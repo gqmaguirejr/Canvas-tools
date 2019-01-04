@@ -97,12 +97,6 @@ Example:
 ./users-in-course.py --config config-test.json --avatar 6434
 ```
 
-You can xxxx, for example:
-```
-
-```
-
-
 ## xxx.py
 
 Purpose: To 

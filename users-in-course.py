@@ -222,6 +222,10 @@ def main():
               users=users_in_course(course_id)
               if (users):
                      users_df=pd.io.json.json_normalize(users)
+                     
+                     # below are examples of some columns that might be dropped
+                     columns_to_drop=['user.id', 'user.integration_id', 'section_integration_id', 'course_integration_id', 'associated_user_id']
+                     users_df.drop(columns_to_drop,inplace=True,axis=1)
 
                      # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
                      # set up the output write
