@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./list_your_courses.py
+# ./list_your_courses_JSON.py
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
@@ -39,14 +39,18 @@ def initialize(options):
        else:
               config_file='config.json'
 
-       with open(config_file) as json_data_file:
-              configuration = json.load(json_data_file)
-              access_token=configuration["canvas"]["access_token"]
-              baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1/"
+       try:
+              with open(config_file) as json_data_file:
+                     configuration = json.load(json_data_file)
+                     access_token=configuration["canvas"]["access_token"]
+                     baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1/"
 
-       header = {'Authorization' : 'Bearer ' + access_token}
-       payload = {}
-
+                     header = {'Authorization' : 'Bearer ' + access_token}
+                     payload = {}
+       except:
+              print("Unable to open configuration file named {}".format(config_file))
+              print("Please create a suitable configuration file, the default name is config.json")
+              sys.exit()
 
 def list_your_courses():
        courses_found_thus_far=[]

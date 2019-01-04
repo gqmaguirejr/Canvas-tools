@@ -9,6 +9,8 @@ Additionally, programs can be called with an alternative configuration file usin
 
 for example:  --config config-test.json
 
+See the default-config.json file for an example of the structure of this file. Replace the string xxx by your access token and replace the string yyy.instructure.com with the name of the server where your Canvas LMS is running.
+
 ======================================================================
 ## list_your_courses_JSON.py
 
@@ -20,8 +22,6 @@ Input: none
 ```
 
 Output: outputs JSON for user's courses
-
-Note 
 
 Example (edited to show only some of the output):
 ```
@@ -61,12 +61,6 @@ Example (edited to show only some of the output):
         'workflow_state': 'available'},
         'workflow_state': 'unpublished'}]
 ```
-
-You can xxxx, for example:
-```
-
-```
-
 
 ## xxx.py
 
