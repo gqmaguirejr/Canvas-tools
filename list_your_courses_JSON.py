@@ -43,7 +43,7 @@ def initialize(options):
               with open(config_file) as json_data_file:
                      configuration = json.load(json_data_file)
                      access_token=configuration["canvas"]["access_token"]
-                     baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1/"
+                     baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
 
                      header = {'Authorization' : 'Bearer ' + access_token}
                      payload = {}
@@ -57,7 +57,7 @@ def list_your_courses():
        # Use the Canvas API to get the list of all of your courses
        # GET /api/v1/courses
 
-       url = baseUrl+'courses'
+       url = "{0}/courses".format(baseUrl)
        if Verbose_Flag:
               print("url: {}".format(url))
 
