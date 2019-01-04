@@ -62,6 +62,21 @@ Example (edited to show only some of the output):
         'workflow_state': 'unpublished'}]
 ```
 
+## list_your_courses.py
+
+Purpose: To list the courses of the user runinng the program
+
+Input: none
+```
+./list_your_courses.py
+```
+
+Output: outputs the file courses-self.xlsx containing a spreadsheet of the user's courses
+
+```
+./list_your_courses.py
+```
+
 ## xxx.py
 
 Purpose: To 

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./list_your_courses_JSON.py
+# ./list_your_courses.py
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
@@ -20,6 +20,9 @@ import pprint
 import optparse
 import sys
 import json
+
+# Use Python Pandas to create XLSX files
+import pandas as pd
 
 #############################
 ###### EDIT THIS STUFF ######
@@ -111,7 +114,15 @@ def main():
 
        output=list_your_courses()
        if (output):
-              pprint.pprint(output, indent=4)
+              courses_df=pd.io.json.json_normalize(output)
+
+              # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
+              # set up the output write
+              writer = pd.ExcelWriter('courses-self.xlsx', engine='xlsxwriter')
+              courses_df.to_excel(writer, sheet_name='Courses')
+    
+              # Close the Pandas Excel writer and output the Excel file.
+              writer.save()
 
 if __name__ == "__main__": main()
 
