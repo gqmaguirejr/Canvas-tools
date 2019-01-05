@@ -274,6 +274,8 @@ def main():
        # if a size is specified, but the picture option is not set, then set it automatically
        if Picture_size > 1:
               Picture_Flag=True
+       if Picture_Flag:         # you need to have the avatar URLs in order to make pictures, so enable them
+              options.avatar=True
 
        initialize(options)
 
