@@ -102,6 +102,24 @@ To make images 90x90 pixels in size:
  ./users-in-course.py --config config-test.json --avatar -p -s 90 11
 ```
 
+## modules-in-course.py
+
+Purpose: To list the modules in a course in a spreadsheet
+
+Input: course_id
+```
+./modules-in-course.py course_id
+```
+
+Output: outputs a spreadsheet named 'modules-'+course_id+'.xlsx'
+
+Example:
+```
+./modules-in-course.py 11
+
+./modules-in-course.py --config config-test.json 11
+```
+
 ## xxx.py
 
 Purpose: To 
