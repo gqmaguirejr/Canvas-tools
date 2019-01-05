@@ -155,6 +155,24 @@ Example:
 ./assignments-in-course.py --config config-test.json 11
 ```
 
+## quizzes-in-course.py
+
+Purpose: To list the quizzes in a course in a spreadsheet
+
+Input: course_id
+```
+./quizzes-in-course.py course_id
+```
+
+Output: outputs a spreadsheet named 'quizzes-'+course_id+'.xlsx'
+
+Example:
+```
+./quizzes-in-course.py 11
+
+./quizzes-in-course.py --config config-test.json 11
+```
+
 
 ## xxx.py
 
