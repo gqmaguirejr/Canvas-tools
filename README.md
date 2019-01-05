@@ -120,6 +120,42 @@ Example:
 ./modules-in-course.py --config config-test.json 11
 ```
 
+## modules-items-in-course.py
+Purpose: To list the module items in a course in a spreadsheet
+
+Input: course_id
+```
+./module-items-in-course.py course_id
+```
+
+Output: outputs a spreadsheet named 'module-items-'+course_id+'.xlsx'
+
+Example:
+```
+./module-items-in-course.py 11
+
+./module-items-in-course.py --config config-test.json 11
+```
+
+## assignments-in-course.py
+
+Purpose: To list the assignments in a course in a spreadsheet
+
+Input: course_id
+```
+./assignments-in-course.py course_id
+```
+
+Output: outputs a spreadsheet named 'assignments-'+course_id+'.xlsx'
+
+Example:
+```
+./assignments-in-course.py 11
+
+./assignments-in-course.py --config config-test.json 11
+```
+
+
 ## xxx.py
 
 Purpose: To 
