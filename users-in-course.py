@@ -5,6 +5,9 @@
 #
 # Output: XLSX spreadsheet with textual section names and URL to user's avatar
 #
+# --avatar flag include the avatar URLs
+# -p or --picture flag include pictures
+# -s or --size specification size the pictures (and enable pictures if not separately specified)
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
@@ -18,10 +21,14 @@
 #
 # ./users-in-course.py --config config-test.json --avatar 6434
 # 
+# documentation about using xlsxwriter to insert images can be found at:
+#   John McNamara, "Example: Inserting images into a worksheet", web page, 10 November 2018, https://xlsxwriter.readthedocs.io/example_images.html
+#
 # G. Q. Maguire Jr.
 #
-# based on earlier users-in-course.py that generated CSV files
-
+# based on earlier users-in-course.py (that generated CSV files) and
+#                  users-in-course-improved2.py (that included the images)
+#
 # 2019.01.04
 #
 
@@ -33,6 +40,17 @@ import json
 
 # Use Python Pandas to create XLSX files
 import pandas as pd
+
+# for dealing with the image bytes
+from io import StringIO, BytesIO
+
+# Import urlopen() for either Python 2 or 3.
+try:
+    from urllib.request import urlopen
+except ImportError:
+    from urllib2 import urlopen
+
+from PIL import Image
 
 #############################
 ###### EDIT THIS STUFF ######
@@ -183,8 +201,33 @@ def list_your_courses():
 
        return courses_found_thus_far
 
+# based upon answer by RoMA on Oct 8 '08 at 10:09 in http://stackoverflow.com/questions/181596/how-to-convert-a-column-number-eg-127-into-an-excel-column-eg-aa
+def ColIdxToXlName(idx):
+    if idx < 1:
+        raise ValueError("Index is too small")
+    result = ""
+    while True:
+        if idx > 26:
+            idx, r = divmod(idx - 1, 26)
+            result = chr(r + ord('A')) + result
+        else:
+            return chr(idx + ord('A') - 1) + result
+
+
+# from KobeJohn on Nov 12 '15 at 15:36 at http://stackoverflow.com/questions/33672833/set-width-and-height-of-an-image-when-inserting-via-worksheet-insert-image
+
+def calculate_scale(im_size, bound_size):
+    original_width, original_height = im_size
+
+    # calculate the resize factor, keeping original aspect and staying within boundary
+    bound_width, bound_height = bound_size
+    ratios = (float(bound_width) / original_width, float(bound_height) / original_height)
+    return min(ratios)
+
 def main():
        global Verbose_Flag
+
+       default_picture_size=128
 
        parser = optparse.OptionParser()
 
@@ -204,6 +247,19 @@ def main():
                          help="include URL to avatar for each user"
        )
 
+       parser.add_option('-p', '--pictures',
+                         dest="pictures",
+                         default=False,
+                         action="store_true",
+                         help="Include pictures from user's avatars"
+       )
+
+       parser.add_option("-s", "--size",
+                         action="store",
+                         dest="picture_size",
+                         default=default_picture_size,
+                         help="size of picture in pixels")
+
        options, remainder = parser.parse_args()
 
        Verbose_Flag=options.verbose
@@ -212,6 +268,12 @@ def main():
               print("VERBOSE   : {}".format(options.verbose))
               print("REMAINING : {}".format(remainder))
               print("Configuration file : {}".format(options.config_filename))
+
+       Picture_Flag=options.pictures
+       Picture_size=int(options.picture_size)
+       # if a size is specified, but the picture option is not set, then set it automatically
+       if Picture_size > 1:
+              Picture_Flag=True
 
        initialize(options)
 
@@ -231,6 +293,8 @@ def main():
                      # set up the output write
                      writer = pd.ExcelWriter('users-'+course_id+'.xlsx', engine='xlsxwriter')
                      #users_df.to_excel(writer, sheet_name='Users')
+
+                     # Get the xlsxwriter workbook and worksheet objects.
     
                      sections=sections_in_course(course_id)
                      sections_df=pd.io.json.json_normalize(sections)
@@ -259,7 +323,63 @@ def main():
                                           users_avatars[user_id]=user_avatar
                                    users_df.at[index, 'avatar_url']=user_avatar
 
+                     if Picture_Flag: # if necessary add a picture column
+                            users_df['pictures']=''
+                            headers = users_df.columns.tolist()
+                            if Verbose_Flag:
+                                   print("users_df columns: {}".format(headers))
+                            column_for_pictures_of_users=ColIdxToXlName(len(headers) + 1)
+
                      users_df.to_excel(writer, sheet_name='Users')
+
+                     # for adding pictures
+                     workbook = writer.book
+                     worksheet = writer.sheets['Users']
+                                          
+                     if Picture_Flag: # add pictures
+                            # Widen the picture column to hold the images
+                            worksheet.set_column(column_for_pictures_of_users+':'+column_for_pictures_of_users, 25)
+
+
+                            # set the row slightly larger than the pictures
+                            maxsize = (Picture_size, Picture_size)
+                            worksheet.set_default_row(Picture_size+2)
+                            # set the heading row to be only 25 units high
+                            worksheet.set_row(0, 20)
+
+                            for index, row in  users_df.iterrows():
+                                   avatar_url=row['avatar_url']
+                                   if Verbose_Flag:
+                                          print("index: {0}, avatar_url: {1}".format(index, avatar_url))
+
+                                   if len(avatar_url) > 0:
+                                          http_reponse=urlopen(avatar_url)
+                                          if Verbose_Flag:
+                                                 print("http_reponse: {0}".format(http_reponse.info()))
+                                          im = Image.open(http_reponse)
+                                          image_width, image_height = im.size
+                                          if (image_width <= 1) or (image_height <= 1): # if either dimension is <1, this is a degenerate image
+                                                 print("degenerate image encountered (for user_id={0}) that is one pixel of less in height or width, URL={1}".format(row['user_id'],avatar_url))
+                                                 continue
+                                          if Verbose_Flag:
+                                                 print("im: {0}".format(im.size))
+                                          resize_scale=calculate_scale(im.size, maxsize)
+                                          if Verbose_Flag:
+                                                 print("resize_scale: {0}".format(resize_scale))
+
+                                          image_data = BytesIO(urlopen(avatar_url).read())
+                                          if Verbose_Flag:
+                                                 print("image_data: {}".format(image_data))
+                                          # im.thumbnail(maxsize, Image.ANTIALIAS)
+
+                                          # need to increase the index because the first user is in the row indexed by 0, but this has to be in the second row of the Excel spreadhsheet
+                                          if Verbose_Flag:
+                                                 print("column_for_pictures_of_users+str(index+2): {}".format(column_for_pictures_of_users+str(index+2)))
+                                          worksheet.insert_image(column_for_pictures_of_users+str(index+2),
+                                                                 avatar_url,
+                                                                 {'image_data': image_data, 'x_scale': resize_scale, 'y_scale': resize_scale}
+                                          )
+
                      sections_df.to_excel(writer, sheet_name='Sections')
 
                      # Close the Pandas Excel writer and output the Excel file.

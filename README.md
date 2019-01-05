@@ -90,11 +90,16 @@ Output: XLSX spreadsheet with textual section names and URL to user's avatar
 
 Note that getting the avatars takes some time, hence this is optional
 
-Example:
+Examples:
 ```
 ./users-in-course.py --config config-test.json 6434
 
 ./users-in-course.py --config config-test.json --avatar 6434
+
+ ./users-in-course.py --config config-test.json --avatar -p 11
+
+To make images 90x90 pixels in size:
+ ./users-in-course.py --config config-test.json --avatar -p -s 90 11
 ```
 
 ## xxx.py
