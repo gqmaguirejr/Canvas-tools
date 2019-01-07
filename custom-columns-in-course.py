@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./quizzes-in-course.py course_id
+# ./custom-columns-in-course.py course_id
 #
-# Output: XLSX spreadsheet with quizzes in course
+# Output: XLSX spreadsheet with custom columns in course
 #
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
@@ -12,9 +12,9 @@
 # ./list_your_courses.py --config config-test.json
 #
 # Example:
-# ./quizzes-in-course.py 11
+# ./custom-columns-in-course.py 11
 #
-# ./quizzes-in-course.py --config config-test.json 11
+# ./custom-columns-in-course.py --config config-test.json 11
 #
 # 
 # documentation about using xlsxwriter to insert images can be found at:
@@ -22,9 +22,9 @@
 #
 # G. Q. Maguire Jr.
 #
-# based on earlier list-quizzes.py
+# based on earlier list-custom-columns.py
 #
-# 2019.01.05
+# 2019.01.07
 #
 
 import requests, time
@@ -67,69 +67,35 @@ def initialize(options):
         print("Please create a suitable configuration file, the default name is config.json")
         sys.exit()
 
-def list_quizzes(course_id):
-    quizzes_found_thus_far=[]
-    # Use the Canvas API to get the list of quizzes for the course
-    #GET /api/v1/courses/:course_id/quizzes
+def list_custom_columns(course_id):
+    columns_found_thus_far=[]
+    # Use the Canvas API to get the list of custom column for this course
+    #GET /api/v1/courses/:course_id/custom_gradebook_columns
 
-    url = "{0}/courses/{1}/quizzes".format(baseUrl, course_id)
+    url = "{0}/courses/{1}/custom_gradebook_columns".format(baseUrl,course_id)
     if Verbose_Flag:
         print("url: {}".format(url))
 
     r = requests.get(url, headers = header)
     if Verbose_Flag:
-        print("result of getting quizzes: {}".format(r.text))
+        print("result of getting custom_gradebook_columns: {}".format(r.text))
 
     if r.status_code == requests.codes.ok:
         page_response=r.json()
 
         for p_response in page_response:  
-            quizzes_found_thus_far.append(p_response)
+            columns_found_thus_far.append(p_response)
 
-            # the following is needed when the reponse has been paginated
-            # i.e., when the response is split into pieces - each returning only some of the list
-            # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-            while r.links['current']['url'] != r.links['last']['url']:  
-                r = requests.get(r.links['next']['url'], headers=header)  
-                if Verbose_Flag:
-                    print("result of getting quizzes for a paginated response: {}".format(r.text))
-                page_response = r.json()  
-                for p_response in page_response:  
-                    quizzes_found_thus_far.append(p_response)
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        while r.links['current']['url'] != r.links['last']['url']:  
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                columns_found_thus_far.append(p_response)
 
-    return quizzes_found_thus_far
-
-def list_quiz_questions(course_id, quiz_id):
-    questions_found_thus_far=[]
-    # Use the Canvas API to get the list of questions for a quiz in the course
-    # GET /api/v1/courses/:course_id/quizzes/:quiz_id/questions
-
-    url = "{0}/courses/{1}/quizzes/{2}/questions".format(baseUrl, course_id, quiz_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    r = requests.get(url, headers = header)
-    if Verbose_Flag:
-        print("result of getting questions: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            questions_found_thus_far.append(p_response)
-
-            # the following is needed when the reponse has been paginated
-            # i.e., when the response is split into pieces - each returning only some of the list of modules
-            # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-            while r.links['current']['url'] != r.links['last']['url']:  
-                r = requests.get(r.links['next']['url'], headers=header)  
-                if Verbose_Flag:
-                    print("result of getting questions for a paginated response: {}".format(r.text))
-                page_response = r.json()  
-                for p_response in page_response:  
-                    questions_found_thus_far.append(p_response)
-
-    return questions_found_thus_far
+    return columns_found_thus_far
 
 
 def main():
@@ -163,23 +129,18 @@ def main():
         print("Insuffient arguments - must provide course_id\n")
     else:
         course_id=remainder[0]
-        quizzes=list_quizzes(course_id)
-        if (quizzes):
-            quizzes_df=pd.io.json.json_normalize(quizzes)
+        columns=list_custom_columns(course_id)
+        if (columns):
+            columns_df=pd.io.json.json_normalize(columns)
                      
             # below are examples of some columns that might be dropped
             #columns_to_drop=[]
-            #quizzes_df.drop(columns_to_drop,inplace=True,axis=1)
+            #columns_df.drop(columns_to_drop,inplace=True,axis=1)
 
             # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
             # set up the output write
-            writer = pd.ExcelWriter('quizzes-'+course_id+'.xlsx', engine='xlsxwriter')
-            quizzes_df.to_excel(writer, sheet_name='Quizzes')
-
-            for q in sorted(quizzes, key=lambda x: x['id']):
-                qi=list_quiz_questions(course_id, q['id'])
-                qi_df=pd.io.json.json_normalize(qi)
-                qi_df.to_excel(writer, sheet_name=str(q['id']))
+            writer = pd.ExcelWriter('columns-'+course_id+'.xlsx', engine='xlsxwriter')
+            columns_df.to_excel(writer, sheet_name='Columns')
 
 
             # Close the Pandas Excel writer and output the Excel file.
