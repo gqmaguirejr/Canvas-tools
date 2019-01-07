@@ -173,6 +173,42 @@ Example:
 ./quizzes-in-course.py --config config-test.json 11
 ```
 
+## custom-columns-in-course.py
+
+Purpose: To list the custom columns in a spreadsheet
+
+Input:
+```
+./custom-columns-in-course.py course_id
+```
+
+Example:
+```
+./custom-columns-in-course.py 1585
+```
+
+## delete-custom-columns-in-course.py
+
+Purpose: To delete a custom column or all custom columns from a course
+
+Input:
+```
+To delete a specific custom column:
+  ./delete-custom-columns-in-course.py course_id column_id
+
+To delete aall custom column:
+  ./delete-custom-columns-in-course.py -a course_id
+
+```
+
+Example:
+```
+Delete one column:
+   ./delete-custom-columns-in-course.py 12683 1118
+Delete all columns:
+  ./delete-custom-columns-in-course.py -v --config config-test.json -a 12683
+```
+
 
 ## xxx.py
 
