@@ -18,14 +18,14 @@ Purpose: To list the courses of the user runinng the program
 
 Input: none
 ```
-./list_your_courses_JSON.py
+list_your_courses_JSON.py
 ```
 
 Output: outputs JSON for user's courses
 
 Example (edited to show only some of the output):
 ```
-./list_your_courses_JSON.py
+list_your_courses_JSON.py
 [   {   'account_id': 42,
         'apply_assignment_group_weights': False,
         'blueprint': False,
@@ -68,13 +68,13 @@ Purpose: To list the courses of the user runinng the program
 
 Input: none
 ```
-./list_your_courses.py
+list_your_courses.py
 ```
 
 Output: outputs a file (courses-self.xlsx) containing a spreadsheet of the user's courses
 
 ```
-./list_your_courses.py
+list_your_courses.py
 ```
 
 ## users-in-course.py
@@ -83,7 +83,7 @@ Purpose: To get a list of the users in a course together with their sections and
 
 Input:
 ```
-./users-in-course.py course_id
+users-in-course.py course_id
 ```
 
 Output: XLSX spreadsheet with textual section names and URL to user's avatar
@@ -92,14 +92,14 @@ Note that getting the avatars takes some time, hence this is optional
 
 Examples:
 ```
-./users-in-course.py --config config-test.json 6434
+users-in-course.py --config config-test.json 6434
 
-./users-in-course.py --config config-test.json --avatar 6434
+users-in-course.py --config config-test.json --avatar 6434
 
- ./users-in-course.py --config config-test.json --avatar -p 11
+users-in-course.py --config config-test.json --avatar -p 11
 
 To make images 90x90 pixels in size:
- ./users-in-course.py --config config-test.json --avatar -p -s 90 11
+  users-in-course.py --config config-test.json --avatar -p -s 90 11
 ```
 
 ## modules-in-course.py
@@ -108,16 +108,16 @@ Purpose: To list the modules in a course in a spreadsheet
 
 Input: course_id
 ```
-./modules-in-course.py course_id
+modules-in-course.py course_id
 ```
 
 Output: outputs a spreadsheet named 'modules-'+course_id+'.xlsx'
 
-Example:
+Examples:
 ```
-./modules-in-course.py 11
+modules-in-course.py 11
 
-./modules-in-course.py --config config-test.json 11
+modules-in-course.py --config config-test.json 11
 ```
 
 ## modules-items-in-course.py
@@ -125,16 +125,16 @@ Purpose: To list the module items in a course in a spreadsheet
 
 Input: course_id
 ```
-./module-items-in-course.py course_id
+module-items-in-course.py course_id
 ```
 
 Output: outputs a spreadsheet named 'module-items-'+course_id+'.xlsx'
 
-Example:
+Examples:
 ```
-./module-items-in-course.py 11
+module-items-in-course.py 11
 
-./module-items-in-course.py --config config-test.json 11
+module-items-in-course.py --config config-test.json 11
 ```
 
 ## assignments-in-course.py
@@ -143,16 +143,16 @@ Purpose: To list the assignments in a course in a spreadsheet
 
 Input: course_id
 ```
-./assignments-in-course.py course_id
+assignments-in-course.py course_id
 ```
 
 Output: outputs a spreadsheet named 'assignments-'+course_id+'.xlsx'
 
-Example:
+Examples:
 ```
-./assignments-in-course.py 11
+assignments-in-course.py 11
 
-./assignments-in-course.py --config config-test.json 11
+assignments-in-course.py --config config-test.json 11
 ```
 
 ## quizzes-in-course.py
@@ -161,16 +161,16 @@ Purpose: To list the quizzes in a course in a spreadsheet
 
 Input: course_id
 ```
-./quizzes-in-course.py course_id
+quizzes-in-course.py course_id
 ```
 
 Output: outputs a spreadsheet named 'quizzes-'+course_id+'.xlsx'
 
-Example:
+Examples:
 ```
-./quizzes-in-course.py 11
+quizzes-in-course.py 11
 
-./quizzes-in-course.py --config config-test.json 11
+quizzes-in-course.py --config config-test.json 11
 ```
 
 ## custom-columns-in-course.py
@@ -179,12 +179,12 @@ Purpose: To list the custom columns in a spreadsheet
 
 Input:
 ```
-./custom-columns-in-course.py course_id
+custom-columns-in-course.py course_id
 ```
 
 Example:
 ```
-./custom-columns-in-course.py 1585
+custom-columns-in-course.py 1585
 ```
 
 ## delete-custom-columns-in-course.py
@@ -194,21 +194,60 @@ Purpose: To delete a custom column or all custom columns from a course
 Input:
 ```
 To delete a specific custom column:
-  ./delete-custom-columns-in-course.py course_id column_id
+  delete-custom-columns-in-course.py course_id column_id
 
 To delete aall custom column:
-  ./delete-custom-columns-in-course.py -a course_id
+  delete-custom-columns-in-course.py -a course_id
 
 ```
+
+Examples:
+```
+Delete one column:
+  delete-custom-columns-in-course.py 12683 1118
+
+Delete all columns:
+  delete-custom-columns-in-course.py -v --config config-test.json -a 12683
+```
+
+
+## create_sections_in_course.py
+
+Purpose: To create sections in a course
+
+Input:
+```
+create_sections_in_course.py course_id [section_name]  [section_name]  [section_name] ...
+```
+
+Output: None
 
 Example:
 ```
-Delete one column:
-   ./delete-custom-columns-in-course.py 12683 1118
-Delete all columns:
-  ./delete-custom-columns-in-course.py -v --config config-test.json -a 12683
+create_sections_in_course.py --config config-test.json 12683  'Test section'  'Test section2'
 ```
 
+
+## delete_sections_in_course.py
+
+Purpose: To delete indicated section(s) of a course
+
+Input:
+```
+delete_sections_in_course.py course_id section_id
+```
+
+Output: deleting section id=NNNN with name=SSSSSS
+
+Note 
+
+Example:
+```
+delete_sections_in_course.py -v --config config-test.json 12683 16164
+
+To delete all sections:
+./delete_sections_in_course.py -a --config config-test.json 12683
+```
 
 ## xxx.py
 
