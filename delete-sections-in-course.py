@@ -172,10 +172,12 @@ def main():
 
        initialize(options)
 
-       if (len(remainder) < 1) and options.all:
+       if (len(remainder) < 1):
               print("Insuffient arguments - must provide course_id\n")
-       else:
+              sys.exit()
+       if (len(remainder) < 2) and not options.all:
               print("Insuffient arguments - must provide course_id and at least one section name\n")
+              sys.exit()
 
        course_id=remainder[0]
 
@@ -187,6 +189,8 @@ def main():
                      section_id=s['id']
                      section_name=s['name']
                      print("deleting section id={0} with name={1}".format(section_id, section_name))
+                     if section_id < 15000:
+                            continue
                      delete_sections_by_id(section_id)
        else:
               for i in range(1, len(remainder)):
