@@ -211,30 +211,30 @@ Delete all columns:
 ```
 
 
-## create_sections_in_course.py
+## create-sections-in-course.py
 
 Purpose: To create sections in a course
 
 Input:
 ```
-create_sections_in_course.py course_id [section_name]  [section_name]  [section_name] ...
+create-sections-in-course.py course_id [section_name]  [section_name]  [section_name] ...
 ```
 
 Output: None
 
 Example:
 ```
-create_sections_in_course.py --config config-test.json 12683  'Test section'  'Test section2'
+create-sections-in-course.py --config config-test.json 12683  'Test section'  'Test section2'
 ```
 
 
-## delete_sections_in_course.py
+## delete-sections-in-course.py
 
 Purpose: To delete indicated section(s) of a course
 
 Input:
 ```
-delete_sections_in_course.py course_id section_id
+delete-sections-in-course.py course_id section_id
 ```
 
 Output: deleting section id=NNNN with name=SSSSSS
@@ -243,11 +243,36 @@ Note
 
 Example:
 ```
-delete_sections_in_course.py -v --config config-test.json 12683 16164
+delete-sections-in-course.py -v --config config-test.json 12683 16164
 
 To delete all sections:
-./delete_sections_in_course.py -a --config config-test.json 12683
+./delete-sections-in-course.py -a --config config-test.json 12683
 ```
+
+## my-files.py
+
+Purpose: To output a XLSX spreadsheet of the files for the user running the program
+
+Input:
+```
+./my-files.py
+```
+
+Output: none
+
+Example:
+```
+    ./my-files.py
+
+    ./my-files.py --config config-test.json 11
+
+for testing - skips some files:
+   ./my-files.py -t 
+
+    ./my-files.py -t --config config-test.json
+
+```
+
 
 ## xxx.py
 
