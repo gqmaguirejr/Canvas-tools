@@ -26,6 +26,8 @@ import optparse
 import sys
 import json
 
+from bs4 import BeautifulSoup
+
 #############################
 ###### EDIT THIS STUFF ######
 #############################
@@ -106,6 +108,53 @@ def user_profile_url(user_id):
         page_response=r.json()
         return page_response
     return []
+
+#curl 'https://kth.test.instructure.com/api/v1/users/self/custom_data/program_of_study' \
+#  -H 'Content-Type: application/json' \
+#  -X PUT \
+#  -d '{
+#        "ns": "se.kth.canvas-app.program_of_study",
+#        "data": {
+#      "programs": [{"code": "TIVNM-DASC", "name": "ICT Innovation, (TIVNM), Data Science (DASC) Program", "start": 2016}]
+#        }
+#      }'
+def put_user_custom_data_by_sis_id(user_id, name_space, scope, data):
+    # Use the Canvas API to set a user's custom data
+    # PUT /api/v1/users/:user_id/custom_data(/*scope)
+    url = "{0}/users/sis_user_id:{1}/custom_data/{2}".format(baseUrl, user_id, scope)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    payload={'ns': name_space,
+             'data': data
+    }
+    r = requests.put(url, headers = header, json=payload)
+    if Verbose_Flag:
+        print("result of setting custom data: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+        return page_response
+    return []
+
+def get_user_custom_data_by_sis_id(user_id, name_space, scope):
+    # Use the Canvas API to get a user's custom data
+    # GET /api/v1/users/:user_id/custom_data(/*scope)
+    url = "{0}/users/sis_user_id:{1}/custom_data/{2}".format(baseUrl, user_id, scope)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    payload={'ns': name_space }
+
+    r = requests.get(url, headers = header, json=payload)
+    if Verbose_Flag:
+        print("result of getting custom data: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+        return page_response
+    return []
+
 
 def section_name_from_section_id(sections_info, section_id): 
     for i in sections_info:
@@ -420,6 +469,44 @@ def existing_user_in_course_by_sis_id(all_users_in_course, sis_user_id):
             return True
     return False
 
+KOPPSbaseUrl = 'https://www.kth.se'
+def v1_get_programmes():
+    global Verbose_Flag
+    #
+    # Use the KOPPS API to get the data
+    # note that this returns XML
+    url = "{0}/api/kopps/v1/programme".format(KOPPSbaseUrl)
+    if Verbose_Flag:
+        print("url: " + url)
+    #
+    r = requests.get(url)
+    if Verbose_Flag:
+        print("result of getting v1 programme: {}".format(r.text))
+    #
+    if r.status_code == requests.codes.ok:
+        return r.text           # simply return the XML
+    #
+    return None
+
+def programs_and_owner_and_titles():
+    programs=v1_get_programmes()
+    xml=BeautifulSoup(programs, "lxml")
+    program_and_owner_titles=dict()
+    for prog in xml.findAll('programme'):
+        if prog.attrs['cancelled'] == 'false':
+            owner=prog.owner.string
+            titles=prog.findAll('title')
+            title_en=''
+            title_sv=''
+            for t in titles:
+                if t.attrs['xml:lang'] == 'en':
+                    title_en=t.string
+                if t.attrs['xml:lang'] == 'sv':
+                    title_sv=t.string
+            program_and_owner_titles[prog.attrs['code']]={'owner': owner, 'title_en': title_en, 'title_sv': title_sv}
+    #
+    return program_and_owner_titles
+
 def main():
     global Verbose_Flag
 
@@ -435,6 +522,14 @@ def main():
     )
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
+
+    parser.add_option('-t', '--testing',
+                      dest="testing",
+                      default=False,
+                      action="store_true",
+                      help="execute test code"
+    )
+
     
     options, remainder = parser.parse_args()
 
@@ -466,6 +561,19 @@ def main():
 {'user_name': 'James FakeStudent', 'short_name': 'James', 'sortable_name': 'FakeStudent, James', 'time_zone': 'CET', 'locale': 'se-SE', 'birthdate': '1970-01-13', 'unique_id': 's10', 'password': 'DumbPassword', 'sis_user_id': 'z10', 'email_address': 'james@localhost', 'program': 'TIVNM'}
 ]
 
+    course_id=remainder[1]
+    all_users_in_course=users_in_course(course_id)
+    if all_users_in_course:
+        if Verbose_Flag:
+    	    print(all_users_in_course)
+
+
+    if options.testing:
+        print("testing for course_id={}".format(course_id))
+
+        sys.exit()
+
+
     for user in test_users:
         if not existing_user_by_sis_id(all_users, user['sis_user_id']):
             # create the user
@@ -473,11 +581,6 @@ def main():
             if Verbose_Flag:
                 print("result of creating user {0} is {1}".format(user['user_name'], result))
 
-    course_id=remainder[1]
-    all_users_in_course=users_in_course(course_id)
-    if all_users_in_course:
-        if Verbose_Flag:
-    	    print(all_users_in_course)
 
     section_id=[]
     role='StudentEnrollment'
@@ -486,6 +589,21 @@ def main():
             result=enroll_user_with_sis_id(course_id, user['sis_user_id'], role, section_id)
             if Verbose_Flag:
                 print("result of enrolling user {0} is {1}".format(user['user_name'], result))
+
+    # set the fake program data for the users
+    all_programs=programs_and_owner_and_titles()
+    for user in test_users:
+        if existing_user_in_course_by_sis_id(all_users_in_course, user['sis_user_id']):
+            data={"programs": [{"code": user['program'], "name": all_programs[user['program']]['title_en'], "start": 2016}]
+            }
+            result=put_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study', data)
+            if Verbose_Flag:
+                print("result of setting custom data for user {0} is {1}".format(user['user_name'], result))
+
+            result2=get_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study')
+            if Verbose_Flag:
+                print("result of getting custom data for user {0} is {1}".format(user['user_name'], result2))
+
 
 if __name__ == "__main__": main()
 
