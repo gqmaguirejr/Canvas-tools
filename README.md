@@ -273,6 +273,22 @@ for testing - skips some files:
 
 ```
 
+## create-fake-users-in-course.py
+Purpose: To create a set of fake users in a Canvas instance and enroll them in a course
+
+Input:
+```
+./create-fake-users-in-course.py account_id course_id
+```
+
+Output: nothing
+
+Example:
+```
+./create-fake-users-in-course.py 1 4
+
+./create-fake-users-in-course.py --config config-test.json 1 4
+```
 
 ## xxx.py
 
