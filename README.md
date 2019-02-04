@@ -290,6 +290,28 @@ Example:
 ./create-fake-users-in-course.py --config config-test.json 1 4
 ```
 
+
+## insert_AFPFFx_grading_standards.py
+
+Purpose: To insert an A-F and Fx grading scheme, as well as a P/F and Fx grading scheme in either a course or an account.
+
+Input:
+```
+insert_AFPFFx_grading_standards.py -a account_id
+  or
+insert_AFPFFx_grading_standards.py    course_id
+
+```
+
+Output: outputs a little information as it works
+
+Examples:
+```
+insert_AFPFFx_grading_standards.py -v 11
+insert_AFPFFx_grading_standards.py -v --config config-test.json 11
+
+```
+ 
 ## xxx.py
 
 Purpose: To 
