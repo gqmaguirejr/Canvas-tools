@@ -312,6 +312,31 @@ insert_AFPFFx_grading_standards.py -v --config config-test.json 11
 
 ```
  
+## custom-data-for-users-in-course.py
+
+Purpose: To display custom data that is stored with a user in Canvas.
+
+Input:
+```
+./custom-data-for-users-in-course.py course_id
+
+the name space is 'se.kth.canvas-app.program_of_study'
+the scope is 'program_of_study'
+
+```
+
+Output: the custom data associated with the name space and scope for each user in the selected course
+
+Examples:
+```
+ ./custom-data-for-users-in-course.py 4
+
+ ./custom-data-for-users-in-course.py --config config-test.json 4
+
+```
+
+<-- 
+
 ## xxx.py
 
 Purpose: To 
@@ -360,3 +385,4 @@ You can xxxx, for example:
 
 
 
+-->
