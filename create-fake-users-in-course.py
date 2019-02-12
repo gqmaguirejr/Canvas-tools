@@ -5,6 +5,11 @@
 #
 # Output: none
 #
+# with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+# with the option -m' or '--majors' create the programand majkor data for each user
+# with the option -t' or '--testing' testing mode
+# with the option -u' or '--users' create the users for the course
+#
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
@@ -14,6 +19,8 @@
 # ./create-fake-users-in-course.py 1 4
 #
 # ./create-fake-users-in-course.py --config config-test.json 1 4
+#
+#  ./create-fake-users-in-course.py -u -C -m 1 5
 #
 # G. Q. Maguire Jr.
 #
@@ -50,7 +57,11 @@ def initialize(options):
         with open(config_file) as json_data_file:
             configuration = json.load(json_data_file)
             access_token=configuration["canvas"]["access_token"]
-            baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
+            if options.containers:
+                baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
+                print("using HTTP for the container environment")
+            else:
+                baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
 
             header = {'Authorization' : 'Bearer ' + access_token}
             payload = {}
@@ -366,8 +377,10 @@ def create_user(account_id, user_name, short_name, sortable_name, time_zone, loc
 
     if r.status_code == requests.codes.ok:
         page_response=r.json()
+        return page_response
 
-    return page_response
+    print("r.status_code={}".format(r.status_code))
+    return []
 
 def enrollments_in_course(course_id):
     global Verbose_Flag
@@ -442,10 +455,10 @@ def enroll_user_with_sis_id(course_id, sis_id, role, section_id):
         return page_response['user_id']
     else:
         if r.status_code == 404: # "404 Not Found"
-            message="student {0} not in Canvas - status code {1} ".format(kthid, r.status_code)
+            message="student {0} not in Canvas - status code {1} ".format(sis_id, r.status_code)
             print(message)
         else:
-            message="unable to enroll student {0} in Canvas course {1}, status code {2} ".format(kthid, course_id, r.status_code)
+            message="unable to enroll student {0} in Canvas course {1}, status code {2} ".format(sis_id, course_id, r.status_code)
             print(message)
     return None
 
@@ -523,11 +536,32 @@ def main():
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
 
+    parser.add_option('-u', '--users',
+                      dest="users",
+                      default=False,
+                      action="store_true",
+                      help="add users"
+    )
+
+    parser.add_option('-m', '--majors',
+                      dest="majors",
+                      default=False,
+                      action="store_true",
+                      help="add majors"
+    )
+
     parser.add_option('-t', '--testing',
                       dest="testing",
                       default=False,
                       action="store_true",
                       help="execute test code"
+    )
+
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
     )
 
     
@@ -547,25 +581,66 @@ def main():
         sys.exit()
               
     account_id=remainder[0]
-    all_users=users_in_account(account_id)
 
-    test_users=[{'user_name': 'Ann FakeStudent', 'short_name': 'Ann', 'sortable_name': 'FakeStudent, Ann', 'time_zone': 'CET', 'locale': 'en-US', 'birthdate': '1970-01-01', 'unique_id': 's1', 'password': 'DumbPassword', 'sis_user_id': 'z1', 'email_address': 'ann@localhost', 'program': 'CINTE'},
-{'user_name': 'Bertil FakeStudent', 'short_name': 'Bertil', 'sortable_name': 'FakeStudent, Bertil', 'time_zone': 'CET', 'locale': 'en-US', 'birthdate': '1970-01-02', 'unique_id': 's2', 'password': 'DumbPassword', 'sis_user_id': 'z2', 'email_address': 'bertil@localhost', 'program': 'CDATE'},
-{'user_name': 'Cenric FakeStudent', 'short_name': 'Cenric', 'sortable_name': 'FakeStudent, Cenric', 'time_zone': 'CET', 'locale': 'se-SE', 'birthdate': '1970-01-03', 'unique_id': 's3', 'password': 'DumbPassword', 'sis_user_id': 'z3' , 'email_address': 'cendric@localhost', 'program': 'CINTE'},
-{'user_name': 'David FakeStudent', 'short_name': 'David', 'sortable_name': 'FakeStudent, David', 'time_zone': 'CET', 'locale': 'en-US', 'birthdate': '1970-01-04', 'unique_id': 's4', 'password': 'DumbPassword', 'sis_user_id': 'z4', 'email_address': 'david@localhost', 'program': 'CINTE'},
-{'user_name': 'Ellen FakeStudent', 'short_name': ' Ellen', 'sortable_name': 'FakeStudent, Ellen', 'time_zone': 'CET', 'locale': 'en-US', 'birthdate': '1970-01-05', 'unique_id': 's5', 'password': 'DumbPassword', 'sis_user_id': 'z5', 'email_address': 'ellen@localhost', 'program': 'CDATE'},
-{'user_name': 'Fran FakeStudent', 'short_name': 'Fran', 'sortable_name': 'FakeStudent, Fran', 'time_zone': 'CET', 'locale': 'en-US', 'birthdate': '1970-01-06', 'unique_id': 's6', 'password': 'DumbPassword', 'sis_user_id': 'z6', 'email_address': 'fran@localhost', 'program': 'TEBSM'},
-{'user_name': 'Gordon FakeStudent', 'short_name': 'Gordon', 'sortable_name': 'FakeStudent, Gordon', 'time_zone': 'CET', 'locale': 'se-SE', 'birthdate': '1970-01-07', 'unique_id': 's7', 'password': 'DumbPassword', 'sis_user_id': 'z7', 'email_address': 'gordon@localhost', 'program': 'CDATE'},
-{'user_name': 'Håkan FakeStudent', 'short_name': 'Håkan', 'sortable_name': 'FakeStudent, Håkan', 'time_zone': 'CET', 'locale': 'se-SE', 'birthdate': '1970-01-08', 'unique_id': 's8', 'password': 'DumbPassword', 'sis_user_id': 'z8', 'email_address': 'haakan@localhost', 'program': 'TCOMM'},
-{'user_name': 'Ibǘy FakeStudent', 'short_name': 'Ibǘy', 'sortable_name': 'FakeStudent, Ibǘy', 'time_zone': 'CET', 'locale': 'en-US', 'birthdate': '1970-01-09', 'unique_id': 's9', 'password': 'DumbPassword', 'sis_user_id': 'z9', 'email_address': 'ivy@localhost', 'program': 'CELTE'},
-{'user_name': 'James FakeStudent', 'short_name': 'James', 'sortable_name': 'FakeStudent, James', 'time_zone': 'CET', 'locale': 'se-SE', 'birthdate': '1970-01-13', 'unique_id': 's10', 'password': 'DumbPassword', 'sis_user_id': 'z10', 'email_address': 'james@localhost', 'program': 'TIVNM'}
-]
+    test_users=[{'user_name': 'Ann FakeStudent', 'short_name': 'Ann', 'sortable_name': 'FakeStudent, Ann', 'time_zone': 'Europe/Stockholm', 'locale': 'en-US', 'birthdate': '1970-01-01', 'unique_id': 's1', 'password': 'DumbPassword', 'sis_user_id': 'z1', 'email_address': 'ann@localhost', 'program': 'CINTE', 'major': 'Elektroteknik'},
+                {'user_name': 'Bertil FakeStudent', 'short_name': 'Bertil', 'sortable_name': 'FakeStudent, Bertil', 'time_zone': 'Europe/Stockholm', 'locale': 'en-US', 'birthdate': '1970-01-02', 'unique_id': 's2', 'password': 'DumbPassword', 'sis_user_id': 'z2', 'email_address': 'bertil@localhost', 'program': 'CDATE', 'major': 'Datalogi och datateknk'},
+                {'user_name': 'Cenric FakeStudent', 'short_name': 'Cenric', 'sortable_name': 'FakeStudent, Cenric', 'time_zone': 'Europe/Stockholm', 'locale': 'se-SE', 'birthdate': '1970-01-03', 'unique_id': 's3', 'password': 'DumbPassword', 'sis_user_id': 'z3' , 'email_address': 'cendric@localhost', 'program': 'CINTE', 'major': 'Elektroteknik'},
+                {'user_name': 'David FakeStudent', 'short_name': 'David', 'sortable_name': 'FakeStudent, David', 'time_zone': 'Europe/Stockholm', 'locale': 'en-US', 'birthdate': '1970-01-04', 'unique_id': 's4', 'password': 'DumbPassword', 'sis_user_id': 'z4', 'email_address': 'david@localhost', 'program': 'CINTE', 'major': 'Datalogi och datateknk'},
+                {'user_name': 'Ellen FakeStudent', 'short_name': ' Ellen', 'sortable_name': 'FakeStudent, Ellen', 'time_zone': 'Europe/Stockholm', 'locale': 'en-US', 'birthdate': '1970-01-05', 'unique_id': 's5', 'password': 'DumbPassword', 'sis_user_id': 'z5', 'email_address': 'ellen@localhost', 'program': 'CDATE', 'major': 'Datalogi och datateknk'},
+                {'user_name': 'Fran FakeStudent', 'short_name': 'Fran', 'sortable_name': 'FakeStudent, Fran', 'time_zone': 'Europe/Stockholm', 'locale': 'en-US', 'birthdate': '1970-01-06', 'unique_id': 's6', 'password': 'DumbPassword', 'sis_user_id': 'z6', 'email_address': 'fran@localhost', 'program': 'TEBSM', 'major': 'Datalogi och datateknk', 'track': 'INMV'},
+                {'user_name': 'Gordon FakeStudent', 'short_name': 'Gordon', 'sortable_name': 'FakeStudent, Gordon', 'time_zone': 'Europe/Stockholm', 'locale': 'se-SE', 'birthdate': '1970-01-07', 'unique_id': 's7', 'password': 'DumbPassword', 'sis_user_id': 'z7', 'email_address': 'gordon@localhost', 'program': 'CDATE', 'major': 'Datalogi och datateknk'},
+                {'user_name': 'Håkan FakeStudent', 'short_name': 'Håkan', 'sortable_name': 'FakeStudent, Håkan', 'time_zone': 'Europe/Stockholm', 'locale': 'se-SE', 'birthdate': '1970-01-08', 'unique_id': 's8', 'password': 'DumbPassword', 'sis_user_id': 'z8', 'email_address': 'haakan@localhost', 'program': 'TCOMM', 'major': 'Elektroteknik'},
+                {'user_name': 'Ibǘy FakeStudent', 'short_name': 'Ibǘy', 'sortable_name': 'FakeStudent, Ibǘy', 'time_zone': 'Europe/Stockholm', 'locale': 'en-US', 'birthdate': '1970-01-09', 'unique_id': 's9', 'password': 'DumbPassword', 'sis_user_id': 'z9', 'email_address': 'ivy@localhost', 'program': 'CELTE', 'major': 'Elektroteknik'},
+                {'user_name': 'James FakeStudent', 'short_name': 'James', 'sortable_name': 'FakeStudent, James', 'time_zone': 'Europe/Stockholm', 'locale': 'se-SE', 'birthdate': '1970-01-13', 'unique_id': 's10', 'password': 'DumbPassword', 'sis_user_id': 'z10', 'email_address': 'james@localhost', 'program': 'TIVNM', 'major': 'Datalogi och datateknk', 'track': 'HCID'},
+                {'user_name': 'Karolin FakeStudent', 'short_name': 'Karolin', 'sortable_name': 'FakeStudent, Karolin', 'time_zone': 'Europe/Stockholm', 'locale': 'se-SE', 'birthdate': '1970-01-13', 'unique_id': 's11', 'password': 'DumbPassword', 'sis_user_id': 'z11', 'email_address': 'karolin@localhost', 'program': 'TIVNM', 'major': 'Elektroteknik', 'track': 'INSY'},
+                {'user_name': 'Lucy FakeStudent', 'short_name': 'Lucy', 'sortable_name': 'FakeStudent, Lucy', 'time_zone': 'Europe/Stockholm', 'locale': 'se-SE', 'birthdate': '1970-01-13', 'unique_id': 's12', 'password': 'DumbPassword', 'sis_user_id': 'z12', 'email_address': 'lucy@localhost', 'program': 'CINTE'} # a CINTE student without a major specified
+
+    ]
 
     course_id=remainder[1]
-    all_users_in_course=users_in_course(course_id)
-    if all_users_in_course:
-        if Verbose_Flag:
-    	    print(all_users_in_course)
+
+    all_users=users_in_account(account_id)
+
+    if options.users:
+        for user in test_users:
+            if not existing_user_by_sis_id(all_users, user['sis_user_id']):
+                # create the user
+                result=create_user(account_id, user['user_name'], user['short_name'], user['sortable_name'], user['time_zone'], user['locale'], user['birthdate'], user['unique_id'], user['password'], user['sis_user_id'], user['email_address'])
+                if Verbose_Flag:
+                    print("result of creating user {0} is {1}".format(user['user_name'], result))
+
+
+        section_id=[]
+        role='StudentEnrollment'
+        all_users_in_course=users_in_course(course_id)
+        if all_users_in_course:
+            if Verbose_Flag:
+    	        print(all_users_in_course)
+
+        for user in test_users:
+            if not existing_user_in_course_by_sis_id(all_users_in_course, user['sis_user_id']):
+                result=enroll_user_with_sis_id(course_id, user['sis_user_id'], role, section_id)
+                if Verbose_Flag:
+                    print("result of enrolling user {0} is {1}".format(user['user_name'], result))
+
+    if options.majors:
+        # set the fake program data for the users
+        all_programs=programs_and_owner_and_titles()
+        for user in test_users:
+            if existing_user_in_course_by_sis_id(all_users_in_course, user['sis_user_id']):
+                track=user.get('track', [])
+                if track:
+                    data={"programs": [{"code": user['program'], "name": all_programs[user['program']]['title_en'], "major": user['major'], "track": track, "start": 2016}]}
+                else:
+                    data={"programs": [{"code": user['program'], "name": all_programs[user['program']]['title_en'], "major": user['major'], "start": 2016}]}
+
+                result=put_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study', data)
+                if Verbose_Flag:
+                    print("result of setting custom data for user {0} is {1}".format(user['user_name'], result))
+
+                result2=get_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study')
+                if Verbose_Flag:
+                    print("result of getting custom data for user {0} is {1}".format(user['user_name'], result2))
 
 
     if options.testing:
@@ -574,35 +649,6 @@ def main():
         sys.exit()
 
 
-    for user in test_users:
-        if not existing_user_by_sis_id(all_users, user['sis_user_id']):
-            # create the user
-            result=create_user(account_id, user['user_name'], user['short_name'], user['sortable_name'], user['time_zone'], user['locale'], user['birthdate'], user['unique_id'], user['password'], user['sis_user_id'], user['email_address'])
-            if Verbose_Flag:
-                print("result of creating user {0} is {1}".format(user['user_name'], result))
-
-
-    section_id=[]
-    role='StudentEnrollment'
-    for user in test_users:
-        if not existing_user_in_course_by_sis_id(all_users_in_course, user['sis_user_id']):
-            result=enroll_user_with_sis_id(course_id, user['sis_user_id'], role, section_id)
-            if Verbose_Flag:
-                print("result of enrolling user {0} is {1}".format(user['user_name'], result))
-
-    # set the fake program data for the users
-    all_programs=programs_and_owner_and_titles()
-    for user in test_users:
-        if existing_user_in_course_by_sis_id(all_users_in_course, user['sis_user_id']):
-            data={"programs": [{"code": user['program'], "name": all_programs[user['program']]['title_en'], "start": 2016}]
-            }
-            result=put_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study', data)
-            if Verbose_Flag:
-                print("result of setting custom data for user {0} is {1}".format(user['user_name'], result))
-
-            result2=get_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study')
-            if Verbose_Flag:
-                print("result of getting custom data for user {0} is {1}".format(user['user_name'], result2))
 
 
 if __name__ == "__main__": main()
