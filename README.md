@@ -333,6 +333,8 @@ Examples:
 
  ./custom-data-for-users-in-course.py --config config-test.json 4
 
+Can be used With the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas in containers in a VM.
+
 ./custom-data-for-users-in-course.py -v 4
 ARGV      : ['-v', '4']
 VERBOSE   : True
