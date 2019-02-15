@@ -5,6 +5,9 @@
 #
 # Output: none
 #
+# with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+# with the option -t' or '--testing' testing mode
+#
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
@@ -14,6 +17,8 @@
 # ./custom-data-for-users-in-course.py 4
 #
 # ./custom-data-for-users-in-course.py --config config-test.json 4
+#
+# ./custom-data-for-users-in-course.py -C 5
 #
 # G. Q. Maguire Jr.
 #
@@ -50,7 +55,11 @@ def initialize(options):
         with open(config_file) as json_data_file:
             configuration = json.load(json_data_file)
             access_token=configuration["canvas"]["access_token"]
-            baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
+            if options.containers:
+                baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
+                print("using HTTP for the container environment")
+            else:
+                baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
 
             header = {'Authorization' : 'Bearer ' + access_token}
             payload = {}
@@ -568,6 +577,14 @@ def main():
                       help="execute test code"
     )
 
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
+    )
+
+
     
     options, remainder = parser.parse_args()
 
@@ -599,7 +616,7 @@ def main():
         }
         result=put_user_custom_data_by_sis_id('z0', 'se.kth.canvas-app.program_of_study', 'program_of_study', data)
         if Verbose_Flag:
-            print("result of setting custom data for user z0p is {0}".format(result))
+            print("result of setting custom data for user z0 is {0}".format(result))
 
         sys.exit()
 
