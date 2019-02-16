@@ -400,6 +400,55 @@ result of getting custom data: {"data":{"programs":[{"code":"FakeFake","name":"F
 result of getting custom data for user self is {'data': {'programs': [{'code': 'FakeFake', 'name': 'Fake program', 'start': 1600}]}}
 ```
 
+## list-external-tools-for-course.py
+
+Purpose: To external tools for a Canvas course
+
+Input:
+```
+list-external-tool-for-course.py  course_id tool_id 'navigation_text'
+
+```
+
+Output: a list of external tools for the given course_id
+
+Example:
+With the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+
+list-external-tools-for-course.py -C 5
+
+Can also be called with an alternative configuration file:
+list-external-tools-for-course.py --config config-test.json 4
+
+list-external-tools-for-course.py 4
+```
+
+
+
+## add-external-tool-for-course.py
+Purpose: To add an external to to a Canvas course
+
+Input:
+```
+add-external-tool-for-course.py  course_id tool_id 'navigation_text'
+
+```
+
+Output: a list of external tools for the given course_id
+
+Example:
+With the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+
+add-external-tool-for-course.py 4 2 'TestTool'
+
+Can also be called with an alternative configuration file:
+add-external-tool-for-course.py --config config-test.json 4 2 'TestTool'
+
+add-external-tool-for-course.py -C 5 2 'TestTool'
+```
+
 <!-- 
 
 ## xxx.py

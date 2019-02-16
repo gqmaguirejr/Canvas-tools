@@ -13,9 +13,9 @@
 # Example:
 # ./add-external-tool-for-course.py 4 2 'TestTool'
 #
-# ./list-external-tools-for-course.py --config config-test.json 4 2 'TestTool'
+# ./add-external-tool-for-course.py --config config-test.json 4 2 'TestTool'
 #
-# ./list-external-tools-for-course.py -C 5 2 'TestTool'
+# ./add-external-tool-for-course.py -C 5 2 'TestTool'
 #
 # G. Q. Maguire Jr.
 #
