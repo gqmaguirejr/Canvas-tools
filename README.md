@@ -449,6 +449,30 @@ add-external-tool-for-course.py --config config-test.json 4 2 'TestTool'
 add-external-tool-for-course.py -C 5 2 'TestTool'
 ```
 
+## list_calendar_events.py
+
+Purpose: To output calendar events into an XLSX file
+
+Input:
+```
+./list_calendar_events.py user_id
+```
+
+Output: outputs a file with a name of the form: calendar-user_id.xlsx
+
+## create_calendar_event.py
+
+Purpose: To be able to experiment with creating calendar events.
+
+Input:
+```
+./create_calendar_event.py user_id date title description
+```
+
+Output: Nothing
+
+Note: Can be modified to use a course or a user content.
+
 <!-- 
 
 ## xxx.py

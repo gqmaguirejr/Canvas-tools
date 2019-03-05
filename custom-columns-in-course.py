@@ -7,6 +7,7 @@
 #
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+# with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 #
 # Can also be called with an alternative configuration file:
 # ./list_your_courses.py --config config-test.json
@@ -58,7 +59,11 @@ def initialize(options):
         with open(config_file) as json_data_file:
             configuration = json.load(json_data_file)
             access_token=configuration["canvas"]["access_token"]
-            baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
+            if options.containers:
+                baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
+                print("using HTTP for the container environment")
+            else:
+                baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
 
             header = {'Authorization' : 'Bearer ' + access_token}
             payload = {}
@@ -114,6 +119,13 @@ def main():
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
     
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -121,6 +133,8 @@ def main():
         print("ARGV      : {}".format(sys.argv[1:]))
         print("VERBOSE   : {}".format(options.verbose))
         print("REMAINING : {}".format(remainder))
+
+    if options.config_filename:
         print("Configuration file : {}".format(options.config_filename))
 
     initialize(options)
