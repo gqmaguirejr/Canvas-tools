@@ -11,7 +11,7 @@
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
-# ./create_fake_users-in-course.py --config config-test.json
+# ./custom-data-for-users-in-course.py --config config-test.json
 #
 # Example:
 # ./custom-data-for-users-in-course.py 4
@@ -620,20 +620,21 @@ def main():
 
         sys.exit()
 
+    all_sis_ids=set()
 
     for user in all_users_in_course:
         name=user['user'].get('name', 'no name')
         sis_user_id=user.get('sis_user_id', [])
-        print("user name={0} with id={1} and sis_id={2}".format(name, user['id'], sis_user_id))
-        if sis_user_id:
-            result2=get_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study')
-            print("result of getting custom data for user {0} is {1}".format(name, result2))
-        else:
-            result2=get_user_custom_data_by_user_id(user['id'], 'se.kth.canvas-app.program_of_study', 'program_of_study')
-            print("result of getting custom data for user {0} is {1}".format(name, result2))
+        
+        if sis_user_id not in all_sis_ids:
+            print("user name={0} with id={1} and sis_id={2}".format(name, user['id'], sis_user_id))
+            if sis_user_id:
+                result2=get_user_custom_data_by_sis_id(user['sis_user_id'], 'se.kth.canvas-app.program_of_study', 'program_of_study')
+                print("result of getting custom data for user {0} is {1}".format(name, result2))
+                all_sis_ids.add(sis_user_id)
 
-    result_for_self=get_user_custom_data_by_user_id('self', 'se.kth.canvas-app.program_of_study', 'program_of_study')
-    print("result of getting custom data for user self is {0}".format(result_for_self))
+    #result_for_self=get_user_custom_data_by_user_id('self', 'se.kth.canvas-app.program_of_study', 'program_of_study')
+    #print("result of getting custom data for user self is {0}".format(result_for_self))
 
 if __name__ == "__main__": main()
 
