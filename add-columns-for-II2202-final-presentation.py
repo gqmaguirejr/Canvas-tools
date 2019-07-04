@@ -4,7 +4,7 @@
 # 
 # creates custom columns in the gradebook to make it easier for each teacher to take notes during the final presentation
 # The goal is to avoid the need to have a separate spreadsheet for all of this and then needing to transfer information to the gradebook.
-# A sign benefit might be having all of the teachers keep similar notes.
+# An additional benefit might be to encourage all of the teachers in the course keep similar notes.
 #
 # with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
@@ -13,7 +13,7 @@
 # ./create_fake_users-in-course.py --config config-test.json
 #
 # Example:
-# ./add-columns-for-II2202-final-presentation.py 6434
+# ./add-columns-for-II2202-final-presentation.py 6434 2019-01-01 2019-02-01
 #
 # G. Q. Maguire Jr.
 #
@@ -477,11 +477,15 @@ def main():
 
     initialize(options)
 
-    if (len(remainder) < 1):
-        print("Insuffient arguments - must provide course_id")
+    if (len(remainder) < 3):
+        print("Insuffient arguments - must provide course_id start_date end_date")
     else:
         course_id=remainder[0]
-        # create the columns
+        start_date=remainder[1]
+        end_date=remainder[2]
+
+        # create the following additional custom columns
+        # if you change the names of these columns, be sure to change the strings later in the code
         columns_to_add=["Oral presentation date/time",
                         "title",
                         "Opponent",
@@ -493,13 +497,19 @@ def main():
 	                "Final report grade",
 	                "Overall final grade"]
 
+        # identify which assignment to use to get the information about the opponent(s)
+        # for P1
+        opposition_assignment_name="Opposition before final seminar"
+        # for P1P2
+        #opposition_assignment_name="Opposition before final seminar - with peer review"
+
+
         list_of_columns=list_custom_columns(course_id)
         for column_name in columns_to_add:
             column_number=add_column_if_necessary(course_id, column_name, list_of_columns)
             if Verbose_Flag:
                 print('column_name: "{0}" at column number: {1}'.format(column_name, column_number))
 
-        opposition_assignment_name="Opposition before final seminar - with peer review"
         assignments=list_assignments(course_id)
         if Verbose_Flag:
             print('{0} assignments is {1}'.format(len(assignments), assignments))
@@ -561,8 +571,6 @@ def main():
                 group_by_member[m1]=group_id
 
         # calendar events
-        start_date='2019-01-01'
-        end_date='2019-08-01'
         events=calendar_events_in_course(course_id, start_date, end_date)
         if Verbose_Flag:
             print("{0} events are {1}".format(len(events), events))
