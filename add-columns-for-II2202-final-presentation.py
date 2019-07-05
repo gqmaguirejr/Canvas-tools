@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #
-# ./add-columns-for-II2202-final-presentation.py  course_id
+# ./add-columns-for-II2202-final-presentation.py  course_id start_date end_date
 # 
 # creates custom columns in the gradebook to make it easier for each teacher to take notes during the final presentation
 # The goal is to avoid the need to have a separate spreadsheet for all of this and then needing to transfer information to the gradebook.

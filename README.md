@@ -473,6 +473,59 @@ Output: Nothing
 
 Note: Can be modified to use a course or a user content.
 
+## list_calendar_events.py
+
+Purpose: Create a spreadsheet of a user's calendar events
+
+Input:
+```
+./list_calendar_events.py user_id
+```
+
+Output: XLSX spreadsheet of the user's calendar events. The format of the file name is: calendar-user_id.xlsx
+
+## custom-columns-in-course.py
+
+Purpose: To output all of the customn columns in a course as a spreadsheet
+
+Input:
+```
+./custom-columns-in-course.py course_id
+```
+
+Output: A XLSX spreadsheet with all of the information from the custom columns in a given course.
+
+## insert-custom-columns-from-spreadsheet.py
+
+Purpose: To enter data into the names customn columns in a course from a spreadsheet
+
+Input:
+```.
+insert-custom-columns-from-spreadsheet.py  course_id column_name_1 column_name_2 ...
+```
+
+Output: Updates the gradebook
+
+## add-columns-for-II2202-final-presentation.py
+Purpose: To create custom columns in the gradebook to make it easier for each teacher to take notes during the final presentation (avoiding the user of a spreadsheet).
+
+Input:
+```
+add-columns-for-II2202-final-presentation.py  course_id start_date end_date
+```
+
+Output: Adds the columns to the course's gradebook and populates the "Opponents" columns with the name of the student's peer reviwer and populates the "Oral presentation date/time" columns with the date and time of the oral presentation as scheduled in the calendar.
+
+Note: The columns are custom columns that can have up to ~256 characters entered into them. This is a limitation of the custom columns due to their underlying representation in the database used by Canvas.
+
+Example:
+```
+For II2202 P1 the assignment to use to learn who the opponents are is set as follows
+        opposition_assignment_name="Opposition before final seminar"
+then the program is run as:
+./add-columns-for-II2202-final-presentation.py 6434 2019-01-01 2019-02-01
+```
+
 <!-- 
 
 ## xxx.py
