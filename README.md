@@ -548,6 +548,42 @@ Example:
 
  ./insert-group_column_in_gradebook.py 6433 New_groups "Project Groups" "Project group"
 
+## insert_grades_and_comments.py
+
+Purpose: Inserts grades for an assignment into the gradebook for a course.
+	 The column headings of the gradebook are assumed to have the form (where dddd is a user_id):
+	   Student,ID,assignment_name,assignment_name*comment*
+	   xxxx,dddd,A,"I wish I had written this report"
+	   xxxx,dddd,E,"Terrible report"
+
+Input:
+```
+./insert_grades_and_comments.py course_id assignment_id file.csv
+```
+
+Output: No ouput unless run in verbose mode.
+
+Example:
+./insert_grades_and_comments_indirect.py 6433 25425 inser_grades_and_comments_test.csv
+
+## insert_grades_and_comments_indirect.py
+
+Purpose: Inserts grades for an assignment into the gradebook for a course.
+	 The column headings of the gradebook are assumed to have the form (where dddd is a pseudo user_id):
+	   Student,ID,assignment_name,assignment_name*comment*
+	   xxxx,dddd,A,"I wish I had written this report"
+	   xxxx,dddd,E,"Terrible report"
+
+Input:
+```
+./insert_grades_and_comments_indirect.py course_id assignment_id file.csv indirect_column_name
+```
+
+Output: No ouput unless run in verbose mode.
+
+Example:
+./insert_grades_and_comments_indirect.py 6433 25425 inser_grades_and_comments_test.csv "New_groups"
+
 <!-- 
 
 ## xxx.py
