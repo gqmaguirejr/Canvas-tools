@@ -526,6 +526,28 @@ then the program is run as:
 ./add-columns-for-II2202-final-presentation.py 6434 2019-01-01 2019-02-01
 ```
 
+## insert-group_column_in_gradebook.py
+
+Purpose: Inserts a custom column with the indicated name using the data from
+from the named groupset (it will create the column as necessary).  Note that
+one can optionally strip a fixed prefix from the group names. For example, if
+each group name begins with "Project group" followed by space and a number
+then
+   ./insert-group_column_in_gradebook.py 6433 New_groups "Project Groups" "Project group"
+will simply insert the number with the leading space stripped.
+
+Input:
+```
+./insert-group_column_in_gradebook.py  course_id column_name groupset_name [prefix_to_remove]
+```
+
+Output: No ouput unless run in verbose mode.
+
+Example:
+ ./insert-group_column_in_gradebook.py 6433 New_groups "Project Groups"
+
+ ./insert-group_column_in_gradebook.py 6433 New_groups "Project Groups" "Project group"
+
 <!-- 
 
 ## xxx.py
