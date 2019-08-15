@@ -39,7 +39,6 @@ import pandas as pd
 #############################
 ###### EDIT THIS STUFF ######
 #############################
-
 global baseUrl	# the base URL used for access to Canvas
 global header	# the header for all HTML requests
 global payload	# place to store additionally payload when needed for options to HTML requests
@@ -58,7 +57,11 @@ def initialize(options):
         with open(config_file) as json_data_file:
             configuration = json.load(json_data_file)
             access_token=configuration["canvas"]["access_token"]
-            baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
+            if options.containers:
+                baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
+                print("using HTTP for the container environment")
+            else:
+                baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
 
             header = {'Authorization' : 'Bearer ' + access_token}
             payload = {}
@@ -66,6 +69,7 @@ def initialize(options):
         print("Unable to open configuration file named {}".format(config_file))
         print("Please create a suitable configuration file, the default name is config.json")
         sys.exit()
+
 
 def list_assignments(course_id):
     assignments_found_thus_far=[]
@@ -102,8 +106,6 @@ def list_assignments(course_id):
 def main():
     global Verbose_Flag
 
-    default_picture_size=128
-
     parser = optparse.OptionParser()
 
     parser.add_option('-v', '--verbose',
@@ -114,14 +116,23 @@ def main():
     )
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
-    
+       
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
     if Verbose_Flag:
-        print("ARGV      : {}".format(sys.argv[1:]))
-        print("VERBOSE   : {}".format(options.verbose))
-        print("REMAINING : {}".format(remainder))
+        print('ARGV      :', sys.argv[1:])
+        print('VERBOSE   :', options.verbose)
+        print('REMAINING :', remainder)
+        
+    if options.config_filename:
         print("Configuration file : {}".format(options.config_filename))
 
     initialize(options)

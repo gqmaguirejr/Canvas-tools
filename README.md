@@ -584,6 +584,17 @@ Output: No ouput unless run in verbose mode.
 Example:
 ./insert_grades_and_comments_indirect.py 6433 25425 inser_grades_and_comments_test.csv "New_groups"
 
+## students-in-my-courses.py
+
+Purpose: To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
+
+Input:
+```
+./students-in-my-courses.py
+```
+
+Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
+
 <!-- 
 
 ## xxx.py
