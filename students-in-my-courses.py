@@ -185,7 +185,8 @@ def main():
                              4996, # Canvas at KTH 2.0 - New structure
                              5733, # Grunder, resultathantering och attestering för kursledare och examinatorer. (sv/en)
                              8356, # GDPR@KTH
-                             17839 #Miljöutbildning
+                             17839, # Miljöutbildning
+                             18339  # Vårt uppdrag
         ]): # skip the courses over all KTH faculty and staff
         
         print("course id={0}  name={1}".format(course['id'], course['name']))

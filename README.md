@@ -595,6 +595,22 @@ Input:
 
 Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
+## assignments-in-course.py
+
+Purpose: To generate a spreadsheet of the assignments in a course
+
+Input:
+```
+assignments-in-course.py course_id
+```
+
+Output: outputs a spreadsheet with all the assignments for the course
+
+Example:
+```
+./assignments-in-course.py 11
+```
+
 <!-- 
 
 ## xxx.py
