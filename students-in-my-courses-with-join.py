@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./students-in-my-courses.py
+# ./students-in-my-courses-with-join.py
 #
 # Output: XLSX spreadsheet with students and the course(s) they are in, one sheet per course
 #
@@ -133,9 +133,35 @@ def users_in_course(course_id):
 
     return users_found_thus_far
 
+def add_student_info(row):
+    global student_info
+    if not student_info.get(row['user_id'], []):
+        student_info[row['user_id']]={'user.sortable_name': row['user.sortable_name'],
+                                      'user.login_id':      row['user.login_id'],
+                                      'sis_user_id':        row['sis_user_id'],
+                                      'user.name':          row['user.name'],
+                                      'user.short_name':    row['user.short_name'],
+                                      'user.sis_user_id':   row['user.sis_user_id']
+        }
+    return
+
+def add_course_info(user_id, course_id):
+    global course_info
+    existing_info=course_info.get(user_id, [])
+    if not existing_info:
+        course_info[user_id]=[course_id]
+    else:
+        course_info[user_id].append(course_id)
+    return
+
 
 def main():
     global Verbose_Flag
+    global student_info
+    global course_info
+
+    student_info=dict()
+    course_info=dict()
 
     parser = optparse.OptionParser()
 
@@ -147,7 +173,7 @@ def main():
     )
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
-       
+    
     parser.add_option('-C', '--containers',
                       dest="containers",
                       default=False,
@@ -162,9 +188,10 @@ def main():
         print('ARGV      :', sys.argv[1:])
         print('VERBOSE   :', options.verbose)
         print('REMAINING :', remainder)
-        
+
     if options.config_filename:
-        print("Configuration file : {}".format(options.config_filename))
+        print("Configuration file: {}".format(options.config_filename))
+
 
     initialize(options)
 
@@ -174,13 +201,23 @@ def main():
     # set up the output write
     writer = pd.ExcelWriter('users_in_my_courses.xlsx', engine='xlsxwriter')
 
+    jusers_df = pd.DataFrame(columns=['user_id'])
+    jusers_df.astype({'user_id': 'int64'}).dtypes # set the data type of the column to int64
+
+    list_of_dfs=[]
+    course_name_given_number={}
+    for c in ['sis_user_id', 'user.login_id', 'user.name', 'user.short_name', 'user.sis_user_id', 'user.sortable_name', 'user_id']:
+        course_name_given_number[c]=0
+
+
     for course in my_courses:
         if course['name'].find('do not use') >= 0:
             print("course id={0}  name={1} -- skipping".format(course['id'], course['name']))
             continue
 
-        # if not (course['id'] in [16039, 17234]): # for testing only look at these courses
+        # if not (course['id'] in [2332, 2413, 2414, 17234]): # for testing only look at these courses
         #     continue
+
         if (course['id'] in [85, # Canvas at KTH
                              4996, # Canvas at KTH 2.0 - New structure
                              5733, # Grunder, resultathantering och attestering för kursledare och examinatorer. (sv/en)
@@ -190,7 +227,10 @@ def main():
         ]): # skip the courses over all KTH faculty and staff
             continue
         
-        print("course id={0}  name={1}".format(course['id'], course['name']))
+        # if not (course['id'] in [189, 190]): # for testing only look at these courses
+        #     continue
+
+        print("course1 id={0}  name={1}".format(course['id'], course['name']))
 
 
         users=users_in_course(course['id'])
@@ -198,11 +238,12 @@ def main():
             print("users are: {0}".format(users))
         if (users):
             users_df=pd.io.json.json_normalize(users)
-                     
+            
             # below are examples of some columns that might be dropped
             columns_to_drop=[
                 'associated_user_id',
                 'course_integration_id',
+                'course_section_id',
                 'created_at',
 	        'end_at',
 	        'enrollment_state',
@@ -225,6 +266,7 @@ def main():
                 'root_account_id',
                 'section_integration_id',
                 'sis_account_id',
+                'sis_course_id',
 	        'sis_section_id',
 	        'start_at',
 	        'total_activity_time',
@@ -235,7 +277,6 @@ def main():
                 'user.integration_id'
             ]
             # keep the following:
-            # 'sis_course_id',
             # 'sis_user_id',
 	    # 'user.login_id',
 	    # 'user.name',
@@ -250,9 +291,63 @@ def main():
             course_sheet_name="{0}".format(course['name'])
             if (len(course_sheet_name) > 30):
                 course_sheet_name=course_sheet_name[0:29]
-            course_sheet_name=course_sheet_name.replace(':', '-')
-            users_df.to_excel(writer, sheet_name=course_sheet_name)
+                course_sheet_name=course_sheet_name.replace(':', '-')
+                users_df.to_excel(writer, sheet_name=course_sheet_name)
 
+            new_column_name="{0}".format(course['id'])
+            course_name_given_number[new_column_name]=[course['name']]
+            #users_df.rename(columns={'course_id':new_column_name}, inplace=True)
+
+
+            list_of_dfs.append(users_df.drop_duplicates().reset_index(drop=True))
+
+    for f in list_of_dfs:
+        for index, row in  f.iterrows():
+            add_student_info(row)
+            add_course_info(row['user_id'], row['course_id'])
+
+    aggregated_data=list()
+    for user_id, student in student_info.items():
+        elem={'user_id':            user_id,
+              'user.sortable_name': student['user.sortable_name'],
+              'user.login_id':      student['user.login_id'],
+              'sis_user_id':        student['sis_user_id'],
+              'user.name':          student['user.name'],
+              'user.short_name':    student['user.short_name'],
+              'user.sis_user_id':   student['user.sis_user_id'],
+              'course_ids':         course_info[user_id]
+        }
+        for cid in course_info[user_id]:
+            new_column_name="{0}".format(cid)
+            elem[new_column_name]=cid
+            
+        aggregated_data.append(elem)
+
+        
+    if Verbose_Flag:
+        print("aggregated_data is {}".format(aggregated_data))
+    aggregated_df=pd.io.json.json_normalize(aggregated_data)
+        
+    aggregated_heading_df = pd.DataFrame(course_name_given_number, index=[0]) # insert a row below the column headings
+
+    jusers_df=pd.concat([aggregated_heading_df, aggregated_df], sort=True)
+    jusers_df=jusers_df.reset_index(drop = True) 
+
+    # put the columns you want on the left in the order you want below
+    inserted_cols = ['user.sortable_name', 'user.login_id', 'sis_user_id', 'user.name','user.short_name',
+                     'user.sis_user_id', 'user_id']
+    cols = ([col for col in inserted_cols if col in jusers_df]
+            + [col for col in jusers_df if col not in inserted_cols])
+    jusers_df = jusers_df[cols]
+
+    columns_to_drop=[
+        'course_section_id_y','sis_course_id_y','sis_user_id_y','user.login_id_y','user.name_y','user.short_name_y','user.sis_user_id_y','user.sortable_name_y'
+    ]
+    #    jusers_df.drop(columns_to_drop,inplace=True,axis=1)
+    #jusers_df.rename(columns={'course_id_y':'190'}, inplace=True)
+
+
+    jusers_df.to_excel(writer, sheet_name='Summary')
 
     # Close the Pandas Excel writer and output the Excel file.
     writer.save()

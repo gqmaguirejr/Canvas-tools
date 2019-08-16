@@ -595,21 +595,20 @@ Input:
 
 Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
-## assignments-in-course.py
+Note: It skips courses involving the whole of KTH (as of 2019-08-15)
 
-Purpose: To generate a spreadsheet of the assignments in a course
+## students-in-my-courses-with-join.py
+
+Purpose: To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
 
 Input:
 ```
-assignments-in-course.py course_id
+./students-in-my-courses.py
 ```
 
-Output: outputs a spreadsheet with all the assignments for the course
+Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
-Example:
-```
-./assignments-in-course.py 11
-```
+Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "Summary" that contains a summary of all of the information about the students and which courses they were in. This page has all of the students, the individual courses (by course_id), and a list of all courses (by course_id) the student was in.
 
 <!-- 
 
