@@ -597,18 +597,34 @@ Output: spreadsheet with a page per course in a file named "users_in_my_courses.
 
 Note: It skips courses involving the whole of KTH (as of 2019-08-15)
 
+## students-in-my-courses-with-cat.py
+
+Purpose: To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
+
+Input:
+```
+./students-in-my-courses-with-cat.py
+```
+
+Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
+
+Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "concat" that contains the concatinated data from the separate spreadsheets.
+
+
 ## students-in-my-courses-with-join.py
 
 Purpose: To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
 
 Input:
 ```
-./students-in-my-courses.py
+./students-in-my-courses-with-join.py
 ```
 
 Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
 Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "Summary" that contains a summary of all of the information about the students and which courses they were in. This page has all of the students, the individual courses (by course_id), and a list of all courses (by course_id) the student was in.
+
+Further note that it does not acutal use a join operation, but actually computes two dictionaries: one with information about the student (user_id, login ID, SIS_user_id, and various forms of the user's name) and the other with the list of course that a give user has been a student in. These data structures are then turned into a Python Pandas DataFrame and then output as the summary sheet. [However, logically the operation is a join on the data based on the user information.]
 
 <!-- 
 
