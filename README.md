@@ -626,6 +626,28 @@ Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also 
 
 Further note that it does not acutal use a join operation, but actually computes two dictionaries: one with information about the student (user_id, login ID, SIS_user_id, and various forms of the user's name) and the other with the list of course that a give user has been a student in. These data structures are then turned into a Python Pandas DataFrame and then output as the summary sheet. [However, logically the operation is a join on the data based on the user information.]
 
+
+## copy-peer-reviewer-assignments.py
+
+Purpose: To copy peer reviewing assignments from one assignment to another
+
+Input:
+```
+./copy-peer-reviewer-assignments.py course_id old_assignment_id new_assignment_id
+```
+
+Output: outputs information about the assigned peer review of the form:
+   result of post assigning peer reviwer: {"id":xxx,"user_id":yyy,"asset_id":zzz,"asset_type":"Submission","workflow_state":"assigned","assessor_id":qqqq}
+
+
+Example:
+```
+./copy-peer-reviewer-assignments.py 12162 86839 86851
+```
+
+In the above case the old_assignment was 86839 and the new assignment was 86851.
+
+
 <!-- 
 
 ## xxx.py
