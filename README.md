@@ -647,6 +647,24 @@ Example:
 
 In the above case the old_assignment was 86839 and the new assignment was 86851.
 
+## list-peer_reviewing_assignments.py
+
+Purpose: To have a summary of who is the peer reviewer for whom
+
+Input:
+```
+./list-peer_reviewing_assignments.py course_id assignment_id
+```
+
+Output: outputs a summary of peer reviewing assignments as an xlsx file of the form: peer_reviewing_assignments-189.xlsx
+
+Note 
+
+Example:
+```
+./list-peer_reviewing_assignments.py 12162 86851
+```
+
 
 <!-- 
 
