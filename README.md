@@ -666,6 +666,20 @@ Example:
 ```
 
 
+## update-custom-column.py
+
+Purpose: To change the name/title of a custom column
+
+Input:
+```
+./update-custom-column.py  course_id column_id column_name
+```
+
+Example:
+```
+./update-custom-column.py -v 12162 1205 "Grade for oral opposition"
+```
+
 <!-- 
 
 ## xxx.py

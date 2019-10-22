@@ -499,7 +499,7 @@ def main():
 
         # identify which assignment to use to get the information about the opponent(s)
         # for P1
-        opposition_assignment_name="Opposition before final seminar"
+        opposition_assignment_name="Written opposition: before final seminar - with peer review"
         # for P1P2
         #opposition_assignment_name="Opposition before final seminar - with peer review"
 

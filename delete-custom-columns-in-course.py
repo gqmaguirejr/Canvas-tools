@@ -149,8 +149,8 @@ def main():
 
     initialize(options)
 
-    if (len(remainder) < 1):
-        print("Insuffient arguments - must provide course_id\n")
+    if (len(remainder) < 2):
+        print("Insuffient arguments - must provide course_id column_id\n")
     else:
         course_id=remainder[0]
         columns=list_custom_columns(course_id)
