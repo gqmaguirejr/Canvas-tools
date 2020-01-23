@@ -500,8 +500,10 @@ def main():
         # identify which assignment to use to get the information about the opponent(s)
         # for P1
         opposition_assignment_name="Written opposition: before final seminar - with peer review"
+        #                           Written opposition: before final seminar - with peer review
         # for P1P2
         #opposition_assignment_name="Opposition before final seminar - with peer review"
+
 
 
         list_of_columns=list_custom_columns(course_id)
@@ -517,7 +519,7 @@ def main():
         opposition_assignment=lookup_assignment(opposition_assignment_name, assignments)
         if Verbose_Flag:
             print('opposition assignment is {0}'.format(opposition_assignment))
-
+    
         peer_review_assignments=list_peer_review_assignments(course_id, opposition_assignment)
         if Verbose_Flag:
             print('{0} peer reviewing assignments is {1}'.format(len(peer_review_assignments), peer_review_assignments))

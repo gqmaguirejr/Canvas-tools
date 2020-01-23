@@ -680,6 +680,224 @@ Example:
 ./update-custom-column.py -v 12162 1205 "Grade for oral opposition"
 ```
 
+## list-features-for-course.py
+
+Purpose: To list the features for a course
+
+Input:
+```
+./list-features-for-course.py  course_id
+```
+
+Output: outputs the features as a vector
+
+
+Example:
+```
+./list-features-for-course.py  19885
+[{'applies_to': 'Course',
+  'description': 'Learning Mastery Gradebook provides a way for teachers to '
+                 'quickly view student and course\n'
+                 'progress on course learning outcomes. Outcomes are presented '
+                 'in a Gradebook-like\n'
+                 'format and student progress is displayed both as a numerical '
+                 'score and as mastered/near\n'
+                 'mastery/remedial.',
+  'display_name': 'Learning Mastery Gradebook',
+  'feature': 'outcome_gradebook',
+  'feature_flag': {'context_id': 19885,
+                   'context_type': 'Course',
+                   'feature': 'outcome_gradebook',
+                   'locked': False,
+                   'locking_account_id': None,
+                   'state': 'on',
+                   'transitions': {'off': {'locked': False}}},
+  'root_opt_in': False},
+ {'applies_to': 'Course',
+  'description': 'Create assessments with New Quizzes and migrate existing '
+                 'Canvas Quizzes.',
+  'display_name': 'New Quizzes',
+  'feature': 'quizzes_next',
+  'feature_flag': {'context_id': 1,
+                   'context_type': 'Account',
+                   'feature': 'quizzes_next',
+                   'locked': True,
+                   'locking_account_id': None,
+                   'state': 'on',
+                   'transitions': {'off': {'locked': False}}}},
+ {'applies_to': 'Course',
+  'description': 'Prevents students from leaving annotations in assignments. '
+                 'Does not apply to peer-reviewed assignments.',
+  'display_name': 'Restrict Students from Annotating',
+  'feature': 'restrict_students_from_annotating',
+  'feature_flag': {'feature': 'restrict_students_from_annotating',
+                   'locked': False,
+                   'state': 'allowed',
+                   'transitions': {'off': {'locked': False},
+                                   'on': {'locked': False}}}},
+ {'applies_to': 'Course',
+  'description': 'Allow switching to the enhanced RCE',
+  'display_name': 'RCE Enhancements',
+  'feature': 'rce_enhancements',
+  'feature_flag': {'context_id': 170000000000002,
+                   'context_type': 'Account',
+                   'feature': 'rce_enhancements',
+                   'locked': True,
+                   'locking_account_id': None,
+                   'state': 'off',
+                   'transitions': {'on': {'locked': False}}},
+  'root_opt_in': True},
+ {'applies_to': 'Course',
+  'description': 'Show new analytics for course and user data',
+  'display_name': 'New Course and User Analytics',
+  'feature': 'analytics_2',
+  'feature_flag': {'context_id': 19885,
+                   'context_type': 'Course',
+                   'feature': 'analytics_2',
+                   'locked': False,
+                   'locking_account_id': None,
+                   'state': 'on',
+                   'transitions': {'off': {'locked': False}}}},
+ {'applies_to': 'Course',
+  'description': 'Enable the tracking of events for a quiz submission, and the '
+                 'ability\n'
+                 '      to view a log of those events once a submission is '
+                 'made.',
+  'display_name': 'Quiz Log Auditing',
+  'feature': 'quiz_log_auditing',
+  'feature_flag': {'feature': 'quiz_log_auditing',
+                   'locked': False,
+                   'state': 'allowed',
+                   'transitions': {'off': {'locked': False},
+                                   'on': {'locked': False}}}},
+ {'applies_to': 'Course',
+  'description': 'Enable anonymous grading of assignments.',
+  'display_name': 'Anonymous Grading',
+  'feature': 'anonymous_marking',
+  'feature_flag': {'context_id': 1,
+                   'context_type': 'Account',
+                   'feature': 'anonymous_marking',
+                   'locked': False,
+                   'locking_account_id': None,
+                   'state': 'allowed',
+                   'transitions': {'off': {'locked': False},
+                                   'on': {'locked': False}}},
+  'root_opt_in': True},
+ {'applies_to': 'Course',
+  'description': 'Enable moderated grading.',
+  'display_name': 'Moderated Grading',
+  'feature': 'moderated_grading',
+  'feature_flag': {'context_id': 1,
+                   'context_type': 'Account',
+                   'feature': 'moderated_grading',
+                   'locked': False,
+                   'locking_account_id': None,
+                   'state': 'allowed',
+                   'transitions': {'off': {'locked': False},
+                                   'on': {'locked': False}}},
+  'root_opt_in': True},
+ {'applies_to': 'Course',
+  'description': 'Student Learning Mastery Gradebook provides a way for '
+                 'students to quickly view progress\n'
+                 'on course learning outcomes. Outcomes are presented in a '
+                 'Gradebook-like\n'
+                 'format and progress is displayed both as a numerical score '
+                 'and as mastered/near\n'
+                 'mastery/remedial.',
+  'display_name': 'Student Learning Mastery Gradebook',
+  'feature': 'student_outcome_gradebook',
+  'feature_flag': {'context_id': 19885,
+                   'context_type': 'Course',
+                   'feature': 'student_outcome_gradebook',
+                   'locked': False,
+                   'locking_account_id': None,
+                   'state': 'on',
+                   'transitions': {'off': {'locked': False}}},
+  'root_opt_in': False},
+ {'applies_to': 'Course',
+  'description': 'Anonymize all instructor comments and annotations within '
+                 'DocViewer',
+  'display_name': 'Anonymous Instructor Annotations',
+  'feature': 'anonymous_instructor_annotations',
+  'feature_flag': {'feature': 'anonymous_instructor_annotations',
+                   'locked': False,
+                   'state': 'allowed',
+                   'transitions': {'off': {'locked': False},
+                                   'on': {'locked': False}}},
+  'root_opt_in': False},
+ {'applies_to': 'Course',
+  'description': 'New Gradebook enables an early release of new Gradebook '
+                 'enhancements.',
+  'display_name': 'New Gradebook',
+  'feature': 'new_gradebook',
+  'feature_flag': {'context_id': 19885,
+                   'context_type': 'Course',
+                   'feature': 'new_gradebook',
+                   'locked': False,
+                   'locking_account_id': None,
+                   'state': 'on',
+                   'transitions': {'off': {'locked': False}}},
+  'root_opt_in': True},
+ {'applies_to': 'Course',
+  'description': 'Allows the duplication of Calendar Events',
+  'display_name': 'Duplicating Calendar Events',
+  'feature': 'recurring_calendar_events',
+  'feature_flag': {'context_id': 170000000000002,
+                   'context_type': 'Account',
+                   'feature': 'recurring_calendar_events',
+                   'locked': True,
+                   'locking_account_id': None,
+                   'state': 'on',
+                   'transitions': {'off': {'locked': False}}},
+  'root_opt_in': True},
+ {'applies_to': 'Course',
+  'description': 'List students by their sortable names in the Gradebook. '
+                 "Sortable name defaults to 'Last Name, First Name' and can be "
+                 'changed in settings.',
+  'display_name': 'Gradebook - List Students by Sortable Name',
+  'feature': 'gradebook_list_students_by_sortable_name',
+  'feature_flag': {'feature': 'gradebook_list_students_by_sortable_name',
+                   'locked': False,
+                   'state': 'allowed',
+                   'transitions': {'off': {'locked': False},
+                                   'on': {'locked': False}}}}]
+
+```
+
+## set-features-for-course.py
+
+Purpose: To set a specific features for a course to a given state
+
+Input:
+```
+./set-features-for-course.py  course_id feature state
+```
+
+Output: outputs the resulting feature
+
+Example:
+```
+./set-features-for-course.py -v 19885 outcome_gradebook off
+{'context_id': 19885,
+ 'context_type': 'Course',
+ 'feature': 'outcome_gradebook',
+ 'locked': False,
+ 'locking_account_id': None,
+ 'state': 'off',
+ 'transitions': {'on': {'locked': False}}}
+```
+Another example:
+```
+./set-features-for-course.py -v 19885 outcome_gradebook on
+{'context_id': 19885,
+ 'context_type': 'Course',
+ 'feature': 'outcome_gradebook',
+ 'locked': False,
+ 'locking_account_id': None,
+ 'state': 'on',
+ 'transitions': {'off': {'locked': False}}}
+ ```
+
 <!-- 
 
 ## xxx.py
