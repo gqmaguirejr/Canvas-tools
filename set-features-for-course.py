@@ -71,60 +71,6 @@ def initialize(options):
 log_file = 'log.txt' # a log file. it will log things
 
 
-def details_of_external_tools_for_course(course_id, external_tool_id):
-    # Use the Canvas API to GET the tool's detailed information
-    # GET /api/v1/courses/:course_id/external_tools/:external_tool_id
-    # GET /api/v1/accounts/:account_id/external_tools/:external_tool_id
-
-    url = "{0}/courses/{1}/external_tools/{2}".format(baseUrl, course_id, external_tool_id)
-    if Verbose_Flag:
-        print(url)
-    payload={}
-    r = requests.get(url, headers = header, data=payload)
-    if r.status_code == requests.codes.ok:
-        tool_response = r.json()  
-        pprint(tool_response)
-        return tool_response
-    else:
-        print("No details for tool_id {1} for course_id: {2}".format(external_tool_id, course_id))
-        return False
-
-def list_external_tools_for_course(course_id):
-    list_of_all_tools=[]
-    # Use the Canvas API to get the list of external tools for this course
-    # GET /api/v1/courses/:course_id/external_tools
-    # GET /api/v1/accounts/:account_id/external_tools
-    # GET /api/v1/groups/:group_id/external_tools
-
-    url = "{0}/courses/{1}/external_tools".format(baseUrl, course_id)
-    if Verbose_Flag:
-        print("url: " + url)
-
-    r = requests.get(url, headers = header)
-    if Verbose_Flag:
-        print("result of getting list of external tools: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        tool_response=r.json()
-    else:
-        print("No external tools for course_id: {}".format(course_id))
-        return False
-
-
-    for t_response in tool_response:  
-        list_of_all_tools.append(t_response)
-
-        # the following is needed when the reponse has been paginated
-        # i.e., when the response is split into pieces - each returning only some of the list of modules
-        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
-            r = requests.get(r.links['next']['url'], headers=header)  
-            tool_response = r.json()  
-            for t_response in tool_response:  
-                list_of_all_tools.append(t_response)
-
-    return list_of_all_tools
-
 def list_features_for_course(course_id):
     list_of_all_features=[]
     # Use the Canvas API to get the list of external tools for this course
