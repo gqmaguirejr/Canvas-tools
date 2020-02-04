@@ -61,7 +61,7 @@ def write_to_log(message):
               log.write(message + "\n")
               pprint(message)
 
-def insert_column_name(course_id, column_name):
+def insert_column_name(course_id, column_name, position):
        global Verbose_Flag
 
        # Use the Canvas API to Create a custom gradebook column
@@ -78,6 +78,8 @@ def insert_column_name(course_id, column_name):
        if Verbose_Flag:
               print("url: {}".format(url))
        payload={'column[title]': column_name}
+       if position:
+           payload['column[position]']=position
        r = requests.post(url, headers = header, data=payload)
        if r.status_code == requests.codes.ok:
               if Verbose_Flag:
@@ -88,46 +90,49 @@ def insert_column_name(course_id, column_name):
        return False
 
 def main():
-       global Verbose_Flag
+    global Verbose_Flag
 
-       parser = optparse.OptionParser()
+    parser = optparse.OptionParser()
 
-       parser.add_option('-v', '--verbose',
-                         dest="verbose",
-                         default=False,
-                         action="store_true",
-                         help="Print lots of output to stdout"
-       )
+    parser.add_option('-v', '--verbose',
+                      dest="verbose",
+                      default=False,
+                      action="store_true",
+                      help="Print lots of output to stdout"
+    )
 
-       parser.add_option("--config", dest="config_filename",
-                         help="read configuration from FILE", metavar="FILE")
-    
-       parser.add_option('-C', '--containers',
-                         dest="containers",
-                         default=False,
-                         action="store_true",
-                         help="for the container enviroment in the virtual machine"
-       )
+    parser.add_option("--config", dest="config_filename",
+                      help="read configuration from FILE", metavar="FILE")
+       
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
+    )
 
-       options, remainder = parser.parse_args()
+    options, remainder = parser.parse_args()
 
-       Verbose_Flag=options.verbose
-       if Verbose_Flag:
-              print('ARGV      :', sys.argv[1:])
-              print('VERBOSE   :', options.verbose)
-              print('REMAINING :', remainder)
+    Verbose_Flag=options.verbose
+    if Verbose_Flag:
+        print('ARGV      :', sys.argv[1:])
+        print('VERBOSE   :', options.verbose)
+        print('REMAINING :', remainder)
 
-       if options.config_filename:
-              print("Configuration file : {}".format(options.config_filename))
+    if options.config_filename:
+        print("Configuration file : {}".format(options.config_filename))
 
-       initialize(options)
+    initialize(options)
 
-       if (len(remainder) < 2):
-              print("Inusffient arguments\n must provide course_id custom_column_name\n")
-       else:
-              output=insert_column_name(remainder[0], remainder[1])
-              if (output):
-                     print(output)
+    if (len(remainder) < 2):
+        print("Inusffient arguments\n must provide course_id custom_column_name\n")
+    else:
+        if len(remainder) > 2:
+            output=insert_column_name(remainder[0], remainder[1], remainder[2])
+        else:
+            output=insert_column_name(remainder[0], remainder[1], False)
+    if output:
+        print(output)
 
 if __name__ == "__main__": main()
 

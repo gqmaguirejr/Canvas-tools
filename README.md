@@ -898,6 +898,23 @@ Another example:
  'transitions': {'off': {'locked': False}}}
  ```
 
+## list_sections_in_course.py
+Purpose: To output a spreadsheet of the sections in a course and the students in these sections
+
+Input:
+```
+./list_sections_in_course.py course_if
+```
+
+Output: outputs a file with a name of the form: sections-in-{course_id}.xlsx
+
+Example:
+```
+./list_sections_in_course.py 19885
+```
+
+Note:  If there are no sections, this page is  not included in the spreadsheet. 
+       If there are no students this page is not included in the spreadsheet. 
 <!-- 
 
 ## xxx.py
