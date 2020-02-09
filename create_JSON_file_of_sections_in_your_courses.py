@@ -235,6 +235,44 @@ def submission_for_assignment_by_user(course_id, assignment_id, user_id):
        else:
               return dict()
 
+def cleanup_sections(users_name, courses_with_sections):
+       # if there is a section with a name == users_name, then eliminate all of the other sections
+       for c in courses_with_sections:
+              section_for_user=False
+              sections=courses_with_sections[c].get('sections', [])
+              for s in sections:
+                     if courses_with_sections[c]['sections'][s] == users_name:
+                            section_for_user=s
+              if section_for_user:
+                     courses_with_sections[c]['sections']={section_for_user: users_name}
+
+       return courses_with_sections
+
+def remove_courses_to_be_ignored(course_list, courses_to_ignore):
+       new_course_list=[]
+       for course in course_list:              
+              if Verbose_Flag:
+                     print("course['id']={}".format(course['id']))
+              # note that the course['id'] is an integer in course_list, but a string in courses_to_ignore
+              ci=courses_to_ignore.get(str(course['id']), False)
+              if ci:
+                     print("ignoring course['id']={}".format(course['id']))
+              else:
+                     new_course_list.append(course)
+       return new_course_list
+              
+def remove_courses_to_be_ignored_dict(course_dict, courses_to_ignore):
+       new_course_dict=dict()
+       for course in course_dict:
+              if Verbose_Flag:
+                     print("course['id']={}".format(course['id']))
+              ci=courses_to_ignore.get(course, False)
+              if ci:
+                     print("ignoring course with id={}".format(course))
+              else:
+                     new_course_dict[course]=course_dict[course]
+       return new_course_dict
+              
 def main():
        global Verbose_Flag
 
@@ -338,18 +376,13 @@ def main():
        if len(courses_to_ignore) > 0:
               if Verbose_Flag:
                      print("courses_to_ignore={}".format(courses_to_ignore))
-              new_course_list=[]
-              for course in course_list:              
-                     if Verbose_Flag:
-                            print("course['id']={}".format(course['id']))
-                     # note that the course['id'] is an integer in course_list, but a string in courses_to_ignore
-                     ci= courses_to_ignore.get(str(course['id']), False)
-                     if ci:
-                            print("ignoring course['id']={}".format(course['id']))
-                     else:
-                            new_course_list.append(course)
-              course_list=new_course_list
-
+              # remove the courses to be ignored from the list of the user's courses
+              course_list=remove_courses_to_be_ignored(course_list, courses_to_ignore)
+              # also remove courses to be ignored from the courses_with_sections dict
+              courses_without_specific_sections=remove_courses_to_be_ignored_dict(courses_without_specific_sections, courses_to_ignore)
+              #Note: We do not need removes from courses_with_sections - as they will recomputed from the reduced course_list
+              courses_with_sections=remove_courses_to_be_ignored_dict(courses_with_sections, courses_to_ignore)
+              
        # if only including degree project courses (course code of the form cc1ddX* or cc2ddX), then skip other courses
        if options.exjobs:
               exjobb_courses=[]
@@ -388,34 +421,28 @@ def main():
               print("courses where user is teacher or examiner={}".format(list_of_course_ids))
 
        for c_id in list_of_course_ids:
-              sections=sections_in_course(c_id)
-              section_info_in_course=dict()
-              if sections:
-                     for s in sections:
-                            # first check to see if this is a course that should be without specific sections
-                            c1=courses_without_specific_sections.get(str(c_id), [])
-                            if c1:
-                                   print("course {0} indicated as having now specific sections".format(c_id))
-                                   continue
+              # first check to see if this is a course that should be without specific sections
+              c1=courses_without_specific_sections.get(str(c_id), [])
+              if c1:
+                     print("course {0} indicated as having no specific sections".format(c_id))
+                     continue
 
-                            # otherwise add the section information
-                            c2=courses_with_sections.get(c_id, [])
-                            if c2:
-                                   s0=courses_with_sections[c_id].get('sections', [])
-                                   if s0 and type(dict) == 'dict': # s0 will be a dict
-                                          s1=courses_with_sections[c_id]['sections'].get(s['id'], []) # course has existing section information
-                                          if s1: # update existing section information
-                                                 print("updating to section {0} in course information for course {1} of type {2}".format(s['id'], c_id, type(c_id)))
-                                                 courses_with_sections[c_id]['sections'][s['id']]=s['name']
-                                   else: # no existing section info, so add it
-                                          print("adding section to course information for course {0}".format(c_id))
-                                          courses_with_sections[c_id]['sections'][s['id']]=s['name']
-                            else: #add the course with section information
-                                   print("adding course information for course {0}".format(c_id))
-                                   courses_with_sections[c_id]={'name':  course_dict[c_id]['name'],
-                                                                'course_code':  course_dict[c_id]['course_code'],
-                                                                'sections': {s['id']: s['name']}
-                                   }
+              # if there is exsiting explicit sections, then do not add additional sections
+              c2=courses_with_sections.get(str(c_id), [])
+              if c2:
+                     s0=courses_with_sections[str(c_id)].get('sections', [])
+                     if s0 and type(dict) == 'dict': # s0 will be a dict
+                            continue
+
+              # otherwise add the section information
+              sections=sections_in_course(c_id)
+
+              if sections:
+                     courses_with_sections[c_id]={'name':  course_dict[c_id]['name'],
+                                                  'course_code':  course_dict[c_id]['course_code'],
+                                                  'sections': dict()}
+                     for s in sections:
+                            courses_with_sections[c_id]['sections'][s['id']]=s['name']
               else:
                      c3=courses_without_specific_sections.get(c_id, [])
                      if not c3: # if not already in courses_without_specific_sections, then add it
@@ -423,6 +450,8 @@ def main():
                                                                      'course_code':  course_dict[c_id]['course_code']
                             }
 
+
+       courses_with_sections=cleanup_sections(users_name, courses_with_sections)
 
        course_info['courses_to_ignore']=courses_to_ignore
        course_info['courses_without_specific_sections']=courses_without_specific_sections
