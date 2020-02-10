@@ -939,13 +939,43 @@ Can also be called with an alternative configuration file:
  ./create_JSON_file_of_sections_in_your_courses --config config-test.json
 
 Examples:
+```
    create file for only exjobb courses:
       ./create_JSON_file_of_sections_in_your_courses.py -s fee.json -X
 
    update an existing file (possibly adding new courses)
       ./create_JSON_file_of_sections_in_your_courses.py -s foo.json -U
+```
 
+## list_ungraded_submissions_in_your_courses_JSON.py
 
+Purpose: output a list of ungraded assignments for a user to grade
+
+Input:
+```
+./list_ungraded_submissions_in_your_courses_JSON.py [-v] [--config config.json] [-s course_info.json] [-t] [-X]
+```
+
+With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+
+With the option "-t" or "--testing" only does a specific set of courses ids (built into the program)
+
+With the option "-X" of "--exjobs" only processes degree project courses
+
+The JSON file contains a course_info dict 
+   courses_to_ignore=course_info['courses_to_ignore'] - courses that the user wants to ignore
+   courses_without_specific_sections=course_info['courses_without_specific_sections'] - courses where the user is responsible for all the students
+   courses_with_sections=course_info['courses_with_sections']  - courses where the user has a specific section
+               the specific section's name may be the user's name or some other unique string (such as "Chip's section")
+               Because the name of the relevant section can be arbitrary, this file is necessary to know which section belongs to a given user
+
+Can also be called with an alternative configuration file:
+ ./create_JSON_file_of_sections_in_your_courses --config config-test.json
+
+Examples:
+```
+./list_ungraded_submissions_in_your_courses_JSON.py -t
+```
 
 <!-- 
 
