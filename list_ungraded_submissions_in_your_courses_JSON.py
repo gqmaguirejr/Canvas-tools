@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 #
 # ./list_ungraded_submissions_in_your_courses_JSON.py
+# Purpose:
+#   output a list of ungraded assignments for a user to grade
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
@@ -415,17 +417,21 @@ def main():
                      continue
 
               if options.testing:
-                     if c_id not in [19885, 19871]:
+                     if c_id not in [1585, 19885, 19871]:
                             continue
 
               if Verbose_Flag:
                      print("processing course_id={0}".format(c_id))
               relevant_enrollments=[]
-              sections=courses_with_sections[str(c_id)].get('sections', [])
-              if sections:
-                     for s in sections:
-                            enrollments=enrollments_in_section(int(s))
-                            relevant_enrollments.extend(enrollments)
+              # check that the course is in the list of courses with sections
+              c_sections=courses_with_sections.get(str(c_id), [])
+              if c_sections:
+                     sections=courses_with_sections[str(c_id)].get('sections', [])
+                     if sections:
+                            for s in sections:
+                                   print("getting students in course {0} for section {1} for {2}".format(c_id, s, sections[s]))
+                                   enrollments=enrollments_in_section(int(s))
+                                   relevant_enrollments.extend(enrollments)
               else:             #  for courses_without_specific_section
                      relevant_enrollments=enrollments_in_course(c_id)
 
@@ -447,9 +453,15 @@ def main():
                             student_submission=submission_for_assignment_by_user(c_id, assignment_id, enrollment['user_id'])
 
                             # if the grader_id is NULL then the submission has not been graded
-                            if student_submission and student_submission['grader_id'] is None:
-                                   print("ungraded assignment for student: {0} on assignment: {1} in course: {2} ({3})".format(enrollment['user']['name'], assignment['name'], course_dict[c_id]['name'], c_id))
-                                   print("student_submission={}".format(student_submission))
+                            if student_submission:
+                                   # ignore unsubmitted assignments and ignore assignments that are not relevant for a student
+                                   if (student_submission['workflow_state'] == 'unsubmitted') or (student_submission['workflow_state'] is None) or (student_submission['workflow_state'] == 'deleted'):
+                                          continue
+
+                                   # if not graded and not excused, then report as ungraded
+                                   if (student_submission['grader_id'] is None) and not (student_submission['excused'] == True):
+                                          print("ungraded assignment for student: {0} on assignment: {1} in course: {2} ({3})".format(enrollment['user']['name'], assignment['name'], course_dict[c_id]['name'], c_id))
+                                          print("student_submission={}".format(student_submission))
 
        
 if __name__ == "__main__": main()
