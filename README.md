@@ -977,6 +977,67 @@ Examples:
 ./list_ungraded_submissions_in_your_courses_JSON.py -t
 ```
 
+## modules-items-in-course-json.py
+
+Purpose: To extract the modules and page information for a course in JSON
+
+Input:
+```
+./modules-items-in-course-json.py course_id
+```
+
+Output: outputs a JSON file with a name of the form: "modules-in-course-course_id.json"
+
+Example:
+```
+./modules-items-in-course.py 11
+
+./modules-items-in-course.py --config config-test.json 11
+
+```
+
+
+## compute_stats_for_pages_in_course.py
+
+Purpose: To computer some readability statistics for each page in a course
+
+Input:
+```
+./compute_stats_for_pages_in_course.py  course_id
+
+```
+
+Output: outputs an XLSX formatted file with a name of the form: 'statistics-for-course-'+str(course_id)+'.xlsx
+	The statistics are computed using Textatistic (see http://www.erinhengel.com/software/textatistic/)
+
+Example:
+```
+./compute_stats_for_pages_in_course.py 11
+
+./compute_stats_for_pages_in_course.py --config config-test.json 11
+
+```
+
+## cgetall.py
+
+Purpose: To get all of the pages from a Canvas course as local files
+
+Input:
+```
+./cgetall.py  canvas_course_page_url|course_id [destination_directory]
+
+```
+
+Output: outputs each page as a file with the extenssion ".html" the basename is taken from the title of the page
+
+Example:
+```
+cgetall.py https://kth.instructure.com/courses/11/pages/test-3
+
+cgetall.py 11
+
+```
+
 <!-- 
 
 ## xxx.py
