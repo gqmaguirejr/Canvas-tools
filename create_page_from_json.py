@@ -286,9 +286,20 @@ def add_words_to_dict(lang, words, url):
     page_entries[lang][words]=url_list_for_words
 
 
+def add_words_to_default_dict(words, url):
+    global Verbose_Flag
+    global page_entries_in_language_of_course
+    #
+    # look up urls for given words in the dict or start an empty list
+    url_list_for_words=page_entries_in_language_of_course.get(words, list())
+    url_list_for_words.append(url)
+    #
+    page_entries_in_language_of_course[words]=url_list_for_words
+
 def main():
     global Verbose_Flag
     global page_entries
+    global page_entries_in_language_of_course
 
     parser = optparse.OptionParser()
 
@@ -379,6 +390,34 @@ def main():
         page=page+'</ul>'
 
     print("page is {}".format(page))
+
+    page_entries_in_language_of_course=dict()
+    
+    for p in json_data:
+        data=json_data[p].get("figcaption_text", [])
+        if data and len(data) > 0:
+            print("data is {0}, p={1}".format(data, p))
+            html_url_and_title=html_url_from_page_url(course_info, p)
+            if html_url_and_title:
+                print("html_url_and_title={}".format(html_url_and_title))
+                for i in data:
+                        add_words_to_default_dict(i, html_url_and_title)
+            else:
+                print("did not find matching entry for {}".format(p))
+
+    print("page_entries_in_language_of_course is {}".format(page_entries_in_language_of_course))
+
+    # create page for entries in the default lamguage of the course
+    page_default='<h3>Entries in default language of the course</h3><ul>'
+    for words in sorted(page_entries_in_language_of_course.keys()):
+        page_default=page_default+'<li>'+words+'<ul>'
+        for url in page_entries_in_language_of_course[words]:
+            page_default=page_default+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
+        page_default=page_default+'</ul></li>'
+    page_default=page_default+'</ul>'
+
+    print("page_default is {}".format(page_default))
+
     # write out body of response as a .html page
     new_file_name="stats_for_course-{}.html".format(course_id)
     with open(new_file_name, 'wb') as f:
