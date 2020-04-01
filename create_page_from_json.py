@@ -25,6 +25,11 @@ from lxml import html
 # Use Python Pandas to create XLSX files
 import pandas as pd
 
+language_info={
+    "de_de": {'en': '<span lang="en_us">German</span>',    'sv': '<span lang="sv_se">Tyska</span>'},
+    "no_nb": {'en': '<span lang="en_us">Norwegian</span>', 'sv': '<span lang="sv_se">Norska</span>'},
+    "sv_se": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">Svenska</span>'},
+    }
 
 def process_page(page, remove):
     global Verbose_Flag
@@ -255,7 +260,7 @@ def html_url_from_page_url(course_info, page_url):
             #print("course_info[m]['module_items'][mi]={}".format(course_info[m]['module_items'][mi]))
             url=course_info[m]['module_items'][mi].get('page_url', [])
             if url == page_url:
-                return course_info[m]['module_items'][mi]['html_url']
+                return [course_info[m]['module_items'][mi]['html_url'], course_info[m]['module_items'][mi]['title']]
             else:
                 continue
     # else
@@ -352,11 +357,11 @@ def main():
         lang_specific_data=json_data[p].get("lang_specific", [])
         if lang_specific_data and len(lang_specific_data) > 0:
             print("lang_specific_data is {0}, p={1}".format(lang_specific_data, p))
-            html_url=html_url_from_page_url(course_info, p)
-            if html_url:
-                print("html_url={}".format(html_url))
+            html_url_and_title=html_url_from_page_url(course_info, p)
+            if html_url_and_title:
+                print("html_url_and_title={}".format(html_url_and_title))
                 for i in lang_specific_data:
-                    add_words_to_dict(i['lang'], i['text'], html_url)
+                    add_words_to_dict(i['lang'], i['text'], html_url_and_title)
             else:
                 print("did not find matching entry for {}".format(p))
 
@@ -365,11 +370,11 @@ def main():
     # create page
     page=""
     for lang in sorted(page_entries.keys()):
-        page=page+'<h3>'+lang+'</h3><ul>'
+        page=page+'<h3>'+lang+': '+language_info[lang]['en']+': '+language_info[lang]['sv']+'</h3><ul>'
         for words in sorted(page_entries[lang].keys()):
             page=page+'<li>'+words+'<ul>'
             for url in page_entries[lang][words]:
-                page=page+'<li><a href="'+url+'">'+url+'</a></li>'
+                page=page+'<li><a href="'+url[0]+'"><span lang="'+lang+'">'+url[1]+'</span></a></li>'
             page=page+'</ul></li>'
         page=page+'</ul>'
 
