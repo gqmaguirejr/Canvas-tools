@@ -113,7 +113,7 @@ def compute_stats_for_pages_in_course(course_id):
                 print("body: {}".format(page_response["body"]))
 
             body=page_response["body"]
-            if isinstance(body, str):
+            if isinstance(body, str) and len(body) > 0:
                 document = html.document_fromstring(body)
                 raw_text = document.text_content()
             else:               # nothing to process

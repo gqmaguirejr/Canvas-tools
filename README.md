@@ -1038,6 +1038,62 @@ cgetall.py 11
 
 ```
 
+
+## modules-items-in-course-json.py
+
+Purpose: To collect information about all of the modules in a course
+
+Input:
+```
+./modules-items-in-course-json.py course_id
+```
+
+Output: outputs a JSON file with the information about each of the modules in the course and each of the module items in a given module
+	The file name isof the form: modules-in-course-xxxx.json where xxxx is the course_id
+
+Example:
+```
+./modules-items-in-course.py 11
+
+./modules-items-in-course.py 17234
+```
+
+## find_keyords_phrase_in_files.py
+
+Purpose: To extract from a directory of files of the pages from a course words or phrases
+
+Input:
+```
+./find_keyords_phrase_in_files.py direcory
+```
+
+Output: outputs a file with a name of the form keywords_and_phrases_xx.json from the *-html files in the directory
+
+Note the files are placed in the directory by using cgetall.py course_id
+
+Example:
+```
+./find_keyords_phrase_in_files.py /tmp/testdik1552
+```
+
+## create_page_from_json.py
+
+Purpose: To create the contents for a page with information about each language with the words used and URLs to their usage
+
+Input:
+```
+./create_page_from_json.py course_id input.json
+```
+
+Output: outputs a file with a name of the form stats_for_course-xxxx.html where xxxx is the course_id
+
+Example:
+```
+./create_page_from_json.py 17234 keywords_and_phrases_testdik1552.json
+```
+
+
+
 <!-- 
 
 ## xxx.py
