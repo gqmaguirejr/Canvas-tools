@@ -25,11 +25,295 @@ from lxml import html
 # Use Python Pandas to create XLSX files
 import pandas as pd
 
+# to handle regular expressions
+import re
+import nltk
+
 language_info={
     "de_de": {'en': '<span lang="en_us">German</span>',    'sv': '<span lang="sv_se">Tyska</span>'},
     "no_nb": {'en': '<span lang="en_us">Norwegian</span>', 'sv': '<span lang="sv_se">Norska</span>'},
     "sv_se": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">Svenska</span>'},
     }
+
+StopWords=[
+    u'a',
+    u'à',
+    u'able',
+    u'about',
+    u'above',
+    u'after',
+    u'against',
+    u'all',
+    u'allows',
+    u'along',
+    u'also',
+    u'an',
+    u'and',
+    u'another',
+    u'any',
+    u'are',
+    u'as',
+    u'at',
+    u'average',
+    u'be',
+    u'been',
+    u'because',
+    u'before',
+    u'being',
+    u'below',
+    u'between',
+    u'both',
+    u'but',
+    u'by',
+    u'can',
+    u'could',
+    u'course',
+    u'currently',
+    u'decrease',
+    u'decreasing',
+    u'did',
+    u'do',
+    u'doing',
+    u'does',
+    u'done',
+    u'down',
+    u'due',
+    u'during',
+    u'each',
+    u'early',
+    u'earlier',
+    u'easy',
+    u'e.g',
+    u'eigth',
+    u'either',
+    u'end',
+    u'especially',
+    u'etc',
+    u'even',
+    u'every',
+    u'far',
+    u'few',
+    u'five',
+    u'first',
+    u'follow',
+    u'following',
+    u'for',
+    u'formerly',
+    u'four',
+    u'from',
+    u'further',
+    u'general',
+    u'generally',
+    u'get',
+    u'going',
+    u'good',
+    u'had',
+    u'has',
+    u'have',
+    u'having',
+    u'he',
+    u'her',
+    u'here',
+    u'hers',
+    u'herself',
+    u'high',
+    u'higher',
+    u'him',
+    u'himself',
+    u'his', 
+    u'how',
+    u'i',    
+    u'i.e',
+    u'if',
+    u'in',
+    u'include',
+    u'includes',
+    u'including',
+    u'increase',
+    u'increasing',
+    u'into',
+    u'is',
+    u'it',
+    u"it's",
+    u'its',
+    u'itself',
+    u'just',
+    u'know',
+    u'known',
+    u'knows',
+    u'last',
+    u'later',
+    u'large',
+    u'least',
+    u'like',
+    u'long',
+    u'longer',
+    u'low',
+    u'made',
+    u'many',
+    u'make',
+    u'makes',
+    u'me',
+    u'might',
+    u'much',
+    u'more',
+    u'most',
+    u'must',
+    u'my',
+    u'myself',
+    u'near',
+    u'need',
+    u'needs',
+    u'needed',
+    u'next',
+    u'new',
+    u'no',
+    u'nor',
+    u'not',
+    u'now',
+    u'of',
+    u'off',
+    u'on',
+    u'once',
+    u'one',
+    u'only',
+    u'or',
+    u'other',
+    u'others',
+    u'our',
+    u'ours',
+    u'ourselves',
+    u'out', 
+    u'over',
+    u'own',
+    u'pass',
+    u'per',
+    u'pg',
+    u'pp',
+    u'provides',
+    u'rather',
+    u'require',
+    u's',
+    u'same',
+    u'see',
+    u'several',
+    u'she',
+    u'should',
+    u'simply',
+    u'since',
+    u'six',
+    u'small',
+    u'so',
+    u'some',
+    u'such',
+    u'take',
+    u'takes',
+    u'th',
+    u'than',
+    u'that',
+    u'the',
+    u'then',
+    u'their',
+    u'there',
+    u'theirs',
+    u'them',
+    u'themselves',
+    u'then',
+    u'there',
+    u'these',
+    u'three',
+    u'they',
+    u'this',
+    u'those',
+    u'through',
+    u'thus',
+    u'time',
+    u'to',
+    u'too',
+    u'try',
+    u'two',
+    u'under',
+    u'unit',
+    u'until',
+    u'up',
+    u'used',
+    u'verison',
+    u'very',
+    u'vs',
+    u'was',
+    u'we',
+    u'were',
+    u'what',
+    u'when',
+    u'where',
+    u'which',
+    u'while',
+    u'who',
+    u'whom',
+    u'why',
+    u'wide',
+    u'will',
+    u'with',
+    u'within',
+    u'would',
+    u'you',
+    u'your'
+    u'yourself',
+    u'yourselves'
+    ]
+
+punctuation_list=[
+    u'.',                       # add some punctuation to this list
+    u'?',
+    u'!',
+    u','
+    u'\t'
+    u'\n',
+    u'⇒',
+    u'… ',
+    u'…'
+]
+
+def split_into_words(txt):
+    return re.findall(r"[\w']+", txt)
+
+def split_on_stop_words(s1):
+    global Verbose_Flag
+    output_list=list()
+    working_list=list()
+    lower_case_next_word=True
+    #words=split_into_words(s1)
+    words=nltk.word_tokenize(s1)
+    for w in words:
+        if len(w) > 1 and w.isupper():         # preserve aconyms
+            lower_case_next_word=False
+        if lower_case_next_word and w[0].isupper(): # if the first word in a sentence is capitalized, then lower case it
+            w=w.lower()
+            lower_case_next_word=False
+        if w in punctuation_list:
+            lower_case_next_word=True
+        if (w not in StopWords) and (w not in punctuation_list):
+            working_list.append(w)
+        else:
+            output_list.append(working_list)
+            working_list=list()
+        if Verbose_Flag:
+            print("w={0} lower_case_next_word={1}".format(w, lower_case_next_word))
+    # handle remainder - if necessary
+    if len(working_list) > 0:
+        output_list.append(working_list)
+    # remove empty list from the list
+    output_list = [x for x in output_list if x != []]
+    return output_list
+
+def combine_sublists_into_strings(l1):
+    new_list=list()
+    for l in l1:
+        working_string=""
+        for w in l:
+            working_string=working_string+' '+w
+        new_list.append(working_string.strip())
+    return new_list
 
 def process_page(page, remove):
     global Verbose_Flag
@@ -67,6 +351,10 @@ def process_page(page, remove):
         tmp[:] = [item for item in tmp if item != None and item != "\n"]
         if tmp:
             d['img_alt_text']=tmp
+
+    # now that we have the alt strings, remove <img> .. </img>
+    for bad in document.xpath("//img"):
+        bad.getparent().remove(bad)
 
     # get figcapations
     tmp_path=document.xpath('.//figcaption')
@@ -242,7 +530,7 @@ def process_page(page, remove):
             entry['text']=item.text
             language_specific_tagged_material.append(entry)
         # add collected material
-        d['lang_specifiv']=language_specific_tagged_material
+        d['lang_specific']=language_specific_tagged_material
         
 
     if Verbose_Flag:
@@ -276,12 +564,14 @@ def add_words_to_dict(lang, words, url):
     if not dict_for_target_lang:
         page_entries[lang]=dict()
 
-    print("dict_for_target_lang={}".format(dict_for_target_lang))
+    if Verbose_Flag:
+        print("dict_for_target_lang={}".format(dict_for_target_lang))
 
     # look up urls for given words in the dict or start an empty list
     url_list_for_words=page_entries[lang].get(words, list())
     url_list_for_words.append(url)
-    print("url_list_for_words={}".format(url_list_for_words))
+    if Verbose_Flag:
+        print("url_list_for_words={}".format(url_list_for_words))
 
     page_entries[lang][words]=url_list_for_words
 
@@ -290,11 +580,75 @@ def add_words_to_default_dict(words, url):
     global Verbose_Flag
     global page_entries_in_language_of_course
     #
-    # look up urls for given words in the dict or start an empty list
-    url_list_for_words=page_entries_in_language_of_course.get(words, list())
-    url_list_for_words.append(url)
+    # look up URLs for given words in the dict or start an empty set
+    # sets are used so that the only unique URLs are added
+    #  (i.e., if a word is used multiple times on the page, it will only have one URL)
+    urls_for_words=page_entries_in_language_of_course.get(words, list())
+    urls_for_words.append(url)
     #
-    page_entries_in_language_of_course[words]=url_list_for_words
+    page_entries_in_language_of_course[words]=urls_for_words
+
+ 
+def compute_page_for_tag(tag, heading, json_data, course_info):
+    global Verbose_Flag
+    global     page_entries_in_language_of_course
+
+    page_entries_in_language_of_course=dict()
+    
+    for p in json_data:
+        data=json_data[p].get(tag, [])
+        if data and len(data) > 0:
+            html_url_and_title=html_url_from_page_url(course_info, p)
+            if html_url_and_title:
+                if Verbose_Flag:
+                    print("html_url_and_title={}".format(html_url_and_title))
+                for i in data:
+                        add_words_to_default_dict(i, html_url_and_title)
+            else:
+                print("did not find matching entry for {}".format(p))
+
+    if Verbose_Flag:
+        print("tag={0}, page_entries_in_language_of_course is {1}".format(tag, page_entries_in_language_of_course))
+
+    # create page for entries in the default lamguage of the course
+    page=""
+    page=page+'<h3>'+heading+'</h3><ul>'
+    for words in sorted(page_entries_in_language_of_course.keys()):
+        page=page+'<li>'+words+'<ul>'
+        for url in page_entries_in_language_of_course[words]:
+            page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
+        page=page+'</ul></li>'
+    page=page+'</ul>'
+
+    return page
+
+
+def cleanup_list(l1):
+    global Verbose_Flag
+    new_list=list()
+    for e in l1:
+        if Verbose_Flag:
+            print("e: {}".format(e))
+        cs=cleanup_string(e)
+        if Verbose_Flag:
+            print("cs is {}".format(cs))
+        if cs:
+            new_list.append(cs)
+    if Verbose_Flag:
+        print("new_list is {}".format(new_list))
+    return new_list
+
+
+def cleanup_string(s):
+    if s.endswith(','):
+        s=s[:-1]
+    #
+    if s.endswith(':'):
+        s=s[:-1]
+    #
+    return s.strip()
+
+
 
 def main():
     global Verbose_Flag
@@ -367,10 +721,12 @@ def main():
         # [{"tag": "span", "lang": "sv_se", "text": "
         lang_specific_data=json_data[p].get("lang_specific", [])
         if lang_specific_data and len(lang_specific_data) > 0:
-            print("lang_specific_data is {0}, p={1}".format(lang_specific_data, p))
+            if Verbose_Flag:
+                print("lang_specific_data is {0}, p={1}".format(lang_specific_data, p))
             html_url_and_title=html_url_from_page_url(course_info, p)
             if html_url_and_title:
-                print("html_url_and_title={}".format(html_url_and_title))
+                if Verbose_Flag:
+                    print("html_url_and_title={}".format(html_url_and_title))
                 for i in lang_specific_data:
                     add_words_to_dict(i['lang'], i['text'], html_url_and_title)
             else:
@@ -391,32 +747,86 @@ def main():
 
     print("page is {}".format(page))
 
-    page_entries_in_language_of_course=dict()
-    
+
+
+    page_figcaption=compute_page_for_tag('figcaption_text', "Figure caption text", json_data, course_info)
+    if Verbose_Flag:
+        print("page_figcaption is {}".format(page_figcaption))
+    page=page+page_figcaption
+
+    page_caption=compute_page_for_tag('caption_text', "Caption text", json_data, course_info)
+    if Verbose_Flag:
+        print("page_caption is {}".format(page_caption))
+    page=page+page_caption
+
+    save_page=page              # save current page contents
+
+    # process all of the things that were extracts and index them
+    page_entries=dict()
+
+
     for p in json_data:
-        data=json_data[p].get("figcaption_text", [])
-        if data and len(data) > 0:
-            print("data is {0}, p={1}".format(data, p))
+        format("p={}".format(p))
+        d1=json_data[p]
+        list_of_strings=list()
+        for de in d1:
+            l=json_data[p][de]
+            if Verbose_Flag:
+                print("l is {}".format(l))
+            for s in l:
+                if Verbose_Flag:
+                    print("s={}".format(s))
+                
+                if isinstance(s, str):
+                    l1=split_on_stop_words(s)
+                else:
+                    s_prime=s.get('text', '')
+                    if s_prime:
+                        l1=split_on_stop_words(s_prime)
+                    else:
+                        continue
+                if Verbose_Flag:
+                    print("l1 is {}".format(l1))
+                c1=combine_sublists_into_strings(l1)
+                if Verbose_Flag:
+                    print("c1 is {}".format(c1))
+                c2=cleanup_list(c1)
+                if c2:
+                    list_of_strings.extend(c2)
+        if Verbose_Flag:
+            print("list_of_strings is {}".format(list_of_strings))
+
+        if list_of_strings and len(list_of_strings) > 0:
+            if Verbose_Flag:
+                print("o={}".format(p))
             html_url_and_title=html_url_from_page_url(course_info, p)
+            if Verbose_Flag:
+                print("html_url_and_title first ={}".format(html_url_and_title))
             if html_url_and_title:
-                print("html_url_and_title={}".format(html_url_and_title))
-                for i in data:
-                        add_words_to_default_dict(i, html_url_and_title)
-            else:
-                print("did not find matching entry for {}".format(p))
+                if Verbose_Flag:
+                    print("html_url_and_title={}".format(html_url_and_title))
+                for words in list_of_strings:
+                    add_words_to_default_dict(words, html_url_and_title)
+        else:
+            print("did not find matching entry for {}".format(p))
 
-    print("page_entries_in_language_of_course is {}".format(page_entries_in_language_of_course))
+    if Verbose_Flag:
+        print("page_entries is {}".format(page_entries))
 
-    # create page for entries in the default lamguage of the course
-    page_default='<h3>Entries in default language of the course</h3><ul>'
+    # create page
+    page=""
+    page=page+'<h3>groups of words</h3><ul>'
     for words in sorted(page_entries_in_language_of_course.keys()):
-        page_default=page_default+'<li>'+words+'<ul>'
+        page=page+'<li>'+words+'<ul>'
         for url in page_entries_in_language_of_course[words]:
-            page_default=page_default+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
-        page_default=page_default+'</ul></li>'
-    page_default=page_default+'</ul>'
+            page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
+        page=page+'</ul></li>'
+    page=page+'</ul>'
 
-    print("page_default is {}".format(page_default))
+    if Verbose_Flag:
+        print("page is {}".format(page))
+
+    page=save_page+page
 
     # write out body of response as a .html page
     new_file_name="stats_for_course-{}.html".format(course_id)
