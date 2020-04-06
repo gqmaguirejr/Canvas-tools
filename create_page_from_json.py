@@ -288,7 +288,7 @@ def split_on_stop_words(s1):
         if len(w) > 1 and w.isupper():         # preserve aconyms
             lower_case_next_word=False
         if lower_case_next_word and w[0].isupper(): # if the first word in a sentence is capitalized, then lower case it
-            w=w.lower()
+            #w=w.lower()                             # needs a better tests as this is too agressive
             lower_case_next_word=False
         if w in punctuation_list:
             lower_case_next_word=True
@@ -558,7 +558,8 @@ def add_words_to_dict(lang, words, url):
     global Verbose_Flag
     global page_entries
 
-    print("(lang={0}, words={1}, url={2})".format(lang, words, url))
+    if Verbose_Flag:
+        print("(lang={0}, words={1}, url={2})".format(lang, words, url))
     # get or make the dict for the target language
     dict_for_target_lang=page_entries.get(lang, False)
     if not dict_for_target_lang:
@@ -568,8 +569,8 @@ def add_words_to_dict(lang, words, url):
         print("dict_for_target_lang={}".format(dict_for_target_lang))
 
     # look up urls for given words in the dict or start an empty list
-    url_list_for_words=page_entries[lang].get(words, list())
-    url_list_for_words.append(url)
+    url_list_for_words=page_entries[lang].get(words, set())
+    url_list_for_words.add(url)
     if Verbose_Flag:
         print("url_list_for_words={}".format(url_list_for_words))
 
@@ -583,8 +584,8 @@ def add_words_to_default_dict(words, url):
     # look up URLs for given words in the dict or start an empty set
     # sets are used so that the only unique URLs are added
     #  (i.e., if a word is used multiple times on the page, it will only have one URL)
-    urls_for_words=page_entries_in_language_of_course.get(words, list())
-    urls_for_words.append(url)
+    urls_for_words=page_entries_in_language_of_course.get(words, set())
+    urls_for_words.add(url)
     #
     page_entries_in_language_of_course[words]=urls_for_words
 
@@ -598,14 +599,8 @@ def compute_page_for_tag(tag, heading, json_data, course_info):
     for p in json_data:
         data=json_data[p].get(tag, [])
         if data and len(data) > 0:
-            html_url_and_title=html_url_from_page_url(course_info, p)
-            if html_url_and_title:
-                if Verbose_Flag:
-                    print("html_url_and_title={}".format(html_url_and_title))
-                for i in data:
-                        add_words_to_default_dict(i, html_url_and_title)
-            else:
-                print("did not find matching entry for {}".format(p))
+            for i in data:
+                add_words_to_default_dict(i, p)
 
     if Verbose_Flag:
         print("tag={0}, page_entries_in_language_of_course is {1}".format(tag, page_entries_in_language_of_course))
@@ -615,8 +610,12 @@ def compute_page_for_tag(tag, heading, json_data, course_info):
     page=page+'<h3>'+heading+'</h3><ul>'
     for words in sorted(page_entries_in_language_of_course.keys()):
         page=page+'<li>'+words+'<ul>'
-        for url in page_entries_in_language_of_course[words]:
-            page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
+        for p in page_entries_in_language_of_course[words]:
+            url=html_url_from_page_url(course_info, p)
+            if not url:
+                print("could not find URL and title for {}".format(p))
+            else:
+                page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
         page=page+'</ul></li>'
     page=page+'</ul>'
 
@@ -638,13 +637,81 @@ def cleanup_list(l1):
         print("new_list is {}".format(new_list))
     return new_list
 
+def is_number(n):
+    try:
+        float(n)   # Type-casting the string to `float`.
+                   # If string is not a valid `float`, 
+                   # it'll raise `ValueError` exception
+    except ValueError:
+        return False
+    return True
+
+starting_characters_to_remove =[
+    u',',
+    u':',
+    u';',
+    u'&',
+    u'"',
+    u'(',
+    u')',
+    u'[',
+    u']',
+    u'{',
+    u'}',
+    u'+',
+    u'-',
+    u'--',
+    # u'.', # note that we cannot remove a leading period as this might be an example of a domain name
+    u'..',
+    u'...',
+    u'...',
+    u'*',
+    u'< < <',
+    ]
+
+
+ending_characters_to_remove =[
+    u',',
+    u'.',
+    u':',
+    u';',
+    u'&',
+    u'%',
+    u"''",
+    u'"',                      # a double quote mark
+    u"‘",
+    u'(',
+    u')',
+    u'[',
+    u']',
+    u'{',
+    u'}',
+    u'-',
+    u'[ online',
+    u'*',
+    ]
 
 def cleanup_string(s):
-    if s.endswith(','):
-        s=s[:-1]
-    #
-    if s.endswith(':'):
-        s=s[:-1]
+    s=s.strip()                 # first remove any trailing or leading white space
+    if s.endswith(')') and s.endswith('('): #  remove initial and trailing parentheses
+        s=cleanup_string(s[1:-1])
+
+    if s.endswith('[') and s.endswith(']'): #  remove initial and trailing brackets
+        s=cleanup_string(s[1:-1])
+
+    if s.endswith('{') and s.endswith('}'): #  remove initial and trailing brackets
+        s=cleanup_string(s[1:-1])
+
+    for c in ending_characters_to_remove:
+        if s.endswith(c):
+            s=cleanup_string(s[:-(len(c))])
+
+    for c in starting_characters_to_remove:
+        if s.startswith(c):
+            s=cleanup_string(s[len(c):])
+
+    if is_number(s):
+        return ""
     #
     return s.strip()
 
@@ -703,6 +770,15 @@ def main():
         sys.exit()
 
 
+    # for each of the stop words add a version with an initial capital letter - so that these can also be removed
+    oldStopWords=StopWords.copy()
+    for w in oldStopWords:
+        if len(w) > 1:
+            capitalized_word=w[0].upper()+w[1:]
+            StopWords.append(capitalized_word)
+
+    print("Processing language specific elements")
+
     # page_entries will have the structure
     # {"sv_se": {
     #            "words1": (url1, url2, ...),
@@ -723,16 +799,11 @@ def main():
         if lang_specific_data and len(lang_specific_data) > 0:
             if Verbose_Flag:
                 print("lang_specific_data is {0}, p={1}".format(lang_specific_data, p))
-            html_url_and_title=html_url_from_page_url(course_info, p)
-            if html_url_and_title:
-                if Verbose_Flag:
-                    print("html_url_and_title={}".format(html_url_and_title))
-                for i in lang_specific_data:
-                    add_words_to_dict(i['lang'], i['text'], html_url_and_title)
-            else:
-                print("did not find matching entry for {}".format(p))
+            for i in lang_specific_data:
+                add_words_to_dict(i['lang'], i['text'], p)
 
-    print("page_entries is {}".format(page_entries))
+    if Verbose_Flag:
+        print("page_entries is {}".format(page_entries))
 
     # create page
     page=""
@@ -740,36 +811,47 @@ def main():
         page=page+'<h3>'+lang+': '+language_info[lang]['en']+': '+language_info[lang]['sv']+'</h3><ul>'
         for words in sorted(page_entries[lang].keys()):
             page=page+'<li>'+words+'<ul>'
-            for url in page_entries[lang][words]:
-                page=page+'<li><a href="'+url[0]+'"><span lang="'+lang+'">'+url[1]+'</span></a></li>'
+            for p in page_entries[lang][words]:
+                url=html_url_from_page_url(course_info, p)
+                if not url:
+                    print("could not find URL and title for {}".format(p))
+                else:
+                    page=page+'<li><a href="'+url[0]+'"><span lang="'+lang+'">'+url[1]+'</span></a></li>'
             page=page+'</ul></li>'
         page=page+'</ul>'
 
-    print("page is {}".format(page))
+    if Verbose_Flag:
+        print("page is {}".format(page))
 
 
-
+    print("Processing figcaption text")
     page_figcaption=compute_page_for_tag('figcaption_text', "Figure caption text", json_data, course_info)
     if Verbose_Flag:
         print("page_figcaption is {}".format(page_figcaption))
     page=page+page_figcaption
 
+    print("Processing caption text")
     page_caption=compute_page_for_tag('caption_text', "Caption text", json_data, course_info)
     if Verbose_Flag:
         print("page_caption is {}".format(page_caption))
     page=page+page_caption
 
+    if Verbose_Flag:
+        print("page is {}".format(page))
+        
     save_page=page              # save current page contents
 
-    # process all of the things that were extracts and index them
+    print("Processing all of the word groups")
+    # process all of the things that were extracted and index them
     page_entries=dict()
-
 
     for p in json_data:
         format("p={}".format(p))
         d1=json_data[p]
         list_of_strings=list()
         for de in d1:
+            if de == 'pre_text': # do not index <pre> tagged content
+                continue
             l=json_data[p][de]
             if Verbose_Flag:
                 print("l is {}".format(l))
@@ -799,16 +881,12 @@ def main():
         if list_of_strings and len(list_of_strings) > 0:
             if Verbose_Flag:
                 print("o={}".format(p))
-            html_url_and_title=html_url_from_page_url(course_info, p)
-            if Verbose_Flag:
-                print("html_url_and_title first ={}".format(html_url_and_title))
-            if html_url_and_title:
-                if Verbose_Flag:
-                    print("html_url_and_title={}".format(html_url_and_title))
-                for words in list_of_strings:
-                    add_words_to_default_dict(words, html_url_and_title)
+            for words in list_of_strings:
+                add_words_to_default_dict(words, p)
         else:
-            print("did not find matching entry for {}".format(p))
+            if Verbose_Flag:
+                print("There is no content to index on page: {}".format(p))
+            continue
 
     if Verbose_Flag:
         print("page_entries is {}".format(page_entries))
@@ -818,8 +896,12 @@ def main():
     page=page+'<h3>groups of words</h3><ul>'
     for words in sorted(page_entries_in_language_of_course.keys()):
         page=page+'<li>'+words+'<ul>'
-        for url in page_entries_in_language_of_course[words]:
-            page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
+        for p in page_entries_in_language_of_course[words]:
+            url=html_url_from_page_url(course_info, p)
+            if not url:
+                print("for words '{0}' could not find URL and title for page {1}".format(words, p))
+            else:
+                page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
         page=page+'</ul></li>'
     page=page+'</ul>'
 

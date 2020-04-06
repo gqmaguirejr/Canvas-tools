@@ -26,19 +26,36 @@ from lxml import html
 import pandas as pd
 
 
-def process_page(page, remove):
+def process_page(page_name, page, remove):
     global Verbose_Flag
     global null
     
     d=dict()
 
+    if Verbose_Flag:
+        print("processing page named: {}".format(page_name))
     # handle the case of an empty document
     if not page or len(page) == 0:
         return d
     
     # remove material after <hr>
     if remove:
-        page=page[page.rfind("<hr>")+1:]
+        index=page.find("<hr>")
+        if index >= 0:
+            page=page[:index]
+            if Verbose_Flag:
+                print("<hr> found at {0} in {1}".format(index, page_name))
+
+        index=page.find("<hr />")
+        if index >= 0:
+            page=page[:index]
+            if Verbose_Flag:
+                print("<hr /> found at {0} in {1}".format(index, page_name))
+
+
+    # handle the case of an empty document
+    if not page or len(page) == 0:
+        return d
 
     document = html.document_fromstring(page)
     # raw_text = document.text_content()
@@ -160,6 +177,17 @@ def process_page(page, remove):
         if tmp:
             d['q_text']=tmp
 
+    # remove span class="inline-ref">
+    if remove:
+        for bad in document.xpath("//span[contains(@class, 'inline-ref')]"):
+            bad.getparent().remove(bad)
+
+    # remove span class="dont-index">
+    if remove:
+        for bad in document.xpath("//span[contains(@class, 'dont-index')]"):
+            bad.getparent().remove(bad)
+
+
     tmp_path=document.xpath('.//span')
     if tmp_path:
         tmp=[item.text for item in tmp_path]
@@ -275,6 +303,7 @@ def main():
         print("ARGV      : {}".format(sys.argv[1:]))
         print("VERBOSE   : {}".format(options.verbose))
         print("REMAINING : {}".format(remainder))
+        print("Remove_flag : {}".format(Remove_Flag))
 
     if (len(remainder) < 1):
         print("Inusffient arguments\n must provide name of directory to process\n")
@@ -293,10 +322,7 @@ def main():
         # do something with each file
         with open(html_file) as input_page_file:
             page = input_page_file.read()
-            page_data[os.path.basename(html_file)]=process_page(page, Remove_Flag)
-            
-    if Verbose_Flag:
-        print(page_data)
+            page_data[os.path.basename(html_file)]=process_page(html_file, page, Remove_Flag)
 
     output_filename='keywords_and_phrases_'+dir_name[dir_name.rfind("/")+1:]+'.json'
     try:
