@@ -46,7 +46,9 @@ StopWords=[
     u'all',
     u'allows',
     u'along',
+    u'already',
     u'also',
+    u'although',
     u'an',
     u'and',
     u'another',
@@ -240,6 +242,7 @@ StopWords=[
     u'verison',
     u'very',
     u'vs',
+    u'want',
     u'was',
     u'we',
     u'were',
@@ -264,14 +267,15 @@ StopWords=[
 
 punctuation_list=[
     u'.',                       # add some punctuation to this list
+    u','
+    u';'
     u'?',
     u'!',
-    u','
     u'\t'
     u'\n',
     u'⇒',
-    u'… ',
     u'…'
+
 ]
 
 def split_into_words(txt):
@@ -895,14 +899,16 @@ def main():
     page=""
     page=page+'<h3>groups of words</h3><ul>'
     for words in sorted(page_entries_in_language_of_course.keys()):
-        page=page+'<li>'+words+'<ul>'
+        word_entry='<li>'+words+'<ul>'
+        url_entry=""
         for p in page_entries_in_language_of_course[words]:
             url=html_url_from_page_url(course_info, p)
             if not url:
                 print("for words '{0}' could not find URL and title for page {1}".format(words, p))
             else:
-                page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
-        page=page+'</ul></li>'
+                url_entry=url_entry+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
+        if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
+            page=page+word_entry+url_entry+'</ul></li>'
     page=page+'</ul>'
 
     if Verbose_Flag:
