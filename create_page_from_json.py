@@ -33,7 +33,7 @@ language_info={
     "de_de": {'en': '<span lang="en_us">German</span>',    'sv': '<span lang="sv_se">Tyska</span>'},
     "no_nb": {'en': '<span lang="en_us">Norwegian</span>', 'sv': '<span lang="sv_se">Norska</span>'},
     "sv_se": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">Svenska</span>'},
-    }
+}
 
 StopWords=[
     u'a',
@@ -271,7 +271,7 @@ StopWords=[
     u'your'
     u'yourself',
     u'yourselves'
-    ]
+]
 
 punctuation_list=[
     u'.',                       # add some punctuation to this list
@@ -315,10 +315,10 @@ def split_on_stop_words(s1):
             working_list=list()
         if Verbose_Flag:
             print("w={0} lower_case_next_word={1}".format(w, lower_case_next_word))
-    # handle remainder - if necessary
+            # handle remainder - if necessary
     if len(working_list) > 0:
         output_list.append(working_list)
-    # remove empty list from the list
+        # remove empty list from the list
     output_list = [x for x in output_list if x != []]
     return output_list
 
@@ -328,7 +328,7 @@ def combine_sublists_into_strings(l1):
         working_string=""
         for w in l:
             working_string=working_string+' '+w
-        new_list.append(working_string.strip())
+            new_list.append(working_string.strip())
     return new_list
 
 def process_page(page, remove):
@@ -550,7 +550,7 @@ def process_page(page, remove):
             entry['lang']=item.get('lang')
             entry['text']=item.text
             language_specific_tagged_material.append(entry)
-        # add collected material
+            # add collected material
         d['lang_specific']=language_specific_tagged_material
         
 
@@ -578,7 +578,7 @@ def html_url_from_page_url(course_info, page_url):
                     return [html_url, course_info[m]['module_items'][mi]['title']]
             else:
                 continue
-    # else
+            # else
     return None
 
 def add_words_to_dict(lang, words, url):
@@ -587,7 +587,7 @@ def add_words_to_dict(lang, words, url):
 
     if Verbose_Flag:
         print("(lang={0}, words={1}, url={2})".format(lang, words, url))
-    # get or make the dict for the target language
+        # get or make the dict for the target language
     dict_for_target_lang=page_entries.get(lang, False)
     if not dict_for_target_lang:
         page_entries[lang]=dict()
@@ -643,8 +643,8 @@ def compute_page_for_tag(tag, heading, json_data, course_info):
                 print("could not find URL and title for {}".format(p))
             else:
                 page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
-        page=page+'</ul></li>'
-    page=page+'</ul>'
+                page=page+'</ul></li>'
+                page=page+'</ul>'
 
     return page
 
@@ -667,8 +667,8 @@ def cleanup_list(l1):
 def is_number(n):
     try:
         float(n)   # Type-casting the string to `float`.
-                   # If string is not a valid `float`, 
-                   # it'll raise `ValueError` exception
+        # If string is not a valid `float`, 
+        # it'll raise `ValueError` exception
     except ValueError:
         return False
     return True
@@ -701,7 +701,7 @@ starting_characters_to_remove =[
     u'&lt;',
     u'&gt;',
     u'&hellip;',
-    ]
+]
 
 
 ending_characters_to_remove =[
@@ -790,7 +790,7 @@ Letter_in_Index=[
     u'Å',
     u'Ä',
     u'Ö'
-    ]
+]
 
 def id_in_Index(s):
     return '*'+s+'*'
@@ -899,8 +899,8 @@ def main():
                     print("could not find URL and title for {}".format(p))
                 else:
                     page=page+'<li><a href="'+url[0]+'"><span lang="'+lang+'">'+url[1]+'</span></a></li>'
-            page=page+'</ul></li>'
-        page=page+'</ul>'
+                    page=page+'</ul></li>'
+                    page=page+'</ul>'
 
     if Verbose_Flag:
         print("page is {}".format(page))
@@ -910,13 +910,13 @@ def main():
     page_figcaption=compute_page_for_tag('figcaption_text', "Figure caption text", json_data, course_info)
     if Verbose_Flag:
         print("page_figcaption is {}".format(page_figcaption))
-    page=page+page_figcaption
+        page=page+page_figcaption
 
     print("Processing caption text")
     page_caption=compute_page_for_tag('caption_text', "Caption text", json_data, course_info)
     if Verbose_Flag:
         print("page_caption is {}".format(page_caption))
-    page=page+page_caption
+        page=page+page_caption
 
     if Verbose_Flag:
         print("page is {}".format(page))
@@ -1002,10 +1002,14 @@ def main():
     index_page_heading="<h3>Quick Index</h3><ul>"
     for l in Letter_in_Index:
         index_page_heading=index_page_heading+'<li><a href="#'+id_in_Index(l)+'"><strong>'+label_in_Index(l)+'</strong></a></li>'
-    index_page_heading=index_page_heading+'</ul>'
+        index_page_heading=index_page_heading+'</ul>'
 
     index_page=index_page+'<h3>groups of words</h3><ul>'
     current_index_letter=""
+    previous_word=""
+    url_entry=""    
+
+    url_dict=dict()
 
     # the casefold sorts upper and lower case together, but gives a stable result
     # see Christian Tismer, Sep 13 '19 at 12:15, https://stackoverflow.com/questions/13954841/sort-list-of-strings-ignoring-upper-lower-case
@@ -1015,16 +1019,26 @@ def main():
             current_index_letter=first_letter
             index_page=index_page+'</ul><a id="'+id_in_Index(current_index_letter)+'" name="'+id_in_Index(current_index_letter)+'"></a><h3>'+label_in_Index(current_index_letter)+'</h3><ul>'
 
+        if words.casefold() != previous_word:
+            previous_word=words.casefold()
+            #if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
+            if len(url_dict)> 0:
+                for d in sorted(url_dict, key=url_dict.get, reverse=False):
+                    url_entry=url_entry+'<li><a href="'+url_dict[d]+'">'+d+'</a></li>'
+                
+                index_page=index_page+word_entry+url_entry+'</ul></li>'
+            url_entry=""
+            url_dict=dict()
+            print("new words={}".format(words))
+
         word_entry='<li>'+words+'<ul>'
-        url_entry=""
         for p in page_entries_in_language_of_course[words]:
             url=html_url_from_page_url(course_info, p)
             if not url:
                 print("for words '{0}' could not find URL and title for page {1}".format(words, p))
             else:
-                url_entry=url_entry+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
-        if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
-            index_page=index_page+word_entry+url_entry+'</ul></li>'
+                url_dict[url[1]]=url[0]
+
     index_page=index_page+'</ul>'
 
     if Verbose_Flag:
