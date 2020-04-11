@@ -76,7 +76,8 @@ def process_page(page_name, page, remove):
     tmp_path=document.xpath('.//img')
     if tmp_path:
         tmp=[item.get('alt') for item in tmp_path]
-        tmp[:] = [item for item in tmp if item != None and item != "\n"]
+        # note: leave out the LaTeX alternatives
+        tmp[:] = [item for item in tmp if item != None and item != "\n" and not item.startswith('LaTeX:')]
         if tmp:
             d['img_alt_text']=tmp
 

@@ -41,11 +41,14 @@ StopWords=[
     u'able',
     u'about',
     u'above',
+    u'additional',
+    u'additionally',
     u'after',
     u'against',
     u'all',
     u'allows',
     u'along',
+    u'almost',
     u'already',
     u'also',
     u'although',
@@ -53,6 +56,7 @@ StopWords=[
     u'and',
     u'another',
     u'any',
+    u'anyone',
     u'are',
     u'as',
     u'at',
@@ -88,6 +92,7 @@ StopWords=[
     u'e.g',
     u'eigth',
     u'either',
+    u'else',
     u'end',
     u'especially',
     u'etc',
@@ -114,6 +119,7 @@ StopWords=[
     u'have',
     u'having',
     u'he',
+    u'hence',
     u'her',
     u'here',
     u'hers',
@@ -124,6 +130,7 @@ StopWords=[
     u'himself',
     u'his', 
     u'how',
+    u'however',
     u'i',    
     u'i.e',
     u'if',
@@ -175,6 +182,7 @@ StopWords=[
     u'now',
     u'of',
     u'off',
+    u'often',
     u'on',
     u'once',
     u'one',
@@ -216,12 +224,12 @@ StopWords=[
     u'the',
     u'then',
     u'their',
-    u'there',
     u'theirs',
     u'them',
     u'themselves',
     u'then',
     u'there',
+    u'therefore',
     u'these',
     u'three',
     u'they',
@@ -279,7 +287,8 @@ punctuation_list=[
 ]
 
 def split_into_words(txt):
-    return re.findall(r"[\w']+", txt)
+    #return re.findall(r"[\w']+", txt)
+    return re.findall(r"[\w']+|[.,!?;]", txt)
 
 def split_on_stop_words(s1):
     global Verbose_Flag
@@ -287,7 +296,10 @@ def split_on_stop_words(s1):
     working_list=list()
     lower_case_next_word=True
     #words=split_into_words(s1)
-    words=nltk.word_tokenize(s1)
+    #words=nltk.word_tokenize(s1)
+    # The method below does fine grain tokenization that the method above
+    lwords=[nltk.word_tokenize(t) for t in nltk.sent_tokenize(s1)]
+    words=[w[0] for w in lwords]
     for w in words:
         if len(w) > 1 and w.isupper():         # preserve aconyms
             lower_case_next_word=False
@@ -368,6 +380,18 @@ def process_page(page, remove):
         if tmp:
             d['figcaption_text']=tmp
 
+
+    tmp_path=document.xpath('.//pre')
+    if tmp_path:
+        tmp=[item.text for item in tmp_path]
+        tmp[:] = [item for item in tmp if item != None and item != "\n"]
+        if tmp:
+            d['pre_text']=tmp
+
+    # after getting the <pre>...</pre> text - remove it so that it is not further processed
+    for bad in document.xpath("//pre"):
+        bad.getparent().remove(bad)
+
     # get the headings at levels 1..4
     tmp_path=document.xpath('.//h1')
     if tmp_path:
@@ -405,7 +429,7 @@ def process_page(page, remove):
         if tmp:
             d['list_item_text']=tmp
 
-    # get table cells and headings - not that a empty cell will return a value of null
+    # get table cells and headings - note that a empty cell will return a value of null
     # note that we ignore tr, thead, tbody, and table - as we are only interested in the contents of the table or its caption
     tmp_path=document.xpath('.//caption')
     if tmp_path:
@@ -435,13 +459,6 @@ def process_page(page, remove):
         tmp[:] = [item for item in tmp if item != None and item != "\n"]
         if tmp:
             d['paragraph_text']=tmp
-
-    tmp_path=document.xpath('.//pre')
-    if tmp_path:
-        tmp=[item.text for item in tmp_path]
-        tmp[:] = [item for item in tmp if item != None and item != "\n"]
-        if tmp:
-            d['pre_text']=tmp
 
     tmp_path=document.xpath('.//blockquote')
     if tmp_path:
@@ -552,7 +569,13 @@ def html_url_from_page_url(course_info, page_url):
             #print("course_info[m]['module_items'][mi]={}".format(course_info[m]['module_items'][mi]))
             url=course_info[m]['module_items'][mi].get('page_url', [])
             if url == page_url:
-                return [course_info[m]['module_items'][mi]['html_url'], course_info[m]['module_items'][mi]['title']]
+                html_url=course_info[m]['module_items'][mi]['html_url']
+                ofset_to_modules=html_url.find('/modules/')
+                if ofset_to_modules > 1:
+                    trimmed_html_url='..'+html_url[ofset_to_modules:]
+                    return [trimmed_html_url, course_info[m]['module_items'][mi]['title']]
+                else:
+                    return [html_url, course_info[m]['module_items'][mi]['title']]
             else:
                 continue
     # else
@@ -671,12 +694,21 @@ starting_characters_to_remove =[
     u'...',
     u'*',
     u'< < <',
+    u'†',
+    u'``',
+    u"`",
+    u"=",
+    u'&lt;',
+    u'&gt;',
+    u'&hellip;',
     ]
 
 
 ending_characters_to_remove =[
     u',',
     u'.',
+    u'!',
+    u'?',
     u':',
     u';',
     u'&',
@@ -693,7 +725,16 @@ ending_characters_to_remove =[
     u'-',
     u'[ online',
     u'*',
-    ]
+    u'†',
+    u" ’",
+    u' (see',
+    u' e.g',
+    u"`",
+    u"=",
+    u'&lt;',
+    u'&gt;',
+    u'&hellip;',
+]
 
 def cleanup_string(s):
     s=s.strip()                 # first remove any trailing or leading white space
@@ -719,6 +760,43 @@ def cleanup_string(s):
     #
     return s.strip()
 
+Letter_in_Index=[
+    u'A',
+    u'B',
+    u'C',
+    u'D',
+    u'E',
+    u'F',
+    u'G',
+    u'H',
+    u'I',
+    u'J',
+    u'K',
+    u'L',
+    u'M',
+    u'N',
+    u'O',
+    u'P',
+    u'Q',
+    u'R',
+    u'S',
+    u'T',
+    u'U',
+    u'V',
+    u'W',
+    u'X',
+    u'Y',
+    u'Z',
+    u'Å',
+    u'Ä',
+    u'Ö'
+    ]
+
+def id_in_Index(s):
+    return '*'+s+'*'
+
+def label_in_Index(s):
+    return '- '+s+' -'
 
 
 def main():
@@ -777,7 +855,7 @@ def main():
     # for each of the stop words add a version with an initial capital letter - so that these can also be removed
     oldStopWords=StopWords.copy()
     for w in oldStopWords:
-        if len(w) > 1:
+        if len(w) > 0:
             capitalized_word=w[0].upper()+w[1:]
             StopWords.append(capitalized_word)
 
@@ -859,10 +937,21 @@ def main():
             l=json_data[p][de]
             if Verbose_Flag:
                 print("l is {}".format(l))
+            if de == 'span_text':
+                if Verbose_Flag:
+                    print("special case of span l={}".format(l))
+                if len(l) == 0:
+                    continue
+                elif len(l) == 1: 
+                    add_words_to_default_dict(l[0], p)
+                else:
+                    for s in l:
+                        add_words_to_default_dict(s, p)
+                continue
             for s in l:
                 if Verbose_Flag:
                     print("s={}".format(s))
-                
+                    
                 if isinstance(s, str):
                     l1=split_on_stop_words(s)
                 else:
@@ -879,12 +968,12 @@ def main():
                 c2=cleanup_list(c1)
                 if c2:
                     list_of_strings.extend(c2)
-        if Verbose_Flag:
-            print("list_of_strings is {}".format(list_of_strings))
-
-        if list_of_strings and len(list_of_strings) > 0:
             if Verbose_Flag:
-                print("o={}".format(p))
+                print("list_of_strings is {}".format(list_of_strings))
+
+            if list_of_strings and len(list_of_strings) > 0:
+                if Verbose_Flag:
+                    print("o={}".format(p))
             for words in list_of_strings:
                 add_words_to_default_dict(words, p)
         else:
@@ -895,10 +984,37 @@ def main():
     if Verbose_Flag:
         print("page_entries is {}".format(page_entries))
 
-    # create page
-    page=""
-    page=page+'<h3>groups of words</h3><ul>'
-    for words in sorted(page_entries_in_language_of_course.keys()):
+    # create index page
+    index_page=""
+    # added quick references to the different parts of the index
+    #<ul>
+    #    <li><a href="#*A*"><strong>*A*</strong></a></li>
+    #    <li><a href="#*B*"><strong>*B*</strong></a></li>
+    # </ul>
+    #
+    # Use id_in_Index(s) to name the IDs
+
+    # At each letter one needs to add:
+    # </ul><a id="*A*" name="*A*"></a><h3>- A -</h3><ul>
+    #
+    # Use label_in_Index(s) to name the visible heading
+
+    index_page_heading="<h3>Quick Index</h3><ul>"
+    for l in Letter_in_Index:
+        index_page_heading=index_page_heading+'<li><a href="#'+id_in_Index(l)+'"><strong>'+label_in_Index(l)+'</strong></a></li>'
+    index_page_heading=index_page_heading+'</ul>'
+
+    index_page=index_page+'<h3>groups of words</h3><ul>'
+    current_index_letter=""
+
+    # the casefold sorts upper and lower case together, but gives a stable result
+    # see Christian Tismer, Sep 13 '19 at 12:15, https://stackoverflow.com/questions/13954841/sort-list-of-strings-ignoring-upper-lower-case
+    for words in sorted(page_entries_in_language_of_course.keys(), key=lambda v: (v.casefold(), v)):
+        first_letter=words[0]
+        if (first_letter in Letter_in_Index) and (not first_letter == current_index_letter):
+            current_index_letter=first_letter
+            index_page=index_page+'</ul><a id="'+id_in_Index(current_index_letter)+'" name="'+id_in_Index(current_index_letter)+'"></a><h3>'+label_in_Index(current_index_letter)+'</h3><ul>'
+
         word_entry='<li>'+words+'<ul>'
         url_entry=""
         for p in page_entries_in_language_of_course[words]:
@@ -908,13 +1024,13 @@ def main():
             else:
                 url_entry=url_entry+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
         if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
-            page=page+word_entry+url_entry+'</ul></li>'
-    page=page+'</ul>'
+            index_page=index_page+word_entry+url_entry+'</ul></li>'
+    index_page=index_page+'</ul>'
 
     if Verbose_Flag:
-        print("page is {}".format(page))
+        print("index_page is {}".format(index_page))
 
-    page=save_page+page
+    page=save_page+index_page_heading+index_page
 
     # write out body of response as a .html page
     new_file_name="stats_for_course-{}.html".format(course_id)
