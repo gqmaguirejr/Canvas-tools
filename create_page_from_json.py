@@ -686,22 +686,46 @@ starting_characters_to_remove =[
     u'{',
     u'}',
     u'+',
-    u'-',
+    u'-',                       # 0x2d
+    u'‒',                       # 0x2012
+    u'–',                       # 0x2013
+    u'―',                       # 0x2015
     u'--',
     # u'.', # note that we cannot remove a leading period as this might be an example of a domain name
     u'..',
     u'...',
     u'...',
+    u'…',
     u'*',
     u'< < <',
     u'†',
+    u'‡',
     u'``',
     u"`",
+    u"’",
+    u'“',
     u"=",
     u'&lt;',
+    u'&le;',
     u'&gt;',
     u'&hellip;',
-]
+    u'¨',
+    u'®',
+    u'→',
+    u'⇒',
+    u'⇨',
+    u'⇨ '
+    u'∴',
+    u'≡',
+    u'≤',
+    u'✔️',
+    u'✔',
+    u'✝',
+    u'❌ ',
+    u'❌',
+    u'#',
+    ]
+
 
 
 ending_characters_to_remove =[
@@ -725,15 +749,30 @@ ending_characters_to_remove =[
     u'-',
     u'[ online',
     u'*',
+    u'&dagger;',
     u'†',
+    u'✝',
+    u'‡',
     u" ’",
-    u' (see',
+    #u' (see',
     u' e.g',
     u"`",
     u"=",
     u'&lt;',
+    u'&le;',
     u'&gt;',
     u'&hellip;',
+    u'®',
+    u'→',
+    u'⇒',
+    u'&rArr;',
+    u'⇨',
+    u'∴',
+    u'≡',
+    u'≤',
+    u'✔️',
+    u'✔',
+    u'❌',
 ]
 
 def cleanup_string(s):
@@ -943,10 +982,19 @@ def main():
                 if len(l) == 0:
                     continue
                 elif len(l) == 1: 
-                    add_words_to_default_dict(l[0], p)
+                    # check for single characters to skip
+                    if l[0].strip() in starting_characters_to_remove:
+                        if Verbose_Flag:
+                            print("special case of span with single element in l[0]={0}, len={1}".format(l[0], len(l[0])))
+                        continue
+                    else:
+                        add_words_to_default_dict(l[0], p)
                 else:
                     for s in l:
                         add_words_to_default_dict(s, p)
+                continue
+            # do not index superscripts or subscripts
+            if de == 'sup_text' or de == 'sub_text':
                 continue
             for s in l:
                 if Verbose_Flag:
@@ -1014,12 +1062,9 @@ def main():
     # the casefold sorts upper and lower case together, but gives a stable result
     # see Christian Tismer, Sep 13 '19 at 12:15, https://stackoverflow.com/questions/13954841/sort-list-of-strings-ignoring-upper-lower-case
     for words in sorted(page_entries_in_language_of_course.keys(), key=lambda v: (v.casefold(), v)):
-        first_letter=words[0]
-        if (first_letter in Letter_in_Index) and (not first_letter == current_index_letter):
-            current_index_letter=first_letter
-            index_page=index_page+'</ul><a id="'+id_in_Index(current_index_letter)+'" name="'+id_in_Index(current_index_letter)+'"></a><h3>'+label_in_Index(current_index_letter)+'</h3><ul>'
 
-        if words.casefold() != previous_word:
+        # if the previous word was an acronym or the new word is different, output the record
+        if previous_word.isupper() or words.casefold() != previous_word:
             previous_word=words.casefold()
             #if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
             if len(url_dict)> 0:
@@ -1030,6 +1075,12 @@ def main():
             url_entry=""
             url_dict=dict()
             print("new words={}".format(words))
+
+        first_letter=words[0]
+        if (first_letter in Letter_in_Index) and (first_letter != current_index_letter):
+            print("first_letter={0} current_index_letter={1}".format(first_letter,current_index_letter))
+            current_index_letter=first_letter
+            index_page=index_page+'</ul><a id="'+id_in_Index(current_index_letter)+'" name="'+id_in_Index(current_index_letter)+'"></a><h3>'+label_in_Index(current_index_letter)+'</h3><ul>'
 
         word_entry='<li>'+words+'<ul>'
         for p in page_entries_in_language_of_course[words]:
