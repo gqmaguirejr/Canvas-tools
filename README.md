@@ -1121,7 +1121,7 @@ mkdir  /tmp/testdik1552
 cp stats_for_course-17234.html test-page-3.html
 
 # Upload the created page and give it a title, in this case "Test page 3"
-./ccreate.py https://kth.instructure.com/courses/17234/pages/test-page-3 "Test page 3"
+./ccreate.py https://xxxx.instructure.com/courses/17234/pages/test-page-3 "Test page 3"
 
 # Put the page into a module in the course by going to a module, clicking the plus symbol
 # then select the type of module to add as "Page" and then select the item in the scrolling list "Test page 3"
