@@ -1092,7 +1092,88 @@ Example:
 ./create_page_from_json.py 17234 keywords_and_phrases_testdik1552.json
 ```
 
+## Making an index
 
+Purpose: To create an index for a Canvas course
+
+Input:
+```
+# Create a directory to put all the pages for the course
+mkdir  /tmp/testdik1552
+
+# Get all the pages for the course_id 17234
+./cgetall.py 17234 /tmp/testdik1552
+
+# Get information about the modules in this course
+./modules-items-in-course.py 17234
+# the above creates the file: modules-in-course-17234.json
+
+# Fine the keywords and phases in the files in the indicated directory
+./find_keyords_phrase_in_files.py -r /tmp/testdik1552
+# the above create the file: keywords_and_phrases_testdik1552.json
+# The "-r" option causes the program to ignore everything after a horizontal rules <hr> or </ hr>
+
+# Create an index
+./create_page_from_json.py 17234 keywords_and_phrases_testdik1552.json
+ the above creates the file: stats_for_course-17234.html
+
+# Copy (or rename) the file, so that it has a name suitable for an Canvas page
+cp stats_for_course-17234.html test-page-3.html
+
+# Upload the created page and give it a title, in this case "Test page 3"
+./ccreate.py https://kth.instructure.com/courses/17234/pages/test-page-3 "Test page 3"
+
+# Put the page into a module in the course by going to a module, clicking the plus symbol
+# then select the type of module to add as "Page" and then select the item in the scrolling list "Test page 3"
+# Note that you need to refresh the "Modules" page to be able to see the new choice of page.
+
+# Note that if your use the ccreate.py script multiple times, the page will have names of the form: "Test page 3-i", such as "Test page 3-6". 
+
+# You can eliminate the uploaded page by using the page: https://xxxx.instructure.com/courses/17234/pages
+# Click on the three vertical dots on the right and select "Delete"
+
+# You can eliminate the page from the module using the three dots on the right and select "Remove"
+
+```
+
+Output: Outputs a web page with various indexes. 
+
+You can iterate creating the index and uploading to optimize what is indexed and how it is indexed. When you edit the HTML files in /tmp/testdik1552 - remember to update the actual web page in the Canvas course. A convenient way to do this is to edit the course page and select the HTML view and paste in the contents of the edited HTML file.
+
+Once you have completed the editing, start the procedure above with the step: find_keyords_phrase_in_files.py
+Otherwise your changes will not be correctly processed.
+
+Some of the changes that I have made to the HTML is to tag words that I want to be kep together (such as a person's name or a logical concept):
+	<span>Adam Smith</span>
+	<span>Autonomous system number</span>	
+
+Similarly, you can mark text that you do not want to be indexed:
+	<span class="dont-index">20% error rate</span>
+
+Similarly, you can mark text that you do not want to be indexed because it is a reference to the literature (I find that this is commonly necessary because I have put a references into a figcaption of caption OR because I have added a reference in-line in the page, rather than following the horizontal rule):
+	<span class="inline-ref">(see Smith, Figure 10, on page 99.)</span>
+
+Note that the rules for what text to index and what text to ignore are rather
+*ad hoc* and hard coded into the program (find_keyords_phrase_in_files.py and
+create_page_from_json.py). However, one can change the source code to tune it
+as you want. For example, one of the things that I chose to not index is all
+superscripts and subscripts (i.e., <sup>xxxx</sup> and <sub>xxxx</sub>). I
+also exclude alt text for images that begins with 'LaTeX:' - in order to
+eliminate the LaTeX for equations.
+
+The logical separation between find_keyords_phrase_in_files.py and
+create_page_from_json.py is that the first computes a list of "strings" for each
+tag of each HTML pages, producing a dictionary with the HTML file name as key and entries of the form:
+
+"sctp-header.html":
+	{"list_item_text": ["As with UDP & TCP, SCTP provides de/multiplexing via the 16-bit source and destination ports.", "Associations between endpoints are defined by a unique ", "SCTP applies a CRC-32 end-to-end checksum to its general header and all the chunks", "Control information is contained in Control Chunks (these always ", "Multiple data chunks can be present - each containing data for different streams"],
+          "paragraph_text": ["16-bit source port", "16-bit source port", "12 bytes", "32-bit verification tag", "32-bit Checksum", "Control chunk(s) {If any}", "Data chunk(s) {If any}", "SCTP packet (see ", "IP protocol x84 = SCTP", "A separate verification tag is used in each direction", "(Previously it used Adler-32 checksum [RFC 3309])"],
+	 "strong_text": ["General Header", "verification tag", "Chunks", "precede "]
+	 },
+
+ While the later program constructs the index page. I found that I had to tune the strings in list starting_characters_to_remove and in the list ending_characters_to_remove to get the results that I wanted. One of the artifacts of cutting and pasting from PowerPoint slides to create the Canvas pages was that some of the characters that appear are Unicode characters for different dashes and some symbols that I have used (such as u'→', u'⇒', u'⇨', u'∴', u'≡', u'✔', u'❌') and generally I do not want to have these indexed (but rather treat them like stop words).
+
+Overall, the process of generating an index was useful - as I found mis-spellings, inconsistent use of various terms and capitalization, random characters that seemed to have been typos or poor alternative img descriptions, ...). However, it remains a work in progress.
 
 <!-- 
 

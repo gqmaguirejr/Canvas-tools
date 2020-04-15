@@ -614,8 +614,11 @@ def add_words_to_default_dict(words, url):
     urls_for_words=page_entries_in_language_of_course.get(words, set())
     urls_for_words.add(url)
     #
-    page_entries_in_language_of_course[words]=urls_for_words
-
+    if words in starting_characters_to_remove:
+        return None
+    else:
+        page_entries_in_language_of_course[words]=urls_for_words
+        return words
  
 def compute_page_for_tag(tag, heading, json_data, course_info):
     global Verbose_Flag
@@ -634,7 +637,7 @@ def compute_page_for_tag(tag, heading, json_data, course_info):
 
     # create page for entries in the default lamguage of the course
     page=""
-    page=page+'<h3>'+heading+'</h3><ul>'
+    page=page+'<h3><a id="'+heading+'">'+heading+'</h3><ul>'
     for words in sorted(page_entries_in_language_of_course.keys()):
         page=page+'<li>'+words+'<ul>'
         for p in page_entries_in_language_of_course[words]:
@@ -674,6 +677,7 @@ def is_number(n):
     return True
 
 starting_characters_to_remove =[
+    u' ',
     u',',
     u':',
     u';',
@@ -927,10 +931,10 @@ def main():
         print("page_entries is {}".format(page_entries))
 
     # create page
-    page=""
-    for lang in sorted(page_entries.keys()):
+    page='<h3><a id="Foreign_words_and_phrases">Foreign words and phrases</h3>'
+    for lang in sorted(page_entries.keys(), key=lambda v: (v.casefold(), v)):
         page=page+'<h3>'+lang+': '+language_info[lang]['en']+': '+language_info[lang]['sv']+'</h3><ul>'
-        for words in sorted(page_entries[lang].keys()):
+        for words in sorted(page_entries[lang].keys(), key=lambda v: (v.casefold(), v)):
             page=page+'<li>'+words+'<ul>'
             for p in page_entries[lang][words]:
                 url=html_url_from_page_url(course_info, p)
@@ -946,16 +950,16 @@ def main():
 
 
     print("Processing figcaption text")
-    page_figcaption=compute_page_for_tag('figcaption_text', "Figure caption text", json_data, course_info)
+    page_figcaption=compute_page_for_tag('figcaption_text', "Figure captions", json_data, course_info)
     if Verbose_Flag:
         print("page_figcaption is {}".format(page_figcaption))
-        page=page+page_figcaption
+    page=page+page_figcaption
 
     print("Processing caption text")
-    page_caption=compute_page_for_tag('caption_text', "Caption text", json_data, course_info)
+    page_caption=compute_page_for_tag('caption_text', "Table captions", json_data, course_info)
     if Verbose_Flag:
         print("page_caption is {}".format(page_caption))
-        page=page+page_caption
+    page=page+page_caption
 
     if Verbose_Flag:
         print("page is {}".format(page))
@@ -1047,7 +1051,7 @@ def main():
     #
     # Use label_in_Index(s) to name the visible heading
 
-    index_page_heading="<h3>Quick Index</h3><ul>"
+    index_page_heading='<h3><a id="Quick_Index">Quick Index</h3><ul>'
     for l in Letter_in_Index:
         index_page_heading=index_page_heading+'<li><a href="#'+id_in_Index(l)+'"><strong>'+label_in_Index(l)+'</strong></a></li>'
         index_page_heading=index_page_heading+'</ul>'
@@ -1078,7 +1082,8 @@ def main():
 
         first_letter=words[0]
         if (first_letter in Letter_in_Index) and (first_letter != current_index_letter):
-            print("first_letter={0} current_index_letter={1}".format(first_letter,current_index_letter))
+            if Verbose_Flag:
+                print("first_letter={0} current_index_letter={1}".format(first_letter,current_index_letter))
             current_index_letter=first_letter
             index_page=index_page+'</ul><a id="'+id_in_Index(current_index_letter)+'" name="'+id_in_Index(current_index_letter)+'"></a><h3>'+label_in_Index(current_index_letter)+'</h3><ul>'
 
@@ -1095,7 +1100,13 @@ def main():
     if Verbose_Flag:
         print("index_page is {}".format(index_page))
 
-    page=save_page+index_page_heading+index_page
+    page_heading='<h3>Automatically extracted index information</h3><ul>'
+    page_heading=page_heading+'<li><a href="#Foreign_words_and_phrases">Foreign_words_and_phrases</li>'
+    page_heading=page_heading+'<li><a href="#Figure captions">Figure captions</li>'
+    page_heading=page_heading+'<li><a href="#Table captions">Table captions</li>'
+    page_heading=page_heading+'<li><a href="#Quick_Index">Quick Index</li></ul>'
+
+    page=page_heading+save_page+index_page_heading+index_page
 
     # write out body of response as a .html page
     new_file_name="stats_for_course-{}.html".format(course_id)
