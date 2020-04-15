@@ -1144,20 +1144,24 @@ Once you have completed the editing, start the procedure above with the step: fi
 Otherwise your changes will not be correctly processed.
 
 Some of the changes that I have made to the HTML is to tag words that I want to be kep together (such as a person's name or a logical concept):
+```
 	<span>Adam Smith</span>
 	<span>Autonomous system number</span>	
-
+```
 Similarly, you can mark text that you do not want to be indexed:
+```
 	<span class="dont-index">20% error rate</span>
+```
 
 Similarly, you can mark text that you do not want to be indexed because it is a reference to the literature (I find that this is commonly necessary because I have put a references into a figcaption of caption OR because I have added a reference in-line in the page, rather than following the horizontal rule):
+```
 	<span class="inline-ref">(see Smith, Figure 10, on page 99.)</span>
 
 Note that the rules for what text to index and what text to ignore are rather
 *ad hoc* and hard coded into the program (find_keyords_phrase_in_files.py and
 create_page_from_json.py). However, one can change the source code to tune it
 as you want. For example, one of the things that I chose to not index is all
-superscripts and subscripts (i.e., <sup>xxxx</sup> and <sub>xxxx</sub>). I
+superscripts and subscripts (i.e., ```<sup>xxxx</sup> and <sub>xxxx</sub>```). I
 also exclude alt text for images that begins with 'LaTeX:' - in order to
 eliminate the LaTeX for equations.
 
@@ -1165,11 +1169,14 @@ The logical separation between find_keyords_phrase_in_files.py and
 create_page_from_json.py is that the first computes a list of "strings" for each
 tag of each HTML pages, producing a dictionary with the HTML file name as key and entries of the form:
 
+```
 "sctp-header.html":
 	{"list_item_text": ["As with UDP & TCP, SCTP provides de/multiplexing via the 16-bit source and destination ports.", "Associations between endpoints are defined by a unique ", "SCTP applies a CRC-32 end-to-end checksum to its general header and all the chunks", "Control information is contained in Control Chunks (these always ", "Multiple data chunks can be present - each containing data for different streams"],
           "paragraph_text": ["16-bit source port", "16-bit source port", "12 bytes", "32-bit verification tag", "32-bit Checksum", "Control chunk(s) {If any}", "Data chunk(s) {If any}", "SCTP packet (see ", "IP protocol x84 = SCTP", "A separate verification tag is used in each direction", "(Previously it used Adler-32 checksum [RFC 3309])"],
 	 "strong_text": ["General Header", "verification tag", "Chunks", "precede "]
 	 },
+
+```
 
  While the later program constructs the index page. I found that I had to tune the strings in list starting_characters_to_remove and in the list ending_characters_to_remove to get the results that I wanted. One of the artifacts of cutting and pasting from PowerPoint slides to create the Canvas pages was that some of the characters that appear are Unicode characters for different dashes and some symbols that I have used (such as u'→', u'⇒', u'⇨', u'∴', u'≡', u'✔', u'❌') and generally I do not want to have these indexed (but rather treat them like stop words).
 
