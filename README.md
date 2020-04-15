@@ -1156,7 +1156,7 @@ Similarly, you can mark text that you do not want to be indexed:
 Similarly, you can mark text that you do not want to be indexed because it is a reference to the literature (I find that this is commonly necessary because I have put a references into a figcaption of caption OR because I have added a reference in-line in the page, rather than following the horizontal rule):
 ```
 	<span class="inline-ref">(see Smith, Figure 10, on page 99.)</span>
-
+```
 Note that the rules for what text to index and what text to ignore are rather
 *ad hoc* and hard coded into the program (find_keyords_phrase_in_files.py and
 create_page_from_json.py). However, one can change the source code to tune it
