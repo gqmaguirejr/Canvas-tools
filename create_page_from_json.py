@@ -30,9 +30,10 @@ import re
 import nltk
 
 language_info={
-    "de_de": {'en': '<span lang="en_us">German</span>',    'sv': '<span lang="sv_se">Tyska</span>'},
-    "no_nb": {'en': '<span lang="en_us">Norwegian</span>', 'sv': '<span lang="sv_se">Norska</span>'},
-    "sv_se": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">Svenska</span>'},
+    "de_de": {'en': '<span lang="en_us">German</span>',    'sv': '<span lang="sv_se">tyska</span>'},
+    "no_nb": {'en': '<span lang="en_us">Norwegian</span>', 'sv': '<span lang="sv_se">norska</span>'},
+    "sv_se": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">svenska</span>'},
+    "fr_fr": {'en': '<span lang="en_us">French</span>',    'sv': '<span lang="sv_se">franska</span>'},
 }
 
 StopWords=[
@@ -51,6 +52,7 @@ StopWords=[
     u'almost',
     u'already',
     u'also',
+    u'also:',
     u'although',
     u'an',
     u'and',
@@ -190,6 +192,7 @@ StopWords=[
     u'or',
     u'other',
     u'others',
+    u'otherwise',
     u'our',
     u'ours',
     u'ourselves',
@@ -268,54 +271,79 @@ StopWords=[
     u'within',
     u'would',
     u'you',
-    u'your'
+    u'your',
     u'yourself',
     u'yourselves'
 ]
 
 punctuation_list=[
     u'.',                       # add some punctuation to this list
-    u','
-    u';'
+    u',',
+    u';',
     u'?',
     u'!',
-    u'\t'
+    u'\t',
     u'\n',
     u'⇒',
-    u'…'
+    u'…',
+    u'(',
+    u')',
 
 ]
 
+def get_text_for_tag(document, tag, dir):
+    tag_xpath='.//'+tag
+    text_dir=tag+'_text'
+    tmp_path=document.xpath(tag_xpath)
+    if tmp_path:
+        tmp=[item.text for item in tmp_path]
+        tmp[:] = [item for item in tmp if item != None and item != "\n"]
+        if tmp:
+            dir[text_dir]=tmp
+
+def remove_tag(document, tag):
+    tag_xpath='//'+tag
+    for bad in document.xpath(tag_xpath):
+        bad.getparent().remove(bad)
+
+def split_into_sentences(txt):
+    regexPattern = '|'.join(map(re.escape, punctuation_list))
+    #print(regexPattern)
+    return re.split(regexPattern, txt)
+    #return re.split('[.,;?!()]\s', txt)
+
+    
 def split_into_words(txt):
     #return re.findall(r"[\w']+", txt)
-    return re.findall(r"[\w']+|[.,!?;]", txt)
+    #return re.findall(r"[\w']+|[.,!?;]", txt)
+    #return re.findall(r"[a-zA-Z0-9_:åäö']+|[.,!?;]", txt)
+    return re.findall(r"[a-zA-Z0-9_:/]+|[.!?;]", txt)
 
 def split_on_stop_words(s1):
     global Verbose_Flag
+    global Stop_flag
+
     output_list=list()
     working_list=list()
     lower_case_next_word=True
-    #words=split_into_words(s1)
-    #words=nltk.word_tokenize(s1)
-    # The method below does fine grain tokenization that the method above
-    lwords=[nltk.word_tokenize(t) for t in nltk.sent_tokenize(s1)]
-    words=[w[0] for w in lwords]
+    if Stop_flag:
+        #lwords=split_into_words(s1)
+        #words=[w[0] for w in lwords]
+        words=split_into_words(s1)
+    else:
+        #words=nltk.word_tokenize(s1)
+        # The method below does fine grain tokenization that the method above
+        lwords=[nltk.word_tokenize(t) for t in nltk.sent_tokenize(s1)]
+        words=[w[0] for w in lwords]
+
     for w in words:
-        if len(w) > 1 and w.isupper():         # preserve aconyms
-            lower_case_next_word=False
-        if lower_case_next_word and w[0].isupper(): # if the first word in a sentence is capitalized, then lower case it
-            #w=w.lower()                             # needs a better tests as this is too agressive
-            lower_case_next_word=False
-        if w in punctuation_list:
-            lower_case_next_word=True
         if (w not in StopWords) and (w not in punctuation_list):
             working_list.append(w)
         else:
             output_list.append(working_list)
             working_list=list()
-        if Verbose_Flag:
-            print("w={0} lower_case_next_word={1}".format(w, lower_case_next_word))
             # handle remainder - if necessary
+            
     if len(working_list) > 0:
         output_list.append(working_list)
         # remove empty list from the list
@@ -381,16 +409,19 @@ def process_page(page, remove):
             d['figcaption_text']=tmp
 
 
-    tmp_path=document.xpath('.//pre')
-    if tmp_path:
-        tmp=[item.text for item in tmp_path]
-        tmp[:] = [item for item in tmp if item != None and item != "\n"]
-        if tmp:
-            d['pre_text']=tmp
+    # tmp_path=document.xpath('.//pre')
+    # if tmp_path:
+    #     tmp=[item.text for item in tmp_path]
+    #     tmp[:] = [item for item in tmp if item != None and item != "\n"]
+    #     if tmp:
+    #         d['pre_text']=tmp
+    get_text_for_tag(document, 'pre', d)
+    print("d is {}".format(d))
 
-    # after getting the <pre>...</pre> text - remove it so that it is not further processed
-    for bad in document.xpath("//pre"):
-        bad.getparent().remove(bad)
+    # # after getting the <pre>...</pre> text - remove it so that it is not further processed
+    # for bad in document.xpath("//pre"):
+    #     bad.getparent().remove(bad)
+    remove_tag(document, 'pre')
 
     # get the headings at levels 1..4
     tmp_path=document.xpath('.//h1')
@@ -614,9 +645,19 @@ def add_words_to_default_dict(words, url):
     urls_for_words=page_entries_in_language_of_course.get(words, set())
     urls_for_words.add(url)
     #
-    if words in starting_characters_to_remove:
+    # if numbers separated by commas or spaces, do not index
+    #s1=wprds.split(' ')
+    
+    words=words.strip()
+    if len(words) == 0:
+        return None        
+
+    # do not index stop words, starting characters to be removed, or numbers
+    if (words in StopWords) or (words in starting_characters_to_remove) or is_number(words):
         return None
     else:
+        if words.find('yourself') >= 0:
+            print("found yourself in {0} of length={1}".format(words, len(words)))
         page_entries_in_language_of_course[words]=urls_for_words
         return words
  
@@ -646,9 +687,8 @@ def compute_page_for_tag(tag, heading, json_data, course_info):
                 print("could not find URL and title for {}".format(p))
             else:
                 page=page+'<li><a href="'+url[0]+'">'+url[1]+'</a></li>'
-                page=page+'</ul></li>'
-                page=page+'</ul>'
-
+        page=page+'</ul></li>'
+    page=page+'</ul>'
     return page
 
 
@@ -666,6 +706,27 @@ def cleanup_list(l1):
     if Verbose_Flag:
         print("new_list is {}".format(new_list))
     return new_list
+
+#[['Internet', 'Corporation'], ['Assigned', 'Names'], ['Numbers']]
+# becomes: ['Internet Corporation'], ['Assigned Names'], ['Numbers']]
+def cleanup_two_layer_list(l1):
+    global Verbose_Flag
+    new_list=list()
+    for l2 in l1:
+        new_string=''
+        for e in l2:
+            if Verbose_Flag:
+                print("e: {}".format(e))
+            cs=cleanup_string(e)
+            if Verbose_Flag:
+                print("cs is {}".format(cs))
+            if cs:
+                new_string=new_string+' '+cs
+        new_list.append(new_string.strip())
+    if Verbose_Flag:
+        print("new_list is {}".format(new_list))
+    return new_list
+
 
 def is_number(n):
     try:
@@ -709,6 +770,7 @@ starting_characters_to_remove =[
     u"’",
     u'“',
     u"=",
+    u'<',
     u'&lt;',
     u'&le;',
     u'&gt;',
@@ -844,6 +906,7 @@ def label_in_Index(s):
 
 def main():
     global Verbose_Flag
+    global Stop_flag
     global page_entries
     global page_entries_in_language_of_course
 
@@ -856,9 +919,17 @@ def main():
                       help="Print lots of output to stdout"
     )
 
+    parser.add_option('-s', '--stop',
+                      dest="stop",
+                      default=False,
+                      action="store_true",
+                      help="split on stopwords with regular expression and not NLTK tokenizer"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
+    Stop_flag=options.stop
 
     if Verbose_Flag:
         print("ARGV      : {}".format(sys.argv[1:]))
@@ -895,12 +966,32 @@ def main():
         sys.exit()
 
 
+    # load words for the course, if the file exists
+    course_words_file="words-for-course-{}.json".format(course_id)
+    if Verbose_Flag:
+        print("loading course words from {}".format(course_words_file))
+
+    try:
+        with open(course_words_file) as json_file:
+            course_words=json.load(json_file)
+    except:
+        #print("Unable to open file named {}".format(course_words_file))
+        print("No file {} - so no course words to specially process".format(course_words_file))
+        course_words=dict()
+        course_words['words_to_ignore']=[] # empty list
+
+    if Verbose_Flag:
+        print("course_words is {}".format(course_words))
+
     # for each of the stop words add a version with an initial capital letter - so that these can also be removed
     oldStopWords=StopWords.copy()
     for w in oldStopWords:
         if len(w) > 0:
             capitalized_word=w[0].upper()+w[1:]
             StopWords.append(capitalized_word)
+
+    if Verbose_Flag:
+        print("Extended StopWords are {}".format(StopWords))
 
     print("Processing language specific elements")
 
@@ -942,8 +1033,8 @@ def main():
                     print("could not find URL and title for {}".format(p))
                 else:
                     page=page+'<li><a href="'+url[0]+'"><span lang="'+lang+'">'+url[1]+'</span></a></li>'
-                    page=page+'</ul></li>'
-                    page=page+'</ul>'
+            page=page+'</ul></li>'
+        page=page+'</ul>'
 
     if Verbose_Flag:
         print("page is {}".format(page))
@@ -979,7 +1070,7 @@ def main():
                 continue
             l=json_data[p][de]
             if Verbose_Flag:
-                print("l is {}".format(l))
+                print("de is {0}, l is {1}".format(de, l))
             if de == 'span_text':
                 if Verbose_Flag:
                     print("special case of span l={}".format(l))
@@ -1000,34 +1091,52 @@ def main():
             # do not index superscripts or subscripts
             if de == 'sup_text' or de == 'sub_text':
                 continue
+            # other cases
+            if Verbose_Flag:
+                print("de is {0}, l is {1}".format(de, l))
             for s in l:
                 if Verbose_Flag:
                     print("s={}".format(s))
                     
-                if isinstance(s, str):
-                    l1=split_on_stop_words(s)
-                else:
-                    s_prime=s.get('text', '')
-                    if s_prime:
-                        l1=split_on_stop_words(s_prime)
-                    else:
-                        continue
-                if Verbose_Flag:
-                    print("l1 is {}".format(l1))
-                c1=combine_sublists_into_strings(l1)
-                if Verbose_Flag:
-                    print("c1 is {}".format(c1))
-                c2=cleanup_list(c1)
-                if c2:
-                    list_of_strings.extend(c2)
-            if Verbose_Flag:
-                print("list_of_strings is {}".format(list_of_strings))
+                if isinstance(s, dict):
+                    s_text=s.get('text', '')
+                    s_lang=s.get('lang', [])
+                    if s_text:
+                        if s_lang:
+                            add_words_to_dict(s_lang, s_text, p)
+                        else:
+                            add_words_to_default_dict(s_text, p)
+                    continue
 
-            if list_of_strings and len(list_of_strings) > 0:
-                if Verbose_Flag:
-                    print("o={}".format(p))
-            for words in list_of_strings:
-                add_words_to_default_dict(words, p)
+                if isinstance(s, str):
+                    l1=split_into_sentences(s)
+                    if Verbose_Flag:
+                        print("l1 is {}".format(l1))
+                    if len(l1) >= 1:
+                        if Verbose_Flag:
+                            print("l1 is longer than 1")
+                        for s1 in l1:
+                            if Verbose_Flag:
+                                print("s1 is {}".format(s1))
+                            l2=split_on_stop_words(s1)
+                            if Verbose_Flag:
+                                print("l2 is {}".format(l2))
+                            l3=cleanup_two_layer_list(l2)
+                            for s3 in l3:
+                                if Verbose_Flag:
+                                    print("s3 is {}".format(s3))
+                                add_words_to_default_dict(s3, p)
+                    else:
+                        l2=split_on_stop_words(s)
+                        l3=cleanup_two_layer_list(l2)
+                        for words in l3:
+                            w2=cleanup_string(words)
+                            if Verbose_Flag:
+                                print("w2 is {}".format(w2))
+                            add_words_to_default_dict(w2, p)
+                    continue
+                else:
+                    print("not a dict or str - s is {}".format(s))
         else:
             if Verbose_Flag:
                 print("There is no content to index on page: {}".format(p))
@@ -1054,7 +1163,7 @@ def main():
     index_page_heading='<h3><a id="Quick_Index">Quick Index</h3><ul>'
     for l in Letter_in_Index:
         index_page_heading=index_page_heading+'<li><a href="#'+id_in_Index(l)+'"><strong>'+label_in_Index(l)+'</strong></a></li>'
-        index_page_heading=index_page_heading+'</ul>'
+    index_page_heading=index_page_heading+'</ul>'
 
     index_page=index_page+'<h3>groups of words</h3><ul>'
     current_index_letter=""
@@ -1063,9 +1172,36 @@ def main():
 
     url_dict=dict()
 
+    global page_entries_in_language_of_course
+    #merge entries
+    sorted_page_entries=sorted(page_entries_in_language_of_course.keys(), key=lambda v: (v.casefold(), v))
+    for words in sorted_page_entries:
+        #merge entries
+        for w in course_words['words_to_merge']:
+            if words in course_words['words_to_merge'][w]:
+                if Verbose_Flag:
+                    print("words is {0} and w is {1}".format(words, w))
+                    print("merging for {}".format(words))
+
+                urls_for_words=page_entries_in_language_of_course.get(words, set())
+                if Verbose_Flag:
+                    print("page_entries_in_language_of_course[words] is {}".format(urls_for_words))
+                if len(urls_for_words) > 0:
+                    if Verbose_Flag:
+                        print("clearing page entry for {}".format(words))
+                    page_entries_in_language_of_course[words]=set()
+                    unified_url_entries=page_entries_in_language_of_course.get(w, set())
+                    page_entries_in_language_of_course[w]=unified_url_entries.union(urls_for_words)
+                    if Verbose_Flag:
+                        print("unified_url_entries is {}".format(unified_url_entries))
+
     # the casefold sorts upper and lower case together, but gives a stable result
     # see Christian Tismer, Sep 13 '19 at 12:15, https://stackoverflow.com/questions/13954841/sort-list-of-strings-ignoring-upper-lower-case
     for words in sorted(page_entries_in_language_of_course.keys(), key=lambda v: (v.casefold(), v)):
+        # ignore words in the course's 'words_to_ignore' list
+        if words in course_words['words_to_ignore']:
+            print("ignoring {}".format(words))
+            continue
 
         # if the previous word was an acronym or the new word is different, output the record
         if previous_word.isupper() or words.casefold() != previous_word:
@@ -1073,14 +1209,18 @@ def main():
             #if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
             if len(url_dict)> 0:
                 for d in sorted(url_dict, key=url_dict.get, reverse=False):
+                    if d == 'Learning outcomes' or d == 'Learning Outcomes':
+                        continue
                     url_entry=url_entry+'<li><a href="'+url_dict[d]+'">'+d+'</a></li>'
                 
                 index_page=index_page+word_entry+url_entry+'</ul></li>'
             url_entry=""
             url_dict=dict()
             print("new words={}".format(words))
-
-        first_letter=words[0]
+        
+        if len(words) == 0:
+            print("words={0} and len(words)={1}".format(words, len(words)))
+        first_letter=words[0].upper()
         if (first_letter in Letter_in_Index) and (first_letter != current_index_letter):
             if Verbose_Flag:
                 print("first_letter={0} current_index_letter={1}".format(first_letter,current_index_letter))
@@ -1107,6 +1247,11 @@ def main():
     page_heading=page_heading+'<li><a href="#Quick_Index">Quick Index</li></ul>'
 
     page=page_heading+save_page+index_page_heading+index_page
+
+    print("sizes index_page={0} ({3} MB), page_caption={1}, save_page={2}".format(len(index_page),
+                                                                                  len(page_caption),
+                                                                                  len(save_page),
+                                                                                  (len(index_page)/(1024*1024))))
 
     # write out body of response as a .html page
     new_file_name="stats_for_course-{}.html".format(course_id)

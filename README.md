@@ -1178,6 +1178,8 @@ tag of each HTML pages, producing a dictionary with the HTML file name as key an
 
 ```
 
+Note that text inside ```<pre>xxxx</pre>``` is extracted (in the first phase), but then ignored in when constructing the main index. Additionally, integers and floating point numbers are aslo not indexed (unless they are inside a span, such as ```<span>3.14159265</span>```.
+
  While the later program constructs the index page. I found that I had to tune the strings in list starting_characters_to_remove and in the list ending_characters_to_remove to get the results that I wanted. One of the artifacts of cutting and pasting from PowerPoint slides to create the Canvas pages was that some of the characters that appear are Unicode characters for different dashes and some symbols that I have used (such as u'→', u'⇒', u'⇨', u'∴', u'≡', u'✔', u'❌') and generally I do not want to have these indexed (but rather treat them like stop words).
 
 Overall, the process of generating an index was useful - as I found mis-spellings, inconsistent use of various terms and capitalization, random characters that seemed to have been typos or poor alternative img descriptions, ...). However, it remains a work in progress.
