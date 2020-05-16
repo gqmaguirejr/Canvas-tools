@@ -1147,6 +1147,8 @@ def main():
 
     # create index page
     index_page=""
+    # index_page_offset will contain information about the offset to each new letter in the index
+    index_page_offset=dict()
     # added quick references to the different parts of the index
     #<ul>
     #    <li><a href="#*A*"><strong>*A*</strong></a></li>
@@ -1225,6 +1227,9 @@ def main():
             if Verbose_Flag:
                 print("first_letter={0} current_index_letter={1}".format(first_letter,current_index_letter))
             current_index_letter=first_letter
+            # store the current offset to the start of this letter in the index_page
+            index_page_offset[current_index_letter]=len(index_page)+5
+
             index_page=index_page+'</ul><a id="'+id_in_Index(current_index_letter)+'" name="'+id_in_Index(current_index_letter)+'"></a><h3>'+label_in_Index(current_index_letter)+'</h3><ul>'
 
         word_entry='<li>'+words+'<ul>'
@@ -1259,7 +1264,68 @@ def main():
         encoded_output = bytes(page, 'UTF-8')
         f.write(encoded_output)
 
+    #page=index_page_heading+index_page
 
+    letters_on_index_page=dict()
+    number_of_index_pages=0
+    maximum_page_size=(512*1024)-1
+    #
+    base_offset_of_page=0
+    #
+    for index, letter in enumerate(Letter_in_Index):
+        if Verbose_Flag:
+            print("index={0}, letter is {1}".format(index, letter))
+        offset_for_letter=index_page_offset.get(letter, False)
+        letters_on_index_page[number_of_index_pages]=letters_on_index_page.get(number_of_index_pages, [])
+        if Verbose_Flag:
+            print("offset_for_letter={0}, letters_on_index_page={1}".format(offset_for_letter, letters_on_index_page))
+        if  offset_for_letter:
+            # check if the current letter's contents will fit, i.e., if next offset is too large
+            next_index=index+1
+            if next_index < len(Letter_in_Index):
+                offset_for_next_letter=index_page_offset.get(Letter_in_Index[next_index], False)
+                if offset_for_next_letter:
+                    delta=(offset_for_next_letter - base_offset_of_page)
+                else:
+                    delta=0
+                if Verbose_Flag:
+                    print("delta={}".format(delta))
+                if delta > maximum_page_size:
+                    base_offset_of_page=index_page_offset[Letter_in_Index[index]]
+                    number_of_index_pages=number_of_index_pages+1
+                    letters_on_index_page[number_of_index_pages]=letters_on_index_page.get(number_of_index_pages, [])
+                    letters_on_index_page[number_of_index_pages].append(letter)
+                    if Verbose_Flag:
+                        print("base_offset_of_page={0}, number_of_index_pages={1}".format(base_offset_of_page, number_of_index_pages))
+                else:
+                    letters_on_index_page[number_of_index_pages].append(letter)
+            else:
+                letters_on_index_page[number_of_index_pages].append(letter)
+        else:
+            letters_on_index_page[number_of_index_pages].append(letter)
+
+    print("letters_on_index_page={}".format(letters_on_index_page))
+
+    for i in range(number_of_index_pages+1):
+        print("i is {}".format(i))
+        if i == 0:
+            start_offset=0
+        else:
+            start_offset=index_page_offset[letters_on_index_page[i][0]]
+        if i == number_of_index_pages:
+            end_offset=len(index_page)
+        else:
+            end_offset=(index_page_offset[letters_on_index_page[i+1][0]])-1
+        print("start_offset={0}, end_offset={1}".format(start_offset, end_offset))
+        page=index_page[start_offset:end_offset]
+        # write out body of response as a .html page
+        new_file_name="stats_for_course-{0}-index-{1}.html".format(course_id, i)
+        with open(new_file_name, 'wb') as f:
+            encoded_output = bytes(page, 'UTF-8')
+            f.write(encoded_output)
+
+
+    print("index_page_offset={}".format(index_page_offset))
 
 
 if __name__ == "__main__": main()
