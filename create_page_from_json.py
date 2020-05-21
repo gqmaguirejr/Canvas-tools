@@ -4,6 +4,15 @@
 # 
 # it outputs a file that could be put into a Canvas page with index related data for a Canvas course
 #
+# Examples:
+# ./create_page_from_json.py -s 17234 keywords_and_phrases_testdik1552.json
+#
+# to split on stop words rather than use the NLTK
+# ./create_page_from_json.py -s 17234 keywords_and_phrases_testdik1552.json
+#
+# To minimize the output by eliimnating some pages (i.e., URLs):
+# ./create_page_from_json.py -m 17234 keywords_and_phrases_testdik1552.json
+#
 # G. Q: Maguire Jr.
 #
 # 2020.03.31
@@ -926,6 +935,14 @@ def main():
                       help="split on stopwords with regular expression and not NLTK tokenizer"
     )
 
+    parser.add_option('-m', '--minimize',
+                      dest="minimize",
+                      default=False,
+                      action="store_true",
+                      help="minimize by leaving out some pages"
+    )
+
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -1211,8 +1228,9 @@ def main():
             #if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
             if len(url_dict)> 0:
                 for d in sorted(url_dict, key=url_dict.get, reverse=False):
-                    if d == 'Learning outcomes' or d == 'Learning Outcomes':
-                        continue
+                    if options.minimize:
+                        if d == 'Learning outcomes' or d == 'Learning Outcomes' or d == 'Acronyms and Abbreviations':
+                            continue
                     url_entry=url_entry+'<li><a href="'+url_dict[d]+'">'+d+'</a></li>'
                 
                 index_page=index_page+word_entry+url_entry+'</ul></li>'
@@ -1317,7 +1335,23 @@ def main():
         else:
             end_offset=(index_page_offset[letters_on_index_page[i+1][0]])-1
         print("start_offset={0}, end_offset={1}".format(start_offset, end_offset))
-        page=index_page[start_offset:end_offset]
+
+
+        index_page_heading='<h3><a id="Quick_Index">Quick Index</h3><ul>'
+        for j in range(0,len(letters_on_index_page[i])):
+            l=letters_on_index_page[i][j]
+            print("i={0}, j={1}, l={2}".format(i, j, l))
+            index_page_heading=index_page_heading+'<li><a href="#'+id_in_Index(l)+'"><strong>'+label_in_Index(l)+'</strong></a></li>'
+
+        index_page_heading=index_page_heading+'</ul>'
+
+        if i == 0:
+            index_page_header=index_page_heading
+        else:
+            index_page_header=index_page_heading+'<h3>groups of words</h3>'
+
+
+        page=index_page_header+index_page[start_offset:end_offset]
         # write out body of response as a .html page
         new_file_name="stats_for_course-{0}-index-{1}.html".format(course_id, i)
         with open(new_file_name, 'wb') as f:
