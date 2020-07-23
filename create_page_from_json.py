@@ -1286,7 +1286,7 @@ def main():
 
     letters_on_index_page=dict()
     number_of_index_pages=0
-    maximum_page_size=(512*1024)-1
+    maximum_page_size=(400*1000)-1
     #
     base_offset_of_page=0
     #
