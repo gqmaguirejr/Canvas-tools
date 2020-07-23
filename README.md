@@ -1184,6 +1184,19 @@ Note that text inside ```<pre>xxxx</pre>``` is extracted (in the first phase), b
 
 Overall, the process of generating an index was useful - as I found mis-spellings, inconsistent use of various terms and capitalization, random characters that seemed to have been typos or poor alternative img descriptions, ...). However, it remains a work in progress.
 
+## my-dashboard.py
+
+Purpose: XLSX spreadsheet of the course for the user running the program.
+
+Input: none
+```
+my-dashboard.py
+```
+
+Output: outputs a file (all-my-cards.xlsx) containing a spreadsheet of the user's dahsboard cards
+
+```
+
 <!-- 
 
 ## xxx.py
