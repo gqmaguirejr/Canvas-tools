@@ -1113,6 +1113,20 @@ mkdir  /tmp/testdik1552
 # the above create the file: keywords_and_phrases_testdik1552.json
 # The "-r" option causes the program to ignore everything after a horizontal rules <hr> or </ hr>
 
+#
+#
+# create an empty file words-for-course-COURSE_ID.json containing:
+#{"words_to_ignore": [
+#   "______last_word_marker______"
+# ],
+# "words_to_merge": {
+#   "______last_merge_marker______": []
+#   }
+#}
+# later add to this file appropriate entries
+# for example in words_to_ignore    "3rd method use alternative algorithms",
+# for example in words_to_merge    "(George) Guilder’s Law": ["George) Guilder’s Law", "Guilder’s Law"],
+#
 # Create an index
 ./create_page_from_json.py 17234 keywords_and_phrases_testdik1552.json
  the above creates the file: stats_for_course-17234.html
