@@ -39,8 +39,11 @@ import re
 import nltk
 
 language_info={
+    "en": {'en': '<span lang="en_us">English</span>',    'sv': '<span lang="sv_se">engelska</span>'},
+    "en_us": {'en': '<span lang="en_us">English</span>',    'sv': '<span lang="sv_se">engelska</span>'},
     "de_de": {'en': '<span lang="en_us">German</span>',    'sv': '<span lang="sv_se">tyska</span>'},
     "no_nb": {'en': '<span lang="en_us">Norwegian</span>', 'sv': '<span lang="sv_se">norska</span>'},
+    "sv": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">svenska</span>'},
     "sv_se": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">svenska</span>'},
     "fr_fr": {'en': '<span lang="en_us">French</span>',    'sv': '<span lang="sv_se">franska</span>'},
 }
@@ -996,6 +999,7 @@ def main():
         print("No file {} - so no course words to specially process".format(course_words_file))
         course_words=dict()
         course_words['words_to_ignore']=[] # empty list
+        course_words['words_to_merge']=[]
 
     if Verbose_Flag:
         print("course_words is {}".format(course_words))
@@ -1041,6 +1045,7 @@ def main():
     # create page
     page='<h3><a id="Foreign_words_and_phrases">Foreign words and phrases</h3>'
     for lang in sorted(page_entries.keys(), key=lambda v: (v.casefold(), v)):
+        print("lang={}".format(lang))
         page=page+'<h3>'+lang+': '+language_info[lang]['en']+': '+language_info[lang]['sv']+'</h3><ul>'
         for words in sorted(page_entries[lang].keys(), key=lambda v: (v.casefold(), v)):
             page=page+'<li>'+words+'<ul>'

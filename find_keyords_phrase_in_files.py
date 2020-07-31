@@ -50,6 +50,8 @@ def remove_tag(document, tag):
         bad.getparent().remove(bad)
 
 def remove_inline_and_dont_index_tags(str1):
+    if len(str1)== 0:
+        return ""
     document2 = html.document_fromstring(str1)
     # remove span class="inline-ref">
     for bad in document2.xpath("//span[contains(@class, 'inline-ref')]"):
