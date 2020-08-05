@@ -199,6 +199,9 @@ def main():
         columns_to_drop=['thumbnail_url']
         df.drop(columns_to_drop,inplace=True,axis=1)
 
+        # drop duplicates of the same row
+        df.drop_duplicates(inplace=True)
+
         # Convert the dataframe to an XlsxWriter Excel object.
         sh_name="{0}".format(course_id)
         df.to_excel(writer, sheet_name=sh_name)
