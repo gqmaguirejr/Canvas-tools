@@ -120,9 +120,14 @@ def getall_course_pages(course_id, destination_directory):
 
             # write out body of response as a .html page
             with open(new_file_name, 'wb') as f:
-                encoded_output = bytes(page_response["body"], 'UTF-8')
+                # modified the code to handle empty files
+                if len(page_response["body"]) > 0:
+                    encoded_output = bytes(page_response["body"], 'UTF-8')
+                else:
+                    encoded_output = bytes("", 'UTF-8')
 
                 f.write(encoded_output)
+
                 continue
         else:
             print("No such page: {}".format(canvas_course_page_url))

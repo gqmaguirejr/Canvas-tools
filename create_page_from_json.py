@@ -17,6 +17,8 @@
 #
 # 2020.03.31
 #
+# 2020.08.01 extended to include the front page as a place that index items can point to
+#
 
 
 import csv, requests, time
@@ -606,19 +608,29 @@ def process_page(page, remove):
 def html_url_from_page_url(course_info, page_url):
     if page_url.endswith('.html'):
         page_url=page_url[:-5]
-    for m in course_info:
-        #print("course_info[m] m={}".format(m))
-        for mi in course_info[m]['module_items']:
-            #print("course_info[m]['module_items'][mi]={}".format(course_info[m]['module_items'][mi]))
-            url=course_info[m]['module_items'][mi].get('page_url', [])
+
+    # check for front page
+    #"front_page": {"title": "II2202 Home page", "created_at": "2020-07-15T11:31:36Z", "url": "ii2202-home-page", "editing_roles": "teachers", "page_id": 96714, "published": true, "hide_from_students": false, "front_page": true, "html_url": "https://canvas.kth.se/courses/20979/pages/ii2202-home-page"
+    front_page=course_info.get('front_page', None)
+    if front_page and front_page['url'] == page_url:
+        print("found front_page html_url_from_page_url:: {0}".format(page_url))
+        return [front_page['html_url'], front_page['title']]
+
+    for m in course_info['modules']:
+        if m == 'front_page':      # skip the front page as we processed it above
+            continue
+        #print("course_info['modules'][m] m={}".format(m))
+        for mi in course_info['modules'][m]['module_items']:
+            #print("course_info['modules'][m]['module_items'][mi]={}".format(course_info[m]['module_items'][mi]))
+            url=course_info['modules'][m]['module_items'][mi].get('page_url', [])
             if url == page_url:
-                html_url=course_info[m]['module_items'][mi]['html_url']
+                html_url=course_info['modules'][m]['module_items'][mi]['html_url']
                 ofset_to_modules=html_url.find('/modules/')
                 if ofset_to_modules > 1:
                     trimmed_html_url='..'+html_url[ofset_to_modules:]
-                    return [trimmed_html_url, course_info[m]['module_items'][mi]['title']]
+                    return [trimmed_html_url, course_info['modules'][m]['module_items'][mi]['title']]
                 else:
-                    return [html_url, course_info[m]['module_items'][mi]['title']]
+                    return [html_url, course_info['modules'][m]['module_items'][mi]['title']]
             else:
                 continue
             # else

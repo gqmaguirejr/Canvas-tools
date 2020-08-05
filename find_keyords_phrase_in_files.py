@@ -15,6 +15,13 @@
 # ./create_page_from_json.py -s 17234 keywords_and_phrases_testdik1552.json
 # cp ../Canvas-tools/stats_for_course-17234.html test-page-3.html
 # ./ccreate.py https://kth.instructure.com/courses/11/pages/test-page-3 "Test page 3"
+#
+# this program uses special spans to decide what to index, not index, and which is a in-line reference:
+# <span class="dont-index">
+# <span class="inline-ref">
+#
+# Words to be kep together should be inside <span>x y z</span>
+#
 
 
 import csv, requests, time

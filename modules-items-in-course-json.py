@@ -4,6 +4,7 @@
 # ./modules-items-in-course-json.py course_id
 #
 # Output: json file with modules and module items in course
+#         it also get the front page, it it exists and is published and visible to students
 #
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
@@ -63,6 +64,56 @@ def initialize(options):
         print("Unable to open configuration file named {}".format(config_file))
         print("Please create a suitable configuration file, the default name is config.json")
         sys.exit()
+
+def list_quizzes(course_id):
+    quizzes_found_thus_far=[]
+    # Use the Canvas API to get the list of quizzes for the course
+    #GET /api/v1/courses/:course_id/quizzes
+
+    url = "{0}/courses/{1}/quizzes".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting quizzes: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            quizzes_found_thus_far.append(p_response)
+
+            # the following is needed when the reponse has been paginated
+            # i.e., when the response is split into pieces - each returning only some of the list
+            # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+            while r.links['current']['url'] != r.links['last']['url']:  
+                r = requests.get(r.links['next']['url'], headers=header)  
+                if Verbose_Flag:
+                    print("result of getting quizzes for a paginated response: {}".format(r.text))
+                page_response = r.json()  
+                for p_response in page_response:  
+                    quizzes_found_thus_far.append(p_response)
+
+    return quizzes_found_thus_far
+
+def get_front_page(course_id):
+    front_page=[]
+    # Use the Canvas API to get the front page it it exists
+    #GET /api/v1/courses/:course_id/GET /v1/courses/{course_id}/front_page
+
+    url = "{0}/courses/{1}/front_page".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting modules: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        front_page=r.json()
+
+    return front_page
 
 def list_modules(course_id):
     modules_found_thus_far=[]
@@ -162,6 +213,8 @@ def main():
 
         course_id=remainder[0]
         course_info_file="modules-in-course-{}.json".format(course_id)
+        # place information into the course_info under 'modules', 'front_page', and 'quizzes'
+        course_info['modules']=dict()
 
         modules=list_modules(course_id)
         if (modules):
@@ -172,7 +225,17 @@ def main():
                     module_items[item['title']]=item
 
                 m['module_items']=module_items
-                course_info[m['name']]=m
+                course_info['modules'][m['name']]=m
+
+        front_page=get_front_page(course_id)
+        if front_page:
+            # check that it is a front_page, published, and visible to students
+            if front_page['front_page'] and front_page['published'] and not front_page['hide_from_students']:
+                course_info['front_page']=front_page
+
+        quizzes=list_quizzes(course_id)
+        if quizzes:
+            course_info['quizzes']=quizzes
 
         print("course_info={}".format(course_info))
 
