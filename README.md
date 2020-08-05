@@ -1210,6 +1210,23 @@ my-dashboard.py
 Output: outputs a file (all-my-cards.xlsx) containing a spreadsheet of the user's dahsboard cards
 
 
+## list-files.py
+
+Purpose: To get a spreadsheet of all the files and folders in a Canvas course.
+
+Input:
+```
+./list-files.py course_id
+```
+
+Output: outputs a file named files-COURSE_ID.xlsx
+
+Note that there can be many instances of a file with a given filename. There can even be multiple instances of the same filename in one folder!
+
+Example:
+```
+./list-files.py 20979
+```
 
 <!-- 
 
