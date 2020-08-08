@@ -393,6 +393,26 @@ def main():
             page = input_page_file.read()
             page_data[os.path.basename(html_file)]=process_page(html_file, page, Remove_Flag)
 
+    # add processing of quiz descriptions to have more text to index
+    if (len(remainder) == 2):
+        course_id=remainder[1]
+        course_info_file="modules-in-course-{}.json".format(course_id)
+
+        if Verbose_Flag:
+            print("processing course_info JSON from {}".format(course_info_file))
+
+        try:
+            with open(course_info_file) as json_file:
+                course_info=json.load(json_file)
+        except:
+            print("Unable to open file named {}".format(course_info_file))
+            sys.exit()
+
+            if Verbose_Flag:
+                print("processing JSON from {}".format(file_name))
+
+
+        quiz_info=course_info.
     output_filename='keywords_and_phrases_'+dir_name[dir_name.rfind("/")+1:]+'.json'
     try:
         with open(output_filename, 'w') as json_file:
