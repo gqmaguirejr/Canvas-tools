@@ -1228,6 +1228,44 @@ Example:
 ./list-files.py 20979
 ```
 
+## get_user_profile.py user_id
+
+Purpose: To output the JSON of the user's profile.
+
+Input:
+```
+./get_user_profile.py user_id
+```
+
+Output: outputs the JSON
+
+Example:
+```bash
+# note the output is edited
+./get_user_profile.py 29
+
+
+user's profile is:
+```
+```JSON
+{   'avatar_url': 'https://xxxx',
+    'bio': 'since 1994  - Professor of xxxx\r\n'
+           'For further information see https://www.kth.se/profile/maguire/',
+    'calendar': {   'ics': 'https://canvas.kth.se/feeds/calendars/xxxx.ics'},
+    'effective_locale': 'en',
+    'id': 29,
+    'integration_id': None,
+    'locale': 'en',
+    'login_id': 'xxxxx@kth.se',
+    'lti_user_id': 'xxxxxxxx',
+    'name': 'xxxx',
+    'primary_email': 'xxxxx@kth.se',
+    'short_name': 'xxxx',
+    'sortable_name': 'yyyyy, xxxx',
+    'time_zone': 'Europe/Stockholm',
+    'title': None}
+```
+
 <!-- 
 
 ## xxx.py
