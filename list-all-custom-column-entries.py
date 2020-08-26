@@ -243,7 +243,7 @@ def main():
     if Verbose_Flag:
         print("users are: {0}".format(users))
     if (users):
-        users_df=pd.io.json.json_normalize(users)
+        users_df=pd.json_normalize(users)
         
         # below are examples of some columns that might be dropped
         columns_to_drop=[
@@ -295,7 +295,7 @@ def main():
 
     # get section info
     sections=sections_in_course(course_id)
-    sections_df=pd.io.json.json_normalize(sections)
+    sections_df=pd.json_normalize(sections)
 
     # augment the users-df with section names
     for index, row in  users_df.iterrows():
@@ -330,7 +330,7 @@ def main():
 
             # the following was inspired by pbreach's answer on Jan 21 '14 at 18:17 in http://stackoverflow.com/questions/21104592/json-to-pandas-dataframe
             # create a Panda dataframe from the output
-            df=pd.io.json.json_normalize(output)
+            df=pd.json_normalize(output)
             df.rename(columns = {'content': column_name}, inplace = True)
             index=index+1
             

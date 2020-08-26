@@ -97,7 +97,8 @@ def sections_in_course(course_id):
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of modules
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              #while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      page_response = r.json()  
                      for p_response in page_response:  
@@ -130,7 +131,8 @@ def students_in_course(course_id):
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of modules
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              #while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      page_response = r.json()  
                      for p_response in page_response:  
@@ -182,7 +184,7 @@ def main():
        sections=sections_in_course(course_id)
        if Verbose_Flag:
               print("sections={0}".format(sections))
-       sections_df=pd.io.json.json_normalize(sections)
+       sections_df=pd.json_normalize(sections)
        sections_df.rename(columns = {'id':'course_section_id', 'name':'section_name'}, inplace = True)
        columns_to_drop=['course_id', 'end_at', 'integration_id', 'nonxlist_course_id', 'sis_course_id', 'sis_section_id', 'start_at']
        sections_df.drop(columns_to_drop,inplace=True,axis=1)
@@ -195,7 +197,7 @@ def main():
               print("students={0}".format(students))
 
        if students:
-              students_df1=pd.io.json.json_normalize(students)
+              students_df1=pd.json_normalize(students)
               headers = sections_df.columns.tolist()
               if Verbose_Flag:
                      print('sections_df columns: ', headers)

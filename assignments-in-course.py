@@ -143,7 +143,7 @@ def main():
         course_id=remainder[0]
         assignments=list_assignments(course_id)
         if (assignments):
-            assignments_df=pd.io.json.json_normalize(assignments)
+            assignments_df=pd.json_normalize(assignments)
                      
             # below are examples of some columns that might be dropped
             #columns_to_drop=[]

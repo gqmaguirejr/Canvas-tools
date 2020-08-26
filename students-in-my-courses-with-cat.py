@@ -206,7 +206,7 @@ def main():
         if Verbose_Flag:
             print("users are: {0}".format(users))
         if (users):
-            users_df=pd.io.json.json_normalize(users)
+            users_df=pd.json_normalize(users)
                      
             # below are examples of some columns that might be dropped
             columns_to_drop=[

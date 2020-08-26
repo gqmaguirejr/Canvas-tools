@@ -165,7 +165,7 @@ def main():
         course_id=remainder[0]
         quizzes=list_quizzes(course_id)
         if (quizzes):
-            quizzes_df=pd.io.json.json_normalize(quizzes)
+            quizzes_df=pd.json_normalize(quizzes)
                      
             # below are examples of some columns that might be dropped
             #columns_to_drop=[]
@@ -178,7 +178,7 @@ def main():
 
             for q in sorted(quizzes, key=lambda x: x['id']):
                 qi=list_quiz_questions(course_id, q['id'])
-                qi_df=pd.io.json.json_normalize(qi)
+                qi_df=pd.json_normalize(qi)
                 qi_df.to_excel(writer, sheet_name=str(q['id']))
 
 

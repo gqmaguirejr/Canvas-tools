@@ -132,7 +132,7 @@ def main():
         course_id=remainder[0]
         modules=list_modules(course_id)
         if (modules):
-            modules_df=pd.io.json.json_normalize(modules)
+            modules_df=pd.json_normalize(modules)
                      
             # below are examples of some columns that might be dropped
             #columns_to_drop=[]

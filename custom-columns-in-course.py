@@ -145,7 +145,7 @@ def main():
         course_id=remainder[0]
         columns=list_custom_columns(course_id)
         if (columns):
-            columns_df=pd.io.json.json_normalize(columns)
+            columns_df=pd.json_normalize(columns)
                      
             # below are examples of some columns that might be dropped
             #columns_to_drop=[]

@@ -334,8 +334,8 @@ def main():
               assignment_id=remainder[1]
 
               users=users_in_course(course_id)
-              users_df1=pd.io.json.json_normalize(users)
-              sections_df=pd.io.json.json_normalize(sections_in_course(course_id))
+              users_df1=pd.json_normalize(users)
+              sections_df=pd.json_normalize(sections_in_course(course_id))
               sections_df.rename(columns = {'id':'course_section_id'}, inplace = True)
               columns_to_drop=['course_id', 'end_at', 'integration_id', 'nonxlist_course_id', 'sis_course_id', 'sis_section_id', 'start_at']
               sections_df.drop(columns_to_drop,inplace=True,axis=1)
@@ -353,7 +353,7 @@ def main():
 
                      # the following was inspired by pbreach's answer on Jan 21 '14 at 18:17 in http://stackoverflow.com/questions/21104592/json-to-pandas-dataframe
                      # create a Panda dataframe from the output
-                     df=pd.io.json.json_normalize(output)
+                     df=pd.json_normalize(output)
                      # Convert the dataframe to an XlsxWriter Excel object.
                      df.to_excel(writer, sheet_name='PeerAssignment')
 

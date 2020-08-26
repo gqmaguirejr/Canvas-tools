@@ -285,7 +285,7 @@ def main():
               course_id=remainder[0]
               users=users_in_course(course_id)
               if (users):
-                     users_df=pd.io.json.json_normalize(users)
+                     users_df=pd.json_normalize(users)
                      
                      # below are examples of some columns that might be dropped
                      columns_to_drop=['user.id', 'user.integration_id', 'section_integration_id', 'course_integration_id', 'associated_user_id']
@@ -299,7 +299,7 @@ def main():
                      # Get the xlsxwriter workbook and worksheet objects.
     
                      sections=sections_in_course(course_id)
-                     sections_df=pd.io.json.json_normalize(sections)
+                     sections_df=pd.json_normalize(sections)
 
                      if options.avatar:
                             users_avatars=dict() # to remember a user's avatar to avoid looking it up again

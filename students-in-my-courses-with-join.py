@@ -237,7 +237,7 @@ def main():
         if Verbose_Flag:
             print("users are: {0}".format(users))
         if (users):
-            users_df=pd.io.json.json_normalize(users)
+            users_df=pd.json_normalize(users)
             
             # below are examples of some columns that might be dropped
             columns_to_drop=[
@@ -326,7 +326,7 @@ def main():
         
     if Verbose_Flag:
         print("aggregated_data is {}".format(aggregated_data))
-    aggregated_df=pd.io.json.json_normalize(aggregated_data)
+    aggregated_df=pd.json_normalize(aggregated_data)
         
     aggregated_heading_df = pd.DataFrame(course_name_given_number, index=[0]) # insert a row below the column headings
 

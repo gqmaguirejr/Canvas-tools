@@ -181,7 +181,7 @@ def main():
     # set up the output write
     writer = pd.ExcelWriter('all-my-files.xlsx', engine='xlsxwriter')
 
-    courses_df=pd.io.json.json_normalize(courses)
+    courses_df=pd.json_normalize(courses)
     courses_df.to_excel(writer, sheet_name='Courses')
 
     for c in sorted(courses, key=lambda x: x['id']):
@@ -195,7 +195,7 @@ def main():
         print("number of files in course is {}".format(len(output)))
         if (output):
             # create a Panda dataframe from the output
-            df=pd.io.json.json_normalize(output)
+            df=pd.json_normalize(output)
             # note that it is necessary to drop the thumbnail_urls as many exceed Excel's URL limit for the length of URLs
             columns_to_drop=['thumbnail_url']
             df.drop(columns_to_drop,inplace=True,axis=1)
