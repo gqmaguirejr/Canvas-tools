@@ -1279,6 +1279,60 @@ user's profile is:
     'title': None}
 ```
 
+## get_user_channels_and_notifications.py
+
+Purpose: To list a user's communication channels and the configuration of notifications for each channel.
+
+Input:
+```
+./get_user_channels_and_notifications.py user_id
+```
+
+Output: outputs
+```
+channel id 29 is email
+user's communication channels is:
+
+{   'notification_preferences': [   {   'category': 'announcement',
+                                        'frequency': 'immediately',
+                                        'notification': 'new_announcement'},
+                                    {   'category': 'due_date',
+                                        'frequency': 'weekly',
+                                        'notification': 'assignment_due_date_changed'},
+...
+                                    {   'category': 'due_date',
+                                        'frequency': 'weekly',
+                                        'notification': 'upcoming_assignment_alert'}]}
+channel id 93562 is push
+user's communication channels is:
+
+{   'notification_preferences': [   {   'category': 'announcement',
+                                        'frequency': 'never',
+                                        'notification': 'new_announcement'},
+...
+                                    {   'category': 'due_date',
+                                        'frequency': 'never',
+                                        'notification': 'upcoming_assignment_alert'}]}
+
+```
+
+Example:
+```
+./get_user_channels_and_notifications.py 29
+
+or
+
+./get_user_channels_and_notifications.py  self
+```
+
+You can xxxx, for example:
+```
+
+```
+
+
+
+
 <!-- 
 
 ## xxx.py
