@@ -1289,7 +1289,7 @@ Input:
 ```
 
 Output: outputs
-```
+```JSON
 channel id 29 is email
 user's communication channels is:
 
@@ -1324,14 +1324,6 @@ or
 
 ./get_user_channels_and_notifications.py  self
 ```
-
-You can xxxx, for example:
-```
-
-```
-
-
-
 
 <!-- 
 
