@@ -1325,6 +1325,57 @@ or
 ./get_user_channels_and_notifications.py  self
 ```
 
+## copy_course_content.py
+Purpose: Copy course content from source to destination course_id
+
+Input:
+```
+./copy_course_content.py source_course_id destination_course_id
+```
+
+Output: status updates
+
+Example:
+```
+./copy_course_content.py 23939 751
+```
+
+```
+response is {'id': 14655, 'user_id': 29, 'workflow_state': 'running', 'started_at': '2020-09-08T15:38:11Z', 'finished_at': None, 'migration_type': 'course_copy_importer', 'created_at': '2020-09-08T15:38:11Z', 'migration_issues_url': 'https://canvas.kth.se/api/v1/courses/751/content_migrations/14655/migration_issues', 'migration_issues_count': 0, 'settings': {'source_course_id': 23939, 'source_course_name': 'II2210 HT20-2 Ethics and Sustainable Development for Engineers', 'source_course_html_url': 'https://canvas.kth.se/courses/23939'}, 'progress_url': 'https://canvas.kth.se/api/v1/progress/186456', 'migration_type_title': 'Course Copy'}
+Migration URL is: https://canvas.kth.se/api/v1/progress/186456
+Migration Status is: running  | progress: 0.0
+Migration Status is: running  | progress: 20.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 46.0
+Migration Status is: running  | progress: 35.5
+Migration Status is: running  | progress: 50.0
+Migration Status is: running  | progress: 80.5
+Migration Status is: running  | progress: 80.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 97.5
+Migration Status is: running  | progress: 99.5
+Migration Status is: running  | progress: 100.0
+------------------------------
+Migration completed.
+```
+
+
+
+
 <!-- 
 
 ## xxx.py

@@ -63,6 +63,7 @@ def initialize(options):
         sys.exit()
 
 def get_users_channels(user_id):
+    found_thus_far=[]
     # Use the Canvas API to get the user's communication channels
     # GET /api/v1/users/:user_id/communication_channels
 
@@ -76,11 +77,19 @@ def get_users_channels(user_id):
 
     if r.status_code == requests.codes.ok:
         page_response=r.json()
-        return page_response
+        for p_response in page_response:  
+            found_thus_far.append(p_response)
 
-    return None
+            while r.links.get('next', False):
+                r = requests.get(r.links['next']['url'], headers=header)
+                page_response = r.json()  
+                for p_response in page_response:  
+                    found_thus_far.append(p_response)
+
+    return found_thus_far
 
 def get_users_notifications(user_id, channel_id):
+    found_thus_far=[]
     # Use the Canvas API to get the user's notifications
     # GET /api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preferences
 
@@ -95,12 +104,7 @@ def get_users_notifications(user_id, channel_id):
     if r.status_code == requests.codes.ok:
         page_response=r.json()
         return page_response
-
     return None
-
-
-
-
 
 def get_user_profile(user_id):
     # Use the Canvas API to get the user's profile
