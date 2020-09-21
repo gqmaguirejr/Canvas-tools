@@ -100,7 +100,20 @@ def migrateContents(old_course, new_course):
         if progress_result[u'completion'] == 100:
             print("------------------------------")
             print("Migration completed.")
+            if data['migration_issues_count'] != 0:
+                issues=checkMigration(data['id'])
+                print("migration issues={}".format(issues))
             break
+
+
+def checkMigration(migration_id):
+    #GET /api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues
+    url = "{0}/courses/{1}/content_migrations/{2}/migration_issues".format(migration_id)
+    r = requests.get(url, headers = header)
+    data = r.json()
+    print("response is {}".format(data))
+    return data
+
 
 def main():
     global Verbose_Flag
