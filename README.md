@@ -1416,6 +1416,26 @@ and
 
 ```
 
+## ./list_user_page_views.py
+
+Purpose: To list page views for a specified user
+
+Input:
+```
+./list_user_page_views.py user_id start_date end_date
+```
+
+Output: outputs a spreadsheet with a page of page_visit data
+
+Examples:
+```
+./list_user_page_views.py self 2020-12-04
+
+./list_user_page_views.py 29 2020-12-01 2020-12-14
+
+./list_user_page_views.py 29
+```
+
 
 
 <!-- 
