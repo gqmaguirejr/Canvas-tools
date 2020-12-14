@@ -1374,6 +1374,26 @@ Migration completed.
 ```
 
 
+## list_user_page_views_for_a_course.py
+
+Purpose: To list page views for students in a course
+
+Input:
+```
+ ./list_user_page_views_for_a_course.py course_id start_date end_date
+```
+
+Output: outputs a spreadsheet with a page per user_id and a Summary page
+
+Examples:
+```
+./list_user_page_views_for_a_course.py 11 2020-12-01 2020-12-14
+
+and
+
+./list_user_page_views_for_a_course.py 20981  2020-12-10 2020-12-12
+
+```
 
 
 <!-- 
