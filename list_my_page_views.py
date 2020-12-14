@@ -1,22 +1,22 @@
 #!/usr/bin/python3
 #
-# ./list_user_page_views_for_a_course.py course_id start_date end_date
+# ./list_my_page_views.py start_date end_date
 #
-# outputs a spreadsheet of appointments as an xlsx file of the form: page-views-course_id.xlsx
+# outputs a spreadsheet of appointments as an xlsx file of the form: page-views-user_id.xlsx
 #
 # The dates from Canvas are in ISO 8601 format.
-# Therefore I have used start_date and end_date in UTC, so that all datetimes are in UTC
+# Therefore I have used start_date and end_date in UTC, so that (except for the logging operation) all datetimes are in UTC
 # and output in local time format if the Use_local_time_for_output_flag is True (the default).
 # 
-# Use is made of Python Pandas.
+# Use is made of Python Pandas
 #
-# Examples:
-# ./list_user_page_views_for_a_course.py 11 2020-12-01 2020-12-14
-# ./list_user_page_views_for_a_course.py 20981  2020-12-10 2020-12-12
+# Example:
+# ./list_my_page_views.py 2020-12-01  2020-12-14
+# ./list_my_page_views.py 2020-12-01 
 #
 # G. Q. Maguire Jr.
 #
-# 2020-12-14, based on earlier program of 2018.10.22
+# 2020-12-14 based on earlier program of 2018.09.30
 #
 
 import csv, requests, time
@@ -70,7 +70,6 @@ def initialize(options):
         print("Unable to open configuration file named {}".format(config_file))
         print("Please create a suitable configuration file, the default name is config.json")
         sys.exit()
-
 
 ##############################################################################
 ## ONLY update the code below if you are experimenting with other API calls ##
@@ -129,36 +128,6 @@ def get_page_views(user_id, start_date, end_date):
 
     return views_found_thus_far
 
-def users_in_course(course_id):
-       user_found_thus_far=[]
-       # Use the Canvas API to get the list of users enrolled in this course
-       #GET /api/v1/courses/:course_id/enrollments
-
-       url = "{0}/courses/{1}/enrollments".format(baseUrl,course_id)
-       if Verbose_Flag:
-              print("url: {}".format(url))
-
-       extra_parameters={'per_page': '100'}
-       r = requests.get(url, params=extra_parameters, headers = header)
-       if Verbose_Flag:
-              print("result of getting enrollments: {}".format(r.text))
-
-       if r.status_code == requests.codes.ok:
-              page_response=r.json()
-
-              for p_response in page_response:  
-                     user_found_thus_far.append(p_response)
-
-              # the following is needed when the reponse has been paginated
-              # i.e., when the response is split into pieces - each returning only some of the list of modules
-              # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links.get('next', False):
-                     r = requests.get(r.links['next']['url'], headers=header)  
-                     page_response = r.json()  
-                     for p_response in page_response:  
-                            user_found_thus_far.append(p_response)
-       return user_found_thus_far
-
 def main():
     global Verbose_Flag
     global Use_local_time_for_output_flag
@@ -194,74 +163,45 @@ def main():
 
     initialize(options)
 
-    if (len(remainder) < 1):
-        print("no user id specified")
-        
-    course_id=remainder[0]
+    user_id='self'
 
     # from amorphic Sep 2 '14 at 23:54 in http://stackoverflow.com/questions/2720319/python-figure-out-local-timezone
     my_tz_name = '/'.join(os.path.realpath('/etc/localtime').split('/')[-2:])
     my_tz = pytz.timezone(my_tz_name)
 
-    if (len(remainder) == 3):
-        start_date=datetime.datetime.combine(isodate.parse_date(remainder[1]), datetime.time.min).replace(tzinfo=my_tz)
-        end_date=datetime.datetime.combine(isodate.parse_date(remainder[2]), datetime.time.min).replace(tzinfo=my_tz)
-        output_file='page_views-'+course_id+'-'+remainder[1]+'-'+remainder[2]+'.xlsx'
-    elif (len(remainder) == 2):
-        start_date=datetime.datetime.combine(isodate.parse_date(remainder[1]), datetime.time.min).replace(tzinfo=my_tz)
-        end_date=datetime.datetime(3000, 1, 1, 0, 0, 0, 0).replace(tzinfo=my_tz)               # use 3000-01-01 as default end date to get "all" 
-        output_file='page_views-'+course_id+'-'+remainder[1]+'.xlsx'
+    if (len(remainder) == 2):
+        start_date=datetime.datetime.combine(isodate.parse_date(remainder[0]), datetime.time.min).replace(tzinfo=my_tz)
+        end_date=datetime.datetime.combine(isodate.parse_date(remainder[1]), datetime.time.min).replace(tzinfo=my_tz)
+        output_file='page_views-'+str(user_id)+'-'+remainder[0]+'-'+remainder[1]+'.xlsx'
+    elif (len(remainder) == 1):
+        start_date=datetime.datetime.combine(isodate.parse_date(remainder[0]), datetime.time.min).replace(tzinfo=my_tz)
+        end_date=datetime.datetime(3000, 1, 1, 0, 0, 0, 0).replace(tzinfo=my_tz)               # use 3000-01-01 as default end date to get "all" appointments
+        output_file='page_views-'+str(user_id)+'-'+remainder[0]+'.xlsx'
     else:
         start_date=datetime.datetime(1900, 1, 1, 0, 0, 0, 0).replace(tzinfo=my_tz)             # use 1900-01-01 as default start date to get "all"
         end_date=datetime.datetime(3000, 1, 1, 0, 0, 0, 0).replace(tzinfo=my_tz)               # use 3000-01-01 as default end date to get "all"
-        output_file='page_views-'+course_id+'.xlsx'
+        output_file='page_views-'+str(user_id)+'.xlsx'
 
     if Verbose_Flag:
         print("start date: ", start_date.isoformat())
         print("end date: ", end_date.isoformat())
 
+
+    page_views=get_page_views(user_id, start_date, end_date)
+    if Verbose_Flag:
+        print("page_views={0}".format(page_views))
+
+    page_views_df=pd.json_normalize(page_views)
+
     # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
     # set up the output write
     writer = pd.ExcelWriter(output_file, engine='xlsxwriter')
 
-    page_views_summary=[]
+    convert_to_local_times(page_views_df, ['created_at', 'updated_at'])
 
-    users_processed=set()
-    users=users_in_course(course_id)
-    for u in users:
-        user_id = u['user_id']
-        # only process each user_id once
-        if user_id in users_processed:
-            continue
-        users_processed.add(user_id)
-
-        page_views=get_page_views(user_id, start_date, end_date)
-        if not page_views:
-            print("no page views by user: {}".format(user_id))
-            page_views_summary.append({"user_id": user_id, "page_views": 0})
-            continue
-
-        print("{0} page views for user_id: {1}".format(len(page_views),user_id))
-        page_views_summary.append({"user_id": user_id, "page_views": len(page_views)})
-        if Verbose_Flag:
-            print("page_views={0}".format(page_views))
-
-    
-        page_views_df=pd.json_normalize(page_views)
-
-        convert_to_local_times(page_views_df, ['created_at', 'updated_at'])
-
-        sheet_name=str(user_id)+'_views'
-        print("outputing page views for user_id: {}".format(user_id))
-        page_views_df.to_excel(writer, sheet_name=sheet_name)
-
-        page_views_summary_df=pd.json_normalize(page_views_summary)
-        page_views_summary_df.to_excel(writer, sheet_name='Summary')
-
+    page_views_df.to_excel(writer, sheet_name='Page_views')
 
     # Close the Pandas Excel writer and output the Excel file.
     writer.save()
-
-    print("There were {} users enrolled in the course.".format(len(users_processed)))
 
 if __name__ == "__main__": main()

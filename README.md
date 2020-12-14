@@ -1395,6 +1395,28 @@ and
 
 ```
 
+## list_my_page_views.py start_date end_date
+
+Purpose: To list page views for yourself
+
+Input:
+```
+./list_my_page_views.py start_date end_date
+```
+
+Output: outputs a spreadsheet with a page of page_visit data
+
+Examples:
+```
+ ./list_my_page_views.py 2020-12-01  2020-12-14
+
+and
+
+./list_my_page_views.py 2020-12-01 
+
+```
+
+
 
 <!-- 
 
