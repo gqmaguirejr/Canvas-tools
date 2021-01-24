@@ -1436,7 +1436,60 @@ Examples:
 ./list_user_page_views.py 29
 ```
 
+## teachers-in-course.py
+Purpose: To output a spreadsheet of teachers in a course
 
+Input:
+```
+./teachers-in-course.py course_id
+```
+
+Output: outputs spreadsheet (teachers-course_id.xlsx) and lists the names of the teachers in sortable order
+
+Example:
+```
+./
+./teachers-in-course.py  --config config-test.json 22156
+```
+
+## create_sections_for_teachers-in-course.py
+
+Purpose: To create a section in the course for each teacher in the course
+
+Input:
+```
+./create_sections_for_teachers-in-course.py course_id
+```
+
+Output: outputs lists the names of the teachers in sortable order
+
+Example:
+```
+./create_sections_for_teachers-in-course.py 11
+
+
+./create_sections_for_teachers-in-course.py -v  --config config-test.json 22156
+
+```
+
+## insert_teachers_grading_standard.py
+
+Purpose: To create a section in the course for each teacher in the course
+
+Input:
+```
+./insert_teachers_grading_standard.py course_id
+```
+
+Output: outputs grading scale that was created (if the verbose flag is set)
+
+Example:
+```
+./insert_teachers_grading_standard.py --force --config config-test.json 22156
+
+./insert_teachers_grading_standard.py --force --config config-test.json 22156 IA150x_Teachers
+
+```
 
 <!-- 
 
