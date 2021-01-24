@@ -1483,6 +1483,8 @@ Input:
 
 Output: outputs grading scale that was created (if the verbose flag is set)
 
+Note: If you have assigned grades previously using another grading scale - adding a new one can render all previoous grades incorrect - as the process of assigning scores to teacher is not stable if there is a change in the number or list of teachers.
+
 Example:
 ```
 ./insert_teachers_grading_standard.py --force --config config-test.json 22156
