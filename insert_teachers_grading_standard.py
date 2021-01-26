@@ -351,7 +351,7 @@ def main():
 
             print("number_of_teachers in existing scale={}".format(number_of_teachers))
 
-            new_teachers.append('Test5')
+            # new_teachers.append('Test5')
 
             new_value=highest_value_in_existing_grading_standard
             print("inserting starting above value={0}".format(new_value))
