@@ -10,6 +10,9 @@
 #
 # Note that this only creates a COURSE LEVEL grading scale. 
 #
+# **** Note****
+#  If you have assigned grades previously using another grading scale - adding a new one can render all previoous grades incorrect - as the process of assigning scores to teacher is not stable if there is a change in the number or list of teachers.
+#
 # G. Q. Maguire Jr.
 #
 # 2021.01.24
@@ -137,6 +140,8 @@ def create_grading_standard(id, name, scale):
         print("inserted grading standard")
         return True
     print("r.status_code={0}".format(r.status_code))
+    print("r.reason={0}".format(r.reason))
+    print("r.text={0}".format(r.text))
     return False
 
 def get_grading_standards(id):
@@ -157,6 +162,12 @@ def get_grading_standards(id):
         return page_response
     return None
 
+def get_grading_standard_by_id(courss_id, grading_standard_id):
+    all_course_grading_standards=get_grading_standards(courss_id)
+    for i in all_course_grading_standards:
+        if i['id'] == grading_standard_id:
+            return i
+    return None
 
 def main():
     global Verbose_Flag
@@ -164,6 +175,7 @@ def main():
     global Force_appointment_flag
 
     Use_local_time_for_output_flag=True
+    Other_value=0.01
 
     parser = optparse.OptionParser()
 
@@ -278,10 +290,13 @@ def main():
     if Verbose_Flag:
         print("canvas_grading_standards={}".format(canvas_grading_standards))
 
+    
+    new_teachers=list()
+    
     potential_grading_standard_id=canvas_grading_standards.get(course_code, None)
 
-    if Force_Flag or (not potential_grading_standard_id):
-        name=course_code
+    name=course_code
+    if (not potential_grading_standard_id):
         scale=[]
         number_of_teachers=len(teacher_names_sortable_sorted)
         print("number_of_teachers={}".format(number_of_teachers))
@@ -290,12 +305,15 @@ def main():
             i=number_of_teachers-index
             d=dict()
             d['name']=e
-            d['value'] =(float(i)/float(number_of_teachers))*100.0
+            # save values above 80% for additions of additional teachers - so as not to disturbe existing lower assignments
+            # note that this will require manually assigning the new teachers.
+            new_value=((float(i)/float(number_of_teachers))*80.0) + 2*(Other_value*100.0)
+            d['value'] = round(new_value, 2) #  round to hundredths
             scale.append(d)
             index=index+1
 
         # testing shows that this was the smallest value other than zero that could be inserted as a value
-        scale.append({'name': 'other - see comments', 'value': 0.01})
+        scale.append({'name': 'other - see comments', 'value': Other_value})
 
         scale.append({'name': 'none assigned', 'value': 0.0})
         if Verbose_Flag:
@@ -306,4 +324,52 @@ def main():
         if Verbose_Flag and status:
             print("Created new grading scale: {}".format(name))
 
+    elif Force_Flag and potential_grading_standard_id: #  there is an existing grading standard and force is applied
+        if potential_grading_standard_id:
+            existing_grading_standard=get_grading_standard_by_id(course_id, potential_grading_standard_id)
+            print("There existins a grading standard {0}, with the value={1}".format(potential_grading_standard_id, existing_grading_standard))
+
+            teachers_in_existing_grading_standard=list()
+            highest_value_in_existing_grading_standard = -1.0
+            existing_grading_scheme= existing_grading_standard['grading_scheme']
+            for e in existing_grading_scheme:
+                e_value=e['value']*100.0
+                e['value']=round(e_value,2) # store back scaled value - round to hundreths
+                if e_value > highest_value_in_existing_grading_standard:
+                    highest_value_in_existing_grading_standard=e_value
+
+                e_name=e['name']
+                teachers_in_existing_grading_standard.append(e_name)
+
+            # figure out if there are new teacher to add
+            for t in teacher_names_sortable_sorted:
+                if not t in teachers_in_existing_grading_standard:
+                    new_teachers.append(t)
+
+            scale=existing_grading_scheme # initialize with existing grading scheme
+            number_of_teachers=len(scale)
+
+            print("number_of_teachers in existing scale={}".format(number_of_teachers))
+
+            new_teachers.append('Test5')
+
+            new_value=highest_value_in_existing_grading_standard
+            print("inserting starting above value={0}".format(new_value))
+            if (len(new_teachers) > 0):
+                print("Adding {0} new teachers to top of grading_standard".format(len(new_teachers)))
+                for nt in new_teachers:
+                    new_value=new_value+Other_value
+                    scale.insert(0, {'name': nt, 'value': new_value})
+
+                print("proposed scale {0} is={1}".format(name, scale))
+                Verbose_Flag=True
+                status=create_grading_standard(course_id, name, scale)
+                print("status={0}".format(status))
+                if Verbose_Flag and status:
+                    print("Created new grading scale: {}".format(name))
+            else:
+                print("There were no new teachers to add, so need to add a new grading scale")
+    else:
+        print("Could not figure out what you want to do")
+        
 if __name__ == "__main__": main()
