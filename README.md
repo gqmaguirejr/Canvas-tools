@@ -1493,6 +1493,30 @@ Example:
 
 ```
 
+## ./add_students_to_examiners_section_in_course.py course_id [admin_assignment_name]
+Purpose: Adds students to sections based upon their Examiner (or other exercise based on admin_assignment_name
+
+Input:
+```
+./add_students_to_examiners_section_in_course.py course_id [admin_assignment_name]
+```
+
+Output: using assignment 'Examiner' as the administrative data to do the assignment into sections
+ 	Added XXXX to section for Maguire Jr, Gerald Quentin
+
+Can also be called with an alternative configuration file:
+./add_students_to_examiners_section_in_course.py --config config-test.json 22156
+
+Example:
+```
+ ./add_students_to_examiners_section_in_course.py 22156
+
+ or
+
+./add_students_to_examiners_section_in_course.py 22156 "Supervisor"
+```
+
+
 <!-- 
 
 ## xxx.py
