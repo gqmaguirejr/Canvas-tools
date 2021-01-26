@@ -20,6 +20,9 @@
 # Test with
 #  ./insert_teachers_grading_standard.py -v 11 
 #  ./insert_teachers_grading_standard.py -v --config config-test.json 11
+#
+#  ./insert_teachers_grading_standard.py -e 11 
+#  only inlucde the teachers who are also examiners and append '_Examiners' to the name of the grading standard
 # 
 # based on earlier program insert_teachers_grading_standards.py
 #
@@ -201,6 +204,13 @@ def main():
                       help="execute test code"
                       )
 
+    parser.add_option('-e', '--examiners',
+                      dest="examiners",
+                      default=False,
+                      action="store_true",
+                      help="limit the set of teachers added to be only those with the role examiner"
+                      )
+
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
 
@@ -230,7 +240,12 @@ def main():
     teachers=list()
     for u in users:
         if u['type'] == 'TeacherEnrollment':
-            teachers.append(u)
+            if options.examiners:
+                if (u['role'] == 'Examiner'): # if the option is set only include the examiners
+                    print("adding examiner {0}".format(u))
+                    teachers.append(u)
+            else:
+                teachers.append(u)
 
     teacher_names_sortable=list()
     for u in teachers:
@@ -296,6 +311,9 @@ def main():
     potential_grading_standard_id=canvas_grading_standards.get(course_code, None)
 
     name=course_code
+    if options.examiners:       # if just the examiners, note this in the name of the grading standard
+        name=course_code+'_Examiners'
+
     if (not potential_grading_standard_id):
         scale=[]
         number_of_teachers=len(teacher_names_sortable_sorted)
