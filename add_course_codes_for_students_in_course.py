@@ -102,8 +102,9 @@ def users_in_course(course_id):
         while r.links.get('next', False):
             r = requests.get(r.links['next']['url'], headers=header)  
             page_response = r.json()  
-            for p_response in page_response:  
-                user_found_thus_far.append(p_response)
+            if r.status_code == requests.codes.ok:
+                for p_response in page_response:  
+                    user_found_thus_far.append(p_response)
     return user_found_thus_far
 
 def user_name_from_user_id(enrollments, id):

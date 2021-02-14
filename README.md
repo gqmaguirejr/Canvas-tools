@@ -1598,6 +1598,32 @@ or
 ./add_course_codes_for_students_in_course.py  --config config-test.json 25434
 ```
 
+## insert-programs-from-spreadsheet.py
+Purpose: Inserts a custom column with the student's program information using the data from several columns of a spreadsheet.
+It combines the data from the columns: program_code, program_code_1, and program_code_2
+
+It will create the column as necessary
+
+The spreadsheet is expected to be generate from canvas_ladok3_spreadsheet.py
+
+
+Input:
+```
+./insert-programs-from-spreadsheet.py  course_id
+```
+
+Output: outputs information about the student and their program
+
+
+Example:
+```
+./insert-programs-from-spreadsheet.py 25434
+
+or
+
+./insert-programs-from-spreadsheet.py  --config config-test.json 25434
+```
+
 
 <!-- 
 
