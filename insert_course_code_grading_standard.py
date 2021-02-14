@@ -2,32 +2,33 @@
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
-# ./insert_teachers_grading_standard.py course_id
+# ./insert_course_code_grading_standard.py course_id
 #
-# Generate a "grading standard" scale with the names of teachers as the "grades".
+# Generate a "grading standard" scale with the course codes as the "grades".
 # Note that if the grading scale is already present, it does nothing unless the "-f" (force) flag is set.
 # In the latter case it adds the grading scale.
 #
+# You can manually manage grading scales via the GUI: https://XXXX/courses/COURSE_ID/grading_standards
+#
 # Note that this only creates a COURSE LEVEL grading scale. 
+# Also note that the name of the grading scale is 'Course_code'
 #
 # **** Note****
-#  If you have assigned grades previously using another grading scale - adding a new one can render all previoous grades incorrect - as the process of assigning scores to teacher is not stable if there is a change in the number or list of teachers.
+#  If you have assigned grades previously using another grading scale - adding a new one can render all previoous grades incorrect - as the process of assigning scores to teacher is not stable if there is a change in the number or list of course codes.
 #
 # G. Q. Maguire Jr.
 #
-# 2021.01.24
+# 2021.02.14
 #
 # Test with
-#  ./insert_teachers_grading_standard.py -v 11 
-#  ./insert_teachers_grading_standard.py -v --config config-test.json 11
+#  ./insert_course_code_grading_standard.py -v 11 
+#  ./insert_course_code_grading_standard.py -v --config config-test.json 11
 #
-#  ./insert_teachers_grading_standard.py -e 11 
-#  only inlucde the teachers who are also examiners and append '_Examiners' to the name of the grading standard
-# 
 # based on earlier program insert_teachers_grading_standards.py
 #
 
 import csv, requests, time
+import pprint
 import optparse
 import sys
 import json
@@ -69,25 +70,30 @@ def initialize(options):
 ## ONLY update the code below if you are experimenting with other API calls ##
 ##############################################################################
 
-def users_in_course(course_id):
-    user_found_thus_far=[]
-    # Use the Canvas API to get the list of users enrolled in this course
-    #GET /api/v1/courses/:course_id/enrollments
 
-    url = "{0}/courses/{1}/enrollments".format(baseUrl,course_id)
+def section_name_from_section_id(sections_info, section_id): 
+    for i in sections_info:
+        if i['id'] == section_id:
+            return i['name']
+
+def sections_in_course(course_id):
+    sections_found_thus_far=[]
+    # Use the Canvas API to get the list of sections for this course
+    #GET /api/v1/courses/:course_id/sections
+
+    url = "{0}/courses/{1}/sections".format(baseUrl,course_id)
     if Verbose_Flag:
         print("url: {}".format(url))
 
-    extra_parameters={'per_page': '100'}
-    r = requests.get(url, params=extra_parameters, headers = header)
+    r = requests.get(url, headers = header)
     if Verbose_Flag:
-        print("result of getting enrollments: {}".format(r.text))
+        print("result of getting sections: {}".format(r.text))
 
     if r.status_code == requests.codes.ok:
         page_response=r.json()
 
         for p_response in page_response:  
-            user_found_thus_far.append(p_response)
+            sections_found_thus_far.append(p_response)
 
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
@@ -96,8 +102,10 @@ def users_in_course(course_id):
             r = requests.get(r.links['next']['url'], headers=header)  
             page_response = r.json()  
             for p_response in page_response:  
-                user_found_thus_far.append(p_response)
-    return user_found_thus_far
+                sections_found_thus_far.append(p_response)
+
+    return sections_found_thus_far
+
 
 def get_course_info(course_id):
     global Verbose_Flag
@@ -204,13 +212,6 @@ def main():
                       help="execute test code"
                       )
 
-    parser.add_option('-e', '--examiners',
-                      dest="examiners",
-                      default=False,
-                      action="store_true",
-                      help="limit the set of teachers added to be only those with the role examiner"
-                      )
-
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
 
@@ -233,62 +234,31 @@ def main():
 
     initialize(options)
 
+    pp = pprint.PrettyPrinter(indent=4) # configure prettyprinter
+
     course_id=remainder[0]
 
-    users=users_in_course(course_id)
-
-    teachers=list()
-    for u in users:
-        if u['type'] == 'TeacherEnrollment':
-            if options.examiners:
-                if (u['role'] == 'Examiner'): # if the option is set only include the examiners
-                    print("adding examiner {0}".format(u))
-                    teachers.append(u)
-            else:
-                teachers.append(u)
-
-    teacher_names_sortable=list()
-    for u in teachers:
-        user_data=u.get('user', False)
-        if user_data:
-            sortable_name=user_data.get('sortable_name', False)
-            if sortable_name:
-                if sortable_name in teacher_names_sortable:
-                    continue
-                else:
-                    teacher_names_sortable.append(sortable_name)
-    
+    sections=sections_in_course(course_id)
     if Verbose_Flag:
-        print("teacher_names_sortable={0}".format(teacher_names_sortable))
+        pp.pprint(sections)
 
-    teacher_names_sortable_sorted=list()
-    if len(teacher_names_sortable) > 0:
-        teacher_names_sortable_sorted=sorted(teacher_names_sortable)
-        print("teacher_names_sortable_sorted={0}".format(teacher_names_sortable_sorted))
+    course_codes=set()
+    for s in sections:
+        sis_section_id=s['sis_section_id'] 
+        if sis_section_id and sis_section_id[5] =='X':
+            course_codes.add(sis_section_id[0:6])
 
-    if len(teacher_names_sortable_sorted)  < 1:
-        print("No teacher, nothing to do")
+    pp.pprint(course_codes)
+
+
+    course_codes_sorted=list()
+    if len(course_codes) > 0:
+        course_codes_sorted=sorted(course_codes)
+        print("course_codes_sorted={0}".format(course_codes_sorted))
+
+    if len(course_codes_sorted)  < 1:
+        print("No course codes, nothing to do")
         return
-
-    course_info=get_course_info(course_id)
-    if not course_info:
-        print("course information not found: {}}".format(course_info))
-        return
-
-    if Verbose_Flag:
-        print("course_info={}".format(course_info))
-
-    if (len(remainder) > 1):
-        course_code=remainder[1]
-    else:
-        course_code=course_info.get('course_code', False)
-
-    if not course_code:
-        print("No course code found: {}}".format(course_code))
-        return
-        
-    if Verbose_Flag:
-        print("course_code={}".format(course_code))
 
     canvas_grading_standards=dict()
     available_grading_standards=get_grading_standards(course_id)
@@ -305,29 +275,28 @@ def main():
     if Verbose_Flag:
         print("canvas_grading_standards={}".format(canvas_grading_standards))
 
+    new_course_codes=list()
     
-    new_teachers=list()
-    
-
-    name=course_code
-    if options.examiners:       # if just the examiners, note this in the name of the grading standard
-        name=course_code+'_Examiners'
-
+    name='Course_code'
     potential_grading_standard_id=canvas_grading_standards.get(name, None)
 
     if (not potential_grading_standard_id):
         scale=[]
-        number_of_teachers=len(teacher_names_sortable_sorted)
-        print("number_of_teachers={}".format(number_of_teachers))
+        number_of_course_codes=len(course_codes_sorted)
+        print("number_of_course_codes={}".format(number_of_course_codes))
         index=0
-        for e in teacher_names_sortable_sorted:
-            i=number_of_teachers-index
+        for e in course_codes_sorted:
+            i=number_of_course_codes-index
             d=dict()
             d['name']=e
-            # save values above 80% for additions of additional teachers - so as not to disturbe existing lower assignments
-            # note that this will require manually assigning the new teachers.
-            new_value=((float(i)/float(number_of_teachers))*80.0) + 2*(Other_value*100.0)
-            d['value'] = round(new_value, 2) #  round to hundredths
+            # save values above 80% for additions of additional course codes - so as not to disturbe existing lower assignments
+            # note that this will require manually assigning the new course codes.
+            new_value=((float(i)/float(number_of_course_codes))*80.0) + 2*(Other_value*100.0)
+            if number_of_course_codes < 25:
+                d['value'] = round(new_value, 0) #  round to integers - if there are few course codes
+            else:
+                d['value'] = round(new_value, 2) #  round to hundredths
+
             scale.append(d)
             index=index+1
 
@@ -346,9 +315,9 @@ def main():
     elif Force_Flag and potential_grading_standard_id: #  there is an existing grading standard and force is applied
         if potential_grading_standard_id:
             existing_grading_standard=get_grading_standard_by_id(course_id, potential_grading_standard_id)
-            print("There existins a grading standard {0}, with the value={1}".format(potential_grading_standard_id, existing_grading_standard))
+            print("There exists a grading standard {0}, with the value={1}".format(potential_grading_standard_id, existing_grading_standard))
 
-            teachers_in_existing_grading_standard=list()
+            course_codes_in_existing_grading_standard=list()
             highest_value_in_existing_grading_standard = -1.0
             existing_grading_scheme= existing_grading_standard['grading_scheme']
             for e in existing_grading_scheme:
@@ -358,36 +327,35 @@ def main():
                     highest_value_in_existing_grading_standard=e_value
 
                 e_name=e['name']
-                teachers_in_existing_grading_standard.append(e_name)
+                course_codes_in_existing_grading_standard.append(e_name)
 
-            # figure out if there are new teacher to add
-            for t in teacher_names_sortable_sorted:
-                if not t in teachers_in_existing_grading_standard:
-                    new_teachers.append(t)
+            # figure out if there are new course codes to add
+            for t in course_codes_sorted:
+                if not t in course_codes_in_existing_grading_standard:
+                    new_course_codes.append(t)
 
             scale=existing_grading_scheme # initialize with existing grading scheme
-            number_of_teachers=len(scale)
+            number_in_existing_scale=len(scale)
 
-            print("number_of_teachers in existing scale={}".format(number_of_teachers))
+            print("number_in_existing_scale={}".format(number_in_existing_scale))
 
-            # new_teachers.append('Test5')
+            #new_course_codes.append('Test5')
 
             new_value=highest_value_in_existing_grading_standard
             print("inserting starting above value={0}".format(new_value))
-            if (len(new_teachers) > 0):
-                print("Adding {0} new teachers to top of grading_standard".format(len(new_teachers)))
-                for nt in new_teachers:
+            if (len(new_course_codes) > 0):
+                print("Adding {0} new course codes to top of grading_standard".format(len(new_course_codes)))
+                for nt in new_course_codes:
                     new_value=new_value+Other_value
                     scale.insert(0, {'name': nt, 'value': new_value})
 
                 print("proposed scale {0} is={1}".format(name, scale))
-                Verbose_Flag=True
                 status=create_grading_standard(course_id, name, scale)
                 print("status={0}".format(status))
                 if Verbose_Flag and status:
                     print("Created new grading scale: {}".format(name))
             else:
-                print("There were no new teachers to add, so need to add a new grading scale")
+                print("There were no new course codes to add, so no need to add a new grading scale")
     else:
         print("Could not figure out what you want to do")
         

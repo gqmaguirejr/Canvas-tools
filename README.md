@@ -1516,6 +1516,88 @@ Example:
 ./add_students_to_examiners_section_in_course.py 22156 "Supervisor"
 ```
 
+## insert_course_code_grading_standard.py
+Purpose: Generate a "grading standard" scale with the course codes as the "grades".
+
+Note that if the grading scale is already present, it does nothing unless the "-f" (force) flag is set.
+In the latter case it adds the grading scale.
+
+Can also be called with an alternative configuration file:
+
+Input:
+```
+./insert_course_code_grading_standard.py course_id
+```
+
+Output: depends on flags and whether there is an existing grading scale
+
+The -v or --verbose flag generates a lot of output.
+
+Example:
+```
+./insert_course_code_grading_standard.py 25434
+{   'DA231X',
+    'DA232X',
+    'DA233X',
+    'DA234X',
+    'DA235X',
+    'DA236X',
+    'DA239X',
+    'DA240X',
+    'DA246X',
+    'DA248X',
+    'DA256X',
+    'DA258X',
+    'EA236X',
+    'EA238X',
+    'EA246X',
+    'EA248X',
+    'EA256X',
+    'EA258X',
+    'EA260X',
+    'EA270X',
+    'EA275X',
+    'IA249X'}
+course_codes_sorted=['DA231X', 'DA232X', 'DA233X', 'DA234X', 'DA235X', 'DA236X', 'DA239X', 'DA240X', 'DA246X', 'DA248X', 'DA256X', 'DA258X', 'EA236X', 'EA238X', 'EA246X', 'EA248X', 'EA256X', 'EA258X', 'EA260X', 'EA270X', 'EA275X', 'IA249X']
+number_of_course_codes=22
+inserted grading standard
+status=True
+```
+Second example with alternative configuration file:
+```
+./insert_course_code_grading_standard.py --config config-test.json 25434
+```
+
+## add_course_codes_for_students_in_course.py
+Purpose: using assignment 'Course code' as the administrative data to do assign course codes as grades
+
+Added the course code (using the Course Code grading scale) based in the SIS section that each student is in
+
+Input:
+```
+./add_course_codes_for_students_in_course.py course_id [admin_assignment_name]
+```
+admin_assignment_name = 'Course code' by default
+
+Output: outputs student's sortable name and their course code
+
+If there is an existing course code and it is different from the course code it should be now, it is changed.
+
+with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+
+Can also be called with an alternative configuration file
+
+With the "-t" or "--testing" it only process a smaller number of students.
+
+Example:
+```
+./add_course_codes_for_students_in_course.py 25434
+
+or
+
+./add_course_codes_for_students_in_course.py  --config config-test.json 25434
+```
+
 
 <!-- 
 

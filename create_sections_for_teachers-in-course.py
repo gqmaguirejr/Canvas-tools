@@ -6,6 +6,8 @@
 #
 # Output: output the sorted list of sortable teacher names
 #
+# Update 2021-02-09 to be able to be run again to add missing sections based on sortable names of teachers.
+#
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
@@ -198,6 +200,16 @@ def main():
     course_id=remainder[0]
     users=users_in_course(course_id)
 
+    existing_sections=sections_in_course(course_id)
+    if Verbose_Flag:
+        print("existing_sections={}".format(existing_sections))
+
+    names_in_existing_sections=list()
+    for s in existing_sections:
+       names_in_existing_sections.append(s['name'])
+    if Verbose_Flag:
+        print("names_in_existing_sections={}".format(names_in_existing_sections))
+
     teachers=list()
     for u in users:
         if u['type'] == 'TeacherEnrollment':
@@ -212,10 +224,13 @@ def main():
                 if sortable_name in teacher_names_sortable:
                     continue
                 else:
-                    teacher_names_sortable.append(sortable_name)
+                    if sortable_name in names_in_existing_sections:
+                        continue
+                    else:
+                        teacher_names_sortable.append(sortable_name)
     
     if Verbose_Flag:
-        print("teacher_names_sortable={0}".format(teacher_names_sortable))
+        print("teacher_names_sortable (sections to be added)={0}".format(teacher_names_sortable))
 
     teacher_names_sortable_sorted=list()
     if len(teacher_names_sortable) > 0:
