@@ -232,7 +232,6 @@ def main():
     if Verbose_Flag:
         print("teacher_names_sortable (sections to be added)={0}".format(teacher_names_sortable))
 
-    teacher_names_sortable_sorted=list()
     if len(teacher_names_sortable) > 0:
         teacher_names_sortable_sorted=sorted(teacher_names_sortable)
         print("teacher_names_sortable_sorted={0}".format(teacher_names_sortable_sorted))
