@@ -1624,6 +1624,24 @@ or
 ./insert-programs-from-spreadsheet.py  --config config-test.json 25434
 ```
 
+## insert-examiners-from-spreadsheet.py
+
+Purpose: To take a spreadsheet with project titles and examiners and add these examiners to the administraitve assignment Examiner in the gradebook
+
+Input:
+```
+insert-examiners-from-spreadsheet.py  course_id spreadsheetFile [column_name]
+```
+
+Output: informaiton about the titles, student name, and examiner as it inserts them
+
+
+Example:
+```
+./insert-examiners-from-spreadsheet.py -v 25434   "Master's thesis proposals P3 2021-20210220.xlsx"
+```
+
+
 
 <!-- 
 
