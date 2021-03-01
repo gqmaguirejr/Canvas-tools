@@ -1641,7 +1641,51 @@ Example:
 ./insert-examiners-from-spreadsheet.py -v 25434   "Master's thesis proposals P3 2021-20210220.xlsx"
 ```
 
+## create-assignment-with-textual-submission.py
+Purpose:
+	Create an assignment with a textual submission
 
+Input:
+```
+./create-assignment-with-textual-submission.py course_id [name_of_assignment]
+```
+
+ with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+ with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+
+ Can also be called with an alternative configuration file:
+  --config config-test.json
+
+Example:
+```
+./create-assignment-with-textual-submission.py 7 "Second assignment"
+```
+## get_textbox_submissions_as_docx.py
+Purpose:
+  create a DOCX file for each textual submission
+
+Input:
+```
+./get_textbox_submissions_as_docx.py course_id assignment_id
+```
+
+with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+
+Can also be called with an alternative configuration file:
+ --config config-test.json
+
+Example - to generate docx file locally
+```
+ ./get_textbox_submissions_as_docx.py -C 7 44^
+```
+Example - to generate docx file locally and upload it as a submission
+```
+ ./get_textbox_submissions_as_docx.py --submit  -C 7 44
+```
+to get the DOCX library do:
+    pip3 install python-docx
+ 
 
 <!-- 
 
