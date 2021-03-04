@@ -180,21 +180,8 @@ def submit_file_for_assignment(course_id, assignment_id, user_id, filename):
             if r.status_code < int(300):
                 page_response=r.json()
                 print("page_response={}".format(page_response))
-                
-
-
-
-            # Activate the file in Canvas
-            # get_api_url = page_response['url']
-            # r = requests.get(get_api_url, headers = header)
-            # if r.status_code < int(300):
-            #     page_response=r.text
-            #     #print("page_response={}".format(page_response))
-
+                return page_response
     return False
-
-    
-
 
 def get_paragraphs_from_HTML(b):
     # clean up the HTML
