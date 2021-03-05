@@ -7,6 +7,7 @@
 # Example:
 # ./Zoom-chat-to-canvas-page-py    -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt
 # ./Zoom-chat-to-canvas-page-py -v -c 11 --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
+# ./Zoom-chat-to-canvas-page-py -c 11 --config config-test.json --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
 #
 # based on by zeudonymize.py Daniel Bosk <dbosk@kth.se> - https://github.com/dbosk/recordy.git
 # His program took in a Zoom chant and pseudo anonymized it.
@@ -581,8 +582,11 @@ def main(argv):
       print("module with this name exists with id={}".format(module_id))
 
   if not module_id:
-    create_module(course_id, desired_module_name)
-  
+    module_id=create_module(course_id, desired_module_name)
+    if not module_id:
+      print("Unable to create module")
+      return
+
   desired_page_title=args["page_title"]
   if len(desired_page_title) < 1:
     desired_page_title=in_base.replace('_', '-')
