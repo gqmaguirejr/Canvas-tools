@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
-# zeudonymized_wiki.py -c course_id --transcript zoom_chat_file
+# Zoom-chat-to-canvas-page-py -c course_id --transcript zoom_chat_file
 #
 # Example:
-# ./zeudonymized_wiki.py -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt
-# ./zeudonymized_wiki.py -v -c 11 --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
+# ./Zoom-chat-to-canvas-page-py    -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt
+# ./Zoom-chat-to-canvas-page-py -v -c 11 --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
 #
 # based on by zeudonymize.py Daniel Bosk <dbosk@kth.se> - https://github.com/dbosk/recordy.git
 # His program took in a Zoom chant and pseudo anonymized it.
@@ -42,12 +42,30 @@
 #
 # With the option "-N" it does not use pseudonyms, but rather the real user's names
 #
+# After creating the HTML page
+# 1. upload the created page and give it a title, in this case "Test page 3"
+#    ./ccreate.py https://xxxx.instructure.com/courses/11/pages/test-page-3 "Test page 3"
+#
+# 2. Put the page into a module in the course by going to a module, clicking the plus symbol
+#    then select the type of module to add as "Page" and then select the item in the scrolling list "Test page 3"
+#
+# Note that you need to refresh the "Modules" page to be able to see the new choice of page.
+#
+# Note that if your use the ccreate.py script multiple times, the page will have names of the form: "Test page 3-i", such as "Test page 3-6". 
+#
+# You can eliminate the uploaded page by using the page: https://xxxx.instructure.com/courses/11/pages
+#    Click on the three vertical dots on the right and select "Delete"
+
+#
 import re
 import sys
 
 import json
 import argparse
 import os
+
+import requests, time
+import pprint
 
 #############################
 ###### EDIT THIS STUFF ######
@@ -80,6 +98,209 @@ def initialize(args):
     print("Unable to open configuration file named {}".format(config_file))
     print("Please create a suitable configuration file, the default name is config.json")
     sys.exit()
+
+# Canvas related functions
+def list_modules(course_id, module_name=None):
+  modules_found_thus_far=[]
+  # Use the Canvas API to get the list of modules for the course
+  #GET /api/v1/courses/:course_id/modules
+
+  url = "{0}/courses/{1}/modules".format(baseUrl, course_id)
+  if Verbose_Flag:
+    print("url: {}".format(url))
+
+  # this will do a partial match against the module_name
+  # This reducing the number of responses returned
+
+  if module_name:
+    payload = {'search_term': module_name} 
+    r = requests.get(url, headers = header, data = payload)
+  else:
+    r = requests.get(url, headers = header)
+
+  if Verbose_Flag:
+    print("result of getting modules: {}".format(r.text))
+
+  if r.status_code == requests.codes.ok:
+    page_response=r.json()
+
+    for p_response in page_response:  
+      modules_found_thus_far.append(p_response)
+
+    # the following is needed when the reponse has been paginated
+    # i.e., when the response is split into pieces - each returning only some of the list of modules
+    # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+    while r.links.get('next', False):
+      r = requests.get(r.links['next']['url'], headers=header)  
+      if Verbose_Flag:
+        print("result of getting modules for a paginated response: {}".format(r.text))
+      page_response = r.json()  
+      for p_response in page_response:  
+        modules_found_thus_far.append(p_response)
+
+  return modules_found_thus_far
+
+def create_module(course_id, module_name):
+  module_id=None              # will contain the module's ID if it exists
+  # Use the Canvas API to create a module in the course
+  #POST /api/v1/courses/:course_id/modules
+  url = "{0}/courses/{1}/modules".format(baseUrl, course_id,module_name)
+  if Verbose_Flag:
+    print("creating module for course_id={0} module_name={1}".format(course_id,module_name))
+  payload = {'module[name]': module_name }
+  r = requests.post(url, headers = header, data = payload)
+  if Verbose_Flag:
+    print("result of creating module: {}".format(r.text))
+
+  if r.status_code == requests.codes.ok:
+    modules_response=r.json()
+    module_id=modules_response["id"]
+
+  return  module_id
+
+def create_module_page_item(course_id, module_id, page_id, item_name, page_url):
+  module_id=None
+  # Use the Canvas API to create a module item in the course and module
+  #POST /api/v1/courses/:course_id/modules/:module_id/items
+  url = "{0}/courses/{1}/modules/{2}/items".format(baseUrl, course_id, module_id)
+  if Verbose_Flag:
+    print("creating module assignment item for course_id={0} module_id={1} assignment_id={1}".format(course_id, module_id, page_id))
+  payload = {'module_item':
+             {
+               'title': item_name,
+               'type': 'Page',
+               'content_id': page_id,
+               'page_url': page_url
+             }
+             }
+
+  r = requests.post(url, headers = header, json = payload)
+  if Verbose_Flag:
+    print("result of creating module page item: {}".format(r.text))
+
+  if r.status_code == requests.codes.ok:
+    modules_response=r.json()
+    module_id=modules_response["id"]
+
+  return  module_id
+
+
+
+def list_pages(course_id, page_name=None):
+  pages_found_thus_far=[]
+  # Use the Canvas API to get the list of modules for the course
+  #GET /api/v1/courses/:course_id/pages
+
+  url = "{0}/courses/{1}/pages".format(baseUrl, course_id)
+  if Verbose_Flag:
+    print("url: {}".format(url))
+
+  # this will do a partial match against the module_name
+  # This reducing the number of responses returned
+
+  if page_name:
+    payload = {'search_term': page_name} 
+    r = requests.get(url, headers = header, data = payload)
+  else:
+    r = requests.get(url, headers = header)
+
+  if Verbose_Flag:
+    print("result of getting pages: {}".format(r.text))
+
+  if r.status_code == requests.codes.ok:
+    page_response=r.json()
+
+    for p_response in page_response:  
+      pages_found_thus_far.append(p_response)
+
+    # the following is needed when the reponse has been paginated
+    # i.e., when the response is split into pieces - each returning only some of the list of modules
+    # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+    while r.links.get('next', False):
+      r = requests.get(r.links['next']['url'], headers=header)  
+      if Verbose_Flag:
+        print("result of getting modules for a paginated response: {}".format(r.text))
+      page_response = r.json()  
+      for p_response in page_response:  
+        pages_found_thus_far.append(p_response)
+
+  return pages_found_thus_far
+
+def create_course_page(course_id, page_title, page_contents):
+  #Create page WikiPagesApiController#create
+  #POST /api/v1/courses/:course_id/pages
+
+  url = "{0}/courses/{1}/pages".format(baseUrl,course_id)
+  if Verbose_Flag:
+    print("url: {}".format(url))
+
+  payload={'wiki_page':
+           {
+             'title': page_title,
+             'body': page_contents,
+             'published': 'true'
+           }
+           }
+  r = requests.post(url, headers = header, json=payload)
+
+  if Verbose_Flag:
+    print("result of creating a page: {}".format(r.text))
+
+  if r.status_code == requests.codes.ok:
+    page_response=r.json()
+    return page_response
+
+  return None
+
+
+def delete_course_page(course_id, page_url):
+  #delete a page
+  #DELETE /api/v1/courses/:course_id/pages/:url
+
+  url = "{0}/courses/{1}/pages/{2}".format(baseUrl,course_id, page_url)
+  if Verbose_Flag:
+    print("url: {}".format(url))
+
+  r = requests.delete(url, headers = header)
+
+  if Verbose_Flag:
+    print("result of deleting a page: {}".format(r.text))
+
+  if r.status_code == requests.codes.ok:
+    page_response=r.json()
+    return page_response
+
+  return None
+
+
+
+def create_module_page_item(course_id, module_id, page_id, item_name, page_url):
+  # Use the Canvas API to create a module item in the course and module
+  #POST /api/v1/courses/:course_id/modules/:module_id/items
+  url = "{0}/courses/{1}/modules/{2}/items".format(baseUrl, course_id, module_id)
+  if Verbose_Flag:
+    print("creating module assignment item for course_id={0} module_id={1} assignment_id={1}".format(course_id, module_id, page_id))
+  payload = {'module_item':
+             {
+               'title': item_name,
+               'type': 'Page',
+               'content_id': page_id,
+               'page_url': page_url
+             }
+             }
+
+  r = requests.post(url, headers = header, json = payload)
+  if Verbose_Flag:
+    print("result of creating module page item: {}".format(r.text))
+
+  if r.status_code == requests.codes.ok:
+    modules_response=r.json()
+    module_id=modules_response["id"]
+    return module_id
+  return  module_id
+
+
+# class and functions related to the Zoom chat items
 
 class PseudonymFactory:
   def __init__(self, prefix, nym_map):
@@ -133,6 +354,20 @@ def main(argv):
                     default=False,
                     action="store_true",
                     help="use the real names and not the pseudonyms")
+
+  argp.add_argument('-M', '--module_name', required=False, type=str,
+                    default='Zoom chat sessions',
+                    help="Name of the module to put the HTML page into")
+
+  argp.add_argument('-T', '--page_title', required=False, type=str,
+                    default='',
+                    help="Name of the page to use")
+
+  argp.add_argument('-R', '--remove_existing_page', required=False,
+                    default=False,
+                    action="store_true",
+                    help="remove an existing page")
+
 
   args = vars(argp.parse_args(argv))
 
@@ -285,15 +520,17 @@ def main(argv):
               continue
 
             else:               # timestamp not starting in column 0
-              output_line="\t\t\t{0}".format(line.strip())
+              #output_line="\t\t\t{0}".format(line.strip())
+              output_line="{0}".format(line.strip())
               existing_msg=chat_item.get('msg', "")
-              chat_item['msg']=existing_msg+'\n'+output_line
+              chat_item['msg']=existing_msg+'<br>'+output_line
               print(output_line, file=out_file)
 
           else:                 # just output lines that do not start with a timestamp
-            output_line="\t\t\t{0}".format(line.strip())
+            #output_line="\t\t\t{0}".format(line.strip())
+            output_line="{0}".format(line.strip())
             existing_msg=chat_item.get('msg', "")
-            chat_item['msg']=existing_msg+'\n'+output_line
+            chat_item['msg']=existing_msg+'<br>'+output_line
 
             print(output_line, file=out_file)
 
@@ -307,23 +544,24 @@ def main(argv):
   if Verbose_Flag:
     print("number of chat_items={}".format(len(list_of_chat_items)))
 
+  in_base, in_ext = os.path.splitext(os.path.basename(in_filename))
+  new_file_name="{1}-chat_for_course-{0}.html".format(course_id, in_base)
 
-  new_file_name="{1}-chat_for_course-{0}.html".format(course_id, out_base)
-
-  page='<h2><a id="Chat">{0}</h3>'.format(out_base)
+  page='<h2><a id="Chat">{0}</h3>'.format(in_base)
   page=page+'<table style="width:100%">\n<tr><th  width=10%>Timestamp</th><th width=15%>Sender</th><th width=15%>[Recipient]</th><th>Message</th></tr>'
 
   for i in list_of_chat_items:
-    print("item={}".format(i))
+    if Verbose_Flag:
+      print("item={}".format(i))
     timestamp=i['timestamp']
     sender=i['sender']
     recipient=i.get('recipient', False)
     msg=i['msg']
 
     if recipient:
-      new_item="<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td></tr>".format(timestamp, sender, recipient, msg)
+      new_item="<tr><td>{0}</td><td>{1}</td><td>{2}</td><td><pre>{3}</pre></td></tr>".format(timestamp, sender, recipient, msg)
     else:
-      new_item="<tr><td>{0}</td><td>{1}</td><td></td><td>{2}</td></tr>".format(timestamp, sender, msg)
+      new_item="<tr><td>{0}</td><td>{1}</td><td></td><td><pre>{2}</pre></td></tr>".format(timestamp, sender, msg)
     page=page+new_item
 
   page=page+'</table>'
@@ -332,6 +570,42 @@ def main(argv):
   with open(new_file_name, 'wb') as f:
     encoded_output = bytes(page, 'UTF-8')
     f.write(encoded_output)
+
+  desired_module_name=args["module_name"]
+  existing_modules=list_modules(course_id, desired_module_name)
+
+  module_id=None
+  for m in existing_modules:
+    if m['name'] == desired_module_name:
+      module_id=m['id']
+      print("module with this name exists with id={}".format(module_id))
+
+  if not module_id:
+    create_module(course_id, desired_module_name)
+  
+  desired_page_title=args["page_title"]
+  if len(desired_page_title) < 1:
+    desired_page_title=in_base.replace('_', '-')
+  print("desired_page_title={}".format(desired_page_title))
+  existing_pages=list_pages(course_id, desired_page_title)
+  for p in existing_pages:
+    if p['title'] == desired_page_title:
+      page_id=p['page_id']
+      print("page with this title exists with p={}".format(p))
+      if args["remove_existing_page"]:
+        delete_course_page(course_id, p['url'])
+        print("removed existing page")
+      else:
+        desired_page_title="{}-new".format(desired_page_title)
+
+  page_info=create_course_page(course_id, desired_page_title, page)
+  if Verbose_Flag:
+    print("page_info={}".format(page_info))
+
+  if page_info:
+    m2=create_module_page_item(course_id, module_id, page_info['page_id'], page_info['title'], page_info['url'])
+    if m2:
+      print("created page in module={}".format(m2))
 
 if __name__ == '__main__':
   sys.exit(main(sys.argv[1:]))
