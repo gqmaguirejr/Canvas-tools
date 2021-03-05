@@ -14,40 +14,23 @@
 #
 # Example: ./zeudonymize.py --transcript /z3/maguire/meeting_saved_chat-20210304.txt
 # Where the transcript is:
-# 14:16:01	 From  KTH, Anna-Karin Högfeldt : https://docs.google.com/document/d/1418Kq39ESLC58HlKBmhq2ZIPWzm8NZmlHkUg6fSXe5E/edit#
-# 14:35:19	 From  Sofia Jonsson - Stockholms universitet : https://www.wonder.me/
-# 14:35:32	 From  Daniel Bosk, KTH : An alternative is https://gather.town
 # 14:41:00	 From  Daniel Bosk, KTH : @Chip: I wrote a short script to pseudonymize Zoom chat transcripts.
 # 14:41:48	 From  Gerald Q Maguire Jr  to  Daniel Bosk, KTH(Direct Message) : Great - send me a pointer to it.
 # 14:42:15	 From  Daniel Bosk, KTH  to  Gerald Q Maguire Jr(Direct Message) : https://github.com/dbosk/recordy/tree/master/zeudonymize
-# 14:43:27	 From  Mats Olsson LiU : I  have used padlet and flinga.fi. in lessons. 
-# 14:48:35	 From  Brittney Nicole Arthur Cabrera : https://www.psychologicalscience.org/observer/nasa-exercise
 #
 # will generate:
 #  meeting_saved_chat-20210304-pseudonymized.txt
 #  meeting_saved_chat-20210304.nyms
 # The later will contain:
 # {
-#   " KTH, Anna-Karin H\u00f6gfeldt": "Student 1",
-#   " Sofia Jonsson - Stockholms universitet": "Student 2",
 #   " Daniel Bosk, KTH": "Student 3",
-#   " Gerald Q Maguire Jr ": "Student 4",
-#   " Daniel Bosk, KTH ": "Student 5",
-#   " Gerald Q Maguire Jr": "Student 6",
-#   " Mats Olsson LiU": "Student 7",
-#   " Brittney Nicole Arthur Cabrera": "Student 8"
+#   " Gerald Q Maguire Jr ": "Student 4"
 # }
 #
 # Changing the pseudonym file to meeting_saved_chat-20210304-teacher.nyms
 # {
-#   " KTH, Anna-Karin H\u00f6gfeldt": "Student 1",
-#   " Sofia Jonsson - Stockholms universitet": "Student 2",
 #   " Daniel Bosk, KTH": "Teacher",
-#   " Gerald Q Maguire Jr ": "Student 4",
-#   " Daniel Bosk, KTH ": "Student 5",
-#   " Gerald Q Maguire Jr": "Student 6",
-#   " Mats Olsson LiU": "Student 7",
-#   " Brittney Nicole Arthur Cabrera": "Student 8"
+#   " Gerald Q Maguire Jr ": "Student 4"
 # }
 # and running with
 #  --nymfile /z3/maguire/meeting_saved_chat-20210304-teacher.nyms
@@ -118,48 +101,6 @@ class PseudonymFactory:
   def __next__(self):
     return self.next()
 
-def pseudonymize(lines, nym_map, prefix="Student"):
-  pseudonym = PseudonymFactory(prefix, nym_map)
-  for line in lines:
-    sender, recipient = parties(line)
-
-    if sender not in nym_map:
-      nym_map[sender] = pseudonym.next()
-    line = substitute(line, sender, nym_map[sender])
-
-    if recipient:
-      if recipient not in nym_map:
-        nym_map[recipient] = pseudonym.next()
-      line = substitute(line, recipient, nym_map[recipient])
-
-    yield line
-
-def substitute(string, frm, to):
-  pattern = re.compile(frm)
-  return pattern.sub(to, string)
-
-def parties(line):
-  to_kw = "[Tt]o"
-  from_kw = "[Ff]rom"
-  private_kw = "(Privately|Direct Message)"
-
-  line = re.sub(f"{to_kw} Everyone", "", line)
-
-  recipient = re.compile(f"{to_kw} *(.*(?=\({private_kw}\)))").search(line)
-  sender = re.compile(f"{from_kw} *([^:]*(?= {to_kw} ))").search(line) \
-    if recipient \
-    else re.compile(f"{from_kw} ([^:]*) :").search(line)
-
-  try:
-    if recipient:
-      print("sender='{0}' and recipient='{1}'".format(sender.group(1).strip(), recipient.group(1).strip()))
-      return sender.group(1).strip(), recipient.group(1).strip()
-    else:
-      print("sender='{0}'".format(sender.group(1).strip()))
-      return sender.group(1).strip(), None
-  except AttributeError:
-    raise ValueError(f"malformed: {line}")
-
 def main(argv):
   global Verbose_Flag
   
@@ -218,7 +159,7 @@ def main(argv):
 
   pseudonym = PseudonymFactory(prefix, nym_map) # initialize the factory to make pseudonyms
   from_kw = "[Ff]rom"
-  privateMsg="Privately"
+  # privateMsg="Privately" - currently not handled
   directMsg="(Direct Message)"
   
   list_of_chat_items=[]
