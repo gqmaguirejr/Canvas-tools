@@ -1687,6 +1687,35 @@ to get the DOCX library do:
     pip3 install python-docx
  
 
+## Zoom-chat-to-canvas-page-py
+
+Purpose: To take a Zoom chat file and make a Canvas course wikipage.
+
+Input:
+```
+Zoom-chat-to-canvas-page-py -c course_id --transcript zoom_chat_file
+```
+
+Output: outputs a number of files: the anonomized transcript and a JSON file of the assigned pseudonyms
+	However, the major effect is the creation of a wiki page and the insertion of this page into a module in a course.
+
+Note there are a lot of options - including the usual -v --verbose option for lots of output as the program runs
+     With the option "-N" it does not use pseudonyms, but rather the real user's names
+     With the option "-M" "--module_name" - you can specifiy the name of the module to put the page in
+     With the option "-T" "--page_title" - you can specify the title of the page
+     With the option "-R" "--remove_existing_page" - you can delete an existing page of the same title (if it exists)
+     	      	     	  			     otherwise "-new" is appended to the page title
+
+Example:
+```
+./Zoom-chat-to-canvas-page-py    -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt
+
+./Zoom-chat-to-canvas-page-py -c 11 --config config-test.json --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
+
+./Zoom-chat-to-canvas-page-py -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt --nymfile /z3/maguire/meeting_saved_chat-20210304-teacher.nyms
+
+```
+
 <!-- 
 
 ## xxx.py

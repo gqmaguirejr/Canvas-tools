@@ -8,6 +8,7 @@
 # ./Zoom-chat-to-canvas-page-py    -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt
 # ./Zoom-chat-to-canvas-page-py -v -c 11 --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
 # ./Zoom-chat-to-canvas-page-py -c 11 --config config-test.json --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
+# ./Zoom-chat-to-canvas-page-py -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt --nymfile /z3/maguire/meeting_saved_chat-20210304-teacher.nyms
 #
 # based on by zeudonymize.py Daniel Bosk <dbosk@kth.se> - https://github.com/dbosk/recordy.git
 # His program took in a Zoom chant and pseudo anonymized it.
@@ -328,7 +329,7 @@ def main(argv):
   
   timestamp_regex = r'(2[0-3]|[01][0-9]|[0-9]):([0-5][0-9]|[0-9]):([0-5][0-9]|[0-9])'
 
-  argp = argparse.ArgumentParser(description="zeudonymize: Pseudonymizing Zoom chats")
+  argp = argparse.ArgumentParser(description="Zoom-chat-to-canvas-page-py: Pseudonymizing Zoom chats and insert as Canvas wiki page")
 
   argp.add_argument("-t", "--transcript", required=True,
                     help="Filename of the chat transcript")
@@ -344,7 +345,7 @@ def main(argv):
   argp.add_argument('-C', '--containers',
                     default=False,
                     action="store_true",
-                    help="for the container enviroment in the virtual machine")
+                    help="for the container enviroment in the virtual machine, uses http and not https")
   argp.add_argument("--config", type=str, default='config.json',
                     help="read configuration from file")
 
