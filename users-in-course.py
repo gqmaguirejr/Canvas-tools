@@ -70,12 +70,16 @@ def initialize(options):
         config_file=options.config_filename
     else:
         config_file='config.json'
-    
+
     try:
         with open(config_file) as json_data_file:
             configuration = json.load(json_data_file)
             access_token=configuration["canvas"]["access_token"]
-            baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
+            if options.containers:
+                baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
+                print("using HTTP for the container environment")
+            else:
+                baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
 
             header = {'Authorization' : 'Bearer ' + access_token}
             payload = {}
@@ -269,6 +273,12 @@ def main():
                       help="For testing only get the list of users"
                       )
 
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
+    )
 
     options, remainder = parser.parse_args()
 
