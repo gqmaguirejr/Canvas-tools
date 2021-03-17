@@ -282,8 +282,11 @@ def main():
     Picture_Flag=options.pictures
     Picture_size=int(options.picture_size)
     # if a size is specified, but the picture option is not set, then set it automatically
-    if Picture_size > 1:
+    if Picture_Flag and Picture_size > 1:
         Picture_Flag=True
+    else:
+        Picture_Flag=False
+
     if Picture_Flag:         # you need to have the avatar URLs in order to make pictures, so enable them
         options.avatar=True
 
@@ -367,7 +370,7 @@ def main():
                     if Verbose_Flag:
                         print("index: {0}, avatar_url: {1}".format(index, avatar_url))
 
-                    if len(avatar_url) > 0:
+                    if isinstance(avatar_url, str) and len(avatar_url) > 0:
                         http_reponse=urlopen(avatar_url)
                         if Verbose_Flag:
                             print("http_reponse: {0}".format(http_reponse.info()))

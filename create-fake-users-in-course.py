@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./create-fake-users-in-course.py account_id course_id
+# ./create-fake-users-in-course.py account_id course_id [number_of_users_to_generate]
 #
 # Output: none
 #
@@ -22,9 +22,13 @@
 #
 #  ./create-fake-users-in-course.py -u -C -m 1 5
 #
+# Generate 3000 fake users in the VM version of Canvas
+# ./create-fake-users-in-course.py -u -C 1 5 3000
+#
 # G. Q. Maguire Jr.
 #
 # 2019.01.30
+# 2021-03-17 expanded to be able to create a large number of fake users
 #
 
 import requests, time
@@ -600,6 +604,25 @@ def main():
     course_id=remainder[1]
 
     all_users=users_in_account(account_id)
+
+    if options.testing:
+        number_of_users_to_generate=remainder[2]
+        base_user_name='FakeStudent'
+        test_users=[]
+        for i in number_of_users_to_generate:
+            user=dict()
+            user['user_name']="N{0} {1}".format(i, base_user_name)
+            user['short_name']="N{0}".format(i)
+            user['sortable_name']="{1}, N{0}".format(i, base_user_name)
+            user['time_zone']='Europe/Stockholm'
+            user['locale']='en-US'
+            user['birthdate']='1970-01-01'
+            user['unique_id']="N{0}".format(i+10000)
+            user['password']='DumbPassword'
+            user['sis_user_id']="z{0}".format(i+10000)
+            user['email_address']="N{0}@localhost".format(i)
+            test_users.append(user)
+        return
 
     if options.users:
         for user in test_users:
