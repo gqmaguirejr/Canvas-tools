@@ -559,21 +559,24 @@ def main(argv):
 
         # Example of assigning a grade for a student who has passed all for assignments
         if er_grade and pe_grade and erh_grade and susd_grade:
-            assign_grade('PRO1',s, 'P', 'fake grade assignment')
+            assign_grade('PRO1',s, 'P', 'test grade assignment')
 
-        # Example of getting a value from a custom column
-        s_note=custom_column_value(s, 'Notes')
-        print("s_note={}".format(s_note))                    
+            # for a studen who has passed all the assignments, compute the data the last one was submitted
+            submission_dates=[submission_date('ER', s),
+                                  submission_date('PE', s),
+                                  submission_date('ERH', s),
+                                  submission_date('SUSD', s)]
+            last_submission_date=max(submission_dates)
+            # Example of storing a value into a custom column named 'Notes' for a student s
+            data_to_store="Data ready for LADOK as of {}".format(last_submission_date)
+            put_custom_column_entries(custom_column_id('Notes'), s, data_to_store)
 
-        # Example of storing a value into a custom column named 'Notes' for a student s
-        data_to_store='Data ready for LADOK'
-        put_custom_column_entries(custom_column_id('Notes'), s, data_to_store)
+            # refresh the copy of the custom column data after changing it.
+            custom_column_data['Notes']=list_custom_column_entries(custom_column_id('Notes'))
+            s_note=custom_column_value(s, 'Notes')
+            if s_note:
+                print("s_note={0}, len of string={1}".format(s_note, len(s_note)))
 
-        # refresh the copy of the custom column data after changing it.
-        custom_column_data['Notes']=list_custom_column_entries(custom_column_id('Notes'))
-        s_note=custom_column_value(s, 'Notes')
-        if s_note:
-            print("s_note={0}, len of string={1}".format(s_note, len(s_note)))
 
         # Example of processing the date of the submssion and checking the assignment's due date
         #
@@ -586,7 +589,9 @@ def main(argv):
                 er_early_submission=submission_date('ER', s) - er_due_date
                 print("early submission by {0}".format(er_early_submission))
 
-
+        # Example of getting a value from a custom column
+        s_note=custom_column_value(s, 'Notes')
+        print("s_note={}".format(s_note))                    
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))
