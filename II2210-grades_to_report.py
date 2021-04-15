@@ -513,19 +513,20 @@ def main(argv):
         # Set up the short names for the assignments
         # ***** This is essential as the routines will use the short names to access the relevant assignment and grades
         # You have to look at the assignment id for each assignment and then add a short_name to the assignment
-        if a['id'] == 146887:
+        # You can do this by matching assignment_id numbers or matching the names
+        if a['id'] == 146887 or a['name'] == 'Ethical Research (with quiz)':
             a['short_name']= 'ER'
 
-        if a['id'] == 146888:
+        if a['id'] == 146888 or a['name'] == 'Professionalism and Ethics for ICT students (with quiz)':
             a['short_name']= 'PE'
 
-        if a['id'] == 146885:
+        if a['id'] == 146885 or a['name'] == 'Ethical Research: Human Subjects and Computer Issues (with quiz)':
             a['short_name']= 'ERH'
 
-        if a['id'] == 146886:
+        if a['id'] == 146886 or a['name'] == 'Sustainable Development/Hållbar Utveckling (with quiz)':
             a['short_name']= 'SUSD'
 
-        if a['id'] == 146889:       # the moment to report to LADOK
+        if a['id'] == 146889 or a['name'] == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
             a['short_name']= 'PRO1'
 
         if Verbose_Flag:
