@@ -303,6 +303,61 @@ def assignment_grading_standard_id(short_name):
             return a['grading_standard_id']
     return None
 
+def get_a_grade(user_id, short_name):
+    global Verbose_Flag
+    g=get_asssignment_grade(user_id, short_name)
+    if g and len(g) > 1:
+        return g[0]['grade']             # by default the latest grade is first
+
+def get_asssignment_grade(user_id, short_name):
+    global Verbose_Flag
+    global course_id
+    
+    assignment=assignment_given_short_name(short_name)
+    if assignment:
+        assignment_id=assignment['id']
+    else:
+        print("No such assignment named {0}".format(shrt_name))
+        return None
+
+    entries_found_thus_far=[]
+
+    # Use the Canvas API to get the grade information
+    # GET /api/v1/courses/:course_id/gradebook_history/feed
+
+    url = "{0}/courses/{1}/gradebook_history/feed".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    extra_parameters={'per_page': '100',
+             'assignment_id': assignment_id,
+             'user_id':  user_id
+             }
+    
+    r = requests.get(url, params=extra_parameters, headers = header)
+
+    if Verbose_Flag:
+        print("result of getting a grade from gradebook: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            entries_found_thus_far.append(p_response)
+
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            if Verbose_Flag:
+                print("result of getting modules for a paginated response: {}".format(r.text))
+            page_response = r.json()  
+            for p_response in page_response:  
+                entries_found_thus_far.append(p_response)
+
+    return entries_found_thus_far
+
 def grade(short_name, student):
     global gradebook
 
@@ -557,25 +612,42 @@ def main(argv):
 
         print("er_grade={0}, pe_grade={1}, erh_grade={2}, susd_grade={3}".format(er_grade, pe_grade, erh_grade, susd_grade))
 
+        g1=grade('PRO1', s)
+        print("grade is currently {}".format(g1))
+        gt=assignment_grading_type('PRO1')
+        print("grading type is {0}".format(gt))
+        cg=get_a_grade(s, 'PRO1')
+        print("latest current grade is {}".format(cg))
+
         # Example of assigning a grade for a student who has passed all for assignments
-        if er_grade and pe_grade and erh_grade and susd_grade:
-            assign_grade('PRO1',s, 'P', 'test grade assignment')
+        if er_grade and pe_grade and erh_grade and susd_grade and get_a_grade(s, 'PRO1') != 'P':
+            assign_grade('PRO1', s, 'P', 'test grade assignment')
 
-            # for a studen who has passed all the assignments, compute the data the last one was submitted
-            submission_dates=[submission_date('ER', s),
-                                  submission_date('PE', s),
-                                  submission_date('ERH', s),
-                                  submission_date('SUSD', s)]
-            last_submission_date=max(submission_dates)
-            # Example of storing a value into a custom column named 'Notes' for a student s
-            data_to_store="Data ready for LADOK as of {}".format(last_submission_date)
-            put_custom_column_entries(custom_column_id('Notes'), s, data_to_store)
-
-            # refresh the copy of the custom column data after changing it.
-            custom_column_data['Notes']=list_custom_column_entries(custom_column_id('Notes'))
+            # Example of getting a value from a custom column
             s_note=custom_column_value(s, 'Notes')
-            if s_note:
-                print("s_note={0}, len of string={1}".format(s_note, len(s_note)))
+            print("s_note={}".format(s_note))                    
+            if s_note is None or s_note != 'P':
+                # for a studen who has passed all the assignments, compute the data the last one was submitted
+                er_submitted=submission_date('ER', s)
+                pe_submitted=submission_date('PE', s)
+                erh_submitted=submission_date('ERH', s)
+                susd_submitted=submission_date('SUSD', s)
+                if er_submitted and pe_submitted and erh_submitted and susd_submitted:
+                    submission_dates=[er_submitted,
+                                      pe_submitted,
+                                      erh_submitted,
+                                      susd_submitted
+                                      ]
+                    last_submission_date=max(submission_dates)
+                    # Example of storing a value into a custom column named 'Notes' for a student s
+                    data_to_store="Data ready for LADOK as of {}".format(last_submission_date)
+                    put_custom_column_entries(custom_column_id('Notes'), s, data_to_store)
+
+                # refresh the copy of the custom column data after changing it.
+                custom_column_data['Notes']=list_custom_column_entries(custom_column_id('Notes'))
+                s_note=custom_column_value(s, 'Notes')
+                if s_note:
+                    print("s_note={0}, len of string={1}".format(s_note, len(s_note)))
 
 
         # Example of processing the date of the submssion and checking the assignment's due date
@@ -589,9 +661,6 @@ def main(argv):
                 er_early_submission=submission_date('ER', s) - er_due_date
                 print("early submission by {0}".format(er_early_submission))
 
-        # Example of getting a value from a custom column
-        s_note=custom_column_value(s, 'Notes')
-        print("s_note={}".format(s_note))                    
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))
