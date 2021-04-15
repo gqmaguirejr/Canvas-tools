@@ -237,7 +237,8 @@ def main():
         if quizzes:
             course_info['quizzes']=quizzes
 
-        print("course_info={}".format(course_info))
+        if Verbose_Flag:
+            print("course_info={}".format(course_info))
 
         try:
             with open(course_info_file, 'w') as json_data_file:

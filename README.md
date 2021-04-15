@@ -1,4 +1,4 @@
-# Canvas-tools
+## Canvas-tools
 Tools for use with Instructure.com's Canvas LMS. These tools
 are intended to be examples of how one can use the Canvas Restful API and to
 provide some useful functionality (mainly for teachers).
@@ -931,7 +931,7 @@ Note:  If there are no sections, this page is  not included in the spreadsheet.
        If there are no students this page is not included in the spreadsheet. 
 
 
-## /create_JSON_file_of_sections_in_your_courses.py
+## create_JSON_file_of_sections_in_your_courses.py
 Purpose:
   Create a JSON file with information about courses where user enrolled as a 'TeacherEnrollment', 'Examiner', or 'TaEnrollment'
 
@@ -1715,6 +1715,23 @@ Example:
 ./Zoom-chat-to-canvas-page-py -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt --nymfile /z3/maguire/meeting_saved_chat-20210304-teacher.nyms
 
 ```
+
+# II2210-grades_to_report.py
+Purpose: To show  hot ro programmatically access assignment, the gradebook, and the custome columns to be able to do calculations on grades, dates of submission, due dates, etc.
+
+Input:
+```
+./II2210-grades_to_report.py -c course_id
+```
+
+Output: outputs gradebook and other information
+
+Note: This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
+
+The program can walk a gradebook and do computations on the grades. Currently, it is for a course with 4 assigned that each have a certain maximum number of points.
+
+Note that you have to manually add a short name for each assignment_id number.
+
 
 <!-- 
 
