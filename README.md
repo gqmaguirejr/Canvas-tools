@@ -1733,6 +1733,35 @@ The program can walk a gradebook and do computations on the grades. Currently, i
 Note that you have to manually add a short name for each assignment_id number.
 
 
+## set_status_in_course.py
+
+Input:
+```
+./set_status_in_course.py course_id status_percent
+```
+
+Note the status_percent is simply treated as a string
+
+with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+with the option -t' or '--testing' testing mode
+
+with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+
+Can also be called with an alternative configuration file:
+./custom-data-for-users-in-course.py --config config-test.json
+
+Examples:
+ ./set_status_in_course.py 11 22
+or
+./set_status_in_course.py -C 5 11 23.7
+
+Example with output:
+```
+ ./set_status_in_course.py --config config-test.json 11 23.5
+Existing custom data for user for course 11 is {'data': '21.5'}
+Result of setting custom data for user for course 11 is {'data': '23.5'}
+```
+
 <!-- 
 
 ## xxx.py
