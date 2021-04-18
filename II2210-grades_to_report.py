@@ -308,6 +308,7 @@ def get_a_grade(user_id, short_name):
     g=get_asssignment_grade(user_id, short_name)
     if g and len(g) > 1:
         return g[0]['grade']             # by default the latest grade is first
+    return None
 
 def get_asssignment_grade(user_id, short_name):
     global Verbose_Flag

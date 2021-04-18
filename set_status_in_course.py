@@ -21,7 +21,10 @@
 # Existing custom data for user for course 11 is {'data': '21.5'}
 # Result of setting custom data for user for course 11 is {'data': '23.5'}
 #
+# With testing option, it takes another parameter the user_id whose grade is to be set:
+# ./set_status_in_course.py 11 22 77307
 #
+# for runing in a Container in my VM
 # ./set_status_in_course.py -C 5 11 23.7
 #
 # G. Q. Maguire Jr.
@@ -165,9 +168,11 @@ def main():
               
     course_id=remainder[0]
     status_percent=remainder[1]
-
     user_id='self'
-        
+
+    if options.testing:
+        user_id=remainder[2]
+
     result1=get_user_custom_data_by_user_id(user_id, 'se.kth.canvas-app.status_'+course_id,[])
     print("Existing custom data for user for course {0} is {1}".format(course_id, result1))
 
