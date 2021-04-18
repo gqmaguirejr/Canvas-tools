@@ -1734,6 +1734,7 @@ Note that you have to manually add a short name for each assignment_id number.
 
 
 ## set_status_in_course.py
+Purpose: To set a user's custom data field to reflext the user's perception of their stat of progress (for example, in a degree project course).
 
 Input:
 ```
@@ -1744,6 +1745,11 @@ Note the status_percent is simply treated as a string
 
 with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 with the option -t' or '--testing' testing mode
+     in this mode it reads another argument that indicates the user whose status is to be set
+     ./set_status_in_course.py -v -t -C 7 10.5 4
+or
+     ./set_status_in_course.py -v -t -C 7 11.5% 10
+
 
 with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 
@@ -1761,6 +1767,53 @@ Example with output:
 Existing custom data for user for course 11 is {'data': '21.5'}
 Result of setting custom data for user for course 11 is {'data': '23.5'}
 ```
+
+## get_status-for-users-in-course.py
+Purpose: Help track progress in degree project courses
+
+Creates an administrative assignment in the course (if it does not yet exist).
+This assignment does not accept any submission, but is just used to display a "grade" indicating a code for the student's status.
+
+In order to enable students to suggest their status early in the degree project, 
+get the student's status information from their custom data and
+update data in Status assignment in gradebook - but ONLY up to a threshold.
+
+The program also looks at assignments that have been completed and
+administrative actions that have been taken to up0ate the Status assignment's "grade".
+
+Background and underlying idea:
+I have done a program: set_status_in_course.py
+It is run using:
+        set_status_in_course.py course_id status_percent
+where the course_id is the Canvas course_id and status_percent is simply a string, which can look like 23.5
+It stores the information in the user's customer date in the name space se.kth.canvas-app.status_course_id
+
+My current idea is that the student can use this program to set their status, while they can view their status in the gradebook via a "Status" assignment (that has no submissions) but shows scores where the scores are the "status_percent" values. A teacher in the course will run a program get_status-for-users-in-course.py that will:
+1. Get the status information for all the students enrolled in the course. Call this students_status.
+2. If students_status is lower than a threshold and higher that the student's Status score in the gradebook then update the Status score in the gradebook. The idea is that some of the scores (after some point) should not be set by the the student.
+3. If the Status score in the course is higher than than the students_status - then update the student's status value. [This operation could be optional.]
+4. For a set of the assignments, if the assignment is marked Completed - update the Status score in the gradebook.
+5.Optionally the program could even check the DIVA status and LADOK grade status and update the score based in these.
+
+Input:
+```
+./get_status-for-users-in-course.py course_id
+```
+# Output: various diagnotic output
+#
+# with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+# with the option -t' or '--testing' testing mode
+#
+# with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+#
+# Can also be called with an alternative configuration file:
+# ./custom-data-for-users-in-course.py --config config-test.json
+#
+Examples:
+```
+./get_status-for-users-in-course.py -C  7 
+```
+
 
 <!-- 
 

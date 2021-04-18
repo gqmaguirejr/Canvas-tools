@@ -96,7 +96,7 @@ def put_user_custom_data_by_user_id(user_id, name_space, scope, data):
     if r.status_code == requests.codes.ok:
         page_response=r.json()
         return page_response
-    return []
+    return data
 
 def get_user_custom_data_by_user_id(user_id, name_space, scope):
     # Use the Canvas API to get a user's custom data
@@ -162,7 +162,14 @@ def main():
 
     initialize(options)
 
-    if (len(remainder) < 1):
+    if (len(remainder) == 1):
+        course_id=remainder[0]
+        user_id='self'
+        result1=get_user_custom_data_by_user_id(user_id, 'se.kth.canvas-app.status_'+course_id,[])
+        print("Existing custom data for user for course {0} is {1}".format(course_id, result1))
+        return
+
+    if (len(remainder) < 2):
         print("Insuffient arguments - must provide account_id course_id status_percent\n")
         sys.exit()
               
