@@ -1815,6 +1815,29 @@ Examples:
 ```
 
 
+## some_canvas_stats.py
+Purpose: To collect some statistics about a Canvas instance in terms of the number of users per account and to computer the total number of these who are unique users.
+
+Input:
+```
+./some_canvas_stats.py
+```
+
+Output: outputs a spreadsheet (canvas_stats.xlsx) with statistics and some text, such as:
+
+No subaccounts
+len unique_users=21972
+
+In this case len unique_users says how many unique users there were.
+
+Note that the numbers are limited to the accounts the person running the program can access.
+
+
+Example:
+```
+./some_canvas_stats.py   --config config-test.json
+```
+
 <!-- 
 
 ## xxx.py
