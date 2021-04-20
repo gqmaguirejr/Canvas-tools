@@ -193,6 +193,78 @@ def users_in_account(account_id):
 
     return entries_found_thus_far
 
+
+def courses_in_account(account_id):
+    global Verbose_Flag
+    global course_id
+    
+    entries_found_thus_far=[]
+
+    #List active courses in an accountAccountsController#courses_api
+    #GET /api/v1/accounts/:account_id/courses
+    url = "{0}/accounts/{1}/courses".format(baseUrl, account_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    extra_parameters={'per_page': '100'}
+    r = requests.get(url, params=extra_parameters, headers = header)
+
+    if Verbose_Flag:
+        print("result of getting gradebook feed: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            entries_found_thus_far.append(p_response)
+
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            if Verbose_Flag:
+                print("result of getting useers in an account for a paginated response: {}".format(r.text))
+            page_response = r.json()  
+            for p_response in page_response:  
+                entries_found_thus_far.append(p_response)
+
+    return entries_found_thus_far
+
+def list_assignments(course_id):
+    global Verbose_Flag
+    entries_found_thus_far=[]
+
+    # Use the Canvas API to get the list of assignments for the course
+    #GET /api/v1/courses/:course_id/assignments
+    url = "{0}/courses/{1}/assignments".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting assignments: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            entries_found_thus_far.append(p_response)
+
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            if Verbose_Flag:
+                print("result of getting modules for a paginated response: {}".format(r.text))
+            page_response = r.json()  
+            for p_response in page_response:  
+                entries_found_thus_far.append(p_response)
+
+    return entries_found_thus_far
+
+
 def main(argv):
     global Verbose_Flag
     global Use_local_time_for_output_flag
@@ -272,6 +344,22 @@ def main(argv):
     count_users_per_account_df=pd.json_normalize(count_users_per_account)
     count_users_per_account_df.to_excel(writer, sheet_name='per account')
 
+    all_assignments=list()
+    courses_per_account=dict()
+    for a in accounts:
+        courses_this_account=courses_in_account(a['id'])
+        courses_per_account[a['id']]=courses_this_account
+
+        courses_this_account_df=pd.json_normalize(courses_this_account)
+        name_this_account=a['name']
+        if len(name_this_account) > 30:
+            name_this_account=name_this_account[0:30]
+        courses_this_account_df.to_excel(writer, sheet_name=name_this_account)
+        for c in courses_this_account:
+            all_assignments.extend(list_assignments(c['id']))
+
+    all_assignments_df=pd.json_normalize(all_assignments)
+    all_assignments_df.to_excel(writer, sheet_name='Assignments')
 
     #print("course_id={}".format(course_id))
 
