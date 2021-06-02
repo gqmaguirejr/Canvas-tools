@@ -565,6 +565,10 @@ def main(argv):
         this_assignment=s_assignments.get(e['assignment_id'], False)
         if this_assignment:
             print("previous value for assignment={}".format(this_assignment))
+            if Verbose_Flag:
+                print("keep previous value for assignment={}".format(this_assignment))
+            continue # added by Viggo 2021-05-30
+
 
         s_assignments[e['assignment_id']]={'attempt': e['attempt'],
                                            'submitted_at': e['submitted_at'],
