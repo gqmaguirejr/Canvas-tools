@@ -1838,6 +1838,34 @@ Example:
 ./some_canvas_stats.py   --config config-test.json
 ```
 
+## get_PDF_submission.py
+
+Purpose: Checks that the submission has been graded and has the grade 'complete'
+	 and then gets the PDF file submitted for a specified assignment
+
+
+Input:
+```
+ ./get_PDF_submission.py -c course_id -a assignment_id -u user_id
+```
+
+Output:  a file with a name of the form: user's name-filename.pdf
+
+with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+
+Can also be called with an alternative configuration file:
+  --config config-test.json
+
+Example 1:
+```
+./get_PDF_submission.py -c 25434 -a 150953 -u 746
+```
+Example 2: get file and then call the program to extract the puseudo JSON from it
+```
+ ./get_PDF_submission.py -c 25434 -a 150953 -u 746 -e
+```
+
 <!-- 
 
 ## xxx.py
