@@ -1846,7 +1846,7 @@ Purpose: Checks that the submission has been graded and has the grade 'complete'
 
 Input:
 ```
- ./get_PDF_submission.py -c course_id -a assignment_id -u user_id
+ ./get_PDF_submission.py -c course_id -a assignment_id -u user_id [-e]
 ```
 
 Output:  a file with a name of the form: user's name-filename.pdf
@@ -1861,7 +1861,7 @@ Example 1:
 ```
 ./get_PDF_submission.py -c 25434 -a 150953 -u 746
 ```
-Example 2: get file and then call the program to extract the puseudo JSON from it
+Example 2: get file and then if the -e option is specified call the program to extract the puseudo JSON from it
 ```
  ./get_PDF_submission.py -c 25434 -a 150953 -u 746 -e
 ```

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
-# ./get_PDF_submission.py -c course_id -a assignment_id -u user_id
+# ./get_PDF_submission.py -c course_id -a assignment_id -u user_id [-e]
 # Purpose:
 #   checks that the submission has been graded and has the grade 'complete'
 #   and then gets the PDF file submitted for a specified assignment
