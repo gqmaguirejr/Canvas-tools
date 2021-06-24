@@ -76,7 +76,7 @@ def list_your_courses():
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of modules
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      if Verbose_Flag:
                             print("result of getting courses for a paginated response: {}".format(r.text))
@@ -125,7 +125,7 @@ def sections_in_course(course_id):
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of modules
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      page_response = r.json()  
                      for p_response in page_response:  
@@ -158,7 +158,7 @@ def enrollments_in_course(course_id):
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of modules
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      page_response = r.json()  
                      for p_response in page_response:  
@@ -191,7 +191,7 @@ def enrollments_in_section(section_id):
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of modules
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      page_response = r.json()  
                      for p_response in page_response:  
@@ -222,7 +222,7 @@ def list_assignments(course_id):
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of assignments
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      if Verbose_Flag:
                             print("result of getting assignments for a paginated response: {}".format(r.text))
@@ -257,7 +257,7 @@ def list_ungraded_assignments(course_id):
               # the following is needed when the reponse has been paginated
               # i.e., when the response is split into pieces - each returning only some of the list of assignments
               # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-              while r.links['current']['url'] != r.links['last']['url']:  
+              while r.links.get('next', False):
                      r = requests.get(r.links['next']['url'], headers=header)  
                      if Verbose_Flag:
                             print("result of getting assignments for a paginated response: {}".format(r.text))
@@ -371,7 +371,7 @@ def main():
                             sys.exit()
 
        except OSError as e:
-              print(e.message)
+              # print(e.message)
               print("Unable to open JSON file named {}".format(course_info_file))
               sys.exit()
 
