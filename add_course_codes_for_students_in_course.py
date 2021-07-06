@@ -9,10 +9,13 @@
 # Output: using assignment 'Course code' as the administrative data to do assign course codes as grades
 # 	Added the course code (using the Course Code grading scale) based in the SIS section that each student is in
 #
+# This program uses the fact that the sis_section_id starts with the course code, i.e.
+#    sis_section_id[5] =='X' and (sis_section_id[2] == '1' or sis_section_id[2] == '2')
+#
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
-# ./add_students_to_examiners_section_in_course.py --config config-test.json 22156
+# ./add_course_codes_for_students_in_course.py --config config-test.json 22156
 #
 # Example:
 # ./add_course_codes_for_students_in_course.py 22156
@@ -313,7 +316,7 @@ def main():
     course_codes=set()
     for s in sections:
         sis_section_id=s['sis_section_id'] 
-        if sis_section_id and sis_section_id[5] =='X':
+        if sis_section_id and sis_section_id[5] =='X' and (sis_section_id[2] == '1' or sis_section_id[2] == '2'):
             course_code=sis_section_id[0:6]
             course_codes.add(course_code)
             section_to_course_code_mapping[s['id']]=course_code
@@ -329,7 +332,7 @@ def main():
     else:
         admin_assignment_name="Course code"
 
-    print("using assignment '{0}' as the administrative data to do the assignment into sections".format(admin_assignment_name))
+    print("Using sections to assign grades in the administrative assignment '{0}'".format(admin_assignment_name))
 
     # check for assignemnt
     course_assignments=list_assignments(course_id)
