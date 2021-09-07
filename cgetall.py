@@ -118,14 +118,18 @@ def getall_course_pages(course_id, destination_directory):
             if Verbose_Flag:
                 print("new_file_name: {}".format(new_file_name))
 
+            # chec that the response was not None
+            pr=page_response["body"]
+            if not pr:
+                continue
+            # modified the code to handle empty files
+            if len(pr) > 0:
+                encoded_output = bytes(page_response["body"], 'UTF-8')
+            else:
+                encoded_output = bytes("", 'UTF-8')
+
             # write out body of response as a .html page
             with open(new_file_name, 'wb') as f:
-                # modified the code to handle empty files
-                if len(page_response["body"]) > 0:
-                    encoded_output = bytes(page_response["body"], 'UTF-8')
-                else:
-                    encoded_output = bytes("", 'UTF-8')
-
                 f.write(encoded_output)
 
                 continue

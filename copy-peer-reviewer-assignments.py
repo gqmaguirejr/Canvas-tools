@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# -*- mode: python; python-indent-offset: 4 -*-
 #
 # ./copy-peer-reviewer-assignments.py course_id old_assignment_id new_assignment_id
 #
@@ -68,251 +70,247 @@ def initialize(options):
 ##############################################################################
 
 def summarize_assignments(list_of_assignments):
-       summary_of_assignments={}
-       for assignm in list_of_assignments:
-              summary_of_assignments[assignm['id']]=assignm['name']
+    summary_of_assignments={}
+    for assignm in list_of_assignments:
+        summary_of_assignments[assignm['id']]=assignm['name']
 
-       print("summary_of_assignments={}".format(summary_of_assignments))
+    print("summary_of_assignments={}".format(summary_of_assignments))
 
 def list_assignments(course_id):
-       assignments_found_thus_far=[]
+    assignments_found_thus_far=[]
 
-       # Use the Canvas API to get the list of assignments for the course
-       #GET /api/v1/courses/:course_id/assignments
+    # Use the Canvas API to get the list of assignments for the course
+    #GET /api/v1/courses/:course_id/assignments
 
-       url = "{0}/courses/{1}/assignments".format(baseUrl, course_id)
-       if Verbose_Flag:
-              print("url: {}".format(url))
+    url = "{0}/courses/{1}/assignments".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
 
-       r = requests.get(url, headers = header)
-       if Verbose_Flag:
-              print("result of getting assignments: {}".format(r.text))
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting assignments: {}".format(r.text))
 
-       if r.status_code == requests.codes.ok:
-              page_response=r.json()
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
 
-       for p_response in page_response:  
-              assignments_found_thus_far.append(p_response)
+        for p_response in page_response:  
+            assignments_found_thus_far.append(p_response)
 
-       # the following is needed when the reponse has been paginated
-       # i.e., when the response is split into pieces - each returning only some of the list of modules
-       # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-       while r.links['current']['url'] != r.links['last']['url']:  
-              r = requests.get(r.links['next']['url'], headers=header)  
-              page_response = r.json()  
-              for p_response in page_response:  
-                     assignments_found_thus_far.append(p_response)
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                assignments_found_thus_far.append(p_response)
 
-       return assignments_found_thus_far
+    return assignments_found_thus_far
 
 def list_peer_reviews(course_id, assignment_id):
-       reviews_found_thus_far=[]
+    reviews_found_thus_far=[]
 
-       # Use the Canvas API to get the list of peer reviwes for the course
-       # GET /api/v1/courses/:course_id/assignments/:assignment_id/peer_reviews
+    # Use the Canvas API to get the list of peer reviwes for the course
+    # GET /api/v1/courses/:course_id/assignments/:assignment_id/peer_reviews
 
-       url = "{0}/courses/{1}/assignments/{2}/peer_reviews".format(baseUrl, course_id, assignment_id)
-       if Verbose_Flag:
-              print("url: {}".format(url))
+    url = "{0}/courses/{1}/assignments/{2}/peer_reviews".format(baseUrl, course_id, assignment_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
 
-       r = requests.get(url, headers = header)
-       if Verbose_Flag:
-              print("result of getting peer reviews: {}".format(r.text))
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting peer reviews: {}".format(r.text))
 
-       if r.status_code == requests.codes.ok:
-              page_response=r.json()
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
 
-       for p_response in page_response:  
-              reviews_found_thus_far.append(p_response)
+        for p_response in page_response:  
+            reviews_found_thus_far.append(p_response)
 
-       # the following is needed when the reponse has been paginated
-       # i.e., when the response is split into pieces - each returning only some of the list of modules
-       # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-       if 'link' in r.headers:
-              while r.links['current']['url'] != r.links['last']['url']:  
-                     r = requests.get(r.links['next']['url'], headers=header)  
-                     page_response = r.json()  
-                     for p_response in page_response:  
-                            reviews_found_thus_far.append(p_response)
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        if 'link' in r.headers:
+            while r.links.get('next', False):
+                r = requests.get(r.links['next']['url'], headers=header)  
+                page_response = r.json()  
+                for p_response in page_response:  
+                    reviews_found_thus_far.append(p_response)
 
-       return reviews_found_thus_far
+    return reviews_found_thus_far
 
 
 
 def students_in_course(course_id):
-       students_found_thus_far=[]
+    students_found_thus_far=[]
 
-       # Use the Canvas API to get the list of students in this course
-       # GET /api/v1/courses/:course_id/users
+    # Use the Canvas API to get the list of students in this course
+    # GET /api/v1/courses/:course_id/users
 
-       url = "{0}/courses/{1}/users".format(baseUrl, course_id)
-       if Verbose_Flag:
-              print("url: {}".format(url))
+    url = "{0}/courses/{1}/users".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
 
-       # enrollment_type[] should be set to 'student'
-       # include[] perhaps include email, enrollments, avatar_url
-       extra_parameters={'enrollment_type[]': 'student', 'include[]': 'email, enrollments, avatar_url'}
-       r = requests.get(url, params=extra_parameters, headers = header)
-       if Verbose_Flag:
-              print("result of getting student enrollments: {}".format(r.text))
+    # enrollment_type[] should be set to 'student'
+    # include[] perhaps include email, enrollments, avatar_url
+    extra_parameters={'enrollment_type[]': 'student', 'include[]': 'email, enrollments, avatar_url'}
+    r = requests.get(url, params=extra_parameters, headers = header)
+    if Verbose_Flag:
+        print("result of getting student enrollments: {}".format(r.text))
 
-       if r.status_code == requests.codes.ok:
-              page_response=r.json()
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
 
-       for p_response in page_response:  
-              students_found_thus_far.append(p_response)
+        for p_response in page_response:  
+            students_found_thus_far.append(p_response)
 
-       # the following is needed when the reponse has been paginated
-       # i.e., when the response is split into pieces - each returning only some of the list of modules
-       # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-       if 'link' in r.headers:
-              while r.links['current']['url'] != r.links['last']['url']:  
-                     r = requests.get(r.links['next']['url'], headers=header)  
-                     page_response = r.json()  
-                     for p_response in page_response:  
-                            students_found_thus_far.append(p_response)
-       return students_found_thus_far
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        if 'link' in r.headers:
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                students_found_thus_far.append(p_response)
+    return students_found_thus_far
 
 def submission_for_assignment_by_user(course_id, assignment_id, user_id):
-       # return the submission information for a single user's assignment for a specific course as a dict
-       #
-       # Use the Canvas API to get a user's submission for a course for a specific assignment
-       # GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
-       url = "{0}/courses/{1}/assignments/{2}/submissions/{3}".format(baseUrl, course_id, assignment_id, user_id)
-       if Verbose_Flag:
-              print("url: {}".format(url))
+    # return the submission information for a single user's assignment for a specific course as a dict
+    #
+    # Use the Canvas API to get a user's submission for a course for a specific assignment
+    # GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
+    url = "{0}/courses/{1}/assignments/{2}/submissions/{3}".format(baseUrl, course_id, assignment_id, user_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
 
-       #extra_parameters={'student_ids[]': 'all'}
-       #r = requests.get(url, params=extra_parameters, headers = header)
-       r = requests.get(url, headers = header)
-       if Verbose_Flag:
-              print("result of getting submissions: {}".format(r.text))
+    #extra_parameters={'student_ids[]': 'all'}
+    #r = requests.get(url, params=extra_parameters, headers = header)
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting submissions: {}".format(r.text))
 
-       if r.status_code == requests.codes.ok:
-              page_response=r.json()
-              if Verbose_Flag:
-                     print("page_response: " + str(page_response))
-              return page_response
-       else:
-              return dict()
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+        if Verbose_Flag:
+            print("page_response: " + str(page_response))
+        return page_response
+    else:
+        return dict()
 
 def assign_peer_reviewer(course_id, assignment_id, user_id, submission_id):
-       global Verbose_Flag
+    global Verbose_Flag
 
-       # Use the Canvas API 
-       #POST /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
-       # Request Parameters:
-       #Parameter		Type	Description
-       # user_id	Required	integer	 user_id to assign as reviewer on this assignment
-       #
-       # from https://github.com/matematikk-mooc/frontend/blob/master/src/js/api/api.js
-       # createPeerReview: function(courseID, assignmentID, submissionID, userID, callback, error) {
-       #       this._post({
-       #              "callback": callback,
-       #              "error":    error,
-       #              "uri":      "/courses/" + courseID + "/assignments/" + assignmentID + "/submissions/" + submissionID + "/peer_reviews",
-       #              "params":   { user_id: userID }
-       #       });
-       #    },
+    # Use the Canvas API 
+    #POST /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
+    # Request Parameters:
+    #Parameter		Type	Description
+    # user_id	Required	integer	 user_id to assign as reviewer on this assignment
+    #
+    # from https://github.com/matematikk-mooc/frontend/blob/master/src/js/api/api.js
+    # createPeerReview: function(courseID, assignmentID, submissionID, userID, callback, error) {
+    #       this._post({
+    #              "callback": callback,
+    #              "error":    error,
+    #              "uri":      "/courses/" + courseID + "/assignments/" + assignmentID + "/submissions/" + submissionID + "/peer_reviews",
+    #              "params":   { user_id: userID }
+    #       });
+    #    },
    
-       url = "{0}/courses/{1}/assignments/{2}/submissions/{3}/peer_reviews".format(baseUrl, course_id, assignment_id, submission_id)
-       if Verbose_Flag:
-              print("url: {}".format(url))
+    url = "{0}/courses/{1}/assignments/{2}/submissions/{3}/peer_reviews".format(baseUrl, course_id, assignment_id, submission_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
 
-       payload={'user_id': user_id}
+    payload={'user_id': user_id}
 
-       r = requests.post(url, headers = header, data=payload)
-       if Verbose_Flag:
-              print("result of post assigning peer reviwer: {}".format(r.text))
-       if r.status_code == requests.codes.ok:
-              print("result of post assigning peer reviwer: {}".format(r.text))
-       if r.status_code == requests.codes.ok:
-              page_response=r.json()
-              print("assigned reviewer")
-              return True
-       return False
+    r = requests.post(url, headers = header, data=payload)
+    if Verbose_Flag:
+        print("result of post assigning peer reviwer: {}".format(r.text))
+    if r.status_code == requests.codes.ok:
+        print("result of post assigning peer reviwer: {}".format(r.text))
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+        print("assigned reviewer")
+        return True
+    return False
 
 def assign_assessor_as_peer_reviewer(course_id, assignment_id, assessor_id, user_id):
-       submission=submission_for_assignment_by_user(course_id, assignment_id, user_id)
-       if Verbose_Flag:
-              print("submission: {}".format(submission))
+    submission=submission_for_assignment_by_user(course_id, assignment_id, user_id)
+    if Verbose_Flag:
+        print("submission: {}".format(submission))
 
-       if Verbose_Flag:
-              print("user_id: {}".format(submission['user_id']))
+    if Verbose_Flag:
+        print("user_id: {}".format(submission['user_id']))
 
-       if submission['user_id'] == int(user_id):
-              if Verbose_Flag:
-                     print("matching submission: {}".format(submission))
-              output=assign_peer_reviewer(course_id, assignment_id, assessor_id, submission['id'])
-              return output
-       return "no match found"
+    if submission['user_id'] == int(user_id):
+        if Verbose_Flag:
+            print("matching submission: {}".format(submission))
+        output=assign_peer_reviewer(course_id, assignment_id, assessor_id, submission['id'])
+        return output
+    return "no match found"
 
 def copy_assigned_peer_reviewers(course_id, old_assignment_id, new_assignment_id):
-       # students=students_in_course(course_id)
-       # for student in students:
-       old_list=list_peer_reviews(course_id, old_assignment_id)
-       if Verbose_Flag:
-              print("old_list: {}".format(old_list))
+    # students=students_in_course(course_id)
+    # for student in students:
+    old_list=list_peer_reviews(course_id, old_assignment_id)
+    if Verbose_Flag:
+        print("old_list: {}".format(old_list))
 
-       for previous_peer_assignment in old_list:
-              assessor_id=previous_peer_assignment['assessor_id']
-              user_id=previous_peer_assignment['user_id']
-              if Verbose_Flag:
-                     print("assessor_id: {}".format(assessor_id))
-                     print("user_id: {}".format(user_id))
+    for previous_peer_assignment in old_list:
+        assessor_id=previous_peer_assignment['assessor_id']
+        user_id=previous_peer_assignment['user_id']
+        if Verbose_Flag:
+            print("assessor_id: {}".format(assessor_id))
+            print("user_id: {}".format(user_id))
 
-              assign_assessor_as_peer_reviewer(course_id, new_assignment_id, assessor_id, user_id)
-
-
-       new_list=list_peer_reviews(course_id, new_assignment_id)
-       if Verbose_Flag:
-              print("new_list: " + str(new_list))
+        assign_assessor_as_peer_reviewer(course_id, new_assignment_id, assessor_id, user_id)
 
 
-       
+        new_list=list_peer_reviews(course_id, new_assignment_id)
+        if Verbose_Flag:
+            print("new_list: " + str(new_list))
+
 def main():
-       global Verbose_Flag
+    global Verbose_Flag
 
-       parser = optparse.OptionParser()
+    parser = optparse.OptionParser()
 
-       parser.add_option('-v', '--verbose',
-                         dest="verbose",
-                         default=False,
-                         action="store_true",
-                         help="Print lots of output to stdout"
-       )
+    parser.add_option('-v', '--verbose',
+                      dest="verbose",
+                      default=False,
+                      action="store_true",
+                      help="Print lots of output to stdout"
+                      )
 
-       parser.add_option("--config", dest="config_filename",
-                         help="read configuration from FILE", metavar="FILE")
+    parser.add_option("--config", dest="config_filename",
+                      help="read configuration from FILE", metavar="FILE")
 
-       parser.add_option('-C', '--containers',
-                         dest="containers",
-                         default=False,
-                         action="store_true",
-                         help="for the container enviroment in the virtual machine"
-       )
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
+                      )
 
-       options, remainder = parser.parse_args()
+    options, remainder = parser.parse_args()
 
-       Verbose_Flag=options.verbose
-       if Verbose_Flag:
-              print('ARGV      :', sys.argv[1:])
-              print('VERBOSE   :', options.verbose)
-              print('REMAINING :', remainder)
+    Verbose_Flag=options.verbose
+    if Verbose_Flag:
+        print('ARGV      :', sys.argv[1:])
+        print('VERBOSE   :', options.verbose)
+        print('REMAINING :', remainder)
 
-       initialize(options)
+    initialize(options)
 
-       if (len(remainder) < 3):
-              print("Insuffient arguments\n must provide course_id old_assignment_id new_assignment_id\n")
-       else:
-              course_id=remainder[0]
-              old_assignment_id=remainder[1]
-              new_assignment_id=remainder[2]
+    if (len(remainder) < 3):
+        print("Insuffient arguments\n must provide course_id old_assignment_id new_assignment_id\n")
+    else:
+        course_id=remainder[0]
+        old_assignment_id=remainder[1]
+        new_assignment_id=remainder[2]
 
-              output=copy_assigned_peer_reviewers(course_id, old_assignment_id, new_assignment_id)
-              if (output):
-                     if Verbose_Flag:
-                            print(output)
+        output=copy_assigned_peer_reviewers(course_id, old_assignment_id, new_assignment_id)
+        if (output):
+            if Verbose_Flag:
+                print(output)
 
 if __name__ == "__main__": main()
-
