@@ -5,11 +5,16 @@
 # ./assign-random-peer-reviewer-by-section.py course_id new_assignment_id [old_assignment_id ]
 #
 # This program assigns each user in a course (course_id) with a randomly assigned peer reviewer from within their section for a given assignment (new_assignment).
+# Note that this program ignores all sections that do not have a single quote or the word "section" in them.
+#
+# Note also that there are some permutaitons that cannot meet the above two conditions and the additional condition of not having a person assigned
+# to review two different persons. In this case the program tries with a new starting permutation. It will try up to 99 times before giving
+# up doing peer reviewing assignments for this section. I know this is an arbitrary number, but hope that it works in practice.
 #
 # Example:
 #
 # ./assign-random-peer-reviewer-by-section.py --testing 28715 159758
-# 
+# ./assign-random-peer-reviewer-by-section.py 28850 160120
 #
 # G. Q. Maguire Jr.
 #
