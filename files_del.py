@@ -10,6 +10,7 @@
 # Example:
 # ./files_del.py -v --config config-test.json -c 2139
 #
+# Note that this removes the file completely from the systems -- including for all of the other courses that use this file!
 #
 # G. Q: Maguire Jr.
 #
