@@ -1732,6 +1732,7 @@ The program can walk a gradebook and do computations on the grades. Currently, i
 
 Note that you have to manually add a short name for each assignment_id number.
 
+Note that the "Notes" column has to be set to visible in the gradebook before the program will add the date inofmration to the notes column.
 
 ## set_status_in_course.py
 Purpose: To set a user's custom data field to reflext the user's perception of their stat of progress (for example, in a degree project course).

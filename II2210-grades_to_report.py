@@ -10,6 +10,8 @@
 # The program can walk a gradebook and do computations on the grades. Currently, it is for a course with 4 assigned that each have a certain maximum number of points.
 # Note that you have to manually add a short name for each assignment_id number.
 #  
+# Note that the "Notes" column has to be set to visible in the gradebook before the program will add the date inofmration to the notes column.
+#
 # 2021.04.12 G. Q. Maguire Jr.
 #
 #
