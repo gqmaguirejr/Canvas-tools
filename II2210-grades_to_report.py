@@ -564,18 +564,18 @@ def main(argv):
             print("assignments={0}".format(assignments))
 
     custom_columns=list_custom_columns()
-    print("custom_columns={}".format(custom_columns))
 
     if not custom_columns:
         # if missing, then add "Notes" column
         insert_column_name(course_id, "Notes")
         custom_columns=list_custom_columns()
 
+    if Verbose_Flag:
+        print("custom_columns={}".format(custom_columns))
+
     custom_column_data=dict()
     for c in custom_columns:
         custom_column_data[c['title']]=list_custom_column_entries(c['id'])
-
-
 
     grade_feed=list_gradebook_history_feed()
     print("length of grade_feed={0}".format(len(grade_feed)))
@@ -617,7 +617,9 @@ def main(argv):
         if Verbose_Flag:
             print("gradebook[{0}]={1}".format(e['user_id'], gradebook[e['user_id']]))
 
-    pprint.pprint(gradebook, indent=4)
+
+    if Verbose_Flag:
+        pprint.pprint(gradebook, indent=4)
     print("number of users in gradebook={0}".format(len(gradebook)))
 
 
