@@ -462,6 +462,34 @@ def put_custom_column_entries(column_id, user_id, data_to_store):
 
     return entries_found_thus_far
 
+def insert_column_name(course_id, column_name):
+    global Verbose_Flag
+
+    # Use the Canvas API to Create a custom gradebook column
+    # POST /api/v1/courses/:course_id/custom_gradebook_columns
+    #   Create a custom gradebook column
+    # Request Parameters:
+    #Parameter		Type	Description
+    #column[title]	Required	string	no description
+    #column[position]		integer	The position of the column relative to other custom columns
+    #column[hidden]		boolean	Hidden columns are not displayed in the gradebook
+    # column[teacher_notes]		boolean	 Set this if the column is created by a teacher. The gradebook only supports one teacher_notes column.
+
+    url = "{0}/courses/{1}/custom_gradebook_columns".format(baseUrl,course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+    payload={'column[title]': column_name,
+             'column[hidden]': False
+             }
+    r = requests.post(url, headers = header, data=payload)
+    if r.status_code == requests.codes.ok:
+        if Verbose_Flag:
+            print("result of post creating custom column:  {}".format(r.text))
+            page_response=r.json()
+            print("inserted column")
+        return True
+    return False
+
 def main(argv):
     global Verbose_Flag
     global assignments
@@ -537,6 +565,11 @@ def main(argv):
 
     custom_columns=list_custom_columns()
     print("custom_columns={}".format(custom_columns))
+
+    if not custom_columns:
+        # if missing, then add "Notes" column
+        insert_column_name(course_id, "Notes")
+        custom_columns=list_custom_columns()
 
     custom_column_data=dict()
     for c in custom_columns:
