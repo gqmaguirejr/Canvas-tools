@@ -1895,6 +1895,37 @@ Examples:
 
 ```
 
+## get_peer_reviews_and_comments.py
+
+Purpose: To get the peer reviewing information both comments and PDF file attachments
+
+Input:
+```
+./get_peer_reviews_and_comments.py -c course_id -a assignment_id
+```
+
+Output: Outputs a directory (assignment_folder) with a name of the form: Assignment_ddddd, where ddddd is the assignment_id.
+	In this directory will be a directory (teacher_folder) using the teacher's name, for each of the teachers who has commented on a submission.
+	In this directoty there will be a directory (peer_review_folder) with names based on the peer review id.
+	Within this directory there can be one or more files.
+	One file has a name of the form: basic_info_{1}-{2}.json where {1} is the student's name who made the submission and {2} is the assessor's name.
+	Any text comments that were made will be in files of the form: {1}-{2}.txt where {1} is the comment_author_name and {2} is the comment_date.
+	Any PDF file attachments will have a name of the form: {1}-{2}-{3} where {1} is comment_author_name, {2} is the attachment_date, and {3} is the file_name of the attachment.
+
+The program outputs a JSON file with a name of the form: peer_reviewrs_{0}-{1}.json where {0} is the course_id and {1} is the assignment_id - this contains the information returned for all the peer reviews for the assignment in this course.
+
+The program also outputs another JSON file of the form: {2}_peer_reviwers_{0}-{1}.json where {0} is the course_id, {1} is the assignment_id, and {0} is the teacher's name.
+
+As the program is running it outputs the number of teachers in the course and their user_id and name. It also says how many (top level) peer reviews there were and how many there are for each teacher.
+
+Note that the program does not do anything with section or group information. These might be interesting for future enhancements.
+
+Example:
+```
+./get_peer_reviews_and_comments.py -c 28715 -a 159760
+```
+
+
 <!-- 
 
 ## xxx.py
