@@ -1925,6 +1925,40 @@ Example:
 ./get_peer_reviews_and_comments.py -c 28715 -a 159760
 ```
 
+## edit_modules_items_in_a_module_in_a_course.py
+
+Purpose: To go throught a specific module or all modules in a course and perform some operations on the content of each page, for example replacing '<p>' with '<p lang="en_us">' to do language tagging.
+
+Input:
+```
+./edit_modules_items_in_a_module_in_a_course.py course_id [module_name]
+```
+
+Output: proggress information such as:
+```
+processing module: II2202 modules
+process_item 1
+processing item: Course syllabus (kurs-PM)
+process_item 2
+processing item: Course Introduction
+process_item 3
+processing item: TimeEdit
+```
+
+Note you have to edit the program to add the operations that you want to perform on the page contents.
+
+Example:
+```
+./edit_modules_items_in_a_module_in_a_course.py 11 'Presenting data (as a Wiki)'
+
+```
+
+You can process all of the modules in the course with:
+```
+./edit_modules_items_in_a_module_in_a_course.py 11
+
+```
+
 
 <!-- 
 

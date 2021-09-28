@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./modules-items-in-course.py course_id
+# ./edit_modules_items_in_a_module_in_a_course.py course_id [module_name]
 #
-# Output: XLSX spreadsheet with modules in course
+# Output: To go throught a specific module or all modules in a course and perform some operations on the content of each page, for example replacing '<p>' with '<p lang="en_us">' to do language tagging.
 #
+# Note that you have to change the code at "# do the processing here" to do what you want.
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
@@ -12,19 +13,17 @@
 # ./list_your_courses.py --config config-test.json
 #
 # Example:
-# ./modules-items-in-course.py 11
+# ./edit_modules_items_in_a_module_in_a_course.py 11 'Presenting data (as a Wiki)'
 #
-# ./modules-items-in-course.py --config config-test.json 11
+# or process all of the modules in the course with:
+# ./edit_modules_items_in_a_module_in_a_course.py 11
 #
 # 
-# documentation about using xlsxwriter to insert images can be found at:
-#   John McNamara, "Example: Inserting images into a worksheet", web page, 10 November 2018, https://xlsxwriter.readthedocs.io/example_images.html
-#
 # G. Q. Maguire Jr.
 #
-# based on earlier list-modules.py
+# based on earlier modules-items-in-course.py
 #
-# 2019.01.05
+# 2021-09-28
 #
 
 import requests, time
@@ -131,6 +130,75 @@ def list_module_items(course_id, module_id):
 
     return module_items_found_thus_far
 
+def process_module(course_id, module_id, modules):
+    global Verbose_Flag
+
+    module_items=list_module_items(course_id, module_id)
+    if Verbose_Flag:
+        print("module_items={}".format(module_items))
+
+    number_of_items=len(module_items)
+    if Verbose_Flag:
+        print("number_of_items={}".format(number_of_items))
+
+    if number_of_items < 1:
+        return
+
+    for i in range(1, number_of_items+1):
+        process_item(i, module_items)
+
+def process_item(position, module_items):
+    print("process_item {}".format(position))
+    item_to_process=None
+    for item in module_items:
+        if item['position'] == position:
+            item_to_process=item
+
+    if not item_to_process:
+        return
+
+    print("processing item: {}".format(item_to_process['title']))
+    if item_to_process['type'] == 'Page':
+        url=item_to_process['url']
+        payload={}
+        r = requests.get(url, headers = header, data=payload)
+        if Verbose_Flag:
+            print("r.status_code: {}".format(r.status_code))
+        if r.status_code == requests.codes.ok:
+            page_response = r.json()
+            # chec that the response was not None
+            pr=page_response["body"]
+            if not pr:
+                return
+            # modified the code to handle empty files
+            if len(pr) == 0:
+                return
+            encoded_output = page_response["body"]
+
+            if Verbose_Flag:
+                print("encoded_output before: {}".format(encoded_output))
+
+            # do the processing here
+            encoded_output=encoded_output.replace('<h3>Transcript</h3>', '<h2>Transcript</h2>')
+            encoded_output=encoded_output.replace('<p>', '<p lang="en_us">')
+
+            if Verbose_Flag:
+                print("encoded_output after: {}".format(encoded_output))
+
+            # update the page
+            payload={"wiki_page[body]": encoded_output}
+            r = requests.put(url, headers = header, data=payload)
+            if Verbose_Flag:
+                print("r.status_code: {}".format(r.status_code))
+            if r.status_code == requests.codes.ok:
+                return True
+            else:
+                return False
+
+    return True
+    
+
+
 def main():
     global Verbose_Flag
 
@@ -159,28 +227,28 @@ def main():
     initialize(options)
 
     if (len(remainder) < 1):
-        print("Insuffient arguments - must provide course_id\n")
+        print("Insuffient arguments - must provide course_id")
+        return
+    
+    course_id=remainder[0]
+
+    modules=list_modules(course_id)
+    if not modules:
+        print("No modules in the course!")
+
+    module_id=None
+    if (len(remainder) == 2):
+        module_name=remainder[1]
+        for m in modules:
+            if m['name'] == module_name:
+                module_id=m['id']
+
+    if not module_id:
+        for m in modules:
+            print("processing module: {}".format(m['name']))
+            process_module(course_id, m['id'], modules)
     else:
-        course_id=remainder[0]
-        modules=list_modules(course_id)
-        if (modules):
-            modules_df=pd.json_normalize(modules)
-                     
-            # below are examples of some columns that might be dropped
-            #columns_to_drop=[]
-            #modules_df.drop(columns_to_drop,inplace=True,axis=1)
+        process_module(course_id, module_id, modules)
 
-            # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
-            # set up the output write
-            writer = pd.ExcelWriter('modules-items-'+course_id+'.xlsx', engine='xlsxwriter')
-            modules_df.to_excel(writer, sheet_name='Modules')
-
-            for m in sorted(modules, key=lambda x: x['id']):
-                mi=list_module_items(course_id, m['id'])
-                mi_df=pd.json_normalize(mi)
-                mi_df.to_excel(writer, sheet_name=str(m['id']))
-
-            # Close the Pandas Excel writer and output the Excel file.
-            writer.save()
 
 if __name__ == "__main__": main()
