@@ -1959,6 +1959,39 @@ You can process all of the modules in the course with:
 
 ```
 
+##  ./delete_a_module_and_its_items.py course_id
+
+Purpose: To delete a module. It additionally, deletes any wikipages unless they are used in another module. This should make it possible to re-import a new version of this module into a course.
+
+Input:
+```
+ ./delete_a_module_and_its_items.py course_id 'module_name'
+```
+
+Output: outputs some progress information.
+
+Note that when an existing page is used in a module, it gets a new module item instance in the module ; however, the url points to the original wikipage.
+
+Example:
+```
+./delete_a_module_and_its_items.py --config config-test.json 11 'Test module for deletion' 
+process_item 1
+processing item: Test page 1 for deletion
+process_item 2
+processing item: Introduction to Chip's sandbox			<<< This is used in another module
+process_item 3
+processing item: Test page 2 for deletion
+process_item 4
+processing item: A dummy header for deletion
+process_item 5
+processing item: Test page 3 for deletion
+```
+
+You can xxxx, for example:
+```
+
+```
+
 
 <!-- 
 
