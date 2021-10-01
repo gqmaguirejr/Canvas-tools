@@ -284,11 +284,6 @@ def process_item(course_id, position, module_items, module_id, modules_info):
 
     print("processing item: {}".format(item_to_process['title']))
 
-    if not Testing_Flag:
-        delete_module_item(course_id, module_id, item_to_process['id'])
-    else:
-        print("If not testing, item_id={} would be deleted".format(item_to_process['id']))
-
     # the types of th module items are: 'File', 'Page', 'Discussion', 'Assignment', 'Quiz',
     # 'SubHeader', 'ExternalUrl', 'ExternalTool'
     # delete the module item from this module
@@ -301,6 +296,11 @@ def process_item(course_id, position, module_items, module_id, modules_info):
                 del_course_pages(course_id, [url])
             else:
                 print("If not testing, url={} would be deleted".format(url))
+
+    if not Testing_Flag:
+        delete_module_item(course_id, module_id, item_to_process['id'])
+    else:
+        print("If not testing, item_id={} would be deleted".format(item_to_process['id']))
 
     return True
 
