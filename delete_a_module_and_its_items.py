@@ -184,11 +184,11 @@ def del_course_pages(course_id, urls):
         r = requests.delete(url, headers = header, data=payload)
         if Verbose_Flag:
             print("r.status_code: {}".format(r.status_code))
-            if r.status_code == requests.codes.ok:
-                page_response = r.json()
-                print("{} deleted".format(canvas_course_page_url))
-            else:
-                print("error when deleteing page: {}".format(page_url))
+        if r.status_code == requests.codes.ok:
+            page_response = r.json()
+            print("{} deleted".format(canvas_course_page_url))
+        else:
+            print("error when deleteing page: {}".format(page_url))
 
 
 def delete_module(course_id, module_id):
@@ -283,21 +283,24 @@ def process_item(course_id, position, module_items, module_id, modules_info):
         return
 
     print("processing item: {}".format(item_to_process['title']))
+
+    if not Testing_Flag:
+        delete_module_item(course_id, module_id, item_to_process['id'])
+    else:
+        print("If not testing, item_id={} would be deleted".format(item_to_process['id']))
+
     # the types of th module items are: 'File', 'Page', 'Discussion', 'Assignment', 'Quiz',
     # 'SubHeader', 'ExternalUrl', 'ExternalTool'
+    # delete the module item from this module
     if item_to_process['type'] == 'Page':
         url=item_to_process['url']
         # skip deletion of pages that are in use in another module
         if not look_for_use_elsewhere(course_id, url, module_id, modules_info):
             if not Testing_Flag:
-                del_course_pages(course_id, list(url))
+                #print("deleting course page {}".format(url))
+                del_course_pages(course_id, [url])
             else:
                 print("If not testing, url={} would be deleted".format(url))
-        # delete the module item from this module
-        if not Testing_Flag:
-            delete_module_item(course_id, module_id, item_to_process['id'])
-        else:
-            print("If not testing, item_id={} would be deleted".format(item_to_process['id']))
 
     return True
 
