@@ -523,7 +523,8 @@ def main():
     for section in sections:
         print("working on {}".format(section['name']))
 
-        if course_id == 28850 and section['id'] in [39702]: #  skip Magnus' section
+        if section['name'].find('Magnus Boman') >= 0: #  skip Magnus' section
+            print("Skipping Magnus Boman's section")
             continue
 
         if options.testing and course_id == 28715 and section['id'] not in [emils_section, chips_section]:
@@ -551,6 +552,9 @@ def main():
                 assignments[a]=assignments_for_section[a]
 
     print("assignments={}".format(assignments))
+    if options.testing:
+        return
+
     for a in assignments:
         reviewer=a
         reviewee=assignments[reviewer]
