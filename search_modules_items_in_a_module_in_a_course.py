@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./edit_modules_items_in_a_module_in_a_course.py course_id [module_name]
+# ./search_modules_items_in_a_module_in_a_course.py course_id "string" [module_name]
 #
 # Output: To go throught a specific module or all modules in a course and perform some operations on the content of each page, for example replacing '<p>' with '<p lang="en-us">' to do language tagging.
 #
@@ -13,10 +13,10 @@
 # ./list_your_courses.py --config config-test.json
 #
 # Example:
-# ./edit_modules_items_in_a_module_in_a_course.py 11 'Presenting data (as a Wiki)'
+# ./search_modules_items_in_a_module_in_a_course.py 11 'Presenting data (as a Wiki)'
 #
 # or process all of the modules in the course with:
-# ./edit_modules_items_in_a_module_in_a_course.py 11
+# ./search_modules_items_in_a_module_in_a_course.py 11
 #
 # 
 # G. Q. Maguire Jr.
@@ -130,7 +130,7 @@ def list_module_items(course_id, module_id):
 
     return module_items_found_thus_far
 
-def process_module(course_id, module_id, modules):
+def process_module(course_id, module_id, modules, search_string):
     global Verbose_Flag
 
     module_items=list_module_items(course_id, module_id)
@@ -145,10 +145,13 @@ def process_module(course_id, module_id, modules):
         return
 
     for i in range(1, number_of_items+1):
-        process_item(i, module_items)
+        process_item(i, module_items, search_string)
 
-def process_item(position, module_items):
-    print("process_item {}".format(position))
+def process_item(position, module_items, search_string):
+    global Quiet_Flag
+
+    if not Quiet_Flag:
+        print("process_item {}".format(position))
     item_to_process=None
     for item in module_items:
         if item['position'] == position:
@@ -157,7 +160,9 @@ def process_item(position, module_items):
     if not item_to_process:
         return
 
-    print("processing item: {}".format(item_to_process['title']))
+    if not Quiet_Flag:
+        print("processing item: {}".format(item_to_process['title']))
+
     if item_to_process['type'] == 'Page':
         url=item_to_process['url']
         payload={}
@@ -179,28 +184,13 @@ def process_item(position, module_items):
                 print("encoded_output before: {}".format(encoded_output))
 
             # do the processing here
-            encoded_output=encoded_output.replace('<h3>Transcript</h3>', '<h2>Transcript</h2>')
-            encoded_output=encoded_output.replace('<p>', '<p lang="en-US">')
-            encoded_output=encoded_output.replace('lang="en_us"', 'lang="en-US"')
-            encoded_output=encoded_output.replace('lang="sv_se"', 'lang="sv-SE"')
-            encoded_output=encoded_output.replace('lang="fr_fr"', 'lang="fr-FR"')
-            encoded_output=encoded_output.replace('lang="de_de"', 'lang="de-DE"')
-            encoded_output=encoded_output.replace('lang="no_nb"', 'lang="nb-NO"')
-            encoded_output=encoded_output.replace('lang="da_dk"', 'lang="da-DK"')
-
-
-            if Verbose_Flag:
-                print("encoded_output after: {}".format(encoded_output))
-
-            # update the page
-            payload={"wiki_page[body]": encoded_output}
-            r = requests.put(url, headers = header, data=payload)
-            if Verbose_Flag:
-                print("r.status_code: {}".format(r.status_code))
-            if r.status_code == requests.codes.ok:
-                return True
-            else:
-                return False
+            offset=encoded_output.find(search_string)
+            if  offset >= 0:
+                print("Found instance of {0} in page {1}".format(search_string, item_to_process['title']))
+                output_line_offset=encoded_output[offset:].find('&gt;')
+                if output_line_offset >= 0:
+                    output_line=encoded_output[offset:output_line_offset-1]
+                    print("found in context {}".format(output_line))
 
     return True
     
@@ -208,6 +198,7 @@ def process_item(position, module_items):
 
 def main():
     global Verbose_Flag
+    global Quiet_Flag
 
     default_picture_size=128
 
@@ -222,6 +213,13 @@ def main():
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
     
+    parser.add_option('-q', '--quiet',
+                      dest="quiet",
+                      default=False,
+                      action="store_true",
+                      help="reduce the amount of text sent to stdout"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -231,21 +229,24 @@ def main():
         print("REMAINING : {}".format(remainder))
         print("Configuration file : {}".format(options.config_filename))
 
+    Quiet_Flag=options.quiet
+
     initialize(options)
 
-    if (len(remainder) < 1):
-        print("Insuffient arguments - must provide course_id")
+    if (len(remainder) < 2):
+        print("Insuffient arguments - must provide course_id string_to_search_for")
         return
     
     course_id=remainder[0]
+    search_string=remainder[1]
 
     modules=list_modules(course_id)
     if not modules:
         print("No modules in the course!")
 
     module_id=None
-    if (len(remainder) == 2):
-        module_name=remainder[1]
+    if (len(remainder) == 3):
+        module_name=remainder[2]
         for m in modules:
             if m['name'] == module_name:
                 module_id=m['id']
@@ -253,9 +254,9 @@ def main():
     if not module_id:
         for m in modules:
             print("processing module: {}".format(m['name']))
-            process_module(course_id, m['id'], modules)
+            process_module(course_id, m['id'], modules, search_string)
     else:
-        process_module(course_id, module_id, modules)
+        process_module(course_id, module_id, modules, search_string)
 
 
 if __name__ == "__main__": main()
