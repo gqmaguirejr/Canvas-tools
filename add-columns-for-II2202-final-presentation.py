@@ -18,6 +18,8 @@
 # G. Q. Maguire Jr.
 #
 # 2019.07.01
+# 2021-10-16 removed processing of last page, to simply use the next page for paginated responses
+#            also added --early option to only do the adding of columns and not the processing of the calendar
 #
 
 import csv, requests, time
@@ -142,8 +144,8 @@ def list_custom_column_entries(course_id, column_number):
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
-            r = requests.get(r.links['next']['url'], headers=header)  
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)
             page_response = r.json()  
             for p_response in page_response:  
                 entries_found_thus_far.append(p_response)
@@ -176,7 +178,7 @@ def list_custom_columns(course_id):
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
+        while r.links.get('next', False):
             r = requests.get(r.links['next']['url'], headers=header)  
             page_response = r.json()  
             for p_response in page_response:  
@@ -237,7 +239,7 @@ def list_assignments(course_id):
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
+        while r.links.get('next', False):
             r = requests.get(r.links['next']['url'], headers=header)  
             page_response = r.json()  
             for p_response in page_response:  
@@ -279,7 +281,7 @@ def list_peer_review_assignments(course_id, assignment_id):
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
         if 'link' in r.headers:
-            while r.links['current']['url'] != r.links['last']['url']:  
+            while r.links.get('next', False):
                 r = requests.get(r.links['next']['url'], headers=header)  
                 page_response = r.json()  
                 for p_response in page_response:  
@@ -313,7 +315,7 @@ def users_in_course(course_id):
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
         if 'link' in r.headers:
-            while r.links['current']['url'] != r.links['last']['url']:  
+            while r.links.get('next', False):
                 r = requests.get(r.links['next']['url'], headers=header)  
                 page_response = r.json()  
                 for p_response in page_response:  
@@ -363,7 +365,7 @@ def calendar_events_in_course(course_id, start_date, end_date):
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
         if 'link' in r.headers:
-            while r.links['current']['url'] != r.links['last']['url']:  
+            while r.links.get('next', False):
                 r = requests.get(r.links['next']['url'], headers=header)  
                 page_response = r.json()  
                 for p_response in page_response:  
@@ -395,7 +397,7 @@ def list_groups_in_course(course_id):
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
         if 'link' in r.headers:
-            while r.links['current']['url'] != r.links['last']['url']:  
+            while r.links.get('next', False):
                 r = requests.get(r.links['next']['url'], headers=header)  
                 page_response = r.json()  
                 for p_response in page_response:  
@@ -427,7 +429,7 @@ def members_of_groups(group_id):
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
         if 'link' in r.headers:
-            while r.links['current']['url'] != r.links['last']['url']:  
+            while r.links.get('next', False):
                 r = requests.get(r.links['next']['url'], headers=header)  
                 page_response = r.json()  
                 for p_response in page_response:  
@@ -466,6 +468,13 @@ def main():
                       help="for the container enviroment in the virtual machine"
     )
 
+    parser.add_option('-e', '--early',
+                      dest="early",
+                      default=False,
+                      action="store_true",
+                      help="Add the columns but do not process the calendar"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -488,14 +497,14 @@ def main():
         # if you change the names of these columns, be sure to change the strings later in the code
         columns_to_add=["Oral presentation date/time",
                         "title",
-                        "Opponent",
-	                "Written opposition (by opponents)",
-	                "Questions from opponent",
-                        "Notes on presentation",
+                        "opponent",
+	                "written opposition (by opponents)",
+	                "questions from opponent",
+                        "notes on presentation",
                         "presentation grade",
-                        "Grade for written opposition",
-	                "Final report grade",
-	                "Overall final grade"]
+                        "grade for written opposition",
+	                "final report grade",
+	                "overall final grade"]
 
         # identify which assignment to use to get the information about the opponent(s)
         # for P1
@@ -503,8 +512,6 @@ def main():
         #                           Written opposition: before final seminar - with peer review
         # for P1P2
         #opposition_assignment_name="Opposition before final seminar - with peer review"
-
-
 
         list_of_columns=list_custom_columns(course_id)
         for column_name in columns_to_add:
@@ -530,11 +537,15 @@ def main():
             print('final list of columns is {}'.format(list_of_columns))
 
         # Add names of peer reviewer(s) to the opponent column
-        opponent_column_number=lookup_column_number("Opponent", list_of_columns)
+        opponent_column_number=lookup_column_number("opponent", list_of_columns)
+        if opponent_column_number <1:
+            print("Error did not find opponents column")
+            return
 
+        # Get the list of entries in the opponents column
         opponents=list_custom_column_entries(course_id, opponent_column_number)
         if Verbose_Flag:
-            print('{0} opponents is {1}'.format(len(opponents), opponents))
+            print('number of existing opponents is {0} opponents are {1}'.format(len(opponents), opponents))
 
         users=users_in_course(course_id)
         if Verbose_Flag:
@@ -556,6 +567,9 @@ def main():
                     put_custom_column_entries(course_id, opponent_column_number, user_id, opponent + ';' + assessor_name)
                     if Verbose_Flag:
                         print("{0} is reviewed by multiple {1}".format(user_id, opponent + ';' + assessor_name))
+
+        if options.early:       # do not process the calendar
+            return
 
         # get group information
         groups=list_groups_in_course(course_id)
