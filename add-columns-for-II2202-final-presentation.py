@@ -610,12 +610,18 @@ def main():
                         print("context_code {0} for user_id {1} named {2}".format(cc, user_id, name_of_student(user_id, users)))
                     group_id=group_by_member[user_id]
                     for m in group_members_by_group[group_id]: # add timestamp for all group members
-                        put_custom_column_entries(course_id, date_time_column_number, m, time_stamp_local)
+                        if options.testing:
+                            print("m={0} at {1}".format(m, time_stamp_local))
+                        else:
+                            put_custom_column_entries(course_id, date_time_column_number, m, time_stamp_local)
                 else:
                     if cc.startswith(group_prefix): # process the event for the group who booked it
                         group_id=int(cc[len(group_prefix):])
                         for m in group_members_by_group[group_id]: # add timestamp for all group members
-                            put_custom_column_entries(course_id, date_time_column_number, m, time_stamp_local)
+                            if options.testing:
+                                print("m={0} at {1}".format(m, time_stamp_local))
+                            else:
+                                put_custom_column_entries(course_id, date_time_column_number, m, time_stamp_local)
 
 if __name__ == "__main__": main()
 
