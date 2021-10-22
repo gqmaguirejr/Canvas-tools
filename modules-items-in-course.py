@@ -170,6 +170,12 @@ def main():
             #columns_to_drop=[]
             #modules_df.drop(columns_to_drop,inplace=True,axis=1)
 
+            if Verbose_Flag:
+                cols=modules_df.columns.values.tolist()
+                print("cols={}".format(cols))
+
+            modules_df.sort_values(by='position',inplace=True)
+
             # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
             # set up the output write
             writer = pd.ExcelWriter('modules-items-'+course_id+'.xlsx', engine='xlsxwriter')
@@ -178,6 +184,7 @@ def main():
             for m in sorted(modules, key=lambda x: x['id']):
                 mi=list_module_items(course_id, m['id'])
                 mi_df=pd.json_normalize(mi)
+                mi_df.sort_values(by='position',inplace=True)
                 mi_df.to_excel(writer, sheet_name=str(m['id']))
 
             # Close the Pandas Excel writer and output the Excel file.
