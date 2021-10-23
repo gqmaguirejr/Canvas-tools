@@ -1992,6 +1992,28 @@ You can xxxx, for example:
 
 ```
 
+## compute_stats_for_course.py
+
+Purpose: Textatistic is used to compute some statistics about module items that are Pages.
+       HTML elements that contain non-English sentences are filtered or cause an exception for Textatistic.
+             By default, only published pages are processed (use option -u or --unpublished to include them).
+
+      The pages (either on 'All pages' or 'All published pages') are sorted by the module's position and the postion of the page within this module. This is to make it easy to look at the statistics for pages within a module and across modules.
+
+Input:
+```
+./compute_stats_for_course.py course_id
+```
+
+Output: XLSX spreadsheet with modules in course
+
+Note 
+     The filtering is a work in progress - the filters should be expanded.
+
+Example:
+```
+./compute_stats_for_course.py 11
+```
 
 <!-- 
 
