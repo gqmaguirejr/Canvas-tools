@@ -4,6 +4,9 @@
 # ./compute_stats_for_course.py course_id
 #
 # Textatistic is used to compute some statistics about module items that are Pages.
+# For details of the metrics, see https://www.erinhengel.com/software/textatistic/
+# and the code at https://github.com/erinhengel/Textatistic/blob/master/textatistic/textatistic.py
+#
 #       HTML elements that contain non-English sentences are filtered or cause an exception for Textatistic.
 #             By default, only published pages are processed (use option -u or --unpublished to include them).
 #
@@ -183,11 +186,17 @@ def augment_entries(course_id, moduleItems, module_name, module_position, option
                             bad.getparent().remove(bad)
 
                     #  remove anything in one of the following languages
-                    languages_to_remove=['sv', 'sv-SE', 'fr', 'fr-FR', 'de', 'de-DE', 'nb-NO', 'da-DK', 'zh-Hans']
+                    languages_to_remove=['sv', 'sv-SE', 'fr', 'fr-FR', 'de', 'de-DE', 'nb-NO', 'nn-NO', 'da-DK', 'zh-Hans', 'es', 'es-ES', 'nl', 'nl-NL', 'it', 'it-IT', 'X-NONE', 'x-western']
                     for l in languages_to_remove:
                         lang_path="//*[@lang=\'{0}\']".format(l)
                         for bad in document.xpath(lang_path):
                             bad.getparent().remove(bad)
+
+                    expected_languages=['en', 'en-US', 'en-GB', 'en-UK']
+                    for el in document.xpath('//*[@lang]'):
+                        lang=el.get('lang')
+                        if lang not in expected_languages:
+                            print("Unexpected language={0}, url={1}".format(lang, url))
 
                     raw_text = document.text_content()
                     if Verbose_Flag:

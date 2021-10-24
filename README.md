@@ -2015,6 +2015,24 @@ Example:
 ./compute_stats_for_course.py 11
 ```
 
+## augments-course-stats-with-plots.py
+Purpose: take the output of compute_stats_for_course.py and agument it with a plot of the SMOG scores of the pages.
+
+Input:
+```
+./augments-course-stats-with-plots.py -c course_id
+```
+
+Output: outputs an updated spreadsheet 'course-modules-item-stats-'+course_id+'-augmented.xlsx' - not current include only the sheet with the readability scores and a plot of the SMOG scores for all of the pages in the course - organized by module.
+
+Note: It tries to enlarge the size of the bar charart vertically based upon multiples of 50 module item pages. It also scales the SMOG chart based on the highest score rounded up to a multiple of 5.
+
+Example:
+```
+./augments-course-stats-with-plots.py -c 28715
+```
+
+
 <!-- 
 
 ## xxx.py

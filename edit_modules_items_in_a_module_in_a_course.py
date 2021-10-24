@@ -186,6 +186,7 @@ def process_item(position, module_items):
             encoded_output=encoded_output.replace('lang="fr_fr"', 'lang="fr-FR"')
             encoded_output=encoded_output.replace('lang="de_de"', 'lang="de-DE"')
             encoded_output=encoded_output.replace('lang="no_nb"', 'lang="nb-NO"')
+            encoded_output=encoded_output.replace('lang="no_no"', 'lang="nb-NO"')
             encoded_output=encoded_output.replace('lang="da_dk"', 'lang="da-DK"')
 
 
