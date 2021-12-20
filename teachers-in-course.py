@@ -181,6 +181,8 @@ def main():
 
     course_id=remainder[0]
     users=users_in_course(course_id)
+    if Verbose_Flag:
+        print("users={}".format(users))
 
     teachers=list()
     for u in users:

@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
-# II2210-grades_to_report.py -c course_id
+# II2210-grades_to_reportv2.py -c course_id
 #
 # Example:
-# ./II2210-grades_to_report.py    -c 11 
+# ./II2210-grades_to_reportv2.py    -c 11 
 #
 # The program can walk a gradebook and do computations on the grades. Currently, it is for a course with 4 assigned that each have a certain maximum number of points.
 # Note that you have to manually add a short name for each assignment_id number.
@@ -14,6 +14,9 @@
 #
 # 2021.04.12 G. Q. Maguire Jr.
 #
+# Modified 2021-12-20 - to make the Notes column visible. This avoids creating a new "Notes" column.
+#                       This also has a version of list_columns that lists hideen columns.
+# This version of the program is for use after 2022-01-01
 #
 # The dates from Canvas are in ISO 8601 format.
 #
@@ -164,7 +167,9 @@ def list_custom_columns():
     if Verbose_Flag:
         print("url: {}".format(url))
 
-    r = requests.get(url, headers = header)
+    payload={'include_hidden': True }
+
+    r = requests.get(url, headers = header, data=payload)
     if Verbose_Flag:
         print("result of getting custom columns: {}".format(r.text))
 
@@ -593,13 +598,15 @@ def main(argv):
             print("assignments={0}".format(assignments))
 
     custom_columns=list_custom_columns()
-
-    if not custom_columns:
+    # Make sure "Notes" column is visible
+    if custom_columns:
+        for c in custom_columns:
+            if c['title'] == 'Notes' and c['hidden']:
+                unhide_column_name(course_id, "Notes")
+    else:
         # if missing, then add "Notes" column
         insert_column_name(course_id, "Notes")
         custom_columns=list_custom_columns()
-    else:
-        unhide_column_name(course_id, "Notes")
 
     if Verbose_Flag:
         print("custom_columns={}".format(custom_columns))

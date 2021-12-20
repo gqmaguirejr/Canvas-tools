@@ -1734,6 +1734,24 @@ Note that you have to manually add a short name for each assignment_id number.
 
 Note that the "Notes" column has to be set to visible in the gradebook before the program will add the date inofmration to the notes column.
 
+# II2210-grades_to_reportv2.py
+Purpose: To show  hot ro programmatically access assignment, the gradebook, and the custome columns to be able to do calculations on grades, dates of submission, due dates, etc.
+
+Input:
+```
+./II2210-grades_to_reportv2.py -c course_id
+```
+
+Output: outputs gradebook and other information
+
+Note: This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
+
+The program can walk a gradebook and do computations on the grades. Currently, it is for a course with 4 assigned that each have a certain maximum number of points.
+
+Note that you have to manually add a short name for each assignment_id number.
+
+The "Notes" column is set to visible in the gradebook by the program. This avoids create a second "Notes" column.
+
 ## set_status_in_course.py
 Purpose: To set a user's custom data field to reflext the user's perception of their stat of progress (for example, in a degree project course).
 
