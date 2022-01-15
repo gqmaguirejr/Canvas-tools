@@ -266,8 +266,6 @@ delete-sections-in-course.py course_id section_id
 ### Output
 deleting section id=NNNN with name=SSSSSS
 
-Note 
-
 ### Example
 
 ```bash
@@ -529,7 +527,8 @@ outputs a file with a name of the form: calendar-user_id.xlsx
 ### Output
 Nothing
 
-Note: Can be modified to use a course or a user content.
+### Note
+Can be modified to use a course or a user content.
 
 ## list_calendar_events.py
 
@@ -586,7 +585,8 @@ add-columns-for-II2202-final-presentation.py  course_id start_date end_date
 ### Output
 Adds the columns to the course's gradebook and populates the "Opponents" columns with the name of the student's peer reviwer and populates the "Oral presentation date/time" columns with the date and time of the oral presentation as scheduled in the calendar.
 
-Note: The columns are custom columns that can have up to ~256 characters entered into them. This is a limitation of the custom columns due to their underlying representation in the database used by Canvas.
+### Note
+The columns are custom columns that can have up to ~256 characters entered into them. This is a limitation of the custom columns due to their underlying representation in the database used by Canvas.
 
 ### Example
 
@@ -687,7 +687,8 @@ No ouput unless run in verbose mode.
 ### Output
 spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
-Note: It skips courses involving the whole of KTH (as of 2019-08-15)
+### Note
+It skips courses involving the whole of KTH (as of 2019-08-15)
 
 ## students-in-my-courses-with-cat.py
 
@@ -703,7 +704,8 @@ Note: It skips courses involving the whole of KTH (as of 2019-08-15)
 ### Output
 spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
-Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "concat" that contains the concatinated data from the separate spreadsheets.
+### Note
+It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "concat" that contains the concatinated data from the separate spreadsheets.
 
 
 ## students-in-my-courses-with-join.py
@@ -720,7 +722,8 @@ Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also 
 ### Output
 spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
-Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "Summary" that contains a summary of all of the information about the students and which courses they were in. This page has all of the students, the individual courses (by course_id), and a list of all courses (by course_id) the student was in.
+### Note
+It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "Summary" that contains a summary of all of the information about the students and which courses they were in. This page has all of the students, the individual courses (by course_id), and a list of all courses (by course_id) the student was in.
 
 Further note that it does not acutal use a join operation, but actually computes two dictionaries: one with information about the student (user_id, login ID, SIS_user_id, and various forms of the user's name) and the other with the list of course that a give user has been a student in. These data structures are then turned into a Python Pandas DataFrame and then output as the summary sheet. [However, logically the operation is a join on the data based on the user information.]
 
@@ -762,8 +765,6 @@ In the above case the old_assignment was 86839 and the new assignment was 86851.
 
 ### Output
 outputs a summary of peer reviewing assignments as an xlsx file of the form: peer_reviewing_assignments-189.xlsx
-
-Note 
 
 ### Example
 
@@ -1038,8 +1039,9 @@ outputs a file with a name of the form: sections-in-{course_id}.xlsx
 ./list_sections_in_course.py 19885
 ```
 
-Note:  If there are no sections, this page is  not included in the spreadsheet. 
-       If there are no students this page is not included in the spreadsheet. 
+### Note
+If there are no sections, this page is not included in the spreadsheet. 
+If there are no students, this page is not included in the spreadsheet. 
 
 
 ## create_JSON_file_of_sections_in_your_courses.py
@@ -1217,7 +1219,8 @@ outputs a JSON file with the information about each of the modules in the course
 ### Output
 outputs a file with a name of the form keywords_and_phrases_xx.json from the *-html files in the directory
 
-Note the files are placed in the directory by using cgetall.py course_id
+### Note
+The files are placed in the directory by using cgetall.py course_id
 
 ### Example
 
@@ -1383,7 +1386,8 @@ outputs a file (all-my-cards.xlsx) containing a spreadsheet of the user's dahsbo
 ### Output
 outputs a file named files-COURSE_ID.xlsx
 
-Note that there can be many instances of a file with a given filename. There can even be multiple instances of the same filename in one folder!
+### Note
+That there can be many instances of a file with a given filename. There can even be multiple instances of the same filename in one folder!
 
 ### Example
 
@@ -1660,7 +1664,8 @@ outputs lists the names of the teachers in sortable order
 ### Output
 outputs grading scale that was created (if the verbose flag is set)
 
-Note: If you have assigned grades previously using another grading scale - adding a new one can render all previoous grades incorrect - as the process of assigning scores to teacher is not stable if there is a change in the number or list of teachers.
+### Note
+If you have assigned grades previously using another grading scale - adding a new one can render all previoous grades incorrect - as the process of assigning scores to teacher is not stable if there is a change in the number or list of teachers.
 
 ### Example
 ```bash
@@ -1700,7 +1705,8 @@ Can also be called with an alternative configuration file:
 ### Purpose
  Generate a "grading standard" scale with the course codes as the "grades".
 
-Note that if the grading scale is already present, it does nothing unless the "-f" (force) flag is set.
+### Note
+If the grading scale is already present, it does nothing unless the "-f" (force) flag is set.
 In the latter case it adds the grading scale.
 
 Can also be called with an alternative configuration file:
@@ -1890,7 +1896,8 @@ Zoom-chat-to-canvas-page-py -c course_id --transcript zoom_chat_file
 outputs a number of files: the anonomized transcript and a JSON file of the assigned pseudonyms
 	However, the major effect is the creation of a wiki page and the insertion of this page into a module in a course.
 
-Note there are a lot of options - including the usual -v --verbose option for lots of output as the program runs
+### Note
+There are a lot of options - including the usual -v --verbose option for lots of output as the program runs
      With the option "-N" it does not use pseudonyms, but rather the real user's names
      With the option "-M" "--module_name" - you can specifiy the name of the module to put the page in
      With the option "-T" "--page_title" - you can specify the title of the page
@@ -1919,13 +1926,14 @@ Note there are a lot of options - including the usual -v --verbose option for lo
 ### Output
 outputs gradebook and other information
 
-Note: This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
+### Note
+This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
 
 The program can walk a gradebook and do computations on the grades. Currently, it is for a course with 4 assigned that each have a certain maximum number of points.
 
-Note that you have to manually add a short name for each assignment_id number.
+You have to manually add a short name for each assignment_id number.
 
-Note that the "Notes" column has to be set to visible in the gradebook before the program will add the date inofmration to the notes column.
+The "Notes" column has to be set to visible in the gradebook before the program will add the date inofmration to the notes column.
 
 # II2210-grades_to_reportv2.py
 ### Purpose
@@ -1939,11 +1947,12 @@ Note that the "Notes" column has to be set to visible in the gradebook before th
 ### Output
 outputs gradebook and other information
 
-Note: This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
+### Note
+This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
 
 The program can walk a gradebook and do computations on the grades. Currently, it is for a course with 4 assigned that each have a certain maximum number of points.
 
-Note that you have to manually add a short name for each assignment_id number.
+You have to manually add a short name for each assignment_id number.
 
 The "Notes" column is set to visible in the gradebook by the program. This avoids create a second "Notes" column.
 
@@ -1956,7 +1965,8 @@ The "Notes" column is set to visible in the gradebook by the program. This avoid
 ./set_status_in_course.py course_id status_percent
 ```
 
-Note the status_percent is simply treated as a string
+### Note
+The status_percent is simply treated as a string
 
 with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 with the option -t' or '--testing' testing mode
@@ -2048,8 +2058,8 @@ len unique_users=21972
 
 In this case len unique_users says how many unique users there were.
 
-Note that the numbers are limited to the accounts the person running the program can access.
-
+### Note
+The numbers are limited to the accounts the person running the program can access.
 
 ### Example
 ```bash
@@ -2090,7 +2100,9 @@ Example 2: get file and then if the -e option is specified call the program to e
 
 ### Purpose
  This program assigns each user in a course (course_id) with a randomly assigned peer reviewer from within their section for a given assignment (new_assignment).
-	 Note that this program ignores all sections that do not have a single quote or the word "section" in them.
+
+### Note
+This program ignores all sections that do not have a single quote or the word "section" in them.
 
 
 ### Input
@@ -2102,7 +2114,6 @@ Example 2: get file and then if the -e option is specified call the program to e
 outputs the assigne peer reviews and makes these peer reviewing assignments in the assignment new_assignment_id
 
 ### Note
-
 Note also that there are some permutations that cannot meet the above two conditions and the additional condition of not having a person assigned
 to review two different persons. In this case the program tries with a new starting permutation. It will try up to 99 times before giving
 up doing peer reviewing assignments for this section. I know this is an arbitrary number, but hope that it works in practice.
@@ -2141,7 +2152,8 @@ The program also outputs another JSON file of the form: {2}_peer_reviwers_{0}-{1
 
 As the program is running it outputs the number of teachers in the course and their user_id and name. It also says how many (top level) peer reviews there were and how many there are for each teacher.
 
-Note that the program does not do anything with section or group information. These might be interesting for future enhancements.
+### Note
+The program does not do anything with section or group information. These might be interesting for future enhancements.
 
 ### Example
 ```bash
@@ -2169,7 +2181,8 @@ process_item 3
 processing item: TimeEdit
 ```
 
-Note you have to edit the program to add the operations that you want to perform on the page contents.
+### Note
+You have to edit the program to add the operations that you want to perform on the page contents.
 
 ### Example
 ```bash
@@ -2196,7 +2209,8 @@ You can process all of the modules in the course with:
 ### Output
 outputs some progress information.
 
-Note that when an existing page is used in a module, it gets a new module item instance in the module ; however, the url points to the original wikipage.
+### Note
+When an existing page is used in a module, it gets a new module item instance in the module ; however, the url points to the original wikipage.
 
 ### Example
 ```bash
@@ -2229,8 +2243,8 @@ processing item: Test page 3 for deletion
 ### Output
 XLSX spreadsheet with modules in course
 
-Note 
-     The filtering is a work in progress - the filters should be expanded.
+### Note 
+The filtering is a work in progress - the filters should be expanded.
 
 ### Example
 ```bash
@@ -2249,7 +2263,8 @@ Note
 ### Output
 outputs an updated spreadsheet 'course-modules-item-stats-'+course_id+'-augmented.xlsx' - not current include only the sheet with the readability scores and a plot of the SMOG scores for all of the pages in the course - organized by module.
 
-Note: It tries to enlarge the size of the bar charart vertically based upon multiples of 50 module item pages. It also scales the SMOG chart based on the highest score rounded up to a multiple of 5.
+### Note
+It tries to enlarge the size of the bar charart vertically based upon multiples of 50 module item pages. It also scales the SMOG chart based on the highest score rounded up to a multiple of 5.
 
 ### Example
 ```bash
@@ -2295,7 +2310,6 @@ Outputs a list of missing sections (in sortable name order)
 Outputs a list of teacher missing from the course  (in normal name order)
 
 ### Note 
-
 Supervisors will be marked as missing if they are not built into the table in the program that takes a supervior name (in normal order) as shown in the Supervisor column of the spreadsheet and maps it to the name in the Canvas course in sortable name order.
 
 ### Example
@@ -2311,49 +2325,21 @@ Supervisors will be marked as missing if they are not built into the table in th
 ## xxx.py
 
 ### Purpose
- To 
-
-### Input
-
-```
-./xxx.py KTHID_of_user
-```
-
-### Output
-outputs 
-
-Note 
-
-### Example
-
-```
-./xxx.py u1d13i2c
-```
-
-You can xxxx, for example:
-```
-
-```
-
-## yyy.py
-
-### Purpose
 To 
 
 ### Input
-
-```
+```bash
 ./xxx.py KTHID_of_user
 ```
 
 ### Output
 outputs 
 
-Note 
+### Note 
 
 ### Example
 
-```
+```bash
 ./xxx.py u1d13i2c
 ```
 
