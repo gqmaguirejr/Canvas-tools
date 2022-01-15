@@ -229,7 +229,7 @@ def main():
                     else:
                         teacher_names_sortable.append(sortable_name)
     
-    if Verbose_Flag:
+    if True or Verbose_Flag:
         print("teacher_names_sortable (sections to be added)={0}".format(teacher_names_sortable))
 
     if len(teacher_names_sortable) > 0:

@@ -507,6 +507,7 @@ def main():
         'Dejan Kostic':		'Kostic, Dejan Manojlo',
         'Elena Troubitsyna':	'Troubitsyna, Elena',
         'Erik Fransén':		'Fransén, Erik',
+        'Gerald Maguire': 	'Maguire Jr, Gerald Quentin',
         'Gerald  Q.  Maguire': 	'Maguire Jr, Gerald Quentin',
         'György Dán':		'Dán, György',
         'joakim gustafson':	'Gustafsson, Joakim',

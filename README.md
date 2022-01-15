@@ -2050,6 +2050,55 @@ Example:
 ./augments-course-stats-with-plots.py -c 28715
 ```
 
+## insert-examiners-and-supervisors-from-spreadsheet.py
+
+Purpose:
+
+Program inserts the name of the examiner as a grade based on matching the
+"e-mail" and the student's in the course gradebook. It also adds the students
+to the appropriate section for the examiner and supervisors.  The names of
+multiple supervisors are assumed to be separated by either a comma or " and ".
+
+
+Input:
+```
+./insert-examiners-and-supervisors-from-spreadsheet.py course_id spreadsheetFile
+```
+
+Output:
+
+Outputs additions to an examiner's section
+```
+Adding Last, First to section for examiner Maguire Jr, Gerald Quentin
+```
+
+Outputs additions to an examiner's section
+```
+Adding Last, First to section for supervisor Maguire Jr, Gerald Quentin
+```
+
+Outputs a list of missing students, i.e., students' who are not in the Canvas course
+```
+missing_students={'aaaa@kth.se', 'bbbb@kth.se'}
+```
+
+Outputs a list of missing examiners or superviosrs (in normal name order)
+
+Outputs a list of missing sections (in sortable name order)
+
+Outputs a list of teacher missing from the course  (in normal name order)
+
+Note 
+
+Supervisors will be marked as missing if they are not built into the table in the program that takes a supervior name (in normal order) as shown in the Supervisor column of the spreadsheet and maps it to the name in the Canvas course in sortable name order.
+
+Example:
+```
+./insert-examiners-and-supervisors-from-spreadsheet.py  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
+
+ ./insert-examiners-and-supervisors-from-spreadsheet.py --config config-test.json  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
+```
+
 
 <!-- 
 
