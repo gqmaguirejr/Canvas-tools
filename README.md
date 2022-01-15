@@ -2091,7 +2091,7 @@ Note
 
 Supervisors will be marked as missing if they are not built into the table in the program that takes a supervior name (in normal order) as shown in the Supervisor column of the spreadsheet and maps it to the name in the Canvas course in sortable name order.
 
-Example:
+#Example:
 ```
 ./insert-examiners-and-supervisors-from-spreadsheet.py  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
 
@@ -2137,7 +2137,7 @@ Output: outputs
 
 Note 
 
-#Example:
+Example:
 ```
 ./xxx.py u1d13i2c
 ```
