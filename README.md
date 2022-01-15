@@ -1,4 +1,4 @@
-## Canvas-tools
+# Canvas-tools
 Tools for use with Instructure.com's Canvas LMS. These tools
 are intended to be examples of how one can use the Canvas Restful API and to
 provide some useful functionality (mainly for teachers).
@@ -14,14 +14,17 @@ See the default-config.json file for an example of the structure of this file. R
 ======================================================================
 ## list_your_courses_JSON.py
 
-Purpose: To list the courses of the user runinng the program
+### Purpose
+To list the courses of the user runinng the program
 
-Input: none
+### Input
+No input
 ```bash
 list_your_courses_JSON.py
 ```
 
-Output: outputs JSON for user's courses
+### Output
+Outputs JSON for user's courses
 
 Example (edited to show only some of the output):
 ```bash
@@ -66,14 +69,18 @@ list_your_courses_JSON.py
 
 ## list_your_courses.py
 
-Purpose: To list the courses of the user runinng the program
+### Purpose
+To list the courses of the user runinng the program
 
-Input: none
+### Input
+None
+
 ```bash
 list_your_courses.py
 ```
 
-Output: outputs a file (courses-self.xlsx) containing a spreadsheet of the user's courses
+### Output
+Outputs a file (courses-self.xlsx) containing a spreadsheet of the user's courses
 
 ```bash
 list_your_courses.py
@@ -81,18 +88,20 @@ list_your_courses.py
 
 ## users-in-course.py
 
-Purpose: To get a list of the users in a course together with their sections and avatars
+### Purpose
+To get a list of the users in a course together with their sections and avatars
 
-Input:
+### Input
 ```bash
 users-in-course.py course_id
 ```
 
-Output: XLSX spreadsheet with textual section names and URL to user's avatar
+### Output
+XLSX spreadsheet with textual section names and URL to user's avatar
 
 Note that getting the avatars takes some time, hence this is optional
 
-Examples:
+### Examples
 ```bash
 users-in-course.py --config config-test.json 6434
 
@@ -106,16 +115,19 @@ To make images 90x90 pixels in size:
 
 ## modules-in-course.py
 
-Purpose: To list the modules in a course in a spreadsheet
+### Purpose
+To list the modules in a course in a spreadsheet
 
-Input: course_id
+### Input
+Takes course_id as an argument
 ```bash
 modules-in-course.py course_id
 ```
 
-Output: outputs a spreadsheet named 'modules-'+course_id+'.xlsx'
+### Output
+Outputs a spreadsheet named 'modules-'+course_id+'.xlsx'
 
-Examples:
+### Examples
 ```bash
 modules-in-course.py 11
 
@@ -123,16 +135,19 @@ modules-in-course.py --config config-test.json 11
 ```
 
 ## modules-items-in-course.py
-Purpose: To list the module items in a course in a spreadsheet
+### Purpose
+To list the module items in a course in a spreadsheet
 
-Input: course_id
+### Input
+Takes course_id as an argument
 ```bash
 module-items-in-course.py course_id
 ```
 
-Output: outputs a spreadsheet named 'module-items-'+course_id+'.xlsx'
+### Output
+Outputs a spreadsheet named 'module-items-'+course_id+'.xlsx'
 
-Examples:
+### Examples
 ```bash
 module-items-in-course.py 11
 
@@ -141,16 +156,19 @@ module-items-in-course.py --config config-test.json 11
 
 ## assignments-in-course.py
 
-Purpose: To list the assignments in a course in a spreadsheet
+### Purpose
+To list the assignments in a course in a spreadsheet
 
-Input: course_id
+### Input
+Takes course_id as an argument
 ```bash
 assignments-in-course.py course_id
 ```
 
-Output: outputs a spreadsheet named 'assignments-'+course_id+'.xlsx'
+### Output
+Outputs a spreadsheet named 'assignments-'+course_id+'.xlsx'
 
-Examples:
+### Examples
 ```bash
 assignments-in-course.py 11
 
@@ -158,17 +176,19 @@ assignments-in-course.py --config config-test.json 11
 ```
 
 ## quizzes-in-course.py
+### Purpose
+To list the quizzes in a course in a spreadsheet
 
-Purpose: To list the quizzes in a course in a spreadsheet
-
-Input: course_id
+### Input
+Takes course_id as an argument
 ```bash
 quizzes-in-course.py course_id
 ```
 
-Output: outputs a spreadsheet named 'quizzes-'+course_id+'.xlsx'
+### Output
+Outputs a spreadsheet named 'quizzes-'+course_id+'.xlsx'
 
-Examples:
+### Examples
 ```bash
 quizzes-in-course.py 11
 
@@ -177,23 +197,25 @@ quizzes-in-course.py --config config-test.json 11
 
 ## custom-columns-in-course.py
 
-Purpose: To list the custom columns in a spreadsheet
+### Purpose
+To list the custom columns in a spreadsheet
 
-Input:
+### Input
 ```bash
 custom-columns-in-course.py course_id
 ```
 
-Example:
+### Example
 ```bash
 custom-columns-in-course.py 1585
 ```
 
 ## delete-custom-columns-in-course.py
 
-Purpose: To delete a custom column or all custom columns from a course
+### Purpose
+To delete a custom column or all custom columns from a course
 
-Input:
+### Input
 ```bash
 To delete a specific custom column:
   delete-custom-columns-in-course.py course_id column_id
@@ -203,7 +225,7 @@ To delete aall custom column:
 
 ```
 
-Examples:
+### Examples
 ```bash
 Delete one column:
   delete-custom-columns-in-course.py 12683 1118
@@ -212,19 +234,20 @@ Delete all columns:
   delete-custom-columns-in-course.py -v --config config-test.json -a 12683
 ```
 
-
 ## create-sections-in-course.py
 
-Purpose: To create sections in a course
+### Purpose
+To create sections in a course
 
-Input:
+### Input
 ```bash
 create-sections-in-course.py course_id [section_name]  [section_name]  [section_name] ...
 ```
 
-Output: None
+### Output
+None
 
-Example:
+### Example
 ```bash
 create-sections-in-course.py --config config-test.json 12683  'Test section'  'Test section2'
 ```
@@ -232,18 +255,21 @@ create-sections-in-course.py --config config-test.json 12683  'Test section'  'T
 
 ## delete-sections-in-course.py
 
-Purpose: To delete indicated section(s) of a course
+### Purpose
+To delete indicated section(s) of a course
 
-Input:
+### Input
 ```bash
 delete-sections-in-course.py course_id section_id
 ```
 
-Output: deleting section id=NNNN with name=SSSSSS
+### Output
+deleting section id=NNNN with name=SSSSSS
 
 Note 
 
-Example:
+### Example
+
 ```bash
 delete-sections-in-course.py -v --config config-test.json 12683 16164
 
@@ -253,16 +279,20 @@ To delete all sections:
 
 ## my-files.py
 
-Purpose: To output a XLSX spreadsheet of the files for the user running the program
+### Purpose
+To output a XLSX spreadsheet of the files for the user running the program
 
-Input:
+### Input
+
 ```bash
 ./my-files.py
 ```
 
-Output: none
+### Output
+none
 
-Example:
+### Example
+
 ```bash
     ./my-files.py
 
@@ -276,16 +306,20 @@ for testing - skips some files:
 ```
 
 ## create-fake-users-in-course.py
-Purpose: To create a set of fake users in a Canvas instance and enroll them in a course
+### Purpose
+To create a set of fake users in a Canvas instance and enroll them in a course
 
-Input:
+### Input
+
 ```bash
 ./create-fake-users-in-course.py account_id course_id
 ```
 
-Output: nothing
+### Output
+nothing
 
-Example:
+### Example
+
 ```bash
 ./create-fake-users-in-course.py 1 4
 
@@ -295,9 +329,11 @@ Example:
 
 ## insert_AFPFFx_grading_standards.py
 
-Purpose: To insert an A-F and Fx grading scheme, as well as a P/F and Fx grading scheme in either a course or an account.
+### Purpose
+ To insert an A-F and Fx grading scheme, as well as a P/F and Fx grading scheme in either a course or an account.
 
-Input:
+### Input
+
 ```bash
 insert_AFPFFx_grading_standards.py -a account_id
   or
@@ -305,7 +341,8 @@ insert_AFPFFx_grading_standards.py    course_id
 
 ```
 
-Output: outputs a little information as it works
+### Output
+outputs a little information as it works
 
 Examples:
 ```bash
@@ -316,9 +353,11 @@ insert_AFPFFx_grading_standards.py -v --config config-test.json 11
  
 ## custom-data-for-users-in-course.py
 
-Purpose: To display custom data that is stored with a user in Canvas.
+### Purpose
+ To display custom data that is stored with a user in Canvas.
 
-Input:
+### Input
+
 ```bash
 ./custom-data-for-users-in-course.py course_id
 
@@ -327,7 +366,8 @@ the scope is 'program_of_study'
 
 ```
 
-Output: the custom data associated with the name space and scope for each user in the selected course
+### Output
+the custom data associated with the name space and scope for each user in the selected course
 
 Examples:
 ```bash
@@ -406,17 +446,21 @@ result of getting custom data for user self is {'data': {'programs': [{'code': '
 
 ## list-external-tools-for-course.py
 
-Purpose: To external tools for a Canvas course
+### Purpose
+ To external tools for a Canvas course
 
-Input:
+### Input
+
 ```bash
 list-external-tool-for-course.py  course_id tool_id 'navigation_text'
 
 ```
 
-Output: a list of external tools for the given course_id
+### Output
+a list of external tools for the given course_id
 
-Example:
+### Example
+
 With the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 ```bash
@@ -431,17 +475,21 @@ list-external-tools-for-course.py 4
 
 
 ## add-external-tool-for-course.py
-Purpose: To add an external to to a Canvas course
+### Purpose
+ To add an external to to a Canvas course
 
-Input:
+### Input
+
 ```bash
 add-external-tool-for-course.py  course_id tool_id 'navigation_text'
 
 ```
 
-Output: a list of external tools for the given course_id
+### Output
+a list of external tools for the given course_id
 
-Example:
+### Example
+
 With the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 ```bash
@@ -455,74 +503,93 @@ add-external-tool-for-course.py -C 5 2 'TestTool'
 
 ## list_calendar_events.py
 
-Purpose: To output calendar events into an XLSX file
+### Purpose
+ To output calendar events into an XLSX file
 
-Input:
+### Input
+
 ```bash
 ./list_calendar_events.py user_id
 ```
 
-Output: outputs a file with a name of the form: calendar-user_id.xlsx
+### Output
+outputs a file with a name of the form: calendar-user_id.xlsx
 
 ## create_calendar_event.py
 
-Purpose: To be able to experiment with creating calendar events.
+### Purpose
+ To be able to experiment with creating calendar events.
 
-Input:
+### Input
+
 ```bash
 ./create_calendar_event.py user_id date title description
 ```
 
-Output: Nothing
+### Output
+Nothing
 
 Note: Can be modified to use a course or a user content.
 
 ## list_calendar_events.py
 
-Purpose: Create a spreadsheet of a user's calendar events
+### Purpose
+ Create a spreadsheet of a user's calendar events
 
-Input:
+### Input
+
 ```bash
 ./list_calendar_events.py user_id
 ```
 
-Output: XLSX spreadsheet of the user's calendar events. The format of the file name is: calendar-user_id.xlsx
+### Output
+XLSX spreadsheet of the user's calendar events. The format of the file name is: calendar-user_id.xlsx
 
 ## custom-columns-in-course.py
 
-Purpose: To output all of the customn columns in a course as a spreadsheet
+### Purpose
+ To output all of the customn columns in a course as a spreadsheet
 
-Input:
+### Input
+
 ```bash
 ./custom-columns-in-course.py course_id
 ```
 
-Output: A XLSX spreadsheet with all of the information from the custom columns in a given course.
+### Output
+A XLSX spreadsheet with all of the information from the custom columns in a given course.
 
 ## insert-custom-columns-from-spreadsheet.py
 
-Purpose: To enter data into the names customn columns in a course from a spreadsheet
+### Purpose
+ To enter data into the names customn columns in a course from a spreadsheet
 
-Input:
+### Input
+
 ```bash
 insert-custom-columns-from-spreadsheet.py  course_id column_name_1 column_name_2 ...
 ```
 
-Output: Updates the gradebook
+### Output
+Updates the gradebook
 
 ## add-columns-for-II2202-final-presentation.py
-Purpose: To create custom columns in the gradebook to make it easier for each teacher to take notes during the final presentation (avoiding the user of a spreadsheet).
+### Purpose
+ To create custom columns in the gradebook to make it easier for each teacher to take notes during the final presentation (avoiding the user of a spreadsheet).
 
-Input:
+### Input
+
 ```bash
 add-columns-for-II2202-final-presentation.py  course_id start_date end_date
 ```
 
-Output: Adds the columns to the course's gradebook and populates the "Opponents" columns with the name of the student's peer reviwer and populates the "Oral presentation date/time" columns with the date and time of the oral presentation as scheduled in the calendar.
+### Output
+Adds the columns to the course's gradebook and populates the "Opponents" columns with the name of the student's peer reviwer and populates the "Oral presentation date/time" columns with the date and time of the oral presentation as scheduled in the calendar.
 
 Note: The columns are custom columns that can have up to ~256 characters entered into them. This is a limitation of the custom columns due to their underlying representation in the database used by Canvas.
 
-Example:
+### Example
+
 ```
 For II2202 P1 the assignment to use to learn who the opponents are is set as follows
         opposition_assignment_name="Opposition before final seminar"
@@ -532,7 +599,8 @@ then the program is run as:
 
 ## insert-group_column_in_gradebook.py
 
-Purpose: Inserts a custom column with the indicated name using the data from
+### Purpose
+ Inserts a custom column with the indicated name using the data from
 from the named groupset (it will create the column as necessary).  Note that
 one can optionally strip a fixed prefix from the group names. For example, if
 each group name begins with "Project group" followed by space and a number
@@ -540,14 +608,17 @@ then
    ./insert-group_column_in_gradebook.py 6433 New_groups "Project Groups" "Project group"
 will simply insert the number with the leading space stripped.
 
-Input:
+### Input
+
 ```bash
 ./insert-group_column_in_gradebook.py  course_id column_name groupset_name [prefix_to_remove]
 ```
 
-Output: No ouput unless run in verbose mode.
+### Output
+No ouput unless run in verbose mode.
 
-Example:
+### Example
+
 ```bash
  ./insert-group_column_in_gradebook.py 6433 New_groups "Project Groups"
 
@@ -556,81 +627,98 @@ Example:
 
 ## insert_grades_and_comments.py
 
-Purpose: Inserts grades for an assignment into the gradebook for a course.
+### Purpose
+ Inserts grades for an assignment into the gradebook for a course.
 	 The column headings of the gradebook are assumed to have the form (where dddd is a user_id):
 	   Student,ID,assignment_name,assignment_name*comment*
 	   xxxx,dddd,A,"I wish I had written this report"
 	   xxxx,dddd,E,"Terrible report"
 
-Input:
+### Input
+
 ```bash
 ./insert_grades_and_comments.py course_id assignment_id file.csv
 ```
 
-Output: No ouput unless run in verbose mode.
+### Output
+No ouput unless run in verbose mode.
 
-Example:
+### Example
+
 ```bash
 ./insert_grades_and_comments_indirect.py 6433 25425 inser_grades_and_comments_test.csv
 ```
 
 ## insert_grades_and_comments_indirect.py
 
-Purpose: Inserts grades for an assignment into the gradebook for a course.
+### Purpose
+ Inserts grades for an assignment into the gradebook for a course.
 	 The column headings of the gradebook are assumed to have the form (where dddd is a pseudo user_id):
 	   Student,ID,assignment_name,assignment_name*comment*
 	   xxxx,dddd,A,"I wish I had written this report"
 	   xxxx,dddd,E,"Terrible report"
 
-Input:
+### Input
+
 ```bash
 ./insert_grades_and_comments_indirect.py course_id assignment_id file.csv indirect_column_name
 ```
 
-Output: No ouput unless run in verbose mode.
+### Output
+No ouput unless run in verbose mode.
 
-Example:
+### Example
+
 ```bash
 ./insert_grades_and_comments_indirect.py 6433 25425 inser_grades_and_comments_test.csv "New_groups"
 ```
 
 ## students-in-my-courses.py
 
-Purpose: To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
+### Purpose
+ To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
 
-Input:
+### Input
+
 ```bash
 ./students-in-my-courses.py
 ```
 
-Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
+### Output
+spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
 Note: It skips courses involving the whole of KTH (as of 2019-08-15)
 
 ## students-in-my-courses-with-cat.py
 
-Purpose: To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
+### Purpose
+ To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
 
-Input:
+### Input
+
 ```bash
 ./students-in-my-courses-with-cat.py
 ```
 
-Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
+### Output
+spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
 Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "concat" that contains the concatinated data from the separate spreadsheets.
 
 
 ## students-in-my-courses-with-join.py
 
-Purpose: To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
+### Purpose
+ To create a spreadsheet of all students in my own courses to be able to look up which courses a student has been in.
 
-Input:
+### Input
+
 ```bash
 ./students-in-my-courses-with-join.py
 ```
 
-Output: spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
+### Output
+spreadsheet with a page per course in a file named "users_in_my_courses.xlsx"
 
 Note: It skips courses involving the whole of KTH (as of 2019-08-15). Note also that it computes a sheet called "Summary" that contains a summary of all of the information about the students and which courses they were in. This page has all of the students, the individual courses (by course_id), and a list of all courses (by course_id) the student was in.
 
@@ -639,18 +727,22 @@ Further note that it does not acutal use a join operation, but actually computes
 
 ## copy-peer-reviewer-assignments.py
 
-Purpose: To copy peer reviewing assignments from one assignment to another
+### Purpose
+ To copy peer reviewing assignments from one assignment to another
 
-Input:
+### Input
+
 ```bash
 ./copy-peer-reviewer-assignments.py course_id old_assignment_id new_assignment_id
 ```
 
-Output: outputs information about the assigned peer review of the form:
+### Output
+outputs information about the assigned peer review of the form:
    result of post assigning peer reviwer: {"id":xxx,"user_id":yyy,"asset_id":zzz,"asset_type":"Submission","workflow_state":"assigned","assessor_id":qqqq}
 
 
-Example:
+### Example
+
 ```bash
 ./copy-peer-reviewer-assignments.py 12162 86839 86851
 ```
@@ -659,18 +751,22 @@ In the above case the old_assignment was 86839 and the new assignment was 86851.
 
 ## list-peer_reviewing_assignments.py
 
-Purpose: To have a summary of who is the peer reviewer for whom
+### Purpose
+ To have a summary of who is the peer reviewer for whom
 
-Input:
+### Input
+
 ```bash
 ./list-peer_reviewing_assignments.py course_id assignment_id
 ```
 
-Output: outputs a summary of peer reviewing assignments as an xlsx file of the form: peer_reviewing_assignments-189.xlsx
+### Output
+outputs a summary of peer reviewing assignments as an xlsx file of the form: peer_reviewing_assignments-189.xlsx
 
 Note 
 
-Example:
+### Example
+
 ```bash
 ./list-peer_reviewing_assignments.py 12162 86851
 ```
@@ -678,31 +774,38 @@ Example:
 
 ## update-custom-column.py
 
-Purpose: To change the name/title of a custom column
+### Purpose
+ To change the name/title of a custom column
 
-Input:
+### Input
+
 ```bash
 ./update-custom-column.py  course_id column_id column_name
 ```
 
-Example:
+### Example
+
 ```bash
 ./update-custom-column.py -v 12162 1205 "Grade for oral opposition"
 ```
 
 ## list-features-for-course.py
 
-Purpose: To list the features for a course
+### Purpose
+ To list the features for a course
 
-Input:
+### Input
+
 ```bash
 ./list-features-for-course.py  course_id
 ```
 
-Output: outputs the features as a vector
+### Output
+outputs the features as a vector
 
 
-Example:
+### Example
+
 ```bash
 ./list-features-for-course.py  19885
 ```
@@ -878,16 +981,20 @@ Example:
 
 ## set-features-for-course.py
 
-Purpose: To set a specific features for a course to a given state
+### Purpose
+ To set a specific features for a course to a given state
 
-Input:
+### Input
+
 ```bash
 ./set-features-for-course.py  course_id feature state
 ```
 
-Output: outputs the resulting feature
+### Output
+outputs the resulting feature
 
-Example:
+### Example
+
 ```bash
 ./set-features-for-course.py -v 19885 outcome_gradebook off
 ```
@@ -913,16 +1020,20 @@ Another example:
  ```
 
 ## list_sections_in_course.py
-Purpose: To output a spreadsheet of the sections in a course and the students in these sections
+### Purpose
+ To output a spreadsheet of the sections in a course and the students in these sections
 
-Input:
+### Input
+
 ```bash
 ./list_sections_in_course.py course_if
 ```
 
-Output: outputs a file with a name of the form: sections-in-{course_id}.xlsx
+### Output
+outputs a file with a name of the form: sections-in-{course_id}.xlsx
 
-Example:
+### Example
+
 ```bash
 ./list_sections_in_course.py 19885
 ```
@@ -932,7 +1043,8 @@ Note:  If there are no sections, this page is  not included in the spreadsheet.
 
 
 ## create_JSON_file_of_sections_in_your_courses.py
-Purpose:
+### Purpose
+
   Create a JSON file with information about courses where user enrolled as a 'TeacherEnrollment', 'Examiner', or 'TaEnrollment'
 
 The JSON file contains a course_info dict 
@@ -942,7 +1054,8 @@ The JSON file contains a course_info dict
                the specific section's name may be the user's name or some other unique string (such as "Chip's section")
                Because the name of the relevant section can be arbitrary, this file is necessary to know which section belongs to a given user
  
-Input:
+### Input
+
 ```bash
 ./create_JSON_file_of_sections_in_your_courses.py [-v] [--config config.json] [-s course_info.json] [-U] [-X]
 ```
@@ -963,9 +1076,11 @@ Examples:
 
 ## list_ungraded_submissions_in_your_courses_JSON.py
 
-Purpose: output a list of ungraded assignments for a user to grade
+### Purpose
+ output a list of ungraded assignments for a user to grade
 
-Input:
+### Input
+
 ```bash
 ./list_ungraded_submissions_in_your_courses_JSON.py [-v] [--config config.json] [-s course_info.json] [-t] [-X]
 ```
@@ -993,16 +1108,20 @@ Examples:
 
 ## modules-items-in-course-json.py
 
-Purpose: To extract the modules and page information for a course in JSON
+### Purpose
+ To extract the modules and page information for a course in JSON
 
-Input:
+### Input
+
 ```bash
 ./modules-items-in-course-json.py course_id
 ```
 
-Output: outputs a JSON file with a name of the form: "modules-in-course-course_id.json"
+### Output
+outputs a JSON file with a name of the form: "modules-in-course-course_id.json"
 
-Example:
+### Example
+
 ```bash
 ./modules-items-in-course.py 11
 
@@ -1013,18 +1132,22 @@ Example:
 
 ## compute_stats_for_pages_in_course.py
 
-Purpose: To computer some readability statistics for each page in a course
+### Purpose
+ To computer some readability statistics for each page in a course
 
-Input:
+### Input
+
 ```bash
 ./compute_stats_for_pages_in_course.py  course_id
 
 ```
 
-Output: outputs an XLSX formatted file with a name of the form: 'statistics-for-course-'+str(course_id)+'.xlsx
+### Output
+outputs an XLSX formatted file with a name of the form: 'statistics-for-course-'+str(course_id)+'.xlsx
 	The statistics are computed using Textatistic (see http://www.erinhengel.com/software/textatistic/)
 
-Example:
+### Example
+
 ```bash
 ./compute_stats_for_pages_in_course.py 11
 
@@ -1034,17 +1157,21 @@ Example:
 
 ## cgetall.py
 
-Purpose: To get all of the pages from a Canvas course as local files
+### Purpose
+ To get all of the pages from a Canvas course as local files
 
-Input:
+### Input
+
 ```bash
 ./cgetall.py  canvas_course_page_url|course_id [destination_directory]
 
 ```
 
-Output: outputs each page as a file with the extenssion ".html" the basename is taken from the title of the page
+### Output
+outputs each page as a file with the extenssion ".html" the basename is taken from the title of the page
 
-Example:
+### Example
+
 ```bash
 cgetall.py https://kth.instructure.com/courses/11/pages/test-3
 
@@ -1055,17 +1182,21 @@ cgetall.py 11
 
 ## modules-items-in-course-json.py
 
-Purpose: To collect information about all of the modules in a course
+### Purpose
+ To collect information about all of the modules in a course
 
-Input:
+### Input
+
 ```bash
 ./modules-items-in-course-json.py course_id
 ```
 
-Output: outputs a JSON file with the information about each of the modules in the course and each of the module items in a given module
+### Output
+outputs a JSON file with the information about each of the modules in the course and each of the module items in a given module
 	The file name isof the form: modules-in-course-xxxx.json where xxxx is the course_id
 
-Example:
+### Example
+
 ```bash
 ./modules-items-in-course.py 11
 
@@ -1074,43 +1205,53 @@ Example:
 
 ## find_keyords_phrase_in_files.py
 
-Purpose: To extract from a directory of files of the pages from a course words or phrases
+### Purpose
+ To extract from a directory of files of the pages from a course words or phrases
 
-Input:
+### Input
+
 ```bash
 ./find_keyords_phrase_in_files.py direcory
 ```
 
-Output: outputs a file with a name of the form keywords_and_phrases_xx.json from the *-html files in the directory
+### Output
+outputs a file with a name of the form keywords_and_phrases_xx.json from the *-html files in the directory
 
 Note the files are placed in the directory by using cgetall.py course_id
 
-Example:
+### Example
+
 ```bash
 ./find_keyords_phrase_in_files.py /tmp/testdik1552
 ```
 
 ## create_page_from_json.py
 
-Purpose: To create the contents for a page with information about each language with the words used and URLs to their usage
+### Purpose
+ To create the contents for a page with information about each language with the words used and URLs to their usage
 
-Input:
+### Input
+
 ```bash
 ./create_page_from_json.py course_id input.json
 ```
 
-Output: outputs a file with a name of the form stats_for_course-xxxx.html where xxxx is the course_id
+### Output
+outputs a file with a name of the form stats_for_course-xxxx.html where xxxx is the course_id
 
-Example:
+### Example
+
 ```bash
 ./create_page_from_json.py 17234 keywords_and_phrases_testdik1552.json
 ```
 
 ## Making an index
 
-Purpose: To create an index for a Canvas course
+### Purpose
+ To create an index for a Canvas course
 
-Input:
+### Input
+
 ```bash
 # Create a directory to put all the pages for the course
 mkdir  /tmp/testdik1552
@@ -1164,7 +1305,8 @@ cp stats_for_course-17234.html test-page-3.html
 
 ```
 
-Output: Outputs a web page with various indexes. 
+### Output
+Outputs a web page with various indexes. 
 
 You can iterate creating the index and uploading to optimize what is indexed and how it is indexed. When you edit the HTML files in /tmp/testdik1552 - remember to update the actual web page in the Canvas course. A convenient way to do this is to edit the course page and select the HTML view and paste in the contents of the edited HTML file.
 
@@ -1214,46 +1356,57 @@ Overall, the process of generating an index was useful - as I found mis-spelling
 
 ## my-dashboard.py
 
-Purpose: XLSX spreadsheet of the course for the user running the program.
+### Purpose
+ XLSX spreadsheet of the course for the user running the program.
 
-Input: none
+### Input
+ none
 ```bash
 my-dashboard.py
 ```
 
-Output: outputs a file (all-my-cards.xlsx) containing a spreadsheet of the user's dahsboard cards
+### Output
+outputs a file (all-my-cards.xlsx) containing a spreadsheet of the user's dahsboard cards
 
 
 ## list-files.py
 
-Purpose: To get a spreadsheet of all the files and folders in a Canvas course.
+### Purpose
+ To get a spreadsheet of all the files and folders in a Canvas course.
 
-Input:
+### Input
+
 ```bash
 ./list-files.py course_id
 ```
 
-Output: outputs a file named files-COURSE_ID.xlsx
+### Output
+outputs a file named files-COURSE_ID.xlsx
 
 Note that there can be many instances of a file with a given filename. There can even be multiple instances of the same filename in one folder!
 
-Example:
+### Example
+
 ```bash
 ./list-files.py 20979
 ```
 
 ## get_user_profile.py user_id
 
-Purpose: To output the JSON of the user's profile.
+### Purpose
+ To output the JSON of the user's profile.
 
-Input:
+### Input
+
 ```bash
 ./get_user_profile.py user_id
 ```
 
-Output: outputs the JSON
+### Output
+outputs the JSON
 
-Example:
+### Example
+
 ```bash
 # note the output is edited
 ./get_user_profile.py 29
@@ -1281,14 +1434,17 @@ user's profile is:
 
 ## get_user_channels_and_notifications.py
 
-Purpose: To list a user's communication channels and the configuration of notifications for each channel.
+### Purpose
+ To list a user's communication channels and the configuration of notifications for each channel.
 
-Input:
-```
+### Input
+
+```bash
 ./get_user_channels_and_notifications.py user_id
 ```
 
-Output: outputs
+### Output
+outputs
 ```JSON
 channel id 29 is email
 user's communication channels is:
@@ -1316,8 +1472,9 @@ user's communication channels is:
 
 ```
 
-Example:
-```
+### Example
+
+```bash
 ./get_user_channels_and_notifications.py 29
 
 or
@@ -1326,21 +1483,25 @@ or
 ```
 
 ## copy_course_content.py
-Purpose: Copy course content from source to destination course_id
+### Purpose
+ Copy course content from source to destination course_id
 
-Input:
-```
+### Input
+
+```bash
 ./copy_course_content.py source_course_id destination_course_id
 ```
 
-Output: status updates
+### Output
+status updates
 
-Example:
-```
+### Example
+
+```bash
 ./copy_course_content.py 23939 751
 ```
 
-```
+```bash
 response is {'id': 14655, 'user_id': 29, 'workflow_state': 'running', 'started_at': '2020-09-08T15:38:11Z', 'finished_at': None, 'migration_type': 'course_copy_importer', 'created_at': '2020-09-08T15:38:11Z', 'migration_issues_url': 'https://canvas.kth.se/api/v1/courses/751/content_migrations/14655/migration_issues', 'migration_issues_count': 0, 'settings': {'source_course_id': 23939, 'source_course_name': 'II2210 HT20-2 Ethics and Sustainable Development for Engineers', 'source_course_html_url': 'https://canvas.kth.se/courses/23939'}, 'progress_url': 'https://canvas.kth.se/api/v1/progress/186456', 'migration_type_title': 'Course Copy'}
 Migration URL is: https://canvas.kth.se/api/v1/progress/186456
 Migration Status is: running  | progress: 0.0
@@ -1376,17 +1537,20 @@ Migration completed.
 
 ## list_user_page_views_for_a_course.py
 
-Purpose: To list page views for students in a course
+### Purpose
+ To list page views for students in a course
 
-Input:
-```
+### Input
+
+```bash
  ./list_user_page_views_for_a_course.py course_id start_date end_date
 ```
 
-Output: outputs a spreadsheet with a page per user_id and a Summary page
+### Output
+outputs a spreadsheet with a page per user_id and a Summary page
 
 Examples:
-```
+```bash
 ./list_user_page_views_for_a_course.py 11 2020-12-01 2020-12-14
 
 and
@@ -1397,17 +1561,20 @@ and
 
 ## list_my_page_views.py start_date end_date
 
-Purpose: To list page views for yourself
+### Purpose
+ To list page views for yourself
 
-Input:
-```
+### Input
+
+```bash
 ./list_my_page_views.py start_date end_date
 ```
 
-Output: outputs a spreadsheet with a page of page_visit data
+### Output
+outputs a spreadsheet with a page of page_visit data
 
 Examples:
-```
+```bash
  ./list_my_page_views.py 2020-12-01  2020-12-14
 
 and
@@ -1418,17 +1585,20 @@ and
 
 ## ./list_user_page_views.py
 
-Purpose: To list page views for a specified user
+### Purpose
+ To list page views for a specified user
 
-Input:
-```
+### Input
+
+```bash
 ./list_user_page_views.py user_id start_date end_date
 ```
 
-Output: outputs a spreadsheet with a page of page_visit data
+### Output
+outputs a spreadsheet with a page of page_visit data
 
 Examples:
-```
+```bash
 ./list_user_page_views.py self 2020-12-04
 
 ./list_user_page_views.py 29 2020-12-01 2020-12-14
@@ -1437,34 +1607,39 @@ Examples:
 ```
 
 ## teachers-in-course.py
-Purpose: To output a spreadsheet of teachers in a course
+### Purpose
+ To output a spreadsheet of teachers in a course
 
-Input:
-```
+### Input
+```bash
 ./teachers-in-course.py course_id
 ```
 
-Output: outputs spreadsheet (teachers-course_id.xlsx) and lists the names of the teachers in sortable order
+### Output
+outputs spreadsheet (teachers-course_id.xlsx) and lists the names of the teachers in sortable order
 
-Example:
-```
+### Example
+```bash
 ./
 ./teachers-in-course.py  --config config-test.json 22156
 ```
 
 ## create_sections_for_teachers-in-course.py
 
-Purpose: To create a section in the course for each teacher in the course
+### Purpose
+ To create a section in the course for each teacher in the course
 
-Input:
-```
+### Input
+
+```bash
 ./create_sections_for_teachers-in-course.py course_id
 ```
 
-Output: outputs lists the names of the teachers in sortable order
+### Output
+outputs lists the names of the teachers in sortable order
 
-Example:
-```
+### Example
+```bash
 ./create_sections_for_teachers-in-course.py 11
 
 
@@ -1474,19 +1649,21 @@ Example:
 
 ## insert_teachers_grading_standard.py
 
-Purpose: To create a section in the course for each teacher in the course
+### Purpose
+ To create a section in the course for each teacher in the course
 
-Input:
-```
+### Input
+```bash
 ./insert_teachers_grading_standard.py course_id
 ```
 
-Output: outputs grading scale that was created (if the verbose flag is set)
+### Output
+outputs grading scale that was created (if the verbose flag is set)
 
 Note: If you have assigned grades previously using another grading scale - adding a new one can render all previoous grades incorrect - as the process of assigning scores to teacher is not stable if there is a change in the number or list of teachers.
 
-Example:
-```
+### Example
+```bash
 ./insert_teachers_grading_standard.py --force --config config-test.json 22156
 
 ./insert_teachers_grading_standard.py --force --config config-test.json 22156 IA150x_Teachers
@@ -1494,21 +1671,24 @@ Example:
 ```
 
 ## ./add_students_to_examiners_section_in_course.py course_id [admin_assignment_name]
-Purpose: Adds students to sections based upon their Examiner (or other exercise based on admin_assignment_name
+### Purpose
+ Adds students to sections based upon their Examiner (or other exercise based on admin_assignment_name
 
-Input:
-```
+### Input
+
+```bash
 ./add_students_to_examiners_section_in_course.py course_id [admin_assignment_name]
 ```
 
-Output: using assignment 'Examiner' as the administrative data to do the assignment into sections
+### Output
+using assignment 'Examiner' as the administrative data to do the assignment into sections
  	Added XXXX to section for Maguire Jr, Gerald Quentin
 
 Can also be called with an alternative configuration file:
 ./add_students_to_examiners_section_in_course.py --config config-test.json 22156
 
-Example:
-```
+### Example
+```bash
  ./add_students_to_examiners_section_in_course.py 22156
 
  or
@@ -1517,24 +1697,26 @@ Example:
 ```
 
 ## insert_course_code_grading_standard.py
-Purpose: Generate a "grading standard" scale with the course codes as the "grades".
+### Purpose
+ Generate a "grading standard" scale with the course codes as the "grades".
 
 Note that if the grading scale is already present, it does nothing unless the "-f" (force) flag is set.
 In the latter case it adds the grading scale.
 
 Can also be called with an alternative configuration file:
 
-Input:
-```
+### Input
+```bash
 ./insert_course_code_grading_standard.py course_id
 ```
 
-Output: depends on flags and whether there is an existing grading scale
+### Output
+depends on flags and whether there is an existing grading scale
 
 The -v or --verbose flag generates a lot of output.
 
-Example:
-```
+### Example
+```bash
 ./insert_course_code_grading_standard.py 25434
 {   'DA231X',
     'DA232X',
@@ -1564,22 +1746,24 @@ inserted grading standard
 status=True
 ```
 Second example with alternative configuration file:
-```
+```bash
 ./insert_course_code_grading_standard.py --config config-test.json 25434
 ```
 
 ## add_course_codes_for_students_in_course.py
-Purpose: using assignment 'Course code' as the administrative data to do assign course codes as grades
+### Purpose
+ using assignment 'Course code' as the administrative data to do assign course codes as grades
 
 Added the course code (using the Course Code grading scale) based in the SIS section that each student is in
 
-Input:
-```
+### Input
+```bash
 ./add_course_codes_for_students_in_course.py course_id [admin_assignment_name]
 ```
 admin_assignment_name = 'Course code' by default
 
-Output: outputs student's sortable name and their course code
+### Output
+outputs student's sortable name and their course code
 
 If there is an existing course code and it is different from the course code it should be now, it is changed.
 
@@ -1589,8 +1773,8 @@ Can also be called with an alternative configuration file
 
 With the "-t" or "--testing" it only process a smaller number of students.
 
-Example:
-```
+### Example
+```bash
 ./add_course_codes_for_students_in_course.py 25434
 
 or
@@ -1599,7 +1783,8 @@ or
 ```
 
 ## insert-programs-from-spreadsheet.py
-Purpose: Inserts a custom column with the student's program information using the data from several columns of a spreadsheet.
+### Purpose
+ Inserts a custom column with the student's program information using the data from several columns of a spreadsheet.
 It combines the data from the columns: program_code, program_code_1, and program_code_2
 
 It will create the column as necessary
@@ -1607,16 +1792,17 @@ It will create the column as necessary
 The spreadsheet is expected to be generate from canvas_ladok3_spreadsheet.py
 
 
-Input:
-```
+### Input
+```bash
 ./insert-programs-from-spreadsheet.py  course_id
 ```
 
-Output: outputs information about the student and their program
+### Output
+outputs information about the student and their program
 
 
-Example:
-```
+### Example
+```bash
 ./insert-programs-from-spreadsheet.py 25434
 
 or
@@ -1626,27 +1812,29 @@ or
 
 ## insert-examiners-from-spreadsheet.py
 
-Purpose: To take a spreadsheet with project titles and examiners and add these examiners to the administraitve assignment Examiner in the gradebook
+### Purpose
+ To take a spreadsheet with project titles and examiners and add these examiners to the administraitve assignment Examiner in the gradebook
 
-Input:
-```
+### Input
+```bash
 insert-examiners-from-spreadsheet.py  course_id spreadsheetFile [column_name]
 ```
 
-Output: informaiton about the titles, student name, and examiner as it inserts them
+### Output
+informaiton about the titles, student name, and examiner as it inserts them
 
 
-Example:
-```
+### Example
+```bash
 ./insert-examiners-from-spreadsheet.py -v 25434   "Master's thesis proposals P3 2021-20210220.xlsx"
 ```
 
 ## create-assignment-with-textual-submission.py
-Purpose:
+### Purpose
 	Create an assignment with a textual submission
 
-Input:
-```
+### Input
+```bash
 ./create-assignment-with-textual-submission.py course_id [name_of_assignment]
 ```
 
@@ -1656,16 +1844,17 @@ Input:
  Can also be called with an alternative configuration file:
   --config config-test.json
 
-Example:
-```
+### Example
+```bash
 ./create-assignment-with-textual-submission.py 7 "Second assignment"
 ```
 ## get_textbox_submissions_as_docx.py
-Purpose:
+### Purpose
+
   create a DOCX file for each textual submission
 
-Input:
-```
+### Input
+```bash
 ./get_textbox_submissions_as_docx.py course_id assignment_id
 ```
 
@@ -1676,11 +1865,11 @@ Can also be called with an alternative configuration file:
  --config config-test.json
 
 Example - to generate docx file locally
-```
+```bash
  ./get_textbox_submissions_as_docx.py -C 7 44^
 ```
 Example - to generate docx file locally and upload it as a submission
-```
+```bash
  ./get_textbox_submissions_as_docx.py --submit  -C 7 44
 ```
 to get the DOCX library do:
@@ -1689,14 +1878,16 @@ to get the DOCX library do:
 
 ## Zoom-chat-to-canvas-page-py
 
-Purpose: To take a Zoom chat file and make a Canvas course wikipage.
+### Purpose
+ To take a Zoom chat file and make a Canvas course wikipage.
 
-Input:
-```
+### Input
+```bash
 Zoom-chat-to-canvas-page-py -c course_id --transcript zoom_chat_file
 ```
 
-Output: outputs a number of files: the anonomized transcript and a JSON file of the assigned pseudonyms
+### Output
+outputs a number of files: the anonomized transcript and a JSON file of the assigned pseudonyms
 	However, the major effect is the creation of a wiki page and the insertion of this page into a module in a course.
 
 Note there are a lot of options - including the usual -v --verbose option for lots of output as the program runs
@@ -1706,8 +1897,8 @@ Note there are a lot of options - including the usual -v --verbose option for lo
      With the option "-R" "--remove_existing_page" - you can delete an existing page of the same title (if it exists)
      	      	     	  			     otherwise "-new" is appended to the page title
 
-Example:
-```
+### Example
+```bash
 ./Zoom-chat-to-canvas-page-py    -c 11 --transcript /z3/maguire/meeting_saved_chat-20210304.txt
 
 ./Zoom-chat-to-canvas-page-py -c 11 --config config-test.json --transcript /z3/maguire/meeting_saved_chat-2020-12-10.txt
@@ -1717,14 +1908,16 @@ Example:
 ```
 
 # II2210-grades_to_report.py
-Purpose: To show  hot ro programmatically access assignment, the gradebook, and the custome columns to be able to do calculations on grades, dates of submission, due dates, etc.
+### Purpose
+ To show  hot ro programmatically access assignment, the gradebook, and the custome columns to be able to do calculations on grades, dates of submission, due dates, etc.
 
-Input:
-```
+### Input
+```bash
 ./II2210-grades_to_report.py -c course_id
 ```
 
-Output: outputs gradebook and other information
+### Output
+outputs gradebook and other information
 
 Note: This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
 
@@ -1735,14 +1928,16 @@ Note that you have to manually add a short name for each assignment_id number.
 Note that the "Notes" column has to be set to visible in the gradebook before the program will add the date inofmration to the notes column.
 
 # II2210-grades_to_reportv2.py
-Purpose: To show  hot ro programmatically access assignment, the gradebook, and the custome columns to be able to do calculations on grades, dates of submission, due dates, etc.
+### Purpose
+ To show  hot ro programmatically access assignment, the gradebook, and the custome columns to be able to do calculations on grades, dates of submission, due dates, etc.
 
-Input:
-```
+### Input
+```bash
 ./II2210-grades_to_reportv2.py -c course_id
 ```
 
-Output: outputs gradebook and other information
+### Output
+outputs gradebook and other information
 
 Note: This is a work in progress and is design to (a) do something useful for and (b) to be a set of examples that others can use.
 
@@ -1753,10 +1948,11 @@ Note that you have to manually add a short name for each assignment_id number.
 The "Notes" column is set to visible in the gradebook by the program. This avoids create a second "Notes" column.
 
 ## set_status_in_course.py
-Purpose: To set a user's custom data field to reflext the user's perception of their stat of progress (for example, in a degree project course).
+### Purpose
+ To set a user's custom data field to reflext the user's perception of their stat of progress (for example, in a degree project course).
 
-Input:
-```
+### Input
+```bash
 ./set_status_in_course.py course_id status_percent
 ```
 
@@ -1781,14 +1977,15 @@ or
 ./set_status_in_course.py -C 5 11 23.7
 
 Example with output:
-```
+```bash
  ./set_status_in_course.py --config config-test.json 11 23.5
 Existing custom data for user for course 11 is {'data': '21.5'}
 Result of setting custom data for user for course 11 is {'data': '23.5'}
 ```
 
 ## get_status-for-users-in-course.py
-Purpose: Help track progress in degree project courses
+### Purpose
+ Help track progress in degree project courses
 
 Creates an administrative assignment in the course (if it does not yet exist).
 This assignment does not accept any submission, but is just used to display a "grade" indicating a code for the student's status.
@@ -1814,11 +2011,12 @@ My current idea is that the student can use this program to set their status, wh
 4. For a set of the assignments, if the assignment is marked Completed - update the Status score in the gradebook.
 5.Optionally the program could even check the DIVA status and LADOK grade status and update the score based in these.
 
-Input:
-```
+### Input
+```bash
 ./get_status-for-users-in-course.py course_id
 ```
-Output: various diagnotic output
+### Output
+various diagnotic output
 with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 with the option -t' or '--testing' testing mode
 
@@ -1828,20 +2026,22 @@ Can also be called with an alternative configuration file:
 ./custom-data-for-users-in-course.py --config config-test.json
 
 Examples:
-```
+```bash
 ./get_status-for-users-in-course.py -C  7 
 ```
 
 
 ## some_canvas_stats.py
-Purpose: To collect some statistics about a Canvas instance in terms of the number of users per account and to computer the total number of these who are unique users.
+### Purpose
+ To collect some statistics about a Canvas instance in terms of the number of users per account and to computer the total number of these who are unique users.
 
-Input:
-```
+### Input
+```bash
 ./some_canvas_stats.py
 ```
 
-Output: outputs a spreadsheet (canvas_stats.xlsx) with statistics and some text, such as:
+### Output
+outputs a spreadsheet (canvas_stats.xlsx) with statistics and some text, such as:
 
 No subaccounts
 len unique_users=21972
@@ -1851,23 +2051,25 @@ In this case len unique_users says how many unique users there were.
 Note that the numbers are limited to the accounts the person running the program can access.
 
 
-Example:
-```
+### Example
+```bash
 ./some_canvas_stats.py   --config config-test.json
 ```
 
 ## get_PDF_submission.py
 
-Purpose: Checks that the submission has been graded and has the grade 'complete'
+### Purpose
+ Checks that the submission has been graded and has the grade 'complete'
 	 and then gets the PDF file submitted for a specified assignment
 
 
-Input:
-```
+### Input
+```bash
  ./get_PDF_submission.py -c course_id -a assignment_id -u user_id [-e]
 ```
 
-Output:  a file with a name of the form: user's name-filename.pdf
+### Output
+ a file with a name of the form: user's name-filename.pdf
 
 with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
@@ -1876,37 +2078,39 @@ Can also be called with an alternative configuration file:
   --config config-test.json
 
 Example 1:
-```
+```bash
 ./get_PDF_submission.py -c 25434 -a 150953 -u 746
 ```
 Example 2: get file and then if the -e option is specified call the program to extract the puseudo JSON from it
-```
+```bash
  ./get_PDF_submission.py -c 25434 -a 150953 -u 746 -e
 ```
 
 ## assign-random-peer-reviewer-by-section.py
 
-Purpose: This program assigns each user in a course (course_id) with a randomly assigned peer reviewer from within their section for a given assignment (new_assignment).
+### Purpose
+ This program assigns each user in a course (course_id) with a randomly assigned peer reviewer from within their section for a given assignment (new_assignment).
 	 Note that this program ignores all sections that do not have a single quote or the word "section" in them.
 
 
-Input:
-```
+### Input
+```bash
 ./assign-random-peer-reviewer-by-section.py course_id new_assignment_id [old_assignment_id ]
 ```
 
-Output: outputs the assigne peer reviews and makes these peer reviewing assignments in the assignment new_assignment_id
+### Output
+outputs the assigne peer reviews and makes these peer reviewing assignments in the assignment new_assignment_id
 
-Note
+### Note
 
-     Note also that there are some permutations that cannot meet the above two conditions and the additional condition of not having a person assigned
+Note also that there are some permutations that cannot meet the above two conditions and the additional condition of not having a person assigned
 to review two different persons. In this case the program tries with a new starting permutation. It will try up to 99 times before giving
 up doing peer reviewing assignments for this section. I know this is an arbitrary number, but hope that it works in practice.
 
-     The program does not currently support processing of the old_assignment_id, but the idea is that in the future it might avoid assigning a peer review if this same peer review arrangement was used in the old assignment (to give greater variety).
+The program does not currently support processing of the old_assignment_id, but the idea is that in the future it might avoid assigning a peer review if this same peer review arrangement was used in the old assignment (to give greater variety).
 
 Examples:
-```
+```bash
 ./assign-random-peer-reviewer-by-section.py --testing 28715 159758
 ./assign-random-peer-reviewer-by-section.py 28850 160120
 
@@ -1914,14 +2118,16 @@ Examples:
 
 ## get_peer_reviews_and_comments.py
 
-Purpose: To get the peer reviewing information both comments and PDF file attachments
+### Purpose
+ To get the peer reviewing information both comments and PDF file attachments
 
-Input:
-```
+### Input
+```bash
 ./get_peer_reviews_and_comments.py -c course_id -a assignment_id
 ```
 
-Output: Outputs a directory (assignment_folder) with a name of the form: Assignment_ddddd, where ddddd is the assignment_id.
+### Output
+Outputs a directory (assignment_folder) with a name of the form: Assignment_ddddd, where ddddd is the assignment_id.
 	In this directory will be a directory (teacher_folder) using the teacher's name, for each of the teachers who has commented on a submission.
 	In this directoty there will be a directory (peer_review_folder) with names based on the peer review id.
 	Within this directory there can be one or more files.
@@ -1937,22 +2143,23 @@ As the program is running it outputs the number of teachers in the course and th
 
 Note that the program does not do anything with section or group information. These might be interesting for future enhancements.
 
-Example:
-```
+### Example
+```bash
 ./get_peer_reviews_and_comments.py -c 28715 -a 159760
 ```
 
 ## edit_modules_items_in_a_module_in_a_course.py
+## Purpose
+ To go throught a specific module or all modules in a course and perform some operations on the content of each page, for example replacing '<p>' with '<p lang="en_us">' to do language tagging.
 
-Purpose: To go throught a specific module or all modules in a course and perform some operations on the content of each page, for example replacing '<p>' with '<p lang="en_us">' to do language tagging.
-
-Input:
-```
+### Input
+```bash
 ./edit_modules_items_in_a_module_in_a_course.py course_id [module_name]
 ```
 
-Output: proggress information such as:
-```
+### Output
+proggress information such as:
+```bash
 processing module: II2202 modules
 process_item 1
 processing item: Course syllabus (kurs-PM)
@@ -1964,33 +2171,35 @@ processing item: TimeEdit
 
 Note you have to edit the program to add the operations that you want to perform on the page contents.
 
-Example:
-```
+### Example
+```bash
 ./edit_modules_items_in_a_module_in_a_course.py 11 'Presenting data (as a Wiki)'
 
 ```
 
 You can process all of the modules in the course with:
-```
+```bash
 ./edit_modules_items_in_a_module_in_a_course.py 11
 
 ```
 
 ##  ./delete_a_module_and_its_items.py course_id
 
-Purpose: To delete a module. It additionally, deletes any wikipages unless they are used in another module. This should make it possible to re-import a new version of this module into a course.
+### Purpose
+ To delete a module. It additionally, deletes any wikipages unless they are used in another module. This should make it possible to re-import a new version of this module into a course.
 
-Input:
-```
+### Input
+```bash
  ./delete_a_module_and_its_items.py course_id 'module_name'
 ```
 
-Output: outputs some progress information.
+### Output
+outputs some progress information.
 
 Note that when an existing page is used in a module, it gets a new module item instance in the module ; however, the url points to the original wikipage.
 
-Example:
-```
+### Example
+```bash
 ./delete_a_module_and_its_items.py --config config-test.json 11 'Test module for deletion' 
 process_item 1
 processing item: Test page 1 for deletion
@@ -2004,48 +2213,46 @@ process_item 5
 processing item: Test page 3 for deletion
 ```
 
-You can xxxx, for example:
-```
-
-```
-
 ## compute_stats_for_course.py
 
-Purpose: Textatistic is used to compute some statistics about module items that are Pages.
+### Purpose
+ Textatistic is used to compute some statistics about module items that are Pages.
        HTML elements that contain non-English sentences are filtered or cause an exception for Textatistic.
              By default, only published pages are processed (use option -u or --unpublished to include them).
 
       The pages (either on 'All pages' or 'All published pages') are sorted by the module's position and the postion of the page within this module. This is to make it easy to look at the statistics for pages within a module and across modules.
-
-Input:
-```
+### Input
+```bash
 ./compute_stats_for_course.py course_id
 ```
 
-Output: XLSX spreadsheet with modules in course
+### Output
+XLSX spreadsheet with modules in course
 
 Note 
      The filtering is a work in progress - the filters should be expanded.
 
-Example:
-```
+### Example
+```bash
 ./compute_stats_for_course.py 11
 ```
 
 ## augments-course-stats-with-plots.py
-Purpose: take the output of compute_stats_for_course.py and agument it with a plot of the SMOG scores of the pages.
+### Purpose
+ take the output of compute_stats_for_course.py and agument it with a plot of the SMOG scores of the pages.
 
-Input:
-```
+### Input
+```bash
 ./augments-course-stats-with-plots.py -c course_id
 ```
 
-Output: outputs an updated spreadsheet 'course-modules-item-stats-'+course_id+'-augmented.xlsx' - not current include only the sheet with the readability scores and a plot of the SMOG scores for all of the pages in the course - organized by module.
+### Output
+outputs an updated spreadsheet 'course-modules-item-stats-'+course_id+'-augmented.xlsx' - not current include only the sheet with the readability scores and a plot of the SMOG scores for all of the pages in the course - organized by module.
 
 Note: It tries to enlarge the size of the bar charart vertically based upon multiples of 50 module item pages. It also scales the SMOG chart based on the highest score rounded up to a multiple of 5.
 
-Example:
-```
+### Example
+```bash
 ./augments-course-stats-with-plots.py -c 28715
 ```
 
@@ -2060,24 +2267,24 @@ multiple supervisors are assumed to be separated by either a comma or " and ".
 
 
 ### Input
-```
+```bash
 ./insert-examiners-and-supervisors-from-spreadsheet.py course_id spreadsheetFile
 ```
 
 ### Output
 
 Outputs additions to an examiner's section
-```
+```bash
 Adding Last, First to section for examiner Maguire Jr, Gerald Quentin
 ```
 
 Outputs additions to an examiner's section
-```
+```bash
 Adding Last, First to section for supervisor Maguire Jr, Gerald Quentin
 ```
 
 Outputs a list of missing students, i.e., students' who are not in the Canvas course
-```
+```bash
 missing_students={'aaaa@kth.se', 'bbbb@kth.se'}
 ```
 
@@ -2092,7 +2299,7 @@ Outputs a list of teacher missing from the course  (in normal name order)
 Supervisors will be marked as missing if they are not built into the table in the program that takes a supervior name (in normal order) as shown in the Supervisor column of the spreadsheet and maps it to the name in the Canvas course in sortable name order.
 
 ### Example
-```
+```bash
 ./insert-examiners-and-supervisors-from-spreadsheet.py  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
 
  ./insert-examiners-and-supervisors-from-spreadsheet.py --config config-test.json  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
@@ -2103,18 +2310,22 @@ Supervisors will be marked as missing if they are not built into the table in th
 
 ## xxx.py
 
-Purpose: To 
+### Purpose
+ To 
 
-Input:
+### Input
+
 ```
 ./xxx.py KTHID_of_user
 ```
 
-Output: outputs 
+### Output
+outputs 
 
 Note 
 
-Example:
+### Example
+
 ```
 ./xxx.py u1d13i2c
 ```
@@ -2126,18 +2337,22 @@ You can xxxx, for example:
 
 ## yyy.py
 
-Purpose: To 
+### Purpose
+To 
 
-Input:
+### Input
+
 ```
 ./xxx.py KTHID_of_user
 ```
 
-Output: outputs 
+### Output
+outputs 
 
 Note 
 
-Example:
+### Example
+
 ```
 ./xxx.py u1d13i2c
 ```
