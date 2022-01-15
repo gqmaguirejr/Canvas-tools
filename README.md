@@ -1818,16 +1818,15 @@ Input:
 ```
 ./get_status-for-users-in-course.py course_id
 ```
-# Output: various diagnotic output
-#
-# with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
-# with the option -t' or '--testing' testing mode
-#
-# with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
-#
-# Can also be called with an alternative configuration file:
-# ./custom-data-for-users-in-course.py --config config-test.json
-#
+Output: various diagnotic output
+with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
+with the option -t' or '--testing' testing mode
+
+with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+
+Can also be called with an alternative configuration file:
+./custom-data-for-users-in-course.py --config config-test.json
+
 Examples:
 ```
 ./get_status-for-users-in-course.py -C  7 
@@ -2138,7 +2137,7 @@ Output: outputs
 
 Note 
 
-Example:
+#Example:
 ```
 ./xxx.py u1d13i2c
 ```
