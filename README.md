@@ -2051,7 +2051,7 @@ Example:
 
 ## insert-examiners-and-supervisors-from-spreadsheet.py
 
-Purpose:
+### Purpose
 
 Program inserts the name of the examiner as a grade based on matching the
 "e-mail" and the student's in the course gradebook. It also adds the students
@@ -2059,12 +2059,12 @@ to the appropriate section for the examiner and supervisors.  The names of
 multiple supervisors are assumed to be separated by either a comma or " and ".
 
 
-Input:
+### Input
 ```
 ./insert-examiners-and-supervisors-from-spreadsheet.py course_id spreadsheetFile
 ```
 
-Output:
+### Output
 
 Outputs additions to an examiner's section
 ```
@@ -2087,11 +2087,11 @@ Outputs a list of missing sections (in sortable name order)
 
 Outputs a list of teacher missing from the course  (in normal name order)
 
-Note 
+### Note 
 
 Supervisors will be marked as missing if they are not built into the table in the program that takes a supervior name (in normal order) as shown in the Supervisor column of the spreadsheet and maps it to the name in the Canvas course in sortable name order.
 
-#Example:
+### Example
 ```
 ./insert-examiners-and-supervisors-from-spreadsheet.py  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
 
