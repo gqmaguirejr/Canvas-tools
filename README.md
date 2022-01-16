@@ -2279,8 +2279,10 @@ Program inserts the name of the examiner as a "grade" based on matching the
 "e-mail" and the student's in the course gradebook. It also adds the students
 to the appropriate section for the examiner and supervisors.  The names of
 multiple supervisors are assumed to be separated by either a comma or " and ".
-Additionally, it takes the vaulke of the string in the "Proposal" column of the spreadsheet
-and adds it as the "Tentative_title" in the gradebook.
+Additionally, it takes the vaulke of the string in the "Proposal" column of
+the spreadsheet and adds it as the "Tentative_title" in the gradebook. A list
+of the supervisors in the same format they are in the spreadsheet is stored in
+the gradebook in a custom column 'Supervisors'.
 
 Note that one has to add the e-mail address column to the spreadsheet "Closed"
 and then manually add the student's e-mail address for each student.

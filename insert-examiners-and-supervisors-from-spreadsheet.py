@@ -10,7 +10,8 @@
 #
 # Program inserts the name of the examiner as a grade based on matching the "e-mail" and the student's in the course gradebook
 # It also adds the students to the appropriate section for the examiner and supervisors.
-# The names of multiple supervisors are assumed to be separated by either a comma or " and ".
+# The names of multiple supervisors are assumed to be separated by either a comma or " and " in the spreadsheet.
+# A list of the supervisors (in the same format they are in the spreadsheet) is stored in the gradebook in a custom column 'Supervisors'.
 #
 # with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
@@ -454,6 +455,12 @@ def lookup_title_in_gradebook(students_userid, existing_title_data):
             return td['content']
     return None
 
+def lookup_supervisors_in_gradebook(students_userid, existing_supervisors_data):
+    for td in existing_supervisors_data: # data is a list with entries of the form: {'content': 'title', 'user_id': xxxx}
+        if students_userid == td['user_id']:
+            return td['content']
+    return None
+
 def users_sections_from_user_id(enrollments, id):
     section_id=list()
     for i in enrollments:
@@ -622,15 +629,27 @@ def main():
     target_column_name='Tenative_title'
     target_column_id=lookup_column_id(custon_columns_in_course, target_column_name)
     if target_column_id:
-        print("target_column_name={0} id={1}".format(target_column_name, target_column_id))
+        if Verbose_Flag:
+            print("target_column_name={0} id={1}".format(target_column_name, target_column_id))
     else:
         print("Canvas course is missing a column with the name: {}".format(target_column_name))
+        return
+
+    # check for 'Advisors' - this corresponds to the spreadsheet column 'Supervisor'
+    target_supervisors_column_name='Supervisors'
+    target_supervisors_column_id=lookup_column_id(custon_columns_in_course, target_supervisors_column_name)
+    if target_supervisors_column_id:
+        if Verbose_Flag:
+            print("target_supervisors_column_name={0} id={1}".format(target_supervisors_column_name, target_supervisors_column_id))
+    else:
+        print("Canvas course is missing a column with the name: {}".format(target_supervisors_column_name))
         return
 
     if Verbose_Flag:
         print("custon_columns_in_course={}".format(custon_columns_in_course))
 
     existing_title_data=list_custom_column_entries(course_id, target_column_id)
+    existing_supervisors_data=list_custom_column_entries(course_id, target_supervisors_column_id)
 
     list_of_assignments=list_assignments(course_id)
     if Verbose_Flag:
@@ -640,7 +659,8 @@ def main():
     target_assignment_name='Examiner'
     assignment_id=assignment_id_from_assignment_name(list_of_assignments, target_assignment_name)
     if assignment_id:
-        print("target_assignment_name={0} id={1}".format(target_assignment_name, assignment_id))
+        if Verbose_Flag:
+            print("target_assignment_name={0} id={1}".format(target_assignment_name, assignment_id))
     else:
         print("Canvas course is missing an assignment with the name: {}".format(target_assignment_name))
         return
@@ -657,8 +677,8 @@ def main():
                 if Verbose_Flag:
                     print("title={0} for id={1}".format(s['title'], s['id']))
 
-    #if Verbose_Flag:
-    print("canvas_grading_standards={}".format(canvas_grading_standards))
+    if Verbose_Flag:
+        print("canvas_grading_standards={}".format(canvas_grading_standards))
 
     course_info=get_course_info(course_id)
     course_code=course_info.get('course_code', False)
@@ -669,7 +689,8 @@ def main():
         print("course_code={}".format(course_code))
 
     examiner_grading_standard_id=canvas_grading_standards.get(course_code+'_Examiners', None)
-    print("examiner_grading_standard_id={}".format(examiner_grading_standard_id))
+    if Verbose_Flag:
+        print("examiner_grading_standard_id={}".format(examiner_grading_standard_id))
 
     for i in available_grading_standards:
         if i['id'] == examiner_grading_standard_id:
@@ -756,6 +777,8 @@ def main():
     number_of_rows=len(projects_df)
     print("number_of_rows in spreadsheet={}".format(number_of_rows))
 
+    # This dict maps the names in the order used in the spread sheet to sortable name order (for use in Canvas)
+    # This dict contains all of the examiners known to the program
     mapping_spreadsheet_to_sortname_examiner_names={
         'Aris Gionis':         'Gionis, Aristides',
         'Aristides Gionis':    'Gionis, Aristides',
@@ -799,9 +822,12 @@ def main():
         'Sten Ternström':	'Ternström, Sten',
         'Tino Weinkauf':	'Weinkauf, Tino',
         'Viggo Kann':		'Kann, Viggo',
-        'Viktoria Fodor':	'Fodor, Viktoria'
+        'Viktoria Fodor':	'Fodor, Viktoria',
+        # Add new examiners to this mapping.
         }
 
+    # This dict maps the names in the order used in the spread sheet to sortable name order (for use in Canvas)
+    # This dict contains all of the teachers (who are not examiners) who are known to the program
     mapping_spreadsheet_to_sortname_supervisor_names={
         'Afsaneh Mahmoudi Benhangi':	'Mahmoudi Benhangi, Afsaneh',
         'Ashish Kumar Dwivedi':	'Dwivedi, Ashish Kumar',
@@ -814,6 +840,7 @@ def main():
         'Eva-Lotta Sallnäs Pysander':	'Sallnäs Pysander, Eva-Lotta',
         'Evangelia Gogoulou':	'Gogoulou, Evangelia',
         'Fredrik Heiding':	'Heiding, Fredrik',
+        'Feridun Tütüncüoglu':	'Tütüncüoglu, Feridun',
         'Giuseppe Nebbione':	'Nebbione, Giuseppe',
         'Henrik Karlsson':	'Karlsson, Henrik',
         'Hongyu Jin':		'Jin, Hongyu',
@@ -830,14 +857,15 @@ def main():
         'Nikolaos Kakouros':	'Kakouros, Nikolaos',
         'Pablo Buiras':		'Buiras, Pablo',
         'Sanne van Waveren':	'van Waveren, Sanne',
+        'Summrina Wajid':	'Wajid, Summrina',
         'Wafaa A. H.':		'Mushtaq, Wafaa',
         'Wafaa A.H.':		'Mushtaq, Wafaa',
         'Yue Liu':		'Liu, Yue',
         'Zeeshan Afzal':	'Afzal, Zeeshan',
-        #'Alexander Baltatzis':	'',
-        #'Jens Edlund':	'',
-        #'Feridun Tütüncüoglu':	'',
-        #'Summrina Wajid':	'',
+        'Alexander Baltatzis':	'Baltatzis, Alexander',
+        'Jens Edlund':		'Edlund, Jens',
+        # Add new teachers to this mapping.
+
         }
 
     # combine the above two dicts into mapping_spreadsheet_to_sortname_supervisor_names
@@ -953,7 +981,16 @@ def main():
                     clean_supervisors_list.append(supervisor.strip())
                     
                 if Verbose_Flag:
-                    print("supervisors_list={}".format(supervisors_list))
+                    print("cleaned supervisors_list={}".format(clean_supervisors_list))
+
+                existing_advisors=lookup_supervisors_in_gradebook(students_userid, existing_supervisors_data)
+                clean_supervisors_list_text="{}".format(clean_supervisors_list)
+                # if there is no existing advisors data or the contents have changes, then update
+                if not existing_advisors or (existing_advisors != clean_supervisors_list_text):
+                    if Verbose_Flag:
+                        print("Storing advisors list for {0} {1} {2}".format(s_name, students_userid, clean_supervisors_list))
+                    put_custom_column_entries(course_id, target_supervisors_column_id, students_userid, clean_supervisors_list_text)
+
                 for supervisor in clean_supervisors_list:
                     # translate from spreadsheet supervisor name to a supervsior's name in sort_name format
                     sorted_name=mapping_spreadsheet_to_sortname_supervisor_names.get(supervisor, False)
@@ -984,15 +1021,16 @@ def main():
 
     # list the e-mail address of missing stduents
     if missing_students:
+        print("missing_students are students who have an e-mail address in the spreadsheet, but are not in the Canvas course")
         print("missing_students={}".format(missing_students))
 
     # list the names of missing examiners or supervisors in normal name order
+    if missing_supervisors or missing_examiners:
+        print("You need to add the missing supervisors or examiners to the mapping table for this program")
     if missing_examiners:
         print("missing_examiners={}".format(missing_examiners))
     if missing_supervisors:
         print("missing_supervisors={}".format(missing_supervisors))
-    if missing_supervisors or missing_examiners:
-        print("You may need to add the missing supervisors or examiners to the course")
 
     # the names in the missing sections are in sortable name order
     if missing_sections:

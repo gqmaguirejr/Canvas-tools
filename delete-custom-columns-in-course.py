@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./delete-custom-columns-in-course.py course_id
+# ./delete-custom-columns-in-course.py course_id [column_id]
 #
 # Output: XLSX spreadsheet with custom columns in course
 #
