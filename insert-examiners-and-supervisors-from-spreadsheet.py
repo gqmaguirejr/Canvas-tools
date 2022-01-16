@@ -898,11 +898,14 @@ def main():
         else:
             continue
 
+        if len(e_mail) > 0:     # Make sure the e-mail address is in lower case, this is the convention in Canvas
+            e_mail=e_mail.lower()
         if len(e_mail) > 0 and e_mail.endswith('@kth.se'):
+            existing_examiner=None
             students_userid=students_email.get(e_mail, None)
             if not students_userid:
                 missing_students.add(e_mail)
-                if Verbose_Flag:
+                if Verbose_Flag or True:
                     print("Student with e-mail '{0}' is missing from the course".format(e_mail))
                 continue
             student=student_from_students_by_id(students_userid, students)
@@ -941,16 +944,26 @@ def main():
                     continue
 
 
-                existing_examiner=None
                 current_grade_info=get_grade_for_assignment(course_id, assignment_id, students_userid)
+                if Verbose_Flag:
+                    print("current_grade_info={}".format(current_grade_info))
                 if current_grade_info:
                     existing_examiner=current_grade_info.get('grade', False)
                     if Verbose_Flag:
                         print("{0}: existing_examiner={1}".format(s_name, existing_examiner))
-                    if existing_examiner and (existing_examiner != sorted_name):
+
+                    if not existing_examiner:
+                        print("no existing examiner for {0}: asssigning examiner {1}".format(s_name, sorted_name))
+                        assign_grade_for_assignment(course_id, assignment_id, students_userid, sorted_name, False)
+                        existing_examiner=sorted_name
+                    elif existing_examiner and (existing_examiner != sorted_name):
                         # need to change the student's examiner
                         assign_grade_for_assignment(course_id, assignment_id, students_userid, sorted_name, False)
                         print("{0}: changed examiner from {1} to {2}".format(s_name, existing_examiner, sorted_name))
+                    else:
+                        if Verbose_Flag:
+                            print("Nothing to do as the existing examiner is already as recorded")
+
                 else:
                     print("no current_grade_info {0}: asssigning examiner {1}".format(s_name, sorted_name))
                     assign_grade_for_assignment(course_id, assignment_id, students_userid, sorted_name, False)
@@ -967,8 +980,11 @@ def main():
                         print("Nothing to do - the user is already in the teacher's section")
                 else:
                     # add the student to this section
-                    print("Adding {0} to section for examiner {1}".format(s_name, existing_examiner))
-                    enroll_student_in_section(course_id, students_userid, teacher_section_id)
+                    if existing_examiner:
+                        print("Adding {0} to section for examiner {1}".format(s_name, existing_examiner))
+                        enroll_student_in_section(course_id, students_userid, teacher_section_id)
+                    else:
+                        print("Do not know the examiner for {0}, the examiner's name in the spreadsheet is '{1}'".format(s_name, examiner))
 
             # Handles supervisors for this student
             # Note that the supervisors (if more than one) can be separate by 'and' or a comma
