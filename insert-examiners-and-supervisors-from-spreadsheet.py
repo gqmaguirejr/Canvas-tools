@@ -624,6 +624,13 @@ def main():
         print("spreadsheet is missing column(s), please correct")
         return
 
+    # The header of the Proposal column seems to have a trailing space
+    spreadsheet_proposal_key='Proposal'
+    if spreadsheet_proposal_key not in spreadsheetColumns:
+        spreadsheet_proposal_key='Proposal '
+        if spreadsheet_proposal_key not in spreadsheetColumns:
+            spreadsheet_proposal_key=None
+
     custon_columns_in_course=list_custom_columns(course_id)
     # check for 'Tentative_title' - this corresponds to the spreadsheet column 'Proposal'
     target_column_name='Tenative_title'
@@ -905,17 +912,19 @@ def main():
                 print("Could not figure out the sortable_name for {0}".format(students_userid))
 
             # deal with tentative_title and 'Proposal'
-            data_to_store=projects_df['Proposal'].values[j]
-            if isinstance(data_to_store, str):
-                if Verbose_Flag:
-                    print("data_to_store={}".format(data_to_store))
-                tentative_title=lookup_title_in_gradebook(students_userid, existing_title_data)
-                if not tentative_title:
+            if spreadsheet_proposal_key:
+                data_to_store=projects_df[spreadsheet_proposal_key].values[j]
+                if isinstance(data_to_store, str):
                     if Verbose_Flag:
-                        print("Storing tentative tilte for {0} {1} {2}".format(s_name, students_userid, data_to_store))
-                    put_custom_column_entries(course_id, target_column_id, students_userid, data_to_store)
-            else:
-                print("no data_to_store")
+                        print("data_to_store={}".format(data_to_store))
+                    tentative_title=lookup_title_in_gradebook(students_userid, existing_title_data)
+                    if not tentative_title:
+                        if Verbose_Flag:
+                            print("Storing tentative tilte for {0} {1} {2}".format(s_name, students_userid, data_to_store))
+                        put_custom_column_entries(course_id, target_column_id, students_userid, data_to_store)
+                else:
+                    if Verbose_Flag:
+                        print("no data_to_store")
 
             # deal with the examiner for this student
             examiner=projects_df['Examiner'].values[j]
