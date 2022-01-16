@@ -561,6 +561,29 @@ def enroll_student_in_section(course_id, user_id, section_id):
 
     return None
 
+def remove_student_from_section(course_id, user_id, section_id, students):
+    global Verbose_Flag
+    enrollment_id=None
+    for s in students:
+        if s['user_id'] == user_id and s['course_section_id'] == section_id:
+            enrollment_id=s['id']
+            # DELETE /api/v1/courses/:course_id/enrollments/:enrollment_id
+            url = "{0}/courses/{1}/enrollments/{2}".format(baseUrl,course_id, enrollment_id)
+            if Verbose_Flag:
+                print("url: {}".format(url))
+            payload={'task': 'delete' } #  delete this specific renollment
+            r = requests.delete(url, headers = header, data=payload)
+
+            if Verbose_Flag:
+                print("result of deleting enrollment of student with enrollment_id {0}: {1}".format(enrollment_id, r.text))
+
+            if r.status_code == requests.codes.ok:
+                page_response=r.json()
+                return page_response
+            else:
+                return None
+    return None
+
 def main():
     global Verbose_Flag
 
@@ -871,6 +894,7 @@ def main():
         'Zeeshan Afzal':	'Afzal, Zeeshan',
         'Alexander Baltatzis':	'Baltatzis, Alexander',
         'Jens Edlund':		'Edlund, Jens',
+        'Yeongwoo Kim':		'Kim, Yeongwoo',
         # Add new teachers to this mapping.
 
         }
@@ -905,7 +929,7 @@ def main():
             students_userid=students_email.get(e_mail, None)
             if not students_userid:
                 missing_students.add(e_mail)
-                if Verbose_Flag or True:
+                if Verbose_Flag:
                     print("Student with e-mail '{0}' is missing from the course".format(e_mail))
                 continue
             student=student_from_students_by_id(students_userid, students)
@@ -950,7 +974,7 @@ def main():
                 if current_grade_info:
                     existing_examiner=current_grade_info.get('grade', False)
                     if Verbose_Flag:
-                        print("{0}: existing_examiner={1}".format(s_name, existing_examiner))
+                        print("{0}: existing_examiner={1} while sorted_name={2}".format(s_name, existing_examiner, sorted_name))
 
                     if not existing_examiner:
                         print("no existing examiner for {0}: asssigning examiner {1}".format(s_name, sorted_name))
@@ -960,6 +984,13 @@ def main():
                         # need to change the student's examiner
                         assign_grade_for_assignment(course_id, assignment_id, students_userid, sorted_name, False)
                         print("{0}: changed examiner from {1} to {2}".format(s_name, existing_examiner, sorted_name))
+                        # remove the student from the previous examiner's section
+                        previous_examiners_section_id=teacher_to_section_mapping[existing_examiner]
+                        if previous_examiners_section_id:
+                            print("removing previous_examiners_section_id={1} from student={0}".format(s_name, previous_examiners_section_id))
+                            remove_student_from_section(course_id, students_userid, previous_examiners_section_id, students)
+                        existing_examiner=sorted_name
+
                     else:
                         if Verbose_Flag:
                             print("Nothing to do as the existing examiner is already as recorded")
@@ -975,6 +1006,8 @@ def main():
                     print("teacher_section_id={}".format(teacher_section_id))
 
                 existing_sections_for_user=users_sections_from_user_id(students, students_userid)
+                if Verbose_Flag:
+                    print("existing_sections_for_user={0}, teacher_section_id={1}".format(existing_sections_for_user, teacher_section_id))
                 if existing_sections_for_user and (teacher_section_id in existing_sections_for_user):
                     if Verbose_Flag:
                         print("Nothing to do - the user is already in the teacher's section")
