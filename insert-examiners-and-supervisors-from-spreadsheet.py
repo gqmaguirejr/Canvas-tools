@@ -44,6 +44,10 @@ import pandas as pd
 
 # to use math.isnan(x) function
 import math
+
+# to convert strings to python lists
+import ast
+
 #############################
 ###### EDIT THIS STUFF ######
 #############################
@@ -792,6 +796,7 @@ def main():
         create_sections_in_course(course_id, new_sections_needed)
 
     teacher_to_section_mapping=dict()
+    all_teacher_section_ids=set()
     list_of_sections=sections_in_course(course_id)
 
     for t in teacher_names_sortable_sorted:
@@ -800,9 +805,11 @@ def main():
             print("Missing section for {0}".format(t))
         else:
             teacher_to_section_mapping[t]=section_id
+            all_teacher_section_ids.add(section_id)
 
     if Verbose_Flag:
         print("teacher_to_section_mapping={}".format(teacher_to_section_mapping))
+        print("all_teacher_section_ids={}".format(all_teacher_section_ids))
 
     number_of_rows=len(projects_df)
     print("number_of_rows in spreadsheet={}".format(number_of_rows))
@@ -935,6 +942,7 @@ def main():
             student=student_from_students_by_id(students_userid, students)
             if student:
                 s_name=student['user']['sortable_name']
+                print("processing student {}".format(s_name))
             else:
                 print("Could not figure out the sortable_name for {0}".format(students_userid))
 
@@ -1033,49 +1041,106 @@ def main():
                     supervisors_list=supervisors.split(',')
                 else:
                     supervisors_list=[supervisors]
-                # clean up supervisor (remove preceeding and trailing white space
-                clean_supervisors_list=[]
+                # clean up supervisors (remove preceeding and trailing white space and make a set of them
+                new_supervisors=[] # in normal name order for supervisors
                 for supervisor in supervisors_list:
-                    clean_supervisors_list.append(supervisor.strip())
+                    new_supervisors.append(supervisor.strip())
                     
+
+                print("new_supervisors={}".format(new_supervisors))
+
+                es=lookup_supervisors_in_gradebook(students_userid, existing_supervisors_data)
+                if es:
+                    existing_supervisors=ast.literal_eval(es)
+                else:
+                    existing_supervisors=None
+
                 if Verbose_Flag:
-                    print("cleaned supervisors_list={}".format(clean_supervisors_list))
+                    print("existing_supervisors={0} of len()={1} and type()={2}".format(existing_supervisors, len(existing_supervisors), type(existing_supervisors)))
 
-                existing_advisors=lookup_supervisors_in_gradebook(students_userid, existing_supervisors_data)
-                clean_supervisors_list_text="{}".format(clean_supervisors_list)
-                # if there is no existing advisors data or the contents have changes, then update
-                if not existing_advisors or (existing_advisors != clean_supervisors_list_text):
-                    if Verbose_Flag:
-                        print("Storing advisors list for {0} {1} {2}".format(s_name, students_userid, clean_supervisors_list))
-                    put_custom_column_entries(course_id, target_supervisors_column_id, students_userid, clean_supervisors_list_text)
-
-                for supervisor in clean_supervisors_list:
-                    # translate from spreadsheet supervisor name to a supervsior's name in sort_name format
-                    sorted_name=mapping_spreadsheet_to_sortname_supervisor_names.get(supervisor, False)
-                    if not sorted_name:
+                existing_supervisors_sorted_names=set()
+                existing_supervisors_section_ids=set()
+                map_section_id_to_supervisor=dict()
+                if  isinstance(existing_supervisors, list) and existing_supervisors:
+                    for supervisor in existing_supervisors:
                         if Verbose_Flag:
-                            print("Could not find sorted name for supervisor={}".format(supervisor))
-                        missing_supervisors.add(supervisor)
-                        continue
-
-                    # make sure student is in the supervisor's section
-                    teacher_section_id=teacher_to_section_mapping.get(sorted_name, False)
-                    if Verbose_Flag:
-                        print("teacher_section_id={}".format(teacher_section_id))
-
-                    if teacher_section_id:
-                        existing_sections_for_user=users_sections_from_user_id(students, students_userid)
-                        if existing_sections_for_user and (teacher_section_id in existing_sections_for_user):
+                            print("processing supervisor: {0} for {1}".format(supervisor, s_name))
+                        # translate from spreadsheet supervisor name to a supervsior's name in sort_name format
+                        sorted_name=mapping_spreadsheet_to_sortname_supervisor_names.get(supervisor, False)
+                        if not sorted_name:
                             if Verbose_Flag:
-                                print("Nothing to do - the user is already in the teacher's section")
+                                print("Could not find sorted name for supervisor={}".format(supervisor))
+                            missing_supervisors.add(supervisor)
+                            continue
+                        existing_supervisors_sorted_names.add(sorted_name)
+
+                        teacher_section_id=teacher_to_section_mapping.get(sorted_name, False)
+                        if Verbose_Flag:
+                            print("teacher_section_id={}".format(teacher_section_id))
+                        if not teacher_section_id:
+                            if Verbose_Flag:
+                                print("Could not find section ID for supervisor={}".format(sorted_name))
                         else:
-                            # add the student to this section
-                            print("Adding {0} to section for supervisor {1}".format(s_name, sorted_name))
-                            enroll_student_in_section(course_id, students_userid, teacher_section_id)
+                            existing_supervisors_section_ids.add(teacher_section_id)
+                            map_section_id_to_supervisor[teacher_section_id]=sorted_name
                     else:
                         if Verbose_Flag:
-                            print("No section for supervisor {}".format(supervisor))
-                        missing_sections.add(sorted_name)
+                            print("Error - there seems to be something ('{}') in the supervisor column, but I don't know what to do".format(existing_supervisors))
+
+                new_supervisors_sorted_names=set()
+                new_supervisors_section_ids=set()
+                if new_supervisors:
+                    for supervisor in new_supervisors:
+                        # translate from spreadsheet supervisor name to a supervsior's name in sort_name format
+                        sorted_name=mapping_spreadsheet_to_sortname_supervisor_names.get(supervisor, False)
+                        if not sorted_name:
+                            if Verbose_Flag:
+                                print("Could not find sorted name for supervisor={}".format(supervisor))
+                            missing_supervisors.add(supervisor)
+                            continue
+                        new_supervisors_sorted_names.add(sorted_name)
+
+                        teacher_section_id=teacher_to_section_mapping.get(sorted_name, False)
+                        if Verbose_Flag:
+                            print("teacher_section_id={}".format(teacher_section_id))
+                        if not teacher_section_id:
+                            missing_sections.add(sorted_name)
+                            if Verbose_Flag:
+                                print("Could not find section ID for supervisor={}".format(sorted_name))
+                        else:
+                            new_supervisors_section_ids.add(teacher_section_id)
+                            map_section_id_to_supervisor[teacher_section_id]=sorted_name
+
+                if Verbose_Flag:
+                    print("map_section_id_to_supervisor={}".format(map_section_id_to_supervisor))
+                existing_sections_for_user=users_sections_from_user_id(students, students_userid)
+                if Verbose_Flag:
+                    print("existing_sections_for_user={}".format(existing_sections_for_user))
+                # if there is no existing supervisor data or the contents have changed, then update with supervisor names in normal order
+                if not existing_supervisors or (existing_supervisors_sorted_names != new_supervisors_sorted_names):
+                    if Verbose_Flag:
+                        print("Storing supervisor(s) for {0} {1} {2}".format(s_name, students_userid, new_supervisors))
+                    new_supervisors_text="{}".format(new_supervisors)
+                    put_custom_column_entries(course_id, target_supervisors_column_id, students_userid, new_supervisors_text)
+
+                    if existing_supervisors_section_ids:
+                        # remove those section IDs that were in the existing set that are not in the new set
+                        to_remove=existing_supervisors_section_ids-new_supervisors_section_ids
+                        if Verbose_Flag:
+                            print("to_remove={}".format(to_remove))
+                        for sid in to_remove:
+                            if sid in existing_sections_for_user:
+                                print("removing {0} from section for supervisor {1}".format(s_name, map_section_id_to_supervisor[sid]))
+                                remove_student_from_section(course_id, students_userid, sid, students)
+                           
+                    # add the new section IDs that are not in the user's current set of sections
+                    if Verbose_Flag:
+                        print("Adding {0} to supervisor(s) sections".format(s_name))
+                        print("new_supervisors_section_ids={}".format(new_supervisors_section_ids))
+                    for sid in new_supervisors_section_ids:
+                        if sid not in existing_sections_for_user:
+                            print("adding {0} to the section for supervisor {1}".format(s_name, map_section_id_to_supervisor[sid]))
+                            enroll_student_in_section(course_id, students_userid, sid)
 
     # list the e-mail address of missing stduents
     if missing_students:
