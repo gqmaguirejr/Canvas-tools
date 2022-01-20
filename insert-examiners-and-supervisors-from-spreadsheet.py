@@ -1045,9 +1045,9 @@ def main():
                 new_supervisors=[] # in normal name order for supervisors
                 for supervisor in supervisors_list:
                     new_supervisors.append(supervisor.strip())
-                    
 
-                print("new_supervisors={}".format(new_supervisors))
+                if Verbose_Flag:
+                    print("new_supervisors={}".format(new_supervisors))
 
                 es=lookup_supervisors_in_gradebook(students_userid, existing_supervisors_data)
                 if es:
@@ -1123,24 +1123,24 @@ def main():
                     new_supervisors_text="{}".format(new_supervisors)
                     put_custom_column_entries(course_id, target_supervisors_column_id, students_userid, new_supervisors_text)
 
-                    if existing_supervisors_section_ids:
-                        # remove those section IDs that were in the existing set that are not in the new set
-                        to_remove=existing_supervisors_section_ids-new_supervisors_section_ids
-                        if Verbose_Flag:
-                            print("to_remove={}".format(to_remove))
-                        for sid in to_remove:
-                            if sid in existing_sections_for_user:
-                                print("removing {0} from section for supervisor {1}".format(s_name, map_section_id_to_supervisor[sid]))
-                                remove_student_from_section(course_id, students_userid, sid, students)
-                           
-                    # add the new section IDs that are not in the user's current set of sections
+                if existing_supervisors_section_ids:
+                    # remove those section IDs that were in the existing set that are not in the new set
+                    to_remove=existing_supervisors_section_ids-new_supervisors_section_ids
                     if Verbose_Flag:
-                        print("Adding {0} to supervisor(s) sections".format(s_name))
-                        print("new_supervisors_section_ids={}".format(new_supervisors_section_ids))
-                    for sid in new_supervisors_section_ids:
-                        if sid not in existing_sections_for_user:
-                            print("adding {0} to the section for supervisor {1}".format(s_name, map_section_id_to_supervisor[sid]))
-                            enroll_student_in_section(course_id, students_userid, sid)
+                        print("to_remove={}".format(to_remove))
+                    for sid in to_remove:
+                        if sid in existing_sections_for_user:
+                            print("removing {0} from section for supervisor {1}".format(s_name, map_section_id_to_supervisor[sid]))
+                            remove_student_from_section(course_id, students_userid, sid, students)
+                           
+                # add the new section IDs that are not in the user's current set of sections
+                if Verbose_Flag:
+                    print("Adding {0} to supervisor(s) sections".format(s_name))
+                    print("new_supervisors_section_ids={}".format(new_supervisors_section_ids))
+                for sid in new_supervisors_section_ids:
+                    if sid not in existing_sections_for_user:
+                        print("adding {0} to the section for supervisor {1}".format(s_name, map_section_id_to_supervisor[sid]))
+                        enroll_student_in_section(course_id, students_userid, sid)
 
     # list the e-mail address of missing stduents
     if missing_students:
