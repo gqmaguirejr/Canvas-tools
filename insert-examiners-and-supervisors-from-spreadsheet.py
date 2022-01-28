@@ -817,6 +817,7 @@ def main():
     # This dict maps the names in the order used in the spread sheet to sortable name order (for use in Canvas)
     # This dict contains all of the examiners known to the program
     mapping_spreadsheet_to_sortname_examiner_names={
+        'Anders Västberg':     'Västberg, Anders',
         'Aris Gionis':         'Gionis, Aristides',
         'Aristides Gionis':    'Gionis, Aristides',
         'Arvind Kumar':        'Kumar, Arvind',
@@ -897,11 +898,20 @@ def main():
         'Summrina Wajid':	'Wajid, Summrina',
         'Wafaa A. H.':		'Mushtaq, Wafaa',
         'Wafaa A.H.':		'Mushtaq, Wafaa',
+        'Wafaa A.H':		'Mushtaq, Wafaa',
         'Yue Liu':		'Liu, Yue',
         'Zeeshan Afzal':	'Afzal, Zeeshan',
         'Alexander Baltatzis':	'Baltatzis, Alexander',
         'Jens Edlund':		'Edlund, Jens',
         'Yeongwoo Kim':		'Kim, Yeongwoo',
+        'Hamid Ghasemirahni':   'Ghasemirahni, Hamid',
+        'Massimo Girondi':	'Girondi, Massimo',
+        'Douglas Wikström':	'Wikström, Douglas',
+        'Giacomo Verardo':	'Verardo, Giacomo',
+        'Konstantinos Kalogiannis': 'Kalogiannis, Konstantinos',
+        'Karey Helms':		'Helms, Karey',
+        'Ronald Cumbal':	'Cumbal, Ronald',
+        'César Soto Valero':	'Soto Valero, César'
         # Add new teachers to this mapping.
 
         }
