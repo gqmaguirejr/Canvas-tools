@@ -19,7 +19,28 @@
 # Can also be called with an alternative configuration file:
 # ./insert-examiners-and-supervisors-from-spreadsheet.py --config config-test.json  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
 #
+# Example:
 # ./insert-examiners-and-supervisors-from-spreadsheet.py  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
+#
+# Asditional options:
+# --createaliasfile
+#       creates a file of aliases in a JSON file name of the form: spreadsheet_aliases-<course_id>.json
+#
+# Otherwise the examiner and teacher aliases are read from a JSON file name of the form: spreadsheet_aliases-<course_id>.json
+#
+# The alias file has the format:
+#{
+#    "examiners": {
+#        "Gerald Maguire": "Maguire Jr, Gerald Quentin",
+#        "Gerald  Q.  Maguire": "Maguire Jr, Gerald Quentin",
+#    },
+#    "teachers": {
+#        "spreadsheet version of a teacher's name": "Canvas sort order version of teacher's name"
+#    }
+#}
+#
+# The reason for the alias file is that the form and values for the names used in the spreadsheet
+# do not always match an examiner's or teacher's name in Canvas.
 #
 # G. Q. Maguire Jr.
 #
@@ -588,8 +609,29 @@ def remove_student_from_section(course_id, user_id, section_id, students):
                 return None
     return None
 
+# This dict maps the names in the order used in the spread sheet to sortable name order (for use in Canvas)
+# This dict contains all of the examiners known to the program
+global mapping_spreadsheet_to_sortname_examiner_names
+global mapping_spreadsheet_to_sortname_supervisor_names
+
+mapping_spreadsheet_to_sortname_examiner_names={
+    'Gerald Maguire': 	'Maguire Jr, Gerald Quentin',
+    'Gerald  Q.  Maguire': 	'Maguire Jr, Gerald Quentin',
+    # Add new examiners to this mapping.
+}
+
+# This dict maps the names in the order used in the spread sheet to sortable name order (for use in Canvas)
+# This dict contains all of the teachers (who are not examiners) who are known to the program
+mapping_spreadsheet_to_sortname_supervisor_names={
+    # Add new teachers to this mapping.
+}
+
+
 def main():
     global Verbose_Flag
+    global mapping_spreadsheet_to_sortname_examiner_names
+    global mapping_spreadsheet_to_sortname_supervisor_names
+
 
     parser = optparse.OptionParser()
 
@@ -608,6 +650,13 @@ def main():
                       default=False,
                       action="store_true",
                       help="for the container enviroment in the virtual machine"
+                      )
+
+    parser.add_option('--createaliasfile',
+                      dest="createaliasfile",
+                      default=False,
+                      action="store_true",
+                      help="dump examiner and teacher alias to a JSON file"
                       )
 
     parser.add_option('-t', '--testing',
@@ -639,6 +688,47 @@ def main():
 
     course_id=remainder[0]
     spreadsheetFile=remainder[1]
+
+    AliasFile_name="spreadsheet_aliases-{}.json".format(course_id)
+
+    createdAliasFile_Flag=options.createaliasfile
+    combined_aliases=None
+    if createdAliasFile_Flag:
+        combined_aliases={'examiners': mapping_spreadsheet_to_sortname_examiner_names,
+                          'teachers': mapping_spreadsheet_to_sortname_supervisor_names
+                          }
+        try:
+            with open(AliasFile_name, 'w') as json_data_file:
+                json.dump(combined_aliases, json_data_file, ensure_ascii=False, indent=4)
+                print("created alias file {}".format(AliasFile_name))
+        except:
+            print("Unable to write JSON file named {}".format(course_info_file))
+        return
+
+
+    try:
+        with open(AliasFile_name) as json_data_file:
+            combined_aliases = json.load(json_data_file)
+    except:
+        print("Unable to open alias file named {}".format(AliasFile_name))
+        print("Please create a suitable alias file")
+        sys.exit()
+
+    #  use the alias data from the file
+    if combined_aliases:
+        mapping_spreadsheet_to_sortname_examiner_names=combined_aliases.get('examiners', dict())
+        mapping_spreadsheet_to_sortname_supervisor_names=combined_aliases.get('teachers', dict())
+    else:
+        print("There was no data in the alias file")
+
+    number_of_examiner_aliases=len(mapping_spreadsheet_to_sortname_examiner_names)
+    number_of_teacher_aliases=len(mapping_spreadsheet_to_sortname_supervisor_names)
+    if number_of_examiner_aliases == 0 or number_of_teacher_aliases == 0:
+        print("Something is likely wrong with the alias file")
+    else:
+        if Verbose_Flag or True:
+            print("Number of aliases examiners={0}, teachers={1}".format(number_of_examiner_aliases, number_of_teacher_aliases))
+
     projects_df = pd.read_excel(open(spreadsheetFile, 'rb'), sheet_name='Closed')
 
     # check for column in spreadsheet data
@@ -814,109 +904,7 @@ def main():
     number_of_rows=len(projects_df)
     print("number_of_rows in spreadsheet={}".format(number_of_rows))
 
-    # This dict maps the names in the order used in the spread sheet to sortable name order (for use in Canvas)
-    # This dict contains all of the examiners known to the program
-    mapping_spreadsheet_to_sortname_examiner_names={
-        'Anders Västberg':     'Västberg, Anders',
-        'Aris Gionis':         'Gionis, Aristides',
-        'Aristides Gionis':    'Gionis, Aristides',
-        'Arvind Kumar':        'Kumar, Arvind',
-        'Benoit Baudry':       'Baudry, Benoit',
-        'Carlo Fischione':     'Fischione, Carlo',
-        'Cyrille Artho':       'Artho, Cyrille',
-        'Danica Kragic':       'Kragic Jensfelt, Danica',
-        'Danica Kragic Jensfelt': 'Kragic Jensfelt, Danica',
-        'David Broman':		'Broman, David',
-        'Dejan Kostic':		'Kostic, Dejan Manojlo',
-        'Elena Troubitsyna':	'Troubitsyna, Elena',
-        'Erik Fransen':		'Fransén, Erik',
-        'Erik Fransén':		'Fransén, Erik',
-        'Gerald Maguire': 	'Maguire Jr, Gerald Quentin',
-        'Gerald  Q.  Maguire': 	'Maguire Jr, Gerald Quentin',
-        'György Dán':		'Dán, György',
-        'joakim gustafson':	'Gustafsson, Joakim',
-        'Joakim Gustafsson':	'Gustafsson, Joakim',
-        'Johan Håstad':		'Håstad, Johan',
-        'John Folkesson':	'Folkesson, John',
-        'Jonas Beskow':		'Beskow, Jonas',
-        'Karl Meinke':		'Meinke, Karl',
-        'Kristina Höök':	'Höök, Kristina',
-        'Mads Dam':		'Dam, Mads',
-        'Magnus Boman':		'Boman, Magnus',
-        'Marco Chiesa':		'Chiesa, Marco',
-        'Mario Romero Vega':	'Romero Vega, Mario',
-        'Mårten Björkman':	'Björkman, Mårten',
-        'Martin Monperrus':	'Monperrus, Martin',
-        'Mathias Ekstedt':	'Ekstedt, Mathias',
-        'Olof Bälter':		'Bälter, Olof',
-        'Olov Engwall':		'Engwall, Olov',
-        'Panos Papadimitratos':	'Papadimitratos, Panagiotis',
-        'Patric Jensfelt':	'Jensfelt, Patric',
-        'Pawel Herman':		'Herman, Pawel',
-        'Pontus Johnson':       'Johnson, Pontus',
-        'Robert Lagerström':	'Lagerström, Robert',
-        'Roberto Guanciale':	'Guanciale, Roberto',
-        'Stefano Markidis':	'Markidis, Stefano',
-        'Sten Ternström':	'Ternström, Sten',
-        'Tino Weinkauf':	'Weinkauf, Tino',
-        'Viggo Kann':		'Kann, Viggo',
-        'Viktoria Fodor':	'Fodor, Viktoria',
-        # Add new examiners to this mapping.
-        }
-
-    # This dict maps the names in the order used in the spread sheet to sortable name order (for use in Canvas)
-    # This dict contains all of the teachers (who are not examiners) who are known to the program
-    mapping_spreadsheet_to_sortname_supervisor_names={
-        'Afsaneh Mahmoudi Benhangi':	'Mahmoudi Benhangi, Afsaneh',
-        'Ashish Kumar Dwivedi':	'Dwivedi, Ashish Kumar',
-        'Birger Moëll':		'Moell, Birger',
-        'Björn Thuresson':	'Thuresson, Björn',
-        'Bob Sturm':		'Sturm JR, Bobby Lee Townsend',
-        'Christopher Peters':	'Peters, Christopher',
-        'Di Wu':		'Wu, Di',
-        'Dmytro Kalpakchi':	'Kalpakchi, Dmytro',
-        'Eva-Lotta Sallnäs Pysander':	'Sallnäs Pysander, Eva-Lotta',
-        'Evangelia Gogoulou':	'Gogoulou, Evangelia',
-        'Fredrik Heiding':	'Heiding, Fredrik',
-        'Feridun Tütüncüoglu':	'Tütüncüoglu, Feridun',
-        'Giuseppe Nebbione':	'Nebbione, Giuseppe',
-        'Henrik Karlsson':	'Karlsson, Henrik',
-        'Hongyu Jin':		'Jin, Hongyu',
-        'Iraklis Symeonidis':	'Symeonidis, Iraklis',
-        'Johan Boye':		'Boye, Johan',
-        'Julia Sidorova':	'Sidorova, Yulia',
-        'Kateryna Morozovska':	'Morozovska, Kateryna',
-        'Kevin Smith':		'Smith, Kevin',
-        'Mårten Björkman':	'Björkman, Mårten',
-        'Martin Karp':		'Karp, Martin',
-        'Mats Nordahl':		'Nordahl, Mats',
-        'Musard Balliu':	'Balliu, Musard',
-        'Niclas Jansson':	'Jansson, Niclas',
-        'Nikolaos Kakouros':	'Kakouros, Nikolaos',
-        'Pablo Buiras':		'Buiras, Pablo',
-        'Sanne van Waveren':	'van Waveren, Sanne',
-        'Summrina Wajid':	'Wajid, Summrina',
-        'Wafaa A. H.':		'Mushtaq, Wafaa',
-        'Wafaa A.H.':		'Mushtaq, Wafaa',
-        'Wafaa A.H':		'Mushtaq, Wafaa',
-        'Yue Liu':		'Liu, Yue',
-        'Zeeshan Afzal':	'Afzal, Zeeshan',
-        'Alexander Baltatzis':	'Baltatzis, Alexander',
-        'Jens Edlund':		'Edlund, Jens',
-        'Yeongwoo Kim':		'Kim, Yeongwoo',
-        'Hamid Ghasemirahni':   'Ghasemirahni, Hamid',
-        'Massimo Girondi':	'Girondi, Massimo',
-        'Douglas Wikström':	'Wikström, Douglas',
-        'Giacomo Verardo':	'Verardo, Giacomo',
-        'Konstantinos Kalogiannis': 'Kalogiannis, Konstantinos',
-        'Karey Helms':		'Helms, Karey',
-        'Ronald Cumbal':	'Cumbal, Ronald',
-        'César Soto Valero':	'Soto Valero, César'
-        # Add new teachers to this mapping.
-
-        }
-
-    # combine the above two dicts into mapping_spreadsheet_to_sortname_supervisor_names
+    # combine the above two alias dicts into mapping_spreadsheet_to_sortname_supervisor_names
     mapping_spreadsheet_to_sortname_supervisor_names.update(mapping_spreadsheet_to_sortname_examiner_names)
 
     # collect the list of missing students, examiners, and supervisors
@@ -995,8 +983,8 @@ def main():
                         print("{0}: existing_examiner={1} while sorted_name={2}".format(s_name, existing_examiner, sorted_name))
 
                     if not existing_examiner:
-                        print("no existing examiner for {0}: asssigning examiner {1}".format(s_name, sorted_name))
-                        assign_grade_for_assignment(course_id, assignment_id, students_userid, sorted_name, False)
+                        status=assign_grade_for_assignment(course_id, assignment_id, students_userid, sorted_name, False)
+                        print("no existing examiner for {0}: assigning examiner {1}".format(s_name, sorted_name))
                         existing_examiner=sorted_name
                     elif existing_examiner and (existing_examiner != sorted_name):
                         # need to change the student's examiner
