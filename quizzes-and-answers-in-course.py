@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./quizzes-in-course.py course_id
+# ./quizzes-and-answers-in-course.py course_id
 #
 # Output: XLSX spreadsheet with quizzes in course
 #
@@ -35,6 +35,12 @@ import json
 
 # Use Python Pandas to create XLSX files
 import pandas as pd
+
+# use lxml to access the HTML content
+from lxml import html
+
+# use the request pacek to get the HTML give an URL
+import requests
 
 #############################
 ###### EDIT THIS STUFF ######
@@ -132,8 +138,62 @@ def list_quiz_questions(course_id, quiz_id):
     return questions_found_thus_far
 
 
+def list_quiz_submissions(course_id, quiz_id):
+    submissions_found_thus_far=[]
+    # Get all quiz submissions
+    # GET /api/v1/courses/:course_id/quizzes/:quiz_id/submissions
+    #Parameter		Type	Description
+    #include[]		string	
+    #Associations to include with the quiz submission.
+    # Allowed values: submission, quiz, user
+
+    url = "{0}/courses/{1}/quizzes/{2}/submissions".format(baseUrl, course_id, quiz_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    extra_parameters={'include[]': 'submission'}
+
+    r = requests.get(url, params=extra_parameters, headers = header)
+    if Verbose_Flag:
+        print("result of getting submissions: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        qs=page_response.get('quiz_submissions', [])
+        for p_response in qs:  
+            submissions_found_thus_far.append(p_response)
+
+            # the following is needed when the reponse has been paginated
+            # i.e., when the response is split into pieces - each returning only some of the list of modules
+            # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+            while r.links.get('next', False):
+                r = requests.get(r.links['next']['url'], headers=header)  
+                if Verbose_Flag:
+                    print("result of getting submissions for a paginated response: {}".format(r.text))
+                page_response = r.json()  
+                qs=page_response.get('quiz_submissions', [])
+                for p_response in qs:  
+                    submissions_found_thus_far.append(p_response)
+
+    return submissions_found_thus_far
+
+
+def update_question_type_stats(question):
+    global question_type_stats
+
+    qt=question.get('question_type', None)
+    qt_number=question_type_stats.get(qt, 0)
+    if qt_number == 0:
+        question_type_stats[qt]=1
+    else:
+        question_type_stats[qt]=qt_number+1
+    
+
+
 def main():
     global Verbose_Flag
+    global question_type_stats
 
     default_picture_size=128
 
@@ -164,6 +224,8 @@ def main():
     else:
         course_id=remainder[0]
         quizzes=list_quizzes(course_id)
+        question_type_stats=dict()
+
         if (quizzes):
             quizzes_df=pd.json_normalize(quizzes)
                      
@@ -181,9 +243,51 @@ def main():
                 qi_df=pd.json_normalize(qi)
                 qi_df.to_excel(writer, sheet_name=str(q['id']))
 
+                for question in qi:
+                    update_question_type_stats(question)
+
+                #Verbose_Flag=True
+                qs=list_quiz_submissions(course_id, q['id'])
+                #Verbose_Flag=False
+                if Verbose_Flag:
+                    print("quiz submission {0} {1}".format(q['id'], qs))
+                qs_df=pd.json_normalize(qs)
+                qs_df.to_excel(writer, sheet_name='s_'+str(q['id']))
+
+                # for submission in qs:
+                #     results_url=submission.get('result_url', None)
+                #     # URL will have the form 'https://canvas.kth.se/courses/:course_id/quizzes/:quiz_id/history?quiz_submission_id=:submission_id&version=:version:number'
+                #     if results_url:
+                #         attempt=submission['attempt']
+                #         print("attempt={}".format(attempt))
+
+                #         submitted_quiz = requests.get(results_url)
+                #         submission_html=submitted_quiz.text
+                #         if submission_html and len(submission_html) > 0:
+                #             print("found a submission: {}".format(submission_html))
+                #             # look for the div with id="questions"
+                #             document = html.document_fromstring(submission_html)
+                #             # questions = document.xpath('//*[@id="questions"]/div/*[@class="display_question"]')
+                #             questions = document.xpath('//*[@id="questions"]')
+                #             for a_question in questions:
+                #                 a_question_id=a_question.attrib['id']
+                #                 a_question_class=a_question.attrib['class']
+                #                 print("question id={0} class={1}".format(a_question_id, a_question_class))
+                #                 input=a_question.find('input')
+                #                 if input:
+                #                     # type="text" name="question_346131" value="redish-green"
+                #                     input_type=input.attrib['type']
+                #                     input_name=input.attrib['name']
+                #                     input_value=input.attrib['value']
+                #                     print("input type={0], name={1}, value={2}".format(input_type, input_name, input_value))
+
 
             # Close the Pandas Excel writer and output the Excel file.
             writer.save()
+
+        if len(question_type_stats) > 0:
+            print("question_type_stats={}".format(question_type_stats))
+        
 
 if __name__ == "__main__": main()
 

@@ -2325,6 +2325,21 @@ Supervisors will be marked as missing if they are not built into the table in th
  ./insert-examiners-and-supervisors-from-spreadsheet.py --config config-test.json  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
 ```
 
+## quizzes-and-answers-in-course.py
+
+### Purpose
+Ouput XLSX spreadsheet with all the quizzes in a course and the quiz submissions.
+
+### Input
+```bash
+./quizzes-and-answers-in-course.py course_id
+```
+
+### Output
+Outputs a file with a name of the form: quizzes-<course_id>.xlsx 
+
+### Note 
+This is a work in progress. As of 2022-02-26 it does not yet support getting the answers that students have given (there is a 'result_url' filed in the submissions that gives you access to an HTML page of the student's submission), as I've not solved the SAML requirements to fetch the URLs of the completed quizzes. However, one can manually click on the links and get them from the spreadsheet in Excel.
 
 <!-- 
 

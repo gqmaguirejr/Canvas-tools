@@ -574,6 +574,7 @@ def enroll_student_in_section(course_id, user_id, section_id):
 
     payload={'enrollment[user_id]': user_id, 
              'enrollment[type]': 'StudentEnrollment',
+             'enrollment[enrollment_state]': 'active', #  immediately make them active so they do not have to accept being in the section
              'enrollment[course_section_id]': section_id }
     r = requests.post(url, headers = header, data=payload)
 
@@ -965,7 +966,9 @@ def main():
                 examiner=examiner.strip()
                 if Verbose_Flag:
                     print("examiner={}".format(examiner))
-
+                if examiner.find('?') >= 0:
+                    print("Found a quesiton mark in examiner's anme - skipping: {}".format(examiner))
+                    continue
                 # translate from spreadsheet examiner names to exaimners names in sort_name format
                 sorted_name=mapping_spreadsheet_to_sortname_examiner_names.get(examiner, False)
                 if not sorted_name:
@@ -1042,6 +1045,9 @@ def main():
                 # clean up supervisors (remove preceeding and trailing white space and make a set of them
                 new_supervisors=[] # in normal name order for supervisors
                 for supervisor in supervisors_list:
+                    if supervisor.find('?') >= 0:
+                        print("Found a quesiton mark in a supervisor's name- skipping: {}".format(supervisor))
+                        continue
                     new_supervisors.append(supervisor.strip())
 
                 if Verbose_Flag:
