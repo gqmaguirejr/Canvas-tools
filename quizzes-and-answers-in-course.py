@@ -254,9 +254,13 @@ def main():
                 qs_df=pd.json_normalize(qs)
                 qs_df.to_excel(writer, sheet_name='s_'+str(q['id']))
 
+                # At this point I want to fetch all of the version of each quiz submission and save the results to files
+                # converting the URLs of the form 'https://canvas.kth.se/courses/:course_id/quizzes/:quiz_id/history?quiz_submission_id=:submission_id&version=:version:number'
+                # into file names of the form: :course_id_:quiz_id_quiz_submission_id=:submission_id_version_:version:number
+
+                #
                 # for submission in qs:
                 #     results_url=submission.get('result_url', None)
-                #     # URL will have the form 'https://canvas.kth.se/courses/:course_id/quizzes/:quiz_id/history?quiz_submission_id=:submission_id&version=:version:number'
                 #     if results_url:
                 #         attempt=submission['attempt']
                 #         print("attempt={}".format(attempt))
