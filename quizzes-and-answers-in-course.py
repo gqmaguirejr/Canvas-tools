@@ -189,7 +189,29 @@ def update_question_type_stats(question):
     else:
         question_type_stats[qt]=qt_number+1
     
-
+def make_dir_for_urls(url, target_dir):
+    global Verbose_Flag
+    # the URLs have the form: https://canvas.kth.se/courses/11/quizzes/39141/history?quiz_submission_id=759552&version=1
+    # remove prefix
+    prefix="courses/"
+    prefix_offset=url.find(prefix)
+    if prefix_offset > 0:
+        url_tail=url[prefix_offset+len(prefix):]
+        parts_of_path=url_tail.split('/')
+        if Verbose_Flag:
+            print(parts_of_path)
+        course_id=parts_of_path[0]
+        quiz_id=parts_of_path[2]
+        quiz_submission_part=parts_of_path[3].split('=')
+        if Verbose_Flag:
+            print(quiz_submission_part)
+        quiz_submission_id=quiz_submission_part[1].split('&')[0]
+        if Verbose_Flag:
+            print(quiz_submission_id)
+        dir_to_create="{0}/{1}/{2}/{3}".format(target_dir, course_id, quiz_id, quiz_submission_id)
+        print("Creating directory: {}".format(dir_to_create))
+        Path(dir_to_create).mkdir(parents=True, exist_ok=True)
+        return dir_to_create
 
 def main():
     global Verbose_Flag
@@ -226,6 +248,7 @@ def main():
         quizzes=list_quizzes(course_id)
         question_type_stats=dict()
 
+        target_dir="./Quiz_Submissions"
         if (quizzes):
             quizzes_df=pd.json_normalize(quizzes)
                      
@@ -253,6 +276,11 @@ def main():
                     print("quiz submission {0} {1}".format(q['id'], qs))
                 qs_df=pd.json_normalize(qs)
                 qs_df.to_excel(writer, sheet_name='s_'+str(q['id']))
+                for submission in qs:
+                    results_url=submission.get('result_url', None)
+                    if results_url:
+                        make_dir_for_urls(url, target_dir)
+
 
                 # At this point I want to fetch all of the version of each quiz submission and save the results to files
                 # converting the URLs of the form 'https://canvas.kth.se/courses/:course_id/quizzes/:quiz_id/history?quiz_submission_id=:submission_id&version=:version:number'
