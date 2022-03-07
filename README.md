@@ -1263,7 +1263,7 @@ mkdir  /tmp/testdik1552
 ./cgetall.py 17234 /tmp/testdik1552
 
 # Get information about the modules in this course
-./modules-items-in-course.py 17234
+./modules-items-in-course-json.py 17234
 # the above creates the file: modules-in-course-17234.json
 
 # Fine the keywords and phases in the files in the indicated directory

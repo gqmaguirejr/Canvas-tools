@@ -412,7 +412,6 @@ def main():
                 print("processing JSON from {}".format(file_name))
 
 
-        quiz_info=course_info.
     output_filename='keywords_and_phrases_'+dir_name[dir_name.rfind("/")+1:]+'.json'
     try:
         with open(output_filename, 'w') as json_file:

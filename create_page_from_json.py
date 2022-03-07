@@ -41,13 +41,18 @@ import re
 import nltk
 
 language_info={
-    "en": {'en': '<span lang="en_us">English</span>',    'sv': '<span lang="sv_se">engelska</span>'},
-    "en_us": {'en': '<span lang="en_us">English</span>',    'sv': '<span lang="sv_se">engelska</span>'},
-    "de_de": {'en': '<span lang="en_us">German</span>',    'sv': '<span lang="sv_se">tyska</span>'},
-    "no_nb": {'en': '<span lang="en_us">Norwegian</span>', 'sv': '<span lang="sv_se">norska</span>'},
-    "sv": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">svenska</span>'},
-    "sv_se": {'en': '<span lang="en_us">Swedish</span>',   'sv': '<span lang="sv_se">svenska</span>'},
-    "fr_fr": {'en': '<span lang="en_us">French</span>',    'sv': '<span lang="sv_se">franska</span>'},
+    "en":    {'en': '<span lang="en-US">English</span>',    'sv': '<span lang="sv-SE">engelska</span>'},
+    "en_us": {'en': '<span lang="en-US">English</span>',    'sv': '<span lang="sv-SE">engelska</span>'},
+    "en-US": {'en': '<span lang="en-US">English</span>',    'sv': '<span lang="sv-SE">engelska</span>'},
+    "de_de": {'en': '<span lang="en-US">German</span>',    'sv': '<span lang="sv-SE">tyska</span>'},
+    "de-DE": {'en': '<span lang="en-US">German</span>',    'sv': '<span lang="sv-SE">tyska</span>'},
+    "no_nb": {'en': '<span lang="en-US">Norwegian</span>', 'sv': '<span lang="sv-SE">norska</span>'},
+    "no-NB": {'en': '<span lang="en-US">Norwegian</span>', 'sv': '<span lang="sv-SE">norska</span>'},
+    "sv":    {'en': '<span lang="en-US">Swedish</span>',   'sv': '<span lang="sv-SE">svenska</span>'},
+    "sv_se": {'en': '<span lang="en-US">Swedish</span>',   'sv': '<span lang="sv-SE">svenska</span>'},
+    "sv-SE": {'en': '<span lang="en-US">Swedish</span>',   'sv': '<span lang="sv-SE">svenska</span>'},
+    "fr_fr": {'en': '<span lang="en-US">French</span>',    'sv': '<span lang="sv-SE">franska</span>'},
+    "fr-FR": {'en': '<span lang="en-US">French</span>',    'sv': '<span lang="sv-SE">franska</span>'},
 }
 
 StopWords=[
@@ -1058,7 +1063,12 @@ def main():
     page='<h3><a id="Foreign_words_and_phrases">Foreign words and phrases</h3>'
     for lang in sorted(page_entries.keys(), key=lambda v: (v.casefold(), v)):
         print("lang={}".format(lang))
+        if lang in ['en', 'en-US']: #  skip these entries as the course language is English
+            continue
         page=page+'<h3>'+lang+': '+language_info[lang]['en']+': '+language_info[lang]['sv']+'</h3><ul>'
+        page_entries[lang].pop(None, None) #  remove any key that is None (first argument) otherwise return None, the second arg
+        if Verbose_Flag:
+            print("page_entries[{0}].keys()={1}".format(lang, page_entries[lang].keys()))
         for words in sorted(page_entries[lang].keys(), key=lambda v: (v.casefold(), v)):
             page=page+'<li>'+words+'<ul>'
             for p in page_entries[lang][words]:
