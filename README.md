@@ -2341,6 +2341,130 @@ Outputs a file with a name of the form: quizzes-<course_id>.xlsx
 ### Note 
 This is a work in progress. As of 2022-02-26 it does not yet support getting the answers that students have given (there is a 'result_url' filed in the submissions that gives you access to an HTML page of the student's submission), as I've not solved the SAML requirements to fetch the URLs of the completed quizzes. However, one can manually click on the links and get them from the spreadsheet in Excel.
 
+## augment_quizzes-and-answers-in-course.py
+### Purpose
+To take the spreadsheet output by quizzes-and-answers-in-course.py and augment it with additional information as well as print incorrect answers to questions with blanks. If the names of the blanks (i.e., the blank_id) are in the range 'a0' to 'a9' the output decodes them, otherwise it uses the hash of the blank_id.
+
+
+### Input
+```bash
+./augment_quizzes-and-answers-in-course.py course_id
+```
+
+### Output
+outputs augmented XLSX spreadsheet with quizzes in course, with name of the form quizzes-<course_id>-augmented.xlsx
+
+The assumption is that each attempt a the quiz has been downloaded locally. The progream rocesses all of the quiz attempts and collects some data for each student's possibly multiple attempts. The spreadsheet is augments with information about which questions the student was ask in a given attempt (in this case typically 5 questions were chosen randomly from a set of questions) - as a dict questions_asked; the type of each of these questoins in a dict questions_types; and the correctness of the answers (one of 'correct', 'incorrect', 'partial_credit') in a dict answer_correctness.
+
+After processing all of the quiz submission, the program writes out the sheets (Quizzes and the quiz information with names of the form: <quiz_id>) from the input file and the augmented sheets (with names of the form: "s_<quiz_id>").
+
+The program outputs information about the incorrect answers give for each question and then the incorrect answers for questions that had multiple blanks.
+
+### Note 
+This is a work in progress and the output is rather verbose at present. Additionally, only questions with an input of type "text" are processed.
+
+It also requires the user to manually download all of the result_html files (and each of the earlier versions of the quiz attempt) into local directories. Hopefully, this can be automated in a future version of quizzes-and-answers-in-course.py
+
+Two of the behaviors that were observed in students who took the quiz many times were:
+(a) the student getting very high scores, but continuing to test themselves with more questions and
+(b) the student not answering any questions but just collecting questions and their answers, then doing a submission with all the correct answers.
+
+For some of the questions the second behavior is very hard. For example, one question had 5 random questions selected out of 70 questions - so there are very large number of possible combination of quiz questions!
+
+### Example
+
+```bash
+./augment_quizzes-and-answers-in-course.py 28715
+quiz_info={28325: 'Avoiding Plagiarism (with quiz)', 28330: 'Sustainable Development/Hållbar Utveckling (with quiz)', 28323: 'Writing an abstract with keywords (with quiz)', 28326: 'Writing and Oral Presentations (with quiz)', 28337: 'Writing the Methods, Results, and Discussion sections (with quiz)', 28331: 'Written and oral opposition (with quiz)', 28332: 'Ethical Research: Human Subjects and Computer Issues (with quiz)', 28327: 'Ethical Research (with quiz)', 28336: 'Power tools and how to use them (with quiz)', 28328: 'Presenting your Data (with quiz)', 28334: 'Privacy, Discoverability, Openness, and Publicity (with quiz)', 28333: 'Professionalism and Ethics for ICT students (with quiz)', 28324: 'Project planning (with quiz)', 28335: 'Quality Assurance (with quiz)', 28329: 'Quantitative Methods and Tools (with quiz)'}
+
+Processing file: ./Quiz_Submissions/<course_id>/<quiz_id>/<submission_id>/xxxx_v11.html
+version_string=11
+a_number=0
+a_number=1
+a_number=2
+a_number=0
+a_number=1
+input_id=None, input_type=text,input_name=question_274205,input_value=green energy,input_describedby=user_answer_NaN_arrow, question_type=short_answer
+second case: input_value=green energy, incorrect_answers[274205]={'green energy'}
+a_number=0
+a_number=1
+a_number=2
+a_number=3
+a_number=4
+a_number=5
+a_number=0
+a_number=1
+a_number=2
+a_number=0
+a_number=1
+a_number=2
+
+...
+questions_asked={'11': [274189, 274205, 274206, 274255, 274252], '15': [274191, 274200, 274214, 274221, 274236], '1': [274193, 274201, 274208, 274234, 274253], '4': [274193, 274201, 274208, 274234, 274253], '2': [274193, 274201, 274208, 274234, 274253], '6': [274191, 274202, 274217, 274254, 274224], '9': [274190, 274197, 274217, 274251, 274229], '7': [274192, 274200, 274217, 274248, 274251], '12': [274189, 274204, 274213, 274240, 274238], '13': [274194, 274200, 274216, 274239, 274237], '16': [274194, 274199, 274216, 274221, 274223], '8': [274189, 274205, 274212, 274245, 274221], '14': [274193, 274198, 274208, 274256, 274257], '3': [274193, 274201, 274208, 274234, 274253], '10': [274189, 274197, 274208, 274227, 274241], '5': [274193, 274201, 274208, 274234, 274253]}
+questions_types={'11': ['multiple_choice_question', 'short_answer', 'multiple_answers_question', 'true_false_question', 'true_false_question'], '15': ['multiple_answers_question', 'multiple_answers_question', 'multiple_answers_question', 'short_answer', 'true_false_question'], '1': ['multiple_choice_question', 'multiple_choice_question', 'short_answer', 'fill_in_multiple_blanks_question', 'true_false_question'], '4': ['multiple_choice_question', 'multiple_choice_question', 'short_answer', 'fill_in_multiple_blanks_question', 'true_false_question'], '2': ['multiple_choice_question', 'multiple_choice_question', 'short_answer', 'fill_in_multiple_blanks_question', 'true_false_question'], '6': ['multiple_answers_question', 'multiple_choice_question', 'true_false_question', 'true_false_question', 'true_false_question'], '9': ['multiple_answers_question', 'multiple_choice_question', 'true_false_question', 'true_false_question', 'true_false_question'], '7': ['short_answer', 'multiple_answers_question', 'true_false_question', 'short_answer', 'true_false_question'], '12': ['multiple_choice_question', 'multiple_answers_question', 'short_answer', 'short_answer', 'short_answer'], '13': ['multiple_choice_question', 'multiple_answers_question', 'fill_in_multiple_blanks_question', 'short_answer', 'fill_in_multiple_blanks_question'], '16': ['multiple_choice_question', 'multiple_choice_question', 'fill_in_multiple_blanks_question', 'short_answer', 'true_false_question'], '8': ['multiple_choice_question', 'short_answer', 'multiple_answers_question', 'true_false_question', 'short_answer'], '14': ['multiple_choice_question', 'short_answer', 'short_answer', 'fill_in_multiple_blanks_question', 'true_false_question'], '3': ['multiple_choice_question', 'multiple_choice_question', 'short_answer', 'fill_in_multiple_blanks_question', 'true_false_question'], '10': ['multiple_choice_question', 'multiple_choice_question', 'short_answer', 'matching_question', 'short_answer'], '5': ['multiple_choice_question', 'multiple_choice_question', 'short_answer', 'fill_in_multiple_blanks_question', 'true_false_question']}
+answer_correctness={'11': ['correct', 'incorrect', 'partial_credit', 'correct', 'correct'], '15': ['correct', 'correct', 'correct', 'incorrect', 'correct'], '1': ['incorrect', 'incorrect', 'correct', 'incorrect', 'incorrect'], '4': ['incorrect', 'incorrect', 'correct', 'incorrect', 'incorrect'], '2': ['incorrect', 'incorrect', 'correct', 'incorrect', 'incorrect'], '6': ['correct', 'incorrect', 'correct', 'incorrect', 'correct'], '9': ['incorrect', 'correct', 'correct', 'correct', 'correct'], '7': ['correct', 'correct', 'correct', 'incorrect', 'correct'], '12': ['correct', 'correct', 'incorrect', 'incorrect', 'incorrect'], '13': ['correct', 'correct', 'correct', 'incorrect', 'incorrect'], '16': ['correct', 'correct', 'correct', 'correct', 'correct'], '8': ['correct', 'incorrect', 'correct', 'correct', 'incorrect'], '14': ['correct', 'correct', 'correct', 'partial_credit', 'correct'], '3': ['incorrect', 'incorrect', 'correct', 'incorrect', 'incorrect'], '10': ['correct', 'correct', 'correct', 'correct', 'correct'], '5': ['incorrect', 'incorrect', 'correct', 'incorrect', 'incorrect']}
+
+...
+copying quiz=28325
+saving quiz submissions=s_28325
+copying quiz=28330
+question_id=274204 already has a quiz_id 28330 associated with it
+question_id=274221 already has a quiz_id 28330 associated with it
+saving quiz submissions=s_28330
+copying quiz=28323
+saving quiz submissions=s_28323
+copying quiz=28326
+saving quiz submissions=s_28326
+copying quiz=28337
+saving quiz submissions=s_28337
+copying quiz=28331
+saving quiz submissions=s_28331
+copying quiz=28332
+saving quiz submissions=s_28332
+copying quiz=28327
+saving quiz submissions=s_28327
+copying quiz=28336
+saving quiz submissions=s_28336
+copying quiz=28328
+saving quiz submissions=s_28328
+copying quiz=28334
+saving quiz submissions=s_28334
+copying quiz=28333
+saving quiz submissions=s_28333
+copying quiz=28324
+saving quiz submissions=s_28324
+copying quiz=28335
+question_id=274354 already has a quiz_id 28335 associated with it
+saving quiz submissions=s_28335
+copying quiz=28329
+question_id=274122 already has a quiz_id 28329 associated with it
+question_id=274154 already has a quiz_id 28329 associated with it
+saving quiz submissions=s_28329
+Incorrect answers for 274205 on quiz 28330: {'energy-saving', 'green energy'}
+Incorrect answers for 274221 on quiz 28330: {'environment'}
+Incorrect answers for 274248 on quiz 28330: {'correct', 'Brundtland', 'true'}
+Incorrect answers for 274213 on quiz 28330: {'sleeping modes', 'sleeping  modes'}
+Incorrect answers for 274240 on quiz 28330: {'ecological', 'anthropocentric', 'scientific'}
+Incorrect answers for 274238 on quiz 28330: {'indirectly', 'similar'}
+Incorrect answers for 274239 on quiz 28330: {'effective', 'indirectly', 'eco-centric'}
+Incorrect answers for 274198 on quiz 28330: {'hardware deisgn', 'Design hardware'}
+Incorrect answers for 274208 on quiz 28330: {'IEEE'}
+Incorrect answers for 274192 on quiz 28330: {'Sustainable', 'economy'}
+Incorrect answers for 274195 on quiz 28330: {'development', 'good', 'true'}
+Incorrect answers for 274196 on quiz 28330: {'sustainability', 'advancement'}
+Incorrect answers for 274207 on quiz 28330: {'coal'}
+Incorrect answers for 274220 on quiz 28330: {'necessary', 'good'}
+Incorrect answers for 274211 on quiz 28330: {'hardware ', 'yes'}
+Incorrect answers for 274247 on quiz 28330: {'anthropocentric'}
+Incorrect answers for 274241 on quiz 28330: {'practical'}
+Incorrect answers for 274222 on quiz 28330: {'Basic Idea'}
+Incorrect answers for 274032 on quiz 28323: {'English', "KTH's digital scientific archive", 'both Swedish and English', 'English and Swedish', ' Swedish and English', 'KTH’s Digitala Vetenskapliga Arkivet (DiVA)', "KTH'S Digitala Vetenskapliga Arkivet", 'Swedish and English', 'Digitala Vetenskapliga Arkivet (DiVA)', 'KTH’s Digitala Vetenskapliga Arkivet ', "KTH's Digitala Vetenskapliga Arkivet", 'library', 'latex', 'Ladok', 'digital scientific archive', 'KTH’s Digitala Vetenskapliga Arkivet', 'KTH’s Digitala VetenskapligaArkivet', 'iDiva'}
+Incorrect answers for 274234 on quiz 28330: {'a0': {'society'}, 'a1': {'environment'}, 'a2': {'economy'}}
+Incorrect answers for 274237 on quiz 28330: {'a0': {'environmental', 'self'}, 'a1': {'social', 'eco'}}
+Incorrect answers for 274203 on quiz 28330: {'a0': {'performance'}, 'a1': {'power consumption'}}
+Invalid question id 274226 (not in the list of questions - but has incorrect answers={'a0': {'2010'}, 'a1': {'2020'}}
+```
+
 <!-- 
 
 ## xxx.py
