@@ -45,6 +45,9 @@ from lxml import html
 # use the request pacek to get the HTML give an URL
 import requests
 
+# import to be able to compute digests for blank_id
+import hashlib
+
 #############################
 ###### EDIT THIS STUFF ######
 #############################
@@ -123,10 +126,33 @@ def dir_name_for_urls(url, target_dir):
         return dir_to_create
 
 
+def compute_canvas_blank_id_digest(bid):
+    m=hashlib.md5()
+    s1="dropdown,{},instructure-key".format(bid)
+    m.update(s1.encode('utf-8'))
+    return m.hexdigest()
+
+def fill_common_blank_ids(num):
+    global common_blank_ids
+    common_blank_ids=dict()
+
+    for i in range(0, 10):
+        s1="a{}".format(i)
+        common_blank_ids[compute_canvas_blank_id_digest(s1)]=s1
+
+
+# produces '443f6a7201fd1b9c37119a9d1aa28776' - which is indeed the first of the values above
+# m=hashlib.md5()
+# m.update("dropdown,a1,instructure-key".encode('utf-8'))
+# m.hexdigest()
+# produces 'd5157c76409909bc0db8eea11b8b37d8' - wicih is the second value above
+
+
 
 def main():
     global Verbose_Flag
     global question_type_stats
+    global common_blank_ids
 
     default_picture_size=128
 
@@ -162,6 +188,10 @@ def main():
     target_dir="./Quiz_Submissions"
     question_id_prefix="question_"
 
+    # compute some likely blank_id to hash digest mappings
+    fill_common_blank_ids(10)
+    if Verbose_Flag:
+        print("common_blank_ids={}".format(common_blank_ids))
 
     input_file="quizzes-{}.xlsx".format(course_id)
     quizzes_df = pd.read_excel(open(input_file, 'rb'), sheet_name='Quizzes')
@@ -293,8 +323,28 @@ def main():
                                     # input_name=question_274226_443f6a7201fd1b9c37119a9d1aa28776 - has the blank_id='a0'
                                     # input_name=question_274226_d5157c76409909bc0db8eea11b8b37d8 - has the blank_id='a1'
                                     # However, I do not know (yet) how to know that the above are the mappings (except by examinging the question manually)
+                                    # The hash is computed as specfied in Canvas app/models/assessment_question.rb
+                                    # def self.variable_id(variable)
+                                    #   Digest::MD5.hexdigest(["dropdown", variable, "instructure-key"].join(","))
+                                    # end
+                                    # so we see it putting the variable between two string separated by commas before computing the MD5 hash
+                                    # import hashlib
+                                    # m=hashlib.md5()
+                                    # m.update("dropdown,a0,instructure-key".encode('utf-8'))
+                                    # m.hexdigest()
+                                    # produces '443f6a7201fd1b9c37119a9d1aa28776' - which is indeed the first of the values above
+                                    # m=hashlib.md5()
+                                    # m.update("dropdown,a1,instructure-key".encode('utf-8'))
+                                    # m.hexdigest()
+                                    # produces 'd5157c76409909bc0db8eea11b8b37d8' - wicih is the second value above
+                                    # NB you have to create a new shash object (m) otherwise the update data is just appended to what was already there
+
                                     current_incorrect_answers=incorrect_answers_multiple_blanks.get(question_id, None)
                                     blank_id_hash=split_input_name[2]
+                                    # If we know the hashid value, then use the actual blank_id
+                                    blank_id=common_blank_ids.get(blank_id_hash, None)
+                                    if blank_id:
+                                        blank_id_hash=blank_id
                                     if current_incorrect_answers:
                                         incorrect_answers_for_blank=current_incorrect_answers.get(blank_id_hash, None)
                                         if incorrect_answers_for_blank:
