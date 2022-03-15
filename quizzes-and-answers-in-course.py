@@ -80,9 +80,10 @@ def list_quizzes(course_id):
 
     url = "{0}/courses/{1}/quizzes".format(baseUrl, course_id)
     if Verbose_Flag:
-        print("url: {}".format(url))
+        print("in list_quizzes url: {}".format(url))
 
-    r = requests.get(url, headers = header)
+    extra_parameters={'per_page': '100'}
+    r = requests.get(url, headers = header, params=extra_parameters)
     if Verbose_Flag:
         print("result of getting quizzes: {}".format(r.text))
 
@@ -96,7 +97,7 @@ def list_quizzes(course_id):
             # i.e., when the response is split into pieces - each returning only some of the list
             # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
             while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header)  
+                r = requests.get(r.links['next']['url'], headers=header, params=extra_parameters)  
                 if Verbose_Flag:
                     print("result of getting quizzes for a paginated response: {}".format(r.text))
                 page_response = r.json()  
@@ -114,7 +115,8 @@ def list_quiz_questions(course_id, quiz_id):
     if Verbose_Flag:
         print("url: {}".format(url))
 
-    r = requests.get(url, headers = header)
+    extra_parameters={'per_page': '100'}
+    r = requests.get(url, headers = header, params=extra_parameters)
     if Verbose_Flag:
         print("result of getting questions: {}".format(r.text))
 
@@ -128,7 +130,7 @@ def list_quiz_questions(course_id, quiz_id):
             # i.e., when the response is split into pieces - each returning only some of the list of modules
             # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
             while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header)  
+                r = requests.get(r.links['next']['url'], headers=header, params=extra_parameters)
                 if Verbose_Flag:
                     print("result of getting questions for a paginated response: {}".format(r.text))
                 page_response = r.json()  
@@ -151,7 +153,8 @@ def list_quiz_submissions(course_id, quiz_id):
     if Verbose_Flag:
         print("url: {}".format(url))
 
-    extra_parameters={'include[]': 'submission'}
+    extra_parameters={'include[]': 'submission',
+                      'per_page': '100'}
 
     r = requests.get(url, params=extra_parameters, headers = header)
     if Verbose_Flag:
@@ -168,7 +171,7 @@ def list_quiz_submissions(course_id, quiz_id):
             # i.e., when the response is split into pieces - each returning only some of the list of modules
             # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
             while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header)  
+                r = requests.get(r.links['next']['url'], headers=header, params=extra_parameters)  
                 if Verbose_Flag:
                     print("result of getting submissions for a paginated response: {}".format(r.text))
                 page_response = r.json()  
@@ -227,6 +230,14 @@ def main():
                       action="store_true",
                       help="Print lots of output to stdout"
     )
+
+    parser.add_option('-t', '--testing',
+                      dest="testing",
+                      default=False,
+                      action="store_true",
+                      help="Do not create the directories only make the XLSX files"
+    )
+
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
     
@@ -245,10 +256,13 @@ def main():
         print("Insuffient arguments - must provide course_id\n")
     else:
         course_id=remainder[0]
+        print("course_id={0}, type={1}".format(course_id, type(course_id)))
         quizzes=list_quizzes(course_id)
         question_type_stats=dict()
 
         target_dir="./Quiz_Submissions"
+        if options.testing:
+            target_dir="./Quiz_Submissions-testing"
         if (quizzes):
             quizzes_df=pd.json_normalize(quizzes)
                      
@@ -278,7 +292,7 @@ def main():
                 qs_df.to_excel(writer, sheet_name='s_'+str(q['id']))
                 for submission in qs:
                     results_url=submission.get('result_url', None)
-                    if results_url:
+                    if results_url and not options.testing:
                         make_dir_for_urls(url, target_dir)
 
 
