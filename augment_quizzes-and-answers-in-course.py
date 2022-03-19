@@ -394,13 +394,24 @@ def main():
         sheet_name="{}".format(quiz)
         print("copying quiz={}".format(sheet_name))
         quiz_instance = pd.read_excel(open(input_file, 'rb'), sheet_name=sheet_name)
-        quiz_instance.to_excel(writer, sheet_name=sheet_name)
+
+        # create a column to put the incorrce answers into
+        quiz_instance['incorrect answers']=''
 
         for index, row in  quiz_instance.iterrows():        
             if quiz_questions_to_quiz.get(row['id'], None):
                 print("question_id={0} already has a quiz_id {1} associated with it".format(row['id'], row['quiz_id']))
             else:
                 quiz_questions_to_quiz[row['id']]=row['quiz_id']
+
+            if row['id'] in incorrect_answers:
+                quiz_instance.at[index, 'incorrect answers']=incorrect_answers[row['id']]
+
+            if row['id'] in incorrect_answers_multiple_blanks:
+                quiz_instance.at[index, 'incorrect answers']=incorrect_answers_multiple_blanks[row['id']]
+
+        # save updated quiz_instance
+        quiz_instance.to_excel(writer, sheet_name=sheet_name)
 
         # save the aumented quiz submission information
         sheet_name="s_{}".format(quiz)
