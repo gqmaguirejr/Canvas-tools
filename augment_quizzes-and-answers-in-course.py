@@ -48,6 +48,9 @@ import requests
 # import to be able to compute digests for blank_id
 import hashlib
 
+# to be able to read the printed dict() in the spreadsheets
+from ast import literal_eval
+
 #############################
 ###### EDIT THIS STUFF ######
 #############################
@@ -134,7 +137,6 @@ def compute_canvas_blank_id_digest(bid):
 
 def fill_common_blank_ids(num):
     global common_blank_ids
-    common_blank_ids=dict()
 
     for i in range(0, 10):
         s1="a{}".format(i)
@@ -188,11 +190,6 @@ def main():
     target_dir="./Quiz_Submissions"
     question_id_prefix="question_"
 
-    # compute some likely blank_id to hash digest mappings
-    fill_common_blank_ids(10)
-    if Verbose_Flag:
-        print("common_blank_ids={}".format(common_blank_ids))
-
     input_file="quizzes-{}.xlsx".format(course_id)
     quizzes_df = pd.read_excel(open(input_file, 'rb'), sheet_name='Quizzes')
 
@@ -202,6 +199,55 @@ def main():
         quiz_info[row['id']]=row['title']
 
     print("quiz_info={}".format(quiz_info))
+
+    # collect the blank_ids and compute the hashes for them
+    #
+    common_blank_ids=dict()     #  stores the hashes
+    blank_ids=set()		# all the blank_id that appear in any questions
+    quizzes_correct_multi_blank_answers=dict()	# index by quiz_id and blank_id
+    for quiz in quiz_info:
+        sheet_name="{}".format(quiz)
+        print("processing quiz={}".format(sheet_name))
+        quiz_instance = pd.read_excel(open(input_file, 'rb'), sheet_name=sheet_name)
+
+        for index, row in  quiz_instance.iterrows():        
+            # get the question type, if it is fill_in_multiple_blanks_question, then collect the blank names
+            q_type=row['question_type']
+            if Verbose_Flag:
+                print("q_type={}".format(q_type))
+            if q_type in ['fill_in_multiple_blanks_question']:
+                # [{'weight': 100, 'id': 12882, 'text': 'traffic', 'blank_id': 'a0'}, {'weight': 100, 'id': 63085, 'text': 'energy consumption', 'blank_id': 'a0'}, {'weight': 100, 'id': 51091, 'text': 'energy consumption', 'blank_id': 'a1'}, {'weight': 100, 'id': 39757, 'text': 'traffic', 'blank_id': 'a1'}]
+                correct_multi_blank_answers=dict()	# index by blank_id
+
+                q_answers=row['answers']
+                if Verbose_Flag:
+                    print("q_answers={0}, type(q_answers)={1}".format(q_answers, type(q_answers)))
+                q_answers=literal_eval(row['answers'])
+                for ans in q_answers:
+                    b_id=ans['blank_id']
+                    if Verbose_Flag:
+                        print("b_id={}".format(b_id))
+                    blank_ids.add(b_id)
+                    if ans['weight'] == 100:
+                        if correct_multi_blank_answers.get(b_id, None):
+                            correct_multi_blank_answers[b_id].append(ans['text'])
+                        else:
+                            correct_multi_blank_answers[b_id]=[ans['text']]
+
+                q_id=row['id']
+                #print("q_id={0}, type(q_id)={1}".format(q_id, type(q_id)))
+                quizzes_correct_multi_blank_answers[q_id]=correct_multi_blank_answers
+
+    if Verbose_Flag:
+        print("blank_ids={}".format(sorted(blank_ids)))
+    # if any blank_id is missing from those with entries in common_blank_ids add the mapping
+    for b_id in blank_ids:
+        common_blank_ids[compute_canvas_blank_id_digest(b_id)]=b_id
+
+    if Verbose_Flag:
+        print("common_blank_ids={}".format(common_blank_ids))
+
+    print("quizzes_correct_multi_blank_answers={}".format(quizzes_correct_multi_blank_answers))
 
     incorrect_answers=dict()    # values a set under the question_id
     incorrect_answers_multiple_blanks=dict() #  values are stored as quiest_id: {blank_id_hash: {value set}}
@@ -346,14 +392,21 @@ def main():
                                     if blank_id:
                                         blank_id_hash=blank_id
                                     if current_incorrect_answers:
+                                        c_answers=quizzes_correct_multi_blank_answers.get(question_id, None)
+                                        b_c_answers=c_answers.get(blank_id_hash, None)
                                         incorrect_answers_for_blank=current_incorrect_answers.get(blank_id_hash, None)
                                         if incorrect_answers_for_blank:
-                                            incorrect_answers_for_blank.add(input_value) #  note that the add occurs in place
+                                            if input_value not in b_c_answers:
+                                                incorrect_answers_for_blank.add(input_value) #  note that the add occurs in place
                                         else:
-                                            incorrect_answers_multiple_blanks[question_id][blank_id_hash]= {input_value}
+                                            if input_value not in b_c_answers:
+                                                incorrect_answers_multiple_blanks[question_id][blank_id_hash]= {input_value}
                                     else:
                                         incorrect_answers_multiple_blanks[question_id]={blank_id_hash: {input_value}}
                                 else: #  not a multiple blank question
+                                    # Note that we need to filter out the correct answers forthe parts of the questions
+                                    # since for a partially correct answer - some of the answers could be correct, and the get added to the list currently!
+                                    # This needs to be fixed.
                                     current_incorrect_answers=incorrect_answers.get(question_id, None)
                                     if current_incorrect_answers:
                                         current_incorrect_answers.add(input_value) #  note that the add occurs in place
