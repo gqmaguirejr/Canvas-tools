@@ -73,6 +73,27 @@ def initialize(options):
         print("Please create a suitable configuration file, the default name is config.json")
         sys.exit()
 
+
+
+def get_course_info(course_id):
+    # Use the Canvas API to get the course info
+    #GET /api/v1/courses/:id
+
+    url = "{0}/courses/{1}".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("in course info url: {}".format(url))
+
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting course info: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+    return page_response
+
+
+
 def list_quizzes(course_id):
     quizzes_found_thus_far=[]
     # Use the Canvas API to get the list of quizzes for the course
@@ -254,15 +275,22 @@ def main():
 
     if (len(remainder) < 1):
         print("Insuffient arguments - must provide course_id\n")
+        return
     else:
         course_id=remainder[0]
-        print("course_id={0}, type={1}".format(course_id, type(course_id)))
+        if Verbose_Flag:
+            print("course_id={0}, type={1}".format(course_id, type(course_id)))
+
+        course_info=get_course_info(course_id)
         quizzes=list_quizzes(course_id)
         question_type_stats=dict()
 
         target_dir="./Quiz_Submissions"
         if options.testing:
             target_dir="./Quiz_Submissions-testing"
+
+        if course_info:
+            course_info_df=pd.json_normalize(course_info)
         if (quizzes):
             quizzes_df=pd.json_normalize(quizzes)
                      
@@ -273,6 +301,9 @@ def main():
             # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
             # set up the output write
             writer = pd.ExcelWriter('quizzes-'+course_id+'.xlsx', engine='xlsxwriter')
+            if course_info:
+                course_info_df.to_excel(writer, sheet_name='Course')
+
             quizzes_df.to_excel(writer, sheet_name='Quizzes')
 
             for q in sorted(quizzes, key=lambda x: x['id']):
