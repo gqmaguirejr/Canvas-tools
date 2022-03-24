@@ -51,6 +51,19 @@ import hashlib
 # to be able to read the printed dict() in the spreadsheets
 from ast import literal_eval
 
+
+# use the Docment library to be able to create the .docx file
+from docx import Document
+#from docx.shared import Inches
+from docx.shared import Cm
+from docx.enum.text import WD_COLOR_INDEX
+from docx.enum.text import WD_BREAK
+from docx.shared import Pt
+from docx.oxml import OxmlElement, ns
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Mm
+from docx.shared import RGBColor
+
 #############################
 ###### EDIT THIS STUFF ######
 #############################
@@ -149,7 +162,44 @@ def fill_common_blank_ids(num):
 # m.hexdigest()
 # produces 'd5157c76409909bc0db8eea11b8b37d8' - wicih is the second value above
 
+def cleanup_question_text(text):
+    text=text.replace('&nbsp;', ' ')
+    text=text.replace('<br>', '\n')
+    text=text.replace('<span>', '')
+    text=text.replace('</span>', '')
+    text=text.replace('<strong>', '')
+    text=text.replace('</strong>', '')
+    text=text.replace('<p> </p>', ' ')
 
+    return text
+
+
+# functions for working with the DOCX report document
+def docx_create_element(name):
+    return OxmlElement(name)
+
+def docx_create_attribute(element, name, value):
+    element.set(ns.qn(name), value)
+
+
+def docx_add_page_number(paragraph):
+    # https://python-docx.readthedocs.io/en/latest/api/enum/WdAlignParagraph.html
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+
+    page_run = paragraph.add_run()
+    fldChar1 = docx_create_element('w:fldChar')
+    docx_create_attribute(fldChar1, 'w:fldCharType', 'begin')
+
+    instrText = docx_create_element('w:instrText')
+    docx_create_attribute(instrText, 'xml:space', 'preserve')
+    instrText.text = "PAGE"
+
+    fldChar2 = docx_create_element('w:fldChar')
+    docx_create_attribute(fldChar2, 'w:fldCharType', 'end')
+
+    page_run._r.append(fldChar1)
+    page_run._r.append(instrText)
+    page_run._r.append(fldChar2)
 
 def main():
     global Verbose_Flag
@@ -191,8 +241,16 @@ def main():
     question_id_prefix="question_"
 
     input_file="quizzes-{}.xlsx".format(course_id)
-    quizzes_df = pd.read_excel(open(input_file, 'rb'), sheet_name='Quizzes')
+    excel_Sheet_names = (pd.ExcelFile(input_file)).sheet_names
+    if 'Course' in excel_Sheet_names:
+        course_df = pd.read_excel(open(input_file, 'rb'), sheet_name='Course')        
+        course_code = course_df.iloc[0]['course_code']
+        print("course_code={}".format(course_code))
 
+    if 'Quizzes' not in excel_Sheet_names:
+        print("Spreadsheeting missing 'Quizzes' sheet, unable to process this file")
+        return
+    quizzes_df = pd.read_excel(open(input_file, 'rb'), sheet_name='Quizzes')
     quiz_info=dict()
     quiz_list=[]
     for index, row in  quizzes_df.iterrows():
@@ -287,7 +345,8 @@ def main():
                     version_offset=file_name.rindex(version_prefix)+2
                     if version_offset:
                         version_string=file_name[version_offset:-5]
-                        print("version_string={}".format(version_string))
+                        if Verbose_Flag:
+                            print("version_string={}".format(version_string))
 
                     if len(html_string) == 0:
                         print("No contents for file={}".format(file_name))
@@ -349,7 +408,8 @@ def main():
                         #<input type="text" name="question_274239" value="effective" class="question_input" autocomplete="off" readonly="&quot;readonly&quot;" aria-label="Fill in the blank answer" aria-describedby="user_answer_NaN_arrow" style="width: 85.5px;">
                         # version_string
                         for a_number, input in enumerate(inputs):
-                            print("a_number={}".format(a_number))
+                            if Verbose_Flag:
+                                print("a_number={}".format(a_number))
                             input_id=input.attrib.get('id', None)
                             input_type=input.attrib.get('type', None)
                             input_name=input.attrib.get('name', None)
@@ -440,13 +500,43 @@ def main():
     writer = pd.ExcelWriter('quizzes-'+course_id+'-augmented.xlsx', engine='xlsxwriter')
     quizzes_df.to_excel(writer, sheet_name='Quizzes')
 
+    quiz_report_document = Document()
+    quiz_report_section = quiz_report_document.sections[0]
+
+    # Set for A4 page size
+    quiz_report_section.page_height = Mm(297)
+    quiz_report_section.page_width = Mm(210)
+
+    quiz_report_header = quiz_report_section.header
+    quiz_report_paragraph = quiz_report_header.paragraphs[0]
+    quiz_report_paragraph.text = "{0}\t{1}\tQuiz report".format(course_code, course_id)
+    quiz_report_paragraph.style = quiz_report_document.styles["Header"]
+
+    # Add a footer with the page number
+    docx_add_page_number(quiz_report_document.sections[0].footer.paragraphs[0])
+
+    question_types_of_interest=['short_answer_question', 'fill_in_multiple_blanks_question']
+    # Add top level heading (title of the report)
+    quiz_report_document.add_heading("Quiz questions and answers: Focus on questions of types: {0}".format(question_types_of_interest), 0)
+
+    author_string="augment_quizzes-and-answers-in-course.py {}".format(course_id)
+    p = quiz_report_document.add_paragraph('Output of ')
+    current_font=p.add_run(author_string).font
+    current_font.color.rgb = RGBColor(0xFF, 0x00, 0xFF)
+    current_font.name = 'Consolas'
+
     quiz_questions_to_quiz=dict() # for each question_id record what quiz it appears in
 
-    for quiz in quiz_info:
+    for qi, quiz in enumerate(quiz_info):
         # copy over the quiz data
         sheet_name="{}".format(quiz)
         print("copying quiz={}".format(sheet_name))
         quiz_instance = pd.read_excel(open(input_file, 'rb'), sheet_name=sheet_name)
+
+        if qi > 0:
+            quiz_report_document.add_page_break()
+        quiz_report_document.add_heading("{0}: {1}".format(quiz, quiz_info[quiz]), 1)
+
 
         # create a column to put the incorrce answers into
         quiz_instance['incorrect answers']=''
@@ -457,11 +547,73 @@ def main():
             else:
                 quiz_questions_to_quiz[row['id']]=row['quiz_id']
 
+            #question_type: short_answer_question
+            #question_id: 379340 (the id of a question within a given quiz)
+            #question_name: Philosophic basis of anthropocentric thinking
+            #question_text: Putting people and their well-being first is the philosophic basis of _______&nbsp;thinking.
+            # only add limited number of types of questions to the report
+            if row['question_type'] in question_types_of_interest:
+                add_to_report=True
+            else:
+                add_to_report=False
+
+            if add_to_report:
+                #rt="question_name: {}".format(row['question_name'])
+                rt="{}".format(row['question_name'])
+                quiz_report_document.add_heading(rt, level=2)
+
+                rt="question_type: {}".format(row['question_type'])
+                p = quiz_report_document.add_paragraph(rt)
+
+                rt="question_id: {}".format(row['id'])
+                p = quiz_report_document.add_paragraph(rt)
+                p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+
+                rt="question_text: {}".format(cleanup_question_text(row['question_text']))
+                p = quiz_report_document.add_paragraph(rt)
+
+                rt="answers: "
+                p = quiz_report_document.add_paragraph(rt)
+
+                if row['question_type'] in ['fill_in_multiple_blanks_question']:
+                    rt_ia=dict()
+                    rt_a=literal_eval(row['answers'])
+                    for ia in rt_a:
+                        #{'weight': 100, 'id': 12882, 'text': 'traffic', 'blank_id': 'a0'}, 
+                        rt_i=ia['blank_id']
+                        if rt_ia.get(rt_i, None):
+                            rt_ia[rt_i].append(ia['text'])
+                        else:
+                            rt_ia[rt_i]=[ia['text']]
+                    #print("rt_ia={}".format(rt_ia))
+                    rt="{}".format(rt_ia)
+                    p.add_run(rt)
+                elif row['question_type'] in ['short_answer_question']:
+                    rt_ia=list()
+                    rt_a=literal_eval(row['answers'])
+                    for ia in rt_a:
+                        if ia['weight'] == 100:
+                            rt_ia.append(ia['text'])
+                    #rt="{}".format(row['answers'])
+                    rt="{}".format(rt_ia)
+                    p.add_run(rt)
+                else:
+                    print("other case={}".format(row['answers']))
+                    rt="{}".format(row['answers'])
+                    p.add_run(rt)
+
             if row['id'] in incorrect_answers:
                 quiz_instance.at[index, 'incorrect answers']=incorrect_answers[row['id']]
+                if add_to_report:
+                    rt="incorrect answers: {}".format(incorrect_answers[row['id']])
+                    p = quiz_report_document.add_paragraph(rt)
 
             if row['id'] in incorrect_answers_multiple_blanks:
                 quiz_instance.at[index, 'incorrect answers']=incorrect_answers_multiple_blanks[row['id']]
+                if add_to_report:
+                    rt="incorrect answers: {}".format(incorrect_answers_multiple_blanks[row['id']])
+                    p = quiz_report_document.add_paragraph(rt)
+
 
         # save updated quiz_instance
         quiz_instance.to_excel(writer, sheet_name=sheet_name)
@@ -486,6 +638,7 @@ def main():
         except:
             print("Invalid question id {0} (not in the list of questions - but has incorrect answers={1}".format(q, incorrect_answers_multiple_blanks[q]))
 
-
+    quiz_report_document.save('quizzes-'+course_id+'-augmented.docx')
+    
 if __name__ == "__main__": main()
 
