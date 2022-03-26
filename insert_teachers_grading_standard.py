@@ -21,7 +21,7 @@
 #  ./insert_teachers_grading_standard.py -v 11 
 #  ./insert_teachers_grading_standard.py -v --config config-test.json 11
 #
-# ./insert_teachers_grading_standard.py -e 11 
+# ./insert_teachers_grading_standard.py -e 11 --examiners
 #  only include the teachers who are also examiners and append '_Examiners' to the name of the grading standard
 # 
 # based on earlier program insert_teachers_grading_standards.py
