@@ -324,7 +324,7 @@ def main():
                 for submission in qs:
                     results_url=submission.get('result_url', None)
                     if results_url and not options.testing:
-                        make_dir_for_urls(url, target_dir)
+                        make_dir_for_urls(results_url, target_dir)
 
 
                 # At this point I want to fetch all of the version of each quiz submission and save the results to files
