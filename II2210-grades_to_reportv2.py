@@ -272,29 +272,33 @@ def assign_grade_for_assignment(assignment_id, user_id, grade, comment):
 def points_possible(short_name):
     global assignments
     for a in assignments:
-        if a['short_name'] == short_name:
-            return a['points_possible']
+        if a.get('short_name', None):
+            if a['short_name'] == short_name:
+                return a['points_possible']
     return None
 
 def assignment_given_short_name(short_name):
     global assignments
     for a in assignments:
-        if a['short_name'] == short_name:
-            return a
+        if a.get('short_name', None):
+            if a['short_name'] == short_name:
+                return a
     return None
 
 def assignment_due_date(short_name):
     global assignments
     for a in assignments:
-        if a['short_name'] == short_name:
-            return isodate.parse_datetime(a['due_at'])
+        if a.get('short_name', None):
+            if a['short_name'] == short_name:
+                return isodate.parse_datetime(a['due_at'])
     return None
 
 def assignment_grading_type(short_name):
     global assignments
     for a in assignments:
-        if a['short_name'] == short_name:
-            return a['grading_type']
+        if a.get('short_name', None):
+            if a['short_name'] == short_name:
+                return a['grading_type']
     return None
 
 def grading_type_points(short_name):
@@ -306,8 +310,9 @@ def grading_type_points(short_name):
 def assignment_grading_standard_id(short_name):
     global assignments
     for a in assignments:
-        if a['short_name'] == short_name:
-            return a['grading_standard_id']
+        if a.get('short_name', None):
+            if a['short_name'] == short_name:
+                return a['grading_standard_id']
     return None
 
 def get_a_grade(user_id, short_name):
@@ -579,19 +584,19 @@ def main(argv):
         # ***** This is essential as the routines will use the short names to access the relevant assignment and grades
         # You have to look at the assignment id for each assignment and then add a short_name to the assignment
         # You can do this by matching assignment_id numbers or matching the names
-        if a['id'] == 146887 or a['name'] == 'Ethical Research (with quiz)':
+        if a['id'] == 146887 or a['name'] == 'Ethical Research (with quiz)' or a['name'] == 'Ethical Research - quiz':
             a['short_name']= 'ER'
 
-        if a['id'] == 146888 or a['name'] == 'Professionalism and Ethics for ICT students (with quiz)':
+        if a['id'] == 146888 or a['name'] == 'Professionalism and Ethics for ICT students (with quiz)' or a['name'] == 'Professionalism and Ethics for ICT students - quiz':
             a['short_name']= 'PE'
 
-        if a['id'] == 146885 or a['name'] == 'Ethical Research: Human Subjects and Computer Issues (with quiz)':
+        if a['id'] == 146885 or a['name'] == 'Ethical Research: Human Subjects and Computer Issues (with quiz)' or a['name'] == 'Ethical Research: Human Subjects and Computer Issues - quiz':
             a['short_name']= 'ERH'
 
-        if a['id'] == 146886 or a['name'] == 'Sustainable Development/Hållbar Utveckling (with quiz)':
+        if a['id'] == 146886 or a['name'] == 'Sustainable Development/Hållbar Utveckling (with quiz)' or a['name'] == 'Sustainable Development/Hållbar Utveckling - quiz':
             a['short_name']= 'SUSD'
 
-        if a['id'] == 146889 or a['name'] == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
+        if a['id'] == 146889 or a['name'] == 'LADOK - PRO1 (Onlinequiz)' or a['name'] == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
             a['short_name']= 'PRO1'
 
         if Verbose_Flag:
