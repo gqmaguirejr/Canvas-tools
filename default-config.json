@@ -1,7 +1,10 @@
 {
     "canvas":{
         "access_token": "xxx",
-	"host": "yyy.instructure.com"
+        "host": "yyy.instructure.com"
+    },
+    "kth":{
+        "username": "zzz@ug.kth.se",
+        "password": ""
     }
-    
 }
