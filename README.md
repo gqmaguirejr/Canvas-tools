@@ -2325,6 +2325,48 @@ Supervisors will be marked as missing if they are not built into the table in th
  ./insert-examiners-and-supervisors-from-spreadsheet.py --config config-test.json  33514   "Masters_thesis_proposals-CS-P3-2022.xlsx"
 ```
 
+## kth_canvas_saml.py
+
+### Purpose
+Toolkit for signing in to KTH's Canvas LMS (through SAML) directly in Python.
+This allows you to make scripts that access login-protected pages.
+This extends the range of possibilities beyond what the Canvas LMS API offers,
+allowing the user to automate even more tasks involving Canvas.
+
+### Example usage
+```py
+>>> from kth_canvas_saml import kth_canvas_login
+>>> s = kth_canvas_login('<user>@ug.kth.se', '<password>')
+>>> r = s.get('https://canvas.kth.se/courses/<course_id>/quizzes/<quiz_id>/history?quiz_submission_id=<subm_id>&version=1')
+>>> print(r.text)
+```
+
+### Note
+Running this script alone will prompt you for credentials and test the sign in with verbose printouts:
+```text
+$ ./kth_canvas_saml.py
+Testing KTH Canvas login.
+KTH username: test
+Password for user test@ug.kth.se:
+Got response from https://canvas.kth.se/login : code 302
+Got response from https://canvas.kth.se/login/saml : code 302
+... [rest of output hidden]
+```
+
+Remember to handle your password with care!
+If you do not wish to have your password stored in plain text,
+you may use `kth_canvas_login_prompt`, or make something yourself.
+
+The two dependencies can be installed with: `pip install requests beautifulsoup4`
+
+### Author
+Johan Berg, 2022-04-09
+
+## canvas_api.py
+### Purpose
+This code is directly derived from Maguire's functions in Canvas-tools.
+The functions have been refactored and simplified into this API handler.
+ 
 ## quizzes-and-answers-in-course.py
 
 ### Purpose
@@ -2341,10 +2383,11 @@ Outputs a file with a name of the form: quizzes-<course_id>.xlsx
 ### Note 
 This is a work in progress. As of 2022-02-26 it does not yet support getting the answers that students have given (there is a 'result_url' filed in the submissions that gives you access to an HTML page of the student's submission), as I've not solved the SAML requirements to fetch the URLs of the completed quizzes. However, one can manually click on the links and get them from the spreadsheet in Excel.
 
+It uses kth_canvas_saml.py to access the latest submission from 'result_url' and access all prior sumissions. If the 'workflow_state' is 'untaken', then it accesses 'html_url' and builds a URL to access all of the attempts except for the last one which had not been submitted (hence was in the untaken state).
+
 ## augment_quizzes-and-answers-in-course.py
 ### Purpose
 To take the spreadsheet output by quizzes-and-answers-in-course.py and augment it with additional information as well as print incorrect answers to questions with blanks. If the names of the blanks (i.e., the blank_id) are in the range 'a0' to 'a9' the output decodes them, otherwise it uses the hash of the blank_id.
-
 
 ### Input
 ```bash
@@ -2370,6 +2413,8 @@ Two of the behaviors that were observed in students who took the quiz many times
 (b) the student not answering any questions but just collecting questions and their answers, then doing a submission with all the correct answers.
 
 For some of the questions the second behavior is very hard. For example, one question had 5 random questions selected out of 70 questions - so there are very large number of possible combination of quiz questions!
+
+This program was refactored by Johan Berg to use canvas_api.py.
 
 ### Example
 
@@ -2412,25 +2457,7 @@ question_id=274204 already has a quiz_id 28330 associated with it
 question_id=274221 already has a quiz_id 28330 associated with it
 saving quiz submissions=s_28330
 copying quiz=28323
-saving quiz submissions=s_28323
-copying quiz=28326
-saving quiz submissions=s_28326
-copying quiz=28337
-saving quiz submissions=s_28337
-copying quiz=28331
-saving quiz submissions=s_28331
-copying quiz=28332
-saving quiz submissions=s_28332
-copying quiz=28327
-saving quiz submissions=s_28327
-copying quiz=28336
-saving quiz submissions=s_28336
-copying quiz=28328
-saving quiz submissions=s_28328
-copying quiz=28334
-saving quiz submissions=s_28334
-copying quiz=28333
-saving quiz submissions=s_28333
+...
 copying quiz=28324
 saving quiz submissions=s_28324
 copying quiz=28335
@@ -2458,7 +2485,6 @@ Incorrect answers for 274211 on quiz 28330: {'hardware ', 'yes'}
 Incorrect answers for 274247 on quiz 28330: {'anthropocentric'}
 Incorrect answers for 274241 on quiz 28330: {'practical'}
 Incorrect answers for 274222 on quiz 28330: {'Basic Idea'}
-Incorrect answers for 274032 on quiz 28323: {'English', "KTH's digital scientific archive", 'both Swedish and English', 'English and Swedish', ' Swedish and English', 'KTH’s Digitala Vetenskapliga Arkivet (DiVA)', "KTH'S Digitala Vetenskapliga Arkivet", 'Swedish and English', 'Digitala Vetenskapliga Arkivet (DiVA)', 'KTH’s Digitala Vetenskapliga Arkivet ', "KTH's Digitala Vetenskapliga Arkivet", 'library', 'latex', 'Ladok', 'digital scientific archive', 'KTH’s Digitala Vetenskapliga Arkivet', 'KTH’s Digitala VetenskapligaArkivet', 'iDiva'}
 Incorrect answers for 274234 on quiz 28330: {'a0': {'society'}, 'a1': {'environment'}, 'a2': {'economy'}}
 Incorrect answers for 274237 on quiz 28330: {'a0': {'environmental', 'self'}, 'a1': {'social', 'eco'}}
 Incorrect answers for 274203 on quiz 28330: {'a0': {'performance'}, 'a1': {'power consumption'}}

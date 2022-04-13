@@ -27,11 +27,12 @@
 # 2019.01.05
 #
 
-import requests, time
-import pprint
-import optparse
+from argparse import ArgumentParser
 import sys
 import json
+import re
+from pathlib import Path
+from collections import defaultdict
 
 # Use Python Pandas to create XLSX files
 import pandas as pd
@@ -39,332 +40,190 @@ import pandas as pd
 # use lxml to access the HTML content
 from lxml import html
 
-# use the request pacek to get the HTML give an URL
+# use the request package to get the HTML give an URL
 import requests
+
+# canvas_api.py - handler for Canvas API
+from canvas_api import CanvasAPI
+
+# kth_canvas_saml.py - toolkit for KTH Canvas login
+import kth_canvas_saml
 
 #############################
 ###### EDIT THIS STUFF ######
 #############################
 
-global baseUrl	# the base URL used for access to Canvas
-global header	# the header for all HTML requests
-global payload	# place to store additionally payload when needed for options to HTML requests
+verbose = False # Global flag for verbose prints
+DEFAULT_CONFIG_FILE = 'config.json'
 
-# Based upon the options to the program, initialize the variables used to access Canvas gia HTML requests
-def initialize(options):
-    global baseUrl, header, payload
+TARGET_DIR = './Quiz_Submissions'
 
-    # styled based upon https://martin-thoma.com/configuration-files-in-python/
-    if options.config_filename:
-        config_file=options.config_filename
-    else:
-        config_file='config.json'
 
+def read_config(config_file: str = None) -> dict:
+    config_file = config_file or DEFAULT_CONFIG_FILE
     try:
-        with open(config_file) as json_data_file:
-            configuration = json.load(json_data_file)
-            access_token=configuration["canvas"]["access_token"]
-            baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
-
-            header = {'Authorization' : 'Bearer ' + access_token}
-            payload = {}
-    except:
-        print("Unable to open configuration file named {}".format(config_file))
-        print("Please create a suitable configuration file, the default name is config.json")
-        sys.exit()
+        # styled based upon https://martin-thoma.com/configuration-files-in-python/
+        return json.loads(Path(config_file).read_text())
+    except json.JSONDecodeError as e:
+        print(f'Invalid JSON in {config_file}')
+        raise e
+    except Exception as e:
+        print(f'Unable to open configuration file named {config_file}')
+        print(f'Please create a suitable configuration file, the default name is {DEFAULT_CONFIG_FILE}')
+        raise e
 
 
-
-def get_course_info(course_id):
-    # Use the Canvas API to get the course info
-    #GET /api/v1/courses/:id
-
-    url = "{0}/courses/{1}".format(baseUrl, course_id)
-    if Verbose_Flag:
-        print("in course info url: {}".format(url))
-
-    r = requests.get(url, headers = header)
-    if Verbose_Flag:
-        print("result of getting course info: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-    return page_response
+# Take out the config variables used to authenticate KTH through SAML login. Used to access Canvas pages directly.
+def get_kth_credentials(config: dict) -> tuple:
+    try:
+        return (config["kth"]["username"], config["kth"]["password"])
+    except KeyError as e:
+        print('Missing keys in config file')
+        raise e
 
 
-
-def list_quizzes(course_id):
-    quizzes_found_thus_far=[]
-    # Use the Canvas API to get the list of quizzes for the course
-    #GET /api/v1/courses/:course_id/quizzes
-
-    url = "{0}/courses/{1}/quizzes".format(baseUrl, course_id)
-    if Verbose_Flag:
-        print("in list_quizzes url: {}".format(url))
-
-    extra_parameters={'per_page': '100'}
-    r = requests.get(url, headers = header, params=extra_parameters)
-    if Verbose_Flag:
-        print("result of getting quizzes: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            quizzes_found_thus_far.append(p_response)
-
-            # the following is needed when the reponse has been paginated
-            # i.e., when the response is split into pieces - each returning only some of the list
-            # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-            while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header, params=extra_parameters)  
-                if Verbose_Flag:
-                    print("result of getting quizzes for a paginated response: {}".format(r.text))
-                page_response = r.json()  
-                for p_response in page_response:  
-                    quizzes_found_thus_far.append(p_response)
-
-    return quizzes_found_thus_far
-
-def list_quiz_questions(course_id, quiz_id):
-    questions_found_thus_far=[]
-    # Use the Canvas API to get the list of questions for a quiz in the course
-    # GET /api/v1/courses/:course_id/quizzes/:quiz_id/questions
-
-    url = "{0}/courses/{1}/quizzes/{2}/questions".format(baseUrl, course_id, quiz_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    extra_parameters={'per_page': '100'}
-    r = requests.get(url, headers = header, params=extra_parameters)
-    if Verbose_Flag:
-        print("result of getting questions: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            questions_found_thus_far.append(p_response)
-
-            # the following is needed when the reponse has been paginated
-            # i.e., when the response is split into pieces - each returning only some of the list of modules
-            # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-            while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header, params=extra_parameters)
-                if Verbose_Flag:
-                    print("result of getting questions for a paginated response: {}".format(r.text))
-                page_response = r.json()  
-                for p_response in page_response:  
-                    questions_found_thus_far.append(p_response)
-
-    return questions_found_thus_far
-
-
-def list_quiz_submissions(course_id, quiz_id):
-    submissions_found_thus_far=[]
-    # Get all quiz submissions
-    # GET /api/v1/courses/:course_id/quizzes/:quiz_id/submissions
-    #Parameter		Type	Description
-    #include[]		string	
-    #Associations to include with the quiz submission.
-    # Allowed values: submission, quiz, user
-
-    url = "{0}/courses/{1}/quizzes/{2}/submissions".format(baseUrl, course_id, quiz_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    extra_parameters={'include[]': 'submission',
-                      'per_page': '100'}
-
-    r = requests.get(url, params=extra_parameters, headers = header)
-    if Verbose_Flag:
-        print("result of getting submissions: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        qs=page_response.get('quiz_submissions', [])
-        for p_response in qs:  
-            submissions_found_thus_far.append(p_response)
-
-            # the following is needed when the reponse has been paginated
-            # i.e., when the response is split into pieces - each returning only some of the list of modules
-            # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-            while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header, params=extra_parameters)  
-                if Verbose_Flag:
-                    print("result of getting submissions for a paginated response: {}".format(r.text))
-                page_response = r.json()  
-                qs=page_response.get('quiz_submissions', [])
-                for p_response in qs:  
-                    submissions_found_thus_far.append(p_response)
-
-    return submissions_found_thus_far
-
-
-def update_question_type_stats(question):
-    global question_type_stats
-
-    qt=question.get('question_type', None)
-    qt_number=question_type_stats.get(qt, 0)
-    if qt_number == 0:
-        question_type_stats[qt]=1
-    else:
-        question_type_stats[qt]=qt_number+1
-    
-def make_dir_for_urls(url, target_dir):
-    global Verbose_Flag
+def dir_name_for_urls(url: str, target_dir: str) -> str:
     # the URLs have the form: https://canvas.kth.se/courses/11/quizzes/39141/history?quiz_submission_id=759552&version=1
-    # remove prefix
-    prefix="courses/"
-    prefix_offset=url.find(prefix)
-    if prefix_offset > 0:
-        url_tail=url[prefix_offset+len(prefix):]
-        parts_of_path=url_tail.split('/')
-        if Verbose_Flag:
-            print(parts_of_path)
-        course_id=parts_of_path[0]
-        quiz_id=parts_of_path[2]
-        quiz_submission_part=parts_of_path[3].split('=')
-        if Verbose_Flag:
-            print(quiz_submission_part)
-        quiz_submission_id=quiz_submission_part[1].split('&')[0]
-        if Verbose_Flag:
-            print(quiz_submission_id)
-        dir_to_create="{0}/{1}/{2}/{3}".format(target_dir, course_id, quiz_id, quiz_submission_id)
-        print("Creating directory: {}".format(dir_to_create))
-        Path(dir_to_create).mkdir(parents=True, exist_ok=True)
-        return dir_to_create
+    subdir_name = re.sub(r'^.*/courses/(\d+)/quizzes/(\d+)/history\?quiz_submission_id=(\d+)&version=\d+.*$',
+                         r'\1/\2/\3',
+                         url)
+    if subdir_name == url:
+        raise ValueError(f'Invalid URL: {url}')
+    return f'{target_dir}/{subdir_name}'
+
+
+def verbose_print(*args, **kwargs) -> None:
+    global verbose
+    if verbose:
+        print(*args, **kwargs)
+
 
 def main():
-    global Verbose_Flag
-    global question_type_stats
+    global verbose
 
-    default_picture_size=128
-
-    parser = optparse.OptionParser()
-
-    parser.add_option('-v', '--verbose',
-                      dest="verbose",
-                      default=False,
-                      action="store_true",
-                      help="Print lots of output to stdout"
+    parser = ArgumentParser()
+    parser.add_argument('-v', '--verbose',
+                        action='store_true',
+                        help='Print lots of output to stdout'
     )
-
-    parser.add_option('-t', '--testing',
-                      dest="testing",
-                      default=False,
-                      action="store_true",
-                      help="Do not create the directories only make the XLSX files"
+    parser.add_argument('-t', '--testing',
+                        action='store_true',
+                        help='Do not create the directories, only make the XLSX files'
     )
+    parser.add_argument('--config', dest='config_filename',
+                        help='read configuration from FILE',
+                        metavar='FILE'
+    )
+    parser.add_argument('course_id')
+    args = parser.parse_args()
 
-    parser.add_option("--config", dest="config_filename",
-                      help="read configuration from FILE", metavar="FILE")
-    
-    options, remainder = parser.parse_args()
+    verbose_print(f'ARGV      : {sys.argv[1:]}')
+    verbose_print(f'VERBOSE   : {args.verbose}')
+    verbose_print(f'COURSE_ID : {args.course_id}')
+    verbose_print(f'Configuration file : {args.config_filename}')
 
-    Verbose_Flag=options.verbose
-    if Verbose_Flag:
-        print("ARGV      : {}".format(sys.argv[1:]))
-        print("VERBOSE   : {}".format(options.verbose))
-        print("REMAINING : {}".format(remainder))
-        print("Configuration file : {}".format(options.config_filename))
+    verbose = args.verbose
+    course_id = args.course_id
+    config = read_config(args.config_filename)
 
-    initialize(options)
+    # Initialize Canvas API
+    canvas_api = CanvasAPI(config, verbose)
 
-    if (len(remainder) < 1):
-        print("Insuffient arguments - must provide course_id\n")
+    # Initialize Canvas KTH SAML login
+    user, password = get_kth_credentials(config)
+    canvas_saml_session = kth_canvas_saml.kth_canvas_login_prompt(user, password, verbose=verbose)
+
+    verbose_print(f'{course_id=}')
+    course_info = canvas_api.get_course_info(course_id)
+    quizzes = canvas_api.list_quizzes(course_id)
+    if not quizzes:
+        print('No quizzes found')
         return
-    else:
-        course_id=remainder[0]
-        if Verbose_Flag:
-            print("course_id={0}, type={1}".format(course_id, type(course_id)))
 
-        course_info=get_course_info(course_id)
-        quizzes=list_quizzes(course_id)
-        question_type_stats=dict()
+    # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
+    # set up the output write
+    writer = pd.ExcelWriter(f'quizzes-{course_id}.xlsx', engine='xlsxwriter')
+    if course_info:
+        pd.json_normalize(course_info).to_excel(writer, sheet_name='Course')
 
-        target_dir="./Quiz_Submissions"
-        if options.testing:
-            target_dir="./Quiz_Submissions-testing"
+    quizzes_df = pd.json_normalize(quizzes)
+    # below are examples of some columns that might be dropped
+    #columns_to_drop=[]
+    #quizzes_df.drop(columns_to_drop,inplace=True,axis=1)
+    quizzes_df.to_excel(writer, sheet_name='Quizzes')
 
-        if course_info:
-            course_info_df=pd.json_normalize(course_info)
-        if (quizzes):
-            quizzes_df=pd.json_normalize(quizzes)
-                     
-            # below are examples of some columns that might be dropped
-            #columns_to_drop=[]
-            #quizzes_df.drop(columns_to_drop,inplace=True,axis=1)
+    question_type_stats = defaultdict(int) # new keys start counting from 0
 
-            # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
-            # set up the output write
-            writer = pd.ExcelWriter('quizzes-'+course_id+'.xlsx', engine='xlsxwriter')
-            if course_info:
-                course_info_df.to_excel(writer, sheet_name='Course')
+    for qid in sorted(q['id'] for q in quizzes):
+        qi = canvas_api.list_quiz_questions(course_id, qid)
+        pd.json_normalize(qi).to_excel(writer, sheet_name=str(qid))
+        for question in qi:
+            question_type_stats[question.get('question_type', None)] += 1
 
-            quizzes_df.to_excel(writer, sheet_name='Quizzes')
+        qs = canvas_api.list_quiz_submissions(course_id, qid)
+        verbose_print(f'quiz {qid} submissions {qs}')
+        pd.json_normalize(qs).to_excel(writer, sheet_name=f's_{qid}')
 
-            for q in sorted(quizzes, key=lambda x: x['id']):
-                qi=list_quiz_questions(course_id, q['id'])
-                qi_df=pd.json_normalize(qi)
-                qi_df.to_excel(writer, sheet_name=str(q['id']))
+        for submission in qs:
+            results_url = submission.get('result_url', None)
+            if not results_url:
+                results_url = submission.get('html_url', None)
+                workflow_state=submission.get('workflow_state', None)
+                # it is possible that the student started to take a quiz, but did not complete it
+                # in thas case the workflow_state will not be 'complete', check for the 'untaken' state
+                # If so, then look at the previous attempt
+                if workflow_state == 'untaken':
+                    attempt = int(submission['attempt']) - 1
+                    # we have to convert the html_url to an results_url
+                    # html_url    https://canvas.kth.se/courses/30565/quizzes/28318/submissions/777998
+                    # results_url https://canvas.kth.se/courses/30565/quizzes/28318/history?quiz_submission_id=777998&version=1
+                    s1=results_url.split('/submissions/')
+                    results_url="{0}/history?quiz_submission_id={1}&version={2}".format(s1[0], s1[1], attempt)
+                    print("new results_url is {0}".format(results_url))
+                else:
+                    continue
+            if not args.testing:
+                d = dir_name_for_urls(results_url, TARGET_DIR)
+                print(f'Creating directory: {d}')
+                Path(d).mkdir(parents=True, exist_ok=True)
+            attempt = submission['attempt']
+            verbose_print(f'{attempt=}')
 
-                for question in qi:
-                    update_question_type_stats(question)
+            # split to get the version and a base to which one can added new versions
+            base_html_splt=results_url.split('version=')
 
-                #Verbose_Flag=True
-                qs=list_quiz_submissions(course_id, q['id'])
-                #Verbose_Flag=False
-                if Verbose_Flag:
-                    print("quiz submission {0} {1}".format(q['id'], qs))
-                qs_df=pd.json_normalize(qs)
-                qs_df.to_excel(writer, sheet_name='s_'+str(q['id']))
-                for submission in qs:
-                    results_url=submission.get('result_url', None)
-                    if results_url and not options.testing:
-                        make_dir_for_urls(results_url, target_dir)
+            if base_html_splt and len(base_html_splt) == 2:
+                latest_version=int(base_html_splt[1])
 
+            for version in range(1, latest_version+1):
+                print("getting version {0} of {1}".format(version, latest_version))
+                target_url="{0}version={1}".format(base_html_splt[0], version)
+                submitted_quiz = canvas_saml_session.get(target_url)
+                if submitted_quiz.status_code != requests.codes.ok:
+                    verbose_print(f'Failed to fetch {results_url}')
+                    print("Error in getting page (0): {1}".format(target_url, submitted_quiz.status_code))
+                    continue
 
-                # At this point I want to fetch all of the version of each quiz submission and save the results to files
-                # converting the URLs of the form 'https://canvas.kth.se/courses/:course_id/quizzes/:quiz_id/history?quiz_submission_id=:submission_id&version=:version:number'
-                # into file names of the form: :course_id_:quiz_id_quiz_submission_id=:submission_id_version_:version:number
+                if not args.testing:
+                    #Path(f'{d}/submission{submission["id"]}_v{attempt}.html').write_text(submitted_quiz.text)
+                    Path(f'{d}/submission{submission["id"]}_v{version}.html').write_text(submitted_quiz.text)
 
-                #
-                # for submission in qs:
-                #     results_url=submission.get('result_url', None)
-                #     if results_url:
-                #         attempt=submission['attempt']
-                #         print("attempt={}".format(attempt))
+                document = html.document_fromstring(submitted_quiz.text)
+                # look for the div with id="questions"
+                questions = document.xpath('//*[@id="questions"]')
+                for question in questions:
+                    verbose_print(f'question id={question.attrib["id"]} class={question.attrib["class"]}')
+                    inputs = question.xpath('.//input')
+                    for i in inputs:
+                        # Example: type="text" name="question_346131" value="redish-green"
+                        verbose_print(f'input type={i.type}, name={i.name}, value={i.value}')
 
-                #         submitted_quiz = requests.get(results_url)
-                #         submission_html=submitted_quiz.text
-                #         if submission_html and len(submission_html) > 0:
-                #             print("found a submission: {}".format(submission_html))
-                #             # look for the div with id="questions"
-                #             document = html.document_fromstring(submission_html)
-                #             # questions = document.xpath('//*[@id="questions"]/div/*[@class="display_question"]')
-                #             questions = document.xpath('//*[@id="questions"]')
-                #             for a_question in questions:
-                #                 a_question_id=a_question.attrib['id']
-                #                 a_question_class=a_question.attrib['class']
-                #                 print("question id={0} class={1}".format(a_question_id, a_question_class))
-                #                 input=a_question.find('input')
-                #                 if input:
-                #                     # type="text" name="question_346131" value="redish-green"
-                #                     input_type=input.attrib['type']
-                #                     input_name=input.attrib['name']
-                #                     input_value=input.attrib['value']
-                #                     print("input type={0], name={1}, value={2}".format(input_type, input_name, input_value))
+    # Close the Pandas Excel writer and output the Excel file.
+    writer.save()
 
+    if question_type_stats:
+        print(f'{question_type_stats=}')
 
-            # Close the Pandas Excel writer and output the Excel file.
-            writer.save()
-
-        if len(question_type_stats) > 0:
-            print("question_type_stats={}".format(question_type_stats))
-        
 
 if __name__ == "__main__": main()
 

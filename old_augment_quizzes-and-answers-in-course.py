@@ -33,7 +33,6 @@ import pprint
 import optparse
 import sys
 import json
-import re
 import os
 from pathlib import Path
 
@@ -92,7 +91,7 @@ def initialize(options):
             header = {'Authorization' : 'Bearer ' + access_token}
             payload = {}
     except:
-        print(f'Unable to open configuration file named {config_file}')
+        print("Unable to open configuration file named {}".format(config_file))
         print("Please create a suitable configuration file, the default name is config.json")
         sys.exit()
     
@@ -115,19 +114,10 @@ def make_dir_for_urls(url, target_dir):
         quiz_submission_id=quiz_submission_part[1].split('&')[0]
         if Verbose_Flag:
             print(quiz_submission_id)
-        dir_to_create=f'{target_dir}/{course_id}/{quiz_id}/{quiz_submission_id}'
-        print(f'Creating directory: {dir_to_create}')
+        dir_to_create="{0}/{1}/{2}/{3}".format(target_dir, course_id, quiz_id, quiz_submission_id)
+        print("Creating directory: {}".format(dir_to_create))
         Path(dir_to_create).mkdir(parents=True, exist_ok=True)
         return dir_to_create
-
-def new_dir_name_for_urls(url: str, target_dir: str) -> str:
-    # the URLs have the form: https://canvas.kth.se/courses/11/quizzes/39141/history?quiz_submission_id=759552&version=1
-    subdir_name = re.sub(r'^.*/courses/(\d+)/quizzes/(\d+)/history\?quiz_submission_id=(\d+)&version=\d+.*$',
-                         r'\1/\2/\3',
-                         url)
-    if subdir_name == url:
-        raise ValueError(f'Invalid URL: {url}')
-    return f'{target_dir}/{subdir_name}'
 
 def dir_name_for_urls(url, target_dir):
     global Verbose_Flag
@@ -148,13 +138,13 @@ def dir_name_for_urls(url, target_dir):
         quiz_submission_id=quiz_submission_part[1].split('&')[0]
         if Verbose_Flag:
             print(quiz_submission_id)
-        dir_to_create=f'{target_dir}/{course_id}/{quiz_id}/{quiz_submission_id}'
+        dir_to_create="{0}/{1}/{2}/{3}".format(target_dir, course_id, quiz_id, quiz_submission_id)
         return dir_to_create
 
 
 def compute_canvas_blank_id_digest(bid):
     m=hashlib.md5()
-    s1=f'dropdown,{bid},instructure-key'
+    s1="dropdown,{},instructure-key".format(bid)
     m.update(s1.encode('utf-8'))
     return m.hexdigest()
 
@@ -162,7 +152,7 @@ def fill_common_blank_ids(num):
     global common_blank_ids
 
     for i in range(0, 10):
-        s1=f'a{i}'
+        s1="a{}".format(i)
         common_blank_ids[compute_canvas_blank_id_digest(s1)]=s1
 
 
@@ -233,10 +223,10 @@ def main():
 
     Verbose_Flag=options.verbose
     if Verbose_Flag:
-        print(f'ARGV      : {sys.argv[1:]}')
-        print(f'VERBOSE   : {options.verbose}')
-        print(f'REMAINING : {remainder}')
-        print(f'Configuration file : {options.config_filename}')
+        print("ARGV      : {}".format(sys.argv[1:]))
+        print("VERBOSE   : {}".format(options.verbose))
+        print("REMAINING : {}".format(remainder))
+        print("Configuration file : {}".format(options.config_filename))
 
     initialize(options)
 
@@ -250,12 +240,12 @@ def main():
     target_dir="./Quiz_Submissions"
     question_id_prefix="question_"
 
-    input_file=f'quizzes-{course_id}.xlsx'
+    input_file="quizzes-{}.xlsx".format(course_id)
     excel_Sheet_names = (pd.ExcelFile(input_file)).sheet_names
     if 'Course' in excel_Sheet_names:
         course_df = pd.read_excel(open(input_file, 'rb'), sheet_name='Course')        
         course_code = course_df.iloc[0]['course_code']
-        print(f'course_code={course_code}')
+        print("course_code={}".format(course_code))
 
     if 'Quizzes' not in excel_Sheet_names:
         print("Spreadsheeting missing 'Quizzes' sheet, unable to process this file")
@@ -266,7 +256,7 @@ def main():
     for index, row in  quizzes_df.iterrows():
         quiz_info[row['id']]=row['title']
 
-    print(f'quiz_info={quiz_info}')
+    print("quiz_info={}".format(quiz_info))
 
     # collect the blank_ids and compute the hashes for them
     #
@@ -274,27 +264,27 @@ def main():
     blank_ids=set()		# all the blank_id that appear in any questions
     quizzes_correct_multi_blank_answers=dict()	# index by quiz_id and blank_id
     for quiz in quiz_info:
-        sheet_name=f'{quiz}'
-        print(f'processing quiz={sheet_name}')
+        sheet_name="{}".format(quiz)
+        print("processing quiz={}".format(sheet_name))
         quiz_instance = pd.read_excel(open(input_file, 'rb'), sheet_name=sheet_name)
 
         for index, row in  quiz_instance.iterrows():        
             # get the question type, if it is fill_in_multiple_blanks_question, then collect the blank names
             q_type=row['question_type']
             if Verbose_Flag:
-                print(f'q_type={q_type}')
+                print("q_type={}".format(q_type))
             if q_type in ['fill_in_multiple_blanks_question']:
                 # [{'weight': 100, 'id': 12882, 'text': 'traffic', 'blank_id': 'a0'}, {'weight': 100, 'id': 63085, 'text': 'energy consumption', 'blank_id': 'a0'}, {'weight': 100, 'id': 51091, 'text': 'energy consumption', 'blank_id': 'a1'}, {'weight': 100, 'id': 39757, 'text': 'traffic', 'blank_id': 'a1'}]
                 correct_multi_blank_answers=dict()	# index by blank_id
 
                 q_answers=row['answers']
                 if Verbose_Flag:
-                    print(f'q_answers={q_answers}, type(q_answers)={type(q_answers)}')
+                    print("q_answers={0}, type(q_answers)={1}".format(q_answers, type(q_answers)))
                 q_answers=literal_eval(row['answers'])
                 for ans in q_answers:
                     b_id=ans['blank_id']
                     if Verbose_Flag:
-                        print(f'b_id={b_id}')
+                        print("b_id={}".format(b_id))
                     blank_ids.add(b_id)
                     if ans['weight'] == 100:
                         if correct_multi_blank_answers.get(b_id, None):
@@ -307,22 +297,22 @@ def main():
                 quizzes_correct_multi_blank_answers[q_id]=correct_multi_blank_answers
 
     if Verbose_Flag:
-        print(f'blank_ids={sorted(blank_ids)}')
+        print("blank_ids={}".format(sorted(blank_ids)))
     # if any blank_id is missing from those with entries in common_blank_ids add the mapping
     for b_id in blank_ids:
         common_blank_ids[compute_canvas_blank_id_digest(b_id)]=b_id
 
     if Verbose_Flag:
-        print(f'common_blank_ids={common_blank_ids}')
+        print("common_blank_ids={}".format(common_blank_ids))
 
-    print(f'quizzes_correct_multi_blank_answers={quizzes_correct_multi_blank_answers}')
+    print("quizzes_correct_multi_blank_answers={}".format(quizzes_correct_multi_blank_answers))
 
     incorrect_answers=dict()    # values a set under the question_id
     incorrect_answers_multiple_blanks=dict() #  values are stored as quiest_id: {blank_id_hash: {value set}}
 
     quiz_submissions_all=dict()
     for quiz in quiz_info:
-        sheet_name=f's_{quiz}'
+        sheet_name="s_{}".format(quiz)
         quiz_submissions_all[quiz] = pd.read_excel(open(input_file, 'rb'), sheet_name=sheet_name)
 
         # add an empty column to remeber the questions that were ask
@@ -338,23 +328,6 @@ def main():
             questions_types=dict()
             answer_correctness=dict()
             version_string=''
-            if not isinstance(url, str):
-                results_url = row.get('html_url', None)
-                workflow_state=row.get('workflow_state', None)
-                # it is possible that the student started to take a quiz, but did not complete it
-                # in thas case the workflow_state will not be 'complete', check for the 'untaken' state
-                # If so, then look at the previous attempt
-                if workflow_state == 'untaken':
-                    attempt = int(row['attempt']) - 1
-                    # we have to convert the html_url to an results_url
-                    # html_url    https://canvas.kth.se/courses/30565/quizzes/28318/submissions/777998
-                    # result_url https://canvas.kth.se/courses/30565/quizzes/28318/history?quiz_submission_id=777998&version=1
-                    s1=results_url.split('/submissions/')
-                    url=f'{s1[0]}/history?quiz_submission_id={s1[1]}&version={attempt}'
-                    print(f'new url is {results_url}')
-                else:
-                    continue
-
             dir_name=dir_name_for_urls(url, target_dir)
             for file in os.listdir(dir_name):
                 version_string=''
@@ -365,26 +338,19 @@ def main():
                         with open(file_name) as html_file:
                             html_string = html_file.read()
                     except:
-                        print(f'Unable to open file named {file_name}')
+                        print("Unable to open file named {}".format(file_name))
 
-                    print(f'\nProcessing file: {file_name}')
+                    print("\nProcessing file: {}".format(file_name))
                     version_prefix='_v'
                     version_offset=file_name.rindex(version_prefix)+2
                     if version_offset:
                         version_string=file_name[version_offset:-5]
                         if Verbose_Flag:
-                            print(f'version_string={version_string}')
+                            print("version_string={}".format(version_string))
 
                     if len(html_string) == 0:
-                        print(f'No contents for file={file_name}')
+                        print("No contents for file={}".format(file_name))
                         continue
-
-                    # check if this is an error page, if so skip it
-                    if html_string.find('<div class="ic-Error-page">') > 0:
-                        if html_string.find('<img class="ic-Error-img" role="presentation" alt="" aria-hidden="true" src="/images/500_pageerror.svg">') > 0:
-                            if html_string.find('<h1>Page Error</h1>'):
-                                continue
-
                     document = html.document_fromstring(html_string)
                     display_questions = document.xpath('//*[contains(@class, "display_question")]')
                     # Can have a correct answer:
@@ -409,7 +375,7 @@ def main():
                         a_question_id=a_question.attrib['id']
                         a_question_class=a_question.attrib['class']
                         if Verbose_Flag:
-                            print(f'question id={a_question_id} class={a_question_class}')
+                            print("question id={0} class={1}".format(a_question_id, a_question_class))
                         question_id=int(a_question_id[len(question_id_prefix):])
                         question_asked_this_attempt.append(question_id)
                         if 'partial_credit' in a_question_class:
@@ -443,7 +409,7 @@ def main():
                         # version_string
                         for a_number, input in enumerate(inputs):
                             if Verbose_Flag:
-                                print(f'a_number={a_number}')
+                                print("a_number={}".format(a_number))
                             input_id=input.attrib.get('id', None)
                             input_type=input.attrib.get('type', None)
                             input_name=input.attrib.get('name', None)
@@ -453,11 +419,11 @@ def main():
                                 continue
 
                             if 'incorrect' in a_question_class and input_type=='text':
-                                print(f'input_id={input_id}, input_type={input_type}, input_name={input_name},input_value={input_value},input_describedby={input_describedby}, question_type={question_type}')
+                                print("input_id={0}, input_type={1},input_name={2},input_value={3},input_describedby={4}, question_type={5}".format(input_id, input_type, input_name, input_value, input_describedby, question_type))
                                 split_input_name=input_name.split('_')
                                 question_id=int(split_input_name[1])
                                 if len(split_input_name) > 2:
-                                    print(f'extention to input_name for question_id={question_id} of {split_input_name}')
+                                    print("extention to input_name for question_id={0} of {1}".format(question_id, split_input_name))
                                 if question_type == 'fill_in_multiple_blanks_question':
                                     # note that quseions with multiple blanks have gensymn'd extensions to the name:
                                     # input_name=question_274226_443f6a7201fd1b9c37119a9d1aa28776 - has the blank_id='a0'
@@ -504,10 +470,10 @@ def main():
                                     current_incorrect_answers=incorrect_answers.get(question_id, None)
                                     if current_incorrect_answers:
                                         current_incorrect_answers.add(input_value) #  note that the add occurs in place
-                                        print(f'first case: input_value={input_value}, incorrect_answers[{question_id}]={incorrect_answers[question_id]}')
+                                        print("first case: input_value={0}, incorrect_answers[{1}]={2}".format(input_value, question_id, incorrect_answers[question_id]))
                                     else:
                                         incorrect_answers[question_id]={input_value}
-                                        print(f'second case: input_value={input_value}, incorrect_answers[{question_id}]={incorrect_answers[question_id]}')
+                                        print("second case: input_value={0}, incorrect_answers[{1}]={2}".format(input_value, question_id, incorrect_answers[question_id]))
 
 
 
@@ -517,15 +483,15 @@ def main():
 
 
             if questions_asked:
-                print(f'questions_asked={questions_asked}')
+                print("questions_asked={}".format(questions_asked))
                 quiz_submissions_all[quiz].at[index, 'questions_asked']=questions_asked
 
             if questions_types:
-                print(f'questions_types={questions_types}')
+                print("questions_types={}".format(questions_types))
                 quiz_submissions_all[quiz].at[index, 'questions_types']=questions_types
 
             if answer_correctness:
-                print(f'answer_correctness={answer_correctness}')
+                print("answer_correctness={}".format(answer_correctness))
                 quiz_submissions_all[quiz].at[index, 'answer_correctness']=answer_correctness
 
 
@@ -543,7 +509,7 @@ def main():
 
     quiz_report_header = quiz_report_section.header
     quiz_report_paragraph = quiz_report_header.paragraphs[0]
-    quiz_report_paragraph.text = f'{course_code}\t{course_id}\tQuiz report'
+    quiz_report_paragraph.text = "{0}\t{1}\tQuiz report".format(course_code, course_id)
     quiz_report_paragraph.style = quiz_report_document.styles["Header"]
 
     # Add a footer with the page number
@@ -551,9 +517,9 @@ def main():
 
     question_types_of_interest=['short_answer_question', 'fill_in_multiple_blanks_question']
     # Add top level heading (title of the report)
-    quiz_report_document.add_heading(f'Quiz questions and answers: Focus on questions of types: {question_types_of_interest}', 0)
+    quiz_report_document.add_heading("Quiz questions and answers: Focus on questions of types: {0}".format(question_types_of_interest), 0)
 
-    author_string=f'augment_quizzes-and-answers-in-course.py {course_id}'
+    author_string="augment_quizzes-and-answers-in-course.py {}".format(course_id)
     p = quiz_report_document.add_paragraph('Output of ')
     current_font=p.add_run(author_string).font
     current_font.color.rgb = RGBColor(0xFF, 0x00, 0xFF)
@@ -563,13 +529,13 @@ def main():
 
     for qi, quiz in enumerate(quiz_info):
         # copy over the quiz data
-        sheet_name=f'{quiz}'
-        print(f'copying quiz={sheet_name}')
+        sheet_name="{}".format(quiz)
+        print("copying quiz={}".format(sheet_name))
         quiz_instance = pd.read_excel(open(input_file, 'rb'), sheet_name=sheet_name)
 
         if qi > 0:
             quiz_report_document.add_page_break()
-        quiz_report_document.add_heading(f'{quiz}: {quiz_info[quiz]}', 1)
+        quiz_report_document.add_heading("{0}: {1}".format(quiz, quiz_info[quiz]), 1)
 
 
         # create a column to put the incorrce answers into
@@ -577,7 +543,7 @@ def main():
 
         for index, row in  quiz_instance.iterrows():        
             if quiz_questions_to_quiz.get(row['id'], None):
-                print(f"question_id={row['id']} already has a quiz_id {row['quiz_id']} associated with it")
+                print("question_id={0} already has a quiz_id {1} associated with it".format(row['id'], row['quiz_id']))
             else:
                 quiz_questions_to_quiz[row['id']]=row['quiz_id']
 
@@ -592,14 +558,14 @@ def main():
                 add_to_report=False
 
             if add_to_report:
-                #rt=f"question_name: {row['question_name']}"
+                #rt="question_name: {}".format(row['question_name'])
                 rt="{}".format(row['question_name'])
                 quiz_report_document.add_heading(rt, level=2)
 
-                rt=f"question_type: {row['question_type']}"
+                rt="question_type: {}".format(row['question_type'])
                 p = quiz_report_document.add_paragraph(rt)
 
-                rt=f"question_id: {row['id']}"
+                rt="question_id: {}".format(row['id'])
                 p = quiz_report_document.add_paragraph(rt)
                 p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
 
@@ -619,8 +585,8 @@ def main():
                             rt_ia[rt_i].append(ia['text'])
                         else:
                             rt_ia[rt_i]=[ia['text']]
-                    #print(f'rt_ia={rt_ia}')
-                    rt=f'{rt_ia}'
+                    #print("rt_ia={}".format(rt_ia))
+                    rt="{}".format(rt_ia)
                     p.add_run(rt)
                 elif row['question_type'] in ['short_answer_question']:
                     rt_ia=list()
@@ -628,24 +594,24 @@ def main():
                     for ia in rt_a:
                         if ia['weight'] == 100:
                             rt_ia.append(ia['text'])
-                    #rt=f"{row['answers']}"
-                    rt=f'{rt_ia}'
+                    #rt="{}".format(row['answers'])
+                    rt="{}".format(rt_ia)
                     p.add_run(rt)
                 else:
-                    print(f"other case={row['answers']}")
-                    rt=f"{row['answers']}"
+                    print("other case={}".format(row['answers']))
+                    rt="{}".format(row['answers'])
                     p.add_run(rt)
 
             if row['id'] in incorrect_answers:
                 quiz_instance.at[index, 'incorrect answers']=incorrect_answers[row['id']]
                 if add_to_report:
-                    rt=f"incorrect answers: {incorrect_answers[row['id']]}"
+                    rt="incorrect answers: {}".format(incorrect_answers[row['id']])
                     p = quiz_report_document.add_paragraph(rt)
 
             if row['id'] in incorrect_answers_multiple_blanks:
                 quiz_instance.at[index, 'incorrect answers']=incorrect_answers_multiple_blanks[row['id']]
                 if add_to_report:
-                    rt=f"incorrect answers: {incorrect_answers_multiple_blanks[row['id']]}"
+                    rt="incorrect answers: {}".format(incorrect_answers_multiple_blanks[row['id']])
                     p = quiz_report_document.add_paragraph(rt)
 
 
@@ -653,8 +619,8 @@ def main():
         quiz_instance.to_excel(writer, sheet_name=sheet_name)
 
         # save the aumented quiz submission information
-        sheet_name=f's_{quiz}'
-        print(f'saving quiz submissions={sheet_name}')
+        sheet_name="s_{}".format(quiz)
+        print("saving quiz submissions={}".format(sheet_name))
         quiz_submissions_all[quiz].to_excel(writer, sheet_name=sheet_name)
 
     # Close the Pandas Excel writer and output the Excel file.
@@ -662,15 +628,15 @@ def main():
 
     for q in incorrect_answers:
         try:
-            print(f'Incorrect answers for {q} on quiz {quiz_questions_to_quiz[q]}: {incorrect_answers[q]}')
+            print("Incorrect answers for {0} on quiz {1}: {2}".format(q, quiz_questions_to_quiz[q], incorrect_answers[q]))
         except:
-            print(f'Invalid question id {q} (not in the list of questions - but has incorrect answers={incorrect_answers[q]}')
+            print("Invalid question id {0} (not in the list of questions - but has incorrect answers={1}".format(q, incorrect_answers[q]))
 
     for q in incorrect_answers_multiple_blanks:
         try:
-            print(f'Incorrect answers for {q} on quiz {quiz_questions_to_quiz[q]}: {incorrect_answers_multiple_blanks[q]}')
+            print("Incorrect answers for {0} on quiz {1}: {2}".format(q, quiz_questions_to_quiz[q], incorrect_answers_multiple_blanks[q]))
         except:
-            print(f'Invalid question id {q} (not in the list of questions - but has incorrect answers={incorrect_answers_multiple_blanks[q]}')
+            print("Invalid question id {0} (not in the list of questions - but has incorrect answers={1}".format(q, incorrect_answers_multiple_blanks[q]))
 
     quiz_report_document.save('quizzes-'+course_id+'-augmented.docx')
     
