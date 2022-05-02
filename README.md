@@ -2385,6 +2385,9 @@ This is a work in progress. As of 2022-02-26 it does not yet support getting the
 
 It uses kth_canvas_saml.py to access the latest submission from 'result_url' and access all prior sumissions. If the 'workflow_state' is 'untaken', then it accesses 'html_url' and builds a URL to access all of the attempts except for the last one which had not been submitted (hence was in the untaken state).
 
+A paper about this toolkit is at SAML_Johan_Berg_v3-20220428.pdf in this repository.
+
+
 ## augment_quizzes-and-answers-in-course.py
 ### Purpose
 To take the spreadsheet output by quizzes-and-answers-in-course.py and augment it with additional information as well as print incorrect answers to questions with blanks. If the names of the blanks (i.e., the blank_id) are in the range 'a0' to 'a9' the output decodes them, otherwise it uses the hash of the blank_id.
