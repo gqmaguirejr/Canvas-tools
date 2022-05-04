@@ -709,9 +709,15 @@ def main():
 
     try:
         with open(AliasFile_name) as json_data_file:
-            combined_aliases = json.load(json_data_file)
+            try:
+                combined_aliases = json.load(json_data_file)
+            except json.decoder.JSONDecodeError as err:
+                print("Unable to load file named {0} - resulting in {1}".format(AliasFile_name, err))
+                return
+            except:
+                print("Unable to load file named {0}".format(AliasFile_name))
+                return
     except:
-        print("Unable to open alias file named {}".format(AliasFile_name))
         print("Please create a suitable alias file")
         sys.exit()
 
