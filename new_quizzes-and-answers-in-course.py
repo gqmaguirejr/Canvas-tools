@@ -38,6 +38,7 @@
 # One of the things to be aware of is that in their set_attributes method,
 # they create additional attributes X-date when the attribute X  has the form of a datetime ending with a time zone.
 # However, the original attribute and value is present and this caused problem when writng the data out to Excel files.
+# See the documentation at https://canvasapi.readthedocs.io/en/stable/getting-started.html#installing-canvasapi
 #
 #
 # 2021-05-14
