@@ -32,6 +32,7 @@
 # df_from_api_list and series_from_api_object - adapted from https://raw.githubusercontent.com/IonMich/autocanvas/main/autocanvas/core/conversions.py
 # where really useful as getting things from the canvasapi object for use with Python pandas was " not easy to handle and manipulate"
 # (quoting the original authors of these two functions - https://github.com/IonMich/autocanvas).
+# See https://github.com/IonMich/autocanvas - Ioannis Michaloliakos
 #
 # To figure out how to adapte the two functions it was important to look at the canvasapi object,
 # see https://github.com/ucfopen/canvasapi/blob/develop/canvasapi/canvas_object.py

@@ -2494,6 +2494,56 @@ Incorrect answers for 274203 on quiz 28330: {'a0': {'performance'}, 'a1': {'powe
 Invalid question id 274226 (not in the list of questions - but has incorrect answers={'a0': {'2010'}, 'a1': {'2020'}}
 ```
 
+## record_active_listener.py
+### Purpose
+To help report student's active participation in a Canvas course room for a degree project
+
+The program reports a grade of 'complete' and includes information about the student who presented.
+
+### Input
+```bash
+ ./record_active_listener.py course_id inputfile student_presenting_email
+```
+
+### Output
+...
+last name, first name
+assignment.name=Active listening 1
+
+assignment.name=Active listening 2
+...
+
+If a student has a graded submission, the program will output:
+...
+{subm.entered_grade} on {subm.graded_at} by {grader.short_name} body={subm.body}
+...
+
+If a student has an ungraded submission,  the program will output:
+...
+submitted {submitted_at} body={subm.body}
+...
+where the body is what the student submitted. Note that in this case you have to manyally check of the body matches that of the current student, if so - you may need to manually set the grade for this assignment. [An enhanced version of the program should let you say yes or no to handle this]
+
+
+### Note 
+If a student is not a Canvas user, the program will output:
+...
+user with {email_address} not found
+...
+
+
+If a student is not in the canvase course room but is a Canvas user, the program will output:
+...
+user last_name, first_name is not enrolled in the course xxxxxx
+...
+
+### Example
+
+```bash
+./xxx.py u1d13i2c
+```
+
+
 <!-- 
 
 ## xxx.py
