@@ -170,6 +170,8 @@ def main():
         print("Unable to open file named {}".format(inputfile))
         sys.exit()
 
+    students_with_grade_entered=set()
+
     for line in students:
         start_marker='<'
         end_marker='>'
@@ -180,6 +182,9 @@ def main():
             end_offset=line.find(end_marker, start_offset)
             if start_offset >= 0 and end_offset > start_offset:
                 email_address=line[start_offset:end_offset]
+                if email_address in students_with_grade_entered:
+                    print(f'already entered a grade for {email_address} - nothing to do')
+                    continue
                 if verbose:
                     print(f'email_address={email_address}')
                 try:
@@ -190,6 +195,7 @@ def main():
 
                 print(f'{user.sortable_name}')
                 for al_instance, assignment in active_listening_assignments.items():
+                    verbose_print(f'{al_instance=}')                    
                     print(f'assignment.name={assignment.name}')
                     try:
                         subm=assignment.get_submission(user)
@@ -246,6 +252,8 @@ def main():
                     else:
                         print(f'else case - unhandled case submissions={sumb}')
 
+                if grade_recorded:
+                    students_with_grade_entered.add(email_address)
     return
 
 if __name__ == "__main__": main()
