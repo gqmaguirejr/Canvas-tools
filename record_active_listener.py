@@ -141,7 +141,7 @@ def main():
     
     config = read_config(args.config_filename)
 
-    f'course_id={course_id}'
+    print(f'course_id={course_id}')
 
     # Initialize Canvas API
     canvas = canvasapi.Canvas('https://'+config["canvas"]["host"],config["canvas"]["access_token"])
@@ -159,9 +159,15 @@ def main():
     #verbose_print(f'{active_listening_assignments=}')
 
     if student_presenting_email:
-        student_presenting=canvas.get_user(student_presenting_email, 'sis_login_id')
+        print(f'student_presenting_email={student_presenting_email}')
+        try:
+            student_presenting=canvas.get_user(student_presenting_email, 'sis_login_id')
+        except:
+            print("Could not look up user by their e-mail address")
+            student_presenting=None
     else:
         student_presenting=None
+    print(f'student_presenting={student_presenting}')
 
     try:
         with open(inputfile) as in_file:
@@ -208,6 +214,7 @@ def main():
                         print(f'{subm.entered_grade} on {subm.graded_at} by {grader.short_name} body={subm.body}')
                         continue
                     elif subm.workflow_state == 'submitted': #  student submitted something, check if it is for the current presentation
+                        submitted_at=subm.submitted_at
                         print(f'submitted {submitted_at} body={subm.body}')
                         # process it
                         user_response = input("Is the submission for the student who is presenting (Y/N):?")
