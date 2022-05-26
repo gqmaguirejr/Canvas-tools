@@ -106,8 +106,24 @@ def verbose_print(*args, **kwargs) -> None:
         print(*args, **kwargs)
 
 
+def assign_grade(subm, grade, comment=None):
+    global testing
+    if comment:
+        if not testing: # when testing do not actually report a grade
+            subm.edit(submission={'posted_grade': 'complete', 'comment[text_comment]': comment})
+        else:
+            print('If not testing, would have reported a grade')
+    else:
+        if not testing:
+            subm.edit(submission={'posted_grade': 'complete'})
+        else:
+            print('If not testing, would have reported a grade')
+
+
+
 def main():
     global verbose
+    global testing
 
     parser = ArgumentParser()
     parser.add_argument('-v', '--verbose',
@@ -177,6 +193,7 @@ def main():
         sys.exit()
 
     students_with_grade_entered=set()
+    students_without_grade_entered=set()
 
     for line in students:
         start_marker='<'
@@ -196,6 +213,7 @@ def main():
                 try:
                     user = canvas.get_user(email_address, 'sis_login_id')
                 except:
+                    students_without_grade_entered.add(email_address)
                     print(f'user with {email_address} not found')
                     break
 
@@ -206,6 +224,7 @@ def main():
                     try:
                         subm=assignment.get_submission(user)
                     except:
+                        students_without_grade_entered.add(email_address)
                         print(f'user {user.sortable_name} is not enrolled in the course {course_id}')
                         break
                     verbose_print(f'{subm=}')
@@ -222,16 +241,9 @@ def main():
                             if not grade_recorded:
                                 if student_presenting:
                                     comment=f'Active listener for {student_presenting.short_name}'
-                                    if not testing: # when testing do not actually report a grade
-                                        subm.edit(submission={'posted_grade': 'complete', 'comment[text_comment]': comment})
-                                    else:
-                                        print('If not testing, would have reported a grade')
+                                    assign_grade(subm, 'complete', comment)
                                 else:
-                                    if not testing:
-                                        subm.edit(submission={'posted_grade': 'complete'})
-                                    else:
-                                        print('If not testing, would have reported a grade')
-
+                                    assign_grade(subm, 'complete')
                                 grade_recorded=True
                                 if not testing:
                                     subm_after=assignment.get_submission(user)
@@ -241,15 +253,9 @@ def main():
                         if not grade_recorded:
                             if student_presenting:
                                 comment=f'Active listener for {student_presenting.short_name}'
-                                if not testing: # when testing do not actually report a grade
-                                    subm.edit(submission={'posted_grade': 'complete', 'comment[text_comment]': comment})
-                                else:
-                                    print('If not testing, would have reported a grade')
+                                assign_grade(subm, 'complete', comment)
                             else:
-                                if not testing:
-                                    subm.edit(submission={'posted_grade': 'complete'})
-                                else:
-                                    print('If not testing, would have reported a grade')
+                                assign_grade(subm, 'complete')
 
                             grade_recorded=True
                             if not testing:
@@ -257,10 +263,17 @@ def main():
                                 verbose_print(f'{subm_after=}')
                             break
                     else:
+                        students_without_grade_entered.add(email_address)
                         print(f'else case - unhandled case submissions={sumb}')
 
                 if grade_recorded:
                     students_with_grade_entered.add(email_address)
+    print("students_with_grade_entered={}".format(students_with_grade_entered))
+    if len(students_without_grade_entered) > 0:
+        print("******")
+        print("students_without_grade_entered={}".format(students_without_grade_entered))
+        print("******")
+
     return
 
 if __name__ == "__main__": main()
