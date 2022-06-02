@@ -171,8 +171,17 @@ def main():
         if assignment.name.find('Active listening') >= 0:
             print(f'{assignment.name} is {assignment.id}')
             active_listening_assignments[assignment.name]=assignment
+            continue
+        if assignment.name.find('deltagande/active listener') >= 0:
+            print(f'{assignment.name} is {assignment.id}')
+            active_listening_assignments[assignment.name]=assignment
+            continue
 
-    #verbose_print(f'{active_listening_assignments=}')
+    if len(active_listening_assignments) > 0:
+        verbose_print(f'{active_listening_assignments=}')
+    else:
+        print("No active listening assignments found in this course")
+        return
 
     if student_presenting_email:
         print(f'student_presenting_email={student_presenting_email}')
@@ -196,6 +205,10 @@ def main():
     students_without_grade_entered=set()
 
     for line in students:
+        if len(line) >= 1:
+            # skip lines that start with a # or ;
+            if line[0] == '#' or line[0] == ';':
+                continue
         start_marker='<'
         end_marker='>'
         grade_recorded=False
