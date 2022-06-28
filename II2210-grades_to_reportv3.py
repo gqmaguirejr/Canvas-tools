@@ -596,6 +596,7 @@ def t2l_gradable_students(course_id, aktivitetstillfalle=None, kurstillfalle=Non
     global headers
     global verbose
     url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
+    #       https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/11555/ladok-grades?kurstillfalle=eb5505e2-f6ed-11e8-9614-d09e533d4323&utbildningsinstans=7f20dbb6-73d8-11e8-b4e0-063f9afb40e3
     payload={}
     if aktivitetstillfalle:
         payload['aktivitetstillfalle']=aktivitetstillfalle
@@ -605,7 +606,8 @@ def t2l_gradable_students(course_id, aktivitetstillfalle=None, kurstillfalle=Non
         payload['utbildningsinstans']=utbildningsinstans
     verbose_print(f'{payload=}')
         
-    response = requests.request("GET", url, headers=headers, data=payload)
+    response = requests.request("GET", url, headers=headers, params=payload, data={})
+    print("response.request.url={}".format(response.request.url))
     print("response.status_code={}".format(response.status_code))
     if response.status_code == requests.codes.ok:
         print("respose.text={}".format(response.text))
@@ -618,7 +620,7 @@ def t2l_get_assignments(course_id) -> dict:
     global verbose
     #url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/assignments'
     # End-point change!
-     url = "https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/36353/columns"
+    #url = "https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/36353/columns"
     url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/columns'
 
     payload={}
@@ -635,7 +637,8 @@ def t2l_get_grades_for_an_assignment(course_id, assignment_id) -> dict:
     global headers
     url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/assignments/{assignment_id}'
     payload={}
-    response = requests.request("GET", url, headers=headers, params=payload)
+    data_payload={}
+    response = requests.request("GET", url, headers=headers, params=payload, data=data_payload)
     print("response.url={}".format(response.url))
     print("response.status_code={}".format(response.status_code))
     if response.status_code == requests.codes.ok:
@@ -721,6 +724,7 @@ def main(argv):
 
     verbose = args.verbose
     print(f'verbose={verbose}')
+    Verbose_Flag=verbose
     course_id = args.course_id
     testing = args.testing
 
@@ -768,11 +772,20 @@ def main(argv):
     # respose.text={"aktivitetstillfalle":[],"kurstillfalle":[{"id":"a8881a52-ac13-11eb-b185-19658d9640e0","utbildningsinstans":"6320c0b1-5cfe-11e9-b67f-a77d6cb34fef","code":"60415","modules":[{"utbildningsinstans":"884b851f-5cfe-11e9-b67f-a77d6cb34fef","code":"PRO1","name":"Onlinequiz"}]}]}
     verbose_print(f'{ladok_sections=}')
     print("type of ladok_sections={}".format(type(ladok_sections)))
+    # ladok_sections={'aktivitetstillfalle': [], 'kurstillfalle': [{'id': 'a8881a52-ac13-11eb-b185-19658d9640e0', 'utbildningsinstans': '6320c0b1-5cfe-11e9-b67f-a77d6cb34fef', 'courseCode': 'II2210', 'roundCode': '60415', 'modules': [{'utbildningsinstans': '884b851f-5cfe-11e9-b67f-a77d6cb34fef', 'code': 'PRO1', 'name': 'Onlinequiz'}]}]}
     for e in ladok_sections:
         print("e={0} {1}".format(e, ladok_sections[e]))
 
     print(f"ladok_sections['aktivitetstillfalle']={ladok_sections['aktivitetstillfalle']}")
     print(f"ladok_sections['kurstillfalle']={ladok_sections['kurstillfalle']}")
+    #[   {   'courseCode': 'II2210',
+    #        'id': 'a8881a52-ac13-11eb-b185-19658d9640e0',
+    #        'modules': [   {   'code': 'PRO1',
+    #                           'name': 'Onlinequiz',
+    #                          'utbildningsinstans': '884b851f-5cfe-11e9-b67f-a77d6cb34fef'}],
+    #    'roundCode': '60415',
+    #    'utbildningsinstans': '6320c0b1-5cfe-11e9-b67f-a77d6cb34fef'}]
+
     print(f"ladok_sections['kurstillfalle'][0]={ladok_sections['kurstillfalle'][0]}")
     print(f"ladok_sections['kurstillfalle'][0]['id']={ladok_sections['kurstillfalle'][0]['id']}")
     print(f"ladok_sections['kurstillfalle'][0]['modules']={ladok_sections['kurstillfalle'][0]['modules']}")
@@ -781,9 +794,12 @@ def main(argv):
     # ladok_sections['kurstillfalle'] takes the form:
     # [{'id': 'a8881a52-ac13-11eb-b185-19658d9640e0', 'utbildningsinstans': '6320c0b1-5cfe-11e9-b67f-a77d6cb34fef', 'code': '60415', 'modules': [{'utbildningsinstans': '884b851f-5cfe-11e9-b67f-a77d6cb34fef', 'code': 'PRO1', 'name': 'Onlinequiz'}]}]
 
+    print(f"ladok_sections['kurstillfalle'][0]['utbildningsinstans']={ladok_sections['kurstillfalle'][0]['utbildningsinstans']}")
+
     gradable_students_in_course=t2l_gradable_students(course_id,
                                                       kurstillfalle=ladok_sections['kurstillfalle'][0]['id'],
                                                       utbildningsinstans=ladok_sections['kurstillfalle'][0]['modules'][0]['utbildningsinstans'])
+                                                      #utbildningsinstans=ladok_sections['kurstillfalle'][0]['utbildningsinstans'])
     verbose_print(f'{gradable_students_in_course=}')
 
     current_grades=dict()
@@ -792,18 +808,29 @@ def main(argv):
         return
 
     for assignment in ladok_assignments['assignments']:
-        current_grades[assignment]=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
-        print(f"{assignment['name']}: {current_grades[assignment]}")
+        print(f"processing assignment: {assignment}")
+        current_grades[assignment['name']]=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
+        #current_grades=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
+        print(f"{assignment['name']}: {current_grades[assignment['name']]}")
+        #print(f"{assignment['name']}: {current_grades}")
 
-    assignments=list_assignments()
-    if Verbose_Flag:
-        print("assignments={0}".format(assignments))
-
+    assignments=course.get_assignments() #list_assignments()
+                                
+    verbose_print(f'{assignments=}')
     assignment_summary=[]
 
     for a in assignments:
-        print("id={0}, name={1}, points_possible={2}, due_at={3}, grading_type={4}, grading_standard_id={5}, allowed_attempts={6}".format(a['id'], a['name'], a['points_possible'], a['due_at'], a['grading_type'], a['grading_standard_id'], a['allowed_attempts']))
+        print("a={}".format(a))
+        for attribute, value in a.__dict__.items():
+            print(attribute, '=', value)
 
+    for a in assignments:
+        print("a={}".format(a))
+        print(f"id={a.id}, name={a.name}, points_possible={a.points_possible}, due_at={a.due_at}, grading_type={a.grading_type}, grading_standard_id={a.grading_standard_id}, allowed_attempts={a.allowed_attempts}")
+
+    return                      # gqmjr for testing
+
+    for a in assignments:
         # Set up the short names for the assignments
         # ***** This is essential as the routines will use the short names to access the relevant assignment and grades
         # You have to look at the assignment id for each assignment and then add a short_name to the assignment
