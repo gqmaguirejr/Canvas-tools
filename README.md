@@ -2543,6 +2543,21 @@ user last_name, first_name is not enrolled in the course xxxxxx
 ./xxx.py u1d13i2c
 ```
 
+## export-gradebook-with-score.py
+
+### Purpose
+Outputs an xlsx file containing all of the custom columns, the file name is of the form: gradebook-course_id.xlsx
+
+
+### Input
+```bash
+export-gradebook-with-score.py course_id
+```
+
+### Output
+Outputs an xlsx file of the form containing all of the custom columns: gradebook-course_id.xlsx
+The first column of the output will be user_id.
+The second sheet "Gradebook_history" will contain all of the gradebook entries made for the course
 
 <!-- 
 

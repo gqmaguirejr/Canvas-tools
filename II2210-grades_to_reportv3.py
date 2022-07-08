@@ -72,34 +72,13 @@ def datetime_to_local_string(canvas_time):
 ###### EDIT THIS STUFF ######
 #############################
 
+global t2l_root_url
+t2l_root_url='https://app-r.referens.sys.kth.se'
+
+
 global baseUrl	# the base URL used for access to Canvas
 global header	# the header for all HTML requests
 global payload	# place to store additionally payload when needed for options to HTML requests
-
-# Based upon the options to the program, initialize the variables used to access Canvas gia HTML requests
-def initialize(args):
-    global baseUrl, header, payload
-
-    # styled based upon https://martin-thoma.com/configuration-files-in-python/
-    config_file=args["config"]
-
-    try:
-        with open(config_file) as json_data_file:
-            configuration = json.load(json_data_file)
-            access_token=configuration["canvas"]["access_token"]
-
-            if args["containers"]:
-                baseUrl="http://"+configuration["canvas"]["host"]+"/api/v1"
-                print("using HTTP for the container environment")
-            else:
-                baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
-
-            header = {'Authorization' : 'Bearer ' + access_token}
-            payload = {}
-    except:
-        print("Unable to open configuration file named {}".format(config_file))
-        print("Please create a suitable configuration file, the default name is config.json")
-        sys.exit()
 
 # Canvas related functions
 def list_gradebook_history_feed():
@@ -139,39 +118,6 @@ def list_gradebook_history_feed():
 
     return entries_found_thus_far
 
-def list_assignments():
-    global Verbose_Flag
-    global course_id
-    entries_found_thus_far=[]
-
-    # Use the Canvas API to get the list of assignments for the course
-    #GET /api/v1/courses/:course_id/assignments
-    url = "{0}/courses/{1}/assignments".format(baseUrl, course_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    r = requests.get(url, headers = header)
-    if Verbose_Flag:
-        print("result of getting assignments: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            entries_found_thus_far.append(p_response)
-
-        # the following is needed when the reponse has been paginated
-        # i.e., when the response is split into pieces - each returning only some of the list of modules
-        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links.get('next', False):
-            r = requests.get(r.links['next']['url'], headers=header)  
-            if Verbose_Flag:
-                print("result of getting modules for a paginated response: {}".format(r.text))
-            page_response = r.json()  
-            for p_response in page_response:  
-                entries_found_thus_far.append(p_response)
-
-    return entries_found_thus_far
 
 def list_custom_columns():
     # will return a list of custom columns including
@@ -579,9 +525,10 @@ def get_kth_credentials(config: dict) -> tuple:
 #
 def t2l_get_sections(course_id) -> dict:
     global headers
+    global t2l_root_url
     #url = f'https://app-referens.sys.kth.se/courses/{course_id}/sections'
     #url = f'https://app-referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/sections'
-    url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/sections'
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/sections'
     payload={}
 
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -595,7 +542,8 @@ def t2l_get_sections(course_id) -> dict:
 def t2l_gradable_students(course_id, aktivitetstillfalle=None, kurstillfalle=None, utbildningsinstans=None) -> dict:
     global headers
     global verbose
-    url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
+    global t2l_root_url
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
     #       https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/11555/ladok-grades?kurstillfalle=eb5505e2-f6ed-11e8-9614-d09e533d4323&utbildningsinstans=7f20dbb6-73d8-11e8-b4e0-063f9afb40e3
     payload={}
     if aktivitetstillfalle:
@@ -607,9 +555,10 @@ def t2l_gradable_students(course_id, aktivitetstillfalle=None, kurstillfalle=Non
     verbose_print(f'{payload=}')
         
     response = requests.request("GET", url, headers=headers, params=payload, data={})
-    print("response.request.url={}".format(response.request.url))
-    print("response.status_code={}".format(response.status_code))
+    verbose_print(f'{response.request.url=}')
+    verbose_print(f'{response.status_code=}')
     if response.status_code == requests.codes.ok:
+        verbose_print(f'{response.text=}')
         print("respose.text={}".format(response.text))
         return response.json()
     else:
@@ -618,24 +567,26 @@ def t2l_gradable_students(course_id, aktivitetstillfalle=None, kurstillfalle=Non
 def t2l_get_assignments(course_id) -> dict:
     global headers
     global verbose
+    global t2l_root_url
     #url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/assignments'
     # End-point change!
     #url = "https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/36353/columns"
-    url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/columns'
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/columns'
 
     payload={}
     response = requests.request("GET", url, headers=headers, data=payload)
-    print("response.url={}".format(response.url))
-    print("response.status_code={}".format(response.status_code))
+    verbose_print(f'{response.request.url=}')
+    verbose_print(f'{response.status_code=}')
     if response.status_code == requests.codes.ok:
-        print("respose.text={}".format(response.text))
+        verbose_print(f'{response.text=}')
         return response.json()
     else:
         return None
 
 def t2l_get_grades_for_an_assignment(course_id, assignment_id) -> dict:
     global headers
-    url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/assignments/{assignment_id}'
+    global t2l_root_url
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/assignments/{assignment_id}'
     payload={}
     data_payload={}
     response = requests.request("GET", url, headers=headers, params=payload, data=data_payload)
@@ -650,7 +601,8 @@ def t2l_get_grades_for_an_assignment(course_id, assignment_id) -> dict:
 
 def t2l_send_grades_for_an_assignment(course_id, assignment_id, results_list, aktivitetstillfalle=None) -> dict:
     global headers
-    url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
+    global t2l_root_url
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
     # payload={
     #     "destination": {
     #         "aktivitetstillfalle": "05b7b9b6-88d9-11ec-bc70-adb799404101"
@@ -718,8 +670,6 @@ def main(argv):
     parser.add_argument('course_id')
 
     args = parser.parse_args()
-
-    print("starting program")
     print("args={}".format(args))
 
     verbose = args.verbose
@@ -747,6 +697,65 @@ def main(argv):
     course = canvas.get_course(course_id)
     verbose_print(f'{course=}')
 
+    users = course.get_users(enrollment_type=['student']) # get the list of students in the course
+
+    for user in users:
+        if verbose:
+            print(user)
+        if verbose and testing:
+            for attribute, value in user.__dict__.items():
+                print(attribute, '=', value)
+            # Each user has the attributes:
+            # id
+            # name
+            # created_at = 2021-05-31T10:51:20+02:00
+            # sortable_name
+            # short_name
+            # sis_user_id
+            # integration_id
+            # login_id
+            # email
+
+    assignments=course.get_assignments()
+                                
+    verbose_print(f'{assignments=}')
+    assignment_summary=[]
+
+    # dump all of the attributes of each assignment
+    if testing:
+        for a in assignments:
+            print("a={}".format(a))
+            for attribute, value in a.__dict__.items():
+                print(attribute, '=', value)
+
+    for a in assignments:
+        print(f"id={a.id}, name={a.name}, points_possible={a.points_possible}, due_at={a.due_at}, grading_type={a.grading_type}, grading_standard_id={a.grading_standard_id}, allowed_attempts={a.allowed_attempts}")
+
+
+    for a in assignments:
+        # Set up the short names for the assignments
+        # ***** This is essential as the routines will use the short names to access the relevant assignment and grades
+        # You have to look at the assignment id for each assignment and then add a short_name to the assignment
+        # You can do this by matching assignment_id numbers or matching the names
+        if a.id == 146887 or a.name == 'Ethical Research (with quiz)' or a.name == 'Ethical Research - quiz':
+            a.set_attributes({'short_name': 'ER'})
+
+        if a.id == 146888 or a.name == 'Professionalism and Ethics for ICT students (with quiz)' or a.name == 'Professionalism and Ethics for ICT students - quiz':
+            a.set_attributes({'short_name': 'PE'})
+
+        if a.id == 146885 or a.name == 'Ethical Research: Human Subjects and Computer Issues (with quiz)' or a.name == 'Ethical Research: Human Subjects and Computer Issues - quiz':
+            a.set_attributes({'short_name': 'ERH'})
+
+        if a.id == 146886 or a.name == 'Sustainable Development/Hållbar Utveckling (with quiz)' or a.name == 'Sustainable Development/Hållbar Utveckling - quiz':
+            a.set_attributes({'short_name': 'SUSD'})
+
+        if a.id == 146889 or a.name == 'LADOK - PRO1 (Onlinequiz)' or a.name == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
+            a.set_attributes({'short_name': 'PRO1'})
+
+    if Verbose_Flag:
+        for a in assignments:
+            print(f'{a.name} is {a.short_name}')
+
     sections=course.get_sections()
     if sections:
         for section in sections:
@@ -754,6 +763,10 @@ def main(argv):
 
 
     ladok_assignments=t2l_get_assignments(course_id)
+    # for example:
+    # {'finalGrades': {'hasLetterGrade': False}, 'assignments': [{'id': '159727', 'name': 'Ethical Research - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:00:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159728', 'name': 'Professionalism and Ethics for ICT students - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:10:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159725', 'name': 'Ethical Research: Human Subjects and Computer Issues - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:45:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159726', 'name': 'Sustainable Development/Hållbar Utveckling - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:59:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159729', 'name': 'LADOK - PRO1 (Onlinequiz)', 'gradingType': 'letter_grade', 'dueAt': None, 'unlockAt': None, 'lockAt': None}]}
+    if verbose:
+        print("calling t2l_get_assignments()")
     verbose_print(f'{ladok_assignments=}')
     if not ladok_assignments:
         print("Unable to get assignments for course {0} from transfer to LADOK".format(course_id))
@@ -763,6 +776,85 @@ def main(argv):
         for assignment in ladok_assignments['assignments']:
             print(f"{assignment['id']} {assignment['name']}")
 
+    current_grades=dict()
+    if not ladok_assignments:
+        print("No assignments for course {0} from transfer to LADOK".format(course_id))
+        return
+
+    # get the current grades for each of the assignments
+    for assignment in ladok_assignments['assignments']:
+        print(f"processing assignment: {assignment}")
+        current_grades[assignment['name']]=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
+        print(f"{assignment['name']}: {current_grades[assignment['name']]}")
+
+    custom_columns=course.get_custom_columns()
+    for c in custom_columns:
+        if testing:
+            for attribute, value in c.__dict__.items():
+                print(attribute, '=', value)
+        print(f'{c.id} {c.title} at {c.position}')
+
+    # Make sure "Notes" column is visible
+    if custom_columns:
+        for c in custom_columns:
+            if c.title == 'Notes' and c.hidden:
+                c.update_custom_column({'hidden': 'False'})
+    else:
+        # if missing, then add "Notes" column
+        #insert_column_name(course_id, "Notes")
+        course.create_custom_column({'title': 'Notes', 'hidden': 'False'})
+        custom_columns=course.get_custom_columns()
+
+
+    if Verbose_Flag:
+        for c in custom_columns:
+            if testing:
+                for attribute, value in c.__dict__.items():
+                    print(attribute, '=', value)
+            print(f'{c.id} {c.title} at {c.position}')
+
+    print("getting custom column data")
+    custom_column_data=dict()
+    for c in custom_columns:
+        print("getting data for column {}".format(c.id))
+        data=c.get_column_entries()
+        if verbose and testing:
+            for attribute, value in data.__dict__.items():
+                print(attribute, '=', value)
+            # the attributes are:
+            # _elements = []
+            # _requester = <canvasapi.requester.Requester object at 0x7f6151ea7a60>
+            # _content_class = <class 'canvasapi.custom_gradebook_columns.ColumnData'>
+            # _first_url = courses/30565/custom_gradebook_columns/1798/data
+            # _first_params = {'_kwargs': [], 'per_page': 100}
+            # _next_url = courses/30565/custom_gradebook_columns/1798/data
+            # _next_params = {'_kwargs': [], 'per_page': 100}
+            # _extra_attribs = {'course_id': 30565, 'gradebook_column_id': 1798}
+            # _request_method = GET
+            # _root = None
+
+        custom_column_data[c.title]=data
+
+    print("custom_column_data={}".format(custom_column_data))
+    custom_column_data_notes=dict()
+    if 'Notes' in custom_column_data:
+        for cdi in custom_column_data['Notes']:
+            custom_column_data_notes[cdi.user_id]=cdi.content
+            if verbose and testing:
+                for attribute, value in cdi.__dict__.items():
+                    print(attribute, '=', value)
+            # This output entries of the form:
+            # content = P
+            # user_id = xxxxx         <<<< Note that these are a Canvas user_id
+            # course_id = 18735
+            # gradebook_column_id = 1188
+
+        print("custom_column_data_notes={}".format(custom_column_data_notes))
+
+    return                      # gqmjr for testing
+
+    if verbose:
+        print("calling t2l_get_sections()")
     ladok_sections=t2l_get_sections(course_id)
     if not ladok_sections:
         print("Unable to get section for course {0} from transfer to LADOK".format(course_id))
@@ -796,82 +888,14 @@ def main(argv):
 
     print(f"ladok_sections['kurstillfalle'][0]['utbildningsinstans']={ladok_sections['kurstillfalle'][0]['utbildningsinstans']}")
 
+    if verbose:
+        print("calling t2l_gradable_students()")
     gradable_students_in_course=t2l_gradable_students(course_id,
                                                       kurstillfalle=ladok_sections['kurstillfalle'][0]['id'],
                                                       utbildningsinstans=ladok_sections['kurstillfalle'][0]['modules'][0]['utbildningsinstans'])
                                                       #utbildningsinstans=ladok_sections['kurstillfalle'][0]['utbildningsinstans'])
     verbose_print(f'{gradable_students_in_course=}')
 
-    current_grades=dict()
-    if not ladok_assignments:
-        print("No assignments for course {0} from transfer to LADOK".format(course_id))
-        return
-
-    for assignment in ladok_assignments['assignments']:
-        print(f"processing assignment: {assignment}")
-        current_grades[assignment['name']]=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
-        #current_grades=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
-        print(f"{assignment['name']}: {current_grades[assignment['name']]}")
-        #print(f"{assignment['name']}: {current_grades}")
-
-    assignments=course.get_assignments() #list_assignments()
-                                
-    verbose_print(f'{assignments=}')
-    assignment_summary=[]
-
-    for a in assignments:
-        print("a={}".format(a))
-        for attribute, value in a.__dict__.items():
-            print(attribute, '=', value)
-
-    for a in assignments:
-        print("a={}".format(a))
-        print(f"id={a.id}, name={a.name}, points_possible={a.points_possible}, due_at={a.due_at}, grading_type={a.grading_type}, grading_standard_id={a.grading_standard_id}, allowed_attempts={a.allowed_attempts}")
-
-    return                      # gqmjr for testing
-
-    for a in assignments:
-        # Set up the short names for the assignments
-        # ***** This is essential as the routines will use the short names to access the relevant assignment and grades
-        # You have to look at the assignment id for each assignment and then add a short_name to the assignment
-        # You can do this by matching assignment_id numbers or matching the names
-        if a['id'] == 146887 or a['name'] == 'Ethical Research (with quiz)' or a['name'] == 'Ethical Research - quiz':
-            a['short_name']= 'ER'
-
-        if a['id'] == 146888 or a['name'] == 'Professionalism and Ethics for ICT students (with quiz)' or a['name'] == 'Professionalism and Ethics for ICT students - quiz':
-            a['short_name']= 'PE'
-
-        if a['id'] == 146885 or a['name'] == 'Ethical Research: Human Subjects and Computer Issues (with quiz)' or a['name'] == 'Ethical Research: Human Subjects and Computer Issues - quiz':
-            a['short_name']= 'ERH'
-
-        if a['id'] == 146886 or a['name'] == 'Sustainable Development/Hållbar Utveckling (with quiz)' or a['name'] == 'Sustainable Development/Hållbar Utveckling - quiz':
-            a['short_name']= 'SUSD'
-
-        if a['id'] == 146889 or a['name'] == 'LADOK - PRO1 (Onlinequiz)' or a['name'] == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
-            a['short_name']= 'PRO1'
-
-        if Verbose_Flag:
-            print("assignments={0}".format(assignments))
-
-    custom_columns=list_custom_columns()
-    # Make sure "Notes" column is visible
-    if custom_columns:
-        for c in custom_columns:
-            if c['title'] == 'Notes' and c['hidden']:
-                unhide_column_name(course_id, "Notes")
-    else:
-        # if missing, then add "Notes" column
-        insert_column_name(course_id, "Notes")
-        custom_columns=list_custom_columns()
-
-    if Verbose_Flag:
-        print("custom_columns={}".format(custom_columns))
-
-    custom_column_data=dict()
-    for c in custom_columns:
-        custom_column_data[c['title']]=list_custom_column_entries(c['id'])
-
-    return                      # for testing
 
     grade_feed=list_gradebook_history_feed()
     print("length of grade_feed={0}".format(len(grade_feed)))
