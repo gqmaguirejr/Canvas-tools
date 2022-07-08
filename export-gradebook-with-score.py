@@ -381,14 +381,14 @@ def main():
 
        course_id=remainder[0]
        students=students_in_course(course_id, False)
-       students_df=pd.io.json.json_normalize(students)
+       students_df=pd.json_normalize(students)
        students_df.rename(columns = {'id': 'user_id'}, inplace = True)
 
        gradebook_history=list_gradebook_history_feed(course_id)
        if len(gradebook_history) == 0:
               print("No gradebook history - probably be cause you do not have access to the course.")
               return
-       gradebook_history_df=pd.io.json.json_normalize(gradebook_history)
+       gradebook_history_df=pd.json_normalize(gradebook_history)
        
        list_of_assignments=list_assignments(course_id)
        l_of_assignments = compute_list_of_assignments(list_of_assignments)
@@ -412,7 +412,7 @@ def main():
 
                      # the following was inspired by pbreach's answer on Jan 21 '14 at 18:17 in http://stackoverflow.com/questions/21104592/json-to-pandas-dataframe
                      # create a Panda dataframe from the output
-                     df=pd.io.json.json_normalize(output)
+                     df=pd.json_normalize(output)
                      df.rename(columns = {'content': column_name}, inplace = True)
                      index=index+1
                      
