@@ -51,8 +51,20 @@ language_info={
     "sv":    {'en': '<span lang="en-US">Swedish</span>',   'sv': '<span lang="sv-SE">svenska</span>'},
     "sv_se": {'en': '<span lang="en-US">Swedish</span>',   'sv': '<span lang="sv-SE">svenska</span>'},
     "sv-SE": {'en': '<span lang="en-US">Swedish</span>',   'sv': '<span lang="sv-SE">svenska</span>'},
+    "sv_SE": {'en': '<span lang="en-US">Swedish</span>',   'sv': '<span lang="sv-SE">svenska</span>'},
     "fr_fr": {'en': '<span lang="en-US">French</span>',    'sv': '<span lang="sv-SE">franska</span>'},
     "fr-FR": {'en': '<span lang="en-US">French</span>',    'sv': '<span lang="sv-SE">franska</span>'},
+    "da_dk": {'en': '<span lang="en-US">Danish</span>',   'sv': '<span lang="sv-SE">danska</span>'},
+    "da-DK": {'en': '<span lang="en-US">Danish</span>',   'sv': '<span lang="sv-SE">danska</span>'},
+    "nl_nl": {'en': '<span lang="en-US">Dutch</span>',   'sv': '<span lang="sv-SE">nederländska</span>'},
+    "nl-NL": {'en': '<span lang="en-US">Dutch</span>',   'sv': '<span lang="sv-SE">nederländska</span>'},
+    "ja-JP": {'en': '<span lang="en-US">Japanese</span>',   'sv': '<span lang="sv-SE">japanska</span>'},
+    "zh-Hans": {'en': '<span lang="en-US">Chinese (simplified)</span>',   'sv': '<span lang="sv-SE">förenklad kinesiska</span>'},
+    "zh-Hant": {'en': '<span lang="en-US">Chinese (Traditional)</span>',   'sv': '<span lang="sv-SE">traditionell kinesiska</span>'},
+    "ko-KR": {'en': '<span lang="en-US">Korean</span>',   'sv': '<span lang="sv-SE">koreanska</span>'},
+    "fa-IR": {'en': '<span lang="en-US">Farsi</span>',   'sv': '<span lang="sv-SE">persiska</span>'},
+    "es": {'en': '<span lang="en-US">Spanish</span>',    'sv': '<span lang="sv-SE">spanska</span>'},
+    "la": {'en': '<span lang="en-US">Latin</span>',    'sv': '<span lang="sv-SE">latinska</span>'},
 }
 
 StopWords=[
@@ -1003,20 +1015,29 @@ def main():
         sys.exit()
 
 
+    course_words=dict()
     # load words for the course, if the file exists
     course_words_file="words-for-course-{}.json".format(course_id)
     if Verbose_Flag:
         print("loading course words from {}".format(course_words_file))
 
     try:
-        with open(course_words_file) as json_file:
-            course_words=json.load(json_file)
+        with open(course_words_file, encoding='utf-8') as json_file:
+            try:
+                course_words=json.load(json_file)
+            except:
+                print("Error in reading JSON file")
+
     except:
         #print("Unable to open file named {}".format(course_words_file))
         print("No file {} - so no course words to specially process".format(course_words_file))
         course_words=dict()
         course_words['words_to_ignore']=[] # empty list
         course_words['words_to_merge']=[]
+
+    print("length of course_words['words_to_ignore']={}".format(len(course_words['words_to_ignore'])))
+    print("length of course_words['words_to_merge']={}".format(len(course_words['words_to_merge'])))
+    
 
     if Verbose_Flag:
         print("course_words is {}".format(course_words))
@@ -1241,10 +1262,25 @@ def main():
                     if Verbose_Flag:
                         print("unified_url_entries is {}".format(unified_url_entries))
 
+    special_words_to_ignore=['(']  # containes strings that cannot be in the JSON file
+    for w in special_words_to_ignore:
+        if w in course_words['words_to_ignore']:
+            print("should be ignoring: {}".format(w))
+        else:
+            print("not ignoring: {}".format(w))
+    if Verbose_Flag:
+        print("List of words to ignore")
+        for w in course_words['words_to_ignore']:
+            print("word to ignore: {}".format(w))
+            #print("|{0}| is {1}".format(w, w.encode('utf-8').hex()))
+
     # the casefold sorts upper and lower case together, but gives a stable result
     # see Christian Tismer, Sep 13 '19 at 12:15, https://stackoverflow.com/questions/13954841/sort-list-of-strings-ignoring-upper-lower-case
     for words in sorted(page_entries_in_language_of_course.keys(), key=lambda v: (v.casefold(), v)):
         # ignore words in the course's 'words_to_ignore' list
+        if words in special_words_to_ignore:
+            print("found special characters: {}".format(words))
+            continue
         if words in course_words['words_to_ignore']:
             print("ignoring {}".format(words))
             continue
