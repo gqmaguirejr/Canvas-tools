@@ -76,6 +76,7 @@ global t2l_root_url
 t2l_root_url='https://app-r.referens.sys.kth.se'
 
 
+# To use the Instructure Canvas API
 global baseUrl	# the base URL used for access to Canvas
 global header	# the header for all HTML requests
 global payload	# place to store additionally payload when needed for options to HTML requests
@@ -235,36 +236,40 @@ def assign_grade_for_assignment(assignment_id, user_id, grade, comment):
     return False
 
 
+# new for v3
+def assignment_short_name_given_name(name):
+    global assignments
+    for a in assignments:
+        if a.name == name:
+            return a.short_name
+    return None
+
 def points_possible(short_name):
     global assignments
     for a in assignments:
-        if a.get('short_name', None):
-            if a['short_name'] == short_name:
-                return a['points_possible']
+        if a.short_name == short_name:
+            return a.points_possible
     return None
 
 def assignment_given_short_name(short_name):
     global assignments
     for a in assignments:
-        if a.get('short_name', None):
-            if a['short_name'] == short_name:
-                return a
+        if a.short_name == short_name:
+            return a
     return None
 
 def assignment_due_date(short_name):
     global assignments
     for a in assignments:
-        if a.get('short_name', None):
-            if a['short_name'] == short_name:
-                return isodate.parse_datetime(a['due_at'])
+        if a.short_name == short_name:
+            return isodate.parse_datetime(a.due_at)
     return None
 
 def assignment_grading_type(short_name):
     global assignments
     for a in assignments:
-        if a.get('short_name', None):
-            if a['short_name'] == short_name:
-                return a['grading_type']
+        if a.short_name == short_name:
+            return a.grading_type
     return None
 
 def grading_type_points(short_name):
@@ -276,74 +281,15 @@ def grading_type_points(short_name):
 def assignment_grading_standard_id(short_name):
     global assignments
     for a in assignments:
-        if a.get('short_name', None):
-            if a['short_name'] == short_name:
-                return a['grading_standard_id']
+        if a.short_name == short_name:
+            return a.grading_standard_id
     return None
-
-def get_a_grade(user_id, short_name):
-    global Verbose_Flag
-    g=get_asssignment_grade(user_id, short_name)
-    if g and len(g) > 1:
-        return g[0]['grade']             # by default the latest grade is first
-    return None
-
-def get_asssignment_grade(user_id, short_name):
-    global Verbose_Flag
-    global course_id
-    
-    assignment=assignment_given_short_name(short_name)
-    if assignment:
-        assignment_id=assignment['id']
-    else:
-        print("No such assignment named {0}".format(shrt_name))
-        return None
-
-    entries_found_thus_far=[]
-
-    # Use the Canvas API to get the grade information
-    # GET /api/v1/courses/:course_id/gradebook_history/feed
-
-    url = "{0}/courses/{1}/gradebook_history/feed".format(baseUrl, course_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    extra_parameters={'per_page': '100',
-             'assignment_id': assignment_id,
-             'user_id':  user_id
-             }
-    
-    r = requests.get(url, params=extra_parameters, headers = header)
-
-    if Verbose_Flag:
-        print("result of getting a grade from gradebook: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            entries_found_thus_far.append(p_response)
-
-        # the following is needed when the reponse has been paginated
-        # i.e., when the response is split into pieces - each returning only some of the list of modules
-        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links.get('next', False):
-            r = requests.get(r.links['next']['url'], headers=header)  
-            if Verbose_Flag:
-                print("result of getting modules for a paginated response: {}".format(r.text))
-            page_response = r.json()  
-            for p_response in page_response:  
-                entries_found_thus_far.append(p_response)
-
-    return entries_found_thus_far
 
 def grade(short_name, student):
     global gradebook
 
     assignment=assignment_given_short_name(short_name)
-    if assignment:
-        assignment_id=assignment['id']
-    else:
+    if not assignment:
         print("No such assignment named {0}".format(shrt_name))
         return None
 
@@ -352,14 +298,16 @@ def grade(short_name, student):
         if not students_assignments:
             return None             # student has no assignments
 
-        this_assignment=students_assignments.get(assignment_id, False)
+        this_assignment=students_assignments.get(short_name, False)
         if this_assignment:
-            return this_assignment.get('entered_score', None)
+            return this_assignment.get('grade', None)
 
     return None
 
 
 def assign_grade(short_name,user_id, grade, comment):
+    print("assign_grade({0},{1}, {2}, {3}".format(short_name,user_id, grade, comment))
+    return                      # for testing qqq
     assignment=assignment_given_short_name(short_name)
     if assignment:
         assignment_id=assignment['id']
@@ -375,9 +323,7 @@ def submission_date(short_name, student):
     global gradebook
 
     assignment=assignment_given_short_name(short_name)
-    if assignment:
-        assignment_id=assignment['id']
-    else:
+    if not assignment:
         print("No such assignment named {0}".format(shrt_name))
         return None
 
@@ -386,9 +332,9 @@ def submission_date(short_name, student):
         if not students_assignments:
             return None             # student has no assignments
 
-        this_assignment=students_assignments.get(assignment_id, False)
+        this_assignment=students_assignments.get(short_name, False)
         if this_assignment:
-            td=this_assignment.get('submitted_at', None)
+            td=this_assignment.get('submittedAt', None)
             if td:
                 return isodate.parse_datetime(td)
 
@@ -398,8 +344,8 @@ def submission_date(short_name, student):
 def custom_column_id(title):
     global custom_columns
     for c in custom_columns:
-        if title == c['title']:
-            return c['id']
+        if title == c.title:
+            return c.id
     return None
 
 def custom_column_value(user_id, title):
@@ -413,21 +359,52 @@ def custom_column_value(user_id, title):
                 return value
     return None
 
-def put_custom_column_entries(column_id, user_id, data_to_store):
+
+# for v3
+def put_custom_column_entries(custom_columns, title, user_id, data_to_store):
+    print("put_custom_column_entries({0},{1},{2},{3}".format(custom_columns, title, user_id, data_to_store))
+
+    for c in custom_columns:
+        if c.hidden:     #  skip hidden columns
+            continue
+        if c.teacher_notes:     #  skip teacher notes columns
+            continue
+        if c.title == title:
+            print("c.id={}".format(c.id))
+            print("c.title={}".format(c.title))
+            data=c.get_column_entries(include_hidden=True)
+            for cdi in data:
+                if cdi.user_id == user_id:
+                    print("cdi.content={}".format(cdi.content))
+                    cdi.update_column_data(column_data={'content': data_to_store})
+                    print("cdi.content={} after".format(cdi.content))
+                    return
+            # if there is no matching data, then you need to add it for the first time
+            payload={}
+            header=headers
+            print("put_custom_column_entries_original")
+            put_custom_column_entries_original(c.id, user_id, data_to_store)
+
+
+def put_custom_column_entries_original(column_id, user_id, data_to_store):
+    global baseUrl	# the base URL used for access to Canvas
+    global headers
     global course_id
+    global verbose
     entries_found_thus_far=[]
+    payload={}
 
     # Use the Canvas API to get the list of custom column entries for a specific column for the course
     #PUT /api/v1/courses/:course_id/custom_gradebook_columns/:id/data/:user_id
 
     url = "{0}/courses/{1}/custom_gradebook_columns/{2}/data/{3}".format(baseUrl,course_id, column_id, user_id)
-    if Verbose_Flag:
+    if verbose:
         print("url: " + url)
 
     payload={'column_data[content]': data_to_store}
-    r = requests.put(url, headers = header, data=payload)
+    r = requests.put(url, headers = headers, data=payload)
 
-    if Verbose_Flag:
+    if verbose:
         print("result of putting data into custom_gradebook_column:  {}".format(r.text))
 
     if r.status_code == requests.codes.ok:
@@ -437,6 +414,7 @@ def put_custom_column_entries(column_id, user_id, data_to_store):
             entries_found_thus_far.append(p_response)
 
     return entries_found_thus_far
+
 
 def insert_column_name(course_id, column_name):
     global Verbose_Flag
@@ -584,16 +562,22 @@ def t2l_get_assignments(course_id) -> dict:
         return None
 
 def t2l_get_grades_for_an_assignment(course_id, assignment_id) -> dict:
+    # returns a list with elements of the form:
+    # {'student': {'id': 'xxxx', 'sortableName': 'Maguire, Chip'}, 'grade': None, 'gradedAt': None, 'submittedAt': None}
+    # where xxxx is an integration id for this student
+    global verbose
     global headers
     global t2l_root_url
     url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/assignments/{assignment_id}'
     payload={}
     data_payload={}
     response = requests.request("GET", url, headers=headers, params=payload, data=data_payload)
-    print("response.url={}".format(response.url))
-    print("response.status_code={}".format(response.status_code))
+    if verbose:
+        print("response.url={}".format(response.url))
+        print("response.status_code={}".format(response.status_code))
     if response.status_code == requests.codes.ok:
-        print("respose.text={}".format(response.text))
+        if verbose:
+            print("respose.text={}".format(response.text))
         return response.json()
     else:
         return None
@@ -638,10 +622,10 @@ def t2l_send_grades_for_an_assignment(course_id, assignment_id, results_list, ak
     else:
         return None
 
-
 def main(argv):
     global verbose
     global headers
+    global baseUrl	# the base URL used for access to Canvas
 
     global assignments
     global custom_columns
@@ -685,6 +669,14 @@ def main(argv):
 
     config = read_config(args.config_filename)
 
+    gradebook=dict()            #  will be used to hold the virtual gradebook
+    # form of the gradbook
+    #gradebook[student_intrgration_id]={'user_name': e['sortable_name'],
+    #                         'canvas_id': e['user_id']
+    #                         'assignments': {short_name: grade, short_name2: grade ...}},
+    #                         'notes': None
+    #                         }
+
     # Initialize Canvas API
     canvas = canvasapi.Canvas('https://'+config["canvas"]["host"],config["canvas"]["access_token"])
 
@@ -693,28 +685,46 @@ def main(argv):
     headers = {'Authorization' : 'Bearer ' + access_token}
     #verbose_print(f'{headers=}')
 
+    # Initialize for use with Instructure Canvas API
+    baseUrl="https://"+config["canvas"]["host"]+"/api/v1"
+
 
     course = canvas.get_course(course_id)
     verbose_print(f'{course=}')
 
     users = course.get_users(enrollment_type=['student']) # get the list of students in the course
 
-    for user in users:
-        if verbose:
+    if verbose:
+        print("Information about users")
+        for user in users:
             print(user)
-        if verbose and testing:
-            for attribute, value in user.__dict__.items():
-                print(attribute, '=', value)
-            # Each user has the attributes:
-            # id
-            # name
-            # created_at = 2021-05-31T10:51:20+02:00
-            # sortable_name
-            # short_name
-            # sis_user_id
-            # integration_id
-            # login_id
-            # email
+            if verbose and testing:
+                for attribute, value in user.__dict__.items():
+                    print(attribute, '=', value)
+    # Each user has the attributes:
+    # id
+    # name
+    # created_at = 2021-05-31T10:51:20+02:00
+    # sortable_name
+    # short_name
+    # sis_user_id
+    # integration_id
+    # login_id
+    # email
+
+    # form of the gradbook
+    #gradebook[student_intrgration_id]={'user_name': e['user_name'],
+    #                         'canvas_id': e['user_id']
+    #                         'assignments': {short_name: {'grade': xx, 'submittedAt': xxx},  ...}},
+    #                         'notes': None
+    #                         }
+    for u in users:
+        gradebook[u.integration_id]={'user_name': u.sortable_name,'canvas_id': u.id, 'assignments': dict(), 'notes': None}
+                                        
+    if verbose:
+        print("Initial gradebook")
+        for u in users:
+            print("gradebook[{0}]={1}".format(u.integration_id, gradebook[u.integration_id]))
 
     assignments=course.get_assignments()
                                 
@@ -724,24 +734,32 @@ def main(argv):
     # dump all of the attributes of each assignment
     if testing:
         for a in assignments:
+            if not a.published: # skip unpublished assignments
+                continue
             print("a={}".format(a))
             for attribute, value in a.__dict__.items():
                 print(attribute, '=', value)
 
-    for a in assignments:
-        print(f"id={a.id}, name={a.name}, points_possible={a.points_possible}, due_at={a.due_at}, grading_type={a.grading_type}, grading_standard_id={a.grading_standard_id}, allowed_attempts={a.allowed_attempts}")
-
+    if verbose:
+        for a in assignments:
+            if not a.published: # skip unpublished assignments
+                continue
+            print(f"id={a.id}, name={a.name}, points_possible={a.points_possible}, due_at={a.due_at}, grading_type={a.grading_type}, grading_standard_id={a.grading_standard_id}, allowed_attempts={a.allowed_attempts}")
 
     for a in assignments:
         # Set up the short names for the assignments
         # ***** This is essential as the routines will use the short names to access the relevant assignment and grades
         # You have to look at the assignment id for each assignment and then add a short_name to the assignment
         # You can do this by matching assignment_id numbers or matching the names
+        if not a.published: # skip unpublished assignments
+            continue
         if a.id == 146887 or a.name == 'Ethical Research (with quiz)' or a.name == 'Ethical Research - quiz':
             a.set_attributes({'short_name': 'ER'})
 
         if a.id == 146888 or a.name == 'Professionalism and Ethics for ICT students (with quiz)' or a.name == 'Professionalism and Ethics for ICT students - quiz':
+            print("found PE")
             a.set_attributes({'short_name': 'PE'})
+            print("a.short_name={}".format(a.short_name))
 
         if a.id == 146885 or a.name == 'Ethical Research: Human Subjects and Computer Issues (with quiz)' or a.name == 'Ethical Research: Human Subjects and Computer Issues - quiz':
             a.set_attributes({'short_name': 'ERH'})
@@ -752,43 +770,65 @@ def main(argv):
         if a.id == 146889 or a.name == 'LADOK - PRO1 (Onlinequiz)' or a.name == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
             a.set_attributes({'short_name': 'PRO1'})
 
-    if Verbose_Flag:
+    if verbose or testing:
+        print("Short name")
         for a in assignments:
-            print(f'{a.name} is {a.short_name}')
+            print(f'{a.id}: {a.short_name} is {a.name}')
 
-    sections=course.get_sections()
-    if sections:
-        for section in sections:
-            print(f'section={section}')
+    # sections=course.get_sections()
+    # if sections:
+    #     for section in sections:
+    #         print(f'section={section}')
 
-
-    ladok_assignments=t2l_get_assignments(course_id)
-    # for example:
-    # {'finalGrades': {'hasLetterGrade': False}, 'assignments': [{'id': '159727', 'name': 'Ethical Research - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:00:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159728', 'name': 'Professionalism and Ethics for ICT students - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:10:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159725', 'name': 'Ethical Research: Human Subjects and Computer Issues - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:45:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159726', 'name': 'Sustainable Development/Hållbar Utveckling - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:59:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159729', 'name': 'LADOK - PRO1 (Onlinequiz)', 'gradingType': 'letter_grade', 'dueAt': None, 'unlockAt': None, 'lockAt': None}]}
     if verbose:
         print("calling t2l_get_assignments()")
-    verbose_print(f'{ladok_assignments=}')
-    if not ladok_assignments:
-        print("Unable to get assignments for course {0} from transfer to LADOK".format(course_id))
-        if not testing:
-            return
-    else:
-        for assignment in ladok_assignments['assignments']:
-            print(f"{assignment['id']} {assignment['name']}")
 
-    current_grades=dict()
+    ladok_assignments=t2l_get_assignments(course_id)
     if not ladok_assignments:
         print("No assignments for course {0} from transfer to LADOK".format(course_id))
         return
 
+    # for example:
+    # {'finalGrades': {'hasLetterGrade': False}, 'assignments': [{'id': '159727', 'name': 'Ethical Research - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:00:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159728', 'name': 'Professionalism and Ethics for ICT students - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:10:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159725', 'name': 'Ethical Research: Human Subjects and Computer Issues - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:45:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159726', 'name': 'Sustainable Development/Hållbar Utveckling - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:59:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159729', 'name': 'LADOK - PRO1 (Onlinequiz)', 'gradingType': 'letter_grade', 'dueAt': None, 'unlockAt': None, 'lockAt': None}]}
+    verbose_print(f'{ladok_assignments=}')
+    if verbose:
+        print("Assignment id and name")
+        for assignment in ladok_assignments['assignments']:
+            print(f"{assignment['id']} {assignment['name']}")
+
     # get the current grades for each of the assignments
     for assignment in ladok_assignments['assignments']:
         print(f"processing assignment: {assignment}")
-        current_grades[assignment['name']]=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
-        print(f"{assignment['name']}: {current_grades[assignment['name']]}")
+        current_grades=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
+        print(f"{assignment['name']}: {current_grades}")
+        assignment_short_name=assignment_short_name_given_name(assignment['name'])
+        for g in current_grades:
+            student=g['student']
+            if verbose:
+                print("id={0}".format(student['id']))
+                print("sortableName={0}".format(student['sortableName']))
+                print("grade={0}".format(g['grade']))
+                print("submittedAt={0}".format(g['submittedAt']))
+            # check for matching sortable name
+            if student['sortableName'] == gradebook[student['id']]['user_name']:
+                if g['submittedAt']:
+                    gradebook[student['id']]['assignments'][assignment_short_name]={'grade': g['grade'], 'submittedAt': g['submittedAt']}
+                elif g['gradedAt']:
+                    gradebook[student['id']]['assignments'][assignment_short_name]={'grade': g['grade'], 'submittedAt': g['gradedAt']}
+                else:
+                    print("error in entry for {} no submittedAt or gradedAt information".format(student['sortableName']))
+            else:
+                print("error in gradebook entry  {0} names do not match: {1} {2}".format(student['id'], student['sortableName'],  gradebook[student['id']]['user_name']))
 
-    custom_columns=course.get_custom_columns()
+    if verbose:
+        print("updated gradebook")
+        for u in users:
+            print("gradebook[{0}]={1}".format(u.integration_id, gradebook[u.integration_id]))
+
+    custom_columns=course.get_custom_columns(include_hidden=True)
+    print(f'custom_columns={custom_columns}')
     for c in custom_columns:
+        print("printing information about a CustomGradebookColumn")
         if testing:
             for attribute, value in c.__dict__.items():
                 print(attribute, '=', value)
@@ -798,15 +838,16 @@ def main(argv):
     if custom_columns:
         for c in custom_columns:
             if c.title == 'Notes' and c.hidden:
-                c.update_custom_column({'hidden': 'False'})
+                c.update_custom_column(column={'hidden': 'False'})
     else:
         # if missing, then add "Notes" column
         #insert_column_name(course_id, "Notes")
-        course.create_custom_column({'title': 'Notes', 'hidden': 'False'})
+        course.create_custom_column(column={'title': 'Notes', 'hidden': 'False'})
         custom_columns=course.get_custom_columns()
 
 
-    if Verbose_Flag:
+    print("Printing custom_columns after making Notes not hidden")
+    if verbose:
         for c in custom_columns:
             if testing:
                 for attribute, value in c.__dict__.items():
@@ -816,7 +857,11 @@ def main(argv):
     print("getting custom column data")
     custom_column_data=dict()
     for c in custom_columns:
-        print("getting data for column {}".format(c.id))
+        if c.hidden:     #  skip hidden columns
+            continue
+        if c.teacher_notes:     #  skip teacher notes columns
+            continue
+        print("getting data for column {}".format(c.title))
         data=c.get_column_entries()
         if verbose and testing:
             for attribute, value in data.__dict__.items():
@@ -835,23 +880,130 @@ def main(argv):
 
         custom_column_data[c.title]=data
 
-    print("custom_column_data={}".format(custom_column_data))
+
+
+    print("custom_column_data={0}".format(custom_column_data))
     custom_column_data_notes=dict()
     if 'Notes' in custom_column_data:
-        for cdi in custom_column_data['Notes']:
+        ccdn=custom_column_data['Notes']
+        verbose_print(f'{ccdn=}')
+        for cdi in ccdn:
+            verbose_print(f'{cdi=}')
             custom_column_data_notes[cdi.user_id]=cdi.content
-            if verbose and testing:
+            if verbose or testing:
                 for attribute, value in cdi.__dict__.items():
                     print(attribute, '=', value)
             # This output entries of the form:
             # content = P
-            # user_id = xxxxx         <<<< Note that these are a Canvas user_id
+            # user_id = xxxxx         <<<< Note that this is a Canvas user_id
             # course_id = 18735
             # gradebook_column_id = 1188
 
-        print("custom_column_data_notes={}".format(custom_column_data_notes))
+    print("custom_column_data_notes={}".format(custom_column_data_notes))
 
-    return                      # gqmjr for testing
+    # enter Notes data into gradebook dict by matching user_id with canvas_id
+    for u in users:
+        for cdi in custom_column_data['Notes']:
+            if cdi.user_id == u.id:
+                gradebook[u.integration_id]['notes']=cdi.content
+
+    if verbose:
+        print("Gradebook with notes")
+        for u in users:
+            print("gradebook[{0}]={1}".format(u.integration_id, gradebook[u.integration_id]))
+
+    if Verbose_Flag:
+        pprint.pprint(gradebook, indent=4)
+    print("number of users in gradebook={0}".format(len(gradebook)))
+
+    er_due_date=assignment_due_date('ER')
+    pe_due_date=assignment_due_date('PE')
+    erh_due_date=assignment_due_date('ERH')
+    susd_due_date=assignment_due_date('SUSD')
+
+    print(f'er_due_date: {er_due_date}, pe_due_date:{pe_due_date}, erh_due_date: {erh_due_date}, susd_due_date: {susd_due_date}')
+
+    print("grading_type_points('ER')={}".format(grading_type_points('ER')))
+    print("grade('ER', 'fb132002-d4e0-11ec-aa2b-20f54c694dd5')={}".format(grade('ER', 'fb132002-d4e0-11ec-aa2b-20f54c694dd5')))
+
+    # look at computing grades for each student s
+    for s in gradebook:
+        er_grade = pe_grade = erh_grade = susd_grade =False
+
+        # Example of an assignment with points and a passing threshold of all but one point
+        #
+        # 1. check that the grading type is points and get the grade
+        # 2. compare the points gotten with the points threshold for this assignment to pass
+        #    If the assignment passes er_grade is set to True
+        if grading_type_points('ER'):
+            er_points=float(grade('ER', s))
+            if er_points:
+                er_grade = er_points >= (points_possible('ER') - 1.0)
+
+        if grading_type_points('PE'):
+            pe_points=float(grade('PE', s))
+            if pe_points:
+                pe_grade= pe_points>= (points_possible('PE') - 1.0)
+
+        if grading_type_points('ERH'):
+            erh_points = float(grade('ERH', s))
+            if erh_points:
+                erh_grade= erh_points >= (points_possible('ERH') - 1.0)
+
+        if grading_type_points('SUSD'):
+            susd_points=float(grade('SUSD', s))
+            if susd_points:
+                susd_grade= susd_points >= (points_possible('SUSD') - 1.0)
+
+        print("er_grade={0}, pe_grade={1}, erh_grade={2}, susd_grade={3}".format(er_grade, pe_grade, erh_grade, susd_grade))
+
+        gt=assignment_grading_type('PRO1')
+        print("grading type is {0}".format(gt))
+        cg=gradebook[s]['assignments']['PRO1']
+        print("latest current grade is {}".format(cg))
+
+        # Example of assigning a grade for a student who has passed all for assignments
+        if er_grade and pe_grade and erh_grade and susd_grade and gradebook[s]['assignments']['PRO1'] != 'P':
+            assign_grade('PRO1', s, 'P', 'test grade assignment')
+
+            # Example of getting a value from a custom column
+            s_note=gradebook[s]['notes']
+            print("s_note={}".format(s_note))                    
+            if True or s_note is None or s_note != 'P':
+                # for a studen who has passed all the assignments, compute the data the last one was submitted
+                er_submitted=submission_date('ER', s)
+                pe_submitted=submission_date('PE', s)
+                erh_submitted=submission_date('ERH', s)
+                susd_submitted=submission_date('SUSD', s)
+                if er_submitted and pe_submitted and erh_submitted and susd_submitted:
+                    submission_dates=[er_submitted,
+                                      pe_submitted,
+                                      erh_submitted,
+                                      susd_submitted
+                                      ]
+                    last_submission_date=max(submission_dates)
+                    # Example of storing a value into a custom column named 'Notes' for a student s
+                    data_to_store="Data ready for LADOK as of {}".format(last_submission_date)
+                    put_custom_column_entries(custom_columns, 'Notes', gradebook[s]['canvas_id'], data_to_store)
+                    gradebook[s]['notes']=data_to_store
+                    if s == '8e51e001-b973-11eb-b259-d618d1cb4077': # for testing
+                        break
+                    
+
+        # Example of processing the date of the submssion and checking the assignment's due date
+        #
+        # if you want to check if the assignment was submitted after the due date
+        er_submitted=submission_date('ER', s)
+        if  er_submitted:
+            if er_submitted > er_due_date:
+                print("Late submission of ER by {0}".format(gradebook[s]['user_name']))
+            else:
+                er_early_submission=submission_date('ER', s) - er_due_date
+                print("early submission by {0}".format(er_early_submission))
+
+
+
+    return                      # gqmjr for testing - qqq
 
     if verbose:
         print("calling t2l_get_sections()")
@@ -896,12 +1048,13 @@ def main(argv):
                                                       #utbildningsinstans=ladok_sections['kurstillfalle'][0]['utbildningsinstans'])
     verbose_print(f'{gradable_students_in_course=}')
 
-
+    print(f'gradable_students_in_course={gradable_students_in_course}')
+    return                      # gqmjr for testing
     grade_feed=list_gradebook_history_feed()
     print("length of grade_feed={0}".format(len(grade_feed)))
     if Verbose_Flag:
         print("grade_feed={0}".format(grade_feed))
-    gradebook=dict()
+
 
     for e in grade_feed:
         if Verbose_Flag:
@@ -937,92 +1090,6 @@ def main(argv):
         if Verbose_Flag:
             print("gradebook[{0}]={1}".format(e['user_id'], gradebook[e['user_id']]))
 
-
-    if Verbose_Flag:
-        pprint.pprint(gradebook, indent=4)
-    print("number of users in gradebook={0}".format(len(gradebook)))
-
-
-    er_due_date=assignment_due_date('ER')
-    pe_due_date=assignment_due_date('PE')
-    erh_due_date=assignment_due_date('ERH')
-    susd_due_date=assignment_due_date('SUSD')
-
-    # look at computing grades for each student s
-    for s in gradebook:
-        er_grade = pe_grade = erh_grade = susd_grade =False
-
-        # Example of an assignment with points and a passing threshold of all but one point
-        #
-        # 1. check that the grading type is points and get the grade
-        # 2. compare the points gotten with the points threshold for this assignment to pass
-        #    If the assignment passes er_grade is set to True
-        er_points=grading_type_points('ER') and grade('ER', s)
-        if er_points:
-            er_grade = er_points >= (points_possible('ER') - 1.0)
-
-        pe_points=grading_type_points('PE') and grade('PE', s)
-        if pe_points:
-            pe_grade= pe_points>= (points_possible('PE') - 1.0)
-
-        erh_points = grading_type_points('ERH') and grade('ERH', s)
-        if erh_points:
-            erh_grade= erh_points >= (points_possible('ERH') - 1.0)
-
-        susd_points=grading_type_points('SUSD') and grade('SUSD', s)
-        if susd_points:
-            susd_grade= susd_points >= (points_possible('SUSD') - 1.0)
-
-        print("er_grade={0}, pe_grade={1}, erh_grade={2}, susd_grade={3}".format(er_grade, pe_grade, erh_grade, susd_grade))
-
-        g1=grade('PRO1', s)
-        print("grade is currently {}".format(g1))
-        gt=assignment_grading_type('PRO1')
-        print("grading type is {0}".format(gt))
-        cg=get_a_grade(s, 'PRO1')
-        print("latest current grade is {}".format(cg))
-
-        # Example of assigning a grade for a student who has passed all for assignments
-        if er_grade and pe_grade and erh_grade and susd_grade and get_a_grade(s, 'PRO1') != 'P':
-            assign_grade('PRO1', s, 'P', 'test grade assignment')
-
-            # Example of getting a value from a custom column
-            s_note=custom_column_value(s, 'Notes')
-            print("s_note={}".format(s_note))                    
-            if s_note is None or s_note != 'P':
-                # for a studen who has passed all the assignments, compute the data the last one was submitted
-                er_submitted=submission_date('ER', s)
-                pe_submitted=submission_date('PE', s)
-                erh_submitted=submission_date('ERH', s)
-                susd_submitted=submission_date('SUSD', s)
-                if er_submitted and pe_submitted and erh_submitted and susd_submitted:
-                    submission_dates=[er_submitted,
-                                      pe_submitted,
-                                      erh_submitted,
-                                      susd_submitted
-                                      ]
-                    last_submission_date=max(submission_dates)
-                    # Example of storing a value into a custom column named 'Notes' for a student s
-                    data_to_store="Data ready for LADOK as of {}".format(last_submission_date)
-                    put_custom_column_entries(custom_column_id('Notes'), s, data_to_store)
-
-                # refresh the copy of the custom column data after changing it.
-                custom_column_data['Notes']=list_custom_column_entries(custom_column_id('Notes'))
-                s_note=custom_column_value(s, 'Notes')
-                if s_note:
-                    print("s_note={0}, len of string={1}".format(s_note, len(s_note)))
-
-
-        # Example of processing the date of the submssion and checking the assignment's due date
-        #
-        # if you want to check if the assignment was submitted after the due date
-        er_submitted=submission_date('ER', s)
-        if  er_submitted:
-            if er_submitted > er_due_date:
-                print("Late submission of ER by {0}".format(gradebook[s]['user_name']))
-            else:
-                er_early_submission=submission_date('ER', s) - er_due_date
-                print("early submission by {0}".format(er_early_submission))
 
 
 if __name__ == '__main__':
