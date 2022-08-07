@@ -1,0 +1,372 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# -*- mode: python; python-indent-offset: 4 -*-
+#
+# t2l_gradable_students-py course_id
+# Purpose: get information about gradable students in a Canvas course room (course_id)
+#
+# Example:
+# t2l_gradable_students-py -v --config config-test.json 31168
+#
+#
+# 2022-08-07 G. Q. Maguire Jr.
+#
+# **** this is a work in progress and not yet ready for use ***
+#
+import re
+import sys
+
+import json
+# import argparse
+from argparse import ArgumentParser
+from pathlib import Path
+
+import requests, time
+import pprint
+
+import os			# to make OS calls, here to get time zone info
+import isodate                  # for parsing ISO 8601 dates and times
+import pytz                     # for time zones
+from dateutil.tz import tzlocal
+
+# use the canvasapai
+import canvasapi
+
+global headers	# the header for all HTML requests
+
+def verbose_print(*args, **kwargs) -> None:
+    global verbose
+    if verbose:
+        print(*args, **kwargs)
+
+
+def utc_to_local(utc_dt):
+    return utc_dt.replace(tzinfo=datetime.timezone.utc).astimezone(tz=None)
+
+def datetime_to_local_string(canvas_time):
+    global Use_local_time_for_output_flag
+    t1=isodate.parse_datetime(canvas_time)
+    if Use_local_time_for_output_flag:
+        t2=t1.astimezone()
+        return t2.strftime("%Y-%m-%d %H:%M")
+    else:
+        return t1.strftime("%Y-%m-%d %H:%M")
+
+
+
+#############################
+###### EDIT THIS STUFF ######
+#############################
+
+global t2l_root_url
+t2l_root_url='https://app-r.referens.sys.kth.se'
+
+
+
+verbose = False # Global flag for verbose prints
+DEFAULT_CONFIG_FILE = 'config.json'
+
+def read_config(config_file: str = None) -> dict:
+    config_file = config_file or DEFAULT_CONFIG_FILE
+    try:
+        # styled based upon https://martin-thoma.com/configuration-files-in-python/
+        return json.loads(Path(config_file).read_text())
+    except json.JSONDecodeError as e:
+        print(f'Invalid JSON in {config_file}')
+        raise e
+    except Exception as e:
+        print(f'Unable to open configuration file named {config_file}')
+        print(f'Please create a suitable configuration file, the default name is {DEFAULT_CONFIG_FILE}')
+        raise e
+
+
+# Take out the config variables used to authenticate KTH through SAML login. Used to access Canvas pages directly.
+def get_kth_credentials(config: dict) -> tuple:
+    try:
+        return (config["kth"]["username"], config["kth"]["password"])
+    except KeyError as e:
+        print('Missing keys in config file')
+        raise e
+
+#
+# function for use with transfer to LADOK (t2l)
+#
+def t2l_get_sections(course_id) -> dict:
+    global headers
+    global t2l_root_url
+    #url = f'https://app-referens.sys.kth.se/courses/{course_id}/sections'
+    #url = f'https://app-referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/sections'
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/sections'
+    payload={}
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+    print("response.status_code={}".format(response.status_code))
+    if response.status_code == requests.codes.ok:
+        print("respose.text={}".format(response.text))
+        return response.json()
+    else:
+        return None
+
+def t2l_gradable_students(course_id, aktivitetstillfalle=None, kurstillfalle=None, utbildningsinstans=None) -> dict:
+    global headers
+    global verbose
+    global t2l_root_url
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
+    #       https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/11555/ladok-grades?kurstillfalle=eb5505e2-f6ed-11e8-9614-d09e533d4323&utbildningsinstans=7f20dbb6-73d8-11e8-b4e0-063f9afb40e3
+    payload={}
+    if aktivitetstillfalle:
+        payload['aktivitetstillfalle']=aktivitetstillfalle
+    if kurstillfalle:
+        payload['kurstillfalle']=kurstillfalle
+    if utbildningsinstans:
+        payload['utbildningsinstans']=utbildningsinstans
+    verbose_print(f'{payload=}')
+        
+    response = requests.request("GET", url, headers=headers, params=payload, data={})
+    verbose_print(f'{response.request.url=}')
+    verbose_print(f'{response.status_code=}')
+    if response.status_code == requests.codes.ok:
+        verbose_print(f'{response.text=}')
+        print("respose.text={}".format(response.text))
+        return response.json()
+    else:
+        return None
+    
+def t2l_get_assignments(course_id) -> dict:
+    global headers
+    global verbose
+    global t2l_root_url
+    #url = f'https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/{course_id}/assignments'
+    # End-point change!
+    #url = "https://app-r.referens.sys.kth.se/transfer-to-ladok/api/courses/36353/columns"
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/columns'
+
+    payload={}
+    response = requests.request("GET", url, headers=headers, data=payload)
+    verbose_print(f'{response.request.url=}')
+    verbose_print(f'{response.status_code=}')
+    if response.status_code == requests.codes.ok:
+        verbose_print(f'{response.text=}')
+        return response.json()
+    else:
+        return None
+
+def t2l_get_grades_for_an_assignment(course_id, assignment_id) -> dict:
+    # returns a list with elements of the form:
+    # {'student': {'id': 'xxxx', 'sortableName': 'Maguire, Chip'}, 'grade': None, 'gradedAt': None, 'submittedAt': None}
+    # where xxxx is an integration id for this student
+    global verbose
+    global headers
+    global t2l_root_url
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/assignments/{assignment_id}'
+    payload={}
+    data_payload={}
+    response = requests.request("GET", url, headers=headers, params=payload, data=data_payload)
+    if verbose:
+        print("response.url={}".format(response.url))
+        print("response.status_code={}".format(response.status_code))
+    if response.status_code == requests.codes.ok:
+        if verbose:
+            print("respose.text={}".format(response.text))
+        return response.json()
+    else:
+        return None
+
+
+def t2l_send_grades_for_an_assignment(course_id, assignment_id, results_list, aktivitetstillfalle=None) -> dict:
+    global headers
+    global t2l_root_url
+    url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
+    # payload={
+    #     "destination": {
+    #         "aktivitetstillfalle": "05b7b9b6-88d9-11ec-bc70-adb799404101"
+    #     },
+    #     "results": [
+    #         {
+    #             "id": "df0d839b-b432-11e9-8bbd-25378c5a4e4c",
+    #             "draft": {
+    #                 "grade": "B",
+    #                 "examinationDate": "2022-05-05"
+    #             }
+    #         },
+    #         {
+    #             "id": "13bf0c2a-b433-11e9-8bbd-25378c5a4e4c",
+    #             "draft": {
+    #                 "grade": "F",
+    #                 "examinationDate": "2023-05-05"
+    #             }
+    #         }
+    #     ]
+    # }
+    payload={}
+    if aktivitetstillfalle:
+        payload['destination']={'aktivitetstillfalle': aktivitetstillfalle}
+    payload['results']={'results': results_list}
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+    print("response.url={}".format(response.url))
+    print("response.status_code={}".format(response.status_code))
+    if response.status_code == requests.codes.ok:
+        print("respose.text={}".format(response.text))
+        return response.json()
+    else:
+        return None
+
+def main(argv):
+    global verbose
+    global headers
+    global baseUrl	# the base URL used for access to Canvas
+
+    global Use_local_time_for_output_flag
+    global course_id
+
+    Use_local_time_for_output_flag=True
+
+    timestamp_regex = r'(2[0-3]|[01][0-9]|[0-9]):([0-5][0-9]|[0-9]):([0-5][0-9]|[0-9])'
+
+    parser = ArgumentParser()
+    parser.add_argument('-v', '--verbose',
+                        action='store_true',
+                        help='Print lots of output to stdout'
+    )
+    parser.add_argument('-t', '--testing',
+                        action='store_true',
+                        help='Do not create the directories, only make the XLSX files'
+    )
+    parser.add_argument('--config', dest='config_filename',
+                        help='read configuration from FILE',
+                        metavar='FILE'
+    )
+    parser.add_argument('course_id')
+
+    args = parser.parse_args()
+    print("args={}".format(args))
+
+    verbose = args.verbose
+    print(f'verbose={verbose}')
+    Verbose_Flag=verbose
+    course_id = args.course_id
+    testing = args.testing
+
+    verbose_print(f'ARGV      : {sys.argv[1:]}')
+    verbose_print(f'VERBOSE   : {args.verbose}')
+    verbose_print(f'COURSE_ID : {args.course_id}')
+    verbose_print(f'Configuration file : {args.config_filename}')
+
+    config = read_config(args.config_filename)
+
+    # Initialize Canvas API
+    canvas = canvasapi.Canvas('https://'+config["canvas"]["host"],config["canvas"]["access_token"])
+
+    # set up header for authentication with Canvas token
+    access_token=config["canvas"]["access_token"]
+    headers = {'Authorization' : 'Bearer ' + access_token}
+    #verbose_print(f'{headers=}')
+
+    course = canvas.get_course(course_id)
+    verbose_print(f'{course=}')
+
+    users = course.get_users(enrollment_type=['student']) # get the list of students in the course
+
+    if verbose:
+        print("Information about users")
+        for user in users:
+            print(user)
+            if verbose and testing:
+                for attribute, value in user.__dict__.items():
+                    print(attribute, '=', value)
+    # Each user has the attributes:
+    # id
+    # name
+    # created_at = 2021-05-31T10:51:20+02:00
+    # sortable_name
+    # short_name
+    # sis_user_id
+    # integration_id
+    # login_id
+    # email
+
+    if verbose:
+        print("calling t2l_get_assignments()")
+
+    ladok_assignments=t2l_get_assignments(course_id)
+    if not ladok_assignments:
+        print("No assignments for course {0} from transfer to LADOK".format(course_id))
+        return
+
+    # for example:
+    # {'finalGrades': {'hasLetterGrade': False}, 'assignments': [{'id': '159727', 'name': 'Ethical Research - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:00:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159728', 'name': 'Professionalism and Ethics for ICT students - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:10:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159725', 'name': 'Ethical Research: Human Subjects and Computer Issues - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:45:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159726', 'name': 'Sustainable Development/Hållbar Utveckling - quiz', 'gradingType': 'points', 'dueAt': '2022-06-07T21:59:00Z', 'unlockAt': None, 'lockAt': None}, {'id': '159729', 'name': 'LADOK - PRO1 (Onlinequiz)', 'gradingType': 'letter_grade', 'dueAt': None, 'unlockAt': None, 'lockAt': None}]}
+    verbose_print(f'{ladok_assignments=}')
+    if verbose:
+        print("Assignment id and name")
+        for assignment in ladok_assignments['assignments']:
+            print(f"{assignment['id']} {assignment['name']}")
+
+    if verbose:
+        print("calling t2l_get_sections()")
+    ladok_sections=t2l_get_sections(course_id)
+    if not ladok_sections:
+        print("Unable to get section for course {0} from transfer to LADOK".format(course_id))
+        return
+
+    # a section might yield:
+    # respose.text={"aktivitetstillfalle":[],"kurstillfalle":[{"id":"a8881a52-ac13-11eb-b185-19658d9640e0","utbildningsinstans":"6320c0b1-5cfe-11e9-b67f-a77d6cb34fef","code":"60415","modules":[{"utbildningsinstans":"884b851f-5cfe-11e9-b67f-a77d6cb34fef","code":"PRO1","name":"Onlinequiz"}]}]}
+    verbose_print(f'{ladok_sections=}')
+    print("type of ladok_sections={}".format(type(ladok_sections)))
+    # ladok_sections={'aktivitetstillfalle': [], 'kurstillfalle': [{'id': 'a8881a52-ac13-11eb-b185-19658d9640e0', 'utbildningsinstans': '6320c0b1-5cfe-11e9-b67f-a77d6cb34fef', 'courseCode': 'II2210', 'roundCode': '60415', 'modules': [{'utbildningsinstans': '884b851f-5cfe-11e9-b67f-a77d6cb34fef', 'code': 'PRO1', 'name': 'Onlinequiz'}]}]}
+    for e in ladok_sections:
+        print("e={0} {1}".format(e, ladok_sections[e]))
+
+    print(f"ladok_sections['aktivitetstillfalle']={ladok_sections['aktivitetstillfalle']}")
+    print(f"ladok_sections['kurstillfalle']={ladok_sections['kurstillfalle']}")
+    #[   {   'courseCode': 'II2210',
+    #        'id': 'a8881a52-ac13-11eb-b185-19658d9640e0',
+    #        'modules': [   {   'code': 'PRO1',
+    #                           'name': 'Onlinequiz',
+    #                          'utbildningsinstans': '884b851f-5cfe-11e9-b67f-a77d6cb34fef'}],
+    #    'roundCode': '60415',
+    #    'utbildningsinstans': '6320c0b1-5cfe-11e9-b67f-a77d6cb34fef'}]
+
+    print(f"ladok_sections['kurstillfalle'][0]={ladok_sections['kurstillfalle'][0]}")
+    print(f"ladok_sections['kurstillfalle'][0]['id']={ladok_sections['kurstillfalle'][0]['id']}")
+    print(f"ladok_sections['kurstillfalle'][0]['modules']={ladok_sections['kurstillfalle'][0]['modules']}")
+    print(f"ladok_sections['kurstillfalle'][0]['modules'][0]={ladok_sections['kurstillfalle'][0]['modules'][0]}")
+    print(f"ladok_sections['kurstillfalle'][0]['modules'][0]['utbildningsinstans']={ladok_sections['kurstillfalle'][0]['modules'][0]['utbildningsinstans']}")
+    # ladok_sections['kurstillfalle'] takes the form:
+    # [{'id': 'a8881a52-ac13-11eb-b185-19658d9640e0', 'utbildningsinstans': '6320c0b1-5cfe-11e9-b67f-a77d6cb34fef', 'code': '60415', 'modules': [{'utbildningsinstans': '884b851f-5cfe-11e9-b67f-a77d6cb34fef', 'code': 'PRO1', 'name': 'Onlinequiz'}]}]
+
+    print(f"ladok_sections['kurstillfalle'][0]['utbildningsinstans']={ladok_sections['kurstillfalle'][0]['utbildningsinstans']}")
+
+    print("calling t2l_gradable_students() - top level")
+    gradable_students_in_course=t2l_gradable_students(course_id,
+                                                      kurstillfalle=ladok_sections['kurstillfalle'][0]['id'],
+                                                      utbildningsinstans=ladok_sections['kurstillfalle'][0]['utbildningsinstans'])
+    verbose_print(f'{gradable_students_in_course=}')
+
+    print(f'gradable_students_in_course={gradable_students_in_course}')
+
+
+    print("calling t2l_gradable_students() {}".format(ladok_sections['kurstillfalle'][0]['modules'][0]['code']))
+    gradable_students_in_course=t2l_gradable_students(course_id,
+                                                      kurstillfalle=ladok_sections['kurstillfalle'][0]['id'],
+                                                      utbildningsinstans=ladok_sections['kurstillfalle'][0]['modules'][0]['utbildningsinstans'])
+
+    verbose_print(f'{gradable_students_in_course=}')
+
+    print(f'gradable_students_in_course={gradable_students_in_course}')
+
+    print("calling t2l_gradable_students() {}".format(ladok_sections['kurstillfalle'][0]['modules'][1]['code']))
+    gradable_students_in_course=t2l_gradable_students(course_id,
+                                                      kurstillfalle=ladok_sections['kurstillfalle'][0]['id'],
+                                                      utbildningsinstans=ladok_sections['kurstillfalle'][0]['modules'][1]['utbildningsinstans'])
+
+    verbose_print(f'{gradable_students_in_course=}')
+
+    print(f'gradable_students_in_course={gradable_students_in_course}')
+
+
+    return                      # gqmjr for testing
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
+

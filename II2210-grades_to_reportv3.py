@@ -82,159 +82,6 @@ global header	# the header for all HTML requests
 global payload	# place to store additionally payload when needed for options to HTML requests
 
 # Canvas related functions
-def list_gradebook_history_feed():
-    global Verbose_Flag
-    global course_id
-    
-    entries_found_thus_far=[]
-
-    # Use the Canvas API to get the grade information
-
-    url = "{0}/courses/{1}/gradebook_history/feed".format(baseUrl, course_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    extra_parameters={'per_page': '100'}
-    r = requests.get(url, params=extra_parameters, headers = header)
-
-    if Verbose_Flag:
-        print("result of getting gradebook feed: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            entries_found_thus_far.append(p_response)
-
-        # the following is needed when the reponse has been paginated
-        # i.e., when the response is split into pieces - each returning only some of the list of modules
-        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links.get('next', False):
-            r = requests.get(r.links['next']['url'], headers=header)  
-            if Verbose_Flag:
-                print("result of getting modules for a paginated response: {}".format(r.text))
-            page_response = r.json()  
-            for p_response in page_response:  
-                entries_found_thus_far.append(p_response)
-
-    return entries_found_thus_far
-
-
-def list_custom_columns():
-    # will return a list of custom columns including
-    # [{'id': 1684, 'title': 'Notes', 'position': 1, 'teacher_notes': True, 'read_only': False, 'hidden': False}]
-
-    global Verbose_Flag
-    global course_id
-    entries_found_thus_far=[]
-
-    # Use the Canvas API to get the list of custom column for this course
-    #GET /api/v1/courses/:course_id/custom_gradebook_columns
-    url = "{0}/courses/{1}/custom_gradebook_columns".format(baseUrl,course_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    payload={'include_hidden': True }
-
-    r = requests.get(url, headers = header, data=payload)
-    if Verbose_Flag:
-        print("result of getting custom columns: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            entries_found_thus_far.append(p_response)
-
-        # the following is needed when the reponse has been paginated
-        # i.e., when the response is split into pieces - each returning only some of the list of modules
-        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links.get('next', False):
-            r = requests.get(r.links['next']['url'], headers=header)  
-            if Verbose_Flag:
-                print("result of getting modules for a paginated response: {}".format(r.text))
-            page_response = r.json()  
-            for p_response in page_response:  
-                entries_found_thus_far.append(p_response)
-
-    return entries_found_thus_far
-
-def list_custom_column_entries(column_number):
-    global Verbose_Flag
-    global course_id
-    entries_found_thus_far=[]
-
-    # Use the Canvas API to get the list of custom column entries for a specific column for the course
-    #GET /api/v1/courses/:course_id/custom_gradebook_columns/:id/data
-
-    url = "{0}/courses/{1}/custom_gradebook_columns/{2}/data".format(baseUrl,course_id, column_number)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-
-    r = requests.get(url, headers = header)
-    if Verbose_Flag:
-        print("result of getting custom columns: {}".format(r.text))
-
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-
-        for p_response in page_response:  
-            entries_found_thus_far.append(p_response)
-
-        # the following is needed when the reponse has been paginated
-        # i.e., when the response is split into pieces - each returning only some of the list of modules
-        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links.get('next', False):
-            r = requests.get(r.links['next']['url'], headers=header)  
-            if Verbose_Flag:
-                print("result of getting modules for a paginated response: {}".format(r.text))
-            page_response = r.json()  
-            for p_response in page_response:  
-                entries_found_thus_far.append(p_response)
-
-    return entries_found_thus_far
-
-def assign_grade_for_assignment(assignment_id, user_id, grade, comment):
-    global Verbose_Flag
-    global course_id
-    # Use the Canvas API to assign a grade for an assignment
-    #PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
-
-    # Request Parameters:
-    # comment[text_comment]		string	Add a textual comment to the submission.
-    # comment[group_comment]		boolean	Whether or not this comment should be sent to the entire group (defaults to false). Ignored if this is not a group assignment or if no text_comment is provided.
-    # comment[media_comment_id]		string	Add an audio/video comment to the submission.
-    # comment[media_comment_type]		string	The type of media comment being added.
-    # comment[file_ids][]		integer	Attach files to this comment that were previously uploaded using the Submission Comment API's files action
-    # include[visibility]		string	Whether this assignment is visible to the owner of the submission
-    # submission[posted_grade]		string	Assign a score to the submission, updating both the “score” and “grade” fields on the submission record. This parameter can be passed in a few different formats:
-    # submission[excuse]		boolean	    Sets the “excused” status of an assignment.
-    # submission[late_policy_status]		string	Sets the late policy status to either “late”, “missing”, “none”, or null.
-    # submission[seconds_late_override]		integer	Sets the seconds late if late policy status is “late”
-    # rubric_assessment		RubricAssessment	Assign a rubric assessment to this assignment submission. The sub-parameters here depend on the rubric for the assignment. The general format is, for each row in the rubric:
-
-    url = "{0}/courses/{1}/assignments/{2}/submissions/{3}".format(baseUrl,course_id, assignment_id, user_id)
-    if Verbose_Flag:
-        print("url: " + url)
-
-    if comment:
-        payload={'submission[posted_grade]': grade,
-                 'comment[text_comment]': comment
-                 }
-    else:
-        payload={'submission[posted_grade]': grade,
-                 }
-
-    r = requests.put(url, headers = header, data=payload)
-    if Verbose_Flag:
-        print("result of put assign_grade_for_assignment: {}".format(r.text))
-    if r.status_code == requests.codes.ok:
-        page_response=r.json()
-        if Verbose_Flag:
-            print("inserted grade for assignment")
-        return True
-    return False
-
 
 # new for v3
 def assignment_short_name_given_name(name):
@@ -307,17 +154,22 @@ def grade(short_name, student):
 
 def assign_grade(short_name,user_id, grade, comment):
     print("assign_grade({0},{1}, {2}, {3}".format(short_name,user_id, grade, comment))
-    return                      # for testing qqq
+
     assignment=assignment_given_short_name(short_name)
-    if assignment:
-        assignment_id=assignment['id']
-    else:
+    if not assignment:
         print("No such assignment named {0} unable to store grade".format(shrt_name))
         return None
+    students_submission=assignment.get_submission(int(user_id))
+    if not students_submission:
+        print("No submission for user {0}".format(user_id))
+        return None
 
-    assign_grade_for_assignment(assignment_id, user_id, grade, comment)
-
-
+    if comment:
+        students_submission.edit(submission={'posted_grade': grade},
+                        comment={'text_comment': comment})
+    else:
+        students_submission.edit(submission={'posted_grade': grade})
+    return
 
 def submission_date(short_name, student):
     global gradebook
@@ -347,18 +199,6 @@ def custom_column_id(title):
         if title == c.title:
             return c.id
     return None
-
-def custom_column_value(user_id, title):
-    global custom_column_data
-    slice=custom_column_data.get(title, False)
-    # slice is of the form: [ {'content': 'xxxx', 'user_id': ddd}, ...]
-    if slice:
-        for s in slice:
-            if s['user_id'] == user_id:
-                value=s['content']
-                return value
-    return None
-
 
 # for v3
 def put_custom_column_entries(custom_columns, title, user_id, data_to_store):
@@ -414,63 +254,6 @@ def put_custom_column_entries_original(column_id, user_id, data_to_store):
             entries_found_thus_far.append(p_response)
 
     return entries_found_thus_far
-
-
-def insert_column_name(course_id, column_name):
-    global Verbose_Flag
-
-    # Use the Canvas API to Create a custom gradebook column
-    # POST /api/v1/courses/:course_id/custom_gradebook_columns
-    #   Create a custom gradebook column
-    # Request Parameters:
-    #Parameter		Type	Description
-    #column[title]	Required	string	no description
-    #column[position]		integer	The position of the column relative to other custom columns
-    #column[hidden]		boolean	Hidden columns are not displayed in the gradebook
-    # column[teacher_notes]		boolean	 Set this if the column is created by a teacher. The gradebook only supports one teacher_notes column.
-
-    url = "{0}/courses/{1}/custom_gradebook_columns".format(baseUrl,course_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-    payload={'column[title]': column_name,
-             'column[hidden]': False
-             }
-    r = requests.post(url, headers = header, data=payload)
-    if r.status_code == requests.codes.ok:
-        if Verbose_Flag:
-            print("result of post creating custom column:  {}".format(r.text))
-            page_response=r.json()
-            print("inserted column")
-        return True
-    return False
-
-def unhide_column_name(course_id, column_name):
-    global Verbose_Flag
-
-    # Use the Canvas API to Create a custom gradebook column
-    # POST /api/v1/courses/:course_id/custom_gradebook_columns
-    #   Create a custom gradebook column
-    # Request Parameters:
-    #Parameter		Type	Description
-    #column[title]	Required	string	no description
-    #column[position]		integer	The position of the column relative to other custom columns
-    #column[hidden]		boolean	Hidden columns are not displayed in the gradebook
-    # column[teacher_notes]		boolean	 Set this if the column is created by a teacher. The gradebook only supports one teacher_notes column.
-
-    url = "{0}/courses/{1}/custom_gradebook_columns".format(baseUrl,course_id)
-    if Verbose_Flag:
-        print("url: {}".format(url))
-    payload={'column[title]': column_name,
-             'column[hidden]': False
-             }
-    r = requests.put(url, headers = header, data=payload)
-    if r.status_code == requests.codes.ok:
-        if Verbose_Flag:
-            print("result of PT updating custom column:  {}".format(r.text))
-            page_response=r.json()
-            print("inserted column")
-        return True
-    return False
 
 
 verbose = False # Global flag for verbose prints
@@ -916,6 +699,9 @@ def main(argv):
         pprint.pprint(gradebook, indent=4)
     print("number of users in gradebook={0}".format(len(gradebook)))
 
+    grades_to_report_in_ladok=dict() # keep track of the grades for assignments to be reportedin LADOK
+    # The grades will be a dict of integration_id and grade under the short name for the assigment
+
     er_due_date=assignment_due_date('ER')
     pe_due_date=assignment_due_date('PE')
     erh_due_date=assignment_due_date('ERH')
@@ -964,7 +750,6 @@ def main(argv):
 
         # Example of assigning a grade for a student who has passed all for assignments
         if er_grade and pe_grade and erh_grade and susd_grade and gradebook[s]['assignments']['PRO1'] != 'P':
-            assign_grade('PRO1', s, 'P', 'test grade assignment')
 
             # Example of getting a value from a custom column
             s_note=gradebook[s]['notes']
@@ -986,9 +771,12 @@ def main(argv):
                     data_to_store="Data ready for LADOK as of {}".format(last_submission_date)
                     put_custom_column_entries(custom_columns, 'Notes', gradebook[s]['canvas_id'], data_to_store)
                     gradebook[s]['notes']=data_to_store
-                    if s == '8e51e001-b973-11eb-b259-d618d1cb4077': # for testing
+                    assign_grade('PRO1', gradebook[s]['canvas_id'], 'P', 'test grade assignment')
+                    if not grades_to_report_in_ladok.get('PRO1', False):
+                        grades_to_report_in_ladok['PRO1']=dict()
+                    grades_to_report_in_ladok['PRO1'].update({s: {'grade': 'P', 'date': last_submission_date}})
+                    if s == '20269173-5a97-11e8-9dae-241de8ab435c': # for testing
                         break
-                    
 
         # Example of processing the date of the submssion and checking the assignment's due date
         #
@@ -1002,7 +790,8 @@ def main(argv):
                 print("early submission by {0}".format(er_early_submission))
 
 
-
+    print("grades_to_report_in_ladok:")
+    pprint.pprint(grades_to_report_in_ladok, indent=4)
     return                      # gqmjr for testing - qqq
 
     if verbose:
@@ -1050,45 +839,8 @@ def main(argv):
 
     print(f'gradable_students_in_course={gradable_students_in_course}')
     return                      # gqmjr for testing
-    grade_feed=list_gradebook_history_feed()
-    print("length of grade_feed={0}".format(len(grade_feed)))
-    if Verbose_Flag:
-        print("grade_feed={0}".format(grade_feed))
 
 
-    for e in grade_feed:
-        if Verbose_Flag:
-            pprint.pprint(e, indent=4)
-            print("{0}, {1}, {2}, {3}, {4}, {5}".format(e['user_id'], e['user_name'], e['assignment_id'], e['attempt'], e['submitted_at'], e['entered_score']))
-        gradebook_entry=gradebook.get(e['user_id'], False)
-        if not gradebook_entry:
-            gradebook_entry={'user_name': e['user_name'],
-                             'assignments': {},
-                             }
-
-        s_assignments=gradebook_entry.get('assignments', False)
-        if not s_assignments:
-            s_assignments=dict()
-    
-        this_assignment=s_assignments.get(e['assignment_id'], False)
-        if this_assignment:
-            print("previous value for assignment={}".format(this_assignment))
-            if Verbose_Flag:
-                print("keep previous value for assignment={}".format(this_assignment))
-            continue # added by Viggo 2021-05-30
-
-
-        s_assignments[e['assignment_id']]={'attempt': e['attempt'],
-                                           'submitted_at': e['submitted_at'],
-                                           'entered_score': e['entered_score']
-                                           }
-
-        gradebook[e['user_id']]={'user_name': e['user_name'],
-                                 'assignments': s_assignments,
-                                 }
-
-        if Verbose_Flag:
-            print("gradebook[{0}]={1}".format(e['user_id'], gradebook[e['user_id']]))
 
 
 
