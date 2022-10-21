@@ -87,6 +87,9 @@ global payload	# place to store additionally payload when needed for options to 
 def assignment_short_name_given_name(name):
     global assignments
     for a in assignments:
+        if not a.published: # skip unpublished assignments
+            continue
+
         if a.name == name:
             return a.short_name
     return None
@@ -94,6 +97,9 @@ def assignment_short_name_given_name(name):
 def points_possible(short_name):
     global assignments
     for a in assignments:
+        if not a.published: # skip unpublished assignments
+            continue
+
         if a.short_name == short_name:
             return a.points_possible
     return None
@@ -101,6 +107,9 @@ def points_possible(short_name):
 def assignment_given_short_name(short_name):
     global assignments
     for a in assignments:
+        if not a.published: # skip unpublished assignments
+            continue
+
         if a.short_name == short_name:
             return a
     return None
@@ -108,6 +117,9 @@ def assignment_given_short_name(short_name):
 def assignment_due_date(short_name):
     global assignments
     for a in assignments:
+        if not a.published: # skip unpublished assignments
+            continue
+
         if a.short_name == short_name:
             return isodate.parse_datetime(a.due_at)
     return None
@@ -115,6 +127,9 @@ def assignment_due_date(short_name):
 def assignment_grading_type(short_name):
     global assignments
     for a in assignments:
+        if not a.published: # skip unpublished assignments
+            continue
+
         if a.short_name == short_name:
             return a.grading_type
     return None
@@ -128,6 +143,9 @@ def grading_type_points(short_name):
 def assignment_grading_standard_id(short_name):
     global assignments
     for a in assignments:
+        if not a.published: # skip unpublished assignments
+            continue
+
         if a.short_name == short_name:
             return a.grading_standard_id
     return None
@@ -366,7 +384,7 @@ def t2l_get_grades_for_an_assignment(course_id, assignment_id) -> dict:
         return None
 
 
-def t2l_send_grades_for_an_assignment(course_id, assignment_id, results_list, aktivitetstillfalle=None) -> dict:
+def t2l_send_grades_for_an_assignment(course_id, results_list, aktivitetstillfalle=None, kurstillfalle=None, utbildningsinstans=None) -> dict:
     global headers
     global t2l_root_url
     url = f'{t2l_root_url}/transfer-to-ladok/api/courses/{course_id}/ladok-grades'
@@ -391,9 +409,36 @@ def t2l_send_grades_for_an_assignment(course_id, assignment_id, results_list, ak
     #         }
     #     ]
     # }
+    #
+    # for a project with titles:
+    # {
+    # "destination": {
+    #     "kurstillfalle": "3e39abe3-4945-11eb-bec3-d5a2938f4dea",
+    #     "utbildningsinstans": "25d1da5e-73d8-11e8-b4e0-063f9afb40e3"
+    # },
+    # "results": [
+    #     {
+    #         "id": "713ca6c3-5c18-11e7-82f8-4a99985b4246",
+    #         "draft": {
+    #             "grade": "P",
+    #             "examinationDate": "2022-05-05",
+    #             "projectTitle": {
+    #                 "title": "Proposals for Little Flower",
+    #                 "alternativeTitle": "Alt alt"
+    #             }
+    #         }
+    #     }
+    # ]
+    # }
+
     payload={}
     if aktivitetstillfalle:
         payload['destination']={'aktivitetstillfalle': aktivitetstillfalle}
+    if kurstillfalle:
+        payload['kurstillfalle']=kurstillfalle
+    if utbildningsinstans:
+        payload['utbildningsinstans']=utbildningsinstans
+
     payload['results']={'results': results_list}
 
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -537,7 +582,9 @@ def main(argv):
         if not a.published: # skip unpublished assignments
             continue
         if a.id == 146887 or a.name == 'Ethical Research (with quiz)' or a.name == 'Ethical Research - quiz':
+            print("found ER")
             a.set_attributes({'short_name': 'ER'})
+            print("a.short_name={}".format(a.short_name))
 
         if a.id == 146888 or a.name == 'Professionalism and Ethics for ICT students (with quiz)' or a.name == 'Professionalism and Ethics for ICT students - quiz':
             print("found PE")
@@ -545,17 +592,28 @@ def main(argv):
             print("a.short_name={}".format(a.short_name))
 
         if a.id == 146885 or a.name == 'Ethical Research: Human Subjects and Computer Issues (with quiz)' or a.name == 'Ethical Research: Human Subjects and Computer Issues - quiz':
+            print("found ERH")
             a.set_attributes({'short_name': 'ERH'})
+            print("a.short_name={}".format(a.short_name))
 
         if a.id == 146886 or a.name == 'Sustainable Development/Hållbar Utveckling (with quiz)' or a.name == 'Sustainable Development/Hållbar Utveckling - quiz':
+            print("found SUSD")
             a.set_attributes({'short_name': 'SUSD'})
+            print("a.short_name={}".format(a.short_name))
 
-        if a.id == 146889 or a.name == 'LADOK - PRO1 (Onlinequiz)' or a.name == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
+        if a.id == 146889 or a.name == 'LADOK - PRO1 (Onlinequiz)':       # the moment to report to LADOK
+            print("found PRO1")
             a.set_attributes({'short_name': 'PRO1'})
+            print("a.short_name={}".format(a.short_name))
 
     if verbose or testing:
         print("Short name")
         for a in assignments:
+            if not a.published: # skip unpublished assignments
+                continue
+
+            for attribute, value in a.__dict__.items():
+                print(attribute, '=', value)
             print(f'{a.id}: {a.short_name} is {a.name}')
 
     # sections=course.get_sections()
@@ -585,23 +643,25 @@ def main(argv):
         current_grades=t2l_get_grades_for_an_assignment(course_id, assignment['id'])
         print(f"{assignment['name']}: {current_grades}")
         assignment_short_name=assignment_short_name_given_name(assignment['name'])
-        for g in current_grades:
-            student=g['student']
-            if verbose:
-                print("id={0}".format(student['id']))
-                print("sortableName={0}".format(student['sortableName']))
-                print("grade={0}".format(g['grade']))
-                print("submittedAt={0}".format(g['submittedAt']))
-            # check for matching sortable name
-            if student['sortableName'] == gradebook[student['id']]['user_name']:
-                if g['submittedAt']:
-                    gradebook[student['id']]['assignments'][assignment_short_name]={'grade': g['grade'], 'submittedAt': g['submittedAt']}
-                elif g['gradedAt']:
-                    gradebook[student['id']]['assignments'][assignment_short_name]={'grade': g['grade'], 'submittedAt': g['gradedAt']}
-                else:
-                    print("error in entry for {} no submittedAt or gradedAt information".format(student['sortableName']))
-            else:
-                print("error in gradebook entry  {0} names do not match: {1} {2}".format(student['id'], student['sortableName'],  gradebook[student['id']]['user_name']))
+        if assignment_short_name:
+            for g in current_grades:
+                student=g['student']
+                if g['grade']:
+                    if verbose:
+                        print("id={0}".format(student['id']))
+                        print("sortableName={0}".format(student['sortableName']))
+                        print("grade={0}".format(g['grade']))
+                        print("submittedAt={0}".format(g['submittedAt']))
+                    # check for matching sortable name
+                    if student['sortableName'] == gradebook[student['id']]['user_name']:
+                        if g['submittedAt']:
+                            gradebook[student['id']]['assignments'][assignment_short_name]={'grade': g['grade'], 'submittedAt': g['submittedAt']}
+                        elif g['gradedAt']:
+                            gradebook[student['id']]['assignments'][assignment_short_name]={'grade': g['grade'], 'submittedAt': g['gradedAt']}
+                        else:
+                            print("error in entry for {} no submittedAt or gradedAt information".format(student['sortableName']))
+                    else:
+                        print("error in gradebook entry  {0} names do not match: {1} {2}".format(student['id'], student['sortableName'],  gradebook[student['id']]['user_name']))
 
     if verbose:
         print("updated gradebook")
@@ -792,7 +852,6 @@ def main(argv):
 
     print("grades_to_report_in_ladok:")
     pprint.pprint(grades_to_report_in_ladok, indent=4)
-    return                      # gqmjr for testing - qqq
 
     if verbose:
         print("calling t2l_get_sections()")
@@ -839,10 +898,6 @@ def main(argv):
 
     print(f'gradable_students_in_course={gradable_students_in_course}')
     return                      # gqmjr for testing
-
-
-
-
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))

@@ -486,19 +486,17 @@ def main():
 
     initialize(options)
 
-    if (len(remainder) < 3):
+    if (len(remainder) < 3 and not options.early):
         print("Insuffient arguments - must provide course_id start_date end_date")
     else:
         course_id=remainder[0]
-        start_date=remainder[1]
-        end_date=remainder[2]
 
         # create the following additional custom columns
         # if you change the names of these columns, be sure to change the strings later in the code
         columns_to_add=["Oral presentation date/time",
                         "title",
                         "opponent",
-	                "written opposition (by opponents)",
+	                "written opposition notes (by opponents)",
 	                "questions from opponent",
                         "notes on presentation",
                         "presentation grade",
@@ -570,6 +568,9 @@ def main():
 
         if options.early:       # do not process the calendar
             return
+
+        start_date=remainder[1]
+        end_date=remainder[2]
 
         # get group information
         groups=list_groups_in_course(course_id)

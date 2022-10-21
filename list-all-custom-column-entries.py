@@ -92,8 +92,8 @@ def list_custom_column_entries(course_id, column_number):
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
-            r = requests.get(r.links['next']['url'], headers=header)  
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)
             page_response = r.json()  
             for p_response in page_response:  
                 entries_found_thus_far.append(p_response)
@@ -122,8 +122,8 @@ def list_custom_columns(course_id):
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
-            r = requests.get(r.links['next']['url'], headers=header)  
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)
             page_response = r.json()  
             for p_response in page_response:  
                 columns_found_thus_far.append(p_response)
@@ -155,8 +155,8 @@ def users_in_course(course_id):
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
-            r = requests.get(r.links['next']['url'], headers=header)  
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)
             page_response = r.json()  
             for p_response in page_response:  
                 users_found_thus_far.append(p_response)
@@ -190,8 +190,8 @@ def sections_in_course(course_id):
         # the following is needed when the reponse has been paginated
         # i.e., when the response is split into pieces - each returning only some of the list of modules
         # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
-        while r.links['current']['url'] != r.links['last']['url']:  
-            r = requests.get(r.links['next']['url'], headers=header)  
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)
             page_response = r.json()  
             for p_response in page_response:  
                 sections_found_thus_far.append(p_response)
@@ -381,7 +381,7 @@ def main():
         new_merge_df.to_excel(writer, sheet_name='Custom_Columns_with_name')
 
         # Close the Pandas Excel writer and output the Excel file.
-        writer.save()
+        writer.close()
     else:
         print("There were no custom columns")
 
