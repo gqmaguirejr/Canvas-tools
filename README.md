@@ -2559,6 +2559,25 @@ Outputs an xlsx file of the form containing all of the custom columns: gradebook
 The first column of the output will be user_id.
 The second sheet "Gradebook_history" will contain all of the gradebook entries made for the course
 
+## list_groups_in_course.py
+
+### Purpose
+Output spreadsheet of groups in a course 
+
+### Input
+```bash
+./list_groups_in_course.py course_id
+```
+
+### Output
+outputs a spreadsheet
+
+### Example
+
+```bash
+./list_groups_in_course.py 34871
+```
+
 <!-- 
 
 ## xxx.py
