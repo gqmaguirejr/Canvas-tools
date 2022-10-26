@@ -2609,7 +2609,7 @@ group category, i.e., the name of the group set.
 ### Example
 
 ```bash
-# ./list_groups_in_course.py 34871
+./list_groups_in_course.py 34871
 ```
 
 <!-- 
