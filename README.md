@@ -2592,8 +2592,7 @@ Put the group names into a custom column (based on the group set name) in the gr
 updates the gradebook
 
 ### Note 
-Uses a file with a name of the form: short_group_names-in-ddddd.json where ddddd is the course_id
-that contains a struct of the form:
+When the program is run with the "--short" option, the program uses a file with a name of the form: short_group_names-in-ddddd.json where ddddd is the course_id that contains a struct of the form:
 ```python
  {"Chip Maguire's section": {"base_for_group_names": "Chip", "number_of_groups_to_make": 1, "shorted_group_name": "CM"},
   "Dropped the course": {"base_for_group_names": null, "number_of_groups_to_make": 0, "shorted_group_name": null},
