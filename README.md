@@ -2578,6 +2578,40 @@ outputs a spreadsheet
 ./list_groups_in_course.py 34871
 ```
 
+## add_groups_to_gradebook_course.py course_id
+
+### Purpose
+Put the group names into a custom column in the gradebook. This makes it easier for the examiner to sort the students by group (simply selected the column and type "s").
+
+### Input
+```bash
+./add_groups_to_gradebook_course.py course_id
+```
+
+### Output
+updates the gradebook
+
+### Note 
+Uses a file with a name of the form: short_group_names-in-ddddd.json where ddddd is the course_id
+that contains a struct of the form:
+```python
+ {"Chip Maguire's section": {"base_for_group_names": "Chip", "number_of_groups_to_make": 1, "shorted_group_name": "CM"},
+  "Dropped the course": {"base_for_group_names": null, "number_of_groups_to_make": 0, "shorted_group_name": null},
+ ...
+ }
+```
+
+This information is used to provide the ability to name section names to base names for groups and shorted group names.
+The shortened group names are entered into a custom column in the gradebook. The name of this column is based on the
+group category, i.e., the name of the group set.
+
+
+### Example
+
+```bash
+# ./list_groups_in_course.py 34871
+```
+
 <!-- 
 
 ## xxx.py
