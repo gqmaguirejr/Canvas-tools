@@ -2578,10 +2578,10 @@ outputs a spreadsheet
 ./list_groups_in_course.py 34871
 ```
 
-## add_groups_to_gradebook_course.py course_id
+## add_groups_to_gradebook_course.py
 
 ### Purpose
-Put the group names into a custom column in the gradebook. This makes it easier for the examiner to sort the students by group (simply selected the column and type "s").
+Put the group names into a custom column (based on the group set name) in the gradebook. This makes it easier for the examiner to sort the students by group (simply selected the column and type "s").
 
 ### Input
 ```bash
