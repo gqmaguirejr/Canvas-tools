@@ -217,6 +217,72 @@ def student_name_from_id(id, students_info):
             return s['user']['name']
     return ''
 
+def list_groups_in_course(course_id):
+    groups_found_thus_far=[]
+
+    # Use the Canvas API to get the list of groups for the course
+    # GET /api/v1/courses/:course_id/groups
+
+    url = "{0}/courses/{1}/groups".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting groups: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            groups_found_thus_far.append(p_response)
+
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        if 'link' in r.headers:
+            while r.links.get('next', False):
+                r = requests.get(r.links['next']['url'], headers=header)  
+                page_response = r.json()  
+                for p_response in page_response:  
+                    groups_found_thus_far.append(p_response)
+
+    return groups_found_thus_far
+
+def list_group_categories_in_course(course_id):
+    group_categories_found_thus_far=[]
+
+    # Use the Canvas API to get the list of groups for the course
+    #List group categories for a contextGroupCategoriesController#index
+    #GET /api/v1/courses/:course_id/group_categories
+
+    url = "{0}/courses/{1}/group_categories".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting groups: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            group_categories_found_thus_far.append(p_response)
+
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+        if 'link' in r.headers:
+            while r.links.get('next', False):
+                r = requests.get(r.links['next']['url'], headers=header)  
+                page_response = r.json()  
+                for p_response in page_response:  
+                    group_categories_found_thus_far.append(p_response)
+
+    return group_categories_found_thus_far
+
+
 def main():
     global Verbose_Flag
 
@@ -271,27 +337,14 @@ def main():
 
     course_groups={}
     groups_per_student=dict()   # per student list of group names
- 
-    for g in groups:
-        g_id=g['id']
-        g_name=g['name']
-        if g['members_count'] > 0:
-            members=members_of_groups(g_id)
-            member_ids=[x['id'] for x in members]
-            course_groups[g_id]={'name': g_name,
-                                 'members_count': g['members_count'],
-                                 'member_ids': member_ids,
-                                 'members': members}
-            for m_id in member_ids:
-                cgroups=groups_per_student.get(m_id, None)
-                if cgroups:
-                    groups_per_student[m_id]=cgroups.append(g_name)
-                else:
-                    groups_per_student[m_id]=[g_name]
 
+    group_categories=list_group_categories_in_course(course_id)
     if Verbose_Flag:
-        print("course_groups={}".format(course_groups))
-        print(f'{groups_per_student=}')
+        print(f"{group_categories=}")
+    group_categories_names_by_id=dict()
+
+    for gc in group_categories:
+        group_categories_names_by_id[gc['id']]=gc['name']
 
     if (students):
         students_df=pd.json_normalize(students)
@@ -361,6 +414,19 @@ def main():
 
         # shift the position of the 'Section_name' column
         students_df.insert(2, 'Section_name', students_df.pop('Section_name'))
+
+        for g in groups:
+            g_id=g['id']
+            g_name=g['name']
+            g_category=g['group_category_id']
+            g_category_name=group_categories_names_by_id.get(g_category)
+            if g['members_count'] > 0:
+                members=members_of_groups(g_id)
+                member_ids=[x['id'] for x in members]
+                for m_id in member_ids:
+                    students_df.loc[students_df.user_id == m_id, g_category_name] = g_name
+
+
     # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
     # set up the output write
     writer = pd.ExcelWriter(f'groups-in-{course_id}.xlsx', engine='xlsxwriter')
