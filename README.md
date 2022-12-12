@@ -2611,6 +2611,20 @@ group category, i.e., the name of the group set.
 ./list_groups_in_course.py 34871
 ```
 
+## get_degree_project_course_ids.py
+
+### Purpose
+To create an XLSX spreadsheet with degree course_id for courses in the accounts I can manage
+
+### Input
+```bash
+./get_degree_project_course_ids.py
+```
+
+### Output
+outputs a file names "accounts_I_can_manage.xlsx"
+
+
 <!-- 
 
 ## xxx.py
