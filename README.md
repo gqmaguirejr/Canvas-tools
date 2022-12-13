@@ -2624,6 +2624,31 @@ To create an XLSX spreadsheet with degree course_id for courses in the accounts 
 ### Output
 outputs a file names "accounts_I_can_manage.xlsx"
 
+## get_submissions_with_comments_for_section.py
+
+### Purpose
+To get the set of comments made on submission for a specific section.
+
+### Input
+```bash
+./get_submissions_with_comments_for_section.py  section_id assignment_id
+```
+
+### Output
+The ouput in verbose mode is a pprint output of the results returned by the API call.
+
+### Note 
+
+### Example
+
+```bash
+./get_submissions_with_comments_for_section.py -p 50124 200752
+```
+
+You can xxxx, for example:
+```
+
+```
 
 <!-- 
 
