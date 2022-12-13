@@ -2627,27 +2627,39 @@ outputs a file names "accounts_I_can_manage.xlsx"
 ## get_submissions_with_comments_for_section.py
 
 ### Purpose
-To get the set of comments made on submission for a specific section.
+To get the set of comments made on submission for a specific section in a course.
 
 ### Input
 ```bash
-./get_submissions_with_comments_for_section.py  section_id assignment_id
+./get_submissions_with_comments_for_section.py  section_id assignment_id course_id
 ```
 
 ### Output
 The ouput in verbose mode is a pprint output of the results returned by the API call.
 
-### Note 
+### Example
+
+```bash
+./get_submissions_with_comments_for_section.py 50124 200752 34870
+```
+
+## get_submissions_with_comments.py
+
+### Purpose
+To get the set of comments made on submissions for an assignment in a course..
+
+### Input
+```bash
+.get_submissions_with_comments.py course_:d assignment_id
+```
+
+### Output
+The ouput in verbose mode is a pprint output of the results returned by the API call.
 
 ### Example
 
 ```bash
-./get_submissions_with_comments_for_section.py -p 50124 200752
-```
-
-You can xxxx, for example:
-```
-
+./get_submissions_with_comments.py 34870 200752 
 ```
 
 <!-- 
