@@ -216,7 +216,9 @@ def main():
                      'user.sis_user_id', 'user.integration_id', 'user.login_id']
 
     users_df.drop(columns_to_drop,inplace=True,axis=1)
-    users_df.to_excel(writer, sheet_name='Users')
+    # eliminate duplicate row (as the user is enroled one for each section they are in)
+    users_df=users_df.drop_duplicates(subset=['user_id', 'user.sortable_name'])
+    #users_df.to_excel(writer, sheet_name='Users')
 
     merge_df = pd.merge(comments_info_df, users_df, on='user_id')
     merge_df.to_excel(writer, sheet_name='Merged')
