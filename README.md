@@ -2631,7 +2631,7 @@ To get the set of comments made on submission for a specific section in a course
 
 ### Input
 ```bash
-./get_submissions_with_comments_for_section.py  section_id assignment_id course_id
+./get_submissions_with_comments_for_section.py  course_id section_id assignment_id
 ```
 
 ### Output

@@ -26,6 +26,9 @@
 #
 # based on earlier program insert_teachers_grading_standards.py
 #
+# 2022-12-17 change from using sis_section_id to using section 'name', such as 'DA231X VT23 (TCSCM-p3)',
+# do to the change in the way that KTH is handling the names of sections and the use os sis_section_ids.
+#
 
 import csv, requests, time
 import pprint
@@ -244,9 +247,9 @@ def main():
 
     course_codes=set()
     for s in sections:
-        sis_section_id=s['sis_section_id'] 
-        if sis_section_id and sis_section_id[5] =='X':
-            course_codes.add(sis_section_id[0:6])
+        section_name=s['name'] 
+        if section_name and section_name[5] =='X':
+            course_codes.add(section_name[0:6])
 
     pp.pprint(course_codes)
 

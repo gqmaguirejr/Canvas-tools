@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
-# ./add_groups_to_gradebook_course.py course_id
+# ./add_groups_to_gradebook_course.py [-s] course_id
 #
 # updates the gradebook with information about the groups in a course
 #
@@ -556,6 +556,7 @@ def main():
     course_groups={}
     groups_per_student=dict()   # per student list of group names
  
+    print("Starting to process the groups")
     for g in groups:
         g_id=g['id']
         g_name=g['name']
@@ -568,6 +569,7 @@ def main():
                                  'members_count': g['members_count'],
                                  'member_ids': member_ids,
                                  'members': members}
+
             for m_id in member_ids:
                 cgroups=groups_per_student.get(m_id, None)
                 if cgroups:
@@ -577,7 +579,7 @@ def main():
                 if g_category_name:
                     column_number=lookup_column_number(g_category_name, list_of_columns)
                     if short_group_names:
-                        # computer short name for group
+                        # compute short name for group
                         sg_name=g_name.split(' group ')
                         short_group_name=shorted_group_name_from_base(sg_name[0], short_group_names)
                         if short_group_name:
