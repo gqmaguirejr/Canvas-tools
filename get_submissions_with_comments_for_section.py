@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./get_submissions_with_comments_for_section.py  section_id assignment_id
+# ./get_submissions_with_comments_for_section.py  course_id section_id assignment_id
 #
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
-# ./list_your_courses.py --config config-test.json
+# ./get_submissions_with_comments_for_section.py --config config-test.json  section_id assignment_id
 #
 # Example
 # ./get_submissions_with_comments_for_section.py  50124 200752 34870
