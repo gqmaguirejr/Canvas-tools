@@ -2662,6 +2662,59 @@ The ouput in verbose mode is a pprint output of the results returned by the API 
 ./get_submissions_with_comments.py 34870 200752 
 ```
 
+## get_PDF_submissions_with_comments_by_course_codes.py
+
+### Purpose
+The program assumes that the courses codes are part of the name of a section. It uses this information
+to retrieve the submissions for a given assignment_id for all students in the relevant section or sections.
+
+### Input
+```bash
+./get_PDF_submissions_with_comments_by_course_codes.py  course_id assignment_id course_code+
+```
+
+### Output
+Outputs a file with a name of the form: 'submission_comments-{course_id}-{section_id}-{assignment_id}.xlsx'
+ 
+### Note 
+With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+
+With option "-m" or "--missing" lists the names of students who have made submissions but are not students in the relevant sections (generally this is due to test students)
+
+With option "-" or "--testing" does not fetch the summited files
+
+With option "-d" or "--dir" you can specify the directory to create otherwise it use a constructed anem
+of the form: './Submission-{course_id}-{section_id}-{assignment_id}'
+
+It fetches the files at a rate of about one per second in the test environment (actually 53 in 60 seconds).
+
+### Example
+
+Can be called with an alternative configuration file:
+```bash
+./get_PDF_submissions_with_comments_by_course_codes.py --config config-test.json  section_id course_code+
+```
+
+```bash
+./get_PDF_submissions_with_comments_by_course_codes.py --config config-test.json  33514 179168 DA231X "DA232X VT22"
+```
+
+#### Example outputs
+```bash
+./get_PDF_submissions_with_comments_by_course_codes.py --config config-test.json  33514 179168 DA231X "DA232X VT22"
+Configuration file : config-test.json
+Course codes to be processed: ['DA231X', 'DA232X VT22']
+processing section DA231X HT22 (TCSCM-p1)
+processing section DA231X HT22 (TCSCM-p2)
+processing section DA231X VT22 (60129)
+processing section DA231X VT22 (60132)
+processing section DA232X VT22 (60555)
+Creating directory: ./Submission-33514-38550-179168
+Writing file ./Submission-33514-38550-179168/YYYYMMDDTHHMMSS-lastanem__firstname-xxxx.pdf
+...
+```
+
+
 <!-- 
 
 ## xxx.py
