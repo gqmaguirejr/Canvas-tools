@@ -9,7 +9,7 @@
 # Output: using assignment 'Course code' as the administrative data to do assign course codes as grades
 # 	Added the course code (using the Course Code grading scale) based in the SIS section that each student is in
 #
-# This program uses the fact that the sis_section_id starts with the course code, i.e.
+# This program uses the fact that the section name starts with the course code, i.e.
 #    sis_section_id[5] =='X' and (sis_section_id[2] == '1' or sis_section_id[2] == '2')
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
@@ -30,6 +30,8 @@
 # based on earlier add_students_to_examiners_section_in_course.py
 #
 # 2021.02.14
+#
+# 2023-01-15 modified to deal with the change in the use of the sis_section_id.
 #
 
 import requests, time
@@ -315,9 +317,9 @@ def main():
 
     course_codes=set()
     for s in sections:
-        sis_section_id=s['sis_section_id'] 
-        if sis_section_id and sis_section_id[5] =='X' and (sis_section_id[2] == '1' or sis_section_id[2] == '2'):
-            course_code=sis_section_id[0:6]
+        section_name=s['name'] 
+        if section_name and section_name[5] =='X' and (section_name[2] == '1' or section_name[2] == '2'):
+            course_code=section_name[0:6]
             course_codes.add(course_code)
             section_to_course_code_mapping[s['id']]=course_code
 
@@ -353,17 +355,16 @@ def main():
         if e['type'] == 'StudentEnrollment':
             students_userid=e['user_id']
             student_ids.add(students_userid)
-            sis_section_id=e['sis_section_id']
-            if sis_section_id:
+            course_section_id=e['course_section_id']
+            if course_section_id:
                 number_of_students_processed=number_of_students_processed+1
                 if options.testing and number_of_students_processed > 10:
                     break
 
-                course_section_id=e['course_section_id']
                 students_name=e['user']['sortable_name']
 
                 if Verbose_Flag:
-                    print("{0}: {1} {2}".format(students_name, sis_section_id, course_section_id))
+                    print("{0}: {1}".format(students_name, course_section_id))
 
                 course_code=section_to_course_code_mapping.get(course_section_id, False)
                 if course_code:
