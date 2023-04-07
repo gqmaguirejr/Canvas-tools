@@ -2714,6 +2714,26 @@ Writing file ./Submission-33514-38550-179168/YYYYMMDDTHHMMSS-lastanem__firstname
 ...
 ```
 
+## get_students_submissions_with_comments.py
+
+### Purpose
+To output the informaiton abotu a student's submission - specifically the file name(s), date, and size(s)
+
+### Input
+```bash
+./get_students_submissions_with_comments.py course_:d assignment_id user_id
+```
+
+### Output
+outputs:
+filename: xxxx.pdf, type=pdf, date=xxxx, size=xxxxx
+filename: xxxx.mp4, type=video, date=xxxx, size=xxxxx
+
+with the "-p" option it outputs the full response from the API call
+
+Note:
+If the user_id is not provided it defaults to "self", i.e., the user makiing the request.
+
 
 <!-- 
 
