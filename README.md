@@ -2731,6 +2731,16 @@ filename: xxxx.pdf, type=pdf, date=xxxx, size=xxxxx
 filename: xxxx.mp4, type=video, date=xxxx, size=xxxxx
 ```
 
+Another example:
+```bash
+./get_students_submissions_with_comments.py 11 50 122918
+filename: Simple_test_document.docx, type=doc, date=2023-04-07T12:06:55Z, size=12944
+filename: Simple_test_document.pdf, type=pdf, date=2023-04-07T12:07:15Z, size=194952
+comment: author=Gerald Quentin Maguire Jr), date=2023-04-07T12:03:10Z, comment=A simple comment and the simple test document.
+comment: author=Gerald Quentin Maguire Jr), date=2023-04-07T12:08:54Z, comment=A new comment on the combined submission. ♼
+```
+
+
 with the "-p" option it outputs the full response from the API call
 
 Note:

@@ -10,7 +10,10 @@
 # ./list_your_courses.py --config config-test.json
 #
 # Example getting your own submission:
-# ./get_students_submissions_with_comments.py 34870 200752 self
+# ./get_students_submissions_with_comments.py 11 50 self
+#
+# Another example:
+# ./get_students_submissions_with_comments.py 11 50 122918
 #
 # G. Q. Maguire Jr.
 #
