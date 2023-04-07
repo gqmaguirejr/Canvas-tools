@@ -2726,8 +2726,10 @@ To output the informaiton abotu a student's submission - specifically the file n
 
 ### Output
 outputs:
+```bash
 filename: xxxx.pdf, type=pdf, date=xxxx, size=xxxxx
 filename: xxxx.mp4, type=video, date=xxxx, size=xxxxx
+```
 
 with the "-p" option it outputs the full response from the API call
 
