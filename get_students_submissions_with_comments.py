@@ -115,6 +115,13 @@ def main():
     parser.add_option("--config", dest="config_filename",
                       help="read configuration from FILE", metavar="FILE")
 
+    parser.add_option('-C', '--containers',
+                      dest="containers",
+                      default=False,
+                      action="store_true",
+                      help="for the container enviroment in the virtual machine"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -144,8 +151,15 @@ def main():
     if options.print:
         pprint.pprint(comments_info)
     for s in comments_info:
-        attachments=s['attachments']
+        attachments=s.get('attachments', [])
         for a in attachments:
             print("filename: {0}, type={1}, date={2}, size={3}".format(a['filename'], a['mime_class'], a['created_at'], a['size']))
+        submssion_comments=s['submission_comments']
+        for sc in submssion_comments:
+            sc_attachements=sc.get('attachments', [])
+            for sca in sc_attachements:
+                print("filename: {0}, type={1}, date={2}, size={3}".format(sca['filename'], sca['mime_class'], sca['created_at'], sca['size']))              
+            print("comment: author={0}), date={1}, comment={2}".format(sc['author_name'], sc['created_at'], sc['comment']))
+
 
 if __name__ == "__main__": main()
