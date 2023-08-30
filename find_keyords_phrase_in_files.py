@@ -43,9 +43,19 @@ import pandas as pd
 def get_text_for_tag(document, tag, dir):
     tag_xpath='.//'+tag
     text_dir=tag+'_text'
+
+    # remove all inline-ref and dont-index spans
+
+    # remove span class="inline-ref">
+    for bad in document.xpath("//span[contains(@class, 'inline-ref')]"):
+        bad.getparent().remove(bad)
+
+    # remove span class="dont-index">
+    for bad in document.xpath("//span[contains(@class, 'dont-index')]"):
+        bad.getparent().remove(bad)
+
     tmp_path=document.xpath(tag_xpath)
     if tmp_path:
-        # remove all inline-ref and dont-index spans
         tmp=[item.text for item in tmp_path]
         tmp[:] = [item for item in tmp if item != None and item != "\n"]
         if tmp:
@@ -57,6 +67,8 @@ def remove_tag(document, tag):
         bad.getparent().remove(bad)
 
 def remove_inline_and_dont_index_tags(str1):
+    if str1 is None:
+        return ""
     if len(str1)== 0:
         return ""
     document2 = html.document_fromstring(str1)
@@ -188,7 +200,7 @@ def process_page(page_name, page, remove):
     #         d['list_item_text']=tmp
     get_text_for_tag(document, 'li', d)
 
-    # get table cells and headings - not that a empty cell will return a value of null
+    # get table cells and headings - note that a empty cell will return a value of null
     # note that we ignore tr, thead, tbody, and table - as we are only interested in the contents of the table or its caption
     # tmp_path=document.xpath('.//caption')
     # if tmp_path:

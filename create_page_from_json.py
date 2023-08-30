@@ -1025,8 +1025,10 @@ def main():
         with open(course_words_file, encoding='utf-8') as json_file:
             try:
                 course_words=json.load(json_file)
-            except:
+            except Exception as e:
+                print("Error is {0}: {1}".format(e.message, e.args))
                 print("Error in reading JSON file")
+
 
     except:
         #print("Unable to open file named {}".format(course_words_file))
@@ -1035,8 +1037,17 @@ def main():
         course_words['words_to_ignore']=[] # empty list
         course_words['words_to_merge']=[]
 
-    print("length of course_words['words_to_ignore']={}".format(len(course_words['words_to_ignore'])))
-    print("length of course_words['words_to_merge']={}".format(len(course_words['words_to_merge'])))
+    if not course_words.get('words_to_ignore'):
+        print("Error in words_to_ignore")
+        return
+    else:
+        print("length of course_words['words_to_ignore']={}".format(len(course_words['words_to_ignore'])))
+
+    if not course_words.get('words_to_merge'):
+        print("Error in words_to_merge")
+        return
+    else:
+        print("length of course_words['words_to_merge']={}".format(len(course_words['words_to_merge'])))
     
 
     if Verbose_Flag:
@@ -1277,6 +1288,15 @@ def main():
     # the casefold sorts upper and lower case together, but gives a stable result
     # see Christian Tismer, Sep 13 '19 at 12:15, https://stackoverflow.com/questions/13954841/sort-list-of-strings-ignoring-upper-lower-case
     for words in sorted(page_entries_in_language_of_course.keys(), key=lambda v: (v.casefold(), v)):
+        if words == "\u200f":   # this is from a "&lrm;" -- i.e., left-right-reverse marker
+            if Verbose_Flag:
+                print("Encountered a left-right-reverse marker")
+            continue
+        if words == "\u200b":   # this is from a zero width space
+            if Verbose_Flag:
+                print("Encountered a zero width space")
+            continue
+
         # ignore words in the course's 'words_to_ignore' list
         if words in special_words_to_ignore:
             print("found special characters: {}".format(words))
@@ -1286,8 +1306,12 @@ def main():
             continue
 
         # if the previous word was an acronym or the new word is different, output the record
-        if previous_word.isupper() or words.casefold() != previous_word:
-            previous_word=words.casefold()
+        #if previous_word.isupper() or words.casefold() != previous_word:
+        if words.casefold() == previous_word.casefold():
+            previous_word=words
+
+        # just check if the words are different - this will retain all caps if an acronym
+        if words.casefold() != previous_word.casefold():
             #if len(url_entry) > 0:  # only add an entry for this word if there is atleast one URL
             if len(url_dict)> 0:
                 for d in sorted(url_dict, key=url_dict.get, reverse=False):
@@ -1300,7 +1324,10 @@ def main():
             url_entry=""
             url_dict=dict()
             print("new words={}".format(words))
-        
+            if Verbose_Flag:            
+                words_in_hex=":".join("{:02x}".format(ord(c)) for c in words)
+                print(f"{words_in_hex=}")
+
         if len(words) == 0:
             print("words={0} and len(words)={1}".format(words, len(words)))
         first_letter=words[0].upper()

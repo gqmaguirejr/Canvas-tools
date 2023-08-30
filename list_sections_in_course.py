@@ -207,8 +207,25 @@ def main():
               else:
                      students_df = students_df1
 
-              columns_to_drop=['associated_user_id', 'course_integration_id', 'grades.current_grade', 'grades.current_score', 'grades.final_grade',
-                               'grades.final_score', 'grades.html_url', 'html_url', 'start_at', 'user.integration_id' ]
+              columns_to_drop=['associated_user_id', 'course_integration_id',
+                               'grades.current_grade', 'grades.current_score',
+                               'grades.final_grade', 'grades.final_score',
+                               'grades.html_url', 'html_url', 'start_at',
+                               'user.integration_id', 'created_at_x',
+                               'restrict_enrollments_to_section_dates', 'id',
+                               'user_id', 'course_id', 'type',
+                               'created_at_y', 'updated_at', 'end_at',
+                               'root_account_id',
+                               'limit_privileges_to_course_section',
+                               'enrollment_state', 'role', 'role_id',
+                               'last_activity_at', 'last_attended_at',
+                               'total_activity_time', 'sis_account_id',
+                               'sis_course_id', 'sis_section_id',
+                               'section_integration_id', 'sis_user_id',
+                               'grades.unposted_current_score',
+                               'grades.unposted_current_grade',
+                               'grades.unposted_final_score',
+                               'grades.unposted_final_grade', 'user.created_at' ]
               students_df.drop(columns_to_drop,inplace=True,axis=1)
 
 
@@ -221,7 +238,8 @@ def main():
               students_df.to_excel(writer, sheet_name='Students')
 
        # Close the Pandas Excel writer and output the Excel file.
-       writer.save()
+       writer.close()
 
 if __name__ == "__main__": main()
+
 
