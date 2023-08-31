@@ -2747,6 +2747,30 @@ Note:
 If the user_id is not provided it defaults to "self", i.e., the user makiing the request.
 
 
+## place_students_in_sections_in_course.py
+
+### Purpose
+Take a spreadsheet, such as produced by list_sections_in_course.py that has had the section_name changed to be a specific teacher's section and add the student to that section.
+
+### Input
+```bash
+./place_students_in_sections_in_course.py course_id spreadshseet_name name_of_column_with_section_assignments
+```
+
+### Output
+The program outputs lines noting which section a student is being placed in or if the student is already in the indicated section.
+
+### Note 
+If the section name indicated does not exist, the section will be created. Section names that end with a ")" and have an earleir "(" are ignored when processing the entires in the section_names.
+
+### Example
+
+```bash
+./list_sections_in_course.py 41492
+# edit the spreadsheet
+./place_students_in_sections_in_course.py 41492 sections-in-41492.xlsx
+```
+
 <!-- 
 
 ## xxx.py
