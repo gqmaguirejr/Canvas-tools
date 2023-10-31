@@ -196,6 +196,9 @@ def main():
 
     writer = pd.ExcelWriter(f'comments-{course_id}-{assignment_id}.xlsx', engine='xlsxwriter')
     comments_info_df=pd.json_normalize(comments_info)
+    # full
+    comments_info_df.to_excel(writer, sheet_name='Submissions')
+    
     columns_to_drop=['anonymous_id', 'body', 'url']
     comments_info_df.drop(columns_to_drop,inplace=True,axis=1)
     comments_info_df.to_excel(writer, sheet_name='Comments')
