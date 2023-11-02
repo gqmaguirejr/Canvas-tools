@@ -6,6 +6,9 @@
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
+#with the "'u" or 'users'" option you also get the information about the users
+#
+#
 # Can also be called with an alternative configuration file:
 # ./list_your_courses.py --config config-test.json
 #
@@ -165,6 +168,13 @@ def main():
                       help="for the container enviroment in the virtual machine"
     )
 
+    parser.add_option('-u', '--users',
+                      dest="userData",
+                      default=False,
+                      action="store_true",
+                      help="to add the information about the users"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -188,12 +198,6 @@ def main():
     if options.print:
         pprint.pprint(comments_info)
         
-    users=users_in_course(course_id)
-    users_df=pd.json_normalize(users)
-    if Verbose_Flag:
-        print(users_df.columns)
-
-
     writer = pd.ExcelWriter(f'comments-{course_id}-{assignment_id}.xlsx', engine='xlsxwriter')
     comments_info_df=pd.json_normalize(comments_info)
     # full
@@ -203,32 +207,37 @@ def main():
     comments_info_df.drop(columns_to_drop,inplace=True,axis=1)
     comments_info_df.to_excel(writer, sheet_name='Comments')
 
-    # keep user_id and 'user.sortable_name', drop the rest
-    columns_to_drop=['id', 'course_id', 'type', 'created_at', 'updated_at',
-                     'associated_user_id', 'start_at', 'end_at', 'course_section_id',
-                     'root_account_id', 'limit_privileges_to_course_section',
-                     'enrollment_state', 'role', 'role_id', 'last_activity_at',
-                     'last_attended_at', 'total_activity_time', 'sis_account_id',
-                     'sis_course_id', 'course_integration_id', 'sis_section_id',
-                     'section_integration_id', 'sis_user_id', 'html_url', 'grades.html_url',
-                     'grades.current_grade', 'grades.current_score', 'grades.final_grade',
-                     'grades.final_score', 'grades.unposted_current_score',
-                     'grades.unposted_current_grade', 'grades.unposted_final_score',
-                     'grades.unposted_final_grade', 'user.id', 'user.name',
-                     'user.created_at',  'user.short_name',
-                     'user.sis_user_id', 'user.integration_id', 'user.login_id']
+    if options.userData:
+        users=users_in_course(course_id)
+        users_df=pd.json_normalize(users)
+        if Verbose_Flag:
+            print(users_df.columns)
 
-    users_df.drop(columns_to_drop,inplace=True,axis=1)
-    # eliminate duplicate row (as the user is enroled one for each section they are in)
-    users_df=users_df.drop_duplicates(subset=['user_id', 'user.sortable_name'])
-    #users_df.to_excel(writer, sheet_name='Users')
+        # keep user_id and 'user.sortable_name', drop the rest
+        columns_to_drop=['id', 'course_id', 'type', 'created_at', 'updated_at',
+                         'associated_user_id', 'start_at', 'end_at', 'course_section_id',
+                         'root_account_id', 'limit_privileges_to_course_section',
+                         'enrollment_state', 'role', 'role_id', 'last_activity_at',
+                         'last_attended_at', 'total_activity_time', 'sis_account_id',
+                         'sis_course_id', 'course_integration_id', 'sis_section_id',
+                         'section_integration_id', 'sis_user_id', 'html_url', 'grades.html_url',
+                         'grades.current_grade', 'grades.current_score', 'grades.final_grade',
+                         'grades.final_score', 'grades.unposted_current_score',
+                         'grades.unposted_current_grade', 'grades.unposted_final_score',
+                         'grades.unposted_final_grade', 'user.id', 'user.name',
+                         'user.created_at',  'user.short_name',
+                         'user.sis_user_id', 'user.integration_id', 'user.login_id']
 
-    merge_df = pd.merge(comments_info_df, users_df, on='user_id')
-    merge_df.to_excel(writer, sheet_name='Merged')
+        users_df.drop(columns_to_drop,inplace=True,axis=1)
+        # eliminate duplicate row (as the user is enroled one for each section they are in)
+        users_df=users_df.drop_duplicates(subset=['user_id', 'user.sortable_name'])
+        #users_df.to_excel(writer, sheet_name='Users')
+
+        merge_df = pd.merge(comments_info_df, users_df, on='user_id')
+        merge_df.to_excel(writer, sheet_name='Merged')
 
     # Close the Pandas Excel writer and output the Excel file.
     writer.close()
 
 
 if __name__ == "__main__": main()
-
