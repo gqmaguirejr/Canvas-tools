@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
@@ -33,6 +33,8 @@
 # 2019.01.04
 #
 
+from PIL import Image
+
 import requests, time
 import pprint
 import optparse
@@ -51,7 +53,6 @@ try:
 except ImportError:
     from urllib2 import urlopen
 
-from PIL import Image
 
 #############################
 ###### EDIT THIS STUFF ######
