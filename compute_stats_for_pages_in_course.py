@@ -96,7 +96,8 @@ def compute_stats_for_pages_in_course(course_id):
             list_of_all_pages.append(p_response)
 
     for p in list_of_all_pages:
-        print("title is '{0}' with url {1}".format(p['title'], p['url']))
+        if Verbose_Flag:
+            print("title is '{0}' with url {1}".format(p['title'], p['url']))
         # Use the Canvas API to GET the page
         #GET /api/v1/courses/:course_id/pages/:url
                 
@@ -115,6 +116,7 @@ def compute_stats_for_pages_in_course(course_id):
                 document = html.document_fromstring(body)
                 raw_text = document.text_content()
             else:               # nothing to process
+                raw_text = ""
                 continue
 
             if Verbose_Flag:
