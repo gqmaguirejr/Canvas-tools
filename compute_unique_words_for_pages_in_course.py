@@ -78,6 +78,50 @@ prefixes_to_ignore=[
     ':',
 ]
 
+miss_spelled_words=[
+    'ßtudent',
+    'â€˜Security',
+    'Â§',
+    'wiklipage',
+    'Addres',
+    'Carrera',
+    'Copmmunication',
+    'Dezember',
+    'Europeens',   # should be 'européens'
+    'Glassfish',   # should be 'GlassFish'
+    'Kamailo',     # should be 'Kamailio'
+    'QCLEP',       # should be 'QCELP'
+    'Sigcomp',     # should be 'SigComp',
+    'Sinreich',    # should be 'Sinnreich',
+    'Stcokholm',   # should be 'Stockholm'
+    'acknowdlged', # should be 'acknowledged'
+    'acknowldged', # should be 'acknowledged'
+    'acknowledgment', # should be 'acknowledgement'
+    'acknowledgments', # should be 'acknowledgements'
+    'acroynms',    # should be 'acronyms'
+    'addrees',     # probably should be 'address'
+    'addressesing',  # should be 'addressing'
+    'addtion',     # should be 'addition'
+    'adpators',    # should be 'adaptors'
+    'annouce',     # should be 'announce'
+    'annouced',    # should be 'announced'
+    'annoucement', # should be 'announcement',
+    'anseers',     # 'answer' ?
+    'ansers',      # 'answers' ?
+    'answrs',      # 'answers' ?
+    'apointments', # 'appointments',
+    'april',       # check
+    'aqsks',       # check
+    'audable',     # check
+    'buiold',      # check
+
+]
+
+def check_spelling_errors(string, url):
+    if string in miss_spelled_words:
+        print(f'miss spelling {string=} at {url=}')
+
+
 def unique_words_for_pages_in_course(course_id):
     list_of_all_pages=[]
 
@@ -143,8 +187,10 @@ def unique_words_for_pages_in_course(course_id):
             # this is to address footnotes and some other special cases
             if len(word) > 1 and word[0] in prefixes_to_ignore:
                 unique_words.add(word[1:])
+                check_spelling_errors(word, p["url"])
             else:
                 unique_words.add(word)
+                check_spelling_errors(word, p["url"])
     return True
 
 def list_pages(course_id):
@@ -211,6 +257,10 @@ words_to_ignore=[
     '>',
     '?',
     '@',
+    '[',
+    ']',
+    '`',
+    '``',
     '{',
     '|',
     '}',
@@ -238,8 +288,46 @@ words_to_ignore=[
     '⑤',
     '✔',
     '✛',
+
 ]
 
+
+abbreviations_ending_in_period=[
+    'i.e.',
+    'e.g.',
+    'al.',
+    'etc.',
+    'vs.',
+    'Assoc.',
+    'Corp.',
+    'D.C.',
+    'Dr.',
+    'Inc.',
+    'Jr.',
+    'Ltd.',
+    'Mr.',
+    'Mrs.',
+    'Ms.',
+    'M.S.',
+    'M.Sc.',
+    'N.J.',
+    'prof.',
+    'Prof.',
+    'U.S.',
+    'U.S.C.',
+    'Jan.',
+    'Feb.',
+    'Mar.',
+    'Apr.',
+    'Jun.',
+    'Jul.',
+    'Aug.',
+    'Sep.',
+    'Sept.',
+    'Oct.',
+    'Nov.',
+    'Dec.',
+]
 
 def is_float(string):
     try:
@@ -311,6 +399,8 @@ def is_ISBN(string):
 # <directory indicator> is always '10'
 def is_DOI(string):
     global Verbose_Flag
+    if string.startswith("DOI:"):
+        string=string[4:]
     if string.startswith("10.") and string.count('/') >= 1:
         doi_suffix_offset=string.find('/')
         doi_prefix=string[0:doi_suffix_offset]
@@ -344,14 +434,35 @@ def is_IPv4_dotted_decimal_with_prefix_length(string):
     return False
 
 def is_MAC_address(string):
+    global Verbose_Flag
     if string.count(':') == 5:
         mv=string.split(":")
         for n in mv:
-            if is_hex_number(n) and int('0x'+n, 0) < 256:
+            if Verbose_Flag:
+                print(f"{n=} {is_hex_number('0x'+n)=} and {int('0x'+n, 0)=}")
+            if is_hex_number('0x'+n) and int('0x'+n, 0) < 256:
                 continue
             else:
                 return False            
         # if all numbers are less than 256
+        return True
+    # otherwise
+    return False
+
+def is_IPv6_address(string):
+    global Verbose_Flag
+    if string.count(':') == 7 or (string.count('::') == 1 and string.count(':') < 7):
+        mv=string.split(":")
+        for n in mv:
+            if len(n) == 0:
+                continue
+            if Verbose_Flag:
+                print(f"{n=} {is_hex_number('0x'+n)=} and {int('0x'+n, 0)=}")
+            if is_hex_number('0x'+n) and int('0x'+n, 0) < 65536:
+                continue
+            else:
+                return False            
+        # if all numbers are less than 65535
         return True
     # otherwise
     return False
@@ -511,6 +622,9 @@ def is_colon_range_or_HH_colon_MM(string):
 def is_fraction(string):
     if string.count('/') == 1:
         string=string.replace('/', "")
+        # if a fractional part, remove the 'th' before checking further
+        if string.endswith('th'):
+            string=string[:-2]
         return string.isdigit()
     # otherwise
     return False
@@ -567,6 +681,43 @@ def main():
                     f.write(f"{word}\n")
                 return
 
+            # reduce unique_words to have only one entry when there is both a capitalized version and a lower case version
+            # Note that this may eliminate capitalized names if the same string occurs for an uncapitalized version of the string.
+            new_unique_words=set()
+            for word in unique_words:
+                if (word.capitalize() in unique_words) and (word.lower() in unique_words):
+                    new_unique_words.add(word.lower())
+                else:
+                    new_unique_words.add(word)
+                    
+            unique_words=new_unique_words
+            new_unique_words=set()
+            # when a word ends with a "=" (probably due to the tokenization), only include the word without the trailing "="
+            for word in unique_words:
+                if word.endswith('=') and (word in unique_words):
+                    new_unique_words.add(word[:-1])
+                else:
+                    new_unique_words.add(word)
+
+            unique_words=new_unique_words
+            new_unique_words=set()
+            # when a word ends with a "." (probably due to the tokenization), only include the word without the trailing "."
+            for word in unique_words:
+                if word.endswith('.'):
+                    if word[0].isupper() or word in abbreviations_ending_in_period:
+                        new_unique_words.add(word)
+                    else:
+                        if word[:-1].lower() in unique_words:
+                            continue
+                        else:
+                            new_unique_words.add(word[:-1])
+                elif word+'.' in abbreviations_ending_in_period:
+                        new_unique_words.add(word+'.')
+                else:
+                    new_unique_words.add(word)
+
+            unique_words=new_unique_words
+
             # otherwise, output the filtered list of words
             with open(new_file_name, 'w') as f:
                 for word in unique_words:
@@ -580,6 +731,10 @@ def main():
 
                     # skip PDF file names
                     if word.endswith('.pdf'):
+                        continue
+
+                    # skip HTML file names
+                    if word.endswith('.html'):
                         continue
 
                     # skip currency ammounts
@@ -603,8 +758,12 @@ def main():
                         continue
 
                     # ignore IPv4 address with a specified prefix length
-                    # if is_IPv4_dotted_decimal_with_prefix_length(word):
-                    #     continue
+                    if is_IPv4_dotted_decimal_with_prefix_length(word):
+                        continue
+
+                    # ignore IPv6 addresses
+                    if is_IPv6_address(word):
+                        continue
 
                     # ignore things that look like phone numbers
                     if is_phone_number(word):
@@ -642,7 +801,6 @@ def main():
                     if is_fraction(word):
                         continue
 
-                    print(f'#5 {word=}')
                     # ignore hex numbers
                     if is_hex_number(word):
                         continue
