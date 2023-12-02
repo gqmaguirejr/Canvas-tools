@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #
 # ./compute_stats_for_pages_in_course.py  course_id
 # 
@@ -216,8 +216,12 @@ def main():
             writer = pd.ExcelWriter('statistics-for-course-'+str(course_id)+'.xlsx', engine='xlsxwriter')
             stats_df.to_excel(writer, sheet_name='Stats')
             # Close the Pandas Excel writer and output the Excel file.
-            writer.save()
+            writer.close()
 
 
 if __name__ == "__main__": main()
+
+
+
+
 

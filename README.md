@@ -2771,6 +2771,34 @@ If the section name indicated does not exist, the section will be created. Secti
 ./place_students_in_sections_in_course.py 41492 sections-in-41492.xlsx
 ```
 
+## compute_unique_words_for_pages_in_course.py
+
+### Purpose
+To compute the number and list of unique words in a course.
+
+### Input
+```bash
+./compute_unique_words_for_pages_in_course.py  course_id
+```
+
+### Output
+Outputs a file with the unique words each on a line
+
+### Note 
+Some of the tests are incomplete, but remove a lot of the "words" that are not really useful (such as numbers, ISBNs, DOIs, ...).
+
+This program was inspired when I read the paper:
+
+Hans Malmström, Diane Pecorari, and Marcus Warnby, ‘Teachers’ receptive and productive vocabulary sizes in English-medium instruction’, Journal of Multilingual and Multicultural Development, pp. 1–19, Sep. 2023 [Online]. DOI: 10.1080/01434632.2023.2260781
+
+### Example
+
+```bash
+./compute_unique_words_for_pages_in_course.py 11544
+13854 unique words
+10938 unique words output to unique_words-for-course-11544.txt
+```
+
 <!-- 
 
 ## xxx.py

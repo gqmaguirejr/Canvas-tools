@@ -1,0 +1,664 @@
+#!/usr/bin/env python3
+#
+# ./compute_unique_words_for_pages_in_course.py  course_id
+# 
+# it outputs a file with the unique words each on a line
+# where xx is the course_id
+#
+# G. Q: Maguire Jr.
+#
+# 2023.12.01
+#
+# based on compute_stats_for_pages_in_course.py
+#
+# with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+#
+# Can also be called with an alternative configuration file using the option --config config-test.json
+#
+# Examples:
+# ./compute_unique_words_for_pages_in_course.py 11544
+#
+# ./compute_unique_words_for_pages_in_course.py  --config config-test.json 11544
+#
+
+
+import csv, requests, time
+from pprint import pprint
+import optparse
+import sys
+
+import json
+import re
+
+from lxml import html
+
+# Use Python Pandas to create XLSX files
+import pandas as pd
+
+import nltk
+#############################
+###### EDIT THIS STUFF ######
+#############################
+
+global baseUrl	# the base URL used for access to Canvas
+global header	# the header for all HTML requests
+global payload	# place to store additionally payload when needed for options to HTML requests
+
+# Based upon the options to the program, initialize the variables used to access Canvas gia HTML requests
+def initialize(options):
+    global baseUrl, header, payload
+
+    # styled based upon https://martin-thoma.com/configuration-files-in-python/
+    if options.config_filename:
+        config_file=options.config_filename
+    else:
+        config_file='config.json'
+
+    try:
+        with open(config_file) as json_data_file:
+            configuration = json.load(json_data_file)
+            access_token=configuration["canvas"]["access_token"]
+            baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
+
+            header = {'Authorization' : 'Bearer ' + access_token}
+            payload = {}
+    except:
+        print("Unable to open configuration file named {}".format(config_file))
+        print("Please create a suitable configuration file, the default name is config.json")
+        sys.exit()
+
+prefixes_to_ignore=[
+    '†',
+    '‡',
+    '⇒',
+    '•',
+    '',
+    '¿',
+    '¡',
+    ':',
+]
+
+def unique_words_for_pages_in_course(course_id):
+    list_of_all_pages=[]
+
+    # Use the Canvas API to get the list of pages for this course
+    #GET /api/v1/courses/:course_id/pages
+
+    url = "{0}/courses/{1}/pages".format(baseUrl, course_id)
+    if Verbose_Flag:
+        print("url: " + url)
+
+    r = requests.get(url, headers = header)
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+    else:
+        print("No pages for course_id: {}".format(course_id))
+        return False
+
+    for p_response in page_response:  
+        list_of_all_pages.append(p_response)
+
+    # the following is needed when the reponse has been paginated
+    # i.e., when the response is split into pieces - each returning only some of the list of modules
+    while r.links.get('next', False):
+        r = requests.get(r.links['next']['url'], headers=header)  
+        page_response = r.json()  
+        for p_response in page_response:  
+            list_of_all_pages.append(p_response)
+
+    for p in list_of_all_pages:
+        if Verbose_Flag:
+            print("title is '{0}' with url {1}".format(p['title'], p['url']))
+        # Use the Canvas API to GET the page
+        #GET /api/v1/courses/:course_id/pages/:url
+                
+        url = "{0}/courses/{1}/pages/{2}".format(baseUrl, course_id, p["url"])
+        if Verbose_Flag:
+            print(url)
+        payload={}
+        r = requests.get(url, headers = header, data=payload)
+        if r.status_code == requests.codes.ok:
+            page_response = r.json()  
+            if Verbose_Flag:
+                print("body: {}".format(page_response["body"]))
+
+            body=page_response["body"]
+            if isinstance(body, str) and len(body) > 0:
+                document = html.document_fromstring(body)
+                raw_text = document.text_content()
+            else:               # nothing to process
+                raw_text = ""
+                continue
+
+            if Verbose_Flag:
+                print("raw_text: {}".format(raw_text))
+                
+        else:
+            print("No pages for course_id: {}".format(course_id))
+            return False
+
+        words = nltk.word_tokenize(raw_text)
+        for word in words:
+            # words that start with certain characters should be treated as if this character is not there
+            # this is to address footnotes and some other special cases
+            if len(word) > 1 and word[0] in prefixes_to_ignore:
+                unique_words.add(word[1:])
+            else:
+                unique_words.add(word)
+    return True
+
+def list_pages(course_id):
+    list_of_all_pages=[]
+
+    # Use the Canvas API to get the list of pages for this course
+    #GET /api/v1/courses/:course_id/pages
+    url = "{0}/courses/{1}/pages".format(baseUrl, course_id)
+
+    if Verbose_Flag:
+        print("url: " + url)
+
+    r = requests.get(url, headers = header)
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+    for p_response in page_response:  
+        list_of_all_pages.append(p_response)
+
+        # the following is needed when the reponse has been paginated
+        # i.e., when the response is split into pieces - each returning only some of the list of modules
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                list_of_all_pages.append(p_response)
+
+    for p in list_of_all_pages:
+        print("{}".format(p["title"]))
+
+currency_symbols=[
+    '$',
+    '£',
+    '€',
+]
+
+words_to_ignore=[
+    '\n',
+    '\x0a',
+    "'",
+    "''",
+    '!',
+    '#',
+    '$',
+    '%',
+    '&',
+    '(',
+    ')',
+    '*',
+    '+',
+    '+/-',
+    ',',
+    '-',
+    '--',
+    '.',
+    '..',
+    '...',
+    '/',
+    ':',
+    ';',
+    '<',
+    '=',
+    '==',
+    '>',
+    '?',
+    '@',
+    '{',
+    '|',
+    '}',
+    '§',
+    '§',
+    '©',
+    '½',
+    '–',
+    '‘',
+    '’',
+    '“',
+    '”',
+    '†',
+    '‡',
+    '…',
+    '→',
+    '⇒',
+    '∴',
+    '≅',
+    '≥',
+    '①',
+    '②',
+    '③',
+    '④',
+    '⑤',
+    '✔',
+    '✛',
+]
+
+
+def is_float(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
+    
+def is_number(string):
+    rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", string)
+    if rr and len(rr) == 1:
+        if rr[0].isnumeric():
+            return True
+        if is_float(rr[0]):
+            return True
+    # otherwise
+    return False
+
+hex_digits='0123456789abcdefABCDEF'
+
+def is_hex_number(string):
+    if string.startswith('0x'):
+        for c in string[2:]:
+            if c not in hex_digits:
+                return False
+        return True
+    else:
+        return False
+
+def is_number_with_commas(string):
+    if string.count(',') > 0:
+        string=string.replace(',', '')
+        if string.isdigit():
+            return is_number(string)
+    # otherwise
+    return False
+
+def is_integer_range_or_ISSN(string):
+    if string.count('-') == 1:
+        string=string.replace('-', "")
+        return string.isdigit()
+    elif string.count('–') == 1:
+        string=string.replace('–', "")
+        return string.isdigit()
+    # otherwise
+    return False
+    
+def is_ISBN(string):
+    # if thee is a trailing period remove it
+    if len(string) > 2 and string.endswith("."):
+        string=string[:-1]
+    #
+    if string.startswith("978-") and (string.count('-') == 4 or string.count('-') == 3):
+        string=string.replace("-", "")
+        if string.isnumeric():
+            return True
+    # ISBN-13 without addiitonal dashes
+    elif (string.startswith("978-") and string[4:].count('-') == 0) and string[4:].isdigit:
+            return True
+    elif string.count('-') == 3:
+        string=string.replace("-", "")
+        if string.isnumeric():
+            return True
+    # otherwise
+    return False
+    
+# a DOI has the form: <DOI prefix>/<DOI suffix>
+# <DOI prefix> has the form <directory indicator>.<registrant code>
+# <directory indicator> is always '10'
+def is_DOI(string):
+    global Verbose_Flag
+    if string.startswith("10.") and string.count('/') >= 1:
+        doi_suffix_offset=string.find('/')
+        doi_prefix=string[0:doi_suffix_offset]
+        registrant_code=doi_prefix[3:]
+        doi_suffix=string[doi_suffix_offset+1:]
+        if Verbose_Flag:
+            print(f'{doi_prefix=} with {registrant_code=} and {doi_suffix=}')
+        return True
+    # otherwise
+    return False
+
+def is_IPv4_dotted_decimal(string):
+    if string.count('.') == 3:
+        ipv=string.split(".")
+        for n in ipv:
+            if n.isnumeric() and int(n) < 256:
+                continue
+            else:
+                return False            
+        # if all numbers are less than 256
+        return True
+    # otherwise
+    return False
+
+def is_IPv4_dotted_decimal_with_prefix_length(string):
+    if string.count('.') == 3 and string.count('/') == 1 and string.rfind('.') < string.find('/'):
+        parts=string.split("/")
+        if int(parts[1]) <= 32:
+            return is_IPv4_dotted_decimal(parts[0])
+    # otherwise
+    return False
+
+def is_MAC_address(string):
+    if string.count(':') == 5:
+        mv=string.split(":")
+        for n in mv:
+            if is_hex_number(n) and int('0x'+n, 0) < 256:
+                continue
+            else:
+                return False            
+        # if all numbers are less than 256
+        return True
+    # otherwise
+    return False
+
+
+
+def is_phone_number(string):
+    # note that it does not do a range check on the numbers
+    if string.startswith('+'):
+        string=string[1:].replace("-", "")
+        if string.isnumeric():
+            return True
+    # otherwise
+    return False
+
+# time offsets in the transcripts have the form dd:dd:dd
+def is_time_offset(string):
+    if string.count(':') == 2:
+        string=string.split(":")
+        for n in string:
+            if n.isnumeric() and int(n) < 60:
+                continue
+            else:
+                return False
+        return True
+    # otherwise
+    return False
+
+# start-end times have the form dd:dd-dd:dd
+def is_start_end_time(string):
+    if string.count('-') == 1 and string.count(':') == 2:
+        string=string.split("-")
+        for m in string:
+            m=m.split(":")
+            for n in m:
+                if n.isnumeric() and int(n) < 60:
+                    continue
+                else:
+                    return False
+        return True
+    # otherwise
+    return False
+
+def is_YYYY_MM_DD(string):
+    global Verbose_Flag
+    if string.count('.') == 2:
+        d=string.split('.')
+    elif string.count('-') == 2:
+        d=string.split('-')
+    else:
+        return False
+    if len(d[0]) == 4 and d[0].isdigit():
+        yyyy=d[0]
+    else:
+        return False
+    #
+    if len(d[1]) == 2 and d[1].isdigit():
+        if int(d[1]) < 13:
+            mm=d[1]
+        else:
+            print(f'problem in month number in {string}')
+            return False
+    else:
+        return False
+    #
+    if d[2].isdigit():
+        if int(d[2]) < 32:
+            dd=d[2]
+        else:
+            print(f'problem in day number in {string}')
+    else:
+        return False
+    #
+    if Verbose_Flag:
+        print(f'{yyyy=} {mm=} {dd=}')
+    return True
+
+months_and_abbrevs=[
+    'Jan',
+    'January',
+    'Feb',
+    'February',
+    'Mar',
+    'March',
+    'Apr',
+    'April',
+    'May',
+    'Jun',
+    'June',
+    'Jul',
+    'July',
+    'Aug',
+    'August',
+    'Sep',
+    'Sept',
+    'September',
+    'Oct',
+    'October',
+    'Nov',
+    'November',
+    'Dec',
+    'December',
+]    
+
+def is_DD_MMM_YYYY(string):
+    global Verbose_Flag
+    if string.count('-') == 2:
+        d=string.split('-')
+    else:
+        return False
+    if Verbose_Flag or True:
+        print(f'is_DD_MMM_YYYY({string}) {d=}')
+    if len(d) == 3 and (len(d[2]) == 4 or len(d[2]) == 2) and d[2].isdigit():
+        yyyy=d[2]
+    else:
+        return False
+    #
+    if d[0].isdigit():
+        if int(d[0]) < 32:
+            dd=d[0]
+        else:
+            print(f'Error in day in {string} "{d[0]}"')
+            return False
+    else:
+        return False
+    #
+    # Note that the month abbreviation must be three characters long
+    if len(d[1]) >= 3 and not d[1].isdigit():
+        if d[1].lower().capitalize() in months_and_abbrevs:
+            mm=d[1]
+        else:
+            print(f'Error in month in {string}  "{d[1]}"')
+            return False
+    else:
+        return False
+    #
+    if Verbose_Flag or True:
+        print(f'{yyyy=} {mm=} {dd=}')
+    return True
+
+def approximate_number(string):
+    # remove tilde prefix
+    if len(string) > 1 and string[0]=='~':
+        string=string[1:]
+    #
+    if string.count(',') > 0:
+        string=string.replace(',', "")
+    return is_number(string)
+
+def is_colon_range_or_HH_colon_MM(string):
+    if string.count(':') == 1:
+        string=string.replace(':', "")
+        return string.isdigit()
+    # otherwise
+    return False
+
+def is_fraction(string):
+    if string.count('/') == 1:
+        string=string.replace('/', "")
+        return string.isdigit()
+    # otherwise
+    return False
+
+    
+def main():
+    global Verbose_Flag
+    global unique_words
+
+    parser = optparse.OptionParser()
+
+    parser.add_option('-v', '--verbose',
+                      dest="verbose",
+                      default=False,
+                      action="store_true",
+                      help="Print lots of output to stdout"
+    )
+    parser.add_option("--config", dest="config_filename",
+                      help="read configuration from FILE", metavar="FILE")
+    
+    parser.add_option('-a', '--all',
+                      dest="keepAll",
+                      default=False,
+                      action="store_true",
+                      help="keep all unique words without filtering"
+    )
+
+    options, remainder = parser.parse_args()
+
+    Verbose_Flag=options.verbose
+    if Verbose_Flag:
+        print("ARGV      : {}".format(sys.argv[1:]))
+        print("VERBOSE   : {}".format(options.verbose))
+        print("REMAINING : {}".format(remainder))
+        print("Configuration file : {}".format(options.config_filename))
+
+    initialize(options)
+
+    if (len(remainder) < 1):
+        print("Inusffient arguments\n must provide course_id\n")
+    else:
+        unique_words=set()
+        number_of_unique_words_output=0
+        course_id=remainder[0]
+        unique_words_for_pages_in_course(course_id)
+
+        print(f'{len(unique_words)} unique words')
+        if len(unique_words) > 0:
+            new_file_name='unique_words-for-course-'+str(course_id)+'.txt'
+
+            # if not filtering, simply output the unique words and exit
+            if options.keepAll:
+                with open(new_file_name, 'w') as f:
+                    f.write(f"{word}\n")
+                return
+
+            # otherwise, output the filtered list of words
+            with open(new_file_name, 'w') as f:
+                for word in unique_words:
+                    # ignore a specified set of words
+                    if word in words_to_ignore:
+                        continue
+
+                    # eliminate what is left of URLs
+                    if word.startswith("//"):
+                        continue
+
+                    # skip PDF file names
+                    if word.endswith('.pdf'):
+                        continue
+
+                    # skip currency ammounts
+                    if len(word) > 1 and word[0] in currency_symbols:
+                        continue
+
+                    # skip things that look like DOIs
+                    if is_DOI(word):
+                        continue
+
+                    # skip things that look like ISBNs
+                    if is_ISBN(word):
+                        continue
+
+                    # if there is one hyphen it might be an integer range or ISSN, of so ignore it
+                    if is_integer_range_or_ISSN(word):
+                        continue
+
+                    # ignore things that look like IPv4 dotted decimal addresses
+                    if is_IPv4_dotted_decimal(word):
+                        continue
+
+                    # ignore IPv4 address with a specified prefix length
+                    # if is_IPv4_dotted_decimal_with_prefix_length(word):
+                    #     continue
+
+                    # ignore things that look like phone numbers
+                    if is_phone_number(word):
+                        continue
+
+                    # ignore things that look like time offsets, i.e., dd:dd:dd
+                    if is_time_offset(word):
+                        continue
+
+                    # ignore start and end time strings
+                    if is_start_end_time(word):
+                        continue
+
+                    # ignore YYYY.MM.DD and YYYY-MM-DD strings
+                    if is_YYYY_MM_DD(word):
+                        continue
+
+                    # ignore  DD-MMM-YYYY or DD-MMM-YY strings
+                    if is_DD_MMM_YYYY(word):
+                        continue
+
+                    # ignore words with a single colon in a set of digits
+                    if is_colon_range_or_HH_colon_MM(word):
+                        continue
+
+                    # ignore approximate numbers
+                    if approximate_number(word):
+                        continue
+                    
+                    # ignore numbers with commas in them
+                    if is_number_with_commas(word):
+                        continue
+
+                    # ignore fractions
+                    if is_fraction(word):
+                        continue
+
+                    print(f'#5 {word=}')
+                    # ignore hex numbers
+                    if is_hex_number(word):
+                        continue
+
+                    # ignore things that look like MAC addresses
+                    if is_MAC_address(word):
+                        continue
+
+                    # ignore things that look like single numbers (also ignore numbers with string, such as units, after them)
+                    if is_number(word):
+                        continue
+
+                    # finally output the remaining word
+                    f.write(f"{word}\n")
+                    number_of_unique_words_output=number_of_unique_words_output+1
+
+            print(f'{number_of_unique_words_output} unique words output to {new_file_name}')
+
+if __name__ == "__main__": main()
