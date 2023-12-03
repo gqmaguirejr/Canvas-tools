@@ -68,26 +68,35 @@ def initialize(options):
         sys.exit()
 
 prefixes_to_ignore=[
+    ':',
+    '¡',
+    '¿',
+    '–',
     '†',
     '‡',
-    '⇒',
     '•',
+    '⇒',
     '',
-    '¿',
-    '¡',
-    ':',
+    '',
 ]
 
+suffixes_to_ignore=[
+    '†',
+    '‡',
+    '-',
+]
+
+
 miss_spelled_words=[
-    'ßtudent',
-    'â€˜Security',
+    'ßtudent',     # should be "student"
+    'â€˜Security',  # should be 'Security',
     'Â§',
-    'wiklipage',
-    'Addres',
-    'Carrera',
-    'Copmmunication',
-    'Dezember',
-    'Europeens',   # should be 'européens'
+    'wiklipage',   # should be 'wikipage'
+    'Addres',      # should be 'Address'
+    'Carrera',     # should be 'Carrara'
+    'Copmmunication',  # should be 'Communication'
+    'Dezember',    # should be 'December'
+    'Europeens',   # should be 'Européens'
     'Glassfish',   # should be 'GlassFish'
     'Kamailo',     # should be 'Kamailio'
     'QCLEP',       # should be 'QCELP'
@@ -99,7 +108,7 @@ miss_spelled_words=[
     'acknowledgment', # should be 'acknowledgement'
     'acknowledgments', # should be 'acknowledgements'
     'acroynms',    # should be 'acronyms'
-    'addrees',     # probably should be 'address'
+    'addrees',     # should be 'address'
     'addressesing',  # should be 'addressing'
     'addtion',     # should be 'addition'
     'adpators',    # should be 'adaptors'
@@ -113,7 +122,78 @@ miss_spelled_words=[
     'april',       # check
     'aqsks',       # check
     'audable',     # check
-    'buiold',      # check
+    'buiold',      # should be "build"
+    'cancelling',  # US preference is 'canceling'
+    'congesiton',  # should be 'congestion'
+    'declaritive', # should be 'declarative'
+    'dialling',    # US preference is 'dialing'
+    'erros',       # should be 'errors'
+    'escow',       # should be 'escrow'
+    'evrsion',     # should be 'version'
+    'exampe',      # should be 'example'
+    'existance',   # should be 'existence',
+    'faillure',    # should be 'failure'
+    'fielda',      # should be 'fields'
+    'f¨r',         # should be 'för'
+    'fÃ¼r',        # should be 'för'
+    'gots',	   # should be 'got'
+    'inaudable',   # should be 'inaudible'
+    'indepth',     # should be 'in-depth'
+    'intecept',    # should be 'intercept'
+    'interensed',  # should be 'interested'
+    'keypd',       # should be 'keypad'
+    'lnow',        # should be 'know'
+    'lookes',      # should be 'looks'
+    'messsage',    # should be 'message'
+    'negociate',   # should be 'negotiate'
+    'nonadways',   # possibly should be 'nowadays'
+    'nowadways',   # possibly should be 'nowadays'
+    'offfice',     # should be 'office'
+    'particularily', # should be 'particularly'
+    'passd',       # should be 'passed'
+    'pemissible',  # should be 'permissible'
+    'plaout',      # should be 'playout'
+    'plut',        # should be 'put'
+    'presense',    # possibly 'presence'
+    'probems',     # should be 'probems'
+    'procotol',    # should be 'protocol'
+    'proctocols',  # should be 'protocols'
+    'procy',       # should be 'proxy'
+    'protability', # should be 'portability'
+    'protocls',    # should be 'protocols'
+    'proﬁle',      # should be 'profile'
+    'publically',  # should be 'publicly'
+    'reall',       # check
+    'reciever',    # should be 'receiver'
+    'refences',    # should be 'references'
+    'regularily',  # should be 'regularly'
+    'relse',       # check
+    'reponse',     # should be 'response'
+    'resliiance',  # should be 'resilience'
+    'rining',      # should be 'ringing'
+    'runiing',     # should be 'running'
+    'satistics',   # should be 'statistics'
+    'scehdule',    # should be 'schedule'
+    'sents',       # should be 'sends'
+    'seperators',  # should be 'separators'
+    'servelets',   # should be 'servlets'
+    'serverlets',  # should be 'servlets'
+    'sesssion',    # should be 'session'
+    'similarily',  # should be 'similarly',
+    'slideD',      # check - correct it is a template where D is one or more digits
+    'spresd',      # should be 'spread'
+    'statistcis',  # should be 'statistics'
+    'stduent',     # should be 'student'
+    'streamaing',  # should be 'streaming'
+    'tah',         # check
+    'taugh',       # should be 'taught'
+    'thiing',      # should be 'things'
+    'thursday',    # should be 'Thursday'
+    'trigegr',     # should be 'trigger'
+    'vality',      # should be 'vanity'
+    'verson',      # should be 'version'
+    'voila',       # should be 'voilà'
+    'witht',       # check
 
 ]
 
@@ -188,6 +268,10 @@ def unique_words_for_pages_in_course(course_id):
             if len(word) > 1 and word[0] in prefixes_to_ignore:
                 unique_words.add(word[1:])
                 check_spelling_errors(word, p["url"])
+            elif len(word) > 1 and word[0] in suffixes_to_ignore:
+                unique_words.add(word[1:])
+                check_spelling_errors(word, p["url"])
+
             else:
                 unique_words.add(word)
                 check_spelling_errors(word, p["url"])
@@ -573,7 +657,7 @@ def is_DD_MMM_YYYY(string):
         d=string.split('-')
     else:
         return False
-    if Verbose_Flag or True:
+    if Verbose_Flag:
         print(f'is_DD_MMM_YYYY({string}) {d=}')
     if len(d) == 3 and (len(d[2]) == 4 or len(d[2]) == 2) and d[2].isdigit():
         yyyy=d[2]
@@ -599,7 +683,7 @@ def is_DD_MMM_YYYY(string):
     else:
         return False
     #
-    if Verbose_Flag or True:
+    if Verbose_Flag:
         print(f'{yyyy=} {mm=} {dd=}')
     return True
 
@@ -629,6 +713,12 @@ def is_fraction(string):
     # otherwise
     return False
 
+    
+def is_part_of_DiVA_identifier(string):
+    if string.startswith('3Adiva-'):
+        return True
+    # otherwise
+    return False
     
 def main():
     global Verbose_Flag
@@ -811,6 +901,10 @@ def main():
 
                     # ignore things that look like single numbers (also ignore numbers with string, such as units, after them)
                     if is_number(word):
+                        continue
+
+                    # ignore DiVA identifiers
+                    if is_part_of_DiVA_identifier(word):
                         continue
 
                     # finally output the remaining word
