@@ -68,8 +68,17 @@ def initialize(options):
         sys.exit()
 
 prefixes_to_ignore=[
+    "'",
+    "\\",
+    '+',
+    ',',
+    '-',
+    './',
     ':',
+    '=',
+    '|',
     '¡',
+    '§',
     '¿',
     '–',
     '†',
@@ -81,9 +90,15 @@ prefixes_to_ignore=[
 ]
 
 suffixes_to_ignore=[
+    "'",
+    '-',
+    '.',
+    '/',
+    '\\',
     '†',
     '‡',
-    '-',
+    '…',
+
 ]
 
 
@@ -194,15 +209,34 @@ miss_spelled_words=[
     'verson',      # should be 'version'
     'voila',       # should be 'voilà'
     'witht',       # check
-
+    'Greasmoneky',  # should be 'Greasemoneky'
+    'appendicees',  # should be 'appendices'
 ]
 
-def check_spelling_errors(string, url):
-    if string in miss_spelled_words:
-        print(f'miss spelling {string=} at {url=}')
+def check_spelling_errors(s, url):
+    if s in miss_spelled_words:
+        print(f'miss spelling {s} at {url=}')
 
+
+# remove first prefix
+def prune_prefix(s):
+    for pfx in prefixes_to_ignore:
+        if s.startswith(pfx):
+            s=s[len(pfx):]
+            return s
+    return s
+
+# remove first suffix
+def prune_suffix(s):
+    for sfx in suffixes_to_ignore:
+        if s.endswith(sfx):
+            s=s[:-len(sfx)]
+            return s
+    return s
 
 def unique_words_for_pages_in_course(course_id):
+    global total_words_processed
+    global all_text
     list_of_all_pages=[]
 
     # Use the Canvas API to get the list of pages for this course
@@ -262,19 +296,17 @@ def unique_words_for_pages_in_course(course_id):
             return False
 
         words = nltk.word_tokenize(raw_text)
+        all_text.extend(words)
         for word in words:
-            # words that start with certain characters should be treated as if this character is not there
+            total_words_processed=total_words_processed+1
+            # words that start with certain characters/strings should be treated as if this character/string is not there
             # this is to address footnotes and some other special cases
-            if len(word) > 1 and word[0] in prefixes_to_ignore:
-                unique_words.add(word[1:])
-                check_spelling_errors(word, p["url"])
-            elif len(word) > 1 and word[0] in suffixes_to_ignore:
-                unique_words.add(word[1:])
-                check_spelling_errors(word, p["url"])
-
-            else:
-                unique_words.add(word)
-                check_spelling_errors(word, p["url"])
+            newword=word.strip()
+            newword=prune_prefix(newword)
+            newword=prune_suffix(newword)
+            if len(newword) > 0:
+                unique_words.add(newword)
+                check_spelling_errors(newword, p["url"])
     return True
 
 def list_pages(course_id):
@@ -399,6 +431,7 @@ abbreviations_ending_in_period=[
     'Prof.',
     'U.S.',
     'U.S.C.',
+    'U.K.',
     'Jan.',
     'Feb.',
     'Mar.',
@@ -421,6 +454,8 @@ def is_float(string):
         return False
     
 def is_number(string):
+    if len(string) > 0 and not string[0].isdigit():
+        return False
     rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", string)
     if rr and len(rr) == 1:
         if rr[0].isnumeric():
@@ -460,7 +495,7 @@ def is_integer_range_or_ISSN(string):
     return False
     
 def is_ISBN(string):
-    # if thee is a trailing period remove it
+    # if there is a trailing period remove it
     if len(string) > 2 and string.endswith("."):
         string=string[:-1]
     #
@@ -468,7 +503,7 @@ def is_ISBN(string):
         string=string.replace("-", "")
         if string.isnumeric():
             return True
-    # ISBN-13 without addiitonal dashes
+    # ISBN-13 without additional dashes
     elif (string.startswith("978-") and string[4:].count('-') == 0) and string[4:].isdigit:
             return True
     elif string.count('-') == 3:
@@ -590,14 +625,30 @@ def is_start_end_time(string):
     # otherwise
     return False
 
-def is_YYYY_MM_DD(string):
+# look for strings of the form yyyy-mm-dd or yyyy.mm.dd
+def is_YYYY_MM_DD(s):
     global Verbose_Flag
-    if string.count('.') == 2:
-        d=string.split('.')
-    elif string.count('-') == 2:
-        d=string.split('-')
+    # define an empty d
+    d = ('', '', '')
+
+    if not isinstance(s, str):
+        return False
+    if not len(s) == 10:
+        return False
+    if s.count('.') == 2:
+        if s[4] == '.' and s[7] == '.':
+            d=s.split('.')
+        else:
+            return False
+    elif s.count('-') == 2:
+        if s[4] == '-' and s[7] == '-':
+            d=s.split('-')
+        else:
+            return False
     else:
         return False
+    #
+    #print(f'{d=}')
     if len(d[0]) == 4 and d[0].isdigit():
         yyyy=d[0]
     else:
@@ -651,6 +702,7 @@ months_and_abbrevs=[
     'December',
 ]    
 
+# look for strings of the form dd-mmm-yyyy
 def is_DD_MMM_YYYY(string):
     global Verbose_Flag
     if string.count('-') == 2:
@@ -659,7 +711,7 @@ def is_DD_MMM_YYYY(string):
         return False
     if Verbose_Flag:
         print(f'is_DD_MMM_YYYY({string}) {d=}')
-    if len(d) == 3 and (len(d[2]) == 4 or len(d[2]) == 2) and d[2].isdigit():
+    if len(d) == 3 and d[2].isdigit() and ((len(d[2]) == 4 or len(d[2]) == 2)):
         yyyy=d[2]
     else:
         return False
@@ -720,9 +772,73 @@ def is_part_of_DiVA_identifier(string):
     # otherwise
     return False
     
+# to deal with things of the form: 2016-06-10T08:16:13Z
+def is_date_time_string(string):
+    if string.endswith('Z'):
+        string=string[:-1]
+    if string.count('-') == 2 and  string.count(':') == 2:
+        if string[4] == '-' and string[7] == '-' and string[10] == 'T' and string[13] == ':' and string[16] == ':':
+            # print(f'{string[0:4]=}')
+            # print(f'{string[5:7]=}')
+            # print(f'{string[8:10]=}')
+            # print(f'{string[11:13]=}')
+            # print(f'{string[14:16]=}')
+            # print(f'{string[17:]=}')
+            string=string[0:4]+string[5:7]+string[8:10]+string[11:13]+string[14:16]+string[17:]
+            #print(f'{string=}')
+            if string.isdigit():
+                return True
+    # otherwise
+    return False
+    
+filename_extentions_to_skip=[
+    '.bib',
+    '.c',
+    '.csv',
+    '.doc',
+    '.docx',
+    '.html',
+    '.jpg',
+    '.js',
+#    '.json',
+    '.mods',
+    '.pdf',
+    '.png',
+    '.py',
+    '.srt',
+    '.xls',
+    '.xlsx',
+    '.xml',
+    '.zip',
+]
+    
+def is_filename_to_skip(string):
+    for f in filename_extentions_to_skip:
+        if string.endswith(f):
+            return True
+    # otherwise
+    return False
+
+# if there are multiple capital letters
+def is_multiple_caps(s):
+    len_s=len(s)
+    count_caps=0
+    
+    if len_s > 1:
+        for l in s:
+            if l.isupper():
+                count_caps=count_caps+1
+    if count_caps > 1:
+        return True
+    # otherwise
+    return False
+
 def main():
     global Verbose_Flag
     global unique_words
+    global total_words_processed
+    global all_text
+
 
     parser = optparse.OptionParser()
 
@@ -756,11 +872,17 @@ def main():
     if (len(remainder) < 1):
         print("Inusffient arguments\n must provide course_id\n")
     else:
+        total_words_processed=0
         unique_words=set()
         number_of_unique_words_output=0
+        filtered_unique_words=set()
+        skipped_words=set()
+        all_text=list()
+        
         course_id=remainder[0]
         unique_words_for_pages_in_course(course_id)
 
+        print(f'a total of {total_words_processed} words processed')
         print(f'{len(unique_words)} unique words')
         if len(unique_words) > 0:
             new_file_name='unique_words-for-course-'+str(course_id)+'.txt'
@@ -775,7 +897,12 @@ def main():
             # Note that this may eliminate capitalized names if the same string occurs for an uncapitalized version of the string.
             new_unique_words=set()
             for word in unique_words:
-                if (word.capitalize() in unique_words) and (word.lower() in unique_words):
+                # Put all upper case acronyms in unique_words
+                if word.isupper():
+                    new_unique_words.add(word)
+                elif is_multiple_caps(word):
+                    new_unique_words.add(word)
+                elif (word.capitalize() in unique_words) and (word.lower() in unique_words):
                     new_unique_words.add(word.lower())
                 else:
                     new_unique_words.add(word)
@@ -819,12 +946,8 @@ def main():
                     if word.startswith("//"):
                         continue
 
-                    # skip PDF file names
-                    if word.endswith('.pdf'):
-                        continue
-
-                    # skip HTML file names
-                    if word.endswith('.html'):
+                    # skip a variety of file names
+                    if is_filename_to_skip(word):
                         continue
 
                     # skip currency ammounts
@@ -875,6 +998,10 @@ def main():
                     if is_DD_MMM_YYYY(word):
                         continue
 
+                    # ignore date time stamps
+                    if is_date_time_string(word):
+                        continue
+
                     # ignore words with a single colon in a set of digits
                     if is_colon_range_or_HH_colon_MM(word):
                         continue
@@ -909,8 +1036,34 @@ def main():
 
                     # finally output the remaining word
                     f.write(f"{word}\n")
+                    filtered_unique_words.add(word)
+
                     number_of_unique_words_output=number_of_unique_words_output+1
 
             print(f'{number_of_unique_words_output} unique words output to {new_file_name}')
+
+        # check type of filtered_unique_words
+        print(f'type: {type(filtered_unique_words)} of length {len(filtered_unique_words)}')
+
+        # compute word frequency for the filtered unique words
+        frequency=dict()
+        for count, word in enumerate(all_text):
+            #print(f'{word=}')
+            if word in filtered_unique_words:
+                current_word_frequency=frequency.get(word, 0)
+                frequency[word]=current_word_frequency+1
+            else:
+                skipped_words.add(word)
+
+        frequency_sorted=dict(sorted(frequency.items(), key=lambda x:x[1]))
+
+        new_file_name='unique_words-for-course-frequency-'+str(course_id)+'.txt'        
+        with open(new_file_name, 'w') as f:
+            f.write(json.dumps(frequency_sorted))
+
+        new_file_name='unique_words-for-course-skipped-'+str(course_id)+'.txt'        
+        with open(new_file_name, 'w') as f:
+            for word in skipped_words:
+                f.write(f"{word}\n")
 
 if __name__ == "__main__": main()
