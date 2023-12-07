@@ -101,6 +101,109 @@ suffixes_to_ignore=[
 
 ]
 
+# based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
+top_100_English_words={
+    "the": "Article",
+    "be": "Verb",
+    "to": "Preposition",
+    "of": "Preposition",
+    "and": "Coordinator",
+    "a": "Article",
+    "in": "Preposition",
+    "that": "determiner",
+    "have": "Verb",
+    "I": "Pronoun",
+    "it": "Pronoun",
+    "for": "Preposition",
+    "not": "Adverb et al.",
+    "on": "Preposition",
+    "with": "Preposition",
+    "he": "Pronoun",
+    "as": "Adverb, preposition",
+    "you": "Pronoun",
+    "do": "Verb, noun",
+    "at": "Preposition",
+    "this": "Determiner, adverb, noun",
+    "but": "Preposition, adverb, coordinator",
+    "his": "Possessive pronoun",
+    "by": "Preposition",
+    "from": "Preposition",
+    "they": "Pronoun",
+    "we": "Pronoun",
+    "say": "Verb et al.",
+    "her": "Possessive pronoun",
+    "she": "Pronoun",
+    "or": "Coordinator",
+    "an": "Article",
+    "will": "Verb, noun",
+    "my": "Possessive pronoun",
+    "one": "Noun, adjective, et al.",
+    "all": "Adjective",
+    "would": "Verb",
+    "there": "Adverb, pronoun, et al.",
+    "their": "Possessive pronoun",
+    "what": "Pronoun, adverb, et al.",
+    "so": "Coordinator, adverb, et al.",
+    "up": "Adverb, preposition, et al.",
+    "out": "Preposition",
+    "if": "Preposition",
+    "about": "Preposition, adverb, et al.",
+    "who": "Pronoun, noun",
+    "get": "Verb",
+    "which": "Pronoun",
+    "go": "Verb, noun",
+    "me": "Pronoun",
+    "when": "Adverb",
+    "make": "Verb, noun",
+    "can": "Verb, noun",
+    "like": "Preposition, verb",
+    "time": "Noun",
+    "no": "Determiner, adverb",
+    "just": "Adjective",
+    "him": "Pronoun",
+    "know": "Verb, noun",
+    "take": "Verb, noun",
+    "people": "Noun",
+    "into": "Preposition",
+    "year": "Noun",
+    "your": "Possessive pronoun",
+    "good": "Adjective",
+    "some": "Determiner",
+    "could": "Verb",
+    "them": "Pronoun",
+    "see": "Verb",
+    "other": "Adjective, pronoun",
+    "than": "Preposition",
+    "then": "Adverb",
+    "now": "Preposition",
+    "look": "Verb",
+    "only": "Adverb",
+    "come": "Verb",
+    "its": "Possessive pronoun",
+    "over": "Preposition",
+    "think": "Verb",
+    "also": "Adverb",
+    "back": "Noun, adverb",
+    "after": "Preposition",
+    "use": "Verb, noun",
+    "two": "Noun",
+    "how": "Adverb",
+    "our": "Possessive pronoun",
+    "work": "Verb, noun",
+    "first": "Adjective",
+    "well": "Adverb",
+    "way": "Noun, adverb",
+    "even": "Adjective",
+    "new": "Adjective et al.",
+    "want": "Verb",
+    "because": "Preposition",
+    "any": "Pronoun",
+    "these": "Pronoun",
+    "give": "Verb",
+    "day": "Noun",
+    "most": "Adverb",
+    "us": "Pronoun"
+}
 
 miss_spelled_words=[
     'ßtudent',     # should be "student"
@@ -771,6 +874,13 @@ def is_part_of_DiVA_identifier(string):
         return True
     # otherwise
     return False
+
+#TRITA-ICT-EX-2009:104
+def is_TRITA_identifier(string):
+    if string.startswith('TRITA-'):
+        return True
+    # otherwise
+    return False
     
 # to deal with things of the form: 2016-06-10T08:16:13Z
 def is_date_time_string(string):
@@ -818,6 +928,15 @@ def is_filename_to_skip(string):
             return True
     # otherwise
     return False
+
+def is_slide_number(s):
+    if s.startswith('slide'):
+        s=s[5:]
+        if s.isdigit():
+            return True
+    # otherwise
+    return False
+
 
 # if there are multiple capital letters
 def is_multiple_caps(s):
@@ -938,6 +1057,10 @@ def main():
             # otherwise, output the filtered list of words
             with open(new_file_name, 'w') as f:
                 for word in unique_words:
+                    # skip slide numbers
+                    if is_slide_number(word):
+                        continue
+                        
                     # ignore a specified set of words
                     if word in words_to_ignore:
                         continue
@@ -1032,6 +1155,10 @@ def main():
 
                     # ignore DiVA identifiers
                     if is_part_of_DiVA_identifier(word):
+                        continue
+
+                    # ignore TRITA numbers
+                    if is_TRITA_identifier(word):
                         continue
 
                     # finally output the remaining word
