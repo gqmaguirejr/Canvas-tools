@@ -1,0 +1,4007 @@
+#!/usr/bin/env python3
+#
+# ./prune_unique_words.py course_id
+# 
+# The program takes the dictionary stored as JSON as output of compute_unique_words_for_pages_in_course.py, specifically the
+# unique_words-for-course-frequency-<course_id>.txt file and prunes out words based on different
+# filtering.
+# 
+# It outputs a reduce file with the filtered dictionary.
+#
+# G. Q: Maguire Jr.
+#
+# 2023.12.05
+#
+#
+# with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+#
+# Examples:
+# ./prune_unique_words.py 11544
+#
+# Note: It does not access the Canvas course, but rather uses the output from another program.
+#
+
+
+import csv, time
+from pprint import pprint
+import optparse
+import sys
+
+import json
+import re
+
+from lxml import html
+
+# Use Python Pandas to create XLSX files
+import pandas as pd
+
+# to use math.isnan(x) function
+import math
+
+import nltk
+
+prefixes_to_ignore=[
+    "'",
+    "\\",
+    '+',
+    ',',
+    '-',
+    './',
+    ':',
+    '=',
+    '|',
+    '¡',
+    '§',
+    '¿',
+    '–',
+    '†',
+    '‡',
+    '•',
+    '⇒',
+    '',
+    '',
+]
+
+suffixes_to_ignore=[
+    "'",
+    '-',
+    '.',
+    '/',
+    '\\',
+    '†',
+    '‡',
+    '…',
+
+]
+
+# based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
+top_100_English_words={
+    "the": "Article",
+    "be": "Verb",
+    "to": "Preposition",
+    "of": "Preposition",
+    "and": "Coordinator",
+    "a": "Article",
+    "in": "Preposition",
+    "that": "determiner",
+    "have": "Verb",
+    "I": "Pronoun",
+    "it": "Pronoun",
+    "for": "Preposition",
+    "not": "Adverb et al.",
+    "on": "Preposition",
+    "with": "Preposition",
+    "he": "Pronoun",
+    "as": "Adverb, preposition",
+    "you": "Pronoun",
+    "do": "Verb, noun",
+    "at": "Preposition",
+    "this": "Determiner, adverb, noun",
+    "but": "Preposition, adverb, coordinator",
+    "his": "Possessive pronoun",
+    "by": "Preposition",
+    "from": "Preposition",
+    "they": "Pronoun",
+    "we": "Pronoun",
+    "say": "Verb et al.",
+    "her": "Possessive pronoun",
+    "she": "Pronoun",
+    "or": "Coordinator",
+    "an": "Article",
+    "will": "Verb, noun",
+    "my": "Possessive pronoun",
+    "one": "Noun, adjective, et al.",
+    "all": "Adjective",
+    "would": "Verb",
+    "there": "Adverb, pronoun, et al.",
+    "their": "Possessive pronoun",
+    "what": "Pronoun, adverb, et al.",
+    "so": "Coordinator, adverb, et al.",
+    "up": "Adverb, preposition, et al.",
+    "out": "Preposition",
+    "if": "Preposition",
+    "about": "Preposition, adverb, et al.",
+    "who": "Pronoun, noun",
+    "get": "Verb",
+    "which": "Pronoun",
+    "go": "Verb, noun",
+    "me": "Pronoun",
+    "when": "Adverb",
+    "make": "Verb, noun",
+    "can": "Verb, noun",
+    "like": "Preposition, verb",
+    "time": "Noun",
+    "no": "Determiner, adverb",
+    "just": "Adjective",
+    "him": "Pronoun",
+    "know": "Verb, noun",
+    "take": "Verb, noun",
+    "people": "Noun",
+    "into": "Preposition",
+    "year": "Noun",
+    "your": "Possessive pronoun",
+    "good": "Adjective",
+    "some": "Determiner",
+    "could": "Verb",
+    "them": "Pronoun",
+    "see": "Verb",
+    "other": "Adjective, pronoun",
+    "than": "Preposition",
+    "then": "Adverb",
+    "now": "Preposition",
+    "look": "Verb",
+    "only": "Adverb",
+    "come": "Verb",
+    "its": "Possessive pronoun",
+    "over": "Preposition",
+    "think": "Verb",
+    "also": "Adverb",
+    "back": "Noun, adverb",
+    "after": "Preposition",
+    "use": "Verb, noun",
+    "two": "Noun",
+    "how": "Adverb",
+    "our": "Possessive pronoun",
+    "work": "Verb, noun",
+    "first": "Adjective",
+    "well": "Adverb",
+    "way": "Noun, adverb",
+    "even": "Adjective",
+    "new": "Adjective et al.",
+    "want": "Verb",
+    "because": "Preposition",
+    "any": "Pronoun",
+    "these": "Pronoun",
+    "give": "Verb",
+    "day": "Noun",
+    "most": "Adverb",
+    "us": "Pronoun"
+}
+
+# from https://strommeninc.com/1000-most-common-words-in-english-strommen-languages/
+thousand_most_common_word_in_English=[
+    'the', 'be', 'and', 'a', 'of', 'to', 'in', 'i', 'you', 'it', 'have', 'to',
+    'that', 'for', 'do', 'he', 'with', 'on', 'this', 'n’t', 'we', 'that', 'not',
+    'but', 'they', 'say', 'at', 'what', 'his', 'from', 'go', 'or', 'by', 'get',
+    'she', 'my', 'can', 'as', 'know', 'if', 'me', 'your', 'all', 'who', 'about',
+    'their', 'will', 'so', 'would', 'make', 'just', 'up', 'think', 'time',
+    'there', 'see', 'her', 'as', 'out', 'one', 'come', 'people', 'take', 'year',
+    'him', 'them', 'some', 'want', 'how', 'when', 'which', 'now', 'like', 'other',
+    'could', 'our', 'into', 'here', 'then', 'than', 'look', 'way', 'more',
+    'these', 'no', 'thing', 'well', 'because', 'also', 'two', 'use', 'tell',
+    'good', 'first', 'man', 'day', 'find', 'give', 'more', 'new', 'one', 'us',
+    'any', 'those', 'very', 'her', 'need', 'back', 'there', 'should', 'even',
+    'only', 'many', 'really', 'work', 'life', 'why', 'right', 'down', 'on', 'try',
+    'let', 'something', 'too', 'call', 'woman', 'may', 'still', 'through', 'mean',
+    'after', 'never', 'no', 'world', 'in', 'feel', 'yeah', 'great', 'last',
+    'child', 'oh', 'over', 'ask', 'when', 'as', 'school', 'state', 'much', 'talk',
+    'out', 'keep', 'leave', 'put', 'like', 'help', 'big', 'where', 'same', 'all',
+    'own', 'while', 'start', 'three', 'high', 'every', 'another', 'become',
+    'most', 'between', 'happen', 'family', 'over', 'president', 'old', 'yes',
+    'house', 'show', 'again', 'student', 'so', 'seem', 'might', 'part', 'hear',
+    'its', 'place', 'problem', 'where', 'believe', 'country', 'always', 'week',
+    'point', 'hand', 'off', 'play', 'turn', 'few', 'group', 'such', 'against',
+    'run', 'guy', 'about', 'case', 'question', 'work', 'night', 'live', 'game',
+    'number', 'write', 'bring', 'without', 'money', 'lot', 'most', 'book',
+    'system', 'government', 'next', 'city', 'company', 'story', 'today', 'job',
+    'move', 'must', 'bad', 'friend', 'during', 'begin', 'love', 'each', 'hold',
+    'different', 'american', 'little', 'before', 'ever', 'word', 'fact', 'right',
+    'read', 'anything', 'nothing', 'sure', 'small', 'month', 'program', 'maybe',
+    'right', 'under', 'business', 'home', 'kind', 'stop', 'pay', 'study', 'since',
+    'issue', 'name', 'idea', 'room', 'percent', 'far', 'away', 'law', 'actually',
+    'large', 'though', 'provide', 'lose', 'power', 'kid', 'war', 'understand',
+    'head', 'mother', 'real', 'best', 'team', 'eye', 'long', 'long', 'side',
+    'water', 'young', 'wait', 'okay', 'both', 'yet', 'after', 'meet', 'service',
+    'area', 'important', 'person', 'hey', 'thank', 'much', 'someone', 'end',
+    'change', 'however', 'only', 'around', 'hour', 'everything', 'national',
+    'four', 'line', 'girl', 'around', 'watch', 'until', 'father', 'sit', 'create',
+    'information', 'car', 'learn', 'least', 'already', 'kill', 'minute', 'party',
+    'include', 'stand', 'together', 'back', 'follow', 'health', 'remember',
+    'often', 'reason', 'speak', 'ago', 'set', 'black', 'member', 'community',
+    'once', 'social', 'news', 'allow', 'win', 'body', 'lead', 'continue',
+    'whether', 'enough', 'spend', 'level', 'able', 'political', 'almost', 'boy',
+    'university', 'before', 'stay', 'add', 'later', 'change', 'five', 'probably',
+    'center', 'among', 'face', 'public', 'die', 'food', 'else', 'history', 'buy',
+    'result', 'morning', 'off', 'parent', 'office', 'course', 'send', 'research',
+    'walk', 'door', 'white', 'several', 'court', 'home', 'grow', 'better', 'open',
+    'moment', 'including', 'consider', 'both', 'such', 'little', 'within',
+    'second', 'late', 'street', 'free', 'better', 'everyone', 'policy', 'table',
+    'sorry', 'care', 'low', 'human', 'please', 'hope', 'TRUE', 'process',
+    'teacher', 'data', 'offer', 'death', 'whole', 'experience', 'plan', 'easy',
+    'education', 'build', 'expect', 'fall', 'himself', 'age', 'hard', 'sense',
+    'across', 'show', 'early', 'college', 'music', 'appear', 'mind', 'class',
+    'police', 'use', 'effect', 'season', 'tax', 'heart', 'son', 'art', 'possible',
+    'serve', 'break', 'although', 'end', 'market', 'even', 'air', 'force',
+    'require', 'foot', 'up', 'listen', 'agree', 'according', 'anyone', 'baby',
+    'wrong', 'love', 'cut', 'decide', 'republican', 'full', 'behind', 'pass',
+    'interest', 'sometimes', 'security', 'eat', 'report', 'control', 'rate',
+    'local', 'suggest', 'report', 'nation', 'sell', 'action', 'support', 'wife',
+    'decision', 'receive', 'value', 'base', 'pick', 'phone', 'thanks', 'event',
+    'drive', 'strong', 'reach', 'remain', 'explain', 'site', 'hit', 'pull',
+    'church', 'model', 'perhaps', 'relationship', 'six', 'fine', 'movie', 'field',
+    'raise', 'less', 'player', 'couple', 'million', 'themselves', 'record',
+    'especially', 'difference', 'light', 'development', 'federal', 'former',
+    'role', 'pretty', 'myself', 'view', 'price', 'effort', 'nice', 'quite',
+    'along', 'voice', 'finally', 'department', 'either', 'toward', 'leader',
+    'because', 'photo', 'wear', 'space', 'project', 'return', 'position',
+    'special', 'million', 'film', 'need', 'major', 'type', 'town', 'article',
+    'road', 'form', 'chance', 'drug', 'economic', 'situation', 'choose',
+    'practice', 'cause', 'happy', 'science', 'join', 'teach', 'early', 'develop',
+    'share', 'yourself', 'carry', 'clear', 'brother', 'matter', 'dead', 'image',
+    'star', 'cost', 'simply', 'post', 'society', 'picture', 'piece', 'paper',
+    'energy', 'personal', 'building', 'military', 'open', 'doctor', 'activity',
+    'exactly', 'american', 'media', 'miss', 'evidence', 'product', 'realize',
+    'save', 'arm', 'technology', 'catch', 'comment', 'look', 'term', 'color',
+    'cover', 'describe', 'guess', 'choice', 'source', 'mom', 'soon', 'director',
+    'international', 'rule', 'campaign', 'ground', 'election', 'face', 'uh',
+    'check', 'page', 'fight', 'itself', 'test', 'patient', 'produce', 'certain',
+    'whatever', 'half', 'video', 'support', 'throw', 'third', 'care', 'rest',
+    'recent', 'available', 'step', 'ready', 'opportunity', 'official', 'oil',
+    'call', 'organization', 'character', 'single', 'current', 'likely', 'county',
+    'future', 'dad', 'whose', 'less', 'shoot', 'industry', 'second', 'list',
+    'general', 'stuff', 'figure', 'attention', 'forget', 'risk', 'no', 'focus',
+    'short', 'fire', 'dog', 'red', 'hair', 'point', 'condition', 'wall',
+    'daughter', 'before', 'deal', 'author', 'truth', 'upon', 'husband', 'period',
+    'series', 'order', 'officer', 'close', 'land', 'note', 'computer', 'thought',
+    'economy', 'goal', 'bank', 'behavior', 'sound', 'deal', 'certainly', 'nearly',
+    'increase', 'act', 'north', 'well', 'blood', 'culture', 'medical', 'ok',
+    'everybody', 'top', 'difficult', 'close', 'language', 'window', 'response',
+    'population', 'lie', 'tree', 'park', 'worker', 'draw', 'plan', 'drop', 'push',
+    'earth', 'cause', 'per', 'private', 'tonight', 'race', 'than', 'letter',
+    'other', 'gun', 'simple', 'course', 'wonder', 'involve', 'hell', 'poor',
+    'each', 'answer', 'nature', 'administration', 'common', 'no', 'hard',
+    'message', 'song', 'enjoy', 'similar', 'congress', 'attack', 'past', 'hot',
+    'seek', 'amount', 'analysis', 'store', 'defense', 'bill', 'like', 'cell',
+    'away', 'performance', 'hospital', 'bed', 'board', 'protect', 'century',
+    'summer', 'material', 'individual', 'recently', 'example', 'represent',
+    'fill', 'state', 'place', 'animal', 'fail', 'factor', 'natural', 'sir',
+    'agency', 'usually', 'significant', 'help', 'ability', 'mile', 'statement',
+    'entire', 'democrat', 'floor', 'serious', 'career', 'dollar', 'vote', 'sex',
+    'compare', 'south', 'forward', 'subject', 'financial', 'identify',
+    'beautiful', 'decade', 'bit', 'reduce', 'sister', 'quality', 'quickly', 'act',
+    'press', 'worry', 'accept', 'enter', 'mention', 'sound', 'thus', 'plant',
+    'movement', 'scene', 'section', 'treatment', 'wish', 'benefit', 'interesting',
+    'west', 'candidate', 'approach', 'determine', 'resource', 'claim', 'answer',
+    'prove', 'sort', 'enough', 'size', 'somebody', 'knowledge', 'rather', 'hang',
+    'sport', 'tv', 'loss', 'argue', 'left', 'note', 'meeting', 'skill', 'card',
+    'feeling', 'despite', 'degree', 'crime', 'that', 'sign', 'occur', 'imagine',
+    'vote', 'near', 'king', 'box', 'present', 'figure', 'seven', 'foreign',
+    'laugh', 'disease', 'lady', 'beyond', 'discuss', 'finish', 'design',
+    'concern', 'ball', 'east', 'recognize', 'apply', 'prepare', 'network', 'huge',
+    'success', 'district', 'cup', 'name', 'physical', 'growth', 'rise', 'hi',
+    'standard', 'force', 'sign', 'fan', 'theory', 'staff', 'hurt', 'legal',
+    'september', 'set', 'outside', 'et', 'strategy', 'clearly', 'property', 'lay',
+    'final', 'authority', 'perfect', 'method', 'region', 'since', 'impact',
+    'indicate', 'safe', 'committee', 'supposed', 'dream', 'training', 'shit',
+    'central', 'option', 'eight', 'particularly', 'completely', 'opinion', 'main',
+    'ten', 'interview', 'exist', 'remove', 'dark', 'play', 'union', 'professor',
+    'pressure', 'purpose', 'stage', 'blue', 'herself', 'sun', 'pain', 'artist',
+    'employee', 'avoid', 'account', 'release', 'fund', 'environment', 'treat',
+    'specific', 'version', 'shot', 'hate', 'reality', 'visit', 'club', 'justice',
+    'river', 'brain', 'memory', 'rock', 'talk', 'camera', 'global', 'various',
+    'arrive', 'notice', 'bit', 'detail', 'challenge', 'argument', 'lot', 'nobody',
+    'weapon', 'best', 'station', 'island', 'absolutely', 'instead', 'discussion',
+    'instead', 'affect', 'design', 'little', 'anyway', 'respond', 'control',
+    'trouble', 'conversation', 'manage', 'close', 'date', 'public', 'army', 'top',
+    'post', 'charge', 'seat'
+]
+
+# CEFR levels from https://languageresearch.cambridge.org/wordlists/text-inspector
+# for many hyphenated words the level used in the highest of the indivudal words
+common_English_words={
+    "bachelor's": {'xx': 'adjective'},
+    "can't": {'xx': 'contraction'},
+    "couldn't": {'xx': 'contraction'},
+    "didn't": {'xx': 'contraction'},
+    "doesn't": {'xx': 'contraction'},
+    "don't": {'xx': 'contraction'},
+    "isn't": {'xx': 'contraction'},
+    "it's": {'A1': 'contraction'},
+    "let's": {'A2': 'contraction'},
+    "n't": {'xx': 'contraction'},
+    "that's": {'A1': 'contraction'},
+    "there's": {'A1': 'contraction'},
+    "they're": {'A1': 'contraction'},
+    "user's": {'xx': 'possessive'},
+    "voil\u00e0": {'xx': 'exclamation'}, # 'voilà'
+    "we'll": {'xx': 'contraction'},
+    "we're": {'xx': 'contraction'},
+    "what's": {'A1': 'contraction'},
+    "who's": {'xx': 'contraction'},
+    "you're": {'xx': 'contraction'},
+    "you've": {'xx': 'cintraction'},
+    "you've": {'xx': 'contraction'},
+    # 'hairpinning': {'xx': ''},
+    # GQM
+    #'help/support': {'xx': ''},
+    #'impp': {'xx': ''},
+    #'in-active': {'xx': ''},
+    #'in/Secondary': {'xx': ''},
+    #'information-not': {'xx': ''},
+    #'information-optional': {'xx': ''},
+    #'information.Nostratic': {'xx': ''},
+    #'intercept-related': {'xx': ''},
+    #'internet-based': {'xx': ''},
+    #'internet-centric': {'xx': ''},
+    #'ipgrab': {'xx': ''},
+    #'ippm': {'xx': ''},
+    #'isn': {'xx': ''},
+    #'issll': {'xx': ''},
+    #'ka-mune-i-tay': {'xx': ''},
+    #'l\u00e5ng': {'xx': ''},
+    #'loc': {'xx': ''},
+    #'location-aware': {'xx': ''},
+    #'looSely-couPLed': {'xx': ''},
+    #'loopback': {'xx': ''},
+    #'lost/resent': {'xx': ''},
+    #'macro/micro': {'xx': ''},
+    #'mailto': {'xx': ''},
+    #'make/receive': {'xx': ''},
+    #'man-in-the-middle': {'xx': ''},
+    #'med': {'xx': ''},
+    #'mer': {'xx': ''},
+    #'message-body': {'xx': ''},
+    #'message-header': {'xx': ''},
+    #'messaging/multicast': {'xx': ''},
+    #'messaging/presence': {'xx': ''},
+    #'monthly/quarterly': {'xx': ''},
+    #'move/person/year': {'xx': ''},
+    #'n\u00e4t': {'xx': ''},
+    #'nbn': {'xx': ''},
+    #'nettype': {'xx': ''},
+    #'nic-hdl': {'xx': ''},
+    #'no-answer': {'xx': ''},
+    #'no-cancel': {'xx': ''},
+    #'no-fork': {'xx': ''},
+    #'no-queue': {'xx': ''},
+    #'no-recurse': {'xx': ''},
+    #'nserver': {'xx': ''},
+    #'nslookup': {'xx': ''},
+    #'offer/answer': {'xx': ''},
+    #'openai-whisper': {'xx': ''},
+    #'output_format': {'xx': ''},
+    #'owner-confctrl': {'xx': ''},
+    #'owner/creator': {'xx': ''},
+    #'packet-versus-circuit': {'xx': ''},
+    #'peakstop/sound': {'xx': ''},
+    #'phone-content': {'xx': ''},
+    #'phone-to-multi-phone': {'xx': ''},
+    #'phone-to-phone': {'xx': ''},
+    #'physical/software': {'xx': ''},
+    #'preCOnditions': {'xx': ''},
+    #'precon': {'xx': ''},
+    #'presental': {'xx': ''},
+    #'profie': {'xx': ''},
+    #'provrel': {'xx': ''},
+    #'psyvoip': {'xx': ''},
+    #'pts-enum-admin': {'xx': ''},
+    #'receive-only': {'xx': ''},
+    #'receiver/callee': {'xx': 'noun'},
+    #'regional/national': {'xx': ''},
+    #'relay/ATM': {'xx': ''},
+    #'request-to-fax': {'xx': ''},
+    #'restricted-cone': {'xx': ''},
+    #'ring-down': {'xx': 'noun'},
+    #'screen/Outgoing': {'xx': ''},
+    #'seating/Hoteling': {'xx': ''},
+    #'send-only': {'xx': ''},
+    #'sesstimer': {'xx': ''},
+    #'startTime': {'xx': ''},
+    #'structure-algebraic': {'xx': ''},
+    #'su': {'xx': ''},
+    #'switched-access': {'B1': ''},
+    #'tcpdump': {'xx': ''},
+    #'telecom-only': {'xx': ''},
+    #'teleoperator': {'xx': ''},
+    #'teleoperator-like': {'xx': ''},
+    #'telephone-event': {'xx': ''},
+    #'telephony-equivalent': {'xx': ''},
+    #'u-Law': {'xx': ''},
+    #'ve': {'xx': ''},
+    'Arabic': {'xx': 'noun'},
+    'English': {'xx': 'noun, adjective'},
+    'Founding': {'B2': 'adjective'},
+    'LED': {'xx': 'acronym'},
+    'US': {'A1': 'acronym'},
+    'USA': {'xx': 'acronym'},
+    'abbreviated': {'xx': 'adjective'},
+    'abbreviations': {'xx':  'noun'},
+    'abstraction': {'xx': 'noun'},
+    'academia': {'xx': 'noun'},
+    'accepted': {'B1': 'adjective'},
+    'accepting': {'B1': 'verb gerund or present participle'},
+    'accepts': {'A1': 'verb 3rd person present'},
+    'accessed': {'B2': 'verb past tense, past participle'},
+    'accessing': {'B2': 'verb gerund or present participle'},
+    'accommodated': {'xx': 'verb past tense, past participle'},
+    'accommodates':{'xx': 'verb 3rd person present'},
+    'accounting': {'xx': 'noun'},
+    'acknowledged': {'C1': 'adjective'},
+    'acknowledgement': {'xx': 'noun'},
+    'acknowledgements': {'xx': 'noun'},
+    'acknowledges': {'C1': 'verb 3rd person present'},
+    'acoustic': {'xx': 'adjective, noun'},
+    'acoustics': {'xx': 'noun'},
+    'acronyms': {'xx': 'noun'},
+    'acting': {'B1': 'noun, adjective'},
+    'activated': {'xx': 'verb past tense, past participle'},
+    'actively': {'B2': 'adverb'},
+    'acts': {'B1': 'verb 3rd person present'},
+    'actuality': {'xx': 'noun'},
+    'adapted': {'B2': 'verb past tense, past participle'},
+    'adapter': {'xx': 'noun'},
+    'adapters': {'xx': 'noun'},
+    'adapting': {'B2': 'verb gerund or present participle'},
+    'adaptive': {'xx': 'adjective'},
+    'adaptively': {'xx': 'adverb'},
+    'added': {'A2': 'adjective'},
+    'adding': {'A2': 'verb gerund or present participle'},
+    'additive': {'xx': 'noun, adjective'},
+    'addressed': {'C1': 'adjective'},
+    'addressing': {'C1': 'verb gerund or present participle'},
+    'adds': {'A2': 'verb 3rd person present'},
+    'adjustable': {'xx': 'adjective'},
+    'adjusted': {'B2': 'verb past tense, past participle'},
+    'adjusting': {'B2': 'verb gerund or present participle'},
+    'admin': {'xx': ''},
+    'administratively': {'xx': ''},
+    'adopted': {'B2': 'verb past tense, past participle'},
+    'adopters': {'xx': ''},
+    'adopting': {'B2': 'verb gerund or present participle'},
+    'adopts': {'B2': 'verb 3rd person present'},
+    'advantageous': {'xx': 'adjective'},
+    'advertised': {'B1': 'verb past tense, past participle'},
+    'advisor': {'xx': 'noun - academic'},
+    'advisors': {'xx': 'noun - academic'},
+    'affected': {'B2': 'adjective'},
+    'after-the-event': {'B1': 'phrase of event'},
+    'aggregate': {'xx': 'noun, adjective, verb'},
+    'aggregated': {'xx': 'very'},
+    'aggressively': {'B2': 'adverb'},
+    'agreed': {'A2': 'adjective'},
+    'agrees': {'A2': 'verb 3rd person present'},
+    'aha': {'xx': 'exclamation'},
+    'aka': {'xx': 'abbreviation'},
+    'alerted': {'C2': 'verb past tense, past participle'},
+    'alerting': {'C2': 'verb gerund or present participle'},
+    'algorithm': {'xx': 'noun'},
+    'algorithms': {'xx': 'noun'},
+    'aligning': {'xx': 'verb gerund or present participle'},
+    'alleged': {'C1': 'adjective)'},
+    'allocated': {'C1': 'verb past tense, past participle'},
+    'allocates': {'C1': 'verb 3rd person present'},
+    'allowed': {'B1': 'verb past tense, past participle'},
+    'allowing': {'B1': 'verb gerund or present participle'},
+    'allows': {'B1': 'verb 3rd person present'},
+    'alphabet': {'B1': 'noun'},
+    'alphabetic': {'xx': 'adjective'},
+    'alphabets': {'B1': 'noun'},
+    'alternate': {'C1': 'verb, adjective, noun'},
+    'am': {'A1': 'first person singular of be'},
+    'amaze': {'xx': 'verb'},
+    'amazingly': {'B1': 'adverb'},
+    'amending': {'C2': 'verb gerund or present participle'},
+    'amortization': {'xx': 'noun'},
+    'amortized': {'xx': 'verb past tense, past participle'},
+    'amplification': {'xx': 'noun'},
+    'amplitude': {'xx': 'noun'},
+    'analog': {'xx': 'adjective, noun'},
+    'analytical': {'C1': 'adjective'},
+    'analyzing': {'xx': 'verb gerund or present participle'},
+    'and/or': {'A1': 'conjunction'},
+    'announced': {'B1': 'verb past tense, past participle'},
+    'announcer': {'xx': 'noun'},
+    'announces': {'B1': 'verb 3rd person present'},
+    'announcing': {'B1': 'verb gerund or present participle'},
+    'annoyance': {'C1': 'noun'},
+    'anonymity': {'xx': 'noun'},
+    'anonymization': {'xx': 'noun'},
+    'anonymizer': {'xx': 'noun'},
+    'answered': {'A1': 'verb past tense, past participle'},
+    'answering': {'A1': 'verb gerund or present participle'},
+    'antennas': {'xx': 'noun'},
+    'anytime': {'xx': 'adverb'},
+    'appeared': {'B1': 'verb past tense, past participle'},
+    'appears': {'B1': 'verb 3rd person present'},
+    'append': {'xx': 'verb'},
+    'appendices': {'xx': 'noun'},
+    'appliance': {'C1': 'noun'},
+    'appliances': {'C1': 'noun'},
+    'applied': {'B1': 'adjective'},
+    'applies': {'B1': 'verb 3rd person present'},
+    'applying': {'B1': 'verb gerund or present participle'},
+    'approachable': {'xx': 'adjective'},
+    'approved': {'B1': 'adjective'},
+    'approx': {'xx': 'abbreviation'},
+    'arbitrage': {'xx': 'noun, verb'},
+    'archipelago': {'xx': 'noun'},
+    'are': {'A1': 'verb'},
+    'area/city': {'A2': 'alternatives'},
+    'argued': {'B1': 'verb past tense, past participle'},
+    'argues': {'B1': 'verb 3rd person present'},
+    'arithmetic': {'xx': 'noun'},
+    'arm-mounted': {'C2': 'adjective?'},
+    'arrested': {'B1': 'verb past tense, past participle'},
+    'arrived': {'A2': 'verb past tense, past participle'},
+    'arrives': {'A2': 'verb 3rd person present'},
+    'arriving': {'A2': 'verb gerund or present participle'},
+    'artificially': {'B2': 'adverb'},
+    'asked': {'A1': 'verb past tense, past participle'},
+    'asking': {'A1': 'verb gerund or present participle'},
+    'asks': {'A1': 'verb 3rd person present'},
+    'assigned': {'C1': 'verb'},
+    'assignees': {'xx': 'noun'},
+    'assigning': {'C1': 'verb gerund or present participle'},
+    'assigns': {'C1': 'verb 3rd person present'},
+    'assists': {'B2': 'verb 3rd person present'},
+    'associating': {'C1': 'verb gerund or present participle'},
+    'assumes': {'B2': 'verb 3rd person present'},
+    'assured': {'B2': 'adjective'},
+    'asynchronous': {'xx': 'adjective'},
+    'atomic': {'B2': 'adjective'},
+    'attached': {'B1': 'adjective'},
+    'attacker': {'xx': 'noun'},
+    'attackers': {'xx': 'noun'},
+    'attacking': {'B1': 'verb gerund or present participle'},
+    'attempting': {'B1': 'verb gerund or present participle'},
+    'attendant': {'xx': 'noun, adjective'},
+    'attribute-value': {'C2': 'noun'},
+    'audible': {'xx': 'adjective'},
+    'audio-coding': {'xx': 'phrase'},
+    'audio/video': {'xx': 'alternatives'},
+    'audioconferencing': {'xx': 'noun'},
+    'auditory': {'xx': 'adjective'},
+    'augmented': {'xx': 'adjective'},
+    'authenticate': {'xx': 'verb'},
+    'authenticated': {'xx': 'verb past tense, past participle'},
+    'authenticates': {'xx': 'verb 3rd person present'},
+    'authenticating': {'xx': 'verb gerund or present participle'},
+    'authentication': {'xx': 'noun'},
+    'authentications': {'xx': 'noun'},
+    'authenticator': {'xx': 'noun'},
+    'authenticity': {'xx': 'noun'},
+    'authorisation': {'xx': 'noun'},
+    'authorization': {'xx': 'noun'},
+    'authorized': {'C1': 'adjective'},
+    'authorizing': {'C1': 'verb gerund or present participle'},
+    'auto-attendant': {'xx': 'noun'},
+    'automate': {'xx': ''},
+    'avg': {'xx': 'abbreviation'},
+    'avoided': {'B1': ''},
+    'avoiding': {'B1': ''},
+    'avoids': {'B1': ''},
+    'babysitter': {'B1': 'noun'},
+    'back-end': {'A1': 'noun'},
+    'back-off': {'A1': 'verb'},
+    'back-to-back': {'B1': 'adjective or adverb'},
+    'backbone': {'xx': 'noun'},
+    'backbones': {'xx': 'noun'},
+    'backhaul': {'xx': 'noun'},
+    'backwards': {'B1': 'adverb'},
+    'bailouts': {'': 'noun'},
+    'baked': {'A2': 'adjective'},
+    'balancing': {'B2': 'noun, verb'},
+    'bandwidth': {'xx': 'noun'},
+    'bandwidths': {'xx': 'noun'},
+    'barcode': {'xx': 'noun'},
+    'basics': {'B2': 'adjective, noun'},
+    'battery-operated': {'xx': 'adjective, adverb?'},
+    'beard': {'A1': 'noun, verb'},
+    'became': {'A2': 'verb past tense'},
+    'becomes': {'A2': 'verb 3rd person present'},
+    'becoming': {'A2': 'adjective, adverb'},
+    'bedroom': {'A1': 'noun'},
+    'been': {'A1': 'verb'},
+    'beep': {'xx': 'noun, verb'},
+    'beeping': {'xx': 'verb gerund or present participle'},
+    'beforehand': {'xx': ''},
+    'began': {'A1': 'verb past tense'},
+    'begins': {'A1': 'verb 3rd person present'},
+    'behaving': {'B1': 'verb gerund or present participle'},
+    'bene': {'xx': 'latin?'},
+    'beret': {'xx': 'noun'},
+    'best-effort': {'': 'noun'},
+    'bigger': {'A1': 'adjective'},
+    'biggest': {'A1': 'adjective'},
+    'billed': {'xx': 'adjective'},
+    'billing': {'xx': 'noun'},
+    'billions': {'B2': 'noun'},
+    'bin': {'B1': 'noun'},
+    'binary': {'xx': 'adjective'},
+    'binaural': {'xx': 'adjective'},
+    'binding': {'C1': 'noun'},
+    'bindings': {'xx': 'noun'},
+    'bitrate': {'xx': 'noun'},
+    'bits/sample': {'xx': 'unit'},
+    'bladders': {'xx': 'noun'},
+    'blah': {'xx': 'noun'},
+    'blasting': {'xx': 'verb gerund or present participle'},
+    'blazingly': {'xx': 'adverb'},
+    'blinking': {'B2': 'adjective'},
+    'bliss': {'xx': 'noun'},
+    'blocked': {'B2': 'adjective'},
+    'blocking': {'B2': 'noun'},
+    'blowing': {'B1': 'verb gerund or present participle'},
+    'booth': {'xx': 'noun'},
+    'booths': {'xx': 'noun'},
+    'bootstrap': {'xx': 'noun'},
+    'bootstrapping': {'xx': 'noun'},
+    'borrowed': {'A2': 'verb past tense, past participle'},
+    'bot': {'xx': 'noun'},
+    'bottleneck': {'xx': 'noun'},
+    'bought': {'A1': 'verb past tense, past participle'},
+    'bouncing': {'B2': 'adjective'},
+    'bounded': {'xx': 'verb past tense, past participle'},
+    'bps': {'xx': 'units abbreviation'},
+    'branching': {'xx': 'verb gerund or present participle'},
+    'breaking': {'A2': 'verb gerund or present participle'},
+    'breakout': {'xx': 'noun, adjective'},
+    'breaks': {'A2': 'verb 3rd person present'},
+    'bribed': {'C1': 'verb past tense, past participle'},
+    'bridged': {'xx': 'verb past tense, past participle'},
+    'bridging': {'xx': 'noun'},
+    'bringing': {'A2': 'verb past tense, past participle'},
+    'brings': {'A2': 'verb 3rd person present'},
+    'broader': {'B1': 'adjective'},
+    'broke': {'A2': 'verb, adjective'},
+    'broker': {'xx': 'noun'},
+    'brought': {'A2': 'verb past tense, past participle'},
+    'buffered': {'xx': 'verb past tense, past participle'},
+    'buffering': {'xx': 'verb gerund or present participle'},
+    'buggies': {'xx': 'noun'},
+    'buggy': {'xx': 'noun'},
+    'builds': {'A2': 'verb 3rd person present'},
+    'built': {'A2': 'verb, adjective'},
+    'built-in': {'A2': 'adjective'},
+    'bulky': {'C1': 'adjective'},
+    'burdened': {'xx': 'verb past tense, past participle'},
+    'burglary': {'B2': 'noun'},
+    'busy-hour': {'A2': 'noun'},
+    'buying': {'A1': 'verb gerund or present participle'},
+    'buys': {'A1': 'verb 3rd person present'},
+    'bypass': {'xx': 'noun, verb'},
+    'bypassed': {'xx': 'verb past tense, past participle'},
+    'byte': {'xx': 'noun'},
+    'bytes': {'xx': 'noun'},
+    'cabled': {'xx': 'verb past tense, past participle'},
+    'cached': {'xx': 'verb past tense, past participle'},
+    'caches': {'xx': 'noun, verb 3rd person present'},
+    'calculated': {'B2': 'adjective'},
+    'calculating': {'B2': 'adjective'},
+    'calendar': {'A2': 'noun'},
+    'calendaring': {'xx': 'verb gerund or present participle'},
+    'calendars': {'A2': 'noun'},
+    'call-centers': {'xx': 'noun'},
+    'call-forward': {'b1': 'noun'},
+    'call-identifying': {'B2': '???'},
+    'callback': {'xx': 'noun'},
+    'callbacks': {'xx': 'noun'},
+    'callcontrol': {'xx': 'phrase'},
+    'called': {'A2': 'verb'},
+    'callee': {'xx': 'noun'},
+    'callees': {'xx': 'noun'},
+    'caller': {'xx': 'noun'},
+    'callers': {'xx': 'noun'},
+    'calling': {'A2': 'noun'},
+    'calls/day': {'xx': 'unit'},
+    'calls/year': {'xx': 'unit'},
+    'came': {'A1': 'verb'},
+    'canceled': {'xx': 'verb past tense, past participle'},
+    'canceling': {'xx': 'verb'},
+    'cancellation': {'C1': 'noun'},
+    'cancels': {'B1': 'verb'},
+    'caption': {'xx': 'noun, verb'},
+    'captioning': {'xx': 'verb'},
+    'captions': {'xx': 'noun'},
+    'cardiac': {'': 'adjective, noun'},
+    'cared': {'B1': 'verb'},
+    'carried': {'A1': 'verb past tense, past participle'},
+    'carrier': {'xx': 'noun'},
+    'carriers': {'xx': 'noun'},
+    'carrying': {'A1': 'verb gerund or present participle'},
+    'cascaded': {'xx': 'verb'},
+    'catch-up': {'B2': 'verb'},
+    'catcher': {'xx': 'noun'},
+    'cathedral': {'A1': 'noun'},
+    'causing': {'B2': 'verb'},
+    'ceased': {'B2': 'verb'},
+    'cellular': {'xx': 'adjective'},
+    'centralized': {'xx': 'adjective, verb'},
+    'centrally': {'xx': 'adverb'},
+    'certification': {'xx': 'noun'},
+    'certified/optimized': {'xx': 'verb'},
+    'cetera': {'xx': 'noun'},
+    'challenge/response': {'xx': 'phrase'},
+    'challenged': {'B2': 'adjective'},
+    'changed': {'A1': 'verb past tense, past participle'},
+    'changing': {'A1': 'verb gerund or present participle'},
+    'charged': {'B1': 'adjective'},
+    'charging': {'B1': 'verb gerund or present participle'},
+    'cheaper': {'A1': 'adjective'},
+    'cheapest': {'A1': 'adjective'},
+    'cheating': {'B2': 'verb gerund or present participle'},
+    'checked': {'A2': 'adjective'},
+    'checking': {'A2': 'verb gerund or present participle'},
+    'chipset': {'xx': 'noun'},
+    'chipsets': {'xx': 'noun'},
+    'chirp': {'xx': 'verb'},
+    'chirping': {'xx': 'verb gerund or present participle'},
+    'chooses': {'A1': 'verb 3rd person present'},
+    'chorus': {'xx': 'noun'},
+    'chose': {'A1': 'verb past tense'},
+    'chosen': {'A1': 'verb, adjective'},
+    'circuit-based': {'C2': 'adjective?'},
+    'circuit-switched': {'C2': 'adjective?'},
+    'circular': {'B2': 'adjective, noun'},
+    'citation': {'xx': 'noun'},
+    'citations': {'xx': 'noun'},
+    'cited': {'xx': 'verb'},
+    'cites': {'xx': 'verb'},
+    'cleverly': {'xx': 'adverb'},
+    'click-to-call': {'A2': 'noun'},
+    'click-to-connect': {'B1': 'noun'},
+    'click-to-dial': {'B1': 'noun'},
+    'clicking': {'A2': 'noun, verb'},
+    'clipping': {'xx': 'noun, verb'},
+    'clocked': {'xx': 'verb past tense, past participle'},
+    'clocking': {'xx': 'verb gerund or present participle'},
+    'closer': {'A1': 'noun'},
+    'cloud-base': {'B1': 'noun'},
+    'cloud-based': {'B1': 'adjective'},
+    'clouds': {'A2': 'noun'},
+    'co-located': {'xx': 'verb past tense, past participle'},
+    'codec': {'xx': 'noun'},
+    'codecs': {'xx': 'noun'},
+    'coded': {'xx': 'adjective'},
+    'coder': {'xx': 'noun'},
+    'coding': {'xx': 'noun'},
+    'codings': {'xx': 'noun'},
+    'coefficient': {'xx': 'noun'},
+    'collected': {'A2': 'adjective'},
+    'collecting': {'A2': 'verb gerund or present participle'},
+    'colon': {'B2': 'noun'},
+    'combined': {'B2': 'verb past tense, past participle'},
+    'combines': {'B2': 'noun, verb 3rd person present'},
+    'combining': {'B2': 'verb gerund or present participle'},
+    'comes': {'A1': 'verb 3rd person present'},
+    'comfort-noise': {'B2x': 'noun'},
+    'comically': {'xx': 'adverb'},
+    'coming': {'A1': 'adjective, noun'},
+    'commented': {'B2': 'verb past tense, past participle'},
+    'commercially': {'xx': 'adverb'},
+    'committed': {'B2': 'adjective'},
+    'commonality': {'xx': 'noun'},
+    'communicated': {'B1': 'verb past tense, past participle'},
+    'communicating': {'B1': 'verb gerund or present participle'},
+    'communicator': {'xx': 'noun'},
+    'compared': {'B1': 'verb past tense, past participle'},
+    'compares': {'B1': 'verb 3rd person present'},
+    'compatible': {'C1': 'adjective, noun'},
+    'competing': {'B1': 'verb gerund or present participle'},
+    'complains': {'B1': 'verb 3rd person present'},
+    'completed': {'A2': 'verb past tense, past participle'},
+    'composedw': {'B2': 'verb past tense, past participle'},
+    'comprehension': {'xx': 'noun'},
+    'compress': {'xx': 'verb, noun'},
+    'compressed': {'xx': 'verb past tense, past participle'},
+    'compression': {'xx': 'noun'},
+    'computation': {'xx': 'noun'},
+    'computationally': {'xx': 'adverb'},
+    'computations': {'xx': 'noun'},
+    'computed': {'xx': 'verb past tense, past participle'},
+    'computing': {'xx': 'noun'},
+    'concatenation': {'xx': 'noun'},
+    'concealment': {'xx': 'noun'},
+    'concerning': {'B2': 'preposition, adjective'},
+    'concise': {'xx': 'adjective'},
+    'concluded': {'C1': 'verb past tense, past participle'},
+    'conditioners': {'xx': 'noun'},
+    'cone': {'xx': 'noun'},
+    'conferencing': {'xx': 'verb gerund or present participle'},
+    'confidentiality': {'xx': 'noun'},
+    'configurable': {'xx': 'adjective'},
+    'configure': {'xx': 'verb'},
+    'configured': {'xx': 'verb past tense, past participle'},
+    'configures': {'xx': 'verb 3rd person present'},
+    'conflicts': {'B2': 'noun, verb 3rd person present'},
+    'conformance': {'xx': 'noun'},
+    'conforms': {'xx': 'verb 3rd person present'},
+    'congestion': {'C1': 'verb'},
+    'conjugate': {'xx': 'verb, noun'},
+    'conjunction': {'B2': 'noun'},
+    'connecting': {'B1': 'adjective'},
+    'connectionless': {'xx': 'adjective'},
+    'connectivity': {'xx': 'noun'},
+    'connects': {'B1': 'verb 3rd person present'},
+    'considered': {'B1': 'adjective'},
+    'considering': {'B1': 'preposition, conjunction, adverb'},
+    'consisting': {'xx': 'verb'},
+    'consists': {'xx': 'verb 3rd person present, noun'},
+    'console': {'xx': 'verb, noun'},
+    'consulted': {'C1': 'verb'},
+    'consumed': {'B2': 'verb past tense, past participle'},
+    'contacting': {'A2': 'verb gerund or present participle'},
+    'contained': {'B1': 'verb past tense, past participle'},
+    'containerized': {'xx': 'adjective'},
+    'containing': {'B1': 'verb gerund or present participle'},
+    'contains': {'B1': 'verb'},
+    'contemporaneously': {'xx': 'adverb'},
+    'contending': {'xx': 'verb gerund or present participle'},
+    'contented': {'xx': 'adjective'},
+    'context-aware': {'xx': 'adjective'},
+    'context-dependent': {'xx': 'adjective'},
+    'contiguous': {'xx': 'adjective'},
+    'continuation': {'xx': 'noun'},
+    'continued': {'B1': 'adjective'},
+    'continues': {'B1': 'verb 3rd person present'},
+    'continuing': {'B1': 'adjective'},
+    'continuously': {'B2': 'adverb'},
+    'contractions': {'xx': 'noun'},
+    'contributed': {'B2': 'verb past tense, past participle'},
+    'contributing': {'B2': 'verb gerund or present participle'},
+    'control-of-service': {'xx': 'phrase'},
+    'controlled': {'xx': 'adjective'},
+    'controller': {'xx': 'noun'},
+    'controlling': {'B1': 'verb gerund or present participle'},
+    'converged': {'xx': 'verb past tense, past participle'},
+    'convergence': {'xx': 'noun'},
+    'conversational': {'xx': 'adjective'},
+    'conversely': {'xx': 'adverb'},
+    'converted': {'B2': 'adjective'},
+    'converter': {'xx': 'noun'},
+    'converting': {'B2': 'verb gerund or present participle'},
+    'converts': {'B2': 'verb, noun'},
+    'conveyance': {'xx': 'noun'},
+    'conveying': {'C1': 'verb gerund or present participle'},
+    'cooperation': {'B2': 'noun'},
+    'coordinated': {'xx': 'verb past tense, past participle'},
+    'coordinates': {'xx': 'verb 3rd person present, noun'},
+    'copied': {'A2': 'verb past tense, past participle'},
+    'cord-free': {'xx': 'adjective?'},
+    'cordless': {'xx': 'adjective, nount'},
+    'corollary': {'xx': 'noun'},
+    'corrected': {'B2': 'verb past tense, past participle'},
+    'correlated': {'xx': 'verb past tense, past participle'},
+    'cost-effective': {'xx': 'adjective'},
+    'counselor': {'xx': 'noun'},
+    'counted': {'B1': 'verb past tense, past participle'},
+    'countermeasures': {'xx': 'noun'},
+    'counterproductive': {'xx': 'adjective'},
+    'country/area': {'xx': 'phrase'},
+    'countrycode': {'xx': 'phrase'},
+    'coupled': {'xx': 'adjective'},
+    'crappy': {'xx': 'adjective'},
+    'created': {'B1': 'verb past tense, past participle'},
+    'creates': {'B1': 'verb 3rd person present'},
+    'creating': {'B1': 'verb gerund or present participle'},
+    'credentials': {'xx': 'noun'},
+    'cross-references': {'xx': 'noun'},
+    'cryptographic': {'xx': 'adjective'},
+    'cryptographically': {'xx': 'noun'},
+    'cubic': {'xx': 'adjective, noun'},
+    'cumulative': {'xx': 'adjective'},
+    'cure-all': {'xx': 'noun'},
+    'cushions': {'B1': 'noun, verb'},
+    'customize': {'xx': 'verb'},
+    'customized': {'xx': 'verb past tense, past participle'},
+    'cyclic': {'xx': 'adjective'},
+    'daemon': {'xx': 'noun'},
+    'damaged': {'B1': 'verb past tense, past participle'},
+    'damned': {'xx': 'adjective adverb'},
+    'dashes': {'B2': 'verb 3rd person present, noun'},
+    'data-collection': {'xx': 'noun'},
+    'datacom': {'xx': 'noun'},
+    'datagrams': {'xx': 'noun'},
+    'dated': {'B1': 'adjective'},
+    'days/year': {'xx': 'units'},
+    'de-jitter': {'xx': 'verb?'},
+    'deaf': {'B1': 'adjective'},
+    'dealing': {'xx': 'noun'},
+    'debatable': {'xx': 'adjective'},
+    'debugging': {'xx': 'verb'},
+    'decibels': {'xx': 'noun'},
+    'decided': {'A2': 'verb past tense, past participle'},
+    'decides': {'A2': 'verb 3rd person present'},
+    'deciding': {'xx': 'verb 3rd person present'},
+    'declarative': {'xx': 'noun'},
+    'declared': {'B1': 'verb'},
+    'decode': {'xx': 'verb'},
+    'decoded': {'xx': 'verb past tense, past participle'},
+    'decoding': {'xx': 'verb 3rd person present'},
+    'decomposition': {'xx': 'noun'},
+    'decompressed': {'xx': 'verb past tense, past participle'},
+    'decorated': {'B1': 'adjective'},
+    'decoupling': {'xx': 'verb gerund or present participle'},
+    'decreased': {'B1': 'verb past tense, past participle'},
+    'decremented': {'xx': 'verb past tense, past participle'},
+    'decrypt': {'xx': 'verb, noun'},
+    'decrypted': {'xx': 'verb past tense, past participle'},
+    'dedicate': {'C2': 'verb'},
+    'deeper': {'A2': 'adjective'},
+    'defer': {'xx': 'verb'},
+    'defined': {'B2': 'adjective'},
+    'defines': {'B2': 'verb'},
+    'defining': {'B2': 'verb gerund or present participle'},
+    'definitive': {'C2': 'adjective. noun'},
+    'degraded': {'xx': 'adjective'},
+    'dejittering': {'xx': 'verb'},
+    'delayed': {'A2': 'verb past tense, past participle'},
+    'delegated': {'C2': 'verb past tense, past participle'},
+    'deleterious': {'xx': 'adjective'},
+    'deliverables': {'xx': 'noun'},
+    'delivered': {'B1': 'verb past tense, past participle'},
+    'delivering': {'B1': 'verb gerund or present participle'},
+    'delivers': {'B1': 'verb 3rd person present'},
+    'demo': {'xx': 'noun'},
+    'demonstrated': {'B2': 'verb past tense, past participle'},
+    'demultiplex': {'xx': 'verb'},
+    'demultiplexing': {'xx': 'verb gerund or present participle'},
+    'denial-of-service': {'xxxx': 'phrase'},
+    'denying': {'B2': 'verb gerund or present participle'},
+    'dependable': {'xx': 'adjective'},
+    'depending': {'xx': 'verb gerund or present participle'},
+    'depends': {'xx': 'verb 3rd person present'},
+    'deploying': {'xx': 'verb gerund or present participle'},
+    'deprecate': {'xx': 'verb'},
+    'deprecated': {'xx': 'verb past tense, past participle'},
+    'deregulation': {'xx': 'noun'},
+    'derivative': {'xx': 'adjective'},
+    'derives': {'C1': 'verb 3rd person present'},
+    'deriving': {'C1': 'verb gerund or present participle'},
+    'described': {'A2': 'verb past ense'},
+    'describes': {'A2': 'verb 3rd person present'},
+    'describing': {'A2': 'verb gerund or present participle'},
+    'descriptive': {'xx': 'adjective'},
+    'descriptor': {'xx': 'noun'},
+    'descriptors': {'xx': 'noun'},
+    'designed': {'B1': 'adjective'},
+    'desired': {'C1': 'adjective'},
+    'destroys': {'B1': 'verb 3rd person present'},
+    'detectable': {'xx': 'adjective'},
+    'detected': {'C1': 'verb past tense, past participle'},
+    'detector': {'xx': 'noun'},
+    'detectors': {'xx': 'noun'},
+    'detects': {'C1': 'verb 3rd person present'},
+    'determines': {'C1': 'verb 3rd person present'},
+    'devastating': {'C1': 'verb gerund or present participle'},
+    'developed': {'B1': 'adjective'},
+    'developer': {'C1': 'noun'},
+    'developers': {'C1': 'noun'},
+    'developing': {'B1': 'verb gerund or present participle'},
+    'deviation': {'xx': 'noun'},
+    'diabetic': {'xx': 'adjective, noun'},
+    'dial': {'B1': 'noun, verb'},
+    'dial-in': {'xx': 'adjective'},
+    'dial-up': {'xx': 'adjective'},
+    'dialed': {'xx': 'verb past tense, past participle'},
+    'dialer': {'xx': 'noun'},
+    'dialing': {'xx': 'verb gerund or present participle'},
+    'dialog': {'xx': 'noun'},
+    'dialogs': {'xx': 'noun'},
+    'dials': {'B1': 'noun'},
+    'did': {'A1': 'verb'},
+    'differs': {'B2': 'verb 3rd person present'},
+    'digest': {'C1': 'verb, noun'},
+    'digging': {'B1': 'verb gerund or present participle'},
+    'digit': {'xx': 'noun'},
+    'digitally': {'xx': 'adverb'},
+    'digitized': {'xx': 'verb past tense, past participle'},
+    'digits': {'xx': 'noun'},
+    'dimensioned': {'xx': 'verb past tense, past participle'},
+    'dimensioning': {'xx': 'verb gerund or present participle'},
+    'dinosaurs': {'A2': 'noun'},
+    'dioxide': {'xx': 'noun'},
+    'directed': {'B1': 'verb past tense, past participle'},
+    'directive': {'xx': 'noun'},
+    'directives': {'xx': 'noun'},
+    'directs': {'B1': 'verb 3rd person present'},
+    'disables': {'xx': 'adjective'},
+    'disaggregated': {'xx': 'verb past tense, past participle'},
+    'disappearance': {'B2': 'noun'},
+    'disappeared': {'B1': 'verb past tense, past participle'},
+    'disappearing': {'B1': 'verb gerund or present participle'},
+    'disappears': {'B1': 'verb 3rd person present'},
+    'discarded': {'xx': 'verb past tense, past participle'},
+    'disconnected': {'xx': 'verb past tense, past participle'},
+    'discontinue': {'xx': 'verb'},
+    'discontinued': {'xx': 'verb past tense, past participle'},
+    'discontinuities': {'xx': 'noun'},
+    'discontinuity': {'xx': 'noun'},
+    'discouraged': {'B2': 'verb past tense, past participle'},
+    'discoverability': {'xx': 'noun'},
+    'discovered': {'B1': 'verb past tense, past participle'},
+    'discrepancies': {'xx': 'noun'},
+    'discriminate': {'C1': 'verb'},
+    'discussed': {'A2': 'verb past tense, past participle'},
+    'discusses': {'A2': 'verb 3rd person present'},
+    'discussing': {'A2': 'verb gerund or present participle'},
+    'dishwasher': {'B1': 'noun'},
+    'disparate': {'xx': 'adjective, noun'},
+    'dispatch': {'xx': 'verb, noun'},
+    'displacing': {'C1': 'verb gerund or present participle'},
+    'displayed': {'B1': 'verb past tense, past participle'},
+    'displaying': {'B1': 'verb gerund or present participle'},
+    'disseminating': {'xx': 'verb gerund or present participle'},
+    'dissertation': {'C1': 'noun'},
+    'dissolved': {'C1': 'verb past tense, past participle'},
+    'distributed': {'B2': 'adjective'},
+    'distributing': {'B2': 'verb gerund or present participle'},
+    'divergence': {'xx': 'noun'},
+    'diverging': {'xx': 'adjective'},
+    'diversion': {'xx': 'noun'},
+    'divided': {'B1': 'verb past tense, past participle'},
+    'divides': {'B1': 'verb 3rd person present'},
+    'dividing': {'B1': 'verb gerund or present participle'},
+    'doctoral': {'xx': 'adjective'},
+    'documented': {'xx': 'verb past tense, past participle'},
+    'does': {'A1': 'verb'},
+    'doi': {'xx': 'noun'},
+    'doing': {'A1': 'noun'},
+    'done': {'xx': 'verb, adjective'},
+    'doorbell': {'xx': 'noun'},
+    'dosage': {'xx': 'noun'},
+    'dotted': {'xx': 'adjective'},
+    'doubler': {'xx': 'noun'},
+    'doubletalk': {'xx': 'noun'},
+    'doublings': {'xx': 'noun'},
+    'downgrading': {'xx': 'verb gerund or present participle'},
+    'downloaded': {'A2': 'verb past tense, past participle'},
+    'downloading': {'A2': 'verb gerund or present participle'},
+    'downloads/day': {'xx': 'units'},
+    'dozens': {'B1': 'noun'},
+    'driven': {'A1': 'verb'},
+    'drop-tail': {'xx': 'noun'},
+    'dropped': {'B1': 'verb past tense, past participle'},
+    'dropping': {'B1': 'verb gerund or present participle'},
+    'dual-tone': {'xx': 'adjective'},
+    'dubbing': {'xx': 'noun'},
+    'duplex': {'xx': 'noun, adjective'},
+    'duplex=full': {'xx': 'adjective'},
+    'dwarfs': {'xx': 'noun'},
+    'dynamically': {'xx': 'adverb'},
+    'e-Communications': {'xx': 'noun'},
+    'e-library': {'xx': 'noun'},
+    'e-mail': {'A2': ''},
+    'e-mails': {'xx': 'noun'},
+    'earlier': {'A2': 'adjective, adverb'},
+    'easier': {'A1': 'adjective, adverb'},
+    'easy-to-remember': {'xx': 'phrase'},
+    'eavesdropping': {'xx': 'verb gerund or present participle'},
+    'echoing': {'C2': 'adjective'},
+    'economical': {'B2': 'adjective'},
+    'economically': {'xx': 'adverb'},
+    'ecrit': {'xx': 'noun'},
+    'edited': {'B2': 'adjective'},
+    'editing': {'B2': 'verb gerund or present participle'},
+    'edits': {'B2': 'verb 3rd person present'},
+    'electing': {'B2': 'verb gerund or present participle'},
+    'electrically': {'xx': 'adverb'},
+    'electronically': {'B2': 'adverb'},
+    'elektrosmog': {'xx': 'noun'},
+    'elevated': {'xx': 'verb past tense, past participle'},
+    'em': {'xx': 'unit'},
+    'email/telephone': {'A1': 'phrase'},
+    'embedded': {'xx': 'adjective'},
+    'embodied': {'C2': 'verb past tense, past participle'},
+    'embraced': {'C1': 'verb past tense, past participle'},
+    'emerging': {'B2': 'adjective'},
+    'emit': {'C2': 'verb'},
+    'emitted': {'C2': 'verb past tense, past participle'},
+    'employed': {'B1': 'verb past tense, past participle'},
+    'emulate': {'xx': 'verb'},
+    'emulating': {'xx': 'verb gerund or present participle'},
+    'en': {'xx': 'unit'},
+    'enabled': {'B2': 'adjective'},
+    'enables': {'B2': 'verb 3rd person present'},
+    'enabling': {'B2': 'verb'},
+    'enacted': {'xx': 'verb past tense, past participle'},
+    'encapsulate': {'xx': 'verb'},
+    'encapsulated': {'xx': 'verb past tense, past participle'},
+    'encapsulates': {'xx': 'verb 3rd person present'},
+    'encode': {'xx': 'verb'},
+    'encoded': {'xx': 'verb past tense, past participle'},
+    'encodes': {'xx': 'verb 3rd person present'},
+    'encoding': {'xx': 'verb gerund or present participle'},
+    'encoding/decoding': {'xx': 'verb gerund or present participle'},
+    'encodings': {'xx': 'noun'},
+    'encountered': {'B2': 'verb past tense, past participle'},
+    'encouraged': {'B1': 'verb past tense, past participle'},
+    'encrypt': {'xx': 'verb'},
+    'encrypted': {'xx': 'verb past tense, past participle'},
+    'encrypting': {'xx': 'verb gerund or present participle'},
+    'encryption': {'xx': 'noun'},
+    'end-point': {'xx': 'noun'},
+    'end-to-end': {'xx': 'idom'},
+    'end-user': {'xx': 'noun'},
+    'ended': {'A2': 'verb past tense, past participle'},
+    'endpoint': {'xx': 'noun'},
+    'endpoints': {'xx': 'noun'},
+    'enhanced': {'C1': 'verb past tense, past participle'},
+    'enormously': {'xx': 'adverb'},
+    'enqueue': {'xx': 'verb'},
+    'enrolled': {'xx': 'verb past tense, past participle'},
+    'enshrined': {'xx': 'verb gerund or present participle'},
+    'ensures': {'B2': 'verb 3rd person present'},
+    'entered': {'A2': 'verb past tense, past participle'},
+    'entering': {'A2': 'verb gerund or present participle'},
+    'enters': {'A2': 'verb 3rd person present'},
+    'entitled': {'B2': 'adjective'},
+    'enum': {'xx': 'noun'},
+    'enumerated': {'xx': 'verb past tense, past participle'},
+    'enumerates': {'xx': 'verb 3rd person present'},
+    'enumeration': {'xx': 'noun'},
+    'enumervices': {'xx': 'noun'},
+    'enumservice': {'xx': 'noun'},
+    'equals': {'B2': 'noun, verb 3rd person present'},
+    'equipped': {'B2': 'verb past tense, past participle'},
+    'equips': {'B2': 'verb 3rd person present'},
+    'escalated': {'xx': 'verb past tense, past participle'},
+    'escrow': {'xx': 'noun, verb'},
+    'escrowed': {'xx': 'verb past tense, past participle'},
+    'espionage': {'xx': 'noun'},
+    'established': {'B2': 'verb past tense, past participle'},
+    'establishes': {'B2': 'verb 3rd person present'},
+    'establishing': {'B2': 'verb gerund or present participle'},
+    'estimated': {'B2': 'verb past tense, past participle'},
+    'estimation': {'xx': 'noun'},
+    'et': {'xx': 'latin word'},
+    'ethereal': {'xx': 'noun'},
+    'ethernet': {'xx': 'noun'},
+    'europe': {'xx': 'noun'},
+    'european': {'xx': 'adjective, noun'},
+    'evaluated': {'C1': 'verb past tense, past participle'},
+    'event-based': {'xx': 'adjective'},
+    'evolved': {'C1': 'verb past tense, past participle'},
+    'evolving': {'C1': 'verb gerund or present participle'},
+    'examination': {'A2': 'verb'},
+    'examined': {'B2': 'verb past tense, past participle'},
+    'examines': {'B2': 'verb 3rd person present'},
+    'examining': {'B2': 'verb gerund or present participle'},
+    'exceeds': {'C1': 'verb 3rd person present'},
+    'exchanged': {'B1': 'verb past tense, past participle'},
+    'exchanging': {'B1': 'verb gerund or present participle'},
+    'excitation/long': {'xx': 'noun'},
+    'executed': {'C2': 'verb past tense, past participle'},
+    'executes': {'C2': 'verb 3rd person present'},
+    'exemplified': {'C2': 'verb past tense, past participle'},
+    'exemption': {'xx': 'noun'},
+    'exhale': {'xx': 'verb'},
+    'existed': {'B1': 'verb past tense, past participle'},
+    'existing': {'B1': 'adjective'},
+    'exists': {'B1': 'verb 3rd person present'},
+    'expands': {'B2': 'verb 3rd person present'},
+    'expecting': {'B1': 'verb gerund or present participle'},
+    'expedite': {'xx': 'verb'},
+    'expired': {'C2': 'verb past tense, past participle'},
+    'explained': {'A2': 'verb past tense, past participle'},
+    'exploded': {'B1': 'verb past tense, past participle'},
+    'exploding': {'B1': 'verb gerund or present participle'},
+    'exploited': {'B2': 'verb past tense, past participle'},
+    'exploiting': {'B2': 'verb gerund or present participle'},
+    'exploits': {'B2': 'verb 3rd person present'},
+    'exponential': {'xx': 'noun'},
+    'expressed': {'B2': 'verb past tense, past participle'},
+    'expressiveness': {'xx': 'noun'},
+    'ext': {'xx': 'abbreviation'},
+    'extended': {'B2': 'verb past tense, past participle'},
+    'extending': {'B2': 'verb gerund or present participle'},
+    'extends': {'B2': 'verb 3rd person present'},
+    'extensibility': {'xx': 'noun'},
+    'extensible': {'xx': 'adjective'},
+    'extinct': {'C1': 'adjective'},
+    'extraction': {'xx': 'noun'},
+    'extrapolating': {'xx': 'verb gerund or present participle'},
+    'fabricate': {'xx': 'verb'},
+    'fabricated': {'xx': 'verb past tense, past participle'},
+    'fabrication': {'xx': 'noun'},
+    'faced': {'B1': 'adjective'},
+    'facial': {'C2': 'adjective. noun'},
+    'facilitating': {'xx': 'verb gerund or present participle'},
+    'facsimile': {'xx': 'noun'},
+    'facsimiles': {'xx': 'noun'},
+    'facto': {'xx': 'Latin word'},
+    'failback': {'xx': 'noun'},
+    'failing': {'A2': 'noun, preposition'},
+    'failover': {'xx': 'noun'},
+    'failover/availability': {'xx': 'noun'},
+    'failover/transfer': {'xx': 'noun'},
+    'fails': {'A2': 'verb 3rd person present, noun plural noun'},
+    'fairer': {'A2': 'adjective'},
+    'fallback': {'xx': 'noun'},
+    'fan-out': {'xx': 'noun'},
+    'farther': {'A2': 'adverb'},
+    'fast-growing': {'xx': 'adjective'},
+    'faster': {'A1': 'adjective, adverb'},
+    'fastest': {'A1': 'adjective'},
+    'favoritism': {'': 'noun'},
+    'fax': {'B1': 'verb, noun'},
+    'faxes': {'B1': 'noun'},
+    'feasibility': {'': 'noun'},
+    'feasible': {'C1': 'verb'},
+    'fed': {'B1': 'noun?'},
+    'feeds': {'B1': 'verb 3rd person present'},
+    'felled': {'xx': 'verb past tense, past participle'},
+    'femtocells': {'xx': 'noun'},
+    'fetch': {'B1': 'verb, noun'},
+    'fiber': {'xx': 'noun'},
+    'fictitious': {'xx': 'adjective'},
+    'fidelity': {'xx': 'noun'},
+    'figured': {'B2': 'verb past tense, past participle'},
+    'filed': {'xx': 'verb past tense, past participle'},
+    'filled': {'A2': 'verb past tense, past participle'},
+    'filling': {'A2': 'noun, adjective'},
+    'filtered': {'C2': 'verb past tense, past participle'},
+    'finds': {'A1': 'verb 3rd person present'},
+    'finished': {'A1': 'adjective'},
+    'finite': {'C1': 'adjective'},
+    'firewall': {'xx': 'noun'},
+    'firewalls': {'xx': 'noun'},
+    'firmware': {'xx': 'noun'},
+    'fixes': {'B1': 'verb 3rd person present'},
+    'flashing': {'B2': 'verb gerund or present participle'},
+    'flexibly': {'xx': 'adverb'},
+    'flicker': {'xx': 'verb, noun'},
+    'floating': {'B1': 'adjective'},
+    'flooding': {'B1': 'noun'},
+    'flowchart': {'xx': 'noun'},
+    'flowing': {'B1': 'adjective'},
+    'focused': {'xx': 'adjective'},
+    'folders': {'A2': 'noun'},
+    'followed': {'A2': 'verb past tense, past participle'},
+    'follows': {'A2': 'verb 3rd person present'},
+    'fonts': {'xx': 'noun'},
+    'foo': {'xx': 'noun'},
+    'forbear': {'xx': 'verb'},
+    'foremost': {'C1': 'adjective'},
+    'forensics': {'xx': 'noun'},
+    'forgot': {'A2': 'verb past tense'},
+    'forked': {'xx': 'adjective'},
+    'forking': {'xx': 'verb gerund or present participle'},
+    'forklift': {'xx': 'noun'},
+    'formally': {'C1': 'adverb'},
+    'formatting': {'xx': 'verb gerund or present participle'},
+    'formed': {'B1': 'verb past tense, past participle'},
+    'formulating': {'C2': 'verb gerund or present participle'},
+    'forwarded': {'xx': 'verb past tense, past participle'},
+    'forwarding': {'xx': 'adjective'},
+    'forwards': {'xx': 'verb 3rd person present'},
+    'fought': {'B1': 'verb past tense, past participle'},
+    'fragmentation': {'xx': 'noun'},
+    'fragmented': {'xx': 'verb past tense, past participle'},
+    'framerate': {'xx': 'noun'},
+    'frees': {'B2': 'verb 3rd person present'},
+    'freight': {'xx': 'noun'},
+    'french': {'xx': 'adjective, noun'},
+    'frequently-called': {'xx': 'phrase'},
+    'friend': {'A1': 'noun, verb'},
+    'friends': {'A1': 'noun'},
+    'fries': {'B1': 'noun'},
+    'fulfill': {'xx': 'verb'},
+    'fulfilled': {'C1': 'verb past tense, past participle'},
+    'full-cone': {'xx': 'adjective?'},
+    'full-duplex': {'xx': 'adjective?'},
+    'fumes': {'C1': 'noun'},
+    'functionalities': {'xx': 'noun'},
+    'functionality': {'xx': 'noun'},
+    'functioning': {'xx': 'verb gerund or present participle'},
+    'fundamentals': {'xx': 'noun'},
+    'funded': {'C1': 'verb past tense, past participle'},
+    'furriers': {'xx': 'noun'},
+    'fuzzing': {'xx': 'verb'},
+    'gateway': {'xx': 'noun'},
+    'gatewaying': {'xx': 'verb gerund or present participle'},
+    'gateways': {'xx': 'noun'},
+    'gave': {'A1': 'verb past tense'},
+    'gee': {'xx': 'exclamation'},
+    'generalize': {'C1': 'verb'},
+    'generated': {'B2': 'verb past tense, past participle'},
+    'generates': {'B2': 'verb 3rd person present'},
+    'generating': {'B2': 'verb gerund or present participle'},
+    'generators': {'xx': 'noun'},
+    'geographic': {'xx': 'adjective'},
+    'geographical': {'xx': 'adjective'},
+    'geolocation': {'xx': 'noun'},
+    'geopriv': {'xx': 'abbreviation'},
+    'geostationary': {'xx': 'adjective'},
+    'gets': {'A1': 'verb, noun'},
+    'getting': {'A1': 'verb gerund or present participle'},
+    'gigabit': {'xx': 'unit'},
+    'gigabyte': {'xx': 'unit'},
+    'given': {'A1': 'verb, adjective, noun, preposition'},
+    'gives': {'A1': 'verb'},
+    'giving': {'A1': 'adjective'},
+    'globally': {'B2': 'adverb'},
+    'glottal': {'xx': 'adjective'},
+    'goes': {'A1': 'verb, noun'},
+    'going': {'A1': 'noun, adjective'},
+    'gone': {'A1': 'verb, adjective, preposition'},
+    'goodBYE': {'A1': 'exclamation, noun'},
+    'got': {'A1': 'verb'},
+    'gotten': {'xx': 'past participle'},
+    'grabs': {'B1': 'verb 3rd person present'},
+    'graded': {'C1': 'verb past tense, past participle'},
+    'grading': {'C1': 'verb gerund or present participle'},
+    'graduated': {'B2': 'adjective'},
+    'grammar': {'A2': 'noun'},
+    'granularity': {'xx': 'noun'},
+    'graph': {'B2': 'noun, verb'},
+    'greater': {'A1': 'adjective'},
+    'grew': {'A2': 'verb past tense'},
+    'gripping': {'C1': 'adjective'},
+    'grouping': {'C1': 'noun'},
+    'growing': {'A2': 'verb gerund or present participle'},
+    'grown': {'A2': 'verb past tense'},
+    'grows': {'A2': 'verb 3rd person present'},
+    'guarded': {'B2': 'adjective'},
+    'had': {'A1': 'verb'},
+    'hamburgers': {'xx': 'noun'},
+    'hammer': {'B2': 'noun, verb'},
+    'handed': {'B1': 'combining form'},
+    'handing': {'B1': 'verb gerund or present participle'},
+    'handled': {'xx': 'adjective'},
+    'handouts': {'B2': 'noun'},
+    'handset': {'xx': 'noun'},
+    'handsets': {'xx': 'noun'},
+    'handshake': {'xx': 'noun'},
+    'handshaking': {'xx': 'noun'},
+    'hanging': {'B1': 'noun, adjective'},
+    'hangs': {'B1': 'verb 3rd person present'},
+    'happened': {'A2':  'verb past tense, past participle'},
+    'happening': {'A2': 'noun, adjective'},
+    'happens': {'A2': 'verb'},
+    'haptic': {'xx': 'adjective'},
+    'hard-of-hearing': {'xx': 'idiom'},
+    'harder': {'A1': 'adjective, adverb'},
+    'hardest': {'A1': 'adjective, adverb'},
+    'has': {'A1': 'verb'},
+    'hash': {'xx': 'noun, verb'},
+    'hashes': {'xx': 'noun, verb 3rd person present'},
+    'hateful': {'xx': 'adjective'},
+    'having': {'A1': 'verb gerund or present participle'},
+    'headband': {'xx': 'noun'},
+    'headband/neckband': {'xx': 'noun'},
+    'headed': {'B2': 'adjective'},
+    'header': {'xx': 'noun'},
+    'headers': {'xx': 'noun'},
+    'heading': {'B2': 'noun'},
+    'headset': {'xx': 'noun'},
+    'headsets': {'xx': 'noun'},
+    'heard': {'A1': 'verb past tense, past participle'},
+    'hearing-/speech-impaired': {'xx': 'adjective?'},
+    'hears': {'A1': 'verb 3rd person present'},
+    'heartbeat': {'xx': 'noun'},
+    'heartbeats': {'xx': 'noun'},
+    'held': {'A2': 'verb past tense, past participle'},
+    'helping': {'A1': 'noun'},
+    'helpline': {'xx': 'noun'},
+    'hesitant': {'xx': 'adjective'},
+    'heterogeneous': {'xx': 'adjective'},
+    'heuristic': {'xx': 'adjective, noun'},
+    'hiccups': {'xx': 'noun, verb 3rd person present'},
+    'hides': {'B1': 'verb 3rd person present, noun'},
+    'hiding': {'B1': 'noun'},
+    'high-level': {'xx': 'adjective'},
+    'high-performance': {'xx': 'adjective'},
+    'high-priority': {'xx': 'adjective'},
+    'high-quality': {'xx': 'adjective'},
+    'high-resolution': {'xx': 'adjective'},
+    'high-speed': {'xx': 'adjective'},
+    'higher': {'A2': 'noun'},
+    'highest': {'A2': 'adjective, adverb'},
+    'hijacking': {'xx': 'noun'},
+    'hmm': {'xx': 'exclamation'},
+    'hoc': {'xx': 'Latin word'},
+    'holds': {'B2': 'verb 3rd person present, noun'},
+    'hologram': {'xx': 'noun'},
+    'honeypot': {'xx': 'noun'},
+    'hop': {'C1': 'verb, noun'},
+    'hop-by-hop': {'xx': 'idiom'},
+    'hops': {'C1': 'verb, noun'},
+    'horizontal': {'C1': 'adjective, noun'},
+    'horribly': {'xx': 'adverb'},
+    'host/address': {'xx': 'noun'},
+    'hostname': {'xx': 'noun'},
+    'hotline': {'xx': 'noun'},
+    'http': {'xx': 'acronym'},
+    'https': {'xx': 'acronym'},
+    'hum': {'C1': 'verb, noun'},
+    'human-computer': {'xx': 'noun'},
+    'human-manned': {'xx': 'idiom'},
+    'hundreds': {'xx': 'noun'},
+    'hundredths': {'xx': 'noun'},
+    'hung': {'B1': 'verb, adjective'},
+    'hurdles': {'xx': 'noun, verb 3rd person present'},
+    'hybrid': {'xx': 'noun, adjective'},
+    'hydrant': {'xx': 'noun'},
+    'hype': {'xx': 'noun, verb'},
+    'hyphenation': {'xx': 'noun'},
+    'iPhones': {'xx': 'noun'},
+    'id': {'A2': 'noun'},
+    'ideally': {'B2': 'adverb'},
+    'identification': {'xx': ''},
+    'identified': {'B2': 'verb past tense, past participle'},
+    'identifier': {'xx': 'noun'},
+    'identifiers': {'xx': 'noun'},
+    'identifies': {'B2': 'verb 3rd person present'},
+    'identifying': {'B2': 'verb gerund or present participle'},
+    'idle': {'C2': 'adjective, verb'},
+    'ignored': {'B2': 'verb past tense, past participle'},
+    'illustrated': {'B2': 'adjective'},
+    'illustrates': {'B2': 'verb 3rd person present'},
+    'im': {'xx': 'abbreviation'},
+    'imagines': {'B1': 'verb 3rd person present'},
+    'immersive': {'xx': 'adjective'},
+    'impaired': {'xx': 'adjective'},
+    'impairment': {'xx': 'noun'},
+    'impeded': {'xx': 'verb past tense, past participle'},
+    'implemented': {'B2': 'verb'},
+    'implementing': {'B2': 'verb gerund or present participle'},
+    'implements': {'B2': 'verb 3rd person present'},
+    'implicit': {'C2': 'adjective'},
+    'implies': {'C2': 'verb 3rd person present'},
+    'importantly': {'B2': 'adverb'},
+    'imposing': {'C1': 'adjective'},
+    'improved': {'A2': 'verb past tense, past participle'},
+    'improving': {'A2': 'verb gerund or present participle'},
+    'impulse': {'C2': 'noun'},
+    'in-depth': {'B1': 'adjective'},
+    'in-person': {'xx': 'phrase'},
+    'inactive': {'xx': 'adjective'},
+    'inaudible': {'xx': 'adjective'},
+    'inbound': {'xx': 'adjective, adverb, verb'},
+    'includes': {'A2': 'verb'},
+    'inclusiveness': {'xx': 'noun'},
+    'incoming': {'xx': 'adjective, noun'},
+    'incompatible': {'xx': 'adjective'},
+    'incomplete': {'xx': 'adjective'},
+    'inconvenient': {'B2': 'adjective'},
+    'increased': {'B1': 'verb'},
+    'increasing': {'B1': 'adjective'},
+    'incremental': {'xx': 'adjective'},
+    'incrementing': {'xx': 'verb gerund or present participle'},
+    'incumbent': {'xx': 'adjective. noun'},
+    'incurs': {'C2': 'verb 3rd person present'},
+    'independently': {'B2': 'adverb'},
+    'indexed': {'xx': 'verb past tense, past participle'},
+    'indicated': {'B2': 'verb past tense, past participle'},
+    'indicates': {'B2': 'verb 3rd person present'},
+    'indicating': {'B2': 'verb gerund or present participle'},
+    'individualized': {'xx': 'adjective'},
+    'individually': {'C2': 'adverb'},
+    'inertia': {'xx': 'noun'},
+    'inexpensive': {'B1': 'adjective'},
+    'inflatable': {'xx': 'adjective, noun'},
+    'inflection': {'xx': 'noun'},
+    'informational': {'xx': 'adjective'},
+    'informative': {'C1': 'adjective'},
+    'initiated': {'C2': 'verb past tense, past participle'},
+    'initiates': {'C2': 'verb 3rd person present'},
+    'initiating': {'C2': 'verb gerund or present participle'},
+    'initiation': {'xx': 'noun'},
+    'inserted': {'C1': 'verb past tense, past participle'},
+    'insipid': {'xx': 'adjective'},
+    'inspired': {'B2': 'verb past tense, past participle'},
+    'installed': {'B1': 'verb past tense, past participle'},
+    'instantiate': {'xx': 'verb'},
+    'instantiating': {'xx': 'verb gerund or present participle'},
+    'institute': {'B2': 'verb'},
+    'insulated': {'xx': 'adjective'},
+    'insulin': {'xx': 'noun'},
+    'integer': {'xx': 'noun'},
+    'inter-arrival': {'xx': 'adjective, noun'},
+    'inter-burst': {'xx': 'adjective'},
+    'inter-domain': {'xx': 'adjective, noun'},
+    'inter-operate': {'xx': 'intransitive verb'},
+    'interactivity': {'xx': 'noun'},
+    'interacts': {'B2': 'verb 3rd person present'},
+    'intercept': {'xx': 'verb, noun'},
+    'intercepted': {'xx': 'verb past tense, past participle'},
+    'interception': {'xx': 'noun'},
+    'intercepts': {'xx': 'verb 3rd person present'},
+    'intercom': {'xx': 'noun'},
+    'interconnect': {'xx': 'verb, noun'},
+    'interconnection': {'xx': 'noun'},
+    'interconnects': {'xx': 'verb 3rd person present, noun'},
+    'interdomain': {'xx': 'adjective, noun'},
+    'interestingly': {'xx': 'adverb'},
+    'interfacing': {'xx': 'noun'},
+    'interfering': {'B2': 'adjective'},
+    'interleaved': {'xx': 'verb past tense, past participle'},
+    'intermixed': {'xx': 'verb'},
+    'internally': {'C1': 'adjective'},
+    'internation': {'xx': 'noun, adjective'},
+    'internetworked': {'xx': 'verb past tense, past participle'},
+    'internetworking': {'xx': 'noun'},
+    'interoperability': {'xx': 'noun'},
+    'interoperable': {'xx': 'adjective'},
+    'interoperate': {'xx': 'verb'},
+    'interoperating': {'xx': 'verb gerund or present participle'},
+    'interpacket': {'xx': 'adjective?'},
+    'interpreter': {'xx': 'noun'},
+    'interpreting': {'B2': 'verb gerund or present participle'},
+    'interprets': {'B2': 'verb 3rd person present'},
+    'interrogate': {'xx': 'verb'},
+    'interrupts': {'B1': 'verb 3rd person present, noun?'},
+    'intersection': {'xx': 'noun'},
+    'interwork': {'xx': 'verb'},
+    'interworking': {'xx': 'verb gerund or present participle'},
+    'intimately': {'xx': 'adverb'},
+    'introduced': {'B': 'verb past tense; past participle'},
+    'introduces': {'B1': 'verb 3rd person present'},
+    'introducing': {'B1': 'verb gerund or present participle'},
+    'intrude': {'C2': 'verb'},
+    'intruder': {'C2': 'noun'},
+    'invalid': {'xx': 'adjective, noun, verb'},
+    'invasive': {'xx': 'adjective, noun'},
+    'invented': {'B1': 'verb past tense, past participle'},
+    'invested': {'B2': 'verb past tense, past participle'},
+    'investigated': {'B2': ''},
+    'invited': {'A1': 'verb past tense, past participle'},
+    'invites': {'A1': 'verb 3rd person present'},
+    'inviting': {'xx': 'verb gerund or present participle'},
+    'invocation': {'xx': 'noun'},
+    'invoked': {'xx': 'verb past tense, past participle'},
+    'invokes': {'xx': 'verb 3rd person present'},
+    'invoking': {'xx': 'verb gerund or present participle'},
+    'involves': {'B1': 'verb 3rd person present'},
+    'involving': {'B1': 'verb gerund or present participle'},
+    'inward': {'xx': 'adjective, adverb, noun'},
+    'ip-addr': {'xx': 'abbreviation'},
+    'is':  {'A1': 'verb'},
+    'isochrons': {'xx': 'noun'},
+    'issued': {'C2': 'verb past tense, past participle'},
+    'iterative': {'xx': 'adjective'},
+    'iteratively': {'xx': 'adjective'},
+    'jack': {'xx': 'noun'},
+    'jacks': {'xx': 'noun'},
+    'jitter': {'xx': 'noun'},
+    'joined': {'A2': 'verb past tense, past participle'},
+    'joining': {'A2': 'verb gerund or present participle'},
+    'jure': {'xx': 'Latin word'},
+    'kHz': {'xx': 'unit'},
+    'kb/s': {'xx': 'unit'},
+    'kbit/s': {'xx': 'unit'},
+    'kbps': {'xx': 'unit'},
+    'keeping': {'A2': 'verb gerund or present participle'},
+    'keeps': {'A2': 'verb 3rd person present'},
+    'kept': {'A2': 'verb past tense, past participle'},
+    'keypad': {'xx': 'noun'},
+    'keystrokes': {'xx': 'noun'},
+    'keyword': {'xx': 'noun'},
+    'keywords': {'xx': 'noun'},
+    'killer': {'B1': 'noun, adjective'},
+    'kilo': {'xx': 'unit prefix'},
+    'kilobit': {'xx': 'unit'},
+    'kilobits': {'xx': 'unit'},
+    'kilobytes': {'xx': 'unit'},
+    'kilosamples': {'xx': 'unit'},
+    'knew': {'xx': 'verb past tense'},
+    'knocked': {'xx': 'verb past tense, past participle'},
+    'knowing': {'A1': 'adjective'},
+    'known': {'A1': 'verb, adjective'},
+    'knows': {'A1': 'verb 3rd person present'},
+    'kr': {'xx': 'unit'},
+    'labels/markings': {'xx': 'noun'},
+    'landline': {'xx': 'noun'},
+    'largest': {'A2': 'adjective'},
+    'lasted': {'B1': 'verb past tense, past participle'},
+    'laten': {'xx': 'verb'},
+    'latencies': {'xx': 'noun'},
+    'latency': {'xx': 'noun'},
+    'lawful': {'xx': 'adjective'},
+    'leads': {'B1': 'verb 3rd person present, noun'},
+    'leakage': {'xx': 'noun'},
+    'learned': {'A1': 'adjective'},
+    'learns': {'A1': 'verb 3rd person present'},
+    'lease': {'xx': 'noun, verb'},
+    'least-cost': {'xx': 'adjective'},
+    'leaving': {'A1': 'verb past tense, past participle'},
+    'led': {'B1': 'verb past tense, past participle'},
+    'legitimately': {'xx': 'adverb'},
+    'lets': {'A2': 'verb 3rd person present'},
+    'letting': {'A2': 'noun'},
+    'leverage': {'xx': 'noun, verb'},
+    'leveraged': {'xx': 'verb past tense, past participle'},
+    'leverages': {'xx': 'verb 3rd person present'},
+    'leveraging': {'xx': 'verb gerund or present participle'},
+    'lexicon': {'xx': 'noun'},
+    'liability': {'C1': 'noun'},
+    'libary': {'xx': 'noun'},
+    'licensed': {'xx': 'adjective'},
+    'licensure': {'xx': 'noun'},
+    'licentiate': {'xx': 'noun'},
+    'limiter': {'xx': 'noun'},
+    'limiting': {'B2': 'adjective'},
+    'lingerie': {'xx': 'noun'},
+    'link-local': {'xx': 'adjective?'},
+    'linux': {'xx': 'noun'},
+    'lipsync': {'xx': 'verb'},
+    'listed': {'B2': 'adjective'},
+    'listened': {'A1': 'verb past tense, past participle'},
+    'listening': {'A1': 'verb gerund or present participle'},
+    'listens': {'A1': 'verb 3rd person present'},
+    'lit': {'xx': 'noun, adjective'},
+    'lived': {'A1': 'verb past tense, past participle'},
+    'loaded': {'B2': 'adjective'},
+    'loading': {'B2': 'noun, adjective'},
+    'localhost': {'xx': 'noun'},
+    'localization': {'xx': 'noun'},
+    'localize': {'xx': 'verb'},
+    'localized': {'xx': 'verb past tense, past participle'},
+    'locally': {'xx': 'adverb'},
+    'lock-in': {'B2': 'noun'},
+    'log-in': {'B2': 'phrasal verb'},
+    'log-off': {'B2': 'phrasal verb'},
+    'logged': {'xx': 'verb past tense, past participle'},
+    'logging': {'xx': 'noun'},
+    'logically': {'C2': 'adverb'},
+    'login': {'xx': 'noun'},
+    'logotype': {'xx': 'noun'},
+    'lollipop': {'xx': 'noun'},
+    'longer': {'xx': 'adjective, adverb'},
+    'longest': {'A1': 'adjective'},
+    'longitude': {'xx': 'noun'},
+    'looked': {'A1': 'verb past tense; past participle'},
+    'looking': {'A1': 'adjective'},
+    'looks': {'A1': 'verb, noun'},
+    'lookup': {'xx': 'noun'},
+    'lookups': {'xx': 'noun'},
+    'loosely': {'xx': 'adverb'},
+    'losers': {'xx': 'noun'},
+    'losing': {'A2': 'adjective'},
+    'lots': {'A1': 'pronoun, adverb, plural noun'},
+    'loved': {'A1': 'verb past tense, past participle'},
+    'lovely': {'A2': 'adjective, noun'},
+    'low-cost': {'xx': 'adjective?'},
+    'low-delay': {'xx': 'adjective?'},
+    'lowest': {'A2': 'adjective, adverb'},
+    'macrocellular': {'xx': 'adjective'},
+    'made': {'A1': 'verb, adjective'},
+    'mailing': {'xx': 'noun'},
+    'maintained': {'B2': 'verb past tense, past participle'},
+    'maintaining': {'B2': 'verb gerund or present participle'},
+    'maintains': {'B2': ''},
+    'makes': {'A1': 'verb, noun'},
+    'malformed': {'xx': 'adjective'},
+    'malicious': {'C2': 'adjective'},
+    'maliciously': {'xx': 'adverb'},
+    'manageable': {'xx': 'adjective'},
+    'managed': {'B1': 'verb past tense, past participle'},
+    'manages': {'B1': 'verb 3rd person present'},
+    'managing': {'B1': 'verb gerund or present participle'},
+    'mandated': {'xx': 'verb past tense, past participle'},
+    'manipulated': {'xx': 'verb past tense, past participle'},
+    'manually': {'xx': 'adverb'},
+    'mapped': {'xx': 'verb past tense, past participle'},
+    'mapping': {'xx': 'noun, verb'},
+    'mappings': {'xx': 'noun'},
+    'markings': {'xx': 'noun'},
+    'markup': {'xx': 'noun'},
+    'marshaling': {'xx': 'verb gerund or present participle'},
+    'marvelous': {'xx': 'adjective'},
+    'mashups': {'xx': 'noun'},
+    'masquerading': {'xx': 'verb gerund or present participle'},
+    'mastered': {'xx': 'verb past tense, past participle'},
+    'matched': {'B1': 'adjective'},
+    'mathematically': {'xx': 'adverb'},
+    'maturing': {'xx': 'verb gerund or present participle'},
+    'maturity': {'xx': 'noun'},
+    'max': {'xx': 'abbreviation'},
+    'meant': {'A2': 'verb 3rd person present'},
+    'measured': {'B2': 'verb past tense, past participle'},
+    'measuring': {'B2': 'verb gerund or present participle'},
+    'mechanically': {'xx': 'adverb'},
+    'median': {'xx': 'adjective, noun'},
+    'medium-sized': {'xx': 'adjective'},
+    'meets': {'A1': 'verb 3rd person present'},
+    'megabyte': {'xx': 'unit'},
+    'megahertz': {'xx': 'unit'},
+    'meltdown': {'xx': 'noun'},
+    'mentioned': {'B1': 'verb'},
+    'merged': {'C2': 'verb past tense, past participle'},
+    'merging': {'C2': 'verb gerund or present participle'},
+    'meridiem': {'xx': 'Latin word'},
+    'mesh': {'xx': 'noun, verb'},
+    'messaging': {'xx': 'noun'},
+    'messanger': {'xx': 'noun, verb'},
+    'met': {'A1': 'verb past tense, past participle'},
+    'meta-information': {'xx': 'noun'},
+    'metadata': {'xx': 'noun'},
+    'metric': {'xx': 'noun'},
+    'metrics': {'xx': 'noun'},
+    'mib': {'xx': 'abbreviation'},
+    'microphone': {'B2': 'noun'},
+    'microprocessing': {'xx': 'noun'},
+    'microprocessor': {'xx': 'noun'},
+    'microseconds': {'xx': 'unit'},
+    'mid': {'xx': 'abbreviation'},
+    'mid-call': {'xx': 'adjective'},
+    'middlebox': {'xx': 'noun'},
+    'middleboxes': {'xx': 'noun'},
+    'millionth': {'xx': 'number'},
+    'millisecond': {'xx': 'unit'},
+    'milliseconds': {'xx': 'unit'},
+    'min': {'xx': 'abbreviation'},
+    'min./year': {'xx': 'unit'},
+    'miniscule': {'xx': 'adjective, noun'},
+    'minus': {'A2': 'preposition, adjective, noun'},
+    'misbehave': {'C1': ''},
+    'misconfigured': {'xx': 'verb past tense, past participle'},
+    'misdirection': {'xx': 'noun'},
+    'misfeature': {'xx': 'noun'},
+    'mismatched': {'xx': 'verb past tense, past participle'},
+    'mispronounce': {'xx': 'verb'},
+    'missed': {'A2': 'verb past tense, past participle'},
+    'mitigate': {'xx': 'verb'},
+    'mitigating': {'xx': 'verb gerund or present participle'},
+    'mixed-initiative': {'xx': 'noun'},
+    'mixer': {'xx': 'noun'},
+    'mixers': {'xx': 'noun'},
+    'mixing': {'A2': 'verb gerund or present participle'},
+    'mms': {'xx': 'acronym'},
+    'mobile': {'A1': 'verb'},
+    'model-driven': {'xx': 'adjective'},
+    'modeled': {'xx': 'verb past tense, past participle'},
+    'modeling': {'xx': 'verb gerund or present participle'},
+    'modem': {'xx': 'noun'},
+    'modems': {'xx': 'noun'},
+    'moderated': {'C2': 'verb past tense, past participle'},
+    'modified': {'C1': 'verb past tense; past participle'},
+    'modifying': {'C1': 'verb gerund or present participle'},
+    'modular': {'xx': 'adjective'},
+    'modulate': {'xx': 'verb'},
+    'module': {'xx': 'noun'},
+    'modules': {'xx': 'noun'},
+    'monaural': {'xx': 'adjective'},
+    'monitored': {'C1': 'verb past tense, past participle'},
+    'monitoring': {'C1': 'verb'},
+    'monumental': {'xx': 'adjective'},
+    'mototool': {'xx': 'noun'},
+    'moved': {'A2': 'verb past tense, past participle'},
+    'moves': {'A2': 'verb 3rd person present'},
+    'ms': {'A2': 'unit'},
+    'ms/frame': {'xx': 'unit'},
+    'msec': {'xx': 'unit'},
+    'mu-Law': {'xx': 'noun'},
+    'mu-law': {'xx': 'noun'},
+    'multi-channel': {'xx': 'adjective'},
+    'multi-frequency': {'xx': 'adjective'},
+    'multi-media': {'xx': 'adjective'},
+    'multi-party': {'xx': 'adjective'},
+    'multi-person': {'xx': 'adjective'},
+    'multi-vendor': {'xx': 'adjective'},
+    'multi-way': {'xx': 'adjective'},
+    'multicast': {'xx': 'noun, verb'},
+    'multicasts': {'xx': 'noun'},
+    'multicore': {'xx': 'adjective'},
+    'multifrequency': {'xx': 'adjective'},
+    'multimedia': {'xx': 'adjective, noun'},
+    'multipart': {'xx': 'adjective'},
+    'multiparty': {'xx': 'adjective'},
+    'multiplexed': {'xx': 'verb past tense, past participle'},
+    'multiplexers': {'xx': 'noun'},
+    'multiplexing': {'xx': 'verb gerund or present participle'},
+    'multiplexors': {'xx': 'noun'},
+    'multipoint': {'xx': 'adjective'},
+    'multiservice': {'xx': 'adjective'},
+    'municipality': {'xx': 'noun'},
+    'mute': {'xx': 'adjective, noun, verb'},
+    'mutually': {'xx': 'adverb'},
+    'na': {'xx': 'abbreviation'},
+    'name-server': {'xx': 'noun'},
+    'name-servers': {'xx': 'noun'},
+    'named': {'B1': 'verb past tense, past participle'},
+    'namespace': {'xx': 'noun'},
+    'naming': {'B1': 'verb gerund or present participle'},
+    'nanosecond': {'xx': 'unit'},
+    'nat': {'xx': 'acronym'},
+    'natfriend': {'xx': 'adjective'},
+    'nation-state': {'xx': 'noun'},
+    'nationally': {'xx': 'adverb'},
+    'nearest': {'B1': 'adjective'},
+    'needed': 'verb past tense, past participle}',
+    'needing': {'A1': 'verb gerund or present participle'},
+    'needs': {'A1': 'adverb'},
+    'negatives': {'xx': 'noun, verb 3rd person present'},
+    'negotiating': {'C1': 'verb gerund or present participle'},
+    'network-attached': {'xx': 'adjective'},
+    'network-based': {'xx': 'adjective'},
+    'network-connected': {'xx': 'adjective'},
+    'network-level': {'xx': 'adjective'},
+    'network-to-network': {'xx': 'adjective?'},
+    'networking': {'C1': 'noun'},
+    'nicely': {'B2': 'adverb'},
+    'nines': {'xx': 'number'},
+    'node': {'xx': 'noun'},
+    'nodes': {'xx': 'noun'},
+    'noise-canceling': {'xx': 'adjective'},
+    'nominal': {'xx': 'adjective, noun'},
+    'non-INVITE': {'xx': 'adjective'},
+    'non-Internet': {'xx': 'adjective'},
+    'non-SIP': {'xx': 'adjective'},
+    'non-adaptable': {'xx': 'adjective'},
+    'non-adaptive': {'xx': 'adjective'},
+    'non-digit': {'xx': 'adjective'},
+    'non-digits': {'xx': 'adjective'},
+    'non-emergency': {'xx': 'adjective'},
+    'non-fixed': {'xx': 'adjective'},
+    'non-geographic': {'xx': 'adjective'},
+    'non-interactive': {'xx': 'adjective'},
+    'non-internet': {'xx': 'adjective'},
+    'non-intersection': {'xx': 'adjective'},
+    'non-linear': {'xx': 'adjective'},
+    'non-null': {'xx': 'adjective'},
+    'non-ordinary': {'xx': 'adjective'},
+    'non-plus': {'xx': 'adjective'},
+    'non-real-time': {'xx': 'adjective'},
+    'non-trusted': {'xx': 'adjective'},
+    'non-urgent': {'xx': 'adjective'},
+    'non-voice': {'xx': 'adjective'},
+    'non-zero': {'xx': 'adjective'},
+    'nonce': {'xx': 'noun'},
+    'nope': {'xx': 'adverb'},
+    'notation': {'xx': 'noun'},
+    'noted': {'B1': 'adjective'},
+    'noticeable': {'C1': 'adjective'},
+    'noticed': {'B1': 'verb past tense, past participle'},
+    'notification': {'xx': 'noun'},
+    'notifications': {'xx': 'noun'},
+    'numbered': {'C1': 'verb past tense, past participle'},
+    'numbering': {'C1': 'verb gerund or present participle'},
+    'numeric': {'xx': 'adjective'},
+    'observable': {'xx': 'adjective'},
+    'observed': {'B2': 'verb past tense, past participle'},
+    'obsolescence': {'xx': 'noun'},
+    'obsolete': {'C1': 'adjective, verb'},
+    'obsoleted': {'xx': 'verb past tense, past participle'},
+    'obtains': {'B2': 'verb 3rd person present'},
+    'occurred': {'B2': 'verb gerund or present participle'},
+    'occurring': {'B2': 'verb gerund or present participle'},
+    'occurs': {'B2': 'verb 3rd person present'},
+    'octet': {'xx': 'noun'},
+    'octets': {'xx': 'noun'},
+    'off-line': {'xx': 'adjective, adverb'},
+    'offered': {'A2': 'verb past tense, past participle'},
+    'offline': {'xx': 'adjective, adverb'},
+    'offset': {'C2': 'noun, verb'},
+    'offsetting': {'C2': 'present participle'},
+    'oftentimes': {'xx': 'adverb'},
+    'ointment': {'xx': 'noun'},
+    'okay': {'xx': 'exclamation'},
+    'on-line': {'xx': 'adjective'},
+    'on/off': {'xx': 'adjective'},
+    'one-half': {'xx': 'noun'},
+    'one-party': {'xx': 'adjective'},
+    'one-tenth': {'xx': 'noun'},
+    'one-time': {'xx': 'adjective'},
+    'one-to-many': {'xx': 'adjective'},
+    'one-to-one': {'xx': 'adjective, adverb, noun'},
+    'one-up': {'xx': 'adjective'},
+    'one-way': {'xx': 'adjective'},
+    'ones': {'xx': 'noun'},
+    'onetime': {'xx': 'adjective'},
+    'ontologies': {'xx': 'noun'},
+    'ontology': {'xx': 'noun'},
+    'ooh': {'xx': 'exclamation'},
+    'oops': {'xx': 'exclamation'},
+    'opaque': {'xx': 'adjective, noun'},
+    'opcode': {'xx': 'noun'},
+    'open-source': {'xx': 'adjective'},
+    'opened': {'A1': 'verb past tense, past participle'},
+    'opens': {'A1': 'verb 3rd person present'},
+    'operated': {'B1': 'verb past tense, past participle'},
+    'operates': {'B1': 'verb 3rd person present'},
+    'operating': {'B1': 'verb gerund or present participle'},
+    'oppositely': {'xx': 'adverb'},
+    'opps': {'xx': 'exclamation'},
+    'opt-in': {'xx': 'intransitive verb'},
+    'opt-out': {'xx': 'intransitive verb'},
+    'optimization': {'xx': 'noun'},
+    'optimized': {'xx': 'verb past tense, past participle'},
+    'optimizing': {'xx': 'verb gerund or present participle'},
+    'optional': {'B2': 'adj'},
+    'orally': {'xx': 'adverb'},
+    'ordered': {'A2': 'verb past tense, past participle'},
+    'oriented': {'xx': 'verb past tense, past participle'},
+    'originated': {'C2': 'verb past tense, past participle'},
+    'originates': {'C2': 'verb 3rd person present'},
+    'originating': {'C2': 'verb gerund or present participle'},
+    'originator': {'xx': 'noun'},
+    'oscillation': {'xx': 'noun'},
+    'oscillations': {'xx': 'noun'},
+    'osmosis': {'xx': 'noun'},
+    'outbound': {'xx': 'adjective'},
+    'outgoing': {'C1': 'adjective'},
+    'outsourcing': {'xx': 'noun'},
+    'outward': {'xx': 'adjective, adverb'},
+    'over-provision': {'xx': 'noun, verb'},
+    'over-provisioning': {'xx': 'verb gerund or present participle'},
+    'overflow': {'xx': 'verb, noun'},
+    'overhead': {'xx': 'adverb, adjective, noun'},
+    'overlap': {'C2': 'verb, noun'},
+    'overlay': {'xx': 'verb, noun'},
+    'overloaded': {'C2': 'adjective'},
+    'overview': {'xx': 'noun, verb'},
+    'overwriting': {'xx': 'noun'},
+    'overwritten': {'xx': 'verb past participle'},
+    'owned': {'B1': 'verb past tense, past participle'},
+    'owns': {'B1': 'verb 3rd person present'},
+    'paced': {'C2': 'verb past tense, past participle'},
+    'packaging': {'xx': 'noun'},
+    'packet-based': {'xx': 'adjective'},
+    'packet-switched': {'xx': 'adjective'},
+    'packetization': {'xx': 'noun'},
+    'packetized': {'xx': 'verb past tense, past participle'},
+    'padding': {'xx': 'noun'},
+    'paging': {'xx': 'verb gerund or present participle'},
+    'paid': {'A1': 'verb, adjective'},
+    'pairwise': {'xx': 'adjective, adverb'},
+    'palette': {'xx': 'noun'},
+    'palettes': {'xx': 'noun'},
+    'paperback': {'xx': 'noun'},
+    'parallax': {'xx': 'noun'},
+    'parameterized': {'xx': 'verb past tense, past participle'},
+    'paranoia': {'xx': 'noun'},
+    'parsable': {'xx': 'adjective'},
+    'parse': {'xx': 'verb'},
+    'parsed': {'xx': 'verb past tense, past participle'},
+    'parser': {'xx': 'noun'},
+    'parsers': {'xx': 'noun'},
+    'participating': {'B2': 'verb gerund or present participle'},
+    'partition': {'xx': 'noun, verb'},
+    'partnered': {'xx': 'verb past tense, past participle'},
+    'passcode': {'xx': 'noun'},
+    'passed': {'A2': 'verb past tense, past participle'},
+    'passes': {'A2': 'verb 3rd person present'},
+    'paste': {'xx': 'noun, verb'},
+    'patterned': {'xx': 'adjective'},
+    'paying': {'A1': 'verb gerund or present participle'},
+    'payload': {'xx': 'noun'},
+    'pays': {'A1': 'verb 3rd person present'},
+    'peeler': {'xx': 'noun'},
+    'peer-to-peer': {'xx': 'adjective'},
+    'pending': {'xx': 'adjective'},
+    'penetration': {'xx': 'noun'},
+    'per-user': {'xx': 'unit'},
+    'perceived': {'C1': 'verb past tense, past participle'},
+    'perceptual': {'xx': 'adjective'},
+    'performed': {'B1': 'verb past tense, past participle'},
+    'performing': {'B1': 'verb gerund or present participle'},
+    'periodic': {'xx': 'adjective'},
+    'periodically': {'xx': 'adverb'},
+    'permissible': {'xx': 'adjective'},
+    'permitted': {'B1': 'verb past tense, past participle'},
+    'perplexing': {'xx': 'verb gerund or present participle'},
+    'persistence': {'C2': 'noun'},
+    'persistently': {'xx': 'adverb'},
+    'personalization': {'xx': 'noun'},
+    'personalized': {'xx': 'adjective'},
+    'petered': {'xx': 'verb past tense, past participle'},
+    'pg': {'xx': 'abbreviation'},
+    'pharmaceutical': {'xx': 'noun'},
+    'pharmaceuticals': {'xx': 'noun'},
+    'phone/pda/camera': {'xx': 'noun'},
+    'phonebook': {'xx': 'noun'},
+    'phoneme': {'xx': 'noun'},
+    'physically': {'B2': 'adverb'},
+    'pick-up': {'A2': 'noun, adjective, verb'},
+    'picked': {'A2': 'verb past tense, past participle'},
+    'picks': {'A2': 'verb, noun'},
+    'piggyback': {'xx': 'adverb, noun, adjective'},
+    'ping': {'xx': 'noun, verb'},
+    'pings': {'xx': 'noun'},
+    'pinhole': {'xx': 'noun'},
+    'pip': {'xx': 'noun, verb'},
+    'pivoting': {'xx': 'verb gerund or present participle'},
+    'pixel-based': {'xx': 'adjective'},
+    'pizza': {'A1': 'noun'},
+    'place/record': {'xx': 'verb'},
+    'placed': {'B2': 'verb past tense, past participle'},
+    'placing': {'B2': 'verb gerund or present participle'},
+    'plagiarism': {'xx': 'noun'},
+    'play-out': {'xx': 'verb'},
+    'playback': {'xx': 'noun'},
+    'played': {'A1': 'verb past tense, past participle'},
+    'playing': {'A1': ''},
+    'playout': {'xx': 'verb'},
+    'plosive': {'xx': 'adjective, noun'},
+    'plotted': {'xx': 'verb past tense, past participle'},
+    'ploy': {'xx': 'noun'},
+    'plug-and-play': {'xx': 'noun'},
+    'pluggable': {'xx': 'adjective'},
+    'plugged': {'B2': 'verb past tense, past participle'},
+    'plugin': {'xx': 'adjective, noun'},
+    'plurality': {'xx': 'noun'},
+    'pn': {'xx': 'abbreviation'},
+    'pointer': {'xx': 'noun'},
+    'pointers': {'xx': 'noun'},
+    'pointing': {'A2': 'verb gerund or present participle'},
+    'polices': {'xx': 'noun'},
+    'politically': {'xx': 'adverb'},
+    'pop-up': {'xx': 'noun'},
+    'popularly': {'xx': 'adverb'},
+    'popups': {'xx': 'noun'},
+    'port-restricted-cone': {'xx': 'adjective'},
+    'portability': {'xx': 'noun'},
+    'portable': {'C1': 'adjective, noun'},
+    'portal': {'xx': 'noun'},
+    'posit': {'xx': 'verb, noun'},
+    'positioning': {'xx': 'verb gerund or present participle'},
+    'post-repair': {'xx': 'adjective'},
+    'postcard': {'A2': 'noun'},
+    'pouring': {'B1': 'verb gerund or present participle'},
+    'powered': {'xx': 'verb past tense, past participle, adjective'},
+    'pp': {'xx': 'abbreviation'},
+    'prank': {'xx': 'noun'},
+    'pre-activate': {'xx': 'verb'},
+    'pre-built': {'xx': 'adjective'},
+    'pre-compute': {'xx': 'verb'},
+    'pre-defined': {'xx': 'adjective'},
+    'pre-designate': {'xx': 'verb'},
+    'pre-emptive': {'xx': 'adjective'},
+    'pre-exchanging': {'xx': 'verb gerund or present participle'},
+    'pre-paid': {'xx': 'adjective past participle'},
+    'pre-programmed': {'xx': 'verb'},
+    'pre-recorded': {'xx': 'adjective'},
+    'pre-release': {'xx': 'adjective, noun'},
+    'pre-set': {'xx': 'adjective, noun, verb'},
+    'pre-shared': {'xx': 'adjective'},
+    'preannounced': {'xx': 'transitive verb'},
+    'prebuilt': {'xx': 'adjective'},
+    'precedence': {'xx': 'noun'},
+    'precedes': {'C2': 'verb 3rd person present'},
+    'preclude': {'xx': 'verb'},
+    'preconditions': {'xx': 'noun, 8'},
+    'predefined': {'xx': 'adjective'},
+    'predicting': {'B1': 'verb gerund or present participle'},
+    'predictive': {'xx': 'adjective'},
+    'preferred': {'A2': 'verb past tense, past participle'},
+    'prefers': {'A2': 'verb 3rd person present'},
+    'prefix': {'Bw': 'noun'},
+    'prefixed': {'xx': 'verb, adjective'},
+    'prepaid': {'xx': 'adjective, noun, verb'},
+    'preparing': {'A2': 'verb gerund or present participle'},
+    'prerequisites': {'xx': 'noun, adjective'},
+    'presented': {'B2': 'verb past tense, past participle'},
+    'presenters': {'B2': 'noun'},
+    'preventing': {'B1': 'verb gerund or present participle'},
+    'pricing': {'C1': 'verb'},
+    'primitive': {'C1': 'noun'},
+    'primitives': {'xx': 'noun'},
+    'printed': {'A2': 'verb, adjective'},
+    'prints': {'A2': 'noun'},
+    'prioritization': {'xx': 'noun'},
+    'prioritize': {'xx': 'verb'},
+    'prioritized': {'xx': 'verb past tense, past participle'},
+    'priv': {'xx': 'abbreviation'},
+    'probabilistic': {'xx': 'adjective'},
+    'probing': {'xx': 'verb gerund or present participle'},
+    'proceeded': {'C1': 'verb past tense, past participle'},
+    'proceeding': {'C1': 'verb gerund or present participle'},
+    'processed': {'B2': 'verb past tense, past participle'},
+    'produced': {'B1': 'verb past tense, past participle'},
+    'produces': {'N1': 'verb 3rd person present'},
+    'producing': {'B1': 'verb gerund or present participle'},
+    'products/services': {'xx': 'noun'},
+    'programmable': {'xx': 'adjective'},
+    'programmers': {'C1': 'noun'},
+    'projector': {'xx': 'noun'},
+    'projects/papers': {'xx': 'noun'},
+    'prolong': {'C1': 'verb, noun'},
+    'promised': {'B1': 'verb past tense, past participle'},
+    'prompter': {'xx': 'noun'},
+    'prompts': {'C2': 'verb, noun'},
+    'pronunciation': {'B1': 'noun'},
+    'propagation': {'xx': 'noun'},
+    'proponents': {'xx': 'noun, adjective'},
+    'proposed': {'B2': 'verb past tense, past participle'},
+    'proposes': {'B2': 'verb, noun'},
+    'proposing': {'B2': 'verb gerund or present participle'},
+    'proprietary': {'xx': 'adjective'},
+    'protected': {'B1': 'verb past tense, past participle'},
+    'protecting': {'B1': 'verb gerund or present participle'},
+    'prototype': {'xx': 'noun'},
+    'provided': {'B1': 'conjunction'},
+    'provider': {'C1': 'noun'},
+    'providers': {'C1': 'noun'},
+    'provides': {'B1': 'verb'},
+    'providing': {'B1': 'conjunction'},
+    'proving': {'B1': 'verb, noun, adjective'},
+    'provisional': {'xx': 'adjective, noun'},
+    'provisioned': {'xx': 'verb past tense, past participle'},
+    'provisioning': {'xx': 'verb gerund or present participle'},
+    'proxies': {'xx': 'noun'},
+    'proxy': {'xx': 'noun, verb'},
+    'proxy/masquerading': {'xx': 'verb gerund or present participle'},
+    'proxy/server': {'xx': 'noun'},
+    'pseudo-random': {'xx': 'adjective'},
+    'pt': {'xx': 'unit'},
+    'pts': {'xx': 'unit'},
+    'public-private': {'xx': 'adjective'},
+    'publicly': {'C1':  'adverb'},
+    'publicly-owned': {'xx': 'adjective'},
+    'publicnetwork': {'xx': 'noun'},
+    'published': {'B1': 'adjective'},
+    'publisher': {'B2': 'noun'},
+    'purports': {'xx': 'verb, noun'},
+    'purposely': {'xx': 'adverb'},
+    'pursuant': {'xx': 'noun, adjective, adverb'},
+    'push-to-talk': {'xx': 'adjective'},
+    'pushing': {'A2': 'verb gerund or present participle'},
+    'puts': {'A1': 'verb 3rd person present, noun'},
+    'putting': {'A1': 'verb gerund or present participle'},
+    'quality-of-service': {'xx': 'idiom'},
+    'quarterly': {'xx': 'adjective, adverb'},
+    'queried': {'xx': 'verb past tense, past participle'},
+    'querying': {'xx': 'verb gerund or present participle'},
+    'queue': {'B1': 'noun, verb'},
+    'queueing': {'xx': 'present participle'},
+    'queuing': {'B2': 'verb gerund or present participle'},
+    'rack': {'xx': 'noun, verb'},
+    'radial': {'xx': 'adjective, noun'},
+    'radically': {'C1': 'adverb'},
+    'radio-LAN': {'xx': 'noun'},
+    'radio-based': {'xx': 'adjective'},
+    'radio/telecommunication': {'xx': 'noun'},
+    'railway': {'A2': 'noun'},
+    'ran': {'A1': 'verb past tense'},
+    'random-looking': {'xx': 'adjective?'},
+    'randomly': {'C1': 'adverb'},
+    'ransomware': {'xx': 'noun'},
+    'rate-friendly': {'xx': 'adjective?'},
+    'rated': {'C1': 'verb past tense, past participle'},
+    're-INVITE': {'xx': 'verb, noun'},
+    're-INVITEs': {'xx': 'verb 3rd person present, noun'},
+    're-Invite': {'xx': 'verb'},
+    're-engineered': {'xx': 'verb past tense, past participle'},
+    're-label': {'xx': 'verb'},
+    're-plot': {'xx': 'vern'},
+    're-register': {'xx': 'verb'},
+    're-registering': {'xx': 'verb gerund or present participle'},
+    're-timing': {'xx': 'verb gerund or present participle'},
+    're-transmissions': {'xx': 'noun'},
+    're-used': {'xx': 'verb past tense, past participle'},
+    'reachable': {'xx': 'adjective'},
+    'reached': {'B1': 'verb past tense, past participle'},
+    'readable': {'xx': 'adjective'},
+    'readin': {'xx': 'noun'},
+    'reads': {'A1': 'verb 3rd person present'},
+    'real-life': {'xx': 'noun'},
+    'real-time': {'xx': 'noun'},
+    'realized': {'B1': 'verb past tense, past participle'},
+    'realizes': {'B1': 'verb 3rd person present'},
+    'rebalances': {'xx': 'verb 3rd person present'},
+    'rebind': {'xx': 'verb'},
+    'reboot': {'xx': 'verb, noun'},
+    'rebooted': {'xx': 'verb past tense, past participle'},
+    'reborn': {'xx': 'adjective'},
+    'rebuilding': {'B1': 'verb gerund or present participle'},
+    'recalled': {'B2': 'verb past tense, past participle'},
+    'received': {'A2': 'adjective'},
+    'receives': {'A2': 'verb 3rd person present'},
+    'receiving': {'A2': 'verb gerund or present participle:'},
+    'receptionist': {'A2': 'noun'},
+    'rechargeable': {'xx': 'adjective'},
+    'reclaimed': {'xx': 'verb past tense, past participle'},
+    'recognized': {'B1': 'verb past tense, past participle'},
+    'recognizes': {'B1': 'verb 3rd person present'},
+    'recombine': {'xx': 'verb'},
+    'recommended': {'B1': 'verb past tense, past participle'},
+    'recommends': {'B1': 'verb 3rd person present'},
+    'reconfigure': {'xx': 'verb'},
+    'recorded': {'A2': 'adjective'},
+    'recorder': {'xx': 'noun'},
+    'recreate': {'C1': 'verb'},
+    'recurse': {'xx': 'verb'},
+    'recursively': {'xx': 'adverb'},
+    'redefining': {'xx': 'verb gerund or present participle'},
+    'redesign': {'xx': 'verb, noun'},
+    'redial': {'xx': 'verb, noun'},
+    'redirect': {'xx': 'verb'},
+    'redirected': {'xx': 'verb past tense, past participle'},
+    'redirection': {'xx': 'noun'},
+    'redirections': {'xx': 'noun'},
+    'redirects': {'xx': 'verb, noun'},
+    'redistributing': {'C2': 'verb gerund or present participle'},
+    'redo': {'xx': 'verb, noun'},
+    'reduced': {'B1': 'verb past tense, past participle'},
+    'reduces': {'B1': 'verb 3rd person present'},
+    'reducing': {'B1': 'verb gerund or present participle'},
+    'redundancy': {'C1': 'noun'},
+    'redundant': {'C1': 'adjective'},
+    'referenced': {'xx': 'verb past tense, past participle'},
+    'referred': {'C2': 'verb past tense, past participle'},
+    'referring': {'C2': 'verb gerund or present participle'},
+    'refers': {'C2': 'verb 3rd person present'},
+    'refill': {'xx': 'verb, noun'},
+    'reflected': {'B2': 'verb past tense, past participle'},
+    'reformatted': {'xx': 'verb past tense, past participle'},
+    'refresh': {'C1': 'verb, noun'},
+    'refreshing': {'C1': 'verb gerund or present participle'},
+    'regarded': {'B2': 'verb past tense, past participle'},
+    'regarding': {'B1': 'preposition'},
+    'regenerate': {'xx': 'verb, adjective'},
+    'registered': {'B1': 'verb past tense, past participle'},
+    'registering': {'B1': 'verb gerund or present participle'},
+    'registrar': {'xx': 'noun'},
+    'registrars': {'xx': 'noun'},
+    'registry': {'xx': 'noun'},
+    'regulated': {'C1': 'verb past tense, past participle'},
+    'reinitiating': {'xx': 'verb gerund or present participle'},
+    'rejected': {'B2': 'verb past tense, past participle'},
+    'rejecting': {'B2': 'verb gerund or present participle'},
+    'relax': {'B1': 'verb'},
+    'relay': {'xx': 'noun, verb'},
+    'relays': {'xx': 'noun, verb 3rd person present'},
+    'released': {'B2': 'verb past tense, past participle'},
+    'releasing': {'B2': 'verb gerund or present participle'},
+    'relying': {'xx': 'verb gerund or present participle'},
+    'remembers': {'A1': 'verb 3rd person present'},
+    'remotely': {'xx': 'adverb'},
+    'removed': {'B1': 'verb past tense, past participle'},
+    'removing': {'B1': 'verb gerund or present participle'},
+    'rendezvous': {'xx': 'noun, verb'},
+    'renewal': {'C1': 'noun'},
+    'renewals': {'C1': 'noun'},
+    'reorganize': {'C1': 'verb'},
+    'reorganizing': {'C1': 'verb gerund or present participle'},
+    'repackaging': {'xx': 'verb gerund or present participle'},
+    'replaced': {'B1': 'verb past tense, past participle'},
+    'replaces': {'B1': 'verb 3rd person present'},
+    'replacing': {'B1': 'verb gerund or present participle'},
+    'replay': {'xx': 'noun'},
+    'replays': {'xx': 'noun'},
+    'replicated': {'xx': 'verb past tense, past participle'},
+    'replied': {'B1': 'verb past tense, past participle'},
+    'replying': {'B1': 'verb gerund or present participle'},
+    'reported': {'B1': 'verb past tense, past participle'},
+    'represents': {'B2': 'verb 3rd person present'},
+    'reprogram': {'xx': 'verb'},
+    'requested': {'B1': 'verb past tense, past participle'},
+    'requesting': {'B1': 'verb gerund or present participle'},
+    'requestor': {'xx': 'noun'},
+    'required': {'B1': 'adjective'},
+    'requires': {'B1': 'verb 3rd person present'},
+    'requiring': {'B1': 'verb gerund or present participle'},
+    'rerouting': {'xx': 'verb gerund or present participle'},
+    'rescuers': {'xx': 'noun'},
+    'reseller': {'xx': 'noun'},
+    'resend': {'xx': 'verb'},
+    'resent': {'C2': 'verb'},
+    'reserved': {'B1': 'adjective'},
+    'reset': {'xx': 'verb, noun'},
+    'resides': {'xx': 'verb 3rd person present'},
+    'residual': {'xx': 'noun'},
+    'resilience': {'C2': 'noun'},
+    'responders': {'xx': 'noun'},
+    'responds': {'B2': 'verb 3rd person present'},
+    'restored': {'B2': 'verb past tense, past participle'},
+    'restricted': {'C1': 'adjective'},
+    'retained': {'C2': 'verb past tense, past participle'},
+    'retention': {'C2': 'noun'},
+    'retransmission': {'xx': 'noun'},
+    'retransmit': {'xx': 'verb'},
+    'retransmits': {'xx': 'verb 3rd person present'},
+    'retrieval': {'xx': 'noun'},
+    'retrieves': {'C2': 'verb 3rd person present'},
+    'retry': {'xx': 'verb, noun'},
+    'returned': {'A2': 'verb past tense, past participle'},
+    'returning': {'A2': 'verb gerund or present participle'},
+    'revealed': {'B2': 'verb past tense, past participle'},
+    'revealing': {'B2': 'adjective'},
+    'reveals': {'B2': 'verb 3rd person present, noun'},
+    'reverberations': {'xx': 'noun'},
+    'reviewer': {'xx': 'noun'},
+    'revised': {'B1': 'adjective'},
+    'revisit': {'xx': 'verb'},
+    'revisited': {'xx': 'verb past tense, past participle'},
+    'rewrites': {'B2': 'verb 3rd person present'},
+    'rewrote': {'B2': 'verb'},
+    'richer': {'A2': 'adjective'},
+    'richness': {'C1': 'noun'},
+    'rights': {'B2': 'noun, verb 3rd person present'},
+    'ringer': {'xx': 'noun'},
+    'ringing': {'A2': 'verb'},
+    'ringtone': {'xx': 'noun'},
+    'rising': {'B1': 'adjective, noun'},
+    'roaming': {'xx': 'verb gerund or present participle'},
+    'robbing': {'B1': 'verb gerund or present participle'},
+    'rolling': {'B2': 'adjective'},
+    'rollouts': {'xx': 'noun'},
+    'round-trip': {'xx': 'noun'},
+    'rounding': {'xx': 'verb past tense, past participle'},
+    'roundtrip': {'xx': 'noun'},
+    'routable': {'xx': 'noun'},
+    'routed': {'xx': 'verb past tense, past participle'},
+    'router': {'xx': 'noun'},
+    'routers': {'xx': 'noun'},
+    'routinely': {'xx': 'adverb'},
+    'routing': {'xx': 'noun'},
+    'safely': {'B1': 'adverb'},
+    'said': {'A1': 'verb, adjective'},
+    'salesman': {'B1': 'noun'},
+    'salespeople': {'xx': 'noun'},
+    'salesperson': {'A2': 'noun'},
+    'salting': {'xx': 'noun, verb gerund or present participle'},
+    'salud': {'xx': 'Spanish interjection'},
+    'sample/frame': {'xx': 'unit'},
+    'sampled': {'C2': 'verb past tense, past participle'},
+    'samples/second': {'xx': 'unit'},
+    'sampling': {'C2': 'verb gerund or present participle'},
+    'sat': {'A1': 'verb gerund or present participle'},
+    'saturated': {'xx': 'verb past tense, past participle'},
+    'saved': {'A2': 'verb past tense, past participle'},
+    'saver': {'xx': 'noun'},
+    'saw': {'A1': 'noun, verb'},
+    'saying': {'A1': 'noun'},
+    'sayonara': {'xx': 'interjection, noun'},
+    'says': {'A1': 'verb'},
+    'scalable': {'xx': 'adjective'},
+    'scaled': {'xx': 'adjective'},
+    'scaling': {'xx': 'noun, adjective'},
+    'scanned': {'C1': 'verb past tense, past participle'},
+    'scanner': {'xx': 'noun'},
+    'scanners': {'xx': 'noun'},
+    'scanning': {'C1': 'verb gerund or present participle'},
+    'scheduled': {'B2': 'adjective'},
+    'scheduler': {'xx': 'noun'},
+    'scheduling': {'B2': 'verb gerund or present participle'},
+    'schema': {'xx': 'noun'},
+    'scheme': {'B2': 'noun, verb'},
+    'schemes': {'B2x': 'noun'},
+    'scoped': {'xx': 'verb past tense, past participle'},
+    'scoping': {'xx': 'verb gerund or present participle'},
+    'scorer': {'xx': 'noun'},
+    'scoring': {'B1': 'verb gerund or present participle'},
+    'scripting': {'xx': 'verb gerund or present participle'},
+    'searchable': {'xx': 'adjective'},
+    'searching': {'B1': 'verb gerund or present participle'},
+    'sec': {'xx': 'abbeviation, unit'},
+    'secured': {'xx': 'verb past tense, past participle'},
+    'securely': {'xx': 'adverb'},
+    'seeing': {'A1': 'conjunction, noun, adjective'},
+    'seemed': {'B!': 'verb past tense, past participle'},
+    'seeming': {'B1': 'verb gerund or present participle'},
+    'seems': {'B1': 'verb 3rd person present'},
+    'seen': {'A1': 'verb'},
+    'sees': {'B2': 'verb 3rd person present'},
+    'selected': {'B1': 'verb past tense, past participle'},
+    'selects': {'B1': 'verb 3rd person present'},
+    'selling': {'A2': 'verb gerund or present participle'},
+    'sells': {'A2': 'verb 3rd person present'},
+    'semantics': {'xx': 'noun'},
+    'sender': {'xx': 'noun'},
+    'senders': {'xx': 'noun'},
+    'sending': {'A1': 'noun'},
+    'sends': {'A1': 'noun, verb'},
+    'sent': {'A1': 'verb'},
+    'separated': {'B2': 'verb past tense, past participle'},
+    'separately': {'B2': 'adverb'},
+    'separates': {'B2': 'verb 3rd person present'},
+    'separators': {'xx': 'noun'},
+    'seq': {'xx': 'abbreviation'},
+    'sequencing': {'xx': 'verb gerund or present participle'},
+    'sequential': {'xx': 'adjective'},
+    'sequentially': {'xx': 'adverb'},
+    'served': {'A2': 'verb past tense, past participle'},
+    'server': {'B2': 'verb'},
+    'servers': {'B2': 'verb'},
+    'service-level': {'B2': ''},
+    'service-specific': {'B2': ''},
+    'serving': {'A2': 'noun'},
+    'servlets': {'xx': 'noun'},
+    'session-level': {'B1': ''},
+    'set-top': {'A2': 'noun'},
+    'setup': {'xx': 'noun, verb?'},
+    'setups': {'xx': 'noun'},
+    'sever': {'xx': 'verb'},
+    'shalt': {'xx': 'verb'},
+    'shared': {'A2': 'adjective'},
+    'sharing': {'A2': 'verb gerund or present participle'},
+    'sheriff': {'xx': 'noun'},
+    'shifted': {'C1': 'verb past tense, past participle'},
+    'shifting': {'C1': 'verb gerund or present participle'},
+    'shipped': {'xx': 'verb past tense, past participle'},
+    'short-lived': {'xx': 'adjective'},
+    'shorter': {'A1': 'adjective'},
+    'shortest': {'A1': 'adjective'},
+    'showed': {'A1': 'verb past tense'},
+    'showing': {'A1': 'noun'},
+    'shown': {'xx': 'verb past participle'},
+    'shred': {'xx': 'verb'},
+    'shut-down': {'B1': 'phrasal verb'},
+    'sighted': {'xx': 'adjective'},
+    'signaling': {'xx': 'verb gerund or present participle'},
+    'signed': {'B1': 'verb past tense, past participle'},
+    'signing': {'B1': 'verb gerund or present participle'},
+    'silos': {'xx': 'noun'},
+    'simpler': {'A2': 'adjective'},
+    'simplest': {'A2': 'adjective'},
+    'simplex': {'xx': 'adjective, noun'},
+    'simplify': {'C1': 'verb'},
+    'simulator': {'xx': 'noun'},
+    'simultaneous': {'C1': 'adjective'},
+    'sitting': {'A1': 'noun, adjective'},
+    'sized': {'xx': 'adjective'},
+    'slaved': {'xx': 'verb past tense, past participle'},
+    'sleeping': {'A1': 'verb gerund or present participle'},
+    'sliced': {'B2': 'verb past tense, past participle'},
+    'slows': {'B2': 'verb 3rd person present'},
+    'smaller': {'A1': 'adjective'},
+    'smallest': {'A1': 'adjective'},
+    'smarts': {'xx': ', noun'},
+    'smooths': {'xx': 'verb 3rd person present'},
+    'sms': {'xx': 'noun, acronym'},
+    'snags': {'xx': 'verb 3rd person present'},
+    'snap-shot': {'xx': 'noun'},
+    'sneak': {'C2': 'verb, noun, adjective'},
+    'sniff': {'C2': 'verb, noun'},
+    'sniffing': {'C2x': 'verb gerund or present participle'},
+    'snippets': {'xx': 'noun'},
+    'so-and-so': {'xx': 'noun'},
+    'soc': {'xx': 'acronym'},
+    'socket': {'xx': 'noun, verb'},
+    'sockets': {'xx': 'noun'},
+    'soft-state': {'xx': 'noun'},
+    'softclients': {'xx': 'noun'},
+    'softphone': {'xx': 'noun'},
+    'softphones': {'xx': 'noun'},
+    'softswitch': {'xx': 'noun'},
+    'softswitches': {'xx': 'noun'},
+    'software-based': {'B1': 'adjective'},
+    'sold': {'A2': 'verb past tense, past participle'},
+    'solder': {'xx': 'noun, verb'},
+    'someday': {'xx': 'adverb'},
+    'sooner': {'xx': 'adverb'},
+    'sos': {'xx': 'noun, acronym'},
+    'soundcard': {'xx': 'noun'},
+    'sounded': {'A2': 'verb past tense, past participle'},
+    'spacing': {'xx': 'noun'},
+    'spaghetti': {'xx': 'noun'},
+    'spatial': {'xx': 'adjective'},
+    'spatialized': {'xx': 'verb past tense, past participle'},
+    'spatially': {'xx': 'adjective'},
+    'spawn': {'xx': 'verb, noun'},
+    'speakerphone': {'xx': 'noun'},
+    'speakerphones': {'xx': 'noun'},
+    'speaking': {'A1': 'noun, adjective'},
+    'speaks': {'A1': 'verb 3rd person present'},
+    'spec': {'xx': 'avvreviation'},
+    'specializing': {'B2': 'verb gerund or present participle'},
+    'specialty': {'xx': 'noun'},
+    'specified': {'B2': 'verb gerund or present participle'},
+    'specifies': {'B2': 'verb 3rd person present'},
+    'specifying': {'B2': 'verb gerund or present participle'},
+    'speech-to-text': {'B1': ''},
+    'spell-check': {'A2': ''},
+    'spelled': {'A2': 'verb past tense, past participle'},
+    'spent': {'A2': 'verb, adjective'},
+    'spike': {'xx': 'noun, verb'},
+    'spin-out': {'xx': 'noun'},
+    'spitters': {'xx': 'noun'},
+    'splices': {'xx': 'verb 3rd person present, noun'},
+    'splitting': {'B2': 'verb gerund or present participle'},
+    'splotches': {'xx': 'noun'},
+    'spotted': {'B2': 'adjective'},
+    'spotting': {'B2': 'verb gerund or present participle'},
+    'spurt': {'xx': 'noun'},
+    'spurts': {'xx': 'noun'},
+    'stack': {'xx': 'noun, verb'},
+    'stacks': {'xx': 'noun, verb 3rd person present'},
+    'staffing': {'xx': 'verb gerund or present participle'},
+    'standalone': {'xx': 'adjective'},
+    'standardization': {'xx': 'noun'},
+    'standardized': {'xx': 'verb past tense, past participle'},
+    'standbys': {'xx': 'noun'},
+    'start-line': {'A2': 'noun'},
+    'start-of-data': {'B2': 'noun'},
+    'start-of-voice': {'B1': 'noun'},
+    'start/end': {'a1': 'phrase'},
+    'started': {'A1': 'verb past tense, past participle'},
+    'starting': {'A1': 'verb'},
+    'startup': {'xx': 'noun, verb'},
+    'stateful': {'xx': 'adjective'},
+    'stateless': {'xx': 'adjective'},
+    'static': {'xx': 'adjective, noun'},
+    'statistically': {'xx': 'adverb'},
+    'statistics': {'B2': 'noun'},
+    'statute': {'xx': 'noun'},
+    'statutes': {'xx': 'noun'},
+    'steady-state': {'B2': 'noun'},
+    'steal/abuse': {'B2': 'verb, noun'},
+    'stepping': {'B1': 'verb gerund or present participle'},
+    'steroids': {'xx': 'noun'},
+    'stockbroker': {'xx': 'noun'},
+    'stockholder': {'xx': 'noun'},
+    'stockholm': {'xx': 'noun'},
+    'stole': {'A2': 'noun verb past tense'},
+    'stopped': {'A1': 'verb past tense, past participle'},
+    'stopping': {'A1': 'verb gerund or present participle'},
+    'store-and-forward': {'B1': 'adjective'},
+    'stored': {'B2': 'verb past tense, past participle'},
+    'storyteller': {'xx': 'noun'},
+    'storytelling': {'xx': 'verb gerund or present participle'},
+    'strained': {'B2': 'adjective, verb past tense, past participle'},
+    'streaming': {'xx': 'verb gerund or present participle'},
+    'strengthened': {'B2': 'verb past tense, past participle'},
+    'stronger': {'A2': 'adjective'},
+    'struggling': {'B2': 'verb gerund or present participle'},
+    'stuck': {'B1': 'verb past tense, past participle'},
+    'studied': {'A1': 'verb past tense, past participle'},
+    'subdirectory': {'xx': 'noun'},
+    'submitted': {'B2': 'verb'},
+    'submitting': {'B2': 'verb gerund or present participle'},
+    'subnets': {'xx': 'noun'},
+    'subsamples': {'xx': 'noun'},
+    'subscribe': {'xx': 'verb'},
+    'subscribe-notify': {'xx': 'adjective?'},
+    'subsection': {'xx': 'noun'},
+    'subsections': {'xx': 'noun'},
+    'subset': {'xx': 'noun'},
+    'subsume': {'xx': 'verb'},
+    'subsumed': {'xx': 'verb past tense, past participle'},
+    'subsystems': {'xx': 'noun'},
+    'subtree': {'xx': 'noun'},
+    'succeeds': {'B1': 'verb 3rd person present'},
+    'suffers': {'B2': 'verb 3rd person present'},
+    'suggested': {'B1': 'verb past tense, past participle'},
+    'suggests': {'B1': 'verb 3rd person present'},
+    'suitably': {'B2': 'adverb'},
+    'sunk': {'B1': 'verb past participle'},
+    'suppliers': {'B2': 'noun'},
+    'supported': {'B1': 'verb past tense, past participle'},
+    'supporting': {'B1': 'adjective'},
+    'supposed': {'B1': 'adjective'},
+    'suprisingly': {'xx': 'adverb'},
+    'surprisingly': {'B1': 'adverb'},
+    'surrogates': {'xx': 'noun'},
+    'survived': {'B2': 'verb past tense, past participle'},
+    'suspended': {'B2': 'verb past tense, past participle'},
+    'swapping': {'C1': 'verb gerund or present participle'},
+    'swedish': {'xx': 'adjective, noun'},
+    'switched': {'B1': 'verb past tense, past participle'},
+    'switches': {'B1': 'noun, verb 3rd person present'},
+    'switching': {'B1': 'verb'},
+    'switching/routing': {'B1': 'verb gerund or present participle'},
+    'symmetric': {'xx': 'adjective'},
+    'synchronization': {'xx': 'noun'},
+    'synchronize': {'xx': 'verb'},
+    'synchronized': {'xx': 'verb past tense, past participle'},
+    'synchronizes': {'xx': 'verb 3rd person present'},
+    'synchronizing': {'xx': 'verb gerund or present participle'},
+    'synchronous': {'xx': 'adjective'},
+    'syntax': {'xx': 'noun'},
+    'synthesize': {'xx': 'verb'},
+    'synthesized': {'xx': 'verb past tense, past participle'},
+    'synthesizer': {'xx': 'noun'},
+    'synthesizes': {'xx': 'verb 3rd person present'},
+    'tab': {'xx': 'noun, verb'},
+    'tagging': {'xx': 'noun'},
+    'taken': {'A1': 'verb past participle'},
+    'takes': {'A1': 'verb 3rd person present'},
+    'taking': {'A1': 'noun'},
+    'talk-spurt': {'xx': 'noun'},
+    'talked': {'A1': 'verb past tense, past participle'},
+    'talking': {'A1': 'adjective, noun'},
+    'tamper': {'xx': 'verb'},
+    'tampered': {'xx': '6'},
+    'tasked': {'xx': 'verb gerund or present participle'},
+    'taught': {'A1': 'verb past tense, past participle'},
+    'taxable': {'xx': 'adjective'},
+    'taxed': {'C1': 'verb past tense, past participle'},
+    'tearing': {'B1': 'verb gerund or present participle'},
+    'technically': {'C1': 'adverb'},
+    'technicians': {'C1': 'noun'},
+    'technologist': {'xx': 'noun'},
+    'telco': {'xx': 'noun'},
+    'telecom': {'xx': 'noun'},
+    'telecommunication': {'xx': 'noun'},
+    'telecommunications': {'B2': 'verb'},
+    'telecoms': {'xx': 'noun'},
+    'telegraphy': {'xx': 'noun'},
+    'teleinformatics': {'xx': 'noun'},
+    'telephoning': {'A2': 'verb gerund or present participle'},
+    'telephony': {'xx': 'noun'},
+    'telepresense': {'xx': 'noun'},
+    'teller': {'xx': 'adjective'},
+    'telling': {'A1': 'verb gerund or present participle'},
+    'tells': {'A1': 'verb 3rd person present'},
+    'telnet': {'xx': 'nout'},
+    'template': {'xx': 'noun'},
+    'temporal': {'xx': 'adjective'},
+    'ten-minute': {'A1': 'phrase'},
+    'tens': {'xx': 'noun'},
+    'terabytes': {'xx': 'unit'},
+    'terminated': {'xx': 'verb past tense, past participle'},
+    'terminating': {'xx': 'verb gerund or present participle'},
+    'termination': {'xx': 'noun'},
+    'tested': {'B1': 'verb past tense, past participle'},
+    'text-based': {'B1': 'adjective'},
+    'text-to-speech': {'B1': 'adjective'},
+    'textphones': {'xx': 'noun'},
+    'textual': {'xx': 'adjective'},
+    'thereof': {'xx': 'adverb'},
+    'thereon': {'xx': 'adverb'},
+    'thereto': {'xx': 'adverb'},
+    'thermal': {'xx': 'adjective'},
+    'thingies': {'xx': 'noun'},
+    'thinks': {'A1': 'verb 3rd person present'},
+    'third-party': {'A2': 'noun, adjective'},
+    'those': {'A1': 'pronoun'},
+    'thou': {'xx': 'pronoun'},
+    'thousands': {'xx': 'number'},
+    'thr': {'xx': ''},
+    'three-way': {'A2': 'adjective'},
+    'threw': {'A2': 'verb past tense'},
+    'throughput': {'xx': 'noun'},
+    'throwing': {'A2': 'verb gerund or present participle'},
+    'thwart': {'xx': 'verb, noun, preposition, adverb'},
+    'ticking': {'B1': 'noun'},
+    'tied': {'B1': 'adjective'},
+    'tier': {'xx': 'noun'},
+    'tiered': {'xx': 'verb past tense, past participle'},
+    'time-based': {'B1': 'adjective'},
+    'time-lined': {'B2': 'verb past tense, past participle'},
+    'time-multiplexed': {'xx': 'adjective'},
+    'time-sensitive': {'B2': 'adjective'},
+    'time-slot': {'C1': 'noun'},
+    'time-to-live': {'A1': 'noun?'},
+    'timed': {'B2': 'adjective'},
+    'timeline': {'xx': 'noun'},
+    'timeout': {'xx': 'noun, verb'},
+    'timeouts': {'xx': 'noun'},
+    'timer': {'xx': 'noun'},
+    'timers': {'xx': 'noun'},
+    'timescale': {'xx': 'noun'},
+    'timeslot': {'xx': 'noun'},
+    'timeslots': {'xx': 'noun'},
+    'timestamp': {'xx': 'noun'},
+    'timestamps': {'xx': 'noun'},
+    'tinker': {'xx': 'noun, vern'},
+    'titled': {'xx': 'adjective'},
+    'titling': {'xx': 'noun'},
+    'to/from': {'A1': 'preposition'},
+    'told': {'A1': 'verb past tense, past participle'},
+    'toll-free': {'C1': 'adjective'},
+    'toll-quality': {'C1': 'adjective'},
+    'took': {'A1': 'verb'},
+    'toolkit': {'xx': 'noun'},
+    'top-level': {'A2': 'adjective'},
+    'topology': {'xx': 'noun'},
+    'torn': {'B1': 'verb, adjective'},
+    'torpedoes': {'xx': 'noun'},
+    'towards': {'B1': 'preposition'},
+    'tracing': {'C1': 'noun'},
+    'trade-off': {'B1': 'noun'},
+    'traditionally': {'B2': 'adverb'},
+    'transcode': {'xx': 'verb'},
+    'transcoded': {'xx': 'verb past tense, past participle'},
+    'transcoding': {'xx': 'verb gerund or present participle'},
+    'transferred': {'B1': 'verb past tense, past participle'},
+    'transferring': {'B1': 'verb gerund or present participle'},
+    'translated': {'B1': 'verb past tense, past participle'},
+    'translating': {'B1': 'verb gerund or present participle'},
+    'translation/transcoding': {'xx': 'phrase'},
+    'translator': {'xx': 'noun'},
+    'translators': {'xx': 'noun'},
+    'translators/mixers': {'xx': 'noun'},
+    'transmit/receive': {'xx': 'verb'},
+    'transmits': {'C1': 'verb 3rd person present'},
+    'transmitted': {'C1': 'verb past tense, past participle'},
+    'transmitting': {'C1': 'verb gerund or present participle'},
+    'transport-level': {'B1': 'adjective'},
+    'transported': {'B2': 'verb past tense, past participle'},
+    'trapezoid': {'xx': 'noun'},
+    'traveling': {'xx': 'verb gerund or present participle'},
+    'traversal': {'xx': 'noun'},
+    'traverses': {'xx': 'verb'},
+    'treated': {'B2': 'verb past tense, past participle'},
+    'treats': {'B2': 'noun, verb 3rd person present'},
+    'tremendously': {'B2': 'adverb'},
+    'tried': {'A2': 'verb past tense, past participle'},
+    'triple': {'xx': 'adjective, predeterminer, noun, verb'},
+    'trivial': {'B2': 'adjective'},
+    'trivially': {'xx': 'adverb'},
+    'tromboning': {'xx': 'verb gerund or present participle'},
+    'troubles': {'xxB1': 'verb 3rd person present'},
+    'troubleshooting': {'xx': 'verb gerund or present participle'},
+    'trumpet': {'B1': 'noun'},
+    'trunk': {'B2': 'noun, verb'},
+    'trunking': {'xx': 'verb gerund or present participle'},
+    'trunks': {'B2': 'noun'},
+    'trusted': {'B1': 'adjective'},
+    'trying': {'A2': 'adjective'},
+    'tuned': {'xx': 'verb past tense, past participle'},
+    'tunneled': {'xx': 'verb past tense, past participle'},
+    'tunneling': {'xx': 'verb gerund or present participle'},
+    'turned': {'A2': 'adjective'},
+    'turning': {'A2': 'verb gerund or present participle'},
+    'tutorial': {'xx': 'noun'},
+    'tweet': {'xx': 'noun'},
+    'twisted': {'B2': 'adjective'},
+    'two-dimensional': {'xx': 'adjective'},
+    'two-party': {'A1': 'adjective'},
+    'two-way': {'A2': 'adjective'},
+    'typed': {'B1': 'verb past tense, past participle'},
+    'typing': {'B1': 'verb gerund or present participle'},
+    'unacceptably': {'xx': 'adverb'},
+    'unassigned': {'xx': 'adjective'},
+    'unauthorized': {'xx': 'adjective'},
+    'unavailability': {'xx': 'noun'},
+    'unavailable': {'B2': 'adjective'},
+    'unbelievably': {'xx': 'adjective'},
+    'unbreakable': {'xx': 'adjective'},
+    'unchanged': {'B2': 'adjective'},
+    'unclear': {'B2': 'adjective'},
+    'unconditionally': {'xx': 'adverb'},
+    'uncoordinated': {'xx': 'adjective'},
+    'under-run': {'xx': 'transitive verb, noun'},
+    'undergoing': {'C1': 'verb'},
+    'underneath': {'B1': 'preposition, adverb, noun'},
+    'understands': {'A1': 'verb 3rd person present'},
+    'understood': {'A1': 'verb past tense, past participle'},
+    'underway': {'C2': 'adverb'},
+    'undesirable': {'C2': 'adjective, noun'},
+    'undetected': {'xx': 'adjective'},
+    'unduly': {'xx': 'adverb'},
+    'unencrypted': {'xx': 'adjective'},
+    'uni-directional': {'xx': 'adjective'},
+    'unicast': {'xx': 'adjective'},
+    'unified': {'xx': 'verb'},
+    'uniquely': {'xx': 'adverb'},
+    'unlicensed': {'xx': 'adjective'},
+    'unlimited': {'B2': 'adjective'},
+    'unlisted': {'xx': 'adjective'},
+    'unlit': {'xx': 'adjective'},
+    'unload': {'C1': 'verb'},
+    'unmodified': {'xx': 'adjective'},
+    'unpacked': {'B1': 'verb past tense, past participle'},
+    'unplug': {'xx': 'verb'},
+    'unqualified': {'C1': 'adjective'},
+    'unreachable': {'xx': 'adjective'},
+    'unrelated': {'C1': 'adjective'},
+    'unreliable': {'B2': 'adjective'},
+    'unsolicited': {'xx': 'adjective'},
+    'unspecified': {'xx': 'adjective'},
+    'unsuccessful': {'B2': 'adjective'},
+    'unusable': {'xx': 'adjective'},
+    'updated': {'B1': 'verb past tense, past participle'},
+    'updating': {'B1': 'verb gerund or present participle'},
+    'uplink': {'xx': 'noun'},
+    'upload': {'B1': 'verb'},
+    'uploading': {'B1': 'verb gerund or present participle'},
+    'ups': {'xx': 'acronym'},
+    'upstream': {'xx': 'adverb, adjective'},
+    'upto': {'xx': 'phrase'},
+    'urn': {'xx': 'acronym'},
+    'usability': {'xx': 'noun'},
+    'usable': {'xx': 'adjective'},
+    'usefulness': {'xx': 'noun'},
+    'user-agent': {'B2': 'noun'},
+    'user-defined': {'B2': 'adjective'},
+    'user-generated': {'B': 'adjective'},
+    'user-to-user': {'B1': 'phrase'},
+    'user=phone': {'B1': 'noun'},
+    'usergroup': {'xx': 'noun'},
+    'username': {'xx': 'noun'},
+    'username/password': {'xx': 'noun'},
+    'using': {'A1': 'gerund or present participle'},
+    'utilization': {'xx': 'noun'},
+    'utilizations': {'xx': 'noun'},
+    'validate': {'xx': 'verb'},
+    'validating': {'xx': 'verb gerund or present participle'},
+    'value-added': {'B!': 'noun'},
+    'vanity': {'C2': 'noun'},
+    'variable-rate': {'C1': 'noun'},
+    'variance': {'xx': 'noun'},
+    'varies': {'B2': 'verb 3rd person present'},
+    'varying': {'B2': 'verb gerund or present participle'},
+    'vastly': {'xx': 'adverb'},
+    'vector': {'xx': 'noun'},
+    'velocity': {'xx': 'noun'},
+    'vendor': {'xx': 'noun'},
+    'vendors': {'xx': 'noun'},
+    'verbose': {'xx': 'adjective'},
+    'verboten': {'xx': 'German adjective'},
+    'verified': {'C1': 'verb past tense, past participle'},
+    'vertically': {'xx': 'adverb'},
+    'vibrate': {'xx': 'verb'},
+    'videoconferencing': {'xx': 'noun'},
+    'viol\u00e0': {'xx': 'interjection'},
+    'violated': {'C2': 'verb past tense, past participle'},
+    'virtually': {'B2': 'adverb'},
+    'visualization': {'xx': 'noun'},
+    'visually': {'xx': 'adverb'},
+    'vocabulary': {'A2': 'noun'},
+    'voice-activated': {'xx': 'adjective'},
+    'voice-chat': {'B1': 'noun'},
+    'voice-mail': {'B1': 'noun'},
+    'voice-over': {'B1': 'noun, verb'},
+    'voice-over-IP': {'B1': 'noun'},
+    'voice-over-Long': {'B1': 'noun'},
+    'voice-over-frame': {'B1': 'noun'},
+    'voice/data': {'B1': 'noun'},
+    'voicemail': {'B1': 'noun'},
+    'voiceover': {'B1': 'noun, verb'},
+    'vol': {'xx': 'abbreviation'},
+    'von': {'xx': 'preposition'},
+    'waiting': {'A1': 'noun'},
+    'wakes': {'A1': 'verb 3rd person present'},
+    'wakeup': {'xx': 'noun'},
+    'walked': {'A1': 'verb past tense, past participle'},
+    'walking': {'A1': 'verb gerund or present participle'},
+    'walled': {'xx': 'adjective'},
+    'want/need': {'A1': 'verb, noun'},
+    'wanted': {'A1': 'verb past tense, past participle'},
+    'wanting': {'A1': 'verb gerund or present participle'},
+    'wants': {'A1': 'verb 3rd person present'},
+    'warranty': {'xx': 'noun'},
+    'was': {'A1': 'verb'},
+    'wasting': {'B1': 'adjective'},
+    'watched': {'A1': 'verb past tense, past participle'},
+    'watcher': {'xx': 'noun'},
+    'watching': {'A1': 'verb gerund or present participle'},
+    'watermarking': {'xx': 'verb gerund or present participle'},
+    'watts': {'xx': 'unit'},
+    'waveform': {'xx': 'noun'},
+    'wavelength': {'C2': 'noun'},
+    'weakens': {'C1': 'verb 3rd person present'},
+    'web-based': {'B1': 'adjective'},
+    'webpage': {'xx': 'noun'},
+    'welded': {'xx': 'verb past tense, past participle'},
+    'well-established': {'B2': 'adjective'},
+    'well-known': {'A1': 'adjective'},
+    'well-performing': {'B1': 'adjective'},
+    'went': {'A1': 'verb past tense'},
+    'were': {'A2': 'verb'},
+    'westerns': {'xx': 'noun'},
+    'what/who': {'A1': 'pronoun, determiner, adverb'},
+    'whipmakers': {'xx': 'noun'},
+    'whiteboard': {'xx': 'noun'},
+    'whoops': {'xx': 'exclamation'},
+    'wideband': {'xx': 'adjective'},
+    'wifi': {'xx': 'acronym'},
+    'wikipage': {'xx': 'noun'},
+    'wikipages': {'xx': 'noun'},
+    'window-based': {'B1': 'adjective'},
+    'wink': {'C2': 'verb, noun'},
+    'wiped': {'B2': 'verb past tense, past participle'},
+    'wired': {'xx': 'verb past tense, past participle'},
+    'wireless': {'xx': 'adjective'},
+    'wiretapped': {'xx': 'verb past tense, past participle'},
+    'wiretapping': {'xx': 'verb gerund or present participle'},
+    'wiretaps': {'xx': 'noun'},
+    'wiring': {'xx': 'noun'},
+    'withdraws': {'C1': 'verb 3rd person present'},
+    'wo': {'xx': ''},
+    'won': {'A2': 'verb past and past participle'},
+    'wordy': {'xx': 'adjective'},
+    'worked': {'A1': 'verb past tense, past participle'},
+    'workstation': {'xx': 'noun'},
+    'writes': {'A1': 'verb 3rd person present'},
+    'wrote': {'A1': 'verb past tense'},
+    'zeroth': {'xx': 'adjective'},
+    'zip': {'B2': 'verb, noun, pronoun'},
+}
+
+misc_words_to_ignore=[
+    "A4", 
+    "A4-sized", 
+    "American",
+    "Armenian",
+    "BibTeX", 
+    "British", 
+    "Canadian", 
+    "Chinese", 
+    "Finnish", 
+    "German", 
+    "Greek",
+    "Japanese",
+    "LaTeX",
+    "Svensk",
+    "Spanish",
+    "Swahili",
+    "Swiss",
+    # "TU-Berlin",
+    "Zotero",
+]
+
+place_names=[
+    "America",
+    "Angeles", 
+    "Antipolis",
+    "Arlington", 
+    "Atlanta",
+    "Atlantic", 
+    "Australia", 
+    "Austria", 
+    "Babylon",
+    "Bayonne", 
+    "Beijing", 
+    "Brazil", 
+    "Bristol", 
+    "Brooklyn", 
+    "California", 
+    "Cambridge", 
+    "Canada", 
+    "Cancun", 
+    "Canterbury", 
+    "Caribbean", 
+    "Chicago", 
+    "China", 
+    "Columbia",
+    "Dallas", 
+    "Denver", 
+    "Dublin", 
+    "England", 
+    "Espoo/Helsinki", 
+    "Finland", 
+    "Florida", 
+    "France", 
+    "Francisco",
+    "Frankfurt", 
+    "Georgetown", 
+    "Germany", 
+    "Greece", 
+    "Greenwich", 
+    "Grenoble", 
+    "Hampshire",
+    "Hawaii",
+    "Honolulu", 
+    "Hungary",
+    "India",
+    "Indianapolis",
+    "Ireland", 
+    "Isafjordsgatan",
+    "Israel",
+    "Italy",
+    "Japan", 
+    "Kista",
+    "London",
+    "Luxembourg",
+    "Miami",
+    "Minneapolis",
+    "Minnesota",
+    "Mongolia", 
+    "Montreal",
+    "Moon",
+    "Netherlands",
+    "Nevada",
+    "Newport",
+    "NY",
+    "Oregon",
+    "Oulu",
+    "Pacific",
+    "Pacifica",
+    "Paris",
+    "Phoenix",
+    "Piscataway",
+    "Pittsburgh",
+    "Poland",
+    "Portland",
+    "Portugal",
+    "Rochester",
+    "Sebastopol",
+    "Singapore",
+    "Stockholm/Kista",
+    "Sunnyvale",
+    "Sweden",
+    "Switzerland",
+    "Sydney",
+    "Texas",
+    "Vegas",
+    "Virginia",
+    "Washington",
+    "Zealand",
+    "Zimbabwe",
+]
+
+common_swedish_words=[
+    "anpassad",
+    "anv\u00e4nder",
+    "arbete",
+    "aspekter",
+    "av",
+    "avhandling",
+    "avrapportering",
+    "befintliga",
+    "betalsamtal",
+    "bredbandstelefoni",
+    "centrala",
+    "exjobb",
+    "f\u00f6r",
+    "f\u00f6r\u00e4ndringar",
+    "f\u00f6rel\u00e4sare",
+    "f\u00f6rsvarsunderr\u00e4ttelseverksamhet",
+    "f\u00fcr",
+    "fr\u00e5n",
+    "framtida",
+    "frist\u00e5ende",
+    "grundl\u00e4ggande",
+    "handel",
+    "har",
+    "klienter",
+    "kodek",
+    "komplettering",
+    "kontakta",
+    "kort",
+    "kundrelation",
+    "kunskap",
+    "kursansvarig",
+    "l\u00e5ng",
+    "lanserar",
+    "med",
+    "mer",
+    "minuter",
+    "n\u00e4t",
+    "nyexaminerade",
+    "och",
+    "p\u00e5",
+    "plusning",
+    "portabilitet",
+    "praktiken",
+    "protokoll",
+    "referensdatabasen",
+    "relaterade",
+    "riktnummer",
+    "s\u00f6ker",
+    "samt",
+    "samtrafik",
+    "samverkan",
+    "sikt",
+    "studenter",
+    "studerande",
+    "studiev\u00e4gledare",
+    "systemteknik",
+    "telefonnummer",
+    "telestyrelsen",
+    "webbadress",
+    ]
+
+
+miss_spelled_words=[
+    'ßtudent',     # should be "student"
+    'â€˜Security',  # should be 'Security',
+    'Â§',
+    'wiklipage',   # should be 'wikipage'
+    'Addres',      # should be 'Address'
+    'Carrera',     # should be 'Carrara'
+    'Copmmunication',  # should be 'Communication'
+    'Dezember',    # should be 'December'
+    'Europeens',   # should be 'Européens'
+    'Glassfish',   # should be 'GlassFish'
+    'Kamailo',     # should be 'Kamailio'
+    'QCLEP',       # should be 'QCELP'
+    'Sigcomp',     # should be 'SigComp',
+    'Sinreich',    # should be 'Sinnreich',
+    'Stcokholm',   # should be 'Stockholm'
+    'acknowdlged', # should be 'acknowledged'
+    'acknowldged', # should be 'acknowledged'
+    'acknowledgment', # should be 'acknowledgement'
+    'acknowledgments', # should be 'acknowledgements'
+    'acroynms',    # should be 'acronyms'
+    'addrees',     # should be 'address'
+    'addressesing',  # should be 'addressing'
+    'addtion',     # should be 'addition'
+    'adpators',    # should be 'adaptors'
+    'annouce',     # should be 'announce'
+    'annouced',    # should be 'announced'
+    'annoucement', # should be 'announcement',
+    'anseers',     # 'answer' ?
+    'ansers',      # 'answers' ?
+    'answrs',      # 'answers' ?
+    'apointments', # 'appointments',
+    'april',       # check
+    'aqsks',       # check
+    'audable',     # check
+    'buiold',      # should be "build"
+    'cancelling',  # US preference is 'canceling'
+    'congesiton',  # should be 'congestion'
+    'declaritive', # should be 'declarative'
+    'dialling',    # US preference is 'dialing'
+    'erros',       # should be 'errors'
+    'escow',       # should be 'escrow'
+    'evrsion',     # should be 'version'
+    'exampe',      # should be 'example'
+    'existance',   # should be 'existence',
+    'faillure',    # should be 'failure'
+    'fielda',      # should be 'fields'
+    'f¨r',         # should be 'för'
+    'fÃ¼r',        # should be 'för'
+    'gots',	   # should be 'got'
+    'inaudable',   # should be 'inaudible'
+    'indepth',     # should be 'in-depth'
+    'intecept',    # should be 'intercept'
+    'interensed',  # should be 'interested'
+    'keypd',       # should be 'keypad'
+    'lnow',        # should be 'know'
+    'lookes',      # should be 'looks'
+    'messsage',    # should be 'message'
+    'negociate',   # should be 'negotiate'
+    'nonadways',   # possibly should be 'nowadays'
+    'nowadways',   # possibly should be 'nowadays'
+    'offfice',     # should be 'office'
+    'particularily', # should be 'particularly'
+    'passd',       # should be 'passed'
+    'pemissible',  # should be 'permissible'
+    'plaout',      # should be 'playout'
+    'plut',        # should be 'put'
+    'presense',    # possibly 'presence'
+    'probems',     # should be 'probems'
+    'procotol',    # should be 'protocol'
+    'proctocols',  # should be 'protocols'
+    'procy',       # should be 'proxy'
+    'protability', # should be 'portability'
+    'protocls',    # should be 'protocols'
+    'proﬁle',      # should be 'profile'
+    'publically',  # should be 'publicly'
+    'reall',       # check
+    'reciever',    # should be 'receiver'
+    'refences',    # should be 'references'
+    'regularily',  # should be 'regularly'
+    'relse',       # check
+    'reponse',     # should be 'response'
+    'resliiance',  # should be 'resilience'
+    'rining',      # should be 'ringing'
+    'runiing',     # should be 'running'
+    'satistics',   # should be 'statistics'
+    'scehdule',    # should be 'schedule'
+    'sents',       # should be 'sends'
+    'seperators',  # should be 'separators'
+    'servelets',   # should be 'servlets'
+    'serverlets',  # should be 'servlets'
+    'sesssion',    # should be 'session'
+    'similarily',  # should be 'similarly',
+    'slideD',      # check - correct it is a template where D is one or more digits
+    'spresd',      # should be 'spread'
+    'statistcis',  # should be 'statistics'
+    'stduent',     # should be 'student'
+    'streamaing',  # should be 'streaming'
+    'tah',         # check
+    'taugh',       # should be 'taught'
+    'thiing',      # should be 'things'
+    'thursday',    # should be 'Thursday'
+    'trigegr',     # should be 'trigger'
+    'vality',      # should be 'vanity'
+    'verson',      # should be 'version'
+    'voila',       # should be 'voilà'
+    'witht',       # check
+    'Greasmoneky',  # should be 'Greasemoneky'
+    'appendicees',  # should be 'appendices'
+]
+
+def check_spelling_errors(s, url):
+    if s in miss_spelled_words:
+        print(f'miss spelling {s} at {url=}')
+
+
+# remove first prefix
+def prune_prefix(s):
+    for pfx in prefixes_to_ignore:
+        if s.startswith(pfx):
+            s=s[len(pfx):]
+            return s
+    return s
+
+# remove first suffix
+def prune_suffix(s):
+    for sfx in suffixes_to_ignore:
+        if s.endswith(sfx):
+            s=s[:-len(sfx)]
+            return s
+    return s
+
+currency_symbols=[
+    '$',
+    '£',
+    '€',
+]
+
+words_to_ignore=[
+    '\n',
+    '\x0a',
+    "'",
+    "''",
+    '!',
+    '#',
+    '$',
+    '%',
+    '&',
+    '(',
+    ')',
+    '*',
+    '+',
+    '+/-',
+    ',',
+    '-',
+    '--',
+    '.',
+    '..',
+    '...',
+    '/',
+    ':',
+    ';',
+    '<',
+    '=',
+    '==',
+    '>',
+    '?',
+    '@',
+    '[',
+    ']',
+    '`',
+    '``',
+    '{',
+    '|',
+    '}',
+    '§',
+    '§',
+    '©',
+    '½',
+    '–',
+    '‘',
+    '’',
+    '“',
+    '”',
+    '†',
+    '‡',
+    '…',
+    '→',
+    '⇒',
+    '∴',
+    '≅',
+    '≥',
+    '①',
+    '②',
+    '③',
+    '④',
+    '⑤',
+    '✔',
+    '✛',
+
+]
+
+
+abbreviations_ending_in_period=[
+    'i.e.',
+    'e.g.',
+    'al.',
+    'etc.',
+    'vs.',
+    'Assoc.',
+    'Corp.',
+    'D.C.',
+    'Dr.',
+    'Inc.',
+    'Jr.',
+    'Ltd.',
+    'Mr.',
+    'Mrs.',
+    'Ms.',
+    'M.S.',
+    'M.Sc.',
+    'N.J.',
+    'prof.',
+    'Prof.',
+    'U.S.',
+    'U.S.C.',
+    'U.K.',
+    'Jan.',
+    'Feb.',
+    'Mar.',
+    'Apr.',
+    'Jun.',
+    'Jul.',
+    'Aug.',
+    'Sep.',
+    'Sept.',
+    'Oct.',
+    'Nov.',
+    'Dec.',
+]
+
+def is_float(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
+    
+def is_number(string):
+    if len(string) > 0 and not string[0].isdigit():
+        return False
+    rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", string)
+    if rr and len(rr) == 1:
+        if rr[0].isnumeric():
+            return True
+        if is_float(rr[0]):
+            return True
+    # otherwise
+    return False
+
+hex_digits='0123456789abcdefABCDEF'
+
+def is_hex_number(string):
+    if string.startswith('0x'):
+        for c in string[2:]:
+            if c not in hex_digits:
+                return False
+        return True
+    else:
+        return False
+
+def is_number_with_commas(string):
+    if string.count(',') > 0:
+        string=string.replace(',', '')
+        if string.isdigit():
+            return is_number(string)
+    # otherwise
+    return False
+
+def is_integer_range_or_ISSN(string):
+    if string.count('-') == 1:
+        string=string.replace('-', "")
+        return string.isdigit()
+    elif string.count('–') == 1:
+        string=string.replace('–', "")
+        return string.isdigit()
+    # otherwise
+    return False
+    
+def is_ISBN(string):
+    # if there is a trailing period remove it
+    if len(string) > 2 and string.endswith("."):
+        string=string[:-1]
+    #
+    if string.startswith("978-") and (string.count('-') == 4 or string.count('-') == 3):
+        string=string.replace("-", "")
+        if string.isnumeric():
+            return True
+    # ISBN-13 without additional dashes
+    elif (string.startswith("978-") and string[4:].count('-') == 0) and string[4:].isdigit:
+            return True
+    elif string.count('-') == 3:
+        string=string.replace("-", "")
+        if string.isnumeric():
+            return True
+    # otherwise
+    return False
+    
+# a DOI has the form: <DOI prefix>/<DOI suffix>
+# <DOI prefix> has the form <directory indicator>.<registrant code>
+# <directory indicator> is always '10'
+def is_DOI(string):
+    global Verbose_Flag
+    if string.startswith("DOI:"):
+        string=string[4:]
+    if string.startswith("10.") and string.count('/') >= 1:
+        doi_suffix_offset=string.find('/')
+        doi_prefix=string[0:doi_suffix_offset]
+        registrant_code=doi_prefix[3:]
+        doi_suffix=string[doi_suffix_offset+1:]
+        if Verbose_Flag:
+            print(f'{doi_prefix=} with {registrant_code=} and {doi_suffix=}')
+        return True
+    # otherwise
+    return False
+
+def is_IPv4_dotted_decimal(string):
+    if string.count('.') == 3:
+        ipv=string.split(".")
+        for n in ipv:
+            if n.isnumeric() and int(n) < 256:
+                continue
+            else:
+                return False            
+        # if all numbers are less than 256
+        return True
+    # otherwise
+    return False
+
+def is_IPv4_dotted_decimal_with_prefix_length(string):
+    if string.count('.') == 3 and string.count('/') == 1 and string.rfind('.') < string.find('/'):
+        parts=string.split("/")
+        if int(parts[1]) <= 32:
+            return is_IPv4_dotted_decimal(parts[0])
+    # otherwise
+    return False
+
+def is_MAC_address(string):
+    global Verbose_Flag
+    if string.count(':') == 5:
+        mv=string.split(":")
+        for n in mv:
+            if Verbose_Flag:
+                print(f"{n=} {is_hex_number('0x'+n)=} and {int('0x'+n, 0)=}")
+            if is_hex_number('0x'+n) and int('0x'+n, 0) < 256:
+                continue
+            else:
+                return False            
+        # if all numbers are less than 256
+        return True
+    # otherwise
+    return False
+
+def is_IPv6_address(string):
+    global Verbose_Flag
+    if string.count(':') == 7 or (string.count('::') == 1 and string.count(':') < 7):
+        mv=string.split(":")
+        for n in mv:
+            if len(n) == 0:
+                continue
+            if Verbose_Flag:
+                print(f"{n=} {is_hex_number('0x'+n)=} and {int('0x'+n, 0)=}")
+            if is_hex_number('0x'+n) and int('0x'+n, 0) < 65536:
+                continue
+            else:
+                return False            
+        # if all numbers are less than 65535
+        return True
+    # otherwise
+    return False
+
+
+
+def is_phone_number(string):
+    # note that it does not do a range check on the numbers
+    if string.startswith('+'):
+        string=string[1:].replace("-", "")
+        if string.isnumeric():
+            return True
+    # otherwise
+    return False
+
+# time offsets in the transcripts have the form dd:dd:dd
+def is_time_offset(string):
+    if string.count(':') == 2:
+        string=string.split(":")
+        for n in string:
+            if n.isnumeric() and int(n) < 60:
+                continue
+            else:
+                return False
+        return True
+    # otherwise
+    return False
+
+# start-end times have the form dd:dd-dd:dd
+def is_start_end_time(string):
+    if string.count('-') == 1 and string.count(':') == 2:
+        string=string.split("-")
+        for m in string:
+            m=m.split(":")
+            for n in m:
+                if n.isnumeric() and int(n) < 60:
+                    continue
+                else:
+                    return False
+        return True
+    # otherwise
+    return False
+
+# look for strings of the form yyyy-mm-dd or yyyy.mm.dd
+def is_YYYY_MM_DD(s):
+    global Verbose_Flag
+    # define an empty d
+    d = ('', '', '')
+
+    if not isinstance(s, str):
+        return False
+    if not len(s) == 10:
+        return False
+    if s.count('.') == 2:
+        if s[4] == '.' and s[7] == '.':
+            d=s.split('.')
+        else:
+            return False
+    elif s.count('-') == 2:
+        if s[4] == '-' and s[7] == '-':
+            d=s.split('-')
+        else:
+            return False
+    else:
+        return False
+    #
+    #print(f'{d=}')
+    if len(d[0]) == 4 and d[0].isdigit():
+        yyyy=d[0]
+    else:
+        return False
+    #
+    if len(d[1]) == 2 and d[1].isdigit():
+        if int(d[1]) < 13:
+            mm=d[1]
+        else:
+            print(f'problem in month number in {string}')
+            return False
+    else:
+        return False
+    #
+    if d[2].isdigit():
+        if int(d[2]) < 32:
+            dd=d[2]
+        else:
+            print(f'problem in day number in {string}')
+    else:
+        return False
+    #
+    if Verbose_Flag:
+        print(f'{yyyy=} {mm=} {dd=}')
+    return True
+
+months_and_abbrevs=[
+    'Jan',
+    'January',
+    'Feb',
+    'February',
+    'Mar',
+    'March',
+    'Apr',
+    'April',
+    'May',
+    'Jun',
+    'June',
+    'Jul',
+    'July',
+    'Aug',
+    'August',
+    'Sep',
+    'Sept',
+    'September',
+    'Oct',
+    'October',
+    'Nov',
+    'November',
+    'Dec',
+    'December',
+]    
+
+# look for strings of the form dd-mmm-yyyy
+def is_DD_MMM_YYYY(string):
+    global Verbose_Flag
+    if string.count('-') == 2:
+        d=string.split('-')
+    else:
+        return False
+    if Verbose_Flag:
+        print(f'is_DD_MMM_YYYY({string}) {d=}')
+    if len(d) == 3 and d[2].isdigit() and ((len(d[2]) == 4 or len(d[2]) == 2)):
+        yyyy=d[2]
+    else:
+        return False
+    #
+    if d[0].isdigit():
+        if int(d[0]) < 32:
+            dd=d[0]
+        else:
+            print(f'Error in day in {string} "{d[0]}"')
+            return False
+    else:
+        return False
+    #
+    # Note that the month abbreviation must be three characters long
+    if len(d[1]) >= 3 and not d[1].isdigit():
+        if d[1].lower().capitalize() in months_and_abbrevs:
+            mm=d[1]
+        else:
+            print(f'Error in month in {string}  "{d[1]}"')
+            return False
+    else:
+        return False
+    #
+    if Verbose_Flag:
+        print(f'{yyyy=} {mm=} {dd=}')
+    return True
+
+def approximate_number(string):
+    # remove tilde prefix
+    if len(string) > 1 and string[0]=='~':
+        string=string[1:]
+    #
+    if string.count(',') > 0:
+        string=string.replace(',', "")
+    return is_number(string)
+
+def is_colon_range_or_HH_colon_MM(string):
+    if string.count(':') == 1:
+        string=string.replace(':', "")
+        return string.isdigit()
+    # otherwise
+    return False
+
+def is_fraction(string):
+    if string.count('/') == 1:
+        string=string.replace('/', "")
+        # if a fractional part, remove the 'th' before checking further
+        if string.endswith('th'):
+            string=string[:-2]
+        return string.isdigit()
+    # otherwise
+    return False
+
+    
+def is_part_of_DiVA_identifier(string):
+    if string.startswith('3Adiva-'):
+        return True
+    # otherwise
+    return False
+    
+# to deal with things of the form: 2016-06-10T08:16:13Z
+def is_date_time_string(string):
+    if string.endswith('Z'):
+        string=string[:-1]
+    if string.count('-') == 2 and  string.count(':') == 2:
+        if string[4] == '-' and string[7] == '-' and string[10] == 'T' and string[13] == ':' and string[16] == ':':
+            # print(f'{string[0:4]=}')
+            # print(f'{string[5:7]=}')
+            # print(f'{string[8:10]=}')
+            # print(f'{string[11:13]=}')
+            # print(f'{string[14:16]=}')
+            # print(f'{string[17:]=}')
+            string=string[0:4]+string[5:7]+string[8:10]+string[11:13]+string[14:16]+string[17:]
+            #print(f'{string=}')
+            if string.isdigit():
+                return True
+    # otherwise
+    return False
+    
+filename_extentions_to_skip=[
+    '.bib',
+    '.c',
+    '.csv',
+    '.doc',
+    '.docx',
+    '.html',
+    '.jpg',
+    '.js',
+#    '.json',
+    '.mods',
+    '.pdf',
+    '.png',
+    '.py',
+    '.srt',
+    '.xls',
+    '.xlsx',
+    '.xml',
+    '.zip',
+]
+    
+def is_filename_to_skip(string):
+    for f in filename_extentions_to_skip:
+        if string.endswith(f):
+            return True
+    # otherwise
+    return False
+
+# if there are multiple capital letters
+def is_multiple_caps(s):
+    len_s=len(s)
+    count_caps=0
+    
+    if len_s > 1:
+        for l in s:
+            if l.isupper():
+                count_caps=count_caps+1
+    if count_caps > 1:
+        return True
+    # otherwise
+    return False
+
+def in_dictionary(s, words):
+    global Verbose_Flag
+    for w in words:
+        word=w['word']
+        if s == word:
+            if Verbose_Flag:
+                print(f'found {s=}')
+            return True
+    # otherwise
+    return False
+
+def isVowel(ch):
+    # given a list of vowels 
+    vowels = "aeiouåäöAEIOUÅÄÖ"
+    return (vowels.find(ch) != -1) 
+
+
+domains_to_filter=[
+    '.arpa',
+    '.com',
+    '.edu',
+    '.net',
+    '.org',
+    '.biz',
+    '.au',
+    '.se',
+
+]
+
+def is_domainname(s):
+    for d in domains_to_filter:
+        if s.endswith(d) or s.endswith(d.upper()):
+            return True
+    return False
+
+
+def main():
+    global Verbose_Flag
+    global unique_words
+    global total_words_processed
+    global all_text
+
+    directory_location="/z3/maguire/Language_Committee/"
+
+    parser = optparse.OptionParser()
+
+    parser.add_option('-v', '--verbose',
+                      dest="verbose",
+                      default=False,
+                      action="store_true",
+                      help="Print lots of output to stdout"
+    )
+
+    parser.add_option('-a', '--all',
+                      dest="keepAll",
+                      default=False,
+                      action="store_true",
+                      help="keep all unique words without filtering"
+    )
+
+    options, remainder = parser.parse_args()
+
+    Verbose_Flag=options.verbose
+    if Verbose_Flag:
+        print("ARGV      : {}".format(sys.argv[1:]))
+        print("VERBOSE   : {}".format(options.verbose))
+        print("REMAINING : {}".format(remainder))
+
+    if (len(remainder) < 1):
+        print("Inusffient arguments\n must provide course_id\n")
+    else:
+        total_words_processed=0
+        unique_words=set()
+        number_of_unique_words_output=0
+        filtered_unique_words_dict=dict()
+        new_filtered_unique_words_dict=dict()
+        skipped_words=set()
+        all_text=list()
+        likely_acronyms=set()
+
+        course_id=remainder[0]
+
+        american_3000_file=directory_location+"American_Oxford_3000.xlsx"
+        american_3000_df = pd.read_excel(open(american_3000_file, 'rb'), sheet_name='American3000')
+        american_3000_words = []
+        american_3000_words_plurals = set()
+        for index, row in  american_3000_df.iterrows():
+            word=row['word']
+            word_plural=row['plural']
+            if isinstance(word_plural, str):
+                american_3000_words_plurals.add(word_plural)
+
+            # some words have a parentetical description, remove these from the word
+            if word.endswith(')') and word.count('(') == 1 and word.count(')') == 1:
+                offset=word.find('(')
+                word=word[:offset].strip()
+
+            if Verbose_Flag:
+                print(f"{index=} {word=}")
+
+            pos1=row['pos1']
+            cefr_level1=row['CEFR_level1']
+            if isinstance(pos1, str) and isinstance(cefr_level1, str):
+                entry={'word': word, cefr_level1: pos1}
+            else:
+                entry={'word': word}
+
+            pos2=row['pos2']
+            cefr_level2=row['CEFR_level2']
+            if isinstance(pos2, str) and isinstance(cefr_level2, str):
+                entry[cefr_level2]=pos2
+
+            pos3=row['pos3']
+            cefr_level3=row['CEFR_level3']
+            if isinstance(pos2, str) and isinstance(cefr_level2, str):
+                entry[cefr_level3]=pos3
+
+            american_3000_words.append(entry)
+
+        if Verbose_Flag:
+            print(f'{american_3000_words=}')
+
+        print(f'{len(american_3000_words)=}')
+        if Verbose_Flag:
+            print(f'{american_3000_words_plurals=}')
+
+        american_5000_df = pd.read_excel(open(american_3000_file, 'rb'), sheet_name='American5000')
+        american_5000_words = []
+        american_5000_words_plurals = set()
+        for index, row in  american_5000_df.iterrows():
+            word=row['word']
+            word_plural=row['plural']
+            if isinstance(word_plural, str):
+                american_5000_words_plurals.add(word_plural)
+
+
+            # some words have a parentetical description, remove these from the word
+            if word.endswith(')') and word.count('(') == 1 and word.count(')') == 1:
+                offset=word.find('(')
+                word=word[:offset].strip()
+
+            if Verbose_Flag:
+                print(f"{index=} {word=}")
+
+            pos1=row['pos1']
+            cefr_level1=row['CEFR_level1']
+            if isinstance(pos1, str) and isinstance(cefr_level1, str):
+                entry={'word': word, cefr_level1: pos1}
+            else:
+                entry={'word': word}
+
+            pos2=row['pos2']
+            cefr_level2=row['CEFR_level2']
+            if isinstance(pos2, str) and isinstance(cefr_level2, str):
+                entry[cefr_level2]=pos2
+
+            pos3=row['pos3']
+            cefr_level3=row['CEFR_level3']
+            if isinstance(pos2, str) and isinstance(cefr_level2, str):
+                entry[cefr_level3]=pos3
+
+            american_5000_words.append(entry)
+
+        if Verbose_Flag:
+            print(f'{american_5000_words=}')
+
+        print(f'{len(american_5000_words)=}')
+        if Verbose_Flag:
+            print(f'{american_5000_words_plurals=}')
+
+        # read in the frequecy data that was written as JSON
+        input_file_name='unique_words-for-course-frequency-'+str(course_id)+'.txt'        
+        try:
+            with open(input_file_name, 'r') as f:
+                unique_words=json.load(f)
+        except:
+            print(f'Unable to open file named {input_file_name}')
+            return
+
+        if not len(unique_words) > 0:
+            print('Nothing to process')
+            return
+
+        print(f'initially {len(unique_words)} unique words')
+
+
+        for word in unique_words:
+            if not word in place_names:
+                if not word in misc_words_to_ignore:
+                    if not is_domainname(word):
+                        if not word in abbreviations_ending_in_period:
+                            new_filtered_unique_words_dict[word]=unique_words[word]
+        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering places, domainnames, and abbreviations ending in periods, and words to ignore')
+
+        # look for acronyms
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        for word in filtered_unique_words_dict:
+            # skip single letters
+            if len(word) == 1:
+                continue
+
+            # look for acronyms that end with a "s"
+            if len(word) > 2 and word.endswith('s'):
+                trimmed_word=word[:-1]
+            else:
+                trimmed_word=word
+
+            if trimmed_word.isupper() and trimmed_word.count('.') == 0 and trimmed_word.count('/') == 0\
+               and trimmed_word.count('=') == 0 and\
+               trimmed_word.count('→') == 0 and trimmed_word.count(':') == 0:
+                likely_acronyms.add(trimmed_word)
+            else:
+                new_filtered_unique_words_dict[word]=unique_words[word]
+
+        print(f'{len(likely_acronyms)} likely acronyms')
+        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering acronyms and single letters')
+
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        for word in filtered_unique_words_dict:
+            if filtered_unique_words_dict.get(word) and filtered_unique_words_dict.get(word.lower()):
+                number_of_instances=unique_words.get(word, 0)+unique_words.get(word.lower(), 0)
+                new_filtered_unique_words_dict[word.lower()]=number_of_instances
+
+        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering if there is a capitalized and lower case version of the word')
+
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        for word in filtered_unique_words_dict:
+            if not top_100_English_words.get(word):
+                if not word in thousand_most_common_word_in_English:
+                    new_filtered_unique_words_dict[word]=unique_words[word]
+
+        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering top 100 English words and top1000 most frequent words')
+
+        # filter with tbe american 3000 and 5000 lists
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        for word in filtered_unique_words_dict:
+            if not in_dictionary(word, american_3000_words) and not (word in american_3000_words_plurals):
+                new_filtered_unique_words_dict[word]=unique_words[word]
+
+        print(f'{len(new_filtered_unique_words_dict)} unique words after America 3000 filtering')
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        for word in filtered_unique_words_dict:
+            if not in_dictionary(word, american_5000_words) and not (word in american_5000_words_plurals):
+                new_filtered_unique_words_dict[word]=unique_words[word]
+
+        print(f'{len(new_filtered_unique_words_dict)} unique words after America 5000 filtering')
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        for word in filtered_unique_words_dict:
+            if not word in common_English_words:
+                if not word in common_swedish_words:
+                    new_filtered_unique_words_dict[word]=unique_words[word]
+
+        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering common English words and common Swedish words')
+
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        frequency_sorted=dict(sorted(filtered_unique_words_dict.items(), key=lambda x:x[1]))
+        new_file_name='unique_words-for-course-frequency-updated-'+str(course_id)+'.txt'        
+        with open(new_file_name, 'w') as f:
+            f.write(json.dumps(frequency_sorted))
+
+        # compute difference between the words coming in and the remaining words
+        for word in unique_words:
+            if not word in filtered_unique_words_dict:
+                skipped_words.add(word)
+
+        # output likey acronyms
+        new_file_name='unique_words-for-course-likely-acronyms-'+str(course_id)+'.txt'        
+        with open(new_file_name, 'w') as f:
+            for word in sorted(likely_acronyms):
+                f.write(f"{word}\n")
+
+        new_file_name='unique_words-for-course-skipped-in-update-'+str(course_id)+'.txt'        
+        with open(new_file_name, 'w') as f:
+            for word in skipped_words:
+                f.write(f"{word}\n")
+
+if __name__ == "__main__": main()
