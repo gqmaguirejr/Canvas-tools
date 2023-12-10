@@ -98,7 +98,9 @@ suffixes_to_ignore=[
     '†',
     '‡',
     '…',
-
+    '°',
+    '®',
+    '™',
 ]
 
 # based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
@@ -206,6 +208,23 @@ top_100_English_words={
 }
 
 miss_spelled_words=[
+    "MIEKY",
+    "Tra\ufb03c",
+    "Traf\ufb01c",
+    "u-Law",
+    'wo'
+    'sikt',
+    'sFor',
+    'presental',
+    #'n\u00e4t',
+    #'nat',
+    #'natfriend',
+    #'in-active',
+    #'information.Nostratic',
+    #'isn',
+    #'l\u00e5ng',
+    'identi\ufb01cation',
+    "you're",
     'ßtudent',     # should be "student"
     'â€˜Security',  # should be 'Security',
     'Â§',
@@ -340,6 +359,7 @@ def prune_suffix(s):
 def unique_words_for_pages_in_course(course_id):
     global total_words_processed
     global all_text
+    global total_raw_text
     list_of_all_pages=[]
 
     # Use the Canvas API to get the list of pages for this course
@@ -393,6 +413,7 @@ def unique_words_for_pages_in_course(course_id):
 
             if Verbose_Flag:
                 print("raw_text: {}".format(raw_text))
+            total_raw_text=total_raw_text+'\n'+raw_text
                 
         else:
             print("No pages for course_id: {}".format(course_id))
@@ -869,9 +890,11 @@ def is_fraction(string):
     return False
 
     
-def is_part_of_DiVA_identifier(string):
-    if string.startswith('3Adiva-'):
+def is_part_of_DiVA_identifier(s):
+    if s.startswith('3Adiva-'):
         return True
+    if s.startswith('diva-'):
+        return s[5:].isdigit()
     # otherwise
     return False
 
@@ -904,21 +927,29 @@ def is_date_time_string(string):
 filename_extentions_to_skip=[
     '.bib',
     '.c',
+    '.conf',
     '.csv',
+    '.dtd',
     '.doc',
     '.docx',
+    '.ethereal',
     '.html',
     '.jpg',
     '.js',
-#    '.json',
+    #'.json',
+    '.list',
     '.mods',
     '.pdf',
     '.png',
+    '.ps',
     '.py',
     '.srt',
+    '.tcpdump',
+    '.txt',
     '.xls',
     '.xlsx',
     '.xml',
+    '.xsd',
     '.zip',
 ]
     
@@ -952,12 +983,16 @@ def is_multiple_caps(s):
     # otherwise
     return False
 
+# mixed case is any lower _and_ upprsease in one string
+def ismixed(s):
+    return any(c.islower() for c in s) and any(c.isupper() for c in s)
+
 def main():
     global Verbose_Flag
     global unique_words
     global total_words_processed
     global all_text
-
+    global total_raw_text
 
     parser = optparse.OptionParser()
 
@@ -997,6 +1032,7 @@ def main():
         filtered_unique_words=set()
         skipped_words=set()
         all_text=list()
+        total_raw_text=''
         
         course_id=remainder[0]
         unique_words_for_pages_in_course(course_id)
@@ -1041,6 +1077,8 @@ def main():
             for word in unique_words:
                 if word.endswith('.'):
                     if word[0].isupper() or word in abbreviations_ending_in_period:
+                        new_unique_words.add(word)
+                    elif ismixed(word):
                         new_unique_words.add(word)
                     else:
                         if word[:-1].lower() in unique_words:
@@ -1170,7 +1208,7 @@ def main():
             print(f'{number_of_unique_words_output} unique words output to {new_file_name}')
 
         # check type of filtered_unique_words
-        print(f'type: {type(filtered_unique_words)} of length {len(filtered_unique_words)}')
+        print(f'{len(filtered_unique_words)} filtered_unique_words')
 
         # compute word frequency for the filtered unique words
         frequency=dict()
@@ -1192,5 +1230,12 @@ def main():
         with open(new_file_name, 'w') as f:
             for word in skipped_words:
                 f.write(f"{word}\n")
+
+        # save all the raw text
+        new_file_name='unique_words-for-course-raw_text-'+str(course_id)+'.txt'        
+        with open(new_file_name, 'w') as f:
+            f.write(total_raw_text)
+
+
 
 if __name__ == "__main__": main()
