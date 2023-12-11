@@ -2799,6 +2799,46 @@ Hans Malmström, Diane Pecorari, and Marcus Warnby, ‘Teachers’ receptive and
 10938 unique words output to unique_words-for-course-11544.txt
 ```
 
+## ./prune_unique_words.py course_id
+
+### Purpose
+The program takes the dictionary stored as JSON as output of compute_unique_words_for_pages_in_course.py, specifically the
+unique_words-for-course-frequency-<course_id>.txt file and prunes out words based on different
+filtering.
+
+
+### Input
+```bash
+./prune_unique_words.py 31168
+```
+
+### Output
+It outputs a reduce file with the filtered dictionary.
+ For example it outpus the following types of files.
+```
+unique_words-for-course-skipped-in-update-31168.txt
+unique_words-for-course-frequency-updated-31168.txt
+unique_words-for-course-likely-acronyms-31168.txt
+```
+
+```
+len(american_3000_words)=2999
+len(american_5000_words)=2003
+initially 10592 unique words
+10293 unique words after filtering places, domainnames, and abbreviations ending in periods, and words to ignore
+1054 likely acronyms
+9122 unique words after filtering acronyms and single letters
+9066 unique words after filtering if there is a capitalized and lower case version of the word, title case words turned to lower case
+8326 unique words after filtering top 100 English words and top1000 most frequent words
+6874 unique words after America 3000 filtering
+6190 unique words after America 5000 filtering
+3645 unique words after filtering common English words
+3437 unique words after filtering common Swedish words
+```
+
+### Note 
+This is still a work in progress.
+
 <!-- 
 
 ## xxx.py

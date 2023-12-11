@@ -87,6 +87,10 @@ prefixes_to_ignore=[
     '⇒',
     '',
     '',
+    "¨",
+    '≡',
+    '✔',
+    '✝',
 ]
 
 suffixes_to_ignore=[
@@ -101,6 +105,7 @@ suffixes_to_ignore=[
     '°',
     '®',
     '™',
+    "§",
 ]
 
 # based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
@@ -208,12 +213,16 @@ top_100_English_words={
 }
 
 miss_spelled_words=[
-    "MIEKY",
+    "FF01:0:0:0:0:0:1",
+    "BibTex",
+    "procotol", 
+    "concpets",
+    "acknowldgement",
+    "acknowldgement",
     "Tra\ufb03c",
     "Traf\ufb01c",
     "u-Law",
     'wo'
-    'sikt',
     'sFor',
     'presental',
     #'n\u00e4t',
@@ -618,21 +627,27 @@ def is_integer_range_or_ISSN(string):
     # otherwise
     return False
     
-def is_ISBN(string):
+# The check digit at the end of the ISBN can be an "X"
+def is_ISBN(s):
     # if there is a trailing period remove it
-    if len(string) > 2 and string.endswith("."):
-        string=string[:-1]
+    if len(s) > 2 and s.endswith("."):
+        s=s[:-1]
     #
-    if string.startswith("978-") and (string.count('-') == 4 or string.count('-') == 3):
-        string=string.replace("-", "")
-        if string.isnumeric():
+    if s.startswith("978-") and (s.count('-') == 4 or s.count('-') == 3):
+        s=s.replace("-", "")
+        if s.isnumeric():
             return True
+        if s[-1] =='X' and s[:-1].isnumeric():
+            return True
+
     # ISBN-13 without additional dashes
-    elif (string.startswith("978-") and string[4:].count('-') == 0) and string[4:].isdigit:
+    elif (s.startswith("978-") and s[4:].count('-') == 0) and s[4:].isdigit:
             return True
-    elif string.count('-') == 3:
-        string=string.replace("-", "")
-        if string.isnumeric():
+    elif s.count('-') == 3:
+        s=s.replace("-", "")
+        if s.isnumeric():
+            return True
+        if s[-1] =='X' and s[:-1].isnumeric():
             return True
     # otherwise
     return False
@@ -692,6 +707,7 @@ def is_MAC_address(string):
     # otherwise
     return False
 
+# there can be a while card X at the end of the field
 def is_IPv6_address(string):
     global Verbose_Flag
     if string.count(':') == 7 or (string.count('::') == 1 and string.count(':') < 7):
@@ -702,6 +718,8 @@ def is_IPv6_address(string):
             if Verbose_Flag:
                 print(f"{n=} {is_hex_number('0x'+n)=} and {int('0x'+n, 0)=}")
             if is_hex_number('0x'+n) and int('0x'+n, 0) < 65536:
+                continue
+            elif n[-1] == 'X' and is_hex_number('0x'+n[:-1]) and int('0x'+n[:-1], 0) < 65536:
                 continue
             else:
                 return False            
