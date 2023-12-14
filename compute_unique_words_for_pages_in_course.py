@@ -104,10 +104,12 @@ suffixes_to_ignore=[
     '.',
     '/',
     '\\',
+    '\\n',
     '_',
     '®',
     '°',
     '–',
+    '—',
     '†',
     '‡',
     '•',
@@ -115,7 +117,7 @@ suffixes_to_ignore=[
     '™',
     '⇒',
     '⚠',
-    '\\n',
+    'ﾔ',
 ]
 
 # based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
@@ -223,12 +225,16 @@ top_100_English_words={
 }
 
 miss_spelled_words=[
-    "entrylevel",
-    "enjoyabilitySubmerged",
+    'laterns',
+    'latern',
+    'lang',
+    'interneting',
+    'interent',
+    'insolvibile',
+    'indiv',
     "embedding9",
     "elight",
     "eight-point",
-    "ecologic",
     "eco-centriviewpoint",
     "e-commerceA",
     "deveeloped",
