@@ -70,6 +70,7 @@ def initialize(options):
 prefixes_to_ignore=[
     "'",
     "\\",
+    "¨",
     '+',
     ',',
     '-',
@@ -80,32 +81,41 @@ prefixes_to_ignore=[
     '¡',
     '§',
     '¿',
+    '‒',
     '–',
     '†',
     '‡',
     '•',
     '⇒',
-    '',
-    '',
-    "¨",
+    '⇨',
     '≡',
     '✔',
     '✝',
+    '❌',
+    '',
+    '',
+    '⚠',
 ]
 
 suffixes_to_ignore=[
     "'",
+    "§",
     '-',
     '.',
     '/',
     '\\',
+    '_',
+    '®',
+    '°',
+    '–',
     '†',
     '‡',
+    '•',
     '…',
-    '°',
-    '®',
     '™',
-    "§",
+    '⇒',
+    '⚠',
+    '\\n',
 ]
 
 # based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
@@ -201,7 +211,7 @@ top_100_English_words={
     "well": "Adverb",
     "way": "Noun, adverb",
     "even": "Adjective",
-    "new": "Adjective et al.",
+    "new": "Adjective",
     "want": "Verb",
     "because": "Preposition",
     "any": "Pronoun",
@@ -213,25 +223,76 @@ top_100_English_words={
 }
 
 miss_spelled_words=[
-    "FF01:0:0:0:0:0:1",
-    "BibTex",
-    "procotol", 
-    "concpets",
-    "acknowldgement",
-    "acknowldgement",
-    "Tra\ufb03c",
-    "Traf\ufb01c",
+    "entrylevel",
+    "enjoyabilitySubmerged",
+    "embedding9",
+    "elight",
+    "eight-point",
+    "ecologic",
+    "eco-centriviewpoint",
+    "e-commerceA",
+    "deveeloped",
+    "detectionA",
+    "designsAssessing",
+    "designSolving",
+    "design-if",
+    "countand",
+    "computesFrom",
+    "centersEvaluating",
+    "congestion1",
+    "computesFrom",
+    "codeEnd-user",
+    "blocke",
+    'availalble',
+    'availabity',
+    'analysisExploring',
+    'andcaptions',
+    'alternativeEvaluation',
+    'armsThe',
+    'becuase',
+    'barcodeConway',
+    'binge-watchingEvaluating',
+    'bullet.When',
+    'carControllability',
+    'carFrom',
+    'carsDesign',
+    'channelsConvolutional',
+    'classificationHow',
+    'classifiersAnalysis',
+    'companiesK-means',
+    'completelyunrelated',
+    'countriesAnalyzing',
+    'critique\u2022Show',
+    'datasetsQualitative',
+    'discriminationStudying',
+    'editionhttps',
+    'experienceComparing',
+    'festivalsDeceptive',
+    'formatchrome',
+    'inferenceApplication',
+    'instrument-You',
+    'learningEffect',
+    'learningGaussian',
+    'menusUser',
+    'mergesImproving',
+    'networkAesthetics',
+    'ofPlagiarism',
+    'ofyour',
+    'onthe',
+    'paralle',
+    'policy.Second',
+    'publicaiton',
+    'regulationDynamic',
+    'scenarioNetwork',
+    'screen.Third',
+    'simplye',
+    'techer',
+    'thatit',
+    'theZoom',
+    'you\uff09',
+    #"H|gskolan",
     "u-Law",
     'wo'
-    'sFor',
-    'presental',
-    #'n\u00e4t',
-    #'nat',
-    #'natfriend',
-    #'in-active',
-    #'information.Nostratic',
-    #'isn',
-    #'l\u00e5ng',
     'identi\ufb01cation',
     "you're",
     'ßtudent',     # should be "student"
@@ -397,6 +458,11 @@ def unique_words_for_pages_in_course(course_id):
             list_of_all_pages.append(p_response)
 
     for p in list_of_all_pages:
+        # skip index page as tex runs the list items toegher
+        if p['url'] == 'index-for-course' or p['url'] == 'with-quick-index' or p['url'] == 'examples-of-some-titles-from-previous-p1p2-reports':
+            print(f"skipping page {p['url']}")
+            continue
+
         if Verbose_Flag:
             print("title is '{0}' with url {1}".format(p['title'], p['url']))
         # Use the Canvas API to GET the page
@@ -428,6 +494,10 @@ def unique_words_for_pages_in_course(course_id):
             print("No pages for course_id: {}".format(course_id))
             return False
 
+        # to look for spectivic text on a page
+        # if raw_text.find("Boyle") >= 0:
+        #     print(f'Boyle on page {url}')
+
         words = nltk.word_tokenize(raw_text)
         all_text.extend(words)
         for word in words:
@@ -438,8 +508,14 @@ def unique_words_for_pages_in_course(course_id):
             newword=prune_prefix(newword)
             newword=prune_suffix(newword)
             if len(newword) > 0:
-                unique_words.add(newword)
-                check_spelling_errors(newword, p["url"])
+                if newword.count('\n') > 0:
+                    newwords=newword.split('\n')
+                    for w in newwords:
+                        unique_words.add(w)
+                        check_spelling_errors(w, p["url"])
+                else:
+                    unique_words.add(newword)
+                    check_spelling_errors(newword, p["url"])
     return True
 
 def list_pages(course_id):
@@ -908,11 +984,24 @@ def is_fraction(string):
     return False
 
     
+def is_part_of_springerlink_identifier(s):
+    if s.startswith('springerlink:'):
+        return True
+    # otherwise
+    return False
+
+
 def is_part_of_DiVA_identifier(s):
     if s.startswith('3Adiva-'):
         return True
     if s.startswith('diva-'):
         return s[5:].isdigit()
+    # otherwise
+    return False
+
+def is_part_of_arXiv_identifier(s):
+    if s.startswith('arXiv:'):
+        return True
     # otherwise
     return False
 
@@ -943,26 +1032,32 @@ def is_date_time_string(string):
     return False
     
 filename_extentions_to_skip=[
+    #'.json',
     '.bib',
     '.c',
     '.conf',
     '.csv',
-    '.dtd',
     '.doc',
     '.docx',
+    '.dtd',
     '.ethereal',
+    '.gz',
+    '.h',
     '.html',
     '.jpg',
     '.js',
-    #'.json',
     '.list',
     '.mods',
+    '.pcap',
     '.pdf',
+    '.php',
     '.png',
     '.ps',
     '.py',
     '.srt',
+    '.tar',
     '.tcpdump',
+    '.tex',
     '.txt',
     '.xls',
     '.xlsx',
@@ -1215,6 +1310,14 @@ def main():
 
                     # ignore TRITA numbers
                     if is_TRITA_identifier(word):
+                        continue
+
+                    # ignore arXiv identifiers
+                    if is_part_of_arXiv_identifier(word):
+                        continue
+
+                    # ignore spring links
+                    if is_part_of_springerlink_identifier(word):
                         continue
 
                     # finally output the remaining word
