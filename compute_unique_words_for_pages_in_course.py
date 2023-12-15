@@ -77,24 +77,42 @@ prefixes_to_ignore=[
     './',
     ':',
     '=',
+    '^',
     '|',
     '¡',
     '§',
+    'µ',
+    '¼',
     '¿',
+    '×',
+    'Þ',
+    'α',
     '‒',
     '–',
+    '―',
     '†',
     '‡',
     '•',
+    '←',
+    '↑',
+    '↔',
+    '⇐',
     '⇒',
     '⇨',
     '≡',
+    '≪',
+    '☡',
+    '☺',
+    '⚠',
     '✔',
     '✝',
     '❌',
+    '〃',
     '',
+    '',
     '',
-    '⚠',
+    '（',
+    '👋',
 ]
 
 suffixes_to_ignore=[
@@ -227,188 +245,14 @@ top_100_English_words={
 miss_spelled_words=[
     'laterns',
     'latern',
-    'lang',
     'interneting',
     'interent',
-    'insolvibile',
-    'indiv',
-    "embedding9",
-    "elight",
-    "eight-point",
-    "eco-centriviewpoint",
-    "e-commerceA",
-    "deveeloped",
-    "detectionA",
-    "designsAssessing",
-    "designSolving",
-    "design-if",
-    "countand",
-    "computesFrom",
-    "centersEvaluating",
-    "congestion1",
-    "computesFrom",
-    "codeEnd-user",
-    "blocke",
-    'availalble',
-    'availabity',
-    'analysisExploring',
-    'andcaptions',
-    'alternativeEvaluation',
-    'armsThe',
-    'becuase',
-    'barcodeConway',
-    'binge-watchingEvaluating',
-    'bullet.When',
-    'carControllability',
-    'carFrom',
-    'carsDesign',
-    'channelsConvolutional',
-    'classificationHow',
-    'classifiersAnalysis',
-    'companiesK-means',
-    'completelyunrelated',
-    'countriesAnalyzing',
-    'critique\u2022Show',
-    'datasetsQualitative',
-    'discriminationStudying',
-    'editionhttps',
-    'experienceComparing',
-    'festivalsDeceptive',
-    'formatchrome',
-    'inferenceApplication',
-    'instrument-You',
-    'learningEffect',
-    'learningGaussian',
-    'menusUser',
-    'mergesImproving',
-    'networkAesthetics',
-    'ofPlagiarism',
-    'ofyour',
-    'onthe',
-    'paralle',
-    'policy.Second',
-    'publicaiton',
-    'regulationDynamic',
-    'scenarioNetwork',
-    'screen.Third',
-    'simplye',
-    'techer',
-    'thatit',
-    'theZoom',
-    'you\uff09',
-    #"H|gskolan",
     "u-Law",
-    'wo'
     'identi\ufb01cation',
     "you're",
     'ßtudent',     # should be "student"
-    'â€˜Security',  # should be 'Security',
-    'Â§',
-    'wiklipage',   # should be 'wikipage'
-    'Addres',      # should be 'Address'
-    'Carrera',     # should be 'Carrara'
-    'Copmmunication',  # should be 'Communication'
-    'Dezember',    # should be 'December'
-    'Europeens',   # should be 'Européens'
-    'Glassfish',   # should be 'GlassFish'
-    'Kamailo',     # should be 'Kamailio'
-    'QCLEP',       # should be 'QCELP'
-    'Sigcomp',     # should be 'SigComp',
-    'Sinreich',    # should be 'Sinnreich',
-    'Stcokholm',   # should be 'Stockholm'
-    'acknowdlged', # should be 'acknowledged'
-    'acknowldged', # should be 'acknowledged'
-    'acknowledgment', # should be 'acknowledgement'
-    'acknowledgments', # should be 'acknowledgements'
-    'acroynms',    # should be 'acronyms'
-    'addrees',     # should be 'address'
-    'addressesing',  # should be 'addressing'
-    'addtion',     # should be 'addition'
-    'adpators',    # should be 'adaptors'
-    'annouce',     # should be 'announce'
-    'annouced',    # should be 'announced'
-    'annoucement', # should be 'announcement',
-    'anseers',     # 'answer' ?
-    'ansers',      # 'answers' ?
-    'answrs',      # 'answers' ?
-    'apointments', # 'appointments',
-    'april',       # check
-    'aqsks',       # check
-    'audable',     # check
-    'buiold',      # should be "build"
-    'cancelling',  # US preference is 'canceling'
-    'congesiton',  # should be 'congestion'
-    'declaritive', # should be 'declarative'
-    'dialling',    # US preference is 'dialing'
-    'erros',       # should be 'errors'
-    'escow',       # should be 'escrow'
-    'evrsion',     # should be 'version'
-    'exampe',      # should be 'example'
-    'existance',   # should be 'existence',
-    'faillure',    # should be 'failure'
-    'fielda',      # should be 'fields'
-    'f¨r',         # should be 'för'
-    'fÃ¼r',        # should be 'för'
-    'gots',	   # should be 'got'
-    'inaudable',   # should be 'inaudible'
-    'indepth',     # should be 'in-depth'
-    'intecept',    # should be 'intercept'
-    'interensed',  # should be 'interested'
-    'keypd',       # should be 'keypad'
-    'lnow',        # should be 'know'
-    'lookes',      # should be 'looks'
-    'messsage',    # should be 'message'
-    'negociate',   # should be 'negotiate'
-    'nonadways',   # possibly should be 'nowadays'
-    'nowadways',   # possibly should be 'nowadays'
-    'offfice',     # should be 'office'
-    'particularily', # should be 'particularly'
-    'passd',       # should be 'passed'
-    'pemissible',  # should be 'permissible'
-    'plaout',      # should be 'playout'
-    'plut',        # should be 'put'
-    'presense',    # possibly 'presence'
-    'probems',     # should be 'probems'
-    'procotol',    # should be 'protocol'
-    'proctocols',  # should be 'protocols'
-    'procy',       # should be 'proxy'
-    'protability', # should be 'portability'
-    'protocls',    # should be 'protocols'
-    'proﬁle',      # should be 'profile'
-    'publically',  # should be 'publicly'
-    'reall',       # check
-    'reciever',    # should be 'receiver'
-    'refences',    # should be 'references'
-    'regularily',  # should be 'regularly'
-    'relse',       # check
-    'reponse',     # should be 'response'
-    'resliiance',  # should be 'resilience'
-    'rining',      # should be 'ringing'
-    'runiing',     # should be 'running'
-    'satistics',   # should be 'statistics'
-    'scehdule',    # should be 'schedule'
-    'sents',       # should be 'sends'
-    'seperators',  # should be 'separators'
-    'servelets',   # should be 'servlets'
-    'serverlets',  # should be 'servlets'
-    'sesssion',    # should be 'session'
     'similarily',  # should be 'similarly',
     'slideD',      # check - correct it is a template where D is one or more digits
-    'spresd',      # should be 'spread'
-    'statistcis',  # should be 'statistics'
-    'stduent',     # should be 'student'
-    'streamaing',  # should be 'streaming'
-    'tah',         # check
-    'taugh',       # should be 'taught'
-    'thiing',      # should be 'things'
-    'thursday',    # should be 'Thursday'
-    'trigegr',     # should be 'trigger'
-    'vality',      # should be 'vanity'
-    'verson',      # should be 'version'
-    'voila',       # should be 'voilà'
-    'witht',       # check
-    'Greasmoneky',  # should be 'Greasemoneky'
-    'appendicees',  # should be 'appendices'
 ]
 
 def check_spelling_errors(s, url):

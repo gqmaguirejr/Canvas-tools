@@ -313,7 +313,7 @@ thousand_most_common_word_in_English=[
 common_English_words={
     "I'am": {'xx': 'idiom, noun'},
     "adderas": {'xx': 'verb, verb past tense, past participle'},
-    "addressable": {'c1': 'adjective'},
+    "addressable": {'C1': 'adjective'},
     "adheres": {'xx': 'verb 3rd person present'},
     "adjectives": {'A1': 'noun'},
     "administered": {'xx': 'verb past tense, past participle'},
@@ -543,7 +543,7 @@ common_English_words={
     'acoustic': {'xx': 'adjective, noun'},
     'acoustics': {'xx': 'noun'},
     'acquainted': {'xx': 'verb past tense, past participle'},
-    'acquired': {'B2'' oun'},
+    'acquired': {'B2': 'noun'},
     'acquiring': {'B1': 'verb gerund or present participle'},
     'acronym': {'xx': 'noun'},
     'acronyms': {'xx': 'noun'},
@@ -1119,7 +1119,7 @@ common_English_words={
     'calendaring': {'xx': 'verb gerund or present participle'},
     'calendars': {'A2': 'noun'},
     'call-centers': {'xx': 'noun'},
-    'call-forward': {'b1': 'noun'},
+    'call-forward': {'B1': 'noun'},
     'call-identifying': {'B2': '???'},
     'callable': {'xx': 'adjective'},
     'callback': {'xx': 'noun'},
@@ -1794,7 +1794,6 @@ common_English_words={
     'demultiplexing': {'xx': 'verb gerund or present participle'},
     'demultiplexors': {'xx': 'noun'},
     'denial-of-service': {'C1': 'adjective'},
-    'denial-of-service': {'xxxx': 'phrase'},
     'denied': {'B2': 'noun'},
     'denoted': {'xx': 'noun'},
     'denser': {'B2': 'noun'},
@@ -1845,7 +1844,7 @@ common_English_words={
     'detectability': {'xx': 'noun'},
     'detectable': {'xx': 'adjective'},
     'detected': {'C1': 'verb past tense, past participle'},
-    'detecting': {'c1': 'verb gerund or present participle'},
+    'detecting': {'C1': 'verb gerund or present participle'},
     'detector': {'xx': 'noun'},
     'detectors': {'xx': 'noun'},
     'detects': {'C1': 'verb 3rd person present'},
@@ -2068,14 +2067,14 @@ common_English_words={
     'dynamics': {'xx': 'noun'},
     'e-Communications': {'xx': 'noun'},
     'e-book': {'A1': 'noun'},
-    'e-books': {'A1x': 'noun'},
+    'e-books': {'A1': 'noun'},
     'e-commerce': {'B2': 'noun'},
     'e-learning': {'A1': 'noun'},
     'e-library': {'xx': 'noun'},
     'e-mail': {'A2': ''},
     'e-mails': {'xx': 'noun'},
     'e-payment': {'B2': 'noun'},
-    'e-science': {'A2x': 'noun'},
+    'e-science': {'A2': 'noun'},
     'e-sustainability': {'C2': 'noun'},
     'eHealth': {'xx': 'noun'},
     'earlier': {'A2': 'adjective, adverb'},
@@ -2145,7 +2144,7 @@ common_English_words={
     'emojis': {'xx': 'noun'},
     'emoticons': {'xx': 'noun'},
     'emphasized': {'B2': 'verb past tense, past participle'},
-    'emphasizes': {'B2x': 'verb 3rd person present'},
+    'emphasizes': {'B2': 'verb 3rd person present'},
     'employed': {'B1': 'verb past tense, past participle'},
     'employs': {'B1': 'verb 3rd person present'},
     'emptying': {'xx': 'verb gerund or present participle'},
@@ -2443,7 +2442,7 @@ common_English_words={
     'favourably': {'xx': 'noun'},
     'fax': {'B1': 'verb, noun'},
     'faxes': {'B1': 'noun'},
-    'feasibility': {'': 'noun'},
+    'feasibility': {'xx': 'noun'},
     'feasible': {'C1': 'verb'},
     'featured': {'B2': 'noun'},
     'fed': {'B1': 'noun?'},
@@ -3005,7 +3004,7 @@ common_English_words={
     'imposing': {'C1': 'adjective'},
     'impractical': {'xx': 'adjective'},
     'impressing': {'B2': 'verb gerund or present participle'},
-    'imprisoned': {'C1x': 'adjective, verb past tense, past participle'},
+    'imprisoned': {'C1': 'adjective, verb past tense, past participle'},
     'improper': {'xx': 'adjective'},
     'improper/incorrect': {'xx': 'adjective'},
     'improved': {'A2': 'verb past tense, past participle'},
@@ -3234,7 +3233,7 @@ common_English_words={
     'intersection': {'xx': 'noun'},
     'intersections/bridges/tunnels/rail': {'xx': 'noun'},
     'interuniversity': {'xx': 'adjective'},
-    'interval-based': {'B1', 'adjective'},
+    'interval-based': {'B1': 'adjective'},
     'intervening': {'xx': 'verb gerund or present participle'},
     'interviewed': {'B1': 'verb past tense, past participle'},
     'interviewers': {'xx': 'noun'},
@@ -3249,7 +3248,7 @@ common_English_words={
     'intranet': {'xx': 'noun'},
     'intrinsic': {'C1': 'adjective'},
     'intro': {'xx': 'noun, prefix'},
-    'introduced': {'B': 'verb past tense; past participle'},
+    'introduced': {'B1': 'verb past tense; past participle'},
     'introduces': {'B1': 'verb 3rd person present'},
     'introducing': {'B1': 'verb gerund or present participle'},
     'introductory': {'xx': 'adjective'},
@@ -3550,7 +3549,7 @@ common_English_words={
     'nation-state': {'xx': 'noun'},
     'nationally': {'xx': 'adverb'},
     'nearest': {'B1': 'adjective'},
-    'needed': 'verb past tense, past participle}',
+    'needed': {'A1': 'verb past tense, past participle'},
     'needing': {'A1': 'verb gerund or present participle'},
     'needs': {'A1': 'adverb'},
     'negatives': {'xx': 'noun, verb 3rd person present'},
@@ -3809,7 +3808,7 @@ common_English_words={
     'predictive': {'xx': 'adjective'},
     'preferred': {'A2': 'verb past tense, past participle'},
     'prefers': {'A2': 'verb 3rd person present'},
-    'prefix': {'Bw': 'noun'},
+    'prefix': {'B2': 'noun'},
     'prefixed': {'xx': 'verb, adjective'},
     'prepaid': {'xx': 'adjective, noun, verb'},
     'preparing': {'A2': 'verb gerund or present participle'},
@@ -3832,7 +3831,7 @@ common_English_words={
     'proceeding': {'C1': 'verb gerund or present participle'},
     'processed': {'B2': 'verb past tense, past participle'},
     'produced': {'B1': 'verb past tense, past participle'},
-    'produces': {'N1': 'verb 3rd person present'},
+    'produces': {'B1': 'verb 3rd person present'},
     'producing': {'B1': 'verb gerund or present participle'},
     'products/services': {'xx': 'noun'},
     'programmable': {'xx': 'adjective'},
@@ -4100,7 +4099,7 @@ common_English_words={
     'scheduling': {'B2': 'verb gerund or present participle'},
     'schema': {'xx': 'noun'},
     'scheme': {'B2': 'noun, verb'},
-    'schemes': {'B2x': 'noun'},
+    'schemes': {'B2': 'noun'},
     'scoped': {'xx': 'verb past tense, past participle'},
     'scoping': {'xx': 'verb gerund or present participle'},
     'scorer': {'xx': 'noun'},
@@ -4112,7 +4111,7 @@ common_English_words={
     'secured': {'xx': 'verb past tense, past participle'},
     'securely': {'xx': 'adverb'},
     'seeing': {'A1': 'conjunction, noun, adjective'},
-    'seemed': {'B!': 'verb past tense, past participle'},
+    'seemed': {'B1': 'verb past tense, past participle'},
     'seeming': {'B1': 'verb gerund or present participle'},
     'seems': {'B1': 'verb 3rd person present'},
     'seen': {'A1': 'verb'},
@@ -4188,7 +4187,7 @@ common_English_words={
     'snap-shot': {'xx': 'noun'},
     'sneak': {'C2': 'verb, noun, adjective'},
     'sniff': {'C2': 'verb, noun'},
-    'sniffing': {'C2x': 'verb gerund or present participle'},
+    'sniffing': {'C2': 'verb gerund or present participle'},
     'snippets': {'xx': 'noun'},
     'so-and-so': {'xx': 'noun'},
     'soc': {'xx': 'acronym'},
@@ -4248,7 +4247,7 @@ common_English_words={
     'start-line': {'A2': 'noun'},
     'start-of-data': {'B2': 'noun'},
     'start-of-voice': {'B1': 'noun'},
-    'start/end': {'a1': 'phrase'},
+    'start/end': {'A1': 'phrase'},
     'started': {'A1': 'verb past tense, past participle'},
     'starting': {'A1': 'verb'},
     'startup': {'xx': 'noun, verb'},
@@ -5688,7 +5687,7 @@ common_English_words={
     'reviewers': {'xx': 'noun'},
     'reviewing': {'xx': 'noun'},
     'revising': {'xx': 'noun'},
-    'revisiting': 2,
+    'revisiting': {'xx': 'noun'},
     'revoke': {'xx': 'noun'},
     'revolutionize': {'xx': 'noun'},
     'rewarded': {'xx': 'noun'},
@@ -6089,7 +6088,7 @@ common_English_words={
     'tangible': {'xx': 'noun'},
     'targeted': {'xx': 'noun'},
     'taxonomies': {'xx': 'noun'},
-    'taxonomy': 3,
+    'taxonomy': {'xx': 'noun'},
     'taxpaying': {'xx': 'noun'},
     'tbps': {'xx': 'noun'},
     'teammate': {'xx': 'noun'},
@@ -6471,6 +6470,7 @@ common_English_words={
     'zoom': {'xx': 'noun'},
     'zoomed': {'xx': 'noun'},
 }
+
 
 misc_words_to_ignore=[
     'janmar', # part of email address
@@ -8013,6 +8013,96 @@ def choose_lowest_cefr_level(wl):
     print(f'Error in choose_lowest_cefr_level({wl})')
     return False
 
+# return a tripple of words, words_plurals, dataframe
+def read_cefr_data(filenamme, sheetname):
+    global Verbose_Flag
+
+    df = pd.read_excel(open(filenamme, 'rb'), sheet_name=sheetname)
+
+    # use a list as there may be multiple instances of a given word, due to multiple contexts
+    words = []
+
+    # use a set as we only care about the unique plural words
+    words_plurals = set()
+
+    for index, row in  df.iterrows():
+        word=row['word']
+        word_plural=row['plural']
+        if isinstance(word_plural, str):
+            words_plurals.add(word_plural.strip())
+
+        # some words have a parentetical description, remove these from the word
+        if word.endswith(')') and word.count('(') == 1 and word.count(')') == 1:
+            offset=word.find('(')
+            word=word[:offset].strip()
+
+        if Verbose_Flag:
+            print(f"{index=} {word=}")
+
+        # the spreadsheet has pairs of columns of the part(s) of speech and the CEFR level associated with that usage
+        # no rows in the spreadsheet have more than 3 such pairs of colums
+        pos1=row['pos1']
+        cefr_level1=row['CEFR_level1']
+        if isinstance(pos1, str) and isinstance(cefr_level1, str):
+            entry={'word': word, cefr_level1.strip(): pos1.strip()}
+        else:
+            entry={'word': word}
+
+        pos2=row['pos2']
+        cefr_level2=row['CEFR_level2']
+        if isinstance(pos2, str) and isinstance(cefr_level2, str):
+            entry[cefr_level2.strip()]=pos2.strip()
+
+        pos3=row['pos3']
+        cefr_level3=row['CEFR_level3']
+        if isinstance(pos3, str) and isinstance(cefr_level3, str):
+            entry[cefr_level3.strip()]=pos3.strip()
+
+        word_plural=row['plural']
+        if isinstance(word_plural, str):
+            entry['plural']=word_plural.strip()
+
+        words.append(entry)
+
+    if Verbose_Flag:
+        print(f'{words=}')
+        print(f'{words_plurals=}')
+
+    print(f'{len(words)=}')
+
+    return [words, words_plurals, df]
+
+# takes in words and a filter_list
+#  returns [updated_words, reduction]
+def filter_words_by_list(words, filter_list):
+    updated_words=dict()
+    initial_number_of_words=len(words)
+
+    for w in words:
+        if w in filter_list:
+            continue
+        else:
+            updated_words.update({w: words[w]})
+
+    reduction=initial_number_of_words-len(updated_words)
+    return [updated_words, reduction]
+
+# takes in words and a filter_function
+#  returns [updated_words, reduction]
+def filter_words_by_function(words, filter_function):
+    updated_words=dict()
+    initial_number_of_words=len(words)
+
+    for w in words:
+        if filter_function(w):
+            continue
+        else:
+            updated_words.update({w: words[w]})
+
+    reduction=initial_number_of_words-len(updated_words)
+    return [updated_words, reduction]
+
+
 def main():
     global Verbose_Flag
     global unique_words
@@ -8060,112 +8150,10 @@ def main():
         course_id=remainder[0]
 
         american_3000_file=directory_location+"American_Oxford_3000.xlsx"
-        american_3000_df = pd.read_excel(open(american_3000_file, 'rb'), sheet_name='American3000')
 
-        # use a list as there may be multiple instances of a given word, due to multiple contexts
-        american_3000_words = []
+        american_3000_words, american_3000_words_plurals, american_3000_df=read_cefr_data(american_3000_file, 'American3000')
 
-        # use a set as we only care about the unique plural words
-        american_3000_words_plurals = set()
-
-        for index, row in  american_3000_df.iterrows():
-            word=row['word']
-            word_plural=row['plural']
-            if isinstance(word_plural, str):
-                american_3000_words_plurals.add(word_plural.strip())
-
-            # some words have a parentetical description, remove these from the word
-            if word.endswith(')') and word.count('(') == 1 and word.count(')') == 1:
-                offset=word.find('(')
-                word=word[:offset].strip()
-
-            if Verbose_Flag:
-                print(f"{index=} {word=}")
-
-            # the spreadsheet has pairs of columns of the part(s) of speech and the CEFR level associated with that usage
-            # no rows in the spreadsheet have more than 3 such pairs of colums
-            pos1=row['pos1']
-            cefr_level1=row['CEFR_level1']
-            if isinstance(pos1, str) and isinstance(cefr_level1, str):
-                entry={'word': word, cefr_level1.strip(): pos1.strip()}
-            else:
-                entry={'word': word}
-
-            pos2=row['pos2']
-            cefr_level2=row['CEFR_level2']
-            if isinstance(pos2, str) and isinstance(cefr_level2, str):
-                entry[cefr_level2.strip()]=pos2.strip()
-
-            pos3=row['pos3']
-            cefr_level3=row['CEFR_level3']
-            if isinstance(pos3, str) and isinstance(cefr_level3, str):
-                entry[cefr_level3.strip()]=pos3.strip()
-
-            word_plural=row['plural']
-            if isinstance(word_plural, str):
-                entry['plural']=word_plural.strip()
-
-            american_3000_words.append(entry)
-
-        if Verbose_Flag:
-            print(f'{american_3000_words=}')
-
-        print(f'{len(american_3000_words)=}')
-        if Verbose_Flag:
-            print(f'{american_3000_words_plurals=}')
-
-        american_5000_df = pd.read_excel(open(american_3000_file, 'rb'), sheet_name='American5000')
-
-        # use a list as there may be multiple instances of a given word, due to multiple contexts
-        american_5000_words = []
-
-        # use a set as we only care about the unique plural words
-        american_5000_words_plurals = set()
-
-        for index, row in  american_5000_df.iterrows():
-            word=row['word']
-            word_plural=row['plural']
-            if isinstance(word_plural, str):
-                american_5000_words_plurals.add(word_plural.strip())
-
-
-            # some words have a parentetical description, remove these from the word
-            if word.endswith(')') and word.count('(') == 1 and word.count(')') == 1:
-                offset=word.find('(')
-                word=word[:offset].strip()
-
-            if Verbose_Flag:
-                print(f"{index=} {word=}")
-
-            pos1=row['pos1']
-            cefr_level1=row['CEFR_level1']
-            if isinstance(pos1, str) and isinstance(cefr_level1, str):
-                entry={'word': word, cefr_level1.strip(): pos1.strip()}
-            else:
-                entry={'word': word}
-
-            pos2=row['pos2']
-            cefr_level2=row['CEFR_level2']
-            if isinstance(pos2, str) and isinstance(cefr_level2, str):
-                entry[cefr_level2.strip()]=pos2.strip()
-
-            pos3=row['pos3']
-            cefr_level3=row['CEFR_level3']
-            if isinstance(pos3, str) and isinstance(cefr_level3, str):
-                entry[cefr_level3.strip()]=pos3.strip()
-
-            word_plural=row['plural']
-            if isinstance(word_plural, str):
-                entry['plural']=word_plural.strip()
-
-            american_5000_words.append(entry)
-
-        if Verbose_Flag:
-            print(f'{american_5000_words=}')
-
-        print(f'{len(american_5000_words)=}')
-        if Verbose_Flag:
-            print(f'{american_5000_words_plurals=}')
+        american_5000_words, american_5000_words_plurals, american_5000_df=read_cefr_data(american_3000_file, 'American5000')
 
         # read in the frequecy data that was written as JSON
         input_file_name='unique_words-for-course-frequency-'+str(course_id)+'.txt'        
@@ -8180,28 +8168,45 @@ def main():
             print('Nothing to process')
             return
 
-        print(f'initially {len(unique_words)} unique words')
+        print(f'{len(unique_words)} unique words - initially ')
 
+        filtered_unique_words_dict=unique_words
+        
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, place_names)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} place names removed')
 
-        for word in unique_words:
-            if not word in place_names:
-                if not word in misc_words_to_ignore:
-                    if not is_domainname(word):
-                        if not word in company_and_product_names:
-                            if not is_improbable_word(word):
-                                if not word in abbreviations_ending_in_period:
-                                    if not word in common_programming_languages:
-                                        new_filtered_unique_words_dict[word]=unique_words[word]
-        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering places, domainnames, and abbreviations ending in periods, and words to ignore')
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, misc_words_to_ignore)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} misc_words_to_ignore removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, company_and_product_names)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} company_and_product_names removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, abbreviations_ending_in_period)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} abbreviations_ending_in_period removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_programming_languages)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common_programming_languages removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_domainname)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction}  domainnames removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_improbable_word)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction}  improbable words removed')
+
 
         # look for acronyms
-        filtered_unique_words_dict=new_filtered_unique_words_dict
+
         # reset the new dict
         new_filtered_unique_words_dict=dict()
+
+        single_letter_count=0
 
         for word in filtered_unique_words_dict:
             # skip single letters
             if len(word) == 1:
+                single_letter_count=single_letter_count+1
+                if Verbose_Flag:
+                    print(f'removing letter {word}')
                 continue
 
             # look for acronyms that end with a "s"
@@ -8225,7 +8230,8 @@ def main():
             else:
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(likely_acronyms)} likely acronyms')
+        #print(f'\t{single_letter_count} single letters removed')
+        print(f'\t{len(likely_acronyms)} likely acronyms')
         print(f'{len(new_filtered_unique_words_dict)} unique words after filtering acronyms and single letters')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
@@ -8233,30 +8239,36 @@ def main():
         new_filtered_unique_words_dict=dict()
 
         for word in filtered_unique_words_dict:
-            if filtered_unique_words_dict.get(word, False) and filtered_unique_words_dict.get(word.lower(), False):
+            if not word.islower() and filtered_unique_words_dict.get(word, False) and filtered_unique_words_dict.get(word.lower(), False):
+                # if the word is not in lower case and there is a lower case evrsion of the word, then turn it to lower case
+                if Verbose_Flag:
+                    print(f'case 1: {word=}')
                 number_of_instances=unique_words.get(word, 0)+unique_words.get(word.lower(), 0)
                 new_filtered_unique_words_dict[word.lower()]=number_of_instances
             elif word.istitle():
+                # if word is title case, then turn it to lower case
+                if Verbose_Flag:
+                    print(f'case 2: {word=}')
                 new_filtered_unique_words_dict[word.lower()]=filtered_unique_words_dict[word]
-
             else:
+                # otherwise preserve case
+                if Verbose_Flag:
+                    print(f'case 3: {word=}')
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering if there is a capitalized and lower case version of the word, title case words turned to lower case')
+        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering if there is a capitalized and lower case version of the word or title case turn to lower case')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
         new_filtered_unique_words_dict=dict()
 
-        for word in filtered_unique_words_dict:
-            if not top_100_English_words.get(word):
-                if not word in thousand_most_common_word_in_English:
-                    new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, top_100_English_words)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} top_100_English_words removed')
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering top 100 English words and top1000 most frequent words')
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, thousand_most_common_word_in_English)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} thousand_most_common_word_in_English removed')
 
         # filter with tbe american 3000 and 5000 lists
-        filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
         new_filtered_unique_words_dict=dict()
 
@@ -8264,7 +8276,9 @@ def main():
             if not in_dictionary(word, american_3000_words) and not (word in american_3000_words_plurals):
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after America 3000 filtering')
+        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} Oxford American 3000 words removed')
+
+
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
         new_filtered_unique_words_dict=dict()
@@ -8273,7 +8287,8 @@ def main():
             if not in_dictionary(word, american_5000_words) and not (word in american_5000_words_plurals):
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after America 5000 filtering')
+        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} Oxford American 5000 words removed')
+
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
         new_filtered_unique_words_dict=dict()
@@ -8282,32 +8297,40 @@ def main():
             if (not word in common_English_words) and (not word.lower() in common_English_words):
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering common English words')
+        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} common English words removed')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
-        # reset the new dict
-        new_filtered_unique_words_dict=dict()
 
-        for word in filtered_unique_words_dict:
-            if not word in common_swedish_words:
-                new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_swedish_words)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common_swedish_words removed')
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering common Swedish words')
-
-        filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
         new_filtered_unique_words_dict=dict()
 
         for word in filtered_unique_words_dict:
             working_word=word
             # if word only appears in title case in the original words, then put this version in
-            if word.title() in unique_words and not word.lower() in unique_words:
-                new_filtered_unique_words_dict[word.title()]=filtered_unique_words_dict[word]
+            if word.title() in unique_words:
+                if not word.lower() in unique_words:
+                    new_filtered_unique_words_dict[word.title()]=unique_words[word.title()]
+                    if Verbose_Flag:
+                        print(f'case 1: {word.title()} updated with {unique_words[word.title()]}')
+                else:
+                    new_filtered_unique_words_dict[word.title()]=unique_words[word.title()]
+                    new_filtered_unique_words_dict[word.lower()]=unique_words[word.lower()]
+                    if Verbose_Flag:
+                        print(f'case 2: {word}')
             else:
-                new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
+                new_filtered_unique_words_dict[word]=unique_words[word]
+                if Verbose_Flag:
+                    print(f'case 3: {word}')
 
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after processing words that appear in title case')
+        if len(new_filtered_unique_words_dict) > len(filtered_unique_words_dict):
+            print(f'{len(new_filtered_unique_words_dict)} words left, {len(new_filtered_unique_words_dict) - len(filtered_unique_words_dict)} words added after processing words that appear in title case')
+        else:
+            print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict) } words removed after processing words that appear in title case')
+
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
@@ -8353,18 +8376,6 @@ def main():
                 f.write(f"{word}\n")
 
         # compute some simple stats about which courses and CEFR levels the unique words were in
-        place_names_count=0
-        misc_words_to_ignore_count=0
-        domainname_count=0
-        company_and_product_names_count=0
-        improbable_word_count=0
-        abbreviations_ending_in_period_count=0
-        common_programming_languages_count=0
-        single_letters_count=0
-        likely_acronyms_count=len(likely_acronyms)
-        title_case_to_lower_case_count=0
-        top_100_English_words_count=0
-        top_1000_English_words_count=0
         american_3000_words_singular_count=0
         american_3000_words_plurals_count=0
         american_3000_words_count=0
@@ -8419,6 +8430,7 @@ def main():
 
         level_3000_singular_counts=dict()
         level_5000_singular_counts=dict()
+        level_common_English_counts=dict()
         
         level_3000_singular=dict()
         for w in american_3000_words:
@@ -8429,13 +8441,14 @@ def main():
                     collected_levels_CEFR_levels.append(k)
 
             if len(collected_levels_CEFR_levels) > 1:
-                print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
+                if Verbose_Flag:
+                    print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
                 # need to choose the lowest level
                 collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
 
             level_3000_singular[w['word']]=collected_levels_CEFR_levels
 
-        if Verbose_Flag or True:
+        if Verbose_Flag:
             print(f'{level_3000_singular=}')
 
         level_5000_singular=dict()
@@ -8447,42 +8460,41 @@ def main():
                     collected_levels_CEFR_levels.append(k)
 
             if len(collected_levels_CEFR_levels) > 1:
-                print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
+                if Verbose_Flag:
+                    print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
                 # need to choose the lowest level
                 collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
 
             level_5000_singular[w['word']]=collected_levels_CEFR_levels
 
-        if Verbose_Flag or True:
+        if Verbose_Flag:
             print(f'{level_5000_singular=}')
+
+        level_common_English=dict()
+        for w in common_English_words:
+            collected_levels=[]
+            collected_levels_CEFR_levels=[]
+            if Verbose_Flag:
+                print(f'{w=} {common_English_words[w]}')
+            for k in common_English_words[w].keys():
+                if k and not (k == 'word' or k == 'plural'):
+                    collected_levels_CEFR_levels.append(k)
+
+            if len(collected_levels_CEFR_levels) > 1:
+                if Verbose_Flag:
+                    print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
+                # need to choose the lowest level
+                collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
+
+            level_common_English[w]=collected_levels_CEFR_levels
+
+        if Verbose_Flag:
+            print(f'{level_common_English=}')
+
 
 
         
         for word in unique_words:
-            if word in place_names:
-                place_names_count=place_names_count+1
-            if word in misc_words_to_ignore:
-                misc_words_to_ignore_count=misc_words_to_ignore_count+1
-            if is_domainname(word):
-                domainname_count=domainname_count+1
-            if word in company_and_product_names:
-                company_and_product_names_count=company_and_product_names_count+1
-            if is_improbable_word(word):
-                improbable_word_count=improbable_word_count+1
-            if word in abbreviations_ending_in_period:
-                abbreviations_ending_in_period_count=abbreviations_ending_in_period_count+1
-            if word in common_programming_languages:
-                common_programming_languages_count=common_programming_languages_count+1
-            if len(word) == 1:
-                single_letters_count=single_letters_count+1
-            # likely acronyms
-            # deal with case folding
-            if (unique_words.get(word, False) and unique_words.get(word.lower(), False)) or word.istitle():
-                title_case_to_lower_case_count=title_case_to_lower_case_count+1
-            if top_100_English_words.get(word):
-                top_100_English_words_count=top_100_English_words_count+1                
-            if word in thousand_most_common_word_in_English:
-                top_1000_English_words_count=top_1000_English_words_count+1                
             if in_dictionary(word, american_3000_words) or (word in american_3000_words_plurals):
                 american_3000_words_count=american_3000_words_count+1
             if in_dictionary(word, american_3000_words):
@@ -8534,23 +8546,30 @@ def main():
 
             if word in common_English_words or word.lower() in common_English_words:
                 common_English_words_count=common_English_words_count+1
+                cefr_levels=level_common_English.get(word, False)
+                if not cefr_levels:
+                    cefr_levels=level_common_English.get(word.title(), False)
+                if not cefr_levels:
+                    cefr_levels=level_common_English.get(word.lower(), False)
+                if not cefr_levels:
+                    cefr_levels=level_common_English.get(word.upper(), False)
+
+                if Verbose_Flag:
+                    print(f'{word=} {cefr_levels=}')
+                if cefr_levels:
+                    if len(cefr_levels) >= 1 and not isinstance(cefr_levels, str):
+                        for cefr_level in cefr_levels:
+                            if cefr_level:
+                                level_common_English_counts.update({cefr_level: level_common_English_counts.get(cefr_level, 0) +1})
+                                if Verbose_Flag:
+                                    print(f'{level_common_English_counts=}')
+
+
+
             if word in common_swedish_words:
                 common_swedish_words_count=common_swedish_words_count+1
 
         # output counts
-        print(f'{place_names_count=}')
-        print(f'{misc_words_to_ignore_count=}')
-        print(f'{domainname_count=}')
-        print(f'{company_and_product_names_count=}')
-        print(f'{improbable_word_count=}')
-        print(f'{abbreviations_ending_in_period_count=}')
-        print(f'{common_programming_languages_count=}')
-        print(f'{single_letters_count=}')
-        print(f'{likely_acronyms_count=}')
-        print(f'{title_case_to_lower_case_count=}')
-        print(f'{top_100_English_words_count=}')
-        print(f'{top_1000_English_words_count=}')
-
         print(f'{american_3000_words_singular_count=}')
         print(f'{level_3000_singular_counts=}')
         print(f'{american_3000_words_plurals_count=}')
@@ -8564,6 +8583,7 @@ def main():
         print(f'{level_5000_plural_counts=}')
 
         print(f'{common_English_words_count=}')
+        print(f'{level_common_English_counts=}')
         print(f'{common_swedish_words_count=}')
 
         if Verbose_Flag:
