@@ -8004,6 +8004,15 @@ def is_improbable_word(s):
     # otherwise
     return False
 
+def choose_lowest_cefr_level(wl):
+    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+    for l in level_order:
+        if l in wl:
+            return l
+    # otherwise
+    print(f'Error in choose_lowest_cefr_level({wl})')
+    return False
+
 def main():
     global Verbose_Flag
     global unique_words
@@ -8052,8 +8061,13 @@ def main():
 
         american_3000_file=directory_location+"American_Oxford_3000.xlsx"
         american_3000_df = pd.read_excel(open(american_3000_file, 'rb'), sheet_name='American3000')
+
+        # use a list as there may be multiple instances of a given word, due to multiple contexts
         american_3000_words = []
+
+        # use a set as we only care about the unique plural words
         american_3000_words_plurals = set()
+
         for index, row in  american_3000_df.iterrows():
             word=row['word']
             word_plural=row['plural']
@@ -8068,6 +8082,8 @@ def main():
             if Verbose_Flag:
                 print(f"{index=} {word=}")
 
+            # the spreadsheet has pairs of columns of the part(s) of speech and the CEFR level associated with that usage
+            # no rows in the spreadsheet have more than 3 such pairs of colums
             pos1=row['pos1']
             cefr_level1=row['CEFR_level1']
             if isinstance(pos1, str) and isinstance(cefr_level1, str):
@@ -8099,8 +8115,13 @@ def main():
             print(f'{american_3000_words_plurals=}')
 
         american_5000_df = pd.read_excel(open(american_3000_file, 'rb'), sheet_name='American5000')
+
+        # use a list as there may be multiple instances of a given word, due to multiple contexts
         american_5000_words = []
+
+        # use a set as we only care about the unique plural words
         american_5000_words_plurals = set()
+
         for index, row in  american_5000_df.iterrows():
             word=row['word']
             word_plural=row['plural']
@@ -8392,6 +8413,50 @@ def main():
 
         if Verbose_Flag:
             print(f'{level_5000_plural=}')
+
+        singular_3000_levels=dict()
+        singular_5000_levels=dict()        
+
+        level_3000_singular_counts=dict()
+        level_5000_singular_counts=dict()
+        
+        level_3000_singular=dict()
+        for w in american_3000_words:
+            collected_levels=[]
+            collected_levels_CEFR_levels=[]
+            for k in w.keys():
+                if k and not (k == 'word' or k == 'plural'):
+                    collected_levels_CEFR_levels.append(k)
+
+            if len(collected_levels_CEFR_levels) > 1:
+                print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
+                # need to choose the lowest level
+                collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
+
+            level_3000_singular[w['word']]=collected_levels_CEFR_levels
+
+        if Verbose_Flag or True:
+            print(f'{level_3000_singular=}')
+
+        level_5000_singular=dict()
+        for w in american_5000_words:
+            collected_levels=[]
+            collected_levels_CEFR_levels=[]
+            for k in w.keys():
+                if k and not (k == 'word' or k == 'plural'):
+                    collected_levels_CEFR_levels.append(k)
+
+            if len(collected_levels_CEFR_levels) > 1:
+                print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
+                # need to choose the lowest level
+                collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
+
+            level_5000_singular[w['word']]=collected_levels_CEFR_levels
+
+        if Verbose_Flag or True:
+            print(f'{level_5000_singular=}')
+
+
         
         for word in unique_words:
             if word in place_names:
@@ -8422,27 +8487,51 @@ def main():
                 american_3000_words_count=american_3000_words_count+1
             if in_dictionary(word, american_3000_words):
                 american_3000_words_singular_count=american_3000_words_singular_count+1
+                cefr_levels=level_3000_singular.get(word, False)
+                if cefr_levels:
+                    if len(cefr_levels) >= 1 and not isinstance(cefr_levels, str):
+                        for cefr_level in cefr_levels:
+                            if cefr_level:
+                                level_3000_singular_counts[cefr_level]=level_3000_singular_counts.get(cefr_level, 0) +1
+                    else:
+                        level_3000_singular_counts[cefr_level]=level_3000_singular_counts.get(cefr_level, 0) +1
+
             if word in american_3000_words_plurals:
                 american_3000_words_plurals_count=american_3000_words_plurals_count+1
                 cefr_levels=level_3000_plural.get(word, False)
-                if cefr_levels and len(cefr_levels) >= 1:
-                    for cefr_level in cefr_levels:
-                        if cefr_level:
-                            level_3000_plural_counts[cefr_level]=level_3000_plural_counts.get(cefr_level, 0) +1
+                if cefr_levels:
+                    if len(cefr_levels) >= 1:
+                        for cefr_level in cefr_levels:
+                            if cefr_level:
+                                level_3000_plural_counts[cefr_level]=level_3000_plural_counts.get(cefr_level, 0) +1
+                    else:
+                        level_3000_plural_counts[cefr_level]=level_3000_plural_counts.get(cefr_level, 0) +1
 
-
-            if in_dictionary(word, american_5000_words) or not (word in american_5000_words_plurals):
+            if in_dictionary(word, american_5000_words) or (word in american_5000_words_plurals):
                 american_5000_words_count=american_5000_words_count+1
             if in_dictionary(word, american_5000_words):
                 american_5000_words_singular_count=american_5000_words_singular_count+1
+                cefr_levels=level_5000_singular.get(word, False)
+                if cefr_levels:
+                    if len(cefr_levels) >= 1 and not isinstance(cefr_levels, str):
+                        for cefr_level in cefr_levels:
+                            if cefr_level:
+                                level_5000_singular_counts[cefr_level]=level_3000_singular_counts.get(cefr_level, 0) +1
+                    else:
+                        level_5000_singular_counts[cefr_level]=level_5000_singular_counts.get(cefr_level, 0) +1
+
+
             if word in american_5000_words_plurals:
                 american_5000_words_plurals_count=american_5000_words_plurals_count+1
                 cefr_levels=level_5000_plural.get(word, False)
-                if cefr_levels and len(cefr_levels) >= 1:
-                    for cefr_level in cefr_levels:
-                        if cefr_level:
-                            level_5000_plural_counts[cefr_level]=level_5000_plural_counts.get(cefr_level, 0) +1
-                        
+                if cefr_levels:
+                    if len(cefr_levels) >= 1:
+                        for cefr_level in cefr_levels:
+                            if cefr_level:
+                                level_5000_plural_counts[cefr_level]=level_5000_plural_counts.get(cefr_level, 0) +1
+                    else:
+                        level_5000_plural_counts[cefr_level]=level_5000_plural_counts.get(cefr_level, 0) +1
+
             if word in common_English_words or word.lower() in common_English_words:
                 common_English_words_count=common_English_words_count+1
             if word in common_swedish_words:
@@ -8463,13 +8552,16 @@ def main():
         print(f'{top_1000_English_words_count=}')
 
         print(f'{american_3000_words_singular_count=}')
+        print(f'{level_3000_singular_counts=}')
         print(f'{american_3000_words_plurals_count=}')
         print(f'{american_3000_words_count=}')
         print(f'{level_3000_plural_counts=}')
 
         print(f'{american_5000_words_singular_count=}')
+        print(f'{level_5000_singular_counts=}')
         print(f'{american_5000_words_plurals_count=}')
         print(f'{american_5000_words_count=}')
+        print(f'{level_5000_plural_counts=}')
 
         print(f'{common_English_words_count=}')
         print(f'{common_swedish_words_count=}')
@@ -8478,6 +8570,6 @@ def main():
             print(f'{american_5000_words=}')
             print(f'{american_5000_words_plurals=}')
 
-        print(f'{level_5000_plural_counts=}')
+
 
 if __name__ == "__main__": main()
