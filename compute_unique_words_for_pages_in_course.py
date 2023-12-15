@@ -275,7 +275,7 @@ def prune_suffix(s):
             return s
     return s
 
-def unique_words_for_pages_in_course(course_id):
+def unique_words_for_pages_in_course(course_id, pages_to_skip):
     global total_words_processed
     global all_text
     global total_raw_text
@@ -308,7 +308,7 @@ def unique_words_for_pages_in_course(course_id):
 
     for p in list_of_all_pages:
         # skip index page as tex runs the list items toegher
-        if p['url'] == 'index-for-course' or p['url'] == 'with-quick-index' or p['url'] == 'examples-of-some-titles-from-previous-p1p2-reports':
+        if p['url'] in pages_to_skip:
             print(f"skipping page {p['url']}")
             continue
 
@@ -997,7 +997,15 @@ def main():
         total_raw_text=''
         
         course_id=remainder[0]
-        unique_words_for_pages_in_course(course_id)
+
+        # skip index pages, for example:
+        if course_id == 41493:
+            pages_to_skip=['index-for-course', 'with-quick-index', 'examples-of-some-titles-from-previous-p1p2-reports']
+        else:
+            pages_to_skip=[]
+        
+
+        unique_words_for_pages_in_course(course_id, pages_to_skip)
 
         print(f'a total of {total_words_processed} words processed')
         print(f'{len(unique_words)} unique words')

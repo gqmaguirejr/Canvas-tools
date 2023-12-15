@@ -8455,7 +8455,7 @@ def main():
 
             level_3000_singular[w['word']]=collected_levels_CEFR_levels
 
-        if Verbose_Flag or True:
+        if Verbose_Flag:
             print(f'{level_3000_singular=}')
 
         level_5000_singular=dict()
@@ -8583,14 +8583,16 @@ def main():
                 if Verbose_Flag:
                     print(f'{word=} {cefr_levels=}')
                 if cefr_levels:
-                    if len(cefr_levels) >= 1 and not isinstance(cefr_levels, str):
-                        for cefr_level in cefr_levels:
-                            if cefr_level:
-                                level_common_English_counts.update({cefr_level: level_common_English_counts.get(cefr_level, 0) +1})
-                                if Verbose_Flag:
-                                    print(f'{level_common_English_counts=}')
+                    if isinstance(cefr_levels, str):
+                        level_common_English_counts.update({cefr_levels: level_common_English_counts.get(cefr_levels, 0) +1})
+                    elif isinstance(cefr_levels, list) and len(cefr_levels) >= 1:
+                        level_common_English_counts.update({cefr_levels[0]: level_common_English_counts.get(cefr_levels[0], 0) +1})
+                    else:
+                        print(f'warning in computing level_common_English_counts: {word=} {cefr_levels=}')
 
 
+            if Verbose_Flag:
+                print(f'{level_common_English_counts}')
 
             if word in common_swedish_words:
                 common_swedish_words_count=common_swedish_words_count+1
@@ -8601,25 +8603,29 @@ def main():
         print('The percental of the totals indicate what portion of the words from this source that were used in the course pages.')
         print('The American 3000 and 5000 sources have an explicit column of plurals, the rest are consideres "singular"\n')
         print(f'American 3000: total: {american_3000_words_count} ({(american_3000_words_count/len(american_3000_words))*100:.2f}%), singular: {american_3000_words_singular_count}, plural: {american_3000_words_plurals_count}')
-        print(f'\t{level_3000_singular_counts=}')
+        #print(f'\t{level_3000_singular_counts=}')
         usage_sorted=dict(sorted(level_3000_singular_counts.items(), key=lambda x:x[0]))
-        print(f'singular: {usage_sorted=}')
+        print(f'\tsingular: {usage_sorted}')
 
-        print(f'\t{level_3000_plural_counts=}')
+        #print(f'\t{level_3000_plural_counts=}')
         usage_sorted=dict(sorted(level_3000_plural_counts.items(), key=lambda x:x[0]))
-        print(f'  plural: {usage_sorted=}')
+        print(f'\t  plural: {usage_sorted}')
 
         print(f'American 5000: total: {american_5000_words_count} ({(american_5000_words_count/len(american_5000_words))*100:.2f}%), singular: {american_5000_words_singular_count}, plural: {american_5000_words_plurals_count}')
-        print(f'\t{level_5000_singular_counts=}')
-        print(f'\t{level_5000_plural_counts=}')
+        #print(f'\t{level_5000_singular_counts=}')
+        #print(f'\t{level_5000_plural_counts=}')
         usage_sorted=dict(sorted(level_5000_singular_counts.items(), key=lambda x:x[0]))
-        print(f'singular: {usage_sorted=}')
+        print(f'\tsingular: {usage_sorted}')
         usage_sorted=dict(sorted(level_5000_plural_counts.items(), key=lambda x:x[0]))
-        print(f'  plural: {usage_sorted=}')
+        print(f'\t  plural: {usage_sorted}')
 
 
         print(f'common English words: total: {common_English_words_count}')
+        #print(f'{level_common_English_counts=}')
+        usage_sorted=dict(sorted(level_common_English_counts.items(), key=lambda x:x[0]))
+        print(f'\t{usage_sorted}')
 
+        
         print(f'common Swedish words: total: {common_swedish_words_count=}')
 
 
