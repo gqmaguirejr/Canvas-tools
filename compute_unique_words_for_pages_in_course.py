@@ -243,8 +243,7 @@ top_100_English_words={
 }
 
 miss_spelled_words=[
-    'laterns',
-    'latern',
+    'under-utilizationLearnability',
     'interneting',
     'interent',
     "u-Law",
