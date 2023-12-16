@@ -6208,7 +6208,7 @@ common_English_words={
     'user-based': {'B1': 'noun'},
     'user-defined': {'B2': 'adjective'},
     'user-friendly': {'B1': 'noun'},
-    'user-generated': {'B': 'adjective'},
+    'user-generated': {'B2': 'adjective'},
     'user-space': {'B1': 'noun'},
     'user-to-user': {'B1': 'phrase'},
     'user=phone': {'B1': 'noun'},
@@ -8602,6 +8602,8 @@ def main():
         print('The totals as are the total numbers of the input words that were found in this source.')
         print('The percental of the totals indicate what portion of the words from this source that were used in the course pages.')
         print('The American 3000 and 5000 sources have an explicit column of plurals, the rest are consideres "singular"\n')
+        print('The level xx indicates that the word does not have a known CEFR level.')
+
         print(f'American 3000: total: {american_3000_words_count} ({(american_3000_words_count/len(american_3000_words))*100:.2f}%), singular: {american_3000_words_singular_count}, plural: {american_3000_words_plurals_count}')
         #print(f'\t{level_3000_singular_counts=}')
         usage_sorted=dict(sorted(level_3000_singular_counts.items(), key=lambda x:x[0]))
@@ -8620,13 +8622,13 @@ def main():
         print(f'\t  plural: {usage_sorted}')
 
 
-        print(f'common English words: total: {common_English_words_count}')
+        print(f'common English words: total: {common_English_words_count} ({(common_English_words_count/len(common_English_words))*100:.2f}%)')
         #print(f'{level_common_English_counts=}')
         usage_sorted=dict(sorted(level_common_English_counts.items(), key=lambda x:x[0]))
         print(f'\t{usage_sorted}')
 
         
-        print(f'common Swedish words: total: {common_swedish_words_count=}')
+        print(f'common Swedish words: total: {common_swedish_words_count=}  ({(common_swedish_words_count/len(common_swedish_words))*100:.2f}%)')
 
 
         if Verbose_Flag:
