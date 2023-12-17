@@ -113,6 +113,16 @@ prefixes_to_ignore=[
     '',
     '（',
     '👋',
+    '\u034f', # graphics joiner - non spacing mark
+    '\u03bb',
+    'μ',
+    'χ',
+    '\u200b', #Zero Width Space
+    '—',
+    '…',
+    '→',
+    '\ud835\udc36', # MATHEMATICAL ITALIC CAPITAL C'
+    '_.',
 ]
 
 suffixes_to_ignore=[
@@ -136,6 +146,7 @@ suffixes_to_ignore=[
     '⇒',
     '⚠',
     'ﾔ',
+    '¶',
 ]
 
 # based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
@@ -883,6 +894,7 @@ def is_date_time_string(string):
 filename_extentions_to_skip=[
     #'.json',
     '.bib',
+    '.bash',
     '.c',
     '.conf',
     '.csv',
@@ -903,10 +915,12 @@ filename_extentions_to_skip=[
     '.png',
     '.ps',
     '.py',
+    '.sh',
     '.srt',
     '.tar',
     '.tcpdump',
     '.tex',
+    '.tsv',
     '.txt',
     '.xls',
     '.xlsx',
