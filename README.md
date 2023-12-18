@@ -2821,19 +2821,53 @@ unique_words-for-course-frequency-updated-31168.txt
 unique_words-for-course-likely-acronyms-31168.txt
 ```
 
+The program itself also outputs some information, such as shown below:
 ```
-len(american_3000_words)=2999
-len(american_5000_words)=2003
-initially 10592 unique words
-10293 unique words after filtering places, domainnames, and abbreviations ending in periods, and words to ignore
-1054 likely acronyms
-9122 unique words after filtering acronyms and single letters
-9066 unique words after filtering if there is a capitalized and lower case version of the word, title case words turned to lower case
-8326 unique words after filtering top 100 English words and top1000 most frequent words
-6874 unique words after America 3000 filtering
-6190 unique words after America 5000 filtering
-3645 unique words after filtering common English words
-3437 unique words after filtering common Swedish words
+
+Loading some directories
+2999 entries in American3000
+2003 entries in American5000
+7459 words in common_English_words
+376 words in common Swedish_words
+
+Pruning the input
+10540 unique words - initially 
+10383 words left, 157 place names removed
+10326 words left, 57 misc_words_to_ignore removed
+10229 words left, 97 company_and_product_names removed
+10208 words left, 21 abbreviations_ending_in_period removed
+10206 words left, 2 common_programming_languages removed
+10079 words left, 127  domainnames removed
+9738 words left, 341  improbable words removed
+	1688 likely acronyms
+7937 unique words after filtering acronyms and single letters
+7936 unique words after filtering if there is a capitalized and lower case version of the word or title case turn to lower case
+7838 words left, 98 top_100_English_words removed
+7197 words left, 641 thousand_most_common_word_in_English removed
+5744 words left, 1453 Oxford American 3000 words removed
+5061 words left, 683 Oxford American 5000 words removed
+2435 words left, 2626 common English words removed
+2205 words left, 230 common_swedish_words removed
+2220 words left, 15 words added after processing words that appear in title case
+1565 starting with a capital letter (70.50%)
+638 starting with a lower case letter (28.74%)
+17 starting with other letter (0.77%)
+
+Some statistics about the CEFR levels of the words as determined by the four main data sources
+The totals as are the total numbers of the input words that were found in this source.
+The percentage shown following the totals indicate what portion of the words from this source that were used in the course pages.
+The American 3000 and 5000 sources have an explicit column of plurals, the rest are considered "singular"
+
+The level xx indicates that the word does not have a known CEFR level.
+American 3000: total: 2012 (67.09%), singular: 1554, plural: 460
+	singular: {'A1': 543, 'A2': 443, 'B1': 305, 'B2': 263}
+	  plural: {'A1': 520, 'A2': 442, 'B1': 303, 'B2': 261}
+American 5000: total: 600 (29.96%), singular: 482, plural: 119
+	singular: {'B2': 188, 'C1': 294}
+	  plural: {'B2': 188, 'C1': 294}
+common English words: total: 2784 (37.32%)
+	{'A1': 163, 'A2': 166, 'B!': 1, 'B1': 294, 'B2': 311, 'B2x': 1, 'C1': 167, 'C2': 98, 'xx': 1582}
+common Swedish words: total: common_swedish_words_count=188  (50.00%)
 ```
 
 ### Note 

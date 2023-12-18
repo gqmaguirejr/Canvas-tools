@@ -5,8 +5,39 @@
 # The program takes the dictionary stored as JSON as output of compute_unique_words_for_pages_in_course.py, specifically the
 # unique_words-for-course-frequency-<course_id>.txt file and prunes out words based on different
 # filtering.
+#
+# One aim is to understand the anguage level used in the course. The lavels are based on the Common European Framework of Reference for Languages (CEFR).
+# The first sources for CEFR values were:
+#    The Oxford 3000™ (American English)
+#    The Oxford 5000™ (American English)
+# Information was extraced from the PDF files and used to create a spreadsheet with pages for the above two sources.
+#
+# A major source for CEFR levles is: https://languageresearch.cambridge.org/wordlists/text-inspector
+#
+# For more background see:
+#   Dürlich, L. and François, T., EFLLex: A Graded Lexical Resource for Learners of English as a Foreign Language.
+#   In Proceedings of the 11th International Conference on Language Resources and Evaluation (LREC 2018). Miyazaki, Japan, 7-12 May.
+# see their site: https://cental.uclouvain.be/cefrlex/efllex/
+# They have EFLLex with NLP4J parts of speech - English in receptive context · CEFR levels: A1 A2 B1 B2 C1 -- as a downloadable CSV file.
+# They have done 6 different languages, see https://cental.uclouvain.be/cefrlex/
+# Downloads of the CSV files can be done from: https://cental.uclouvain.be/cefrlex/download/
+#
+# One of these is Swedish:
+#   and they have split this into two parts: 
+#     SVALex is a lexicon of receptive vocabulary for Swedish as a second/foreign language (SVA) 
+#     SweLLex is a lexicon of productive vocabulary for Swedish as a second/foreign language (SVA)
+#
+#   Elena Volodina, Ildikó Pilán, Ingegerd Enström, Lorena Llozhi, Peter Lundkvist, Gunlög Sundberg, Monica Sandell. 2016.
+#   SweLL on the rise: Swedish Learner Language corpus for European Reference Level studies. Proceedings of LREC 2016, Slovenia.
+#
+#   Elena Volodina, Ildikó Pilán, Lorena Llozhi, Baptiste Degryse, Thomas François. 2016. SweLLex: second language learners'
+#    productive vocabulary. Proceedings of the workshop on NLP4CALL&LA. NEALT Proceedings Series / Linköping Electronic Conference Proceedings
+#
 # 
-# It outputs a reduce file with the filtered dictionary.
+# It outputs a reduced file with the filtered dictionary.
+#
+# The second aim of the effort was to help a teacher extract words that might be put in a vocabulary list for the course.
+# Ideally, a pair language list of English and Swedish (assuming that the course is taught in one of these two languages).
 #
 # G. Q: Maguire Jr.
 #
@@ -19,6 +50,10 @@
 # ./prune_unique_words.py 11544
 #
 # Note: It does not access the Canvas course, but rather uses the output from another program.
+#
+# The program is currently mainly focused on courses taught in (American) English.
+#
+# The cefrlex materials has not yet been used to improve the program.
 #
 
 

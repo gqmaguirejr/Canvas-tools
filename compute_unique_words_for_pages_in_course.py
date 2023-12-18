@@ -20,6 +20,12 @@
 #
 # ./compute_unique_words_for_pages_in_course.py  --config config-test.json 11544
 #
+# Notes
+# The program is taking the text version of the Canvas wikipages and not the HTML version. It should probably be changed to use the HTML version so as to
+# (1) take advntage of language tagging and other tagging
+# (2) to avoid some of the problems that Canvas has when extract text from lists and definitions [it is not adding a space or other separator
+#     between entires - so one can get the end of one element of a list mixed with the start of the next element in this list.
+#
 
 
 import csv, requests, time
@@ -1015,6 +1021,8 @@ def main():
         # skip index pages, for example:
         if course_id == 41493:
             pages_to_skip=['index-for-course', 'with-quick-index', 'examples-of-some-titles-from-previous-p1p2-reports']
+        elif course_id == 31168:
+            pages_to_skip=['top-level-index-of-foreign-terms-with-figure-and-table-captions', 'index-special-and-a-r', 'index-r-z']
         else:
             pages_to_skip=[]
         
