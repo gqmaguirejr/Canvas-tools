@@ -2823,8 +2823,6 @@ unique_words-for-course-likely-acronyms-31168.txt
 
 The program itself also outputs some information, such as shown below:
 ```
-
-Loading some directories
 2999 entries in American3000
 2003 entries in American5000
 7459 words in common_English_words
@@ -2854,10 +2852,9 @@ Pruning the input
 17 starting with other letter (0.77%)
 
 Some statistics about the CEFR levels of the words as determined by the four main data sources
-The totals as are the total numbers of the input words that were found in this source.
-The percentage shown following the totals indicate what portion of the words from this source that were used in the course pages.
-The American 3000 and 5000 sources have an explicit column of plurals, the rest are considered "singular"
-
+The totals are the total numbers of the input words in this source.
+The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.
+The American 3000 and 5000 sources have an explicit column of plurals; the rest are considered "singular".
 The level xx indicates that the word does not have a known CEFR level.
 American 3000: total: 2012 (67.09%), singular: 1554, plural: 460
 	singular: {'A1': 543, 'A2': 443, 'B1': 305, 'B2': 263}
@@ -2867,8 +2864,7 @@ American 5000: total: 600 (29.96%), singular: 482, plural: 119
 	  plural: {'B2': 188, 'C1': 294}
 common English words: total: 2784 (37.32%)
 	{'A1': 163, 'A2': 166, 'B1': 295, 'B2': 311, 'B2x': 1, 'C1': 167, 'C2': 98, 'xx': 1582}
-common Swedish words: total: common_swedish_words_count=188  (50.00%)
-```
+common Swedish words: total: common_swedish_words_count=188  (50.00%)```
 
 ### Note 
 This is still a work in progress.

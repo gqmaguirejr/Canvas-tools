@@ -10235,9 +10235,9 @@ def main():
 
         # output counts
         print('\nSome statistics about the CEFR levels of the words as determined by the four main data sources')
-        print('The totals as are the total numbers of the input words that were found in this source.')
-        print('The percentage shown following the totals indicate what portion of the words from this source that were used in the course pages.')
-        print('The American 3000 and 5000 sources have an explicit column of plurals, the rest are considered "singular"\n')
+        print('The totals are the total numbers of the input words in this source.')
+        print('The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.')
+        print('The American 3000 and 5000 sources have an explicit column of plurals; the rest are considered "singular".')
         print('The level xx indicates that the word does not have a known CEFR level.')
 
         print(f'American 3000: total: {american_3000_words_count} ({(american_3000_words_count/len(american_3000_words))*100:.2f}%), singular: {american_3000_words_singular_count}, plural: {american_3000_words_plurals_count}')
