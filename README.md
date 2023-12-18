@@ -2866,7 +2866,7 @@ American 5000: total: 600 (29.96%), singular: 482, plural: 119
 	singular: {'B2': 188, 'C1': 294}
 	  plural: {'B2': 188, 'C1': 294}
 common English words: total: 2784 (37.32%)
-	{'A1': 163, 'A2': 166, 'B!': 1, 'B1': 294, 'B2': 311, 'B2x': 1, 'C1': 167, 'C2': 98, 'xx': 1582}
+	{'A1': 163, 'A2': 166, 'B1': 295, 'B2': 311, 'B2x': 1, 'C1': 167, 'C2': 98, 'xx': 1582}
 common Swedish words: total: common_swedish_words_count=188  (50.00%)
 ```
 
