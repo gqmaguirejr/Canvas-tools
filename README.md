@@ -2823,9 +2823,12 @@ unique_words-for-course-likely-acronyms-31168.txt
 
 The program itself also outputs some information, such as shown below:
 ```
+Loading some directories
 2999 entries in American3000
 2003 entries in American5000
-7459 words in common_English_words
+15281 entries in EFLLex_NLP4J
+15686 entries in SVALex_Korp
+7458 words in common_English_words
 376 words in common Swedish_words
 
 Pruning the input
@@ -2844,27 +2847,36 @@ Pruning the input
 7197 words left, 641 thousand_most_common_word_in_English removed
 5744 words left, 1453 Oxford American 3000 words removed
 5061 words left, 683 Oxford American 5000 words removed
-2435 words left, 2626 common English words removed
-2205 words left, 230 common_swedish_words removed
-2220 words left, 15 words added after processing words that appear in title case
-1565 starting with a capital letter (70.50%)
-638 starting with a lower case letter (28.74%)
-17 starting with other letter (0.77%)
+4675 words left, 386 EFLLex_NLP4J words removed
+4526 words left, 149 SVALex_Korp words removed
+2280 words left, 2246 common English words removed
+2143 words left, 137 common_swedish_words removed
+2158 words left, 15 words added after processing words that appear in title case
+1524 starting with a capital letter (70.62%)
+617 starting with a lower case letter (28.59%)
+17 starting with other letter (0.79%)
 
-Some statistics about the CEFR levels of the words as determined by the four main data sources
-The totals are the total numbers of the input words in this source.
+Some statistics about the CEFR levels of the words as determined by the five main data sources
+The totals are the total numbers of the input words that appear in this source.
 The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.
 The American 3000 and 5000 sources have an explicit column of plurals; the rest are considered "singular".
+EFLLex_NLP4J does not have any C2 words
 The level xx indicates that the word does not have a known CEFR level.
+
 American 3000: total: 2012 (67.09%), singular: 1554, plural: 460
 	singular: {'A1': 543, 'A2': 443, 'B1': 305, 'B2': 263}
 	  plural: {'A1': 520, 'A2': 442, 'B1': 303, 'B2': 261}
 American 5000: total: 600 (29.96%), singular: 482, plural: 119
 	singular: {'B2': 188, 'C1': 294}
 	  plural: {'B2': 188, 'C1': 294}
-common English words: total: 2784 (37.32%)
-	{'A1': 163, 'A2': 166, 'B1': 295, 'B2': 311, 'B2x': 1, 'C1': 167, 'C2': 98, 'xx': 1582}
-common Swedish words: total: common_swedish_words_count=188  (50.00%)```
+EFLLex_NLP4J (English): total: 2169 (15.64%)
+	{'A1': 159, 'A2': 189, 'B1': 446, 'B2': 586, 'C1': 789}
+SVALex_Korp (Swedish): total: 320 (2.09%)
+	{'A1': 33, 'A2': 48, 'B1': 55, 'B2': 94, 'C1': 90}
+common English words: total: 2784 (37.33%)
+	{'A1': 166, 'A2': 176, 'B1': 325, 'B2': 368, 'C1': 253, 'C2': 98, 'xx': 1397}
+common Swedish words: total: common_swedish_words_count=188  (50.00%)
+```
 
 ### Note 
 This is still a work in progress.
