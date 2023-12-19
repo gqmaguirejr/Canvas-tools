@@ -7,14 +7,35 @@
 # filtering.
 #
 # One aim is to understand the anguage level used in the course. The lavels are based on the Common European Framework of Reference for Languages (CEFR).
+# The outputs a reduced file with the filtered dictionary.
+#
+# The second aim of the effort was to help a teacher extract words that might be put in a vocabulary list for the course.
+# Ideally, a pair language list of English and Swedish (assuming that the course is taught in one of these two languages).
+#
+# with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
+#
+# Examples:
+# ./prune_unique_words.py 11544
+#
+# Note: It does not access the Canvas course, but rather uses the output from another program.
+#
+#       The program is currently mainly focused on courses taught in (American) English.
+#
+#       The cefrlex materials was used to improve the CEFR levels in common_English_words
+#
+# ======================================================================
+#
+# A number of different sources have been used to provide CEFR data for a given word.
+#
 # The first sources for CEFR values were:
 #    The Oxford 3000™ (American English)
 #    The Oxford 5000™ (American English)
 # Information was extraced from the PDF files and used to create a spreadsheet with pages for the above two sources.
+# Each row in the spreadhseet can have multiple CEFR levels. each will have a list of parts of speech (pos).
 #
 # A major source for CEFR levles is: https://languageresearch.cambridge.org/wordlists/text-inspector
 #
-# A new source of data will be CEFRLex
+# Another source of data is from CEFRLex:
 #
 # For more background see:
 #   Dürlich, L. and François, T., EFLLex: A Graded Lexical Resource for Learners of English as a Foreign Language.
@@ -24,6 +45,8 @@
 # They have EFLLex with NLP4J parts of speech - English in receptive context · CEFR levels: A1 A2 B1 B2 C1 -- as a downloadable CSV file.
 # They have done 6 different languages, see https://cental.uclouvain.be/cefrlex/
 # Downloads of the CSV files can be done from: https://cental.uclouvain.be/cefrlex/download/
+# Note that the multiple word entries have underscores where there would be spaces. [Currently the program does not deal with multiple words
+#   - since these do not come out of the tokenization done with the other program.]
 #
 # One of these languages is Swedish:
 #   and they have split this into two parts: 
@@ -36,27 +59,27 @@
 #   Elena Volodina, Ildikó Pilán, Lorena Llozhi, Baptiste Degryse, Thomas François. 2016. SweLLex: second language learners'
 #    productive vocabulary. Proceedings of the workshop on NLP4CALL&LA. NEALT Proceedings Series / Linköping Electronic Conference Proceedings
 #
+# The SVALex_Korp, SweLLex_Korp, and EFLLex_NLP4 have entries for a word with a specific part of speech and then
+# the frequency with which this word and this specific POS. The program uses the most frequent CEFR level.
+# If there are multiple entries (due to different POS), then the lowest CEFR level is used when calculating statistics.
 # 
-# It outputs a reduced file with the filtered dictionary.
+# Note that the orignal CEFRLex CSV files contain the statistics for the frequency of a give word and a specific part of speech
+# for each of the sourses that was used. The columns related to the sources have been eliminated and all of the three sources have been
+# placed as separate sheets in a single spreadsheet file.
+# Before removing the source frequencies the spreadsheet was 20,403,059 bytes, while the reduced spreadsheet is 2,019,937 bytes in size.
 #
-# The second aim of the effort was to help a teacher extract words that might be put in a vocabulary list for the course.
-# Ideally, a pair language list of English and Swedish (assuming that the course is taught in one of these two languages).
+# There is a also a French version:
+# For FLELex (Treetagger and CRF Tagger) :
+#   François, T., Gala, N., Watrin, P. & Fairon, C. FLELex: a graded lexical resource for French foreign learners. In the 9th International Conference on Language Resources and Evaluation (LREC 2014). Reykjavik, Iceland, 26-31 May.
+# For FLELex / Beacco :
+#  Pintard, A. and François, T. (2020). Combining expert knowledge with frequency information to infer CEFR levels for words. In Proceedings of the 1st Workshop on Tools and Resources to Empower People with REAding DIfficulties (READI) (pp. 85-92).
 #
-# G. Q: Maguire Jr.
+# Note that the two french sources use different part of speech tagging than the Swedish sheets.
+# The 'FLELex_CRF Tagger' include multiple word entries. The words are separated by spaces.
 #
 # 2023.12.05
 #
 #
-# with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
-#
-# Examples:
-# ./prune_unique_words.py 11544
-#
-# Note: It does not access the Canvas course, but rather uses the output from another program.
-#
-# The program is currently mainly focused on courses taught in (American) English.
-#
-# The cefrlex materials has not yet been used to improve the program.
 #
 
 
@@ -100,6 +123,7 @@ prefixes_to_ignore=[
     '',
     '✝',
     '✔',
+    '\u00b4\u00b4', # double right quote marks
 ]
 
 suffixes_to_ignore=[
@@ -350,11 +374,17 @@ thousand_most_common_word_in_English=[
 # for many hyphenated words the level used in the highest of the indivudal words
 # Levels based on EFLLex_NLP4J used to correct the xx entries
 common_English_words={
+    'orchestrator': {'xx': 'noun'},
+    'teletraffic': {'adjective': 'noun'},
+    'time-out': {'A2': 'noun, verb'},
+    'polytechnic': {'xx': 'noun'},
+    'time-outs': {'A2': 'noun'},
     "I'am": {'xx': 'idiom, noun'},
     "adderas": {'xx': 'verb, verb past tense, past participle'},
     "bachelor's": {'xx': 'adjective'},
     "can't": {'C1': 'contraction'},
     "couldn't": {'xx': 'contraction'},
+    "c/o": {'xx': 'contraction for care of'},
     "didn't": {'xx': 'contraction'},
     "doesn't": {'xx': 'contraction'},
     "don't": {'A1': 'contraction'},
@@ -3353,7 +3383,6 @@ common_English_words={
     'hitting': {'A2': 'verb gerund or present participle'},
     'hmm': {'A2': 'exclamation'},
     'hmmm': {'A2': 'exclamation'},
-    'hoc': {'xx': 'Latin word'},
     'hold-down': {'A2': 'phrasal verb'},
     'holder': {'xx': 'noun'},
     'holders': {'xx': 'noun'},
@@ -3955,6 +3984,7 @@ common_English_words={
     'keying': {'B2': 'verb gerund or present participle'},
     'keynote': {'xx': 'noun'},
     'keypad': {'xx': 'noun'},
+    'keystroke': {'xx': 'noun'},
     'keystrokes': {'xx': 'noun'},
     'keytips': {'xx': 'noun'},
     'keyword': {'xx': 'noun'},
@@ -4706,6 +4736,7 @@ common_English_words={
     'non-adaptable': {'xx': 'adjective'},
     'non-adaptive': {'xx': 'adjective'},
     'non-alteration': {'C1': 'noun'},
+    'non-authoritative': {'xx': 'adjective'},
     'non-biological': {'B2': 'adjective'},
     'non-blocking': {'xx': 'noun'},
     'non-cancer': {'B1': 'adjective'},
@@ -7972,7 +8003,8 @@ common_English_words={
 
 
 misc_words_to_ignore=[
-
+    'Maguire',
+    'maguire',
     # 'TU-Berlin',
     'A4', 
     'A4-sized', 
@@ -8338,6 +8370,7 @@ place_names=[
 
 
 company_and_product_names=[
+    'Macmillan',
     "kaggle",
     "iPad",
     "iPhone",
@@ -8944,6 +8977,24 @@ common_swedish_words=[
     'ändrar',
     'åk',
 
+]
+
+common_french_words=[
+    'raison',
+    'traitement',
+]
+
+common_latin_words=[
+    'interent',
+    'ad-hoc',
+    'bene',
+    'errata',
+    'et',
+    'facto',
+    'jure',
+    'meridiem',
+    'hoc',
+    'machina',
 ]
 
 
@@ -9594,27 +9645,264 @@ def isVowel(ch):
 
 
 domains_to_filter=[
-    ".ae",
-    ".aero",
-    ".coop",
-    ".cooperatives",
-    ".gov",
-    ".info",
-    ".int",
-    ".mil",
-    ".museum",
-    ".name",
-    ".pro",
+    '.aero',
     '.arpa',
     '.biz',
     '.com',
+    '.coop',
+    '.cooperatives',
     '.edu',
+    '.gov',
+    '.info',
+    '.int',
+    '.mil',
+    '.museum',
+    '.name',
     '.net',
     '.org',
+    '.pro',
+    # country TLDs
+    '.ac',
+    '.ad',
+    '.ae',
+    '.af',
+    '.ag',
+    '.ai',
+    '.al',
+    '.am',
+    '.ao',
+    '.aq',
+    '.ar',
+    '.as',
+    '.at',
     '.au',
+    '.aw',
+    '.ax',
+    '.az',
+    '.ba',
+    '.bb',
+    '.bd',
+    '.be',
+    '.bf',
+    '.bg',
+    '.bh',
+    '.bi',
+    '.bj',
+    '.bm',
+    '.bn',
+    '.bo',
+    '.bq',
+    '.br',
+    '.bs',
+    '.bt',
+    '.bw',
+    '.by',
+    '.bz',
+    '.ca',
+    '.cc',
+    '.cd',
+    '.cf',
+    '.cg',
+    '.ch',
+    '.ci',
+    '.ck',
+    '.cl',
+    '.cm',
+    '.cn',
+    '.co',
+    '.cr',
+    '.cu',
+    '.cv',
+    '.cw',
+    '.cx',
+    '.cy',
+    '.cz',
+    '.de',
+    '.dj',
+    '.dk',
+    '.dm',
+    '.do',
+    '.dz',
+    '.ec',
+    '.ee',
+    '.eg',
+    '.er',
+    '.es',
+    '.et',
+    '.eu',
+    '.di',
+    '.fj',
+    '.fm',
+    '.fo',
     '.fr',
+    '.ga',
+    '.gd',
+    '.',
+    '.ge',
+    '.gf',
+    '.gg',
+    '.gh',
+    '.gi',
+    '.gl',
+    '.gm',
+    '.gp',
+    '.gq',
+    '.ge',
+    '.gs',
+    '.gt',
+    '.gu',
+    '.gw',
+    '.gy',
+    '.hk',
+    '.hm',
+    '.hn',
+    '.hr',
+    '.hu',
+    '.id',
+    '.ie',
+    '.il',
+    '.im',
+    '.in',
+    '.io',
+    '.iq',
+    '.ir',
+    '.is',
+    '.it',
+    '.je',
+    '.jm',
+    '.jo',
+    '.jp',
+    '.ke',
+    '.kg',
+    '.kh',
+    '.ki',
+    '.km',
+    '.kn',
+    '.kp',
+    '.kr',
+    '.kw',
+    '.kz',
+    '.la',
+    '.lb',
+    '.lc',
+    '.li',
+    '.lk',
+    '.lr',
+    '.ls',
+    '.lt',
+    '.lu',
+    '.lv',
+    '.ly',
+    '.ma',
+    '.mc',
+    '.md',
+    '.me',
+    '.mg',
+    '.mh',
+    '.mk',
+    '.ml',
+    '.mm',
+    '.mn',
+    '.mo',
+    '.mp',
+    '.mq',
+    '.me',
+    '.ms',
+    '.mt',
+    '.mu',
+    '.mv',
+    '.mw',
+    '.mx',
+    '.my',
+    '.mz',
+    '.na',
+    '.nc',
+    '.ne',
+    '.nf',
+    '.ng',
+    '.ni',
+    '.nl',
+    '.no',
+    '.np',
+    '.nr',
+    '.nu',
+    '.nz',
+    '.om',
+    '.pa',
+    '.pe',
+    '.pf',
+    '.ph',
+    '.pk',
+    '.ol',
+    '.om',
+    '.pn',
+    '.pr',
+    '.ps',
+    '.pt',
+    '.pw',
+    '.py',
+    '.qa',
+    '.re',
+    '.ro',
+    '.rs',
+    '.ru',
+    '.rw',
+    '.sa',
+    '.sb',
+    '.sc',
+    '.sd',
     '.se',
-    ".zw",
+    '.sg',
+    '.sh',
+    '.si',
+    '.sk',
+    '.sl',
+    '.sm',
+    '.sn',
+    '.so',
+    '.sr',
+    '.ss',
+    '.st',
+    '.su',
+    '.sv',
+    '.sx',
+    '.sy',
+    '.sz',
+    '.tc',
+    '.tf',
+    '.tg',
+    '.th',
+    '.tj',
+    '.tk',
+    '.tl',
+    '.tm',
+    '.tn',
+    '.to',
+    '.tr',
+    '.tt',
+    '.tv',
+    '.tw',
+    '.tz',
+    '.ua',
+    '.ug',
+    '.uk',
+    '.us',
+    '.uy',
+    '.uz',
+    '.va',
+    '.vc',
+    '.ve',
+    '.vg',
+    '.vi',
+    '.vn',
+    '.vu',
+    '.wf',
+    '.ws',
+    '.ye',
+    '.yt',
+    '.za',
+    '.zm',
+    '.zw',
 ]
 
 def is_domainname(s):
@@ -9735,39 +10023,50 @@ def read_CEFRLLex_data(filenamme, sheetname):
     df = pd.read_excel(open(filenamme, 'rb'), sheet_name=sheetname)
     # the spreadsheet columns are:
     # word	tag	level_freq@a1	level_freq@a2	level_freq@b1	level_freq@b2	level_freq@c1	total_freq@total
-    # for the English data, there are the following tags:
-    # for the meaning see https://spraakbanken.gu.se/en/resources/saldo/tagset
-    # 'AB': {'adverb'}, 
+    # for the English data, there are the following tags - along with other tags from Appendix 1 and Appendix 4 of 
+    # 'Att söka i Korp med CQP och Regexp – en introduktion' by Klas Hjortstam, 2018
+    #    available from https://www.gu.se/sites/default/files/2021-03/Att%20so%CC%88ka%20i%20Korp%20med%20CQP%20och%20Regexp.pdf
+    # see also https://spraakbanken.gu.se/en/resources/saldo/tagset
+    #
+    # 'AB': {'Adverb'}, 
     # 'ABM_MWE': {''},
-    # 'DT': {''},
-    # 'HA': {''},
-    # 'HD': {''},
-    # 'HP': {''},
-    # 'HS': {''},
+    # 'DT': {'Determiner, determiner'},
+    # 'HA': {'Interrogative/relative adverb'},
+    # 'HD': {'Interrogative/relative determination'},
+    # 'HP': {'Interrogative/relative pronoun'},
+    # 'HS': {'Interrogative/relative possessive expression'},
     # 'IE': {'infinitive particle'},
     # 'IN': {'interjection'},
     # 'INM_MWE': {''},
-    # 'JJ': {'adjective'},
+    # 'JJ': {'Adjective'},
     # 'JJM_MWE': {''},
-    # 'KN': {'conjunction'},
+    # 'KN': {'Conjunction'},
     # 'KNM_MWE',
-    # 'NN': {'noun'},
-    # 'NN_NEU': {''},
-    # 'NN_UTR': {''},
-    # 'NNM_MWE': {'noun multiword'},
-    # 'NNM_UTR': {''},
-    # 'PL': {''},
+    # 'NN': {'Noun'},
+    # 'NN_NEU': {'Moun - Neuter'},
+    # 'NN_UTR': {'Noun - Utrum'},
+    # 'NNM_MWE': {'Noun multiword'},
+    # 'NNM_UTR': {'Noun multiword - Utrum'},
+    # 'PC': {'Participant'},
+    # 'PL': {'Particle'}
     # 'PL_MWE': {''},
-    # 'PMM_MWE': {'proper noun'},
-    # 'PN': {'numeral'},
+    # 'PM': {'Proper name'},
+    # 'PMM_MWE': {'Proper noun'},
+    # 'PN': {'Pronoun'},
     # 'PNM_MWE',
-    # 'PP': {'preposition'},
+    # 'PP': {'Preposition'},
     # 'PPM_MWE': {''},
-    # 'RG': {''},
-    # 'SN': {'subjunction'},
+    # 'PS': {'Possessive expressions'},
+    # 'RG': {'Arithmetic: base number'},
+    # 'RO': {'Arithmetic: ordinal number'},
+    # 'SN': {'Subjunction'},
     # 'SNM_MWE': {''},
-    # 'VB': {'verb'},
+    # 'UO': {'Foreign word'},
+    # 'VB': {'Verb'},
     # 'VBM_MWE': {''},
+    # 'MAD': {'Discriminating punctuation'],
+    # 'MID': {'Punctuation'},
+    # 'PAD': {'Punctuation'},
 
     # use a list as there may be multiple instances of a given word, due to multiple contexts
     words = []
@@ -9791,6 +10090,57 @@ def read_CEFRLLex_data(filenamme, sheetname):
         cefr_levelb1=row['level_freq@b1']
         cefr_levelb2=row['level_freq@b2']
         cefr_levelc1=row['level_freq@c1']
+        cefr_levels={'A1': cefr_levela1,
+                     'A2': cefr_levela2,
+                     'B1': cefr_levelb1,
+                     'B2': cefr_levelb2,
+                     'C1': cefr_levelc1,
+                     }
+
+        # use the POS from the most frequently occuring usage
+        key_max = max(zip(cefr_levels.values(), cefr_levels.keys()))[1]  
+
+        entry={'word': word, 'pos': pos, 'cefr_level': key_max}
+
+        words.append(entry)
+
+    if Verbose_Flag:
+        print(f'{words=}')
+        print(f'{words_plurals=}')
+
+    print(f'{len(words)} entries in {sheetname}')
+
+    return [words, words_plurals, df]
+
+# return a tripple of words, words_plurals, dataframe
+def read_CEFRLLex_French_data(filenamme, sheetname):
+    global Verbose_Flag
+
+    df = pd.read_excel(open(filenamme, 'rb'), sheet_name=sheetname)
+    # the spreadsheet columns are:
+    # word	tag	freq_a1	freq_a2	freq_b1	freq_b2	freq_c1	freq_c2	freq_total	
+    # use a list as there may be multiple instances of a given word, due to multiple contexts
+    words = []
+
+    # use a set as we only care about the unique plural words
+    words_plurals = set()
+
+    for index, row in  df.iterrows():
+        word=row['word']
+        # skip words that are just a space
+        if word == ' ':
+            continue
+        if Verbose_Flag:
+            print(f"{index=} {word=}")
+
+        pos=row['tag']
+
+        # level_freq@a2	level_freq@b1	level_freq@b2	level_freq@c1
+        cefr_levela1=row['freq_a1']
+        cefr_levela2=row['freq_a2']
+        cefr_levelb1=row['freq_b1']
+        cefr_levelb2=row['freq_b2']
+        cefr_levelc1=row['freq_c1']
         cefr_levels={'A1': cefr_levela1,
                      'A2': cefr_levela2,
                      'B1': cefr_levelb1,
@@ -9902,10 +10252,17 @@ def main():
         words_EFLLex, plurals_EFLLex, df_EFLLex=read_CEFRLLex_data(cefrlex_file, 'EFLLex_NLP4J')
         words_SVALex, plurals_SVALex, df_SVALex=read_CEFRLLex_data(cefrlex_file, 'SVALex_Korp')
 
-        print(f'{len(common_English_words)} words in common_English_words')
+        words_FLELex, plurals_FLELex, df_FLELex=read_CEFRLLex_French_data(cefrlex_file, 'FLELex_CRF Tagger')
 
-        print(f'{len(common_swedish_words)} words in common Swedish_words')
 
+        print(f'{len(common_English_words)} words in common_English words')
+
+        print(f'{len(common_swedish_words)} words in common Swedish words')
+
+        print(f'{len(common_french_words)} words in common French words')
+
+        print(f'{len(common_latin_words)} words in common Latin words')
+        
         print('\nPruning the input')
 
         # read in the frequecy data that was written as JSON
@@ -10062,6 +10419,16 @@ def main():
 
         print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} SVALex_Korp words removed')
 
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
+        for word in filtered_unique_words_dict:
+            if not in_dictionary(word.lower(), words_FLELex): # all the words in EFLLex are in lower case
+                new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
+
+        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} FLELex_CRF Tagger words removed')
+
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
@@ -10076,7 +10443,13 @@ def main():
         filtered_unique_words_dict=new_filtered_unique_words_dict
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_swedish_words)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common_swedish_words removed')
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common Swedish words removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_french_words)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common French words removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_latin_words)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common Latin words removed')
 
         # reset the new dict
         new_filtered_unique_words_dict=dict()
@@ -10160,6 +10533,7 @@ def main():
 
         common_English_words_count=0
         common_swedish_words_count=0
+        common_french_words_count=0
 
         plural_3000_levels=dict()
         plural_5000_levels=dict()
@@ -10215,6 +10589,9 @@ def main():
 
         svalex_words_count=0
         level_words_SVALex_counts={}
+
+        flelex_words_count=0
+        level_words_FLELex_counts={}
 
 
         level_3000_singular=dict()
@@ -10309,6 +10686,24 @@ def main():
 
         if Verbose_Flag:
             print(f'{level_words_SVALex=}')
+
+
+        # compute the lowest CEFR level for each word in words_FLELex
+        level_words_FLELex={}
+        for w in words_FLELex:
+            # each entry is of the form {'word': word, 'pos': pos, 'cefr_level': key_max}
+            word=w['word']
+            new_level=w['cefr_level']
+            
+            current_level=level_words_FLELex.get(word, False)
+            if current_level:
+                lowest=choose_lowest_cefr_level_from_two(current_level, new_level)
+            else:
+                lowest=new_level
+            level_words_FLELex[word]=lowest
+
+        if Verbose_Flag:
+            print(f'{level_words_FLELex=}')
 
 
 
@@ -10408,6 +10803,9 @@ def main():
             if word in common_swedish_words:
                 common_swedish_words_count=common_swedish_words_count+1
 
+            if word in common_french_words:
+                common_french_words_count=common_french_words_count+1
+
 
             if word in level_words_EFLLex:
                 efllex_words_count=efllex_words_count+1
@@ -10428,6 +10826,16 @@ def main():
                         level_words_SVALex_counts.update({cefr_level: level_words_SVALex_counts.get(cefr_level, 0) +1})
                     else:
                         print(f'warning in computing level_words_SVALex_counts: {word=} {cefr_level=}')
+
+            if word in level_words_FLELex:
+                flelex_words_count=flelex_words_count+1
+                cefr_level=level_words_FLELex.get(word.lower(), False)
+
+                if cefr_level:
+                    if isinstance(cefr_level, str):
+                        level_words_FLELex_counts.update({cefr_level: level_words_FLELex_counts.get(cefr_level, 0) +1})
+                    else:
+                        print(f'warning in computing level_words_FLELex_counts: {word=} {cefr_level=}')
 
 
         # output counts
@@ -10463,6 +10871,11 @@ def main():
         usage_sorted=dict(sorted(level_words_SVALex_counts.items(), key=lambda x:x[0]))
         print(f'\t{usage_sorted}')
 
+        print(f'FLELex_CRF Tagger (French): total: {flelex_words_count} ({(flelex_words_count/len(level_words_FLELex))*100:.2f}%)')
+        usage_sorted=dict(sorted(level_words_FLELex_counts.items(), key=lambda x:x[0]))
+        print(f'\t{usage_sorted}')
+
+
 
         print(f'common English words: total: {common_English_words_count} ({(common_English_words_count/len(common_English_words))*100:.2f}%)')
         #print(f'{level_common_English_counts=}')
@@ -10471,6 +10884,8 @@ def main():
 
         
         print(f'common Swedish words: total: {common_swedish_words_count=}  ({(common_swedish_words_count/len(common_swedish_words))*100:.2f}%)')
+
+        print(f'common French words: total: {common_french_words_count=}  ({(common_french_words_count/len(common_french_words))*100:.2f}%)')
 
         # The following code compares the common_English_words with those in EFLLex. This was useful to find some of the
         # CEFR levels that were unknown. However, there were also 406 cases where the two had different CEFR levels.
