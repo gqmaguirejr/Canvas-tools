@@ -2882,10 +2882,9 @@ SVALex_Korp (Swedish): total: 320 (2.09%)
 FLELex_CRF Tagger (French): total: 530 (3.20%)
 	{'A1': 56, 'A2': 59, 'B1': 118, 'B2': 76, 'C1': 221}
 common English words: total: 2790 (37.38%)
-	{'A1': 166, 'A2': 177, 'B1': 325, 'B2': 368, 'C1': 253, 'C2': 98, 'adjective': 1, 'xx': 1401}
+	{'A1': 166, 'A2': 177, 'B1': 325, 'B2': 368, 'C1': 253, 'C2': 98, 'xx': 1402}
 common Swedish words: total: common_swedish_words_count=188  (50.00%)
 common French words: total: common_french_words_count=1  (50.00%)
-
 ```
 
 ### Note 

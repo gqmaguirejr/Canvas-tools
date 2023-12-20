@@ -375,7 +375,7 @@ thousand_most_common_word_in_English=[
 # Levels based on EFLLex_NLP4J used to correct the xx entries
 common_English_words={
     'orchestrator': {'xx': 'noun'},
-    'teletraffic': {'adjective': 'noun'},
+    'teletraffic': {'xx': 'adjective, noun'},
     'time-out': {'A2': 'noun, verb'},
     'polytechnic': {'xx': 'noun'},
     'time-outs': {'A2': 'noun'},
