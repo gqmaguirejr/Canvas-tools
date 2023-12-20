@@ -2828,33 +2828,39 @@ Loading some directories
 2003 entries in American5000
 15281 entries in EFLLex_NLP4J
 15686 entries in SVALex_Korp
-7458 words in common_English_words
-376 words in common Swedish_words
+17871 entries in FLELex_CRF Tagger
+7464 words in common_English words
+376 words in common Swedish words
+2 words in common French words
+10 words in common Latin words
 
 Pruning the input
 10540 unique words - initially 
 10383 words left, 157 place names removed
-10326 words left, 57 misc_words_to_ignore removed
-10229 words left, 97 company_and_product_names removed
-10208 words left, 21 abbreviations_ending_in_period removed
-10206 words left, 2 common_programming_languages removed
-10079 words left, 127  domainnames removed
-9738 words left, 341  improbable words removed
-	1688 likely acronyms
-7937 unique words after filtering acronyms and single letters
-7936 unique words after filtering if there is a capitalized and lower case version of the word or title case turn to lower case
-7838 words left, 98 top_100_English_words removed
-7197 words left, 641 thousand_most_common_word_in_English removed
-5744 words left, 1453 Oxford American 3000 words removed
-5061 words left, 683 Oxford American 5000 words removed
-4675 words left, 386 EFLLex_NLP4J words removed
-4526 words left, 149 SVALex_Korp words removed
-2280 words left, 2246 common English words removed
-2143 words left, 137 common_swedish_words removed
-2158 words left, 15 words added after processing words that appear in title case
-1524 starting with a capital letter (70.62%)
-617 starting with a lower case letter (28.59%)
-17 starting with other letter (0.79%)
+10325 words left, 58 misc_words_to_ignore removed
+10227 words left, 98 company_and_product_names removed
+10206 words left, 21 abbreviations_ending_in_period removed
+10204 words left, 2 common_programming_languages removed
+10073 words left, 131  domainnames removed
+9733 words left, 340  improbable words removed
+	1687 likely acronyms
+7933 unique words after filtering acronyms and single letters
+7932 unique words after filtering if there is a capitalized and lower case version of the word or title case turn to lower case
+7834 words left, 98 top_100_English_words removed
+7193 words left, 641 thousand_most_common_word_in_English removed
+5740 words left, 1453 Oxford American 3000 words removed
+5057 words left, 683 Oxford American 5000 words removed
+4672 words left, 385 EFLLex_NLP4J words removed
+4523 words left, 149 SVALex_Korp words removed
+4423 words left, 100 FLELex_CRF Tagger words removed
+2227 words left, 2196 common English words removed
+2092 words left, 135 common Swedish words removed
+2092 words left, 0 common French words removed
+2089 words left, 3 common Latin words removed
+2104 words left, 15 words added after processing words that appear in title case
+1488 starting with a capital letter (70.72%)
+599 starting with a lower case letter (28.47%)
+17 starting with other letter (0.81%)
 
 Some statistics about the CEFR levels of the words as determined by the five main data sources
 The totals are the total numbers of the input words that appear in this source.
@@ -2873,9 +2879,13 @@ EFLLex_NLP4J (English): total: 2169 (15.64%)
 	{'A1': 159, 'A2': 189, 'B1': 446, 'B2': 586, 'C1': 789}
 SVALex_Korp (Swedish): total: 320 (2.09%)
 	{'A1': 33, 'A2': 48, 'B1': 55, 'B2': 94, 'C1': 90}
-common English words: total: 2784 (37.33%)
-	{'A1': 166, 'A2': 176, 'B1': 325, 'B2': 368, 'C1': 253, 'C2': 98, 'xx': 1397}
+FLELex_CRF Tagger (French): total: 530 (3.20%)
+	{'A1': 56, 'A2': 59, 'B1': 118, 'B2': 76, 'C1': 221}
+common English words: total: 2790 (37.38%)
+	{'A1': 166, 'A2': 177, 'B1': 325, 'B2': 368, 'C1': 253, 'C2': 98, 'adjective': 1, 'xx': 1401}
 common Swedish words: total: common_swedish_words_count=188  (50.00%)
+common French words: total: common_french_words_count=1  (50.00%)
+
 ```
 
 ### Note 
