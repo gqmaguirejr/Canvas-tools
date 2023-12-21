@@ -243,7 +243,7 @@ top_100_English_words={
 }
 
 # from https://strommeninc.com/1000-most-common-words-in-english-strommen-languages/
-thousand_most_common_word_in_English=[
+thousand_most_common_words_in_English=[
     'the', 'be', 'and', 'a', 'of', 'to', 'in', 'i', 'you', 'it', 'have', 'to',
     'that', 'for', 'do', 'he', 'with', 'on', 'this', 'n’t', 'we', 'that', 'not',
     'but', 'they', 'say', 'at', 'what', 'his', 'from', 'go', 'or', 'by', 'get',
@@ -10495,8 +10495,8 @@ def main():
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, top_100_English_words)
         print(f'{len(filtered_unique_words_dict)} words left, {reduction} top_100_English_words removed')
 
-        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, thousand_most_common_word_in_English)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} thousand_most_common_word_in_English removed')
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, thousand_most_common_words_in_English)
+        print(f'{len(filtered_unique_words_dict)} words left, {reduction} thousand_most_common_words_in_English removed')
 
         # filter with tbe american 3000 and 5000 lists
         # reset the new dict
@@ -10684,9 +10684,11 @@ def main():
 
         # note that the common_x_words (for x = swedish, french, and latin) do not have CEFR level information
         # hecne we do not have to calculate the lowest CEFR level for each word
-        common_swedish_words_count=0
-        common_french_words_count=0
-        common_latin_words_count=0
+        common_swedish_words_set=set()
+        common_french_words_set=set()
+        common_latin_words_set=set()
+        top_100_English_words_set=set()
+        thousand_most_common_words_in_English_set=set()
 
         #
         # Process all of the unique words and see which CEFR level they fall into for each of the sources
@@ -10794,15 +10796,30 @@ def main():
                         print(f'warning in computing level_common_English_counts: {word=} {cefr_levels=}')
 
 
-            if word in common_swedish_words or word.lower() in common_swedish_words:
-                common_swedish_words_count=common_swedish_words_count+1
+            if word in common_swedish_words:
+                common_swedish_words_set.add(word)
+            if word.lower() in common_swedish_words:
+                common_swedish_words_set.add(word.lower())
 
-            if word in common_french_words or word.lower() in common_french_words:
-                common_french_words_count=common_french_words_count+1
+            if word in common_french_words:
+                common_french_words_set.add(word)
+            if  word.lower() in common_french_words:
+                common_french_words_set.add(word.lower())
 
-            if word in common_latin_words or word.lower() in common_latin_words:
-                common_latin_words_count=common_latin_words_count+1
+            if word in common_latin_words:
+                common_latin_words_set.add(word)
+            if word.lower() in common_latin_words:
+                common_latin_words_set.add(word.lower())
 
+            if word in top_100_English_words:
+                top_100_English_words_set.add(word)
+            if word.lower() in top_100_English_words:
+                top_100_English_words_set.add(word.lower())
+                
+            if word in thousand_most_common_words_in_English:
+                thousand_most_common_words_in_English_set.add(word)
+            if  word.lower() in thousand_most_common_words_in_English:
+                thousand_most_common_words_in_English_set.add(word.lower())
 
         #
         # Output counts
@@ -10921,29 +10938,52 @@ def main():
 
 
         
+        common_swedish_words_count=len(common_swedish_words_set)
         print(f'common Swedish words: total: {common_swedish_words_count}  ({(common_swedish_words_count/len(common_swedish_words))*100:.2f}%)')
         usage_sorted=dict()
         usage_sorted['Input']=f'course_id {course_id}'
         usage_sorted['Source']='common Swedish words'
         usage_sorted['total']=common_swedish_words_count
-        usage_sorted['percentage']=(common_swedish_words_count/len(common_swedish_words))*100
+        usage_sorted['percentage']=(common_swedish_words_count/len(common_swedish_words))*100.0
         stats_df.loc[len(stats_df)] = usage_sorted
 
 
+        common_french_words_count=len(common_french_words_set)
         print(f'common French words: total: {common_french_words_count}  ({(common_french_words_count/len(common_french_words))*100:.2f}%)')
         usage_sorted=dict()
         usage_sorted['Input']=f'course_id {course_id}'
         usage_sorted['Source']='common French words'
         usage_sorted['total']=common_french_words_count
-        usage_sorted['percentage']=(common_french_words_count/len(common_french_words))*100
+        usage_sorted['percentage']=(common_french_words_count/len(common_french_words))*100.0
         stats_df.loc[len(stats_df)] = usage_sorted
 
+        common_latin_words_count=len(common_latin_words_set)
         print(f'common Latin words: total: {common_latin_words_count}  ({(common_latin_words_count/len(common_latin_words))*100:.2f}%)')
         usage_sorted=dict()
         usage_sorted['Input']=f'course_id {course_id}'
         usage_sorted['Source']='common Latin words'
         usage_sorted['total']=common_latin_words_count
-        usage_sorted['percentage']=(common_latin_words_count/len(common_latin_words))*100
+        usage_sorted['percentage']=(common_latin_words_count/len(common_latin_words))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+
+        top_100_English_words_count=len(top_100_English_words)
+        print(f'top 100 English  words: total: {top_100_English_words_count}  ({(top_100_English_words_count/len(top_100_English_words))*100:.2f}%)')
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='top 100 English words'
+        usage_sorted['total']=top_100_English_words_count
+        usage_sorted['percentage']=(top_100_English_words_count/len(top_100_English_words))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+
+        thousand_most_common_words_in_English_count=len(thousand_most_common_words_in_English_set)
+        print(f'thousand most common words in_English: total: {thousand_most_common_words_in_English_count}  ({(thousand_most_common_words_in_English_count/len(thousand_most_common_words_in_English))*100:.2f}%)')
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='thousand most common words in_English'
+        usage_sorted['total']=thousand_most_common_words_in_English_count
+        usage_sorted['percentage']=(thousand_most_common_words_in_English_count/len(thousand_most_common_words_in_English))*100
         stats_df.loc[len(stats_df)] = usage_sorted
 
 
