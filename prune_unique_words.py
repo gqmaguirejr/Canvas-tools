@@ -8599,20 +8599,25 @@ common_programming_languages=[  # and libraries
 
 
 common_swedish_words=[
+    'Arkivet',
     'CDIO-moment', 
     'Canvasrum',
     'Dansk',
     'Dataskyddsombud',
+    'Digitala',
     'FRA-lagen',
     'Högskolelag',
     'Högskolelagen',
+    'Internetstiftelsen',
     'IT-incidentcentrum', 
     'Institutet',
     'Kursanalys-dokument',
     'Lärarundantaget',
     'Personuppgiftslag',
     'Riksdag',
+    'Sverige',
     'Ulvön', # HMS ship name
+    'Vetenskapliga',
     'Vetenskapsrådet',
     'Vinga', # HMS ship name
     '\u00e4ndam\u00e5l', 
@@ -8973,6 +8978,7 @@ common_swedish_words=[
     'webbadress',
     'webbservrar',
     'webbsök',
+    'ändamål',
     'ändra',
     'ändrar',
     'åk',
@@ -8980,7 +8986,10 @@ common_swedish_words=[
 ]
 
 common_french_words=[
+    'attaques',
+    'informatiques',
     'raison',
+    'réponse',
     'traitement',
 ]
 
@@ -10172,6 +10181,8 @@ def filter_words_by_list(words, filter_list):
     for w in words:
         if w in filter_list:
             continue
+        if w.lower() in filter_list:
+            continue
         else:
             updated_words.update({w: words[w]})
 
@@ -10192,6 +10203,115 @@ def filter_words_by_function(words, filter_function):
 
     reduction=initial_number_of_words-len(updated_words)
     return [updated_words, reduction]
+
+
+# collect the set of CEFR levels for each owrd in a lex where the world can have different levels for different parts of speach all in one entry
+def collect_CEFR_levels_from_dict(lex, lex_name):
+    global Verbose_Flag
+
+    levels=dict()
+    for w in lex:
+        collected_levels=[]
+        collected_levels_CEFR_levels=[]
+        if Verbose_Flag:
+            print(f'{w=} {lex[w]}')
+        for k in lex[w].keys():
+            if k and not (k == 'word' or k == 'plural'):
+                collected_levels_CEFR_levels.append(k)
+
+        if len(collected_levels_CEFR_levels) > 1:
+            if Verbose_Flag:
+                print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
+            # need to choose the lowest level
+            collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
+
+        levels[w]=collected_levels_CEFR_levels
+
+    if Verbose_Flag:
+        print(f'collected levels for {lex_name}={levels}')
+    return levels
+
+def collect_CEFR_levels_from_list(lex, lex_name):
+    global Verbose_Flag
+
+    levels=dict()
+    for w in lex:
+        collected_levels=[]
+        collected_levels_CEFR_levels=[]
+        if Verbose_Flag:
+            print(f'{w=} {lex[w]}')
+        for k in w.keys():
+            if k and not (k == 'word' or k == 'plural'):
+                collected_levels_CEFR_levels.append(k)
+
+        if len(collected_levels_CEFR_levels) > 1:
+            if Verbose_Flag:
+                print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
+            # need to choose the lowest level
+            collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
+
+        levels[w['word']]=collected_levels_CEFR_levels
+
+    if Verbose_Flag:
+        print(f'collected levels for {lex_name}={levels}')
+    return levels
+
+def collect_CEFR_levels_for_plurals_from_list(lex, lex_name):
+    global Verbose_Flag
+
+    level_plural=dict()
+    for w in lex:
+        plural_form=w.get('plural', False)
+        if plural_form:
+            collected_levels=[]
+            collected_levels_CEFR_levels=[]
+            for k in w.keys():
+                if k and not (k == 'word' or k == 'plural'):
+                    # we only look for plural nouns and verbs
+                    if 'n.' in w[k]:
+                        collected_levels_CEFR_levels.append(k)
+                    if 'v.' in w[k]:
+                        collected_levels_CEFR_levels.append(k)
+                #
+            level_plural[plural_form]=collected_levels_CEFR_levels
+    
+    if Verbose_Flag:
+        print(f'{level_plural=}')
+        
+    return level_plural
+
+# each entry in the lex is of the form {'word': word, 'pos': pos, 'cefr_level': key_max}
+def compute_lowest_CEFR_level(lex, lex_name):
+    global Verbose_Flag
+
+    level_words=dict()
+    for w in lex:
+        word=w['word']
+        new_level=w['cefr_level']
+            
+        current_level=level_words.get(word, False)
+        if current_level:
+            lowest=choose_lowest_cefr_level_from_two(current_level, new_level)
+        else:
+            lowest=new_level
+        level_words[word]=lowest
+
+    if Verbose_Flag:
+        print(f'loest levels for {lex_name}={level_words=}')
+
+    return level_words
+
+# returns updated words_count, level_words_SVALex_counts
+def increment_usage_count_and_CEFR_level_counts(words_count, level_words_counts, word, level_words_lex,  lex_name):
+    words_count=words_count+1
+    cefr_level=level_words_lex.get(word.lower(), False)
+    if cefr_level:
+        if isinstance(cefr_level, str):
+            level_words_counts.update({cefr_level: level_words_counts.get(cefr_level, 0) +1})
+        else:
+            print(f'warning in computing level_words_counts for {lex_name}: {word=} {cefr_level=}')
+
+    return [words_count, level_words_counts]
 
 
 def main():
@@ -10523,196 +10643,60 @@ def main():
                 f.write(f"{word}\n")
 
         # compute some simple stats about which courses and CEFR levels the unique words were in
+
+
+        level_3000_singular=collect_CEFR_levels_from_list(american_3000_words, 'American 3000 singlualr')
+        level_5000_singular=collect_CEFR_levels_from_list(american_5000_words, 'American 5000 singlualr')
+        level_3000_singular_counts=dict()
+        level_5000_singular_counts=dict()
         american_3000_words_singular_count=0
         american_3000_words_plurals_count=0
         american_3000_words_count=0
 
+
+        level_3000_plural=collect_CEFR_levels_for_plurals_from_list(american_3000_words, 'American 3000 plurals')
+        level_5000_plural=collect_CEFR_levels_for_plurals_from_list(american_5000_words, 'American 5000 plurals')
+        level_3000_plural_counts=dict()
+        level_5000_plural_counts=dict()
         american_5000_words_singular_count=0
         american_5000_words_plurals_count=0
         american_5000_words_count=0
 
-        common_English_words_count=0
-        common_swedish_words_count=0
-        common_french_words_count=0
-
-        plural_3000_levels=dict()
-        plural_5000_levels=dict()
-
-        level_3000_plural_counts=dict()
-        level_5000_plural_counts=dict()
-        
-        level_3000_plural=dict()
-        for w in american_3000_words:
-            plural_form=w.get('plural', False)
-            if plural_form:
-                collected_levels=[]
-                collected_levels_CEFR_levels=[]
-                for k in w.keys():
-                    if k and not (k == 'word' or k == 'plural'):
-                        # we only look for plural nouns and verbs
-                        if 'n.' in w[k]:
-                            collected_levels_CEFR_levels.append(k)
-                        if 'v.' in w[k]:
-                            collected_levels_CEFR_levels.append(k)
-                #
-                level_3000_plural[plural_form]=collected_levels_CEFR_levels
-        if Verbose_Flag:
-            print(f'{level_3000_plural=}')
-        
-
-        level_5000_plural=dict()
-        for w in american_5000_words:
-            plural_form=w.get('plural', False)
-            if plural_form:
-                collected_levels=[]
-                collected_levels_CEFR_levels=[]
-                for k in w.keys():
-                    if k and not (k == 'word' or k == 'plural'):
-                        # we only look for plural nouns
-                        if 'n.' in w[k]:
-                            collected_levels_CEFR_levels.append(k)
-
-                level_5000_plural[plural_form]=collected_levels_CEFR_levels
-
-        if Verbose_Flag:
-            print(f'{level_5000_plural=}')
-
-        singular_3000_levels=dict()
-        singular_5000_levels=dict()        
-
-        level_3000_singular_counts=dict()
-        level_5000_singular_counts=dict()
-        level_common_English_counts=dict()
-
+        # compute the lowest CEFR level for each word in words_EFLLex
+        level_words_EFLLex=compute_lowest_CEFR_level(words_EFLLex, 'EFLLex')
         efllex_words_count=0
         level_words_EFLLex_counts={}
 
+        # compute the lowest CEFR level for each word in words_SVALex
+        level_words_SVALex=compute_lowest_CEFR_level(words_SVALex, 'SVALex')
         svalex_words_count=0
         level_words_SVALex_counts={}
 
+
+        # compute the lowest CEFR level for each word in words_FLELex
+        level_words_FLELex=compute_lowest_CEFR_level(words_FLELex, 'FLELex')
         flelex_words_count=0
         level_words_FLELex_counts={}
 
+        level_common_English=collect_CEFR_levels_from_dict(common_English_words, 'common_English_words')
+        level_common_English_counts=dict()
+        common_English_words_count=0
 
-        level_3000_singular=dict()
-        for w in american_3000_words:
-            collected_levels=[]
-            collected_levels_CEFR_levels=[]
-            for k in w.keys():
-                if k and not (k == 'word' or k == 'plural'):
-                    collected_levels_CEFR_levels.append(k)
+        # note that the common_x_words (for x = swedish, french, and latin) do not have CEFR level information
+        # hecne we do not have to calculate the lowest CEFR level for each word
+        common_swedish_words_count=0
+        common_french_words_count=0
+        common_latin_words_count=0
 
-            if len(collected_levels_CEFR_levels) > 1:
-                if Verbose_Flag:
-                    print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
-                # need to choose the lowest level
-                collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
-
-            level_3000_singular[w['word']]=collected_levels_CEFR_levels
-
-        if Verbose_Flag:
-            print(f'{level_3000_singular=}')
-
-        level_5000_singular=dict()
-        for w in american_5000_words:
-            collected_levels=[]
-            collected_levels_CEFR_levels=[]
-            for k in w.keys():
-                if k and not (k == 'word' or k == 'plural'):
-                    collected_levels_CEFR_levels.append(k)
-
-            if len(collected_levels_CEFR_levels) > 1:
-                if Verbose_Flag:
-                    print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
-                # need to choose the lowest level
-                collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
-
-            level_5000_singular[w['word']]=collected_levels_CEFR_levels
-
-        if Verbose_Flag:
-            print(f'{level_5000_singular=}')
-
-        level_common_English=dict()
-        for w in common_English_words:
-            collected_levels=[]
-            collected_levels_CEFR_levels=[]
-            if Verbose_Flag:
-                print(f'{w=} {common_English_words[w]}')
-            for k in common_English_words[w].keys():
-                if k and not (k == 'word' or k == 'plural'):
-                    collected_levels_CEFR_levels.append(k)
-
-            if len(collected_levels_CEFR_levels) > 1:
-                if Verbose_Flag:
-                    print(f"For {w['word']}: {collected_levels_CEFR_levels=}")
-                # need to choose the lowest level
-                collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
-
-            level_common_English[w]=collected_levels_CEFR_levels
-
-        if Verbose_Flag:
-            print(f'{level_common_English=}')
-
-        # compute the lowest CEFR level for each word in words_EFLLex
-        level_words_EFLLex={}
-        for w in words_EFLLex:
-            # each entry is of the form {'word': word, 'pos': pos, 'cefr_level': key_max}
-            word=w['word']
-            new_level=w['cefr_level']
-            
-            current_level=level_words_EFLLex.get(word, False)
-            if current_level:
-                lowest=choose_lowest_cefr_level_from_two(current_level, new_level)
-            else:
-                lowest=new_level
-            level_words_EFLLex[word]=lowest
-
-        if Verbose_Flag:
-            print(f'{level_words_EFLLex=}')
-
-        # compute the lowest CEFR level for each word in words_SVALex
-        level_words_SVALex={}
-        for w in words_SVALex:
-            # each entry is of the form {'word': word, 'pos': pos, 'cefr_level': key_max}
-            word=w['word']
-            new_level=w['cefr_level']
-            
-            current_level=level_words_SVALex.get(word, False)
-            if current_level:
-                lowest=choose_lowest_cefr_level_from_two(current_level, new_level)
-            else:
-                lowest=new_level
-            level_words_SVALex[word]=lowest
-
-        if Verbose_Flag:
-            print(f'{level_words_SVALex=}')
-
-
-        # compute the lowest CEFR level for each word in words_FLELex
-        level_words_FLELex={}
-        for w in words_FLELex:
-            # each entry is of the form {'word': word, 'pos': pos, 'cefr_level': key_max}
-            word=w['word']
-            new_level=w['cefr_level']
-            
-            current_level=level_words_FLELex.get(word, False)
-            if current_level:
-                lowest=choose_lowest_cefr_level_from_two(current_level, new_level)
-            else:
-                lowest=new_level
-            level_words_FLELex[word]=lowest
-
-        if Verbose_Flag:
-            print(f'{level_words_FLELex=}')
-
-
-
+        #
+        # Process all of the unique words and see which CEFR level they fall into for each of the sources
+        #
         for word in unique_words:
-            if in_dictionary(word, american_3000_words) or (word in american_3000_words_plurals):
+            if in_dictionary(word, american_3000_words):
                 american_3000_words_count=american_3000_words_count+1
             if in_dictionary(word, american_3000_words):
                 american_3000_words_singular_count=american_3000_words_singular_count+1
-                cefr_levels=level_3000_singular.get(word, False)
+                cefr_levels=level_3000_singular.get(word.lower(), False)
                 if Verbose_Flag:
                     print(f'{word=} {cefr_levels=}')
                 if cefr_levels:
@@ -10729,7 +10713,7 @@ def main():
 
             if word in american_3000_words_plurals:
                 american_3000_words_plurals_count=american_3000_words_plurals_count+1
-                cefr_levels=level_3000_plural.get(word, False)
+                cefr_levels=level_3000_plural.get(word.lower(), False)
                 if cefr_levels:
                     if isinstance(cefr_levels, str):
                         if Verbose_Flag:
@@ -10742,11 +10726,11 @@ def main():
                     else:
                         print(f'warning in computing level_3000_pluralsingular_counts: {word=} {cefr_levels=}')
 
-            if in_dictionary(word, american_5000_words) or (word in american_5000_words_plurals):
+            if in_dictionary(word, american_5000_words):
                 american_5000_words_count=american_5000_words_count+1
             if in_dictionary(word, american_5000_words):
                 american_5000_words_singular_count=american_5000_words_singular_count+1
-                cefr_levels=level_5000_singular.get(word, False)
+                cefr_levels=level_5000_singular.get(word.lower(), False)
                 if Verbose_Flag:
                     print(f'{word=} {cefr_levels=}')
                 if cefr_levels:
@@ -10765,7 +10749,7 @@ def main():
 
             if word in american_5000_words_plurals:
                 american_5000_words_plurals_count=american_5000_words_plurals_count+1
-                cefr_levels=level_5000_plural.get(word, False)
+                cefr_levels=level_5000_plural.get(word.lower(), False)
                 if cefr_levels:
                     if isinstance(cefr_levels, str):
                         if Verbose_Flag:
@@ -10777,6 +10761,16 @@ def main():
                         level_5000_plural_counts.update({cefr_levels[0]: level_5000_singular_counts.get(cefr_levels[0], 0) +1})
                     else:
                         print(f'warning in computing level_5000_plural_counts: {word=} {cefr_levels=}')
+
+
+            if word.lower() in level_words_EFLLex:
+                efllex_words_count, level_words_EFLLex_counts = increment_usage_count_and_CEFR_level_counts(efllex_words_count, level_words_EFLLex_counts, word, level_words_EFLLex,  'EFLLex')
+
+            if word.lower() in level_words_SVALex:
+                svalex_words_count, level_words_SVALex_counts = increment_usage_count_and_CEFR_level_counts(svalex_words_count, level_words_SVALex_counts, word, level_words_SVALex,  'SVALex')
+
+            if word.lower() in level_words_FLELex:
+                flelex_words_count, level_words_FLELex_counts = increment_usage_count_and_CEFR_level_counts(flelex_words_count, level_words_FLELex_counts, word, level_words_FLELex,  'FLELex')
 
 
             if word in common_English_words or word.lower() in common_English_words:
@@ -10800,45 +10794,25 @@ def main():
                         print(f'warning in computing level_common_English_counts: {word=} {cefr_levels=}')
 
 
-            if word in common_swedish_words:
+            if word in common_swedish_words or word.lower() in common_swedish_words:
                 common_swedish_words_count=common_swedish_words_count+1
 
-            if word in common_french_words:
+            if word in common_french_words or word.lower() in common_french_words:
                 common_french_words_count=common_french_words_count+1
 
-
-            if word in level_words_EFLLex:
-                efllex_words_count=efllex_words_count+1
-                cefr_level=level_words_EFLLex.get(word.lower(), False)
-
-                if cefr_level:
-                    if isinstance(cefr_level, str):
-                        level_words_EFLLex_counts.update({cefr_level: level_words_EFLLex_counts.get(cefr_level, 0) +1})
-                    else:
-                        print(f'warning in computing level_words_EFLLex_counts: {word=} {cefr_level=}')
-
-            if word in level_words_SVALex:
-                svalex_words_count=svalex_words_count+1
-                cefr_level=level_words_SVALex.get(word.lower(), False)
-
-                if cefr_level:
-                    if isinstance(cefr_level, str):
-                        level_words_SVALex_counts.update({cefr_level: level_words_SVALex_counts.get(cefr_level, 0) +1})
-                    else:
-                        print(f'warning in computing level_words_SVALex_counts: {word=} {cefr_level=}')
-
-            if word in level_words_FLELex:
-                flelex_words_count=flelex_words_count+1
-                cefr_level=level_words_FLELex.get(word.lower(), False)
-
-                if cefr_level:
-                    if isinstance(cefr_level, str):
-                        level_words_FLELex_counts.update({cefr_level: level_words_FLELex_counts.get(cefr_level, 0) +1})
-                    else:
-                        print(f'warning in computing level_words_FLELex_counts: {word=} {cefr_level=}')
+            if word in common_latin_words or word.lower() in common_latin_words:
+                common_latin_words_count=common_latin_words_count+1
 
 
-        # output counts
+        #
+        # Output counts
+        #
+
+        # Create a data frame to put the satsiical data in
+        col_names =  ['Input', 'Source', 'total', 'percentage', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+        stats_df  = pd.DataFrame(columns = col_names)
+
+
         print('\nSome statistics about the CEFR levels of the words as determined by the five main data sources')
         print('The totals are the total numbers of the input words that appear in this source.')
         print('The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.')
@@ -10850,10 +10824,28 @@ def main():
         #print(f'\t{level_3000_singular_counts=}')
         usage_sorted=dict(sorted(level_3000_singular_counts.items(), key=lambda x:x[0]))
         print(f'\tsingular: {usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='American 3000 singular'
+        usage_sorted['total']=american_3000_words_singular_count
+        usage_sorted['percentage']=(american_3000_words_singular_count/len(level_3000_singular))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
 
         #print(f'\t{level_3000_plural_counts=}')
         usage_sorted=dict(sorted(level_3000_plural_counts.items(), key=lambda x:x[0]))
         print(f'\t  plural: {usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='American 3000 plural'
+        usage_sorted['total']=american_3000_words_plurals_count
+        usage_sorted['percentage']=(american_3000_words_plurals_count/len(level_3000_plural))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='American 3000'
+        usage_sorted['total']=american_3000_words_singular_count + american_3000_words_plurals_count
+        usage_sorted['percentage']=((american_3000_words_singular_count + american_3000_words_plurals_count)/(len(level_3000_singular)+len(level_3000_plural)))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
 
         print(f'American 5000: total: {american_5000_words_count} ({(american_5000_words_count/len(american_5000_words))*100:.2f}%), singular: {american_5000_words_singular_count}, plural: {american_5000_words_plurals_count}')
         #print(f'\t{level_5000_singular_counts=}')
@@ -10862,30 +10854,98 @@ def main():
         print(f'\tsingular: {usage_sorted}')
         usage_sorted=dict(sorted(level_5000_plural_counts.items(), key=lambda x:x[0]))
         print(f'\t  plural: {usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='American 5000 singular'
+        usage_sorted['total']=american_5000_words_singular_count
+        usage_sorted['percentage']=(american_5000_words_singular_count/len(level_5000_singular))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        #print(f'\t{level_5000_plural_counts=}')
+        usage_sorted=dict(sorted(level_5000_plural_counts.items(), key=lambda x:x[0]))
+        print(f'\t  plural: {usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='American 5000 plural'
+        usage_sorted['total']=american_5000_words_plurals_count
+        usage_sorted['percentage']=(american_5000_words_plurals_count/len(level_5000_plural))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='American 5000'
+        usage_sorted['total']=american_5000_words_singular_count + american_5000_words_plurals_count
+        usage_sorted['percentage']=((american_5000_words_singular_count + american_5000_words_plurals_count)/(len(level_5000_singular)+len(level_5000_plural)))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+
+
 
         print(f'EFLLex_NLP4J (English): total: {efllex_words_count} ({(efllex_words_count/len(level_words_EFLLex))*100:.2f}%)')
         usage_sorted=dict(sorted(level_words_EFLLex_counts.items(), key=lambda x:x[0]))
         print(f'\t{usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='EFLLex_NLP4J (English)'
+        usage_sorted['total']=efllex_words_count
+        usage_sorted['percentage']=(efllex_words_count/len(level_words_EFLLex))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
 
         print(f'SVALex_Korp (Swedish): total: {svalex_words_count} ({(svalex_words_count/len(level_words_SVALex))*100:.2f}%)')
         usage_sorted=dict(sorted(level_words_SVALex_counts.items(), key=lambda x:x[0]))
         print(f'\t{usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='SVALex_Korp (Swedish)'
+        usage_sorted['total']=svalex_words_count
+        usage_sorted['percentage']=(svalex_words_count/len(level_words_SVALex))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
 
         print(f'FLELex_CRF Tagger (French): total: {flelex_words_count} ({(flelex_words_count/len(level_words_FLELex))*100:.2f}%)')
         usage_sorted=dict(sorted(level_words_FLELex_counts.items(), key=lambda x:x[0]))
         print(f'\t{usage_sorted}')
-
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='FLELex_CRF Tagger (French)'
+        usage_sorted['total']=flelex_words_count
+        usage_sorted['percentage']=(flelex_words_count/len(level_words_FLELex))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
 
 
         print(f'common English words: total: {common_English_words_count} ({(common_English_words_count/len(common_English_words))*100:.2f}%)')
         #print(f'{level_common_English_counts=}')
         usage_sorted=dict(sorted(level_common_English_counts.items(), key=lambda x:x[0]))
         print(f'\t{usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='common English words'
+        usage_sorted['total']=common_English_words_count
+        usage_sorted['percentage']=(common_English_words_count/len(common_English_words))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
 
         
-        print(f'common Swedish words: total: {common_swedish_words_count=}  ({(common_swedish_words_count/len(common_swedish_words))*100:.2f}%)')
+        print(f'common Swedish words: total: {common_swedish_words_count}  ({(common_swedish_words_count/len(common_swedish_words))*100:.2f}%)')
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='common Swedish words'
+        usage_sorted['total']=common_swedish_words_count
+        usage_sorted['percentage']=(common_swedish_words_count/len(common_swedish_words))*100
+        stats_df.loc[len(stats_df)] = usage_sorted
 
-        print(f'common French words: total: {common_french_words_count=}  ({(common_french_words_count/len(common_french_words))*100:.2f}%)')
+
+        print(f'common French words: total: {common_french_words_count}  ({(common_french_words_count/len(common_french_words))*100:.2f}%)')
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='common French words'
+        usage_sorted['total']=common_french_words_count
+        usage_sorted['percentage']=(common_french_words_count/len(common_french_words))*100
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        print(f'common Latin words: total: {common_latin_words_count}  ({(common_latin_words_count/len(common_latin_words))*100:.2f}%)')
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='common Latin words'
+        usage_sorted['total']=common_latin_words_count
+        usage_sorted['percentage']=(common_latin_words_count/len(common_latin_words))*100
+        stats_df.loc[len(stats_df)] = usage_sorted
+
 
         # The following code compares the common_English_words with those in EFLLex. This was useful to find some of the
         # CEFR levels that were unknown. However, there were also 406 cases where the two had different CEFR levels.
@@ -10908,5 +10968,31 @@ def main():
         if Verbose_Flag:
             print(f'{american_5000_words=}')
             print(f'{american_5000_words_plurals=}')
+
+        # set up the output write
+        new_file_name='unique_words-for-course-likely-stats-'+str(course_id)+'.xlsx'
+        writer = pd.ExcelWriter(new_file_name, engine='xlsxwriter')
+        stats_df.to_excel(writer, sheet_name='Stats')
+        workbook = writer.book
+        two_decimals_fmt_dict={'num_format': '0.00'}
+        two_decimals_fmt = workbook.add_format(two_decimals_fmt_dict)
+
+        bottom_thick_border_fmt_dict = {'bottom': 5, 'bold': True}
+        bottom_thick_border_fmt = workbook.add_format(bottom_thick_border_fmt_dict)
+
+        two_decimals_bottom_thick_border_fmt_dict = {'bottom': 5, 'bold': True, 'num_format': '0.00'}
+        two_decimals_bottom_thick_border_fmt = workbook.add_format(two_decimals_bottom_thick_border_fmt_dict)
+
+        worksheet = writer.sheets['Stats']
+        worksheet.set_row(3, 20, bottom_thick_border_fmt)
+        worksheet.set_row(6, 20, bottom_thick_border_fmt)
+        worksheet.set_column('E:E', 20, two_decimals_fmt)
+        worksheet.conditional_format('E4:E4', {'type': 'no_errors', 'format': two_decimals_bottom_thick_border_fmt})
+        worksheet.conditional_format('E7:E7', {'type': 'no_errors', 'format': two_decimals_bottom_thick_border_fmt})
+        worksheet.autofit()
+        # Close the Pandas Excel writer and output the Excel file.
+        writer.close()
+
+
 
 if __name__ == "__main__": main()
