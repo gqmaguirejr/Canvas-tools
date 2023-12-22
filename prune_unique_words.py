@@ -660,6 +660,7 @@ common_English_words={
     'acts': {'B1': 'verb 3rd person present'},
     'actuality': {'xx': 'noun'},
     'actuators': {'xx': 'noun'},
+    'acute': {'xx': 'adjective, noun'},
     'acyclic': {'xx': 'adjective'},
     'ad-hoc': {'xx': 'adjective - should be the Latin ad hoc'},
     'adaptability': {'xx': 'noun'},
@@ -1266,6 +1267,8 @@ common_English_words={
     'bottoms-up': {'A1': 'idiom'},
     'bought': {'A1': 'verb past tense, past participle'},
     'bouncing': {'B2': 'adjective'},
+    'boundaries': {'C1': 'noun'},
+    'boundary': {'C1': 'noun'},
     'bounded': {'xx': 'verb past tense, past participle'},
     'bounding': {'xx': 'adjective'},
     'boxplot': {'xx': 'noun'},
@@ -1297,6 +1300,7 @@ common_English_words={
     'brightness': {'C1': 'noun'},
     'bringing': {'A2': 'verb past tense, past participle'},
     'brings': {'A2': 'verb 3rd person present'},
+    'broadband': {'B2': 'noun'},
     'broadcasting': {'B2': 'noun, verb gerund or present participle'},
     'broaden': {'C1': 'verb'}, #  EFLEX uses the level B2
     'broader': {'B1': 'adjective'},
@@ -1319,6 +1323,8 @@ common_English_words={
     'bug-free': {'B1': 'adjacency?'},
     'buggies': {'xx': 'noun'},
     'buggy': {'B2': 'noun'},
+    'building': {'A2': 'nounverb gerund or present participle'},
+    'buildings': {'A2': 'noun'},
     'builds': {'A2': 'verb 3rd person present'},
     'built': {'A2': 'verb, adjective'},
     'built-in': {'A2': 'adjective'},
@@ -1439,8 +1445,10 @@ common_English_words={
     'catcher': {'xx': 'noun'},
     'catches': {'A1': 'verb 3rd person present, noun'},
     'categorical': {'xx': 'adjective'},
+    'categories': {'B2': 'noun'},
     'categorize': {'C1': 'verb'},
     'categorized': {'xx': 'verb past tense, past participle'},
+    'category': {'B2': 'noun'},
     'cathedral': {'A1': 'noun'}, #  EFLEX uses the level A2
     'caught': {'A1': 'verb past tense, past participle'}, #  EFLEX uses the level C1
     'causal': {'xx': 'adjective'},
@@ -1476,8 +1484,10 @@ common_English_words={
     'certify': {'B2': 'verb'},
     'cetera': {'xx': 'noun'},
     'chaining': {'xx': 'verb gerund or present participle'},
+    'challenge': {'B1': 'noun, verb'},
     'challenge/response': {'xx': 'phrase'},
     'challenged': {'B2': 'adjective'},
+    'challenges': {'B1': 'noun, verb 3rd person present'},
     'changed': {'A1': 'verb past tense, past participle'},
     'changing': {'A1': 'verb gerund or present participle'}, #  EFLEX uses the level C1
     'chaotic': {'C1': 'adjective'},
@@ -1601,7 +1611,9 @@ common_English_words={
     'cloud-based': {'B1': 'adjective'},
     'clouds': {'A2': 'noun'},
     'clumps': {'xx': 'noun, verb 3rd person present'},
+    'cluster': {'xx': 'noun, verb'},
     'clustering': {'xx': 'verb gerund or present participle'},
+    'clusters': {'xx': 'noun, verb 3rd person present'},
     'co-author': {'B1': 'noun, verb'},
     'co-authoring': {'xx': 'verb gerund or present participle'},
     'co-authors': {'B1': 'noun'},
@@ -1612,6 +1624,7 @@ common_English_words={
     'co-located': {'xx': 'verb past tense, past participle'},
     'co-location': {'B1': 'noun'},
     'co-occurrence': {'C1': 'noun'},
+    'co-ordination': {'xx': 'noun'},
     'co-processor': {'xx': 'noun'},
     'co-workers': {'A2': 'noun'},
     'coalesce': {'xx': 'verb'},
@@ -1643,6 +1656,8 @@ common_English_words={
     'cohesion': {'B2': 'noun'},
     'cohort': {'xx': 'noun'},
     'coined': {'C2': 'verb past tense, past participle'},
+    'collaboration': {'C1': 'noun'},
+    'collaborations': {'C1': 'noun'},
     'collaborative': {'xx': 'adjective'},
     'collaboratively': {'xx': 'adverb'},
     'collaborator': {'xx': 'noun'},
@@ -1668,10 +1683,12 @@ common_English_words={
     'colorscale': {'xx': 'noun'},
     'colour': {'A1': 'noun, verb'},
     'columnar': {'xx': 'adjacency'},
+    'comb': {'A2': 'noun, verb'},
     'combined': {'B2': 'verb past tense, past participle'},
     'combines': {'B2': 'noun, verb 3rd person present'},
     'combing': {'B1': 'verb gerund or present participle'},
     'combining': {'B2': 'verb gerund or present participle'},
+    'combs': {'A2': 'noun,. verb 3rd person present'},
     'comes': {'A1': 'verb 3rd person present'},
     'comfort-noise': {'B2': 'noun'},
     'comfortably': {'B2': 'adverb'}, #  EFLEX uses the level C1
@@ -1922,6 +1939,7 @@ common_English_words={
     'coordinated': {'xx': 'verb past tense, past participle'},
     'coordinates': {'xx': 'verb 3rd person present, noun'},
     'coordinating': {'xx': 'adjective, verb gerund or present participle'},
+    'coordination': {'xx': 'noun'},
     'copied': {'A2': 'verb past tense, past participle'},
     'copy-and-paste': {'xx': 'verb'},
     'copy-paste': {'xx': 'noun, verb'},
@@ -2156,6 +2174,8 @@ common_English_words={
     'defined': {'B2': 'adjective'},
     'defines': {'B2': 'verb'},
     'defining': {'B2': 'verb gerund or present participle'},
+    'definition': {'B2': 'noun, adjective'},
+    'definitions': {'B2': 'noun'},
     'definitive': {'C2': 'adjective. noun'}, #  EFLEX uses the level C1
     'deflated': {'xx': 'noun'},
     'degenerate': {'C1': 'adjective, noun, verb'},
@@ -2295,6 +2315,8 @@ common_English_words={
     'didn': {'xx': 'contraction'},
     'died': {'A1': 'verb past tense, past participle'}, #  EFLEX uses the level B2
     'dielectric': {'xx': 'adjective, noun'},
+    'difference': {'A2': 'noun, verb'},
+    'differences': {'A2': 'noun, verb 3rd person present'},
     'different-sized': {'xx': 'adjective'},
     'differential': {'xx': 'adjective, noun'},
     'differentiated': {'C1': 'verb past tense, past participle'},
@@ -2540,6 +2562,8 @@ common_English_words={
     'ed': {'B1': 'abbreviation for editor'},
     'edited': {'B2': 'adjective'},
     'editing': {'B2': 'verb gerund or present participle'}, #  EFLEX uses the level C1
+    'editor': {'B2': 'noun'},
+    'editors': {'B2': 'noun'},
     'edits': {'B2': 'verb 3rd person present'},
     'eds': {'xx': 'abbreviation for editors'},
     'effectuation': {'xx': 'noun'},
@@ -2564,6 +2588,8 @@ common_English_words={
     'electrostatic': {'xx': 'adjective'},
     'elefants': {'xx': 'noun'},
     'elektrosmog': {'xx': 'noun'},
+    'element': {'B2': 'noun'},
+    'elements': {'B2': 'noun'},
     'elevated': {'xx': 'verb past tense, past participle'},
     'eliminated': {'C1': 'verb past tense, past participle'},
     'eliminates': {'C1': 'xverb 3rd person present'},
@@ -2630,6 +2656,7 @@ common_English_words={
     'encryption': {'xx': 'noun'},
     'encrypts': {'xx': 'verb 3rd person present'},
     'encyclopedia': {'B1': 'noun'},
+    'end': {'A1': 'noun, verb'},
     'end-nodes': {'xx': 'noun'},
     'end-of-file': {'A2': 'noun'},
     'end-point': {'xx': 'noun'},
@@ -2647,6 +2674,7 @@ common_English_words={
     'endowment': {'xx': 'noun'},
     'endpoint': {'xx': 'noun'},
     'endpoints': {'xx': 'noun'},
+    'ends': {'A1': 'noun, verb 3rd person present'},
     'endured': {'B2': 'verb past tense, past participle'},
     'energy-awareness': {'C1': 'noun?'},
     'energy-efficiency': {'B2': 'noun'},
@@ -2736,12 +2764,15 @@ common_English_words={
     'establishes': {'B2': 'verb 3rd person present'},
     'establishing': {'B2': 'verb gerund or present participle'},
     'esteem': {'xx': 'noun, verb'},
+    'estimate': {'B2': 'verb,noun'},
     'estimated': {'B2': 'verb past tense, past participle'},
+    'estimates': {'B2': 'noun, verb 3rd person present'},
     'estimating': {'B2': 'verb gerund or present participle'},
     'estimation': {'xx': 'noun'},
     'et': {'xx': 'latin word'},
     'eta': {'xx': 'noun'},
     'etcetera': {'xx': 'noun'},
+    'ether': {'xx': 'noun'},
     'ethereal': {'xx': 'noun'},
     'ethernet': {'xx': 'noun'},
     'ethernets': {'xx': 'noun'},
@@ -2779,8 +2810,10 @@ common_English_words={
     'excellently': {'xx': 'adverb'},
     'excerpted': {'xx': 'verb past tense, past participle'},
     'excessively': {'xx': 'adverb'},
+    'exchange': {'B1': 'noun, verb'},
     'exchanged': {'B1': 'verb past tense, past participle'},
     'exchanger': {'xx': 'noun'},
+    'exchanges': {'B1': 'noun, verb 3rd person present'},
     'exchanging': {'B1': 'verb gerund or present participle'},
     'excitation': {'xx': 'noun'},
     'excitation/long': {'xx': 'noun'},
@@ -3252,8 +3285,10 @@ common_English_words={
     'granularity': {'xx': 'noun'},
     'grapes': {'A2': 'noun'},
     'graph': {'B2': 'noun, verb'},
+    'graphic': {'xx': 'adjective, noun'},
     'graphical': {'xx': 'adjective'},
     'graphically': {'xx': 'adverb'},
+    'graphics': {'B1': 'noun'},
     'graphing': {'xx': 'verb gerund or present participle'},
     'graphs': {'B2': 'noun'},
     'grating': {'xx': 'adjective, noun'},
@@ -3306,12 +3341,15 @@ common_English_words={
     'handed': {'B1': 'combining form'},
     'handheld': {'C1': 'adjective, noun'},
     'handing': {'B1': 'verb gerund or present participle'},
+    'handle': {'B1': 'verb, noun'},
     'handled': {'xx': 'adjective'},
+    'handles': {'B1': 'noun, verb 3rd person present'},
     'handoffs': {'xx': 'noun'},
     'handout': {'B2': 'noun'},
     'handouts': {'B2': 'noun'},
     'handover': {'xx': 'noun'},
     'handovers': {'xx': 'noun'},
+    'hands-free': {'A2': 'adjective'},
     'hands-on': {'A1': 'adjective'},
     'handset': {'xx': 'noun'},
     'handsets': {'xx': 'noun'},
@@ -3365,6 +3403,7 @@ common_English_words={
     'heavenly': {'C1': 'adjective'},
     'heck': {'xx': 'exclamation'},
     'held': {'A2': 'verb past tense, past participle'},
+    'hellenic': {'xx': 'adjective'},
     'helped': {'A1': 'verb past tense, past participle'},
     'helping': {'A1': 'noun'},
     'helpline': {'xx': 'noun'},
@@ -3425,6 +3464,8 @@ common_English_words={
     'homonyms': {'xx': 'noun'},
     'honestly': {'B1': 'adverb'},
     'honeypot': {'xx': 'noun'},
+    'honor': {'xx': 'noun, verb'},
+    'honors': {'xx': 'noun, verb 3rd person present'},
     'honour': {'B2': 'noun, verb'},
     'hood': {'B2': 'noun, verb'}, #  EFLEX uses the level B1
     'hook': {'B2': 'noun, verb'}, #  EFLEX uses the level A2
@@ -3564,7 +3605,6 @@ common_English_words={
     'implementing': {'B2': 'verb gerund or present participle'},
     'implements': {'B2': 'verb 3rd person present'},
     'implications': {'C1': 'noun'},
-    'implications': {'C1': 'noun'},
     'implicit': {'C2': 'adjective'}, #  EFLEX uses the level C
     'implicitly': {'xx': 'adverb'},
     'implied': {'C2': 'adjective, verb past tense, past participle'},
@@ -3601,6 +3641,7 @@ common_English_words={
     'in-silico': {'xx': 'phrase'},
     'in-store': {'B1': 'adjective'}, #  EFLEX uses the level C1
     'in-transit': {'xx': 'adjective'},
+    'in-vehicle': {'B1': 'adjective'},
     'in/dependence': {'C2': 'noun'},
     'inaccessible': {'C1': 'adjective'},
     'inaccuracies': {'C1': 'noun'},
@@ -3888,6 +3929,7 @@ common_English_words={
     'intra': {'xx': 'prefix'},
     'intra-class': {'A1': 'noun'},
     'intra-clusters': {'xx': 'noun'},
+    'intra-session': {'xx': 'adjective'},
     'intracluster': {'xx': 'adjunction'},
     'intracortical': {'xx': 'adjective'},
     'intradomain': {'xx': 'adjective'},
@@ -4051,6 +4093,8 @@ common_English_words={
     'labeled': {'xx': 'verb past tense, past participle'},
     'labeling': {'xx': 'verb gerund or present participle'},
     'labels/markings': {'xx': 'noun'},
+    'laboratories': {'B1': 'noun'},
+    'laboratory': {'B1': 'noun'},
     'labs': {'B1': 'contraction for laboratories'},
     'lacks': {'B1': 'noun'},
     'laden': {'B2': 'adjective'},
@@ -4087,6 +4131,8 @@ common_English_words={
     'laying': {'xx': 'verb gerund or present participle'},
     'layman': {'C1': 'noun'},
     'lays': {'C1': 'verb 3rd person present'},
+    'leach': {'xx': 'verb'},
+    'leaches': {'xx': 'verb 3rd person present'},
     'leads': {'B1': 'verb 3rd person present, noun'},
     'leakage': {'C1': 'noun'},
     'leaking': {'B2': 'adjective, verb gerund or present participle'}, #  EFLEX uses the level C1
@@ -4104,6 +4150,9 @@ common_English_words={
     'lecturing': {'C1': 'verb gerund or present participle'},
     'led': {'B1': 'verb past tense, past participle'},
     'ledger': {'xx': 'noun'},
+    'leech': {'xx': 'noun, verb'},
+    'leeches': {'xx': 'noun, verb 3rd person present'},
+    'leeches': {'xx': 'noun, verb 3rd person present'},
     'left-hand': {'A1': 'noun, adjective'},
     'left-handed': {'B1': 'adjective'},
     'left-most': {'A2': 'adjective'},
@@ -4187,9 +4236,11 @@ common_English_words={
     'lived': {'A1': 'verb past tense, past participle'},
     'livelihood': {'C1': 'noun'},
     'lo-fi': {'xx': 'abbreviation for low fidelity'},
+    'load': {'B1': 'noun, verb'},
     'load-balancing': {'B2': 'verb gerund or present participle'},
     'loaded': {'B2': 'adjective'},
     'loading': {'B2': 'noun, adjective'},
+    'loads': {'B1': 'noun, verb 3rd person present'},
     'localhost': {'xx': 'noun'},
     'locality-aware': {'xx': 'adjective'},
     'localization': {'xx': 'noun'},
@@ -4351,9 +4402,11 @@ common_English_words={
     'masqueraded': {'xx': 'noun'},
     'masquerading': {'xx': 'verb gerund or present participle'},
     'massively': {'B2': 'noun'},
+    'master': {'B2': 'noun, adjective, verb'},
     'master-worker': {'B2': 'noun'},
     'mastered': {'xx': 'verb past tense, past participle'},
     'mastering': {'xx': 'noun'},
+    'masters': {'B2': 'noun, verb 3rd person present'},
     'masturbation': {'xx': 'noun'},
     'matched': {'B1': 'adjective'},
     'mathematically': {'xx': 'adverb'},
@@ -4495,8 +4548,9 @@ common_English_words={
     'min/max': {'xx': 'noun'},
     'mindset': {'xx': 'noun'},
     'mined': {'xx': 'noun'},
+    'minimize': {'C1': 'verb'},
     'minimized': {'C1': 'verb past tense, past participle'},
-    'minimizes': {'C1': 'noun'},
+    'minimizes': {'C1': 'noun, verb 3rd person present'},
     'minimizing': {'C1': 'noun'},
     'miniscule': {'xx': 'adjective, noun'},
     'minority-serving': {'B2': 'adjective'},
@@ -4592,8 +4646,8 @@ common_English_words={
     'ms': {'A2': 'unit'},
     'ms/frame': {'xx': 'unit'},
     'msec': {'xx': 'unit'},
+    'msgs': {'xx': 'abbreviation for messages'},
     'mu-Law': {'xx': 'noun'},
-    'mu-law': {'xx': 'noun'},
     'multi': {'xx': 'noun'},
     'multi-Gbits/s': {'xx': 'unit'},
     'multi-agent': {'B2': 'noun'},
@@ -4716,7 +4770,9 @@ common_English_words={
     'nerd': {'C1': 'noun'},
     'nested': {'C2': 'adjective'},
     'nesting': {'C2': 'adjective'},
+    'net': {'A2': 'noun, verb, adjective'},
     'netmask': {'B2': 'noun'},
+    'nets': {'A2': 'noun'},
     'network-attached': {'xx': 'adjective'},
     'network-based': {'xx': 'adjective'},
     'network-connected': {'xx': 'adjective'},
@@ -4869,7 +4925,8 @@ common_English_words={
     'notification': {'xx': 'noun'},
     'notifications': {'xx': 'noun'},
     'notified': {'C1': 'noun'},
-    'notifies': {'C1': 'noun'},
+    'notifies': {'C1': 'noun, verb 3rd person present'},
+    'notify': {'C1': 'verb'},
     'noting': {'B1': 'noun'},
     'notional': {'xx': 'adjective'},
     'notoriously': {'xx': 'noun'},
@@ -4887,9 +4944,12 @@ common_English_words={
     'numerical': {'xx': 'noun'},
     'numerically': {'C1': 'adjective, noun'},
     'o-ring': {'xx': 'noun'},
+    'obackroom': {'xx': 'noun'},
     'obeying': {'B2': 'verb gerund or present participle'},
     'obfuscation': {'xx': 'noun'},
     'object-oriented': {'xx': 'noun'},
+    'objective': {'B2': 'adjective, noun'},
+    'objectives': {'B2': 'noun'},
     'objectivity': {'xx': 'noun'},
     'obligated': {'xx': 'noun'},
     'obligatory': {'C1': 'noun'},
@@ -5120,6 +5180,8 @@ common_English_words={
     'paced': {'C2': 'verb past tense, past participle'},
     'pacing': {'C2': 'noun'},
     'pack-reused': {'xx': 'noun'},
+    'package': {'B2': 'noun, verb'},
+    'packages': {'B2': 'noun, verb 3rd person present'},
     'packaging': {'B2': 'noun'},
     'packed': {'A2': 'adjective'},
     'packers': {'xx': 'noun'},
@@ -5187,6 +5249,8 @@ common_English_words={
     'parsing': {'xx': 'verb gerund or present participle'},
     'parskip': {'xx': 'noun'},
     'part-of-speech': {'B1': 'noun'},
+    'participant': {'C1': 'noun'},
+    'participants': {'C1': 'noun'},
     'participated': {'B2': 'noun'},
     'participating': {'B2': 'verb gerund or present participle'},
     'participatory': {'xx': 'noun'},
@@ -5197,8 +5261,10 @@ common_English_words={
     'partitioned': {'xx': 'noun'},
     'partitioning': {'xx': 'noun'},
     'partitions': {'xx': 'noun'},
+    'partner': {'A2': 'noun, verb'},
     'partnered': {'xx': 'verb past tense, past participle'},
     'partnering': {'xx': 'verb gerund or present participle'},
+    'partners': {'A2': 'noun, verb 3rd person present'},
     'passcode': {'xx': 'noun'},
     'passed': {'A2': 'verb past tense, past participle'},
     'passes': {'A2': 'verb 3rd person present'},
@@ -5422,6 +5488,7 @@ common_English_words={
     'positive/negative': {'B1': 'noun'},
     'positively': {'B2': 'adverb'}, #  EFLEX uses the level C1
     'positives': {'xx': 'noun'},
+    'post': {'A2': 'noun, prefix, verb'},
     'post-doc': {'xx': 'noun'},
     'post-processing': {'B2': 'noun'},
     'post-repair': {'xx': 'adjective'},
@@ -5434,6 +5501,7 @@ common_English_words={
     'postfix': {'xx': 'noun'},
     'posting': {'A2': 'noun'}, #  EFLEX uses the level B1
     'postprocessing': {'xx': 'verb gerund or present participle'},
+    'posts': {'A2': 'noun, verb 3rd person present'},
     'postscript': {'xx': 'noun'},
     'postsecondary': {'xx': 'adjective'},
     'postulates': {'xx': 'noun'},
@@ -5515,6 +5583,8 @@ common_English_words={
     'prefixed': {'xx': 'verb, adjective'},
     'prefixes': {'B2': 'noun'},
     'premade': {'xx': 'noun'},
+    'premise': {'xx': 'noun, verb'},
+    'premises': {'C1': 'noun, verb 3rd person present'},
     'prep': {'xx': 'verb, noun'},
     'prepaid': {'B2': 'adjective, noun, verb'},
     'prepares': {'A2': 'noun'},
@@ -5584,6 +5654,8 @@ common_English_words={
     'probing': {'xx': 'verb gerund or present participle'},
     'problem-solving': {'B1': 'noun'},
     'procedural': {'xx': 'noun'},
+    'procedure': {'B2': 'noun'},
+    'procedures': {'B2': 'noun'},
     'proceeded': {'C1': 'verb past tense, past participle'},
     'proceeding': {'C1': 'verb gerund or present participle'},
     'proceedings': {'xx': 'noun'},
@@ -5602,8 +5674,10 @@ common_English_words={
     'professionally': {'B2': 'noun'},
     'professionals': {'B2': 'noun'},
     'professorial': {'xx': 'noun'},
+    'profile': {'B2': 'noun, verb'},
     'profiler': {'xx': 'noun'},
     'profilers': {'xx': 'noun'},
+    'profiles': {'B2': 'noun, verb 3rd person present'},
     'profiling': {'xx': 'verb gerund or present participle'},
     'prog': {'xx': 'noun'},
     'program/algorithm': {'xx': 'noun'},
@@ -5648,6 +5722,8 @@ common_English_words={
     'propagates': {'xx': 'noun'},
     'propagating': {'xx': 'noun'},
     'propagation': {'xx': 'noun'},
+    'properties': {'B1': 'noun'},
+    'property': {'B1': 'noun'},
     'proponents': {'xx': 'noun, adjective'},
     'proportional': {'xx': 'noun'},
     'proposed': {'B2': 'verb past tense, past participle'},
@@ -6156,11 +6232,11 @@ common_English_words={
     'repugnant': {'xx': 'noun'},
     'reputable': {'C1': 'noun'},
     'request': {'B1': 'noun, verb'},
-    'requests': {'B1': 'noun, verb 3rd person present'},
     'requested': {'B1': 'verb past tense, past participle'},
     'requesting': {'B1': 'verb gerund or present participle'},
     'requestor': {'xx': 'noun'},
     'requestors': {'xx': 'noun'},
+    'requests': {'B1': 'noun, verb 3rd person present'},
     'required': {'B1': 'adjective'},
     'requires': {'B1': 'verb 3rd person present'},
     'requiring': {'B1': 'verb gerund or present participle'},
@@ -6394,6 +6470,8 @@ common_English_words={
     'scatterplot': {'xx': 'noun'},
     'scatterplots': {'xx': 'noun'},
     'scavaging': {'xx': 'noun'},
+    'scenario': {'C2': 'noun'},
+    'scenarios': {'C2': 'noun'},
     'schedular': {'xx': 'noun'},
     'scheduled': {'B2': 'adjective'},
     'scheduler': {'xx': 'noun'},
@@ -6518,11 +6596,13 @@ common_English_words={
     'sequencing': {'xx': 'verb gerund or present participle'},
     'sequential': {'xx': 'adjective'},
     'sequentially': {'xx': 'adverb'},
+    'serial': {'C1': 'adjective, noun'},
     'serialization': {'xx': 'noun'},
     'serialize': {'xx': 'noun'},
     'serialized': {'xx': 'verb past tense, past participle'},
     'serializes': {'xx': '8'},
     'serially': {'xx': 'adverb'},
+    'serials': {'C1': 'noun'},
     'seriation': {'xx': 'noun'},
     'serif': {'xx': 'noun'},
     'served': {'A2': 'verb past tense, past participle'},
@@ -6601,6 +6681,7 @@ common_English_words={
     'sighted': {'xx': 'adjective'},
     'sigma': {'xx': 'noun'},
     'sigmoid': {'xx': 'adjective, noun'},
+    'sign': {'A2': 'noun, verb'},
     'sign-in': {'A2': 'verb'},
     'signage': {'xx': 'noun'},
     'signal-processing': {'B2': 'phrase'},
@@ -6611,6 +6692,7 @@ common_English_words={
     'signifies': {'xx': 'noun'},
     'signing': {'B1': 'verb gerund or present participle'},
     'signpost': {'B1': 'noun'},
+    'signs': {'A2': 'noun, verb 3rd person present'},
     'silently': {'B2': 'noun'}, #  EFLEX uses the level C1
     'silicon': {'xx': 'noun'},
     'silos': {'xx': 'noun'},
@@ -6790,15 +6872,16 @@ common_English_words={
     'specializing': {'B2': 'verb gerund or present participle'},
     'specially': {'B1': 'noun'}, #  EFLEX uses the level B2
     'specialty': {'C1': 'noun'},
-    'specificity': {'xx': 'noun'},
     'specification': {'C1': 'noun'},
     'specifications': {'C1': 'noun'},
+    'specificity': {'xx': 'noun'},
     'specifics': {'xx': 'noun'},
     'specified': {'B2': 'verb gerund or present participle'},
     'specifies': {'B2': 'verb 3rd person present'},
     'specifying': {'B2': 'verb gerund or present participle'},
     'specs': {'xx': 'noun'},
     'spectral': {'xx': 'adjective'},
+    'spectrum': {'C1': 'noun'},
     'speech-to-text': {'B1': ''},
     'speed-up': {'B1': 'noun'},
     'speeds-up': {'B1': 'phrasal verb'},
@@ -6875,6 +6958,8 @@ common_English_words={
     'stateful': {'xx': 'adjective'},
     'stateless': {'xx': 'adjective'},
     'statelessness': {'xx': 'noun'},
+    'statement': {'B2': 'noun, verb'},
+    'statements': {'B2': 'nounverb 3rd person present'},
     'static': {'xx': 'adjective, noun'},
     'statically': {'xx': 'noun'},
     'stating': {'B2': 'noun'},
@@ -6909,12 +6994,15 @@ common_English_words={
     'stockholder': {'xx': 'noun'},
     'stockholm': {'xx': 'noun'},
     'stole': {'A2': 'noun verb past tense'},
+    'stone': {'B1': 'noun, verb'},
+    'stones': {'B1': 'noun, verb 3rd person present'},
     'stonewall': {'xx': 'noun'},
     'stonewalling': {'xx': 'noun'},
     'stood': {'A2': 'noun'},
     'stopped': {'A1': 'verb past tense, past participle'},
     'stopping': {'A1': 'verb gerund or present participle'},
     'stopwatch': {'xx': 'noun'},
+    'storage': {'B2': 'noun'},
     'store-and-forward': {'B1': 'adjective'},
     'stored': {'B2': 'verb past tense, past participle'},
     'storing': {'B2': 'noun'},
@@ -7046,6 +7134,8 @@ common_English_words={
     'suffixes': {'xx': 'noun'},
     'suggested': {'B1': 'verb past tense, past participle'},
     'suggesting': {'B1': 'noun'},
+    'suggestion': {'B1': 'noun'},
+    'suggestions': {'B1': 'noun'},
     'suggests': {'B1': 'verb 3rd person present'},
     'suitably': {'B2': 'adverb'},
     'suited': {'B2': 'adjective'},
@@ -7190,8 +7280,10 @@ common_English_words={
     'taxpaying': {'xx': 'noun'},
     'tbps': {'xx': 'noun'},
     'teaches': {'A1': 'verb 3rd person present'},
+    'team': {'A2': 'noun, verb'},
     'teammate': {'xx': 'noun'},
     'teammates': {'xx': 'noun'},
+    'teams': {'A2': 'noun, verb 3rd person present'},
     'teamwork': {'C1': 'noun'},
     'teardown': {'xx': 'noun'},
     'tearing': {'B1': 'verb gerund or present participle'},
@@ -7302,8 +7394,10 @@ common_English_words={
     'thirty-three': {'A2': 'noun'},
     'those': {'A1': 'pronoun'}, #  EFLEX uses the level C1
     'thou': {'xx': 'pronoun'}, #  EFLEX uses the level C1
+    'thought': {'A1': 'noun'},
     'thought-leader': {'B1': 'noun'},
     'thought-out': {'A2': 'noun'},
+    'thoughts': {'B1': 'noun'},
     'thousands': {'C1': 'number'},
     'thr': {'xx': ''},
     'threaded': {'C2': 'verb past tense, past participle'},
@@ -7404,10 +7498,14 @@ common_English_words={
     'torpedoes': {'xx': 'noun'},
     'towards': {'B1': 'preposition'}, #  EFLEX uses the level C1
     'township': {'xx': 'noun'},
+    'trace': {'B2': 'verb, noun'},
+    'traces': {'B2': 'noun, verb 3rd person present'},
     'tracing': {'C1': 'noun'},
+    'track': {'B1': 'noun, verb'},
     'tracked': {'C2': 'noun'},
     'trackers': {'xx': 'noun'},
     'tracking': {'C2': 'noun'},
+    'tracks': {'B1': 'noun, verb 3rd person present'},
     'trade-off': {'B1': 'noun'},
     'trade-offs': {'xx': 'noun'},
     'tradeoff': {'xx': 'noun'},
@@ -7423,6 +7521,7 @@ common_English_words={
     'tranformation': {'xx': 'noun'},
     'transaction': {'C1': 'noun'},
     'transactions': {'C1': 'noun'},
+    'transatlantic': {'xx': 'adjective'},
     'transcend': {'C1': 'noun'},
     'transcode': {'xx': 'verb'},
     'transcoded': {'xx': 'verb past tense, past participle'},
@@ -7443,7 +7542,9 @@ common_English_words={
     'transient': {'xx': 'noun'},
     'transistor': {'xx': 'noun'},
     'transistors': {'xx': 'noun'},
+    'transition': {'C2': 'noun, verb'},
     'transitioning': {'xx': 'noun'},
+    'transitions': {'C2': 'noun, verb 3rd person present'},
     'transitive': {'B2': 'noun'},
     'translated': {'B1': 'verb past tense, past participle'},
     'translates': {'B1': 'verb 3rd person present'},
@@ -7467,8 +7568,10 @@ common_English_words={
     'transported': {'B2': 'verb past tense, past participle'},
     'transports': {'B1': 'noun'},
     'transposed': {'xx': 'verb past tense, past participle'},
+    'trap': {'B2': 'noun, verb'},
     'trapezoid': {'xx': 'noun'},
     'trapped': {'B2': 'verb past tense, past participle'},
+    'traps': {'B2': 'noun, verb 3rd person present'},
     'traveling': {'xx': 'verb gerund or present participle'},
     'traversal': {'xx': 'noun'},
     'traverse': {'B2': 'verb, noun'},
@@ -7760,6 +7863,8 @@ common_English_words={
     'utf-8': {'xx': 'acronym'},    # UTF-8 (UCS Transformation Format 8) 
     'utilised': {'xx': 'verb past tense, past participle'},
     'utilitarian': {'xx': 'noun'},
+    'utilities': {'xx': 'noun'},
+    'utility': {'xx': 'noun, adjective'},
     'utilization': {'xx': 'noun'},
     'utilizations': {'xx': 'noun'},
     'utilized': {'xx': 'verb past tense, past participle'},
@@ -8017,6 +8122,7 @@ common_English_words={
     'worded': {'xx': 'noun'},
     'wording': {'xx': 'noun'},
     'wordy': {'xx': 'adjective'},
+    'work': {'A1': 'noun, verb'},
     'work-efficient': {'B1x': 'adjective?'},
     'work-group': {'A1': 'noun'},
     'work-zone': {'B1': 'noun'},
@@ -8029,6 +8135,7 @@ common_English_words={
     'workhorse': {'xx': 'noun'},
     'workload': {'B2': 'noun'},
     'workloads': {'xx': 'noun'},
+    'works': {'A1': 'nounverb 3rd person present'},
     'workspace': {'B2': 'noun'},
     'workspaces': {'xx': 'noun'},
     'workstation': {'xx': 'noun'},
@@ -8066,14 +8173,8 @@ common_English_words={
     'zoom': {'xx': 'noun'},
     'zoomed': {'xx': 'noun'},
 
-    # GQM
-    'utility': {'xx': 'noun, adjective'},
-    'utilities': {'xx': 'noun'},
-    'obackroom': {'xx': 'noun'},
-    'broadband': {'B2': 'noun'},
-    'comb': {'A2': 'noun, verb'},
-    'combs': {'A2': 'noun,. verb 3rd person present'},
 
+    # GQM
 }
 
 
@@ -8677,6 +8778,7 @@ common_programming_languages=[  # and libraries
 
 
 common_swedish_words=[
+    'Kungl',
     'övningar',
     'Arkivet',
     'CDIO-moment', 
@@ -9159,9 +9261,9 @@ miss_spelled_words=[
     'proctocols',  # should be 'protocols'
     'procy',       # should be 'proxy'
     'protability', # should be 'portability'
-    'protocls',    # should be 'protocols'
     'proﬁle',      # should be 'profile'
     'publically',  # should be 'publicly'
+    'protocls',    # should be 'protocols'
     'reall',       # check
     'reciever',    # should be 'receiver'
     'refences',    # should be 'references'
@@ -10424,6 +10526,10 @@ def main():
                       help="Processed the named PDF file rather than a Canvas course"
     )
 
+    parser.add_option("--dir", dest="dir_prefix",
+                      default='./',
+                      help="read configuration from FILE", metavar="FILE")
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -10431,6 +10537,14 @@ def main():
         print("ARGV      : {}".format(sys.argv[1:]))
         print("VERBOSE   : {}".format(options.verbose))
         print("REMAINING : {}".format(remainder))
+
+    # compute the directory prefix for files to be used for the program's I/O
+    # This does not apply to the CEFR spreadsheet files.
+    directory_prefix=options.dir_prefix
+    if not directory_prefix.endswith('/'):
+        directory_prefix=directory_prefix+'/'
+    if Verbose_Flag:
+        print(f'{directory_prefix=}')
 
     if (len(remainder) < 1):
         print("Insuffient arguments\n must provide course_id or file_name\n")
@@ -10479,7 +10593,7 @@ def main():
         print('\nPruning the input')
 
         # read in the frequecy data that was written as JSON
-        input_file_name='unique_words-for-course-frequency-'+str(course_id)+'.txt'        
+        input_file_name=f'{directory_prefix}unique_words-for-course-frequency-{course_id}.txt'        
         try:
             with open(input_file_name, 'r') as f:
                 unique_words=json.load(f)
@@ -10557,8 +10671,6 @@ def main():
         print(f'{len(new_filtered_unique_words_dict)} unique words after filtering acronyms and single letters')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
-        if "Mbps" in filtered_unique_words_dict:
-            print('found Mbps at 2a')
 
         # reset the new dict
         new_filtered_unique_words_dict=dict()
@@ -10577,23 +10689,14 @@ def main():
         print(f'{len(new_filtered_unique_words_dict)} unique words after filtering if there is a tite case and lower case version of the word  turn to lower case')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
-        if "Mbps" in filtered_unique_words_dict:
-            print('found Mbps at 2b')
-
         # reset the new dict
         new_filtered_unique_words_dict=dict()
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, top_100_English_words)
         print(f'{len(filtered_unique_words_dict)} words left, {reduction} top_100_English_words removed')
 
-        if "Mbps" in filtered_unique_words_dict:
-            print('found Mbps at 3')
-
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, thousand_most_common_words_in_English)
         print(f'{len(filtered_unique_words_dict)} words left, {reduction} thousand_most_common_words_in_English removed')
-
-        if "Mbps" in filtered_unique_words_dict:
-            print('found Mbps at 4')
 
         # filter with tbe american 3000 and 5000 lists
         # reset the new dict
@@ -10706,7 +10809,7 @@ def main():
 
         frequency_sorted=dict(sorted(filtered_unique_words_dict.items(), key=lambda x:x[1]))
       
-        new_file_name='unique_words-for-course-frequency-updated-'+str(course_id)+'.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-frequency-updated-{course_id}.txt'        
         with open(new_file_name, 'w') as f:
             f.write(json.dumps(frequency_sorted))
 
@@ -10733,12 +10836,12 @@ def main():
                 skipped_words.add(word)
 
         # output likely acronyms
-        new_file_name='unique_words-for-course-likely-acronyms-'+str(course_id)+'.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-likely-acronyms-{course_id}.txt'        
         with open(new_file_name, 'w') as f:
             for word in sorted(likely_acronyms):
                 f.write(f"{word}\n")
 
-        new_file_name='unique_words-for-course-skipped-in-update-'+str(course_id)+'.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-skipped-in-update-{course_id}.txt'        
         with open(new_file_name, 'w') as f:
             for word in skipped_words:
                 f.write(f"{word}\n")
@@ -11111,7 +11214,7 @@ def main():
             print(f'{american_5000_words_plurals=}')
 
         # set up the output write
-        new_file_name='unique_words-for-course-likely-stats-'+str(course_id)+'.xlsx'
+        new_file_name=f'{directory_prefix}unique_words-for-course-likely-stats-{course_id}.xlsx'
         writer = pd.ExcelWriter(new_file_name, engine='xlsxwriter')
         stats_df.to_excel(writer, sheet_name='Stats')
         workbook = writer.book

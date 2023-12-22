@@ -20,6 +20,10 @@
 #
 # ./compute_unique_words_for_pages_in_course.py  --config config-test.json 11544
 #
+# The option --dir can be used to specify a directory to be used to get the input tiles and to put the output files in.
+# There is also a -P options to process a PDF file.
+# ./compute_unique_words_for_pages_in_course.py --dir ./Internetworking_course/ -P Lecture1-notes-2019.pdf
+#
 # Notes
 # The program is taking the text version of the Canvas wikipages and not the HTML version. It should probably be changed to use the HTML version so as to
 # (1) take advntage of language tagging and other tagging
@@ -488,7 +492,7 @@ def is_ISBN(s):
     if len(s) > 2 and s.endswith("."):
         s=s[:-1]
     #
-    if s.startswith("978-") and (s.count('-') == 4 or s.count('-') == 3):
+    if (s.startswith("978-") or s.startswith("979-")) and (s.count('-') == 4 or s.count('-') == 3):
         s=s.replace("-", "")
         if s.isnumeric():
             return True
@@ -496,7 +500,7 @@ def is_ISBN(s):
             return True
 
     # ISBN-13 without additional dashes
-    elif (s.startswith("978-") and s[4:].count('-') == 0) and s[4:].isdigit:
+    elif (s.startswith("978-") or s.startswith("979-")) and s[4:].count('-') == 0 and s[4:].isdigit:
             return True
     elif s.count('-') == 3:
         s=s.replace("-", "")
@@ -1210,9 +1214,14 @@ def main():
     parser.add_option('-P', '--PDF',
                       dest="processPDF_file",
                       default=False,
-                      action="store_true",
-                      help="Processed the named PDF file rather than a Canvas course"
+                      help="Processed the named PDF file rather than a Canvas course",
+                      metavar="FILE"
     )
+
+    parser.add_option("--dir", dest="dir_prefix",
+                      default='./',
+                      help="read configuration from FILE", metavar="FILE")
+
 
     options, remainder = parser.parse_args()
 
@@ -1225,7 +1234,15 @@ def main():
 
     initialize(options)
 
-    if (len(remainder) < 1):
+
+    # compute the directory prefix for files to be used for the program's I/O
+    directory_prefix=options.dir_prefix
+    if not directory_prefix.endswith('/'):
+        directory_prefix=directory_prefix+'/'
+    if Verbose_Flag:
+        print(f'{directory_prefix=}')
+
+    if (len(remainder) < 1 and not options.processPDF_file):
         print("Insuffient arguments\n must provide course_id or file_name\n")
     else:
         total_words_processed=0
@@ -1237,7 +1254,7 @@ def main():
         total_raw_text=''
         
         if options.processPDF_file:
-            input_PDF_file=remainder[0]
+            input_PDF_file=options.processPDF_file
         else:
             course_id=remainder[0]
             if not str(course_id).isdigit():
@@ -1261,7 +1278,7 @@ def main():
         print(f'a total of {total_words_processed} words processed')
         print(f'{len(unique_words)} unique words')
         if len(unique_words) > 0:
-            new_file_name='unique_words-for-course-'+str(course_id)+'.txt'
+            new_file_name=f'{directory_prefix}unique_words-for-course-{course_id}.txt'
 
             # if not filtering, simply output the unique words and exit
             if options.keepAll:
@@ -1451,17 +1468,17 @@ def main():
 
         frequency_sorted=dict(sorted(frequency.items(), key=lambda x:x[1]))
 
-        new_file_name='unique_words-for-course-frequency-'+str(course_id)+'.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-frequency-{course_id}.txt'        
         with open(new_file_name, 'w') as f:
             f.write(json.dumps(frequency_sorted))
 
-        new_file_name='unique_words-for-course-skipped-'+str(course_id)+'.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-skipped-{course_id}.txt'        
         with open(new_file_name, 'w') as f:
             for word in skipped_words:
                 f.write(f"{word}\n")
 
         # save all the raw text
-        new_file_name='unique_words-for-course-raw_text-'+str(course_id)+'.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-raw_text-{course_id}.txt'        
         with open(new_file_name, 'w') as f:
             f.write(total_raw_text)
 
