@@ -42,6 +42,17 @@ from lxml import html
 import pandas as pd
 
 import nltk
+
+import faulthandler
+
+from pdfminer.high_level import extract_pages
+from pdfminer.layout import LTTextContainer, LTChar, LTLine, LAParams, LTFigure, LTImage, LTTextLineHorizontal, LTTextBoxHorizontal, LTCurve
+from typing import Iterable, Any
+from pdfminer.layout import LAParams, LTTextBox, LTText, LTChar, LTAnno
+import pdfminer.psparser
+from pdfminer.pdfdocument import PDFNoValidXRef
+from pdfminer.psparser import PSEOF
+
 #############################
 ###### EDIT THIS STUFF ######
 #############################
@@ -83,7 +94,12 @@ prefixes_to_ignore=[
     './',
     ':',
     '=',
+    '\u034f', # graphics joiner - non spacing mark
+    '\u03bb',
+    '\u200b', #Zero Width Space
+    '\ud835\udc36', # MATHEMATICAL ITALIC CAPITAL C'
     '^',
+    '_.',
     '|',
     '¡',
     '§',
@@ -93,14 +109,19 @@ prefixes_to_ignore=[
     '×',
     'Þ',
     'α',
+    'μ',
+    'χ',
     '‒',
     '–',
+    '—',
     '―',
     '†',
     '‡',
     '•',
+    '…',
     '←',
     '↑',
+    '→',
     '↔',
     '⇐',
     '⇒',
@@ -115,20 +136,11 @@ prefixes_to_ignore=[
     '❌',
     '〃',
     '',
+    '',
     '',
     '',
     '（',
     '👋',
-    '\u034f', # graphics joiner - non spacing mark
-    '\u03bb',
-    'μ',
-    'χ',
-    '\u200b', #Zero Width Space
-    '—',
-    '…',
-    '→',
-    '\ud835\udc36', # MATHEMATICAL ITALIC CAPITAL C'
-    '_.',
 ]
 
 suffixes_to_ignore=[
@@ -169,8 +181,10 @@ miss_spelled_words=[
 
 def check_spelling_errors(s, url):
     if s in miss_spelled_words:
-        print(f'miss spelling {s} at {url=}')
-
+        if url:
+            print(f'miss spelling {s} at {url=}')
+        else:
+            print(f'miss spelling {s}')
 
 # remove first prefix
 def prune_prefix(s):
@@ -260,6 +274,9 @@ def unique_words_for_pages_in_course(course_id, pages_to_skip):
         # if raw_text.find("Boyle") >= 0:
         #     print(f'Boyle on page {url}')
 
+        if not raw_text or len(raw_text) < 1:
+            print('nothing to processes')
+            return
         words = nltk.word_tokenize(raw_text)
         all_text.extend(words)
         for word in words:
@@ -865,6 +882,306 @@ def is_multiple_caps(s):
 def ismixed(s):
     return any(c.islower() for c in s) and any(c.isupper() for c in s)
 
+# added functions to get text from PDF files
+def show_ltitem_hierarchy(o: Any, depth=0):
+    """Show location and text of LTItem and all its descendants"""
+    if depth == 0:
+        print('element                        x1  y1  x2  y2   text')
+        print('------------------------------ --- --- --- ---- -----')
+
+    print(
+        f'{get_indented_name(o, depth):<30.30s} '
+        f'{get_optional_bbox(o)} '
+        f'{get_optional_text(o)}'
+    )
+
+    if isinstance(o, Iterable):
+        for i in o:
+            show_ltitem_hierarchy(i, depth=depth + 1)
+
+
+def get_indented_name(o: Any, depth: int) -> str:
+    """Indented name of LTItem"""
+    return '  ' * depth + o.__class__.__name__
+
+
+def get_optional_bbox(o: Any) -> str:
+    """Bounding box of LTItem if available, otherwise empty string"""
+    if hasattr(o, 'bbox'):
+        return ''.join(f'{i:<4.0f}' for i in o.bbox)
+    return ''
+
+
+def get_optional_text(o: Any) -> str:
+    """Text of LTItem if available, otherwise empty string"""
+    if hasattr(o, 'get_text'):
+        return o.get_text().strip()
+    return ''
+
+def process_element(o: Any):
+    global extracted_data
+    global total_raw_text
+    
+    last_x_offset=None
+    last_x_width=None
+
+    last_y_offset=None            # y_offset of text characters
+    font_size=None                # when in doublt, the font_size is None
+
+    if isinstance(o, LTTextBoxHorizontal):
+        for text_line in o:
+            if hasattr(text_line, 'bbox'):
+                last_x_offset=text_line.bbox[0]
+                last_y_offset=text_line.bbox[1]
+                last_x_width=text_line.bbox[2]-text_line.bbox[0]
+            if Verbose_Flag:
+                print(f'text_line={text_line}')
+            if hasattr(text_line, 'size'):
+                font_size=text_line.size
+            else:
+                font_size=0
+            if isinstance(text_line, LTAnno):
+                if Verbose_Flag:
+                    print("found an LTAnno")
+
+            # if isinstance(text_line, LTChar):
+            #     print("fount an LTChar")
+            # elif isinstance(text_line, LTAnno):
+            #     print("fount an LTAnno")
+            # else:
+            #     for character in text_line:
+            #         if isinstance(character, LTChar):
+            #             font_size=character.size
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text())])
+
+    elif isinstance(o, LTTextContainer):
+        if Verbose_Flag:
+            print("element is LTTextContainer")
+        for text_line in o:
+            if Verbose_Flag:
+                print(f'text_line={text_line}')
+            if isinstance(text_line, LTAnno):
+                if Verbose_Flag:
+                    print("found an LTAnno")
+            else:
+                font_size=text_line.size
+                if Verbose_Flag:
+                    print("font_size of text_line={}".format(text_line.size))
+            if hasattr(text_line, 'bbox'):
+                last_x_offset=text_line.bbox[0]
+                last_y_offset=text_line.bbox[1]
+                last_x_width=text_line.bbox[2]-text_line.bbox[0]
+            # if isinstance(text_line, LTChar):
+            #     print("found an LTChar")
+            #     font_size=text_line.size
+            # elif isinstance(text_line, LTAnno):
+            #     print("found an LTAnno")
+            # else:
+            #     for character in text_line:
+            #         if isinstance(character, LTChar):
+            #             font_size=character.size
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text())])
+    elif isinstance(o, LTLine): #  a line
+        if Verbose_Flag:
+            print(f'found an LTLine {o=}')
+    elif isinstance(o, LTFigure):
+        if isinstance(o, Iterable):
+            for i in o:
+                process_element(i)
+    elif isinstance(o, LTImage):
+        if Verbose_Flag:
+            print(f'found an LTImage {o=}')
+    elif isinstance(o, LTChar):
+        if Verbose_Flag:
+            print("found LTChar: {}".format(o.get_text()))
+        if hasattr(o, 'bbox'):
+            last_x_offset=o.bbox[0]
+            last_y_offset=o.bbox[1]
+            last_x_width=o.bbox[2]-o.bbox[0]
+            font_size=o.size
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text())])
+    elif isinstance(o, LTAnno):
+        if Verbose_Flag:
+            print("fount an LTAnno")
+        if hasattr(o, 'bbox'):
+            last_x_offset=o.bbox[0]
+            last_y_offset=o.bbox[1]
+            last_x_width=o.bbox[2]-o.bbox[0]
+            font_size=o.size
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' '])
+    elif isinstance(o, LTCurve): #  a curve
+        if Verbose_Flag:
+            print("found an LTCurve")
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' '])
+    else:
+        if Verbose_Flag:
+            print(f'unprocessed element: {o}')
+        if isinstance(o, Iterable):
+            for i in o:
+                process_element(i)
+
+def rough_comparison(a, b):
+    if not a or not b:
+        return False
+    if abs(a-b) < 0.1:
+        return True
+    return False
+
+
+def process_file(filename):
+    global Verbose_Flag
+    global testing
+    global extracted_data
+    global total_raw_text
+
+    extracted_data=[]
+    set_of_errors=set()
+    set_of_evidence_for_new_cover=set()
+    major_subject=None            # the major subject
+    cycle=None                    # the cycle number
+    place=None                    # the place from the cover
+    font_size=None                # the latest font size
+    last_x_offset=None
+    last_x_width=None
+    last_y_offset=None            # y_offset of text characters
+
+    raw_text=''
+
+
+    try:
+        #for page in extract_pages(filename, page_numbers=[0], maxpages=1):
+        for page in extract_pages(filename):
+            if Verbose_Flag:
+                print('showing show_ltitem_hierarchy')
+                show_ltitem_hierarchy(page)
+
+            if Verbose_Flag:
+                print(f'{page=}')
+            for element in page:
+                if Verbose_Flag:
+                    print(f'{element=}')
+                process_element(element)
+
+    except (PDFNoValidXRef, PSEOF, pdfminer.pdfdocument.PDFNoValidXRef, pdfminer.psparser.PSEOF) as e:
+        print(f'Unexpected error in processing the PDF file: {filename} with error {e}')
+        return False
+    except Exception as e:
+        print(f'Error in PDF extractor: {e}')
+        return False
+
+            
+    if Verbose_Flag:
+        print("extracted_data: {}".format(extracted_data))
+    # Example of an old cover:
+    # extracted_data: [[10.990000000000009, 'DEGREE PROJECT  COMPUTER SCIENCE AND ENGINEERING,\nSECOND CYCLE, 30 CREDITS\nSTOCKHOLM SWEDEN2021\n, \n'], [10.990000000000009, 'IN \n'], [19.99000000000001, 'title\n'], [16.00999999999999, 'author in caps\n'], [10.989999999999995, 'KTH ROYAL INSTITUTE OF TECHNOLOGY\nSCHOOL OF ELECTRICAL ENGINEERING AND COMPUTER SCIENCE\n'], [10.989999999999995, ' \n']]
+
+    old_size=-1
+    size=None
+    current_string=''
+    first_x_offset=None
+    last_x_offset=None
+    last_x_width=None
+    last_y_offset=None
+    last_size=None
+    new_extracted_data=[]
+
+    # collect individual characters and build into string - adding spaces as necessary
+    for item in extracted_data:
+        if isinstance(item, list):
+            if len(item) == 5:
+                size, current_x_offset, current_y_offset, current_x_width, txt = item
+                if Verbose_Flag:
+                    print(f'{current_x_offset},{current_y_offset} {size} {txt}')
+                if not last_size:
+                    last_size=size
+                if not first_x_offset:
+                    first_x_offset=current_x_offset
+                if not last_y_offset:
+                    last_y_offset=current_y_offset
+                if rough_comparison(last_y_offset, current_y_offset):
+                    if Verbose_Flag:
+                        print(f'{txt} {current_x_offset} {last_x_offset} {last_x_width}')
+                    if not last_x_offset:
+                        last_x_offset=current_x_offset+current_x_width
+                        last_x_width=current_x_width
+                        current_string=current_string+txt
+                        if Verbose_Flag:
+                            print("direct insert current_string={}".format(current_string))
+                    elif current_x_offset > (last_x_offset+0.2*last_x_width): # just a little faster than adjact characters
+                        if Verbose_Flag:
+                            print("last_x_offset+last_x_width={}".format(last_x_offset, last_x_width))
+                        current_string=current_string+' '+txt
+                        if Verbose_Flag:
+                            print("inserted space current_string={}".format(current_string))
+                        last_x_offset=current_x_offset+current_x_width
+                        last_x_width=current_x_width
+                    else:
+                        current_string=current_string+txt
+                        if Verbose_Flag:
+                            print("second direct insert current_string={}".format(current_string))
+                        last_x_offset=current_x_offset+current_x_width
+                        last_x_width=current_x_width
+                else:
+                    if last_x_offset:
+                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, last_x_offset-first_x_offset, current_string])
+                    else:
+                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, 0, current_string])
+                        if Verbose_Flag:
+                            print(f'current_string={current_string} and no last_x_offset')
+                    current_string=""+txt
+                    first_x_offset=current_x_offset
+                    last_y_offset=current_y_offset
+                    last_x_offset=None
+                    last_x_width=None
+                    last_size=None
+    
+    if last_x_offset:
+        new_extracted_data.append([size, first_x_offset, current_y_offset, last_x_offset-first_x_offset, current_string])
+    else:
+        if Verbose_Flag:
+            print(f'current_string={current_string} and no last_x_offset')
+
+    if Verbose_Flag:
+        print("new_extracted_data={}".format(new_extracted_data))
+
+    extracted_data=new_extracted_data
+    for item in extracted_data:
+        if isinstance(item, list):
+            if len(item) == 5:
+                size, current_x_offset, current_y_offset, current_x_width, txt = item
+                if Verbose_Flag:
+                    print(f'{current_x_offset},{current_y_offset} {size} {txt}')
+
+                raw_text = raw_text+' '+ txt.strip()
+
+    total_raw_text=total_raw_text+raw_text
+
+    return raw_text
+
+def unique_words_in_PDF_file(input_PDF_file):
+    global unique_words
+    global total_words_processed
+
+    raw_text=process_file(input_PDF_file)
+    words = nltk.word_tokenize(raw_text)
+    all_text.extend(words)
+    for word in words:
+        total_words_processed=total_words_processed+1
+        # words that start with certain characters/strings should be treated as if this character/string is not there
+        # this is to address footnotes and some other special cases
+        newword=word.strip()
+        newword=prune_prefix(newword)
+        newword=prune_suffix(newword)
+        if len(newword) > 0:
+            if newword.count('\n') > 0:
+                newwords=newword.split('\n')
+                for w in newwords:
+                    unique_words.add(w)
+                    check_spelling_errors(w, None)
+            else:
+                unique_words.add(newword)
+                check_spelling_errors(newword, None)
+
 def main():
     global Verbose_Flag
     global unique_words
@@ -890,6 +1207,13 @@ def main():
                       help="keep all unique words without filtering"
     )
 
+    parser.add_option('-P', '--PDF',
+                      dest="processPDF_file",
+                      default=False,
+                      action="store_true",
+                      help="Processed the named PDF file rather than a Canvas course"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -902,7 +1226,7 @@ def main():
     initialize(options)
 
     if (len(remainder) < 1):
-        print("Inusffient arguments\n must provide course_id\n")
+        print("Insuffient arguments\n must provide course_id or file_name\n")
     else:
         total_words_processed=0
         unique_words=set()
@@ -912,18 +1236,27 @@ def main():
         all_text=list()
         total_raw_text=''
         
-        course_id=remainder[0]
-
-        # skip index pages, for example:
-        if course_id == 41493:
-            pages_to_skip=['index-for-course', 'with-quick-index', 'examples-of-some-titles-from-previous-p1p2-reports']
-        elif course_id == 31168:
-            pages_to_skip=['top-level-index-of-foreign-terms-with-figure-and-table-captions', 'index-special-and-a-r', 'index-r-z']
+        if options.processPDF_file:
+            input_PDF_file=remainder[0]
         else:
-            pages_to_skip=[]
-        
+            course_id=remainder[0]
+            if not str(course_id).isdigit():
+                print("Error in course_id")
+                return
+            # skip index pages, for example:
+            if course_id == 41493:
+                pages_to_skip=['index-for-course', 'with-quick-index', 'examples-of-some-titles-from-previous-p1p2-reports']
+            elif course_id == 31168:
+                pages_to_skip=['top-level-index-of-foreign-terms-with-figure-and-table-captions', 'index-special-and-a-r', 'index-r-z']
+            else:
+                pages_to_skip=[]
 
-        unique_words_for_pages_in_course(course_id, pages_to_skip)
+        
+        if options.processPDF_file:
+            unique_words_in_PDF_file(input_PDF_file)
+            course_id=input_PDF_file         #  just a place holder course_id
+        else:
+            unique_words_for_pages_in_course(course_id, pages_to_skip)
 
         print(f'a total of {total_words_processed} words processed')
         print(f'{len(unique_words)} unique words')
