@@ -30,7 +30,9 @@
 # (2) to avoid some of the problems that Canvas has when extract text from lists and definitions [it is not adding a space or other separator
 #     between entires - so one can get the end of one element of a list mixed with the start of the next element in this list.
 #
-
+# To have the correct version of PDFminer, do:
+#     pip install pdfminer.six
+#
 
 import csv, requests, time
 from pprint import pprint
@@ -158,6 +160,7 @@ suffixes_to_ignore=[
     '_',
     '®',
     '°',
+    '¶',
     '–',
     '—',
     '†',
@@ -168,7 +171,6 @@ suffixes_to_ignore=[
     '⇒',
     '⚠',
     'ﾔ',
-    '¶',
 ]
 
 miss_spelled_words=[
