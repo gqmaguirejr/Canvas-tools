@@ -23,6 +23,8 @@
 #
 # ======================================================================
 #
+# For general background about CEFR see https://www.cambridgeenglish.org/images/126011-using-cefr-principles-of-good-practice.pdf
+#
 # A number of different sources have been used to provide CEFR data for a given word.
 #
 # The first sources for CEFR values were:
@@ -1336,18 +1338,16 @@ thousand_most_common_words_in_English={
 # for many hyphenated words the level used in the highest of the indivudal words
 # Levels based on EFLLex_NLP4J used to correct the xx entries
 common_English_words={
-    "I'am": {'xx': 'idiom, noun'},
+    "I'am": {'A1': 'idiom, noun', 'B1': 'idiom, noun', 'C1': 'idiom, noun', 'C2': 'idiom, noun'},
     "adderas": {'xx': 'verb, verb past tense, past participle'},
-    "bachelor's": {'xx': 'adjective'},
-    "c/o": {'xx': 'contraction for care of'},
-    "can't": {'C1': 'contraction'},
-    "couldn't": {'A1': 'contraction'},
-    "couldn't": {'xx': 'contraction'},
-    "didn't": {'xx': 'contraction'},
-    "doesn't": {'xx': 'contraction'},
+    "bachelor's": {'B1': 'adjective'},
+    "c/o": {'A1': 'contraction for care of', 'B1': 'contraction for care of', 'C1': 'contraction for care of', 'C2': 'contraction for care of' },
+    "can't": {'A2': 'contraction'},
+    "couldn't": {'A2': 'contraction'},
+    "didn't": {'A1': 'contraction'},
+    "doesn't": {'A1': 'contraction', 'A2': 'contraction'},
     "don't": {'A1': 'contraction'},
-    "don't": {'xx': 'contraction'},
-    "isn't": {'xx': 'contraction'},
+    "isn't": {'xx': 'contraction', 'A2': 'contraction'},
     "it's": {'A1': 'contraction'}, # EFLLex uses the level B2
     "let's": {'A2': 'contraction'},
     "n't": {'A1': 'contraction'},
@@ -1355,49 +1355,43 @@ common_English_words={
     "that's": {'A1': 'contraction'},
     "there's": {'A1': 'contraction'},
     "they're": {'A1': 'contraction'},
-    "user's": {'xx': 'possessive'},
-    "voil\u00e0": {'xx': 'exclamation'}, # 'voilà'
-    "we'll": {'xx': 'contraction'},
-    "we're": {'xx': 'contraction'},
-    "what's": {'A1': 'contraction'},
-    "who's": {'xx': 'contraction'},
-    "you're": {'xx': 'contraction'},
-    "you've": {'xx': 'cintraction'},
-    "you've": {'xx': 'contraction'},
+    "user's": {'B1': 'possessive'},
+    "voil\u00e0": {'B1': 'exclamation'}, # 'voilà'
+    "we'll": {'A2': 'contraction'},
+    "we're": {'A1': 'contraction'},
+    "what's": {'A2': 'contraction', 'B1': 'contraction', 'B2': 'contraction', 'C1': 'contraction', 'C2': 'contraction'},
+    "who's": {'A2': 'contraction'},
+    "you're": {'A1': 'contraction'},
+    "you've": {'A2': 'cintraction'},
     #
     # GQM4
+    ##'ssthresh': {'B2': 'adjective', 'C1': 'adjective'},
+    ##'themfeedback': {'xx': 'noun'},
     #'after-scenario': {'C2': 'noun'},
     #'agentr': {'xx': 'noun'},
     #'agricultureTeaching': {'xx': 'noun'},
-    #'autoencoder': {'xx': 'noun'},
-    #'autoregressive': {'xx': 'noun'},
-    #'back-propagation': {'xx': 'noun'},
     #'backgroup': {'xx': 'noun'},
-    #'backpropagation': {'xx': 'noun'},
     #'computation/less': {'xx': 'noun'},
-    #'coursen': {'xx': 'noun'},
+    #'coursen': {'xx': 'noun'},  # possibly Swedish?
     #'design-if': {'B1': 'noun'},
-    #'deveeloped': {'xx': 'noun'},
-    #'developmment': {'xx': 'noun'},
-    #'diameter1': {'xx': 'noun'},
+    #'deveeloped': {'xx': 'noun'},   # spelling error
+    #'developmment': {'xx': 'noun'}, # spelling error
     #'dos': {'xx': 'noun'},
     #'dup_blks': {'xx': 'noun'},
     #'eco-centric viewpoint': {'xx': 'noun'},
-    #'ecologic': {'xx': 'noun'},
     #'eight-point': {'A2': 'adjective?'},
     #'elight': {'xx': 'noun'},
-    #'embedding9': {'xx': 'noun'},
+    #'embedding9': {'xx': 'noun'}, ## spelling error?
     #'enum': {'A1': 'noun'},
     #'enumervices': {'A1': 'noun'},
     #'enumservice': {'A1': 'noun'},
     #'expected1': {'xx': 'noun'},
-    #'garbaged': {'xx': 'verb past tense, past participle?'},
     #'gplots': {'xx': 'noun'},
     #'grDevices': {'xx': 'noun'},
     #'gtools': {'xx': 'noun'},
-    #'hairpinning': {'xx': ''},
+    #'hairpinning': {'B1': 'noun', 'B2': 'noun'},
     #'help/support': {'xx': ''},
-    #'hyperparamter': {'xx': 'noun'},
+    #'hyperparamter': {'xx': 'noun'}, #spelling error
     #'impp': {'xx': ''},
     #'in-active': {'xx': ''},
     #'in/Secondary': {'xx': ''},
@@ -1423,9 +1417,6 @@ common_English_words={
     #'lang': {'xx': 'noun'},
     #'limited-memory': {'B1': 'noun'},
     #'loc': {'xx': ''},
-    #'location-aware': {'xx': ''},
-    #'log-likelihood': {'C2': 'noun'},
-    #'log-scaled': {'xx': 'noun'},
     #'looSely-couPLed': {'xx': ''},
     #'loopback': {'xx': ''},
     #'lost/resent': {'xx': ''},
@@ -1501,16 +1492,15 @@ common_English_words={
     #'semantic/instance': {'xx': 'noun'},
     #'semi-supervised': {'B2': 'noun'},
     #'send-only': {'xx': ''},
-    #'serverless': {'xx': 'adjunction'},
+    #'serverless': {'B2': 'adjective'},
     #'sfedit': {'xx': 'noun'},
     #'simplegeneric': {'xx': 'noun'},
     #'socie-ties': {'xx': 'noun'},
-    #'ssthresh': {'xx': 'noun'},
     #'statistically-generated': {'xx': 'noun'},
     #'stoc': {'A1': 'noun'},
     #'su': {'xx': ''},
     #'susceptible-infected-susceptible': {'xx': 'noun'},
-    #'switched-access': {'B1': ''},
+    #'switched-access': {'B2': 'adjective'},
     #'tcpdump': {'xx': ''},
     #'telecom-only': {'xx': ''},
     #'teleoperator': {'xx': ''},
@@ -1518,11 +1508,8 @@ common_English_words={
     #'telephone-event': {'xx': ''},
     #'telephony-equivalent': {'xx': ''},
     #'telnet': {'A2': 'nout'},
-    #'temporally-independent': {'xx': 'noun'},
+    #'temporally-independent': {'C1': 'noun'},
     #'term-concept': {'B2': 'noun'},
-    #'term-to-term': {'A2': 'noun'},
-    #'testrig': {'xx': 'noun'},
-    #'themfeedback': {'xx': 'noun'},
     #'top-speed': {'B1': 'noun'},
     #'training/seen/known': {'B1': 'noun'},
     #'traitlets': {'xx': 'noun'},
@@ -1531,9 +1518,8 @@ common_English_words={
     #'two-tail': {'B2': 'noun'},
     #'typing-extensions': {'B2': 'noun'},
     #'u-Law': {'xx': ''},
-    #'under-fitting': {'B1': 'noun'},
     #'ve': {'xx': ''},
-    #'webtable': {'xx': 'noun'},
+    #'webtable': {'B1': 'noun'},
     #gqm1
     'BibTeX': {'B1': 'noun'},
     'ETA': {'A1': 'acronyms for estimated time of arrival'},
@@ -1556,7 +1542,7 @@ common_English_words={
     'Tbit/s': {'C2': 'unit'},
     'Tbyte/s': {'C2': 'noun'},
     'US': {'A1': 'acronym'},    #  EFLEX uses the level B2
-    'USA': {'xx': 'acronym for United States of America'},
+    'USA': {'A1x': 'acronym for United States of America'},
     'World-wide-web': {'A2': 'noun'},
     '\u03bcs': {'C1': 'unit'}, # μs
     'aaaah': {'A1': 'interjection'},
@@ -1641,7 +1627,7 @@ common_English_words={
     'actuality': {'B2': 'noun'},
     'actuators': {'B2': 'noun'},
     'acute': {'B2': 'adjective, noun'},
-    'acyclic': {'xx': 'adjective'},
+    'acyclic': {'B2': 'adjective'},
     'ad-hoc': {'B2': 'adjective - should be the Latin ad hoc'},
     'adaptability': {'B2': 'noun'},
     'adaptable': {'B2': 'noun'},
@@ -1666,8 +1652,8 @@ common_English_words={
     'adhered': {'A2': 'verb past tense, past participle'},
     'adheres': {'A2': 'verb 3rd person present'},
     'adjacency': {'B2': 'noun'},
+    'adjective': {'C1': 'noun'},
     'adjectives': {'A1': 'noun'},
-    'adjunction': {'C1': 'noun'},
     'adjustable': {'B2': 'adjective'},
     'adjusted': {'B2': 'verb past tense, past participle'},
     'adjusting': {'B2': 'verb gerund or present participle'},
@@ -1717,7 +1703,7 @@ common_English_words={
     'after-the-event': {'B1': 'phrase of event'},
     'afterwards': {'A2': 'adverb'},#  EFLEX uses the level B2
     'agent-based': {'B2': 'adjacency'},
-    'agglomerative': {'C2': 'adjunction'},
+    'agglomerative': {'C2': 'adjective'},
     'aggregatable': {'B2': 'adjective'},
     'aggregate': {'B2': 'noun, adjective, verb'},
     'aggregated': {'B2': 'very'},
@@ -1832,7 +1818,7 @@ common_English_words={
     'announces': {'B1': 'verb 3rd person present'},
     'announcing': {'B1': 'verb gerund or present participle'},
     'annoyance': {'C1': 'noun'}, #  EFLEX uses the level B2
-    'annualized': {'C2': 'adjunction'},
+    'annualized': {'C2': 'adjective'},
     'anomalies': {'B2': 'noun'},
     'anomaly': {'B2': 'noun'},
     'anonymity': {'C1': 'noun'},
@@ -1884,7 +1870,7 @@ common_English_words={
     'approximate': {'B2': 'adjective, verb'},
     'approximation': {'B2': 'noun'},
     'approximations': {'B2': 'noun'},
-    'aqua': {'A1': 'noun, adjunction'},
+    'aqua': {'A1': 'noun, adjective'},
     'aquatic': {'B1': 'adjective, noun'},
     'aquatics': {'B2': 'noun'},
     'aquifers': {'A2': 'noun'},
@@ -2028,6 +2014,7 @@ common_English_words={
     'auto-configuration': {'C2': 'noun'},
     'auto-saving': {'B2': 'verb gerund or present participle'},
     'autoconfiguration': {'C2': 'noun'},
+    'autoencoder': {'C1': 'noun', 'C2': 'noun'}, # likely spelling error
     'automate': {'A2': ''},
     'automated': {'B2': 'adjective'},
     'automation': {'B2': 'noun'},
@@ -2036,6 +2023,7 @@ common_English_words={
     'automotive': {'C1': 'adjective'},
     'autonomous': {'B2': 'adjective'},
     'autonomously': {'C1': 'adverb'},
+    'autoregressive': {'C1': 'adjective'},
     'auxiliary': {'B1': 'adjective, noun'},
     'availability': {'B1': 'noun'},
     'available': {'C1': 'adjective'},
@@ -2060,6 +2048,7 @@ common_English_words={
     'bachelor': {'C1': 'noun'},
     'back-end': {'A1': 'noun'},
     'back-off': {'A1': 'verb'},
+    'back-propagation': {'C1': 'adjective', 'C2': 'adjective'},
     'back-to-back': {'B1': 'adjective or adverb'},
     'back-up': {'B2': 'phrasal verb, noun'},
     'backbone': {'B2': 'noun'},
@@ -2069,6 +2058,7 @@ common_English_words={
     'backend': {'C2': 'noun, adjacency'},
     'backhaul': {'B2': 'noun'},
     'backlog': {'B1': 'noun'},
+    'backpropagation': {'C1': 'adjective', 'C2': 'adjective'},
     'backslash': {'A1': 'noun'},
     'backwards': {'B1': 'adverb'}, #  EFLEX uses the level B2
     'bagging': {'C2': 'noun, verb gerund or present participle'},
@@ -2543,7 +2533,7 @@ common_English_words={
     'classified': {'C1': 'adjective, noun'}, #  EFLEX uses the level B2
     'classifier': {'B2': 'noun'},
     'classifiers': {'B1': 'noun'},
-    'classifying': {'C1': 'adjunction, verb gerund or present participle'},
+    'classifying': {'C1': 'adjective, verb gerund or present participle'},
     'classing': {'C1': 'verb gerund or present participle'},
     'classless': {'B2': 'adjective'},
     'classmates': {'A2': 'noun'},
@@ -2962,7 +2952,7 @@ common_English_words={
     'convolution': {'C2': 'noun'},
     'cookbook': {'A2': 'noun'},
     'cookie-cutter': {'A1': 'noun'},
-    'coolest': {'A2': 'adjunction'},
+    'coolest': {'A2': 'adjective'},
     'cooling': {'B2': 'adjective, noun, verb gerund or present participle'},
     'cooperating': {'B2': 'verb gerund or present participle'},
     'cooperation': {'B2': 'noun'}, #  EFLEX uses the level B1
@@ -3158,7 +3148,7 @@ common_English_words={
     'declares': {'B1': 'verb 3rd person present'},
     'declaring': {'B2': 'verb gerund or present participle'},
     'declined': {'B2': 'noun'},
-    'declining': {'B2': 'adjunction, verb gerund or present participlej'},
+    'declining': {'B2': 'adjective, verb gerund or present participlej'},
     'decode': {'B2': 'verb'},
     'decoded': {'A2': 'verb past tense, past participle'},
     'decoder': {'B2': 'noun'},
@@ -3249,7 +3239,7 @@ common_English_words={
     'densely': {'B2': 'adverb'},
     'denser': {'B2': 'noun'},
     'densification': {'C2': 'noun'},
-    'density-based': {'C1': 'adjunction?'},
+    'density-based': {'C1': 'adjective?'},
     'denying': {'B2': 'verb gerund or present participle'},
     'deontological': {'C2': 'noun'},
     'dependability': {'B2': 'noun'},
@@ -3333,6 +3323,7 @@ common_English_words={
     'dialogs': {'A2': 'noun'},
     'dials': {'B1': 'noun'},
     'dialup': {'B1': 'adjective'},
+    'diameter': {'B1': 'concrete noun'},
     'diameter': {'B2': 'noun'},
     'dictated': {'A2': 'verb past tense, past participle'},
     'dictates': {'C1': 'verb 3rd person present, noun'},
@@ -3425,7 +3416,7 @@ common_English_words={
     'disjoint': {'B2': 'verb, adjective'},
     'diskless': {'B2': 'adjective'},
     'disorganized': {'B2': 'adjective'}, #  EFLEX uses the level B1
-    'disorienting': {'B2': 'adjunction'},
+    'disorienting': {'B2': 'adjective'},
     'disparate': {'C1': 'adjective, noun'},
     'dispatch': {'B2': 'verb, noun'},
     'dispatched': {'A2': 'verb past tense, past participle'},
@@ -3580,6 +3571,7 @@ common_English_words={
     'echoed': {'C2': 'verb past tense, past participle'},
     'echoing': {'C2': 'adjective'},
     'eco-centric': {'C2': 'adjective'},
+    'ecologic': {'B2': 'adjective'},
     'ecologically': {'B2': 'adverb'},
     'economical': {'B2': 'adjective'}, #  EFLEX uses the level C1
     'economically': {'C1': 'adverb'},
@@ -3603,7 +3595,7 @@ common_English_words={
     'elaborates': {'B2': 'verb 3rd person present'},
     'elaboration': {'C2': 'noun'},
     'elapsed': {'C2': 'verb past tense, past participle'},
-    'elastic': {'A1': 'adjunction, noun'},
+    'elastic': {'A1': 'adjective, noun'},
     'electing': {'B2': 'verb gerund or present participle'},
     'electrically': {'C1': 'adverb'},
     'electrify': {'B2': 'verb'},
@@ -3738,7 +3730,7 @@ common_English_words={
     'entirety': {'C1': 'noun'},
     'entitled': {'B2': 'adjective'},
     'entitles': {'B2': 'verb 3rd person present'},
-    'entry-level': {'A2': 'adjunction'},
+    'entry-level': {'A2': 'adjective'},
     'entrylevel': {'A2': 'adjective'}, # a replacemenT for entry-level
     'enumerated': {'B2': 'verb past tense, past participle'},
     'enumerates': {'B2': 'verb 3rd person present'},
@@ -3803,7 +3795,7 @@ common_English_words={
     'ethically': {'C1': 'adverb'},
     'ethicist': {'C2': 'noun'},
     'ethnography': {'C1': 'noun'},
-    'euclidean': {'C1': 'adjunction'},
+    'euclidean': {'C1': 'adjective'},
     'europe': {'A1': 'noun'},
     'european': {'B2': 'adjective, noun'},
     'européens': {'A2': 'adjective'},
@@ -4056,7 +4048,7 @@ common_English_words={
     'flattened': {'C2': 'verb past tense, past participle'},
     'flatter': {'B1': 'verb 3rd person present, adjective'},
     'flavors': {'B2': 'noun, verb 3rd person present'},
-    'fleeting': {'C1': 'adjunction, verb gerund or present participle'},
+    'fleeting': {'C1': 'adjective, verb gerund or present participle'},
     'flexibly': {'C2': 'adverb'},
     'flicker': {'B2': 'verb, noun'},
     'flip': {'A1': 'verb, noun, adjective, exclamation'},
@@ -4178,7 +4170,7 @@ common_English_words={
     'fulfillment': {'C1': 'noun'},
     'full-cone': {'C2': 'adjective?'},
     'full-duplex': {'C2': 'adjective?'},
-    'full-fledged': {'C2': 'adjunction'},
+    'full-fledged': {'C2': 'adjective'},
     'full-screen': {'A2': 'adjective'},
     'full-size': {'A2': 'adjective'},
     'full-text': {'A2': 'adjective?'},
@@ -4205,6 +4197,7 @@ common_English_words={
     'fuzzy': {'B1': 'adjective'},
     'gained': {'B1': 'verb past tense, past participle'},
     'gamification': {'B2': 'noun'},
+    'garbaged': {'B2': 'verb past tense, past participle?'},
     'gateway': {'B2': 'noun'},
     'gatewaying': {'C2': 'verb gerund or present participle'},
     'gateways': {'B2': 'noun'},
@@ -4246,7 +4239,7 @@ common_English_words={
     'geological': {'C1': 'adjective'},
     'geometric': {'C1': 'adjective, noun'},
     'geopriv': {'A2': 'abbreviation'},
-    'geospatial': {'C1': 'adjunction'},
+    'geospatial': {'C1': 'adjective'},
     'geostationary': {'C2': 'adjective'},
     'germanium': {'B2': 'noun'},
     'gestalt': {'C2': 'noun'},
@@ -4710,7 +4703,7 @@ common_English_words={
     'independently': {'B2': 'adverb'}, #  EFLEX uses the level B1
     'indexed': {'B1': 'verb past tense, past participle'},
     'indexing': {'B2': 'noun, verb gerund or present participle'},
-    'indian': {'A2': 'adjunction, noun'},
+    'indian': {'A2': 'adjective, noun'},
     'indicated': {'B2': 'verb past tense, past participle'},
     'indicates': {'B2': 'verb 3rd person present'},
     'indicating': {'B2': 'verb gerund or present participle'},
@@ -4842,7 +4835,7 @@ common_English_words={
     'inter-arrivals': {'C2': 'adjective'},
     'inter-burst': {'C2': 'adjective'},
     'inter-city': {'C2': 'adjective'},
-    'inter-class': {'A1': 'adjunction'},
+    'inter-class': {'A1': 'adjective'},
     'inter-clusters': {'C2': 'noun'},
     'inter-domain': {'C2': 'adjective, noun'},
     'inter-examiner': {'C2': 'adjective'},
@@ -4952,7 +4945,7 @@ common_English_words={
     'intra-class': {'A1': 'noun'},
     'intra-clusters': {'C2': 'noun'},
     'intra-session': {'C2': 'adjective'},
-    'intracluster': {'C2': 'adjunction'},
+    'intracluster': {'C2': 'adjective'},
     'intracortical': {'C2': 'adjective'},
     'intradomain': {'C2': 'adjective'},
     'intranet': {'B1': 'noun'},
@@ -5158,7 +5151,7 @@ common_English_words={
     'leads': {'B1': 'verb 3rd person present, noun'},
     'leakage': {'C1': 'noun'},
     'leaking': {'B2': 'adjective, verb gerund or present participle'}, #  EFLEX uses the level C1
-    'leaky': {'A2': 'adjunction'},
+    'leaky': {'A2': 'adjective'},
     'learned': {'A1': 'adjective'},
     'learner': {'B2': 'noun'}, #  EFLEX uses the level C1
     'learners': {'B2': 'noun'},
@@ -5271,6 +5264,7 @@ common_English_words={
     'locatable': {'C2': 'adjective'},
     'locates': {'B1': 'verb 3rd person present'},
     'locating': {'B1': 'verb gerund or present participle'},
+    'location-aware': {'B1': 'adjective'},
     'location-aware': {'B2': 'adjective'},
     'location-awareness': {'C1': 'noun'},
     'locator': {'B1': 'noun'},
@@ -5281,7 +5275,9 @@ common_English_words={
     'locus': {'A2': 'noun'},
     'lodged': {'B2': 'adjective, verb past tense, past participle'},
     'log-in': {'B2': 'phrasal verb'},
+    'log-likelihood': {'C2': 'noun'},
     'log-off': {'B2': 'phrasal verb'},
+    'log-scaled': {'B2': 'adverb, adjective', 'C1': 'adverb, adjective'},
     'logarithm': {'B2': 'noun'},
     'logarithmic': {'C1': 'adjective'},
     'logged': {'B1': 'verb past tense, past participle'},
@@ -5300,7 +5296,7 @@ common_English_words={
     'longer/further': {'A2': 'adjective'},
     'longest': {'A1': 'adjective'},
     'longitude': {'B2': 'noun'},
-    'longitudinal': {'C1': 'adjunction'},
+    'longitudinal': {'C1': 'adjective'},
     'longtable': {'B1': 'idiom'},
     'looked': {'A1': 'verb past tense; past participle'}, #  EFLEX uses the level A2
     'looking': {'A1': 'adjective'},#  EFLEX uses the level B2
@@ -5670,7 +5666,7 @@ common_English_words={
     'multi-agent': {'B2': 'noun'},
     'multi-armed': {'B2': 'noun'},
     'multi-channel': {'C2': 'adjective'},
-    'multi-core': {'C2': 'adjunction'},
+    'multi-core': {'C2': 'adjective'},
     'multi-dimensional': {'C1': 'adjective'},
     'multi-disciplinary': {'C2': 'adjective'},
     'multi-frequency': {'C2': 'adjective'},
@@ -5678,7 +5674,7 @@ common_English_words={
     'multi-media': {'C2': 'adjective'},
     'multi-node': {'C2': 'adjective'},
     'multi-omics': {'C2': 'noun'},
-    'multi-output': {'C2': 'adjunction'},
+    'multi-output': {'C2': 'adjective'},
     'multi-paradigm': {'C2': 'adjective'},
     'multi-party': {'C2': 'adjective'},
     'multi-person': {'C1': 'adjective'},
@@ -5703,7 +5699,7 @@ common_English_words={
     'multigraph': {'C2': 'noun'},
     'multihomed': {'C2': 'noun'},
     'multihoming': {'C2': 'noun'},
-    'multilayer': {'C1': 'adjunction'},
+    'multilayer': {'C1': 'adjective'},
     'multimedia': {'B1': 'adjective, noun'},
     'multimeter': {'A1': 'noun'},
     'multimeters': {'A1': 'noun'},
@@ -5929,7 +5925,7 @@ common_English_words={
     'normalizing': {'B2': 'verb gerund or present participle'},
     'normative': {'C1': 'noun'},
     'northeastern': {'B2': 'nounadj'},
-    'northwest': {'B1': 'noun, adjunction'},
+    'northwest': {'B1': 'noun, adjective'},
     'notation': {'B1': 'noun'},
     'noted': {'B1': 'adjective'},
     'notepads': {'A1': 'noun'},
@@ -6007,7 +6003,7 @@ common_English_words={
     'older': {'A1': 'noun'},
     'oldest': {'A1': 'noun'},
     'olive': {'B1': 'noun'},
-    'olympic': {'B1': 'adjunction'},
+    'olympic': {'B1': 'adjective'},
     'olympics': {'A1': 'noun'},
     'omit': {'C1': 'verb'},
     'omits': {'A2': 'noun'},
@@ -6029,7 +6025,7 @@ common_English_words={
     'one-on-one': {'A1': 'noun'},
     'one-party': {'B1': 'adjective'},
     'one-sided': {'C1': 'noun'},
-    'one-size-fits-all': {'B1': 'adjunction'},
+    'one-size-fits-all': {'B1': 'adjective'},
     'one-tenth': {'A1': 'noun'},
     'one-third': {'A2': 'noun'},
     'one-time': {'A1': 'adjective'},
@@ -6147,7 +6143,7 @@ common_English_words={
     'over-reaching': {'B1': 'noun'},
     'over-represented': {'B2': 'adjective'},
     'overarching': {'C2': 'noun'},
-    'overcast': {'B2': 'adjunction, noun, verb'},
+    'overcast': {'B2': 'adjective, noun, verb'},
     'overcomes': {'B2': 'noun'},
     'overcoming': {'B2': 'noun'},
     'overconsumption': {'C2': 'noun'},
@@ -6378,7 +6374,7 @@ common_English_words={
     'photons': {'C1': 'noun'},
     'phrased': {'B2': 'noun'},
     'phrasing': {'C2': 'noun'},
-    'physical': {'B1': 'adjunction, noun'},
+    'physical': {'B1': 'adjective, noun'},
     'physically': {'B2': 'adverb'},
     'physicist': {'B2': 'noun'},
     'physiological': {'C1': 'noun'},
@@ -7069,7 +7065,7 @@ common_English_words={
     'reduces': {'B1': 'verb 3rd person present'},
     'reducing': {'B1': 'verb gerund or present participle'},
     'reductionism': {'C2': 'noun'},
-    'reductionist': {'c2': 'adjunction'},
+    'reductionist': {'c2': 'adjective'},
     'redundancy': {'C1': 'noun'},
     'redundant': {'C1': 'adjective'},
     'redundantly': {'C2': 'adverb'},
@@ -7367,7 +7363,7 @@ common_English_words={
     'rewrote': {'B2': 'verb'},
     'rgb': {'A2': 'acronym for Red Green and Blue'},
     'rhetorical': {'C1': 'noun'},
-    'ribonucleic': {'C2': 'adjunction'},
+    'ribonucleic': {'C2': 'adjective'},
     'ribosomal': {'C2': 'adjective'},
     'richer': {'A2': 'adjective'},
     'richly': {'C2': 'noun'},
@@ -7419,7 +7415,7 @@ common_English_words={
     'rover': {'C1': 'noun'},
     'rubric': {'B1': 'noun'},
     'rudimentary': {'C1': 'adjective'},
-    'rule-based': {'B1': 'adjunction'},
+    'rule-based': {'B1': 'adjective'},
     'ruled': {'B2': 'noun'},
     'rulemaking': {'C2': 'noun'},
     'run-time': {'A1': 'noun, adjective'},
@@ -7583,7 +7579,7 @@ common_English_words={
     'semicolons': {'B2': 'noun'},
     'semiconductor': {'B2': 'noun'},
     'semiconductors': {'B2': 'noun'},
-    'seminal': {'C2': 'adjunction'},
+    'seminal': {'C2': 'adjective'},
     'sender': {'B2': 'noun'},
     'senders': {'B1': 'noun'},
     'sending': {'A1': 'noun'},
@@ -7727,7 +7723,7 @@ common_English_words={
     'simultaneous': {'C1': 'adjective'},
     'sine': {'B1': 'noun'},
     'sinewaves': {'B2': 'noun'},
-    'single-cell': {'B2': 'adjunction'},
+    'single-cell': {'B2': 'adjective'},
     'single-letter': {'A2': 'noun'},
     'single-machine': {'A2': 'adjective'},
     'single-sentence': {'A2': 'noun'},
@@ -8160,7 +8156,7 @@ common_English_words={
     'supercomputer': {'B2': 'noun'},
     'supercomputers': {'B2': 'noun'},
     'supercomputing': {'C2': 'noun'},
-    'superfly': {'A2': 'adjunction, noun'},
+    'superfly': {'A2': 'adjective, noun'},
     'superhero': {'B2': 'noun'},
     'superimpose': {'C2': 'noun'},
     'superscipt': {'B1': 'noun'},
@@ -8234,7 +8230,7 @@ common_English_words={
     'synergy': {'C2': 'noun'},
     'synonymous': {'C2': 'adjective'},
     'synonyms': {'C2': 'noun'},
-    'syntactic': {'C2': 'adjunction'},
+    'syntactic': {'C2': 'adjective'},
     'syntax': {'B1': 'noun'},
     'synthesize': {'B2': 'verb'},
     'synthesized': {'C2': 'verb past tense, past participle'},
@@ -8258,7 +8254,7 @@ common_English_words={
     'tagged': {'B2': 'noun'},
     'tagging': {'B2': 'noun'},
     'tailed': {'B1': 'adjective'},
-    'tailor-made': {'C2': 'adjunction, noun'},
+    'tailor-made': {'C2': 'adjective, noun'},
     'take-away': {'B1': 'phrasal verb'},
     'takeaway': {'B1': 'noun'},
     'takeaways': {'B1': 'noun'},
@@ -8347,6 +8343,7 @@ common_English_words={
     'terabit': {'B1': 'unit'},
     'terabyte': {'C1': 'noun'},
     'terabytes': {'B1': 'unit'},
+    'term-to-term': {'B1': 'phrase', 'B2': 'phrase'},
     'termate': {'A2': 'noun'},
     'termed': {'A2': 'verb past tense, past participle'},
     'terminated': {'C2': 'verb past tense, past participle'},
@@ -8362,6 +8359,7 @@ common_English_words={
     'testbed': {'B1': 'noun'},
     'tested': {'B1': 'verb past tense, past participle'},
     'tester': {'B1': 'noun'},
+    'testrig': {'B1': 'noun'},
     'tethered': {'B2': 'noun'},
     'text-based': {'B1': 'adjective'},
     'text-matching': {'B1': 'noun'},
@@ -8430,7 +8428,7 @@ common_English_words={
     'time-consuming': {'B2': 'adjective'},
     'time-lined': {'B2': 'verb past tense, past participle'},
     'time-multiplexed': {'C1': 'adjective'},
-    'time-oriented': {'C2': 'adjunction'},
+    'time-oriented': {'C2': 'adjective'},
     'time-out': {'A2': 'noun'},
     'time-out': {'A2': 'noun, verb'},
     'time-outs': {'A2': 'noun'},
@@ -8676,7 +8674,7 @@ common_English_words={
     'unaware': {'B2': 'noun'}, #  EFLEX uses the level C1
     'unbelievably': {'C1': 'adjective'},
     'unbiased': {'C2': 'adjective'},
-    'unbranded': {'C2': 'adjunction'},
+    'unbranded': {'C2': 'adjective'},
     'unbreakable': {'C2': 'adjective'},
     'uncertain': {'B2': 'adjective'}, #  EFLEX uses the level C1
     'unchanged': {'B2': 'adjective'}, #  EFLEX uses the level C1
@@ -8696,6 +8694,7 @@ common_English_words={
     'undeclared': {'C2': 'adjective'},
     'undeployed': {'C2': 'noun'},
     'under-fit': {'A2': 'adjective'},
+    'under-fitting': {'B2': 'noun'}, # under is A1 and fitting is B1, but under-fitting is B2
     'under-run': {'C2': 'transitive verb, noun'},
     'under-utilizationLearnability': {'C1': 'noun'},
     'underflow': {'B1': 'noun'},
@@ -8769,7 +8768,7 @@ common_English_words={
     'unmarked': {'B1': 'noun'},
     'unmatched': {'C1': 'noun'},
     'unmodified': {'C2': 'adjective'},
-    'unnoticeable': {'xx': 'noun'},
+    'unnoticeable': {'A2': 'noun'},
     'unnumbered': {'C2': 'noun'},
     'unofficial': {'C1': 'adjective'},
     'unordered': {'C1': 'noun'},
@@ -8953,7 +8952,7 @@ common_English_words={
     'vistas': {'B1': 'noun'},
     'visualization': {'B2': 'noun'},
     'visualization-wise': {'C2': 'noun'},
-    'visualization/system/tool': {'xx': 'noun'},
+    'visualization/system/tool': {'B2': 'noun'},
     'visualizations': {'B2': 'noun'},
     'visualize': {'B1': 'noun'},
     'visualized': {'B2': 'noun'},
@@ -9019,7 +9018,7 @@ common_English_words={
     'watermarks': {'C2': 'noun'},
     'watts': {'A1': 'unit'},
     'wave-front': {'B1': 'noun'},
-    'waveform': {'xx': 'noun'},
+    'waveform': {'B2': 'noun'},
     'wavefront': {'C1': 'noun'},
     'wavelength': {'C2': 'noun'}, #  EFLEX uses the level B2
     'waving': {'B1': 'noun'},
@@ -11613,6 +11612,9 @@ def main():
                 print("Error in course_id")
                 return
 
+        #################################################################################
+        # load in the information about CEFR levels from the various sources
+        #################################################################################
         print('Loading some directories')
         american_3000_file=directory_location+"American_Oxford_3000.xlsx"
 
@@ -11636,8 +11638,30 @@ def main():
 
         print(f'{len(common_latin_words):>{Numeric_field_width}} words in common Latin words')
         
-        print('\nPruning the input')
+        ###############################################################################
+        # compute the lowest CEFR levels for each of the words, when there are CEFR levels specified
+        ###############################################################################
+        level_3000_singular=collect_CEFR_levels_from_list(american_3000_words, 'American 3000 singlualr')
+        level_5000_singular=collect_CEFR_levels_from_list(american_5000_words, 'American 5000 singlualr')
 
+        level_3000_plural=collect_CEFR_levels_for_plurals_from_list(american_3000_words, 'American 3000 plurals')
+        level_5000_plural=collect_CEFR_levels_for_plurals_from_list(american_5000_words, 'American 5000 plurals')
+
+        # compute the lowest CEFR level for each word in words_EFLLex
+        level_words_EFLLex=compute_lowest_CEFR_level(words_EFLLex, 'EFLLex')
+        # compute the lowest CEFR level for each word in words_SVALex
+        level_words_SVALex=compute_lowest_CEFR_level(words_SVALex, 'SVALex')
+        # compute the lowest CEFR level for each word in words_FLELex
+        level_words_FLELex=compute_lowest_CEFR_level(words_FLELex, 'FLELex')
+
+        level_common_English=collect_CEFR_levels_from_dict(common_English_words, 'common_English_words')
+        level_top_100_English_words=collect_CEFR_levels_from_dict(top_100_English_words, 'top_100_English_words')
+        level_thousand_most_common_words_in_English=collect_CEFR_levels_from_dict_common(thousand_most_common_words_in_English, 'thousand_most_common_words_in_English')
+
+        #################################################################################
+        # process the input unique words from the JSON file
+        #################################################################################
+        print('\nPruning the input')
         # read in the frequecy data that was written as JSON
         input_file_name=f'{directory_prefix}unique_words-for-course-frequency-{course_id}.txt'        
         try:
@@ -11859,7 +11883,7 @@ def main():
         with open(new_file_name, 'w') as f:
             f.write(json.dumps(frequency_sorted))
 
-        # compute some stats
+        # compute some stats for the remiaing words
         number_leading_capital_letter=0
         number_leading_lower_case_letter=0
         number_leading_other=0
@@ -11894,50 +11918,35 @@ def main():
 
         # compute some simple stats about which courses and CEFR levels the unique words were in
 
-
-        level_3000_singular=collect_CEFR_levels_from_list(american_3000_words, 'American 3000 singlualr')
-        level_5000_singular=collect_CEFR_levels_from_list(american_5000_words, 'American 5000 singlualr')
         level_3000_singular_counts=dict()
         level_5000_singular_counts=dict()
         american_3000_words_singular_count=0
         american_3000_words_plurals_count=0
         american_3000_words_count=0
 
-
-        level_3000_plural=collect_CEFR_levels_for_plurals_from_list(american_3000_words, 'American 3000 plurals')
-        level_5000_plural=collect_CEFR_levels_for_plurals_from_list(american_5000_words, 'American 5000 plurals')
         level_3000_plural_counts=dict()
         level_5000_plural_counts=dict()
         american_5000_words_singular_count=0
         american_5000_words_plurals_count=0
         american_5000_words_count=0
 
-        # compute the lowest CEFR level for each word in words_EFLLex
-        level_words_EFLLex=compute_lowest_CEFR_level(words_EFLLex, 'EFLLex')
         efllex_words_count=0
         level_words_EFLLex_counts={}
 
-        # compute the lowest CEFR level for each word in words_SVALex
-        level_words_SVALex=compute_lowest_CEFR_level(words_SVALex, 'SVALex')
         svalex_words_count=0
         level_words_SVALex_counts={}
 
 
-        # compute the lowest CEFR level for each word in words_FLELex
-        level_words_FLELex=compute_lowest_CEFR_level(words_FLELex, 'FLELex')
         flelex_words_count=0
         level_words_FLELex_counts={}
 
-        level_common_English=collect_CEFR_levels_from_dict(common_English_words, 'common_English_words')
         level_common_English_counts=dict()
         common_English_words_count=0
 
         top_100_English_words_set=set()
-        level_top_100_English_words=collect_CEFR_levels_from_dict(top_100_English_words, 'top_100_English_words')
         level_top_100_English_words_counts=dict()
         top_100_English_words_count=0
 
-        level_thousand_most_common_words_in_English=collect_CEFR_levels_from_dict_common(thousand_most_common_words_in_English, 'thousand_most_common_words_in_English')
         level_thousand_most_common_words_in_English_counts=dict()
         thousand_most_common_words_in_English_count=0
 
@@ -12091,7 +12100,7 @@ def main():
         print('The totals are the total numbers of the input words that appear in this source.')
         print('The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.')
         print('The American 3000 and 5000 sources have an explicit column of plurals; the rest are considered "singular".')
-        print('EFLLex_NLP4J, SVALex_Korp, and FLELex_CRF Tagger do {bold_text("not")} have any C2 words')
+        print('EFLLex_NLP4J, SVALex_Korp, and FLELex_CRF Tagger do {bold_text("not")} have any C2 words. The level used for a word based on these sources is based on the most frequent level for this word. In contrast for the other sources, the level used is the lowest level for that word or the highest level when the word is hyphenated.')
         print('The level xx indicates that the word does not have a known CEFR level.\n')
 
         print(f'American 3000: total: {american_3000_words_count} ({(american_3000_words_count/len(american_3000_words))*100:.2f}%), singular: {american_3000_words_singular_count}, plural: {american_3000_words_plurals_count}')
