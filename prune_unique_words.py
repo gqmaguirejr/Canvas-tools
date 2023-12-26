@@ -101,6 +101,10 @@ import math
 
 import nltk
 
+# width to use for outputting numeric values
+Numeric_field_width=7
+
+
 prefixes_to_ignore=[
     "'",
     "\\",
@@ -139,111 +143,112 @@ suffixes_to_ignore=[
 ]
 
 # based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
+
 top_100_English_words={
-    "the": "Article",
-    "be": "Verb",
-    "to": "Preposition",
-    "of": "Preposition",
-    "and": "Coordinator",
-    "a": "Article",
-    "in": "Preposition",
-    "that": "determiner",
-    "have": "Verb",
-    "I": "Pronoun",
-    "it": "Pronoun",
-    "for": "Preposition",
-    "not": "Adverb et al.",
-    "on": "Preposition",
-    "with": "Preposition",
-    "he": "Pronoun",
-    "as": "Adverb, preposition",
-    "you": "Pronoun",
-    "do": "Verb, noun",
-    "at": "Preposition",
-    "this": "Determiner, adverb, noun",
-    "but": "Preposition, adverb, coordinator",
-    "his": "Possessive pronoun",
-    "by": "Preposition",
-    "from": "Preposition",
-    "they": "Pronoun",
-    "we": "Pronoun",
-    "say": "Verb et al.",
-    "her": "Possessive pronoun",
-    "she": "Pronoun",
-    "or": "Coordinator",
-    "an": "Article",
-    "will": "Verb, noun",
-    "my": "Possessive pronoun",
-    "one": "Noun, adjective, et al.",
-    "all": "Adjective",
-    "would": "Verb",
-    "there": "Adverb, pronoun, et al.",
-    "their": "Possessive pronoun",
-    "what": "Pronoun, adverb, et al.",
-    "so": "Coordinator, adverb, et al.",
-    "up": "Adverb, preposition, et al.",
-    "out": "Preposition",
-    "if": "Preposition",
-    "about": "Preposition, adverb, et al.",
-    "who": "Pronoun, noun",
-    "get": "Verb",
-    "which": "Pronoun",
-    "go": "Verb, noun",
-    "me": "Pronoun",
-    "when": "Adverb",
-    "make": "Verb, noun",
-    "can": "Verb, noun",
-    "like": "Preposition, verb",
-    "time": "Noun",
-    "no": "Determiner, adverb",
-    "just": "Adjective",
-    "him": "Pronoun",
-    "know": "Verb, noun",
-    "take": "Verb, noun",
-    "people": "Noun",
-    "into": "Preposition",
-    "year": "Noun",
-    "your": "Possessive pronoun",
-    "good": "Adjective",
-    "some": "Determiner",
-    "could": "Verb",
-    "them": "Pronoun",
-    "see": "Verb",
-    "other": "Adjective, pronoun",
-    "than": "Preposition",
-    "then": "Adverb",
-    "now": "Preposition",
-    "look": "Verb",
-    "only": "Adverb",
-    "come": "Verb",
-    "its": "Possessive pronoun",
-    "over": "Preposition",
-    "think": "Verb",
-    "also": "Adverb",
-    "back": "Noun, adverb",
-    "after": "Preposition",
-    "use": "Verb, noun",
-    "two": "Noun",
-    "how": "Adverb",
-    "our": "Possessive pronoun",
-    "work": "Verb, noun",
-    "first": "Adjective",
-    "well": "Adverb",
-    "way": "Noun, adverb",
-    "even": "Adjective",
-    "new": "Adjective et al.",
-    "want": "Verb",
-    "because": "Preposition",
-    "any": "Pronoun",
-    "these": "Pronoun",
-    "give": "Verb",
-    "day": "Noun",
-    "most": "Adverb",
-    "us": "Pronoun"
+    'the': {'A1':  'article'},
+    'be': {'A1':  'verb'},
+    'to': {'A1':  'preposition'},
+    'of': {'A1':  'preposition'},
+    'and': {'A1':  'coordinator'},
+    'a': {'A1':  'article'},
+    'in': {'A1':  'preposition'},
+    'that': {'A1':  'determiner'},
+    'have': {'A1':  'verb'},
+    'I': {'A1':  'pronoun'},
+    'it': {'A1':  'pronoun'},
+    'for': {'A1':  'preposition'},
+    'not': {'A1':  'adverb et al.'},
+    'on': {'A1':  'preposition'},
+    'with': {'A1':  'preposition'},
+    'he': {'A1':  'pronoun'},
+    'as': {'A1':  'adverb, preposition'},
+    'you': {'A1':  'pronoun'},
+    'do': {'A1':  'verb, noun'},
+    'at': {'A1':  'preposition'},
+    'this': {'A1':  'determiner, adverb, noun'},
+    'but': {'A1':  'preposition, adverb, coordinator'},
+    'his': {'A1':  'possessive pronoun'},
+    'by': {'A2':  'preposition'},
+    'from': {'A1':  'preposition'},
+    'they': {'A1':  'pronoun'},
+    'we': {'A1':  'pronoun'},
+    'say': {'A1':  'verb et al.'},
+    'her': {'A1':  'possessive pronoun'},
+    'she': {'A1':  'pronoun'},
+    'or': {'A1':  'coordinator'},
+    'an': {'A1':  'article'},
+    'will': {'A1':  'verb, noun'},
+    'my': {'A1':  'possessive pronoun'},
+    'one': {'A1':  'noun, adjective, et al.'},
+    'all': {'A1':  'adjective'},
+    'would': {'A1':  'verb'},
+    'there': {'A1':  'adverb, pronoun, et al.'},
+    'their': {'A1':  'possessive pronoun'},
+    'what': {'A1':  'pronoun, adverb, et al.'},
+    'so': {'A2':  'coordinator, adverb, et al.'},
+    'up': {'A1':  'adverb, preposition, et al.'},
+    'out': {'A2':  'preposition'},
+    'if': {'A2':  'preposition'},
+    'about': {'A1':  'preposition, adverb, et al.'},
+    'who': {'A1':  'pronoun, noun'},
+    'get': {'A1':  'verb'},
+    'which': {'A1':  'pronoun'},
+    'go': {'A1':  'verb, noun'},
+    'me': {'A1':  'pronoun'},
+    'when': {'A1':  'adverb'},
+    'make': {'A1':  'verb, noun'},
+    'can': {'A1':  'verb, noun'},
+    'like': {'A1':  'preposition, verb'},
+    'time': {'A1':  'noun'},
+    'no': {'A1':  'determiner, adverb'},
+    'just': {'A2':  'adjective'},
+    'him': {'A1':  'pronoun'},
+    'know': {'A1':  'verb, noun'},
+    'take': {'A1':  'verb, noun'},
+    'people': {'A1':  'noun'},
+    'into': {'A1':  'preposition'},
+    'year': {'A1':  'noun'},
+    'your': {'A1':  'possessive pronoun'},
+    'good': {'A1':  'adjective'},
+    'some': {'A1':  'determiner'},
+    'could': {'A2':  'verb'},
+    'them': {'A1':  'pronoun'},
+    'see': {'A1':  'verb'},
+    'other': {'A1':  'adjective, pronoun'},
+    'than': {'A1':  'preposition'},
+    'then': {'A1':  'adverb'},
+    'now': {'A1':  'preposition'},
+    'look': {'A1':  'verb'},
+    'only': {'A1':  'adverb'},
+    'come': {'A1':  'verb'},
+    'its': {'A1':  'possessive pronoun'},
+    'over': {'A2':  'preposition'},
+    'think': {'A1':  'verb'},
+    'also': {'A1':  'adverb'},
+    'back': {'A1':  'noun, adverb'},
+    'after': {'A1':  'preposition'},
+    'use': {'A1':  'verb, noun'},
+    'two': {'A1':  'noun'},
+    'how': {'A1':  'adverb'},
+    'our': {'A1':  'possessive pronoun'},
+    'work': {'A1':  'verb, noun'},
+    'first': {'A1':  'adjective'},
+    'well': {'A1':  'adverb'},
+    'way': {'A2':  'noun, adverb'},
+    'even': {'A2':  'adjective'},
+    'new': {'A1':  'adjective et al.'},
+    'want': {'A1':  'verb'},
+    'because': {'A1':  'preposition'},
+    'any': {'A1':  'pronoun'},
+    'these': {'A1':  'pronoun'},
+    'give': {'A1':  'verb'},
+    'day': {'A1':  'noun'},
+    'most': {'A2':  'adverb'},
+    'us': {'A1':  'pronoun'}
 }
 
 # from https://strommeninc.com/1000-most-common-words-in-english-strommen-languages/
-thousand_most_common_words_in_English=[
+thousand_most_common_words_in_English_old=[
     'the', 'be', 'and', 'a', 'of', 'to', 'in', 'i', 'you', 'it', 'have', 'to',
     'that', 'for', 'do', 'he', 'with', 'on', 'this', 'n’t', 'we', 'that', 'not',
     'but', 'they', 'say', 'at', 'what', 'his', 'from', 'go', 'or', 'by', 'get',
@@ -290,7 +295,7 @@ thousand_most_common_words_in_English=[
     'walk', 'door', 'white', 'several', 'court', 'home', 'grow', 'better', 'open',
     'moment', 'including', 'consider', 'both', 'such', 'little', 'within',
     'second', 'late', 'street', 'free', 'better', 'everyone', 'policy', 'table',
-    'sorry', 'care', 'low', 'human', 'please', 'hope', 'TRUE', 'process',
+    'sorry', 'care', 'low', 'human', 'please', 'hope', 'true', 'process',
     'teacher', 'data', 'offer', 'death', 'whole', 'experience', 'plan', 'easy',
     'education', 'build', 'expect', 'fall', 'himself', 'age', 'hard', 'sense',
     'across', 'show', 'early', 'college', 'music', 'appear', 'mind', 'class',
@@ -370,6 +375,963 @@ thousand_most_common_words_in_English=[
     'post', 'charge', 'seat'
 ]
 
+thousand_most_common_words_in_English={
+    'the': {'A1': 'zz'},
+    'be': {'A1': 'zz'},
+    'and': {'A1': 'zz'},
+    'a': {'A1': 'zz'},
+    'of': {'A1': 'zz'},
+    'to': {'A1': 'zz'},
+    'in': {'A1': 'preposition', 'A2': 'adverb, preposition', 'B1': 'preposition'},
+    'i': {'A1': 'zz'},
+    'you': {'A1': 'zz'},
+    'it': {'A1': 'zz'},
+    'have': {'A1': 'zz'},
+    'to':   {'A1': 'zz'},
+    'that': {'A1': 'zz'},
+    'for': {'A1': 'zz'},
+    'do': {'A1': 'zz'},
+    'he': {'A1': 'zz'},
+    'with': {'A1': 'zz'},
+    'on': {'A1': 'zz'},
+    'this': {'A1': 'zz'},
+    "n’t": {'A1': 'contraction', 'A2': 'contraction'},
+    'we': {'A1': 'zz'},
+    'that': {'A1': 'zz'},
+    'not': {'A1': 'zz'},
+    'but': {'A1': 'zz'},
+    'they': {'A1': 'zz'},
+    'say': {'A1': 'zz'},
+    'at': {'A1': 'zz'},
+    'what': {'A1': 'zz'},
+    'his': {'A1': 'zz'},
+    'from': {'A1': 'zz'},
+    'go': {'A1': 'zz'},
+    'or': {'A1': 'zz'},
+    'by': {'A2': 'zz'},
+    'get': {'A1': 'zz'},
+    'she': {'A1': 'zz'},
+    'my': {'A1': 'zz'},
+    'can': {'A1': 'zz'},
+    'as': {'A1': 'zz'},
+    'know': {'A1': 'zz'},
+    'if': {'A2': 'zz'},
+    'me': {},
+    'your': {'A1': 'zz'},
+    'all': {'A1': 'zz'},
+    'who': {'A1': 'zz'},
+    'about': {'A1': 'adverb, preposition', 'A2': 'preposition', 'B1': 'adjective, preposition', 'B2': 'adverb'},
+    'their': {'A1': 'zz'},
+    'will': {'A1': 'zz'},
+    'so': {'A2': 'zz'},
+    'would': {'A1': 'zz'},
+    'make': {'A1': 'zz'},
+    'just': {'A2': 'zz'},
+    'up': {'A1': 'zz'},
+    'think': {'A1': 'zz'},
+    'time': {'A1': 'zz'},
+    'there': {'A1': 'zz'},
+    'see': {'A1': 'zz'},
+    'her': {'A1': 'determine, pronoun'},
+    'out': {'A2': 'zz'},
+    'one': {'A1': 'zz'},
+    'come': {'A1': 'zz'},
+    'people': {'A1': 'zz'},
+    'take': {'A1': 'zz'},
+    'year': {'A1': 'zz'},
+    'him': {'A1': 'zz'},
+    'them': {'A1': 'zz'},
+    'some': {'A1': 'zz'},
+    'want': {'A1': 'zz'},
+    'how': {'A1': 'zz'},
+    'when': {'A1': 'zz'},
+    'which': {'A1': 'zz'},
+    'now': {'A1': 'zz'},
+    'like': {'A1': 'zz'},
+    'other': {'A1': 'zz'},
+    'could': {'A2': 'zz'},
+    'our': {'A1': 'zz'},
+    'into': {'A1': 'zz'},
+    'here': {'A1': 'zz'},
+    'then': {'A1': 'zz'},
+    'than': {'A1': 'zz'},
+    'look': {'A1': 'zz'},
+    'way': {'A2': 'zz'},
+    'more': {'A1': 'zz'},
+    'these': {'A1': 'zz'},
+    'no': {'A1': 'zz'},
+    'thing': {'A1': 'zz'},
+    'well': {'A1': 'zz'},
+    'because': {'A1': 'conjunction'},
+    'also': {'A1': 'zz'},
+    'two': {'A1': 'zz'},
+    'use': {'A1': 'zz'},
+    'tell': {'A1': 'zz'},
+    'good': {'A1': 'zz'},
+    'first': {'A1': 'zz'},
+    'man': {'A1': 'zz'},
+    'day': {'A1': 'zz'},
+    'find': {'A1': 'zz'},
+    'give': {'A1': 'zz'},
+    'more': {'A1': 'zz'},
+    'new': {'A1': 'zz'},
+    'one': {'A1': 'zz'},
+    'us': {'A1': 'zz'},
+    'any': {'A1': 'zz'},
+    'those': {'A1': 'zz'},
+    'very': {'A1': 'zz'},
+    'need': {'A1': 'zz'},
+    'back': {'A1': 'adverb', 'A2': 'adjective, adverb, noun', 'B1': 'adverb', 'B2': 'adverb', 'C1': 'adjective', 'C2': 'adverb, noun, verb'},
+    'there': {'A1': 'zz'},
+    'should': {'A2': 'zz'},
+    'even': {'A2': 'adverb', 'B1': 'adverb', 'B2': 'adverb', 'C1': 'adverb'},
+    'only': {'A1': 'zz'},
+    'many': {'A1': 'zz'},
+    'really': {'A1': 'zz'},
+    'work': {'A1': 'zz'},
+    'life': {'A1': 'zz'},
+    'why': {'A1': 'zz'},
+    'right': {'A1': 'zz'},
+    'down': {'A1': 'zz'},
+    'on': {'A1': 'zz'},
+    'try': {'A2': 'zz'},
+    'let': {'A2': 'zz'},
+    'something': {'A1': 'zz'},
+    'too': {'A1': 'zz'},
+    'call': {'A2': 'noun, verb', 'B1': 'noun, verb', 'B2': 'verb', 'C1': 'noun, verb', 'C2': 'verb'},
+    'woman': {'A1': 'zz'},
+    'may': {'A1': 'zz'},
+    'still': {'A2': 'zz'},
+    'through': {'A2': 'zz'},
+    'mean': {'A2': 'zz'},
+    'after': {'A1': 'proposiiton', 'A2': 'adverb, proposiiton', 'B1': 'conjunction, preposition', 'B2': 'conjunction, preposition', 'B2': 'conjunction, preposition', 'C2': 'conjunction, preposition' },
+    'never': {'A1': 'zz'},
+    'no': {'A1': 'zz'},
+    'world': {'A1': 'zz'},
+    'feel': {'A1': 'zz'},
+    'yeah': {'A2': 'zz'},
+    'great': {'A1': 'zz'},
+    'last': {'A1': 'zz'},
+    'child': {'A1': 'zz'},
+    'oh': {'A1': 'zz'},
+    'over': {'A2': 'zz'},
+    'ask': {'A1': 'zz'},
+    'when': {'A1': 'zz'},
+    'as': {'A1': 'preposition', 'A2': 'preposition, conjunction', 'B1': 'conjunction, preposition', 'B2':  'conjunction, preposition' },
+    'school': {'A1': 'zz'},
+    'state': {'B2': 'zz'},
+    'much': {'A1': 'zz'},
+    'talk': {'A1': 'zz'},
+    'out': {'A2': 'zz'},
+    'keep': {'A2': 'zz'},
+    'leave': {'A1': 'zz'},
+    'put': {'A1': 'zz'},
+    'like': {'A1': 'verb', 'A2': 'preposition, verb', 'B1': 'conjunction, noun, preposition', 'B2': 'preposition'},
+    'help': {'A1': 'verb', 'A2': 'exclamation, noun, verb', 'B1': 'noun, verb', 'B2': 'noun, verb'},
+    'big': {'A1': 'zz'},
+    'where': {'A1': 'zz'},
+    'same': {'A1': 'zz'},
+    'all': {'A1': 'zz'},
+    'own': {'A2': 'zz'},
+    'while': {'A2': 'zz'},
+    'start': {'A1': 'zz'},
+    'three': {'A1': 'zz'},
+    'high': {'A2': 'zz'},
+    'every': {'A1': 'zz'},
+    'another': {'A2': 'zz'},
+    'become': {'A2': 'zz'},
+    'most': {'A2': 'zz'},
+    'between': {'A1': 'zz'},
+    'happen': {'A2': 'zz'},
+    'family': {'A1': 'zz'},
+    'over': {'A2': 'zz'},
+    'president': {'B1': 'zz'},
+    'old': {'A1': 'zz'},
+    'yes': {'A1': 'zz'},
+    'house': {'A1': 'zz'},
+    'show': {'A1': 'zz'},
+    'again': {'A1': 'zz'},
+    'student': {'A1': 'zz'},
+    'so': {'A2': 'zz'},
+    'seem': {'B1': 'zz'},
+    'might': {'A2': 'zz'},
+    'part': {'A1': 'zz'},
+    'hear': {'A1': 'zz'},
+    'its': {'A1': 'zz'},
+    'place': {'A1': 'zz'},
+    'problem': {'A1': 'zz'},
+    'where': {'A1': 'zz'},
+    'believe': {'A2': 'zz'},
+    'country': {'A1': 'zz'},
+    'always': {'A1': 'zz'},
+    'week': {'A1': 'zz'},
+    'point': {'A2': 'zz'},
+    'hand': {'A1': 'zz'},
+    'off': {'A2': 'zz'},
+    'play': {'A1': 'zz'},
+    'turn': {'A2': 'zz'},
+    'few': {'A2': 'zz'},
+    'group': {'A1': 'zz'},
+    'such': {'A2': 'zz'},
+    'against': {'A2': 'zz'},
+    'run': {'A1': 'zz'},
+    'guy': {'A2': 'zz'},
+    'case': {'A2': 'zz'},
+    'question': {'A1': 'zz'},
+    'work': {'A1': 'zz'},
+    'night': {'A1': 'zz'},
+    'live': {'A1': 'zz'},
+    'game': {'A1': 'zz'},
+    'number': {'A1': 'zz'},
+    'write': {'A1': 'zz'},
+    'bring': {'A2': 'zz'},
+    'without': {'A2': 'zz'},
+    'money': {'A1': 'zz'},
+    'lot': {'A1': 'zz'},
+    'most': {'A2': 'zz'},
+    'book': {'A1': 'zz'},
+    'system': {'B1': 'zz'},
+    'government': {'B1': 'zz'},
+    'next': {'A1': 'zz'},
+    'city': {'A1': 'zz'},
+    'company': {'A2': 'zz'},
+    'story': {'A2': 'zz'},
+    'today': {'A1': 'zz'},
+    'job': {'A1': 'zz'},
+    'move': {'A2': 'zz'},
+    'must': {'A2': 'zz'},
+    'bad': {'A1': 'zz'},
+    'friend': {'A1': 'zz'},
+    'during': {'A2': 'zz'},
+    'begin': {'A1': 'zz'},
+    'love': {'A1': 'zz'},
+    'each': {'A1': 'determiner, pronoun', 'A2': 'promoun'},
+    'hold': {'A2': 'zz'},
+    'different': {'A1': 'zz'},
+    'american': {'B1': 'noun'},
+    'little': {'A1': 'adjective', 'A2': 'adverb', 'B1': 'adjective, determiner, pronoun', 'B2': 'adjective, adverb, pronoun', 'C1': 'adverb', 'C2': 'adverb'},
+    'before': {'A1': 'preposition', 'A2': 'adverb, conjunction, preposition', 'B1': 'adverb, conjunction, preposition', 'C2': 'preposition'},
+    'ever': {'A2': 'zz'},
+    'word': {'A1': 'zz'},
+    'fact': {'A2': 'zz'},
+    'right': {'A1': 'zz'},
+    'read': {'A1': 'zz'},
+    'anything': {'A1': 'zz'},
+    'nothing': {'A2': 'zz'},
+    'sure': {'A2': 'zz'},
+    'small': {'A1': 'zz'},
+    'month': {'A1': 'zz'},
+    'program': {'A2': 'zz'},
+    'maybe': {'A2': 'zz'},
+    'right': {'A1': 'zz'},
+    'under': {'A1': 'zz'},
+    'business': {'A1': 'zz'},
+    'home': {'A1': 'noun', 'A2': 'adverb', 'B1': 'adverb, noun', 'C1': 'noun'},
+    'kind': {'A1': 'zz'},
+    'stop': {'A1': 'zz'},
+    'pay': {'A1': 'zz'},
+    'study': {'A1': 'zz'},
+    'since': {'A2': 'zz'},
+    'issue': {'B1': 'zz'},
+    'name': {'A1': 'zz'},
+    'idea': {'A2': 'zz'},
+    'room': {'A1': 'zz'},
+    'percent': {'B1': 'zz'},
+    'far': {'A2': 'zz'},
+    'away': {'A2': 'adverb', 'B1': 'adverb, verb', 'B2': 'adverb', 'C1': 'adverb', 'C2': 'adverb'},
+    'law': {'B1': 'zz'},
+    'actually': {'A2': 'zz'},
+    'large': {'A2': 'zz'},
+    'though': {'B1': 'zz'},
+    'provide': {'B1': 'zz'},
+    'lose': {'A2': 'zz'},
+    'power': {'B1': 'zz'},
+    'kid': {'B1': 'zz'},
+    'war': {'A2': 'zz'},
+    'understand': {'A1': 'zz'},
+    'head': {'A1': 'zz'},
+    'mother': {'A1': 'zz'},
+    'real': {'A2': 'zz'},
+    'best': {'A1': 'adjective, adverb', 'A2': 'adjective, noun', 'B1': 'adjective, adverb, noun', 'B2': 'adjective, noun', 'C1': 'adjective, noun', 'C2': 'noun'},
+    'team': {'A2': 'zz'},
+    'eye': {'A1': 'zz'},
+    'long': {'A1': 'adjective', 'A2': 'adjective, adverb', 'B1': 'adverb', 'B2': 'adverb', 'C1': 'adverb', 'C2': 'adverb'},
+    'side': {'A2': 'zz'},
+    'water': {'A1': 'zz'},
+    'young': {'A1': 'zz'},
+    'wait': {'A1': 'zz'},
+    'okay': {'A1': 'noun'},
+    'both': {'A1': 'determiner, adverb'},
+    'yet': {'A2': 'zz'},
+    'meet': {'A1': 'zz'},
+    'service': {'B1': 'zz'},
+    'area': {'A2': 'zz'},
+    'important': {'A1': 'zz'},
+    'person': {'A1': 'zz'},
+    'hey': {'A2': 'zz'},
+    'thank': {'A2': 'zz'},
+    'much': {'A1': 'zz'},
+    'someone': {'A2': 'zz'},
+    'end': {'A1': 'noun', 'A2': 'noun, verb', 'B1': 'noun', 'B2': 'noun', 'C1': 'noun', 'C2': 'noun'},
+    'change': {'A1': 'verb', 'A2': 'noun, verb', 'B1': 'noun, verb', 'C2': 'noun'},
+    'however': {'A2': 'zz'},
+    'only': {'A1': 'zz'},
+    'around': {'A2': 'adverb, preposition', 'B1': 'adverb', 'B2': 'adverb', 'C2': 'adverb'},
+    'hour': {'A1': 'zz'},
+    'everything': {'A2': 'zz'},
+    'national': {'A2': 'zz'},
+    'four': {'A1': 'zz'},
+    'line': {'A2': 'zz'},
+    'girl': {'A1': 'zz'},
+    'watch': {'A1': 'zz'},
+    'until': {'A1': 'zz'},
+    'father': {'A1': 'zz'},
+    'sit': {'A1': 'zz'},
+    'create': {'B1': 'zz'},
+    'information': {'A2': 'zz'},
+    'car': {'A1': 'zz'},
+    'learn': {'A1': 'zz'},
+    'least': {'A2': 'zz'},
+    'already': {'A2': 'zz'},
+    'kill': {'A2': 'zz'},
+    'minute': {'A1': 'zz'},
+    'party': {'A1': 'zz'},
+    'include': {'A2': 'zz'},
+    'stand': {'A2': 'zz'},
+    'together': {'A1': 'zz'},
+    'follow': {'A2': 'zz'},
+    'health': {'A2': 'zz'},
+    'remember': {'A1': 'zz'},
+    'often': {'A1': 'zz'},
+    'reason': {'A2': 'zz'},
+    'speak': {'A1': 'zz'},
+    'ago': {'A2': 'zz'},
+    'set': {'A2': 'zz'},
+    'black': {'A1': 'zz'},
+    'member': {'A2': 'zz'},
+    'community': {'B2': 'zz'},
+    'once': {'A2': 'zz'},
+    'social': {'B1': 'zz'},
+    'news': {'A2': 'zz'},
+    'allow': {'B1': 'zz'},
+    'win': {'A2': 'zz'},
+    'body': {'A1': 'zz'},
+    'lead': {'B1': 'zz'},
+    'continue': {'B1': 'zz'},
+    'whether': {'B1': 'zz'},
+    'enough': {'A2': 'adverb, determiner', 'B2': 'adverb, determiner', 'C1': 'determiner'},
+    'spend': {'A2': 'zz'},
+    'level': {'A2': 'zz'},
+    'able': {'A2': 'zz'},
+    'political': {'B1': 'zz'},
+    'almost': {'A2': 'zz'},
+    'boy': {'A1': 'zz'},
+    'university': {'A1': 'zz'},
+    'stay': {'A1': 'zz'},
+    'add': {'A2': 'zz'},
+    'later': {'A1': 'zz'},
+    'five': {'A1': 'zz'},
+    'probably': {'A2': 'zz'},
+    'center': {'A1': 'noun'},
+    'among': {'A2': 'zz'},
+    'face': {'A1': 'noun', 'B1': 'noun, verb', 'B2': 'noun, verb', 'C1': 'noun', 'C2': 'noun, verb'},
+    'public': {'B1': 'zz'},
+    'die': {'A1': 'zz'},
+    'food': {'A1': 'zz'},
+    'else': {'A2': 'zz'},
+    'history': {'A2': 'zz'},
+    'buy': {'A1': 'zz'},
+    'result': {'B1': 'zz'},
+    'morning': {'A1': 'zz'},
+    'off': {'A2': 'zz'},
+    'parent': {'A1': 'zz'},
+    'office': {'A2': 'zz'},
+    'course': {'A1': 'noun', 'A2': 'noun', 'B1': 'noun', 'B2': 'noun', 'C1': 'noun', 'C2': 'noun'},
+    'send': {'A1': 'zz'},
+    'research': {'B1': 'zz'},
+    'walk': {'A1': 'zz'},
+    'door': {'A1': 'zz'},
+    'white': {'A1': 'zz'},
+    'several': {'A2': 'zz'},
+    'court': {'B1': 'zz'},
+    'grow': {'A2': 'zz'},
+    'better': {'A1': 'adjective', 'A2': 'adjective, adverb', 'B1': 'adjective', 'B2': 'adjective', 'C1': 'adjective', 'C2': 'adjective, adverb'},
+    'open': {'A1': 'zz'},
+    'moment': {'A2': 'zz'},
+    'including': {'A2': 'zz'},
+    'consider': {'B1': 'zz'},
+    'such': {'A2': 'zz'},
+    'within': {'B1': 'zz'},
+    'second': {'A1': 'zz'},
+    'late': {'A1': 'zz'},
+    'street': {'A1': 'zz'},
+    'free': {'A2': 'zz'},
+    'everyone': {'A2': 'zz'},
+    'policy': {'B2': 'zz'},
+    'table': {'A1': 'zz'},
+    'sorry': {'A1': 'zz'},
+    'care': {'A2': 'noun', 'B1': 'noun, verb', 'B2': 'noun', 'C1': 'noun, verb', 'C2': 'noun'},
+    'low': {'A2': 'zz'},
+    'human': {'B1': 'zz'},
+    'please': {'A1': 'zz'},
+    'hope': {'A2': 'zz'},
+    'true': {'A2': 'zz'},
+    'process': {'B2': 'zz'},
+    'teacher': {'A1': 'zz'},
+    'data': {'B2': 'zz'},
+    'offer': {'A2': 'zz'},
+    'death': {'B1': 'zz'},
+    'whole': {'A2': 'zz'},
+    'experience': {'B1': 'zz'},
+    'plan': {'A2': 'zz'},
+    'easy': {'A1': 'zz'},
+    'education': {'B1': 'zz'},
+    'build': {'A2': 'zz'},
+    'expect': {'B1': 'zz'},
+    'fall': {'A2': 'zz'},
+    'himself': {'A2': 'zz'},
+    'age': {'A1': 'zz'},
+    'hard': {'A1': 'adjective, adverb', 'A2': 'adjective', 'B1': 'adjective, adverb', 'B2': 'adjective', 'C1': 'adjective', 'C2': 'adjective' },
+    'sense': {'B1': 'zz'},
+    'across': {'A2': 'zz'},
+    'show': {'A1': 'zz'},
+    'early': {'A1': 'adverb', 'A2': 'adjective, adverb', 'C2': 'adjective'},
+    'college': {'A2': 'zz'},
+    'music': {'A1': 'zz'},
+    'appear': {'B1': 'zz'},
+    'mind': {'A2': 'zz'},
+    'class': {'A1': 'zz'},
+    'police': {'A2': 'zz'},
+    'use': {'A1': 'zz'},
+    'effect': {'B1': 'zz'},
+    'season': {'B1': 'zz'},
+    'tax': {'B1': 'zz'},
+    'heart': {'A2': 'zz'},
+    'son': {'A1': 'zz'},
+    'art': {'A2': 'zz'},
+    'possible': {'A1': 'zz'},
+    'serve': {'A2': 'zz'},
+    'break': {'A2': 'zz'},
+    'although': {'B1': 'zz'},
+    'market': {'A2': 'zz'},
+    'air': {'A2': 'zz'},
+    'force': {'B2': 'noun, verb', 'C2': 'noun, verb'},
+    'require': {'B1': 'zz'},
+    'foot': {'A1': 'zz'},
+    'up': {'A1': 'zz'},
+    'listen': {'A1': 'zz'},
+    'agree': {'A2': 'zz'},
+    'according': {'A2': 'noun'},
+    'anyone': {'A2': 'zz'},
+    'baby': {'A1': 'zz'},
+    'wrong': {'A1': 'zz'},
+    'love': {'A1': 'zz'},
+    'cut': {'A2': 'zz'},
+    'decide': {'A2': 'zz'},
+    'republican': {'B2': 'noun', 'C1': 'noun'},
+    'full': {'A2': 'zz'},
+    'behind': {'A1': 'zz'},
+    'pass': {'A2': 'zz'},
+    'interest': {'B1': 'zz'},
+    'sometimes': {'A1': 'zz'},
+    'security': {'B1': 'zz'},
+    'eat': {'A1': 'zz'},
+    'report': {'B1': 'zz'},
+    'control': {'B1': 'verb', 'B2': 'noun, verb', 'C1': 'noun'},
+    'rate': {'B2': 'zz'},
+    'local': {'B1': 'zz'},
+    'suggest': {'B1': 'zz'},
+    'report': {'B1': 'zz'},
+    'nation': {'B2': 'zz'},
+    'sell': {'A2': 'zz'},
+    'action': {'B1': 'zz'},
+    'support': {'B1': 'zz'},
+    'wife': {'A1': 'zz'},
+    'decision': {'B1': 'zz'},
+    'receive': {'A2': 'zz'},
+    'value': {'B1': 'zz'},
+    'base': {'B1': 'zz'},
+    'pick': {'A2': 'zz'},
+    'phone': {'A1': 'zz'},
+    'thanks': {'A1': 'zz'},
+    'drive': {'A1': 'zz'},
+    'strong': {'A2': 'zz'},
+    'reach': {'B1': 'zz'},
+    'remain': {'B1': 'zz'},
+    'explain': {'A2': 'zz'},
+    'site': {'A2': 'zz'},
+    'hit': {'A2': 'zz'},
+    'pull': {'A2': 'zz'},
+    'church': {'A2': 'zz'},
+    'model': {'A2': 'zz'},
+    'perhaps': {'A2': 'zz'},
+    'relationship': {'B1': 'zz'},
+    'six': {'A1': 'zz'},
+    'fine': {'A1': 'zz'},
+    'movie': {'A1': 'zz'},
+    'field': {'A2': 'zz'},
+    'raise': {'B1': 'zz'},
+    'less': {'A2': 'adverb, determiner, pronoun', 'B2': 'adverb'},
+    'player': {'A1': 'zz'},
+    'couple': {'B1': 'zz'},
+    'million': {'A2': 'zz'},
+    'themselves': {'A2': 'zz'},
+    'record': {'A2': 'zz'},
+    'especially': {'A2': 'zz'},
+    'difference': {'A2': 'zz'},
+    'light': {'A1': 'zz'},
+    'development': {'B1': 'zz'},
+    'federal': {'B2': 'noun'},
+    'former': {'B1': 'zz'},
+    'role': {'B1': 'zz'},
+    'pretty': {'A2': 'zz'},
+    'myself': {'A2': 'zz'},
+    'view': {'A2': 'zz'},
+    'price': {'A2': 'zz'},
+    'effort': {'B1': 'zz'},
+    'nice': {'A1': 'zz'},
+    'quite': {'A2': 'zz'},
+    'along': {'A2': 'zz'},
+    'voice': {'B1': 'zz'},
+    'finally': {'A2': 'zz'},
+    'department': {'A2': 'zz'},
+    'either': {'B1': 'zz'},
+    'toward': {'A2': 'noun'},
+    'leader': {'B1': 'zz'},
+    'photo': {'A1': 'zz'},
+    'wear': {'A1': 'zz'},
+    'space': {'A2': 'zz'},
+    'project': {'A2': 'zz'},
+    'return': {'A2': 'zz'},
+    'position': {'B1': 'zz'},
+    'special': {'A2': 'zz'},
+    'million': {'A2': 'zz'},
+    'film': {'A1': 'zz'},
+    'need': {'A1': 'zz'},
+    'major': {'B2': 'zz'},
+    'type': {'A2': 'zz'},
+    'town': {'A1': 'zz'},
+    'article': {'B1': 'zz'},
+    'road': {'A1': 'zz'},
+    'form': {'A2': 'zz'},
+    'chance': {'B1': 'zz'},
+    'drug': {'B2': 'zz'},
+    'economic': {'B2': 'zz'},
+    'situation': {'B1': 'zz'},
+    'choose': {'A1': 'zz'},
+    'practice': {'A2': 'zz'},
+    'cause': {'B2': 'noun, verb', 'C1': 'noun', 'C2': 'noun'},
+    'happy': {'A1': 'zz'},
+    'science': {'A2': 'zz'},
+    'join': {'A2': 'zz'},
+    'teach': {'A1': 'zz'},
+    'develop': {'B1': 'zz'},
+    'share': {'A2': 'zz'},
+    'yourself': {'A2': 'zz'},
+    'carry': {'A1': 'zz'},
+    'clear': {'A2': 'zz'},
+    'brother': {'A1': 'zz'},
+    'matter': {'A2': 'zz'},
+    'dead': {'A2': 'zz'},
+    'image': {'B2': 'zz'},
+    'star': {'A2': 'zz'},
+    'cost': {'A2': 'zz'},
+    'simply': {'B2': 'zz'},
+    'post': {'A2': 'zz'},
+    'society': {'B1': 'zz'},
+    'picture': {'A1': 'zz'},
+    'piece': {'A2': 'zz'},
+    'paper': {'A1': 'zz'},
+    'energy': {'B1': 'zz'},
+    'personal': {'B1': 'zz'},
+    'building': {'A2': 'zz'},
+    'military': {'B2': 'zz'},
+    'open': {'A1': 'zz'},
+    'doctor': {'A1': 'zz'},
+    'activity': {'A2': 'zz'},
+    'exactly': {'A2': 'zz'},
+    'media': {'B2': 'zz'},
+    'miss': {'A1': 'zz'},
+    'evidence': {'B2': 'zz'},
+    'product': {'B1': 'zz'},
+    'realize': {'B1': 'zz'},
+    'save': {'A2': 'zz'},
+    'arm': {'A1': 'zz'},
+    'technology': {'B1': 'zz'},
+    'catch': {'A1': 'zz'},
+    'comment': {'B1': 'zz'},
+    'look': {'A1': 'zz'},
+    'term': {'A2': 'zz'},
+    'color': {'A1': 'noun'},
+    'cover': {'A2': 'zz'},
+    'describe': {'A2': 'zz'},
+    'guess': {'A2': 'zz'},
+    'choice': {'B1': 'zz'},
+    'source': {'B2': 'zz'},
+    'mom': {'A1': 'noun'},
+    'soon': {'A1': 'zz'},
+    'director': {'B1': 'zz'},
+    'international': {'A2': 'zz'},
+    'rule': {'B1': 'zz'},
+    'campaign': {'C1': 'zz'},
+    'ground': {'B1': 'zz'},
+    'election': {'B1': 'zz'},
+    'uh': {'A1': 'interjection'},
+    'check': {'A2': 'zz'},
+    'page': {'A1': 'zz'},
+    'fight': {'B1': 'zz'},
+    'itself': {'A2': 'zz'},
+    'test': {'A1': 'zz'},
+    'patient': {'B1': 'zz'},
+    'produce': {'B1': 'zz'},
+    'certain': {'B1': 'zz'},
+    'whatever': {'B1': 'zz'},
+    'half': {'A1': 'zz'},
+    'video': {'A2': 'zz'},
+    'support': {'B1': 'zz'},
+    'throw': {'A2': 'zz'},
+    'third': {'A2': 'zz'},
+    'rest': {'A2': 'zz'},
+    'recent': {'B1': 'zz'},
+    'available': {'A2': 'zz'},
+    'step': {'B1': 'zz'},
+    'ready': {'A1': 'zz'},
+    'opportunity': {'B1': 'zz'},
+    'official': {'B2': 'zz'},
+    'oil': {'A2': 'zz'},
+    'organization': {'B1': 'zz'},
+    'character': {'B1': 'zz'},
+    'single': {'A2': 'zz'},
+    'current': {'B2': 'zz'},
+    'county': {'B2': 'zz'},
+    'future': {'A2': 'zz'},
+    'dad': {'A1': 'zz'},
+    'whose': {'B1': 'zz'},
+    'shoot': {'B1': 'zz'},
+    'industry': {'B1': 'zz'},
+    'second': {'A1': 'zz'},
+    'list': {'A2': 'zz'},
+    'general': {'B1': 'zz'},
+    'stuff': {'B1': 'zz'},
+    'figure': {'B1': 'noun', 'B2': 'noun', 'C1': 'noun', 'C2': 'noun, verb'},
+    'attention': {'B1': 'zz'},
+    'forget': {'A2': 'zz'},
+    'risk': {'B2': 'zz'},
+    'no': {'A1': 'zz'},
+    'focus': {'B2': 'zz'},
+    'short': {'A1': 'zz'},
+    'fire': {'A2': 'zz'},
+    'dog': {'A1': 'zz'},
+    'red': {'A1': 'zz'},
+    'hair': {'A1': 'zz'},
+    'point': {'A2': 'zz'},
+    'condition': {'B1': 'zz'},
+    'wall': {'A1': 'zz'},
+    'daughter': {'A1': 'zz'},
+    'deal': {'B2': 'noun', 'C1': 'noun'},
+    'author': {'B1': 'zz'},
+    'truth': {'B1': 'zz'},
+    'upon': {'B1': 'zz'},
+    'husband': {'A1': 'zz'},
+    'period': {'B1': 'zz'},
+    'series': {'B1': 'zz'},
+    'order': {'A2': 'zz'},
+    'officer': {'B1': 'zz'},
+    'close': {'A1': 'adjective, verb', 'A2': 'adjective, verb', 'B1': 'adjective, adverb', 'B2': 'adjective, verb', 'C1': 'adjective, verb', 'C2': 'adjective, verb'},
+    'land': {'B1': 'zz'},
+    'note': {'A1': 'zz'},
+    'computer': {'A1': 'zz'},
+    'thought': {'A1': 'zz'},
+    'economy': {'B2': 'zz'},
+    'goal': {'A2': 'zz'},
+    'bank': {'A1': 'zz'},
+    'behavior': {'A2': 'noun'},
+    'sound': {'A2': 'zz'},
+    'certainly': {'A2': 'zz'},
+    'nearly': {'A2': 'zz'},
+    'increase': {'B1': 'zz'},
+    'act': {'B1': 'noun, verb', 'B2': 'noun, verb', 'C2': 'noun'},
+    'north': {'A2': 'zz'},
+    'well': {'A1': 'zz'},
+    'blood': {'A2': 'zz'},
+    'culture': {'B1': 'zz'},
+    'medical': {'B2': 'zz'},
+    'ok': {'A1': 'zz'},
+    'everybody': {'A2': 'zz'},
+    'top': {'A2': 'zz'},
+    'difficult': {'A1': 'zz'},
+    'language': {'A1': 'zz'},
+    'window': {'A1': 'zz'},
+    'response': {'B2': 'zz'},
+    'population': {'B1': 'zz'},
+    'lie': {'A2': 'zz'},
+    'tree': {'A1': 'zz'},
+    'park': {'A1': 'zz'},
+    'worker': {'A2': 'zz'},
+    'draw': {'A1': 'zz'},
+    'plan': {'A2': 'zz'},
+    'drop': {'B1': 'zz'},
+    'push': {'A2': 'zz'},
+    'earth': {'B1': 'zz'},
+    'per': {'A2': 'zz'},
+    'private': {'B1': 'zz'},
+    'tonight': {'A1': 'zz'},
+    'race': {'A2': 'zz'},
+    'than': {'A1': 'zz'},
+    'letter': {'A1': 'zz'},
+    'other': {'A1': 'zz'},
+    'gun': {'B1': 'zz'},
+    'simple': {'A2': 'zz'},
+    'wonder': {'B1': 'zz'},
+    'involve': {'B1': 'zz'},
+    'hell': {'B2': 'zz'},
+    'poor': {'A1': 'zz'},
+    'answer': {'A1': 'noun, verb', 'A2': 'noun, verb', 'B1': 'noun, verb'},
+    'nature': {'A2': 'zz'},
+    'administration': {'C1': 'zz'},
+    'common': {'B1': 'zz'},
+    'no': {'A1': 'zz'},
+    'message': {'A1': 'zz'},
+    'song': {'A2': 'zz'},
+    'enjoy': {'A1': 'zz'},
+    'similar': {'B1': 'zz'},
+    'congress': {'B1': 'noun'},
+    'attack': {'B1': 'zz'},
+    'past': {'A1': 'zz'},
+    'hot': {'A1': 'zz'},
+    'seek': {'B2': 'zz'},
+    'amount': {'B1': 'zz'},
+    'analysis': {'B2': 'zz'},
+    'store': {'B1': 'zz'},
+    'defense': {'A1': 'noun', 'B1': 'noun', 'C1': 'noun', 'C2': 'noun' },
+    'bill': {'A2': 'zz'},
+    'cell': {'B2': 'zz'},
+    'performance': {'B1': 'zz'},
+    'hospital': {'A1': 'zz'},
+    'bed': {'A1': 'zz'},
+    'board': {'A1': 'zz'},
+    'protect': {'B1': 'zz'},
+    'century': {'A2': 'zz'},
+    'summer': {'A1': 'zz'},
+    'material': {'B1': 'zz'},
+    'individual': {'B1': 'zz'},
+    'recently': {'B1': 'zz'},
+    'example': {'A1': 'zz'},
+    'represent': {'B2': 'zz'},
+    'fill': {'A2': 'zz'},
+    'state': {'B2': 'zz'},
+    'place': {'A1': 'zz'},
+    'animal': {'A1': 'zz'},
+    'fail': {'A2': 'zz'},
+    'factor': {'B2': 'zz'},
+    'natural': {'B1': 'zz'},
+    'sir': {'B1': 'zz'},
+    'agency': {'B1': 'zz'},
+    'usually': {'A2': 'zz'},
+    'significant': {'B2': 'zz'},
+    'ability': {'B1': 'zz'},
+    'mile': {'B1': 'zz'},
+    'statement': {'B2': 'zz'},
+    'entire': {'B2': 'zz'},
+    'democrat': {'A2': 'noun'},
+    'floor': {'A1': 'zz'},
+    'serious': {'B1': 'zz'},
+    'career': {'B1': 'zz'},
+    'dollar': {'A1': 'zz'},
+    'vote': {'B1': 'zz'},
+    'sex': {'B1': 'zz'},
+    'compare': {'B1': 'zz'},
+    'south': {'A2': 'zz'},
+    'forward': {'B1': 'zz'},
+    'subject': {'A1': 'zz'},
+    'financial': {'B1': 'zz'},
+    'identify': {'B2': 'zz'},
+    'beautiful': {'A1': 'zz'},
+    'decade': {'A2': 'noun'},
+    'bit': {'A2': 'noun', 'B1': 'noun, verb', 'B2': 'noun', 'C1': 'noun', 'C2': 'noun'},
+    'reduce': {'B1': 'zz'},
+    'sister': {'A1': 'zz'},
+    'quality': {'B1': 'zz'},
+    'quickly': {'A2': 'zz'},
+    'press': {'B1': 'zz'},
+    'worry': {'A1': 'zz'},
+    'accept': {'B1': 'zz'},
+    'enter': {'A2': 'zz'},
+    'mention': {'B1': 'zz'},
+    'sound': {'A2': 'zz'},
+    'thus': {'B2': 'zz'},
+    'plant': {'A1': 'zz'},
+    'movement': {'B2': 'zz'},
+    'scene': {'B1': 'zz'},
+    'section': {'B1': 'zz'},
+    'treatment': {'B2': 'zz'},
+    'wish': {'A2': 'zz'},
+    'benefit': {'B1': 'zz'},
+    'interesting': {'A1': 'zz'},
+    'west': {'A2': 'zz'},
+    'candidate': {'B1': 'zz'},
+    'approach': {'B1': 'zz'},
+    'determine': {'C1': 'verb'},
+    'resource': {'B2': 'zz'},
+    'claim': {'B2': 'zz'},
+    'prove': {'B1': 'zz'},
+    'sort': {'A2': 'zz'},
+    'size': {'A2': 'zz'},
+    'somebody': {'A2': 'zz'},
+    'knowledge': {'B1': 'zz'},
+    'rather': {'B1': 'zz'},
+    'hang': {'B1': 'zz'},
+    'sport': {'A1': 'zz'},
+    'tv': {'A1': 'zz'},
+    'loss': {'B2': 'zz'},
+    'argue': {'B1': 'zz'},
+    'left': {'A1': 'zz'},
+    'note': {'A1': 'zz'},
+    'meeting': {'A1': 'zz'},
+    'skill': {'B1': 'zz'},
+    'card': {'A2': 'zz'},
+    'feeling': {'A1': 'zz'},
+    'despite': {'B1': 'zz'},
+    'degree': {'A2': 'zz'},
+    'crime': {'B1': 'zz'},
+    'that': {'A1': 'zz'},
+    'sign': {'A2': 'zz'},
+    'occur': {'B2': 'zz'},
+    'imagine': {'B1': 'zz'},
+    'vote': {'B1': 'zz'},
+    'near': {'A1': 'zz'},
+    'king': {'A2': 'zz'},
+    'box': {'A1': 'zz'},
+    'present': {'A1': 'zz'},
+    'seven': {'A1': 'zz'},
+    'foreign': {'A2': 'zz'},
+    'laugh': {'A2': 'zz'},
+    'disease': {'B1': 'zz'},
+    'lady': {'B1': 'zz'},
+    'beyond': {'B2': 'zz'},
+    'discuss': {'A2': 'zz'},
+    'finish': {'A1': 'zz'},
+    'design': {'B1': 'noun, verb', 'C1': 'noun'},
+    'concern': {'B2': 'zz'},
+    'ball': {'A1': 'zz'},
+    'east': {'A2': 'zz'},
+    'recognize': {'B1': 'zz'},
+    'apply': {'B1': 'zz'},
+    'prepare': {'A2': 'zz'},
+    'network': {'B2': 'zz'},
+    'huge': {'B1': 'zz'},
+    'success': {'B1': 'zz'},
+    'district': {'B1': 'zz'},
+    'cup': {'A1': 'zz'},
+    'name': {'A1': 'zz'},
+    'physical': {'B2': 'zz'},
+    'growth': {'B2': 'zz'},
+    'rise': {'B1': 'zz'},
+    'hi': {'A1': 'zz'},
+    'standard': {'B2': 'zz'},
+    'sign': {'A2': 'zz'},
+    'fan': {'A2': 'zz'},
+    'theory': {'B2': 'zz'},
+    'staff': {'A2': 'zz'},
+    'hurt': {'A2': 'zz'},
+    'legal': {'B2': 'zz'},
+    'september': {'A1': 'zz'},
+    'set': {'A2': 'zz'},
+    'outside': {'A1': 'zz'},
+    'et': {'A1': 'conjunction', 'B1': 'conjunction', 'C1': 'conjunction', 'C2': 'conjunction'},
+    'strategy': {'B2': 'zz'},
+    'clearly': {'A2': 'zz'},
+    'property': {'B1': 'zz'},
+    'lay': {'A2': 'zz'},
+    'final': {'A2': 'zz'},
+    'authority': {'B2': 'zz'},
+    'perfect': {'A2': 'zz'},
+    'method': {'B1': 'zz'},
+    'region': {'B1': 'zz'},
+    'since': {'A2': 'zz'},
+    'impact': {'B2': 'zz'},
+    'indicate': {'B2': 'zz'},
+    'safe': {'A1': 'zz'},
+    'committee': {'B2': 'zz'},
+    'supposed': {'B1': 'zz'},
+    'dream': {'A2': 'zz'},
+    'training': {'B1': 'zz'},
+    'shit': {'C1': 'noun, verb, example', 'C2': 'noun, verb, example'},
+    'central': {'B1': 'zz'},
+    'option': {'B1': 'zz'},
+    'eight': {'A1': 'zz'},
+    'particularly': {'B1': 'zz'},
+    'completely': {'B1': 'zz'},
+    'opinion': {'B1': 'zz'},
+    'main': {'B1': 'zz'},
+    'ten': {'A1': 'zz'},
+    'interview': {'B1': 'zz'},
+    'exist': {'B1': 'zz'},
+    'remove': {'B1': 'zz'},
+    'dark': {'A1': 'zz'},
+    'play': {'A1': 'zz'},
+    'union': {'B1': 'zz'},
+    'professor': {'B1': 'zz'},
+    'pressure': {'B2': 'zz'},
+    'purpose': {'B1': 'zz'},
+    'stage': {'A2': 'zz'},
+    'blue': {'A1': 'zz'},
+    'herself': {'A2': 'zz'},
+    'sun': {'A1': 'zz'},
+    'pain': {'A2': 'zz'},
+    'artist': {'A2': 'zz'},
+    'employee': {'B1': 'zz'},
+    'avoid': {'B1': 'zz'},
+    'account': {'B1': 'zz'},
+    'release': {'B2': 'zz'},
+    'fund': {'C1': 'zz'},
+    'environment': {'B1': 'zz'},
+    'treat': {'B2': 'zz'},
+    'specific': {'B2': 'zz'},
+    'version': {'B2': 'zz'},
+    'shot': {'B1': 'zz'},
+    'hate': {'A2': 'zz'},
+    'reality': {'B2': 'zz'},
+    'visit': {'A1': 'zz'},
+    'club': {'A2': 'zz'},
+    'justice': {'B2': 'zz'},
+    'river': {'A1': 'zz'},
+    'brain': {'A2': 'zz'},
+    'memory': {'A2': 'zz'},
+    'rock': {'B1': 'zz'},
+    'talk': {'A1': 'zz'},
+    'camera': {'A1': 'zz'},
+    'global': {'B2': 'zz'},
+    'various': {'A2': 'zz'},
+    'arrive': {'A2': 'zz'},
+    'notice': {'A2': 'zz'},
+    'detail': {'A2': 'zz'},
+    'challenge': {'B1': 'zz'},
+    'argument': {'B1': 'zz'},
+    'lot': {'A1': 'zz'},
+    'nobody': {'A2': 'zz'},
+    'weapon': {'B2': 'zz'},
+    'station': {'A1': 'zz'},
+    'island': {'A2': 'zz'},
+    'absolutely': {'B1': 'zz'},
+    'instead': {'A2': 'adverb'},
+    'discussion': {'B1': 'zz'},
+    'affect': {'B2': 'zz'},
+    'anyway': {'A2': 'zz'},
+    'respond': {'B2': 'zz'},
+    'trouble': {'B1': 'zz'},
+    'conversation': {'A1': 'zz'},
+    'manage': {'B1': 'zz'},
+    'date': {'A1': 'zz'},
+    'public': {'B1': 'zz'},
+    'army': {'B1': 'zz'},
+    'top': {'A2': 'zz'},
+    'post': {'A2': 'zz'},
+    'charge': {'B1': 'zz'},
+    'seat': {'A2': 'zz'},
+ 
+}
+
 # CEFR levels from https://languageresearch.cambridge.org/wordlists/text-inspector
 # for many hyphenated words the level used in the highest of the indivudal words
 # Levels based on EFLLex_NLP4J used to correct the xx entries
@@ -388,7 +1350,7 @@ common_English_words={
     "isn't": {'xx': 'contraction'},
     "it's": {'A1': 'contraction'}, # EFLLex uses the level B2
     "let's": {'A2': 'contraction'},
-    "n't": {'xx': 'contraction'},
+    "n't": {'A1': 'contraction'},
     "needn't": {'A2': 'contraction'},
     "that's": {'A1': 'contraction'},
     "there's": {'A1': 'contraction'},
@@ -1471,7 +2433,7 @@ common_English_words={
     'caused': {'A1': 'verb past tense, past participle'},
     'causing': {'B2': 'verb'},
     'cautiously': {'B2': 'adverb'},
-    'caveats': {'B1x': 'noun'},
+    'caveats': {'B1': 'noun'},
     'ceased': {'B2': 'verb'},
     'ceasing': {'B2': 'verb gerund or present participle'},
     'cellphone': {'A2': 'noun'},
@@ -6723,7 +7685,7 @@ common_English_words={
     'sicker': {'A2': 'adjective'},
     'side-note': {'A2': 'noun'},
     'sideband': {'B2': 'noun'},
-    'sidebar': {'B1x': 'noun'},
+    'sidebar': {'B1': 'noun'},
     'sided': {'B2': 'noun'},
     'sighted': {'B2': 'adjective'},
     'sigma': {'C1x': 'noun'},
@@ -8157,7 +9119,7 @@ common_English_words={
     'wording': {'B1': 'noun'},
     'wordy': {'B1': 'adjective'},
     'work': {'A1': 'noun, verb'},
-    'work-efficient': {'B1x': 'adjective?'},
+    'work-efficient': {'B1': 'adjective?'},
     'work-group': {'A1': 'noun'},
     'work-zone': {'B1': 'noun'},
     'workbench': {'C1': 'noun'},
@@ -10238,7 +11200,7 @@ def read_cefr_data(filenamme, sheetname):
         print(f'{words=}')
         print(f'{words_plurals=}')
 
-    print(f'{len(words)} entries in {sheetname}')
+    print(f'{len(words):>{Numeric_field_width}} entries in {sheetname}')
 
     return [words, words_plurals, df]
 
@@ -10335,7 +11297,7 @@ def read_CEFRLLex_data(filenamme, sheetname):
         print(f'{words=}')
         print(f'{words_plurals=}')
 
-    print(f'{len(words)} entries in {sheetname}')
+    print(f'{len(words):>{Numeric_field_width}} entries in {sheetname}')
 
     return [words, words_plurals, df]
 
@@ -10386,7 +11348,7 @@ def read_CEFRLLex_French_data(filenamme, sheetname):
         print(f'{words=}')
         print(f'{words_plurals=}')
 
-    print(f'{len(words)} entries in {sheetname}')
+    print(f'{len(words):>{Numeric_field_width}} entries in {sheetname}')
 
     return [words, words_plurals, df]
 
@@ -10435,7 +11397,7 @@ def collect_CEFR_levels_from_dict(lex, lex_name):
             print(f'{w=} {lex[w]}')
         
         if not isinstance(lex[w], dict):
-            print(f'error in common_English_words at {w} as the value is not a dict! Skiiping this word.')
+            print(f'error in common_English_words at {w} as the value is not a dict! Skiping this word.')
             continue
         
         for k in lex[w].keys():
@@ -10503,6 +11465,37 @@ def collect_CEFR_levels_for_plurals_from_list(lex, lex_name):
         
     return level_plural
 
+def collect_CEFR_levels_from_dict_common(lex, lex_name):
+    global Verbose_Flag
+
+    levels=dict()
+    for w in lex:
+        collected_levels=[]
+        collected_levels_CEFR_levels=[]
+        if Verbose_Flag:
+            print(f'{w=} {lex[w]}')
+        
+        if not isinstance(lex[w], dict):
+            print(f'error in {lex_name} at {w} as the value is not a dict! Skiping this word.')
+            continue
+        
+        for k in lex[w].keys():
+            if k and not (k == 'word' or k == 'plural'):
+                collected_levels_CEFR_levels.append(k)
+
+        if len(collected_levels_CEFR_levels) > 1:
+            if Verbose_Flag:
+                print(f"For {w}: {collected_levels_CEFR_levels=}")
+            # need to choose the lowest level
+            collected_levels_CEFR_levels=choose_lowest_cefr_level(collected_levels_CEFR_levels)
+
+        levels[w]=collected_levels_CEFR_levels
+
+    if Verbose_Flag:
+        print(f'collected levels for {lex_name}={levels}')
+    return levels
+
+
 # each entry in the lex is of the form {'word': word, 'pos': pos, 'cefr_level': key_max}
 def compute_lowest_CEFR_level(lex, lex_name):
     global Verbose_Flag
@@ -10527,14 +11520,25 @@ def compute_lowest_CEFR_level(lex, lex_name):
 # returns updated words_count, level_words_SVALex_counts
 def increment_usage_count_and_CEFR_level_counts(words_count, level_words_counts, word, level_words_lex,  lex_name):
     words_count=words_count+1
-    cefr_level=level_words_lex.get(word.lower(), False)
+    cefr_level=level_words_lex.get(word, False)
     if cefr_level:
+        if not isinstance(cefr_level, str) and len(cefr_level) >= 1:
+            cefr_level=cefr_level[0]
+
         if isinstance(cefr_level, str):
             level_words_counts.update({cefr_level: level_words_counts.get(cefr_level, 0) +1})
         else:
             print(f'warning in computing level_words_counts for {lex_name}: {word=} {cefr_level=}')
 
     return [words_count, level_words_counts]
+
+
+# Use ANSI escape sequence to output bold text on linux or surround by underline characters
+def bold_text(text):
+    if sys.platform.startswith('linux'):
+        return "\033[1m" + text + "\033[0m"
+    else:
+        return "_not_"
 
 
 def main():
@@ -10624,13 +11628,13 @@ def main():
         words_FLELex, plurals_FLELex, df_FLELex=read_CEFRLLex_French_data(cefrlex_file, 'FLELex_CRF Tagger')
 
 
-        print(f'{len(common_English_words)} words in common_English words')
+        print(f'{len(common_English_words):>{Numeric_field_width}} words in common_English words')
 
-        print(f'{len(common_swedish_words)} words in common Swedish words')
+        print(f'{len(common_swedish_words):>{Numeric_field_width}} words in common Swedish words')
 
-        print(f'{len(common_french_words)} words in common French words')
+        print(f'{len(common_french_words):>{Numeric_field_width}} words in common French words')
 
-        print(f'{len(common_latin_words)} words in common Latin words')
+        print(f'{len(common_latin_words):>{Numeric_field_width}} words in common Latin words')
         
         print('\nPruning the input')
 
@@ -10647,30 +11651,30 @@ def main():
             print('Nothing to process')
             return
 
-        print(f'{len(unique_words)} unique words - initially ')
+        print(f'{len(unique_words):>{Numeric_field_width}} unique words - initially ')
 
         filtered_unique_words_dict=unique_words
         
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, place_names)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} place names removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} place names removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, misc_words_to_ignore)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} misc_words_to_ignore removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} misc_words_to_ignore removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, company_and_product_names)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} company_and_product_names removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} company_and_product_names removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, abbreviations_ending_in_period)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} abbreviations_ending_in_period removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} abbreviations_ending_in_period removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_programming_languages)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common_programming_languages removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common_programming_languages removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_domainname)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction}  domainnames removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}}  domainnames removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_improbable_word)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction}  improbable words removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}}  improbable words removed')
 
         # look for acronyms
 
@@ -10710,7 +11714,7 @@ def main():
 
         #print(f'\t{single_letter_count} single letters removed')
         print(f'\t{len(likely_acronyms)} likely acronyms')
-        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering acronyms and single letters')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} unique words after filtering acronyms and single letters')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
 
@@ -10728,17 +11732,17 @@ def main():
                     print(f'case 3: {word=}')
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} unique words after filtering if there is a tite case and lower case version of the word  turn to lower case')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} unique words after filtering if there is a title case and lower case version of the word  turn to lower case')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
         new_filtered_unique_words_dict=dict()
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, top_100_English_words)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} top_100_English_words removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} top_100_English_words removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, thousand_most_common_words_in_English)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} thousand_most_common_words_in_English removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} thousand_most_common_words_in_English removed')
 
         # filter with tbe american 3000 and 5000 lists
         # reset the new dict
@@ -10748,7 +11752,7 @@ def main():
             if not in_dictionary(word, american_3000_words) and not (word in american_3000_words_plurals):
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} Oxford American 3000 words removed')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict):>{Numeric_field_width}} Oxford American 3000 words removed')
 
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
@@ -10759,7 +11763,7 @@ def main():
             if not in_dictionary(word, american_5000_words) and not (word in american_5000_words_plurals):
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} Oxford American 5000 words removed')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict):>{Numeric_field_width}} Oxford American 5000 words removed')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
@@ -10769,7 +11773,7 @@ def main():
             if not in_dictionary(word.lower(), words_EFLLex): # all the words in EFLLex are in lower case
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} EFLLex_NLP4J words removed')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict):>{Numeric_field_width}} EFLLex_NLP4J words removed')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
@@ -10779,7 +11783,7 @@ def main():
             if not in_dictionary(word.lower(), words_SVALex): # all the words in EFLLex are in lower case
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} SVALex_Korp words removed')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict):>{Numeric_field_width}} SVALex_Korp words removed')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
         # reset the new dict
@@ -10789,7 +11793,7 @@ def main():
             if not in_dictionary(word.lower(), words_FLELex): # all the words in EFLLex are in lower case
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} FLELex_CRF Tagger words removed')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict):>{Numeric_field_width}} FLELex_CRF Tagger words removed')
 
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
@@ -10804,18 +11808,18 @@ def main():
             else:
                 new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
 
-        print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict)} common English words removed')
+        print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict):>{Numeric_field_width}} common English words removed')
 
         filtered_unique_words_dict=new_filtered_unique_words_dict
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_swedish_words)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common Swedish words removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common Swedish words removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_french_words)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common French words removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common French words removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_latin_words)
-        print(f'{len(filtered_unique_words_dict)} words left, {reduction} common Latin words removed')
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common Latin words removed')
 
         # reset the new dict
         new_filtered_unique_words_dict=dict()
@@ -10840,7 +11844,7 @@ def main():
 
 
         if len(new_filtered_unique_words_dict) > len(filtered_unique_words_dict):
-            print(f'{len(new_filtered_unique_words_dict)} words left, {len(new_filtered_unique_words_dict) - len(filtered_unique_words_dict)} words added after processing words that appear in title case')
+            print(f'{len(new_filtered_unique_words_dict):>{Numeric_field_width}} words left, {len(new_filtered_unique_words_dict) - len(filtered_unique_words_dict):>{Numeric_field_width}} words added after processing words that appear in title case')
         else:
             print(f'{len(new_filtered_unique_words_dict)} words left, {len(filtered_unique_words_dict) - len(new_filtered_unique_words_dict) } words removed after processing words that appear in title case')
 
@@ -10868,9 +11872,9 @@ def main():
             else:
                 number_leading_other=number_leading_other+1
 
-        print(f'{number_leading_capital_letter} starting with a capital letter ({number_leading_capital_letter/len(frequency_sorted)*100:.2f}%)')
-        print(f'{number_leading_lower_case_letter} starting with a lower case letter ({number_leading_lower_case_letter/len(frequency_sorted)*100:.2f}%)')
-        print(f'{number_leading_other} starting with other letter ({number_leading_other/len(frequency_sorted)*100:.2f}%)')
+        print(f'{number_leading_capital_letter:>{Numeric_field_width}} starting with a capital letter ({number_leading_capital_letter/len(frequency_sorted)*100:.2f}%)')
+        print(f'{number_leading_lower_case_letter:>{Numeric_field_width}} starting with a lower case letter ({number_leading_lower_case_letter/len(frequency_sorted)*100:.2f}%)')
+        print(f'{number_leading_other:>{Numeric_field_width}} starting with another type of letter ({number_leading_other/len(frequency_sorted)*100:.2f}%)')
 
         # compute difference between the words coming in and the remaining words
         for word in unique_words:
@@ -10928,13 +11932,20 @@ def main():
         level_common_English_counts=dict()
         common_English_words_count=0
 
+        top_100_English_words_set=set()
+        level_top_100_English_words=collect_CEFR_levels_from_dict(top_100_English_words, 'top_100_English_words')
+        level_top_100_English_words_counts=dict()
+        top_100_English_words_count=0
+
+        level_thousand_most_common_words_in_English=collect_CEFR_levels_from_dict_common(thousand_most_common_words_in_English, 'thousand_most_common_words_in_English')
+        level_thousand_most_common_words_in_English_counts=dict()
+        thousand_most_common_words_in_English_count=0
+
         # note that the common_x_words (for x = swedish, french, and latin) do not have CEFR level information
         # hecne we do not have to calculate the lowest CEFR level for each word
         common_swedish_words_set=set()
         common_french_words_set=set()
         common_latin_words_set=set()
-        top_100_English_words_set=set()
-        thousand_most_common_words_in_English_set=set()
 
         #
         # Process all of the unique words and see which CEFR level they fall into for each of the sources
@@ -11012,13 +12023,13 @@ def main():
 
 
             if word.lower() in level_words_EFLLex:
-                efllex_words_count, level_words_EFLLex_counts = increment_usage_count_and_CEFR_level_counts(efllex_words_count, level_words_EFLLex_counts, word, level_words_EFLLex,  'EFLLex')
+                efllex_words_count, level_words_EFLLex_counts = increment_usage_count_and_CEFR_level_counts(efllex_words_count, level_words_EFLLex_counts, word.lower(), level_words_EFLLex,  'EFLLex')
 
             if word.lower() in level_words_SVALex:
-                svalex_words_count, level_words_SVALex_counts = increment_usage_count_and_CEFR_level_counts(svalex_words_count, level_words_SVALex_counts, word, level_words_SVALex,  'SVALex')
+                svalex_words_count, level_words_SVALex_counts = increment_usage_count_and_CEFR_level_counts(svalex_words_count, level_words_SVALex_counts, word.lower(), level_words_SVALex,  'SVALex')
 
             if word.lower() in level_words_FLELex:
-                flelex_words_count, level_words_FLELex_counts = increment_usage_count_and_CEFR_level_counts(flelex_words_count, level_words_FLELex_counts, word, level_words_FLELex,  'FLELex')
+                flelex_words_count, level_words_FLELex_counts = increment_usage_count_and_CEFR_level_counts(flelex_words_count, level_words_FLELex_counts, word.lower(), level_words_FLELex,  'FLELex')
 
 
             if word in common_English_words or word.lower() in common_English_words:
@@ -11059,13 +12070,13 @@ def main():
 
             if word in top_100_English_words:
                 top_100_English_words_set.add(word)
+
             if word.lower() in top_100_English_words:
                 top_100_English_words_set.add(word.lower())
                 
-            if word in thousand_most_common_words_in_English:
-                thousand_most_common_words_in_English_set.add(word)
-            if  word.lower() in thousand_most_common_words_in_English:
-                thousand_most_common_words_in_English_set.add(word.lower())
+            # For count of words at each level we do not consider case; this might msilead of there are only words such as "US" or "i".
+            if word.lower() in thousand_most_common_words_in_English:
+                thousand_most_common_words_in_English_count, level_thousand_most_common_words_in_English_counts = increment_usage_count_and_CEFR_level_counts(thousand_most_common_words_in_English_count, level_thousand_most_common_words_in_English_counts, word.lower(), level_thousand_most_common_words_in_English,  'thousand_most_common_words_in_English')
 
         #
         # Output counts
@@ -11080,7 +12091,7 @@ def main():
         print('The totals are the total numbers of the input words that appear in this source.')
         print('The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.')
         print('The American 3000 and 5000 sources have an explicit column of plurals; the rest are considered "singular".')
-        print('EFLLex_NLP4J does not have any C2 words')
+        print('EFLLex_NLP4J, SVALex_Korp, and FLELex_CRF Tagger do {bold_text("not")} have any C2 words')
         print('The level xx indicates that the word does not have a known CEFR level.\n')
 
         print(f'American 3000: total: {american_3000_words_count} ({(american_3000_words_count/len(american_3000_words))*100:.2f}%), singular: {american_3000_words_singular_count}, plural: {american_3000_words_plurals_count}')
@@ -11183,6 +12194,37 @@ def main():
         stats_df.loc[len(stats_df)] = usage_sorted
 
 
+        top_100_English_words_count=len(top_100_English_words)
+        if Verbose_Flag:
+            print(f'{len(top_100_English_words_set)=}')
+        for word in top_100_English_words_set:
+            top_100_English_words_count, level_top_100_English_words_counts = increment_usage_count_and_CEFR_level_counts(top_100_English_words_count, level_top_100_English_words_counts, word, level_top_100_English_words,  'top_100_English_words')
+
+
+        print(f'top 100 English  words: total: {len(top_100_English_words_set)}  ({(len(top_100_English_words_set)/len(top_100_English_words))*100:.2f}%)')
+        #usage_sorted=dict()
+        usage_sorted=dict(sorted(level_top_100_English_words_counts.items(), key=lambda x:x[0]))
+        print(f'\t{usage_sorted}')
+
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='top 100 English words'
+        usage_sorted['total']=len(top_100_English_words_set)
+        usage_sorted['percentage']=(len(top_100_English_words_set)/len(top_100_English_words))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        print(f'top 100 words in English that were {bold_text("not")} used: {set(top_100_English_words).difference(top_100_English_words_set)}')
+
+
+
+        print(f'thousand most common words in_English: total: {thousand_most_common_words_in_English_count}  ({(thousand_most_common_words_in_English_count/len(thousand_most_common_words_in_English))*100:.2f}%)')
+        usage_sorted=dict(sorted(level_thousand_most_common_words_in_English_counts.items(), key=lambda x:x[0]))
+        print(f'\t{usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='thousand most common words in_English'
+        usage_sorted['total']=thousand_most_common_words_in_English_count
+        usage_sorted['percentage']=(thousand_most_common_words_in_English_count/len(thousand_most_common_words_in_English))*100
+        stats_df.loc[len(stats_df)] = usage_sorted
+
         
         common_swedish_words_count=len(common_swedish_words_set)
         print(f'common Swedish words: total: {common_swedish_words_count}  ({(common_swedish_words_count/len(common_swedish_words))*100:.2f}%)')
@@ -11212,25 +12254,6 @@ def main():
         usage_sorted['percentage']=(common_latin_words_count/len(common_latin_words))*100.0
         stats_df.loc[len(stats_df)] = usage_sorted
 
-
-        top_100_English_words_count=len(top_100_English_words)
-        print(f'top 100 English  words: total: {top_100_English_words_count}  ({(top_100_English_words_count/len(top_100_English_words))*100:.2f}%)')
-        usage_sorted=dict()
-        usage_sorted['Input']=f'course_id {course_id}'
-        usage_sorted['Source']='top 100 English words'
-        usage_sorted['total']=top_100_English_words_count
-        usage_sorted['percentage']=(top_100_English_words_count/len(top_100_English_words))*100.0
-        stats_df.loc[len(stats_df)] = usage_sorted
-
-
-        thousand_most_common_words_in_English_count=len(thousand_most_common_words_in_English_set)
-        print(f'thousand most common words in_English: total: {thousand_most_common_words_in_English_count}  ({(thousand_most_common_words_in_English_count/len(thousand_most_common_words_in_English))*100:.2f}%)')
-        usage_sorted=dict()
-        usage_sorted['Input']=f'course_id {course_id}'
-        usage_sorted['Source']='thousand most common words in_English'
-        usage_sorted['total']=thousand_most_common_words_in_English_count
-        usage_sorted['percentage']=(thousand_most_common_words_in_English_count/len(thousand_most_common_words_in_English))*100
-        stats_df.loc[len(stats_df)] = usage_sorted
 
 
         # The following code compares the common_English_words with those in EFLLex. This was useful to find some of the
@@ -11278,7 +12301,5 @@ def main():
         worksheet.autofit()
         # Close the Pandas Excel writer and output the Excel file.
         writer.close()
-
-
 
 if __name__ == "__main__": main()

@@ -2809,7 +2809,7 @@ filtering.
 
 ### Input
 ```bash
-./prune_unique_words.py 31168
+./prune_unique_words.py  --dir ./Course_31168/ 31168
 ```
 
 ### Output
@@ -2819,72 +2819,85 @@ It outputs a reduce file with the filtered dictionary.
 unique_words-for-course-skipped-in-update-31168.txt
 unique_words-for-course-frequency-updated-31168.txt
 unique_words-for-course-likely-acronyms-31168.txt
+unique_words-for-course-likely-stats-31168.xlsx
 ```
+It also outputs a spreadsheet of values, such as:
+```
+unique_words-for-course-likely-stats-31168.xlsx
+```
+
 
 The program itself also outputs some information, such as shown below:
 ```
 Loading some directories
-2999 entries in American3000
-2003 entries in American5000
-15281 entries in EFLLex_NLP4J
-15686 entries in SVALex_Korp
-17871 entries in FLELex_CRF Tagger
-7464 words in common_English words
-376 words in common Swedish words
-2 words in common French words
-10 words in common Latin words
+   2999 entries in American3000
+   2003 entries in American5000
+  15281 entries in EFLLex_NLP4J
+  15686 entries in SVALex_Korp
+  17871 entries in FLELex_CRF Tagger
+   7599 words in common_English words
+    385 words in common Swedish words
+      5 words in common French words
+     10 words in common Latin words
 
 Pruning the input
-10540 unique words - initially 
-10383 words left, 157 place names removed
-10325 words left, 58 misc_words_to_ignore removed
-10227 words left, 98 company_and_product_names removed
-10206 words left, 21 abbreviations_ending_in_period removed
-10204 words left, 2 common_programming_languages removed
-10073 words left, 131  domainnames removed
-9733 words left, 340  improbable words removed
-	1687 likely acronyms
-7933 unique words after filtering acronyms and single letters
-7932 unique words after filtering if there is a capitalized and lower case version of the word or title case turn to lower case
-7834 words left, 98 top_100_English_words removed
-7193 words left, 641 thousand_most_common_word_in_English removed
-5740 words left, 1453 Oxford American 3000 words removed
-5057 words left, 683 Oxford American 5000 words removed
-4672 words left, 385 EFLLex_NLP4J words removed
-4523 words left, 149 SVALex_Korp words removed
-4423 words left, 100 FLELex_CRF Tagger words removed
-2227 words left, 2196 common English words removed
-2092 words left, 135 common Swedish words removed
-2092 words left, 0 common French words removed
-2089 words left, 3 common Latin words removed
-2104 words left, 15 words added after processing words that appear in title case
-1488 starting with a capital letter (70.72%)
-599 starting with a lower case letter (28.47%)
-17 starting with other letter (0.81%)
+   5338 unique words - initially 
+   5308 words left,      30 place names removed
+   5275 words left,      33 misc_words_to_ignore removed
+   5223 words left,      52 company_and_product_names removed
+   5208 words left,      15 abbreviations_ending_in_period removed
+   5204 words left,       4 common_programming_languages removed
+   5166 words left,      38  domainnames removed
+   5071 words left,      95  improbable words removed
+	806 likely acronyms
+   4196 unique words after filtering acronyms and single letters
+   4196 unique words after filtering if there is a title case and lower case version of the word  turn to lower case
+   4101 words left,      95 top_100_English_words removed
+   3606 words left,     495 thousand_most_common_words_in_English removed
+   2836 words left,     770 Oxford American 3000 words removed
+   2550 words left,     286 Oxford American 5000 words removed
+   2166 words left,     384 EFLLex_NLP4J words removed
+   2092 words left,      74 SVALex_Korp words removed
+   2028 words left,      64 FLELex_CRF Tagger words removed
+    827 words left,    1201 common English words removed
+    759 words left,      68 common Swedish words removed
+    757 words left,       2 common French words removed
+    755 words left,       2 common Latin words removed
+    761 words left,       6 words added after processing words that appear in title case
+    526 starting with a capital letter (69.12%)
+    231 starting with a lower case letter (30.35%)
+      4 starting with another type of letter (0.53%)
 
 Some statistics about the CEFR levels of the words as determined by the five main data sources
 The totals are the total numbers of the input words that appear in this source.
 The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.
 The American 3000 and 5000 sources have an explicit column of plurals; the rest are considered "singular".
-EFLLex_NLP4J does not have any C2 words
+EFLLex_NLP4J, SVALex_Korp, and FLELex_CRF Tagger do {bold_text("not")} have any C2 words
 The level xx indicates that the word does not have a known CEFR level.
 
-American 3000: total: 2012 (67.09%), singular: 1554, plural: 460
-	singular: {'A1': 543, 'A2': 443, 'B1': 305, 'B2': 263}
-	  plural: {'A1': 520, 'A2': 442, 'B1': 303, 'B2': 261}
-American 5000: total: 600 (29.96%), singular: 482, plural: 119
-	singular: {'B2': 188, 'C1': 294}
-	  plural: {'B2': 188, 'C1': 294}
-EFLLex_NLP4J (English): total: 2169 (15.64%)
-	{'A1': 159, 'A2': 189, 'B1': 446, 'B2': 586, 'C1': 789}
-SVALex_Korp (Swedish): total: 320 (2.09%)
-	{'A1': 33, 'A2': 48, 'B1': 55, 'B2': 94, 'C1': 90}
-FLELex_CRF Tagger (French): total: 530 (3.20%)
-	{'A1': 56, 'A2': 59, 'B1': 118, 'B2': 76, 'C1': 221}
-common English words: total: 2790 (37.38%)
-	{'A1': 166, 'A2': 177, 'B1': 325, 'B2': 368, 'C1': 253, 'C2': 98, 'xx': 1402}
-common Swedish words: total: common_swedish_words_count=188  (50.00%)
-common French words: total: common_french_words_count=1  (50.00%)
+American 3000: total: 1040 (34.68%), singular: 1040, plural: 281
+	singular: {'A1': 400, 'A2': 286, 'B1': 182, 'B2': 156}
+	  plural: {'A1': 380, 'A2': 287, 'B1': 182, 'B2': 155}
+American 5000: total: 248 (12.38%), singular: 248, plural: 52
+	singular: {'B2': 98, 'C1': 149}
+	  plural: {'B2': 98, 'C1': 150}
+	  plural: {'B2': 98, 'C1': 150}
+EFLLex_NLP4J (English): total: 1728 (12.46%)
+	{'A1': 138, 'A2': 163, 'B1': 374, 'B2': 466, 'C1': 587}
+SVALex_Korp (Swedish): total: 309 (2.02%)
+	{'A1': 34, 'A2': 54, 'B1': 59, 'B2': 91, 'C1': 71}
+FLELex_CRF Tagger (French): total: 505 (3.05%)
+	{'A1': 60, 'A2': 58, 'B1': 111, 'B2': 65, 'C1': 211}
+common English words: total: 1601 (21.07%)
+	{'A1': 211, 'A2': 170, 'B1': 332, 'B2': 418, 'C1': 243, 'C2': 224, 'xx': 2}
+top 100 English  words: total: 97  (97.00%)
+	{'A1': 87, 'A2': 10}
+top 100 words in English that were not used: {'come', 'him', 'me'}
+thousand most common words in_English: total: 618  (68.97%)
+	{'A1': 270, 'A2': 171, 'B1': 121, 'B2': 54, 'C1': 2}
+common Swedish words: total: 122  (31.69%)
+common French words: total: 5  (100.00%)
+common Latin words: total: 6  (60.00%)
 ```
 
 ### Note 
