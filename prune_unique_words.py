@@ -6,7 +6,10 @@
 # unique_words-for-course-frequency-<course_id>.txt file and prunes out words based on different
 # filtering.
 #
-# One aim is to understand the anguage level used in the course. The lavels are based on the Common European Framework of Reference for Languages (CEFR).
+# One aim is to understand the anguage level used in the course. The lavels are based on the Common European Framework of Reference for Languages: Learning, teaching, assessment (CEFR).
+#
+#
+#
 # The outputs a reduced file with the filtered dictionary.
 #
 # The second aim of the effort was to help a teacher extract words that might be put in a vocabulary list for the course.
@@ -24,6 +27,23 @@
 # ======================================================================
 #
 # For general background about CEFR see https://www.cambridgeenglish.org/images/126011-using-cefr-principles-of-good-practice.pdf
+# 
+# The six levels are:
+#
+# C2 Mastery                           ]
+#                                      ]  ---- Proficient user ---
+# C1 Effective Operational Proficiency ]
+#
+# B2 Vantage        ]
+#                   ]  ---- Independent user ---
+# B1 Threshold      ]
+#
+#
+# A2 Waystage       ]
+#                   ]   ---- Basic user ---
+# A1 Breakthrough   ]
+#
+#
 #
 # A number of different sources have been used to provide CEFR data for a given word.
 #
@@ -1542,7 +1562,7 @@ common_English_words={
     'Tbit/s': {'C2': 'unit'},
     'Tbyte/s': {'C2': 'noun'},
     'US': {'A1': 'acronym'},    #  EFLEX uses the level B2
-    'USA': {'A1x': 'acronym for United States of America'},
+    'USA': {'A1': 'acronym for United States of America'},
     'World-wide-web': {'A2': 'noun'},
     '\u03bcs': {'C1': 'unit'}, # μs
     'aaaah': {'A1': 'interjection'},
@@ -12026,7 +12046,7 @@ def main():
                     elif isinstance(cefr_levels, list) and len(cefr_levels) >= 1:
                         if Verbose_Flag:
                             print(f'case 2  (5000 plural): {word=} {cefr_levels[0]=}')
-                        level_5000_plural_counts.update({cefr_levels[0]: level_5000_singular_counts.get(cefr_levels[0], 0) +1})
+                        level_5000_plural_counts.update({cefr_levels[0]: level_5000_plural_counts.get(cefr_levels[0], 0) +1})
                     else:
                         print(f'warning in computing level_5000_plural_counts: {word=} {cefr_levels=}')
 
@@ -12106,7 +12126,7 @@ def main():
         print(f'American 3000: total: {american_3000_words_count} ({(american_3000_words_count/len(american_3000_words))*100:.2f}%), singular: {american_3000_words_singular_count}, plural: {american_3000_words_plurals_count}')
         #print(f'\t{level_3000_singular_counts=}')
         usage_sorted=dict(sorted(level_3000_singular_counts.items(), key=lambda x:x[0]))
-        print(f'\tsingular: {usage_sorted}')
+        print(f'singular: {usage_sorted}')
         usage_sorted['Input']=f'course_id {course_id}'
         usage_sorted['Source']='American 3000 singular'
         usage_sorted['total']=american_3000_words_singular_count
@@ -12115,7 +12135,7 @@ def main():
 
         #print(f'\t{level_3000_plural_counts=}')
         usage_sorted=dict(sorted(level_3000_plural_counts.items(), key=lambda x:x[0]))
-        print(f'\t  plural: {usage_sorted}')
+        print(f'  plural: {usage_sorted}')
         usage_sorted['Input']=f'course_id {course_id}'
         usage_sorted['Source']='American 3000 plural'
         usage_sorted['total']=american_3000_words_plurals_count
@@ -12132,11 +12152,8 @@ def main():
 
         print(f'American 5000: total: {american_5000_words_count} ({(american_5000_words_count/len(american_5000_words))*100:.2f}%), singular: {american_5000_words_singular_count}, plural: {american_5000_words_plurals_count}')
         #print(f'\t{level_5000_singular_counts=}')
-        #print(f'\t{level_5000_plural_counts=}')
         usage_sorted=dict(sorted(level_5000_singular_counts.items(), key=lambda x:x[0]))
-        print(f'\tsingular: {usage_sorted}')
-        usage_sorted=dict(sorted(level_5000_plural_counts.items(), key=lambda x:x[0]))
-        print(f'\t  plural: {usage_sorted}')
+        print(f'singular:                                 {usage_sorted}')
         usage_sorted['Input']=f'course_id {course_id}'
         usage_sorted['Source']='American 5000 singular'
         usage_sorted['total']=american_5000_words_singular_count
@@ -12145,7 +12162,7 @@ def main():
 
         #print(f'\t{level_5000_plural_counts=}')
         usage_sorted=dict(sorted(level_5000_plural_counts.items(), key=lambda x:x[0]))
-        print(f'\t  plural: {usage_sorted}')
+        print(f'  plural:                                 {usage_sorted}')
         usage_sorted['Input']=f'course_id {course_id}'
         usage_sorted['Source']='American 5000 plural'
         usage_sorted['total']=american_5000_words_plurals_count

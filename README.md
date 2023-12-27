@@ -2835,7 +2835,7 @@ Loading some directories
   15281 entries in EFLLex_NLP4J
   15686 entries in SVALex_Korp
   17871 entries in FLELex_CRF Tagger
-   7599 words in common_English words
+   7610 words in common_English words
     385 words in common Swedish words
       5 words in common French words
      10 words in common Latin words
@@ -2872,27 +2872,26 @@ Some statistics about the CEFR levels of the words as determined by the five mai
 The totals are the total numbers of the input words that appear in this source.
 The percentage shown following the totals indicates what portion of the words from this source were used in the course pages.
 The American 3000 and 5000 sources have an explicit column of plurals; the rest are considered "singular".
-EFLLex_NLP4J, SVALex_Korp, and FLELex_CRF Tagger do {bold_text("not")} have any C2 words
+EFLLex_NLP4J, SVALex_Korp, and FLELex_CRF Tagger do {bold_text("not")} have any C2 words. The level used for a word based on these sources is based on the most frequent level for this word. In contrast for the other sources, the level used is the lowest level for that word or the highest level when the word is hyphenated.
 The level xx indicates that the word does not have a known CEFR level.
 
 American 3000: total: 1040 (34.68%), singular: 1040, plural: 281
-	singular: {'A1': 400, 'A2': 286, 'B1': 182, 'B2': 156}
-	  plural: {'A1': 380, 'A2': 287, 'B1': 182, 'B2': 155}
+singular: {'A1': 400, 'A2': 286, 'B1': 182, 'B2': 156}
+  plural: {'A1': 380, 'A2': 287, 'B1': 182, 'B2': 155}
 American 5000: total: 248 (12.38%), singular: 248, plural: 52
-	singular: {'B2': 98, 'C1': 149}
-	  plural: {'B2': 98, 'C1': 150}
-	  plural: {'B2': 98, 'C1': 150}
+singular:                                 {'B2': 98, 'C1': 149}
+  plural:                                 {'B2': 19, 'C1': 31}
 EFLLex_NLP4J (English): total: 1728 (12.46%)
 	{'A1': 138, 'A2': 163, 'B1': 374, 'B2': 466, 'C1': 587}
 SVALex_Korp (Swedish): total: 309 (2.02%)
 	{'A1': 34, 'A2': 54, 'B1': 59, 'B2': 91, 'C1': 71}
 FLELex_CRF Tagger (French): total: 505 (3.05%)
 	{'A1': 60, 'A2': 58, 'B1': 111, 'B2': 65, 'C1': 211}
-common English words: total: 1601 (21.07%)
-	{'A1': 211, 'A2': 170, 'B1': 332, 'B2': 418, 'C1': 243, 'C2': 224, 'xx': 2}
+common English words: total: 1601 (21.04%)
+	{'A1': 213, 'A2': 170, 'B1': 332, 'B2': 418, 'C1': 243, 'C2': 224}
 top 100 English  words: total: 97  (97.00%)
 	{'A1': 87, 'A2': 10}
-top 100 words in English that were not used: {'come', 'him', 'me'}
+top 100 words in English that were not used: {'him', 'come', 'me'}
 thousand most common words in_English: total: 618  (68.97%)
 	{'A1': 270, 'A2': 171, 'B1': 121, 'B2': 54, 'C1': 2}
 common Swedish words: total: 122  (31.69%)
