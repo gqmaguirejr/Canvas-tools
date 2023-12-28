@@ -2902,6 +2902,39 @@ common Latin words: total: 6  (60.00%)
 ### Note 
 This is still a work in progress.
 
+
+## reduce_possible_acronyms.py
+
+### Purpose
+To reduce the list of likely acronyms based upon the acronyms that are already in the course (based on the output of the prune_unique_words.py program) or perhaps some other filtering. Currently, only the difference between the likely set and the existing set are considered.
+
+### Input
+```bash
+reduce_possible_acronyms.py  course_id [url to acronym page]
+```
+
+### Output
+Outputs a file, such as unique_words-for-course-missing-acronyms-31168.txt with the still missing acronyms
+
+### Note 
+The idea is to help the user reduce the set of likely acronyms so that they decide which of them to include them in a course web page.
+
+
+### Example
+
+```bash
+./reduce_possible_acronyms.py  --dir Course_31168 31168
+```
+
+This produces output of the form:
+```
+processing existing acronyms from ['acronyms-and-abbreviations']
+581 likely acronyms
+399 existing acronyms in the Canvas course room
+240 missing acronyms
+missing acronyms = ['AWK', 'All-IP', 'BIND', 'BLOG', 'BYE', 'CANARIE', 'CANCEL', 'CC', 'CDMA2000', 'CE', 'CEO', 'CERTA', 'CHUNKS', 'CIAC', 'CMT', 'CNAME', 'CNCERT/CC', 'CODE', 'COMPLETE', 'COOKIE', 'COOKIE_ACK', 'COOKIE_ECHO', 'CORBA-IDL', 'CORBA/SNMP', 'COS/CCS', 'CRITIC/ECP', 'CRUDE', 'CS-2000-06', 'CSD-94-858', 'CSIRT', 'CSLIP', 'CSRC', 'CU-SeeME', 'DATA', 'DATA_FILE', 'DCE', 'DECnet', 'DF', 'DNSViz', 'DNSsec', 'DOI', 'DR-Web', 'DS', 'DSAP', 'DSCP', 'DySPAN', 'ECHO', 'ECT', 'END', 'ENV', 'ERROR', 'FH', 'FIN', 'FLAGS', 'FMIPv6', 'FOKUS', 'FSL-04-03', 'GET', 'GETALL', 'GETATTR', 'GETLIST', 'GLOP', 'GS2', 'GSS', 'GSS-TSIG', 'HAVC', 'HAWAII', 'HBH', 'HDMI', 'HEAD', 'HEARTBEAT', 'HEARTBEAT_ACK', 'HIPPI', 'HMAC-ALGO', 'HP', 'HTTP-NG', 'HTTP/1.0', 'HTTP/1.1', 'ICEBERG', 'ICMPv6', 'ID', 'IDUP-GSS-API', 'IEEE/ACM', 'IFS', 'II', 'IK1203', 'IK1552', 'IMEI', 'IN', 'INC', 'INIT', 'INTERNET', 'INVITE', 'IO', 'ION', 'IOS', 'IP-in-IP', 'IPSec', 'IPX/SPX', 'IPv6/IPsec', 'IPv6/IPv4', 'ISC', 'IT', 'IVERSEN', 'IX', 'J-SAC', 'KUO', 'KX', 'LACNIC', 'LBO', 'LI', 'LOC', 'LTTP', 'MA', 'MAE-East', 'MAE-West', 'MASCOTS', 'MBONED', 'MEDIA', 'MF', 'MG', 'MGEN', 'MINFO', 'MKDIR', 'MOSPF', 'MR', 'MSR-α', 'ND', 'NETCONF', 'NETNOD', 'NICNAME', 'NJ', 'NLA', 'NTTP', 'NetBIOS', 'NetID', 'OBS', 'OID', 'ONC', 'ONC/RPC', 'OPTIONS', 'OpenDNS', 'OpenID', 'OpenVPN', 'PATH', 'PETS', 'PGP/MIME', 'PING', 'PMAPPROC_DUMP', 'PMAPPROC_SET', 'PMAPPROC_UNSET', 'PODC', 'POST', 'PPID', 'PPP/SLIP/serial', 'PSH', 'PSML', 'PTYPE', 'PURSUIT', 'QUIC', 'RADb', 'RANDOM', 'READIR', 'REGISTER', 'REMOVE', 'RESV', 'RF', 'RFC1213', 'RFC1533', 'RFC2409', 'RFC3554', 'RFC826', 'RFID', 'RIID', 'RIPv1', 'RIPv2', 'RMDIR', 'RMON1', 'RMON2', 'RRSID', 'RS', 'RSSId', 'RST', 'SANS', 'SASL', 'SAVI', 'SEND', 'SHUTDOWN', 'SID', 'SIGCOMM', 'SIGTRAN', 'SKI', 'SLO', 'SMIv2', 'SNMPv2', 'SNMPv2p', 'SNMPv2u', 'SNMPv3', 'SOCK', 'SOCKS', 'SOCKS-based', 'SOL-IX', 'SO_BROADCAST', 'SSH', 'STANDARD', 'STHIX', 'SYN', 'SYN_ACK', 'SYN_RCVD', 'SoCC', 'T1', 'TCCN', 'TCP/IP', 'TCP_NODELAY', 'TELNET', 'TI', 'TIME_WAIT', 'TYPE', 'UK', 'ULA', 'UPDATE', 'URG', 'US', 'USA', 'USENIX', 'UTC', 'V4', 'V6', 'VOIP', 'VT2022Time', 'VoIP', 'VoLTE', 'WEB', 'X.400/RFC822', 'XIN', 'XORd', 'Y-MP', 'YANG', 'iOS', 'non-SACK']
+```
+
 <!-- 
 
 ## xxx.py

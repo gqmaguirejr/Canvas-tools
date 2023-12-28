@@ -270,7 +270,7 @@ def unique_words_for_pages_in_course(course_id, pages_to_skip):
 
             if Verbose_Flag:
                 print("raw_text: {}".format(raw_text))
-            total_raw_text=total_raw_text+'\n'+raw_text
+            total_raw_text=total_raw_text+f"\n⌘⏩{p['url']}⏪\n"+raw_text
                 
         else:
             print("No pages for course_id: {}".format(course_id))
@@ -1263,9 +1263,9 @@ def main():
                 print("Error in course_id")
                 return
             # skip index pages, for example:
-            if course_id == 41493:
+            if int(course_id) == 41493:
                 pages_to_skip=['index-for-course', 'with-quick-index', 'examples-of-some-titles-from-previous-p1p2-reports']
-            elif course_id == 31168:
+            elif int(course_id) == 31168:
                 pages_to_skip=['top-level-index-of-foreign-terms-with-figure-and-table-captions', 'index-special-and-a-r', 'index-r-z']
             else:
                 pages_to_skip=[]
