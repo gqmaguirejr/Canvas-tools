@@ -3,7 +3,12 @@
 # ./compute_unique_words_for_pages_in_course.py  course_id
 # 
 # it outputs a file with the unique words each on a line
-# where xx is the course_id
+# where xx is the course_id.
+#
+# It also outputs others files, such as one with the raw text from all the wikipages.
+# The pages are separated with lines, such as:
+# ⌘⏩routing-table-search-classless⏪
+# where the page URL is between the markers. This makes it easy to look at the source material, for example when tryign to locate misspellings.
 #
 # G. Q: Maguire Jr.
 #
@@ -209,9 +214,12 @@ def prune_suffix(s):
     return s
 
 def unique_words_for_pages_in_course(course_id, pages_to_skip):
+    global Verbose_Flag
     global total_words_processed
     global all_text
     global total_raw_text
+    global total_raw_HTML
+
     list_of_all_pages=[]
 
     # Use the Canvas API to get the list of pages for this course
@@ -239,7 +247,14 @@ def unique_words_for_pages_in_course(course_id, pages_to_skip):
         for p_response in page_response:  
             list_of_all_pages.append(p_response)
 
+    # if Verbose_Flag:
+    #     print(f'{list_of_all_pages=}')
+
     for p in list_of_all_pages:
+        # skip unpublished pages
+        if not p['published']:
+            continue
+
         # skip index page as tex runs the list items toegher
         if p['url'] in pages_to_skip:
             print(f"skipping page {p['url']}")
@@ -262,6 +277,9 @@ def unique_words_for_pages_in_course(course_id, pages_to_skip):
 
             body=page_response["body"]
             if isinstance(body, str) and len(body) > 0:
+                # save all of the bodies
+                total_raw_HTML=total_raw_HTML+f"\n⌘⏩{p['url']}⏪\n"+body
+
                 document = html.document_fromstring(body)
                 raw_text = document.text_content()
             else:               # nothing to process
@@ -281,8 +299,9 @@ def unique_words_for_pages_in_course(course_id, pages_to_skip):
         #     print(f'Boyle on page {url}')
 
         if not raw_text or len(raw_text) < 1:
-            print('nothing to processes')
-            return
+            print(f"nothing to processes on page {p['url']}")
+            continue
+
         words = nltk.word_tokenize(raw_text)
         all_text.extend(words)
         for word in words:
@@ -1194,6 +1213,7 @@ def main():
     global total_words_processed
     global all_text
     global total_raw_text
+    global total_raw_HTML
 
     parser = optparse.OptionParser()
 
@@ -1254,6 +1274,7 @@ def main():
         skipped_words=set()
         all_text=list()
         total_raw_text=''
+        total_raw_HTML=''
         
         if options.processPDF_file:
             input_PDF_file=options.processPDF_file
@@ -1474,16 +1495,20 @@ def main():
         with open(new_file_name, 'w') as f:
             f.write(json.dumps(frequency_sorted))
 
-        new_file_name=f'{directory_prefix}unique_words-for-course-skipped-{course_id}.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-skipped-{course_id}.txt'
         with open(new_file_name, 'w') as f:
             for word in skipped_words:
                 f.write(f"{word}\n")
 
         # save all the raw text
-        new_file_name=f'{directory_prefix}unique_words-for-course-raw_text-{course_id}.txt'        
+        new_file_name=f'{directory_prefix}unique_words-for-course-raw_text-{course_id}.txt'
         with open(new_file_name, 'w') as f:
             f.write(total_raw_text)
 
+        # save all the raw HTML
+        new_file_name=f'{directory_prefix}unique_words-for-course-raw_HTML-{course_id}.txt'
+        with open(new_file_name, 'w') as f:
+            f.write(total_raw_HTML)
 
 
 if __name__ == "__main__": main()

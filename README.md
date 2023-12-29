@@ -2926,6 +2926,17 @@ The idea is to help the user reduce the set of likely acronyms so that they deci
 ./reduce_possible_acronyms.py  --dir Course_31168 31168
 ```
 
+One can create an HTML file with a table of acronyms and even include a column for Swedish descriptions
+```
+./reduce_possible_acronyms.py --create -s --dir Course_11544 11544
+```
+
+One can create an HTML file with a descriptions list of acronyms:
+```
+./reduce_possible_acronyms.py --create -dl --dir Course_11544 11544
+```
+
+
 This produces output of the form:
 ```
 processing existing acronyms from ['acronyms-and-abbreviations']
