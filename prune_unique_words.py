@@ -1359,6 +1359,148 @@ thousand_most_common_words_in_English={
 # Levels based on EFLLex_NLP4J used to correct the xx entries
 # Used Bard with the question: What CEFR levels is the word "congressional" in and what part of speech is it?
 common_English_words={
+    'add-on': {'B2': 'noun'},
+    'actuarial': {'B2': 'adjective'},
+    'AI-based': {'B1': 'adjective'},
+    'abduction': {'C1': 'noun'},
+    'academies': {'B1': 'noun'},
+    'advancements': {'B1': 'noun, verb'},
+    'adverse': {'A2': 'adjective', 'B1': 'adjective', 'C1': 'adjective', 'C2': 'adjective'},
+    'angular': {'B1': 'adjective'},
+    'announcements': {'A2': 'noun'},
+    'anti-plagiarism': {'B2': 'noun'},
+    'aspirational': {'B1': 'adjective', 'C1': 'adjective'},
+    'asymptotically': {'C1': 'adverb'},
+    'atherosclerosis': {'B2': 'noun'},
+    'attenuation': {'B1': 'noun'},
+    'Bayesian': {'B2': 'adjective'},
+    'between-subjects': {'B2': 'adjective'},
+    'biobanking': {'C1': 'noun'},
+    'bioconductor': {'B2': 'noun'},
+    'bioethical': {'B2': 'adjective'},
+    'bookmarks': {'A2': 'noun'},
+    'bounties': {'B1': 'noun'},
+    'Cambrian': {'C1': 'adjective'},
+    'caucasian': {'A1': 'noun', 'A2': 'noun'},
+    'centering': {'B1': 'present participle verb'},
+    'childrens': {'A2': 'adjective'}, # should be set "children's"
+    'chiropractic': {'B1': 'noun', 'B2': 'noun'},
+    'co-chair': {'B2': 'noun'},
+    'community-wide': {'B2': 'adjective'},
+    'compendex': {'C2': 'noun'},
+    'complying': {'B!': 'adjective'},
+    'compositional': {'B1': 'adjective'},
+    'computer-human': {'B1': 'noun'},
+    'computer-mediated': {'B2': 'adjective'},
+    'concentric': {'B1': 'adjective', 'B2': 'adjective'},
+    'constellations': {'B1': 'noun'},
+    'convolutional': {'B2': 'adjective'},
+    'cooperative': {'B1': 'adjective'},
+    'courtesy': {'B2': 'noun'},
+    'Covid': {'B2': 'noun'},
+    'Covid-19': {'B2': 'noun'},
+    'criminals': {'B1': 'noun'},
+    'criminology': {'B2x': 'noun'},
+    'cumulatve': {'B2': 'adjective'},
+    'curiosa': {'B1': 'noun'},
+    'dataspora': {'xx': 'noun'}, # new word, not yet assigned a CEFR level but likley to be C1 or C2
+    'de-anonymization': {'C1': 'noun'},
+    'deadlines': {'B1': 'noun'},
+    'decomposable': {'B1': 'adjective'},
+    'deleting': {'A2': 'gerund'},
+    'delineating': {'B1': 'present participle verb'},
+    'disclaimer': {'B1': 'noun'},
+    'dissipation': {'B1': 'noun'},
+    'drafting': {'B1': 'noun', 'B2': 'verb', 'C1': 'adjective'},
+    'dude': {'A1': 'noun'},
+    'earths': {'B1': 'noun'},
+    'ecology': {'B1': 'noun'},
+    'Editor-in-Chief': {'C1': 'noun phrase', 'C2': 'noun phrase'},
+    'electrification': {'B1': 'noun'},
+    'eligibility': {'B1': 'noun'},
+    'enclosures': {'B1': 'noun'},
+    'enquete': {'B2': 'noun'}, # French word should be set as "enquête"
+    'enterprise-class': {'B2': 'adjective'},
+    'Epidemiol': {'xx': 'abbreviation for epidemiology'}, # "Eur J Epidemiol"
+    'exemplars': {'C1': 'noun'},
+    'exeptions': {'A2': 'noun'},
+    'exodus': {'B2': 'noun'},
+    'explainability': {'B1': 'noun'},
+    'filament': {'B2': 'noun'},
+    'financing': {'B1': 'noun'},
+    'first-author': {'B2x': 'noun'},
+    'flows': {'A2': 'verb'},
+    'flyer': {'A11': 'noun, verb', 'A2': 'verb', 'B1': 'noun, verb', 'B2': 'noun'},
+    'formalised': {'C1': 'verb'},
+    'forseen': {'B2': 'adjective'},
+    'frontiers': {'B1': 'noun'},
+    'fuzzy-logic': {'B2': 'noun'},
+    'galvanized': {'B1': 'verb', 'B2': 'verb', 'C1': 'verb', 'C2': 'verb'},
+    'fourier': {'B1': 'noun'},   # should be set as 'Fourier'
+    'markovian': {'B2': 'noun'}, # should be set as 'Markovian'
+    'millimetres': {'A2': 'unit'},
+    "needn't": {'A2': 'contraction'},
+    'venipuncture': {'C1': 'noun'},
+    'wilcoxian': {'xx': 'noun'}, # not in CEFR
+    'wilcoxon': {'B2': 'noun'},
+    'X-ray': {'A2': 'noun'},
+    'within-subjects': {'B2': 'adjective'},
+
+    'internalizing': {'xx': 'noun'},
+    'Internet-of-Things': {'xx': 'noun'},
+    'integrative': {'xx': 'noun'},
+    'Iot': {'xx': 'acronym for Internet of Things'},
+    'IoT': {'xx': 'acronym for Internet of Things'},
+
+    'illuminated': {'xx': 'noun'},
+    'immunity': {'xx': 'noun'},
+    'impoverished': {'xx': 'noun'},
+    'IPsec': {'xx': 'noun'},
+    'italicized': {'xx': 'noun'},
+    'legality': {'xx': 'noun'},
+    'mechanical-electrical': {'xx': 'noun'},
+    'mentorspace': {'xx': 'noun'},
+    'meta-level': {'xx': 'noun'},
+    'metaphilosophy': {'xx': 'noun'},
+    'metasurface': {'xx': 'noun'},
+    'micro-strip': {'xx': 'noun'},
+    'microactuator': {'xx': 'noun'},
+    'mobility': {'xx': 'noun'},
+    'mobility-aware': {'xx': 'noun'},
+    'motzartian': {'xx': 'noun'},
+    'N\u00fcrnberger': {'xx': 'noun'},
+    'neuroscience': {'xx': 'noun'},
+    'ninesigma': {'xx': 'noun'},
+    'non-native': {'xx': 'noun'},
+    'non-orthogonal': {'xx': 'noun'},
+    'non-ethical': {'xx': 'noun'},
+    'non-sustainable': {'xx': 'noun'},
+    'obscuring': {'xx': 'noun'},
+    'one-tailed': {'xx': 'noun'},
+    'one-sample': {'xx': 'noun'},
+    'payoff': {'xx': 'noun'},
+    'pedagogy': {'xx': 'noun'},
+    'personalize': {'xx': 'noun'},
+    'physical-layer': {'xx': 'noun'},
+    'polarization': {'xx': 'noun'},
+    'polls': {'xx': 'noun'},
+    'polyethylene': {'xx': 'noun'},
+    'positoning': {'xx': 'noun'},
+    'predominant': {'xx': 'noun'},
+    'preferences': {'xx': 'noun'},
+    'prereview': {'xx': 'noun'},
+    'presumptive': {'xx': 'noun'},
+    'productions': {'xx': 'noun'},
+    'professions': {'xx': 'noun'},
+    'ProjectLibre': {'xx': 'noun'},
+    'proposals': {'xx': 'noun'},
+    'prosper': {'xx': 'noun'},
+    'Pygments': {'xx': 'noun'},
+    'radiology': {'xx': 'noun'},
+    'randomize': {'xx': 'noun'},
+    'ResearcherID': {'xx': 'noun'},
+
+
     'declaration': {'A2': 'noun'},
     'decodability': {'B2': 'adjective'},
     'demystified': {'B2': 'verb past tense, past participle'},
@@ -9470,8 +9612,13 @@ common_English_words={
 
 
 misc_words_to_ignore=[
+    'Attribution-NoDerivs',
+    'Attribution-NonCommercial-NoDerivs',
+    'Attribution-NonCommercial-ShareAlike',
+    'Attribution-ShareAlike',
     'attribution-noncommercial', # with a CC-BY
-    # 'TU-Berlin',
+    'male/female',
+    'Bible',
     'A4', 
     'A4-sized', 
     'American',
@@ -9513,6 +9660,11 @@ misc_words_to_ignore=[
     'diameter1',
     'dynamist',
     'emilbjo', # part of an e-mail address
+    'henbos', # part of an e-mail address
+    'wouter', # part of an e-mail address
+    'mab', # part of an e-mail address
+    'vastberg', # part of an e-mail address
+    'slimane', # part of an e-mail address
     'extraLatex',
     'fr-FR', 
     'googled',
@@ -9535,7 +9687,9 @@ misc_words_to_ignore=[
     'British', 
     'Canadian', 
     'Chinese', 
+    'Cymraeg', # : {'A1': 'noun'}
     'Danish',
+    'Deutsch',
     'Dutch',
     'English',
     'Farsi',
@@ -9577,7 +9731,11 @@ misc_words_to_ignore=[
     'October',
     'November',
     'December',
-
+    # Name of some holidays
+    'Easter',
+    'Christmas',
+    # font names
+    'Arial',
 ]    
 
 place_names=[
@@ -9898,6 +10056,26 @@ place_names=[
 ]
 
 company_and_product_names=[
+    'Multiphysics',
+    'Matlab',
+    'Inspec',
+    'openSuSE',
+    'macOS',
+    'Fundación',
+    'Elasticsearch',
+    'Earthscan',
+    'Deepnote',
+    'Chromy',
+    'Cengage',
+    'Biometrika',
+    'Beutsche',
+    'Art500k',
+    'Flink',
+    'Zigbee',
+    'YouTube',
+    'Zabbix',
+    'CiteULike',
+    'WordNet',
     'Accton',
     'Acrobat',
     'Acroread',
@@ -10006,17 +10184,16 @@ company_and_product_names=[
     'Excel',
     'Expos',                   # baseball team
     'Facebook',
-    'Facebook',
     'Ferrari',
     'Finisar',
     'Firebird',
     'Firebug',
     'Firefox',
-    'Firefox',
     'Flickr',
     'Flikr',
     'Ford',
     'Framemaker',
+    'FrameMaker',
     'Francis',
     'Freescale',
     'Frisby',
@@ -10248,7 +10425,6 @@ company_and_product_names=[
     'Twister',
     'Twitpay',
     'Twitter',
-    'Twitter',
     'Uber',
     'Ubuntu',
     'Unix',
@@ -10282,13 +10458,11 @@ company_and_product_names=[
     'Wireshark',
     'Wolfram',
     'Worldcom',
-    'Worldcom',
     'Xerox',
     'Xilinx',
     'Xplore',
     'Yankees',
     'Zarlink',
-    'Zigbee',
     'Zimmer',
     'Zoiper',
     'Zotero',
@@ -10318,6 +10492,31 @@ company_and_product_names=[
 ]
 
 names_of_persons=[
+    'Pach',
+    'Pang',
+    'Morin',
+    'Moewes',
+    'Markendahls',
+    'Weir',
+    'Cosma',
+    'Corell',
+    'Capo',
+    'Camitz',
+    'Cakici',
+    'Davison',
+    'Cocking',
+    'Vesco',
+    'Aakvaag',
+    'Claxton',
+    'Demouth',
+    'Vliet',
+    'Rockstr\u00f6m',
+    'Childress',
+    'Nylenna',
+    'Widom',
+    'Greenacre',
+    'Agnes',
+    'Wiener',
     "John's",
     "O'Brien",
     "O'Hanlon",
@@ -12412,6 +12611,7 @@ names_of_persons=[
 ]
 
 common_programming_languages=[  # and libraries, programs
+    'Perl',
     'Erlang',
     'Fortran',
     'Hadoop/Java',
@@ -12464,16 +12664,24 @@ common_programming_languages=[  # and libraries, programs
     'Parlay',
     'Tcl',
     'BibTex'
+    'BibTex',
     'Beamer',
     'Clang',
     'X11',
     'Win32',
     'X-windows',
-
+    'PyDetex',
+    'OOoLatex',
+    'IPython',
+    'IPython3',
+    'JavaScript',
 ]
 
 
 common_swedish_words=[
+    'detta',
+    'definitioner',
+    'Tryckfrihetsordningen',
     'Yttrandefrihetsgrundlag',
     'Spr\u00e5kkommitt\u00e9n',
     'Socialstyrelsen',
@@ -12916,6 +13124,10 @@ common_french_words=[
     'traitement',
     'très',
     'viol\u00e0'
+]
+
+common_italian_words=[
+    'Fondazione',
 ]
 
 common_latin_words=[
@@ -14436,6 +14648,8 @@ def main():
 
         print(f'{len(common_finnish_words):>{Numeric_field_width}} words in common Finnish words')
 
+        print(f'{len(common_italian_words):>{Numeric_field_width}} words in common Italian words')
+
         print(f'{len(names_of_persons):>{Numeric_field_width}} words in names_of_persons')
         print(f'{len(place_names):>{Numeric_field_width}} words in place_names')
         print(f'{len(company_and_product_names):>{Numeric_field_width}} words in company_and_product_names')
@@ -14491,14 +14705,14 @@ def main():
         filtered_unique_words_dict, reduction = filter_words_by_list_case_sensitive(filtered_unique_words_dict, names_of_persons)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} names_of_persons removed')
 
+        filtered_unique_words_dict, reduction = filter_words_by_list_case_sensitive(filtered_unique_words_dict, common_programming_languages)
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common_programming_languages removed')
+
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, misc_words_to_ignore)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} misc_words_to_ignore removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, abbreviations_ending_in_period)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} abbreviations_ending_in_period removed')
-
-        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_programming_languages)
-        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common_programming_languages removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_domainname)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}}  domainnames removed')
@@ -14657,6 +14871,10 @@ def main():
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_finnish_words)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common Finnish words removed')
 
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_italian_words)
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} common Italian words removed')
+
+
         # reset the new dict
         new_filtered_unique_words_dict=dict()
 
@@ -14769,6 +14987,7 @@ def main():
         common_latin_words_set=set()
         common_german_words_set=set()
         common_finnish_words_set=set()
+        common_italian_words_set=set()
 
         #
         # Process all of the unique words and see which CEFR level they fall into for each of the sources
@@ -14900,6 +15119,12 @@ def main():
                 common_finnish_words_set.add(word)
             if word.lower() in common_finnish_words:
                 common_finnish_words_set.add(word.lower())
+
+            if word in common_italian_words:
+                common_italian_words_set.add(word)
+            if word.lower() in common_italian_words:
+                common_italian_words_set.add(word.lower())
+
 
 
             if word in top_100_English_words:
@@ -15103,6 +15328,15 @@ def main():
         usage_sorted['Source']='common Finnish words'
         usage_sorted['total']=common_finnish_words_count
         usage_sorted['percentage']=(common_finnish_words_count/len(common_finnish_words))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        common_italian_words_count=len(common_italian_words_set)
+        print(f'common Italian words: total: {common_italian_words_count}  ({(common_italian_words_count/len(common_italian_words))*100:.2f}%)')
+        usage_sorted=dict()
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='common Italian words'
+        usage_sorted['total']=common_italian_words_count
+        usage_sorted['percentage']=(common_italian_words_count/len(common_italian_words))*100.0
         stats_df.loc[len(stats_df)] = usage_sorted
 
 
