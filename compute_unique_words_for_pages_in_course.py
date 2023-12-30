@@ -163,6 +163,7 @@ suffixes_to_ignore=[
     '\\',
     '\\n',
     '_',
+    '¢',
     '®',
     '°',
     '¶',
@@ -179,6 +180,7 @@ suffixes_to_ignore=[
 ]
 
 miss_spelled_words=[
+    #"algorithm|s",
     'under-utilizationLearnability',
     'interneting',
     'interent',
