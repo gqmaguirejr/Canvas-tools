@@ -282,7 +282,15 @@ def unique_words_for_pages_in_course(course_id, pages_to_skip):
                 # save all of the bodies
                 total_raw_HTML=total_raw_HTML+f"\n⌘⏩{p['url']}⏪\n"+body
 
-                document = html.document_fromstring(body)
+                spaced_body = re.sub("</", " </", body)
+                document = html.document_fromstring(spaced_body)
+                # replace the BR tags with a space
+                for br in document.xpath("*//br"):
+                    br.tail = " " + br.tail if br.tail else " "
+                for br in document.xpath("*//BR"):
+                    br.tail = " " + br.tail if br.tail else " "
+
+
                 raw_text = document.text_content()
             else:               # nothing to process
                 raw_text = ""
