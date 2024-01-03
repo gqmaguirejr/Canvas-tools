@@ -262,6 +262,13 @@ def main():
                       help="for the container enviroment in the virtual machine"
     )
 
+    parser.add_option('-a', '--all',
+                      dest="all_files",
+                      default=False,
+                      action="store_true",
+                      help="include even hidden files"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -293,7 +300,7 @@ def main():
 
     for f in folders:
         # skip hidden folders
-        if f['hidden']:
+        if f['hidden'] and not options.all_files:
             continue
         dir_to_make=destination_directory+'/'+f['full_name']
         if Verbose_Flag:
@@ -307,7 +314,7 @@ def main():
 
     files=list_files(course_id)
     for f in files:
-        if not f['hidden'] and f['folder_id'] in relevant_folders:
+        if (not f['hidden'] or options.all_files) and f['folder_id'] in relevant_folders:
             print(f"should copy file {f['filename']} of size {f['size']} from {f['url']}")
             getfile_to_dest(f['url'], folder_id_to_name_mapping[ f['folder_id']], f['filename'])
 

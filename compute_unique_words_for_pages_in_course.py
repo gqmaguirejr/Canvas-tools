@@ -367,6 +367,7 @@ currency_symbols=[
 ]
 
 words_to_ignore=[
+    '\r',
     '\n',
     '\x0a',
     "'",
@@ -775,6 +776,8 @@ def approximate_number(string):
     # remove tilde prefix
     if len(string) > 1 and string[0]=='~':
         string=string[1:]
+    else:
+        return False
     #
     if string.count(',') > 0:
         string=string.replace(',', "")
@@ -890,6 +893,7 @@ def is_filename_to_skip(string):
     # otherwise
     return False
 
+# look for strings of the form "slideD" where D is a number
 def is_slide_number(s):
     if s.startswith('slide'):
         s=s[5:]
@@ -916,6 +920,16 @@ def is_multiple_caps(s):
 # mixed case is any lower _and_ upprsease in one string
 def ismixed(s):
     return any(c.islower() for c in s) and any(c.isupper() for c in s)
+
+# cid:dd indicates a CID font identifier
+def is_cid_font_identifier(string):
+    global Verbose_Flag
+    if string.startswith("cid:"):
+        string=string[4:]
+        return is_number(string)
+    # otherwise
+    return False
+
 
 # added functions to get text from PDF files
 def show_ltitem_hierarchy(o: Any, depth=0):
@@ -1189,9 +1203,118 @@ def process_file(filename):
 
                 raw_text = raw_text+' '+ txt.strip()
 
-    total_raw_text=total_raw_text+raw_text
+    total_raw_text=total_raw_text+clean_raw_text(raw_text)
 
-    return raw_text
+    return clean_raw_text(raw_text)
+
+# ligature. LaTeX commonly does it for ff, fi, fl, ffi, ffl, ...
+ligrature_table= {'\ufb00': 'ff', # 'ﬀ'
+                  '\ufb03': 'f‌f‌i', # 'ﬃ'
+                  '\ufb04': 'ffl', # 'ﬄ'
+                  '\ufb01': 'fi', # 'ﬁ'
+                  '\ufb02': 'fl', # 'ﬂ'
+                  '\ua732': 'AA', # 'Ꜳ'
+                  '\ua733': 'aa', # 'ꜳ'
+                  '\ua733': 'aa', # 'ꜳ'
+                  '\u00c6': 'AE', # 'Æ'
+                  '\u00e6': 'ae', # 'æ'
+                  '\uab31': 'aə', # 'ꬱ'
+                  '\ua734': 'AO', # 'Ꜵ'
+                  '\ua735': 'ao', # 'ꜵ'
+                  '\ua736': 'AU', # 'Ꜷ'
+                  '\ua737': 'au', # 'ꜷ'
+                  '\ua738': 'AV', # 'Ꜹ'
+                  '\ua739': 'av', # 'ꜹ'
+                  '\ua73a': 'AV', # 'Ꜻ'  - note the bar
+                  '\ua73b': 'av', # 'ꜻ'  - note the bar
+                  '\ua73c': 'AY', # 'Ꜽ'
+                  '\ua76a': 'ET', # 'Ꝫ'
+                  '\ua76b': 'et', # 'ꝫ'
+                  '\uab41': 'əø', # 'ꭁ'
+                  '\u01F6': 'Hv', # 'Ƕ'
+                  '\u0195': 'hu', # 'ƕ'
+                  '\u2114': 'lb', # '℔'
+                  '\u1efa': 'IL', # 'Ỻ'
+                  '\u0152': 'OE', # 'Œ'
+                  '\u0153': 'oe', # 'œ'
+                  '\ua74e': 'OO', # 'Ꝏ'
+                  '\ua74f': 'oo', # 'ꝏ'
+                  '\uab62': 'ɔe', # 'ꭢ'
+                  '\u1e9e': 'fs', # 'ẞ'
+                  '\u00df': 'fz', # 'ß'
+                  '\ufb06': 'st', # 'ﬆ'
+                  '\ufb05': 'ſt', # 'ﬅ'  -- long ST
+                  '\ua728': 'Tz', # 'Ꜩ'
+                  '\ua729': 'tz', # 'ꜩ'
+                  '\u1d6b': 'ue', # 'ᵫ'
+                  '\uab63': 'uo', # 'ꭣ'
+                  #'\u0057': 'UU', # 'W'
+                  #'\u0077': 'uu', # 'w'
+                  '\ua760': 'VY', # 'Ꝡ'
+                  '\ua761': 'vy', # 'ꝡ'
+                  # 
+                  '\u0238': 'db', # 'ȸ'
+                  '\u02a3': 'dz', # 'ʣ'
+                  '\u1b66': 'dʐ', # 'ꭦ'
+                  '\u02a5': 'dʑ', # 'ʥ'
+                  '\u02a4': 'dʒ', # 'ʤ'
+                  '\u02a9': 'fŋ', # 'ʩ'
+                  '\u02aa': 'ls', # 'ʪ'
+                  '\u02ab': 'lz', # 'ʫ'
+                  '\u026e': 'lʒ', # 'ɮ'
+                  '\u0239': 'qp', # 'ȹ'
+                  '\u02a8': 'tɕ', # 'ʨ'
+                  '\u02a6': 'ts', # 'ʦ'
+                  '\uab67': 'tʂ', # 'ꭧ'
+                  '\u02a7': 'tʃ', # 'ʧ'
+                  '\uab50': 'ui', # 'ꭐ'
+                  '\uab51': 'ui', # 'ꭑ' -- turned ui
+                  '\u026f': 'uu', # 'ɯ'
+                  # digraphs with single code points
+                  '\u01f1': 'DZ', # 'Ǳ'
+                  '\u01f2': 'Dz', # 'ǲ'
+                  '\u01f3': 'dz', # 'ǳ'
+                  '\u01c4': 'DŽ', # 'Ǆ'
+                  '\u01c5': 'Dž', # 'ǅ'
+                  '\u01c6': 'dž', # 'ǆ'
+                  '\u0132': 'IJ', # 'Ĳ'
+                  '\u0133': 'ij', # 'ĳ'
+                  '\u01c7': 'LJ', # 'Ǉ'
+                  '\u01c8': 'Lj', # 'ǈ'
+                  '\u01c9': 'lj', # 'ǉ'
+                  '\u01ca': 'NJ', # 'Ǌ'
+                  '\u01cb': 'Nj', # 'ǋ'
+                  '\u01cc': 'nj', # 'ǌ'
+                  '\u1d7a': 'th', # 'ᵺ'
+                  }
+
+def replace_ligature(s):
+    # check for ligratures and replace them with separate characters
+    if not s:
+        return s
+    
+    for l in ligrature_table:
+        if s.find(l) >= 0:
+            print("found ligrature {0} replacing with {1}".format(l, ligrature_table[l]))  
+            s=s.replace(l, ligrature_table[l])
+    #
+    return s
+
+# do deal with PDF generators outputting Swedish chracters such as 'ö' as '¨o'
+def clean_raw_text(s):
+    global replace_ligatures_flag
+    s=s.replace('¨o', 'ö')
+    s=s.replace('¨a', 'ä')
+    s=s.replace('˚a', 'å')
+    s=s.replace('¨O', 'Ö')
+    s=s.replace('¨A', 'Ä')
+    s=s.replace('˚A', 'Å')
+
+    # it is very likely that the TeX engine has inserrted ligatures, but you can replace them
+    if replace_ligatures_flag:
+        s=replace_ligature(s)
+    return s
+
 
 def unique_words_in_PDF_file(input_PDF_file):
     global unique_words
@@ -1224,6 +1347,7 @@ def main():
     global all_text
     global total_raw_text
     global total_raw_HTML
+    global replace_ligatures_flag
 
     parser = optparse.OptionParser()
 
@@ -1255,6 +1379,14 @@ def main():
                       help="read configuration from FILE", metavar="FILE")
 
 
+    parser.add_option('-l', '--ligatures',
+                      dest="replace_ligatures",
+                      default=False,
+                      action="store_true",
+                      help="replace ligatures"
+    )
+
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -1266,6 +1398,8 @@ def main():
 
     initialize(options)
 
+    if options.replace_ligatures:
+        replace_ligatures_flag=True
 
     # compute the directory prefix for files to be used for the program's I/O
     directory_prefix=options.dir_prefix
@@ -1287,7 +1421,8 @@ def main():
         total_raw_HTML=''
         
         if options.processPDF_file:
-            input_PDF_file=options.processPDF_file
+            print('Process a PDF file')
+            course_id=remainder[0]
         else:
             course_id=remainder[0]
             if not str(course_id).isdigit():
@@ -1303,8 +1438,9 @@ def main():
 
         
         if options.processPDF_file:
+            input_PDF_file=f'{directory_prefix}{options.processPDF_file}'
             unique_words_in_PDF_file(input_PDF_file)
-            course_id=input_PDF_file         #  just a place holder course_id
+            course_id=f'{course_id}_{options.processPDF_file}'         #  make a place holder course_id
         else:
             unique_words_for_pages_in_course(course_id, pages_to_skip)
 
@@ -1315,11 +1451,13 @@ def main():
 
             # if not filtering, simply output the unique words and exit
             if options.keepAll:
-                with open(new_file_name, 'w') as f:
-                    f.write(f"{word}\n")
+                print(f'Writing file: {new_file_name}')
+                with open(new_file_name+'raw_words', 'w') as f:
+                    for word in unique_words:
+                        f.write(f"{word}\n")
                 return
 
-            # reduce unique_words to have only one entry when there is both a capitalized version and a lower case version
+           # reduce unique_words to have only one entry when there is both a capitalized version and a lower case version
             # Note that this may eliminate capitalized names if the same string occurs for an uncapitalized version of the string.
             new_unique_words=set()
             for word in unique_words:
@@ -1368,118 +1506,183 @@ def main():
                 for word in unique_words:
                     # skip slide numbers
                     if is_slide_number(word):
+                        if Verbose_Flag:
+                            print(f'found slide number: {s}')
                         continue
                         
                     # ignore a specified set of words
                     if word in words_to_ignore:
+                        if Verbose_Flag:
+                            print(f'{word} in words_to_ignore')
                         continue
 
                     # eliminate what is left of URLs
                     if word.startswith("//"):
+                        if Verbose_Flag:
+                            print(f'{word} starts with a //')
                         continue
 
                     # skip a variety of file names
                     if is_filename_to_skip(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a filename that should be skipped')
                         continue
 
                     # skip currency ammounts
                     if len(word) > 1 and word[0] in currency_symbols:
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a currency amount')
                         continue
 
                     # skip things that look like DOIs
                     if is_DOI(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a DOI')
                         continue
 
                     # skip things that look like ISBNs
                     if is_ISBN(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be an ISBN')
                         continue
 
                     # if there is one hyphen it might be an integer range or ISSN, of so ignore it
                     if is_integer_range_or_ISSN(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be an integer range or ISSN')
                         continue
 
                     # ignore things that look like IPv4 dotted decimal addresses
                     if is_IPv4_dotted_decimal(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be an IPv4 dotted decimal address')
                         continue
 
                     # ignore IPv4 address with a specified prefix length
                     if is_IPv4_dotted_decimal_with_prefix_length(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be an IPv4 dotted decimal address with prefix length')
                         continue
 
                     # ignore IPv6 addresses
                     if is_IPv6_address(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be an IPv6 address')
                         continue
 
                     # ignore things that look like phone numbers
                     if is_phone_number(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a phone number')
                         continue
 
                     # ignore things that look like time offsets, i.e., dd:dd:dd
                     if is_time_offset(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a time offset')
                         continue
 
                     # ignore start and end time strings
                     if is_start_end_time(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a start and end time')
                         continue
 
                     # ignore YYYY.MM.DD and YYYY-MM-DD strings
                     if is_YYYY_MM_DD(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a YYYY.MM.DD or YYYY-MM-DD string')
                         continue
 
                     # ignore  DD-MMM-YYYY or DD-MMM-YY strings
                     if is_DD_MMM_YYYY(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be DD_MMM_YYYY string')
                         continue
 
                     # ignore date time stamps
                     if is_date_time_string(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be time string')
                         continue
 
                     # ignore words with a single colon in a set of digits
                     if is_colon_range_or_HH_colon_MM(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a colon range or HH:MM string')
                         continue
 
                     # ignore approximate numbers
                     if approximate_number(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a approximate number')
                         continue
                     
                     # ignore numbers with commas in them
                     if is_number_with_commas(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to contain one of more commas')
                         continue
 
                     # ignore fractions
                     if is_fraction(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a fraction')
                         continue
 
                     # ignore hex numbers
                     if is_hex_number(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a hexidecimal number')
                         continue
 
                     # ignore things that look like MAC addresses
                     if is_MAC_address(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a MAC address')
+                        continue
+
+
+                    # ignore things that look like CID font identifier
+                    if is_cid_font_identifier(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a CID font identifier')
                         continue
 
                     # ignore things that look like single numbers (also ignore numbers with string, such as units, after them)
                     if is_number(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a number')
                         continue
 
                     # ignore DiVA identifiers
                     if is_part_of_DiVA_identifier(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be part of a DiVA identifier')
                         continue
 
                     # ignore TRITA numbers
                     if is_TRITA_identifier(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be part of a TRITA identifier')
                         continue
 
                     # ignore arXiv identifiers
                     if is_part_of_arXiv_identifier(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be part of a arXiv identifier')
                         continue
 
                     # ignore spring links
                     if is_part_of_springerlink_identifier(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be a Springer link')
                         continue
 
                     # finally output the remaining word
                     f.write(f"{word}\n")
+                    if Verbose_Flag:
+                        print(f'keeping: {word}')
                     filtered_unique_words.add(word)
 
                     number_of_unique_words_output=number_of_unique_words_output+1
@@ -1493,17 +1696,32 @@ def main():
         frequency=dict()
         for count, word in enumerate(all_text):
             #print(f'{word=}')
-            if word in filtered_unique_words:
+            if word in filtered_unique_words or word.lower() in filtered_unique_words:
                 current_word_frequency=frequency.get(word, 0)
                 frequency[word]=current_word_frequency+1
+            elif len(word) > 1:
+                # keep the base of words, such as "binär-" or suffixes, such as "-notationens"
+                if word.endswith('-'):
+                    current_word_frequency=frequency.get(word[:-1], 0)
+                    frequency[word[:-1]]=current_word_frequency+1
+                if word.startswith('-'):
+                    current_word_frequency=frequency.get(word[1:], 0)
+                    frequency[word[1:]]=current_word_frequency+1
+                else:
+                    if Verbose_Flag:
+                        print(f'when computing frequency - skipping: {word}')
+                    skipped_words.add(word)
             else:
+                if Verbose_Flag:
+                    print(f'when computing frequency - skipping: {word}')
                 skipped_words.add(word)
 
         frequency_sorted=dict(sorted(frequency.items(), key=lambda x:x[1]))
 
         new_file_name=f'{directory_prefix}unique_words-for-course-frequency-{course_id}.txt'        
         with open(new_file_name, 'w') as f:
-            f.write(json.dumps(frequency_sorted))
+            f.write(json.dumps(frequency_sorted, ensure_ascii=False))
+        print(f'output {new_file_name}')
 
         new_file_name=f'{directory_prefix}unique_words-for-course-skipped-{course_id}.txt'
         with open(new_file_name, 'w') as f:
@@ -1515,10 +1733,11 @@ def main():
         with open(new_file_name, 'w') as f:
             f.write(total_raw_text)
 
-        # save all the raw HTML
-        new_file_name=f'{directory_prefix}unique_words-for-course-raw_HTML-{course_id}.txt'
-        with open(new_file_name, 'w') as f:
-            f.write(total_raw_HTML)
+        if not options.processPDF_file:
+            # save all the raw HTML
+            new_file_name=f'{directory_prefix}unique_words-for-course-raw_HTML-{course_id}.txt'
+            with open(new_file_name, 'w') as f:
+                f.write(total_raw_HTML)
 
 
 if __name__ == "__main__": main()
