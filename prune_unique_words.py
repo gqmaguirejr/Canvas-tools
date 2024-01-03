@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# -*- mode: python; python-indent-offset: 4 -*-
 #
 # ./prune_unique_words.py course_id
 # 
