@@ -478,12 +478,16 @@ def is_float(string):
         return False
     
 def is_number(string):
-    if len(string) > 0 and not string[0].isdigit():
-        return False
+    # deal with the fact that LaTeX can set a minus sign
+    if len(string) > 1 and string[0] == '\u2212':
+        string = '-' + string[1:]
+    #
+    if len(string) > 0:
+        if not (string[0] == '-' or string[0] == '+'):
+            if not string[0].isdigit():
+                return False
     rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", string)
     if rr and len(rr) == 1:
-        if rr[0].isnumeric():
-            return True
         if is_float(rr[0]):
             return True
     # otherwise
