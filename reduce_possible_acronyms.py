@@ -4,7 +4,9 @@
 # 
 # reduce the likely acronyms file for a course (as extraced by compute_unique_words_for_pages_in_course.py
 #
-# G. Q: Maguire Jr.
+# Optionally output a skeleton as a table for definition list
+#
+# G. Q. Maguire Jr.
 #
 # 2023.12.28
 #
@@ -270,11 +272,18 @@ def main():
                       help="set tag for acronym <dl> list"
     )
 
-    parser.add_option('-s',
-                      dest="swedish_column",
+    parser.add_option('--third',
+                      dest="third_column",
                       default=False,
                       action="store_true",
-                      help="Add a Swedish colum"
+                      help="Add a third column"
+    )
+
+    parser.add_option('-S', '--swedish',
+                      dest="swedish",
+                      default=False,
+                      action="store_true",
+                      help="Make the first description in Swedish"
     )
 
 
@@ -376,21 +385,31 @@ def main():
         print(f"createing file {new_file_name}")
         with open(new_file_name, 'w') as f:
             # basic contents for new page
-            start_of_page=f'<p lang="en-US">Acronyms and Abbreviations <span class="dont-index">useful for {course_name}</span>.</p>\n'
+            if options.swedish:
+                start_of_page=f'<p lang="sv-SE">Akronymer och förkortningar <span class="dont-index">användbara för {course_name}</span>.</p>\n'
+            else:
+                start_of_page=f'<p lang="en-US">Acronyms and Abbreviations <span class="dont-index">useful for {course_name}</span>.</p>\n'
             f.write(start_of_page)
             
             if options.tag:
                 start_of_table='<dl>\n'
             else:
-                start_of_table='<table border="1" cellspacing="1" cellpadding="1">\n<tbody>\n'
+                start_of_table='<table border="1" cellspacing="1" cellpadding="1" ruling="ALL">\n<tbody>\n'
             f.write(start_of_table)
 
 
             if not options.tag:
-                if options.swedish_column:
-                    table_heading='<tr>\n<th>Acronym or Abbreviation</th>\n<th>Description</th>\n<th>Swedish term</th>\n</tr>\n'
+                if options.swedish:
+                    if options.third_column:
+                        table_heading='<tr>\n<th lang="sv">Akronymer och förkortningar/th>\n<th lang="en">Beskrivning</th>\n<th><span lang="sv">English description</span>(<span lang="sv">engelsk term</span></th>\n</tr>\n'
+                    else:
+                        table_heading='<tr>\n<th lang="sv">Akronymer och förkortningar</th>\n<th lang="sv">Beskrivning</th>\n</tr>\n'
                 else:
-                    table_heading='<tr>\n<th>Acronym or Abbreviation</th>\n<th>Description</th>\n</tr>\n'
+                    if options.third_column:
+                        table_heading='<tr>\n<th lang="en">Acronym or Abbreviation</th>\n<th lang="en">Description</th>\n<th><span lang="sv">Svensk term</span>(<span lang="en">Swedish term</span></th>\n</tr>\n'
+                    else:
+                        table_heading='<tr>\n<th lang="en">Acronym or Abbreviation</th>\n<th lang="en">Description</th>\n</tr>\n'
+
                 f.write(table_heading)
 
 
@@ -398,10 +417,10 @@ def main():
                 if options.tag:
                     entry=f"<dt>{word}</dt>\n<dd></dd>\n"
                 else:
-                    if options.swedish_column:
-                        entry=f"<tr><td>{word}</td><td><span>xxxx</span></td><td><span></span></td></tr>\n"
+                    if options.third_column:
+                        entry=f'<tr><td>{word}</td><td><span lang="en">xxxx</span></td><td><span lang="sv"></span></td></tr>\n'
                     else:
-                        entry=f"<tr><td>{word}</td><td><span>xxxx</span></td></tr>\n"
+                        entry=f'<tr><td>{word}</td><td><span  lang="en">xxxx</span></td></tr>\n'
                 f.write(entry)
 
             if options.tag:

@@ -177,6 +177,7 @@ suffixes_to_ignore=[
     '⇒',
     '⚠',
     'ﾔ',
+    '✷',
 ]
 
 miss_spelled_words=[
@@ -921,6 +922,23 @@ def is_multiple_caps(s):
     # otherwise
     return False
 
+# GQMq
+def is_equation(s):
+    len_s=len(s)
+    count_caps=0
+    if s.count('√') == 1:
+        # and it is the first symbol
+        if s.find('√') == 0:
+            return True
+
+    # if there is an assignment symbol
+    if s.count('←') == 1:
+        # and there is at least one letter for the lefthand side
+        if s.find('←') >= 1:
+            return True
+    # otherwise
+    return False
+
 # mixed case is any lower _and_ upprsease in one string
 def ismixed(s):
     return any(c.islower() for c in s) and any(c.isupper() for c in s)
@@ -933,7 +951,6 @@ def is_cid_font_identifier(string):
         return is_number(string)
     # otherwise
     return False
-
 
 # added functions to get text from PDF files
 def show_ltitem_hierarchy(o: Any, depth=0):
@@ -1307,6 +1324,10 @@ def replace_ligature(s):
 # do deal with PDF generators outputting Swedish chracters such as 'ö' as '¨o'
 def clean_raw_text(s):
     global replace_ligatures_flag
+
+    # deal with hyphens at the end of lines
+    s=s.replace('-\n', '')
+
     s=s.replace('¨o', 'ö')
     s=s.replace('¨a', 'ä')
     s=s.replace('˚a', 'å')
@@ -1682,6 +1703,13 @@ def main():
                         if Verbose_Flag:
                             print(f'{word} seems to be a Springer link')
                         continue
+
+                    # ignore equations
+                    if is_equation(word):
+                        if Verbose_Flag:
+                            print(f'{word} seems to be an equation')
+                        continue
+
 
                     # finally output the remaining word
                     f.write(f"{word}\n")

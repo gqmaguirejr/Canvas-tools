@@ -9947,13 +9947,14 @@ misc_words_to_ignore=[
     'OPTpages',   # optional field in a BibTeX entry
     'OPTvolume',  # optional field in a BibTeX entry
 
-    'emilbjo', # part of an e-mail address
-    'bellman', # part of an e-mail address
-    'henbos', # part of an e-mail address
-    'wouter', # part of an e-mail address
-    'mab', # part of an e-mail address
-    'vastberg', # part of an e-mail address
-    'slimane', # part of an e-mail address
+    'emilbjo',    # part of an e-mail address
+    'bellman',    # part of an e-mail address
+    'henbos',     # part of an e-mail address
+    'wouter',     # part of an e-mail address
+    'mab',        # part of an e-mail address
+    'vastberg',   # part of an e-mail address
+    'slimane',    # part of an e-mail address
+    'viggo',      # part of an e-mail address
 
 
     # Languages/peoples
@@ -19024,6 +19025,15 @@ common_swedish_words=[
 
 
 common_swedish_technical_words=[
+    'binärsökwi',
+    'bioinformatiken',
+    'jämförelseoperationen',
+    'kappsäcksstorlek',
+    'matriskedjemultiplikationsordning',
+    'matrisvektormultiplikationer',
+    'satisfierbarhetsproblemet',
+    'tvådimensionellt',
+    'proteindragspelsvikningsproblemet',
     'rationella',
     'rekursion',
     'rekursionen',
