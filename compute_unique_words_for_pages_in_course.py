@@ -1455,7 +1455,7 @@ def main():
                 return
             # skip index pages, for example:
             if int(course_id) == 41493:
-                pages_to_skip=['index-for-course', 'with-quick-index', 'examples-of-some-titles-from-previous-p1p2-reports']
+                pages_to_skip=['index-for-course', 'with-quick-index', 'examples-of-some-titles-from-previous-p1p2-reports', 'ict-keywords-20141203']
             elif int(course_id) == 31168:
                 pages_to_skip=['top-level-index-of-foreign-terms-with-figure-and-table-captions', 'index-special-and-a-r', 'index-r-z']
             else:
