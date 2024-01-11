@@ -2997,6 +2997,20 @@ The resulting combined file is output as: combined_sheets.xlsx
 ```
 Outputs the combined_sheets.xlsx file in the directory ./Course_41668/
 
+## compute_and_prune.bash
+
+### Purpose
+To recursively compute the unique words and prune them
+
+### Input
+when in the directory Course_41668/course file
+```bash
+ ../../compute_and_prune.bash .
+```
+
+### Output
+You can see the name of the file being processed and the output of the two programs.
+
 
 <!-- 
 
