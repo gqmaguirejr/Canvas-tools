@@ -1467,9 +1467,11 @@ def main():
             unique_words_in_PDF_file(input_PDF_file)
             if options.processPDF_file.startswith('./'):
                 print('triming ./ when making new file name')
-                course_id=f'{course_id}_{options.processPDF_file[2:]}'         #  make a place holder course_id
+                f_name=options.processPDF_file[2:].replace('/', '_')
+                course_id=f'{course_id}_{f_name}'         #  make a place holder course_id
             else:
-                course_id=f'{course_id}_{options.processPDF_file}'         #  make a place holder course_id
+                f_name=options.processPDF_file.replace('/', '_')
+                course_id=f'{course_id}_{f_name}'         #  make a place holder course_id
         else:
             unique_words_for_pages_in_course(course_id, pages_to_skip)
 
