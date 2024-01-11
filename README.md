@@ -2975,6 +2975,29 @@ Does not do anything to handle files with different file IDs that have the same 
 getall-files.py 11  Course_11
 ```
 
+## combine_XLSX_files.py
+
+### Purpose
+The program walks the path to collect the XLSX files into a single speadsheet.
+
+The individual XLSX files are assumed to have been output by prune_unique_words.py
+
+### Input
+```bash
+./combine_XLSX_files.py path
+```
+
+### Output
+The resulting combined file is output as: combined_sheets.xlsx
+
+### Example
+
+```bash
+./combine_XLSX_files.py --dir "./Course_41668/course files/"
+```
+Outputs the combined_sheets.xlsx file in the directory ./Course_41668/
+
+
 <!-- 
 
 ## xxx.py

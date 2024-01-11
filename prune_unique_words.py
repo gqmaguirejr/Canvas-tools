@@ -112,7 +112,7 @@
 #
 # 2023.12.05
 #
-#
+# G. Q. Maguire Jr.
 #
 
 
@@ -15455,8 +15455,7 @@ common_swedish_words={
     'ingenjörsarbete': {'B1': 'noun'},
     'ingenjörskonst': {'B1': 'noun'},
     'inget': {'A1': 'pronoun'},
-    'ingressen': {'xx': 'unknown'},
-    'ingresser': {'xx': 'unknown'},
+    'ingressen': {'A2': 'noun, verb'},
     'ingripande': {'B1': 'adjective'},
     'ingäende': {'B1': 'adjective'},
     'ingäng': {'A1': 'noun'},
@@ -15546,7 +15545,6 @@ common_swedish_words={
     'instruktioner': {'A2': 'noun'},
     'instruktionerna': {'A1': 'noun'},
     'instruktör': {'B1': 'noun'},
-    'instrumen': {'xx': 'unknown'},
     'instrument': {'B1': 'noun'},
     'instrumentering': {'B1': 'noun'},
     'instrumentet': {'B1': 'noun'},
@@ -15896,7 +15894,7 @@ common_swedish_words={
     'konsolidering': {'B2': 'noun'},
     'konstant': {'B2': 'noun'},
     'konstiga': {'B1': 'adjective'},
-    'konstrue': {'xx': 'unknown'},
+    'konstrue': {'B1': 'verb'},
     'konstruera': {'B1': 'verb'},
     'konstruerade': {'B2': 'verb'},
     'konstruerar': {'A2': 'verb'},
@@ -16693,7 +16691,7 @@ common_swedish_words={
     'motsvarighet': {'B1': 'noun'},
     'motsägelse': {'B1': 'noun'},
     'mottaga': {'A1': 'verb'},
-    'mottagar': {'xx': 'unknown'},
+    'mottagar': {'A2': 'verb'},
     'mottagare': {'A2': 'noun'},
     'mottages': {'A2': 'verb'},
     'mottagna': {'A1': 'adjective'},
@@ -17240,7 +17238,7 @@ common_swedish_words={
     'pekartypen': {'A2': 'noun'},
     'pekarvariabel': {'A2': 'noun'},
     'pendling': {'A2': 'noun'},
-    'penetrering': {'xx': 'unknown'},
+    'penetrering': {'B1': 'verb'},
     'pengar': {'A1': 'noun'},
     'penna': {'A1': 'noun'},
     'per': {'A1': 'preposition'},
@@ -17795,7 +17793,7 @@ common_swedish_words={
     'samarbete': {'B2': 'noun'},
     'samarbetsvilliga': {'B1': 'adjective'},
     'samexistens': {'B1': 'noun'},
-    'samfundet': {'xx': 'unknown'},
+    'samfundet': {'xx': 'noun'},
     'samhällen': {'A1': 'noun'},
     'samla': {'A1': 'verb'},
     'samlande': {'A2': 'adjective'},
@@ -18118,7 +18116,7 @@ common_swedish_words={
     'smartkort': {'A2': 'noun'},
     'smarttelefon': {'A2': 'noun'},
     'smarttelefon-app': {'B2': 'noun'},
-    'smarttelefoner': {'xx': 'unknown'},
+    'smarttelefoner': {'B1': 'noun'},
     'smycken': {'A1': 'noun'},
     'smyg': {'A2': 'adeverb'},
     'smä': {'C2': 'verb'},
@@ -18737,15 +18735,15 @@ common_swedish_words={
     'tillfällig': {'A2': 'adjective'},
     'tillfälligt': {'A2': 'adverb'},
     'tillförlitlighet': {'B1': 'noun'},
-    'tillgäng': {'xx': 'unknown'},
-    'tillgängar': {'xx': 'unknown'},
+    'tillgäng': {'A2': 'adjective'},
+    'tillgängar': {'B1': 'verb'},
     'tillgänglig': {'A2': 'adjective'},
     'tillgängliga': {'B1': 'adjective'},
     'tillgängligar': {'B1': 'verb'},
     'tillgänglighet': {'B1': 'noun'},
     'tillgängligs': {'B2': 'adjective'},
     'tillgängligt': {'B1': 'adjective'},
-    'tillgängs': {'xx': 'unknown'},
+    'tillgängs': {'B1': 'genitive'},
     'tillhanda': {'A1': 'adverb'},
     'tillhandahälla': {'A1': 'verb'},
     'tillhandahällande': {'B1': 'adjective'},
@@ -19146,8 +19144,8 @@ common_swedish_words={
     'utgivare': {'B1': 'noun'},
     'utgäende': {'A1': 'adjective'},
     'utgäng': {'A1': 'noun'},
-    'utgänget': {'xx': 'unknown'},
-    'utgäva': {'xx': 'unknown'},
+    'utgänget': {'A2': 'participle'},
+    'utgäva': {'B!': 'noun'},
     'utgått': {'A1': 'adjective'},
     'utgör': {'A1': 'verb'},
     'utgörs': {'A2': 'verb'},
@@ -20659,6 +20657,7 @@ common_swedish_technical_words={
     'tvåpotens': {'B1': 'noun'},
     'tvåpotenser': {'B1': 'noun'},
     'tvåvärda': {'B1': 'adjective'},
+    'täcka': {'C1': 'verb'}, # from SweLLex
     'täckas': {'B1': 'verb'},
     'täcker': {'B2': 'verb'},
     'täcks': {'B1': 'verb'},
@@ -20732,6 +20731,8 @@ common_danish_words=[
     'en',
     'for',
     'i',
+    'ingresser', #    'ingresser': {'xx': 'unknown'},
+    'instrumen', #    'instrumen': {'xx': 'unknown'},
     'kongelige',
     'lysbevægelsen',
     'lysbølger', #     'lysbølger': {'xx': 'unknown'},
@@ -20765,6 +20766,7 @@ common_german_words=[
     'sozialforschung',
     'telekommunikationsnetzte',
     'forschungsgruppe',
+    'kredite',
     'leistungsmessung',
 ]
 
@@ -23372,7 +23374,7 @@ def main():
         if not options.testing:
             return
 
-        print('Some experimnts to looking a the words that are not in swedish_common_words ')
+        print('Some experimnts to looking a the words that are not in swedish_common_words-for the content being processed.')
         words_Kelly_set=set()
         for w in words_kelly_swedish:
             words_Kelly_set.add(w)
