@@ -2955,9 +2955,16 @@ To get all of the files of a Canvas for a given course_id
 ```bash
 getall-files.py  course_id destination_directory
 ```
+the -a or --all option sayes to include even the hiddern folders and files
+the -i or --info option creates an xlsx file with a seheet of information about the folders and another about the files
+the -s or --skip option has the program skipp getting the files
+the -t or --testing option can be used to have functions just used when testing
 
 ### Output
 Creates the necessary subdirectories under the destination_directory and outputs each of the files.
+
+Also when the --info option is use it outputs a file with a name of the form: folders_for_{course_id}.xlsx in he destination_directory.
+This spreadsheet has sheets, Folders, Files, and Merged.
 
 ### Note 
 Does not do anything to handle files with different file IDs that have the same name, the last one to be copied will overwrite an earlier copy.

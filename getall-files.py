@@ -9,11 +9,29 @@
 # with the option '-C'or '--containers' use HTTP rather than HTTPS for access to Canvas
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
+# the -a or --all option sayes to include even the hiddern folders and files
+# the -i or --info option creates an xlsx file with a seheet of information about the folders and another about the files
+# the -s or --skip option has the program skipp getting the files
+# the -t or --testing option can be used to have functions just used when testing
+# 
+# 
+#
 # Can also be called with an alternative configuration file:
 # ./getall-files.py --config config-test.json  11  Course_11
 #
 # Example:
 #   getall-files.py 11  Course_11
+#
+# ./getall-files.py --all 41668  Course_41668
+#
+# Get information about the folders and files and create the directory structure, and then get only the non-hidden the individual files:
+# ./getall-files.py -i 41668  Course_41668 
+#
+# Get information about the folders and files and create the directory structure, and then get ALL the individual files:
+# ./getall-files.py -i --all 41668  Course_41668 
+#
+# Get information about the folders and files and create the directory structure, but skip getting the individual files:
+# ./getall-files.py -i --skip --all 41668  Course_41668 
 #
 # Note:
 # Does not do anything to handle files with different file IDs that have the same name, the last one to be copied will overwrite an earlier copy.
@@ -32,6 +50,11 @@ import sys
 import json
 
 import pathlib
+
+# Use Python Pandas to create XLSX files
+import pandas as pd
+
+
 
 #############################
 ###### EDIT THIS STUFF ######
@@ -269,6 +292,19 @@ def main():
                       help="include even hidden files"
     )
 
+    parser.add_option('-i', '--info',
+                      dest="info",
+                      default=False,
+                      action="store_true",
+                      help="store the file and directory information"
+    )
+    parser.add_option('-s', '--skip',
+                      dest="skip",
+                      default=False,
+                      action="store_true",
+                      help="skip getting the files"
+    )
+
     options, remainder = parser.parse_args()
 
     Verbose_Flag=options.verbose
@@ -281,7 +317,7 @@ def main():
 
     print("remainder is {}".format(remainder))
     if (len(remainder) < 2):
-        print("Inusffient arguments\n must course_id and destiation_directory\n")
+        print("Insuffient arguments\n must course_id and destiation_directory\n")
         return
     course_id=remainder[0]
     if Verbose_Flag:
@@ -313,9 +349,31 @@ def main():
     print(f'{folder_id_to_name_mapping=}')
 
     files=list_files(course_id)
-    for f in files:
-        if (not f['hidden'] or options.all_files) and f['folder_id'] in relevant_folders:
-            print(f"should copy file {f['filename']} of size {f['size']} from {f['url']}")
-            getfile_to_dest(f['url'], folder_id_to_name_mapping[ f['folder_id']], f['filename'])
+    if not options.skip:
+        for f in files:
+            if (not f['hidden'] or options.all_files) and f['folder_id'] in relevant_folders:
+                print(f"should copy file {f['filename']} of size {f['size']} from {f['url']}")
+                getfile_to_dest(f['url'], folder_id_to_name_mapping[ f['folder_id']], f['filename'])
+
+    if options.info:
+        # output information about the folders
+        folders_df=pd.json_normalize(folders)
+        spreadsheet_file_name=f'{destination_directory}/folders_for_{course_id}.xlsx'
+        print(f'ouputing information about the folders to {spreadsheet_file_name}')
+        writer = pd.ExcelWriter(spreadsheet_file_name, engine='xlsxwriter')
+        folders_df.to_excel(writer, sheet_name='Folders')
+
+        # output information about the files
+        files_df=pd.json_normalize(files)
+        files_df.to_excel(writer, sheet_name='Files')
+
+        # rename the id on the Folder page to folder_id and then merge with the file data
+        folders_df.rename(columns = {'id':'folder_id', 'name':'folder_name', 'full_name':'full_folder_name'}, inplace = True)
+        merged_df = pd.merge(folders_df, files_df, on='folder_id', suffixes=('_folder', '_file'))
+        merged_df.to_excel(writer, sheet_name='Merged')
+
+        # Close the Pandas Excel writer and output the Excel file.
+        writer.close()
+
 
 if __name__ == "__main__": main()
