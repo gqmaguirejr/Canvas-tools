@@ -178,11 +178,13 @@ prefixes_to_ignore=[
     '',
     '（',
     '👋',
+    'ˆ',
 ]
 
 suffixes_to_ignore=[
     "'",
     "§",
+    #',
     '-',
     '.',
     '/',
@@ -204,6 +206,9 @@ suffixes_to_ignore=[
     '⚠',
     'ﾔ',
     '✷',
+    '',
+    '',
+    '\u0000', # null character
 ]
 
 miss_spelled_words=[
@@ -971,12 +976,14 @@ filename_extentions_to_skip=[
     '.bib',
     '.bash',
     '.c',
+    '.c',
     '.conf',
     '.csv',
     '.doc',
     '.docx',
     '.dtd',
     '.ethereal',
+    '.g++',
     '.gz',
     '.h',
     '.html',
@@ -984,6 +991,7 @@ filename_extentions_to_skip=[
     '.js',
     '.list',
     '.mods',
+    '.o',
     '.pcap',
     '.pdf',
     '.php',
@@ -1037,8 +1045,44 @@ def is_multiple_caps(s):
 
 # GQMq
 def is_equation(s):
+    math_symbols=[
+        '∀', '∁', '∂', '∃', '∄', '∅',
+        '∆', '∇', '∈', '∉', '∊', '∋',
+        '∌', '∍', '∎', '∏', '∐', '∑',
+        '∓', '∔', '∖', '∗',     # Note that we do not include the minus sign('−'), '∕', since these can be used for other purposes
+        '∘', '∙', '√', '∛', '∜', '∝', 
+        '∞', '∟', '∠', '∡', '∢', # perhaps exclude '∣', as it has other uses
+        '∤', '∥', '∦', '∧', '∨', '∩', 
+        '∪', '∫', '∬', '∭', '∮', '∯', 
+        '∰', '∱', '∲', '∳', '∴', '∵', 
+        '∸', '∹', '∺', '∻', # perhaps exclude '∶', '∷',  as they can have other uses
+        '∽', '∾', '∿', '≀', '≁',  # perhaps exclude '∼', 
+        '≂', '≃', '≄', '≅', '≆', '≇', 
+        '≈', '≉', '≊', '≋', '≌', '≍', 
+        '≎', '≏', '≐', '≑', '≒', '≓', 
+        '≔', '≕', '≖', '≗', '≘', '≙', 
+        '≚', '≛', '≜', '≝', '≞', '≟', 
+        '≠', '≡', '≢', '≣', '≤', '≥', 
+        '≦', '≧', '≨', '≩', '≪', '≫', 
+        '≬', '≭', '≮', '≯', '≰', '≱',
+        '≲', '≳', '≴', '≵', '≶', '≷', 
+        #'', '', '', '', '', '',
+        #'', '', '', '', '', '', 
+        #'', '', '', '', '', '',
+        #'', '', '', '', '', '', 
+        #'', '', '', '', '', '',
+        #'', '', '', '', '', '', 
+        ]
+
     len_s=len(s)
-    count_caps=0
+    if len_s < 1:
+        return
+
+    for ms in math_symbols:
+        if ms in s:
+            return True
+
+
     if s.count('√') == 1:
         # and it is the first symbol
         if s.find('√') == 0:
@@ -1049,6 +1093,39 @@ def is_equation(s):
         # and there is at least one letter for the lefthand side
         if s.find('←') >= 1:
             return True
+
+    if s.count('∈') == 1:
+        # and it is the not first symbol
+        if s.find('∈') > 0:
+            return True
+
+    if s.count('≤') == 1:
+        # and it is the not first symbol
+        if s.find('≤') > 0:
+            return True
+
+    if s.count('≤') == 1:
+        # and it is the not first symbol
+        if s.find('≤') > 0:
+            return True
+
+
+    if s.count('∑') >= 1:
+        return True
+
+    if s.count('∃') >= 1:
+        return True
+
+    if s.count('≡') >= 1:
+        return True
+
+    if s.count('∞') >= 1:
+        return True
+
+    if s[0] in ['Γ', '¬', 'β', 'δ', '∆', 'π', 'ρ', 'σ', 'φ', '∀', '∧', ]:
+        return True
+
+
     # otherwise
     return False
 

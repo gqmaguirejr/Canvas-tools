@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
-# ./combine_XLSX:files.py path
+# ./combine_XLSX:files.py path course_id
 # 
 # The program walks the path to collect the XLSX files into a single speadsheet.
 #
@@ -72,6 +72,11 @@ def main():
     if Verbose_Flag:
         print(f'{directory_prefix=}')
 
+    if len(remainder) > 0:
+        course_id = remainder[0]
+    else:
+        course_id = "no-course_id"
+
     cumulative_df=pd.DataFrame()
     
     for root, dirs, files in os.walk(directory_prefix, topdown=True):
@@ -79,7 +84,7 @@ def main():
             if Verbose_Flag:
                 print(f'file: {filename}')
 
-            # skip locl files
+            # skip lock files
             if filename.startswith('~$'):
                 continue
 
@@ -102,7 +107,7 @@ def main():
     else:
         directory_to_use=directory_prefix[:directory_prefix.rfind('/')]
     print(f'using directory: {directory_to_use}')
-    new_file_name=f'{directory_to_use}/combined_sheets.xlsx'
+    new_file_name=f'{directory_to_use}/combined_sheets-{course_id}.xlsx'
     print(f'outputting file: {new_file_name}')
     cumulative_df.rename(columns = {'Unnamed: 0':'orignal_row'}, inplace = True)
     writer = pd.ExcelWriter(new_file_name, engine='xlsxwriter')

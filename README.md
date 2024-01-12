@@ -2989,11 +2989,11 @@ The individual XLSX files are assumed to have been output by prune_unique_words.
 
 ### Input
 ```bash
-./combine_XLSX_files.py path
+./combine_XLSX_files.py path course_id
 ```
 
 ### Output
-The resulting combined file is output as: combined_sheets.xlsx
+The resulting combined file is output as: combined_sheets-{course_id}.xlsx
 
 ### Example
 
@@ -3057,14 +3057,14 @@ mkdir Course_41668
 ./getall-files.py -i --all 41668  Course_41668
 cd Course_41668/course files
 ../../compute_and_prune.bash .
-./combine_XLSX_files.py --dir "./Course_41668/course files/"
+./combine_XLSX_files.py --dir "./Course_41668/course files/" 41668
 
 ```
 
 ### Output
 After completing all of the above the target directory (in this case Course_41668) wil contain the following files:
 * anchors-41668.json
-* combined_sheets.xlsx
+* combined_sheets-41668.xlsx
 * folders_for_41668.xlsx
 * unique_words-for-course-41668.txt
 * unique_words-for-course-frequency-41668.txt
@@ -3100,7 +3100,7 @@ Files of the form: unique_words-for-course-frequency-* and unique_words-for-cour
 
 Files of the form: unique_words-for-course-likely-acronyms-* contain words that are likely to be acronyms (as determined during the prune operation).
 
-Files of the form: unique_words-for-course-likely-stats-* contain a summary of the statistics while the file combined_sheets.xlsx contains all of the statistics of the individual sources.
+Files of the form: unique_words-for-course-likely-stats-* contain a summary of the statistics while the file combined_sheets*.xlsx contains all of the statistics of all the individual sources.
 
 Files of the form: folders_for_* contain information about the folders and files (as determined when running getall-files).
 
