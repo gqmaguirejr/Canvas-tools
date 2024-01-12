@@ -3053,7 +3053,7 @@ The following shows all of the tools being applied for a course, in this case th
 mkdir Course_41668
 ./compute_unique_words_for_pages_in_course.py --dir Course_41668 41668
 ./prune_unique_words.py --bar --slash --dir Course_41668 41668
-./extract_anchros_elements_from_rawHTML_files.py  --dir Course_41668 41668
+./extract_anchor_elements_from_rawHTML_files.py  --dir Course_41668 41668
 ./getall-files.py -i --all 41668  Course_41668
 cd Course_41668/course files
 ../../compute_and_prune.bash .
