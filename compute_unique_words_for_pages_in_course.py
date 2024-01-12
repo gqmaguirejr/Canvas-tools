@@ -3,6 +3,8 @@
 #
 # ./compute_unique_words_for_pages_in_course.py  course_id
 # 
+# The content is taken from the wikipages in the specified course or from PDF files that have been retried ffrom the course.
+#
 # it outputs a file with the unique words each on a line
 # where xx is the course_id.
 #
@@ -22,19 +24,42 @@
 # Can also be called with an alternative configuration file using the option --config config-test.json
 #
 # Examples:
+# To process the wikipages:
+#
 # ./compute_unique_words_for_pages_in_course.py 11544
 #
 # ./compute_unique_words_for_pages_in_course.py  --config config-test.json 11544
 #
-# The option --dir can be used to specify a directory to be used to get the input tiles and to put the output files in.
+# To process the files from a course:
+## The option --dir can be used to specify a directory to be used to get the input tiles and to put the output files in.
 # There is also a -P options to process a PDF file.
 # ./compute_unique_words_for_pages_in_course.py --dir ./Internetworking_course/ -P Lecture1-notes-2019.pdf
 #
+# For example when procesing the PDF files retrieved from a course:
+#  ./compute_unique_words_for_pages_in_course.py 41668 --ligature --dir "./Course_41668/course files/Uploaded Media/" -P F01.pdf
+# will output:
+# Process a PDF file
+# found ligrature ﬀ replacing with ff
+# found ligrature ﬁ replacing with fi
+# found ligrature ﬂ replacing with fl
+# found ligrature ﬀ replacing with ff
+# found ligrature ﬁ replacing with fi
+# found ligrature ﬂ replacing with fl
+# a total of 1588 words processed
+# 559 unique words
+# 484 unique words output to ./Course_41668/course files/Uploaded Media/unique_words-for-course-41668_F01.pdf.txt
+# 484 filtered_unique_words
+# output ./Course_41668/course files/Uploaded Media/unique_words-for-course-frequency-41668_F01.pdf.txt
+#
+# It also generates the following additional files:
+#  unique_words-for-course-41668_F01.pdf.txt
+#  unique_words-for-course-raw_text-41668_F01.pdf.txt
+#  unique_words-for-course-skipped-41668_F01.pdf.txt
+#
+#
 # Notes
-# The program is taking the text version of the Canvas wikipages and not the HTML version. It should probably be changed to use the HTML version so as to
-# (1) take advntage of language tagging and other tagging
-# (2) to avoid some of the problems that Canvas has when extract text from lists and definitions [it is not adding a space or other separator
-#     between entires - so one can get the end of one element of a list mixed with the start of the next element in this list.
+# The program is processing the text of Canvas wikipages (it get the HTML content, but simply extracts all of the text).
+# It should probably be changed to be smarter - for example, to utilize the langugage tagged parts of the page to use the correct auxiliary information.
 #
 # To have the correct version of PDFminer, do:
 #     pip install pdfminer.six
@@ -217,10 +242,32 @@ def prune_suffix(s):
             return s
     return s
 
-def unique_words_for_pages_in_course(course_id, pages_to_skip):
+def uniqe_words_from_rawtext(raw_text):
     global Verbose_Flag
     global total_words_processed
-    global all_text
+    global unique_words
+
+    words = nltk.word_tokenize(raw_text)
+    all_text.extend(words)
+    for word in words:
+        total_words_processed=total_words_processed+1
+        # words that start with certain characters/strings should be treated as if this character/string is not there
+        # this is to address footnotes and some other special cases
+        newword=word.strip()
+        newword=prune_prefix(newword)
+        newword=prune_suffix(newword)
+        if len(newword) > 0:
+            if newword.count('\n') > 0:
+                newwords=newword.split('\n')
+                for w in newwords:
+                    unique_words.add(w)
+            else:
+                unique_words.add(newword)
+
+    return True
+
+def unique_words_for_pages_in_course(course_id, pages_to_skip):
+    global Verbose_Flag
     global total_raw_text
     global total_raw_HTML
 
@@ -313,26 +360,91 @@ def unique_words_for_pages_in_course(course_id, pages_to_skip):
         if not raw_text or len(raw_text) < 1:
             print(f"nothing to processes on page {p['url']}")
             continue
-
-        words = nltk.word_tokenize(raw_text)
-        all_text.extend(words)
-        for word in words:
-            total_words_processed=total_words_processed+1
-            # words that start with certain characters/strings should be treated as if this character/string is not there
-            # this is to address footnotes and some other special cases
-            newword=word.strip()
-            newword=prune_prefix(newword)
-            newword=prune_suffix(newword)
-            if len(newword) > 0:
-                if newword.count('\n') > 0:
-                    newwords=newword.split('\n')
-                    for w in newwords:
-                        unique_words.add(w)
-                        check_spelling_errors(w, p["url"])
-                else:
-                    unique_words.add(newword)
-                    check_spelling_errors(newword, p["url"])
+        
+        uniqe_words_from_rawtext(raw_text)
     return True
+
+def unique_words_for_syllabus_in_course(course_id):
+    global Verbose_Flag
+    global total_raw_text
+    global total_raw_HTML
+
+    payload={}
+
+    # Note that the syllabus is simply an HTML page
+    url=f"https://canvas.kth.se/courses/{course_id}/assignments/syllabus"
+
+    r = requests.get(url, headers = header, data=payload)
+    if Verbose_Flag:
+        print("r.status_code: {}".format(r.status_code))
+    if r.status_code == requests.codes.ok:
+        body = r.content.decode("utf-8")
+
+    else:
+        print("Error in getting syllabus for course_id: {}".format(course_id))
+        return False
+
+    if Verbose_Flag:
+        print(f'body after decode utf-8: {body}')
+
+    env_pattern = re.compile('ENV = ({.*?});', re.DOTALL)
+
+    matches = env_pattern.search(body)
+
+    body=matches.group(1)
+
+    if isinstance(body, str) and len(body) > 0:
+        body=body.replace('\\u003c', '\u003c')
+        body=body.replace('\\u003e', '\u003e')
+        body=body.replace('\\"', '"')
+        body=body.replace('\\n', '\n')
+        body=body.replace( "\\u0026" , "&" )
+
+
+        start_of_syllabus_body='"SYLLABUS_BODY":"'
+        offset_to_body=body.find(start_of_syllabus_body)
+        if offset_to_body < 0:
+            print('No syllabus body found')
+            return False
+
+        effective_end_of_body='","notices":[],"active_context_tab":"syllabus"'
+        offset_to_end_of_body=body.find(effective_end_of_body)
+        if offset_to_end_of_body < offset_to_body:
+            print('No end to syllabus body found')
+            return False
+
+        body='<html>'+body[offset_to_body+len(start_of_syllabus_body):offset_to_end_of_body]+'</html>'
+        #save all of the bodies
+        total_raw_HTML=total_raw_HTML+f"\n⌘⏩syllabus⏪\n"+body
+
+        
+        spaced_body = re.sub("</", " </", body)
+        document = html.document_fromstring(spaced_body)
+        # replace the BR tags with a space
+        for br in document.xpath("*//br"):
+            br.tail = " " + br.tail if br.tail else " "
+            for br in document.xpath("*//BR"):
+                br.tail = " " + br.tail if br.tail else " "
+
+        raw_text = document.text_content()
+    else:               # nothing to process
+        raw_text = ""
+
+    if Verbose_Flag:
+        print("raw_text: {}".format(raw_text))
+    total_raw_text=total_raw_text+f"\n⌘⏩syllabus⏪\n"+raw_text
+                
+    # to look for spectivic text on a page
+    # if raw_text.find("Boyle") >= 0:
+    #     print(f'Boyle on page {url}')
+
+    if not isinstance(raw_text, str) or len(raw_text) < 1:
+        print(f"nothing to processes in syllabus")
+        return False
+        
+    uniqe_words_from_rawtext(raw_text)
+    return True
+
 
 def list_pages(course_id):
     list_of_all_pages=[]
@@ -1482,6 +1594,7 @@ def main():
                 f_name=options.processPDF_file.replace('/', '_')
                 course_id=f'{course_id}_{f_name}'         #  make a place holder course_id
         else:
+            unique_words_for_syllabus_in_course(course_id)
             unique_words_for_pages_in_course(course_id, pages_to_skip)
 
         print(f'a total of {total_words_processed} words processed')
