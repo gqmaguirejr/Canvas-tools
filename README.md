@@ -3063,31 +3063,31 @@ cd Course_41668/course files>
 
 ### Output
 After completing all of the above the target directory (in this case Course_41668) wil contain the following files:
-    anchors-41668.json
-    combined_sheets.xlsx
-    folders_for_41668.xlsx
-    unique_words-for-course-41668.txt
-    unique_words-for-course-frequency-41668.txt
-    unique_words-for-course-frequency-updated-41668.txt
-    unique_words-for-course-likely-acronyms-41668.txt
-    unique_words-for-course-likely-stats-41668.xlsx
-    unique_words-for-course-raw_HTML-41668.txt
-    unique_words-for-course-raw_text-41668.txt
-    unique_words-for-course-skipped-41668.txt
-    unique_words-for-course-skipped-in-update-41668.txt
+* anchors-41668.json
+* combined_sheets.xlsx
+* folders_for_41668.xlsx
+* unique_words-for-course-41668.txt
+* unique_words-for-course-frequency-41668.txt
+* unique_words-for-course-frequency-updated-41668.txt
+* unique_words-for-course-likely-acronyms-41668.txt
+* unique_words-for-course-likely-stats-41668.xlsx
+* unique_words-for-course-raw_HTML-41668.txt
+* unique_words-for-course-raw_text-41668.txt
+* unique_words-for-course-skipped-41668.txt
+* unique_words-for-course-skipped-in-update-41668.txt
 
 and a directory:
-    course files
+* course files
 
 Under the "course files" you wil find individual files (such as F08.pdf) and the corresponding procesed files, such as:
-      unique_words-for-course-likely-stats-41668_Uppladdade media_F08.pdf.xlsx
-      unique_words-for-course-frequency-updated-41668_Uppladdade media_F08.pdf.txt
-      unique_words-for-course-likely-acronyms-41668_Uppladdade media_F08.pdf.txt
-      unique_words-for-course-skipped-in-update-41668_Uppladdade media_F08.pdf.txt
-      unique_words-for-course-41668_Uppladdade media_F08.pdf.txt
-      unique_words-for-course-frequency-41668_Uppladdade media_F08.pdf.txt
-      unique_words-for-course-raw_text-41668_Uppladdade media_F08.pdf.txt
-      unique_words-for-course-skipped-41668_Uppladdade media_F08.pdf.txt
+* unique_words-for-course-likely-stats-41668_Uppladdade media_F08.pdf.xlsx
+* unique_words-for-course-frequency-updated-41668_Uppladdade media_F08.pdf.txt
+* unique_words-for-course-likely-acronyms-41668_Uppladdade media_F08.pdf.txt
+* unique_words-for-course-skipped-in-update-41668_Uppladdade media_F08.pdf.txt
+* unique_words-for-course-41668_Uppladdade media_F08.pdf.txt
+* unique_words-for-course-frequency-41668_Uppladdade media_F08.pdf.txt
+* unique_words-for-course-raw_text-41668_Uppladdade media_F08.pdf.txt
+* unique_words-for-course-skipped-41668_Uppladdade media_F08.pdf.txt
 
 ### Note 
 While most of the above is rather quick, it takes almost 40 minutes to run compute_and_prune.bash on the whole tree of course files.
@@ -3107,9 +3107,8 @@ Files of the form: folders_for_* contain information about the folders and files
 Files of the form: anchors-* contain information about the anchors in the toplevel *rawHTML* (as detrmined when running extract_anchros_elements_from_rawHTML_files).
 
 The general process is to look at 
-    unique_words-for-course-frequency-*  to tune the compute_unique_words_for_pages_in_course.py program
-and
-    unique_words-for-course-frequency-updated-* to tune the prune_unique_words.py
+* unique_words-for-course-frequency-*  to tune the compute_unique_words_for_pages_in_course.py program
+* unique_words-for-course-frequency-updated-* to tune the prune_unique_words.py
 
 In the above tuning includes adding new prefix and suffix strings or new filtering functions in compute_unique_words_for_pages_in_course.py program, while tuning of prune_unique_words.py primarily involves adding new words and possibly CEFR level information. Ideally, there should be few words left in unique_words-for-course-frequency-updated-* .. meaning that the pruning has identified the words.
 
