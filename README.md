@@ -176,6 +176,10 @@ assignments-in-course.py 11
 assignments-in-course.py --config config-test.json 11
 ```
 
+### Note
+The reason for getting the syllabus is that some courses may use it to refer to the content covered in the course.
+
+
 ## quizzes-in-course.py
 ### Purpose
 To list the quizzes in a course in a spreadsheet
@@ -3012,6 +3016,104 @@ when in the directory Course_41668/course file
 ### Output
 You can see the name of the file being processed and the output of the two programs.
 
+## extract_anchros_elements_from_rawHTML_files.py
+
+### Purpose
+The content is taken from the wikipages in the specified course have been saved in a file and
+the pages are separated with lines, such as:
+⌘⏩routing-table-search-classless⏪
+where the page URL is between the markers. This makes it easy to look at the source material, for example when tryign to locate misspellings.
+
+The idea is to read in this material and extract information about all of the anchor elements.
+
+
+### Input
+```bash
+./extract_anchros_elements_from_rawHTML_files.py  --dir Course_course_id course_id
+```
+
+### Output
+Outputs a JSON file with information about each of the anchors using the information from a file such as unique_words-for-course-raw_HTML-{course-id}.txt 
+
+### Note 
+Some of the information is shorted, for example by reducing the class information and removing some of the attributes (that to be seemed uninteresting).
+
+### Example
+
+```bash
+./extract_anchros_elements_from_rawHTML_files.py  --dir Course_41668 41668
+```
+
+## Applying the CEFR tools to a course
+
+The following shows all of the tools being applied for a course, in this case the course_id = 41668
+
+### Input
+```bash
+mkdir Course_41668
+./compute_unique_words_for_pages_in_course.py --dir Course_41668 41668
+./prune_unique_words.py --bar --slash --dir Course_41668 41668
+./extract_anchros_elements_from_rawHTML_files.py  --dir Course_41668 41668
+./getall-files.py -i --all 41668  Course_41668
+cd Course_41668/course files>
+../../compute_and_prune.bash .
+./combine_XLSX_files.py --dir "./Course_41668/course files/"
+
+```
+
+### Output
+After completing all of the above the target directory (in this case Course_41668) wil contain the following files:
+    anchors-41668.json
+    combined_sheets.xlsx
+    folders_for_41668.xlsx
+    unique_words-for-course-41668.txt
+    unique_words-for-course-frequency-41668.txt
+    unique_words-for-course-frequency-updated-41668.txt
+    unique_words-for-course-likely-acronyms-41668.txt
+    unique_words-for-course-likely-stats-41668.xlsx
+    unique_words-for-course-raw_HTML-41668.txt
+    unique_words-for-course-raw_text-41668.txt
+    unique_words-for-course-skipped-41668.txt
+    unique_words-for-course-skipped-in-update-41668.txt
+
+and a directory:
+    course files
+
+Under the "course files" you wil find individual files (such as F08.pdf) and the corresponding procesed files, such as:
+      unique_words-for-course-likely-stats-41668_Uppladdade media_F08.pdf.xlsx
+      unique_words-for-course-frequency-updated-41668_Uppladdade media_F08.pdf.txt
+      unique_words-for-course-likely-acronyms-41668_Uppladdade media_F08.pdf.txt
+      unique_words-for-course-skipped-in-update-41668_Uppladdade media_F08.pdf.txt
+      unique_words-for-course-41668_Uppladdade media_F08.pdf.txt
+      unique_words-for-course-frequency-41668_Uppladdade media_F08.pdf.txt
+      unique_words-for-course-raw_text-41668_Uppladdade media_F08.pdf.txt
+      unique_words-for-course-skipped-41668_Uppladdade media_F08.pdf.txt
+
+### Note 
+While most of the above is rather quick, it takes almost 40 minutes to run compute_and_prune.bash on the whole tree of course files.
+
+Files of the form: unique_words-for-course-raw_text-* and unique_words-for-course-raw_HTML-* contain the extracted text and the extracted HTML. Note that there is only extracted HTML for the wikipages and the syllabus.
+
+Files of the form: unique_words-for-course-skipped-in-update* contain "words" that were skipped when doing the update (in the prune operation).
+
+Files of the form: unique_words-for-course-frequency-* and unique_words-for-course-frequency-updated-* contain the word frequency data before and after the prune opeation.
+
+Files of the form: unique_words-for-course-likely-acronyms-* contain words that are likely to be acronyms (as determined during the prune operation).
+
+Files of the form: unique_words-for-course-likely-stats-* contain a summary of the statistics while the file combined_sheets.xlsx contains all of the statistics of the individual sources.
+
+Files of the form: folders_for_* contain information about the folders and files (as determined when running getall-files).
+
+Files of the form: anchors-* contain information about the anchors in the toplevel *rawHTML* (as detrmined when running extract_anchros_elements_from_rawHTML_files).
+
+The general process is to look at 
+    unique_words-for-course-frequency-*  to tune the compute_unique_words_for_pages_in_course.py program
+and
+    unique_words-for-course-frequency-updated-* to tune the prune_unique_words.py
+
+In the above tuning includes adding new prefix and suffix strings or new filtering functions in compute_unique_words_for_pages_in_course.py program, while tuning of prune_unique_words.py primarily involves adding new words and possibly CEFR level information. Ideally, there should be few words left in unique_words-for-course-frequency-updated-* .. meaning that the pruning has identified the words.
+
+**Warning** adding new words seems an unending task due to the different words used in different courses.
 
 <!-- 
 

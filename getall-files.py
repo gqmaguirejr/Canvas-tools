@@ -10,7 +10,7 @@
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # the -a or --all option sayes to include even the hiddern folders and files
-# the -i or --info option creates an xlsx file with a seheet of information about the folders and another about the files
+# the -i or --info option creates an xlsx file with a sheet of information about the folders and another about the files
 # the -s or --skip option has the program skipp getting the files
 # the -t or --testing option can be used to have functions just used when testing
 # 
@@ -353,7 +353,8 @@ def main():
         for f in files:
             if (not f['hidden'] or options.all_files) and f['folder_id'] in relevant_folders:
                 print(f"should copy file {f['filename']} of size {f['size']} from {f['url']}")
-                getfile_to_dest(f['url'], folder_id_to_name_mapping[ f['folder_id']], f['filename'])
+                #getfile_to_dest(f['url'], folder_id_to_name_mapping[ f['folder_id']], f['filename'])
+                getfile_to_dest(f['url'], folder_id_to_name_mapping[ f['folder_id']], f['display_name'])
 
     if options.info:
         # output information about the folders
