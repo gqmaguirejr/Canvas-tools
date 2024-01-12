@@ -1,10 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # ./assignments-in-course.py course_id
 #
 # Output: XLSX spreadsheet with assignments in course
-#
+# It also gets the course syllabus and saves it as an HTML file.
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
@@ -15,6 +15,9 @@
 # ./assignments-in-course.py 11
 #
 # ./assignments-in-course.py --config config-test.json 11
+#
+# Note
+# The reason for getting the syllabus is that some courses may use it to refer to the content covered in the course.
 #
 # 
 # documentation about using xlsxwriter to insert images can be found at:
@@ -72,6 +75,7 @@ def initialize(options):
 
 
 def list_assignments(course_id):
+    global Verbose_Flag
     assignments_found_thus_far=[]
     # Use the Canvas API to get the list of assignments for the course
     #GET /api/v1/courses/:course_id/assignments
@@ -102,6 +106,53 @@ def list_assignments(course_id):
                     assignments_found_thus_far.append(p_response)
 
     return assignments_found_thus_far
+
+def get_assignments(course_id, id):
+    global Verbose_Flag
+    # Use the Canvas API to get the assignment
+    #GET /api/v1/courses/:course_id/assignments/:id
+
+    url = "{0}/courses/{1}/assignments/{2}".format(baseUrl, course_id, id)
+    if Verbose_Flag:
+        print("url: {}".format(url))
+
+    r = requests.get(url, headers = header)
+    if Verbose_Flag:
+        print("result of getting assignments: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+    return page_response
+
+# https://canvas.kth.se/courses/41668/assignments/syllabus
+def getfile_to_dest(url, destination_directory, filename):
+    payload={}
+    r = requests.get(url, headers = header, data=payload)
+    if Verbose_Flag:
+        print("r.status_code: {}".format(r.status_code))
+    if r.status_code == requests.codes.ok:
+        page_response = r.content
+    else:
+        return False
+
+    new_file_name=f'{destination_directory}/{filename}'
+    if Verbose_Flag:
+        print("new_file_name: {}".format(new_file_name))
+
+    # write out the response as a file
+    with open(new_file_name, 'wb') as f:
+        # # modified the code to handle empty files
+        # if len(page_response) > 0:
+        #     encoded_output = bytes(page_response, 'UTF-8')
+        # else:
+        #     encoded_output = bytes("", 'UTF-8')
+
+        # f.write(encoded_output)
+        f.write(page_response)
+
+    return True
+
 
 def main():
     global Verbose_Flag
@@ -139,24 +190,30 @@ def main():
 
     if (len(remainder) < 1):
         print("Insuffient arguments - must provide course_id\n")
-    else:
-        course_id=remainder[0]
-        assignments=list_assignments(course_id)
-        if (assignments):
-            assignments_df=pd.json_normalize(assignments)
-                     
-            # below are examples of some columns that might be dropped
-            #columns_to_drop=[]
-            #assignments_df.drop(columns_to_drop,inplace=True,axis=1)
+        return
 
-            # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
-            # set up the output write
-            writer = pd.ExcelWriter('assignments-'+course_id+'.xlsx', engine='xlsxwriter')
-            assignments_df.to_excel(writer, sheet_name='Assignments')
+    course_id=remainder[0]
+
+    destination_directory='./'
+    url="https://canvas.kth.se/courses/41668/assignments/syllabus"
+    getfile_to_dest(url, destination_directory, f'syllabus-{course_id}.html')
+
+    assignments=list_assignments(course_id)
+    if (assignments):
+        assignments_df=pd.json_normalize(assignments)
+        
+        # below are examples of some columns that might be dropped
+        #columns_to_drop=[]
+        #assignments_df.drop(columns_to_drop,inplace=True,axis=1)
+
+        # the following was inspired by the section "Using XlsxWriter with Pandas" on http://xlsxwriter.readthedocs.io/working_with_pandas.html
+        # set up the output write
+        writer = pd.ExcelWriter('assignments-'+course_id+'.xlsx', engine='xlsxwriter')
+        assignments_df.to_excel(writer, sheet_name='Assignments')
 
 
-            # Close the Pandas Excel writer and output the Excel file.
-            writer.save()
+        # Close the Pandas Excel writer and output the Excel file.
+        writer.close()
 
 if __name__ == "__main__": main()
 

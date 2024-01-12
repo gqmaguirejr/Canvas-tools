@@ -158,6 +158,7 @@ module-items-in-course.py --config config-test.json 11
 
 ### Purpose
 To list the assignments in a course in a spreadsheet
+It also gets the course syllabus and saves it as an HTML file.
 
 ### Input
 Takes course_id as an argument

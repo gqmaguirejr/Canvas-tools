@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 #
 # ./compute_unique_words_for_pages_in_course.py  course_id
 # 
@@ -1334,7 +1335,15 @@ def clean_raw_text(s):
     s=s.replace('¨O', 'Ö')
     s=s.replace('¨A', 'Ä')
     s=s.replace('˚A', 'Å')
+    # there can also be spaces before and after the dicritical for the overprinted characters
+    s=s.replace(' ¨ o', 'ö')
+    s=s.replace(' ¨ a', 'ä')
+    s=s.replace(' ¨ a', 'å')
+    s=s.replace(' ¨ O', 'Ö')
+    s=s.replace(' ¨ A', 'Ä')
+    s=s.replace(' ˚ A', 'Å')
 
+    
     # it is very likely that the TeX engine has inserrted ligatures, but you can replace them
     if replace_ligatures_flag:
         s=replace_ligature(s)
