@@ -3055,7 +3055,7 @@ mkdir Course_41668
 ./prune_unique_words.py --bar --slash --dir Course_41668 41668
 ./extract_anchros_elements_from_rawHTML_files.py  --dir Course_41668 41668
 ./getall-files.py -i --all 41668  Course_41668
-cd Course_41668/course files>
+cd Course_41668/course files
 ../../compute_and_prune.bash .
 ./combine_XLSX_files.py --dir "./Course_41668/course files/"
 
