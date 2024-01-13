@@ -1043,93 +1043,7 @@ def is_multiple_caps(s):
     # otherwise
     return False
 
-# GQMq
-def is_equation(s):
-    math_symbols=[
-        '∀', '∁', '∂', '∃', '∄', '∅',
-        '∆', '∇', '∈', '∉', '∊', '∋',
-        '∌', '∍', '∎', '∏', '∐', '∑',
-        '∓', '∔', '∖', '∗',     # Note that we do not include the minus sign('−'), '∕', since these can be used for other purposes
-        '∘', '∙', '√', '∛', '∜', '∝', 
-        '∞', '∟', '∠', '∡', '∢', # perhaps exclude '∣', as it has other uses
-        '∤', '∥', '∦', '∧', '∨', '∩', 
-        '∪', '∫', '∬', '∭', '∮', '∯', 
-        '∰', '∱', '∲', '∳', '∴', '∵', 
-        '∸', '∹', '∺', '∻', # perhaps exclude '∶', '∷',  as they can have other uses
-        '∽', '∾', '∿', '≀', '≁',  # perhaps exclude '∼', 
-        '≂', '≃', '≄', '≅', '≆', '≇', 
-        '≈', '≉', '≊', '≋', '≌', '≍', 
-        '≎', '≏', '≐', '≑', '≒', '≓', 
-        '≔', '≕', '≖', '≗', '≘', '≙', 
-        '≚', '≛', '≜', '≝', '≞', '≟', 
-        '≠', '≡', '≢', '≣', '≤', '≥', 
-        '≦', '≧', '≨', '≩', '≪', '≫', 
-        '≬', '≭', '≮', '≯', '≰', '≱',
-        '≲', '≳', '≴', '≵', '≶', '≷', 
-        #'', '', '', '', '', '',
-        #'', '', '', '', '', '', 
-        #'', '', '', '', '', '',
-        #'', '', '', '', '', '', 
-        #'', '', '', '', '', '',
-        #'', '', '', '', '', '', 
-        ]
-
-    len_s=len(s)
-    if len_s < 1:
-        return
-
-    for ms in math_symbols:
-        if ms in s:
-            return True
-
-
-    if s.count('√') == 1:
-        # and it is the first symbol
-        if s.find('√') == 0:
-            return True
-
-    # if there is an assignment symbol
-    if s.count('←') == 1:
-        # and there is at least one letter for the lefthand side
-        if s.find('←') >= 1:
-            return True
-
-    if s.count('∈') == 1:
-        # and it is the not first symbol
-        if s.find('∈') > 0:
-            return True
-
-    if s.count('≤') == 1:
-        # and it is the not first symbol
-        if s.find('≤') > 0:
-            return True
-
-    if s.count('≤') == 1:
-        # and it is the not first symbol
-        if s.find('≤') > 0:
-            return True
-
-
-    if s.count('∑') >= 1:
-        return True
-
-    if s.count('∃') >= 1:
-        return True
-
-    if s.count('≡') >= 1:
-        return True
-
-    if s.count('∞') >= 1:
-        return True
-
-    if s[0] in ['Γ', '¬', 'β', 'δ', '∆', 'π', 'ρ', 'σ', 'φ', '∀', '∧', ]:
-        return True
-
-
-    # otherwise
-    return False
-
-# mixed case is any lower _and_ upprsease in one string
+# mixed case is any lower _and_ uppercase in one string
 def ismixed(s):
     return any(c.islower() for c in s) and any(c.isupper() for c in s)
 
@@ -1909,11 +1823,12 @@ def main():
                             print(f'{word} seems to be a Springer link')
                         continue
 
-                    # ignore equations
-                    if is_equation(word):
-                        if Verbose_Flag:
-                            print(f'{word} seems to be an equation')
-                        continue
+                    # moved this functionality to the prune phase
+                    # # ignore equations
+                    # if is_equation(word):
+                    #     if Verbose_Flag:
+                    #         print(f'{word} seems to be an equation')
+                    #     continue
 
 
                     # finally output the remaining word
