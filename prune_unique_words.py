@@ -27299,11 +27299,11 @@ def conditionally_get_level(word, source_name, levels_to_use, entry):
     cefr_levels=False
     if word in levels_to_use:
         cefr_levels=levels_to_use.get(word, False)
-        if not cefr_levels:
-            cefr_levels=levels_to_use.get(word.title(), False)
-        if not cefr_levels:
-            cefr_levels=levels_to_use.get(word.lower(), False)
-        if not cefr_levels:
+    if not cefr_levels:
+        cefr_levels=levels_to_use.get(word.title(), False)
+    if not cefr_levels:
+        cefr_levels=levels_to_use.get(word.lower(), False)
+    if not cefr_levels:
             cefr_levels=levels_to_use.get(word.upper(), False)
     if cefr_levels:
         entry[source_name]=cefr_levels
@@ -27488,8 +27488,8 @@ def main():
         ###############################################################################
         # compute the lowest CEFR levels for each of the words, when there are CEFR levels specified
         ###############################################################################
-        level_3000_singular=collect_CEFR_levels_from_list(american_3000_words, 'American 3000 singlualr')
-        level_5000_singular=collect_CEFR_levels_from_list(american_5000_words, 'American 5000 singlualr')
+        level_3000_singular=collect_CEFR_levels_from_list(american_3000_words, 'American 3000 singlular')
+        level_5000_singular=collect_CEFR_levels_from_list(american_5000_words, 'American 5000 singlular')
 
         level_3000_plural=collect_CEFR_levels_for_plurals_from_list(american_3000_words, 'American 3000 plurals')
         level_5000_plural=collect_CEFR_levels_for_plurals_from_list(american_5000_words, 'American 5000 plurals')
@@ -28382,6 +28382,16 @@ def main():
                 'common_English_words': level_common_English,
                 'common_swedish_words': level_common_swedish_words, 
                 'common_swedish_technical_words': level_common_swedish_technical_words,
+                'SVALex': level_words_SVALex,
+                'FLELex': level_words_FLELex,
+                'EFLLex': level_words_EFLLex,
+                'American 3000 singlular': level_3000_singular,
+                'American 5000 singlular': level_5000_singular,
+
+                'American 3000 plurals': level_3000_plural,
+                'American 5000 plurals': level_5000_plural,
+                'thousand_most_common_words_in_English': level_thousand_most_common_words_in_English,
+                'top_100_English_words': level_top_100_English_words,
                 }
             annotated_dict=dict()
             for word in unique_words:
