@@ -168,17 +168,19 @@ prefixes_to_ignore=[
     '☡',
     '☺',
     '⚠',
-    '✔',
+    '✓',  # 0x2713
+    '✔',  # 0x2714
     '✝',
     '❌',
     '〃',
     '',
     '',
-    '',
     '',
     '（',
     '👋',
     'ˆ',
+    '\\u0000', # remove the string \u0000 which is the null characters
+    '0xFE0E',  # this is Variation Selector-15 - it modifies the character before it, but will end up at the start of the word after it
 ]
 
 suffixes_to_ignore=[
@@ -1884,6 +1886,8 @@ def main():
         # compute word frequency for the filtered unique words
         frequency=dict()
         for count, word in enumerate(all_text):
+            if len(word) == 0:  #  skip zero length word
+                continue
             #print(f'{word=}')
             if word in filtered_unique_words or word.lower() in filtered_unique_words:
                 current_word_frequency=frequency.get(word, 0)
