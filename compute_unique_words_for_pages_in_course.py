@@ -979,6 +979,7 @@ filename_extentions_to_skip=[
     '.c',
     '.conf',
     '.csv',
+    '.dat',
     '.doc',
     '.docx',
     '.dtd',
@@ -1428,8 +1429,11 @@ def replace_ligature(s):
 # do deal with PDF generators outputting Swedish chracters such as 'ö' as '¨o'
 def clean_raw_text(s):
     global replace_ligatures_flag
+    global processing_a_PDF_file
+    global delete_lines_with_assignments
+    global assignment_lines_removed
 
-    # deal with hyphens at the end of lines
+    # in some places in PDF files from LaTeX there is hypehnation at the end of a line leading to "-\n"
     s=s.replace('-\n', '')
 
     s=s.replace('¨o', 'ö')
@@ -1447,9 +1451,22 @@ def clean_raw_text(s):
     s=s.replace(' ˚ A', 'Å')
 
     
-    # it is very likely that the TeX engine has inserrted ligatures, but you can replace them
+    # it is very likely that the TeX engine has inserted ligatures, but you can replace them
     if replace_ligatures_flag:
         s=replace_ligature(s)
+
+    # for LaTeX produced PDF files, delete lines with an assignment in them
+    if processing_a_PDF_file and delete_lines_with_assignments:
+        lines=s.split('\n')
+        clean_lines=[]
+        for l in lines:
+            if l.count('←') == 1:
+                assignment_lines_removed=assignment_lines_removed+1
+                if Verbose_Flag:
+                    print(f'deleting line: {l}')
+                continue
+            clean_lines.append(l)
+        s="\n".join(clean_lines)
     return s
 
 
@@ -1485,6 +1502,9 @@ def main():
     global total_raw_text
     global total_raw_HTML
     global replace_ligatures_flag
+    global processing_a_PDF_file
+    global delete_lines_with_assignments
+    global assignment_lines_removed
 
     parser = optparse.OptionParser()
 
@@ -1523,6 +1543,12 @@ def main():
                       help="replace ligatures"
     )
 
+    parser.add_option('--keepAssignments',
+                      dest="keep_lines_with_assignments",
+                      default=False,
+                      action="store_true",
+                      help="by default remove lines from PDFs with a '←' in them"
+    )
 
     options, remainder = parser.parse_args()
 
@@ -1537,6 +1563,13 @@ def main():
 
     if options.replace_ligatures:
         replace_ligatures_flag=True
+
+    if options.keep_lines_with_assignments:
+        delete_lines_with_assignments=False
+    else:
+        delete_lines_with_assignments=True
+
+    assignment_lines_removed=0
 
     # compute the directory prefix for files to be used for the program's I/O
     directory_prefix=options.dir_prefix
@@ -1560,7 +1593,9 @@ def main():
         if options.processPDF_file:
             print('Process a PDF file')
             course_id=remainder[0]
+            processing_a_PDF_file=True
         else:
+            processing_a_PDF_file=False
             course_id=remainder[0]
             if not str(course_id).isdigit():
                 print("Error in course_id")
@@ -1589,6 +1624,8 @@ def main():
             unique_words_for_pages_in_course(course_id, pages_to_skip)
 
         print(f'a total of {total_words_processed} words processed')
+        if assignment_lines_removed > 0:
+            print(f'{assignment_lines_removed} assignment lines removed')
         print(f'{len(unique_words)} unique words')
         if len(unique_words) > 0:
             new_file_name=f'{directory_prefix}unique_words-for-course-{course_id}.txt'
