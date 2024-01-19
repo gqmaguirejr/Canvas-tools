@@ -148,6 +148,7 @@ Numeric_field_width=7
 prefixes_to_ignore=[
     "'",
     "\\",
+    '˜',
     '+',
     ',',
     '-',
@@ -1363,88 +1364,6 @@ thousand_most_common_words_in_English={
 # This gave output that was easy to edit and Bard also gave some interesting comments.
 #
 common_English_words={
-    'oracles': {'B1': 'noun'},
-    'orchestrate': {'B2': 'verb'},
-    'overpass': {'A2': 'noun'},
-    'overshoot': {'B2': 'verb'},
-    'worst': {'A1': 'adjective'},
-    'Symp': {'B2': 'abbreviation for Symposium'},
-    'symposium': {'B2': 'noun'},
-    'bystanders': {'A2': 'noun'},
-    'goalstate': {'B1': 'noun'},
-    'gadgets': {'A2': 'noun'},
-    'left/right': {'A1xx': 'prepositional phrase'},
-    'weighed': {'B2': 'verb'},
-    'yardstick': {'B2': 'noun'},
-    'scalar': {'B1': 'adjective'},
-    'selfadjusting': {'B1': 'adjective'},
-    'semi-decidable': {'B2': 'adjective'},
-    'semi-infinite': {'B1': 'adjective'},
-    'motherboard': {'B2': 'noun'},
-
-    'atomic': {'B1': 'adjective'},
-    'array': {'B1': 'noun'},
-    'audio': {'A1': 'noun'},
-    'axioms': {'B2': 'noun'},
-    'back-office': {'B1': 'noun'},
-    'backtrace': {'B2': 'noun'},
-    'backtrack': {'B2': 'verb'},
-    'basis': {'A1': 'noun'},
-    'be': {'A1': 'verb'},
-    'bit': {'A1': 'noun'},
-    'blowup': {'B1': 'noun'},
-    'bool': {'B1': 'noun'},
-    'breadth-first': {'B1': 'adverb'},
-    'breakpoint': {'A1': 'noun'},
-    'bubblesort': {'A2': 'noun'},
-    'carry-in': {'B2': 'noun'},
-    'carry-out': {'B2': 'noun'},
-    'Makefile': {'B2': 'noun'},
-    'cell': {'A2': 'noun'},
-    'center': {'A2': 'noun'},
-    'central': {'A2': 'adjective'},
-    'chip': {'B2': 'noun'},
-    'climbed': {'B2': 'verb'},
-    'clog': {'B2': 'noun'},
-    'coef‌f‌icient': {'B2': 'noun'},
-    'coef‌f‌icients': {'B2': 'noun'},
-    'collaborative': {'B2': 'adjective'},
-    'colours': {'B2': 'noun'},
-    'combinatorial': {'B1': 'adjective'},
-    'compiles': {'B2': 'verb'},
-    'computable': {'B2': 'adjective'},
-    'concluding': {'B2': 'adjective'},
-    'connectad': {'B2': 'adjective'},
-    'constant-factor': {'B2': 'adjective'},
-    'constant-time': {'B2': 'adjective'},
-    'countable': {'B2': 'adjective'},
-    'ctrl-C': {'B2': 'noun'},
-    'ctrl-D': {'B2': 'noun'},
-    'ctrl-alt-del': {'B2': 'noun'},
-    'cubes': {'B2': 'noun'},
-    'cyan': {'B2': 'adjective'},
-    'darker': {'B2': 'adjective'},
-    'data': {'A1': 'noun'},
-    'datagram': {'B2': 'noun'},
-    'debacle': {'B2': 'noun'},
-    'decidable': {'B2': 'noun'},
-    'decimal': {'A1': 'adjective', 'C2': 'noun'},
-    'depicted': {'B2': 'verb'},
-    'design': {'A2': 'noun'},
-    'destination': {'B1': 'noun'},
-    'diamanter': {'A1': 'noun'},
-    'dice': {'B2': 'verb'},
-    'digital': {'B1': 'adjective'},
-    'digital-TV': {'A1': 'noun'},
-    'dilemma': {'B2': 'noun'},
-    'docs': {'B2': 'noun'},
-    'duplex': {'A1': 'adjective'},
-    'duration': {'B2': 'noun'},
-    'elefant': {'A1': 'noun'},
-    'element': {'A1': 'noun'},
-    'emission': {'B1': 'noun'},
-    'experiment': {'B1': 'noun'},
-
     "I'am": {'A1': 'idiom, noun', 'B1': 'idiom, noun', 'C1': 'idiom, noun', 'C2': 'idiom, noun'},
     "I've": {'A2': 'contraction'},
     "adderas": {'xx': 'verb, verb past tense, past participle'},
@@ -1584,11 +1503,15 @@ common_English_words={
     'B-nivå': {'A1': 'noun'},
     'Bayesian': {'B2': 'adjective'},
     'BibTeX': {'B1': 'noun'},
+    'Bible': {'A1': 'Noun'},
+    'Big-O': {'A1': 'noun'},
     'C-nivå': {'A1': 'noun'},
     'Cambrian': {'C1': 'adjective'},
+    'Chancellor': {'A2': 'Noun'},
     'Covid': {'B2': 'noun'},
     'Covid-19': {'B2': 'noun'},
     'D-nivå': {'A1': 'noun'},
+    'E-learning': {'A2': 'Noun'},
     'E-nivå': {'A1': 'noun'},
     'ETA': {'A1': 'acronyms for estimated time of arrival'},
     'Editor-in-Chief': {'C1': 'noun phrase', 'C2': 'noun phrase'},
@@ -1603,6 +1526,7 @@ common_English_words={
     'Gigabits/second': {'C2': 'unit'},
     'IPsec': {'B2': 'noun'},
     'Internet-of-Things': {'B1': 'phrase', 'C1': 'phrase'},
+    'Internet-standard': {'C1': 'Noun'},
     'Iot': {'B1': 'acronym for Internet of Things'},
     'K-means': {'B2': 'noun'},
     'Ka-Band': {'B2': 'noun'},
@@ -1610,6 +1534,7 @@ common_English_words={
     'Kalman-Filter-Based': {'B2': 'adjective'},
     'LED': {'A2': 'acronym'},
     'MHz': {'C2': 'unit'},
+    'Makefile': {'B2': 'noun'},
     'Mbits/s': {'C2': 'unit'},
     'Mbits/sec': {'C2': 'unit'},
     'Mbps': {'C2': 'unit'},
@@ -1619,15 +1544,23 @@ common_English_words={
     'O-rings': {'A2': 'noun'},
     'Pbit/s': {'C2': 'unit'},
     'PhD': {'B1': 'abbreviation for Doctor of Philosophy'},
+    'Polytechnique': {'B2': 'Noun'},
+    'Professor': {'B1': 'Noun'},
+    'Provost': {'A2': 'Noun'},
     'ReadMe': {'A1': 'noun', 'A2': 'noun'},
     'S-curves': {'A1': 'noun', 'A2': 'adjacent', 'B1': 'verb', 'B2': 'preposition'},
     'SMOG-Grading': {'C1': 'noun'},
+    'Sci-Fi': {'A1': 'Noun'},
     'SciENcv': {'xx': 'abbreviation for Science Experts Network'},
     'Stockholm': {'A2': 'noun'},
+    'Symp': {'B2': 'abbreviation for Symposium'},
+    'T-Shirt': {'A1': 'Noun'},
     'Tb/s': {'C2': 'unit'},
     'Tbit/s': {'C2': 'unit'},
     'Tbyte/s': {'C2': 'noun'},
     'Telcom': {'C1': 'noun'},
+    'Tele-traffic': {'B1': 'Noun'},
+    'Telecosm': {'B2': 'Noun'},
     'TeraWatthours': {'C1': 'noun'},
     'Terawatt-hours': {'C1': 'noun'},
     'US': {'A1': 'acronym'},    #  EFLEX uses the level B2
@@ -1639,6 +1572,7 @@ common_English_words={
     'XML-based': {'B1': 'adjective', 'B2': 'adjective'},
     'XML-schema': {'C1': 'noun', 'C2': 'noun'},
     'Y-axis': {'A2': 'noun', 'B1': 'noun'},
+    'Zoom-link': {'A2': 'Noun'},
     '\u03bcs': {'C1': 'unit'}, # μs
     'aaaah': {'A1': 'interjection'},
     'abandoned': {'B2': 'adjective, verb past tense, past participle'},
@@ -1849,7 +1783,7 @@ common_English_words={
     'algae': {'B2': 'noun'},
     'algebra': {'B1': 'noun'},
     'algebraic': {'B2': 'adjective'},
-    'algorithm': {'C1': 'noun'},
+    'algorithm': {'A2': 'Noun', 'C1': 'noun'},
     'algorithmic': {'C2': 'adjective'},
     'algorithms': {'C2': 'noun'},
     'alia': {'B2': 'noun'},
@@ -1951,6 +1885,7 @@ common_English_words={
     'answering': {'A1': 'verb gerund or present participle'},
     'antenna': {'B2': 'noun'},
     'antennas': {'B2': 'noun'},
+    'anthropocene': {'C1': 'Noun'},
     'anthropocentric': {'B2': 'adjective'},
     'anti-plagiarism': {'B2': 'noun'},
     'anticipated': {'C1': 'verb past tense, past participle'},
@@ -2024,6 +1959,7 @@ common_English_words={
     'arm-mounted': {'C2': 'adjective?'},
     'arose': {'C1': 'verb past tens'},
     'arranged': {'B1': 'verb past tense, past participle'},
+    'array': {'B1': 'noun'},
     'arrested': {'B1': 'verb past tense, past participle'},
     'arrived': {'A2': 'verb past tense, past participle'},
     'arrives': {'A2': 'verb 3rd person present'},
@@ -2085,6 +2021,7 @@ common_English_words={
     'atherosclerosis': {'B2': 'noun'},
     'atlas': {'B1': 'noun'},
     'atom': {'B2': 'noun'},
+    'atomic': {'B1': 'adjective'},
     'atomic': {'B2': 'adjective'},
     'atoms': {'B2': 'noun'},
     'attached': {'B1': 'adjective'},
@@ -2109,6 +2046,7 @@ common_English_words={
     'attributions': {'B1': 'noun'},
     'audacious': {'B2': 'adjective'},
     'audible': {'B1': 'adjective'},
+    'audio': {'A1': 'noun'},
     'audio-coding': {'C2': 'phrase'},
     'audio/video': {'A2': 'alternatives'},
     'audiobooks': {'B2': 'noun'},
@@ -2179,12 +2117,14 @@ common_English_words={
     'awarded': {'B2': 'verb past tense, past participle'},
     'axes': {'B2': 'verb 3rd person present'},
     'axial': {'C1': 'adjective'},
+    'axioms': {'B2': 'noun'},
     'axis': {'B1': 'noun'},
     'b/s': {'A1': 'unit'},
     'babysitter': {'B1': 'noun'},
     'bachelor': {'C1': 'noun'},
     'back-end': {'A1': 'noun'},
     'back-off': {'A1': 'verb'},
+    'back-office': {'B1': 'noun'},
     'back-propagation': {'C1': 'adjective', 'C2': 'adjective'},
     'back-to-back': {'B1': 'adjective or adverb'},
     'back-up': {'B2': 'phrasal verb, noun'},
@@ -2197,6 +2137,8 @@ common_English_words={
     'backlog': {'B1': 'noun'},
     'backpropagation': {'C1': 'adjective', 'C2': 'adjective'},
     'backslash': {'A1': 'noun'},
+    'backtrace': {'B2': 'noun'},
+    'backtrack': {'B2': 'verb'},
     'backwards': {'B1': 'adverb'}, #  EFLEX uses the level B2
     'bagging': {'C2': 'noun, verb gerund or present participle'},
     'bailouts': {'A1': 'noun'},
@@ -2223,10 +2165,12 @@ common_English_words={
     'basestation': {'B2': 'noun'},
     'bash': {'B1': 'verb, noun'},
     'basics': {'B2': 'adjective, noun'}, #  EFLEX uses the level C1
+    'basis': {'A1': 'noun'},
     'batch': {'B1': 'noun, verb'},
     'batched': {'A1': 'verb past tense, past participle'},
     'batches': {'A2': 'noun, verb 3rd person present'},
     'battery-operated': {'B2': 'adjective, adverb?'},
+    'be': {'A1': 'verb'},
     'beacons': {'B1': 'noun'},
     'beamforming': {'C2': 'noun'},
     'beard': {'A1': 'noun, verb'},
@@ -2276,6 +2220,7 @@ common_English_words={
     'bi-directional': {'B2': 'adjective'},
     'biased': {'C1': 'adjective'},
     'biasing': {'C1': 'verb gerund or present participle'},
+    'bible': {'A1': 'Noun'},
     'bibliographic': {'B2': 'adjective'},
     'bibliographics': {'C1': 'noun'},
     'bibliographies': {'B2': 'noun'},
@@ -2283,7 +2228,6 @@ common_English_words={
     'bibliometrics': {'C2': 'noun'},
     'bidirectional': {'C2': 'adjective'},
     'big-O': {'A1': 'noun'},
-    'Big-O': {'A1': 'noun'},
     'big-endian': {'C2': 'noun'},
     'bigger': {'A1': 'adjective'},
     'biggest': {'A1': 'adjective'},
@@ -2324,6 +2268,7 @@ common_English_words={
     'bipartite': {'B2': 'adjacency'},
     'bisecting': {'C1': 'verb gerund or present participle'},
     'bistro': {'A2': 'noun'},
+    'bit': {'A1': 'noun'},
     'bit-mapped': {'B2': 'adjective'},
     'bitmap': {'A2': 'noun'},
     'bitrate': {'B2': 'noun'},
@@ -2350,6 +2295,7 @@ common_English_words={
     'blooms': {'B2': 'nounm verb 3rd person present'},
     'blow-by': {'B1': 'noun'},
     'blowing': {'B1': 'verb gerund or present participle'},
+    'blowup': {'B1': 'noun'},
     'blur': {'B1': 'verb, noun, adjective'},
     'blurred': {'B1': 'adjective'},
     'blurring': {'C2': 'verb gerund or present participle'},
@@ -2364,6 +2310,7 @@ common_English_words={
     'bookmarks': {'A2': 'noun'},
     'booksellers': {'B1': 'noun'},
     'booktitle': {'A1': 'noun'},
+    'bool': {'B1': 'noun'},
     'boolean': {'B2': 'adjective, noun'},
     'boosted': {'B2': 'verb past tense, past participle'},
     'booster': {'B1': 'noun'},
@@ -2400,9 +2347,11 @@ common_English_words={
     'branding': {'C1': 'noun, verb gerund or present participle'},
     'brazen': {'B2': 'adjective, verb'},
     'breadth': {'C1': 'noun'},
+    'breadth-first': {'B1': 'adverb'},
     'break-in': {'B1': 'noun'}, 
     'breaking': {'A2': 'verb gerund or present participle'},
     'breakout': {'B2': 'noun, adjective'},
+    'breakpoint': {'A1': 'noun'},
     'breaks': {'A2': 'verb 3rd person present'},
     'breakthroughs': {'B2': 'noun'},
     'bredth': {'A1': 'noun'},
@@ -2433,6 +2382,7 @@ common_English_words={
     'brushed': {'A2': 'adjective, verb past tense, past participle'},
     'brute': {'B2': 'noun, adjacency'},
     'bs': {'A1': 'acronym'},
+    'bubblesort': {'A2': 'noun'},
     'bucket': {'B1': 'noun, verb'}, #  EFLEX uses the level C1
     'buckets': {'B1': 'noun'},
     'budgetary': {'B2': 'adjective'},
@@ -2472,6 +2422,7 @@ common_English_words={
     'bypass': {'C1': 'noun, verb'},
     'bypassed': {'B2': 'verb past tense, past participle'},
     'bystander': {'B1': 'noun'},
+    'bystanders': {'A2': 'noun'},
     'byte': {'A2': 'noun'},
     'byte-stream': {'C2': 'noun'},
     'bytefield': {'C2': 'noun'},
@@ -2542,6 +2493,8 @@ common_English_words={
     'carrier': {'C1': 'noun'},
     'carriers': {'B1': 'noun'},
     'carries': {'A1': 'verb 3rd person present, noun'},
+    'carry-in': {'B2': 'noun'},
+    'carry-out': {'B2': 'noun'},
     'carry-over': {'A2': 'phrasal verb'},
     'carrying': {'A1': 'verb gerund or present participle'},
     'carryout': {'A1': 'adjective'},
@@ -2583,15 +2536,18 @@ common_English_words={
     'caveats': {'B1': 'noun'},
     'ceased': {'B2': 'verb'},
     'ceasing': {'B2': 'verb gerund or present participle'},
+    'cell': {'A2': 'noun'},
     'cellphone': {'A2': 'noun'},
     'cellphones': {'A2': 'noun'},
     'cellular': {'A2': 'adjective'},
     'census': {'B1': 'noun'},
+    'center': {'A2': 'noun'},
     'centered': {'B2': 'verb past tense, past participle'},
     'centering': {'B1': 'present participle verb'},
     'centers/labs': {'A1': 'noun'},
     'centimeter': {'A2': 'noun'},
     'centimeters': {'A2': 'noun'},
+    'central': {'A2': 'adjective'},
     'centralities': {'C1': 'noun'},
     'centrality': {'B1': 'noun'},
     'centralize': {'C2': 'verb'},
@@ -2615,6 +2571,7 @@ common_English_words={
     'challenged': {'B2': 'adjective'},
     'challenges': {'B1': 'noun, verb 3rd person present'},
     'chambers': {'A1': 'noun', 'B1': 'verb, adjective'},
+    'chancellor': {'A2': 'Noun'},
     'changed': {'A1': 'verb past tense, past participle'},
     'changing': {'A1': 'verb gerund or present participle'}, #  EFLEX uses the level C1
     'channel-oriented': {'B2': 'adjective'},
@@ -2651,6 +2608,7 @@ common_English_words={
     'chi-square': {'C2': 'noun'},
     'chi-squared': {'C2': 'noun'},
     'childrens': {'A2': 'adjective'}, # should be set "children's"
+    'chip': {'B2': 'noun'},
     'chipset': {'B1': 'noun'},
     'chipsets': {'B1': 'noun'},
     'chiropractic': {'B1': 'noun', 'B2': 'noun'},
@@ -2722,6 +2680,7 @@ common_English_words={
     'client-server': {'B2': 'adjective'},
     'client-side': {'B2': 'adjacency'},
     'climate-affecting': {'B2': 'adjective?'},
+    'climbed': {'B2': 'verb'},
     'climbs': {'A2': 'verb 3rd person present, noun'},
     'clinician-trialist': {'C2': 'noun'},
     'clipboard': {'A1': 'noun'},
@@ -2730,6 +2689,7 @@ common_English_words={
     'clique': {'C1': 'noun'},
     'clocked': {'B1': 'verb past tense, past participle'},
     'clocking': {'B2': 'verb gerund or present participle'},
+    'clog': {'B2': 'noun'},
     'clone': {'B2': 'noun, verb'},
     'cloned': {'B2': 'verb past tense, past participle'},
     'cloning': {'C2': 'verb gerund or present participle'},
@@ -2780,6 +2740,8 @@ common_English_words={
     'codon': {'B1': 'noun'},
     'coefficient': {'B2': 'noun'},
     'coefficients': {'B1': 'noun'},
+    'coef‌f‌icient': {'B2': 'noun'},
+    'coef‌f‌icients': {'B2': 'noun'},
     'coercion': {'C2': 'noun'},
     'coercive': {'C2': 'adjective'},
     'coffin': {'A2': 'noun'},
@@ -2792,6 +2754,7 @@ common_English_words={
     'coined': {'C2': 'verb past tense, past participle'},
     'collaboration': {'C1': 'noun'},
     'collaborations': {'C1': 'noun'},
+    'collaborative': {'B2': 'adjective'},
     'collaborative': {'B2': 'adjective'},
     'collaboratively': {'B2': 'adverb'},
     'collaborator': {'B2': 'noun'},
@@ -2816,8 +2779,10 @@ common_English_words={
     'colormaps': {'B1': 'noun'},
     'colorscale': {'B1': 'noun'},
     'colour': {'A1': 'noun, verb'},
+    'colours': {'B2': 'noun'},
     'columnar': {'B2': 'adjacency'},
     'comb': {'A2': 'noun, verb'},
+    'combinatorial': {'B1': 'adjective'},
     'combined': {'B2': 'verb past tense, past participle'},
     'combines': {'B2': 'noun, verb 3rd person present'},
     'combing': {'B1': 'verb gerund or present participle'},
@@ -2879,6 +2844,7 @@ common_English_words={
     'compilation': {'B1': 'noun'},
     'compiled': {'C1': 'verb past tense, past participle'},
     'compiler': {'B1': 'noun'},
+    'compiles': {'B2': 'verb'},
     'compiling': {'C1': 'verb gerund or present participle'},
     'complains': {'B1': 'verb 3rd person present'},
     'complementary': {'C1': 'adjective'},
@@ -2908,6 +2874,7 @@ common_English_words={
     'comprises': {'C1': 'verb 3rd person present'},
     'comprising': {'C1': 'verb gerund or present participle'},
     'compromising': {'B2': 'adjective'},
+    'computable': {'B2': 'adjective'},
     'computation': {'B2': 'noun'},
     'computation-intensive': {'C1': 'adjacency'},
     'computational': {'B2': 'adjective'},
@@ -2915,6 +2882,7 @@ common_English_words={
     'computations': {'B1': 'noun'},
     'compute': {'A2': 'verb'},
     'computed': {'A2': 'verb past tense, past participle'},
+    'computer science': {'A2': 'Noun'},
     'computer-centric': {'C1': 'adjective'},
     'computer-generated': {'B2': 'adjective'},
     'computer-human': {'B1': 'noun'},
@@ -2937,6 +2905,7 @@ common_English_words={
     'concise': {'B1': 'adjective'},
     'concluded': {'C1': 'verb past tense, past participle'},
     'concludes': {'C1': 'verb 3rd person present'},
+    'concluding': {'B2': 'adjective'},
     'conclusive': {'C2': 'adjective'},
     'concretely': {'C1': 'adverb'},
     'concretizing': {'C2': 'verb gerund or present participle'},
@@ -2983,6 +2952,7 @@ common_English_words={
     'conjugate': {'B1': 'verb, noun'},
     'conjunction': {'B2': 'noun'},
     'conjunctions': {'B2': 'noun'},
+    'connectad': {'B2': 'adjective'},
     'connecting': {'B1': 'adjective'},
     'connection-oriented': {'C2': 'adjective?'},
     'connectionless': {'B2': 'adjective'},
@@ -3003,6 +2973,8 @@ common_English_words={
     'consolidated': {'B2': 'verb past tense, past participle'},
     'consortium': {'C1': 'noun'},
     'conspire': {'B2': 'verb'},
+    'constant-factor': {'B2': 'adjective'},
+    'constant-time': {'B2': 'adjective'},
     'constants': {'B1': 'noun'},
     'constellations': {'B1': 'noun'},
     'constitutes': {'C1': 'verb 3rd person present'},
@@ -3136,6 +3108,7 @@ common_English_words={
     'couldn': {'A1': 'part of a contraction'},
     'counsel': {'A2': 'noun, verb'},
     'counselor': {'B1': 'noun'},
+    'countable': {'B2': 'adjective'},
     'counted': {'B1': 'verb past tense, past participle'},
     'counter-intuitive': {'C2': 'adjective'},
     'counteracting': {'C2': 'verb gerund or present participle'},
@@ -3194,6 +3167,10 @@ common_English_words={
     'cryptographic': {'C2': 'adjective'},
     'cryptographically': {'C2': 'noun'},
     'cryptography': {'C1': 'noun'},
+    'ctrl-C': {'B2': 'noun'},
+    'ctrl-D': {'B2': 'noun'},
+    'ctrl-alt-del': {'B2': 'noun'},
+    'cubes': {'B2': 'noun'},
     'cubic': {'A2': 'adjective, noun'},
     'culprit': {'B2': 'noun'},
     'cumulative': {'C1': 'adjective'},
@@ -3213,6 +3190,7 @@ common_English_words={
     'cut-through': {'A2': 'phrasal verb'},
     'cutter': {'A2': 'noun'},
     'cyan': {'A1': 'noun'},
+    'cyan': {'B2': 'adjective'},
     'cyber': {'B1': 'adjective'},
     'cyber-defense-exercise': {'C1': 'noun'},
     'cyberattack': {'B1': 'noun'},
@@ -3230,10 +3208,12 @@ common_English_words={
     'damned': {'B2': 'adjective adverb'},
     'damon': {'A2': 'noun'},
     'darkblue': {'A1': 'noun'},
+    'darker': {'B2': 'adjective'},
     'darkgreen': {'A1': 'noun'},
     'dashboard': {'C1': 'noun'},
     'dashed': {'B2': 'noun'},
     'dashes': {'B2': 'verb 3rd person present, noun'},
+    'data': {'A1': 'noun'},
     'data': {'B1': 'noun'},
     'data-collection': {'A2': 'noun'},
     'data-driven': {'B2': 'noun'},
@@ -3247,6 +3227,7 @@ common_English_words={
     'datafolk': {'A1': 'noun'},
     'dataframe': {'B1': 'noun'},
     'datagram': {'A2': 'noun'},
+    'datagram': {'B2': 'noun'},
     'datagrams': {'A2': 'noun'},
     'dataplane': {'B2': 'noun'},
     'dataset': {'B1': 'noun'},
@@ -3272,6 +3253,7 @@ common_English_words={
     'dealt': {'A2': 'noun'},
     'deamon': {'A2': 'noun'},
     'debacle': {'B2': 'noun'},
+    'debacle': {'B2': 'noun'},
     'debatable': {'B2': 'adjective'},
     'debated': {'C1': 'noun'},
     'debaters': {'B2': 'noun'},
@@ -3290,9 +3272,11 @@ common_English_words={
     'decentralized': {'C2': 'noun'},
     'deception': {'C2': 'noun'}, #  EFLEX uses the level C1
     'decibels': {'B1': 'noun'},
+    'decidable': {'B2': 'noun'},
     'decided': {'A2': 'verb past tense, past participle'},
     'decides': {'A2': 'verb 3rd person present'},
     'deciding': {'B1': 'verb 3rd person present'},
+    'decimal': {'A1': 'adjective', 'C2': 'noun'},
     'decimal': {'B2': 'noun'},
     'decision-makers': {'B2': 'noun'},
     'decisions/values': {'B1': 'noun'},
@@ -3408,6 +3392,7 @@ common_English_words={
     'dependency': {'B2': 'noun'},
     'depending': {'A1': 'verb gerund or present participle'},
     'depends': {'A1': 'verb 3rd person present'},
+    'depicted': {'B2': 'verb'},
     'deplete': {'B2': 'noun'},
     'depleted': {'B2': 'noun'},
     'depletion': {'B2': 'noun'},
@@ -3437,6 +3422,7 @@ common_English_words={
     'desertification': {'C1': 'noun'},
     'deserves': {'B1': 'noun'},
     'design': {'A1': 'noun', 'B1': 'verb', 'B2': 'adjective', 'C1': 'preposition'},
+    'design': {'A2': 'noun'},
     'design-based': {'B1': 'noun'},
     'designated': {'B2': 'verb past tense, past participle'},
     'designating': {'C2': 'verb gerund or present participle'},
@@ -3452,6 +3438,7 @@ common_English_words={
     'dessert': {'A2': 'noun'},
     'desserts': {'A2': 'noun'},
     'destinating': {'B1': 'transitive verb', 'C1': 'verb', 'C2': 'verb'},
+    'destination': {'B1': 'noun'},
     'destined': {'B2': 'adjective, verb past tense, past participle'},
     'destroyed': {'B1': 'verb past tense, past participle'},
     'destroying': {'B1': 'verb gerund or present participle'},
@@ -3496,8 +3483,10 @@ common_English_words={
     'dialogs': {'A2': 'noun'},
     'dials': {'B1': 'noun'},
     'dialup': {'B1': 'adjective'},
+    'diamanter': {'A1': 'noun'},
     'diameter': {'B1': 'concrete noun'},
     'diameter': {'B2': 'noun'},
+    'dice': {'B2': 'verb'},
     'dictated': {'A2': 'verb past tense, past participle'},
     'dictates': {'C1': 'verb 3rd person present, noun'},
     'dictatorship': {'C1': 'noun'},
@@ -3522,11 +3511,14 @@ common_English_words={
     'digest': {'C1': 'verb, noun'}, #  EFLEX uses the level B2
     'digging': {'B1': 'verb gerund or present participle'}, #  EFLEX uses the level C1
     'digit': {'B1': 'noun'},
+    'digital': {'B1': 'adjective'},
+    'digital-TV': {'A1': 'noun'},
     'digitally': {'B2': 'adverb'},
     'digitise': {'B2': 'verb'},
     'digitized': {'A2': 'verb past tense, past participle'},
     'digits': {'A1': 'noun'},
     'digression': {'B1': 'noun'},
+    'dilemma': {'B2': 'noun'},
     'dimensional': {'B2': 'adjective'},
     'dimensionality': {'C1': 'noun'},
     'dimensioned': {'A2': 'verb past tense, past participle'},
@@ -3646,6 +3638,7 @@ common_English_words={
     'docker': {'A1': 'noun'},
     'docking': {'B1': 'verb gerund or present participle'},
     'docs': {'A1': 'abbreviation'},
+    'docs': {'B2': 'noun'},
     'doctoral': {'C2': 'adjective'},
     'document/presentation': {'B1': 'phrase'},
     'document/result': {'B1': 'phrase'},
@@ -3728,6 +3721,7 @@ common_English_words={
     'dummy': {'A2': 'noun, verb'},
     'dumping': {'C1': 'verb gerund or present participle'},
     'dumps': {'C1': 'noun, verb 3rd person present'},
+    'duplex': {'A1': 'adjective'},
     'duplex': {'B1': 'noun, adjective'},
     'duplex=full': {'A2': 'adjective'},
     'duplicate': {'B1': 'adjective, noun, verb'},
@@ -3735,16 +3729,18 @@ common_English_words={
     'duplicates': {'A1': 'verb 3rd person present, noun'},
     'duplicating': {'B1': 'verb gerund or present participle'},
     'duplication': {'B1': 'noun'},
+    'duration': {'B2': 'noun'},
     'duress': {'C2': 'noun'},
     'dwarfs': {'A2': 'noun'},
     'dying': {'A1': 'adjective'},
     'dynamically': {'C2': 'adverb'},
     'dynamics': {'B2': 'noun'},
+    'dynamist': {'C1': 'noun'},  # This is quite unusual, so I rate it as atleast C1
     'e-Communications': {'A1': 'noun'},
     'e-book': {'A1': 'noun'},
     'e-books': {'A1': 'noun'},
     'e-commerce': {'B2': 'noun'},
-    'e-learning': {'A1': 'noun'},
+    'e-learning': {'A1': 'noun', 'A2': 'Noun'},
     'e-library': {'A1': 'noun'},
     'e-mail': {'A2': ''},
     'e-mails': {'A1': 'noun'},
@@ -3775,6 +3771,7 @@ common_English_words={
     'ecology': {'B1': 'noun'},
     'economical': {'B2': 'adjective'}, #  EFLEX uses the level C1
     'economically': {'C1': 'adverb'},
+    'economics': {'A2': 'Noun'},
     'ecosystem': {'B2': 'noun'},
     'ecosystems': {'C2': 'noun'},
     'ecrit': {'A1': 'noun'},
@@ -3790,9 +3787,9 @@ common_English_words={
     'effectuation': {'C2': 'noun'},
     'efficacy': {'C2': 'noun'},
     'efficiencies': {'B2': 'noun'},
+    'effortlessly': {'B2': 'adjective'},
     'ef‌f‌icient': {'A2': 'adjective'},
     'ef‌f‌iciently': {'A2': 'adverb'},
-    'effortlessly': {'B2': 'adjective'},
     'egress': {'B2': 'noun, verb'}, 
     'eighteenth': {'A1': 'number'},
     'eighteenth-century': {'A2': 'noun'}, #  EFLEX uses the level C1
@@ -3811,8 +3808,10 @@ common_English_words={
     'electronically': {'B2': 'adverb'},
     'electrons': {'A1': 'noun'},
     'electrostatic': {'C1': 'adjective'},
+    'elefant': {'A1': 'noun'},
     'elefants': {'A1': 'noun'},
     'elektrosmog': {'A1': 'noun'},
+    'element': {'A1': 'noun'},
     'element': {'B2': 'noun'},
     'elements': {'B2': 'noun'},
     'elevated': {'B2': 'verb past tense, past participle'},
@@ -3833,6 +3832,7 @@ common_English_words={
     'emerged': {'B2': 'verb past tense, past participle'},
     'emerging': {'B2': 'adjective'},
     'emeritus': {'C1': 'adjective'},
+    'emission': {'B1': 'noun'},
     'emit': {'C2': 'verb'},
     'emitted': {'C2': 'verb past tense, past participle'},
     'emitter': {'B1': 'noun'},
@@ -4015,6 +4015,7 @@ common_English_words={
     'europe': {'A1': 'noun'},
     'european': {'B2': 'adjective, noun'},
     'européens': {'A2': 'adjective'},
+    'euthanasia': {'B2': 'Noun'},
     'eutrophication': {'C2': 'noun'},
     'evaluated': {'C1': 'verb past tense, past participle'},
     'evaluates': {'C1': 'verb 3rd person present'},
@@ -4074,6 +4075,7 @@ common_English_words={
     'exhausting': {'B2': 'verb gerund or present participle'},
     'exhaustion': {'B2': 'noun'},
     'existed': {'B1': 'verb past tense, past participle'}, #  EFLEX uses the level B2
+    'existentialism': {'B1': 'Noun'},
     'existing': {'B1': 'adjective'},
     'exists': {'B1': 'verb 3rd person present'},
     'exited': {'B1': 'verb past tense, past participle'},
@@ -4087,6 +4089,7 @@ common_English_words={
     'expedite': {'C2': 'verb'},
     'experience': {'B1': 'noun, verb'},
     'experiencing': {'B1': 'verb gerund or present participle'},
+    'experiment': {'B1': 'noun'},
     'experiment': {'B1': 'noun, verb'},
     'experimental': {'C2': 'adjective'},
     'experimentation': {'B2': 'noun'},
@@ -4453,6 +4456,7 @@ common_English_words={
     'fuzzing': {'C2': 'verb'},
     'fuzzy': {'B1': 'adjective'},
     'fuzzy-logic': {'B2': 'noun'},
+    'gadgets': {'A2': 'noun'},
     'gained': {'B1': 'verb past tense, past participle'},
     'galvanized': {'B1': 'verb', 'B2': 'verb', 'C1': 'verb', 'C2': 'verb'},
     'game': {'A1': 'noun'},
@@ -4529,6 +4533,7 @@ common_English_words={
     'gnu': {'A1': 'noun'},
     'goal': {'A2': 'noun'},
     'goals': {'A2': 'noun'},
+    'goalstate': {'B1': 'noun'},
     'goes': {'A1': 'verb, noun'},
     'going': {'A1': 'noun, adjective'}, #  EFLEX uses the level B2
     'goldfish': {'A1': 'noun'},
@@ -4536,6 +4541,7 @@ common_English_words={
     'goodBYE': {'A1': 'exclamation, noun'},
     'goodby': {'A1': 'exclamation, noun'},
     'goofs': {'A2': 'noun, verb 3rd person present'},
+    'googled': {'A2': 'verb', 'B1': 'verb'},
     'gory': {'B2': 'adjective'},
     'got': {'A1': 'verb'},
     'gotchas': {'B1': 'noun'},
@@ -4747,6 +4753,7 @@ common_English_words={
     'histograms': {'A2': 'noun'},
     'historgram': {'A1': 'noun'},
     'historically': {'C1': 'adverb'},
+    'history': {'A2': 'Noun'},
     'histrogram': {'B1': 'noun'},
     'hitchhiker': {'B1': 'noun'},
     'hitchhikers': {'A2': 'noun'},
@@ -4838,7 +4845,7 @@ common_English_words={
     'hyper-scale': {'C1': 'adjective'},
     'hyper-spheres': {'C2': 'noun'},    #  can set as hyperspheres
     'hyperbolic': {'C1': 'adjective'},
-    'hyperlink': {'A1': 'noun'},
+    'hyperlink': {'A1': 'noun', 'A2': 'Noun'},
     'hypermedia': {'B2': 'noun'},
     'hyperparameter': {'C2': 'noun'},
     'hyperparameters': {'C2': 'noun'},
@@ -5474,6 +5481,7 @@ common_English_words={
     'launching': {'B2': 'verb gerund or present participle'},
     'launchs': {'C1': 'verb 3rd person present, noun'},
     'laureate': {'C2': 'noun, adjective'},
+    'law': {'B1': 'Noun'},
     'lawful': {'B2': 'adjective'},
     'layered': {'C2': 'verb past tense, past participle'},
     'layering': {'C1': 'verb gerund or present participle'},
@@ -5506,6 +5514,7 @@ common_English_words={
     'left-hand': {'A1': 'noun, adjective'},
     'left-handed': {'B1': 'adjective'},
     'left-most': {'A2': 'adjective'},
+    'left/right': {'A1': 'prepositional phrase'},
     'lefthand': {'B2': 'noun, adjective'},
     'leftmost': {'C1': 'adjective'},
     'legalese': {'C2': 'noun'},
@@ -5573,6 +5582,7 @@ common_English_words={
     'lined': {'B2': 'adjective, verb past tense, past participle'},
     'linerize': {'C2': 'verb'},
     'lingerie': {'C2': 'noun'},
+    'linguistics': {'B1': 'Noun'},
     'linguistics': {'B2': 'noun'},
     'link-layer': {'B2': 'adjective'},
     'link-level': {'B1': 'adjective'},
@@ -5722,6 +5732,7 @@ common_English_words={
     'makers': {'B2': 'noun'},
     'makerspace': {'C2': 'noun'},
     'makes': {'A1': 'verb, noun'},
+    'male/female': {'A1': 'noun, adjective'},
     'males': {'B2': 'noun'},
     'malformed': {'C2': 'adjective'},
     'malicious': {'C2': 'adjective'}, #  EFLEX uses the level C1
@@ -5829,6 +5840,7 @@ common_English_words={
     'medias': {'B1': 'noun'},   # Not a correct plural in english
     'mediation': {'B2': 'noun'},
     'medicinal': {'B2': 'adjective, noun'},
+    'medicine': {'A2': 'Noun'},
     'medics': {'C2': 'noun'},
     'medium-size': {'B1': 'noun'},
     'medium-sized': {'B2': 'adjective'},
@@ -6053,6 +6065,7 @@ common_English_words={
     'morally': {'B2': 'noun'},
     'mosaic': {'B1': 'noun'},
     'most-cited': {'B2': 'noun'},
+    'motherboard': {'B2': 'noun'},
     'motion': {'A1': 'noun', 'B1': 'verb, noun?'},
     'motions': {'B1': 'verb, noun?'},
     'motivated': {'B2': 'noun'}, #  EFLEX uses the level B1
@@ -6526,7 +6539,9 @@ common_English_words={
     'optional': {'B2': 'adj'},
     'optionally': {'B1': 'noun'},
     'opus': {'A1': 'noun'},
+    'oracles': {'B1': 'noun'},
     'orally': {'A2': 'adverb'},
+    'orchestrate': {'B2': 'verb'},
     'orchestrated': {'B2': 'verb past tense, past participle'},
     'orchestrator': {'C2': 'noun'},
     'order': {'A1': 'noun', 'A2': 'verb', 'B1': 'adjective', 'B2': 'preposition', 'C1': 'interjection'},
@@ -6611,12 +6626,14 @@ common_English_words={
     'overlays': {'C2': 'noun'},
     'overload': {'C2': 'noun'},
     'overloaded': {'C2': 'adjective'},
+    'overpass': {'A2': 'noun'},
     'overprovisioning': {'C2': 'noun'},
     'override': {'C1': 'noun'},
     'overriding': {'C2': 'noun'},
     'overrule': {'C2': 'verb'},
     'overrun': {'C2': 'noun'},
     'overruns': {'C2': 'noun'},
+    'overshoot': {'B2': 'verb'},
     'overstates': {'C2': 'verb 3rd person present'},
     'oversubscribe': {'C2': 'verb'},
     'oversubscription': {'C2': 'noun'},
@@ -6669,12 +6686,14 @@ common_English_words={
     'pandemic': {'B2': 'noun'},
     'pandemics': {'C2': 'noun'},
     'pane': {'A1': 'noun'},
+    'panspermia': {'B2': 'Noun'},
     'paper-based': {'B1': 'noun'},
     'paper/presentation': {'B1': 'noun'},
     'paper/talk/poster': {'A2': 'noun'},
     'paperback': {'A2': 'noun'},
     'paperbacks': {'B1': 'noun'},
     'par': {'A1': 'noun'},
+    'paradigm shift': {'B2': 'Noun'},
     'paradigm': {'C2': 'noun'},
     'paradigms': {'C2': 'noun'},
     'paradox': {'C2': 'noun'},
@@ -6954,6 +6973,7 @@ common_English_words={
     'polished': {'C1': 'noun'},
     'political': {'B2': 'adjective'},
     'politically': {'B2': 'adverb'},
+    'politics': {'B1': 'Noun'},
     'polls': {'B2': 'noun'},
     'polluters': {'C1': 'noun'},
     'polyethylene': {'B2': 'noun'},
@@ -7303,6 +7323,7 @@ common_English_words={
     'pseudocode': {'C1': 'noun'},
     'pseudonyms': {'B2': 'noun'},
     'psychologically': {'B2': 'noun'},
+    'psychology': {'B2': 'Noun'},
     'psychosocial': {'C1': 'noun'},
     'pt': {'A1': 'unit'},
     'pts': {'A1': 'unit'},
@@ -7363,6 +7384,7 @@ common_English_words={
     'quantitate': {'B2': 'verb'},
     'quantitative': {'B2': 'noun'},
     'quantitatively': {'C2': 'noun'},
+    'quantum entanglement': {'C1': 'Noun'},
     'quarterly': {'B2': 'adjective, adverb'},
     'quartet': {'B1': 'noun'},
     'quartile': {'C1': 'noun'},
@@ -8025,6 +8047,7 @@ common_English_words={
     'says': {'A1': 'verb'}, #  EFLEX uses the level B2
     'scalability': {'C1': 'noun'},
     'scalable': {'C1': 'adjective'},
+    'scalar': {'B1': 'adjective'},
     'scale': {'B1': 'noun', 'B2': 'verb', 'C1': 'adjective'},
     'scaled': {'C2': 'adjective'},
     'scaling': {'C2': 'noun, adjective'},
@@ -8138,6 +8161,7 @@ common_English_words={
     'self-regulation': {'C1': 'noun'},
     'self-repairing': {'C1': 'adjective'},
     'self-study': {'C1': 'noun'},
+    'selfadjusting': {'B1': 'adjective'},
     'selfless': {'C2': 'noun'},
     'sellers': {'B2': 'noun'},
     'selling': {'A2': 'verb gerund or present participle'},
@@ -8147,6 +8171,8 @@ common_English_words={
     'semantics': {'C2': 'noun, verb'},
     'semaphore': {'B1': 'noun, verb 3rd person present'},
     'semester': {'A1': 'noun'},
+    'semi-decidable': {'B2': 'adjective'},
+    'semi-infinite': {'B1': 'adjective'},
     'semi-permanent': {'C2': 'noun'},
     'semi-supervised': {'B2': 'adjective', 'C1': 'adjective'},
     'semicolons': {'B2': 'noun'},
@@ -8186,6 +8212,7 @@ common_English_words={
     'serials': {'C1': 'noun'},
     'seriation': {'C2': 'noun'},
     'serif': {'A2': 'noun'},
+    'serotonin': {'B2': 'Noun'},
     'served': {'A2': 'verb past tense, past participle'},
     'server': {'B2': 'verb'}, #  EFLEX uses the level A1
     'server-side': {'B2': 'noun phrase'},
@@ -8319,7 +8346,7 @@ common_English_words={
     'single-subject': {'B1': 'noun'},
     'singleton': {'C2': 'noun'},
     'singular': {'A2': 'adjective, noun'},
-    'singularity': {'C2': 'noun'},
+    'singularity': {'C1': 'Noun', 'C2': 'noun'},
     'sinograms': {'C2': 'noun'},
     'sip': {'C1': 'verb'}, #  EFLEX uses the level B2
     'sipping': {'C1': 'verb gerund or present participle'},
@@ -8828,6 +8855,7 @@ common_English_words={
     'symmetry': {'B2': 'noun'},
     'symphony': {'B2': 'noun'},
     'symposium': {'B2': 'noun'},
+    'symposium': {'B2': 'noun'},
     'synchronic': {'C1': 'adjective'},
     'synchronically': {'C2': 'adverb'},
     'synchronization': {'C2': 'noun'},
@@ -9177,6 +9205,7 @@ common_English_words={
     'transforming': {'B2': 'verb gerund or present participle'},
     'transforms': {'C1': 'noun, verb 3rd person present'},
     'transgress': {'C2': 'noun'},
+    'transhumanism': {'C1': 'Noun'},
     'transient': {'C1': 'noun'},
     'transistor': {'B1': 'noun'},
     'transistors': {'B1': 'noun'},
@@ -9721,6 +9750,7 @@ common_English_words={
     'webserver': {'B1': 'noun'},
     'wedge': {'A1': 'noun'},
     'weeding': {'B2': 'noun'},
+    'weighed': {'B2': 'verb'},
     'weighted': {'B1': 'noun'},
     'weighting': {'B1': 'noun'},
     'welded': {'B1': 'verb past tense, past participle'},
@@ -9831,6 +9861,7 @@ common_English_words={
     'world-class': {'A1': 'noun'},
     'world-wide': {'A2': 'noun'},
     'worrying': {'A1': 'noun'}, #  EFLEX uses the level B1
+    'worst': {'A1': 'adjective'},
     'worst-case': {'A2': 'noun'},
     'worthless': {'C1': 'noun'}, #  EFLEX uses the level B2
     'wrangling': {'C2': 'noun, verb gerund or present participle'},
@@ -9848,7 +9879,9 @@ common_English_words={
     'wrongful': {'C2': 'noun'},
     'wrote': {'A1': 'verb past tense'},
     'wrt': {'A1': 'noun'},
+    'xenophobia': {'B2': 'Noun'},
     'yah': {'A1': 'noun'},
+    'yardstick': {'B2': 'noun'},
     'yearbook': {'A2': 'noun'},
     'yep': {'A1': 'noun'},
     'younger': {'A1': 'noun'},
@@ -9868,12 +9901,48 @@ common_English_words={
     'zooming': {'A1': 'present participle verb'},
 
 
+
+    # end of region to sort
+
+    # days of the week
+    'Monday': {'A1': 'Noun'},
+    'Tuesday': {'A1': 'Noun'},
+    'Wednesday': {'A1': 'Noun'},
+    'Thursday': {'A1': 'Noun'},
+    'Friday': {'A1': 'Noun'},
+    'Saturday': {'A1': 'Noun'},
+    'Sunday': {'A1': 'Noun'},
+
+    # names of the months
+    'January': {'A1': 'Noun'},
+    'February': {'A1': 'Noun'},
+    'March': {'A1': 'Noun'},
+    'April': {'A1': 'Noun'},
+    'May': {'A1': 'Noun'},
+    'June': {'A1': 'Noun'},
+    'July': {'A1': 'Noun'},
+    'August': {'A1': 'Noun'},
+    'September': {'A1': 'Noun'},
+    'October': {'A1': 'Noun'},
+    'November': {'A1': 'Noun'},
+    'December': {'A1': 'Noun'},
+
+    # Name of some holidays
+    'Easter': {'A1': 'Noun'},
+    'Christmas': {'A1': 'Noun'},
+
+    # GQM some new possible words
 }
  
 
+# consider adding support for these
+well_known_acronyms={
+    'ASCII': {'American Standard Code for Information Interchange'},
+    'CPU': {'Central Processing Unit'},
 
+}
 misc_words_to_ignore=[
-    'Calcolo', # This is the name of a journal on numerical analysis, theory of computation and their applications
+    'N/S/V/Ö', # compass dirceions in Swedish
     'keyboardShortcuts',
     'de-LaTeXed',
     'Method/Approach',
@@ -9895,60 +9964,31 @@ misc_words_to_ignore=[
 
     'A4', 
     'A4-sized', 
-    'American',
-    'BibTeX', 
-    'Bible',
-    'Chancellor',
-    'Christmas',
     'Crosstalks',
     'DarkMatter',
-    'Deploy360',
     'DiVA',
     'Drop-in',
-    'E-leanirng',
-    'Helvetica',
     'H|gskolan',
     'ISBN',
     'Institut',
-    'Internet-standard',
-    'LaTeX',
     'Ladok',
-    'NFSspy',
     'PhD',
-    'Polytechnique',
-    'PostScipt',
-    'Profssor',
-    'Provost',
-    'Sci-Fi',
-    'T-Shirt',
-    'Tele-traffic',
-    'Telecosm',
-    'Zoom-link',
-    'Zotero',
+
     'chmod',
     'chown',
     'chroot',
     'courseroom',
     'creat',
     'cus',
-    'de_de', 
+
     'diameter1',
-    'dynamist',
     'extraLatex',
-    'fr-FR', 
-    'googled',
     'it-support',
-    'janmar', # part of email address
     'latexExample',
-    'male/female',
     'mediaFacial',
     'medianc',
     'medianc,42',
-    'no_nb', 
     'pH',
-    'réseaux',
-    'sv-SE', 
-    'sv_se', 
 
     'Alt',                # keyboard short cut
     'Alt-Down',           # keyboard short cut
@@ -10041,18 +10081,20 @@ misc_words_to_ignore=[
     'OPTpages',   # optional field in a BibTeX entry
     'OPTvolume',  # optional field in a BibTeX entry
 
-    'emilbjo',    # part of an e-mail address
     'bellman',    # part of an e-mail address
+    'emilbjo',    # part of an e-mail address
     'henbos',     # part of an e-mail address
-    'wouter',     # part of an e-mail address
+    'janmar',     # part of email address
     'mab',        # part of an e-mail address
-    'vastberg',   # part of an e-mail address
     'slimane',    # part of an e-mail address
+    'vastberg',   # part of an e-mail address
     'viggo',      # part of an e-mail address
+    'wouter',     # part of an e-mail address
 
 
     # Languages/peoples
     'Arabic',
+    'American',
     'Americans',
     'Armenian',
     'British', 
@@ -10080,33 +10122,6 @@ misc_words_to_ignore=[
     'Brazilian', 
     'Portugues', 
     'Russian',
-
-    # days of the week
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-    # names of the months
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-    # Name of some holidays
-    'Easter',
-    'Christmas',
-    # font names
-    'Arial',
 ]    
 
 place_names=[
@@ -10458,6 +10473,7 @@ company_and_product_names=[
     'Aptillo',
     'Arduino',
     'Arlanda',
+    'ARM',
     'Art500k',
     'Artech',
     'Artemisa',
@@ -10498,6 +10514,8 @@ company_and_product_names=[
     'Cachy',
     'Cachy-sched',
     'CadSoft',
+    'Calcolo', # This is the name of a journal on numerical analysis, theory of computation and their applications
+    'CardGame', # CardGame.io a site for card games
     'Cardinals',                   # baseball team
     'Celeron',
     'Cengage',
@@ -10526,10 +10544,12 @@ company_and_product_names=[
     'Cubs',                   # baseball team
     'Cummings',
     'CustomerThink',
+    'Cybud',
     'Databricks',
     'Debian',
     'Deepnote',
     'Dell',
+    'Deploy360',
     'Deutsche',
     'Dialpad',
     'Digikey',
@@ -10681,6 +10701,7 @@ company_and_product_names=[
     'Myricom',
     'NASA',
     'NVIDIA',
+    'Nvidia',
     'NVLink',
     'Neo4j',
     'NetMeeting',
@@ -10748,6 +10769,7 @@ company_and_product_names=[
     'ProjectLibre',
     'Psytechnics',
     'PubMed',
+    'Pyrex',
     'QRcode',
     'Qualcomm',
     'Quicktime',
@@ -10756,6 +10778,7 @@ company_and_product_names=[
     'Radcom',
     'Rangers',
     'Rebtel',
+    'RedElvis',
     'Reddit',
     'Redfish',
     'RefMan',
@@ -10806,6 +10829,7 @@ company_and_product_names=[
     'StatPac',
     'StateFarm',
     'Stavas',
+    'Stitcher',
     'Swift',
     'Swish',
     'Sybex',
@@ -10907,8 +10931,10 @@ company_and_product_names=[
     'ispell',
     'kaggle',
     'macOS',
+    'netshield',
     'nvidia',
     'openSuSE',
+    'openai-whisper',
     'pandoc',
     'pslatex',
     'pstex',
@@ -10917,14 +10943,11 @@ company_and_product_names=[
     'vi',
     'wordnet',
     'youtube',
-    'netshield',
-    'openai-whisper',
-    'Stitcher',
-    'Pyrex',
-    'Modula-3',
-    'RedElvis',
-    'Cybud',
-    'CardGame', # CardGame.io a site for card games
+    'NFSspy',
+
+    # font names
+    'Arial',
+    'Helvetica',
 ]
 
 names_of_persons=[
@@ -10932,10 +10955,6 @@ names_of_persons=[
     'von',   # part of a name
     'der',   # part of a name
 
-    'Matti',
-    'Pilu',
-    'Aragon',
-    'Grensjös',
     "John's",
     "Kruskal",
     "O'Brien",
@@ -10978,6 +10997,7 @@ names_of_persons=[
     'Aizu',
     'Akoglu',
     'Al-Naamany',
+    'Alan',
     'Alasuutari',
     'Albert',
     'Alberto',
@@ -11035,6 +11055,7 @@ names_of_persons=[
     'Antoinette',
     'Anton',
     'Antone',
+    'Aragon',
     'Arakawa',
     'Archer',
     'Arden',
@@ -11537,6 +11558,7 @@ names_of_persons=[
     'Foley',
     'Folke',
     'Ford-Fulkerson',
+    'Ford-Fulkersson',
     'Forouzan',
     'Forsythe',
     'Fraley',
@@ -11652,6 +11674,7 @@ names_of_persons=[
     'Greg',
     'Gregory',
     'Grensjö',
+    'Grensjös',
     'Grifes',
     'Griggs',
     'Grimaldi',
@@ -12240,6 +12263,7 @@ names_of_persons=[
     'Matthew',
     'Matthews',
     'Matthias',
+    'Matti',
     'Mattisson',
     'Mattsson',
     'Mauldin',
@@ -12513,6 +12537,7 @@ names_of_persons=[
     'Pieters',
     'Pietro',
     'Pillai',
+    'Pilu',
     'Pisner',
     'Pizer',
     'Pjothi',
@@ -13161,29 +13186,45 @@ names_of_persons=[
 
 common_programming_languages=[  # and libraries, programs
     'Ada',
-    'epslatex',
-    'epstopdf',
-    'GraphX',
-    'Git',
-    'Perl',
+    'ANSI-C',
+    'Beamer',
+    'BibTex',
+    'BitTorrent',
+    'Clang',
     'Erlang',
     'Fortran',
+    'Git',
+    'GraphX',
+    'Gstreamer',
     'Hadoop/Java',
     'Haskell',
     'Horovod',
+    'IPython',
+    'IPython3',
     'ImageMagick',
     'Java',
+    'JavaScript',
+    'Javascript',
     'JupyterLab',
+    'Kerberos',
+    'LaTeX',
+    'Modula-3',
     'MySQL',
+    'Nim',
     'NoSQL',
     'NumPy',
+    'OOoLatex',
+    'Parlay',
+    'Perl',
     'PostScript',
     'PostgreSQL',
     'PyData',
+    'PyDetex',
     'PySpark',
     'PyTorch',
     'PyWavelet',
     'PyYAML',
+    'Pygments',
     'Python',
     'Pytorch',
     'Ruby',
@@ -13191,10 +13232,20 @@ common_programming_languages=[  # and libraries, programs
     'SQL',
     'SciKit',
     'Splus/R',
+    'Tcl',
     'TensorFLow',
+    'Win32',
+    'X-windows',
+    'X11',
     'YAML',
+    'epslatex',
+    'epstopdf',
     'g++',
+    'gcc',
+    'gdb',
+    'gmake',
     'ipython',
+    'java',
     'javascript',
     'mathematica',
     'matlab',
@@ -13210,35 +13261,36 @@ common_programming_languages=[  # and libraries, programs
     'scala',
     'sqlite',
     'sqlite3',
+    'tcpdump',
     'yaml',
     'yarn',
-    'BitTorrent',
-    'Gstreamer',
-    'Kerberos',
-    'Parlay',
-    'Tcl',
-    'BibTex',
-    'Beamer',
-    'Clang',
-    'X11',
-    'Win32',
-    'X-windows',
-    'PyDetex',
-    'OOoLatex',
-    'IPython',
-    'IPython3',
-    'JavaScript',
-    'Pygments',
-    'Nim',
-    'java',
-    'tcpdump',
-    'Javascript',
-    'gcc',
-    'gdb',
-    'gmake',
-
 ]
 
+# note that these are considered in a case sensitive manner
+programming_keywords={
+    'argc',
+    'argv',
+
+    'def',
+    'elif',
+    'else',
+    'enum',
+    'eq',
+    'fi',
+}
+
+language_tags={
+    'en-US',
+    'fr-FR', 
+    'de-DE',
+    'no-NB', 
+    'sv-SE', 
+
+    # incorrect - as the separator should be a dash
+    'de_de',
+    'no_nb', 
+    'sv_se', 
+}
 
 # mathematical expressions have no CEFR levels, so we will ignore them
 mathematical_words_to_ignore=[
@@ -13330,6 +13382,7 @@ common_swedish_words={
     'A-uppgift': {'A2': 'noun'},
     'AD-omvandlare': {'B1': 'noun'},
     'ASCII-alfabetet': {'B1': 'noun'},
+    'ASCII-koder': {'B1': 'noun'},
     'ASSERT-satserna': {'B1': 'noun'},
     'ASSERT-villkor': {'B1': 'noun'},
     'B-träd': {'B2': 'noun'},
@@ -24421,20 +24474,9 @@ common_swedish_words={
     'övriga': {'B1': 'adjective'},
     'övrigt': {'A2': 'noun'},
 
-
-    # GQM - some new words to consider - so should perhaps go to the technical words
-    'spännandeträd': {'B1': 'compoumnd noun'},
-    'absolutbeloppet': {'A2': 'noun'},
-    'oviktad': {'A1': 'adjective'},
-    'oväntat': {'A1': 'adjective'},
-    'packat': {'A2': 'adjective'},
-    'packningen': {'A1': 'noun'},
+    'pannkakor': {'A1': 'noun'},
     'pajbitar': {'A1': 'noun'},
     'pajdiagram': {'A1': 'noun'},
-    'pannkakor': {'A1': 'noun'},
-    'papperskonstruktion': {'A1': 'noun'},
-    'papperslappar': {'A1': 'noun'},
-    'paradigmskifte': {'B1': 'noun'},
     'paradoxalt': {'B1': 'adjective'},
     'paragrafen': {'A1': 'noun'},
     'parar': {'A1': 'verb'},
@@ -24442,7 +24484,6 @@ common_swedish_words={
     'paren': {'A1': 'verb'},
     'parentesuttryck': {'A1': 'noun'},
     'paret': {'A1': 'noun'},
-    'paritionering': {'A1': 'noun'},
     'parkerar': {'A1': 'verb'},
     'parkerat': {'A1': 'adjective'},
     'parkerats': {'A1': 'adverb'},
@@ -24453,15 +24494,26 @@ common_swedish_words={
     'parkeringsspårslängden': {'A1': 'verb'},
     'rekomenderas': {'A1': 'verb'},
     'rekommenderade': {'B1': 'verb'},
-    #'utdatanär': {'xx': 'noun'},
+
+
+    # GQM - some new words to consider - so should perhaps go to the technical words
+
 }
 
 
 #CEFR levels via Bard with questions of the form: What CEFR levels is the Swedish word "tidsdomänreflektometer" in and what part of speech is it?
 common_swedish_technical_words={
-    'def': {'A1': 'noun'},
-    'enum': {'A2': 'noun'},
-    'eq': {'A1': 'noun'},
+    'spännandeträd': {'B1': 'compoumnd noun'},
+    'absolutbeloppet': {'A2': 'noun'},
+    'oviktad': {'A1': 'adjective'},
+    'oväntat': {'A1': 'adjective'},
+    'packat': {'A2': 'adjective'},
+    'packningen': {'A1': 'noun'},
+    'papperskonstruktion': {'A1': 'noun'},
+    'papperslappar': {'A1': 'noun'},
+    'paradigmskifte': {'B1': 'noun'},
+    'paritionering': {'A1': 'noun'},
+    #'utdatanär': {'xx': 'noun'},
 
     # 'sizeof': {'xx': 'unknown'}, # keyword for getting the sizeof something?
     # 'struct': {'xx': 'unknown'}, # keyword for creating a data structure?
@@ -25188,7 +25240,7 @@ common_swedish_technical_words={
     'programutvecklingspaket': {'B2': 'noun', 'C1': 'noun'},
     'programutvecklingsverktyg': {'B2': 'noun'},
     'programvara-definierade': {'B1': 'adjective'},
-    'programvarastatistik': {'B2x': 'noun'},
+    'programvarastatistik': {'B2': 'noun'},
     'programvaruföretaget': {'B2': 'noun'},
     'proteindragspelsvik': {'B2': 'noun'},
     'proteindragspelsvikning': {'C1': 'noun'},
@@ -25497,6 +25549,7 @@ common_french_words=[
     'informatiques',
     'raison',
     'reseaux',
+    'réseaux',
     'réponse',
     'sp\u00e9cial',
     'traitement',
@@ -25575,6 +25628,9 @@ common_finnish_words=[
 
 
 miss_spelled_words=[
+    'PostScipt', # should be 'PostScript'
+    'Profssor',  # should be 'Professor'
+    'E-leanirng',# should be 'E-learning'
     'bedöm',
     'behö',
     'vandling',
@@ -25828,6 +25884,7 @@ abbreviations_ending_in_period=[
     'vs',
     'p.g.a',
     't.o.m',
+    'V.S.B', # short for "vilket skulle bevisas"
     'v.s.b', # short for "vilket skulle bevisas"
     'v.s.v', # short for "vilket skulle visas"
     'Q.E.D', 
@@ -25835,20 +25892,23 @@ abbreviations_ending_in_period=[
     'm.h.a', # short for "med hjälp av"
     'eng',   # short for engelska "eng."
     'm.a.p', # short for "med avseende på"
+    'P.S.S', # short for "på samma sätt"
     'p.s.s', # short for "på samma sätt"
+    'D.v.s', # short for  "det vill säga"
+    'd.v.s', # short for  "det vill säga"
 
-    'Jan.',   # months
-    'Feb.',
-    'Mar.',
-    'Apr.',
-    'Jun.',
-    'Jul.',
-    'Aug.',
-    'Sep.',
-    'Sept.',
-    'Oct.',
-    'Nov.',
-    'Dec.',
+    'Jan',   # months
+    'Feb',
+    'Mar',
+    'Apr',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
 ]
 
 def is_float(string):
@@ -26541,9 +26601,12 @@ def is_domainname(s):
 def is_MathSymbol(s):
     if not len(s) == 1:
         return False
+
+    if 0x2100 <= ord(s) and ord(s) <= 0x214FF:         # Letterlike Symbols
+        return True
     if 0x2200 <= ord(s) and ord(s) <= 0x22FF:     # Mathematical Operators
         return True
-    if 0x2a00 <= ord(s) and ord(s) <= 0x2AFF:     # Supplemental Mathematical Operators
+    if 0X2A00 <= ord(s) and ord(s) <= 0x2AFF:     # Supplemental Mathematical Operators
         return True
     if 0xE000 <= ord(s) and ord(s) <= 0xF8FF:     # Private Use Area - seems to be used by conveertnb (to print Jupyter notebooks)
         return True
@@ -26619,7 +26682,7 @@ def is_equation(s):
     #
     math_possible_excludes=['−', '∣', '∶', '∷', '∼']
     #
-    extra_symbols = ['+', '–', '^', '·', '¹', '²', '³', '±', '¬', 'µ', '¼', '½', '¾']
+    extra_symbols = ['…', '=', '÷', '+', '–', '^', '·', '¹', '²', '³', '±', '¬', 'µ', '¼', '½', '¾']
     #
     if len(s) < 1:
         return False
@@ -26631,6 +26694,8 @@ def is_equation(s):
             return True
         if is_Miscellaneous_Technical(s):
             return True
+        if s in extra_symbols:
+            return True
         else:
             return False
     #
@@ -26639,6 +26704,9 @@ def is_equation(s):
         return False
     #
     if s[0] in ['¬']:
+        return True
+    #
+    if s.count('=') == 1:
         return True
     #
     # if there is any math symbol in the string, consider it an equation
@@ -26663,6 +26731,27 @@ def is_equation(s):
     #
     # otherwise
     return False
+
+def is_MiscSymbol_or_Pictograph(s):
+    if not len(s) == 1:
+        return False
+
+    if 0x2190 <= ord(s) and ord(s) <= 0x21FF:    # Arrows
+        return True
+    if 0x25A0 <= ord(s) and ord(s) <= 0x25FF:    # Geometric Shapes
+        return True
+    if 0x2600 <= ord(s) and ord(s) <= 0x26FF:    # Miscellaneous Symbols
+        return True
+    if 0xFFF0 <= ord(s) and ord(s) <= 0xFFFD:    # Specials
+        return True
+    if 0x27F0 <= ord(s) and ord(s) <= 0x27FF:    #    Supplemental Arrows-A
+        return True
+    if 0x1F300 <= ord(s) and ord(s) <= 0x1F5FF:  # Miscellaneous Symbols and Pictographs
+        return True
+    if 0x1F900 <= ord(s) and ord(s) <= 0x1F9FF:  # Supplemental Symbols and Pictographs
+        return True
+    return False
+
 
 def is_improbable_word(s):
     if s.count('=') > 0 :
@@ -27309,6 +27398,23 @@ def conditionally_get_level(word, source_name, levels_to_use, entry):
         entry[source_name]=cefr_levels
     return entry
 
+# only make an entry if the word is in the source
+def conditionally_check_list(word, source_name, source_list, entry):
+    if word in source_list:
+        entry[source_name]=True
+    return entry
+
+def conditionally_check_list_case_insensitive(word, source_name, source_list, entry):
+    if word in source_list:
+        entry[source_name]=True
+    if word.lower() in source_list:
+        entry[source_name]=True
+    return entry
+
+def conditionally_check_with_function(word, source_name, filter_function, entry):
+    if filter_function(word):
+        entry[source_name]=True
+    return entry
 
 
 # Use ANSI escape sequence to output bold text on linux or surround by underline characters
@@ -27484,6 +27590,9 @@ def main():
         print(f'{len(company_and_product_names):>{Numeric_field_width}} words in company_and_product_names')
         print(f'{len(misc_words_to_ignore):>{Numeric_field_width}} words in misc_words_to_ignore')
         print(f'{len(mathematical_words_to_ignore):>{Numeric_field_width}} words in mathematical_words_to_ignore')
+        print(f'{len(programming_keywords):>{Numeric_field_width}} words in programming_keywords')
+        print(f'{len(language_tags):>{Numeric_field_width}} words in language_tags')
+
 
         ###############################################################################
         # compute the lowest CEFR levels for each of the words, when there are CEFR levels specified
@@ -27530,6 +27639,16 @@ def main():
             print('Nothing to process')
             return
 
+        print(f'{len(unique_words):>{Numeric_field_width}} unique words - before starting ')
+        # get reid of any zero wdith spaces
+        zero_width_space='\u200B'
+        if zero_width_space in unique_words:
+            del unique_words[zero_width_space]
+        # similarly get rid of any zero length srings
+        for word in unique_words:
+            if len(word) < 1:
+                del unique_words[word]
+
         print(f'{len(unique_words):>{Numeric_field_width}} unique words - initially ')
 
         # make a deep copy of the dict, so that any operations do not affect the original set of unique_words
@@ -27564,11 +27683,21 @@ def main():
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, mathematical_words_to_ignore)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} mathematical_words_to_ignore removed')
 
+        filtered_unique_words_dict, reduction = filter_words_by_list_case_sensitive(filtered_unique_words_dict, programming_keywords)
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} programming_keywords removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, language_tags)
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} language_tags removed')
+
+
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, misc_words_to_ignore)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} misc_words_to_ignore removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, abbreviations_ending_in_period)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} abbreviations_ending_in_period removed')
+
+        filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_MiscSymbol_or_Pictograph)
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} MiscSymbol_or_Pictograph removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_equation)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} equations (i.e., includes math & technical symbols and Greek letters) removed')
@@ -27787,6 +27916,17 @@ def main():
         # reset the new dict
         new_filtered_unique_words_dict=dict()
 
+        # in case any words have become zero length get rid of them now
+        for word in filtered_unique_words_dict:
+            if len(word) < 1:
+                continue
+            else:
+                new_filtered_unique_words_dict[word]=filtered_unique_words_dict[word]
+
+        filtered_unique_words_dict=new_filtered_unique_words_dict
+        # reset the new dict
+        new_filtered_unique_words_dict=dict()
+
         frequency_sorted=dict(sorted(filtered_unique_words_dict.items(), key=lambda x:x[1]))
       
         new_file_name=f'{directory_prefix}unique_words-for-course-frequency-updated-{course_id}.txt'        
@@ -27799,9 +27939,6 @@ def main():
         number_leading_other=0
 
         for word in frequency_sorted:
-            if len(word) < 1:
-                print(f'very short word: "{word}"')
-                continue
             if word[0].isupper():
                 number_leading_capital_letter=number_leading_capital_letter+1
             elif word[0].islower():
@@ -27809,9 +27946,13 @@ def main():
             else:
                 number_leading_other=number_leading_other+1
 
-        print(f'{number_leading_capital_letter:>{Numeric_field_width}} starting with a capital letter ({number_leading_capital_letter/len(frequency_sorted)*100:.2f}%)')
-        print(f'{number_leading_lower_case_letter:>{Numeric_field_width}} starting with a lower case letter ({number_leading_lower_case_letter/len(frequency_sorted)*100:.2f}%)')
-        print(f'{number_leading_other:>{Numeric_field_width}} starting with another type of letter ({number_leading_other/len(frequency_sorted)*100:.2f}%)')
+        if len(frequency_sorted) > 0:
+            print(f'{number_leading_capital_letter:>{Numeric_field_width}} starting with a capital letter ({number_leading_capital_letter/len(frequency_sorted)*100:.2f}%)')
+            print(f'{number_leading_lower_case_letter:>{Numeric_field_width}} starting with a lower case letter ({number_leading_lower_case_letter/len(frequency_sorted)*100:.2f}%)')
+            print(f'{number_leading_other:>{Numeric_field_width}} starting with another type of letter ({number_leading_other/len(frequency_sorted)*100:.2f}%)')
+        else:
+            print('No remaining words')
+        
 
         # compute difference between the words coming in and the remaining words
         for word in unique_words:
@@ -28393,11 +28534,45 @@ def main():
                 'thousand_most_common_words_in_English': level_thousand_most_common_words_in_English,
                 'top_100_English_words': level_top_100_English_words,
                 }
+
+            source_lists={
+                'place': place_names,
+                'company or product': company_and_product_names,
+                'person_name': names_of_persons,
+                'programming language or tool': common_programming_languages,
+                'mathematical_word': mathematical_words_to_ignore,
+                'misc': misc_words_to_ignore,
+                'abbreviations_ending_in_period': abbreviations_ending_in_period,
+                'misspelled': miss_spelled_words,
+                'programming_keywords': programming_keywords,
+                'language_tags': language_tags,
+                'French': common_french_words,
+            }
+
+            case_insensitive_source_lists={
+                'Latin': common_latin_words,
+                'German': common_german_words,
+                'Finnish': common_finnish_words,
+                'Italian': common_italian_words,
+                'Danish': common_danish_words,
+            }
+            source_filters={
+                'equation': is_equation,
+                'domainname': is_domainname,
+                'improbable word':  is_improbable_word,
+                'MiscSymbol_or_Pictograph': is_MiscSymbol_or_Pictograph,
+            }
             annotated_dict=dict()
             for word in unique_words:
                 entry={'frequency': unique_words.get(word, 0)}
                 for source in sources:
                     entry=conditionally_get_level(word, source, sources[source], entry)
+                for source in case_insensitive_source_lists:
+                    entry=conditionally_check_list_case_insensitive(word, source, case_insensitive_source_lists[source], entry)
+                for source in source_lists:
+                    entry=conditionally_check_list(word, source, source_lists[source], entry)
+                for source in source_filters:
+                    entry=conditionally_check_with_function(word, source, source_filters[source], entry)
                 annotated_dict[word]=entry
 
             #print(f'{annotated_dict.items()}')

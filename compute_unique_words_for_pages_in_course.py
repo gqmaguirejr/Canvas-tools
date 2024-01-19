@@ -90,6 +90,15 @@ import pdfminer.psparser
 from pdfminer.pdfdocument import PDFNoValidXRef
 from pdfminer.psparser import PSEOF
 
+# note that caseless comparison on unicode characters or strings requires some gymnastics (see https://docs.python.org/3/howto/unicode.html)
+import unicodedata
+
+def compare_caseless(s1, s2):
+    def NFD(s):
+        return unicodedata.normalize('NFD', s)
+
+    return NFD(NFD(s1).casefold()) == NFD(NFD(s2).casefold())
+
 #############################
 ###### EDIT THIS STUFF ######
 #############################
@@ -125,12 +134,16 @@ prefixes_to_ignore=[
     "'",
     "\\",
     "¨",
+    "′", # prime
     '+',
     ',',
     '-',
+    '.',
     './',
+    '0xFE0E',  # this is Variation Selector-15 - it modifies the character before it, but will end up at the start of the word after it
     ':',
     '=',
+    '\\u0000', # remove the string \u0000 which is the null characters
     '\u034f', # graphics joiner - non spacing mark
     '\u03bb',
     '\u200b', #Zero Width Space
@@ -138,6 +151,7 @@ prefixes_to_ignore=[
     '^',
     '_.',
     '|',
+    '~',
     '¡',
     '§',
     'µ',
@@ -145,6 +159,7 @@ prefixes_to_ignore=[
     '¿',
     '×',
     'Þ',
+    'ˆ',
     'α',
     'μ',
     'χ',
@@ -152,9 +167,11 @@ prefixes_to_ignore=[
     '–',
     '—',
     '―',
+    '„',
     '†',
     '‡',
     '•',
+    '‣',
     '…',
     '←',
     '↑',
@@ -178,9 +195,6 @@ prefixes_to_ignore=[
     '',
     '（',
     '👋',
-    'ˆ',
-    '\\u0000', # remove the string \u0000 which is the null characters
-    '0xFE0E',  # this is Variation Selector-15 - it modifies the character before it, but will end up at the start of the word after it
 ]
 
 suffixes_to_ignore=[
@@ -208,7 +222,9 @@ suffixes_to_ignore=[
     '⚠',
     'ﾔ',
     '✷',
+    '',
     '',
+    '',
     '',
     '\u0000', # null character
 ]
@@ -233,20 +249,18 @@ def check_spelling_errors(s, url):
         else:
             print(f'miss spelling {s}')
 
-# remove first prefix
+# remove all prefixes
 def prune_prefix(s):
     for pfx in prefixes_to_ignore:
         if s.startswith(pfx):
             s=s[len(pfx):]
-            return s
     return s
 
-# remove first suffix
+# remove all suffixes
 def prune_suffix(s):
     for sfx in suffixes_to_ignore:
         if s.endswith(sfx):
             s=s[:-len(sfx)]
-            return s
     return s
 
 def uniqe_words_from_rawtext(raw_text):
@@ -263,7 +277,7 @@ def uniqe_words_from_rawtext(raw_text):
         newword=word.strip()
         newword=prune_prefix(newword)
         newword=prune_suffix(newword)
-        if len(newword) > 0:
+        if len(newword) > 0 and not newword == '\u200b': # eliminate a zero width space
             if newword.count('\n') > 0:
                 newwords=newword.split('\n')
                 for w in newwords:
@@ -1095,7 +1109,7 @@ def get_optional_text(o: Any) -> str:
         return o.get_text().strip()
     return ''
 
-def process_element(o: Any):
+def process_element(o: Any, png):
     global extracted_data
     global total_raw_text
     
@@ -1129,7 +1143,7 @@ def process_element(o: Any):
             #     for character in text_line:
             #         if isinstance(character, LTChar):
             #             font_size=character.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text())])
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), png])
 
     elif isinstance(o, LTTextContainer):
         if Verbose_Flag:
@@ -1157,14 +1171,14 @@ def process_element(o: Any):
             #     for character in text_line:
             #         if isinstance(character, LTChar):
             #             font_size=character.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text())])
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), png])
     elif isinstance(o, LTLine): #  a line
         if Verbose_Flag:
             print(f'found an LTLine {o=}')
     elif isinstance(o, LTFigure):
         if isinstance(o, Iterable):
             for i in o:
-                process_element(i)
+                process_element(i, png)
     elif isinstance(o, LTImage):
         if Verbose_Flag:
             print(f'found an LTImage {o=}')
@@ -1176,7 +1190,7 @@ def process_element(o: Any):
             last_y_offset=o.bbox[1]
             last_x_width=o.bbox[2]-o.bbox[0]
             font_size=o.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text())])
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), png])
     elif isinstance(o, LTAnno):
         if Verbose_Flag:
             print("fount an LTAnno")
@@ -1185,17 +1199,17 @@ def process_element(o: Any):
             last_y_offset=o.bbox[1]
             last_x_width=o.bbox[2]-o.bbox[0]
             font_size=o.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' '])
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' ', png])
     elif isinstance(o, LTCurve): #  a curve
         if Verbose_Flag:
             print("found an LTCurve")
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' '])
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' ', png])
     else:
         if Verbose_Flag:
             print(f'unprocessed element: {o}')
         if isinstance(o, Iterable):
             for i in o:
-                process_element(i)
+                process_element(i, png)
 
 def rough_comparison(a, b):
     if not a or not b:
@@ -1204,6 +1218,734 @@ def rough_comparison(a, b):
         return True
     return False
 
+def add_diaeresis(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='ä'
+    elif c == 'A':
+        new_c='Ä'
+    elif c == 'e':
+        new_c='ê'
+    elif c == 'E':
+        new_c='Ê'
+    elif c == 'h':
+        new_c='ḧ'
+    elif c == 'H':
+        new_c='Ḧ'
+    elif (c == 'i') or  (c == 'ı'): # have to consider it might be a dotless "i"
+        new_c='ï'
+    elif c == 'I':
+        new_c='Ï'
+    elif c == 'o':
+        new_c='ö'
+    elif c == 'O':
+        new_c='Ö'
+    elif c == 't':
+        new_c='ẗ'
+    elif c == 'T':
+        new_c='T̈'
+    elif c == 'u':
+        new_c='ü'
+    elif c == 'U':
+        new_c='Ü'
+    elif c == 'w':
+        new_c='ẅ'
+    elif c == 'W':
+        new_c='Ẅ'
+    elif c == 'x':
+        new_c='ẍ'
+    elif c == 'X':
+        new_c='Ẍ'
+    elif c == 'y':
+        new_c='ÿ'
+    elif c == 'Y':
+        new_c='Ÿ'
+    elif c == '‐':              # hyphen and hyphen with Hyphen with Diaeresis
+        new_c='⸚'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+
+def add_ring(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='å'
+    elif c == 'A':
+        new_c='Å'
+    elif c == 'u':
+        new_c='ů'
+    elif c == 'U':
+        new_c='Ů'
+    elif c == 'y':
+        new_c='ẙ'
+    elif c == 'y':
+        new_c='Y̊'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) > 1:
+        return new_c+txt[1:]
+    return new_c
+
+def add_acute_accent(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='á'
+    elif c == 'A':
+        new_c='Á'
+    elif c == 'c':
+        new_c='ć'
+    elif c == 'C':
+        new_c='Ć'
+    elif c == 'e':
+        new_c='é'
+    elif c == 'E':
+        new_c='É'
+    elif c == 'g':
+        new_c='ǵ'
+    elif c == 'G':
+        new_c='Ǵ'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='í'
+    elif c == 'I':
+        new_c='Í'
+    elif c == 'k':
+        new_c='ḱ'
+    elif c == 'K':
+        new_c='Ḱ'
+    elif c == 'l':
+        new_c='ĺ'
+    elif c == 'L':
+        new_c='Ĺ'
+    elif c == 'm':
+        new_c='ḿ'
+    elif c == 'M':
+        new_c='Ḿ'
+    elif c == 'n':
+        new_c='ń'
+    elif c == 'N':
+        new_c='Ń'
+    elif c == 'o':
+        new_c='ó'
+    elif c == 'O':
+        new_c='Ó'
+    elif c == 'p':
+        new_c='ṕ'
+    elif c == 'P':
+        new_c='Ṕ'
+    elif c == 'r':
+        new_c='ŕ'
+    elif c == 'R':
+        new_c='Ŕ'
+    elif c == 's':
+        new_c='ś'
+    elif c == 'S':
+        new_c='Ś'
+    elif c == 'u':
+        new_c='ú'
+    elif c == 'U':
+        new_c='Ú'
+    elif c == 'w':
+        new_c='ẃ'
+    elif c == 'W':
+        new_c='Ẃ'
+    elif c == 'y':
+        new_c='ý'
+    elif c == 'Y':
+        new_c='Ý'
+    elif c == 'z':
+        new_c='ź'
+    elif c == 'Z':
+        new_c='Ź'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_grave_accent(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='à'
+    elif c == 'A':
+        new_c='À'
+    elif c == 'e':
+        new_c='è'
+    elif c == 'E':
+        new_c='È'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='ì'
+    elif c == 'I':
+        new_c='Ì'
+    elif c == 'n':
+        new_c='ǹ'
+    elif c == 'N':
+        new_c='Ǹ'
+    elif c == 'o':
+        new_c='ò'
+    elif c == 'O':
+        new_c='Ò'
+    elif c == 'u':
+        new_c='ù'
+    elif c == 'U':
+        new_c='Ù'
+    elif c == 'w':
+        new_c='ẁ'
+    elif c == 'W':
+        new_c='Ẁ'
+    elif c == 'y':
+        new_c='ỳ'               # from "Latin Extended Additional"
+    elif c == 'Y':
+        new_c='Ỳ'		# from "Latin Extended Additional"
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+
+
+def add_circumflex_accent(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='â'
+    elif c == 'A':
+        new_c='Â'
+    elif c == 'c':
+        new_c='ĉ'
+    elif c == 'C':
+        new_c='Ĉ'
+    elif c == 'e':
+        new_c='ê'
+    elif c == 'E':
+        new_c='Ê'
+    elif c == 'g':
+        new_c='ĝ'
+    elif c == 'G':
+        new_c='Ĝ'
+    elif c == 'h':
+        new_c='ĥ'
+    elif c == 'H':
+        new_c='Ĥ'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='î'
+    elif c == 'I':
+        new_c='Î'
+    elif (c == 'j') or  (c == 'ȷ'):
+        new_c='ĵ'
+    elif (c == 'j'):
+        new_c='Ĵ'
+    elif c == 'o':
+        new_c='ô'
+    elif c == 'O':
+        new_c='Ô'
+    elif c == 's':
+        new_c='ŝ'
+    elif c == 'S':
+        new_c='Ŝ'
+    elif c == 'u':
+        new_c='û'
+    elif c == 'U':
+        new_c='Û'
+    elif c == 'w':
+        new_c='ŵ'
+    elif c == 'W':
+        new_c='Ŵ'
+    elif c == 'y':
+        new_c='ŷ'               # from "Latin Extended Additional"
+    elif c == 'Y':
+        new_c='Ŷ'		# from "Latin Extended Additional"
+    elif c == 'z':
+        new_c='ẑ'
+    elif c == 'Z':
+        new_c='Ẑ'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_breve(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='ă'
+    elif c == 'A':
+        new_c='Ă'
+    elif c == 'e':
+        new_c='ĕ'
+    elif c == 'E':
+        new_c='Ĕ'
+    elif c == 'g':
+        new_c='ğ'
+    elif c == 'G':
+        new_c='Ğ'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='ĭ'
+    elif c == 'I':
+        new_c='Ĭ'
+    elif c == 'o':
+        new_c='ŏ'
+    elif c == 'O':
+        new_c='Ŏ'
+    elif c == 'u':
+        new_c='ŭ'
+    elif c == 'U':
+        new_c='Ŭ'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_inverted_breve(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='ȃ'
+    elif c == 'A':
+        new_c='Ȃ'
+    elif c == 'e':
+        new_c='ȇ'
+    elif c == 'E':
+        new_c='Ȇ'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='ȋ'
+    elif c == 'I':
+        new_c='Ȋ'
+    elif c == 'o':
+        new_c='ȏ'
+    elif c == 'O':
+        new_c='Ȏ'
+    elif c == 'r':
+        new_c='ȓ'
+    elif c == 'R':
+        new_c='Ȓ'
+    elif c == 'u':
+        new_c='ȗ'
+    elif c == 'U':
+        new_c='Ȗ'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+
+def add_macron(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='ā'
+    elif c == 'A':
+        new_c='Ā'
+    elif c == 'e':
+        new_c='ē'
+    elif c == 'E':
+        new_c='Ē'
+    elif c == 'g':
+        new_c='ḡ'
+    elif c == 'G':
+        new_c='Ḡ'
+    elif (c == 'i') or  (c == 'i'):
+        new_c='ī'
+    elif c == 'i':
+        new_c='Ī'
+    elif c == 'o':
+        new_c='ō'
+    elif c == 'O':
+        new_c='Ō'
+    elif c == 'u':
+        new_c='ū'
+    elif c == 'U':
+        new_c='Ū'
+    elif c == 'y':
+        new_c='ȳ'
+    elif c == 'Y':
+        new_c='Ȳ'
+    elif c == 'α':              # Greek alpha
+        new_c='ᾱ'               # Greek Small Letter Alpha with Macron from "Greek Extended"
+    elif c == 'Α':              # Greek Alpha
+        new_c='Ᾱ'               # Greek Capital Letter Alpha with Macron from "Greek Extended"
+    elif c == 'ι':              # Greek Iota
+        new_c='ῑ'               # Greek Small Letter Iota with Macron from "Greek Extended"
+    elif c == 'Ι':              # Greek Iota
+        new_c='Ῑ'               # Greek Capital Letter Iota with Macron from "Greek Extended"
+    elif c == 'υ':              # Greek upsilon 
+        new_c='ῡ'               # Greek Small Letter Upsilon with Macron from "Greek Extended"
+    elif c == 'Υ':              # Greek Upsilon
+        new_c='Ῡ'               # Greek Capital Letter Upsilon with Macron from "Greek Extended"
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_tilde(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='ã'
+    elif c == 'A':
+        new_c='Ã'
+    elif c == 'e':
+        new_c='ẽ'
+    elif c == 'E':
+        new_c='Ẽ'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='ĩ'
+    elif c == 'I':
+        new_c='Ĩ'
+    elif c == 'n':
+        new_c='ñ'
+    elif c == 'N':
+        new_c='Ñ'
+    elif c == 'o':
+        new_c='õ'
+    elif c == 'O':
+        new_c='Õ'
+    elif c == 'u':
+        new_c='ũ'
+    elif c == 'Ũ':
+        new_c='Û'
+    elif c == 'v':
+        new_c='ṽ'
+    elif c == 'V':
+        new_c='Ṽ'
+    elif c == 'y':
+        new_c='ỹ'               # from "Latin Extended Additional"
+    elif c == 'Y':
+        new_c='Ỹ'		# from "Latin Extended Additional"
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_dot_above(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='ȧ'
+    elif c == 'A':
+        new_c='Ȧ'
+    elif c == 'b':
+        new_c='ḃ'
+    elif c == 'B':
+        new_c='Ḃ'
+    elif c == 'c':
+        new_c='ċ'
+    elif c == 'C':
+        new_c='Ċ'
+    elif c == 'd':
+        new_c='ḋ'
+    elif c == 'D':
+        new_c='Ḋ'
+    elif c == 'e':
+        new_c='ė'
+    elif c == 'E':
+        new_c='Ė'
+    elif c == 'f':
+        new_c='ḟ'
+    elif c == 'F':
+        new_c='Ḟ'
+    elif c == 'g':
+        new_c='ġ'
+    elif c == 'G':
+        new_c='Ġ'
+    elif c == 'h':
+        new_c='ḣ'
+    elif c == 'H':
+        new_c='Ḣ'
+    # elif (c == 'i') or  (c == 'ı'):
+    #     new_c=''
+    elif c == 'I':
+        new_c='İ'
+    elif c == 'm':
+        new_c='ṁ'
+    elif c == 'M':
+        new_c='Ṁ'
+    elif c == 'n':
+        new_c='ṅ'
+    elif c == 'N':
+        new_c='Ṅ'
+    elif c == 'o':
+        new_c='ȯ'
+    elif c == 'O':
+        new_c='Ȯ'
+    elif c == 'p':
+        new_c='ṗ'
+    elif c == 'P':
+        new_c='Ṗ'
+    elif c == 'r':
+        new_c='ṙ'
+    elif c == 'R':
+        new_c='Ṙ'
+    elif c == 's':
+        new_c='ṡ'
+    elif c == 'S':
+        new_c='Ṡ'
+    elif c == 't':
+        new_c='ṫ'
+    elif c == 'T':
+        new_c='Ṫ'
+    elif c == 'u':
+        new_c='ụ'
+    elif c == 'Ũ':
+        new_c='Ụ'
+    elif c == 'w':
+        new_c='ẇ'
+    elif c == 'W':
+        new_c='Ẇ'
+    elif c == 'x':
+        new_c='ẋ'
+    elif c == 'X':
+        new_c='Ẋ'
+    elif c == 'y':
+        new_c='ẏ'
+    elif c == 'Y':
+        new_c='Ẏ'
+    elif c == 'z':
+        new_c='ż'
+    elif c == 'Z':
+        new_c='Ż'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_cedilla(txt):
+    c=txt[0]
+    if c == 'c':
+        new_c='ç'
+    elif c == 'C':
+        new_c='Ç'
+    elif c == 'd':
+        new_c='ḑ'
+    elif c == 'D':
+        new_c='Ḑ'
+    elif c == 'e':
+        new_c='ȩ'
+    elif c == 'E':
+        new_c='Ȩ'
+    elif c == 'g':
+        new_c='ģ'
+    elif c == 'G':
+        new_c='Ģ'
+    elif c == 'h':
+        new_c='ḩ'
+    elif c == 'H':
+        new_c='Ḩ'
+    elif c == 'k':
+        new_c='ķ'
+    elif c == 'K':
+        new_c='Ķ'
+    elif c == 'l':
+        new_c='ļ'
+    elif c == 'L':
+        new_c='Ļ'
+    elif c == 'n':
+        new_c='ņ'
+    elif c == 'N':
+        new_c='Ņ'
+    elif c == 'r':
+        new_c='ŗ'
+    elif c == 'R':
+        new_c='Ŗ'
+    elif c == 's':
+        new_c='ş'
+    elif c == 'S':
+        new_c='Ş'
+    elif c == 't':
+        new_c='ţ'
+    elif c == 'T':
+        new_c='Ţ'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_hacek_caron(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='ǎ'
+    elif c == 'A':
+        new_c='Ǎ'
+    elif c == 'c':
+        new_c='č'
+    elif c == 'C':
+        new_c='Č'
+    elif c == 'd':
+        new_c='ď'
+    elif c == 'D':
+        new_c='Ď'
+    elif c == 'e':
+        new_c='ě'
+    elif c == 'E':
+        new_c='Ě'
+    elif c == 'g':
+        new_c='ǧ'
+    elif c == 'G':
+        new_c='Ǧ'
+    elif c == 'h':
+        new_c='ȟ'
+    elif c == 'H':
+        new_c='Ȟ'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='ǐ'
+    elif c == 'I':
+        new_c='Ǐ'
+    elif (c == 'j') or  (c == 'ȷ'):
+        new_c='ǰ'
+    elif c == 'k':
+        new_c='ǩ'
+    elif c == 'K':
+        new_c='Ǩ'
+    elif c == 'l':
+        new_c='ľ'
+    elif c == 'L':
+        new_c='Ľ'
+    elif c == 'n':
+        new_c='ň'
+    elif c == 'N':
+        new_c='Ň'
+    elif c == 'o':
+        new_c='ǒ'
+    elif c == 'O':
+        new_c='Ǒ'
+    elif c == 'r':
+        new_c='ř'
+    elif c == 'R':
+        new_c='Ř'
+    elif c == 's':
+        new_c='š'
+    elif c == 'S':
+        new_c='Š'
+    elif c == 't':
+        new_c='ť'
+    elif c == 'T':
+        new_c='Ť'
+    elif c == 'u':
+        new_c='ǔ'
+    elif c == 'U':
+        new_c='Ǔ'
+    elif c == 'z':
+        new_c='ž'
+    elif c == 'Z':
+        new_c='Ž'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+def add_double_acute_accent(txt):
+    c=txt[0]
+    if c == 'a':
+        new_c='a̋'
+    elif c == 'A':
+        new_c='A̋'
+    elif c == 'c':
+        new_c='c̋'
+    elif c == 'C':
+        new_c='C̋'
+    elif c == 'e':
+        new_c='e̋'
+    elif c == 'E':
+        new_c='E̋'
+    elif c == 'g':
+        new_c='g̋'
+    elif c == 'G':
+        new_c='G̋'
+    elif (c == 'i') or  (c == 'ı'):
+        new_c='i̋'
+    elif c == 'I':
+        new_c='I̋'
+    elif (c == 'j') or  (c == 'ȷ'):
+        new_c=' j̋'
+    elif c == 'J':
+        new_c=' J̋'
+    elif c == 'm':
+        new_c='m̋'
+    elif c == 'M':
+        new_c='M̋'
+    elif c == 'o':
+        new_c='ő'
+    elif c == 'O':
+        new_c='Ő'
+    elif c == 'u':
+        new_c='ű'
+    elif c == 'U':
+        new_c='Ű'
+    elif c == 'ү': # Cyrillic
+        new_c='ӳ'
+    elif c == 'Ү':
+        new_c='Ӳ'
+    else:                       # just replace it by itself - if you have no replacement
+        new_c=c
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+    
+# for vectors
+# note that the combing character has to come after the base character
+def add_right_arrow_above(txt):
+    c=txt[0]
+    new_c=c+'\u20D7'             # Combining Right Arrow Above from "Combining Diacritical Marks for Symbols"
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+    
+def add_low_line(txt):
+    c=txt[0]
+    new_c=c+'\u0332'             # Combining Low Line (0x0332) from Combining Diacritical Marks
+    if len(txt) == 1:
+        return new_c
+    return new_c+txt[1:]
+
+
+def transform_txt(last_txt, txt, delta_y):
+    print(f'transform_txt({last_txt}, {txt}, {delta_y})')
+    incoming_txt=txt
+    last_txt=last_txt.strip()
+    if last_txt == '¨':         # Diaeresis from "Latin-1 Supplement"
+        txt=add_diaeresis(txt)
+    elif last_txt == '˚':       # Ring Above from "Spacing Modifier Letters"
+        txt=add_ring(txt)
+    elif last_txt == '¯':       # Macron from "Latin-1 Supplement"
+        txt=add_macron(txt)
+    elif last_txt in ["ˊ", "´"]: # Modifier Letter Acute Accent from "Spacing Modifier Letters", Accute Accent from "Latin-1 Supplement"
+        add_acute_accent(txt)
+    elif last_txt in ["ˋ", "`"]: # Modifier Letter Acute Accent from "Spacing Modifier Letters", Grave Accent from "Basic Latin"
+        add_grave_accent(txt)
+    elif last_txt in ["ˆ", "^"]: # Modifier Letter Circumflex Accent from "Spacing Modifier Letters", Circumflex Accent from "Basic Latin"
+        add_circumflex_accent(txt)
+    elif last_txt in ["˜", "~"]: # Small Tilde from "Spacing Modifier Letters", Tilde from "Basic Latin"
+        add_tilde(txt)
+    elif last_txt in ["˘"]: # Breve from "Spacing Modifier Letters"
+        add_breve(txt)
+    elif last_txt in ["⁀"]: # Character Tie from "General Punctuation" -- CHECK if this is what the PDF generator uses
+        add_inverted_breve(txt)
+    elif last_txt in ["˙"]:     # Dot Above (0x02D9) from "Spacing Modifier Letters"
+        add_dot_above(txt)
+    elif last_txt in ["¸"]: # note that the character cedilla (0xB8) has been used and not the Combining Cedilla (0x0327) from "Combining Diacritical Marks"
+        add_cedilla(txt)
+    elif last_txt in ["ˇ"]: # Caron (0x02c7) from "Spacing Modifier Letters"
+        add_hacek_caron(txt)
+    elif last_txt in ["˝"]: # Double Acute Accent (0x02DD) from "Spacing Modifier Letters"
+        add_double_acute_accent(txt)
+    elif last_txt in ["̲"]: # Combining Low Line (0x0332) from "Combining Diacritical Marks"
+        print(f'low line case: {last_txt} and {txt} and incoming: {incoming_txt}')
+        add_low_line(txt)
+    elif last_txt in ["⃗"]: # Combining Right Arrow Above (0x20D7) from "Combining Diacritical Marks for Symbols"
+        print(f'right arrow case: {last_txt} and {txt} and incoming: {incoming_txt}')
+        add_right_arrow_above(txt)
+
+    else:
+        print(f'unhandled case in transform_txt({last_txt}, {txt})')
+        txt=f'{last_txt} {txt}'
+
+    print(f'{last_txt}, {incoming_txt} -> {txt}')
+    return txt
 
 def process_file(filename):
     global Verbose_Flag
@@ -1227,7 +1969,9 @@ def process_file(filename):
 
     try:
         #for page in extract_pages(filename, page_numbers=[0], maxpages=1):
+        pgn=0
         for page in extract_pages(filename):
+            pgn=pgn+1
             if Verbose_Flag:
                 print('showing show_ltitem_hierarchy')
                 show_ltitem_hierarchy(page)
@@ -1237,7 +1981,7 @@ def process_file(filename):
             for element in page:
                 if Verbose_Flag:
                     print(f'{element=}')
-                process_element(element)
+                process_element(element, pgn)
 
     except (PDFNoValidXRef, PSEOF, pdfminer.pdfdocument.PDFNoValidXRef, pdfminer.psparser.PSEOF) as e:
         print(f'Unexpected error in processing the PDF file: {filename} with error {e}')
@@ -1266,7 +2010,10 @@ def process_file(filename):
     for item in extracted_data:
         if isinstance(item, list):
             if len(item) == 5:
-                size, current_x_offset, current_y_offset, current_x_width, txt = item
+                print(f'5 unit item {item}')
+                continue
+            if len(item) == 6:
+                size, current_x_offset, current_y_offset, current_x_width, txt, png = item
                 if Verbose_Flag:
                     print(f'{current_x_offset},{current_y_offset} {size} {txt}')
                 if not last_size:
@@ -1284,7 +2031,7 @@ def process_file(filename):
                         current_string=current_string+txt
                         if Verbose_Flag:
                             print("direct insert current_string={}".format(current_string))
-                    elif current_x_offset > (last_x_offset+0.2*last_x_width): # just a little faster than adjact characters
+                    elif current_x_offset > (last_x_offset+0.25*last_x_width): # just a little faster than adjact characters
                         if Verbose_Flag:
                             print("last_x_offset+last_x_width={}".format(last_x_offset, last_x_width))
                         current_string=current_string+' '+txt
@@ -1300,9 +2047,9 @@ def process_file(filename):
                         last_x_width=current_x_width
                 else:
                     if last_x_offset:
-                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, last_x_offset-first_x_offset, current_string])
+                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, last_x_offset-first_x_offset, current_string+' ', png])
                     else:
-                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, 0, current_string])
+                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, 0, current_string+' ', png])
                         if Verbose_Flag:
                             print(f'current_string={current_string} and no last_x_offset')
                     current_string=""+txt
@@ -1313,7 +2060,7 @@ def process_file(filename):
                     last_size=None
     
     if last_x_offset:
-        new_extracted_data.append([size, first_x_offset, current_y_offset, last_x_offset-first_x_offset, current_string])
+        new_extracted_data.append([size, first_x_offset, current_y_offset, last_x_offset-first_x_offset, current_string, png])
     else:
         if Verbose_Flag:
             print(f'current_string={current_string} and no last_x_offset')
@@ -1322,14 +2069,68 @@ def process_file(filename):
         print("new_extracted_data={}".format(new_extracted_data))
 
     extracted_data=new_extracted_data
-    for item in extracted_data:
-        if isinstance(item, list):
-            if len(item) == 5:
-                size, current_x_offset, current_y_offset, current_x_width, txt = item
-                if Verbose_Flag:
-                    print(f'{current_x_offset},{current_y_offset} {size} {txt}')
 
-                raw_text = raw_text+' '+ txt.strip()
+    last_size=False
+    last_current_x_offset=False
+    last_current_y_offset=False
+    last_current_x_width=-1     # use -1 as a flag, since Faöse == 0
+    last_txt=False
+    last_png=False
+    current_baseline=False
+    
+    new_extracted_data=list()
+    for idx, item in enumerate(extracted_data):
+        if isinstance(item, list):
+            if len(item) == 6:
+                size, current_x_offset, current_y_offset, current_x_width, txt, png = item
+
+                # if there is a new page number
+                if not last_png or not (last_png == png):
+                    print(f'now processing page: {png}')
+                    last_png=png
+                    last_size=False
+                    last_current_x_offset=False
+                    last_current_y_offset=False
+                    last_current_x_width= -1
+                    last_txt=False
+
+
+                if Verbose_Flag or True:
+                    print(f'{idx}: {current_x_offset},{current_y_offset} {size} {current_x_width} {txt} {png}')
+
+                if current_x_width != 0:
+                    if last_current_x_width == 0:
+                        print(f'{current_x_width=}')
+                        delta_y=last_current_y_offset - current_y_offset
+                        print(f'after modified case: {delta_y} pt')
+
+                        raw_text = raw_text+transform_txt(last_txt, txt.strip(), delta_y)
+                    else:
+                        delta_y=last_current_y_offset - current_y_offset
+                        print(f'else case: {delta_y} pt')
+                        if abs(delta_y) > size:
+                            raw_text = raw_text+'\n'+ txt.strip()
+                            current_baseline=current_y_offset
+                        else:
+                            raw_text = raw_text+' '+ txt.strip()
+                    # if the current txt is zero width there is nothing to do add to the raw_txt, we simply remember tha last text to apply the modification to the next text
+                else:
+                    delta_y=last_current_y_offset - current_y_offset
+                    print(f'modified case: {txt} {delta_y} pt')
+                    if abs(delta_y) > size:
+                        raw_text = raw_text+'\n'+ txt.strip()
+                        current_baseline=current_y_offset
+                    else:
+                        raw_text = raw_text+' '+ txt.strip()
+
+                last_current_y_offset=current_y_offset
+                last_current_x_width=current_x_width
+                last_txt=txt
+                last_size=size
+
+
+            else:
+                continue
 
     total_raw_text=total_raw_text+clean_raw_text(raw_text)
 
@@ -1438,19 +2239,320 @@ def clean_raw_text(s):
     # in some places in PDF files from LaTeX there is hypehnation at the end of a line leading to "-\n"
     s=s.replace('-\n', '')
 
-    s=s.replace('¨o', 'ö')
-    s=s.replace('¨a', 'ä')
-    s=s.replace('˚a', 'å')
-    s=s.replace('¨O', 'Ö')
-    s=s.replace('¨A', 'Ä')
+    # s=s.replace('¨o', 'ö')
+    # s=s.replace('¨a', 'ä')
+    # s=s.replace('˚a', 'å')
+    # s=s.replace('¨O', 'Ö')
+    # s=s.replace('¨A', 'Ä')
+    s=s.replace('¨a','ä')
+    s=s.replace('¨A','Ä')
+    s=s.replace('¨e','ê')
+    s=s.replace('¨E','Ê')
+    s=s.replace('¨h','ḧ')
+    s=s.replace('¨H','Ḧ')
+    s=s.replace('¨i', 'ï')
+    s=s.replace('¨ı', 'ï')
+    s=s.replace('¨I','Ï')
+    s=s.replace('¨o','ö')
+    s=s.replace('¨O','Ö')
+    s=s.replace('¨t','ẗ')
+    s=s.replace('¨T','T̈')
+    s=s.replace('¨u','ü')
+    s=s.replace('¨U','Ü')
+    s=s.replace('¨w','ẅ')
+    s=s.replace('¨W','Ẅ')
+    s=s.replace('¨x','ẍ')
+    s=s.replace('¨X','Ẍ')
+    s=s.replace('¨y','ÿ')
+    s=s.replace('¨Y','Ÿ')
+    s=s.replace('¨‐','⸚')
+
+    # ring above
     s=s.replace('˚A', 'Å')
+    s=s.replace('˚a','å')
+    s=s.replace('˚A','Å')
+    s=s.replace('˚u','ů')
+    s=s.replace('˚U','Ů')
+    s=s.replace('˚y','ẙ')
+    s=s.replace('˚y','Y̊')
+
+    # acute accent
+    s=s.replace('´a','á')
+    s=s.replace('´A','Á')
+    s=s.replace('´c','ć')
+    s=s.replace('´C','Ć')
+    s=s.replace('´e','é')
+    s=s.replace('´E','É')
+    s=s.replace('´g','ǵ')
+    s=s.replace('´G','Ǵ')
+    s=s.replace('´i','í')
+    s=s.replace('´ı','í')
+    s=s.replace('´I','Í')
+    s=s.replace('´k','ḱ')
+    s=s.replace('´K','Ḱ')
+    s=s.replace('´l','ĺ')
+    s=s.replace('´L','Ĺ')
+    s=s.replace('´m','ḿ')
+    s=s.replace('´M','Ḿ')
+    s=s.replace('´n','ń')
+    s=s.replace('´N','Ń')
+    s=s.replace('´o','ó')
+    s=s.replace('´O','Ó')
+    s=s.replace('´p','ṕ')
+    s=s.replace('´P','Ṕ')
+    s=s.replace('´r','ŕ')
+    s=s.replace('´R','Ŕ')
+    s=s.replace('´s','ś')
+    s=s.replace('´S','Ś')
+    s=s.replace('´u','ú')
+    s=s.replace('´U','Ú')
+    s=s.replace('´w','ẃ')
+    s=s.replace('´W','Ẃ')
+    s=s.replace('´y','ý')
+    s=s.replace('´Y','Ý')
+    s=s.replace('´z','ź')
+    s=s.replace('´Z','Ź')
+
+    # grave accent
+    s=s.replace('`a', 'à')
+    s=s.replace('`A', 'À')
+    s=s.replace('`e', 'è')
+    s=s.replace('`E', 'È')
+    s=s.replace('`i', 'ì')
+    s=s.replace('`ı', 'ì')
+    s=s.replace('`I', 'Ì')
+    s=s.replace('`n', 'ǹ')
+    s=s.replace('`N', 'Ǹ')
+    s=s.replace('`o', 'ò')
+    s=s.replace('`O', 'Ò')
+    s=s.replace('`u', 'ù')
+    s=s.replace('`U', 'Ù')
+    s=s.replace('`w', 'ẁ')
+    s=s.replace('`W', 'Ẁ')
+    s=s.replace('`y', 'ỳ')
+    s=s.replace('`Y', 'Ỳ')
+
+    # macron
+    s=s.replace('¯a','ā')
+    s=s.replace('¯A','Ā')
+    s=s.replace('¯e','ē')
+    s=s.replace('¯E','Ē')
+    s=s.replace('¯g','ḡ')
+    s=s.replace('¯G','Ḡ')
+    s=s.replace('¯i','ī')
+    s=s.replace('¯i','ī')
+    s=s.replace('¯i','Ī')
+    s=s.replace('¯o','ō')
+    s=s.replace('¯O','Ō')
+    s=s.replace('¯u','ū')
+    s=s.replace('¯U','Ū')
+    s=s.replace('¯y','ȳ')
+    s=s.replace('¯Y','Ȳ')
+    s=s.replace('¯α','ᾱ')
+    s=s.replace('¯Α','Ᾱ')
+    s=s.replace('¯ι','ῑ')
+    s=s.replace('¯Ι','Ῑ')
+    s=s.replace('¯υ','ῡ')
+    s=s.replace('¯Υ','Ῡ')
+
+    # tilde
+    s=s.replace('˜a','ã')
+    s=s.replace('˜A','Ã')
+    s=s.replace('˜e','ẽ')
+    s=s.replace('˜E','Ẽ')
+    s=s.replace('˜i','ĩ')
+    s=s.replace('˜ı','ĩ')
+    s=s.replace('˜I','Ĩ')
+    s=s.replace('˜n','ñ')
+    s=s.replace('˜N','Ñ')
+    s=s.replace('˜o','õ')
+    s=s.replace('˜O','Õ')
+    s=s.replace('˜u','ũ')
+    s=s.replace('˜Ũ','Û')
+    s=s.replace('˜v','ṽ')
+    s=s.replace('˜V','Ṽ')
+    s=s.replace('˜y','ỹ')
+    s=s.replace('˜Y','Ỹ')
+
+    # circumflex
+    s=s.replace('ˆa', 'â')
+    s=s.replace('ˆA', 'Â')
+    s=s.replace('ˆc', 'ĉ')
+    s=s.replace('ˆC', 'Ĉ')
+    s=s.replace('ˆe', 'ê')
+    s=s.replace('ˆE', 'Ê')
+    s=s.replace('ˆg', 'ĝ')
+    s=s.replace('ˆG', 'Ĝ')
+    s=s.replace('ˆh', 'ĥ')
+    s=s.replace('ˆH', 'Ĥ')
+    s=s.replace('ˆi', 'î')
+    s=s.replace('ˆı', 'î')
+    s=s.replace('ˆI', 'Î')
+    s=s.replace('ˆj', 'ĵ')
+    s=s.replace('ˆȷ', 'ĵ')
+    s=s.replace('ˆj', 'Ĵ')
+    s=s.replace('ˆo', 'ô')
+    s=s.replace('ˆO', 'Ô')
+    s=s.replace('ˆs', 'ŝ')
+    s=s.replace('ˆS', 'Ŝ')
+    s=s.replace('ˆu', 'û')
+    s=s.replace('ˆU', 'Û')
+    s=s.replace('ˆw', 'ŵ')
+    s=s.replace('ˆW', 'Ŵ')
+    s=s.replace('ˆy', 'ŷ')
+    s=s.replace('ˆY', 'Ŷ')
+    s=s.replace('ˆz', 'ẑ')
+    s=s.replace('ˆZ', 'Ẑ')
+
+    # breve
+    s=s.replace('˘a', 'ă')
+    s=s.replace('˘A', 'Ă')
+    s=s.replace('˘e', 'ĕ')
+    s=s.replace('˘E', 'Ĕ')
+    s=s.replace('˘g', 'ğ')
+    s=s.replace('˘G', 'Ğ')
+    s=s.replace('˘i', 'ĭ')
+    s=s.replace('˘ı', 'ĭ')
+    s=s.replace('˘I', 'Ĭ')
+    s=s.replace('˘o', 'ŏ')
+    s=s.replace('˘O', 'Ŏ')
+    s=s.replace('˘u', 'ŭ')
+    s=s.replace('˘U', 'Ŭ')
+
+    # dot above
+    s=s.replace('˙a', 'ȧ')
+    s=s.replace('˙A', 'Ȧ')
+    s=s.replace('˙b', 'ḃ')
+    s=s.replace('˙B', 'Ḃ')
+    s=s.replace('˙c', 'ċ')
+    s=s.replace('˙C', 'Ċ')
+    s=s.replace('˙d', 'ḋ')
+    s=s.replace('˙D', 'Ḋ')
+    s=s.replace('˙e', 'ė')
+    s=s.replace('˙E', 'Ė')
+    s=s.replace('˙f', 'ḟ')
+    s=s.replace('˙F', 'Ḟ')
+    s=s.replace('˙g', 'ġ')
+    s=s.replace('˙G', 'Ġ')
+    s=s.replace('˙h', 'ḣ')
+    s=s.replace('˙H', 'Ḣ')
+    s=s.replace('˙I', 'İ')
+    s=s.replace('˙m', 'ṁ')
+    s=s.replace('˙M', 'Ṁ')
+    s=s.replace('˙n', 'ṅ')
+    s=s.replace('˙N', 'Ṅ')
+    s=s.replace('˙o', 'ȯ')
+    s=s.replace('˙O', 'Ȯ')
+    s=s.replace('˙p', 'ṗ')
+    s=s.replace('˙P', 'Ṗ')
+    s=s.replace('˙r', 'ṙ')
+    s=s.replace('˙R', 'Ṙ')
+    s=s.replace('˙s', 'ṡ')
+    s=s.replace('˙S', 'Ṡ')
+    s=s.replace('˙t', 'ṫ')
+    s=s.replace('˙T', 'Ṫ')
+    s=s.replace('˙u', 'ụ')
+    s=s.replace('˙Ũ', 'Ụ')
+    s=s.replace('˙w', 'ẇ')
+    s=s.replace('˙W', 'Ẇ')
+    s=s.replace('˙x', 'ẋ')
+    s=s.replace('˙X', 'Ẋ')
+    s=s.replace('˙y', 'ẏ')
+    s=s.replace('˙Y', 'Ẏ')
+    s=s.replace('˙z', 'ż')
+    s=s.replace('˙Z', 'Ż')
+
+    # cedilla - note that there seems to be something odd in the order of the characters that the PDF driver is generating
+    s=s.replace('c¸', 'ç')
+    #s=s.replace('¸C', 'Ç')
+    s=s.replace('C¸ ', 'Ç')      #  the cedilla seems to follow the character
+    s=s.replace('d¸', 'ḑ')
+    s=s.replace('D¸', 'Ḑ')
+    s=s.replace('e¸', 'ȩ')
+    s=s.replace('E¸', 'Ȩ')
+    s=s.replace('g¸', 'ģ')
+    s=s.replace('G¸', 'Ģ')
+    s=s.replace('h¸', 'ḩ')
+    s=s.replace('H¸', 'Ḩ')
+    s=s.replace('k¸', 'ķ')
+    s=s.replace('K¸', 'Ķ')
+    s=s.replace('l¸', 'ļ')
+    s=s.replace('L¸', 'Ļ')
+    s=s.replace('n¸', 'ņ')
+    s=s.replace('N¸', 'Ņ')
+    s=s.replace('r¸', 'ŗ')
+    s=s.replace('R¸', 'Ŗ')
+    s=s.replace('s¸', 'ş')
+    s=s.replace('S¸', 'Ş')
+    #s=s.replace('¸t', 'ţ')
+    s=s.replace('t¸', 'ţ') #  the cedilla seems to follow the character
+    s=s.replace('T¸', 'Ţ')
+
+    # háček caron
+    s=s.replace('ˇa', 'ǎ')
+    s=s.replace('ˇA', 'Ǎ')
+    s=s.replace('ˇc', 'č')
+    s=s.replace('ˇC', 'Č')
+    s=s.replace('ˇd', 'ď')
+    s=s.replace('ˇD', 'Ď')
+    s=s.replace('ˇe', 'ě')
+    s=s.replace('ˇE', 'Ě')
+    s=s.replace('ˇg', 'ǧ')
+    s=s.replace('ˇG', 'Ǧ')
+    s=s.replace('ˇh', 'ȟ')
+    s=s.replace('ˇH', 'Ȟ')
+    s=s.replace(('ˇi') or  ('ˇı'), 'ǐ')
+    s=s.replace('ˇI', 'Ǐ')
+    s=s.replace(('ˇj') or  ('ˇȷ'), 'ǰ')
+    s=s.replace('ˇk', 'ǩ')
+    s=s.replace('ˇK', 'Ǩ')
+    s=s.replace('ˇl', 'ľ')
+    s=s.replace('ˇL', 'Ľ')
+    s=s.replace('ˇn', 'ň')
+    s=s.replace('ˇN', 'Ň')
+    s=s.replace('ˇo', 'ǒ')
+    s=s.replace('ˇO', 'Ǒ')
+    s=s.replace('ˇr', 'ř')
+    s=s.replace('ˇR', 'Ř')
+    s=s.replace('ˇs', 'š')
+    s=s.replace('ˇS', 'Š')
+    s=s.replace('ˇt', 'ť')
+    s=s.replace('ˇT', 'Ť')
+    s=s.replace('ˇu', 'ǔ')
+    s=s.replace('ˇU', 'Ǔ')
+    s=s.replace('ˇz', 'ž')
+    s=s.replace('ˇZ', 'Ž')
+
+     # Double Acute Accent
+    s=s.replace('˝a', 'a̋')
+    s=s.replace('˝A', 'A̋')
+    s=s.replace('˝c', 'c̋')
+    s=s.replace('˝C', 'C̋')
+    s=s.replace('˝e', 'e̋')
+    s=s.replace('˝E', 'E̋')
+    s=s.replace('˝g', 'g̋')
+    s=s.replace('˝G', 'G̋')
+    s=s.replace('˝i', 'i̋')
+    s=s.replace('˝ı', 'i̋')
+    s=s.replace('˝I', 'I̋')
+    s=s.replace('˝ȷ', 'j̋')
+    s=s.replace('˝J', 'J̋')
+    s=s.replace('˝m', 'm̋')
+    s=s.replace('˝M', 'M̋')
+    s=s.replace('˝o', 'ő')
+    s=s.replace('˝O', 'Ő')
+    s=s.replace('˝u', 'ű')
+    s=s.replace('˝U', 'Ű')
+    s=s.replace('˝ү', 'ӳ')
+    s=s.replace('˝Ү', 'Ӳ')
+
     # there can also be spaces before and after the dicritical for the overprinted characters
-    s=s.replace(' ¨ o', 'ö')
-    s=s.replace(' ¨ a', 'ä')
-    s=s.replace(' ¨ a', 'å')
-    s=s.replace(' ¨ O', 'Ö')
-    s=s.replace(' ¨ A', 'Ä')
-    s=s.replace(' ˚ A', 'Å')
+    # s=s.replace(' ¨ o', 'ö')
+    # s=s.replace(' ¨ a', 'ä')
+    # s=s.replace(' ¨ a', 'å')
+    # s=s.replace(' ¨ O', 'Ö')
+    # s=s.replace(' ¨ A', 'Ä')
+    # s=s.replace(' ˚ A', 'Å')
 
     
     # it is very likely that the TeX engine has inserted ligatures, but you can replace them
@@ -1458,17 +2560,22 @@ def clean_raw_text(s):
         s=replace_ligature(s)
 
     # for LaTeX produced PDF files, delete lines with an assignment in them
-    if processing_a_PDF_file and delete_lines_with_assignments:
+    if processing_a_PDF_file:
         lines=s.split('\n')
         clean_lines=[]
         for l in lines:
-            if l.count('←') == 1:
+            if delete_lines_with_assignments and l.count('←') == 1:
                 assignment_lines_removed=assignment_lines_removed+1
                 if Verbose_Flag:
                     print(f'deleting line: {l}')
                 continue
-            clean_lines.append(l)
-        s="\n".join(clean_lines)
+            # remove trailing dashes or hyphens on a line otherwise insert a space
+            print(f'{l=}')
+            if l.endswith('-'):
+                clean_lines.append(l[0:-1])
+            else:
+                clean_lines.append(l+' ')
+        s="".join(clean_lines)
     return s
 
 
