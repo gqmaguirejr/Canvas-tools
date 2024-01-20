@@ -1969,7 +1969,10 @@ def add_low_line(txt):
 
 
 def transform_txt(last_txt, txt, delta_y):
-    print(f'transform_txt("{last_txt}", "{txt}", {delta_y})')
+    global Verbose_Flag
+
+    if Verbose_Flag:
+        print(f'transform_txt("{last_txt}", "{txt}", {delta_y})')
 
     # if character followed by a cedilla chracter, swap last_txt and txt
     if txt in ["¸"]:
@@ -2018,7 +2021,8 @@ def transform_txt(last_txt, txt, delta_y):
         print(f'unhandled case in transform_txt({last_txt}, {txt})')
         txt=f'{last_txt}{txt}'
 
-    print(f'{last_txt}, {incoming_txt} -> {txt}')
+    if Verbose_Flag:
+        print(f'{last_txt}, {incoming_txt} -> {txt}')
     return txt
 
 overlap_threshold=0.01
@@ -2044,7 +2048,9 @@ def combine_txt(last_txt, txt):
     return last_txt+txt
             
 def combine_at_same_position(last_txt, txt, delta_y):
-    print(f'combine_at_same_position("{last_txt}", "{txt}", "{delta_y}")')
+    global Verbose_Flag
+    if Verbose_Flag:
+        print(f'combine_at_same_position("{last_txt}", "{txt}", "{delta_y}")')
     return transform_txt(last_txt, txt, delta_y)
 
 def process_file(filename):
@@ -2144,13 +2150,16 @@ def process_file(filename):
                 if last_current_y_offset is None:
                     last_current_y_offset=current_y_offset
                     
-                print(f'{last_current_y_offset=}')
+                if Verbose_Flag:
+                    print(f'{last_current_y_offset=}')
                 delta_y=last_current_y_offset-current_y_offset
                 # (size * 0.1)  was 1.0, but change to 10% of font size
                 if delta_y < 1.0:
-                    print(f'{delta_y=}')
+                    if Verbose_Flag:
+                        print(f'{delta_y=}')
                     if last_current_x_offset is False:
-                        print(f'last_current_x_offset is False, so just get started')
+                        if Verbose_Flag:
+                            print(f'last_current_x_offset is False, so just get started')
                         last_size=size
                         last_current_x_offset=current_x_offset
                         last_current_y_offset=current_y_offset
@@ -2163,9 +2172,11 @@ def process_file(filename):
                     if last_current_x_width is None:
                         last_current_x_width=current_x_width
 
-                    print(f'{last_current_x_width=} and {rough_comparison_with_tolerance(last_current_x_offset, current_x_offset, min(last_current_x_width, current_x_width)/2.0)=}')
+                    if Verbose_Flag:
+                        print(f'{last_current_x_width=} and {rough_comparison_with_tolerance(last_current_x_offset, current_x_offset, min(last_current_x_width, current_x_width)/2.0)=}')
                     delta_x=rough_comparison_with_tolerance(last_current_x_offset, current_x_offset, min(last_current_x_width, current_x_width)/2.0)
-                    print(f'{delta_x}')
+                    if Verbose_Flag:
+                        print(f'{delta_x}')
                     if not last_current_x_width is None and delta_x:
                         new_txt=combine_at_same_position(last_txt, txt, delta_y)
                         new_extracted_data.append([last_size, last_current_x_offset, last_current_y_offset, last_current_x_width, new_txt, last_fontname, last_png])
@@ -2191,7 +2202,8 @@ def process_file(filename):
                         last_fontname=fontname
                         last_png=png
                 else:
-                    print(f'at bottom {delta_y=} was larger than 1.0')
+                    if Verbose_Flag:
+                        print(f'at bottom {delta_y=} was larger than 1.0')
                     # output the previous txt    
                     if not last_txt is None: #  If there previous txt was a combination, there is nothing to output now
                         new_extracted_data.append([last_size, last_current_x_offset, last_current_y_offset, last_current_x_width, last_txt, last_fontname, last_png])
@@ -2225,7 +2237,8 @@ def process_file(filename):
     for item in extracted_data:
         if isinstance(item, list):
             if len(item) == 5:
-                print(f'5 unit item {item}')
+                if Verbose_Flag:
+                    print(f'5 unit item {item}')
                 continue
             if len(item) == 7:
                 size, current_x_offset, current_y_offset, current_x_width, txt, fontname, png = item
@@ -2248,7 +2261,8 @@ def process_file(filename):
                             last_x_offset=current_x_offset+current_x_width
                         last_x_width=current_x_width
                         if not txt is None:
-                            print(f'appending "{txt}"')
+                            if Verbose_Flag:
+                                print(f'appending "{txt}"')
                             current_string=current_string+txt
                         if Verbose_Flag:
                             print("direct insert current_string={}".format(current_string))
@@ -2256,7 +2270,8 @@ def process_file(filename):
                         if Verbose_Flag:
                             print("last_x_offset+last_x_width={}".format(last_x_offset, last_x_width))
                         if not txt is None:
-                            print(f'Inserting: "{txt}"')
+                            if Verbose_Flag:
+                                print(f'Inserting: "{txt}"')
                             current_string=current_string+' '+txt
                         if Verbose_Flag:
                             print("inserted space current_string={}".format(current_string))
@@ -2281,13 +2296,21 @@ def process_file(filename):
                         if Verbose_Flag:
                             print(f'current_string={current_string} and no last_x_offset')
                     if not txt is None:
-                        print(f'Starting a new text string a y={current_y_offset} with "{txt}"')
+                        if Verbose_Flag:
+                            print(f'Starting a new text string a y={current_y_offset} with "{txt}"')
                         current_string=""+txt
-                    first_x_offset=current_x_offset
-                    last_y_offset=current_y_offset
-                    last_x_offset=current_x_offset+current_x_width
-                    last_x_width=current_x_width
-                    last_size=size
+                        first_x_offset=current_x_offset
+                        last_y_offset=current_y_offset
+                        last_x_offset=False
+                        last_x_width=False
+                        last_size=size
+                    else:
+                        first_x_offset=False
+                        last_y_offset=False
+                        last_x_offset=False
+                        last_x_width=False
+                        last_size=False
+
     
     if last_x_offset:
         new_extracted_data.append([size, first_x_offset, current_y_offset, last_x_offset-first_x_offset, current_string, fontname, png])
@@ -2320,7 +2343,8 @@ def process_file(filename):
 
                 # if there is a new page number
                 if last_png is None or not (last_png == png):
-                    print(f'now processing page: {png}')
+                    if Verbose_Flag:
+                        print(f'now processing page: {png}')
                     last_png=png
                     last_size=None
                     last_current_x_offset=None
@@ -2366,8 +2390,11 @@ def process_file(filename):
                             raw_text = raw_text+txt.strip()
                     # if the current txt is zero width there is nothing to do add to the raw_txt, we simply remember tha last text to apply the modification to the next text
                 else:
-                    if current_y_offset is None:
-                        delta_y=current_baseline - current_y_offset
+                    if not current_y_offset is None:
+                        if not current_baseline is None:
+                            delta_y=current_baseline - current_y_offset
+                        else:
+                            delta_y=0.0
                     else:
                         delta_y=0.0
                     if Verbose_Flag:
