@@ -73,6 +73,22 @@ import sys
 import json
 import re
 
+from types import FunctionType
+from inspect import getmembers
+
+def api(obj):
+    return [name for name in dir(obj) if name[0] != '_']
+
+def attrs(obj):
+    disallowed_properties = {
+        name for name, value in getmembers(type(obj)) 
+        if isinstance(value, (property, FunctionType))
+    }
+    return {
+        name: getattr(obj, name) for name in api(obj) 
+        if name not in disallowed_properties and hasattr(obj, name)
+    }
+
 from lxml import html
 
 # Use Python Pandas to create XLSX files
@@ -1077,13 +1093,15 @@ def is_cid_font_identifier(string):
 def show_ltitem_hierarchy(o: Any, depth=0):
     """Show location and text of LTItem and all its descendants"""
     if depth == 0:
-        print('element                        x1  y1  x2  y2   text')
-        print('------------------------------ --- --- --- ---- -----')
+        print('element                        x1  y1  x2  y2   w     h    s    text               fontname')
+        print('------------------------------ --- --- --- ---- ---- ---- ----  -----              --------')
 
     print(
         f'{get_indented_name(o, depth):<30.30s} '
         f'{get_optional_bbox(o)} '
+        f'{get_optional_size(o)} '
         f'{get_optional_text(o)}'
+        f'{get_optional_fontname(o)}'
     )
 
     if isinstance(o, Iterable):
@@ -1102,12 +1120,31 @@ def get_optional_bbox(o: Any) -> str:
         return ''.join(f'{i:<4.0f}' for i in o.bbox)
     return ''
 
+def get_optional_size(o: Any) -> str:
+    """Bounding box of LTItem if available, otherwise empty string"""
+    if hasattr(o, 'bbox'):
+        x1, y1, x2, y2 = o.bbox
+        width=x2-x1
+        height=y2-y1
+        if hasattr(o, 'size'):
+            size=o.size
+            return f'{width:<4.0f} {height:<4.0f} {size:<4.0f}'
+        else:
+            return f'{width:<4.0f} {height:<4.0f}      '
+    return '        '
 
 def get_optional_text(o: Any) -> str:
     """Text of LTItem if available, otherwise empty string"""
     if hasattr(o, 'get_text'):
-        return o.get_text().strip()
+        return f'{o.get_text().strip():<20.20s}'
     return ''
+
+def get_optional_fontname(o: Any) -> str:
+    """Text of LTItem if available, otherwise empty string"""
+    if hasattr(o, 'fontname'):
+        return o.fontname.strip()[7:] # remove the prefix
+    return ''
+
 
 def process_element(o: Any, png):
     global extracted_data
@@ -1120,30 +1157,42 @@ def process_element(o: Any, png):
     font_size=None                # when in doublt, the font_size is None
 
     if isinstance(o, LTTextBoxHorizontal):
-        for text_line in o:
-            if hasattr(text_line, 'bbox'):
-                last_x_offset=text_line.bbox[0]
-                last_y_offset=text_line.bbox[1]
-                last_x_width=text_line.bbox[2]-text_line.bbox[0]
-            if Verbose_Flag:
-                print(f'text_line={text_line}')
-            if hasattr(text_line, 'size'):
-                font_size=text_line.size
-            else:
-                font_size=0
-            if isinstance(text_line, LTAnno):
-                if Verbose_Flag:
-                    print("found an LTAnno")
+        if isinstance(o, Iterable):
+            for i in o:
+                process_element(i, png)
 
-            # if isinstance(text_line, LTChar):
-            #     print("fount an LTChar")
-            # elif isinstance(text_line, LTAnno):
-            #     print("fount an LTAnno")
-            # else:
-            #     for character in text_line:
-            #         if isinstance(character, LTChar):
-            #             font_size=character.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), png])
+        # for text_line in o:
+        #     if hasattr(text_line, 'bbox'):
+        #         last_x_offset=text_line.bbox[0]
+        #         last_y_offset=text_line.bbox[1]
+        #         last_x_width=text_line.bbox[2]-text_line.bbox[0]
+        #     if Verbose_Flag:
+        #         print(f'text_line={text_line}')
+        #     if hasattr(text_line, 'size'):
+        #         font_size=text_line.size
+        #     else:
+        #         font_size=text_line.bbox[3]-text_line.bbox[1]
+        #     if isinstance(text_line, LTAnno):
+        #         if Verbose_Flag:
+        #             print("found an LTAnno")
+
+        #     # if isinstance(text_line, LTChar):
+        #     #     print("fount an LTChar")
+        #     # elif isinstance(text_line, LTAnno):
+        #     #     print("fount an LTAnno")
+        #     # else:
+        #     #     for character in text_line:
+        #     #         if isinstance(character, LTChar):
+        #     #             font_size=character.size
+        # fontname=''
+        # extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), fontname, png])
+
+    elif isinstance(o, LTTextLineHorizontal):
+        if Verbose_Flag:
+            print("element is LTTextLineHorizontal")
+        if isinstance(o, Iterable):
+            for i in o:
+                process_element(i, png)
 
     elif isinstance(o, LTTextContainer):
         if Verbose_Flag:
@@ -1162,6 +1211,7 @@ def process_element(o: Any, png):
                 last_x_offset=text_line.bbox[0]
                 last_y_offset=text_line.bbox[1]
                 last_x_width=text_line.bbox[2]-text_line.bbox[0]
+                font_size=text_line.bbox[3]-text_line.bbox[1]
             # if isinstance(text_line, LTChar):
             #     print("found an LTChar")
             #     font_size=text_line.size
@@ -1171,7 +1221,8 @@ def process_element(o: Any, png):
             #     for character in text_line:
             #         if isinstance(character, LTChar):
             #             font_size=character.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), png])
+        font_name=''
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), font_name, png])
     elif isinstance(o, LTLine): #  a line
         if Verbose_Flag:
             print(f'found an LTLine {o=}')
@@ -1189,21 +1240,27 @@ def process_element(o: Any, png):
             last_x_offset=o.bbox[0]
             last_y_offset=o.bbox[1]
             last_x_width=o.bbox[2]-o.bbox[0]
+        if hasattr(o, 'size'):
             font_size=o.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), png])
+        else:
+            font_size=o.bbox[3]-o.bbox[1]
+        if hasattr(o, 'fontname'):
+            font_name=o.fontname.strip()[7:] # remove the prefix
+        else:
+            font_name=''
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, (o.get_text()), font_name, png])
     elif isinstance(o, LTAnno):
         if Verbose_Flag:
-            print("fount an LTAnno")
-        if hasattr(o, 'bbox'):
-            last_x_offset=o.bbox[0]
-            last_y_offset=o.bbox[1]
-            last_x_width=o.bbox[2]-o.bbox[0]
-            font_size=o.size
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' ', png])
+            print(f'fount an LTAnno: {o} {o.get_text()}')
+        font_name=''
+        extracted_data.append([None, None, None, None, o.get_text(), font_name, png])
     elif isinstance(o, LTCurve): #  a curve
         if Verbose_Flag:
             print("found an LTCurve")
-        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' ', png])
+            if hasattr(o, 'bbox'):
+                font_size=o.bbox[3]-o.bbox[1]
+        font_name=''
+        extracted_data.append([font_size, last_x_offset, last_y_offset, last_x_width, ' ', font_name, png])
     else:
         if Verbose_Flag:
             print(f'unprocessed element: {o}')
@@ -1217,6 +1274,14 @@ def rough_comparison(a, b):
     if abs(a-b) < 0.1:
         return True
     return False
+
+def rough_comparison_with_tolerance(a, b, tolerance):
+    if not a or not b:
+        return False
+    if abs(a-b) < tolerance:
+        return True
+    return False
+
 
 def add_diaeresis(txt):
     c=txt[0]
@@ -1904,7 +1969,17 @@ def add_low_line(txt):
 
 
 def transform_txt(last_txt, txt, delta_y):
-    print(f'transform_txt({last_txt}, {txt}, {delta_y})')
+    print(f'transform_txt("{last_txt}", "{txt}", {delta_y})')
+
+    # if character followed by a cedilla chracter, swap last_txt and txt
+    if txt in ["¸"]:
+        tmp=txt
+        txt=last_txt
+        last_txt=tmp
+    if last_txt is None:
+        return txt
+
+
     incoming_txt=txt
     last_txt=last_txt.strip()
     if last_txt == '¨':         # Diaeresis from "Latin-1 Supplement"
@@ -1914,38 +1989,63 @@ def transform_txt(last_txt, txt, delta_y):
     elif last_txt == '¯':       # Macron from "Latin-1 Supplement"
         txt=add_macron(txt)
     elif last_txt in ["ˊ", "´"]: # Modifier Letter Acute Accent from "Spacing Modifier Letters", Accute Accent from "Latin-1 Supplement"
-        add_acute_accent(txt)
+        txt=add_acute_accent(txt)
     elif last_txt in ["ˋ", "`"]: # Modifier Letter Acute Accent from "Spacing Modifier Letters", Grave Accent from "Basic Latin"
-        add_grave_accent(txt)
+        txt=add_grave_accent(txt)
     elif last_txt in ["ˆ", "^"]: # Modifier Letter Circumflex Accent from "Spacing Modifier Letters", Circumflex Accent from "Basic Latin"
-        add_circumflex_accent(txt)
+        txt=add_circumflex_accent(txt)
     elif last_txt in ["˜", "~"]: # Small Tilde from "Spacing Modifier Letters", Tilde from "Basic Latin"
-        add_tilde(txt)
+        txt=add_tilde(txt)
     elif last_txt in ["˘"]: # Breve from "Spacing Modifier Letters"
-        add_breve(txt)
+        txt=add_breve(txt)
     elif last_txt in ["⁀"]: # Character Tie from "General Punctuation" -- CHECK if this is what the PDF generator uses
-        add_inverted_breve(txt)
+        txt=add_inverted_breve(txt)
     elif last_txt in ["˙"]:     # Dot Above (0x02D9) from "Spacing Modifier Letters"
-        add_dot_above(txt)
+        txt=add_dot_above(txt)
     elif last_txt in ["¸"]: # note that the character cedilla (0xB8) has been used and not the Combining Cedilla (0x0327) from "Combining Diacritical Marks"
-        add_cedilla(txt)
+        txt=add_cedilla(txt)
     elif last_txt in ["ˇ"]: # Caron (0x02c7) from "Spacing Modifier Letters"
-        add_hacek_caron(txt)
+        txt=add_hacek_caron(txt)
     elif last_txt in ["˝"]: # Double Acute Accent (0x02DD) from "Spacing Modifier Letters"
-        add_double_acute_accent(txt)
+        txt=add_double_acute_accent(txt)
     elif last_txt in ["̲"]: # Combining Low Line (0x0332) from "Combining Diacritical Marks"
         print(f'low line case: {last_txt} and {txt} and incoming: {incoming_txt}')
-        add_low_line(txt)
+        txt=add_low_line(txt)
     elif last_txt in ["⃗"]: # Combining Right Arrow Above (0x20D7) from "Combining Diacritical Marks for Symbols"
         print(f'right arrow case: {last_txt} and {txt} and incoming: {incoming_txt}')
-        add_right_arrow_above(txt)
-
+        txt=add_right_arrow_above(txt)
     else:
         print(f'unhandled case in transform_txt({last_txt}, {txt})')
-        txt=f'{last_txt} {txt}'
+        txt=f'{last_txt}{txt}'
 
     print(f'{last_txt}, {incoming_txt} -> {txt}')
     return txt
+
+overlap_threshold=0.01
+
+def overlap_q(last_current_x_offset, last_current_x_width, last_txt, last_png, current_x_offset, current_x_width, txt, png):
+    if not (png == last_png):   # text on different pages cannot overlap
+        return False
+    if last_current_x_width is None:
+        return False
+    if abs(last_current_x_offset-current_x_offset) < overlap_threshold and abs(last_current_x_width-current_x_width) < overlap_threshold and last_txt == txt:
+        return False            #  it is the same txt
+    if last_current_x_offset <= current_x_offset:
+        if last_current_x_offset + last_current_x_width <= current_x_offset: #  case 0a: no overlap
+            return False
+    if last_current_x_offset > current_x_offset:
+        if last_current_x_offset >= current_x_offset + current_x_width: #  case 0b: no overlap
+            return False
+    return True
+
+
+def combine_txt(last_txt, txt):
+    print(f'combine_txt("{last_txt}", "{txt}")')
+    return last_txt+txt
+            
+def combine_at_same_position(last_txt, txt, delta_y):
+    print(f'combine_at_same_position("{last_txt}", "{txt}", "{delta_y}")')
+    return transform_txt(last_txt, txt, delta_y)
 
 def process_file(filename):
     global Verbose_Flag
@@ -1993,9 +2093,125 @@ def process_file(filename):
             
     if Verbose_Flag:
         print("extracted_data: {}".format(extracted_data))
-    # Example of an old cover:
-    # extracted_data: [[10.990000000000009, 'DEGREE PROJECT  COMPUTER SCIENCE AND ENGINEERING,\nSECOND CYCLE, 30 CREDITS\nSTOCKHOLM SWEDEN2021\n, \n'], [10.990000000000009, 'IN \n'], [19.99000000000001, 'title\n'], [16.00999999999999, 'author in caps\n'], [10.989999999999995, 'KTH ROYAL INSTITUTE OF TECHNOLOGY\nSCHOOL OF ELECTRICAL ENGINEERING AND COMPUTER SCIENCE\n'], [10.989999999999995, ' \n']]
+    # Example of overlapping characters:
+    # extracted_data:
+    # overlapping:
+    #   [9.962600000000009, 398.67459937999996, 125.26025559999974, 7.33346985999998, 'R', 1],
+    #   [9.962600000000009, 400.13013523999996, 125.26025559999974, 4.4273794399999815, '¸', 1],
+    #   [None, None, None, None, ' ', 1],
+    # non overlapping:
+    #   [9.962600000000009, 406.0120542799999, 125.26025559999974, 4.981299999999976, 'a', 1],
+    #   [9.962600000000009, 410.9933542799999, 125.26025559999974, 5.5352205600000275, 'b', 1],
+    # [None, None, None, None, ' ', 1],
 
+    #
+    # look for overlapping characters
+    #
+    if Verbose_Flag:
+        print('look for overlapping characters')
+
+    last_current_x_offset=None
+    last_current_y_offset=None
+    last_current_x_width=None
+    last_txt=None
+    last_size=None
+    last_png=None
+    last_fontname=False
+
+    new_extracted_data=list()
+    
+    for idx, item in enumerate(extracted_data):
+        if isinstance(item, list):
+            if len(item) == 7:
+                size, current_x_offset, current_y_offset, current_x_width, txt, fontname, png = item
+                if Verbose_Flag:
+                    if not current_x_offset is None and not current_y_offset is None and not current_x_width is None and  not size is None and not txt is None:
+                        print(f'{current_x_offset:<4.3f},{current_y_offset:<4.3f} {current_x_width:<4.3f} {size:<4.1f} "{txt}" {fontname}')
+                    else:
+                        print(f'{current_x_offset},{current_y_offset} {current_x_width} {size} "{txt}"')
+                if current_x_width is None:
+                    # an LTAnno has been reached, output last_txt
+                    new_extracted_data.append([last_size, last_current_x_offset, last_current_y_offset, last_current_x_width, last_txt, last_fontname, last_png])
+                    last_size=None
+                    last_current_x_offset=None
+                    last_current_y_offset=None
+                    last_current_x_width=None
+                    last_txt=None
+                    last_png=png
+                    last_fontname=fontname
+                    continue
+                
+                if last_current_y_offset is None:
+                    last_current_y_offset=current_y_offset
+                    
+                print(f'{last_current_y_offset=}')
+                delta_y=last_current_y_offset-current_y_offset
+                # (size * 0.1)  was 1.0, but change to 10% of font size
+                if delta_y < 1.0:
+                    print(f'{delta_y=}')
+                    if last_current_x_offset is False:
+                        print(f'last_current_x_offset is False, so just get started')
+                        last_size=size
+                        last_current_x_offset=current_x_offset
+                        last_current_y_offset=current_y_offset
+                        last_current_x_width=current_x_width
+                        last_txt=txt
+                        last_png=png
+                        last_fontname=fontname
+                        continue
+
+                    if last_current_x_width is None:
+                        last_current_x_width=current_x_width
+
+                    print(f'{last_current_x_width=} and {rough_comparison_with_tolerance(last_current_x_offset, current_x_offset, min(last_current_x_width, current_x_width)/2.0)=}')
+                    delta_x=rough_comparison_with_tolerance(last_current_x_offset, current_x_offset, min(last_current_x_width, current_x_width)/2.0)
+                    print(f'{delta_x}')
+                    if not last_current_x_width is None and delta_x:
+                        new_txt=combine_at_same_position(last_txt, txt, delta_y)
+                        new_extracted_data.append([last_size, last_current_x_offset, last_current_y_offset, last_current_x_width, new_txt, last_fontname, last_png])
+                        last_size=size
+                        last_current_x_offset=current_x_offset
+                        last_current_y_offset=current_y_offset
+                        last_current_x_width=current_x_width
+                        last_txt=None # there will be nothing to output on the next character, as it has already been outputs
+                        last_png=png
+                        last_fontname=fontname
+                        continue
+                    
+                    else:
+                        # output the previous txt    
+                        if not last_txt is None: #  If there previous txt was a combination, there is nothing to output now
+                            new_extracted_data.append([last_size, last_current_x_offset, last_current_y_offset, last_current_x_width, last_txt, last_fontname, last_png])
+                            #extracted_data.append([size, current_x_offset, current_y_offset, current_x_width, txt, fontname, png])
+                        last_size=size
+                        last_current_x_offset=current_x_offset
+                        last_current_y_offset=current_y_offset
+                        last_current_x_width=current_x_width
+                        last_txt=txt
+                        last_fontname=fontname
+                        last_png=png
+                else:
+                    print(f'at bottom {delta_y=} was larger than 1.0')
+                    # output the previous txt    
+                    if not last_txt is None: #  If there previous txt was a combination, there is nothing to output now
+                        new_extracted_data.append([last_size, last_current_x_offset, last_current_y_offset, last_current_x_width, last_txt, last_fontname, last_png])
+                        #extracted_data.append([size, current_x_offset, current_y_offset, current_x_width, txt, fontname, png])
+                    last_size=size
+                    last_current_x_offset=current_x_offset
+                    last_current_y_offset=current_y_offset
+                    last_current_x_width=current_x_width
+                    last_txt=txt
+                    last_png=png
+                    last_fontname=fontname
+
+    if Verbose_Flag:
+        print("New_extracted_data after dealing with overlapping characters: {}".format(new_extracted_data))
+
+    extracted_data = new_extracted_data
+
+    #
+    # collect individual characters and build into string - adding spaces as necessary
+    #
     old_size=-1
     size=None
     current_string=''
@@ -2006,61 +2222,75 @@ def process_file(filename):
     last_size=None
     new_extracted_data=[]
 
-    # collect individual characters and build into string - adding spaces as necessary
     for item in extracted_data:
         if isinstance(item, list):
             if len(item) == 5:
                 print(f'5 unit item {item}')
                 continue
-            if len(item) == 6:
-                size, current_x_offset, current_y_offset, current_x_width, txt, png = item
+            if len(item) == 7:
+                size, current_x_offset, current_y_offset, current_x_width, txt, fontname, png = item
                 if Verbose_Flag:
-                    print(f'{current_x_offset},{current_y_offset} {size} {txt}')
+                    print(f'{current_x_offset:<4.3f},{current_y_offset:<4.3f} {size:<4.1f} "{txt}"')
                 if not last_size:
                     last_size=size
                 if not first_x_offset:
                     first_x_offset=current_x_offset
                 if not last_y_offset:
                     last_y_offset=current_y_offset
-                if rough_comparison(last_y_offset, current_y_offset):
+                if rough_comparison_with_tolerance(last_y_offset, current_y_offset, size):
                     if Verbose_Flag:
-                        print(f'{txt} {current_x_offset} {last_x_offset} {last_x_width}')
+                        print(f'on same line "{txt}" {current_x_offset:<4.3f} {last_x_offset} {last_x_width} {last_x_offset}')
                     if not last_x_offset:
-                        last_x_offset=current_x_offset+current_x_width
+                        if current_x_width is None or current_x_offset is None:
+                            if Verbose_Flag:
+                                print('processing an LTAnno')
+                        else:
+                            last_x_offset=current_x_offset+current_x_width
                         last_x_width=current_x_width
-                        current_string=current_string+txt
+                        if not txt is None:
+                            print(f'appending "{txt}"')
+                            current_string=current_string+txt
                         if Verbose_Flag:
                             print("direct insert current_string={}".format(current_string))
-                    elif current_x_offset > (last_x_offset+0.25*last_x_width): # just a little faster than adjact characters
+                    elif not current_x_offset  is None and current_x_offset > (last_x_offset+0.250*size): # just a little faster than adjact characters
                         if Verbose_Flag:
                             print("last_x_offset+last_x_width={}".format(last_x_offset, last_x_width))
-                        current_string=current_string+' '+txt
+                        if not txt is None:
+                            print(f'Inserting: "{txt}"')
+                            current_string=current_string+' '+txt
                         if Verbose_Flag:
                             print("inserted space current_string={}".format(current_string))
-                        last_x_offset=current_x_offset+current_x_width
+                        if not current_x_width is None:
+                            last_x_offset=current_x_offset+current_x_width
+                        else:
+                            last_x_offset=current_x_offset
                         last_x_width=current_x_width
                     else:
-                        current_string=current_string+txt
+                        if not txt is None:
+                            current_string=current_string+txt
                         if Verbose_Flag:
                             print("second direct insert current_string={}".format(current_string))
-                        last_x_offset=current_x_offset+current_x_width
+                        if not current_x_width is None:
+                            last_x_offset=current_x_offset+current_x_width
                         last_x_width=current_x_width
                 else:
                     if last_x_offset:
-                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, last_x_offset-first_x_offset, current_string+' ', png])
+                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, last_x_offset-first_x_offset, current_string+' ', fontname, png])
                     else:
-                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, 0, current_string+' ', png])
+                        new_extracted_data.append([last_size, first_x_offset, last_y_offset, 0.0, current_string+' ', fontname, png])
                         if Verbose_Flag:
                             print(f'current_string={current_string} and no last_x_offset')
-                    current_string=""+txt
+                    if not txt is None:
+                        print(f'Starting a new text string a y={current_y_offset} with "{txt}"')
+                        current_string=""+txt
                     first_x_offset=current_x_offset
                     last_y_offset=current_y_offset
-                    last_x_offset=None
-                    last_x_width=None
-                    last_size=None
+                    last_x_offset=current_x_offset+current_x_width
+                    last_x_width=current_x_width
+                    last_size=size
     
     if last_x_offset:
-        new_extracted_data.append([size, first_x_offset, current_y_offset, last_x_offset-first_x_offset, current_string, png])
+        new_extracted_data.append([size, first_x_offset, current_y_offset, last_x_offset-first_x_offset, current_string, fontname, png])
     else:
         if Verbose_Flag:
             print(f'current_string={current_string} and no last_x_offset')
@@ -2070,62 +2300,101 @@ def process_file(filename):
 
     extracted_data=new_extracted_data
 
-    last_size=False
-    last_current_x_offset=False
-    last_current_y_offset=False
-    last_current_x_width=-1     # use -1 as a flag, since Faöse == 0
-    last_txt=False
-    last_png=False
-    current_baseline=False
+    last_size=None
+    last_current_x_offset=None
+    last_current_y_offset=None
+    last_current_x_width=None
+    last_txt=None
+    last_png=None
+    current_baseline=None
     
+    #
+    # Collect the strings and added it to raw_text
+    #
+
     new_extracted_data=list()
     for idx, item in enumerate(extracted_data):
         if isinstance(item, list):
-            if len(item) == 6:
-                size, current_x_offset, current_y_offset, current_x_width, txt, png = item
+            if len(item) == 7:
+                size, current_x_offset, current_y_offset, current_x_width, txt, fontname, png = item
 
                 # if there is a new page number
-                if not last_png or not (last_png == png):
+                if last_png is None or not (last_png == png):
                     print(f'now processing page: {png}')
                     last_png=png
-                    last_size=False
-                    last_current_x_offset=False
-                    last_current_y_offset=False
-                    last_current_x_width= -1
-                    last_txt=False
+                    last_size=None
+                    last_current_x_offset=None
+                    last_current_y_offset=None
+                    last_current_x_width=None
+                    last_txt=None
 
 
-                if Verbose_Flag or True:
-                    print(f'{idx}: {current_x_offset},{current_y_offset} {size} {current_x_width} {txt} {png}')
+                if Verbose_Flag:
+                    print(f'{idx}: last: {last_current_x_offset},{last_current_y_offset} {last_size} {last_current_x_width} "{last_txt}"')
+                    print(f'{raw_text=}')
+                    print(f'{idx}: {current_x_offset:<4.3f},{current_y_offset:<4.3f} {size:<4.1f} {current_x_width:<4.3f} "{txt}" {png}')
 
                 if current_x_width != 0:
-                    if last_current_x_width == 0:
-                        print(f'{current_x_width=}')
-                        delta_y=last_current_y_offset - current_y_offset
-                        print(f'after modified case: {delta_y} pt')
+                    # if this is the first line on a page, just add the txt
+                    if last_current_y_offset is None:
+                        last_current_y_offset=current_y_offset
+                        current_baseline=current_y_offset
 
-                        raw_text = raw_text+transform_txt(last_txt, txt.strip(), delta_y)
+                    if last_current_x_offset is None:
+                        if Verbose_Flag:
+                            print(f'first line on page: {txt}')
+                        raw_text = raw_text+txt.strip()
+                        last_current_x_offset=current_x_offset
+                    elif last_current_x_width == 0.0:
+                        if Verbose_Flag:
+                            print(f'{current_x_width=}')
+                        delta_y=last_current_y_offset - current_y_offset
+                        if Verbose_Flag:
+                            print(f'after modified case: {delta_y} pt')
+
+                        raw_text = raw_text+txt.strip()
                     else:
                         delta_y=last_current_y_offset - current_y_offset
-                        print(f'else case: {delta_y} pt')
-                        if abs(delta_y) > size:
+                        if Verbose_Flag:
+                            print(f'else case2: {delta_y} pt')
+                        if size is None:
+                            raw_text = raw_text+txt.strip()
+                        elif abs(delta_y) > 0.8 * size: # GQM try to be more agreesive in finding new line opportunities
                             raw_text = raw_text+'\n'+ txt.strip()
                             current_baseline=current_y_offset
                         else:
-                            raw_text = raw_text+' '+ txt.strip()
+                            raw_text = raw_text+txt.strip()
                     # if the current txt is zero width there is nothing to do add to the raw_txt, we simply remember tha last text to apply the modification to the next text
                 else:
-                    delta_y=last_current_y_offset - current_y_offset
-                    print(f'modified case: {txt} {delta_y} pt')
-                    if abs(delta_y) > size:
-                        raw_text = raw_text+'\n'+ txt.strip()
-                        current_baseline=current_y_offset
+                    if current_y_offset is None:
+                        delta_y=current_baseline - current_y_offset
                     else:
-                        raw_text = raw_text+' '+ txt.strip()
+                        delta_y=0.0
+                    if Verbose_Flag:
+                        print(f'modified case: "{txt}" {delta_y} pt')
+                    if not size is None:
+                        if size > 0:
+                            if abs(delta_y) > 0.8 * size:
+                                if Verbose_Flag:
+                                    print(f'Starting a new line of text')
+                                raw_text = raw_text+'\n'+ txt.strip()
+                                current_x_offset=None
+                                current_baseline=current_y_offset
+                            else:
+                                raw_text = raw_text+' '+ txt.strip()
+                        else:
+                            # Note that if size is zero we do not add anything
+                            if Verbose_Flag:
+                                print(f'nothing to add to the raw text - as the current txt is "{txt}"')
+
+                if current_x_offset is None:
+                    last_current_x_offset=current_x_width
+                else:
+                    last_current_x_offset=current_x_offset+current_x_width
 
                 last_current_y_offset=current_y_offset
                 last_current_x_width=current_x_width
-                last_txt=txt
+                last_txt=txt.strip()
                 last_size=size
 
 
@@ -2570,12 +2839,13 @@ def clean_raw_text(s):
                     print(f'deleting line: {l}')
                 continue
             # remove trailing dashes or hyphens on a line otherwise insert a space
-            print(f'{l=}')
+            if Verbose_Flag:
+                print(f'{l=}')
             if l.endswith('-'):
                 clean_lines.append(l[0:-1])
             else:
                 clean_lines.append(l+' ')
-        s="".join(clean_lines)
+        s="\n".join(clean_lines)
     return s
 
 
