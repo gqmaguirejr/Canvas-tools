@@ -846,7 +846,7 @@ def is_YYYY_MM_DD(s):
         if int(d[1]) < 13:
             mm=d[1]
         else:
-            print(f'problem in month number in {string}')
+            print(f'problem in month number in {s}')
             return False
     else:
         return False
@@ -855,7 +855,7 @@ def is_YYYY_MM_DD(s):
         if int(d[2]) < 32:
             dd=d[2]
         else:
-            print(f'problem in day number in {string}')
+            print(f'problem in day number in {s}')
     else:
         return False
     #
