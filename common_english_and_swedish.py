@@ -32884,6 +32884,14 @@ common_swedish_words={
     'spektral': {'A2': 'Adjective'},
     'spektrala': {'A2': 'Adjective'},
     'spektraldata': {'C1': 'Noun Phrase'},
+    'delmäng': {'A2': 'Noun'},
+    'förändringar': {'A1': 'Noun'},
+    'muddringssystem': {'B1': 'Noun'},
+    'programmeringsuppgift': {'A1': 'Noun Phrase'},
+    'programmeringsträning': {'A1': 'Noun Phrase'},
+    'simulerat flockbeteende': {'C1': 'Noun Phrase'},
+    'solcellsanläggning': {'B1': 'Noun'},
+    'programmeringsupplæring': {'A2': 'Noun Phrase'},
 
 }
 
@@ -35383,6 +35391,7 @@ company_and_product_names=[
     'Stitcher',
     'Stokab',
     'Storstockholms',
+    'Stratego',
     'StreamingBringing',
     'Streamingkollen',
     'Sudoku',
@@ -35602,13 +35611,12 @@ company_and_product_names=[
     'wordnet',
     'youtube',
 
-
     # font names
     'Arial',
     'Helvetica',
 
     # GQM-for-merger
-    'Stratego',
+
 ]
 
 common_programming_languages=[  # and libraries, programs
@@ -38174,8 +38182,6 @@ common_italian_words=[
 
 miss_spelled_words=[
     'utångsvillkorenär',
-
-    # GQM-for-merger    
     'Bildkvalitetsbedömingsalgoritm',
     'Jämforande',
     'Koldioixutsläpp',
@@ -38194,7 +38200,13 @@ miss_spelled_words=[
     'maskinginlärningsmodeller',
     'medicinisk',
     'minnesanvänding',
-    
+    'mun-till-mun-marknadsförings',
+    'sambarbete',
+    'sammarbete',
+    'säkerhetbedömning',
+    'tillämplingsbar',
+
+    # GQM-for-merger    
 ]
 
 
