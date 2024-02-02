@@ -44943,6 +44943,12 @@ def main():
         level_common_swedish_words=collect_CEFR_levels_from_dict(common_swedish_words, 'common_swedish_words')
         level_common_swedish_technical_words=collect_CEFR_levels_from_dict(common_swedish_technical_words, 'common_swedish_technical_words')
 
+        level_KTH_ordbok_English_with_CEFR=collect_CEFR_levels_from_dict(KTH_ordbok_English_with_CEFR, 'KTH_ordbok_English_with_CEFR')
+        level_KTH_ordbok_Swedish_with_CEFR=collect_CEFR_levels_from_dict(KTH_ordbok_Swedish_with_CEFR, 'KTH_ordbok_Swedish_with_CEFR')
+        if Verbose_Flag:
+            print(f'{level_KTH_ordbok_English_with_CEFR=}')
+            print(f'{level_KTH_ordbok_Swedish_with_CEFR=}')
+
         #################################################################################
         # process the input unique words from the JSON file
         #################################################################################
@@ -45347,6 +45353,12 @@ def main():
         level_common_swedish_technical_words_counts=dict()
         common_swedish_technical_words_count=0
 
+        level_KTH_ordbok_Swedish_with_CEFR_counts=dict()
+        count_KTH_ordbok_Swedish_with_CEFR=0
+
+        level_KTH_ordbok_English_with_CEFR_counts=dict()
+        count_KTH_ordbok_English_with_CEFR=0
+
         #
         # Process all of the unique words and see which CEFR level they fall into for each of the sources
         #
@@ -45503,6 +45515,46 @@ def main():
                         level_common_swedish_technical_words_counts.update({cefr_levels[0]: level_common_swedish_technical_words_counts.get(cefr_levels[0], 0) +1})
                     else:
                         print(f'warning in computing level_common_swedish_technical_words_counts: {word=} {cefr_levels=}')
+
+            if word in KTH_ordbok_Swedish_with_CEFR or word.lower() in KTH_ordbok_Swedish_with_CEFR:
+                count_KTH_ordbok_Swedish_with_CEFR=count_KTH_ordbok_Swedish_with_CEFR+1
+                cefr_levels=level_KTH_ordbok_Swedish_with_CEFR.get(word, False)
+                if not cefr_levels:
+                    cefr_levels=level_KTH_ordbok_Swedish_with_CEFR.get(word.title(), False)
+                if not cefr_levels:
+                    cefr_levels=level_KTH_ordbok_Swedish_with_CEFR.get(word.lower(), False)
+                if not cefr_levels:
+                    cefr_levels=level_KTH_ordbok_Swedish_with_CEFR.get(word.upper(), False)
+
+                if Verbose_Flag:
+                    print(f'{word=} {cefr_levels=}')
+                if cefr_levels:
+                    if isinstance(cefr_levels, str):
+                        level_KTH_ordbok_Swedish_with_CEFR_counts.update({cefr_levels: level_KTH_ordbok_Swedish_with_CEFR_counts.get(cefr_levels, 0) +1})
+                    elif isinstance(cefr_levels, list) and len(cefr_levels) >= 1:
+                        level_KTH_ordbok_Swedish_with_CEFR_counts.update({cefr_levels[0]: level_KTH_ordbok_Swedish_with_CEFR_counts.get(cefr_levels[0], 0) +1})
+                    else:
+                         print(f'warning in computing KTH_ordbok_Swedish_with_CEFR_count: {word=} {cefr_levels=}')
+
+            if word in KTH_ordbok_English_with_CEFR or word.lower() in KTH_ordbok_English_with_CEFR:
+                count_KTH_ordbok_English_with_CEFR=count_KTH_ordbok_English_with_CEFR+1
+                cefr_levels=level_KTH_ordbok_English_with_CEFR.get(word, False)
+                if not cefr_levels:
+                    cefr_levels=level_KTH_ordbok_English_with_CEFR.get(word.title(), False)
+                if not cefr_levels:
+                    cefr_levels=level_KTH_ordbok_English_with_CEFR.get(word.lower(), False)
+                if not cefr_levels:
+                    cefr_levels=level_KTH_ordbok_English_with_CEFR.get(word.upper(), False)
+
+                if Verbose_Flag:
+                    print(f'{word=} {cefr_levels=}')
+                if cefr_levels:
+                    if isinstance(cefr_levels, str):
+                        level_KTH_ordbok_English_with_CEFR_counts.update({cefr_levels: level_KTH_ordbok_English_with_CEFR_counts.get(cefr_levels, 0) +1})
+                    elif isinstance(cefr_levels, list) and len(cefr_levels) >= 1:
+                        level_KTH_ordbok_English_with_CEFR_counts.update({cefr_levels[0]: level_KTH_ordbok_English_with_CEFR_counts.get(cefr_levels[0], 0) +1})
+                    else:
+                         print(f'warning in computing KTH_ordbok_English_with_CEFR_count: {word=} {cefr_levels=}')
 
 
             if word in common_french_words:
@@ -45680,8 +45732,6 @@ def main():
         if len(unused_top_100_English_words) > 0:
             print(f'top 100 words in English that were {bold_text("not")} used: {unused_top_100_English_words}')
 
-
-
         print(f'thousand most common words in_English: total: {thousand_most_common_words_in_English_count}  ({(thousand_most_common_words_in_English_count/len(thousand_most_common_words_in_English))*100:.2f}%)')
         usage_sorted=dict(sorted(level_thousand_most_common_words_in_English_counts.items(), key=lambda x:x[0]))
         print(f'\t{usage_sorted}')
@@ -45711,6 +45761,26 @@ def main():
         usage_sorted['Source']='common Swedish technical words'
         usage_sorted['total']=common_swedish_technical_words_count
         usage_sorted['percentage']=(common_swedish_technical_words_count/len(common_swedish_technical_words))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        print(f'KTH_ordbok_Swedish_with_CEFR: total: {count_KTH_ordbok_Swedish_with_CEFR}  ({(count_KTH_ordbok_Swedish_with_CEFR/len(KTH_ordbok_Swedish_with_CEFR))*100:.2f}%)')
+        #print(f'{level_KTH_ordbok_Swedish_with_CEFR_counts=}')
+        usage_sorted=dict(sorted(level_KTH_ordbok_Swedish_with_CEFR_counts.items(), key=lambda x:x[0]))
+        print(f'\t{usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='KTH_ordbok_Swedish'
+        usage_sorted['total']=count_KTH_ordbok_Swedish_with_CEFR
+        usage_sorted['percentage']=(count_KTH_ordbok_Swedish_with_CEFR/len(KTH_ordbok_Swedish_with_CEFR))*100.0
+        stats_df.loc[len(stats_df)] = usage_sorted
+
+        print(f'KTH_ordbok_English_with_CEFR: total: {count_KTH_ordbok_English_with_CEFR}  ({(count_KTH_ordbok_English_with_CEFR/len(KTH_ordbok_English_with_CEFR))*100:.2f}%)')
+        usage_sorted=dict(sorted(level_KTH_ordbok_English_with_CEFR_counts.items(), key=lambda x:x[0]))
+        #print(f'{level_KTH_ordbok_English_with_CEFR_counts=}')
+        print(f'\t{usage_sorted}')
+        usage_sorted['Input']=f'course_id {course_id}'
+        usage_sorted['Source']='KTH_ordbok_English'
+        usage_sorted['total']=count_KTH_ordbok_English_with_CEFR
+        usage_sorted['percentage']=(count_KTH_ordbok_English_with_CEFR/len(KTH_ordbok_English_with_CEFR))*100.0
         stats_df.loc[len(stats_df)] = usage_sorted
 
         common_french_words_count=len(common_french_words_set)
@@ -45862,6 +45932,8 @@ def main():
                 'American 5000 plurals': level_5000_plural,
                 'thousand_most_common_words_in_English': level_thousand_most_common_words_in_English,
                 'top_100_English_words': level_top_100_English_words,
+                'KTH_ordbok_Swedish': level_KTH_ordbok_Swedish_with_CEFR,
+                'KTH_ordbok_English': level_KTH_ordbok_English_with_CEFR,
                 }
 
             source_lists={
