@@ -380,6 +380,47 @@ def convert_Kelly_list_to_dict(kelly_list):
         print(f'list of {len(kelly_list)} converted to a dict with {len(words_kelly_swedish_dict)} entries')
     return words_kelly_swedish_dict
 
+# return a tripple of swedish_words, english_words, dataframe
+def read_KTH_svensk_engelska_ordbok_file(filenamme, sheetname):
+    global Verbose_Flag
+
+    df = pd.read_excel(open(filenamme, 'rb'), sheet_name=sheetname)
+
+    if Verbose_Flag:
+        print(f'{df.columns=}')
+    if not 'Svensk term' in df.columns or\
+       not 'Engelsk översättning' in df.columns or\
+       not 'Synonymer' in df.columns:
+        print('Unexpected missisng column(s) in spreadsheet')
+        return [swedish_words, english_words, df]
+
+    # use a set as each entry should be unique
+    swedish_words = set()
+    english_words = set()
+    english_synonyms = set()
+
+    for index, row in  df.iterrows():
+        swedish_word=row['Svensk term'] # note that these strings may include spaces
+        english_word=row['Engelsk översättning'] # note that these strings may include spaces
+        english_synonym=row['Synonymer'] # note that these strings may include spaces
+        if Verbose_Flag:
+            print(f"{index=} {swedish_word=} {english_word=} {english_synonym=}")
+        if isinstance(swedish_word, str):
+            swedish_words.add(swedish_word)
+        if isinstance(english_word, str):
+            english_words.add(english_word)
+            
+
+
+    if Verbose_Flag:
+        print(f'{swedish_words=} {english_words=}')
+
+    # words_dict=convert_Kelly_list_to_dict(words)
+    # print(f'{len(words_dict):>{Numeric_field_width}} entries in {sheetname}')
+    print(f'{len(swedish_words):>{Numeric_field_width}} Swedish entries in KTH svensk-engelska ordbok')
+    return [swedish_words, english_words, df]
+
+
 
 def in_dictionary(s, words):
     global Verbose_Flag
@@ -462,6 +503,34 @@ def main():
 
     kelly_swedish_file=directory_location+"Swedish-Kelly_M3_CEFR.xlsx"
     words_kelly_swedish, plurals_kelly_swedish, df_kelly_swedish=read_Kelly_data(kelly_swedish_file, 'Swedish_M3_CEFR')
+ 
+    # KTH:s svensk-engelska ordbok
+    KTH_svensk_engelska_ordbok_file=directory_location+"kth-ordboken-version-2023-07-01.xlsx"
+    words_KTH_swedish, words_KTH_english, df_KTH_svensk_engelska_ordbok=read_KTH_svensk_engelska_ordbok_file(KTH_svensk_engelska_ordbok_file, 'Sheet1')
+
+    # look for the levels for the KTH words
+    for w in words_KTH_swedish:
+        if w.endswith('(amerikansk engelska)'):
+            w=w.replace('(amerikansk engelska)', '')
+        w=w.strip()
+        if w not in common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR:
+            levels=common_english_and_swedish.common_swedish_words.get(w, False)
+            if levels:
+                print(f"'{w}': {levels},")
+            else:
+                print(f'missing Swedish: {w}')
+
+    for w in words_KTH_english:
+        if w.endswith('(amerikansk engelska)'):
+            w=w.replace('(amerikansk engelska)', '')
+        w=w.strip()
+        if w not in common_english_and_swedish.KTH_ordbok_English_with_CEFR:
+            levels=common_english_and_swedish.common_English_words.get(w, False)
+            if levels:
+                print(f"'{w}': {levels},")
+            else:
+                print(f'missing English: {w}')
+    
 
     print(f'{len(common_english_and_swedish.common_English_words):>{Numeric_field_width}} words in common English words')
 
@@ -469,8 +538,10 @@ def main():
 
     print(f'{len(common_english_and_swedish.common_swedish_technical_words):>{Numeric_field_width}} words in common Swedish technical words')
 
-    #print(f'{len(common_english_and_swedish.common_french_words):>{Numeric_field_width}} words in common French words')
+    print(f'{len(common_english_and_swedish.common_french_words):>{Numeric_field_width}} words in common French words')
     
+    print(f'{len(common_english_and_swedish.common_spanish_words):>{Numeric_field_width}} words in common Spanish words')
+
     #print(f'{len(common_english_and_swedish.common_latin_words):>{Numeric_field_width}} words in common Latin words')
         
     print(f'{len(common_english_and_swedish.common_german_words):>{Numeric_field_width}} words in common German words')
@@ -627,6 +698,22 @@ def main():
             continue
 
         if w.lower() in common_english_and_swedish.common_german_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.common_french_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w.lower() in common_english_and_swedish.common_french_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.common_spanish_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w.lower() in common_english_and_swedish.common_spanish_words:
             number_skipped=number_skipped+1
             continue
 

@@ -2243,7 +2243,8 @@ def process_file(filename):
             if len(item) == 7:
                 size, current_x_offset, current_y_offset, current_x_width, txt, fontname, png = item
                 if Verbose_Flag:
-                    print(f'{current_x_offset:<4.3f},{current_y_offset:<4.3f} {size:<4.1f} "{txt}"')
+                    if not current_x_offset is None and not current_y_offset is None and not size is None:
+                        print(f'{current_x_offset:<4.3f},{current_y_offset:<4.3f} {size:<4.1f} "{txt}"')
                 if not last_size:
                     last_size=size
                 if not first_x_offset:
@@ -2356,7 +2357,8 @@ def process_file(filename):
                 if Verbose_Flag:
                     print(f'{idx}: last: {last_current_x_offset},{last_current_y_offset} {last_size} {last_current_x_width} "{last_txt}"')
                     print(f'{raw_text=}')
-                    print(f'{idx}: {current_x_offset:<4.3f},{current_y_offset:<4.3f} {size:<4.1f} {current_x_width:<4.3f} "{txt}" {png}')
+                    #print(f'{idx}: {current_x_offset:<4.3f},{current_y_offset:<4.3f} {size:<4.1f} {current_x_width:<4.3f} "{txt}" {png}')
+                    print(f'{idx}: {current_x_offset},{current_y_offset} {size} {current_x_width} "{txt}" {png}')
 
                 if current_x_width != 0:
                     # if this is the first line on a page, just add the txt
