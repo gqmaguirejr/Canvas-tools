@@ -514,6 +514,9 @@ def main():
             w=w.replace('(amerikansk engelska)', '')
         w=w.strip()
         if w not in common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR:
+            # skip acronyms
+            if w in common_english_and_swedish.well_known_acronyms:
+                continue
             levels=common_english_and_swedish.common_swedish_words.get(w, False)
             if levels:
                 print(f"'{w}': {levels},")
@@ -525,6 +528,9 @@ def main():
             w=w.replace('(amerikansk engelska)', '')
         w=w.strip()
         if w not in common_english_and_swedish.KTH_ordbok_English_with_CEFR:
+            # skip acronyms
+            if w in common_english_and_swedish.well_known_acronyms:
+                continue
             levels=common_english_and_swedish.common_English_words.get(w, False)
             if levels:
                 print(f"'{w}': {levels},")
