@@ -40267,16 +40267,39 @@ common_swedish_technical_words={
 }
 
 common_french_words=[
+    "d'Electricité",
+    'Appliqué',
+    'Economie',
+    'Electriques',
+    'Etudes',
+    'Fonctionnement'
     'Goéland',
     'Montrealais',
     'Montréalais',
     'R´eseau',
     'Réseau',
     'Réseaux',
+    'Soufflé',
+    'Système',
+    'Systèmes',
     'attaques',
+    'avancé',
+    'compensation'
+    'composent',
+    'conformité',
+    'contrôle'
+    'croisière',
     'crêpes', #    'crêpes': {'B2': 'noun'},
+    'de',
+    'des'
     'ecole',
+    'et',
     'informatiques',
+    'la',
+    'le',
+    'montage',
+    'nouveau',
+    'pour',
     'raison',
     'reseaux',
     'réponse',

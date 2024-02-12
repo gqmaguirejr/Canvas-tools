@@ -6,6 +6,9 @@
 # 
 # The program opens the file and filters the words aginst a set of dictionaries.
 #
+# Examples:
+# ./look_for_more_words.py /tmp/unique_words-abstracts-English.json
+#
 # 2024-01-20
 #
 # G. Q. Maguire Jr.
@@ -63,7 +66,162 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'A/BSplit',
+    'A/g',
+    'A/m',
+    'A/mm',
+    'a/b',
+    'a/g/n',
+    '$µ$-calculus',
+    '2-Amino-5-diethylaminopentane',
+    '3-hexafluoro-2-propanol',
+    'p+',
+    'p+-poly',
+    'p-InP',
+    'p-i-n',
+    'p-n',
+    'p-p',
+    'p-type',
+    'poly-InP',
+    'n+-poly',
+    'n+-poly-Si',
+    'n+-poly-Si/TiN',
+    'n+/n+/n-/p+',
+    'n-InP',
+    'dv/dt',
+    'dI/dt',
+    'dV/dt',
+    'YBa2Cu3O7',
+    'YCbCr',
+    'W/Kg', # unit
+    'TlBaCaCuO',
+    'Ti',
+    'TiCl4',
+    'TiO2/graphene',
+    'Ta/Al/Ta',
+    'Ta2O5',
+    'Status]',
+    'Si/SiO2',
+    'Si0',
+    'Si2H6',
+    'Si3H8',
+    'SiC/Si',
+    'SiC/SiO2',
+    'SiFe',
+    'SiH4',
+    'SiO2',
+    'SiO2/Al2O3',
+    'SiO2/HfO2',
+    'SiO2/SiC',
+    'SiO2/”Al2O3+TiO2',
+    'SiO2',
+    'SiO2–',
+    'SiOx',
+    'Se2',
+    'Zn',
+    'Zu104',
+    'PbZrxTi1-xO3',
+    'ZnO-Ts',
+    'Si-Al2O3',
+    'SiO2/a-Si/SiO2',
+    'Si-Si',
+    'Ni/Cu',
+    'Ni/SiC/Si',
+    'Neodymium',
+    'Nd',
+    'N2O/SiH4',
+    'NaClO',
+    'Na+',
+    'Mg2+',
+    'MdCN',
+    'N-dimethyl',
+    'L*a*b',
+    'Log4J',
+    'Log4jJ',
+    'Isoflurane',
+    'Ir/IrOx',
+    'HxM',
+    'III-V/Si',
+    'III-nitride',
+    'In2O3',
+    'InAs/InP',
+    'InGaAs',
+    'InGaAsP',
+    'InGaN',
+    'MgxZn1-xO',
+    'InP',
+    'InSb/InAs',
+    'Hz/cm2',
+    'Hz]',
+    'Ge/oxide',
+    'GeH4',
+    'GeSn',
+    'GaAs',
+    'GaInP',
+    'Hf',
+    'Hf3Al2',
+    'Gain-128/80',
+    'H/c-Si',
+    'G-ω',
+    'H∞-norm',
+    'GHz-17',
+    'Gm-C',
+    'NdFeB',
+    'Fe-14Cr-2W-0',
+    'Eb/N0',
+    'Eb/No',
+    'EricssonÃ¢ÂÂs',
+    'Er2O3',
+    'Ethylenediamine',
+    'Er3+-ions',
+    'Deoxyribonucleic',
+    'Desflurane',
+    'Design-1',
+    'Design-2',
+    'Dit=3-4×1012', # equation see diva2:504573
+    'CH4/H2/Ar',
+    'CHF3/Ar',
+    'Ca2+',
+    'Cl',
+    'Cl2',
+    'Co4Sb12',
+    'Cr',
+    'Cu-I',
+    'Cu3p',
+    'Cu-nanoparticle-based',
+    'Cu/SiC/Si',
+    'Cerium',
+    'Californium',
+    'Ba2Cu3O7',
+    'Bi0',
+    'Beryllium',
+    'BiAlO3',
+    'BiTiFGAN',
+    'Boron',
+    '#BlackLivesMatter',
+    '#Nike',
+    '#metoo',
+    'Argon',
+    'Au-S',
+    'Au@SiO2',
+    'BaxSr1-xCoyFe1-yO3−δ',
+    'Anal-ysis',
+    'Amino-EG6-undecanethiol',
+    'AlxGa1-xN/GaN',
+    'Alcohol/Poly',
     'a-Si:H',
+    'Al-Cu-Fe',
+    'Al-Pd-Re',
+    'Al-oxide',
+    'Al/Hf-hybrid',
+    'Al/Hf-hybrid/Ni',
+    'Al203',
+    'Al2O3+TiO2',
+    'Al2O3/SiC',
+    'Al2O3interface',
+    'Al2O3on',
+    'Al70',
+    'AlGaN',
     'Ga',
     'Si',
     'Si-SiO',
@@ -104,17 +262,41 @@ words_to_ignore=[
 ]
 
 prefix_to_ignore=[
-    '“',
+    '|',
+    '~',
+    '®',
+    '­',
+    '°',
+    '±',
+    '‐',
+    '—',
     "'",
-    '-',
-    '*',
-    '/',
     ":",
     "?", 
+    "‘",
+    "’",
+    '*',
+    '-',
+    '/',
+    '“',
+    '”',
+    '„',
+    '•',
+    '{',
+    '#',
+    '>',
+    '=',
+    '<',
+    '+',
+    '$',
+    '\\',
+    '`',
     
 ]
 
 suffix_to_ignore=[
+    '%',
+    '}',
     '”',
     '.',
     ',',
@@ -126,6 +308,7 @@ suffix_to_ignore=[
     '*',
     "’",
     '/',
+    '…',
 ]
 
 
@@ -517,11 +700,14 @@ def main():
             # skip acronyms
             if w in common_english_and_swedish.well_known_acronyms:
                 continue
+            if w in common_english_and_swedish.miss_spelled_words:
+                continue
             levels=common_english_and_swedish.common_swedish_words.get(w, False)
             if levels:
                 print(f"'{w}': {levels},")
             else:
-                print(f'missing Swedish: {w}')
+                if Verbose_Flag:
+                    print(f'missing Swedish: {w}')
 
     for w in words_KTH_english:
         if w.endswith('(amerikansk engelska)'):
@@ -531,11 +717,14 @@ def main():
             # skip acronyms
             if w in common_english_and_swedish.well_known_acronyms:
                 continue
+            if w in common_english_and_swedish.miss_spelled_words:
+                continue
             levels=common_english_and_swedish.common_English_words.get(w, False)
             if levels:
                 print(f"'{w}': {levels},")
             else:
-                print(f'missing English: {w}')
+                if Verbose_Flag:
+                    print(f'missing English: {w}')
     
 
     print(f'{len(common_english_and_swedish.common_English_words):>{Numeric_field_width}} words in common English words')
@@ -544,36 +733,77 @@ def main():
 
     print(f'{len(common_english_and_swedish.common_swedish_technical_words):>{Numeric_field_width}} words in common Swedish technical words')
 
+    #print(f'{len(common_english_and_swedish.common_danish_words):>{Numeric_field_width}} words in common Danish words')
+
     print(f'{len(common_english_and_swedish.common_french_words):>{Numeric_field_width}} words in common French words')
     
-    print(f'{len(common_english_and_swedish.common_spanish_words):>{Numeric_field_width}} words in common Spanish words')
+    print(f'{len(common_english_and_swedish.common_finnish_words):>{Numeric_field_width}} words in common Finnish words')
 
-    #print(f'{len(common_english_and_swedish.common_latin_words):>{Numeric_field_width}} words in common Latin words')
-        
     print(f'{len(common_english_and_swedish.common_german_words):>{Numeric_field_width}} words in common German words')
-
-    #print(f'{len(common_english_and_swedish.common_finnish_words):>{Numeric_field_width}} words in common Finnish words')
 
     print(f'{len(common_english_and_swedish.common_italian_words):>{Numeric_field_width}} words in common Italian words')
 
-    #print(f'{len(common_english_and_swedish.common_danish_words):>{Numeric_field_width}} words in common Danish words')
+    print(f'{len(common_english_and_swedish.common_latin_words):>{Numeric_field_width}} words in common Latin words')
 
+    print(f'{len(common_english_and_swedish.common_portuguese_words):>{Numeric_field_width}} words in common Portuguese words')
+
+    print(f'{len(common_english_and_swedish.common_spanish_words):>{Numeric_field_width}} words in common Spanish words')
+
+    print(f'{len(common_english_and_swedish.common_units):>{Numeric_field_width}} words in common units')
+    
     print(f'{len(common_english_and_swedish.names_of_persons):>{Numeric_field_width}} words in names_of_persons')
     print(f'{len(common_english_and_swedish.place_names):>{Numeric_field_width}} words in place_names')
     print(f'{len(common_english_and_swedish.company_and_product_names):>{Numeric_field_width}} words in company_and_product_names')
-    #print(f'{len(misc_words_to_ignore):>{Numeric_field_width}} words in misc_words_to_ignore')
-    #print(f'{len(mathematical_words_to_ignore):>{Numeric_field_width}} words in mathematical_words_to_ignore')
+    print(f'{len(common_english_and_swedish.misc_words_to_ignore):>{Numeric_field_width}} words in misc_words_to_ignore')
+    print(f'{len(words_to_ignore):>{Numeric_field_width}} words in words_to_ignore')
+    print(f'{len(common_english_and_swedish.mathematical_words_to_ignore):>{Numeric_field_width}} words in mathematical_words_to_ignore')
     #print(f'{len(programming_keywords):>{Numeric_field_width}} words in programming_keywords')
     #print(f'{len(language_tags):>{Numeric_field_width}} words in language_tags')
-
+    print(f'{len(common_english_and_swedish.merged_words):>{Numeric_field_width}} words in merged_words')
 
 
     print(f'{len(unique_words):>{Numeric_field_width}} read in')
 
+    # after removing spaces and dashses, put all of the common_english_words in lower case in a fall_back list 
+    fall_back_words=set()
+    added_to_unique_words_count=0
+    
+    for w in common_english_and_swedish.common_English_words:
+        w=w.replace(' ', '')
+        w=w.replace('-', '')
+        fall_back_words.add(w.lower())
+
+    for w in common_english_and_swedish.merged_words:
+        wx=w.replace(' ', '')
+        wx=wx.replace('-', '')
+        wx=wx.lower()
+        fall_back_words.add(wx)
+        # if necessary add the words in multiple words to unique_words
+        if w.count(' ') > 0:
+            ws=w.split(' ')
+            for wsw in ws:
+                if wsw in unique_words:
+                    unique_words[wsw]= unique_words[wsw] + 1
+                else:
+                    unique_words[wsw]=1
+                    added_to_unique_words_count=added_to_unique_words_count + 1
+
+    print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in merged_words')
+
     words_not_found=set()
     number_skipped=0
     number_of_potential_acronyms=0
+    count_fall_back_cases=0
     
+    # for some testing
+    if options.testing and 'detection zone' in common_english_and_swedish.merged_words:
+        print('detection zone present')
+        if 'detection zone' in fall_back_words:
+            print('detection zone in fall-back_words')
+        if 'detectionzone' in fall_back_words:
+            print('detectionzone in fall-back_words')
+
+
     for w in unique_words:
         w = unicodedata.normalize('NFC',w) #  put everything into NFC form - to make comparisons simpler; also NFC form is the W3C recommended web form
         w=remove_prefixes(w)
@@ -582,6 +812,14 @@ def main():
         if len(w) < 1:
             continue
         
+        if w in common_english_and_swedish.common_units:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.mathematical_words_to_ignore:
+            number_skipped=number_skipped+1
+            continue
+
         # remove possessives
         if w.endswith("'s"):
             w=w[:-2]
@@ -704,6 +942,26 @@ def main():
             continue
 
         if w.lower() in common_english_and_swedish.common_german_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.common_latin_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w.lower() in common_english_and_swedish.common_latin_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.common_portuguese_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w.lower() in common_english_and_swedish.common_portuguese_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.common_finnish_words:
             number_skipped=number_skipped+1
             continue
 
@@ -894,12 +1152,22 @@ def main():
                 number_skipped=number_skipped+1
                 continue
 
+        # check the fall_back case
+        wl=w.replace(' ', '')
+        wl=wl.replace('-', '')
+        wl=wl.lower()
+        if wl in fall_back_words:
+            count_fall_back_cases=count_fall_back_cases+1
+            continue
+
         words_not_found.add(w)
+
 
     print(f'{len(words_not_found)} in words_not_found')
     #print(f'{words_not_found} in words_not_found')
     print(f'{number_skipped=}')
     print(f'{number_of_potential_acronyms=}')
+    print(f'{count_fall_back_cases=}')
 
     if options.swedish:
         save_collected_words(words_not_found, 'Swedish')
