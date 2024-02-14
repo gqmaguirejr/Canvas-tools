@@ -66,6 +66,7 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'gits-15', # a KTH local github instance
     'A/BSplit',
     'A/g',
     'A/m',
@@ -304,7 +305,7 @@ suffix_to_ignore=[
     ':',
     "?", 
     "'",
-    '-',
+    #'-',
     '*',
     "’",
     '/',
