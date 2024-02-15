@@ -66,6 +66,7 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'renhuldt/TiramiProt', # part of the URL:  https://gitlab.com/nikos.t.renhuldt/TiramiProt
     'gits-15', # a KTH local github instance
     'A/BSplit',
     'A/g',
