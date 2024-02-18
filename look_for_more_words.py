@@ -66,6 +66,9 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'tommasop@kth',
+    'se/appar/ica-handla',
+    'se/joeli/midiPipe',
     'renhuldt/TiramiProt', # part of the URL:  https://gitlab.com/nikos.t.renhuldt/TiramiProt
     'gits-15', # a KTH local github instance
     'A/BSplit',
@@ -773,6 +776,19 @@ def main():
     for w in common_english_and_swedish.common_English_words:
         w=w.replace(' ', '')
         w=w.replace('-', '')
+        fall_back_words.add(w.lower())
+
+    # add lower case version of varioous lists of words to the fall_back list - to cover cases such as "sinkhorn"
+    for w in common_english_and_swedish.names_of_persons:
+        fall_back_words.add(w.lower())
+ 
+    for w in common_english_and_swedish.place_names:
+        fall_back_words.add(w.lower())
+        
+    for w in common_english_and_swedish.company_and_product_names:
+        fall_back_words.add(w.lower())
+
+    for w in common_english_and_swedish.common_programming_languages:
         fall_back_words.add(w.lower())
 
     for w in common_english_and_swedish.merged_words:
