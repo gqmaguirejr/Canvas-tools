@@ -66,6 +66,22 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'com/KTH-SSAS/sandor-berglund-thesis',
+    'com/NiravSurajlal',
+    'com/WangZesen/Text-Generation-GAN',
+    'com/cfognom/MMS_SLAMS_detection_and_magnetospheric_classification',
+    'com/marinone94/ThesisMeetingSummarization',
+    'com/nikos',
+    'com/project/60104b7e4b5c604828be9768',
+    'com/r/wallstreetbets',
+    'com/victorwegeborn/LjudMAP',
+    'com/wille-eriksson/RL-instruments',
+    'Rhodamine',
+    'Methotrexate',
+    'H∞norm',
+    'April2012',
+    'April2018',
+    "AmI'11", # International Joint Conference on Ambient Intelligent (AmI'11
     'tommasop@kth',
     'se/appar/ica-handla',
     'se/joeli/midiPipe',
@@ -789,6 +805,9 @@ def main():
         fall_back_words.add(w.lower())
 
     for w in common_english_and_swedish.common_programming_languages:
+        fall_back_words.add(w.lower())
+
+    for w in common_english_and_swedish.well_known_acronyms:
         fall_back_words.add(w.lower())
 
     for w in common_english_and_swedish.merged_words:
