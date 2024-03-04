@@ -6484,7 +6484,7 @@ common_English_words={
     'journalistic': {'C2': 'adjective'},
     'journalists': {'A2': 'noun'},
     'js': {'A1': 'abbreviation for JaqvaScript'},
-    'json': {'A1': 'acronym for avaScript Object Notation'}, #  set as JSON
+    'json': {'A1': 'acronym for JavaScript Object Notation'}, #  set as JSON
     'judged': {'B1': 'verb past tense, past participle'}, #  EFLEX uses the level B2
     'judgement': {'B1': 'noun'},
     'judging': {'B1': 'verb gerund or present participle'},
@@ -7520,7 +7520,6 @@ common_English_words={
     'mm-wave': {'B1': 'Noun'},
     'mmW': {'A1': 'Noun'},
     'mms': {'A1': 'acronym'},
-    'mmwave': {'A2': 'Noun'},
     'mobile': {'A1': 'verb', 'B1': 'verb, noun, adjective'}, #  EFLEX uses the level B1 as does Google's Bart
     'mobile-based': {'B1': 'Adjective'},
     'mobile-friendly': {'A2': 'Adjective'},
@@ -13544,8 +13543,6 @@ common_English_words={
     'Easter': {'A1': 'Noun'},
     'Christmas': {'A1': 'Noun'},
 
-    # GQM some new possible words
-
     # GQM-for-merger
     "Hold’em": {'B1': 'Noun'},
     "aren't": {'A1':  'Contraction'},
@@ -13802,7 +13799,8 @@ common_English_words={
     'DC-grids': {'B1': 'Noun'},
     'DC-jack': {'B1': 'Noun'},
     'DC-lines': {'B1': 'Noun'},
-    'DC-link': {'B1': 'Noun'},
+    'DC-link': {'B1': 'Noun'}, # the dash here is \x2d
+    'DC‐link': {'B1': 'Noun'}, # the dash here is \u2010
     'DC-model': {'B1': 'Noun'},
     'DC-motors': {'B1': 'Noun'},
     'DC-operated': {'B1': 'Adjective'},
@@ -14875,12 +14873,10 @@ common_English_words={
     'chip-based': {'B1': 'Adjective'},
     'cicada': {'A1': 'Noun'},
     'cinder': {'A1': 'Noun'},
-    'cinnober': {'B2': 'Noun'},
     'circa': {'B1': 'Adverb'},
     'citric': {'B1': 'Adjective'},
     'class-weighting': {'B2': 'Noun Phrase'},
     'classifications': {'A2': 'Noun'},
-    'click-once': {'B1': 'Adjective'},
     'climate-economic': {'B2': 'Adjective'},
     'clocks': {'A1': 'Noun'},
     'close-to-optimal': {'B2': 'Adjective Phrase'},
@@ -26039,7 +26035,6 @@ common_English_words={
     'K-Nearest': {'C1': 'Noun Phrase'},
     'LANL/SOPA': {'xx': 'Noun Phrase'},
     'Matlab/SIMULINK': {'C1': 'Noun Phrase'},
-    'P-MAS-TG': {'xx': 'Noun Phrase'},
     'PV-plant': {'B2': 'Noun Phrase'},
     'Q-model': {'xx': 'Noun Phrase'},
     'RL-agentsaves16%to18%': {'C2': 'Noun Phrase'},
@@ -30575,7 +30570,6 @@ common_English_words={
     'modmin': {'C2': 'Noun'},
     'categorised': {'A2': 'Verb (British English)'},
     'categorises': {'B2': 'Verb (British English)'},
-    'characterics': {'NA': 'Noun (Incorrect spelling of 'characteristics')'},
     'characterised': {'B2': 'Verb (British English)'},
     'characterising': {'B2': 'Verb (British English)'},
     'differ': {'A2': 'Verb'},
@@ -30590,6 +30584,46 @@ common_English_words={
     'different energy': {'B1': 'Noun Phrase'},
     'differentiate': {'B2': 'Verb'},
     'differentiation': {'B2': 'Noun'},
+    'differs': {'A2': 'Verb'},
+    "couldn’t": {'A1': 'Contraction'},
+    'DC-link': {'B2': 'Noun'},  # Note the hyphen instead of a space
+    'coreferencere': {'C1': 'Noun'}, # Already included in previous list
+    'dc/dc': {'B2': 'Noun'},
+    'distil': {'B1': 'Verb'},
+    'l2-regularized': {'B2': 'Adjective'},
+    'mBusiness': {'B2': 'Noun'},  # Assuming this refers to 'mobile business' # diva2:708029
+    'minimises': {'B2': 'Verb (British English)'}, # Already included in previous list
+    'parameterizations': {'B2': 'Noun'}, # Already included in previous list
+    'shunting': {'B2': 'Noun'},
+    'supergrids': {'B2': 'Noun'},
+    'ultra-wideband': {'B2': 'Adjective'},
+    'update-aided': {'B2': 'Adjective'},  # Assuming hyphen is intended # diva2:541630
+    '1-on-1': {'A2': 'Adjective Phrase'},  # Assuming used as an adjective
+    '1-to-1': {'A2': 'Adjective Phrase'},  # Assuming used as an adjective
+    'AAE-based': {'B2': 'Adjective'},
+    'ADAS-equipped': {'B2': 'Adjective'},
+    'ALD-deposited': {'B2': 'Adjective'},
+    'Pre-Event': {'A2': 'Adjective'},
+    'Quadric': {'B2': 'Noun'}, # Considering context of 'Quadric Error Metrics'
+    "API's": {'xx': 'Noun (Incorrect use of apostrophe)'},
+    'Btc': {'A2': 'Noun (Abbreviation)'}, # Abbreviation for Bitcoin
+    'TTA-projects': {'B2': 'Noun Phrase'}, # Considering context of projects
+    'XORed': {'B2': 'Verb (Past Participle)'},
+    'admins': {'A2': 'Noun (Abbreviation)'}, # Abbreviation for administrators
+    'aesthetical': {'B2': 'Adjective'},
+    'aesthetization': {'B2': 'Noun'},
+    'aether': {'B2': 'Noun'},
+    'aforementioned': {'B1': 'Adjective'},
+    'sectioning': {'B1': 'Noun (Verb form also exists)'},
+    'animats': {'C2': 'Noun (Uncommon usage)'}, # see for example https://doi.org/10.1016/S1364-6613(98)01120-6
+    'oncologists': {'B2': 'Noun'},
+    're-programming': {'B2': 'Noun'},  # can also be used as 'reprogramming'
+    'superegrids': {'B2': 'Noun'},
+    'targeting': {'B2': 'Verb (Noun form also exists)'},
+
+
+    # GQM some new possible words
+
 
 }
 
@@ -31132,7 +31166,6 @@ common_swedish_words={
     'OTT-tv': {'B2': 'Noun Phrase'},
     'OldSchool': {'A1': 'Adjective'},
     'OpenAIs': {'A1': 'Adjective Phrase'},
-    'OpenQA': {'B2': 'Noun Phrase'},
     'OpenStacks': {'A1': 'Adjective Phrase'},
     'OpenStreetMaps': {'B2': 'Noun Phrase'},
     'Openstack': {'A1': 'Adjective'},
@@ -31232,7 +31265,6 @@ common_swedish_words={
     'STDP-tränade': {'B2': 'Adjective'},
     'STEM-färdigheter': {'C1': 'Noun Phrase'},
     'STL-specifikationer': {'C2': 'Noun Phrase'},
-    'SVMs': {'C1': 'Noun Phrase'},
     'SVOD-tjänster': {'B2': 'Noun Phrase'},
     'SW-fel': {'B1': 'Noun Phrase'},
     'SaaS-prenumerationstjanst': {'B1': 'Substantiv'},
@@ -50274,26 +50306,98 @@ common_swedish_words={
     'vuxit': {'B2': 'Verb (Past Participle)'},
     'väletablerade': {'B2': 'Adjective'},
     'väletablerat': {'B2': 'Adjective'},
-    # Sofiaängen
-    # 'Jämställdhetsarbete',
-    # 'allokerare',
-    # 'allokeringsstrategier',
-    # 'beställt',
-    # 'bildruta',
-    # 'binärer',
-    # 'branschkunskap',
-    # 'examensarbetet',
+    'Jämställdhetsarbete': {'B2': 'Noun'},
+    'allokerare': {'B2': 'Noun'},
+    'allokeringsstrategier': {'B2': 'Noun'},
+    'beställt': {'A2': 'Verb (Past Participle)'},
+    'bildruta': {'A2': 'Noun'},
+    'binärer': {'B2': 'Adjective'},
+    'branschkunskap': {'B2': 'Noun'},
+    'examensarbetet': {'B2': 'Noun'},
+    'kostnadseffetiviten': {'B2': 'Noun'},
+    'kraftöverförning': {'B2': 'Noun'},
+    'literaturstudie': {'B2': 'Noun'},
+    'maskinginlärningsmodeller': {'B2': 'Noun'},
+    'medicinisk': {'B2': 'Adjective'},
+    'minnesanvänding': {'B2': 'Noun'},
+    'mun-till-mun-marknadsförings': {'B2': 'Noun'},
+    'relse': {'A2': 'Noun'},
+    'Bildkvalitetsbedömningsalgoritm': {'B2': 'Noun'},
+    'Efersom': {'B2': 'Conjunction'},
+    'Jämforande': {'B2': 'Adjective'},
+    'Koldioixutsläpp': {'B2': 'Noun'},
+    'Prestandautverdering': {'B2': 'Noun'},
+    'Sekvenentiell': {'B2': 'Adjective'},
+    'Tillämpning': {'B2': 'Noun'},
+    'användarbarhetsstudie': {'B2': 'Noun'},
+    'Meta-pseudomärking': {'B2': 'Noun'},
+    'bedöm': {'B2': 'Verb'},
+    'behö': {'B2': 'Verb'},
+    'forbattra': {'B2': 'Verb'},
+    'industrielt': {'B2': 'Adjective'},
+    'intensivvårdsavdelingen': {'B2': 'Noun'},
+    'vandling': {'B2': 'Noun'},
+    'Klarspråkskristallen': {'B2': 'Noun'},
+    'lagringskapacitet': {'B2': 'Noun'},
+    'lokalen': {'B2': 'Noun'},
+    'manipuleras': {'B2': 'Verb'},
+    'modellarkitektur': {'B2': 'Noun'},
+    'modelledas': {'B2': 'Verb'},
+    'modelleringsverktyg': {'B2': 'Noun'},
+    'molnen': {'B2': 'Noun'},
+    'organisationen': {'B2': 'Noun'},
+    'organisationsförändringsarbete': {'B2': 'Noun'},
+    'organisationsteori': {'B2': 'Noun'},
+    'realisera': {'B2': 'Verb'},
+    'rigorösa': {'B2': 'Adjective'},
+    'riktmärken': {'B2': 'Noun'},
+    'träningsdatapunkterna': {'B2': 'Noun'},
+    'aggregeras': {'B2': 'Verb (Passive Voice)'},
+    'analyserades': {'B2': 'Verb (Passive Voice)'},
+    'angripare': {'B2': 'Noun'},
+    'angrips': {'B2': 'Noun'},
+    'arbeten': {'B2': 'Noun (Plural)'},
+    'arbetsmiljowiki': {'B2': 'Noun (Compound)'},
+    'beaktar': {'B2': 'Verb'},
+    'befordrad': {'B2': 'Verb (Past Participle)'},
+    'behandlats': {'B2': 'Verb (Passive Voice)'},
+    'behoven': {'B2': 'Noun (Plural)'},
+    'brusigare': {'B2': 'Adjective (Comparative)'},
+    'oförutsägbar': {'B2': 'Adjective'},
+    'mätresultaten': {'B2': 'Noun'},
+    'inloggad': {'B2': 'Adjective'},
+    'insatser': {'B2': 'Noun'},
+    'instruktions': {'B2': 'Noun'},
+    'instuktionsprocessor': {'B2': 'Noun'},
+    'underlättat': {'B2': 'Verb (Past Participle)'},
+    'testmiljö': {'B2': 'Noun'},
+    'testflygplan': {'B2': 'Noun'},
+    'renderingstider': {'B2': 'Noun'},
+    'responstid': {'B2': 'Noun'},
+    'raport': {'B2': 'Noun'},
+    'rapporten': {'B2': 'Noun'},
+    'portabelt': {'B2': 'Adjective'},
+    'positionerade': {'B2': 'Verb (Past Participle)'},
+    'omskrivet': {'B2': 'Verb (Past Participle)'},
+    'omfattas': {'B2': 'Verb'},
+    'ommendations': {'B2': 'Noun'},
+    'parallelliserad': {'B2': 'Verb (Past Participle)'},
+    'positionerade': {'B2': 'Verb (Past Participle)'},
+    'portabelt': {'B2': 'Adjective'},
+    'positioners': {'B2': 'Noun'},
+    'pulsvariansen': {'B2': 'Noun'},
+    'prototypen': {'B2': 'Noun'},
+    'domänen': {'A2': 'Noun'},
+    'erhållna': {'B1': 'Adjective (Participle)'},
+    'lösning': {'A2': 'Noun'},
+    'migrera': {'B2': 'Verb'},
+    'projektet': {'A2': 'Noun'},
 
 }
 
 
 #CEFR levels via Bard with questions of the form: What CEFR levels is the Swedish word 'tidsdomänreflektometer' in and what part of speech is it?
 common_swedish_technical_words={
-    # 'sizeof': {'xx': 'unknown'}, # keyword for getting the sizeof something?
-    # 'struct': {'xx': 'unknown'}, # keyword for creating a data structure?
-    #'findmax': {'xx': 'noun'},
-    #'findmin': {'xx': 'noun'},
-    #'searchKey': {'xx': 'unknown'}, # the Swedish word is 'sökordet'
     #'utdatanär': {'xx': 'noun'},
     '0-1-programmering': {'B2': 'noun'},
     '2D-metod': {'A2': 'noun', 'B1': 'noun'},
@@ -51345,191 +51449,88 @@ common_swedish_technical_words={
 
 # consider adding support for these
 well_known_acronyms={
-    'AC': 'Alternating Current',
-    'ADC': 'Analog to Digital Conveerter',
-    'AES': 'Advanced Encryption Standard',
-    'AI': 'Artificial Intelligence',
-    'API': 'Application Programming Interface',
-    'AR': 'Augmented reality',
-    'ASCII': 'American Standard Code for Information Interchange',
-    'ASIC': 'Application Specific Integrated Circuit',
-    'BJTs': '',
-    'CEFR': 'Common European Framework of Reference for Languages: Learning, teaching, assessment (CEFR)',
-    'CNN': '',
-    'CPU': 'Central Processing Unit',
-    'CV': '',
-    'CoAP': '',
-    'CoMP-JT': 'coordinated multipoint joint transmission',
-    'Cycle-GAN': '',
-    'DDoS': '',
-    'DER': '',
-    'DFIG': '',
-    'DFIG-based': '',
-    'DFT': '',
-    'DLT': '',
-    'DNN': '',
-    'DQ-Frame': '',
-    'DaaS': '',
-    'DoD': '',
-    'DoS': '',
-    'ECG': '',
-    'ECU': '',
-    'EV': '',
-    'FFT': 'Fast Fourier Transform',
-    'FPGA': 'Field Programmable Gate Arrays',
-    'FaaS': 'Function-as-a-Service',
-    'GAN': '', 
-    'GPGPU': '',
-    'GPU': '', 
-    'HDV': '',
-    'HEMT': '',
-    'HVDC': '',
-    'HiDAC': '',
-    'IC': '',
-    'ICT': '',
-    'IDE': '',
-    'IGBT': '',
-    'IIoT': '',
-    'IMU': '',
-    'IP': '',
-    'IPv4': '',
-    'IPv6': '',
-    'ISP': '',
-    'IaaS': 'Infrastructure-as-a-Service',
-    'KPI': 'Ley Performqance Indicator',
-    'LAN': '',
-    'LED': '',
-    'LSTM': '',
-    'LiDAR': '',
-    'MCU': '',
-    'MMORPGs': '',
-    'MOSFETs': '',
-    'MPSoC': '',
-    'MRI': '',
-    'MeV': '',
-    'NB-IoT': '',
-    'NFT': '',
-    'NLI': '',
-    'NLUI': '',
-    'NeRF': '',
-    'NoC': '',
-    'ODS-alloys': 'Oxide dispersion strengthened alloys',
-    'OFA': '',
-    'OSGi': '',
-    'OTDoA': 'Observed Time Difference of Arrival',
-    'PA': '',
-    'PDA': '',
-    'PaaS': '',
-    'PaaSM': '',
-    'PoC': '',
-    'QDs': '',
-    'QoE': '',
-    'QoS': '',
-    'RGB-D': 'RGB  plus depth',
-    'RNN': '',
-    'RoF': 'Radio-over-Fibre',
-    'RoHS': 'Restriction of Hazardous Substances in Electrical and Electronic Equipment',
-    'RoI': 'Return on Investment',
-    'SDG': '',
-    'SME': 'small and medium-size enterprise',
-    'SNN': '',
-    'SVC': '',
-    'SWoT': '',
-    'SiCMOSFETs': '',
-    'SiGe': '',
-    'SoC': '',
-    'SpMXV': 'sparse matrix-vector multiplication',
-    'TATCOM': 'STATic synchronous COMpensator',
-    'TEE': '',
-    'TGV': '',
-    'TSV': '',
-    'TimeGAN': '',
-    'ToIP': 'Trust Over IP',
-    'UAV': '',
-    'UGV': '',
-    'USIM': '',
-    'UTDoA': 'Uplink Time Difference of Arrival ',
-    'VAE': '',
-    'VANET': '',
-    'VFD': '',
-    'VM': '',
-    'VPKIaaS': '',
-    'VPN': '',
-    'VTPin': '',
-    'VTable': '',
-    'VePMAD': '',
-    'VoD': '',
-    'VoIP': '',
-    'VoLTE': '',
-    'VoiceSec': '',
-    'WLAN': '',
-    'WSN': '',
-    'cGAN': '',
-    'chl-a': 'Chlorophyll a',
-    'fMRI': 'functional MRI',
-    'gRPC': '',
-    'kNN': '',
-    'kV': '',
-    'kW': '',
-    'mBERT': '',
-    'mCRM': '',
-    'reCAPTCHA': '',
-    'AV': 'Audio Visual',
-    'CV': 'curriculum vitae',
-    'ECTS': 'European Credit Transfer and Accumulation System',
-    'FA': 'forskarutbildningsansvarig (Director of Third-Cycle Education)',
-    'FFA': 'fakultetsförnyelseansvarig()',
-    'FTE': 'Fulltime equivalent',
-    'GA': 'grundutbildningsansvarig (Director of First and Second Cycle Education)',
-    'JML-råd (på THS)': 'JML council',
-    'JMLA': 'jämställdhets-, mångfalds- och lika villkorsansvarig (gender equality, diversity and equal conditions officer)',
-    'KPU': 'kompletterande pedagogisk utbildning',
-    'KS': 'kontrollskrivning',
-    'MBL': 'Lag om medbestämmande i arbetslivet (The Co-determination Act)',
-    'NyA': 'joint admissions database for higher education in Sweden ()University Admissions)',
-    'PBL': 'problembaserat lärande (problem based learning)',
-    'SSO': 'studerandeskyddsombud (student protection representative)',
-    'UA': 'utbildningsadministrativt ansvarig (educational administration manager)',
-
-    # GQM-for-merger
-    'A-RoF': 'analog radio-over-fiber',
+    'AAE': 'Adversarial Autoencoder',
     'A*Star': 'A* search algorithm',
-    'ABD-events': 'Apnea, bradycardia, and oxygen desaturation events',
-    'ABA-stacked': 'Bernal stacking sequence',
-    'ABC-stacked': 'Rhombohedral stacking sequene',
+    'A-RoF': 'Analog Radio over Fiber',
+    'A-RoF': 'analog radio-over-fiber',
     'A/B-test': '',
     'A/B-testing': '',
+    'ABA-stacked': 'Bernal stacking sequence',
+    'ABC-stacked': 'Rhombohedral stacking sequene',
+    'ABD-events': 'Apnea, bradycardia, and oxygen desaturation events',
+    'ABF':  'Articial Bacterial Flagella',
+    'AC': 'Alternating Current',
     'AC-grid': '',
     'AC-network': '',
     'AC-side': '',
     'AC-system': '',
     'AC3-tabu': '',
-    'ACLs': '',
-    'AD/DA-conversion': '',
-    'ADASs': '',
-    'AEDs': '',
-    'AEPlanner': '',
-    'AER-model': '',
-    'AES-based': '',
-    'AEs': '',
-    'AFDDs': '',
-    'AFLNet': '',
-    'AFLNwe': '',
-    'AFTSis': '',
-    'AGUs': '',
-    'AGVs': '',
-    'AST': 'Abstract Syntax Tree',
-    'AUV': 'autonomous underwater vehicle',
-    'AVR': 'Audio/Video Receiver',
+    'ACL': 'Access Control List',
+    'AD/DA-conversion': 'analog to digital/digital to analog conversion',
+    'ADAS': 'Advanced Driver Assistance System',
+    'ADC': 'Analog to Digital Converter',
+    'ADPLL': 'All-Digital Phase Locked Loop',
+    'AED': 'antiepileptic drug',
+    'AER-model': 'Acquisition-Execution-Restitution model',
+    'AES': 'Advanced Encryption Standard',
+    'AES-based': 'Advanced Encryption Standard-based',
+    'AE': 'autoencoder',
+    'AFDD': 'Arc Fault Detection Device',
+    'AFTS': 'Augmented Finite Transition System',
+    'AGU': 'Address Generation Unit',
+    'AGV': 'Autonomous ground vehicle',
+    'AI': 'Artificial Intelligence',
+    'AIDL': 'Android Interface DefinitionLanguage',
+    'AIMMS': 'Advanced Interactive Multidimensional Modeling System',    
+    'AJAX': 'Asynchrounous Javascript And XML',
     'ANTLR': 'ANother Tool for Language Recognition',
+    'API': 'Application Programming Interface',
+    'AR': 'Augmented reality',
+    'ARIMA': 'Auto Regressive Integrated Moving Average',
+    'ASCII': 'American Standard Code for Information Interchange',
+    'ASIC': 'Application Specific Integrated Circuit',
+    'AST': 'Abstract Syntax Tree',
+    'AUTOSAR': 'AUTomotive Open System ARchitecture',
+    'AUV': 'autonomous underwater vehicle',
+    'AV': 'Audio Visual',
+    'AVR': 'Audio/Video Receiver',
+    'AmI': 'Ambient Intelligence',
     'AnyBURL': 'Anytime Bottom Up Rule Learning',
     'AoA': 'Angle of Arrival',
     'AoA-based': 'Angle of Arrival based',
     'AoD': 'Angle of Departure',
     'AoI': 'Angle of incidence',
     'Apdex': 'Application Performance Index',
-    'AUTOSAR': 'AUTomotive Open System ARchitecture',
-    'AIMMS': 'Advanced Interactive Multidimensional Modeling System',    
+    'BACnet': 'Building and Control Network',
+    'BBQueue': 'BipBuffer Queue',
+    'BBU': 'baseband unit',
+    'BCET': 'Best-Case Execution Time',
+    'BCI': 'Brain-Computer Interface',
+    'BCPNN': 'Bayesian Confidence Propagating Neural Networks',
+    'BERT': 'Bidirectional Encoder Representations from Transformers',
+    'BEV': 'battery electric vehicle',
+    'BFN': 'Beam Forming Network',
+    'BGP': 'Board Gateway Protocol',
+    'BGPv4': 'Border Gateway Protocol version 4',
+    'BJTs': '',
+    'BLE': 'Bluetooth Low Energy',
+    'BLER': 'Block Error Rate',
+    'BM25adpt': 'BM25 adaptive term',
+    'BMU': 'Battery Monitoring Unit',
+    'BNN': 'Bayesian NeuralNetwork',
+    'BOS': 'background oriented schlieren',
+    'BP-HiPIMS': 'Bipolar High Power Impulse Magnetron Sputteringis',
+    'BPM': 'Business process management',
+    'BQM': 'binary quadratic model',
+    'BRAM': 'BlockRAM',
+    'BRDF': 'idirectional Reflectance Distribution Function',
+    'BRPs': 'balance responsible parties',
+    'BS': 'base station',
+    'BSD-based': 'Berkely Standard Distribution-based',
+    'BSF': 'back surface field',
+    'BSR': 'Buffer Status Report',
+    'BSs': 'base stations',
+    'BTs': 'Behavior Trees',
     'Bi-CMOS': '',
     'Bi-LSTM': '',
     'Bi-LSTM-CRF': '',
@@ -51541,228 +51542,1241 @@ well_known_acronyms={
     'BioSOMs': '',
     'BnB': 'Branch and bound',
     'BnBPQ': 'Bound and Branch with Priority Queue',
-    'CFD': 'computational fluid dynamics',
-    'BOS': 'background oriented schlieren',
-    'PV': 'photovoltaic',
     'BoW': 'Bag of Words',
     'BraTS': 'brain tumor segmentation challenge',
-    'LSTM': 'Long-Short Term Memory',
-    'BACnet': '(Building and Control Network',
-    'BBQueue': 'BipBuffer Queue',
-    'BBU': 'baseband units',
-    'WCETs': 'Worst- Case Execution Times',
-    'BCETs': 'Best- Case Execution Times',
-    'HAL': 'Hardware Abstraction Layer',
-    'EMG': 'electromyography',
-    'ECG': 'electrocardiography',
-    'EEG': 'electroencephalography',
-    'BCI': 'Brain-Computer Interface',
-    'BCPNN': 'Bayesian Confidence Propagating Neural Networks',
-    'GMM': 'Gaussian Mixture Model',
-    'BEV': 'battery electric vehicles',
-    'TCO': 'Total Cost of Ownership',
-    'BFN': 'Beam Forming Network',
-    'BGP': 'Board Gateway Protocol',
-    'BGPv4': 'Border Gateway Protocol version 4',
-    'VRF': 'Verifiable Random Function',
-    'RPKI': 'Resource Public Key Infrastructure',
-    'BERT': 'Bidirectional Encoder Representations from Transformers',
-    'BLE': 'Bluetooth Low Energy',
-    'BM25adpt': 'BM25 adaptive term',
-    'BMU': 'Battery Monitoring Unit',
-    'BNN': 'Bayesian NeuralNetwork',
-    'BP-HiPIMS': 'Bipolar High Power Impulse Magnetron Sputteringis',
-    'BPM': 'Business process management',
-    'BQM': 'binary quadratic model',
-    'DQM': 'discrete quadratic model',
-    'HARQ': 'Hybrid Automatic Repeat Request',
-    'BLER': 'Block Error Rate',
-    'BRAM': 'BlockRAM',
-    'CVD': 'Chemical Vapor Deposition',
-    'BRDF': 'idirectional Reflectance Distribution Function',
-    'BRPs': 'balance responsible parties',
-    'BSD-based': 'Berkely Standard Distribution-based',
-    'BSF': 'back surface field',
-    'PECVD': 'plasma-enhanced chemical vapor deposition',
-    'BSR': 'Buffer Status Report',
-    'BSs': 'base stations',
-    'BTs': 'Behavior Trees',
-    'CycleGAN': 'Cycle Generative Adversarial Network',
-    'CvRDT': 'Conflict-free replicated data type',    
-    'CUSUM': 'cumulative sum',
-    'ConvNet': 'convolutional neural network',
+    'C-ITS': 'Cooperative Intelligent Transportation Systems',
+    'CA': 'Certificate Authority',
+    'CADx': 'computer aided diagnosis',
+    'CAMs': 'Cooperative Awareness Messages',
+    'CANet': 'Component Attention Network',
+    'CAPEX': 'Capital Expenditure',
+    'CAs': 'Certificate Authorities',
+    'CBF': 'Control Barrier Function',
+    'CBR': 'channel busy ratio',
+    'CBs': 'circuitbreakers', # diva2:1331900
+    'CCD': 'Charge Couple Device',
+    'CCHs': 'Customizable Contraction Hierarchies',
+    'CEFR': 'Common European Framework of Reference for Languages: Learning, teaching, assessment (CEFR)',
+    'CFD': 'computational fluid dynamics',
+    'CIGRÉ': 'International Council On Large Electric Systems',
+    'CLAHE': 'contrast limited adaptive histogram equalization',
     'CNN':  'convolutional neural network',
-    'ConvGNN': 'Graph Convolutional Network',
-    'ConvLSTM': 'Convolutional-LSTM',
-    'MKBSC': 'Multi-Agent Knowledge-Based Subset Construction',
+    'CNN': '',
     'COTS': 'Commerciall-off-the-Shelf',
-    'CoQA': 'Conversational Question Answering dataset',
+    'CPU': 'Central Processing Unit',
+    'CRDT': 'Conflict-Free Replicated Data Types',
+    'CSI': 'Channel State Information',
+    'CUSUM': 'cumulative sum',
+    'CV': '',
+    'CV': 'curriculum vitae',
+    'CVD': 'Cardiovascular disease',
+    'CVD': 'Chemical Vapor Deposition',
+    'CaaS': 'container as a service',
+    'CoAP': '',
     'CoC': '',
     'CoM': '',
-    'CoMP': '',
+    'CoMP-JT': 'coordinated multipoint joint transmission',
     'CoMix': '',
-    'CIGRÉ': 'International Council On Large Electric Systems',
-    'MQTT': 'Message Queue Telemetry Transport',
-    'SMS': 'Short Message Service',
-    'CAPEX': 'Capital Expenditure',
-    'OPEX': 'Operating Expenditure',
-    'IaaS': 'infrastructure as a service',
-    'CaaS': 'container as a service',
-    'FaaS': 'function as a service',
-    'VOD': 'video on demand',
-    'EMR': 'Electronic Medical Record',
-    'CCD': 'Carge Couple Device',
-    'A-RoF': 'Analog Radio over Fiber',
+    'CoQA': 'Conversational Question Answering dataset',
+    'ConvGNN': 'Graph Convolutional Network',
+    'ConvLSTM': 'Convolutional-LSTM',
+    'ConvNet': 'convolutional neural network',
+    'CvRDT': 'Conflict-free replicated data type',    
+    'Cycle-GAN': '',
+    'CycleGAN': 'Cycle Generative Adversarial Network',
     'D-RoF': 'Digital Radio over Fiber',
-    'DSP-ARoF': 'Digital Signal Processing based Analog Radio over Fiber',
-    'DWDM': 'Dense Wavelength Division Multiplexing',
-    'DL-TDoA': 'Downlink Time Difference of Arrival',
+    'DAGAN': 'Dual Autoencoder GAN',
+    'DAgger': 'Dataset Aggregation',
+    'DBCI': 'digital behavior change intervention',
+    'DC': 'Direct Current',
+    'DCC': 'Decentralized Congestion Control',
     'DCC-BiLSTMs': 'deep canonically correlated bidirectional long short-term memory networks',
     'DCCA': 'deep canonical correlation analysis',
-    'ARIMA': 'Auto Regressive Integrated Moving Average',
-    'RNN': 'recurrent neural network',
-    'GRU': 'Gated Recurrent Unit',
+    'DCO': 'Digitally Controlled Oscillator',
     'DCRNN': 'Diffusion Convolutional Recurrent Neural Network',
-    'STAWnet': 'Spatial-Temporal Attention Wavenet',
+    'DDQN': 'DQN algorithms Double DQN',
+    'DDoS': '',
+    'DER': '',
     'DFB-EAM': 'Distributed Feedback laser - Electro-Absorption Modulator',
-    'NIM': 'negative-index material',
-    'RHM': 'right-handed material',
-    'LHM': 'left-handed material',
-    'Dapp': 'decentralized application',
-    'KI': 'Karolinska Institutet',
-    'DIT': 'Dar Es Salaam Institute of Technology',
-    'QA': 'Quality Assurance',
-    'POC': 'Proof of Concept',
-    'MIMO': 'Multi Input Multi Output',
-    'SAR': 'specific absorption rate',
-    'DbC': 'Design by Contract',
-    'SPAs': 'Single-page Applications',
-    'DeFi': 'Decentralized Finance',
-    'LMS': 'learning management system',
-    'HELAM': 'Hexagonal E-learning assessment model',
-    'VUI': 'Voice user interfaces',
-    'SLAMS': 'Short Large-Amplitude Magnetic Structures',
-    'DeePC': 'Data-enabled predictive control',
+    'DFIG': '',
+    'DFIG-based': '',
+    'DFT': '',
     'DGCF': 'Dynamic Graph Collaborative Filtering',
+    'DIT': 'Dar Es Salaam Institute of Technology',
+    'DL-TDoA': 'Downlink Time Difference of Arrival',
+    'DLT': '',
+    'DNN': 'Deep Neural Network',
+    'DQ-Frame': '',
+    'DQM': 'discrete quadratic model',
+    'DQN': 'Deep Q-Network',
+    'DSE': 'Design Space Exploration',
+    'DSP': 'Digital Signal Processing',
+    'DSP-ARoF': 'Digital Signal Processing based Analog Radio over Fiber',
+    'DUT': 'Device Under Test',
+    'DWDM': 'Dense Wavelength Division Multiplexing',
+    'DaaS': '',
+    'Dapp': 'decentralized application',
+    'DbC': 'Design by Contract',
+    'DeFi': 'Decentralized Finance',
+    'DeePC': 'Data-enabled predictive control',
     'DeePRed': 'Dynamic Embeddings for Interaction Prediction',
-    'JODIE': 'Joint Dynamic User- Item Embeddings',
-    'DBCI': 'digital behavior change intervention',
     'DeepSAD': 'Deep Semi-Supervised Anomaly Detection',
-    'DAGAN': 'Dual Autoencoder GAN',
-    'MAE': 'Mean Absolute Error',
-    'SCADA': 'Supervisory Control And Data Acquisition',
-    'AIDL': 'Android Interface DefinitionLanguage',
-    'ITS': 'Intelligent Transport System',
-    'V-SLAM': 'Visual Simultaneous Localization And Mapping',
     'DeiT': 'Data-Efficient Image Transformer',
-    'HPE': 'Human pose estimation',
+    'DfT': 'Design-for-Test',
     'DiMArch': 'Distributed Memory architecture',
     'DiVA': 'Digitala Vetenskapliga Arkivet',
-    'DfT': 'Design-for-Test',
-    'DUT': 'Device Under Test',
     'Dits': 'density of interface traps',
-    'DoF': 'Degree of freedom',
-    'GNSS': 'Global Navigation Satellite Systems',
-    'MPC': 'Model Predictive Control',
     'DnCNN': 'Denoising Convolutional Neural Network',
-    'nlDAE': 'noise-learning based denoising autoencoder',
-    'UE': 'user equipment',
-    'BS': 'base station',
     'DoCAN': 'Diagnostic communication over Controller Area Network',
-    'LoRaWAN': 'Long Range Wide Area Network',
-    'DQN': 'Deep Q-Network',
-    'DDQN': 'DQN algorithms Double DQN',
+    'DoD': 'Department of Defense',
+    'DoF': 'Degree of freedom',
+    'DoS': 'Denial of Service',
     'DuDQN': 'Dueling DQN',
-    'WWLLN': 'World Wide Lightning Location Network',
-    'EIWG': 'Earth-ionosphere waveguide',
-    'VLF': 'Very Low frequency',
-    'USAR': 'urban search and rescue',
-    'SAR': 'search and rescue',
-    'MSC': 'mobile switch center',
-    'MS': 'mobile station',
-    'HLR': 'home location register',
-    'VLR': 'visitor location register',
-    'RNC': 'radio network controller',
-    'STFT': 'Short-Time Fourier Transform',
-    'C-ITS': 'Cooperative Intelligent Transportation Systems',
-    'ETSI': 'European Telecommunications Standards Institute',
-    'IEEE': 'Institute of Electrical and Electronics Engineers',
-    'DCC': 'Decentralized Congestion Control',
-    'CBR': 'channel busy ratio',
-    'CAMs': 'Cooperative Awareness Messages',
-    'STB': 'static beaconing',
     'DynB': 'dynamic beaconing',
-    'LIMERIC': 'LInear MEssage Rate Integrated Control',
-    'POS': 'Parts-of-Speech',
-    'NER': 'Named Entity Recog­nition',
-    'EKF': 'ExtendedKalman Filter',
-    'XKF': 'eXogenous Kalman Filter',
-    'ExNLP': 'Explainable NLP',
-    'HTM': 'Hierarchical Temporal Memory',
-    'EnDD': 'ensemble distribution distillation',
-    'MMAS': 'Min-Max Ant System',
+    'ECG': 'electrocardiography',
+    'ECTS': 'European Credit Transfer and Accumulation System',
+    'ECU': '',
+    'EEG': 'electroencephalography',
+    'EIWG': 'Earth-ionosphere waveguide',
+    'EKF': 'Extended Kalman Filter', # see diva2:1232900
+    'EMG': 'electromyography',
+    'EMR': 'Electronic Medical Record',
+    'EOF': 'End of File',
+    'ETSI': 'European Telecommunications Standards Institute',
+    'EV': 'Electric Vehicle',
     'EliteAS': 'Elitist Ant System',
-    'RankedAS': 'Ranked Ant System',
-    'FA-LSPs': 'Forward Adjacency Label Switched Paths',
+    'EnDD': 'ensemble distribution distillation',
+    'ExNLP': 'Explainable NLP',
     'F-CSIOp': 'full channel state information optimal',
-    'CSI': 'channel state information',
     'F-OBNs': 'Filterless optical backbone networks',
+    'FA': 'forskarutbildningsansvarig (Director of Third-Cycle Education)',
+    'FA-LSPs': 'Forward Adjacency Label Switched Paths',
+    'FFA': 'fakultetsförnyelseansvarig()',
+    'FFT': 'Fast Fourier Transform',
+    'FPCA': 'Field Programmable Counter Array',
+    'FPGA': 'Field Programmable Gate Array',
     'FSCW': 'fractional-slot concentrated-wound',
-    'PMaSynRM': 'Permanent-Magnet-Assisted Synchronous Reluctance Machine',
-    'SynRM': 'synchronous reluctance machines',
-    'FTTH': 'Fiber-to-the-Home',
-    'FeRAM': 'Ferroelectric RAM',
-    
-    'SMPM': 'surface-mounted permanent magnet',
     'FSCW-PMaSynRM': 'fractional-slot concentrated-wound-Permanent-Magnet-Assisted Synchronous Reluctance Machine',
     'FSCW-SynRM': 'fractional-slot concentrated-wound-synchronous reluctance machines',
-    'IoT': 'Internet of Things',
-    'DCO': 'Digitally Controlled Oscillator',
-    'ADPLL': 'All-Digital Phase Locked Loop',
+    'FTE': 'Fulltime equivalent',
+    'FTTH': 'Fiber-to-the-Home',
+    'FaaS': 'Function-as-a-Service',
+    'FaaS': 'function as a service',
+    'FeRAM': 'Ferroelectric RAM',
     'FinFET': 'Fin field-effect transistor',
     'FinTech': 'Financial Technology',
     'FssAgg': 'Forward secure sequential Aggregate',
     'G-FETs': '',
-    'GoS': 'Grade of Service',
-    'PCB': 'Printed Circuit Board',
-    'NTNU': 'Norwegian University of Science and Technology',
-    'VHT': 'Vertical Hoeffding Tree',
+    'GA': 'grundutbildningsansvarig (Director of First and Second Cycle Education)',
+    'GAN': 'Generative Adversarial Network', 
+    'GCN': 'Graph Convolution Network',
     'GDPR': 'General Data Protection Regulation',
-    'CLAHE': 'contrast limited adaptive histogram equalization',
+    'GMM': 'Gaussian Mixture Model',
+    'GNSS': 'Global Navigation Satellite Systems',
+    'GPGPU': 'General Purpose Graphic Processing Unit',
+    'GPS': 'Global Positioning System',
+    'GPU': 'Graphic Processing Unit', 
+    'GRU': 'Gated Recurrent Unit',
+    'GoS': 'Grade of Service',
+    'GraDeS': 'gradient descent with sparsification',
+    'HAL': 'Hardware Abstraction Layer',
+    'HARQ': 'Hybrid Automatic Repeat Request',
+    'HDI': 'Human-Drone Interaction',
+    'HDV': '',
+    'HELAM': 'Hexagonal E-learning assessment model',
+    'HEMT': '',
+    'HLR': 'home location register',
+    'HPE': 'Human pose estimation',
+    'HTM': 'Hierarchical Temporal Memory',
+    'HVDC': '',
+    'HiDAC': '',
     'I-Pipe': 'interrupt pipeline',
+    'I-pipe': 'interrupt pipeline',
+    'IC': 'integrated circuit',
+    'ICT': 'Information and Communication Technology',
+    'IDE': 'Integrated Development Environment',
+    'IEEE': 'Institute of Electrical and Electronics Engineers',
+    'IGBT': 'Insulated Gate Bipolar Transistor',
+    'IIoT': 'industrial IoT',
+    'IMU': 'inertial measurement unit',
+    'IP': 'Internet Protocol',
+    'IPv4': 'Internet Protocol version 4',
+    'IPv6': 'Internet Protocol version 6',
+    'ISP': 'Internet Service Provider',
+    'ITS': 'Intelligent Transport System',
+    'IaaS': 'Infrastructure-as-a-Service',
+    'IaaS': 'infrastructure as a service',
+    'IoT': 'Internet of Things',
     'IoU': '',
     'IoV': '',
-    'AJAX': 'Asynchrounous Javascript And XML',
-    'LADAR': 'Laser Detection and Ranging',
-    'LIDAR': 'Light Detection and Ranging',
-    'GPS': 'Global Positioning System',
-    'LPWAN': 'Low Power Wide Area Network',
-    'LoWPAN': 'Low-power Wireless Personal Area Networks',
-    'CRDT': 'Conflict-Free Replicated Data Types',
+    'JML-råd (på THS)': 'JML council',
+    'JMLA': 'jämställdhets-, mångfalds- och lika villkorsansvarig (gender equality, diversity and equal conditions officer)',
+    'JODIE': 'Joint Dynamic User- Item Embeddings',
     'JVM': 'Java Virtual Machine',
-    'vircators': 'virtual cathode oscillators', # see diva2:968664
-    'PhACs': 'Pharmaceutical Active Compounds',
-    'TF-IDF': 'term frequency-inverse document frequency',
-    'DC': 'Direct Current',
-    'AmI': 'Ambient Intelligence',
-    'DSP': 'Digital Signal Processing',
-    'fps': 'frames per second',
+    'KI': 'Karolinska Institutet',
+    'KPI': 'Ley Performqance Indicator',
+    'KPU': 'kompletterande pedagogisk utbildning',
+    'KS': 'kontrollskrivning',
+    'LADAR': 'Laser Detection and Ranging',
+    'LAN': 'Local Area Network',
+    'LCA': 'Life Cycle Assessment',
+    'LED': 'Light Emitting Diode',
+    'LHM': 'left-handed material',
+    'LIDAR': 'Light Detection and Ranging',
+    'LIMERIC': 'LInear MEssage Rate Integrated Control',
+    'LMS': 'learning management system',
+    'LPWAN': 'Low Power Wide Area Network',
+    'LSTM': 'Long-Short Term Memory',
+    'LiDAR': 'Light Detection and Ranging',
+    'LoRaWAN': 'Long Range Wide Area Network',
+    'LoWPAN': 'Low-power Wireless Personal Area Networks',
+    'MAE': 'Mean Absolute Error',
+    'MBL': 'Lag om medbestämmande i arbetslivet (The Co-determination Act)',
+    'MCU': '',
+    'MIMO': 'Multi Input Multi Output',
+    'MKBSC': 'Multi-Agent Knowledge-Based Subset Construction',
+    'MMAS': 'Min-Max Ant System',
+    'MMORPGs': '',
+    'MOSFETs': '',
+    'MPC': 'Model Predictive Control',
+    'MPSoC': 'Multiprocessor System On-Chip',
+    'MQTT': 'Message Queue Telemetry Transport',
+    'MRI': '',
+    'MS': 'mobile station',
+    'MSC': 'mobile switch center',
+    'MeV': '',
+    'NB-IoT': '',
+    'NER': 'Named Entity Recog­nition',
+    'NFT': '',
+    'NIM': 'negative-index material',
+    'NLI': '',
+    'NLUI': '',
     'NPN': 'negative-positive-negative',
+    'NTNU': 'Norwegian University of Science and Technology',
+    'NeRF': '',
+    'NyA': 'joint admissions database for higher education in Sweden ()University Admissions)',
+    'ODS-alloys': 'Oxide dispersion strengthened alloys',
+    'OFA': '',
+    'OPEX': 'Operating Expenditure',
+    'OSGi': 'Open Service Gateway Initiative',
+    'OTDoA': 'Observed Time Difference of Arrival',
+    'PA': '',
+    'PBL': 'problembaserat lärande (problem based learning)',
+    'PCB': 'Printed Circuit Board',
+    'PCBA': 'Printed Circuit Board Assembly',
+    'PDA': 'Personal Digital Assistant',
+    'PECVD': 'plasma-enhanced chemical vapor deposition',
+    'PKI': 'Public Key Infrastructure',
+    'PMaSynRM': 'Permanent-Magnet-Assisted Synchronous Reluctance Machine',
     'PNP': 'Positive-Negative-Positive',
+    'POC': 'Proof of Concept',
+    'POS': 'Parts-of-Speech',
+    'PV': 'photovoltaic',
+    'PaaS': 'platform as a service',
+    'PaaSM': 'Platform as a Service Security Method',
+    'PhACs': 'Pharmaceutical Active Compounds',
+    'PoC': 'Proof-of-Concept',
+    'PoE': 'Power over Ethernet',
+    'QA': 'Quality Assurance',
+    'QD': 'Quantum Dot',
+    'QoE': 'Quality of Experience',
+    'QoS': 'Quality of Service',
+    'RGB-D': 'RGB  plus depth',
+    'RHM': 'right-handed material',
+    'RNC': 'radio network controller',
+    'RNN': 'recurrent neural network',
+    'RPKI': 'Resource Public Key Infrastructure',
+    'RankedAS': 'Ranked Ant System',
+    'RoF': 'Radio-over-Fibre',
+    'RoHS': 'Restriction of Hazardous Substances in Electrical and Electronic Equipment',
+    'RoI': 'Return on Investment',
+    'SAR': 'search and rescue',
+    'SAR': 'specific absorption rate',
+    'SAR': 'Successive Approximation', # A/D converter - see diva2:1484488
+    'SCADA': 'Supervisory Control And Data Acquisition',
+    'SDG': '',
+    'SLAMS': 'Short Large-Amplitude Magnetic Structures', # see diva2:1479345
+    'SME': 'small and medium-size enterprise',
+    'SMPM': 'surface-mounted permanent magnet',
+    'SMS': 'Short Message Service',
+    'SNN': '',
+    'SOA': 'service oriented architecture',
     'SOL': 'scrape-off-layer',
+    'SPAs': 'Single-page Applications',
+    'SSO': 'studerandeskyddsombud (student protection representative)',
+    'ST-Isomap': 'spatio temporal Isomap',
+    'STAWnet': 'Spatial-Temporal Attention Wavenet',
+    'STB': 'static beaconing',
+    'STFT': 'Short-Time Fourier Transform',
+    'SVC': '',
+    'SWoT': '',
+    'SiCMOSFETs': '',
+    'SiGe': '',
+    'SoC': '',
+    'SpMXV': 'sparse matrix-vector multiplication',
+    'SynRM': 'synchronous reluctance machines',
+    'TATCOM': 'STATic synchronous COMpensator',
+    'TCO': 'Total Cost of Ownership',
+    'TEE': 'Trusted Execution Environment',
+    'TF-IDF': 'term frequency-inverse document frequency',
+    'TGV': '',
+    'TSV': '',
+    'TimeGAN': '',
+    'ToIP': 'Trust Over IP',
+    'UA': 'utbildningsadministrativt ansvarig (educational administration manager)',
+    'UAV': '',
+    'UE': 'user equipment',
+    'UGV': '',
+    'USAR': 'urban search and rescue',
+    'USIM': '',
+    'UTDoA': 'Uplink Time Difference of Arrival',
+    'V-SLAM': 'Visual Simultaneous Localization And Mapping',
+    'VAE': '',
+    'VANET': '',
+    'VFD': '',
+    'VHT': 'Vertical Hoeffding Tree',
+    'VLF': 'Very Low frequency',
+    'VLR': 'visitor location register',
+    'VM': '',
+    'VOD': 'video on demand',
+    'VPKIaaS': '',
+    'VPN': '',
+    'VRF': 'Verifiable Random Function',
+    'VTPin': '',
+    'VTable': '',
+    'VUI': 'Voice user interfaces',
+    'VePMAD': '',
+    'VoD': '',
+    'VoIP': '',
+    'VoiceSec': '',
+    'WCET': 'Worst-Case Execution Time',
+    'WLAN': 'Wireless Local Area Network', # see diva2:387961
+    'WWLLN': 'World Wide Lightning Location Network',
+    'XKF': 'eXogenous Kalman Filter',
+    'cGAN': '',
+    'chl-a': 'Chlorophyll a',
+    'eNodeB': 'Evolved Node B ',
+    'fMRI': 'functional MRI',
+    'fps': 'frames per second',
+    'gRPC': '',
+    'iForest': 'Isolation Forest',
+    'iNNE': 'Isolation Nearest Neighbour',
+    'k-NN': 'kth Nearest Neighbour',
+    'kNN': '',
+    'kV': '',
+    'kW': '',
+    'mBERT': '',
+    'mCRM': '',
+    'nlDAE': 'noise-learning based denoising autoencoder',
     'pos': 'point of sale', # see diva2:1713865
     'ppb': 'parts per billion',
     'ppm': 'parts per million',
-    'DAgger': 'Dataset Aggregation',
-    'GraDeS': 'gradient descent with sparsification',
-    'I-pipe': 'interrupt pipeline',
-    'ST-Isomap': 'spatio temporal Isomap',
-    'PoE': 'Power over Ethernet',
-    'eNodeB': 'Evolved Node B ',
-    'EOF': 'End of File',
-    'iNNE': 'Isolation Nearest Neighbour',
-    'iForest': 'Isolation Forest',
-    'k-NN': 'kth Nearest Neighbour',
+    'reCAPTCHA': '',
+    'vircators': 'virtual cathode oscillators', # see diva2:968664
+    'PSNR': 'Peak-Signalto-Noise Ratio',
+    'SSIM': 'Structural Similarity index',
+    'VIF': 'Visual Information Fidelity',
+    'PCA': 'Principal Component Analysis',
+    'DAC': 'Digital to Analog Converter',
+    'DAE': 'Differential Algebraic Equation', # see diva2:1332039
+    'DBMS': 'database management syste',
+    'DBN': 'Deep Belief Network',
+    'DCCB': 'direct current circuit breaker',
+    'IED': 'intelligent electronic device',
+    'DCH': 'dedicated channel',
+    'SDR': 'Software Defined Radio',
+    'RAM': 'Randon Access Memory',
+    'DRAM': 'Dynamic RAM',
+    'SRAM': 'Static RAM',
+    'MRAM': 'Magnetic RAM',
+    'RRAM': 'Resistive RAM',
+    'EPR': 'European pressurized reactor',
+    'LTL': 'Linear Temporal Logic',
+    'AFTS': 'Augmented Finite Transition System',
+    'LiMNet': 'lightweight memory network',
+    'LiTH': 'Linköping Institute of Technology',
+    'MANET': 'Mobile Ad hoc Network',
+    'NOx': 'nitric oxide and nitrogen dioxide',
+    'OAuth': 'Open Authorization',
+    'SDN': 'Software Defined Networking',
+    'SLA': 'Service Level Agreement',
+    'PIC': 'Particle-In-Cell',
+    'TAFLab': '(U. C. Berkeley) Theoretical and Applied Fluid Dynamics Laboratory',
+    'VLAN': 'Virtual Local Area Network',
+    'VMAN': 'Virtual Metropolitan Area Network',
+    'VoWLAN': 'Voice over WLAN',
+    'WAN': 'Wide Area Network',
+    'FND': 'fake news detection',
+    'WFT': 'Wearable fitness tracker',
+    'abVIP': 'assertion-based Verification Intellectual Property',
+    'crVIP': 'constrained random Verification Intellectual Property',
+    'PPG': 'Photoplethysmogram',
+    'cPPG': 'contact PPG',
+    'rPPG': 'remote PPG',
+    'ccTLD': 'country code TLD',
+    'gTLD': 'generic Top Level Domain',
+    'ICANN': 'Internet Corporation for Assigned Names and Numbers',
+    'CEO': 'Chief Executive Officer',
+    'eDRAM': 'Embedded DRAM',
+    'eDRX': 'Extended Discontinuous Reception',
+    'eICIC': 'Enhanced Inter-Cell Interference Coordination',
+    'eIDAS': 'electronic identification and trust services',
+    'eID': 'Electronic ID',
+    'eMPC': 'explicit Model Predictive Control',
+    'eMRAM': 'embedded magnetoresistive random access memory',
+    'eMTC': 'enhanced machine-type communication',
+    'eNB': 'enhanced Node B', # sometimes written as eNodeB
+    'eNBC': 'eNodeB-Cloud',
+    'gNB': 'gNodeB',
+    'iRingLA': 'inter Ring. Localization Algorithm',
+    'SLAM': 'simultaneous localization and mapping',
+    'OFDMA': 'Orthogonal Frequency Division Multiple nAccess',
+    'CDMA': 'Code DivisionMultiple Access',
+    'qOCP': 'Quantum One-Component plasmas',
+    'rANOVA': 'repeated measure analysis of variance',
+    'SVM': 'Support Vector Machine',
+    'RBFN': 'Radial Basis Function Network',
+    'MAPE': 'Mean Average Percentage Error',
+    'MLP': 'Multilayer Perceptron',
+    'RMSE': 'Root Mean Squared Error',
+    'rRMSD': 'elative root mean square deviation',
+    'rpm': 'rotations per minute',
+    'GUI': 'graphical user interface',
+    'sMAPE': 'Symmetric mean absolute percentage error',
+    'sMRI': 'structural magnetic resonance imaging',
+    'scLTL': 'co-safe Linear Temporal Logic', # formulas - see diva2:1214506
+    'scVI': 'single-cell Variational Inference',
+    'SDK': 'Software Development Kit',
+    'SRTP': 'Secure Real−Time Protocol',
+    'AES': 'Advanced Encryption Standard',
+    'ssDNA': 'single-stranded DNA',
+    'RCAM': 'Reliability Centered Asset Management',
+    'vsWM': 'Visuospatial working memory',
+    'WKNN': 'weighted K-nearest neighbor',
+    '2oo2': '2 out of 2', # see diva2:1268723
+    'IIP': 'Idle-time Insertion Policy',
+    'AER': 'Acquisition-Execution-Restitution',
+    'UUV': 'Unmanned Underwater Vehicles',
+    'ADG': 'Attack (Defense) Graph',
+    'ALD': 'Atomic layer deposition',
+    'MLE': 'Maximum-Likelihood Estimation',
+    'AN': 'Ambient Network',
+    'APUF': 'Arbiter Physical Unclonable Function',
+    'AP': 'access point',
+    'ARS': 'Audience Response System',
+    'BES': 'bounded exhaustive search',
+    'B2B': 'Business-to-business',
+    'BPMS': 'Business Process Management Systems',
+    'BPM': 'Business Process Management',
+    'EBV': 'Epstein - Barr virus',
+    'CDN': 'Content Distribution Networks',
+    'HTTP': 'Hypertext Transfer Protocol',
+    'CDR': 'Call Detail Record',
+    'CDSS': 'Clinical Decision Support System',
+    'CFG': 'Control-Flow Graphs',
+    'CFR': 'Counterfactual Regret Minimization',
+    'CGRA': 'coarse-grained reconfigurable architecture',
+    'CHs': 'Contraction Hierarchies',
+    'CWE': 'Common Weakness Enumeration',
+    'NVD': 'National Vulnerability Database',
+    'CIoT': 'Consumer Internet of Things',
+    'LDA': 'Linear Discriminant Analysis',
+    'CI': 'Conversational interface',
+    'CLB': 'Configurable Logic Block', 
+    'DSL': 'Domain-specific Language',
+    'CLI': 'command line interface',
+    'RTL': 'Register Transfer Level',
+    'WFQ': 'Weighted Fair Queuing',
+    'SCFQ': 'Self Clock Fair Queueing',
+    'WRR': 'Weighted Round Robin',
+    'CMP': 'chip multiprocessors',
+    'CMS': 'Content management system',
+    'CM': 'Contention Manager',
+    'CNT': 'Carbon nanotube',
+    'VACNT': 'vertically aligned carbon nanotube',
+    'COP': 'combinatorial optimization problem',
+    'CPE': 'Customer Premises Equipment',
+    'CPL': 'constant power load',
+    'CRAN': 'Centralized Radio Access Network',
+    'RRH': 'Remote Radio Head',
+    'FSR': 'Feedback Shift Register',
+    'CRC': 'Cyclic Redundancy Check',
+    'CRD': 'Constrained Resource Device',
+    'OCSP': 'Online Certificate Status Protocol',
+    'CRL': 'certificate revocation list',
+    'CRN': 'Connected Random Network',
+    'LCRN': 'Locally Connected Random Network',
+    'CSC': 'Critical SecurityControl',
+    'CSF': 'Critical Successful Factor',
+    'CSP': 'communication service provider',
+    'CT': 'current transformer',
+    'CU-level': 'Coding Unit level',
+    'CUI': 'conversational user interface',
+    'DD/h': 'defect density per hour instead',
+    'DD/KLOC': 'Defect Density per 1000 lines of code',
+    'DDAEs': 'Deep Denoising Autoencoder', # diva2:912705
+    'DDBN': 'Deep Belief Network',
+    'DENM': 'Decentralized Environmental Notification Message',
+    'DETR': 'detection transformer',
+    'PDE': 'partial differential equations',
+    'GWRM': 'generalized weighted residual method',
+    'LPI': 'Low-probability-of-intercept',
+    'DE': 'Deep Ensembles',
+    'DFA': 'deterministic finite automata', # diva2:721652
+    'ROCOF': 'rate of change of frequency',
+    'SMIB': 'Single Machine Infinite Bus',
+    'DG': 'Distributed Generation',
+    'M2M': 'Machine-to-machine',
+    'DHT': 'Distributed Hash Table',
+    'WSN': 'Wireless Sensor Network',
+    'p2p': 'Peer-to-peer',
+    'DJs': {'c': 'Disc Jockey' , 's': 'diva2:1414380'},
+    'DLL': 'dynamic-link library',
+    'DMOSFET': 'Diffused Metal-Oxide Semiconductor Field-Effect Transistor',
+    'DNC': 'Differentiable Neural Network',
+    'MANN': 'Memory Augmented Neural Networks',
+    'DNO': 'Distribution Network Operator',
+    'SAIDI': 'System Average Interruption Duration Index',
+    'RCS': 'remote controlled sectionalizers',
+    'MV': 'medium voltage',
+    'CFL': 'compact fluorescent light',
+    'TNO': 'Transmission Network Operator',
+    'DN': 'Distribution Netowrk',
+    'DPU': 'Datapath Unit', #    diva2:1740699
+    'DRIC': 'dynamically reconfigurable isolation cell',
+    'DRL': 'Deep reinforcement learning',
+    'GBS': 'Ground base station',
+    'V2G': 'Vehicle-to-Grid',
+    'V2B': 'Vehicleto-Building',
+    'MILP': 'mixed integerlinear problem',
+    'DSO': 'distribution system operator',
+    'DTM': 'digital track map',
+    'DTx': 'digital therapeutics',
+    'DT': 'Decision Trees',
+    'EAM': 'Electro-Absorption Modulator', # see diva2:544800
+    'DFB': 'Distributed Feedback', # see diva2:544800
+    'EA': 'Enterprise Architecture',
+    'EBG': 'Electromagnetic Band Gap',
+    'EBNA': 'EBV encoded nuclear antigen',
+    'ECA': 'Embodied Conversational Agent',
+    'ECoG': 'Electrocorticographic',
+    'EDF': 'Electricite de France',
+    'SEGAN': 'Speech Enhancement Generative Adversarial Network',
+    'EHR': 'Electronic Health Record',
+    'EIS': 'Edge Infrastructure Service',
+    'JET': 'Joint European Torus',
+    'ELM': 'Edge-localized-mode',
+    'MPLS': 'Multi Protocol Label Switching',
+    'ELSP': 'EXP Inferred PHB Scheduling Class LSP',
+    'LDP': 'Label Distribution Protocol',
+    'EMCA': 'Ericsson Multi Core Architecture',
+    'CCC': 'Cascaded Cell Commutated',
+    'EMF': 'electromotance',
+    'RIB': 'Rigid-hulled Inflatable Boat',
+    'EON': 'Elastic Optical Network',
+    'PF-MBL': 'Primary First-Fit Modified Backup Last-Fit',
+    'EP': 'Emerging Pattern',
+    'ERP': 'Enterprise Resource Planning',
+    'ETL': 'extract, transform, load', #    diva2:1149023
+    'ETP': 'Examination Timetabling Problem',
+    'HNN': 'Hopfield Neural Network',
+    'GCP': 'Graph Colouring Problem',
+    'NSFET': 'nanosheet field effect transistors',
+    'GAA': 'Gate-all-around',
+    'SCE': 'short channel effects',
+    'WF': 'work-function',
+    'MPB': 'Most Pieces Broadcast',
+    'ICE': 'Intelligent CRL Exchange',
+    '3LT': 'Three-Level T-Type',
+    'SVPWM': 'Space Vector Pulse Width Modulation',
+    'FET': 'field effect transistor',
+    'GFET': 'top-gate graphene FET',
+    'ABS': 'Anti Blocking System',
+    'EPS': 'Electronic Stability Program',
+    'ACC': 'Autonomous Cruise Control',
+    'RTK': 'Real Time Kinematics',
+    'EcNo': 'the received energy per chip (Ec) of the pilot channel divided by the total noise power density (No)',
+    'CLR': 'closed-loop re-simulation',
+    'SPAS': 'Simulation Platform Active Safety',
+    'EuNCAP': ' European New Car Assessment Programme',
+    'FCEV': 'Fuel Cell Electric Vehicle',
+    'FDOA': 'frequency-difference-of-arrival',
+    'TDoA': 'Time Difference of Arrival ',
+    'TDOA': 'Time Difference of Arrival ',
+    'NURBS': 'Nonuniform Rational B-splines',
+    'RMU': 'Rocket Mounted Unit',
+    'FFU': 'Free-Falling Units',
+    'FFNN': 'feed-forward neural network',
+    'P4': 'Programming Protocol-independent Packet Processors',
+    'FF': 'Flip Flop',
+    'PCIe': 'Peripheral Component Interconnect Express',
+    'HDL': 'Hardware Description Language',
+    'FISCiMA': 'Framework for Integrating Shopping Cart Software in Mobile Applications',  # diva2:1335817
+    'FISCSiMA': 'Framework for Integrating Shopping Cart Software in Mobile Applications', # diva2:1335817
+    'ET': 'Exchange Terminal',
+    'FMTs': 'fertility- and menstruation technologies',
+    'FMI': 'Functional Mock-up Interface',
+    'UML': 'Unified Modeling Language',
+    'CIM': 'Common Information Model',
+    'FMU': 'Functional Mock-Up Unit',
+    'PFC': 'plasma-facing component',
+    'FM': 'First Mirror',
+    'FPA': 'focal plane array',
+    'LWIR': 'long wavelength infrared',
+    'FSM': 'ﬁnite-state machine',
+    'FTCS': 'Fault Tolerant Control System',
+    'FV': 'flying vehicle',
+    'FoM': 'Figure of Merit',
+    'CZT': 'Chirp Z-transform',
+    'FoV': 'Field of View',
+    'GAM': 'geodsic acoustic mode',
+    'GBM': 'gradient boosting model',
+    'EMI': 'electromagnetic interference',
+    'EMC': 'electromagnetic compatibility',
+    'GBT': 'Graphene base transistor',
+    'VSC': 'Voltage Source Converter',
+    'DMA': 'Direct Memory Acerss',
+    'GEMM': 'generaö matrix-matrix multiplication',
+    'GFC': 'Glucose Fuel Cell',
+    'GFLI': 'Grid-following inverter',
+    'GFL': 'Grid-Following',
+    'GFMI': 'grid-forming inverters',
+    'GNN': 'Graph Neural Network',
+    'AMP': 'approximate message passing',
+    'DAMP': 'AMP with damping',
+    'MMSE': 'minimum mean square error',
+    'MRF': 'Markov Random Field',
+    'LBP': 'loopy belief propagation', #  algorithm
+    'MAP': 'maximum a posteriori', # inference problem
+    'GNP': 'gold nanoparticle',
+    'GOx': 'glucose oxidase',
+    'GOx/GA': 'Glucose Oxidase/bovineserum albumin/glutaraldehyde', # # diva2:1230358
+    'GPP': 'general purpose processor',
+    'GQD': 'Graphene quantum dot',
+    'GSHP': 'Ground Source Heat Pump',
+    'GTS': 'Guaranteed Time Slot',
+    'GVTO': 'Global Voxel Transformer Operator',
+    'MTTR': 'Mean Time To Repair',
+    'HAB': 'Harmful Algal Bloom',
+    'HAR': 'Human activity region',
+    'HCN': 'Hybrid Code Network',
+    'HCP': 'hyper-scale cloud provider',
+    'HDUnet': 'Hierarchically Densely Connected U-net',
+    'CGAN': 'Conditional Generative Adversarial Network',
+    'RF': 'Radio Frequency',
+    'HET': 'hot electron transistor',
+    'PHEV': 'Plug-in Hybrid Electric Vehicle',
+    'HEV': 'Hybrid Electric Vehicle',
+    'HIP': 'Human Interactive Proof',
+    'HOP': 'Human Observational Proof',
+    'HMAC': 'Hash-based Message Authentication Code',
+    'HMC': 'Home Media Center',
+    'HMD': 'head-muonted display',
+    'OEM': 'Original Equipment Manufacturer',
+    'HMI': 'Human-Machine Interface',
+    'UX': 'user experience',
+    'UI': 'user interface',
+    'HMM': 'Hidden Markov Model',
+    'ASR': 'automatic speech recognition',
+    'HOGs': 'Histogram of Oriented Gradients',
+    'ECRH': 'Electron Cyclotron Resonance Heating',
+    'HOMs': 'high-order modes',
+    'HPT': 'Helicon Plasma Thruster',
+    'HRTF': 'Head-Related Transfer Function',
+    'HSM': 'Hardware Security Module',
+    'HTC': 'heat transfer coefficient',
+    'PEID': 'Power Electronic Interfaced Devices',
+    'LEED': 'Low Energy Electron Diffraction',
+    'STM': 'Scanning Tunneling Microscopy',
+    'DSSC': 'dye-sensitized solar cells',
+    'ICEV': 'internal combustion engine vehicles',
+    'TCO': 'Total Cost of Ownership',
+    'ICS': 'Industrial control system',
+    'ICU': 'Intensive Care Unit',
+    'IDS': 'Intrusion detection system',
+    'IGCT': 'Integrated Gate-Commutated Thyristor',
+    'RC-IGCT': 'Reverse Conducting IGCT',
+    'IO': 'Input/Output"',
+    'ASF': 'Avalon Switch Fabric', # diva2:1595226
+    'TDM': 'Time-Division Multiplexing',
+    'EASA': 'European Aviation Safety Agency',
+    'FMA': 'Flight Mode Annunciator',
+    'PFD': 'Primary </em>Flight Display',
+    'ILD': 'Interactive Lecture Demonstration',
+    'SAIFI': 'System Average Interruption Frequency Index',
+    'CEMI4': 'Customers Experiencing More Than Four Outages of one minute or more in the past year', # diva2:750131
+    'IMDb': 'Internet Movie Database',
+    'DPBL': 'Double Population Boundary Layers',
+    'IMSI': 'International Mobile Subscriber Identity',
+    'DNEAF': 'Domain Neutral Enterprise Architecture Framewors',
+    'EAIS': 'Enterprise Application Integration Services',
+    'PPS': 'Platform Pervasive Services',
+    'TGA': 'Transitional Gap Analysis',
+    'CGA': 'Comparative Gap Analysis',
+    'NIM': 'negative-index material',
+    'RHM': 'right-handed material',
+    'LHM': 'left-handed material',
+    'PIM': 'positive-index material',
+    'IM': 'Instant messaging',
+    'INS': 'inertial navigation system',
+    'FIPS': 'United States Federal Information',
+    'OPF': 'optimal power flow',
+    'OPF': 'Open Phase Fault', # see diva2:1752829
+    'IPMs': 'interior point methods',
+    'SOCP': 'second order cone programming',
+    'NDI': 'nonlinear dynamic inversion',
+    'LTI': 'linear time-invariant',
+    'LTV': 'linear time-varying',
+    'IQC': 'integral quadratic constraint',
+    'IRLED': 'infrared light-emitting diode',
+    'IRs': 'Intermediate Representatives',
+    'NoC': 'networks on chip',
+    'ISA': 'instruction set architecture',
+    'SL': 'AB Storstockholms Lokaltrafik',
+    'IT': 'Information Technology',
+    'COBIT': 'Control Objectives for Information and related Technology',
+    'ITOMAT': 'IT Organization Model Assessment Tool',
+    'IVVR': 'Voice and Video Response',
+    'PBX': 'Public Exchange Server',
+    'IVR': 'interactive voice response',
+    'IVs': 'integral videos', # see diva2:798112
+    'II': 'Integral imaging', # see diva2:798112
+    'IWMs': 'In wheel motors',
+    'IXP': 'Internet eXchange Point',
+    'IaC': 'Infrastructure as Code',    # diva2:1792965
+    'IgG': 'Immunoglobulin G', # diva2:1111535
+    'DNA': 'Deoxyribonucleic acid',
+    'STL': 'Sidewall Transfer Lithography',
+    'NWs': 'nanowires',
+    'RPCVD': 'Reduced Pressure Chemical Vapor Deposition',
+    'SOI': 'Silicon on Insulator substrates',
+    'FIB': 'Focus Ion Beam',
+    'I-line': 'Photolithography using 365 nm wavelength UV radiation for exposure',
+    'TE': 'thermoelectric material',
+    'I/O': 'Input/Output',
+    'IMAP': 'Internet Message Access Protocol',
+    'NPM': 'Node Package Manager',
+    'MDS': 'meta-data server',
+    'eT': 'elastic-transfer', # module - see diva2:812044
+    'IoMT': 'Internet of Moving Things',
+    'SOPC': 'System on Programmable Chip',
+    'FEC': 'Forward Error Correction',
+    'ATM': 'Asynchronous Transfer Mode',
+    'IvD': 'Invention Disclosure',
+    'PA': 'Patent Attorney',
+    'EQE': 'external quantum efficiency',
+    'Jsc': 'short circuit current',
+    'KF': 'Potassium Fluoride',
+    'Voc': 'Open-Circuit Voltage', # diva2:1348692
+    'Mo': 'Molybdenum',
+    'KQI': 'Key quality indicator',
+    'KVS': 'Key-Value Store',
+    'BGA': 'Ball Grid Array',
+    'LAD': 'Learning dashboard', # diva2:1582910
+    'LEA': 'law enforcements agency',
+    'LFLB': 'local feature learning block',
+    'LFSR': 'linear-feedback shift register',
+    'LIB': 'lithium ion battery',
+    'LIM': 'linear induction motor',
+    'LLM': 'Large Language Model',
+    'APR': 'Automated Program Repair',
+    '6loWPAN': 'IPv6 over Low power WPAN',
+    'LLN': 'Low-Power and Lossy Networks',
+    'RPL': 'Routing Protocol for Low-Power and Lossy Networks',
+    'CSG': 'Closed Subscriber Group',
+    'HetNet': 'Heterogeneous Network',
+    'OA': 'Open Access',
+    'ICIC': 'Inter-cell Interference Coordination',
+    'TDRP': 'Time Domain Resource Partitioning',
+    'FDRP': 'Frequency Domain Resource Partitioning',
+    'CRS-IC': 'Cell-specific Reference Signal Interference Cancellation',
+    'LPN': 'Low Power Network',
+    'LPPM': 'Location Privacy Protection Mechanism',
+    'LBS': 'Location Based Serivce',
+    'LQR': 'Linear Quadratic Regulator',
+    'LSP': 'Label Switched Path',
+    'FA-LSP': 'Forward Adjacency Label Switched Path',
+    'LSS': 'Life SupportSystem',
+    'MELiSSA': 'Micro-Ecological Life Support System Alternative',
+    'ESA': 'European Space Agency',
+    'LUT': 'Lookup Table',
+    'LaDPR': 'language agnostic document retrieval',
+    'DPR': 'Dense Passage Retrieval',
+    'LfD': 'Learning from Demonstration',
+    'LiCha': 'LIKIR chat',
+    'LiL': 'Live-in-lab',
+    'TDQM': 'Total Data Quality Management',
+    'LoD': 'Level of detail',
+    'LoL': 'League of legends', # diva2:1335262
+    'FPS': 'First Person Shooter', # diva2:1335262
+    'MOBA': 'Multiplayer Online Battle Arena', # diva2:1335262
+    'RTS': 'Real-Time Strategy', # diva2:1335262
+    'CSGO': 'Counter Strike global offensive', # diva2:1335262
+    'SC2': 'Starcraft II',  # diva2:1335262
+    'LwM2M': 'Lightweight Machine to Machine (LwM2M', # diva2:1306358
+    'MAB': 'Multi-armed bandit',
+    'MAC': 'Message Authentication Code', # also Media Access and Control
+    'MAGIIAN': 'multi-agent games with perfect information against Nature', # diva2:1701704
+    'MBs': 'megabytes',
+    'GBs': 'gigabytes',
+    'MCB': 'Miniature Circuit Breaker',
+    'MCQ': 'multiple choice question',
+    'MCS': 'Mixed-Criticality system',
+    'MDP': 'Markov decision process',
+    'MEA': 'microelectrode array',
+    'MEC': 'Multi-access Edge Computing',
+    'MED': 'Marine Electric Driveline',
+    'EMS': 'Efficiency Monitoring System',  # diva2:1821910
+    'EMS': 'Energy Management System', # diva2:510596
+    'MFCC': 'mel-frequency cepstral coefficient',
+    'MIoU': 'Mean Intersection over Union',
+    'MLA': 'Machine Learning Algorithm',
+    'MLFN': 'Multi-hidden Layer Feedforward neural Network',
+    'SLFN': 'Single-hidden Layer Feedforward neural Network',
+    'MLN': 'Markov Logic Network',
+    'MMC': 'Modular Multilevel Converter',
+    'SFC': 'Static Frequency Converter',
+    'STATCOM': 'Static Compensators',
+    'ML': 'Maximum Likelihood',
+    'LVAMP': 'Learnable Vector AMP',
+    'MNO': 'Mobile Network Operator',
+    'LEMP': 'Law Enforcement Monitoring Provider',
+    'PLMN': 'Public Land Mobile Network',
+    'MIKEY': 'Multimedia Internet KEYing',
+    'LBO': 'Local Breakout',
+    'VoLTE': 'Voice over Long-Term Evolution',
+    'TTP': 'Trusted Third Party',
+    'DAG': 'Directed Acyclic Graph',
+    'MN': 'Microneedle',
+    'MOPC': 'Magneto-Optic Photonic Crystals',
+    'MOSFET': 'metal-oxide-semiconductor field-effect transistor',
+    'MOS-FET': 'metal-oxide-semiconductor field-effect transistor',
+    'MOS­FET': 'metal-oxide-semiconductor field-effect transistor',
+    'MPEM': 'Multiphase Electrical Machine',
+    'VSD': 'Vector Space Decomposition',
+    'MQW': 'multiple quantum well',
+    'MTD': 'Moving Target Defense',
+    'MUSk': 'Model for Evaluating Screen management methods', # see diva2:941982
+    'MVAr': 'megavolt ampere of reactive power',
+    'MVE': 'Modifiable Virtual Environment',
+    'MVNO': 'Monile Virtual Network Operators',
+    'MVP': 'most valuable player',
+    'MWp': 'Megawatt peak',
+    'MoC': 'Model-of-computation',
+    'MobWS': 'Mobile Web Services',
+    'MtM': 'More than Moore',
+    'MuSC': 'muscle stem cell',
+    'NAT': 'rk Address Translator',
+    'NA': 'Native Application',
+    'NCS': 'Networked control systems', # diva2:570067
+    'WNCS': 'wireless networked control systems', # diva2:567680
+    'GNC': 'Guidance, Navigation and Control', # system - see diva2:1249048
+    'NC': 'nanocrystal',
+    'NEO': 'Near-Earth Object',
+    'NFP': 'near-field probe',
+    'GMR': 'Giant Magneto-Resistance',
+    'VNF': 'Virtual Network Function',
+    'NF': 'Network Function',
+    'NHPP': 'non-homogeneous Poisson process',
+    'SDP3': 'Scania Diagnose and Programmer 3',
+    'NIC': 'network interface card',
+    'JWST': 'James Webb Space Telescope',
+    'NIRSpec': 'Near InfraredSpectrograph',
+    'NLFSR': 'nonlinear-feedback shift register',
+    'NLP': 'nonlinear program',
+    'MINLP': 'mixed-integer nonlinear programming',
+    'NLoS': 'non-line-of-sight',
+    'LoS': 'line-of-sight',
+    'NMS': 'Network Management Solution', # see diva2:938973
+    'VPKI': 'Vehicular Public-Key Infrastructure',
+    'V2V': 'Vehicle-to-Vehicle',
+    'V2I': 'Vehicle-to-Infrastructure',
+    'RSU': 'Roadside Unit',
+    'VCS': 'Vehicular Communication System',
+    'NM': 'nano-machine', # see diva2:1295744
+    'NND': 'Neural NetworkDecoder',
+    'SPA': 'Sum-Product Algorithm',
+    'SSA': 'space situational awareness',
+    'GLM': 'generalized linear model',
+    'NN': 'neural network',
+    'NPC': 'Non-player character',
+    'NPI': 'Non-pharmaceutical intervention',
+    'NP': 'etwork Process',
+    'NSGAN': 'Non-Saturating Generative Adversarial Network',
+    'NVM': 'Non-Volatile Memory',
+    'SEU': 'Single-Event Upset',
+    'NVRAM': 'ovel non-volatile RAM',
+    'LV': 'low-voltage',
+    'WDM-PON': 'wavelength division multiplexing passive optical network',
+    'OTDR': 'optical time domain reflectometer',
+    'OAR': 'Organs at Risk',
+    'OBU': 'On-Board Unit',
+    'WHO': '(World Health Organization',
+    'WWTP': 'waste water treatment plant',
+    'PAN': 'Polyacrylonitrile', # see diva2:873252
+    'EDX': 'energy dispersive X-ray', # see diva2:873252
+    'ODE': 'ordinary differential equation',
+    'ATP': 'adenosine triphosphate',
+    'XOD': 'xanthine oxidase',
+    'OECT': 'Organic Electrochemical Transistor',
+    'OHL': 'overhead line',
+    'OLTC': 'on-load tap changer',
+    'ONU': 'optical network unit',
+    'ORC': 'Organic Rankine Cycle', # see title of diva2:914959
+    'OSF': 'Open Switch Fault',
+    'WICSC': 'Wound Independently Controlled Stator Coil',
+    'FDI': 'Fault detection and isolation',
+    'PN': 'phase noise',
+    'CD': 'Chromatic dispersion',
+    'BER': 'bit error rate',
+    'EEPN': 'equalization enhanced phase noise',
+    'OSNR': 'optical signal-to-noise ratio',
+    'OSN': 'Online Social Network',
+    'OSTEmer': 'Off-stoichiometry thiol-ene-epoxy', # polymers
+    'OS': 'Operating System',
+    'OSes': 'Operating Systems',
+    'OWS': 'Online Web Service',
+    'CO': 'Central Office',
+    'CD': 'Continuous Delivery', # see diva2:1612613
+    'CI': 'Continuous Integration', # see diva2:1612613
+    'Ops': 'operation',  # see diva2:1636109
+    'Dev': 'development',  # see diva2:1636109
+    'DevOPs': 'development and operations',  # see diva2:1636109
+    'Opto22': 'OPTOEMU-SNR-DR2', # abbreviation - see diva2:1596061
+    'NASPI': 'North-American Synchrophasor Initiative',
+    'WECC': 'Western Electricity Coordinating Council',
+    'PMU': 'Phasor Measurement Unit',
+    'PDC': 'Phasor Data Concentrator',
+    'PACT': 'Parallelization Contract',
+    'FGVC': 'Fine-grained Visual Classification', # see diva2:1590915
+    'RPN': 'Region Proposal Networks', # see diva2:1590915
+    'PANet': 'Path Aggregation Network', # see diva2:1590915
+    'BiFPN': 'Weighted Bidirectional Feature Pyramid Network', # see diva2:1590915
+    'PAN': 'Personal Area Network',
+    'PCC': 'Point of Common Coupling', # see diva2:761016
+    'DTD': 'Distance-to-Default', # see diva2:557179
+    'PCN': 'Payment Channel Network', # see diva2:1783661
+    'PCSEL': 'photonic-crystal surface emitting laser', # see diva2:1259267
+    'MOCVD': 'metal organic chemical vapour deposition',
+    'PC': 'Personal Computer',
+    'PDF': 'Portable Document Format',
+    'PDP': 'power delay profiles', # see diva2:1570193
+    'PDP': 'Pickup and Delivery Problem', # see diva2:1601097
+    'LNS': 'Large Neighborhood Search', # see diva2:1601097
+    'HDR': 'Heuristic Destroy and Repair', # see diva2:1601097
+    'PDS': 'Probabilistic Data Structure',
+    'PD': 'Partial discharge',
+    'PHY': 'Physical Layer',
+    'EVM': 'Error Vector Magnitude', # see diva2:663177
+    'MCS': 'Modulation and Coding Scheme', # see diva2:663177
+    'STBC': 'Space-Time Block Coding', # see diva2:663177
+    'PID': 'Proportional – Integral – Derivative', # controller
+    'PLC': 'Programmable Logic Controller',
+    'PMA': 'Protected (software) Module Architecture', # see diva2:1305654
+    'PMSM': 'permanent magnet synchronousmotor', # see diva2:571104
+    'FOC': 'field oriented control',  # see diva2:571104
+    'FEM': 'finite element simulations', # see diva2:571075
+    'PM': 'Permanent magnet', # see diva2:571075
+    'PM': 'Performance Measurement', # see diva2:1172847
+    'POI': 'Points Of Interest',
+    'PRB': 'Physical resource block',
+    'PR': 'pull request', # see diva2:1737828
+    'PSS': 'Power System Stabilizer', # see diva2:1723189
+    'PSoC': 'Programmable System on Chip', # see diva2:577805
+    'USI': 'Universal Sensor Interface', # see diva2:577805
+    'PTLM': 'pre-trained language model',
+    'PTP': 'Precision Time Protocol',
+    'PUF': 'Physically Unclonable Function',
+    'ICP': 'Iterative Closest Point', # algorithm - see diva2:1244852
+    'GICP': 'Generalized ICP', # algorithm - see diva2:1244852
+    'PU': 'priority user', # see diva2:925045
+    'SU': 'secondary user',# see diva2:925045
+    'SCN': 'secondary communication network', # see diva2:925045
+    'PCN': 'priority communication network',  # see diva2:925045
+    'PnP': 'Perspective-n-Point', # see diva2:1704886
+    'PWA': 'Progressive Web Application', # see diva2:1770631
+    'SUT': 'system-under-test', # see diva2:1609005
+    'MBT': 'Model-based testing', # see diva2:1609005
+    'PdM': 'Predictive Maintenance', # see diva2:1653832
+    'PHM': 'Prognostics and Health Management', # see diva2:1653832
+    'PhC': 'photonic crystal', # see diva2:1259267
+    'OFAF': 'oil forced/air forced', # type of cooling
+    'OFAN': 'Oil Natural Air Natural', # type of cooling
+    'QN': 'Queueing Network', # see diva2:1304951
+    'QP': 'quadratic programming',
+    'QP': 'Quantization Parameter',
+    'QWIP': 'Quantum Well Infrared Photodetector', # see diva2:1415915
+    'T2SL': 'Type II-superlattice', # see diva2:1415915
+    'QW': 'quantum well',
+    'Qp': 'BamH I Q promoter',
+    'Cp': 'BamH I C promoter',
+    'Wp': 'BamH I W promoter',
+    'OTA': 'Over the Air',
+    'TSM': 'Trusted Service Manager',
+    'CC': 'Commercial Carrier',
+    'RAN': 'Radio Access Network', # see diva2:1088647
+    'CoMP': 'oordinated Multipoint Processing', # see diva2:1088647
+    'DU': 'Digital Unit', # see diva2:1088647
+    'DRAN': 'Distributed RAN', # see diva2:1088647
+    'RAS': 'Remedial Actions Scheme', # see diva2:510598
+    'SI': 'Stability Indices', # see diva2:510598
+    'DSA': 'Dynamic Security Assessment', # see diva2:510598
+    'RBC': 'red blood cell',
+    'RBF': 'Radial Basis Function', # see diva2:1787726
+    'RBM': 'Restricted Boltzmann Machine', # see diva2:859006
+    'RB-PoW': 'reputation based proof-of-work', # diva2:668297
+    'RBPoW': 'reputation based proof-of-work', # diva2:668297
+    'RBS': 'radio base station', # see diva2:1331955
+    '1PPS': 'one pulse per second', # see diva2:1331955
+    'RE': 'Resource element', # see diva2:1713873
+    'RB': 'resources block', # see diva2:1110070
+    'RDF': 'Randomized Decision Forest', # see diva2:1134686
+    'RFID': 'Radio Frequency ID',
+    'FSO': 'Free Space Optical', # see diva2:1818557
+    'DLR': 'Deutsches Zentrum für Luft- und Raumfahrt', # see diva2:1818557
+    'PRBS': 'Parallel Pseudo Random Binary Sequence', # see diva2:1818557
+    'RFSoC': 'RF Systems-on-Chip',
+    'RIR': 'room impulse response',
+    'RIS': 'reconfigurable intelligent surface', # see diva2:1802830
+    'mmWave': 'Millimeter-wave',  # see diva2:1802830
+    'IDS': 'Indoor dense space', # see  diva2:1802830
+    'ROV': 'Remotely Operated Vehicle', # see diva2:1639312
+    'ROI': 'Regions­Of-Interest', # see diva2:1331719
+    'RPC': 'Remote Procedure Call',
+    'IID': 'independent and identically distributed', # see diva2:1736023
+    'FL': 'federated learning', # see diva2:1736023
+    'RPI': 'Raspberry Pi', # see diva2:1736023
+    'RPi': 'Raspberry Pi', # see diva2:1637440
+    'RPMS': 'Remote Patient Monitoring system', # see diva2:637470
+    'RRT': 'rapidly-exploring random tree', # see diva2:1279130
+    'RRU': 'remote radio unit', # see diva2:1732946
+    'TXRU': 'transceiver unit', # see diva2:1732946
+    'C-RAN': 'centralized radio access network', # see diva2:1732946
+    'LTE': 'Long Term Evolution', # see diva2:1133526
+    '3GPP': '3rd Generation Partnership Project',  # see diva2:1133526
+    'Cat-M1': 'category M1',   # see diva2:1133526
+    'FIR': 'Finite Impulse Response',   # see diva2:1133526
+    'IIR': 'Infinite Impulse Response', # see diva2:1133526
+    'SRS': 'Sounding Reference Signal', # see diva2:867797
+    'CDF': 'Cumulative Distribution Function', # see diva2:867797
+    'RS': 'Reference Signal', # see diva2:1133526
+    'RTAO': 'ray traced ambient occlusion', # see diva2:1574351
+    'GTAO': 'ground- truth ambient occlusion', # see diva2:1574351
+    'SSAO': 'screen space ambient occlusion', # see diva2:1574351
+    'RTOS': 'Real-Time Operating System', # see diva2:1085303
+    'ESFree': 'Efficient Scheduling Library',  # see diva2:1085303
+    'RTT': 'Round Trip Time',
+    'RTU': 'remote terminal unit',
+    'RaMViD': 'Random-Mask Video Diffusion', # see diva2:1726971
+    'ReLU': 'Rectified Linear Unit', # see diva2:1156251
+    'MBM': 'Matrix-Based Method', # diva2:1156251
+    'OSLC': 'Open Services for Lifecycle Collaboration', # see diva2:1127525
+    'ReSh': 'Resource Shapes', # verification language - see diva2:1127525
+    'HIL': 'Hardware-in-Loop', # see diva2:1829119
+    'Rprop': 'Resilient Backpropagation', # see diva2:1620690
+    'MSS': 'market surveillance system', # see diva2:1588596
+    'RtD': 'Research through Design', # see diva2:1588596
+    'SAFeBAA': 'Scaled Agile Framework Business Agility Assessment', # see diva2:1613209
+    'SAFeMM': 'Scaled Agile Framework Maturity Model',  # see diva2:1613209
+    'SAF': 'submerged-arc furnace', # see diva2:1039097
+    'SK': 'Selective Kernel', # network - see  diva2:1800876
+    'MSE': 'Mean Squared Error', # see  diva2:1800876
+    'SAV': 'shared autonomous vehicle', # see diva2:1412661
+    'SBC': 'Session Border Controller', # see diva2:906809
+    'ToIP': 'Telephony over IP', # see diva2:906809
+    'SBO': 'Spin based oscillator', # see diva2:1232046
+    'CMOS': 'complementary metal-oxide semiconductor',
+    'SBR': 'Shooting and Bouncing Rays', # see diva2:1354488
+    'SIENT': 'SBR Including or Excluding Near-eld Terms', # see diva2:1354488
+    'SCA': 'Side-Channel Attack', # see diva2:1468521
+    'EM': 'electromagnetic',
+    'CRN': 'Chemical Reaction Network', # see diva2:1778263
+    'SCRN': 'Surface Chemical Reaction Network', # see diva2:1778263
+    'LDPC': 'Low-Density Parity Check', # see diva2:1412396
+    'SDO': 'tandards development organization', # see diva2:1613189
+    'hPSC': 'Human pluripotent stem cell', # see diva2:753077
+    'SECaaS': 'Security as a Service', # see diva2:618113
+    'SEL': 'Single-Event Latch-up', # see diva2:1499093
+    'SERP': 'search engine result page', # see diva2:680610
+    'SFAs': 'Seven Focus Areas', # see diva2:1374217
+    'SFU': 'selective forwarding unit', # see diva2:1165928
+    'SHNO': 'Spin Hall Nano Oscillator', # see diva2:1232046
+    'SIB': 'sodium-ion battery', # see diva2:1607609
+    'PW': 'Prussian White',  # see diva2:1607609
+    'SLO': 'Service Level Objective', # used but not defined in diva2:929943
+    'SSS': 'Side Scan Sonar', # see diva2:1711126
+    'MBES': 'Multibeam echosounder', # see diva2:1711126
+    'SLAM': 'Simultaneous Localisation and Mapping', # see diva2:1711126
+    'SMaRC': 'Swedish Maritime Robotics Center',  # see diva2:1711126
+    'GWAS': '<p>Genome-wide association studies', # see diva2:706748
+    'SNP': 'single nucleotidepolymorphism', # see diva2:706748
+    'SNR': 'Signal to Noise Ratio', # diva2:1133526
+    'CQI': 'Channel Quality Indicator', # diva2:1133526
+    'SNSPD': 'superconducting nanowire single-photon detector', # see diva2:1712817
+    'SOC': 'System-On-Chip',
+    'SOT': 'Spin-Orbit-Torque', # see diva2:1264914
+    'STT': 'Spin-Transfer-Torque',  # see diva2:1264914
+    'SPCs': 'European Southern Neighbourhood Partner Countries', # see diva2:1702839
+    'EU': 'European Union',
+    'ICMPD': 'International Centre for Migration Policy Development', # see diva2:1702839
+    'SPION': 'superparamagnetic iron oxide nanoparticle', # see diva2:618655
+    'SPP': 'urface plasmon polariton', # see diva2:874504
+    'SRM': 'Solid Rocket Motors', # see diva2:513657
+    'SRV': 'surface recombination velocity', # see diva2:470415
+    'HDFS': 'Apache Hadoop distributed file system', # see diva2:1080713
+    'SSD': 'solid-state drive', 
+    'SSID': 'Service Set Identifier',
+    'SST': 'Self-service technology',  # see diva2:1818513
+    'STO': 'Spin Torque Oscillator', # see diva2:874887
+    'SUI': 'Search User Interface', # see diva2:1112494
+    'SUN': 'Smart metering Utility Network', # see diva2:750092
+    'TNFi': 'Tumor Necrosis Factor inhibitor', # see diva2:1815071
+    'SVAE': 'Supervised VAE', # see diva2:1815071
+    'SfM': 'Structure from Motion', # see diva2:763219
+    'ShEx': 'Shapes Expression', # see diva2:1127525
+    'SHACL': 'Shapes Constraint Language', # see diva2:1127525
+    'SOTA': 'State-of-the-Art',
+    'SoTA': 'State-of-the-Art', # used by not defined in diva2:1833610
+    'SvFF': 'Svenska Fotbollförbundet', # see diva2:1705451
+    'SvK': 'Svenska Kraftnät', # see diva2:610182
+    'Svk': 'Svenska Kraftnät', # see diva2:1421309
+    'PPAT': 'People Professionally Arranging Transactions', # see diva2:1421309
+    'ACER': 'Agency for the Cooperation of Energy Regulators', # see diva2:1421309
+    'RO': 'regulated object', # see diva2:1421309
+    'TAM': 'technology acceptance model', # see diva2:1536799
+    'TAP': 'Trigger-action platform', # see diva2:1713834
+    'TCL': 'Thermostatically Controlled Load', # see diva2:1381350
+    'TCR': 'temperature coefficient of resistance', # see diva2:579233
+    'MWIR': 'mid wavelength infrared', # see diva2:579233
+    'LWIR': 'long wavelength infrared', # see diva2:579233
+    'TDMA': 'Time Division Multiple Access', # plural form used in diva2:647373
+    'TED': 'Thermoelectric device', # see diva2:1788043
+    'TEG': 'thermoelectric generator', # see diva2:446877
+    'BPFA': 'Beta Process Factor Analysis', # see diva2:654439
+    'NMF': 'Non-negative Matrix Factorization', # see diva2:654439
+    'TKAm': 'Tetrakis (4-aminophenyl) methane', # see diva2:1699284
+    'SC': 'supercapacitor', # see diva2:1699284
+    'PGO': 'Porous spaced graphene oxide', # see diva2:1699284
+    'EDA': 'Ethylenediamine', # see diva2:1699284
+    'ADAP': '2-Amino-5-diethylaminopentane', # see diva2:1699284
+    'ATA': '2-Aminoethyl trimethylammonium chloride hydrochloride', # see diva2:1699284
+    '2D': 'two dimensional',
+    '3D': 'three dimensional',
+    'TLD': 'Top Level Domain',
+    'TLM': 'Transaction Level Model', # see diva2:813119
+    'TL': 'Transmission Line', # used in diva2:550476, but not defined
+    'TR': 'Trouble Report', # see diva2:612633
+    'TSO': 'Transmission System Operator', # see diva2:1324146
+    'TTA': 'Technology Transfer Alliance', # see diva2:463001
+    'AFDX': 'Avionics Full-Duplex Ethernet',  # see diva2:1484743
+    'TTEthernet': 'Time-Triggered Ethernet', # see diva2:1484743
+    'SINR': 'Signal-to-Interference-plus-Noise ratio', # see diva2:1710474
+    'OLLA': 'Outer Loop Link Adaptation', # see diva2:1710474
+    'TTI': 'Transmission Time Interval', # see diva2:1710474
+    'TWEAM': 'Travelling-Wave', # see diva2:546777
+    'Tc': 'critical temperature',
+    'UDN': 'Ultra Dense Network', # see diva2:881082
+    'UIN': 'Unique Identification Number', # see diva2:531077
+    'UPnP': 'Universal Plug and Play', # diva2:926683
+    'URI': 'Uniform Resource Identifier',
+    'SPISE': 'Space Plug-and-play Interface Simulation Equipment', # see diva2:462886
+    'SPA': 'Space Plug-and-play Avionics',  # see diva2:462886
+    'USB': 'Universal Serial Bus',
+    'IP': 'Intellectual Property',  # see diva2:462886
+    'VHDL': 'Very High Speed Integrated Circuit Hardware Description Language',  # see diva2:462886
+    'USRP': 'Universal SoftwareRadio Peripheral', # see diva2:1453602
+    'CFO': 'Carrier Frequency Offset',  # see diva2:1453602
+    'VCO': 'Voltage Controlled Oscillators',
+    'VCSEL': 'vertical-cavity surface-emitting laser', # see diva2:468172
+    'VE': 'virtual environment', # see diva2:1156010
+    'MR': 'Mixed Reality', # see diva2:1156010
+    'VR': 'Virtual Reality', # see diva2:1156010
+    'M2C': 'Modular Multilevel Converter', # see diva2:572379
+    'VFC': '(Voltage-to-Frequency Converter', # see diva2:572379
+    'VHO': 'vertical handover', # see diva2:608059
+    'WiMAX': 'Worldwide Interoperability for Microwave Access',  # see diva2:608059
+    'UMTS': 'Universal Mobile Telecommunication System',   # see diva2:608059
+    'VIR': 'Voltage Impasse Region', # diva2:1332039
+    'TDS': 'Time Domain Simulation', # diva2:1332039
+    'VIRflag': 'Voltage Impasse Region Flag', # diva2:1332039
+    '3DVFH*': '3D Vector Field Histogram*', # see diva2:1534501
+    'VMAP': 'Vector Map', # used but not defined in diva2:1534501
+    'GIS': 'Geographical Information System', # see diva2:1534501
+    'VOIPSec': 'VoIP over IPSec', # diva2:510441
+    'VoIPSec': 'VoIP over IPSec', # diva2:510441
+    'VOx': 'vanadium oxide', # used but not defined in diva2:579233
+    'VPP': 'Virtual Power Plant', # see diva2:1414372
+    'VPat': 'Vulnerability Pattern', # see diva2:1778255
+    'MBST': 'Model-Based Security Testing', # see diva2:1778255
+    'CDL': 'Context Definition Language', # see diva2:1778255
+    'CDML': 'Context-Driven Modelling Language', # see diva2:1778255
+    'VRLab': 'Virtual Reality Lab', # see diva2:654201
+    'VRP': 'Vehicle Routing Problem', # see diva2:1601097
+    'TEHL': 'Thermal Elastohydrodynamic Lubrication', # see diva2:1470325
+    'SMP': 'Shared Memory Parallel', # see diva2:1470325
+    'Vb': 'voltage breakdown', # used but not defined in diva2:1712829
+    'FHVAE': 'Factorized Hierarchical Variational Autoencoder', # see diva2:1336760
+    'VQVAE': 'Vector Quantised-Variational AutoEncoder', # see diva2:1336760
+    'WBAN': 'wireless body area network', # see diva2:1091192
+    'WDN': 'Water Distribution Network', # see diva2:1640093
+    'WDS': 'water distribution system', # see diva2:1142741
+    'CED': 'contamination event detection', # see diva2:1142741
+    'WEC': 'Wave Energy Converter', # see diva2:1177850
+    'WMR': 'Wheeled Mobile Robots', # see diva2:662268
+    'WPAN': 'Wireless Personal Area Network', # see diva2:387961
+    'WTG': 'wind turbine generator', # see diva2:714792
+    'OWPP': 'offshore wind power plant', # see diva2:714792
+    'LVRT': 'low-voltage-ride-through', # see diva2:714792
+    'WWAN': 'wireless wide area network', # see diva2:699786
+    'Wasm': 'WebAssembly', # see diva2:1833811
+    'XAI': 'Explainable Artificial Intelligence', # see diva2:1722940
+    'XKF': 'Xogenous Kalman Filter', # see diva2:1232900
+    'XOR': 'exclusive OR',
+    'XSL': 'eXtensible Stylesheet Language',
+    'XSLT': 'XSL Transformation',
+    'OO': 'object-oriented', # see  diva2:1467022
+    'DLSCA': 'Deep Learning Side-Channel Analysis', # see diva2:1737844
+    'WRM': 'winding resistance measurement', # see diva2:1537658
+    'SFRA': 'Sweep Frequency Response Analysis', # see diva2:1537658
+    'ZKP': 'Zero Knowledge Proof', # see diva2:1710479
+    'OCCF': 'Off-Chain Computation Framework', # see diva2:1710479
+    'ZUPT': 'zero-velocity update', # diva2:541630
+    'TCN': 'Temporal Convolution Network', # diva2:1314164
+    'LNN': 'Lagrangian Neural Network', # see diva2:1592532
+    'NIN': 'Network in Network', # see diva2:927067
+    'NiN': 'Network in Network',
+    'PbD': 'Privacy by Design', # diva2:1316430
+    'NFC': 'Near Field Communication', # see diva2:862212
+    'WWW': 'World Wide Web',
+    'vDU': 'virtual distributed unit', # see diva2:1830454
+    'vCU': 'centralized virtual unit',  # see diva2:1830454
+    'mDNS': 'multicast DNS', # see diva2:108072
+    'SSD': 'single-shot multi-box detector', # see diva2:1249005
+    'mAP': 'Mean average precision',
+    'mAP50': 'Mean average precision calculated at an intersection over union (IoU) threshold of 0.50',
+    'mAP_50': 'Mean average precision calculated at an intersection over union (IoU) threshold of 0.50',
+    'mAP@50': 'Mean average precision calculated at an intersection over union (IoU) threshold of 0.50',
+    'gNodeB': 'Next-Generation Node B',
+    'f2cc': 'ForSyDe-to-CUDA C', # see diva2:646340
+    'PTI': 'Pivotal Tuning Inversion', # see diva2:1763100
+    'CLIP': 'Contrastive Language Image Pre-training', # see diva2:1763100
+    'PLC': 'power line communication', # see diva2:623697
+    'MWS': 'Mobile Web Server', # see diva2:470189
+    'eRTP': 'Energy Real Time Protocol', # see diva2:505086
+    'iRTP': 'Iyad Real Time Protocol', # see diva2:505086
+    'eSNP': 'expression SNP', # used but not defined in diva2:706748
+    'dID': 'digital alternative ID',
+    'ITRL': 'Integrated Transport Research Lab', # see diva2:1805241
+    'MVEM': 'Mean Value Engine Model', # see diva2:573435
+    'VSM': 'virtual synchronous machine', # see diva2:1543454
+    'dVOC': 'dispatchable virtual oscillator control', # see diva2:1543454
+    'dWIP': 'Detached Walk-in-place', # see diva2:1159190
+    'PDR': 'Partial Dynamic Reconfiguration', # see diva2:644906
+    'LIBS': 'Laser-Induced Breakdown Spectroscopy', # diva2:1504146
+    'PLS': 'artial Least Square', # see diva2:1504146
+    'IPW-PLS': 'Iterative Predictor Weighting PLS',  # see diva2:1504146
+    'iPLS': 'Interval PLS', # see diva2:1504146
+    'SITS': 'Satellite Image Time Series', # see diva2:1584546
     #GQMa
 }
 
@@ -51918,6 +52932,7 @@ misc_words_to_ignore=[
     'vastberg',   # part of an e-mail address
     'viggo',      # part of an e-mail address
     'wouter',     # part of an e-mail address
+    'saadua@kth', # part of an e-mail address
 
     # Languages/peoples
     'American',
@@ -52001,29 +53016,41 @@ misc_words_to_ignore=[
 ]    
 
 place_names=[
-    'Risley',
-    'Argentinos', # Argentinos Juniorsfootball team
-    "Alexandria",
-    "Cuba",
+    "Earth‘s",    
+    'Aachen',
     'Aalto',
     'Aberdeen', 
+    'Achterbahn',
+    'Ain',
     'Aires', 
     'Alaska',
     'Albanova',
     'Alberta',
     'Aldebaran',
+    'Alesund',
+    'Alexandria',
+    'Alps',
     'Alto', 
     'America',
     'Amsterdam',
     'Anaheim',
     'Angeles',
     'Angeles', 
+    'Anglia',
+    'Antarctic',
     'Antarctica',
+    'Antares',
     'Antipolis',
+    'Anue',
     'Arabia',
+    'Argentinos', # Argentinos Juniorsfootball team
+    'Arismore',
+    'Aritco',
     'Arlington', 
     'Asia',
     'Asia-Pacific',
+    'Asketorp',
+    'Assam',
     'Athens',
     'Atlanta',
     'Atlantic',
@@ -52031,34 +53058,50 @@ place_names=[
     'Austrailia',
     'Australia', 
     'Austria', 
+    'Avalon',    
     'Babylon',
     'Baltic',
     'Baltimore',
     'Bangalore',
+    'Bangor',
     'Banten',
     'Barcelona', 
+    'Basel',
     'Bayonne', 
     'Beijing', 
     'Beirut',
     'Belarus',
     'Belgium',
+    'Benelux',
     'Bengal',
     'Bengaluru',
     'Bergen',
     'Berkeley',
     'Berlin',
     'Berne',
+    'Blekinge',
     'Bloomington',
     'Boca',
+    'Bohuslän',
     'Bolivia',
+    'Bologna',
+    'Bolíbar',
+    'Borja',
+    'Borlänge',
     'Boston', 
+    'Botswana',
+    'Bottenvikens',
     'Brandenburg',
     'Bratislava',
     'Braunschweig',
     'Brazil', 
+    'Breivik',
+    'Briey',
     'Brisbane', 
     'Bristol', 
+    'Britain',
     'Brittany',
+    'Bromma',
     'Brook',
     'Brooklyn', 
     'Brussels', 
@@ -52067,7 +53110,9 @@ place_names=[
     'Buenos', 
     'Buffalo',
     'Bulgaria', 
+    'Bunda',
     'Burbank',
+    'Burgundy',
     'Burlingame',
     'Burlington',
     'Cairo', 
@@ -52085,6 +53130,12 @@ place_names=[
     'Carlsbad',
     'Carnegie',
     'Cartagena', 
+    'Cartpole',
+    'Cassini',
+    'Castalia',
+    'Castelo',
+    'Catalonia',
+    'Chalokwa',
     'Champaign',
     'Chapel',
     'Chennai', 
@@ -52095,34 +53146,61 @@ place_names=[
     'China', 
     'Ciena', 
     'Cincinnati',
+    'Claremont',
     'Cleveland',
+    'Coimbatore',
     'Colorado',
     'Columbia',
     'Columbus', 
     'Conn',
+    'Copenhagen',
+    'Craeye',
+    'Croatia',
+    'Cuba',
     'Dalarna',
     'Dallas', 
+    'Danderyd',
+    'Dar',
+    'Daytona',
     'Delaware', 
+    'Delft',
     'Delsbo',
     'Denmark', 
     'Denver', 
     'Detroit',
     'Diego', 
+    'Djurgården',
+    'Djurgårdenstaden',
     'Dordrecht',
     'Dresden', 
     'Dubai', 
+    'Dubin',
     'Dublin', 
     'Dulles',
+    'Dunedin',
+    'Dushanbe',
+    'Dyviks',
     'EU-wide',
     'Eastlake', 
+    'Ecuador',
+    'Eegmond',
+    'Egypt',
+    'Eindhoven',
     'Ekerö',
+    'Emirates',
     'England', 
+    'Es',
     'Espoo/Helsinki', 
+    'Est',
+    'Estonia',
     'Ethiopia',
+    'Etna',
     'European-wide',
     'Fairfax',
     'Falun',
     'Fano',
+    'Farsta',
+    'Fennoscandia',
     'Fiji', 
     'Finland', 
     'Florida', 
@@ -52131,6 +53209,8 @@ place_names=[
     'Francisco',
     'Frankfurt', 
     'Frederiksberg',
+    'Freiburg',
+    'Gaborone',
     'Gainesville',
     'Gaithersburg',
     'Galway',
@@ -52141,6 +53221,7 @@ place_names=[
     'Glasgow', 
     'Gothenburg',
     'Gotland',
+    'Grand Est',
     'Great-Britain',
     'Greece', 
     'Greenwich', 
@@ -52151,7 +53232,12 @@ place_names=[
     'Gävle',
     'Göteborg',
     'Haiti',
+    'Hallamshire',
+    'Hallstahammar',
+    'Hallstavik',
     'Hampshire',
+    'Hankasalmi', # Finland
+    'Haparanda',
     'Harlem',
     'Harvard',
     'Havana',
@@ -52159,10 +53245,12 @@ place_names=[
     'Hawaii',
     'Heidelberg', 
     'Helenalund',
+    'Helmond',
     'Helsinki',
     'Herlev',    
     'Herndon',
     'Hoboken',
+    'Hogdalen',
     'Holland',
     'Hollywood',
     'Honolulu', 
@@ -52195,8 +53283,11 @@ place_names=[
     'Johannesburg', 
     'Jonkoping',
     'Jordan', 
+    'Joux',
     'Jämtland',
     'K\u00f6ln',
+    'Kalix',
+    'Kampala',    
     'Kansas',
     'Karachi', 
     'Karlskrona',
@@ -52206,20 +53297,36 @@ place_names=[
     'Kathmandu',
     'Kayamandi',
     'Kenya',
+    'Kibera',
+    'Kirehe',
     'Kirkland',
+    'Kiruna',
     'Kista',
     'Korea',
     'Kosovo',
     'Kreta',
+    'Kruseberg',
+    'Krush', # Krush Creative
+    'Kubernetes/minikube',
+    'Kufu',
+    'Kulturskolan',
     'Kulyab',
+    'Kundo',
     'Kungsholmen',
+    'Kungsholmen',
+    'Kungsholmens',
+    'Kungsängen',
     'Kurdistan',
     'Kyiv',
+    'Kyoto',
+    'Köping',
     'Ladakh', # India
     'Lagos', 
+    'Lanka',
     'Latvia',
     'Lebanon',
     'Leicester',
+    'Leuwidamar',
     'Lidingö',
     'Liechtenstein',
     'Liege',
@@ -52235,7 +53342,11 @@ place_names=[
     'London',
     'Los',
     'Louvain',
+    'Ludvika',
     'Lugoba',
+    'Lule älven',
+    'Lule',
+    'Luleälven',
     'Luleå',
     'Luxembourg',
     'Lyngby', 
@@ -52243,6 +53354,8 @@ place_names=[
     'Lübeck',
     'Maarten', 
     'Madrid', 
+    'Madurai',
+    'Makumba',    
     'Malaysia',
     'Maldive',
     'Maldives',
@@ -52255,7 +53368,10 @@ place_names=[
     'Manille',
     'Manitoba',
     'Maryland', 
+    'Masdar',
     'Massachusetts', 
+    'Medina',
+    'Mediterranean',
     'Melbourne',
     'Mercury',
     'Mexico',
@@ -52271,16 +53387,23 @@ place_names=[
     'Monterrey', 
     'Montreal',
     'Moon',
+    'Mora',
+    'Morbihan',
+    'Morrumbene',
     'Moscow', 
     'Mozambique',
+    'Mugumu',
     'Munchen',
     'Munich',
+    'Mårtsbo',
     'N.Y',
     'NY',
     'NYC',
     'Nairobi', 
     'Naples', 
+    'Nata',
     'Nepal',
+    'Netherland',    
     'Netherlands',
     'Nevada',
     'Newark', 
@@ -52294,15 +53417,23 @@ place_names=[
     'Norrland',
     'Norrmalm',
     'North-America',
+    'North/South',
+    'Northeast',
     'Norway',
     'Nottingham',
     'Nuremberg',
+    'Nurmijärvi',
     'Nykvarn',
     'Nynäshamns',
+    'Närdingen',
     'Oakland',
     'Oaks',
     'Oaxaca',
     'Oceania',
+    'Oklahoma',
+    'Oland',
+    'Olsbergs',
+    'Oman',
     'Ontario',
     'Oregon',
     'Orleans',
@@ -52320,8 +53451,10 @@ place_names=[
     'Pakistani',
     'Palo',
     'Panama', 
+    'Panimbang',
     'Paris',
     'Paris-Saclay',
+    'Paterno',
     'Paulo', 
     'Pays-de-la-Loire',
     'Peking',
@@ -52335,6 +53468,7 @@ place_names=[
     'Piteå',
     'Pittsburgh',
     'Poland',
+    'Pondicherry',
     'Portland',
     'Portugal',
     'Potsdam',
@@ -52353,57 +53487,84 @@ place_names=[
     'Rhodes',
     'Rhodesia', 
     'Riddarholmen',
+    'Rijeka',
     'Ringvägen',
     'Rion-Antirion',
     'Risley',
+    'Risley',
+    'Rissne',
     'Rochester',
     'Romania',
     'Rome', 
     'Ropsten',
+    'Rouen', # France
     'Russia',
     'Rwanda',
+    'Salaam',
     'San',
     'Santiago', 
     'Sao', 
     'Scandinavian',
     'Seattle', 
     'Sebastopol',
+    'Sege',
     'Senegal',
     'Seoul', 
     'Serengeti',
     'Seville',
+    'Shams', #Ain Shams University in Cairo, Egypt
     'Shandong',
     'Shanghai',
     'Sheffield',
     'Shenandoah',
     'Singapore',
+    'Skagerrak',
     'Skeboå',
+    'Skellefte',
+    'Skellefte¨alven',
     'Skellefteälven',
     'Skellefteå',
+    'Skurup',
     'Slovenia',
     'Slussen',
     'Smedjebacken',
     'Sodertalje',
     'Sodra',
     'Sofia', 
+    'Sofiaängen', # a neighborhood in Stockholm
     'Sollentuna',
     'Solna',
     'Somalia',
+    'Sotenäs',
+    'Southampton',
     'Southwester',
     'Southwestern',
     'Spain', 
+    'Sponza', # Sponza Palace
+    'Sri',
     'StJohns',
     'Stamford',
     'Stanford',
+    'Stavlo',
+    'Stellenbosch',
+    'Stenungsund',
     'Stockholm',
     'Stockholm-Arlanda',
+    'Stockholm-Bangkok',
     'Stockholm-Copenhagen',
+    'Stockholm-Mallorca',
+    'Stockholm-Sweden',
+    'Stockholm-Umeå',
     'Stockholm/Kista',
+    'Stockholm/Sundbyberg',
+    'Stockholm/Sweden',
     'Stockholms', 
     'Stony',
     'Strathclyde',
     'Stuttgart', 
     'Sudan',
+    'Suez',
+    'Sulaymaniyah', # Iraqi Kurdistan
     'Sundbyberg',
     'Sunnyvale',
     'Surrey',
@@ -52411,6 +53572,7 @@ place_names=[
     'Sweden',
     'Switzerland',
     'Sydney',
+    'Séglien',     # France
     'Södermalm',
     'Södertälje',
     'Södertörns',
@@ -52423,8 +53585,12 @@ place_names=[
     'Texas',
     'Tezpur',
     'Thames',
+    'Tihany',
+    'Tinguiririca',
+    'Tirunelveli',
     'Tivoli',
     'Tobago',
+    'Tocina',
     'Tokyo', 
     'Torino', 
     'Toronto', 
@@ -52438,6 +53604,7 @@ place_names=[
     'Trinity',
     'Tromsø',
     'Trondheim',
+    'Trujillo', # Peru
     'Tumba',
     'Turin',
     'Tyresö',
@@ -52447,9 +53614,11 @@ place_names=[
     'Uppsala',
     'Utah',
     'Utrecht',
+    'Utøya',
     'Valhallav\u00e4gen',
     'Vancouver',
     'Vegas',
+    'Viana', # Viana do Castelo, Portugal
     'Vienna',
     'Virginia',
     'Visby',
@@ -52479,169 +53648,16 @@ place_names=[
     'Zurich',
     'Zött',
     'Zürich',
-    'Älvsjö',
-
-
-    # GQM-for-merger
-    'Aachen',
-    'Achterbahn',
-    'Ålesund',
-    'Alesund',
-    'Alps',
-    'Anglia',
-    'Östermalm',
-    'Åkervik',
-    'Antarctic',
-    'Antares',
-    'Anue',
-    'Arismore',
-    'Aritco',
-    'Asketorp',
-    'Avalon',    
-    'Ain',
-    'Bangor',
-    'Basel',
-    'Benelux',
-    'Blekinge',
-    'Bohuslän',
-    'Bologna',
-    'Borlänge',
-    'Botswana',
-    'Breivik',
-    'Britain',
-    'Bromma',
-    'Burgundy',
-    'Bolíbar',
-    'Borja',
-    'Bottenvikens',
-    'Bunda',
-    'Nata',
-    'Copenhagen',
-    'Croatia',
-    'Craeye',
-    'Coimbatore',
-    'Claremont',
-    'Chalokwa',
-    'Catalonia',
-    'Castelo',
-    'Castalia',
-    'Cassini',
-    'Cartpole',
-    'Danderyd',
-    'Dar',
-    'Es',
-    'Salaam',
-    'Daytona',
-    'Delft',
-    'Djurgården',
-    'Dubin',
-    'Dunedin',
-    'Tihany',
-    'Dushanbe',
-    'Dyviks',
-    'Etna',
-    'Estonia',
-    'Grand Est',
-    'Est',
-    'Emirates',
-    'Eindhoven',
-    'Egypt',
-    'Ecuador',
-    'Eegmond',
-    "Earth‘s",    
-    'Farsta',
-    'Fennoscandia',
-    'Freiburg',
-    'Gaborone',
-    'Hallamshire',
-    'Hallstavik',
-    'Hallstahammar',
-    'Hankasalmi', # Finland
-    'Haparanda',
-    'Helmond',
-    'Hogdalen',
-    'Stellenbosch',
-    'Kalix',
-    'Kampala',    
-    'Kibera',
-    'Kirehe',
-    'Kiruna',
-    'Kruseberg',
-    'Krush', # Krush Creative
-    'Kubernetes/minikube',
-    'Kufu',
-    'Kulturskolan',
-    'Kundo',
-    'Kungsholmen',
-    'Kungsängen',
-    'Kyoto',
-    'Köping',
-    'Lanka',
-    'Leuwidamar',
-    'Panimbang',
-    'Ludvika',
-    'Lule älven',
-    'Lule',
-    'Luleälven',
-    'Madurai',
-    'Pondicherry',
-    'Tirunelveli',
-    'Makumba',    
-    'Masdar',
-    'Medina',
-    'Mediterranean',
-    'Mora',
-    'Morbihan',
-    'Morrumbene',
-    'Mugumu',
-    'Mårtsbo',
-    'Netherland',    
-    'North/South',
-    'Northeast',
-    'Nurmijärvi',
-    'Närdingen',
-    'Oklahoma',
-    'Oland',
-    'Olsbergs',
-    'Oman',
-    'Stockholm-Bangkok',
-    'Stockholm-Mallorca',
-    'Stockholm-Sweden',
-    'Stockholm-Umeå',
-    'Paterno',
-    'Rijeka',
-    'Rissne',
-    'Rouen', # France
-    'Sege',
-    'Shams', #Ain Shams University in Cairo, Egypt
-    'Skagerrak',
-    'Skellefte',
-    'Skellefte¨alven',
-    'Skurup',
-    'Stenungsund',
-    'Sotenäs',
-    'Southampton',
-    'Sri',
-    'Stavlo',
-    'Stockholm/Sundbyberg',
-    'Stockholm/Sweden',
-    'Suez',
-    'Sulaymaniyah', # Iraqi Kurdistan
-    'Séglien',     # France
-    'Tinguiririca',
-    'Tocina',
-    'Trujillo', # Peru
-    'Utøya',
-    'Viana', # Viana do Castelo, Portugal
     'Älvkarleby',
+    'Älvsjö',
+    'Åkervik',
+    'Ålesund',
     'Ångermanälven',
-    'Kungsholmens',
-    'Djurgårdenstaden',
-    'Assam',
-    'Sponza', # Sponza Palace
-    'Joux',
-    'Briey',
-
+    'Östermalm',
+    'Kundur',
+    'Birka',
+    'Koper', # Gulf of Koper
+    'Koping',
 ]
 
 company_and_product_names=[
@@ -52812,8 +53828,9 @@ company_and_product_names=[
     'Conzilla',
     'Cooltalk',
     'Copco',
-    'CorPower',
-    'Cortex-M3',
+    'CorPower', # CorPower Ocean AB - see # see diva2:1177850
+    'Cortex-M3', #     Arm
+    'Cortex-M4', #     Arm
     'Costan',
     'Cray',
     'Crossmedialab',
@@ -53092,6 +54109,7 @@ company_and_product_names=[
     'Kubernetes',
     'LBTest',
     'LESpy',
+    'LESim',
     'LICT',
     'LMSim',
     'LTE-Advanced',
@@ -53362,7 +54380,7 @@ company_and_product_names=[
     'Qunfes',
     'Quora',
     'Qwest',
-    'RACalc',
+    'RACalc', # diva2:750131
     'RB-PoW',
     'RabbitMQ',
     'Radcom',
@@ -53425,7 +54443,7 @@ company_and_product_names=[
     'Securitas',
     'Selenium',
     'Sennheiser',
-    'Sentrion',
+    'Sentrion', # see diva2:539598
     'Sevilla',
     'Shakey',
     'SharePoint',
@@ -53674,7 +54692,7 @@ company_and_product_names=[
     'WiMAX',
     'WiMAX+WLAN',
     'WiMax',
-    'Wiimote',
+    'Wiimote', # see diva2:654201
     'Wikibooks',
     'Wikimedia',
     'Wiley',
@@ -53824,7 +54842,6 @@ company_and_product_names=[
     'Ackebrink',
     'Acosta',
     'Acreo',
-    'Actel',
     'Activeeon',
     'Acuminor',
     'AcviteMQ',
@@ -54242,7 +55259,7 @@ company_and_product_names=[
     'Deutsches',    
     'DevVec',    
     'DiaStar',
-    'DiaStar™',
+    'DiaStar™', # diva2:552851
     'Dialogflow'
     'Dibber', # Rullen Dibber special needs school in Solna
     'Dibz',
@@ -54529,7 +55546,6 @@ company_and_product_names=[
     'Skal',
     'GoogLeNet',
     'Graph500',
-    'GraphCodeBERT',
     'GraphDraw',
     'GraphLab',
     'GraphML',
@@ -54587,8 +55603,6 @@ company_and_product_names=[
     'Hemnet',
     'Hera',
     'Heroma',
-    'HetNet',
-    'HetNets',
     'Hi3G',
     'HiDraw',
     'Hockeysverige',
@@ -54648,7 +55662,6 @@ company_and_product_names=[
     'InfluxDB',
     'Infogix',
     'Integrum',
-    'IntelR',
     'Ipad',
     'Ipads',
     'Iperf',
@@ -54688,7 +55701,7 @@ company_and_product_names=[
     'Kinesis',
     'Kinodynamic',
     'Kintex',
-    'KitNet',
+    'KitNet', # diva2:1584363
     'Knightec',
     'Kodo',
     'Kogi',
@@ -54750,7 +55763,7 @@ company_and_product_names=[
     'Lviv',
     'Lyman',
     'Lytro',
-    'Lucene',
+    'Lucene', 
     'Lucidchart',
     'Notion',
     'Trello',
@@ -54805,7 +55818,7 @@ company_and_product_names=[
     'Mahout',
     'Makespan',
     'Malmbanan',
-    'ManageEngine',
+    'ManageEngine', # see diva2:938973
     'Manas',
     'ManasUI',
     'ManoHandDB',
@@ -54922,7 +55935,7 @@ company_and_product_names=[
     'Muhimbili', # Muhimbili University of health and Allied Sciences(MUHAS)
     'MultiBox',
     'MultiGet',
-    'MultiResUNet',
+    'MultiResUNet', # see diva2:1619512
     'MultiTaper',
     'MultiTenancy',
     'MultiWOZ',
@@ -54959,7 +55972,7 @@ company_and_product_names=[
     'Nephele',
     'Nessus',
     'Net1',
-    'Netcool/OMNIbus',
+    'Netcool/OMNIbus', # IBM Tivoli Netcool/OMNIbus - see diva2:938973
     'Netlight',
     'Netmap',
     'Netomac',
@@ -55410,7 +56423,7 @@ company_and_product_names=[
     'SimpleACLAuthorizer',
     'SimpleScalar',
     'Simplorer',
-    'Simpow',
+    'Simpow', # a simulator - see diva2:1821983
     'Simscale',
     'Simstream',
     'Simulator3',
@@ -55554,7 +56567,6 @@ company_and_product_names=[
     'Swedint',
     'Swedint/livgardet',
     'SwedishICT',
-    'Swiesh',
     'Swisl',
     'Switchgear',
     'SyRS',
@@ -55608,7 +56620,7 @@ company_and_product_names=[
     'ThinGC',
     'Thyselius',
     'TianChi',
-    'Tibber',
+    'Tibber', # see diva2:1381350
     'Tidende',
     'Tierp',
     'TilePro',
@@ -55738,7 +56750,6 @@ company_and_product_names=[
     'Votia',
     'Vuforia',
     'Warmkitten',
-    'Wasm',
     'WavEC',
     'WaveHolz',
     'WaveNET',
@@ -56022,7 +57033,7 @@ company_and_product_names=[
     'vSphere',
     'vanillaDQN',
     'Advantech',
-    'Advrty', 
+    'Advrty',  # see diva2:1156010:
     'Aimms', #diva2:515402
     'Atlas-GAN',
     'AutoKeras',
@@ -56078,7 +57089,7 @@ company_and_product_names=[
     'Word2Vec',
     'ZeroMQ',
     'Azipod',
-    'iForestASD',
+    'iForestASD', # diva2:1584363
     'iFEST',
     'iGaming',
     'iGroup', # iGroup Presence Questionnaire
@@ -56091,8 +57102,373 @@ company_and_product_names=[
     'β-SVAE',
     'β-VAE',
     'βVAE',
+    'aFRR', # diva2:1543243 - the algorithm ios called aFRR Down
+    'sofiaangen', # part of a web URL diva2:869145
+    'Astah', # Astah Community Edition
+    'nrf51822',
+     'nRF51822',
+    'nRF52',
+    'nRF52840',
+    'nRF9160',
+    'h5500',
+    'h5550',
+    'ActiveMQ',
+    'BACnet/IP',
+    'C67x',
+    'DBScan',
+    'OMAP3530',
+    'DSPLink',
+    'GAMS/Matlab',
+    'LayoutLMv3',
+    'LayoutLMv2',
+    'LayoutLM',
+    'LayoutXLM',
+    'Nasa-TLX',
+    'NeuralDynamicsLab',
+    'NodeManagers',
+    'NodePiece',
+    'OmniCore',
+    'P4Runtime',
+    'Sanitizer',
+    'Sawtooth',
+    'T4i', # T4i Technology for Propulsion and Innovation s.p.a.
+    'RP2040',
+    'TACLeBench',
+    'TILEPro64',
+    'TLSonSGX',
+    'TRADExpress',
+    'Cinnober', # Cinnober Financial Technology AB
+    'TestDFSIO',
+    'TestU01',
+    'Testify',
+    'WELFake',
+    'LIAR',
+    'URights',
+    'bAbI', # challenge    diva2:1701745
+    'cDAQ', # National Instruments 'cDAQ'
+    '34972A', #  Agilent 34972A - see diva2:511152
+    'cProfile',
+    'c65',
+    'canAnalyser/32', # diva2:576416
+    'control-Lyapunov',    # function - see diva2:1821983
+    'OpenQA', # abbreviaiton for "Open Domain Question Answering (OpenQA)" - see diva2:1722945 
+    'ePLUS', # interactive writing baord - see diva2:654358
+    'ePub', # e-book file format
+    'eTRIO', # e-learning interface - see diva2:1466296
+    'eSett', # A Nordic imbalance settlement company - see diva2:1324272
+    'flowtime',
+    'iQsmart3', # Creo iQsmart3
+    'iSAM2', # (Incremental Smoothing and Mapping solver - see diva2:1507932
+    'jArvest', # diva2:925430
+    'kthuniversity', # KTH's Instagram account
+    '@kthuniversity', # KTH's Instagram account
+    'mMIMO',
+    'mMTC',
+    'mPaaS',
+    'mPreBERT',
+    'mQAM',
+    'mRMSE',
+    'mSRGAN',
+    'multidupehack', # algorithm diva2:1380265
+    'nDCG', # score - see diva2:1604458
+    'nDCG@10', # score - see diva2:1604458
+    'p-approximation', # algorithm - see diva2:1708153
+    'rTriplify', # diva2:654372
+    'rtl8188eus', # Realtek rtl8188eus chipset
+    'rqt', # ROS' GUI framework rqt - see diva2:1249798
+    'P-MAS-TG', # software package - see diva2:1249798
+    'sTEC', # interface -see diva2:1504448
+    'seL4', # microkernel - see diva2:1607328
+    'srsLTE', # an open source SDR LTE project
+    'GAM5',
+    'wlanTGnChannel', # MATLAB model
+    'yEd', # application diva2:706183
+    'yn0-couplings', # diva2:1247558
+    'an0-couplings', # diva2:1247558 (part of "an0- and yn0-couplings"
+    'z/Architecture', # IBM'S 'z/Architecture', - see diva2:1458132
+    "ACSLsmall", # ACSL<sub>small</sub>a subset of ACSL - see diva2:1801590
+    "A-phase",
+    'AFLNet', # stateful protocol fuzzer - see diva2:1803135
+    'AFLNwe', # stateful protocol fuzzer - see diva2:1803135
+    'AEPlanner', # diva2:1415975
+    'ADAMS/view', # diva2:576419
+    'ALPHA-drone', # diva2:1822790
+    'AMK-handbook', # diva2:621868
+    'BDNet', # diva2:1616957
+    'BESnL', # diva2:1604513
+    'BESL', # diva2:1604513
+    'Bb4', # a note at 235 Hz
+    'CBMI-Ral-STO',
+    'CCNx', # diva2:575001
+    'CFU/mL', # (Number of colonies*dilution factor) / volume of culture plate - see diva2:1793362
+    'CHoG', # descriptor - see diva2:555602
+    'CIC-Evasive-PDFMal2022', # dataes - see diva2:1678561
+    'CIDEr', # metric - see diva2:1472682
+    'CMake',
+    'CPSolver',
+    'CSRNet', # see diva2:1800876
+    'CScore',
+    'Cdc6', # see diva2:11112
+    'Cdk4/6',# see diva2:11112
+    'Cdk2', # see diva2:11112
+    'Cigr', # see diva2:609184
+    'DETReg', # see diva2:1824011
+    'EHNet', #diva2:1355369
+    'ELMo', # diva2:1617597
+    'EMPro', # produced by Keysight Technologies
+    'ENet', # diva2:1240557
+    'ESPnetv2', # diva2:1536051
+    'EUREF', # http://www.euref.eu/
+    'EUREFs',
+    'FCSmek', # diva2:583657
+    'DLite', # "<em>D</em><em>Lite </em>" - see diva2:700130
+    'Delete&Generate', # framework see diva2:1835958
+    'FEniCS',
+    'ConcurrentSkipListSet', # diva2:1618357
+    'FaSPAIR', # algorithm - see diva2:1449798
+    'FoHSS', # an HSS server - see diva2:508775
+    'IWR6843AOPEVM', # mmWave FMCW radar IWR6843AOPEVM - see diva2:1541369
+    'GLocal',    # see diva2:1784238
+    'BP-MMSE', # algorithm see diva2:1479310
+    'GeoDNS', # diva2:1498802
+    'GeoD', # see diva2:930194
+    'GeoIP', # see diva2:1351145
+    'PSS/E', # software diva2:610066
+    'Heflp', # a Homomorphic Encryption project - see  diva2:1835970
+    'IDeSyDe', # tool - see diva2:1820238
+    'II/e', # Nios II/e - see Nios II/e
+    'IIIa', # CAT IIIa - see diva2:565491
+    'IIIb', # CAT IIIb - see diva2:565491
+    'IL120x', # course codes
+    'STM32F103RE', # see diva2:872781
+    'ILEffekt',
+    'Idop', # Idop AB - see diva2:647965
+    'Ih', # iH point group - see diva2:1110226
+    'IKAROS', # diva2:812044
+    'IuB', # Iub Interface - see diva2:458887
+    'LUCENE', # see diva2:928553
+    'SCAPS', # solar cell simulator - see diva2:1348692
+    'KBLab', # diva2:1707578
+    'KKAWeb', # KI emplyee staff informaiton system - see diva2:1087275
+    'Ka', # Ka band 26.5–40 GHz
+    'JiB', # JiB 2 chip prototype - see diva2:1617388
+    'LA5c', # UCLA Consortium for Neuropsychiatric Phenomics LA5c Study- see diva2:1352547
+    'LTF/Reduce', # by Norconsult Astando AB - see diva2:652176
+    'LTSpice', # simulation model - see diva2:1805005
+    'LTTng', # open source tracing frame work - see diva2:1335836
+    'LVars', # see diva2:1268459
+    'LIKIR', # diva2:346222
+    'LiLT', # diva2:1833610
+    'LoLo', # diva2:1639312
+    'Ludu', # on-line courses - see diva2:820914
+    'Luna', # SafeNet Luna SA 1700 - see diva2:774557
+    'MAVLink', # diva2:1251208
+    'MAdWeather', # data set - see diva2:1736060
+    'MHENet', # diva2:1698113
+    'MInature', # part of KTH MInature STudent (MIST) satellite - see diva2:1181060
+    'MMNet', # diva2:1661649
+    'MMarco', # data set diva2:1742871
+    'MPNet', # diva2:1722945
+    'MPcore', # ARM MPCore
+    'MQuery', # formal model - see diva2:1238485
+    'MSP/Jitter', # part of "MAX MSP/Jitter" - see diva2:654236
+    'MSieve', # diva2:769846
+    'MTConnect', # protocol - see diva2:1783647
+    'Mbed', # part of Mbed TLS - see diva2:1105827
+    'MbedTLS', # diva2:1587410
+    'McMoGlow', # diva2:1836363
+    'MemN2N', # model - see diva2:1701745
+    'MiXiM', # simulation paradignm - see diva2:612624
+    'MiXiMs', # simulation paradignm - see diva2:612624
+    'MipsIt', # simulator - see diva2:647033
+    'MoCo', # diva2:1619641
+    'MoSync', # diva2:507888
+    'MobMuPlat', # diva2:785840
+    'Motulator', # simulator - see diva2:1750930
+    'Mplab', # diva2:873240
+    'MuJoCo', # physics simulator - see diva2:1264815
+    'Moff', # 'M<sub>off</sub>' - see diva2:1205924
+    'Mon',# 'M<sub>on</sub>' - see diva2:1205924
+    'N-Speculation', # method - see diva2:1833746
+    'NAOs', # Aldebaran Robotics - see diva2:746337
+    'NAOs', # Aldebaran Robotics - see diva2:746337
+    'NDepend',# tool - see diva2:1108935
+    'NDprotector', # open source SEND - see diva2:402380
+    'NHibernate', # technique - SEE diva2:654198
+    'Click-Once', # technique - SEE diva2:654198
+    'DrNIN',
+    'NNgen',  # tool diva2:1818755
+    'NOKI-model', # model - see diva2:873468
+    'NOKIv2', # model - see diva2:873468
+    'NReal', # glasses - see diva2:1834113
+    'NSBootstrap', # see diva2:1272242
+    'NSLab', # a lab at kTH - see diva2:1539441
+    'NSSearch', # see diva2:1272242
+    'NSynth', # data set - see diva2:1778370
+    'NXP140nm', # CMOS processs - see diva2:862315
+    'NX', # Siemens NX - see diva2:1635000
+    'Netz', #  Avacon Netz GmbH - see diva2:1359842
+    'NxN', # an N x N arrary - see diva2:570122
+    'O&M', # Operation and Maintenance (O&amp;M) - see diva2:1726974
+    'O&MDSMs', # Operation and Maintenance Decision Support Models (O&amp;MDSMs) - see diva2:1726974
+    'O&MDSTs', # Operation and Maintenance Decision Support Tools (O&amp;MDSTs) - see diva2:1726974
+    'OBu', #  part of the chemical formula for tetrabutyl titanate - see diva2:873252    
+    'ODE15s', # MATLAB’s ODEsolver - see diva2:1105933
+    'RADAU5', # ODEsolver - see diva2:1105933
+    'ONiO', # part of "RISC-V ONiO.zero core" - see diva2:1769445
+    'OpManager', # see diva2:938973
+    'PCIe2', # bus - see diva2:557179
+    'PDFBox', # Java library Apache PDFBox - see diva2:1119405
+    'PETSc', # scientific toolkit - see diva2:904127
+    'PLBart', # see diva2:1702229
+    'GraphCodeBERT', # see diva2:1702229
+    'PSPNet',    # see diva2:1746732
+    'PSPNet101', # see diva2:1746732
+    'PSPNet50',  # see diva2:1746732
+    'PUREi9', # see diva2:1244852
+    'PVNet', # diva2:1704886
+    'SUN2012', # dataset diva2:1704886
+    'PaCovForJbc', # tool - see diva2:1609005
+    'PaPP', # project - see diva2:872598
+    'Pi2', # see diva2:511521
+    'Pi4', # see diva2:1739098, diva2:1534501
+    'PlatON', # netowrk - see diva2:1834163
+    'PoCC', # polyhedral C-to-C compiler PoCC - see diva2:1129224
+    'Powervault',   # see diva2:1157947
+    'Powerwall', # see diva2:1157947
+    'Swiesh', # Swiesh QLurn IT Solutions - see diva2:1216892
+    'QLurn', # Swiesh QLurn IT Solutions - see diva2:1216892
+    'ASq', # system - see  diva2:654377
+    'Anchr', # system - see diva2:1119098
+    'SWORDSMAN', # see diva2:1787726
+    'ZU28DR', # see diva2:1818557
+    'RLTCol', # algorithm - see diva2:1779796
+    'Radau5ODE', # solver diva2:1705413
+    'Radiotftp', # see diva2:626842
+    'Radiotftp_process', # see diva2:626842
+    'Radiotunnel', # see diva2:626842
+    'Soundmodem', # see diva2:626842
+    'APRX', # see diva2:626842
+    'ReDaR', # software and hardware environment - see diva2:573471
+    'ResNet18', # see diva2:1829119
+    'Resnet_v', # see diva2:1788173
+    'Rh6G', # solution - see diva2:556807
+    'SANet', # crowd counting design - see  diva2:1800876
+    'SDAccel', # Xilinx SDAccel reference platform - see diva2:1412396
+    'SDSoc', # Vivado HLS with SDSoc environment- see diva2:1517320
+    'SEAdb', # see diva2:753077
+    'SLEPc', # library - see diva2:1412649
+    'EMM4', # dataset - see diva2:1702839
+    'EMM5', # dataset - see diva2:1702839
+    'EUROMED', # program - see diva2:1702839
+    'SPECjbb2013', # see diva2:754515
+    'SPECjbb2015', # see diva2:1693010
+    'SQgen', # traffic generator - see diva2:523738
+    'SRv6', # segment routing protocol - see diva2:1804923
+    'HopsFS', #  see diva2:1080713
+    'SUSig', # visual corpus - see diva2:874820
+    'SVMlin', # support vecotr machine system - see diva2:680232
+    'Granska', # part-of-speech tagger for Swedish - see diva2:680232
+    'SVPracer', # Ericsson's SVPracer - see diva2:1216804
+    'SYSteam', # SYSteam Nät AB - an ISP - see diva2:513152
+    'SubVIs', # diva2:511152
+    'SweRV', # core processor - diva2:1584924
+    'Skiptrip', # Skiptrip AB - see diva2:789372
+    'SwEAT-', # see diva2:1607477
+    'SwEAT-BERT', # see diva2:1607477
+    'TBar', # Template based automatic program repair tool - see diva2:1612596
+    'TIDigits', # database , # see diva2:654439
+    'TLab', # TLab West AB - see diva2:539598
+    'ÅF', # ÅF Digital Solutions AB - see diva2:1484743
+    'HECTO', # European project - see diva2:546777
+    'Tcom', # company - see diva2:1368133
+    'TraCI', # see diva2:1336430
+    'UCov', # static analysus tool -diva2:1836361
+    'UNet', # see diva2:1619512
+    'ÅAC', #  see diva2:462886
+    'Actel', # see diva2:462886
+    'A3P1000', # Actel A3P1000see - see diva2:462886
+    'USBHostSlave', # see diva2:462886
+    'USBKey', # diva2:484496
+    'UiPath', # diva2:1609800
+    'VAE2Enc', # diva2:1516237
+    'VGGFace', # model - see diva2:1795907
+    'VGGNet',
+    'VGGish', # see diva2:1618056
+    'VPatChecker', # see diva2:1778255
+    'VSCode', # repository - see diva2:1593922
+    'VTune', # Intel’s VTune Amplifier - see # see diva2:1470325
+    'Vaa3D', #  diva2:1778341
+    'VoiceServer', # see diva2:531917
+    'AudioBrowser',# see diva2:531917
+    'FRDMKW40Z', # NXP FRDMKW40Z - see diva2:1091192
+    'Ocean', # CorPower Ocean AB - see # see diva2:1177850
+    'WasmEdge', # see diva2:1833811
+    'Wnt', # Wingless-related integration site - see diva2:654192
+    'XCUITest', # see diva2:1653815
+    'XCode', # see diva2:1653815
+    'XCounter', # company - see diva2:871612
+    'XLNet', # diva2:1633154
+    'XMega', # see diva2:1633149
+    'XQuAD', # data set - see diva2:1602172
+    'MLQA', # data set - see diva2:1602172
+    'Xcode', # diva2:1467022
+    'DOTS', # see diva2:1467022
+    'Xmega',
+    'YNauto0', # see diva2:1247549
+    'YNyn0', # see diva2:1247549
+    'YNyn0yn0', # see diva2:1247549
+    'Yd', #  see diva2:1537658
+    'Yy', #  see diva2:1537658
+    'ZoKrates', # framework - # see diva2:1710479
+    'avrgcc', # diva2:871553
+    'Bromone', # anticoagulant
+    'bsdiff', # diva2:1538229
+    'btferret', # diva2:1593659
+    '802.15.4', # IEEE standard numebr
+    '802.15.4j', # IEEE standard numebr
+    'VoiceLoop', # diva2:1336760
+    'xStream', # diva2:1584363
+    'LoOP', # diva2:1584363
+    'xUnit', # diva2:1148711
+    'xPC' # diva2:662296,
+    'xBD', # diva2:1616957
+    'xA4', # BladeRF xA4 - see diva2:1529805
+    'vxB', # induced electric field - see diva2:514058
+    'mFRR', # diva2:1728662
+    'm2mc', # controller synthesis system - see diva2:1537533
+    'mT5', # diva2:1606199
+    'hBN', # diva2:1464045
+    'hERG', # diva2:1640867
+    'e500mc', # see diva2:579079
+    'e500', # PowerPC - see diva2:528945
+    'e4e', # encoder - see diva2:1763100
+    'e31', # transverse piezoelectriccoefficient - see diva2:1071795
+    'e3', # diva2:612576
+    'E3', # diva2:612576
+    'e6', # Volvo truch - see diva2:623697
+    'FMX', # volvo truck -  see diva2:623697
+    'eT′s', # see diva2:812044
+    'dpPower', # diva2:1337063
+    'dSPACE', # see diva2:1805241
+    'dSpace', # dSpace microAutobox -  # see diva2:573435
+    'dPACE', # see diva2:1749923
+    'Sc2Share', # see diva2:1749923
+    'Walk-in-place', # see diva2:1159190
+    'x264', # encoder - diva2:1331719
+    'x310', # Universal Software Radio Peripheral x310 - see diva2:1413149
+    'textio', # see diva2:1217723
+    'HDiMArch', # diva2:556742
+    'g2o', # see diva2:1415989
+    'gG', # typ of use - see diva2:1556736
+    'iPB', # diva2:872592
+    'i5', # Intel i5 CPU #  diva2:557179
+    'aegypti', # Aedes aegypti- see diva2:1750629
+    'ndnSIMv2', # simulator - see diva2:1039090
 
 ]
+
+
 
 common_programming_languages=[  # and libraries, programs
     'ANSI-C',
@@ -56436,6 +57812,11 @@ common_programming_languages=[  # and libraries, programs
 ]
 
 names_of_persons=[
+    'Payne',
+    'Loewner',
+    'Jaro',
+    'Flötteröd',
+    'Šarić',
     'Willans',
     'Vickrey-Clarke',
     'Groves',
@@ -59820,6 +61201,30 @@ common_french_words=[
     'développement',
 ]
 
+common_danish_words=[
+    'Kulge',
+    'Selskabs',
+    'Skrifter',
+    'Videnskabernes',
+    'af',
+    'belyst',
+    'danske',
+    'det',
+    'en',
+    'for',
+    'i',
+    'ingresser', #    'ingresser': {'xx': 'unknown'},
+    'instrumen', #    'instrumen': {'xx': 'unknown'},
+    'kongelige',
+    'lysbevægelsen',
+    'lysbølger', #     'lysbølger': {'xx': 'unknown'},
+    'og',
+    'plane',
+    'uden',
+    'ApS', # Danish - Anpartsselskab - private limited company
+
+]
+
 common_finnish_words=[
     'Oy',
     # GQM-for-merger
@@ -59844,7 +61249,6 @@ common_german_words=[
 
 
 ]
-
 
 common_italian_words=[
     'Fondazione',
@@ -59912,6 +61316,33 @@ common_spanish_words=[
 
 ]
 
+# note that these are considered in a case sensitive manner
+programming_keywords={
+    'argc',
+    'argv',
+
+    'def',
+    'elif',
+    'else',
+    'enum',
+    'eq',
+    'fi',
+    'writev',
+}
+
+language_tags={
+    'en-US',
+    'fr-FR', 
+    'de-DE',
+    'no-NB', 
+    'sv-SE', 
+
+    # incorrect - as the separator should be a dash
+    'de_de',
+    'no_nb', 
+    'sv_se', 
+}
+
 miss_spelled_words=[
     'mulit-agent', #     'multi-agent'
     'modelmodell',
@@ -59937,7 +61368,7 @@ miss_spelled_words=[
     'work-ow',
     'moni-toring', # 'monitoring'
     'line-of-sightor', # 'line-of-sight or'
-    'light-witch': # light-switch',
+    'light-witch', # light-switch'
     'decentraliziation', # 'decentralization'
     'dif‌f‌iculties', # 'difficulties'
     'ef‌f‌iciency', # 'efficiency'
@@ -60935,7 +62366,7 @@ miss_spelled_words=[
     'e_ciency', # 'efficiency',
     'e-cient', #     'efficient',
     'e-ciently', #     'efficiently',
-    "‘dumb'input", # "‘dumb' input" - see diva2:618115
+    "dumb'input", # "‘dumb' input" - see diva2:618115
     'con- ductor', # 'conductor' - see diva2:1498997
     'pro- duction', # 'production' - see diva2:1467363
     'intro- ducing', # 'introducing' - see diva2:1324030
@@ -61316,33 +62747,18 @@ miss_spelled_words=[
     'abstact', # should be "abstract"
     'Angluinâ€™s', # should be Angluin’s - see diva2:721652
     'Amplifer', # missing spelling of 'Amplifier',?
-    'utångsvillkorenär',
-    'Bildkvalitetsbedömingsalgoritm',
-    'Jämforande',
-    'Koldioixutsläpp',
-    'Meta-pseudomärking',
-    'Operatorplatform',
-    'Prestandautverdering',
-    'Sekvenentiell',
-    'literaturstudie',
-    'Tillämpling',
-    'användarbarhetsstudie',
-    'forbattra',
-    'industrielt',
-    'intensivvårdsavdelingen',
-    'kostnadseffetiviten',
-    'kraftöverförning',
-    'maskinginlärningsmodeller',
-    'medicinisk',
-    'minnesanvänding',
-    'mun-till-mun-marknadsförings',
-    'sambarbete',
-    'sammarbete',
-    'säkerhetbedömning',
-    'tillämplingsbar',
-
     # GQM-for-merger    
     'Absract',
+    'âchecking',
+    'âword-of-mouthâ',
+    '́enwing', # 'Alfv ́enwing',
+    '́enwings', # 'Alfv ́enwings',
+    '́en', # 'Alfv ́en wings',
+    'Ąeld',
+    'ï¬nite',
+    '̈od', # {'c': 'Flötteröd', 's': 'diva2:912685', 'n': 'part of Flötteröd'},
+    '̈otter', # {'c': 'Flötteröd', 's': 'diva2:912685', 'n': 'part of Flötteröd'},
+
 ]
 
 
@@ -63911,37 +65327,42 @@ KTH_ordbok_English_with_CEFR={
 }
 
 common_units=[
-    'per-watt',
-    'kA',
-    'kVA',
-    'kVAC',
-    'kms-1',
+    'nT',
+    'cm􀀀3',
+    'fJ',
+    'hPa',
+    'mA/mM/mm2',
+    'mF',
+    'mJ',
+    'mK',
+    'mTorr',
+    's/transaction',
+    'TWh',
+    'THz',
+    'MMS/sec',
+    'SMS/sec',
+    'C/min',
+    'GF/J', # see diva2:837145 - should probably be GFLOP/J
+    'GF/s', # see diva2:837145 - should probably be GFLOP/s
     'GFLOP/s',
-    'millimetre',
-    'microjoules',
-    'megadalton',
-    'mAh',
-    'kilometres',
-    'keV',
-    'kCal',
-    'kWcm',
-    'kBar',
-    'h/year',
-    'fJ/bit',
-    'fJ/conv-step',
-    'cm−2',
-    'centimetres',
-    'SEK/kWh',
-    'SEK/participant',
-    'MWh/h',
-    'MWh/year',
-    'MSample/s',
-    'MB/s',
     'GHz',
     'Gbps',
+    'Gs', # see diva2:1323575
     'Hz',
+    'Kpps',
+    'MB/s',
     'MHz',
+    'MPa',
+    'MSample/s',
+    'MSps', # megasamples per second
+    'MWh/h',
+    'MWh/year',
+    'Mrad',
+    'Mrad~s2',
+    'SEK/kWh',
+    'SEK/participant',
     'atoms/cm2',
+    'centimetres',
     'cm',
     'cm-1',
     'cm-2',
@@ -63949,16 +65370,33 @@ common_units=[
     'cm-3',
     'cm/s',
     'cm2',
-    'dBm'
+    'cm−2',
+    'dB',
+    'dBc/Hz',
+    'dBi',
+    'dBm',
     'eV-1cm-2',
+    'eV-1cm-2',
+    'fJ/bit',
+    'fJ/conv-step',
     'g/cm2',
     'g/km',
+    'h/year',
+    'kA',
     'kB',
+    'kBar',
+    'kCal',
     'kHz/cm2',
     'kS/s',
+    'kVA',
+    'kVAC',
+    'kWcm',
     'kWh/h',
     'kWh/m3',
+    'keV',
+    'kilometres',
     'km/h',
+    'kms-1',
     'kn',
     'kΩ',
     'l/min',
@@ -63968,6 +65406,7 @@ common_units=[
     'm/s2',
     'm2',
     'm2/g',
+    'mAh',
     'mHz',
     'mV',
     'mW',
@@ -63975,14 +65414,18 @@ common_units=[
     'mW/m2',
     'mWh',
     'mbar',
+    'megadalton',
     'mg/dL',
     'mg/g',
+    'microjoules',
+    'millimetre',
     'mm/yr',
     'mm2',
     'ms',
     'mΩ',
     'mΩcm2',
     'm−3',
+    'nJm-3',
     'nW',
     'nW/cm2',
     'nm',
@@ -63992,6 +65435,7 @@ common_units=[
     'nm2',
     'ns',
     'ore/kWh',
+    'per-watt',
     'rd/s',
     'µF',
     'µN',
@@ -64006,11 +65450,26 @@ common_units=[
     'μm2',
     '€',
     '€/MWh',
+    '€MWh',
     '℃',
+    'Ω',
+    '𝑘𝑊',
+
 ]
 
 
 mathematical_words_to_ignore=[
+    'z̈',
+    'sub-10',
+    'sub-100',
+    'sub-20',
+    'sub-6',
+    'n*logn',
+    'log2n',
+    'log3',
+    'log4m',
+    'log5',
+    'log6',
     '∆time',
     '∇²',
     '∈',
@@ -64040,6 +65499,44 @@ mathematical_words_to_ignore=[
     'arctan',
     'enum',
 
+]
+
+abbreviations_ending_in_period=[
+    'i.e.',
+    'e.g.',
+    'al.',
+    'etc.',
+    'vs.',
+    'Assoc.',
+    'Corp.',
+    'D.C.',
+    'Dr.',
+    'Inc.',
+    'Jr.',
+    'Ltd.',
+    'Mr.',
+    'Mrs.',
+    'Ms.',
+    'M.S.',
+    'M.Sc.',
+    'N.J.',
+    'prof.',
+    'Prof.',
+    'U.S.',
+    'U.S.C.',
+    'U.K.',
+    'Jan.',
+    'Feb.',
+    'Mar.',
+    'Apr.',
+    'Jun.',
+    'Jul.',
+    'Aug.',
+    'Sep.',
+    'Sept.',
+    'Oct.',
+    'Nov.',
+    'Dec.',
 ]
 
 merged_words={
@@ -66510,7 +68007,8 @@ merged_words={
     'balance a',
     'balance between',
     'balance equations',
-    'balancei n',
+    'balance in',
+    'balance is',
     'ball size',
     'band formulation',
     'bandit algorithms',
@@ -76040,10 +77538,167 @@ merged_words={
     'system as',
     'trading algorithm',
     'under or',
-    
+    '⇡/2 at the optimal operating point',
+    '2D to 3D',
+    'zero few shot',
+    'z statistic',
+    'with existing'
+    'DAE is',
+    'GHz with',
+    'LoRaWAN and',
+    'MHz and',
+    'NoC System',
+    'Odin and',
+    'Ta2O5 and',
+    'Testify Input',
+    'W Hall',
+    'an IEC 61499',
+    'articulation in', # diva2:1253052
+    'at 430', # diva2:784553
+    'bulky STATCOMs',
+    'bus 1', # a footnote diva2:619396
+    'bus 2', # a footnote diva2:619396
+    'by 28',
+    'by an', # diva2:1359825
+    'cameras 1', # footnote in diva2:1043993 - note the footnote has a citation in it!
+    'can a', # diva2:1359825    
+    'certain E-region', # diva2:862312
+    'small Kundur',    
+    'designs [BIT16]',
+    'especially at',
+    'existing DAE',
+    'honest but-',
+    'in 1964',
+    'in 2008',
+    'in 2018',
+    'kV meshed',
+    'model of',
+    'paper [Mac71]', # a citation in an abstract - see diva2:1149158
+    'designs[BIT16]', # a citation in an abstract - see diva2:1149158
+    'your electricity',
+    're‐programming 1', # footnote for diva2:644906
+    'sub-6 GHz',
+    'sub-7 nm',
+    'system - Birka', # diva2:1074453
+    'technique that',
+    'to qubit',
+    'trace out',
+    'upgrade to',
+    'workloads1',
+    '02 mA/mM/mm2',
+    "240 mm2",
+    "2 m/s2",
+    "2 nm/4",
+    "2 ppb - 250",
+    "44 mm2",
+    "53 cm2",
+    "6 m/s2",
+    'AFTS is'
+    'BSF / emitter',
+    'CFR is',
+    'CO2-emissions — and',
+    'DAE is',
+    'DNN is', # diva2:1297328
+    'DeCap', # diva2:654365
+    'S-naq', # diva2:654365
+    'Deedster—a', # gamified mobile DBCI - see     diva2:1460022
+    'EDF and',
+    'FIFO / Capacity / Fair',
+    'GSM / Short',
+    'ICT som',
+    'IMF but',
+    'IP / Cores',
+    'IPCamera / NVR / DVR',
+    'Kompics 1', # THE 1 IS A FOOTNOTE - SEE diva2:468086
+    'LSS is',
+    'LoRa / GPS',
+    'LoRa / LoRaWAN',
+    'Maintenance / Support',
+    'Modelica / Unified',
+    'NATs / firewalls',
+    'NND enables', # see diva2:1146212
+    'NX and',
+    'Norway &',
+    'NASPI / WECC',
+    'P-class Path',
+    'IEEE 802.11ac Wireless',
+    '11ac Wireless',
+    'PHYframe',
+    'Error Vector',
+    'PMaSynRM is',
+    'PM motor', #  error in handling newline - see diva2:571075
+    'Powervault U', # see diva2:1157947
+    'Powervault UK',   # see diva2:1157947
+    'Powerwall 2', # see diva2:1157947
+    'QD / toluene',
+    'QP algorithms',
+    'AFTS is',
+    'BSF / emitter',
+    'resources block',
+    'RF / Analogue',
+    'SBR is',
+    'Including or',
+    'SLAs / requirements',
+    'Structure from',
+    'Seaport / Norra',
+    'TLM / SystemC / C',
+    'Trace &',
+    'V3 uses',
+    'VIR by',
+    'Impasse Region',
+    'VMap geospatial',
+    '2GB RAM cannot',
+    'IEEE 802.15.4',
+    'IEEE 802.15.4j',
+    'IEEE 802.11',
+    'XKF indeed',
+    'XML v1',
+    'a and',
+    'above 2',
+    'amplify / attenuate',
+    'applications / systems',
+    'arbetar med',
+    'a sun',
+    'as “ISIS',
+    'as 6loWPAN',
+    'attack / release',
+    'attributes 1',
+    "at ´ 777",
+    'behavior 2',
+    'bits 3',
+    'RTAO is',
+    'MKBSC — a',
+    'Handla ”',
+    'Institute — a',
+    'users 2',
+    'store / IOS',
+    'section / switching-device',
+    'mAP of',
+    'mT5 were',
+    'is BSF',
+    "dumb' input",
+    'dB FS',
+    'the less',
+    'tank heater',
+    'player 1',
+    'poles / 12',
+    'nm / 4',
+    'nm / 427',
+    'nm / RIU',
+    'new 5G',
+    'new BGP',
+    'kV / 40',
+    'failures / non',    
+    '% ” hypothesis,'
+    '% for',
+    'denna anpassning',
+    'de viktigaste',
+    'miljön i',
+    'value 2',
+    'vapor liquid-',
+    'with high-',
 }
 
 corrected_abstracts={
     'diva2:1701880': "<p>The social media app TikTok, owned by the Chinese Company ByteDance, has become a worldwide success with over one billion monthly active users due to an algorithm that enables users to consume individually tailored content. However, it was also part of political confrontations between countries like the USA and China due to allegedly security risks. Moreover, the app could be classified as a persuasive technology with potential ethical and privacy concerns. A case study on Students in Sweden with quantitative and qualitative research methods was conducted to understand user behavior and the app's impact on users. The former was a survey with 36 participants, and the latter interviews with 6 participants. The case study results indicate, among other things, that the participants consume content beyond entertainment, evaluate the algorithm as accurate, do not unambiguously experience a filter bubble, and asses the app as addictive. Despite ethical and privacy concerns, the app has potential for different use cases, such as marketing or education.</p>"
-    
 }

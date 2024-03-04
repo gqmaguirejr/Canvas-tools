@@ -31873,6 +31873,7 @@ common_English_words={
     'different energy': {'B1': 'Noun Phrase'},
     'differentiate': {'B2': 'Verb'},
     'differentiation': {'B2': 'Noun'},
+    'differs': {'A2': 'Verb'},
 
 }
  
@@ -32300,6 +32301,16 @@ well_known_acronyms={
 }
 
 misc_words_to_ignore=[
+    '4HSiCSiO2',
+    '5TiO3',
+    '03BiAlO3',
+    '13Mn13Co13O2',
+    '2Amino5diethylaminopentane',
+    '3heafluoro2propanol',
+    '4HSiC/SiO2',
+    '5Pd21Re8',
+    'ℓ1-penalised',
+    'slideD',      # check - correct it is a template where D is one or more digits
     'N/S/V/Ö', # compass dirceions in Swedish
     'keyboardShortcuts',
     'de-LaTeXed',
@@ -32530,8 +32541,6 @@ misc_words_to_ignore=[
 ]    
 
 place_names=[
-    "Alexandria",
-    "Cuba",
     "Earth‘s",    
     'Aachen',
     'Aalto',
@@ -32544,6 +32553,7 @@ place_names=[
     'Alberta',
     'Aldebaran',
     'Alesund',
+    'Alexandria',
     'Alps',
     'Alto', 
     'America',
@@ -32671,6 +32681,7 @@ place_names=[
     'Copenhagen',
     'Craeye',
     'Croatia',
+    'Cuba',
     'Dalarna',
     'Dallas', 
     'Danderyd',
@@ -33045,6 +33056,7 @@ place_names=[
     'Sodertalje',
     'Sodra',
     'Sofia', 
+    'Sofiaängen'
     'Sollentuna',
     'Solna',
     'Somalia',
@@ -33171,6 +33183,8 @@ place_names=[
 ]
 
 names_of_persons=[
+    'Flötteröd',
+    'Šarić',
     'van',   # part of a name
     'von',   # part of a name
     'der',   # part of a name
@@ -39937,6 +39951,7 @@ company_and_product_names=[
     'β-VAE',
     'βVAE',
     'π-calculus',
+    'aSi', # diva2:1055990 - an acronym for amorphous Silicon - also written as a-Si
 
 
 
@@ -60011,15 +60026,37 @@ common_swedish_words={
     'vuxit': {'B2': 'Verb (Past Participle)'},
     'väletablerade': {'B2': 'Adjective'},
     'väletablerat': {'B2': 'Adjective'},
-    # Sofiaängen
-    # 'Jämställdhetsarbete',
-    # 'allokerare',
-    # 'allokeringsstrategier',
-    # 'beställt',
-    # 'bildruta',
-    # 'binärer',
-    # 'branschkunskap',
-    # 'examensarbetet',
+    'Jämställdhetsarbete': {'B2': 'Noun'},
+    'allokerare': {'B2': 'Noun'},
+    'allokeringsstrategier': {'B2': 'Noun'},
+    'beställt': {'A2': 'Verb (Past Participle)'},
+    'bildruta': {'A2': 'Noun'},
+    'binärer': {'B2': 'Adjective'},
+    'branschkunskap': {'B2': 'Noun'},
+    'examensarbetet': {'B2': 'Noun'},
+    'kostnadseffetiviten': {'B2': 'Noun'},
+    'kraftöverförning': {'B2': 'Noun'},
+    'literaturstudie': {'B2': 'Noun'},
+    'maskinginlärningsmodeller': {'B2': 'Noun'},
+    'medicinisk': {'B2': 'Adjective'},
+    'minnesanvänding': {'B2': 'Noun'},
+    'mun-till-mun-marknadsförings': {'B2': 'Noun'},
+    'relse': {'A2': 'Noun'},
+    'Bildkvalitetsbedömningsalgoritm': {'B2': 'Noun'},
+    'Efersom': {'B2': 'Conjunction'},
+    'Jämforande': {'B2': 'Adjective'},
+    'Koldioixutsläpp': {'B2': 'Noun'},
+    'Prestandautverdering': {'B2': 'Noun'},
+    'Sekvenentiell': {'B2': 'Adjective'},
+    'Tillämpning': {'B2': 'Noun'},
+    'användarbarhetsstudie': {'B2': 'Noun'},
+    'Meta-pseudomärking': {'B2': 'Noun'},
+    'bedöm': {'B2': 'Verb'},
+    'behö': {'B2': 'Verb'},
+    'forbattra': {'B2': 'Verb'},
+    'industrielt': {'B2': 'Adjective'},
+    'intensivvårdsavdelingen': {'B2': 'Noun'},
+    'vandling': {'B2': 'Noun'},
 
 }
 
@@ -61174,6 +61211,8 @@ common_danish_words=[
     'og',
     'plane',
     'uden',
+    'ApS', # Danish - Anpartsselskab - private limited company
+
 ]
 
 common_latin_words=[
@@ -61435,7 +61474,6 @@ miss_spelled_words=[
     'a dministrators', # 'administrators' - see diva2:511398
     'aDC-DC',
     'aDQN',
-    'aFRR',
     'aFormula',
     'aGuidance',
     'aHamilton-Jacobi-Isaacs',
@@ -61452,7 +61490,6 @@ miss_spelled_words=[
     'aPID',
     'aParameterized',
     'aPython',
-    'aSi',
     'a_ected', # 'affected',
     'abandpass',
     'abandwidth',
@@ -62797,6 +62834,9 @@ miss_spelled_words=[
     'Ånei', # should be "Ånej"
     'ßtudent',     # should be "student"
     'â€˜Security',  # should be 'Security',
+    '̈od', # {'c': 'Flötteröd', 's': 'diva2:912685', 'n': 'part of Flötteröd'},
+    '̈otter', # {'c': 'Flötteröd', 's': 'diva2:912685', 'n': 'part of Flötteröd'},
+
 ]
 
 KTH_ordbok_Swedish_with_CEFR={
@@ -77633,6 +77673,7 @@ merged_words={
     'voltagelevel',
 
     #GQMm
+    '2D to 3D',
 }
 
 

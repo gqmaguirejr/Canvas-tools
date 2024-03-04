@@ -33,9 +33,71 @@ sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module
 
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
 import common_english_and_swedish
+import miss_spelled_to_correct_spelling
 
 # width to use for outputting numeric values
 Numeric_field_width=7
+
+
+
+def remove_products_and_ranges(s):
+    # check for triple product first
+    matches = re.findall(r"(\d+[*x]\d+[*x]\d+)", s)
+    if not matches:
+        # note that the minus sign has to be last otherwise it things a range is being specified
+        matches = re.findall(r"(\d+[\*x/‐~—_-]\d+)", s)
+        if not matches:
+            return s
+    matches = list( dict.fromkeys(matches) )
+    matches.sort()
+    for m in matches:
+        s=s.replace(m, '')
+    return s
+
+def remove_percentage_range(s):
+    # note that the minus sign has to be last otherwise it things a range is being specified
+    matches = re.findall(r"(\d+%[~—_-]\d+)", s)
+    if not matches:
+        return s
+    matches = list( dict.fromkeys(matches) )
+    matches.sort()
+    for m in matches:
+        s=s.replace(m, '')
+    return s
+
+
+def remove_lbracket_number_rbracket(s):
+    matches = re.findall(r"\[[0-9]+\]", s)
+    if not matches:
+        return s
+    matches = list( dict.fromkeys(matches) )
+    matches.sort()
+    for m in matches:
+        s=s.replace(m, '')
+    return s
+
+def remove_lbracket_text_rbracket(s):
+    matches = re.findall(r"\[[A-Za-z/]+\]", s)
+    if not matches:
+        return s
+    matches = list( dict.fromkeys(matches) )
+    matches.sort()
+    for m in matches:
+        s=s.replace(m, '')
+    return s
+
+def remove_lbracket_rbracket_pair(s):
+    if len(s) > 2 and s[0] == '[' and s[-1] == ']':
+        return s[1:-1]
+    else:
+        return s
+
+def remove__single_lbracket(s):
+    if len(s) > 2 and s[0] == '[' and s[-1] != ']':
+        return s[1:]
+    else:
+        return s
+
 
 
 def save_collected_words(s, lang):
@@ -45,6 +107,165 @@ def save_collected_words(s, lang):
     sl=sorted(s)
     with open(new_file_name, 'w') as f:
         f.write(json.dumps(sl, ensure_ascii=False))
+
+# A helpful function
+# def generate_chars(start, end):
+#     for i in range(start, end+1, 6):
+#         print(f"'{chr(i)}', '{chr(i+1)}', '{chr(i+2)}', '{chr(i+3)}', '{chr(i+4)}', '{chr(i+5)}',")
+
+def is_MathSymbol(s):
+    if not len(s) == 1:
+        return False
+
+    if 0x2100 <= ord(s) and ord(s) <= 0x214FF:         # Letterlike Symbols
+        return True
+    if 0x2200 <= ord(s) and ord(s) <= 0x22FF:     # Mathematical Operators
+        return True
+    if 0X2A00 <= ord(s) and ord(s) <= 0x2AFF:     # Supplemental Mathematical Operators
+        return True
+    if 0xE000 <= ord(s) and ord(s) <= 0xF8FF:     # Private Use Area - seems to be used by conveertnb (to print Jupyter notebooks)
+        return True
+    if 0x1D400 <= ord(s) and ord(s) <= 0x1D4FF:    # Mathematical Alphanumeric Symbols
+        return True
+    else:
+        return False
+
+
+def is_GreekSymbol(s):
+    if not len(s) == 1:
+        return False
+    if 0x0370 <= ord(s) and ord(s) <= 0x03FF:
+        return True
+    else:
+        return False
+
+def is_Miscellaneous_Technical(s):
+    if not len(s) == 1:
+        return False
+    if 0x2300 <= ord(s) and ord(s) <= 0x23FF:
+        return True
+    else:
+        return False
+
+
+def is_equation(s):
+    math_symbols=[ # generate_chars(0x2200, 0x22ff)
+        '∀', '∁', '∂', '∃', '∄', '∅',
+        '∆', '∇', '∈', '∉', '∊', '∋',
+        '∌', '∍', '∎', '∏', '∐', '∑',
+        '−', '∓', '∔', '∕', '∖', '∗',
+        '∘', '∙', '√', '∛', '∜', '∝',
+        '∞', '∟', '∠', '∡', '∢', '∣',
+        '∤', '∥', '∦', '∧', '∨', '∩',
+        '∪', '∫', '∬', '∭', '∮', '∯',
+        '∰', '∱', '∲', '∳', '∴', '∵',
+        '∶', '∷', '∸', '∹', '∺', '∻',
+        '∼', '∽', '∾', '∿', '≀', '≁',
+        '≂', '≃', '≄', '≅', '≆', '≇',
+        '≈', '≉', '≊', '≋', '≌', '≍',
+        '≎', '≏', '≐', '≑', '≒', '≓',
+        '≔', '≕', '≖', '≗', '≘', '≙',
+        '≚', '≛', '≜', '≝', '≞', '≟',
+        '≠', '≡', '≢', '≣', '≤', '≥',
+        '≦', '≧', '≨', '≩', '≪', '≫',
+        '≬', '≭', '≮', '≯', '≰', '≱',
+        '≲', '≳', '≴', '≵', '≶', '≷',
+        '≸', '≹', '≺', '≻', '≼', '≽',
+        '≾', '≿', '⊀', '⊁', '⊂', '⊃',
+        '⊄', '⊅', '⊆', '⊇', '⊈', '⊉',
+        '⊊', '⊋', '⊌', '⊍', '⊎', '⊏',
+        '⊐', '⊑', '⊒', '⊓', '⊔', '⊕',
+        '⊖', '⊗', '⊘', '⊙', '⊚', '⊛',
+        '⊜', '⊝', '⊞', '⊟', '⊠', '⊡',
+        '⊢', '⊣', '⊤', '⊥', '⊦', '⊧',
+        '⊨', '⊩', '⊪', '⊫', '⊬', '⊭',
+        '⊮', '⊯', '⊰', '⊱', '⊲', '⊳',
+        '⊴', '⊵', '⊶', '⊷', '⊸', '⊹',
+        '⊺', '⊻', '⊼', '⊽', '⊾', '⊿',
+        '⋀', '⋁', '⋂', '⋃', '⋄', '⋅',
+        '⋆', '⋇', '⋈', '⋉', '⋊', '⋋',
+        '⋌', '⋍', '⋎', '⋏', '⋐', '⋑',
+        '⋒', '⋓', '⋔', '⋕', '⋖', '⋗',
+        '⋘', '⋙', '⋚', '⋛', '⋜', '⋝',
+        '⋞', '⋟', '⋠', '⋡', '⋢', '⋣',
+        '⋤', '⋥', '⋦', '⋧', '⋨', '⋩',
+        '⋪', '⋫', '⋬', '⋭', '⋮', '⋯',
+        '⋰', '⋱', '⋲', '⋳', '⋴', '⋵',
+        '⋶', '⋷', '⋸', '⋹', '⋺', '⋻',
+        '⋼', '⋽', '⋾', '⋿'
+    ]
+    #
+    math_possible_excludes=['−', '∣', '∶', '∷', '∼']
+    #
+    extra_symbols = ['×', '…', '=', '÷', '+', '–', '^', '·', '¹', '²', '³', '±', '¬', 'µ', '¼', '½', '¾', 'Ø']
+    #
+    if len(s) < 1:
+        return False
+    #
+    if len(s) == 1:
+        if is_MathSymbol(s):  # alternative it could be "if s in math_symbols:"
+            return True
+        if is_GreekSymbol(s):
+            return True
+        if is_Miscellaneous_Technical(s):
+            return True
+        if s in extra_symbols:
+            return True
+        else:
+            return False
+    #
+    # exception for minus sign and tilde before a digit - these should be taken care of elsewhere
+    if (s[0] == '−' or  s[0] == '∼') and s[1].isdigit():
+        return False
+    #
+    if s[0] in ['¬']:
+        return True
+    #
+    if s.count('=') == 1:
+        return True
+    #
+    # if there is any math symbol in the string, consider it an equation
+    for c in s:
+        if is_MathSymbol(c): # alternatively "c in math_symbols:"
+            return True
+        if is_GreekSymbol(c):
+            return True
+        if is_Miscellaneous_Technical(c):
+            return True
+        if c in extra_symbols:
+            return True
+    #
+    if s.count('|') > 1:
+        return True
+
+    # if there is an assignment symbol
+    if s.count('←') == 1:
+        # and there is at least one letter for the lefthand side
+        if s.find('←') >= 1:
+            return True
+    #
+    # otherwise
+    return False
+
+def is_MiscSymbol_or_Pictograph(s):
+    if not len(s) == 1:
+        return False
+
+    if 0x2190 <= ord(s) and ord(s) <= 0x21FF:    # Arrows
+        return True
+    if 0x25A0 <= ord(s) and ord(s) <= 0x25FF:    # Geometric Shapes
+        return True
+    if 0x2600 <= ord(s) and ord(s) <= 0x26FF:    # Miscellaneous Symbols
+        return True
+    if 0xFFF0 <= ord(s) and ord(s) <= 0xFFFD:    # Specials
+        return True
+    if 0x27F0 <= ord(s) and ord(s) <= 0x27FF:    #    Supplemental Arrows-A
+        return True
+    if 0x1F300 <= ord(s) and ord(s) <= 0x1F5FF:  # Miscellaneous Symbols and Pictographs
+        return True
+    if 0x1F900 <= ord(s) and ord(s) <= 0x1F9FF:  # Supplemental Symbols and Pictographs
+        return True
+    return False
 
 def is_float(string):
     try:
@@ -66,6 +287,75 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'x1',
+    'x2',
+    'x4',
+    'f0',
+    'f1',
+    'f2',
+    'k1',
+    'k2',
+    'p1',
+    'p15',
+    'p2',
+    'p5',
+    'n1',
+    'n2',
+    'n3',
+    'n~1',
+    'r>0',
+    'YBa2Cu3O7-', # diva2:372407
+    'RMnO3', # manganese perovskites, RMnO3, where R is a cation in the lanthanide series - see diva2:823057
+    'Cdk',  # see diva2:11112
+    'Cdk2', # see diva2:11112
+    'Cdk4', # see diva2:11112
+    'Cdc6', # see diva2:11112
+    'LiNi', # diva2:1299231
+    'SiH4',
+    'GeH4',
+    'Si0.53Ge0.47',
+    'GO/pillared', # chemical structure - see diva2:1699284
+    'GO/TKAm', # chemicals - see diva2:1699284
+    'EKin', # diva2:577757
+    'Eg', #  diva2:577757
+    "10¯6",
+    "13”-17",
+    "150’000",
+    "1’240’000",
+    "1⁄3",
+    "2014-i2b2",
+    "20{20{20",
+    "20¯21",
+    "3Ti-0",
+    "4%23",
+    "41%{89",
+    "4{5",
+    "4”-7",
+    "53Ge0",
+    "5Na0",
+    "6p2z",
+    "75Ge0",
+    "8p4z",
+    "97Bi0",
+    "99%/10",
+    "3GHz-5GHz",
+    "400-to-1",
+    'a-Si',
+    'a-Si/SiO2',
+    'MoO3',
+    'MoSx/MoOx',
+    'HaCaT', # a type of immortal keratinocyte cell from human skin
+    'HCl',
+    '4HSiCSiO2',
+    '5TiO3',
+    '03BiAlO3',
+    '13Mn13Co13O2',
+    '2Amino5diethylaminopentane',
+    '3heafluoro2propanol',
+    '4HSiC/SiO2',
+    '5Pd21Re8',
+    'ℓ1-penalised',
+    'slideD',      # check - correct it is a template where D is one or more digits
     'com/KTH-SSAS/sandor-berglund-thesis',
     'com/NiravSurajlal',
     'com/WangZesen/Text-Generation-GAN',
@@ -278,59 +568,83 @@ words_to_ignore=[
     'Au-Si',
     'Ge/GeO',
     'HfO',
-
+    'Mac71', # from a citation
 
 ]
 
 prefix_to_ignore=[
-    '|',
-    '~',
-    '®',
-    '­',
-    '°',
-    '±',
-    '‐',
-    '—',
     "'",
     ":",
     "?", 
     "‘",
     "’",
+    '#',
+    '$',
+    '%',
     '*',
+    '+',
     '-',
     '/',
+    '<',
+    '=',
+    '>',
+    '@',
+    '\\',
+    '`',
+    '{',
+    '|',
+    '~',
+    '­',
+    '®',
+    '°',
+    '±',
+    '​', # 'ZERO WIDTH SPACE' (U+200B)
+    '‌', # 'ZERO WIDTH NON-JOINER' (U+200C)
+    '‐',
+    '–',
+    '—',
+    '―',
     '“',
     '”',
     '„',
     '•',
-    '{',
-    '#',
-    '>',
-    '=',
-    '<',
-    '+',
-    '$',
-    '\\',
-    '`',
-    
+    '→',
+    '⇡',
+    '−',
+    '∼',
+    '≈',
+    '≥',
+    '⌈',
+    '□',
+    '◦',
+    '♣',
+    '、',
+    '・',
+    '',
+    '￼',
+    '�',    
+    '􀀀',
 ]
 
 suffix_to_ignore=[
-    '%',
-    '}',
-    '”',
-    '.',
-    ',',
-    ';',
-    ':',
-    "?", 
     "'",
-    #'-',
-    '*',
+    "?", 
     "’",
+    #'-',
+    '%',
+    '*',
+    ',',
+    '.',
     '/',
+    ':',
+    ';',
+    '}',
+    '´',
+    '”',
     '…',
+    '�',
 ]
+
 
 
 def remove_prefixes(w):
@@ -721,7 +1035,7 @@ def main():
             # skip acronyms
             if w in common_english_and_swedish.well_known_acronyms:
                 continue
-            if w in common_english_and_swedish.miss_spelled_words:
+            if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
                 continue
             levels=common_english_and_swedish.common_swedish_words.get(w, False)
             if levels:
@@ -738,7 +1052,7 @@ def main():
             # skip acronyms
             if w in common_english_and_swedish.well_known_acronyms:
                 continue
-            if w in common_english_and_swedish.miss_spelled_words:
+            if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
                 continue
             levels=common_english_and_swedish.common_English_words.get(w, False)
             if levels:
@@ -754,7 +1068,7 @@ def main():
 
     print(f'{len(common_english_and_swedish.common_swedish_technical_words):>{Numeric_field_width}} words in common Swedish technical words')
 
-    #print(f'{len(common_english_and_swedish.common_danish_words):>{Numeric_field_width}} words in common Danish words')
+    print(f'{len(common_english_and_swedish.common_danish_words):>{Numeric_field_width}} words in common Danish words')
 
     print(f'{len(common_english_and_swedish.common_french_words):>{Numeric_field_width}} words in common French words')
     
@@ -778,9 +1092,11 @@ def main():
     print(f'{len(common_english_and_swedish.misc_words_to_ignore):>{Numeric_field_width}} words in misc_words_to_ignore')
     print(f'{len(words_to_ignore):>{Numeric_field_width}} words in words_to_ignore')
     print(f'{len(common_english_and_swedish.mathematical_words_to_ignore):>{Numeric_field_width}} words in mathematical_words_to_ignore')
-    #print(f'{len(programming_keywords):>{Numeric_field_width}} words in programming_keywords')
-    #print(f'{len(language_tags):>{Numeric_field_width}} words in language_tags')
+    print(f'{len(common_english_and_swedish.programming_keywords):>{Numeric_field_width}} words in programming_keywords')
+    print(f'{len(common_english_and_swedish.language_tags):>{Numeric_field_width}} words in language_tags')
     print(f'{len(common_english_and_swedish.merged_words):>{Numeric_field_width}} words in merged_words')
+    print(f'{len(miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling):>{Numeric_field_width}} words in miss_spelled_to_correct_spelling')
+    print(f'{len(common_english_and_swedish.abbreviations_ending_in_period):>{Numeric_field_width}} words in abbreviations_ending_in_period')
 
 
     print(f'{len(unique_words):>{Numeric_field_width}} read in')
@@ -845,6 +1161,30 @@ def main():
         w = unicodedata.normalize('NFC',w) #  put everything into NFC form - to make comparisons simpler; also NFC form is the W3C recommended web form
         w=remove_prefixes(w)
         w=remove_suffixes(w)
+        w=remove_lbracket_number_rbracket(w) # remove [ddd] from words
+        if len(w) == 0:
+            continue
+        w=remove_products_and_ranges(w)
+        if len(w) == 0:
+            continue
+
+        w=remove_percentage_range(w)
+        if len(w) == 0:
+            continue
+
+        w=remove_lbracket_rbracket_pair(w) # remove brackets around a word
+        if len(w) == 0:
+            continue
+
+        w=remove__single_lbracket(w)
+        if len(w) == 0:
+            continue
+
+
+        if is_MiscSymbol_or_Pictograph(w):
+            continue
+        if is_equation(w):
+            continue
 
         if len(w) < 1:
             continue
@@ -875,7 +1215,7 @@ def main():
             number_skipped=number_skipped+1
             continue
 
-        if w in common_english_and_swedish.miss_spelled_words:
+        if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
             number_skipped=number_skipped+1
             continue
             
@@ -884,6 +1224,16 @@ def main():
             continue
 
         if is_number(w):
+            number_skipped=number_skipped+1
+            continue
+
+        w_with_period=w+'.'
+        if w_with_period in common_english_and_swedish.abbreviations_ending_in_period or \
+           w_with_period.lower() in common_english_and_swedish.abbreviations_ending_in_period:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.programming_keywords:
             number_skipped=number_skipped+1
             continue
 
@@ -974,6 +1324,10 @@ def main():
             number_skipped=number_skipped+1
             continue
 
+        if w in common_english_and_swedish.common_danish_words:
+            number_skipped=number_skipped+1
+            continue
+
         if w in common_english_and_swedish.common_german_words:
             number_skipped=number_skipped+1
             continue
@@ -997,7 +1351,7 @@ def main():
         if w.lower() in common_english_and_swedish.common_portuguese_words:
             number_skipped=number_skipped+1
             continue
-
+           
         if w in common_english_and_swedish.common_finnish_words:
             number_skipped=number_skipped+1
             continue
