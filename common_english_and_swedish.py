@@ -30620,11 +30620,15 @@ common_English_words={
     're-programming': {'B2': 'Noun'},  # can also be used as 'reprogramming'
     'superegrids': {'B2': 'Noun'},
     'targeting': {'B2': 'Verb (Noun form also exists)'},
-
-
-    # GQM some new possible words
-
-
+    'targetting': {'B2': 'Verb (Noun form also exists)'}, # British form
+    'switching-device': {'B2': 'Noun'},
+    'cableTV': {'A2': 'Noun'},
+    'multi-in': {'A2': 'Adjective'},
+    'multidupe': {'B2': 'Noun'},
+    'hability': {'C2': 'Noun'},
+    'dampings': {'B2': "Noun (Plural of 'damping')"},
+    #GQMe
+    
 }
 
 
@@ -50392,7 +50396,13 @@ common_swedish_words={
     'lösning': {'A2': 'Noun'},
     'migrera': {'B2': 'Verb'},
     'projektet': {'A2': 'Noun'},
-
+    'tränats': {'B1': 'Verb (Past Participle)'},
+    'centralt': {'B2': 'Adverb'},
+    'spritt': {'A2': 'Noun'},
+    'bristen': {'B2': 'Noun'},
+    'exister': {'B2': 'Verb'},
+    'examens': {'B2': 'Noun'},
+    'lappat': {'A2': 'Verb (Past Participle)'},
 }
 
 
@@ -52777,6 +52787,13 @@ well_known_acronyms={
     'IPW-PLS': 'Iterative Predictor Weighting PLS',  # see diva2:1504146
     'iPLS': 'Interval PLS', # see diva2:1504146
     'SITS': 'Satellite Image Time Series', # see diva2:1584546
+    'KPIECE': 'Kinodynamic Motion Planning by Interior-Exterior Cell Exploration', # diva2:1636521
+    'ROS': 'Robot Operating System',  # diva2:1636521
+    'DOF': 'Degrees Of Freedom',  # diva2:1636521
+    'PDST': 'Path- Directed subdivision Trees', # diva2:1636521
+    'EST': 'Expansive Space Trees',  # diva2:1636521
+    'OMPL': 'Open Motion Planning Library',  # diva2:1636521
+    
     #GQMa
 }
 
@@ -55794,7 +55811,7 @@ company_and_product_names=[
     'LayoutLMv2',
     'LayoutLMv3',
     'LaCasa',
-    'LZGraph',
+    'LZGraph', # see diva2:811126
     'KeepIt',
     'Kankernetwerk',
     'Jakstab',
@@ -56254,7 +56271,7 @@ company_and_product_names=[
     'R2Meton',
     'RESTfull',
     'RESTfulness',
-    'RPGraph',
+    'RPGraph', # see diva2:811126
     'Rabta',
     'Radiohead',
     'Rainbowextensions',
@@ -57036,7 +57053,7 @@ company_and_product_names=[
     'Advrty',  # see diva2:1156010:
     'Aimms', #diva2:515402
     'Atlas-GAN',
-    'AutoKeras',
+    'AutoKeras', # diva2:1609748
     'Autobox',
     'Baseline++',
     'CASIA-WebFace',
@@ -57465,6 +57482,18 @@ company_and_product_names=[
     'i5', # Intel i5 CPU #  diva2:557179
     'aegypti', # Aedes aegypti- see diva2:1750629
     'ndnSIMv2', # simulator - see diva2:1039090
+    'â', # should have been a ' in diva2:654148, diva2:654523, diva2:654187, diva2:654521, diva2:654543, diva2:654451, diva2:654520
+    'NuSMV-file', # see diva2:872010
+    'UR5', # robot arm - see diva2:1636521
+    'RRT-Connect',  # planner - diva2:1636521
+    'PeGridStat', # diva2:579303
+    'facto-teknik', # part of 'de facto-teknik' - see diva2:952052
+    'k2-tree', # graph search algorithm - see diva2:811126
+    'Gain-', # from Gain-128/80 cipher - see diva2:481201
+    'but-', # part of honest-but-curious - see diva2:1668204
+    'd-q', # frame - see diva2:1590831
+    'DjangoNova',
+    'earplug~', # citation in diva2:836283
 
 ]
 
@@ -61148,18 +61177,14 @@ names_of_persons=[
 
 
 common_french_words=[
-    'Fonctionnement',
-    'optronique',
-    'manœuvre',
-    'idéa',
-    'bouy',
-    'Ecole',
     "d'Electricité",
     'Appliqué',
+    'Ecole',
     'Economie',
     'Electriques',
     'Etudes',
     'Fonctionnement'
+    'Fonctionnement',
     'Goéland',
     'Montrealais',
     'Montréalais',
@@ -61171,21 +61196,32 @@ common_french_words=[
     'Systèmes',
     'attaques',
     'avancé',
+    'bouy',
+    'carte',
+    'chine',
     'compensation'
     'composent',
     'conformité',
     'contrôle'
+    'contrôle',
     'croisière',
     'crêpes', #    'crêpes': {'B2': 'noun'},
     'de',
     'des'
+    'développement',
+    'd’Electricité',
     'ecole',
+    'en',
     'et',
+    'idéa',
     'informatiques',
     'la',
     'le',
+    'manœuvre',
+    'masse',
     'montage',
     'nouveau',
+    'optronique',
     'pour',
     'raison',
     'reseaux',
@@ -61195,10 +61231,8 @@ common_french_words=[
     'traitement',
     'très',
     'viol\u00e0',
-    'chine',
-    'd’Electricité',
-    'contrôle',
-    'développement',
+    'à',
+
 ]
 
 common_danish_words=[
@@ -61249,6 +61283,12 @@ common_german_words=[
 
 
 ]
+
+common_icelandic_words=[
+    'Þjórsá',
+    'Tungnaá',
+]
+
 
 common_italian_words=[
     'Fondazione',
@@ -65525,6 +65565,7 @@ abbreviations_ending_in_period=[
     'U.S.',
     'U.S.C.',
     'U.K.',
+    'sq.',
     'Jan.',
     'Feb.',
     'Mar.',
@@ -72207,7 +72248,7 @@ merged_words={
     'modelling and',
     'modelling improvements',
     'modelling requirements',
-    'modellings ome',
+    'modelling some',
     'modelling tool',
     'model made',
     'model remained',
@@ -72455,7 +72496,7 @@ merged_words={
     'networks shows',
     'networks that',
     'networks to',
-    'networks tructures',
+    'network structures',
     'networks we',
     'network technology',
     'network throughput',
@@ -74642,7 +74683,7 @@ merged_words={
     'software programs',
     'software that',
     'software to',
-    'solare cliptic',
+    'solar ecliptic',
     'solar irradiation',
     'solarwind',
     'solder bumps',
@@ -77697,6 +77738,14 @@ merged_words={
     'value 2',
     'vapor liquid-',
     'with high-',
+    'Dashboard / DjangoNova',
+    'PMU’s P-class', # diva2:681359
+    'examensarbete / application',
+    'hysteresis / TTT',
+    'to work',
+    'granularity 2',
+    'lösning för',
+
 }
 
 corrected_abstracts={

@@ -93,10 +93,24 @@ def remove_lbracket_rbracket_pair(s):
         return s
 
 def remove__single_lbracket(s):
-    if len(s) > 2 and s[0] == '[' and s[-1] != ']':
+    if len(s) == 1 and s[0] == '[':
+        return ''
+    if len(s) > 1 and s[0] == '[' and s[-1] != ']':
         return s[1:]
     else:
         return s
+
+def correct_for_hyphenation(s):
+    offset=s.find('- ')
+    and_offset=s.find('and ')
+    if offset < 0:
+        return s
+    if and_offset < 0:
+        return s[:offset]+correct_for_hyphenation(s[offset+2:])
+    if and_offset > (offset + 2):
+        return s[:offset]+correct_for_hyphenation(s[offset+2:])
+    else:
+        return s[:and_offset4]+correct_for_hyphenation(s[and_offset4:])
 
 
 
@@ -287,6 +301,8 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'toluene',
+    '30cmX30cmX10cm',
     'x1',
     'x2',
     'x4',
