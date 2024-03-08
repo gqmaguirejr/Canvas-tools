@@ -301,6 +301,7 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'SiGe',
     'RMnO',
     'YBa2Cu3O7YBCO', 
     'Amino-EG',
@@ -1144,6 +1145,8 @@ def main():
 
     print(f'{len(common_english_and_swedish.common_german_words):>{Numeric_field_width}} words in common German words')
 
+    print(f'{len(common_english_and_swedish.common_icelandic_words):>{Numeric_field_width}} words in common Icelandic words')
+
     print(f'{len(common_english_and_swedish.common_italian_words):>{Numeric_field_width}} words in common Italian words')
 
     print(f'{len(common_english_and_swedish.common_latin_words):>{Numeric_field_width}} words in common Latin words')
@@ -1171,7 +1174,6 @@ def main():
 
     # after removing spaces and dashses, put all of the common_english_words in lower case in a fall_back list 
     fall_back_words=set()
-    added_to_unique_words_count=0
     
     for w in common_english_and_swedish.common_English_words:
         w=w.replace(' ', '')
@@ -1194,6 +1196,7 @@ def main():
     for w in common_english_and_swedish.well_known_acronyms:
         fall_back_words.add(w.lower())
 
+    added_to_unique_words_count=0
     for w in common_english_and_swedish.merged_words:
         wx=w.replace(' ', '')
         wx=wx.replace('-', '')
@@ -1210,6 +1213,32 @@ def main():
                     added_to_unique_words_count=added_to_unique_words_count + 1
 
     print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in merged_words')
+
+
+    added_to_unique_words_count=0
+    for w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
+        entry=miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling[w]
+        if not entry:
+            continue
+        if not isinstance(entry, dict):
+            print(f'{entry=}')
+            continue
+        actuaL_word=entry.get('c', False)
+        if not actuaL_word:
+            continue
+        # if necessary add the words to unique_words
+        if actuaL_word.count(' ') > 0:
+            ws=actuaL_word.split(' ')
+            for wsw in ws:
+                if wsw in unique_words:
+                    unique_words[wsw]= unique_words[wsw] + 1
+                else:
+                    unique_words[wsw]=1
+                    added_to_unique_words_count=added_to_unique_words_count + 1
+                    #print(f'adding word: {wsw=}')
+
+    print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in miss_spelled_to_correct_spelling')
+
 
     words_not_found=set()
     number_skipped=0
@@ -1414,6 +1443,14 @@ def main():
             continue
 
         if w.lower() in common_english_and_swedish.common_german_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.common_icelandic_words:
+            number_skipped=number_skipped+1
+            continue
+
+        if w.lower() in common_english_and_swedish.common_icelandic_words:
             number_skipped=number_skipped+1
             continue
 
