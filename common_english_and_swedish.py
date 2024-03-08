@@ -137,6 +137,79 @@ thousand_most_common_words_in_English_old=[
 ]
 
 common_English_words={
+    # Languages/peoples
+    'Abyssinian': {'A2': 'Demonym (historical)'},
+    'Albanian': {'A2': 'Demonym/Adjective'},
+    'American': {'A1': 'Demonym/Adjective'},
+    'Americans': {'A1': 'Noun'},
+    'Arabia': {'A1': 'Proper Noun'},
+    'Arabic': {'A2': 'Demonym/Adjective'},
+    'Argentinean': {'A2': 'Demonym'},
+    'Armenian': {'A2': 'Demonym/Adjective'},
+    'Bangla': {'A2': 'Demonym/Adjective'},
+    'Brazilian': {'A2': 'Demonym/Adjective'},
+    'British': {'A1': 'Demonym/Adjective'},
+    'Bulgarian': {'A2': 'Demonym/Adjective'},
+    'Canadian': {'A1': 'Demonym/Adjective'},
+    'Catalan': {'A2': 'Demonym/Adjective'},
+    'Cherokee': {'A2': 'Demonym/Adjective'},
+    'Chinese': {'A1': 'Demonym/Adjective'},
+    'Croatian': {'A2': 'Demonym/Adjective'},
+    'Cymraeg': {'A1': 'Noun'},
+    'Czech': {'A2': 'Demonym/Adjective'},
+    'Danish': {'A2': 'Demonym/Adjective'},
+    'Deutsch': {'A1': 'Noun (German)'},
+    'Dutch': {'A1': 'Demonym/Adjective'},
+    'English': {'A1': 'Demonym/Adjective'},
+    'Estonian': {'A2': 'Demonym/Adjective'},
+    'Farsi': {'A2': 'Demonym/Adjective'},
+    'Finnish': {'A2': 'Demonym/Adjective'},
+    'Flemish': {'A2': 'Demonym/Adjective'},
+    'French-German': {'A2': 'Adjective'},
+    'German': {'A1': 'Demonym/Adjective'},
+    'Ge’ez': {'B1': 'Demonym/Adjective'},
+    'Greek': {'A2': 'Demonym/Adjective'},
+    'Indonesian': {'A2': 'Demonym/Adjective'},
+    'Indonesians': {'A1': 'Noun'},
+    'Iraqi': {'A2': 'Demonym/Adjective'},
+    'Japanese': {'A1': 'Demonym/Adjective'},
+    'Kenyan': {'A2': 'Demonym/Adjective'},
+    'Korean': {'A1': 'Demonym/Adjective'},
+    'Kurdish': {'A2': 'Demonym/Adjective'},
+    'Latin': {'A2': 'Demonym/Adjective'},
+    'Latvian': {'A2': 'Demonym/Adjective'},
+    'Lithuanian': {'A2': 'Demonym/Adjective'},
+    'Muslim': {'A1': 'Adjective/Noun'},
+    'Nigerian': {'A2': 'Demonym/Adjective'},
+    'Norse': {'A2': 'Demonym/Adjective (historical)'},
+    'North-American': {'A2': 'Demonym/Adjective'},
+    'Norwegian': {'A2': 'Demonym/Adjective'},
+    'Norwegian/Swedish': {'A2': 'Demonym'},
+    'Persian': {'A2': 'Demonym/Adjective'},
+    'Português': {'A2': 'Demonym (Portuguese)'},
+    'Prussian': {'B2': 'Adjective/Noun'},
+    'Romania': {'A1': 'Proper Noun'},
+    'Romanian': {'A2': 'Adjective/Noun'},
+    'Russia': {'A1': 'Proper Noun'},
+    'Russian': {'A2': 'Adjective/Noun'},
+    'Russians': {'A2': 'Noun'},
+    'Saudi': {'A2': 'Adjective/Noun'},
+    'Scots': {'A2': 'Noun'},
+    'Senegalese': {'A2': 'Adjective/Noun'},
+    'Siamese': {'A2': 'Adjective/Noun'},
+    'Singaporean': {'A2': 'Adjective/Noun'},
+    'Spanish': {'A2': 'Adjective/Noun'},
+    'Svensk': {'A2': 'Adjective (informal, refers to Swedish language)'},
+    'Svenska': {'A2': 'Adjective (informal, refers to Swedish language)'},
+    'Swahili': {'A2': 'Adjective/Noun'},
+    'Swedes': {'A2': 'Noun'},
+    'Swedish/Norwegian': {'A2': 'Adjective Phrase'},
+    'Swiss': {'A2': 'Adjective/Noun'},
+    'Syrian': {'A2': 'Adjective/Noun'},
+    'Tanzanian': {'A2': 'Adjective/Noun'},
+    'Ugandan': {'A2': 'Adjective/Noun'},
+
+    # start of region to sort
     "I'am": {'A1': 'idiom, noun', 'B1': 'idiom, noun', 'C1': 'idiom, noun', 'C2': 'idiom, noun'},
     "I'm": {'A1': 'Contraction'},
     "I've": {'A2': 'contraction'},
@@ -13502,17 +13575,17 @@ common_English_words={
     'zoomed': {'C2': 'verb past tense, past participle'},
     'zooming': {'A1': 'present participle verb'},
    'image-space': {'B1': 'Adjective Phrase'},
-  'geometrically': {'B1': 'Adverb'},
-  'lane-switching': {'A2': 'Noun'},
-  'metering': {'B1': 'Noun'},
-  'non-visual': {'B1': 'Adjective'},
-  'pendula': {'C1': 'Noun Phrase'},
-  'preverbal': {'B2': 'Adjective'},
-  'rotator': {'A1': 'Noun'},
-  'sub-transmission': {'B1': 'Noun Phrase'},
-  'underSpecial': {'C1': 'Adjective'},
-'multi-commodity': {'B1': 'Noun Phrase'},
-'reacted': {'A2': 'Verb'},
+    'geometrically': {'B1': 'Adverb'},
+    'lane-switching': {'A2': 'Noun'},
+    'metering': {'B1': 'Noun'},
+    'non-visual': {'B1': 'Adjective'},
+    'pendula': {'C1': 'Noun Phrase'},
+    'preverbal': {'B2': 'Adjective'},
+    'rotator': {'A1': 'Noun'},
+    'sub-transmission': {'B1': 'Noun Phrase'},
+    'underSpecial': {'C1': 'Adjective'},
+    'multi-commodity': {'B1': 'Noun Phrase'},
+    'reacted': {'A2': 'Verb'},
 
     # end of region to sort
 
@@ -19059,8 +19132,7 @@ common_English_words={
     'die-cast': {'B1': 'Adjective'},
     'dielectric-only': {'B2': 'Adjective'},
     'dielectrics': {'B2': 'Noun (plural)'},
-
-  'dies': {'A2': 'Noun (plural)'},
+    'dies': {'A2': 'Noun (plural)'},
     'diesel-based': {'B2': 'Adjective'},
     'differences': {'A2': 'Noun (plural)'},
     'different': {'A1': 'Adjective'},
@@ -30605,7 +30677,8 @@ common_English_words={
     'ALD-deposited': {'B2': 'Adjective'},
     'Pre-Event': {'A2': 'Adjective'},
     'Quadric': {'B2': 'Noun'}, # Considering context of 'Quadric Error Metrics'
-    "API's": {'xx': 'Noun (Incorrect use of apostrophe)'},
+    "API's": {'xx': 'Noun (Incorrect use of apostrophe)'}, # note that this is the possessive form
+    "API‘s": {'xx': 'Noun (Incorrect use of apostrophe)'}, # note that this is the possessive form
     'Btc': {'A2': 'Noun (Abbreviation)'}, # Abbreviation for Bitcoin
     'TTA-projects': {'B2': 'Noun Phrase'}, # Considering context of projects
     'XORed': {'B2': 'Verb (Past Participle)'},
@@ -30618,6 +30691,7 @@ common_English_words={
     'animats': {'C2': 'Noun (Uncommon usage)'}, # see for example https://doi.org/10.1016/S1364-6613(98)01120-6
     'oncologists': {'B2': 'Noun'},
     're-programming': {'B2': 'Noun'},  # can also be used as 'reprogramming'
+    're‐programming': {'B2': 'Noun'},  # can also be used as 'reprogramming'
     'superegrids': {'B2': 'Noun'},
     'targeting': {'B2': 'Verb (Noun form also exists)'},
     'targetting': {'B2': 'Verb (Noun form also exists)'}, # British form
@@ -30627,8 +30701,121 @@ common_English_words={
     'multidupe': {'B2': 'Noun'},
     'hability': {'C2': 'Noun'},
     'dampings': {'B2': "Noun (Plural of 'damping')"},
+    '-year': {'NA': 'Suffix'}, # Suffixes typically don't have a CEFR level
+    'avail': {'A2': 'Verb'},
+    'completest': {'xx': 'Adjective (Incorrect use of "complete")'}, # diva2:1705419 -  the superlative of "complete" is "most complete"
+    'diff': {'B1': 'Noun (Informal)'}, # Used in specific contexts like code and technical discussions - used in diva2:1624586 and diva2:1471148
+    'diffs': {'B1': 'Noun (Informal)'}, # Used in specific contexts like code and technical discussions - used in diva2:1534461
+    'divers': {'A2': 'Noun'}, # diva2:1172159
+    'edged': {'B1': 'Adjective'},
+    'naevi': {'B1': 'Noun'},
+    'remanent': {'B2': 'Adjective'},
+    'chemical-protein': {'B2': 'Adjective'},
+    'closer-ranged': {'B2': 'Adjective'},
+    'cross-link': {'B2': 'Noun/Verb'},
+    'curtails': {'B2': 'Verb'},
+    'delay-performance': {'B2': 'Noun Phrase'},
+    'delirious': {'B2': 'Adjective'},
+    'delirium-specific': {'B2': 'Adjective'},
+    'disparities': {'B2': 'Noun'},
+    'eastward': {'A2': 'Adverb'},
+    'edge/cloud': {'B2': 'Noun Phrase'},
+    'effect-based': {'B2': 'Adjective'},
+    'end-devices': {'B2': 'Noun Phrase'},
+    'energy-harvesting': {'B2': 'Noun Phrase'},
+    'engendering': {'B2': 'Verb'},
+    'evolutionary-searched': {'B2': 'Adjective'},
+    'fast-charging': {'B2': 'Adjective'},
+    'few-slice': {'B2': 'Adjective'},
+    'galvanic': {'B2': 'Adjective'},
+    'glycine-based': {'B2': 'Adjective'},
+    'graph-like': {'B2': 'Adjective'},
+    'graph-structures': {'B2': 'Noun Phrase'},
+    'high-sparsity': {'B2': 'Noun Phrase'},
+    'juncture': {'B2': 'Noun'},
+    'leaned': {'A2': 'Verb (Past Participle)'},
+    'lockdowns': {'B2': 'Noun'},
+    'low-sparsity': {'B2': 'Noun Phrase'},
+    'macro-averaged': {'B2': 'Adjective'},
+    'metal-free': {'B2': 'Adjective'},
+    'multi-ported': {'B2': 'Adjective'},
+    'navigable': {'B2': 'Adjective'},
+    'near-far': {'B2': 'Adjective'},
+    'non-delirious': {'B2': 'Adjective'},
+    'non-restart': {'B2': 'Noun Phrase'},
+    'nondelirious': {'B2': 'Adjective'},
+    'non‐delirious': {'B2': 'Adjective'},
+    'on-resistance': {'B2': 'Noun Phrase'},
+    'operand': {'B2': 'Noun'},
+    'operands': {'B2': 'Noun'},
+    'pocket-size': {'B2': 'Adjective'},
+    'polyalphabetic': {'B2': 'Adjective'},
+    'prompt-design': {'B2': 'Noun Phrase'},
+    'pyannote-audio': {'B2': 'Noun Phrase'},
+    'quadrants': {'B2': 'Noun'},
+    'rest-activity': {'B2': 'Noun Phrase'},
+    'robustness-enhancing': {'B2': 'Adjective'},
+    'single-slice': {'B2': 'Adjective'},
+    'situating': {'B2': 'Verb'},
+    'southward': {'A2': 'Adverb'},
+    'teat': {'A2': 'Noun'},
+    'steerability': {'B2': 'Noun'},
+    'stride-free': {'B2': 'Adjective'},
+    'stringency': {'B2': 'Noun'},
+    'switchers': {'B2': 'Noun'},
+    'teleprinter': {'B2': 'Noun'},
+    'telex': {'B2': 'Noun'},
+    'triple-based': {'B2': 'Adjective'},
+    'triumphs': {'B2': 'Noun'},
+    'two-cable': {'B2': 'Adjective'},
+    'unequivocally': {'B2': 'Adverb'},
+    'wide-bandgap': {'B2': 'Adjective'},
+    'wrist-worn': {'B2': 'Adjective'},
+    'x-vectors': {'B2': 'Noun Phrase'},
+    'AI-aided': {'C1': 'Adjective'},
+    'Airforestry': {'B2': 'Noun'},
+    'Counter-Unmanned': {'B2': 'Adjective'},
+    'DAB-based': {'B1': 'Adjective'},
+    'Deadbeat': {'A2': 'Adjective/Noun'},
+    'E-mobility': {'B2': 'Noun'},
+    'LSTM­Transformer': {'C1': 'Noun Phrase'},
+    'Look-Up-Tables': {'B1': 'Noun Phrase'},
+    'MOSFET-based': {'B1': 'Adjective'},
+    'Model-predictions': {'B2': 'Noun Phrase'},
+    'Neumann-based': {'B2': 'Adjective'},
+    'Proportional-Derivative': {'B1': 'Adjective'},
+    'ST-image': {'B1': 'Noun'},
+    'ST-images': {'B1': 'Noun'},
+    'Search-Binary': {'B1': 'Noun Phrase'},
+    'Spatial-to-Depth': {'B2': 'Adjective'},
+    'Superposed': {'B2': 'Adjective'},
+    'Sporadic-E': {'B2': 'Noun Phrase'},
+    'actigraphy': {'B2': 'Noun'},
+    'agent-to-agent': {'B2': 'Adjective'},
+    'aperiodically': {'B2': 'Adverb'},
+    'apperiodicity': {'B2': 'Noun'},
+    'article-abstracts': {'B2': 'Noun Phrase'},
+    'backward-chained': {'B2': 'Adjective'},
+    'bad-samba': {'A2': 'Noun Phrase'},
+    'bio-organic': {'B2': 'Adjective'},
+    'biomaterials': {'B2': 'Noun'},
+    'biomaterials-based': {'B2': 'Adjective'},
+    'zero-voltage': {'B1': 'Adjective Phrase'},
+    'neuromorphic computing': {'C1': 'Noun Phrase'},
+    'motoric': {'A1': 'Adjective'},
+    'unperceptibility': {'B2': 'Noun'},
+    'antimonotonicity': {'C1': 'Noun'},
+    'diva-portal': {'A2': 'Noun Phrase'},
+    'intergovernmental': {'B2': 'Adjective'},
+    'misperception': {'B2': 'Noun'},
+    'earns': {'A2': 'Verb (Present Tense)'},
+    'penalised': {'B2': 'Verb (British English)'},
+
+
+
     #GQMe
-    
+
+
 }
 
 
@@ -50169,7 +50356,6 @@ common_swedish_words={
     'Svenka': {'B2': 'Adjective'},
     'Systemgruppen': {'B2': 'Noun'},
     'Sällskapet': {'B2': 'Noun'},
-
     'älven': {'A1': 'Noun'},
     'ämneskunskap': {'B2': 'Noun'},
     'åtskillnad': {'B2': 'Noun'},
@@ -50403,12 +50589,14 @@ common_swedish_words={
     'exister': {'B2': 'Verb'},
     'examens': {'B2': 'Noun'},
     'lappat': {'A2': 'Verb (Past Participle)'},
+    'armen': {'A1': 'Noun'},
+    'resultet': {'B1': 'Noun'}
 }
 
 
 #CEFR levels via Bard with questions of the form: What CEFR levels is the Swedish word 'tidsdomänreflektometer' in and what part of speech is it?
 common_swedish_technical_words={
-    #'utdatanär': {'xx': 'noun'},
+    # 'utdatanär': {'xx': 'noun'},
     '0-1-programmering': {'B2': 'noun'},
     '2D-metod': {'A2': 'noun', 'B1': 'noun'},
     '3D-modell': {'A2': 'noun', 'B1': 'noun'},
@@ -51451,9 +51639,10 @@ common_swedish_technical_words={
 
     # GQM-for-merger
     'lab-PM': {'xx': 'unknown'},
+    'binärer': {'A2': 'Adjective'},
+    'brusigare': {'A2': 'Adjective (Comparative)'},
+    'multicast-kommunikation': {'B2': 'Noun Phrase'},
     'spänning/stabilitetsstöd': {'xx': 'unknown'},
-    # 'binärer',
-    # 'brusigare',
 
 }
 
@@ -52793,7 +52982,21 @@ well_known_acronyms={
     'PDST': 'Path- Directed subdivision Trees', # diva2:1636521
     'EST': 'Expansive Space Trees',  # diva2:1636521
     'OMPL': 'Open Motion Planning Library',  # diva2:1636521
-    
+    'ORP': 'Oxidation-Reduction Potential',  # diva2:577797
+    'BOD': 'Biochemical Oxygen Demand',   # diva2:577797
+    'DPSS': 'Discrete Prolate Spheroidal Sequences', # diva2:538857
+    'MoL': 'Method of Loci', # diva2:1271840
+    'aSi': 'amorphous silicon', # diva2:1055990
+    'EP': 'expectation propagation', # diva2:1421287
+    'BP': 'belief propagation', # diva2:1421287
+    'sAV': 'semi-autonomous vehicle', # diva2:1449841
+    'SARL': 'société à responsibilité limitée', # Luxembourgois
+    'ST': 'spatial-temporal', # diva2:1836833
+    'Es': 'Sporadic-E layers',
+    'PCoE': 'Prognostics Center of Excellence', # diva2:1836931
+    'SSNN': 'Stochastic Spiking Neural Network', # diva2:1837710
+    'EOR': 'enhanced oil recovery', # diva2:956830
+    'BT': 'Bergens Tidende', # diva2:1597914
     #GQMa
 }
 
@@ -52950,86 +53153,21 @@ misc_words_to_ignore=[
     'viggo',      # part of an e-mail address
     'wouter',     # part of an e-mail address
     'saadua@kth', # part of an e-mail address
-
-    # Languages/peoples
-    'American',
-    'Americans',
-    'Arabia',
-    'Arabic',
-    'Armenian',
-    'Brazilian', 
-    'British', 
-    'Bulgarian',
-    'Canadian', 
-    'Chinese', 
-    'Cymraeg', # : {'A1': 'noun'}
-    'Czech',
-    'Danish',
-    'Deutsch',
-    'Dutch',
-    'English',
-    'Farsi',
-    'Finnish', 
-    'Flemish',
-    'French-German',
-    'German', 
-    'Ge’ez',
-    'Greek',
-    'Indonesian',
-    'Iraqi',
-    'Japanese',
-    'Kenyan',
-    'Korean',
-    'Latin',
-    'Nigerian',
-    'Norwegian',
-    'Persian',
+    # languages/peoples - spelling ? or case?
+    'Portugese',
     'Portugues', 
-    'Prussian',
-    'Romanian',
-    'Russia',
-    'Russian',
-    'Saudi',
-    'Scots',
-    'Siamese',
-    'Spanish',
-    'Svensk',
-    'Svenska',
-    'Swahili',
-    'Swedes',
-    'Swiss',
-    'Tanzanian',
-    'Ugandan',
     'czech',
+    'danish',
 
+    # HTML tage
+    '<audio>',
+    '<canvas>',
+    '<img',
+    '<svg>',
+    '<video>',
 
 
     # GQM-for-merger
-    'Croatian',
-    'Albanian',
-    'Kurdish',
-    'Latvian',
-    'Muslim',
-    'North-American',
-    'Norwegian/Swedish',
-    'Portugese',
-    'Português',
-    'Romania',
-    'Russians',
-    'Senegalese',
-    'Singaporean',
-    'Swedish/Norwegian',
-    'Syrian',    
-    'Abyssinian',
-    'Argentinean',
-    'Bangla',
-    'Cherokee',    
-    'Catalan',
-    'Estonian',
-    'Indonesians',
-    'Norse',
-    'danish',
-    'Lithuanian',
 ]    
 
 place_names=[
@@ -56389,7 +56527,7 @@ company_and_product_names=[
     'SelfCpaced', # diva2:677066 - note ehe abstract has ! instead of spaces
     'Sellpy',
     'SemEval',
-    'SemVer',
+    'SemVer', # diva2:1535596
     'SemanticKITTI',
     'SemanticWeb',
     'Semat',
@@ -57329,6 +57467,8 @@ company_and_product_names=[
     'O&M', # Operation and Maintenance (O&amp;M) - see diva2:1726974
     'O&MDSMs', # Operation and Maintenance Decision Support Models (O&amp;MDSMs) - see diva2:1726974
     'O&MDSTs', # Operation and Maintenance Decision Support Tools (O&amp;MDSTs) - see diva2:1726974
+    'MDSMs', # Maintenance Decision Support Models - see diva2:1726974
+    'MDSTs', # Maintenance Decision Support Tools  - see diva2:1726974
     'OBu', #  part of the chemical formula for tetrabutyl titanate - see diva2:873252    
     'ODE15s', # MATLAB’s ODEsolver - see diva2:1105933
     'RADAU5', # ODEsolver - see diva2:1105933
@@ -57494,7 +57634,89 @@ company_and_product_names=[
     'd-q', # frame - see diva2:1590831
     'DjangoNova',
     'earplug~', # citation in diva2:836283
-
+    'Dmax', # diva2:538857
+    'vDmax',# diva2:538857
+    'Ev3',
+    'EV3', # iva2:1459622
+    'Studi', # Studi.se - see diva2:1130305
+    'Vth',  # device threshold voltage (V<sub>th</sub> diva2:1710391
+    'Zo', # Microsoft chatbot - see diva2:1078272
+    '\\%$', # part of a LaTeX expression: $50-54\%$ - see diva2:928205
+    'action-', # comes from  "the(action-)value" - see diva2:1199871
+    'användning-after-free', # Swenglish - see diva2:952052
+    'cOmunicAtion', # comes from  GOAT (Gamified cOmunicAtion Tool) - see diva2:1416017
+    'cvx', # diva2:570088
+    'd/0', # optical geometry - see diva2:308052
+    'div', # refers to a <div> section of an HTML document used in diva2:1234361    
+    'CPPemu', # diva2:471230
+    '3Gsim', # diva2:471230
+    'estDec', # algorithm - see diva2:872469
+    'fullo', # part of 'fullo behandlats' - see diva2:847246
+    'imec', # R&D - see diva2:1213022 and diva2:1299224
+    'jl', # part of "PowerModels.jl" in diva2:1498753
+    'm6', # part of "Ironpie m6" in diva2:1450590
+    'mAP0', # possibly from <em>mAP</em><sub>0.5:0.95</sub> diva2:1707578
+    'NuSMV', # simulator - see diva2:1114579
+    'nuXmv', # simulator - see diva2:1114579
+    'sFlow', # diva2:1609265 diva2:951616
+    'sarl', # part of SPARC Industries sarl - see diva2:1447390    
+    'size-4', # size-4 motifs number - see diva2:1594896
+    'sled', # workload see diva2:1529797
+    'sub0', # part of "sub- 0:1 second" - see diva2:1597267
+    'xs', # one of the the four Bootstrap device classifications -  used in diva2:873261
+    'sm', # one of the the four Bootstrap device classifications -  used in diva2:873261
+    'md', # one of the the four Bootstrap device classifications -  used in diva2:873261
+    'lg', # one of the the four Bootstrap device classifications -  used in diva2:873261
+    'Dynasonde',
+    'Fraunhofer',
+    'GENEActiv',
+    'HashiCorp',
+    'Gwyddion', # diva2:1838565
+    'InterFaceGAN', # diva2:1837778
+    'Hagelin', # diva2:1837724
+    'BioGPT',
+    'BioGPT-Large',
+    'BioMedLM',
+    'Morlet', # wavelet - see diva2:1836934
+    'OMNIWeb', # diva2:1838411
+    'MCore',
+    'RAFTstereo', # diva2:1836829
+    'Vigenère', # diva2:1837724
+    'VisDrone', # dataset - see diva2:1836836
+    'Wi‑Fi',
+    'Tidings', # Tidnings Home - see diva2:1836929
+    'CycleR2R', # method diva2:1836930
+    'CF-Retrain', # diva2:1838160
+    'Newsboard', # diva2:1836929
+    'PCoE', # NASA PCoE data set - see diva2:1836931
+    'trainval', # data set diva2:1141864
+    'v12', # FLUX v12 - see diva2:881673 and v12 subset - see diva2:1697794
+    'v120', # SUN Fire v120 diva2:881673
+    'x2-', # AWS models - diva2:1783237
+    'x3-', # AWS models - diva2:1783237
+    'x4',  # AWS models - diva2:1783237
+    'vsat', # saturation velocity - diva2:1078568 - should be set as "v<sub>sat</sub> as in the original"
+    'dq-axis', # diva2:1836839
+    'TRx', # transmit receive ports - see diva2:1838555
+    'xBD', # xBD training dataset - see diva2:1616957
+    'xPC', # xPC Target TM system developed by MathWorks - see diva2:662296
+    'xN', # sacling factor - see diva2:1224181
+    'wt', # used with ~18 wt% - see diva2:449152
+    '˜', # Se˜nora - see diva2:826536; with ~3 in diva2:873226; 30 ~45 seconds in diva2:873226
+    'vn', # vn - in diva2:1542917 - should be set as v<sub>n</sub>
+    'tcp', # used in lower case in diva2:572792
+    'entmax-1', # entmax-1.5 diva2:1713857
+    '_local_', # used for emphasis in diva2:511851
+    'Layer­', # prefix used in diva2:1749923
+    'Conv', # diva2:1836836
+    'ru', # part of "Avito.ru" in diva2:1414424
+    'sys', # in URL in diva2:1782708
+    'un-', # appears as "(un-)perceptibility" in diva2:1460856
+    'un', # appears as "(un)available" in diva2:511893
+    'iX', # in 'iX10-100' in diva2:1713713
+    'cgi', 
+    'i/n', # 'i/n+' in diva2:1055990
+    'n-/p',# in     diva2:872770
 ]
 
 
@@ -57841,6 +58063,9 @@ common_programming_languages=[  # and libraries, programs
 ]
 
 names_of_persons=[
+    'Rohde', 
+    'Avogadro', 
+    'Prometheus',
     'Payne',
     'Loewner',
     'Jaro',
@@ -61183,7 +61408,7 @@ common_french_words=[
     'Economie',
     'Electriques',
     'Etudes',
-    'Fonctionnement'
+    'Fonctionnement',
     'Fonctionnement',
     'Goéland',
     'Montrealais',
@@ -61202,12 +61427,11 @@ common_french_words=[
     'compensation'
     'composent',
     'conformité',
-    'contrôle'
     'contrôle',
     'croisière',
     'crêpes', #    'crêpes': {'B2': 'noun'},
     'de',
-    'des'
+    'des',
     'développement',
     'd’Electricité',
     'ecole',
@@ -62065,7 +62289,6 @@ miss_spelled_words=[
     'performence', # 'performance',
     'performe', # error in the original- see diva2:654281
     'performanc', # performance and - see diva2:1080320
-    'performanc eand', # performance and - see diva2:1080320
     'performanceaect', # 'performance affect',
     'perfor', # perform such' diva2:1622382
     'perfor msuch', # perform such' diva2:1622382
@@ -62236,7 +62459,6 @@ miss_spelled_words=[
     'justies', # 'justifies' - see diva2:510391
     'jigsawv', # jigsaw variant - see diva2:770174
     'jigsawv ariant', # jigsaw variant - see diva2:770174
-    'istribution', # ?
     'isnished', # finished - see diva2:1082129
     'isiiienergized', #  'is energized' diva2:1324288 - an "ii" comes from the page number as the word crosses from page "i" to page "ii"
     'iscretization', # 'discretization', - see diva2:470064
@@ -62394,7 +62616,6 @@ miss_spelled_words=[
     'efficently', # 'efficiently',
     'efficency', # 'efficiency'
     'ecrypt', # 'encrypt' - see diva2:654220
-    'ecosyst e ms', # 'ecosystems' - see diva2:1413137
     'eciency', #     'efficiency',
     'ecient', #     'efficient',
     'eciently', #     'efficiently',
@@ -62504,7 +62725,7 @@ miss_spelled_words=[
     'definied', # 'define' - see diva2:766105 pg 2 of https://kth.diva-portal.org/smash/get/diva2:766105/FULLTEXT01.pdf
     'denes', # 'defines' - see for example diva2:1272156
     'dened', # 'defined' - see for example diva2:1203694
-     'dene',  #  'define' - see diva2:1203694 and diva2:1381350
+    'dene',  #  'define' - see diva2:1203694 and diva2:1381350
     'confi- dence', # 'confidence' - see diva2:1503344
     'demonstion', # 'demonstration' - see diva2:873240
     'democtratic', # 'democratic'
@@ -62527,7 +62748,6 @@ miss_spelled_words=[
     'credibil- ity', # 'credibility' - see diva2:1104337
     'costraint', # 'constraint'
     'costituent', # 'constituent'
-    'cost-e ective', # cost-effective - see diva2:1061497
     'corrrelation', # 'correlation'
     'corrolated', # 'correlated'
     'correc- tion', # correction - see diva2:1414371
@@ -62731,7 +62951,7 @@ miss_spelled_words=[
     'environmentson-board', #     'environments on-board',
     'environment“The', #     'environment The',
     'di±culties',
-    'di˙erent',
+    "di˙erent",
     'di↵erence',
     'di↵erences',
     'di↵erent',
@@ -65367,6 +65587,15 @@ KTH_ordbok_English_with_CEFR={
 }
 
 common_units=[
+    'atoms/cm',
+    'eV-1cm',
+    'mW/m',
+    'kHz/cm',
+    'Hz/cm',
+    'mdeg', # used in diva2:1141205
+    'kDa', # kilodalton
+    'MDa', # megadalton
+    'ft',
     'nT',
     'cm􀀀3',
     'fJ',
@@ -65618,7 +65847,7 @@ merged_words={
     'ASDEX Upgrade',
     'ASRE could',
     'AUVs are',
-    'AVF oundation',
+    'AV Foundation',
     'AWS exploitation',
     'AXA Insurance',
     'Abstract The',
@@ -65680,7 +65909,6 @@ merged_words={
     'CNN models', # see the text of the report diva2:1635641
     'CNN scaled', # see diva2:1622394
     'COMSOL Multiphysics',  # see diva2:1635759
-    'CPP emu',
     'CPU depends',
     'CSI reports', # see https://kth.diva-portal.org/smash/get/diva2:1479354/FULLTEXT01.pdf
     'CSI-based',
@@ -66670,7 +66898,7 @@ merged_words={
     'a moving',
     'a much',
     'a multi-terminal',
-    'a nactual',
+    'an actual',
     'able to',
     'about future',
     'about residents',
@@ -68585,12 +68813,11 @@ merged_words={
     'chosen for',
     'chosen number',
     'chosen parameters',
-    'circum navigation mission',
+    'circumnavigation mission',
     'circumvent this',
     'citizens—anti-military',
     'classes were',
-
-'classical Deep',
+    'classical Deep',
     'classic computer',
     'classified in',
     'classification algorithm',
@@ -68719,7 +68946,7 @@ merged_words={
     'compensators are',
     'compensators successfully',
     'competition benefits',
-    'competition sare',
+    'competitions are',
     'competitive market',
     'compiled and',
     'compiler and',
@@ -69017,7 +69244,7 @@ merged_words={
     'cooperative relays',
     'cooperative rendezvous',
     'coordinated operations',
-    'coordinatin gmultiple',
+    'coordinating multiple',
     'coordination and',
     'coordination between',
     'coordination system',
@@ -69373,7 +69600,7 @@ merged_words={
     "detector’s optical",
     'detects the',
     'detect undesirable',
-    'deteriorationw ithin',
+    'deterioration within',
     'determination of',
     'determined from',
     'determine if',
@@ -69383,7 +69610,7 @@ merged_words={
     'determine which',
     'deterministic optimal',
     'deterministic unit',
-    'dett aexamensarbete',
+    'detta examensarbete',
     'deuterium and',
     'develop CheesePi',
     'develop a',
@@ -69695,7 +69922,7 @@ merged_words={
     'edge weights',
     'effectively identify',
     'effectively learn',
-    'effectiv emean',
+    'effective mean',
     'effective strategies',
     'effective they',
     'effective tool',
@@ -69928,7 +70155,7 @@ merged_words={
     'evaluated several',
     'evaluated using',
     'evaluated with',
-    'evaluatei ts',
+    'evaluate its',
     'evaluate military',
     'evaluates such',
     'evaluate the',
@@ -69954,7 +70181,7 @@ merged_words={
     'events have',
     'event soccur',
     'event that',
-    'evenwi thin',
+    'even within',
     'ever before',
     'ever growing',
     'every configuration',
@@ -70038,7 +70265,7 @@ merged_words={
     'exposed to',
     'exposure assessment',
     'expressed based',
-    'expressth eir',
+    'express their',
     'extended dataset',
     'extend stream',
     'extension for',
@@ -70454,7 +70681,6 @@ merged_words={
     'from which',
     'from which customers can',
     'from whole',
-    'front hual',
     'fruitful evaluation',
     'fuel power',
     'fuels will',
@@ -71016,9 +71242,9 @@ merged_words={
     'improved when',
     'improve interactiveness',
     'improvement of',
-    'improvement scompared',
-    'improvement scould',
-    'improvement shave',
+    'improvements compared',
+    'improvements could',
+    'improvements have',
     'improve network',
     'improve reference',
     'improve robustness',
@@ -71919,7 +72145,7 @@ merged_words={
     'low precipitation',
     'low query',
     'low security',
-    'lowst ray',
+    'low stray', # see diva2:1299231
     'low time',
     'low to',
     'low voltage grid',
@@ -72256,7 +72482,7 @@ merged_words={
     'models except',
     'models for',
     'models has',
-    'models implifying',
+    'model simplifying',
     'models on',
     'models that',
     'models was',
@@ -72625,7 +72851,7 @@ merged_words={
     'obey strict',
     'objective function',
     'objective is',
-    'objectiv eof',
+    'objective of',
     'objectives are',
     'objects exchanged',
     'objects in',
@@ -72778,7 +73004,7 @@ merged_words={
     'of features',
     'offers submitted',
     'of flexibility',
-    'offlin eas',
+    'offline as',
     'offline phase',
     'offline simulation',
     'of food',
@@ -73008,7 +73234,6 @@ merged_words={
     'on examining',
     'on functional',
     'on generator',
-    'on gestions',
     'on going phaseout',
     'on historical',
     'on how',
@@ -73436,7 +73661,6 @@ merged_words={
     'plume eruptions',
     'plumes that',
     'podcasts is',
-    'point-to curve using-heading',
     'point clouds',
     'point cut',
     'point in',
@@ -73781,7 +74005,7 @@ merged_words={
     'properties between',
     'properties of',
     'properties was',
-    'propertyc an',
+    'property can',
     'proportional hazard',
     'propose a',
     'proposed CDS',
@@ -74178,7 +74402,7 @@ merged_words={
     'respect to',
     'response and',
     'response can',
-    'responset ime',
+    'response time',
     'response times',
     'response to',
     'responsible for',
@@ -74590,7 +74814,7 @@ merged_words={
     'simulations as',
     'simulations by',
     'simulations done',
-    'simulations ettings',
+    'simulation settings',
     'simulations in',
     'simulations of',
     'simulation software',
@@ -74742,7 +74966,7 @@ merged_words={
     'sort out',
     'so that',
     'sounding crocket',
-    'sourced estination',
+    'source destination',
     'source inverter',
     'source of',
     'source project',
@@ -74803,7 +75027,7 @@ merged_words={
     'speed of',
     'speed ripple',
     'speed shooting',
-    'speed sover',
+    'speeds over',
     'spent on',
     'spherical nanoparticles',
     'split between',
@@ -75016,7 +75240,7 @@ merged_words={
     'suggests that',
     'suggest that',
     'suitability of',
-    'suitableF EM',
+    'suitable FEM',
     'suitable algorithm',
     'suitable device',
     'suitable patterns',
@@ -75150,7 +75374,7 @@ merged_words={
     'taken advantage',
     'tackle video', # diva2:1249544
     'taken by',
-    'taken ecessary',
+    'take necessary',
     'taken individually',
     'taken much',
     'taken place',
@@ -75226,7 +75450,7 @@ merged_words={
     'temporal logics',
     'temporal properties',
     'temporary holding',
-    'tenF ree',
+    'ten Free',
     'tend to',
     'tens of',
     'tensor decomposition',
@@ -75583,7 +75807,7 @@ merged_words={
     'the disturbances',
     'the division',
     'the domain-specific',
-    'the dooror',
+    'the door or',
     'the double',
     'the doubletalk',
     'the driver',
@@ -75785,7 +76009,7 @@ merged_words={
     'the minimum',
     'them inspired',
     'the mitigating',
-    'the mmore',
+    'them more',
     'the mode',
     'the model-free',
     'the modeling',
@@ -75938,8 +76162,8 @@ merged_words={
     'there probably',
     'the required',
     'the requirement',
-    'the reremain',
-    'the reremains',
+    'there remain',
+    'there remains',
     'there should be availability of varying tariff structures',
     'the resource',
     'the response',
@@ -76548,7 +76772,7 @@ merged_words={
     'training and',
     'training data',
     'training features',
-    'trainingh as',
+    'training has',
     'training market',
     'training methods',
     'training on',
@@ -77184,7 +77408,7 @@ merged_words={
     'wider range',
     'widespread development',
     'width from',
-    'width syields',
+    'widths yields',
     'will analyze',
     'will be',
     'will cause',
@@ -77354,7 +77578,7 @@ merged_words={
     'yields the',
     'ying',
     'ying objects',
-    'you relectricity',
+    'your electricity',
     'zapping behavior',
     'zerglings', # - see diva2:1640875
     'zero-IoUs',
@@ -77508,7 +77732,6 @@ merged_words={
     'code tracing',
     'companies—Apple',
     'company internal',
-    'comple test',
     'computer-vision-based',
     'computer controlled',
     'connected and',
@@ -77572,7 +77795,6 @@ merged_words={
     'namely replication',
     'nano and',
     'nano positioners',
-    'over exitement',
     'per subframe',
     'recognition as',
     'space a',
@@ -77730,13 +77952,13 @@ merged_words={
     'new BGP',
     'kV / 40',
     'failures / non',    
-    '% ” hypothesis,'
+    '% ” hypothesis',
     '% for',
     'denna anpassning',
     'de viktigaste',
     'miljön i',
     'value 2',
-    'vapor liquid-',
+    #'vapor liquid-',
     'with high-',
     'Dashboard / DjangoNova',
     'PMU’s P-class', # diva2:681359
@@ -77745,7 +77967,35 @@ merged_words={
     'to work',
     'granularity 2',
     'lösning för',
-
+    '-20 targets',
+    'a 2', # see  diva2:1177850
+    'a 5', # error in handling line break - see diva2:1072057
+    'behov av',
+    'earna', # diva2:1531227
+    'effective mean', # diva2:1414194
+    'the congestion',
+    'Among them',
+    'applied in many electronic',
+    'available to couple',
+    'basedon PVA-glycine',
+    'by products',
+    'electricity in real',
+    'industry fields',
+    'ink writing organic',
+    'metal-free energy',
+    'piezoelectric performance',
+    'system to',
+    'the piezoelectric',
+    'through a simple',
+    'to the field of',
+    'point-tocurve using-heading',
+    'tele &',
+    'Preand',
+    'trivalent Er', # diva2:874540 - mo full text in DiVA
+    'specified &lt',
+    'DC direct',
+    'probability &lt', # diva2:705156
+    'everything &', # part of "everything-&-anywhere" diva2:1394927
 }
 
 corrected_abstracts={

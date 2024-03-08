@@ -301,10 +301,62 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'RMnO',
+    'YBa2Cu3O7YBCO', 
+    'Amino-EG',
+    'N/GaN',
+     'undecanethiol',
+    'Er-dopedTa',
+    '>1',
+    '>1999', 
+    'poly-Si',
+    'poly-Si/TiN',
+    'Si-Al',
+    'Si/SiO',
+    'SiC/SiO',
+    'SiH',
+    'SiO',
+    'TiCl',
+    'org/cgi-bin/mimetex',
+    '&amp',
+    '&gt',
+    '&lt',
+     '>',
+    '\\',
+    ']',
+    '_29', # used for ×29.7 in  diva2:1514163
+    '􀀀0', # [−0. in diva2:1463798
+    '􀀀100', # [−100 in diva2:1463798
+    'oi/fc_thesis', # part of github URL in diva2:1836829
+    'v1',
+    'v2',
+    'v4',
+    'v8',
+    'di/dt',
+    'com/FloCoic',
+    'PVA-glycine',
+    'PVA-glycine-PVA',
+    'sub-7',
+    's-1',
+    's/c',
+    's2',
+    'Er3', # Er<sup>3+</sup>-ions - see diva2:874540
+    'Ca2+',
+    'Mg2+',
+    'Cl2',
+    'Cl-',
+    'NO3-',
+    'NH3+',
+    'CO2/CO32-',
+    'F-',
+    'BF4-',
+    'K+',
+    'Na+',
     'toluene',
     '30cmX30cmX10cm',
     'x1',
     'x2',
+    'x3',
     'x4',
     'f0',
     'f1',
@@ -601,9 +653,9 @@ prefix_to_ignore=[
     '+',
     '-',
     '/',
-    '<',
+    #'<',
     '=',
-    '>',
+    #'>',
     '@',
     '\\',
     '`',
@@ -1174,12 +1226,20 @@ def main():
 
 
     for w in unique_words:
+        initial_w=w[:]
+
+        # remove the following product unimbers - as other wise the remove_products_and_ranges() turns them into 'iU'
+        if w in ['i7-6600U', 'i5-5200U']:
+            continue
+
         w = unicodedata.normalize('NFC',w) #  put everything into NFC form - to make comparisons simpler; also NFC form is the W3C recommended web form
+
         w=remove_prefixes(w)
         w=remove_suffixes(w)
         w=remove_lbracket_number_rbracket(w) # remove [ddd] from words
         if len(w) == 0:
             continue
+
         w=remove_products_and_ranges(w)
         if len(w) == 0:
             continue
@@ -1202,6 +1262,9 @@ def main():
         if is_equation(w):
             continue
 
+        if w.endswith('&amp'):
+            w=w[:-4]
+
         if len(w) < 1:
             continue
         
@@ -1223,11 +1286,13 @@ def main():
         if w.endswith("’s"):
             w=w[:-2]
 
-        if w.replace('-', '').isdigit():
+        wtemp=w[:]
+        if wtemp.replace('-', '').isdigit():
             number_skipped=number_skipped+1
             continue
 
-        if w.replace('/', '').isdigit():
+        wtemp=w[:]
+        if wtemp.replace('/', '').isdigit():
             number_skipped=number_skipped+1
             continue
 
