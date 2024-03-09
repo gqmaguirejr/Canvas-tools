@@ -51665,7 +51665,7 @@ well_known_acronyms={
     'AAE': 'Adversarial Autoencoder',
     'ABA-stacked': 'Bernal stacking sequence',
     'ABC-stacked': 'Rhombohedral stacking sequene',
-    'ABD-events': 'Apnea, bradycardia, and oxygen desaturation events',
+    'ABD-events': 'Apnea, bradycardia, and oxygen desaturation events',  # used but not defined in diva2:1109509
     'ABF':  'Articial Bacterial Flagella',
     'ABS': 'Anti Blocking System',
     'AC': 'Alternating Current',
@@ -51701,6 +51701,7 @@ well_known_acronyms={
     'AN': 'Ambient Network',
     'ANTLR': 'ANother Tool for Language Recognition',
     'AP': 'access point',
+    'AP': 'Average precision', # see diva2:1613237
     'API': 'Application Programming Interface',
     'APR': 'Automated Program Repair',
     'APUF': 'Arbiter Physical Unclonable Function',
@@ -51915,7 +51916,7 @@ well_known_acronyms={
     'DGCF': 'Dynamic Graph Collaborative Filtering',
     'DHT': 'Distributed Hash Table',
     'DIT': 'Dar Es Salaam Institute of Technology',
-    'DJs': {'c': 'Disc Jockey' , 's': 'diva2:1414380'},
+    'DJs':  'Disc Jockey', # 'diva2:1414380'
     'DL-TDoA': 'Downlink Time Difference of Arrival',
     'DLL': 'dynamic-link library',
     'DLR': 'Deutsches Zentrum für Luft- und Raumfahrt', # see diva2:1818557
@@ -52981,9 +52982,196 @@ well_known_acronyms={
     'vDU': 'virtual distributed unit', # see diva2:1830454
     'vircators': 'virtual cathode oscillators', # see diva2:968664
     'vsWM': 'Visuospatial working memory',
-    #GQMa
+
     'mIoU': 'mean Intersection-over-Union',
     'SOM': 'self organizing map',
+    'SSL': 'self-supervised learning',
+    'SSL': 'Semi-Supervised Learning',
+    'SSL': 'Secure Sockets Layer',
+    'SSL/TLS': 'Secure Sockets Layer/Transport Layer Security',
+    'SSH': 'Secure Shell Protocol',
+    'A-CGKA': 'administrated CGKA', # find_in_abstract('A-CGKA',
+    'CGKA': 'continuous group key agreement',
+    'A-GPS': 'Assisted Global Positioning System', # diva2:680237
+    'A/D': 'Analog to Digital', # Convertsion
+    'A2G': 'air-to-ground', # diva2:1129315
+    'DA2GC': 'direct air-to-ground communication system',
+    'A3C': 'Asynchronous Advantage Actor Critic',
+    'AA': 'Aortic Aneurysm', # 'diva2:1129547'
+    'AAA': 'Authentication, authorization, and accounting',
+    'AACC': 'Advanced Air Condition Controller',
+    'AAF': 'Agile Adoption Framework', # diva2:1613209
+    'SAMM': 'Scaled Agile Maturity Model',
+    'AAL': 'Ambient Assisted Living', # used but not defined in diva2:1320146
+    'AALAA': 'Awesome Automatic Log Analysis Application',
+    'AAMPC': 'Adversarial Adaptive Model Predictive Control', # diva2:1639277
+    'AAOFMPC': 'Adversarial Adaptive Output-Feedback Model Predictive Control', # diva2:1639277
+    'AAR': 'After Action Reviews',
+    'AAS': 'Advanced Antenna System', # diva2:1632196
+    'AB': 'Aktiebolag',
+    'ARH': 'Association rule hiding', # diva2:1801043
+    'ABD': 'Apnea, bradycardia, and oxygen desaturation', # used but not defined in diva2:1109509
+    'ABEP': 'Atmosphere-Breathing Electric Propulsion', # diva2:1543422
+    'ABLS': 'Automatic Bacterial Lighting System',
+    'ABM': 'agent-based model', # diva2:728449
+    'ABOB': 'Automated BreakOut Box', # diva2:815180, diva2:770508
+    'ABW': 'Activity-based working', # used but not defined in diva2:1111548
+    'AC/DC': 'AC to DC conversion',
+    'DC/AC': 'DC to AC conversion',
+    'AC3': 'Arc Consistency Algorithm 3', # CODEC
+    'AC-3': 'Arc Consistency Algorithm 3', # CODEC
+    'ACAS': 'Adaptive Context Aware Services',
+    'ACIR': 'Adjacent Channel Interference power Ratio ',  # diva2:874910, diva2:680026
+    'SARIMA': 'Seasonal Autoregressive Integrated Moving Average', #  diva2:1526553
+    'ACF': 'Autocorrelation function', # used but not defined in diva2:1526553
+    'PACF': 'Partial Autocorrelation Function', # used but not defined in diva2:1526553
+    'ACM': 'Associaiton for COmputing Machinery',
+    'ACM/IEEE': 'ACM and IEEE',
+    'ACM/IEEE-CS': 'ACM and IEEE Computer Society',
+    'ACO': 'Ant Colony Optimization', # diva2:1214402
+    'PMR': 'Professional Mobile Radio', # see diva2:691654
+    'LMR': 'Land Mobile Radio', # see diva2:691654
+    'TIA': 'Telecommunications Industry Association', # see diva2:691654
+    'CLEOS-CPDS': 'Clinical Expert Operating System - Chest Pain Danderyd Study', # see diva2:1710597
+    'ACS': 'acute coronary syndrome', # see diva2:1710597
+    'ACSL': 'ANSI/ISO C Specification Langage', # used but not defined in diva2:1801590 and diva2:1604617
+    'ACSU': 'add-compare-select unit', # see diva2:483817
+    'Adam': 'Adaptive Moment Estimation',
+    'ADCS': 'Attitude Determination and Control System', # see diva2:1542311
+    'ADL': 'Architecture Description Language', # used in but not described at diva2:862773
+    'ADMM': 'alternating direction method of multipliers', # see diva2:602608, diva2:1477511, diva2:881481
+    'ADN': 'ammonium dinitramide', # used but not defined in diva2:511222
+    'ADNI': 'Alzheimer’s Disease Neuroimaging Initiative (ADNI', # see diva2:1464104
+    'ADSL': 'asymmetric digital subscriber line', # diva2:649865
+    'ADT': 'Android Development Tools', # see diva2:874580
+    'AEB': 'Advanced Emergency Braking', # see find_in_abstract('AEB',
+    'GYAFC': 'Grammarly’s Yahoo Answers Formality Corpus',
+    'FST': 'Formality Style Transfer',
+    'B2D2': 'Bistable Boom Dynamic Deployment', # diva2:1542311
+    'AFC': 'automated fare collection', # see diva2:1712773
+    'AFEC': 'adaptive forward error correction', # see diva2:582541
+    'AFH': 'Adaptive Frequency Hopping', # diva2:872772
+    'AFM': 'Atomic Force Microscope', # diva2:1117173
+    'AFPM': 'Axial Flux Permanent Magnet', # see diva2:470664
+    'AFSS': 'Activity Flow State Scale', # diva2:1814054
+    '2AFC': 'two-alternative, forced-choice',
+    'ADE': 'Average Displacement Error', # see diva2:1638177
+    'ADR': 'adaptive data rate', # diva2:1818758
+    'ADS-B': 'Automatic Dependent Surveillance Broadcast', # diva2:1709483
+    'AGLARBRI': 'African Great Lakes Broadband Research Infrastructure',
+    'AHB': 'Advanced High-performance Bus',
+    'MIRI': 'Memory/Register Interface',
+    'AXI': 'Advanced eXtensible Interface',
+    'AHCI': 'Advanced Host Controller Interface',
+    'AHP': 'analytic hierarchy process',
+    'AHSR': 'average human success rate',
+    'AICK': 'daptive Iterative Closest Keypoint',
+    'AIC-AB': 'attribute-information-combined attention- based network', # diva2:1472682
+    'ORB': 'Oriented FAST and Rotated BRIEF', # diva2:858059
+    'DMAIC': 'Define, Measure, Analyze, Improve, and Control', # diva2:827016
+    'RLAIF': 'Reinforcement Learning from AI Feedback', # diva2:1782683
+    'RLHF': 'Reinforcement Learning from Human Feedback',
+    'AIF': 'AI Feedback',
+    'AIS': 'Automatic Identiﬁcation System', # diva2:1205343
+    'AIT': 'Average Interruption Time', # used but not defined in diva2:1209661 - see https://www.ei.se/download/18.5b0e2a2a176843ef8f56ca7e/1611642559299/Uppdaterade-incitament-i-regleringen-av-eln%C3%A4tsf%C3%B6retagens%20int%C3%A4ktsramar-%C3%B6verv%C3%A4ganden-inf%C3%B6r-kommande-%C3%B6versyn-av-Energimarknadsinspektionens-f%C3%B6reskrifter%20Ei-PM2018-01.pdf
+    'PAKE': 'Password authenticated key-exchange',     # diva2:1354154
+    'AKE': 'authenticated key-exchange',
+    'MSB': 'Myndigheten för samhällsskydd och beredskap', # diva2:612627
+    'NMC': 'Network Management Center', # diva2:612627
+    'RAKEL': 'adiokommunikation för Effektiv Ledning',  # diva2:612627
+    'DWS': 'Dispatching Work Station', # TETRA - see diva2:612627
+    'ALBERT': 'Alfvén Laboratory Balloon ExpeRimenT', # diva2:511316
+    'ALCOL': 'Amazon eLastic COntainer Language', # diva2:1358409
+    'ECS': 'Elastic Container Service', # Amazon -  diva2:1358409
+    'MBO': 'Marriage in Honey Bees Optimization', # diva2:1213992
+    'HEVC': 'High Efficiency Video Coding', # diva2:471504
+    'ALF': 'Adaptive Loop Filter', # diva2:471504
+    'ALPR': 'automatic license plate recognition', # diva2:847992
+    'GALS': 'Globally Asynchronous Locally Synchronous', # diva2:1252967
+    'MF': 'Matrix Factorization', # diva2:929350
+    'SGD': 'stochastic gradient descent', #  diva2:929350
+    'ALS': 'alternating least squares', # algorithm - diva2:929350
+    'DAB': 'Digital Audio Broadcasting', # diva2:1413143
+    'SEM': 'service entertainment module', # diva2:1413143
+    'MCTS': 'Monte Carlo Tree Search', # diva2:770360
+    'AMAF': 'All Moves As First', # diva2:770360
+    'SPARC': 'Scalable Processor ARChitecture', # used in but not defined in diva2:619396
+    'AMBSN': 'Attention-based Multi-Behavior Sequential Network', # diva2:1710389
+    'AMC': 'Adaptive Modulation and Coding', # diva2:1710474
+    'AMD-SEV': 'Secure Encrypted Virtualization (SEV)', # used in diva2:1557651
+    'AMI': 'Advanced Metering Infrastructure', # diva2:1232060
+    'SANAE': 'South African National Antarctic Expedition', # diva2:511327
+
+    'PHEB': 'Planar Hall Effect Bridge', # diva2:609160
+    'AMQP': 'Advanced Message Queueing Protocol', # diva2:1449734
+    'AMR': 'Automatic Meter Reading', # diva2:609160    
+    'AMRTM': 'Automatic Milking Rotary', # DeLaval Automatic Milking Rotary - see diva2:1064081
+    'AMT': 'Active Management Technology', # Intel - see diva2:508256
+    'ANC': 'active noise control', # diva2:1547982
+    'SPM': 'secondary path modelling', # diva2:1547982
+    'ANF':  'Algebraic normal form', # used but not defined in diva2:481201, but is defined in the full text of the thesis
+    'ANFIS': 'Adaptive Neuro-Fuzzy inference system', # diva2:771126
+    'ANIL': 'Almost No Inner Loop', # diva2:1531273
+    'MAML': 'Model-Agnostic Meta-Learning', # diva2:1531273
+    'ANN': 'artificial neural network', # diva2:927335
+    'FNN': 'Feed-forward Neural Network', # diva2:1659913
+    'MIR': 'Music Information Retrieval', # diva2:875963
+    'DSR': 'Design Science Research', # diva2:1713711
+    'ANOVA': 'Analysis of variance', # diva2:1713711
+    'ANR': 'Active Noise Reduction', # diva2:571737
+    'ANSI': 'American National Standards Institute',
+    'ANSSI': "Agence nationale de la sécurité des systèmes d'information", # French Cyber security agency  used but not defined in - diva2:646435
+    'ANTSS': 'Ants Nearby Treasures Search', # diva2:1214312
+    'LKH': 'Lin-Kernighan-Helsgaun', # method - see diva2:1711131
+    'AO': 'ambient occlusion', # diva2:1337203
+    'MSVO': 'multi-scale volumetric AO', # diva2:1337203
+    'MBSE': 'Model-Based System Evolution', # diva2:654228
+    'NADA': 'Numerisk Analys och DAtalogi',
+    'AOA': 'Angle of Arrival', # diva2:1713709
+    'DBSCAN': 'Density-Based Spatial Clustering of Applications with Noise', # diva2:1713709
+    'AOI': 'Area of Interest', # diva2:1329958
+    'WBOIT': 'Weighted Blended Order-Independent Transparency', # diva2:811329
+    'FOMOIT': 'Fourier Opacity Mapped Order-Independent Transparency', # diva2:811329
+    'AOIT': 'Adaptive Order-Independent Transparency', # diva2:811329
+    'APB': 'Advanced Peripheral Bus', # diva2:1635725
+    'HLS': 'High Level Synthesis', # diva2:1635725
+    'APC': 'Area Power Consumption', # diva2:506601
+    'ASE': 'Area Spectral Efficiency', # diva2:506601
+    'APF': 'Access Point Framework', # diva2:556737
+    'MAPF': 'MultiAgent Pathfinding', # problem - diva2:1215201
+    'WHCA': 'Windowed Hierarchical Cooperative A*', # diva2:1215201
+    'DKBR': 'Dynamic Knowledge Based Routing', #  algorithm -  diva2:1215201
+    'APM': 'Application Portfolio Management', # diva2:497365
+    'APS': 'Auxiliary Power Supply', # diva2:1724529
+    'APSD': 'automatic power save delivery', # diva2:699786
+    'APTES': 'amino terminated silane', # diva2:449127
+    'APVFS': 'autonomous parallelism, voltage and frequency selection', # diva2:579245
+    'DVFS': 'dynamic voltage and frequency selection', # used in but not defined in diva2:579245
+    'AQ': 'adaptive quantization', # diva2:1788172
+    'GAQ': 'Graph Attention Q-Network', # diva2:1587562
+    'DAQ': 'Data Acquisition', # diva2:1232916
+    'SELAQ': 'Student Expectations of Learning Analytics Questionnaire', # diva2:1582922
+    'AQG': 'automatically generated questions', # diva2:1463845
+    'AR-FIFO': 'Autoregressive First, In First Out-buffer', # diva2:1735861
+    'BRR-SS': 'Binned Relevance and Redundancy Sample Selection', # diva2:1735861
+    'RS': 'Reservoir Sampling', # see diva2:1735861
+    'ARF': 'Adaptive Random Forest', # diva2:1464917
+    'DWM': 'Dynamic Weighted Majority',  # diva2:1464917
+    'NB': 'Naïve Bayes',  # diva2:1464917
+    'KNNA': 'KNearest Neighbor with ADWIN', # diva2:1464917
+    'PVCFA': 'Principal Variation Context Feature Attribution', # diva2:1737847
+    'ARI': 'Adjusted Rand Index',  # diva2:1620314
+    'RI': 'Rand Index',  # diva2:1620314
+    'SARFA': 'Specificity and Relevance Feature Attribution', # diva2:1737847
+    'WILMAR': 'Wind power Integration in Liberalised electricity MARkets', # diva2:604579
+    'ARMA': 'autoregressive–moving-average', # used but not defined in diva2:604579
+    'ARPES': 'angle resolved photoemission spectrometer', # diva2:1098927
+    'ARPU': 'average revenue per user', # diva2:1068217
+    'ARQ': 'Automatic Repeat Request',
+    'PPO': 'Proximal Policy Optimization', # diva2:1527910
+    'TMR': 'Triple Modular Redundancy', # see diva2:1448700
+    'ASDEX': 'Axially Symmetric Divertor Experiment', # ITER upgrade - see diva2:1725154
+    #GQMa
 }
 
 misc_words_to_ignore=[
@@ -57710,8 +57898,145 @@ company_and_product_names=[
     'VTPin', # diva2:952052
     'BioSOMs', # find_in_abstract('BioSOM'
     'BiNet', # diva2:1240557
-
-
+    'TELE2',
+    'BBC',
+    'STM32',
+    'STM32F103',
+    'STM32MP157F-DK2',
+    'SÖRAB',
+    'TESLA',
+    'TEXTOR',
+    'TIA/EIA485',
+    'THALES',
+    'THEMIS', # diva2:862298
+    'TI',
+    'TIDAB', # Högskoleingenjörsutbildning i datateknik
+    'TIMIT', # TIMIT dataset diva2:1504139
+    'TMC2130',
+    'TMDXEVM6678L',
+    'TMS320C6678',
+    'TMS320F28335',
+    'TR-069',
+    'TREC-50',
+    'TREC-6',
+    'TRIPOLI-4®',
+    'TV3',
+    'TV4',
+    'UART16550',
+    'USENIX',
+    'VGG-11',
+    'VGG-16',
+    'VGG-19',
+    'VGG16',
+    'VGG16AAE',
+    'VGG19',
+    'XC40',
+    'XC7A100T',
+    'X2000',
+    'X509',
+    'X86',
+    'XUPV5-LX110T',
+    '3G/4G',
+    '4G/5G',
+    'A-EV', # Arriflex Alexa A-EV - see find_in_abstract('A-EV',
+    'A-MAC', # a receiver-initiated MAC - diva2:539203
+    'A/B', # testing - diva2:1095629, diva2:1603463,
+    'A100', # Nvidia A100 - see diva2:1710487
+    'A15', # ARM Cortex-A15 architecture - see diva2:1138490
+    'A270', # highway - diva2:1046353
+    'A4000', # Nvidia RTX A4000 - see diva2:1835620
+    'A5', # keratinocyte HaCaT A5 - diva2:654241
+    'A7', # Cortex A7 diva2:1735960
+    'A9', # ARM cortex A9 - diva2:1119373
+    'A8105-E', # Axis Communications A8105-E Network Video Door Station
+    'AAH', # AAH002-02 model - see diva2:1702239
+    'UPPAAL', # UPPAAL STRATEGO - diva2:1691368
+    'ABLOY',
+    'ABA', # diva2:1091182
+    'ABC', # diva2:1091182
+    'ABB',
+    'ABBYY', # diva2:1464440
+    'ABC4ARH', # diva2:1801043
+    'ABD', # dynamic graph representation learning approach - diva2:1455762
+    'ABX', # used but not defined in diva2:1117712
+    'AC-DC', # used but not defined in diva2:1634516
+    'ACDC', # diva2:1716126
+    'ACE2005', # diva2:1414451, diva2:1412656
+    'ACH6530', # Inmotion - see diva2:1498878
+    'ACN-SIM', # open source simulator - see diva2:1639385
+    'ACS-F2', # dataset - see diva2:1304677
+    'ACSF2', # dataset - see diva2:1304677
+    'ACTVOD', # ACTVOD Futures Workshop - see diva2:1783649
+    'ADAM', # optimizer - see diva2:1788173
+    'ADAMS', # simulation software - see diva2:576419
+    'ADDR', # ADD ADDR vulnerability - see diva2:934158
+    'ADE20K', # dataset - see diva2:1528646
+    'ADQ214', # Signal Processing (SP) Devices Digitizer ADQ214 - see diva2:708583
+    'ADS1292R', # TI ADC chip
+    'ADWIN', # algorithm - see diva2:1464917, diva2:1637018
+    'ADWIN1', # algorithm - see diva2:1275511:
+    'CV', # part of "Scania CV AB"
+    'AENS', # Alternative Energy Sources Inc. performance index - used by not defined in diva2:750131
+    'AEROWORKS', # diva2:1177557
+    'AES-128',
+    'AESCCM-128',
+    'AFINN', # lexical sentiment analysis method - see diva2:939932 diva2:1108725 diva2:1107756
+    'AFL', # fuzzer - see diva2:1105827
+    'AFM-FM', # AFM with layered ferromagnetic (FM)
+    'ACROPOL', # French Professional Mobile Radio network - see diva2:691654
+    'AABB', # tree algorithm - see diva2:1622382
+    'AGLN250', # Microsemi FPGA - see diva2:871616
+    'AGX', # Nvidia Jetson AGX and NX platforms - see diva2:1637008
+    'AHP1', # AHP with footnote 1 used in diva2:730418, footnote not in DiVA but is in full text
+    'AIA', # robot - see diva2:570086
+    'AIC', # clustering - see diva2:874329 - Akaike Information Criterion
+    'AISEPS',  #ESA project - see diva2:599781
+    'AKAZE', # algorithm - see diva2:927480
+    'KAZE', # algorithm - see diva2:927480
+    'AKD1000', # Akida AKD1000 neuromorphic processor - see diva2:1779206
+    'ALBERT', # language model diva2:1500722
+    'GREEDYRECOLOR',  # algorithm - diva2:1213992
+    'PARTIALCOL', # tabu search - diva2:1213992
+    'TABUCOL', # tabu search - diva2:1213992
+    'ALPHAUAV', # project - see diva2:1734513
+    'ALPS', # sentence classification - see diva2:1604604
+    'ALTERA',
+    'AM/FM/DAB', # broadcasting bands - see diva2:1413143
+    'AMBA', # bus - see diva2:619396
+    'SPARCV8', # processor architecture - see diva2:619396
+    'AMBER', # instrument - see diva2:1453646
+    'AMD',
+    'AMF', # Sewdish pension insurance company - see diva2:931374
+    'AMF-RPC', # web service technology - see diva2:430397
+    'AMIGO', # tuning procedure - see diva2:571738
+    'AMIRIS', # agent based simulation - see diva2:1381360
+    'AMK', # handbook - see diva2:621868
+    'AMPRID', # identity provider - see diva2:1119182
+    'AMPR', # diva2:1119182
+    'ANAFI', # Parrot ANAFI drone camera - see diva2:1601435
+    'ANSYS', # software company
+    'ANSYSHFSS', # simulation software - see diva2:1295345
+    'ANYA', # any angle path finding algorithm - see diva2:1711131
+    'SCANIA',
+    'AP-UE', # association - see diva2:1728679
+    'AP@0', # actually part of "Average precision(AP@0.5)" - see diva2:1613237
+    'APTOS2019', # dataset - diva2:1703301
+    'APZ', # Ericsson processor - see diva2:654211
+    'AXE/APZ', # Ericsson switch and processor - see diva2:654211
+    'AREVA', # diva2:609069
+    'ARIMA-GARCH', # model - see diva2:1711510
+    'ARIMAX', # model - see diva2:1746031
+    'ARX', # model - see diva2:1746031
+    'ARISTO', # tool - see diva2:610182
+    'ARSTIO', # simulations - see diva2:610182
+    'SPICA', # tool - see diva2:610182
+    'ARMAX', # model - see diva2:815221
+    'ARTIX-7', # chip - see diva2:1448700
+    'ARTIX7', # chip - see diva2:1448700 - was set as "'ARTIX- 7'"
+    'AS3935', # sensor - see diva2:1087473
+    'ASEA',
+    'ASAI', # performance indicator - see diva2:750131
+    'CAIDI',# performance indicator - see diva2:750131
 
 ]
 
@@ -61400,6 +61725,7 @@ names_of_persons=[
 
 common_french_words=[
     "d'Electricité",
+    'Agence',
     'Appliqué',
     'Composent',
     'Ecole',
@@ -61428,6 +61754,7 @@ common_french_words=[
     'contrôle',
     'croisière',
     'crêpes', #    'crêpes': {'B2': 'noun'},
+    "d'information",
     'de',
     'des',
     'développement',
@@ -61442,6 +61769,7 @@ common_french_words=[
     'manœuvre',
     'masse',
     'montage',
+    'nationale',
     'nouveau',
     'optronique',
     'pour',
@@ -61449,6 +61777,7 @@ common_french_words=[
     'reseaux',
     'réponse',
     'réseaux',
+    'sécurité',
     'sp\u00e9cial',
     'traitement',
     'très',
@@ -61458,6 +61787,8 @@ common_french_words=[
 ]
 
 common_danish_words=[
+    'Aktieselskab',
+    'S/A', # abbreviation for Aktieselskab
     'Kulge',
     'Selskabs',
     'Skrifter',

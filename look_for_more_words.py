@@ -122,6 +122,14 @@ def save_collected_words(s, lang):
     with open(new_file_name, 'w') as f:
         f.write(json.dumps(sl, ensure_ascii=False))
 
+def save_potential_acronyms(s):
+    global directory_prefix
+
+    new_file_name=f'{directory_prefix}potential_acronyms.json'
+    sl=sorted(s)
+    with open(new_file_name, 'w') as f:
+        f.write(json.dumps(sl, ensure_ascii=False))
+
 # A helpful function
 # def generate_chars(start, end):
 #     for i in range(start, end+1, 6):
@@ -1243,6 +1251,7 @@ def main():
     words_not_found=set()
     number_skipped=0
     number_of_potential_acronyms=0
+    potential_acronyms=set()
     count_fall_back_cases=0
     
     # for some testing
@@ -1648,6 +1657,7 @@ def main():
 
 
         if w.isupper():
+            potential_acronyms.add(w)
             number_of_potential_acronyms=number_of_potential_acronyms+1
             continue
 
@@ -1682,6 +1692,11 @@ def main():
         save_collected_words(words_not_found, 'Swedish')
     else:
         save_collected_words(words_not_found, 'English')
+
+    # save the potential acronyms
+    save_potential_acronyms(potential_acronyms)
+    print(f'unique potential acronyms: {len(potential_acronyms)}')
+
 
 if __name__ == "__main__": main()
 
