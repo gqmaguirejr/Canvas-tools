@@ -2601,7 +2601,6 @@ common_English_words={
     'Uplink-Downlink': {'B2': 'Noun Phrase'},
     'Uranian': {'A2': 'Adjective/Noun'},
     'Urb-it': {'A2': 'Proper Noun'},
-    'Us-101': {'A2': 'Proper Noun'},
     'User-Experience': {'B1': 'Noun Phrase'},
     'Use‐Case‐Points': {'C2': 'Noun Phrase'},
     'V-Att2Seq': {'C2': 'Noun Phrase'},
@@ -51732,7 +51731,7 @@ well_known_acronyms={
     'BBQueue': 'BipBuffer Queue',
     'BBU': 'baseband unit',
     'BCET': 'Best-Case Execution Time',
-    'BCI': 'Brain-Computer Interface',
+    'BCI': 'Brain-Computer Interface', # diva2:1376477
     'BCPNN': 'Bayesian Confidence Propagating Neural Networks',
     'BER': 'bit error rate',
     'BERT': 'Bidirectional Encoder Representations from Transformers',
@@ -51866,7 +51865,7 @@ well_known_acronyms={
     'Cat-M1': 'category M1',   # see diva2:1133526
     'CoAP': 'Constrained Application Protocol',
     'CoC': 'circle of confusion',
-    'CoM': 'Center of Mass',
+    'CoM': 'Center of Mass', # diva2:1836857
     'CoMP': 'oordinated Multipoint Processing', # see diva2:1088647
     'CoMP-JT': 'coordinated multipoint joint transmission',
     'CoMix': 'Concurrent Model Interface', # framework - diva2:1109982
@@ -51917,7 +51916,7 @@ well_known_acronyms={
     'DHT': 'Distributed Hash Table',
     'DIT': 'Dar Es Salaam Institute of Technology',
     'DJs':  'Disc Jockey', # 'diva2:1414380'
-    'DL-TDoA': 'Downlink Time Difference of Arrival',
+    'DL-TDoA': 'Downlink Time Difference of Arrival', # used but note defined in diva2:1498852
     'DLL': 'dynamic-link library',
     'DLR': 'Deutsches Zentrum für Luft- und Raumfahrt', # see diva2:1818557
     'DLSCA': 'Deep Learning Side-Channel Analysis', # see diva2:1737844
@@ -52093,7 +52092,7 @@ well_known_acronyms={
     'GA': 'grundutbildningsansvarig (Director of First and Second Cycle Education)',
     'GAA': 'Gate-all-around',
     'GAM': 'geodsic acoustic mode',
-    'GAN': 'Generative Adversarial Network', 
+    'GAN': 'Generative Adversarial Network',  # diva2:1554622
     'GBM': 'gradient boosting model',
     'GBS': 'Ground base station',
     'GBT': 'Graphene base transistor',
@@ -52101,7 +52100,7 @@ well_known_acronyms={
     'GCN': 'Graph Convolution Network',
     'GCP': 'Graph Colouring Problem',
     'GDPR': 'General Data Protection Regulation',
-    'GEMM': 'generaö matrix-matrix multiplication',
+    'GEMM': 'general matrix-matrix multiplication',
     'GFC': 'Glucose Fuel Cell',
     'GFET': 'top-gate graphene FET',
     'GFL': 'Grid-Following',
@@ -52115,7 +52114,7 @@ well_known_acronyms={
     'GNC': 'Guidance, Navigation and Control', # system - see diva2:1249048
     'GNN': 'Graph Neural Network',
     'GNP': 'gold nanoparticle',
-    'GNSS': 'Global Navigation Satellite Systems',
+    'GNSS': 'Global Navigation Satellite Systems', # diva2:1544978
     'GOx': 'glucose oxidase',
     'GOx/GA': 'Glucose Oxidase/bovineserum albumin/glutaraldehyde', # # diva2:1230358
     'GPGPU': 'General Purpose Graphic Processing Unit',
@@ -52203,7 +52202,7 @@ well_known_acronyms={
     'IMDb': 'Internet Movie Database',
     'IMSI': 'International Mobile Subscriber Identity',
     'IMU': 'inertial measurement unit',
-    'INS': 'inertial navigation system',
+    'INS': 'inertial navigation system', # diva2:1354856
     'IO': 'Input/Output"',
     'IP': 'Intellectual Property',  # see diva2:462886
     'IP': 'Internet Protocol',
@@ -52230,7 +52229,7 @@ well_known_acronyms={
     'IaaS': 'infrastructure as a service',
     'IgG': 'Immunoglobulin G', # diva2:1111535
     'IoMT': 'Internet of Moving Things',
-    'IoT': 'Internet of Things',
+    'IoT': 'Internet of Things', # diva2:1111718
     'IoU': 'Intersection-over-Union',
     'IoV': 'Internet of Vehicle',
     'IvD': 'Invention Disclosure',
@@ -52259,11 +52258,11 @@ well_known_acronyms={
     'LCRN': 'Locally Connected Random Network',
     'LDA': 'Linear Discriminant Analysis',
     'LDP': 'Label Distribution Protocol',
-    'LDPC': 'Low-Density Parity Check', # see diva2:1412396
+    'LDPC': 'Low-Density Parity Check', # see diva2:1412396 and  diva2:471235
     'LEA': 'law enforcements agency',
     'LED': 'Light Emitting Diode',
     'LEED': 'Low Energy Electron Diffraction',
-    'LEMP': 'Law Enforcement Monitoring Provider',
+    'LEMP': 'Law Enforcement Monitoring Provider', # diva2:1272384
     'LFLB': 'local feature learning block',
     'LFSR': 'linear-feedback shift register',
     'LHM': 'left-handed material',
@@ -52311,7 +52310,7 @@ well_known_acronyms={
     'LwM2M': 'Lightweight Machine to Machine (LwM2M', # diva2:1306358
     'M2C': 'Modular Multilevel Converter', # see diva2:572379
     'M2M': 'Machine-to-machine',
-    'MAB': 'Multi-armed bandit',
+    'MAB': 'Multi-armed bandits', #  diva2:1707379
     'MAC': 'Message Authentication Code', # also Media Access and Control
     'MAE': 'Mean Absolute Error',
     'MAGIIAN': 'multi-agent games with perfect information against Nature', # diva2:1701704
@@ -52416,6 +52415,7 @@ well_known_acronyms={
     'NLFSR': 'nonlinear-feedback shift register',
     'NLI': 'Natural Language Interface',
     'NLP': 'nonlinear program',
+    'NLP': 'natural language processing',   # diva2:1554622
     'NLUI': 'Natural-language user interface',
     'NLoS': 'non-line-of-sight',
     'NM': 'nano-machine', # see diva2:1295744
@@ -52685,7 +52685,6 @@ well_known_acronyms={
     'SL': 'AB Storstockholms Lokaltrafik',
     'SLA': 'Service Level Agreement',
     'SLAM': 'Simultaneous Localisation and Mapping', # see diva2:1711126
-    'SLAM': 'simultaneous localization and mapping',
     'SLAMS': 'Short Large-Amplitude Magnetic Structures', # see diva2:1479345
     'SLFN': 'Single-hidden Layer Feedforward neural Network',
     'SLO': 'Service Level Objective', # used but not defined in diva2:929943
@@ -52831,7 +52830,7 @@ well_known_acronyms={
     'V2V': 'Vehicle-to-Vehicle',
     'VACNT': 'vertically aligned carbon nanotube',
     'VAE': 'Variational Autoencoder',
-    'VANET': 'Vehicular Ad Hoc Network',
+    'VANET': 'Vehicular Ad Hoc Network', # diva2:1636674
     'VCO': 'Voltage Controlled Oscillators',
     'VCS': 'Vehicular Communication System',
     'VCSEL': 'vertical-cavity surface-emitting laser', # see diva2:468172
@@ -52967,7 +52966,7 @@ well_known_acronyms={
     'pos': 'point of sale', # see diva2:1713865
     'ppb': 'parts per billion',
     'ppm': 'parts per million',
-    'qOCP': 'Quantum One-Component plasmas',
+    'qOCP': 'Quantum One-Component plasmas', # see diva2:1709484
     'rANOVA': 'repeated measure analysis of variance',
     'rPPG': 'remote PPG',
     'rRMSD': 'elative root mean square deviation',
@@ -53101,7 +53100,6 @@ well_known_acronyms={
     'AMD-SEV': 'Secure Encrypted Virtualization (SEV)', # used in diva2:1557651
     'AMI': 'Advanced Metering Infrastructure', # diva2:1232060
     'SANAE': 'South African National Antarctic Expedition', # diva2:511327
-
     'PHEB': 'Planar Hall Effect Bridge', # diva2:609160
     'AMQP': 'Advanced Message Queueing Protocol', # diva2:1449734
     'AMR': 'Automatic Meter Reading', # diva2:609160    
@@ -53171,6 +53169,1670 @@ well_known_acronyms={
     'PPO': 'Proximal Policy Optimization', # diva2:1527910
     'TMR': 'Triple Modular Redundancy', # see diva2:1448700
     'ASDEX': 'Axially Symmetric Divertor Experiment', # ITER upgrade - see diva2:1725154
+    'ASIL': 'Automotive Safety Integrity Level', # diva2:1498878 - note ASIL C is "Adaptive cruise control, battery management, suspension"
+    'ASI': 'Ambient Networks Service Interface', # diva2:511893
+    'ASM-MBF': 'Array Scanning Method - Macro Basis Function', # diva2:442015
+    'ASMR': 'Autonomous Sensory Meridian Response', # diva2:1708151
+    'ASN': 'Abstract Syntax Notation', # part of Abstract Syntax Notation One (ASN.1) - see diva2:1553697
+    'ASO': 'AP switch ON/OFAP switch ON/OFFF', # diva2:1728679
+    'OWASP': 'Open Worldwide Application Security Project', # diva2:1800421
+    'ASRE': 'Android Speech RecognitionEngine', # diva2:769349
+    'OBDH': 'On-Board Data Handling', # diva2:1322977
+    'ASVS': 'Application Security Verification Standard', # used but not defined in find_in_abstract('ASVS',
+    'ATC': 'Air Traffic Control', # diva2:1704880
+    'ATM': 'Air Traffic Management', # diva2:1704880
+    'IMM-EKF':'Interacting Multiple Model Extended Kalman Filter', # diva2:1704880
+    'IMM-UKF' : 'Interacting Multiple Model Unscented Kalman Filter', # diva2:1704880
+    'IMM': 'Interacting Multiple Model', # diva2:1704880
+    'CV': 'Constant Velocity', # diva2:1704880
+    'HVDC-VSC': 'High Voltage Direct Current - Voltage Source Converter', # diva2:930831
+    'EMT': 'Electro Magnetic Transient Tools', # diva2:930831
+    'CJ': 'Constant Jerk', # diva2:1704880
+    'CT': 'Constant Turn',  # diva2:1704880
+    'CAV': 'Constant Angular Velocity',
+    'ATEX': 'Atmospheres Explosibles', # used but not defined in diva2:872683
+    'RATEX-J': 'RAdiation Test EXperiment for JUICE', # diva2:931347
+    'JDC': 'Jovian plasma Dynamics and Composition analyzer', # diva2:931347
+    'ATL': 'Alternating Time Temporal Logic', # diva2:1338774
+    'ATPG': 'Automatic Test Pattern Generation', # used but not defined in diva2:463401
+    'ATPG': 'Automatic Test Pattern Generator', # another version
+    'ATR': 'Achilles Tendon Rupture', # diva2:1228796
+    'ATSU': 'Air Traffic Services Unit', # diva2:705150
+    'AUC': 'Area Under the Curve', # diva2:1278667
+    'AUC-ROC': 'Area Under the Curve-Receiver Operating Characteristics', # used in both not defined in diva2:1799686
+
+    'AUCD': 'Agile User-Centered Design', # diva2:1500730
+    'UCD': 'User-Centered Design', # diva2:1500730
+    'AUCPR': 'Area Under the Precision Recall Curve', # diva2:1708855
+    'AUPRC': 'area under the precision-recall curve', # diva2:1337242
+    'AUROC': 'Area Under the Precision Recall Curve', # diva2:1466914
+    'AVB': 'Audio/Video Bridging', # IEEE 802.1 Audio/Video Bridging (AVB) standard- see diva2:1095520
+    'AVL': 'Automatic Vehicle Location', # diva2:1264803
+    'AVP': 'Anti-Virus Products', # diva2:1080560
+    'AVTCT': 'automated vehicle traffic control towers', # diva2:1414150
+    'AVX': 'Advanced Vector Extensions', # used but not defined in diva2:648407
+    'AVX2': 'Advanced Vector Extensions 2', # used but not defined in diva2:927102
+    'AWGN': 'additive white gaussian noise', # diva2:955018
+    'AWG': 'arrayed waveguide grating', # diva2:1047653
+    'AWT': 'Abstract Window Toolkit', # diva2:531069
+    'VAWT': 'Vertical Axis Wind Turbine', # diva2:470652
+    'AXI4': 'Advance eXtensible Interface4', # diva2:1710489
+    'AZO': 'aluminum-doped zinc oxide', # diva2:1788043
+    '8H-8T-8W': 'eight headers, tables and write operations', # see diva2:1335912
+    'MKA': 'MACsec Key Agreement', # see diva2:1712825
+    'B2C': 'Business to Consumer', # diva2:510426, diva2:1153261
+    'QKD': 'Quantum key distribution',
+    'BACNN': 'Convolutional Neural Network with Bidirectional Attention', # diva2:1516229
+    'BACoN': 'Convolutional Neural Network with Bidirectional Attention Code Network', # diva2:1516229
+    'JIT-DP': 'Just-In-Time Software Defect Prediction', # diva2:1516229
+    'BART': 'Bandwidth Available in Real-Time', # diva2:892059
+    'BBGKY': 'Bogoliubov-Born-Green-Kirkwood-Yvon', # Hierarchy - see diva2:1709484
+    'WDM': 'Warm Dense Matter', # see diva2:1709484
+    'VS': 'Vashishta-Singwi', # see diva2:1709484
+    'BBP': 'Billing Business Process', # diva2:934364
+    'SCM': 'Supplier Centric Model', # diva2:934364
+    'DSO-TSO': 'Distribution System Operators-Transmission System Operator', # diva2:934364
+    'BCE': 'Binary Cross Entropy', # used but not defined in diva2:1806243
+    'BCH': 'Bose, Chaudhuri, and Hocquenghem', # code -  used but not defined in diva2:1146212 and diva2:383922
+    'BCS': 'Business Communication Suite', # Ericsson  BCS - see diva2:539462
+    'BCW': 'Behavioural Change Wheel', # diva2:1459699
+    'BD': 'Block-diagonalization', # diva2:1167908
+    'PBD': 'position-based dynamics', # diva2:1708156
+    'MBD': 'Model Based Design', # diva2:1590831
+    'MBD': 'Multi Body Dynamics', # diva2:1632214
+    'CBD': 'Controlled dielectric breakdown', # diva2:1750953
+    'TBD': 'Tracking-By-Detection',  # diva2:1782875
+    'RHBD': 'radiation hardened-by-design', #diva2:1335945
+    'BDA': 'Building Damage Assessment', # diva2:1616957
+    'BDD': 'Behavior Driven Development', # diva2:1458121, diva2:1351654
+    'TDD': 'Test Driven Development', # diva2:1458121
+    'BDU': 'Boom Deployment Unit', # diva2:1253057
+    'BESS': 'Battery Energy Storage Systems', # diva2:1793391
+    'BF': 'Blowfish',  # diva2:1793714
+    'BFL': 'balanced field length', # diva2:1449886
+    'BFR': 'Bradley, Fayyad and Reina', # framework diva2:1261996
+    'BFS': 'Breadth First Search', # diva2:1613192
+    'BFT': 'Byzantine Fault Tolerant', # diva2:468125
+    'WBG': 'wide band gap', # diva2:1772595
+    'MSM': 'measure-stress-measure', # diva2:1772595
+    'BG': 'basal ganglia', # diva2:654366
+    'FBG': 'Fiber Bragg Grating', # diva2:601531
+    'BIC': 'Bayesian Information Criterion', # score used but not defined - see diva2:1504312
+    'BIGT': 'Bimode Insulated Gate Transistors', # used but not defined in diva2:1272175
+    'BIM': 'Building Information Modeling', # diva2:1784233
+    'TS': 'Tekla Structures', # diva2:1784233
+    'CBIR': 'Content-based Image Retrieval', # diva2:654121
+    'BJ': 'Box-Jenkin', # diva2:582539
+    'BKT': 'Bayesian Knowledge Tracing', # diva2:1475186
+    'BLDC': 'Brushless Direct Current', # diva2:872159
+    'BLEU': 'BiLingual Evaluation Understudy', # diva2:1702229
+    'BLFEC': 'Bit-Level Forward Error Correction', # diva2:750057
+    'BLISS-B': 'Bimodal Lattice Signature Schemes', # used but not define in diva2:1121030
+    'BLSTM': 'Bidirectional LSTM', # diva2:1609287
+    'VBM':  'Vector-Based Method', # diva2:1156251
+    'DUS': 'Direct Updating Strategy', # diva2:1156251
+    'BMS': 'Battery Management System', # diva2:1129539
+    'BM': 'build marines', # diva2:1640875
+    'QIMU': 'quad-IMU', #  diva2:1331704
+    'OQAM-FBMC': 'Offset QAM Filter-Bank Multi-Carrier', # diva2:1084840
+    'FBMC': 'Flow-based Market Coupling', # diva2:1636629
+    'FBMC': 'filter bank multi-carrier', # diva2:816032
+    'BMC': 'bounded model checking', # diva2:1592825
+    'BMI': 'Body mass index', # used but not defined in diva2:1110639
+    'BMO': 'business model ontology', # diva2:680504,
+    'BMW': 'Bayerische Motoren Werke AG', # used but not defined in diva2:838903
+    'MCBN': 'Monte Carlo Batch Normalization', #  diva2:1416025
+    'SBN': 'Serengeti Broadband Network', # diva2:1049522
+    'BNPL': 'Buy Now Pay Later', # diva2:1588606
+    'BNT': 'Bi0.5Na0.5TiO3', # diva2:1299114
+    'BNTBA': ' 0.97Bi0.5Na0.5TiO3-0.03BiAlO3', # diva2:1299114
+    'XRD': 'X-ray diffraction', # diva2:1299114
+    'BOF': 'Basic Oxygen Furnace', # diva2:1164171
+    'BOO': 'Binary One Optimization', # diva2:1838170
+    'EMONAS-BOO': 'Evolutionary Multi-Objective Neuron Architecture Search-Binary One Optimization', # diva2:1838170
+    'EMONAS': 'Evolutionary Multi-Objective Neuron Architecture Search', # diva2:1838170
+    'BOPTEST': 'building optimization testing', # diva2:1704894
+    'SAC': 'Soft Actor Critic', # diva2:1704894
+    'BORO': 'Business Object Reference Ontology', #  Program- see diva2:680540
+    'BPE': 'byte pairing encoding', # diva2:1570208
+    'BPMN': 'Business Process Management Notation', # diva2:1179108
+    'BPSK': 'Binary Phase Shift Keying', # used but not defined in diva2:705929
+    'QPSK': 'Quadrature phase shift keying', # used but not defined in diva2:705929
+    'BPTT': 'backpropagation through time', # diva2:1778353
+    'BRBM': 'Bernoulli restricted Boltzmann machine', # diva2:927736
+    'BRF': 'bostadsrättsföreningar', # used in but not defined in diva2:1678466
+    'BRISK': 'Binary Robust invariant scalable keypoints', # used but not defined in diva2:765478
+    'RANSAC': 'Random sample consensus',  # used but not defined indiva2:952599
+    'BRISQUE': 'Blind/Referenceless Image Spatial Quality Evaluator', # image quality assessment model - see diva2:1778306
+    'BSAB': 'Bottenvikens Stuveri AB', #diva2:538870
+    'WBSAR': 'whole-body average specific absorption rate', #  diva2:1707788
+    'BSC': 'Base Station Controllers', #  diva2:511678
+    'BSCAN': 'Boundary Scan Testing', # diva2:733614
+    'HDBSCAN': 'Hierarchical Density-Based Spatial Clustering of Applications with Noise diva2:1822032', # diva2:1806243
+    'BSE': 'Bombay Stock Exchange', # diva2:1597259
+    'UTB-SOI': 'Ultra-Thin-Body Silicon-on-Insulator', # diva2:872774
+    'UTBSOI': 'Ultra-Thin-Body Silicon-on-Insulator', # diva2:872774
+    'BBW': 'Brake-by-Wire', # diva2:1484540
+    'BCC': 'Breast Cancer Classifier', # diva2:1778373
+    'BSM': 'basic Security Module', # diva2:372416 
+    'BES': 'binary erasure source', #diva2:471235
+    'BSS': 'Bicycle-sharing system', # diva2:1348488
+    'BSS': 'binary symmetric source', # diva2:471235
+    'CRP': 'check regular Poisson', # diva2:471235
+    'LDGM': 'low-density generator matrix',  # diva2:471235
+    'LDGM-LDPC': 'low-density generator matrix - low-density parity-check', # diva2:471235
+    'BSW': 'Basic Software', # for electronic control unit (ECU) - diva2:1213078
+    'BTC': 'Bitcoin', # diva2:1110776
+    'IBTM': 'Inter-Battery Topic Model', # diva2:953765
+    'BTM': 'Balise Transmission Module', # diva2:1791190
+    'BTMS': 'Battery Thermal Management System', # diva2:1783642
+    'BTS': 'Base Transceiver Stations', # diva2:511678
+    'NSS': 'Network Switching Subsystem', # diva2:511678
+    'MGC': 'Media Gateway Controller', # diva2:511678
+    'MG': 'Media Gateway', # diva2:511678
+    'BUFIAR': 'Buffered Fliilp and Arash', # diva2:531930
+    'RSP': 'Ray Shooting Problem', # diva2:1612584
+    'BVH': 'Bounding Volume Hierarchy', # diva2:1612584
+    'IPRT': 'Interleaved Prefetching Ray Traversal',# diva2:1612584
+    'BVI': 'Blind and visually impaired', # diva2:861838
+    'BW': 'bandwidth', # diva2:1792968
+    'SF': 'spreading factor', # diva2:1792968
+    'RSSI': 'Receive Signal Strength Indicator', # diva2:1792968
+    'BYOD': 'Bring Your Own Device', # diva2:678014
+    'MDM': 'Mobile Device Management',
+    'C-64QAM': 'circular m-level quadrature amplitude modulation',  # diva2:872741
+    'CPE': 'carrier phase estimation',  # diva2:872741
+    'V-V': 'Viterbi-Viterbi', # as V- V CPE - see diva2:872741
+    'C-ACC': 'cooperative adaptive cruise control', # diva2:1722466
+    'C-CRC': 'Cryptographic Cyclic Redundancy Check', # diva2:1111718
+    'KMAC': 'KECCAK Message Authentication Code',  # diva2:1111718
+    'NIST': 'National Institute of Standards and Technology',  # diva2:1111718
+    'C-SLAM': 'Collaborative SLAM', # diva2:1818546
+    'XR': 'eXtended Reality',  # diva2:1818546
+    'C-V': 'Current->Voltage', # diva2:504573
+    'RISC':  'Reduced Instruction Set Computer',
+    'RISC-V': 'Reduced Instruction Set Computer Five', # diva2:1710485
+    'RISCV': 'Reduced Instruction Set Computer Five', # diva2:1710485
+    'Meltdown-CF': 'Meltdown - Capability Forgery',  # diva2:1538245
+    'OVP': 'Open Virtual Platforms', # diva2:1710485
+    'C-V2X': 'Cellular Vehicle-to-Everything', # diva2:1422828
+    'C-VAE': 'Conditional Variational Autoencoder', # diva2:1554622
+    'C/D': 'Control/Display', # diva2:972451
+    'C/I': 'carrier-to-interference ratio', # used but not defined in diva2:389006, diva2:383812
+    'CIR': 'carrier-to-interference ratio', # used but not defined in diva2:1498852
+    'CLEF': 'CIRMMT Live Electronics Framework', # diva2:783792
+    'PWM': 'Pulse Width Modulation', # defined in diva2:470559, used in diva2:783792
+    'IACS': 'industrial automation and control systems', # diva2:497323
+    'C/N0': 'Carrier-to-noise density ratio', # used but not defined in diva2:956118
+    'C/R': 'Checkpoint/Restore', # diva2:1508220
+    'TI': ' Texas Instruments', # see diva2:1505553
+    'C200': 'Communicator 200', # Scania product - defined in diva2:820956 - used in  diva2:654186
+    'HEFT': 'Heterogeneous Earliest Finish Time', # diva2:1471707
+    'C2C': 'car-to-car', # undefined in thesis - diva2:612624, but is in publication [2]
+    'CA-CFAR': 'Cell averaging constant false alarm rate method', # diva2:1504652
+    'GO-CFAR': 'Greatest of constant false alarm method', # diva2:1504652
+    'CA-GCN': 'Context-Aware-Graph-Convolutional-Network', # diva2:1472461
+    'CA-Cluster-GCN': 'Context-Aware--Cluster-Graph-Convolutional-Network',  # diva2:1472461
+    'GD': 'Gradient Descent',# diva2:1472461
+    'IMEP': 'Indicated Mean Effective Pressure', # see diva2:415344
+    'CAAPI': 'Cloud Agnostic Application Programming Interface', # diva2:1330827
+    'VCL': 'Virtual Computer Laboratory', # diva2:1330827
+    'CACC': 'ooperative adaptive cruise control', # diva2:1421238
+    'CTG': 'Constant Time Gap', # diva2:1636674
+    'CDG': 'Constant Distance Gap', # diva2:1636674
+    'CV': 'cross validation', # diva2:1214150
+    'PET': 'Positron emission tomography', # diva2:1214150
+    'CAD': 'Computer aided diagnostics', # diva2:1702465
+    'CAD': 'computer-aided detection', # used in artificial intelligent computer-aided detection system (AI CAD) # diva2:1586047
+    'TAM3': 'Technology Acceptance Model', # diva2:1586047
+    'CAE': 'Computer Aided Engineering', # diva2:1272253
+    'CAIDA': 'Center for Applied Internet Data Analysis', # used but not defined in diva2:1335932
+    'NAPT': 'Network address/port translation', # used but not defined in diva2:1335932
+    'CAL': 'CAL Actor Language', # diva2:504563
+    'CALCE': 'centre for advanced life cycle engineering', # diva2:1802829
+    'CAPT': 'computer-assisted pronunciation training', # diva2:1814057
+    'CARB': 'California Air Resources Board', # diva2:1251964
+    'CARLA': 'Car Learning to Act', # diva2:1548695
+    'SML': 'Smart Mobility Lab', # diva2:1548695
+    'CAS': 'Center for Autonomous Systems', # diva2:654136
+    'JCAS': 'Joint Communication and Sensing', # diva2:1818354
+    'CASA': 'Computers are Social Actors', # diva2:1444209
+    'CASS': 'content aware similarity search', # diva2:874594
+    'PARSEC': 'Princeton Application Repository for Shared-Memory Computers', # diva2:874594
+    'ULF': 'ultra low frequency', # diva2:1822771
+    'CAWFD': 'Communication Aware Worst Fit Decreasing', # diva2:1651984
+    'CAWS': 'channel-assignment and workload-based', # diva2:541492
+    'CB': 'click behavior', # diva2:1712818
+    'CBA': 'Cost-Benefit Analysis', #  diva2:1218070
+    'CBAM': 'convolutional block attention module', # diva2:1798108
+    'CBCT': 'Cone-Beam Computed Tomography', # diva2:1463589
+    'DCBF': 'discrete-time control barrier function conditions', # diva2:1749553
+    'HOCBF': 'High Order Control Barrier Functions', # diva2:1751648
+    'ISS': 'International Space Station', # diva2:1751648
+    'CBI': 'computer based interlocking', # diva2:810395
+    'CBPS': 'converter based power system', # diva2:1660097
+    'ESS': 'Energy Storage System ', # diva2:1660097
+    'CBQ': 'Class Based Queuing', # diva2:541080
+    'EDGE': 'Enhanced Data rates for GSM Evolution',  # diva2:541080
+    'EGPRS2': 'Enhanced General Packet Radio Service phase 2', # diva2:538892
+    'DCT': 'Discrete Cosine Transform ', # diva2:538892
+    'CBSE': 'Component-Based Software Engineering', # diva2:1501125
+    'RCM': 'Rubus Component Model', # diva2:1501125							   
+    'SDF': 'Synchronous Data Flow', # diva2:1501125
+    'SDFG': 'Synchronous Data Flow Graph',  # diva2:1501125
+    'CBT': 'core based trees', # diva2:515365
+    'SBT': 'source based trees',# diva2:515365'
+    'CBTA': 'cache based timing attacks', # diva2:483610
+    'MA': 'Micro-architectural analysis', # diva2:483610
+    'CBV': 'capillary blood cell velocity', # diva2:1229350
+    'CC-CV': 'constant-current constant-voltage charging', # diva2:1044206
+    'SRC-CV': 'sinusoidal ripple current-constant voltage charging', # diva2:1044206 
+    'CCA': 'canonical correlation analysis', # diva2:1647708
+    'LCCA': 'life cycle cost assessment', # diva2:1522069
+    'CCA2': 'cryptographic Adaptive chosen-ciphertext attack', # used in diva2:668307
+    'CCAT': 'Clear Channel Assessment Threshold', # diva2:1067514
+    'CCCV': 'Constant Current Constant Voltage', # charding - see diva2:1040690
+    'CCFS': 'Candy Crush Friends Saga', # diva2:1460707
+    'CCGT': 'Combine Cycle Gas and Turbines', # diva2:470725
+    'CCS': 'CO2 Capture and Storage', # diva2:470725
+    'CCH': 'Customizable Contraction Hierarchy', # diva2:1784230
+    'PDCCH': 'Physical Downlink Control Channel', # diva2:540740
+    'DPCCH': 'dedicated physical control channel', # diva2:508199
+    'PUCCH': 'Physical Uplink Control Channel', # diva2:1643943
+    'UCI': 'Uplink Control Information', # diva2:1643943
+    'HCCI': 'Homogeneous Charge Compression Ignition', # diva2:576331
+    'CCI': 'Credit Card Information', # diva2:600353
+    'CCL': 'Connected component labeling', # diva2:926622
+    'CCM': 'Cipher block chaining - message authentication code', # used but not defined in diva2:697252
+    'CCN': 'Content Centric Network', # diva2:1111572
+    'ICN': 'information-centric networking', # diva2:1111572
+    'MQTT-SN': 'MQ Telemetry Transport Sensor Network', # diva2:1111572
+    'CCP': 'CAN Calibration Protocol', # diva2:865984
+    'CCPP': 'Combined Cycle Power Plant', # diva2:1381341
+    'EOC': 'Equivalent Operating Cycles', # diva2:1381341
+    'EOH': 'Equivalent Operating Hours',  # diva2:1381341
+    'CCRE': 'cross-cumulative residual entropy', # diva2:927557
+    'MI': 'mutual information', # diva2:927557
+    'SCV': 'sum of conditional variances',  # diva2:927557
+    'CCTV': 'Closed-circuit television', # used but not defined in diva2:787131
+    'CDA': 'Continuous Deep Analytics', # diva2:1250335
+    'CDATE': 'Degree Programme in Computer Science', # diva2:1596439
+    'CDB': 'Configuration Database', # diva2:626808
+    'DCFC': 'DC fast-charging stations', # diva2:1836844
+    'CDC': 'Communications Device Class', # diva2:825925
+    'CDCL': 'conflict-driven clause learning', # diva2:1320366
+    'DPLL': 'Davis-Putnam-Logemann-Loveland', # algorithm - see diva2:1320366
+    'GCDC': 'Grand Cooperative Driving Challenge', # diva2:1046353
+    'CDE': 'Common Data Environment', # diva2:1095664
+    'CDI': 'Capacitive deionization', # diva2:1769449
+    'CDIO': 'Conceive, Design, Implement, Operate', # used but not defined in diva2:872590
+    'CDM': 'Code division multiplexing', # diva2:470901
+    'CDPR': 'Cable Driven Parallel Robot', # diva2:1836857
+    'CDS': 'Clinical Decision Support', #  diva2:512330
+    'CDS': 'Credit Default Swap', # diva2:1772596
+    'OTC': 'Over The Counter',  # diva2:1772596
+    'CVA': 'Credit Valuation Adjustment',  # diva2:1772596
+    'CDV': 'Conversational Data Visualization', # diva2:1113153
+    'CEA': "Commissariat à l'énergie atomique et aux énergies alternatives", # diva2:1639271
+    'CEE': 'Cloud Execution Environment', # diva2:865877
+    'CEHD': 'CNN Encoder Hybrid Decoder', # diva2:1697794
+    'CEIS': 'Cross-Entropy based Importance Sampling', # diva2:1249024
+    'NEPP': 'North European Energy Perspectives Project', # diva2:1249024
+    'CERN': 'European Organization for Nuclear Research', # used in diva2:1557602, diva2:859500, diva2:1252665, diva2:1259247 but not define
+    'CELOG': 'Corrugated Epitaxial Lateral Overgrowth', # diva2:928769
+    'CEOC': 'Cumulative EquivalentOperating Cycles', # diva2:1381341
+    'CEOH': 'Cumulative Equivalent Operating Hours', # diva2:1381341
+    'CEP': 'Complex Event Processing', # diva2:872469
+    'CER': 'Character Error Rate', # diva2:1463587
+    'WER': 'Word Error Rate', # diva2:1463587
+    'OCR': 'Optical Character Recognition', # diva2:1463587
+    'CES': 'Continuously Controlled Electronic Suspension', # diva2:584007
+    'CESBIO': "Centre d'Etudes Spatiales de la Biosphère", # diva2:1584546
+    'CESI': 'China Electronics Standard Institute', #  diva2:483824
+    'UWB': 'Ultra Wide Band', #  diva2:483824
+    'ISO': 'International Standard Organization', #  diva2:483824
+    'ECMA': 'European Computer Manufacturers Association', #  diva2:483824
+    'DC-OFDM': 'Dual Carriers-Orthogonal Frequency Division Multiplexing', #  diva2:483824
+    'SFO': 'Sample Frequency Offset', #  diva2:483824
+    'CEVT': 'China Euro Vehicle Technology', # diva2:1737860 and  diva2:1737858
+    'FCS-MPC': 'initeControl Set Model Predictive controller', # diva2:1737858
+    'NLG': 'Natural Language Generation', # diva2:1708538
+    'CF': 'Collaborative Filtering', # diva2:929350
+    'KCF': 'kernelized correlation filter', # diva2:929350
+    'LCF': 'low code frequency', #  diva2:575397
+    'HCF': 'high code frequency', #  diva2:575397
+    'CFA': 'Control Flow Automaton', # used but note defined in diva2:1416002, given in full text
+    'FCFA': 'Communauté Financière Africaine Franc', # used but not define diva2:601608
+    'SO-CFAR': 'Smallest of constant false alarm rate', # diva2:1504652
+    'CFAR': 'Constant False Alarm Rate', # used in  diva2:1504652
+    'CPA': 'Configurable Program Analysis', # in full text for diva2:1416002
+    'CNF': 'Conjunctive Normal Form',  # in full text for diva2:1416002
+    'CFF': 'Chemins de fer fédéraux suisses', # diva2:1728663
+    'FFS': 'Ferrovie federali svizzere',  # diva2:1728663
+    'SSB': 'Schweizerische Bundesbahnen',  # diva2:1728663
+    'CFOP': 'Cross, First 2 Layers, Orientation, Permutation', # method for solving Rubik' cube - see diva2:812006
+    'CFP': 'Contention-Free Period', # diva2:570074
+    'CWT': 'continuous wavelet transform', # diva2:1573998
+    'CG': 'Conjugate Gradient', #  diva2:1713648
+    'CG-CS': 'Common Gate - Common Source', # two stage in architecture - used but not defined in diva2:492351 - components defined in acronyms table in thesis
+    'CGI': 'Computer-generated imagery', # used but not defined in diva2:1335274
+    'CGMES': 'Common Grid Model Exchange Standard', # diva2:1046364
+    'ENTSO-E': 'European Network of Transmission Operators for Electricity', # diva2:1046364
+    'ENTSOE': 'European Network of Transmission Operators for Electricity', # used but not defined in diva2:1477497
+    'CGMS': 'contin-uous glucose monitoring systems', # diva2:1046844
+    'SMBG': 'Self-monitoring blood glucose strips',  # diva2:1046844
+    'CGPS': 'Cold Gas Propulsion System', # used but not defined in diva2:1601075
+    'CH': 'cluster head', #  diva2:690435
+    'HS-DSCH': 'High-Speed Downlink shared channel', #  diva2:514744
+    'HSDPA': 'High Speed Downlink Packet Access',  #  diva2:514744
+    'CHB': 'cascaded H-bridge', # diva2:470576
+    'CHI': 'Conference on Human Factors in Computing Systems', # used but not defined in diva2:1147447
+    'CHM': 'Convective Heat transfer Meter', # diva2:1335823
+    'CHOMP': 'Covariant Hamiltonian Optimization for Motion Planning', # algorithm - see diva2:1633602
+    'CHP': 'Combined heat and power', # used but not defined in diva2:1129335 diva2:1380775
+    'CI/CD': 'Continuous integration and continuous delivery', #  diva2:1696841
+    'CIA': 'confidentiality, integrity and the availability', # diva2:1350873
+    'CIGRE': 'Conseil International des Grands Réseaux Electriques',  # used but not defined in diva2:1249010
+    'CIGS': 'Copper indium gallium selenide', # CIGS-based absorber layer - see diva2:1348692
+    'CII': 'Continuous Integration Infrastructure', #  diva2:818538
+    'CINR': 'carrier-to-interference-plus-noise ratio', #  diva2:1804950
+    'CIO': 'Chief Information Officer', # diva2:1749554
+    'PRECIOSA': 'Privacy Enabled Capability In Co-Operative Systems</p><p>and Safety Applications', # diva2:612630
+    'CIRMMT': 'Center Interdisciplinary Research in Music Media and Technology', # used but not defined in diva2:783792
+    'CIS': 'Compute Intensive Services', # diva2:1061497
+    'CISPR': "Comitéinternational spécial des perturbations radioélectriques", # used but not defined in diva2:693749 - English: 'International special committee on radio interference'
+    'EBU': 'European Broadcasting Union', # diva2:720721
+    'CIT': 'Combinatorial interaction testing', # diva2:1508205
+    'CJA': 'Collaborative Joint attention', # diva2:1259800
+    'CKD': 'Chronic Kidney Disease', #  diva2:1336287
+    'CKF': 'Cubature Kalman filter', #  diva2:1656572
+    'CKN': 'Convolutional Kernel Network', # diva2:862363
+    'VIO': 'visual-inertial odometry', #  diva2:1656572
+    'CL': 'Colloidal Lithography', #  diva2:1118260
+    'CLA': 'Cortical Learning Algorithm', # find_in_abstract('(CLA)',
+    'CLBG': 'Computer Language Benchmarks Game', # diva2:1793389
+    'KMM': 'Kotlin Multiplatform Mobile', # diva2:1793389
+    'CLF': 'control-Lyapunov function', # diva2:1821983
+    'CLPC': 'closed loop power control', # diva2:930146
+    'D2D': 'Device-to-Device', # diva2:930146
+    'CLS': 'Classification Token', # diva2:1710759
+    'CLV': 'Customer Lifetime Value', # diva2:1119205
+    'USSD': 'Unstructured Supplementary Service Data', # diva2:511850
+    'SMSC': 'Short Message Service Center', # diva2:515034
+    'MMSC': 'Multimedia Messaging Service Center', # diva2:515034
+    'CMC': 'computer mediated communication',#  diva2:1591323
+    'CMCC': 'China Mobile Communications Corporation', #  diva2:511850
+    'CMD': 'Correlation Matrix Distance', # used but not defined in diva2:1264831
+    'NCMD': 'normalized version of CMD', # diva2:1264831
+    'CME': 'Chemical Master Equation', # diva2:726001
+    'MCMC': 'Markov Chain Monte Carlo', # diva2:726001
+    'CMIMOR': 'cooperative MIMO relaying', # diva2:383889, diva2:383925, diva2:383893
+    'EBM': 'Engel Blackwell Miniard', # diva2:920118
+    'CMO': 'Chief marketing officer', # diva2:920118
+    'CMRR': 'Common-Mode Rejection Ratio', # used but not defined in diva2:1231997. is in full text
+    'CMU': 'Carnegie Mellon University', # used but not defined in diva2:1570325
+    'CN': 'Cognitive Normal', # diva2:1700454
+    'CN': 'colour normalisation', # diva2:1635576
+    'CN': 'Cloud-Native', # diva2:1520289
+    'CN-DPM': 'Continual Neural Dirichlet Process Mixture', # used but not defined in diva2:1642489
+    'CNAE': 'convolutional nonnegative autoencoder', # diva2:1525838
+    'DCNAE': 'deep convolutional nonnegative autoencoder', # diva2:1525838
+    'CNC': 'Computer Numerical Control', #  diva2:1515191
+    'CNC': 'Centralized Network Controller', # diva2:1479446
+    'CNCE': 'conditional noise-contrastive estimation', #  diva2:1139156
+    'CNCF': 'Cloud Native Computing Foundation', #  diva2:1621787
+    'CNF-SAT': 'conjunctive normal form boolean satisfiability problem', # diva2:721407
+    'CNFSAT': 'conjunctive normal form boolean satisfiability problem', # diva2:769762
+    'CNMPC': 'Nonlinear Model Predictive Control', # diva2:1230321
+    'DNMPC': 'Decentralized Nonlinear Model Predictive Control', # diva2:1230321
+    'CNR': 'Cloud Networked Robotics', # diva2:791695
+    'CNS': 'central nervous system', # diva2:1169168
+    'COQAM': 'cyclic offset-QAM', # diva2:816032
+    'OQAM': 'Offset-QAM', # diva2:816032
+    'CORALL': 'COllaborative Robot Assisted Language Learning', # diva2:1130572
+    'RALL': 'robot-assisted language learning', # diva2:1351886
+    'CORBA': 'Common Object Request Broker Architecture', # used but not defined in diva2:613997
+    'CORDIC': 'coordinate rotation digital computer', # algorithm - diva2:484516
+    'COSE': 'CBOR Object Signing and Encryption', # diva2:1255401
+    'EDHOC': 'Ephemeral Diffie Hellman over COSE', # diva2:1255401
+    'COVID19': 'Coronavirus Disease 2019', # diva2:1597397 also used in diva2:1836842
+    'CP': 'classical platform', #  diva2:1272204
+    'MOCP-ACO': 'Multi-Objective Container Placement Ant Colony Optimization', #  diva2:1305653
+    'CP-ABE': 'Ciphertext-Policy Attribute-Based Encryption', #  diva2:1725010
+    'CP-OFDM': 'Cyclic Prefix-Orthogonal Frequency Division Multiplexing', # used but not defined in diva2:816032
+    'CPD': 'Change Point Detection', #  diva2:1795307
+    'CPI': 'cycle per instruction', # diva2:1713647
+    'CPLD': 'Complex Programmable Logic Device', # diva2:1078389,
+    'CPM': 'cost per thousand impressions', #  diva2:1472065
+    'CPOP': 'Critical-Path-on-a-Processor', #  diva2:1164179
+    'CPPL': 'Context Privacy Policy Language', #  diva2:512292
+    'CPRI': 'Common Public Radio Interface', # diva2:927855
+    'CPS': ' Core Production Stockholm', # diva2:383915
+    'CPTI': 'Critical Path to Interactive', #  diva2:1763085
+    'CQRS': 'Command Query Responsibility Segregation', # diva2:1146247
+    'CRC-PUF': 'Cyclic Redundancy Check Physical Unclonable Function', # diva2:1372527
+    'CRF': 'Conditional Random Field', #  diva2:1256706
+    'CRG': 'CareNet Residential Gateway', # diva2:550740
+    'CRAFTERS': 'Constraint and Application Driven Framework for Tailoring Embedded Real-time System', # diva2:688753
+    'CRISP-DM': 'Cross Industry Standard for Data Mining', # diva2:1130305, also used in diva2:1250897
+    'CRM': 'Customer Relationship Management', # diva2:525837
+    'CRS': 'Compressed Row Storage', # diva2:811385
+    'CRUD': 'Create, Read, Update and Delete', # diva2:1105278
+    'RDBMS': 'relational database management system', # diva2:692365 also  diva2:957393
+    'CS': 'Cloud Services ', # diva2:1334210
+    'CS1': 'Computer Science 1', # course - see diva2:1703322
+    'CSA': 'Curve Speed Adaptation', # diva2:1145897
+    'CSCL': 'computer-supported collaborative learning', # diva2:1763088
+    'CSCW': 'Computer Supported Cooperative Work ', # used but not defined in diva2:946199 and diva2:1246179
+    'CSEMP': 'Computer System for Expressive Music Performance', # diva2:1468336
+    'CSIR': 'hannel State Information at the Receiver', # diva2:1414343
+    'CSIT': 'CSI at the transmitter', # diva2:864274
+    'CSM': 'cryptographic service manager', # diva2:1712825
+    'CSMA': 'carrier sense multiple access', #
+    'CSMA/CA': 'carrier sense multiple access with collision avoidance', # diva2:1091192
+    'CSMA/CD': 'carrier sense multiple access with collision detection', # used but not defined in diva2:1537533
+    'CSMS': 'Charging Station Management System', # diva2:1707576
+    'OCPP': 'Open Charge Point Protocol', # diva2:1707576
+    'CSN': 'corporate social network', # diva2:630424
+    'SPH': 'Smoothed Particle Hydrodynamics', # diva2:1795915
+    'CSPH': 'Compressible SPH',  # diva2:1795915
+    'WCSPH': 'Weak Compressible SPH',  # diva2:1795915
+    'FPS': 'frames per secong',  # diva2:1795915
+    'CSR': 'corporate social responsibility', # diva2:1307184, also diva2:654548
+    'CSRR': 'square complementary split ring resonators', # diva2:1723243
+    'CSS': 'Cascading Style Sheets', # diva2:766095
+    'OCSVM': 'One-Class Support Vector Machine', # diva2:1711135
+    'CSV': 'Comma-separated Values', # diva2:1087996
+    'CSW': 'complimentary software', #  parameters - see diva2:874545
+    'CTAB': 'cetyltrimethylammonium bromide', # diva2:872455
+    'CTO': 'Chielf Technology Officer', # diva2:1583312
+    'CRE': 'national energy regulation committee', #  diva2:611652
+    'CTH': 'Chalmers tekniska högskola', # used but not defined in diva2:614537 - English: Chalmers University of Technology
+    'CTI': 'Cyber Threat Intelligence', # # diva2:1477504
+    'CTL': 'Computational Tree Logic', #  diva2:573391
+    'CTMH': 'Center for Technology in Medicine and Health', # diva2:539591
+    'CTP': 'Collection Tree routing Protocol', #  diva2:556196
+    'CTR': 'Click through rate', # diva2:654369
+    'CTS': 'Continuous Transverse Stub', # used in diva2:1822013
+    'CTV': 'Crew Transfer Vessels', # diva2:1453607
+    'CTWEAM': 'cascaded travelling wave electroabsorption modulator', # diva2:577749
+    'CUAS': 'Counter-Unmanned Aerial System', # diva2:1838165
+    'CUDA': 'Compute Unified Device Architecture', #  diva2:463337
+    'SCAMV': 'Side Channel Abstract Model Validator', # diva2:1615024
+    'CVAE': 'Convolutional Variational autoencoder', #  diva2:1703317
+    'CVC': 'Connected Vehicle Cloud', # diva2:871660
+    'CVE': 'Common Vulnerabilities and Exposures', # database - diva2:1703902
+    'CVR': 'cinematic virtual reality', #  diva2:1647569
+    'CVS': 'Computer Vision Syndrome', # diva2:1334691
+    'CVSS': 'Common Vulnerability Scoring System', #  diva2:1471199
+    'CW': 'Contention Window', #  diva2:383914
+    'D-MIMO': 'distributed multi-input multioutput', # diva2:1707388
+    'D/R': 'Demand Response', #  diva2:1751354
+    'D2B': 'dot-to-bulk', # D2B IR detector - used but not defined in diva2:579294
+    'D2LC': 'Distributed Two-level Control System', # diva2:1783071
+    'DDRA': 'Dynamically Reconfigurable Resource Array', # diva2:1783071
+    'FLVQ': 'Fast Lattice Vector Quantization', # diva2:696519
+    'PVQ': 'Pyramidal Vector Quantization', # diva2:696519
+    'DAGGER': 'Disagreement-Augmented Dataset Aggregation', # used but not defined in diva2:1334302
+    'DAN': 'Deep Adaptation Network', # diva2:1750932
+    'DAPI': 'Distributed Averaging Proportional Integral', # diva2:1092556
+    'DARPA': 'Defense Advanced Research Projects Agency',
+    'PDAS': 'Process data analysis system', #  diva2:1702838
+    'DAS': 'Distributed Antenna System', #  diva2:647067
+    'DB': 'Davies–Bouldin', # diva2:1640204
+    'DBA': 'Dependency Based Algorithm', #  diva2:1713826
+    'DBC': 'Design by contract', #  diva2:1463234
+    'DBCV': 'Density-based clustering validation', # used but not defined in diva2:1813068
+    'DBEX': 'Database Engine X', # diva2:872000
+    'DBR': 'Distributed Bragg Reflectors', #  diva2:410307
+    'DBS': 'Delay Based Scheduler', #  diva2:1484466
+    'DBT': 'Data Build Tool', #  diva2:1705419
+    'DC-GIS': 'Direct Current - Gas-Insulated-Systems', # diva2:790045
+    'GIS': 'Gas-Insulated-Systems', # diva2:790045
+    'DCA': 'Domain CA', # diva2:678013
+    'LTC': 'Long Term Certificate', # diva2:678013
+    'DCCP': 'datagram congestion control protocol', # diva2:513178
+    'DCF': 'Discriminative Correlation Filter', #  diva2:1269787
+    'DCGAN': 'Deep Convolutional Generative adversarial network', # diva2:1703317
+    'DCMS': 'Distributed Component Management System', # diva2:345684
+    'DCN': 'data center network', #  diva2:1055850
+    'DCNN': 'Deep Convolutional Neural Network', #  diva2:1259064
+    'DCOPF': 'DCOptimal Power Flow', # diva2:563701
+    'WNE': 'Worst-Nash Equilibrium', # diva2:563701
+    'DCP': 'Distributed Computation Pruning', # diva2:810616
+    'GLP': 'Generalized Linear Preference', #  model - diva2:810616
+    'DCS': 'distribution control system', # diva2:535617
+    'DCTCP': 'Data Center TCP', # diva2:1372622
+    'DCU': 'data concentration unit', #  diva2:535617
+    'DCXP': 'Distributed Context eXchange Protocol', # diva2:511884
+    'DD': 'Digital Density', #  diva2:931267
+    'DDA': 'dynamic difficulty adjustment', #  diva2:1354414
+    'DDC': 'Data-Driven Connectivity', #  diva2:1395055
+    'DDC4CC': 'diverse double-compiling for cryptocurrency', #  diva2:1737190
+    'DDCD': 'Data-driven concept design', #  diva2:1734459
+    'DDM': 'domain decomposition method', # diva2:541504
+    'DDOS': 'Distributed Denial of Service', # diva2:1525559
+    'DDPG': 'Deep Deterministic Policy Gradient', #  diva2:1704894
+    'DDR': 'Double Data Rate',
+    'DDR3': 'Double Data Rate 3', # diva2:538361
+    'DDSG': 'direct drive synchronous generator', # diva2:610173
+    'DDSP': 'Differentiable Digital Signal Processing', # diva2:1465597
+    'DEA': 'Data Envelopment Analysis', # diva2:537365
+    'DEC': 'Deep Embedded Clustering', #  diva2:1460775
+    'DECT': 'Digital Enhanced Cordless Telecommunications', #  diva2:530129
+    'DENS-F': 'Distributed Edge Node Switching Filter', # diva2:1818525
+    'DF': 'Digital Forensics', #  diva2:1525559
+    'DFAA': 'Dual Frame Average Aggregation', # diva2:1834167
+    'DFM': 'design formanufacturing', # diva2:1464475
+    'DFS': 'direct finite element simulation', #  diva2:1614202
+    'DFSS': 'Design for Six Sigma', #  diva2:600706
+    'DFU': 'Device Firmware Upgrade', #  diva2:1412848
+    'DG': 'Distributed Generation', # diva2:618839
+    'DGA': 'Dissolved Gas Analysis', #  diva2:14162
+    'DGCNN': 'Dynamic Graph Convolutional Neural Network', # diva2:1707498
+    'DGNN': 'directed graph neural net', # diva2:1597388
+    'DGPR': 'deep Gaussian process regression', #  diva2:1523900
+    'DGS': 'distributed generation system', #  diva2:609078
+    'DH': 'downhill', # diva2:571104
+    'DHCP': 'Dynamic Host Client protocol', #  diva2:511010
+    'DIA': 'Delayed Integral Action', # diva2:1836839
+    'DIBR': 'Depth image based rendering', # used but not defined in diva2:471523
+    'DIGS':' Dynamic Iterative Greedy Search', #  diva2:1539601
+    'DIMA': 'decentralized diagnostic manager', # diva2:557155
+    'DIS': 'Distributed Interactive Simulation', # used but not defined in diva2:654203
+    'DIW': 'Direct Ink Writing', #  diva2:1479859
+    'DJIA': 'Dow Jones Industrial Average', # diva2:811130
+    'DKT': 'Deep Knowledge Tracing', #  diva2:1470609
+    'DL': 'deep learning', # diva2:1661649
+    'DL-VO': 'Deep Learning-based Visual Odometry', #  diva2:1750631
+    'DLC': 'Double Lane Change', #  diva2:1537816
+    'DLEP': 'Dynamic Link Exchange Protocol', #  diva2:758742
+    'DLLA': 'DownLink Link Adaptation', #  diva2:1801386
+    'DLNA': 'Digital Living Network Alliance', #  diva2:654216
+    'DLS': 'Domain- Specific Language', #  diva2:1553685
+    'DM': 'Data Mining', #  diva2:811087
+    'DMC': 'DeepMonte-Carlo', #  diva2:1723061
+    'DMF': 'N, N-dimethyl formamide', # diva2:873252
+    'DMI': 'digital musical instruments', #  diva2:1466064
+    'DMIMO': 'Distributed MIMO', # used but not defined in diva2:1707388
+    'DMO': 'Direct Mode Operation', # used but not defined in diva2:510482
+    'DMPC': 'distributed model predictive control', #  diva2:1332107
+    'DMS': 'Deadline-Monotonic Scheduling', #  diva2:1085303
+    'DMSO': 'Dimethyl sulfoxide', # diva2:1473041
+    'DMSP': 'Defense Meteorological Satellite Program', # used but not defined in diva2:1822765 - in full text on pagr 354
+    'DNL': 'differential non-linearity', #  diva2:1484488
+    'DNS': 'Domain Name System', #  diva2:1498802
+    'DNSSEC': 'Domain Name System Security Extensions', # diva2:508237
+    'DOA': 'Direction Of Arrival', #  diva2:1324237
+    'DOB': 'disturbance observer', #  diva2:790881
+    'DOE': 'Design of Experiment', # diva2:694739
+    'DOOH': 'Digital Out of Home', # used but not defined in diva2:742664
+    'DOS': 'denial-of-service', #  diva2:1717773
+    'DOSN': 'Distributed Online Social Network', #  diva2:654202
+    'DOT/ITD': 'Department of Transportation/Idaho Transportation Department', # used but not defined in diva2:702430
+    'DPCC': 'Deadbeat Predictive Current Control', #  diva2:1836839
+    'DPCM/ADPCM': 'Differential Pulse Code Modulation/Adaptive Differential Pulse Code Modulation', # used but not defined in diva2:1047083
+    'DPD': 'Digital Pre-Distortion', #  diva2:1838148
+    'DPDK': 'Data Plane Development Kit', #  diva2:892059
+    'DPI': 'Deep Packet Inspection', # diva2:702430
+    'DPM': 'Dynamic Power Management', #  diva2:1213022
+    'DPP': 'determinantal point process', #  diva2:1713646
+    'DPS': 'discrete prolate spheroidal', # diva2:538857
+    'DPSO': 'Discrete Particle Swarm Optimisation', #  diva2:1507267
+    'DPT': 'double pulse test', #  diva2:1841133
+    'DQ': 'data quality', #  diva2:1737820
+    'DR': 'Demand-Response', #  diva2:681429
+    'DR1': 'Disperse Red1', #  diva2:705988
+    'DRI': 'Direct Remote Identification', #  diva2:1838165
+    'DRL-ISP': 'Deep Reinforcement Learning for Image Signal Processor', # diva2:1836930
+    'DRM': 'Digital Rights Management', #  diva2:654216
+    'DRMC': 'digital rights management company', #  diva2:1240044
+    'DRRA': 'Dynamically Reconfigurable Resource Array', #  diva2:458646
+    'DRSM': 'Design Research Science Method', #  diva2:1710734
+    'DRT': 'Dunham and Depositional Rock Types', #  diva2:1305807
+    'DRX': 'Discontinuous Reception', # diva2:872755
+    'DS': 'Direct Sequence', #  diva2:462684
+    'DS-AFIM': 'double-stator axial-flux induction machines', #  diva2:1632202
+    'DSC': 'Distributed source coding', #  diva2:573501
+    'DSD-NTSS': 'Down-sampled Diamond NTSS algorithm', #  diva2:507828
+    'NTSS': 'New Three Step Search',  #  diva2:507828
+    'DSM': 'Demand side management', #  diva2:470238
+    'DSMC': 'Direct Simulation Monte Carlo', #  diva2:1543422
+    'DSRC': 'Dedicated Short-Range Communications', #  diva2:1351617
+    'DSRM': 'design science methodology', #  diva2:618092
+    'DSS': 'Decision Support System', #  diva2:1336287
+    'DSSS': ' direct-sequence spread-spectrum', #used but not defined in diva2:470915 in full text of thesis
+    'DSVL': 'Domain Specific Visual Language', # diva2:618092
+    'DSW': 'Distributed Software Scheduler', #  diva2:1818562
+    'DTC': 'Direct Torque Control', #  diva2:582454
+    'DTL': 'Diode transistor logic', # used but not defined in diva2:1110184
+    'DTLS': 'datagram transport layer security', #  diva2:513178
+    'DTLS-SRTP': 'Datagram Transport Layer Security Extension to Establish Keys for the Secure Real-time Transport Protocol', # used but not defined in diva2:1078385
+    'DTN': 'Disruption Tolerant Network', #  diva2:857362
+    'DTR': 'Dynamic Transformer Rating', #  diva2:1637092
+    'DTSP': 'Dynamic Traveling Salesman Problem', #  diva2:1111660
+    'DTU': 'Technical University of Denmark', #  diva2:1088545
+    'DTW': 'dynamic time warping', #  diva2:1752825
+    'DTX': 'discontineous transmission', #  diva2:826087
+    'DTX-DRX': 'Discontinuous Transmission - Discontinuous Reception', # diva2:872755
+    'DTXDRX': 'Discontinuous Transmission - Discontinuous Reception', # diva2:872755
+    'DUCB': 'Discounted Upper Confidence Bound', #  diva2:1838521
+    'DVA': 'Dynamic Virtual Admittance', # used but not defined in diva2:1453651
+    'DVAC' : 'Dynamic Virtual Admittance Control', #  diva2:1453651
+    'DVB': 'Digital Video Broadcasting',
+    'DVB-RCS': 'Digital Video Broadcasting - Return Channel via Satellite', # used but not defined in diva2:394049
+    'DVT': 'deep vein thrombosis', #  diva2:877778
+    'DW4DO': 'Dynamic Window Approach for Dynamic Obstacles', # used but not defined in diva2:1836829 - in full text of thesis
+    'DWAF': 'Domän-Webb-Applikations-Fuzzer', # acronym from thesis title of diva2:654266
+    'DWT': 'Discrete wavelet transform', #  diva2:1214150
+    'DXA': 'Dual Energy X-ray Absorptiometry', # diva2:1243011
+    'DXCP': 'Distributed Context eXchange Protocol', # diva2:511893
+    'DYMO': 'Dynamic MANET On-demand', # diva2:539203
+    'DZAB': 'defeat zerglings and banelings', # diva2:1640875
+    'E-UTRA': 'Evolved UMTS Terrestrial Radio Access', # used but not defined in diva2:538966 - not spelled out in thesis
+    'E-ISAC': 'Electricity Information Sharing and Analysis Center', # used but not defined in diva2:1268009 - in full text of thesis
+    'E/E': 'electrical/electronic', # diva2:1229146
+    'E2EE': 'End-to-End Encryption', # diva2:813095
+    'RTS': 'Regression test selection', # - the RTS in EALRTS - see diva2:1376305
+    'EAAT': 'Enterprise Architecture Analysis Tool', #  diva2:930970
+    'EAD': 'Enterprise architecture debt', # diva2:1616670
+    'EADS': 'European Aeronautic Defence and Space Company', # EADS Astrium used but not defined in diva2:394049
+    'EAI': 'enterprise application integration', #  diva2:500538
+    'EAMMH': 'Energy-Aware Multi-Hop Multi-Path Hierarchical', # used but not defined in diva2:1111590 - full text not in DiVA
+    'EAPS': 'Etherent Automatic Protective Switching', # used but not defined in diva2:515385 - spelled out in full text of thesis 
+    'EARFCN': 'E-UTRA Absolute Radio-Frequency Channel Number', # used but not defined in diva2:1110221 - spelled out in full text of thesis
+    'EAS': 'Enterprise Architecture System', # diva2:1524926
+    'EBCOT': 'Embedded Block Coding with Optimized Truncations', #  diva2:643020
+    'MCOT': 'Motion-Compensated Orthogonal Transforms', #  diva2:643020
+    'EBI': 'external bus interface', # used but not defined in diva2:484505
+    'EBIOS': 'Expression des Besoins et Identification des Objectifs de Sécurité', # used but not defined in diva2:1335946 - French acronym for “Expression of Needs and Identification of Security Objectives” - not spelled out in thesis
+    'EBNF': 'Extended Backus Naur Form', #  diva2:927855
+    'EBREM': 'Event-Based Requirement Elicitation Method', #  diva2:648473
+    'EBS': 'electronic brake system', # used but not defined in diva2:572686
+    'ECC': 'Elliptic-Curve Cryptography ', #  diva2:1793714
+    'EC2': 'Amazon Web Service Eextensibe Computing 2', # used but not defined in diva2:1471707
+    'ECA-IP': 'Energy and Chassis-Aware IP Routing', #  diva2:652173
+    'ECA-IP-VTA': 'Energy and Chassis-Aware IP Routing and Virtual Topology Adaptation', #  used but not defined in diva2:652173 - spelled out in full text of thesis
+    'ECA-VTA': 'Energy and Chassis-Aware Virtual Topology Adaptation', # diva2:652173
+    'ECAF': 'Ericsson Client Application Framework', # diva2:510476
+    'ECDH': 'Elliptic Curve Diffie-Hellman', # used but not defined in diva2:697252 - in full text of fhesis
+    'ECDSA': 'Elliptic Curve Digital Signature Algorithm', # used but not defined in diva2:1121030 - spelled out in full text of thesis
+    'ECH': 'electrostatic electron-cyclotron harmonic', #  diva2:618437
+    'ECI': 'E-UTRAN Cell Identifier', # used but not defined in diva2:1110221 - spelled out in full text of thesis
+    'ECL': 'Emitter coupled logic', # used but not defined in diva2:577752  - spelled out in full text of thesis
+    'ECMP': 'Equal-Cost Multi Path', # used but not defined in diva2:582533 - spelled out in full text of thesis
+    'ECMS': 'Equivalent Consumption Minimization Strategy', #  diva2:1295780
+    'ECN': 'Explicit Con- gestion Notification', #  diva2:1484466
+    'ECP': 'end corona protection', #  diva2:1479327
+    'ECR': 'electrochemical reaction', #  diva2:1750953
+    'ECSS': 'European Cooperation for Space Standardization', # used but not defined in diva2:1524918 - not spelled out in full teext of thesis
+    'ED-HMM': 'Explicit Duration Hidden Markov Model', #  diva2:1503860
+    'ED/LC': 'Early Detect/Late Commit', # attack -see diva2:682097
+    'ED': 'Early Detect', #  attack - see diva2:682097
+    'LC': 'Late Commit', #   attack - see diva2:682097
+    'EDAC': 'ErrorDetection-And-Correction', #  diva2:1181060
+    'EDFA': 'Erbium Doped Fiber Amplifier', # diva2:612613
+    'EDM': 'Euclidean distance matrix', #  diva2:654210
+    'EDQN': 'Enhanced Deep Q Learning', # diva2:1264813
+    'EDQN': 'Effective deep Q-networks',
+    'EDRM': 'Electronic Discovery Reference Model', # used but not defined in diva2:540508 - no full text in DiVA
+    'EDTA': 'Ethylenediaminetetraacetic acid', # used but not defined in diva2:1813695  - spelled out in full text of thesis
+    'EE': 'energy efficiency', #  diva2:1728679
+    'EEC3': 'Exhaust Emission Control 3', #  diva2:557155
+    'EECS': 'Electrical Engineering and Computer Science', # school at KTH - see  diva2:1459622,
+    'EECSLS': 'EECS Library System', #  diva2:1611408
+    'EEDF': 'electron energy distribution function', # diva2:1453641
+    'EEPROM': 'electrically erasable programmable read only memory', # used but not defined in diva2:874545 and diva2:1723170
+    'EER': 'Equal Error Rate', #  diva2:1014991
+    'EES': 'Electrical Energy Storage', #  diva2:470718
+    'EMPS': "EFI1's Multi-area Power Simulator", # diva2:1146168 - the 1 is a footnore saying "Elektrisitetsforsyningens ForskningsInstitutt (Electricity Research Institute)"
+    'EFI': 'Elektrisitetsforsyningens ForskningsInstitutt (Electricity Research Institute)', # diva2:1146168
+    'EFSM': 'extended finite-state machine', # diva2:1801581
+    'EGAN': 'Enhanced Generative Adversarial Network', #  diva2:1475348
+    'EHD': 'Electro-hydrodynamic', #  diva2:1705137
+    'EHSS': 'Ergonomi och Human Factors Sällskapet Sverige', # diva2:938574
+    'FTF': 'Föreningen Teknisk Företagshälsovård', # diva2:938574
+    'EHV': 'Extra High Voltage', # diva2:610171
+    'UHV': 'Ultra High Voltage', # diva2:610171
+    'EHV/UHV': 'Extra High Voltage / Ultra High Voltage', # diva2:610171
+    'EI': 'Swedish Energy Market Inspectorate', # diva2:842755
+    'EIM': 'Effective Index Method', #  diva2:468172
+    'EISCAT': 'European Incoherent Scatter Scientific Association', #  diva2:1324682
+    'EIT': 'electromagnetically induced transparent', #  diva2:646496
+    'EIV': 'errors-in-variables', #  diva2:1453320
+    'EFI': "Elektrisitetsforsyningens ForskningsInstitutt (Electricity Research Institute)", # diva2:1146168
+    'EC': 'European Commission',
+    'EKF-SLAM': 'extended Kalman filter-Simultaneous Localization and Mapping', # diva2:1361875 and diva2:1337260
+    'EKN': 'Exportkreditnämnden', # Swedish Export Credits Guarantee Board - diva2:766244
+    'ELK': 'Elasticsearch, Logstash, and Kibana', #  stack diva2:1613502
+    'ELOG': 'epitaxial lateral overgrowth', # diva2:432717
+    'ELU': 'Exponential Linear Unit diva2:1264815',
+    'EMD': 'EmpiricalMode Decomposition', #  diva2:1146168
+    'EMEC': 'European Marine Energy Centre', #  diva2:1177850
+    'EMGI': 'Exercise Motives and Gains Index', #  diva2:1706607
+    'EMP': 'Eclipse Modeling Project ', # diva2:497410
+    'EMPC': 'Economic model predictive control', #  diva2:1331886
+    'EMRS': 'Electronic Medical Record System', # diva2:869145
+    'EMS': 'Energy Management System', #  diva2:510596
+    'EMS/SCADA': 'Energy Management System/Supervisory Control And Data Acquisition', #  diva2:510596
+    'EMTDC': 'Electromagnetic Transients including DC',
+    'EMTP': 'Elektro Transient Program', #  diva2:790575
+    'EMV': 'Europay, Mastercard, and Visa', # card payment standard - see diva2:618604
+    'ENAS': 'Fraunhofer-Instituts für Elektronische Nanosysteme', # diva2:1836931
+    'ENERBAT': 'Energy in buildings and areas',  #  diva2:470564
+    'ENISA': 'European Union Agency for Cybersecurity', # used but not defined in diva2:1232896
+    'ENOB': 'Effective number of bits', # used but not defined in diva2:1484488
+    'ENT': 'Entropy calculation and analysis of putative random sequences', # used but not defined in diva2:654303 - see pg. 16 of thesis
+    'ENTSO-E RG': ' European Network of Transmission System Operators for Electricity - Regional Group', # used but not defined in diva2:470736 European Network of Transmission System Operators for Electricity - Regional Group
+    'ENUM': 'E. 164 Number to URI Mapping', # used but not defined in diva2:511763, diva2:515501
+    'EO': 'electro-optic', #  diva2:705988
+    'EOD': 'Explosive Ordinance Disposal', #  diva2:907403
+    'EOL': 'End-Of-Line', #  diva2:654108
+    'EOM': 'Equations of Motion', #  diva2:1706612
+    'EPC': 'Edge-Pursuit Comparator', #  diva2:1710490
+    'EPCC': 'Edge-Pursuit Comparator enhanced with Capacitor', #  diva2:1710490
+    'EPD': 'Electronic Paper Display', #  diva2:1130039
+    'EPE': 'Electric Power and Energy systems', # KTH department -  diva2:934364
+    'EPEX-BE': 'European Power Exchange - Belgium', # used but not defined in diva2:1833617
+    'EPI': 'Entropy Power Inequality', #  diva2:1637083
+    'EPID': 'electronic portal imaging device', #  diva2:1469914
+    'EPNS': 'Expected Power Not Served', # diva2:1077673
+    'EPO-1': 'EISCAT Prisma Odin Experiment - 1', # used but not defined in diva2:862316
+    'EPON': 'Ethernet passive optical network', # used but not defined in diva2:1087266
+    'EPP': 'Energetic Particle Precipitation', #  diva2:1324682
+    'UEQ': 'User Experience Questionnaire', #  diva2:1228341
+    'EQ': 'Equalization', # used but not defined in diva2:1109152
+    'ERCOT': 'Electric Reliability Council of Texas', #  diva2:1264861
+    'ERDA': 'Elastic recoil detection analysis', #  diva2:1725146
+    'ERDF': 'Électricité Réseau Distribution France', # diva2:611652 - now known as Enedis
+    'EREW': 'Exclusive Read Exclusive Write', # diva2:1512083
+    'ERMS': 'European Rail Traffic Management System', # used but not defined in diva2:841138
+    'ERR': 'error rate', #  diva2:1701482
+    'ERTMS': 'European Rail Traffic Management System', #  diva2:841138
+    'ES': 'Evolution Strategy', #  diva2:1612475
+    'ESA/GRAS': 'European Space Agency / GRAS (Geant4 Radiation Analysis for Space', # ESA/GRAS Monte Carlo-based software - used but not defined in diva2:1453646
+    'GRAS': 'Geant4 Radiation Analysis for Space', 
+    'ESB': 'enterprise service bus', # used but not defined in diva2:556737
+    'ESBO-DS': 'European Stratospheric Balloon Observatory - Design Study', # ESBO-DS Stratospheric Balloon project diva2:1713652
+    'ESC': 'Extremum Seeking Control', # diva2:1047712
+    'ESEKF': 'Error-State Extended Kalman Filter', #  diva2:1811287
+    'ESG': 'Environmental, Social and corporate Governance', #  diva2:1716539
+    'ESGC': 'Elevator Supervisory Group Control', #  diva2:811154
+    'ESI': 'emergency severity index', #  diva2:1351508
+    'ESL': 'Embedding Similarity Loss', #  diva2:1722945
+    'ESM': 'Enterprise Social Media', #  diva2:855948
+    'ESN': 'Echo State Network', #  diva2:1280738
+    'ESP': 'electrostatic precipitator', #  diva2:602862
+    'ESR': 'EISCAT Svalbard Incoherent Scatter Radar', #  diva2:1838411
+    'ETAP': 'electrical transient analysis program', #  diva2:1199888
+    'ETCS': 'European Train Control System', # diva2:841138
+    'ETH': 'Eidgenössische Technische Hochschule Zürich', # diva2:1395067
+    'ETS': 'Error Trend Seasonality', # used but not defined in diva2:1273037
+    'ETX': 'Expected Transmissions', #  diva2:874288
+    'EU3': 'Europa Universalis III', #  diva2:678986
+    'EUL': 'Enhanced Uplink', #  diva2:508199
+    'EUV': 'extreme ultra-violet', #  diva2:1333546
+    'EVD': 'External Ventricular Drain', #  diva2:1835960
+    'EVT': 'Extreme Value Theory', #  diva2:1793712
+    'EWC': 'Elastic Weight Consolidation', #  diva2:1597711
+    'EWC-SD': 'elastic weight consolidation safe dataset aggregation', # algorithm - used but not defined in diva2:1343776
+    'EWKM': 'Entropy Weighted k-means', #  diva2:1415882
+    'EWOD': 'ElectroWetting-on-Dielectric', # used but not defined in diva2:743805
+    'MHD': 'magnetohydrodynamic', # diva2:550663
+    'RFP': 'reversed field pinch', # diva2:550663
+    'EXP': 'experimental', # used but not defined in diva2:515331 - the MPLS 3 bit experimental (EXP) field
+    'F-OBN': 'Filterless optical backbone networks', #  diva2:601531
+    'F-PKI': 'Flexible-PKI', #  diva2:1728664
+    'F3B': 'Flash Freezing Flash Boys', # diva2:1801732
+    'FAA': 'Federal Aviation Administration', # used but not defined in diva2:1451063
+    'FACS': 'Fast and accurate sequence classification system', # diva2:699439
+    'FACTOPO': 'factorisation domain decomposition method', # diva2:541504
+    'FASP': 'Fast Adaptive and Secure Protocol', # used but not defined in diva2:849244 
+    'FBANK': 'Filter Bank Energy', #  diva2:1594701
+    'FBW': 'Fly-By-Wire', #  diva2:565491
+    'FC': 'Feature clustering', #  diva2:1635572
+    'FCA': 'free carrier absorption', #  diva2:470415
+    'FCC': 'Federal Communication Commission', #  diva2:462684
+    'FCCS': 'full collective control system', #  diva2:1214420
+    'FCHEV': 'Fuel Cell Hybrid Electric Vehicles', #  diva2:1802832
+    'FCM': 'Forward capacity market', # used but not defined in diva2:1634411
+    'FCR': 'Frequency Containment Reserves', #  diva2:1634488
+    'FCWM': 'Fixed Cumulative Windows Model', # used but not defined in diva2:1038725
+    'FCN': 'Fully Connected Networks', #  diva2:1189830
+    'FCNN': 'fully connected neural network', # diva2:1823402
+    'FCP': 'Firewall Control Protocol', #  diva2:654205
+    'FD': 'full-duplex', #  diva2:1477511
+    'FD-MIMO': 'Full duplex MIMO', # used but not defined in diva2:1167908
+    'MU-MIMO': 'Multi-User MIMO', # used but not defined in diva2:1167908
+    'FD-SOI': 'm Fully Depleted Silicon-On-Insulator', # used but not defined in diva2:1814555
+    'FDA': 'Food and Drug Administration', # used but not defined in diva2:1235451
+    'FDD': 'frequency division duplex', #  diva2:1412690 also used but not defined in diva2:696328 diva2:1526959
+    'FDM': 'fused deposition modeling', #  diva2:1453586
+    'FDMA': 'Frequency Division Multiple Access',
+    'FDP': 'Fu Dan Programmable device', # Reconfigurable Logic Core device - see diva2:484505
+    'FDSOI': 'fully depleted SOI', #  diva2:1606939
+    'FDTD': 'finite difference time domain', #  diva2:1118260
+    'FE-MLP': 'feature extraction neural network', #  diva2:1278712
+    'FEA': 'Finite Element Analysis', #  diva2:1590831
+    'FEEP': 'Field Emission Electric Propulsion', #  diva2:1805003
+    'FEMIC': 'Finite Element Method for Ion Cyclotron resonance heating', #  diva2:1543429
+    'FEMM': 'Finite Element Method Magnetics', #  diva2:647715
+    'FFI': 'Fordonsstrategisk forskning och innovation', # Strategic Vehicle Research and Innovation (FFI) program diva2:1272253
+    'FFR': 'Fast Frequency Response', # used but not defined in diva2:1508515
+    'FFT/IFFT': 'Fast Fourier Transform (FFT)/Inverse Fast Fourier Transform (IFFT)', # diva2:693424
+    'FGSM': 'Fast Gradient Sign Method', #  diva2:1751344
+    'FH': 'fronthaul', #  diva2:1732946
+    'FHR': 'fetal heart rate', #  diva2:1597438
+    'FID': 'Fréchet inception distance', #  diva2:1703317
+    'FIFO': 'First In First Out', #  diva2:1702837
+    'FITB': 'Fill-in-the-blank', #  diva2:1606449
+    'FJSP': 'Flexible Job-shop Scheduling Problem', # diva2:1779193
+    'FLANN': 'Fast Approximate Nearest Neighbor', #   Search Library - diva2:872951
+    'FLI': 'formal language interface', #  diva2:812783
+    'FLOC': 'fetoscopic guided laser occlusion of chorioangiopagous vessels', #  diva2:1149060
+    'FLR': 'finite Larmor radius', # diva2:1698118
+    'FLS': 'forward looking sonars', #  diva2:1507932
+    'FS': 'forward-scan', #  diva2:1507932
+    'FLSC': 'Swedish Air Force Combat Simulation Centre', #  diva2:1820233
+    'FMC': 'Fixed Mobile Convergence', #  diva2:1096090
+    'FMCG': 'Fast-Moving Consumer Goods', # used but not defined in diva2:1472750
+    'FMCU': 'flight microcontroller unit', #  diva2:558670
+    'FMCW': 'frequency modulated continuous wave', # diva2:1613536
+    'FME': 'failure modes and effects', #  diva2:470634
+    'FMEA': 'failure modes and effects analysis', #  diva2:470634
+    'FMS': 'Fast Motion Sickness scale', #  diva2:1820233
+    'FMTK': 'Försvarsmaktens träningsklubb', # diva2:941071
+    'FMV': 'Försvarets Materielverk', # used but not defined in diva2:511869 - English: Swedish Defence Materiel Administration
+    'FMWC': 'frequency modulated continuous wave', #  diva2:1613536
+    'FOBN': 'filterless optical backbone network', # diva2:601531
+    'FOI': 'Totalförsvarets forskningsinstitut', #  diva2:534680 English: Swedish Defence Research Agency
+    'FOLAR': 'FOggy-LAser Rendering method', #  diva2:1420642
+    'FOSS': 'Floating Offshore Substation', #  diva2:1810968
+    'FOV': 'field of view', #  diva2:1149060
+    'FPGA/FPCA': 'Field Programmable Gate Array / Field Programmable Counter Array', # diva2:484861
+    'FPI': 'Fast Plasma Investigation', #  diva2:1498858
+    'FPN': 'Feature Pyramid Network', #  diva2:1417070
+    'FPR': 'False Prediction Rate', #  diva2:1038685
+    'TPR': 'True Prediction Rate', #  diva2:1038685
+    'FR3': 'frequency range 3', #  diva2:1838555
+    'FRA': 'Försvarets radioanstalt', # used but not defined in diva2:511012 - English: National Defence Radio Establishment
+    'FRC': 'fully-rated converter', # diva2:714792 - part of "fully-rated converter windturbine generator (FRC WTG)
+    'FRFT': 'fractional Fourier transform', # used but not defined in diva2:648828
+    'FRT': 'fault ride-through', # diva2:1199888
+    'FQI': 'Fitted Q-Iteration', # diva2:1376711
+    'FS-DDPG': 'fully spiking deep deterministic policy gradient', #  diva2:1746001
+    'FS4': 'fixed sectoring, priority timed unidirectional sectors', # elevator algorithm - diva2:812034
+    'FSA': 'first step annealing', #  diva2:1251954
+    'FSC': 'Fuzzy Subspace-Clustering', #  diva2:1415882
+    'LEKM': 'LogTransformed Entropy Weighting k-means', #  diva2:1415882
+    'FSF': 'Free Software Foundation', #  diva2:458625
+    'FSL': 'Few-Shot Learning', #  diva2:1473064
+    'FSS': 'Four Step Search', #  diva2:507828
+    'FT': 'Functional Testing', #  diva2:733614
+    'FT-IR': 'Fourier transform infrared spectroscopy', #  diva2:900230
+    'FT-VAE': 'Fine-Tuned VAE', # used but not defined in diva2:1516237 - see pg. 35 of thesis
+    'FTIR': 'Fourier Transform Infrared Spectroscopy', #  diva2:449152
+    'FTO': 'Fluorine doped tin oxide', # diva2:869133
+    'FTP': 'file transfer protocol', #  diva2:654235
+    'FTS': 'flame transport synthesis', # diva2:900230
+    'FTSE100': 'Financial Times Stock Exchange 100 Index', # diva2:1114719
+    'FTTH/B': 'Fiber-To-The-Home/Building', # diva2:648434
+    'P2MP': 'point-to-multipoint', # diva2:648434
+    'FUD': 'Fear, Uncertainty and Doubt', #  diva2:1234361
+    'FUF': 'frequency utilization factor', #  diva2:567920
+    'FURIA': 'Fuzzy unordered rule induction algorithm)', # used but not defined in diva2:1254853
+    'FUV': 'far-ultraviolet', #  diva2:1188497
+    'FUV-MAMA': 'Far Ultraviolet MultiAnode Micro-channel Array', # photondetector- see pg 268 of diva2:1549048
+    'FWA': 'fixed wireless access channel', #  diva2:927118
+    'FX': 'Foreign exchange', #  diva2:1594348
+    'FXLMS': 'filtered-X least mean squares', #  diva2:571737
+    'FXP': 'File eXchange Protocol', # used but not defined in diva2:654235
+    'G-XLT': 'Generalised Cross-Lingual Transfer', #  diva2:1722945
+    'G1GC': 'Garbage First GC', #  diva2:1466940
+    'GA-SSNN': 'Genetic Algorithm for Stochastic Spiking Neural Networks', #  diva2:1837710
+    'GARCH': 'Generalised Autoregressive Conditional Heteroskedasticity.', # volitility model - diva2:928622
+    'GAT': 'graph attention network', #  diva2:1643829
+    'GB': 'Gigabyte', # used but not defined in diva2:1121040, diva2:1121040, diva2:539128, diva2:1120310, ...
+    'GBDT': 'Gradient Boosted Decision Tree', # used but not defined in diva2:1798165
+    'GBL': 'game based learning', #  diva2:1779199
+    'GC': 'garbage collector', # diva2:1449632
+    'GCC': 'GNU Compiler Collection', # diva2:374028
+    'GDL': 'Game Description Language', # predicate logi language - see diva2:700108
+    'GDM': 'Gestational diabetes Mellitus', #  diva2:1468839
+    'GE-MAF': 'Guidelines for Evaluating Mobile Application Frameworks', # guidelines - diva2:1774220
+    'GEC': 'Gaseous Electronics Conference', # radio­frequency reference cell - used in thesis diva2:1637677
+    'GEC-ICP': 'Gaseous Electronics Conference (GEC) - inductively coupled plasma (ICP)', # Schwabedissen GECICP reactor experiment diva2:1637677
+    'GELCELL': 'Graphwave Edge-Linking CELL', #  diva2:1713847
+    'GEMS': 'General Executiondriven Multiprocessor Simulator', # Multi-facet’s GEMS simulator diva2:872766
+    'GEOSS': 'Global Earth Observation System of Systems', #  diva2:1225333
+    'GEQ': 'Game Experience Questionnaire diva2:1169906',
+    'GERAN': 'GSM and EDGE Radio Access Network', #  diva2:541080
+    'GF': 'Galois field', # used but not defined in diva2:560898
+    'GFDL': 'GNU Free Documentation License', #  diva2:699729
+    'GFM': 'Grid-Forming', # converter - see  diva2:1723189
+    'GHG': 'greenhouse gas', #  diva2:840342
+    'GICS': 'Global Industry Classification Standard', # used but not defined in diva2:927355, diva2:1118031 - note this is a registered trademark: GICS®
+    'GIC': 'Geomagnetically induced currents', #  diva2:769799
+    'GIS/NIS': 'Geographic Information Systems and Network Information Systems', # diva2:1241936
+    'GISAID': 'Global Initiative on Sharing All Influenza Data)', # dataset - see diva2:1701710
+    'GISOO': 'Graphical Integration of Simulink and Cooja', #  diva2:567680
+    'GJK': 'Gilbert–Johnson–Keerthi', # diva2:1821269
+    'GK': 'Gustafson-Kessel', # used but not defined in diva2:1038685
+    'GKE': 'Google Kubernetes Engine', # used but not defined in diva2:1783247
+    'PA': 'project module', # diva2:579118
+    'MDGL': 'Multidigraph learning rule', #  diva2:1778350
+    'GL': 'general ledger', # diva2:579118
+    'GLPK': 'GNU Linear Programming Kit', # library - used but not defined in diva2:471868, diva2:552594, 
+    'GMA': 'General Movements Assessment', #  diva2:1778352
+    'GMIC': 'Globally-aware Multiple Instance Classifier', #  diva2:1778373
+    'GMM-HMM': 'Gaussian Mixture Model-Hidden Markov Model', # used but not defined in diva2:1307982 and diva2:1038763
+    'GMMHMM': 'Hidden Markov Model with Gaussian Mixture Model emission', #  diva2:1636674
+    'GMPLS': 'Generalized Multi-Protocol Label Switching', #  diva2:511677
+    'GMRES': 'generalised minimal residual method', # used but not defined in diva2:1412649
+    'GMS': 'gaze and a manual switch', #  diva2:1608872
+    'GNFS': 'general number field sieve', # diva2:811289
+    'GNSS/IMU': 'Global Navigation Satellite System/Inertial Measurement Unit (GNSS/IMU)', # diva2:1354856
+    'GNSS/INS': 'Global Navigation Satellite System/Integrated Navigation Systems',
+    'GO/ATA': 'graphene oxide/2-Aminoethyl trimethylammonium chloride hydrochloride', # used but not defined in diva2:1699284
+    'GOCR': 'Gamified cOmunicAtion Tool', # application - see diva2:1416017
+    'GOL': 'game of life', #  diva2:728449
+    'GONET': 'Gradient Oriented Fuzzing for Stateful Network Protocol', # fuzzer - see diva2:1803135
+    'GOP': 'Group of Pictures', #  diva2:1269787
+    'GP-EDF': 'Euclidean distance fields (EDF) using Gaussian process (GP) regression', # diva2:1793338
+    'GP-LVM': 'Gaussian Process Latent Variable Model', #  diva2:866153
+    'GPEH': 'passive listener for network events', #  diva2:1205372
+    'GPGPUS': 'General Purpose GPUs ', # diva2:504941
+    'GPIO': 'General-Purpose Input/Output', #  diva2:1381368
+    'GPIS': 'Gaussian Process Implicit Surface', #  diva2:1148664
+    'GPMP2': 'Gaussian Process for Motion Planning 2', # used but not defined in diva2:1526877
+    'GPOS': 'General-Purpose Operating System', #  diva2:1251188
+    'GPR': 'Gaussian process regression', #  diva2:1523900
+    'GPRS': 'General Packet Radio Service',
+    'GPS/A-GPS': 'Global Positioning System (GPS) / Assisted GPS', # used but not defined in diva2:939514
+    'GPS/DR': 'Global Positioning System (GPS) / Dead Reckoning (DR)', # diva2:700008
+    'GPS/INS': 'Global Positioning System (GPS) / Integrated Navigation Systems (INS)', # diva2:956118
+    'GPT': 'Generative Pre-Training', # diva2:1521110
+    'GRL': 'Graph Representation Learning', # used but not defined in diva2:1732952
+    'GRLS': 'Globally Ratiochronous Locally-Synchronous', #  diva2:1464609
+    'GRUB': 'GRand Unified Bootloader', # used but not defined in diva2:1616944
+    'GRUVAE': 'Gated Recurrent Unit Variational Autoencoder', # used but not defined in diva2:1633162
+    'GS': 'Gather-Scatter', #  diva2:1711497
+    'GSA': 'Gas Sensor Array', #  diva2:1622348
+    'GSCM': 'Geometric Stochastic Channel Model', #  diva2:471265
+    'GSCNN': 'Gated-Shape CNN', # diva2:1466765
+    'GSDMM': 'Gibbs Sampling Dirichlet Multinomial Mixture', # diva2:1337251
+    'GSE': 'Geocentric solar ecliptic', # diva2:1543410, diva2:511326
+    'GSG': 'Grand Strategy Games', #  diva2:1713353
+    'GSIR': 'Generalized rake receiver SIR', #  diva2:508199
+    'GSM': 'Global system for mobile communications', #  diva2:690824
+    'GSM-R': 'GSM–Railway', #  diva2:841138
+    'GSS-API': 'Generic Security Service Application Program Interface', #  diva2:512701
+    'GST': 'Guaranteed Service Transport', #  diva2:703998
+    'GT': 'Gas Turbine', #  diva2:1381341
+    'GTIN': 'Global Trade Identification Number', #  diva2:1704885
+    'GTOM': 'gaze-to-object mapping', #  diva2:967519
+    'GTP': 'GPRS Tunneling Protocol', # diva2:606017
+    'GTP-U': 'GPRS Tunneling Protocol user plane',# diva2:606017
+    'GTSAM': 'Georgia Tech Smoothing and Mapping', # diva2:1148538,
+    'GTSRB': 'German Trac Sign Recognition Benchmark', #  diva2:1336299
+    'GTT': 'Glucose Tolerance Test', #  diva2:1468839
+    'GTX': 'Giga Texel Shader eXtreme', # a type of GPU produced by NVIDIA
+    'GW': 'GigaWatt', # diva2:1414138
+    'GWT': 'Google Web Toolkit', # diva2:654135 - from title
+    'GZSL': 'Generalized-Zero-Shot Learning', #  diva2:1509048
+    'ZSL': 'Zero-Shot Learning', #  diva2:1509048
+    'H-CRAN': 'A hybrid cloud radio access network', #  diva2:1336300
+    'H-T-W': 'number of headers, tables and write operations', # diva2:1335912
+    'H1': 'hypothesis 1', #  diva2:1040874
+    'H2': 'hypothesis 2', #  diva2:1040874
+    'H2O': 'chemical formular for water',
+    'H3': 'hypothesis 3', #  diva2:1040874
+    'HAC': 'Hierarchical Agglomerative Clustering', #  diva2:1710469
+    'HALE': 'High Altitude Long Endurance', #  diva2:930987
+    'HAP': 'High Altitude Platform', #  diva2:1467839
+    'HATEOAS': 'Hypermedia As The Engine Of Application State', #  diva2:849934
+    'HATS': 'Histograms of Averaged Time Surfaces', #  diva2:1597427
+    'HB': 'Handelsbolag', # Tweakers HB - see diva2:865240 - English: general partnership
+    'HBAO': 'horizon-based ambient occlusion', #  diva2:1337203
+    'HBF': 'Hybrid Beamforming', # diva2:1498763
+    'HBO': 'Home Box Office', # diva2:846664
+    'HBT': 'Heterojunction Bipolar Transistor', # used but not defined in diva2:401135
+    'LHC': 'Large Hadron Collider', #  diva2:1324244
+    'ROHC': 'RTP/TCP/IP header compression', #  diva2:511755
+    'HC': 'Hollow Cathode', #  diva2:1805003
+    'HCD': 'human centered design', #  diva2:1614366
+    'HCI': 'Human-Computer Interaction', #  diva2:1219716
+    'HCSGC': 'Hot‐Cold Objects Segregation GC', # diva2:1693010
+    'HD': 'High-Definition', # diva2:471504
+    'HDF5': 'Hadoop Distributed File System', #  diva2:548037
+    'HDMI': 'High-Definition Multimedia Interface', # diva2:1448700
+    'HDPC': 'High Density Parity Check diva2:1146212',
+    'HDRF': 'High-Degree vertices (are) Replicated First', # used but not defined in diva2:1464498
+    'HEK': 'Human Embryonic Kidney cell', #  diva2:692174
+    'HETNET': 'Heterogeneous Networks', #  diva2:506601
+    'HF': 'High Frequency', #  diva2:1770619
+    'HFCT': 'high-frequency current transformer', #  diva2:1800407
+    'HFIP': '1,1,1,3,3,3-hexafluoro-2-propanol', #  diva2:1784239
+    'HFSS': 'High Frequency Simulation Software', #  diva2:1708743
+    'HG-DAGGER': ' Human-Gated Dataset Aggregation', # used but not defined in Selection deleted diva2:1334302
+    'HGDAGGER': ' Human-Gated Dataset Aggregation',
+    'HHC': 'Heaterless Hollow Cathode', #  diva2:1805003
+    'HHL': 'Harrow-Hassidim-Lloyd', #  diva2:1381355
+    'HJBI': 'Hamilton Jacobi Bellman Isaacs', #  equation - see diva2:1299145
+    'HKC': 'Hashemi, Kaeli &amp; Calder', #  diva2:944710
+    'HLA': 'High-level Architecture', # diva2:654203 - note produced by the merger of the DIS protocol with the Aggregate Level Simulation Protocol (ALSP) designed by MITRE
+    'HLB': 'Hotel List Builder', #  diva2:1335805
+    'HMN': 'hierarchical modular neural networks', #  diva2:1823504
+    'HMQ': 'HeatMap Quadtree', #  diva2:849697
+    'HMTDG': 'Hierarchical Multi-Thread Dependency Graph', #  diva2:1737815
+    'HNO3': 'chemicla formula for nitric acid', #  diva2:1453648
+    'HOCLF': 'high-order control Lyapunov functions', #  diva2:1751651
+    'HOMER': 'Hybrid Optimization of Multiple Energy Resource', # simulator -  diva2:1299222
+    'HP': 'hybrid plasmonic', #  diva2:646496
+    'HPA': 'Horizontal Pod AutoScaler', #  Kubernetes -  diva2:1466419
+    'HPBW': 'half-power bandwidth', # diva2:1635013
+    'HPC': 'High-Performance Computing', #  diva2:1725008
+    'HPC2N': 'High Performance Computing Center North', # diva2:1523039
+    'HPD': 'Harmonic Plane Decomposition', #  diva2:1668187
+    'HPEP': 'High Performance Electric Propulsion', #  diva2:511222
+    'HPI': 'Human-Power Interaction', #  diva2:1508290
+    'HPL': 'high-performance LINPACK benchmark', #  diva2:837145
+    'HPLMN': 'Home Public Land Mobile Network', #  diva2:1068217
+    'HPO': 'hyperparameter optimization', #  diva2:1593145
+    'HPPC': 'Hybrid pulse power characterization', # used but not defined in diva2:1802829
+    'HRC': 'Human-robot collaboration', #  diva2:1836934
+    'HRI': 'Human-Robot Interaction', #  diva2:1233059
+    'HRL': 'hierarchical reinforcement learning', #  diva2:1738774
+    'HRP': 'Hardened Registration Process', #  diva2:1668730
+    'HRSEM': 'high-resolution scanning electron microscope', #  diva2:874286
+    'HRVO': 'Reciprocal Velocity Obstacles', #  diva2:1424403
+    'HRXRD': 'high-resolution x-ray diffraction', #  diva2:133581
+    'HSC': 'hypersphere classifier', #  diva2:1778252
+    'HSH': 'High-Speed Hierarchy', #  diva2:1460707
+    'HSI': 'Hyperspectral images', # diva2:1516250
+    'HSL': 'High Speed Lines', #  diva2:432728
+    'HSMM': 'hidden semi Markov model', #  diva2:881880
+    'HSPA': 'high-speed packet access', #  diva2:690824
+    'HSRIVC': 'Hammerstein Simplified Refined Instrumental Variable method for continuous-time', # systems,
+
+    'HSS': 'Home Subscriber Server',# diva2:636889 - shown in evidence gainst IOT
+    'HST': 'Hot Spot Temperature', #  diva2:1637092
+    'HSV': 'hue, saturation, and value', # diva2:735224 - 
+    'DOM': 'Document Object Model',
+    'HTA': 'Health Technology Assessment', #  diva2:1087996
+    'HTML': 'HyperText Markup Language', 
+    'HTML/DOM': 'HyperText Markup Language / Document Object Model', #diva2:1640196
+    'HTML5': 'HyperText Markup Language version 5', # used but not defined in diva2:654158
+    'UGC': 'User Generated Content', # diva2:612322,
+    'HTOL': 'High Temperature Operating Life', #  diva2:511152
+    'HTTP/1': 'Hypertext Transfer Protocol version 1', # also HTML 1.1 - see  diva2:1241936 
+    'HTTP/2': 'Hypertext Transfer Protocol version 2', # diva2:1241936
+    'HTTP/REST': 'Hypertext Transfer Protocol / representational state transfer', # diva2:1651984
+    'REST': 'representational state transfer',
+    'HUGSI': 'Husqvarna Urban Green Space Index)', # diva2:1459605
+    'HV': 'High Voltage,', # diva2:1638598
+    'HVAC': 'Heating, Ventilation and Air Conditioning', #  diva2:712334
+    'HVAC-HVDC': 'High voltage AC - High voltage DC', # diva2:609080,
+    'HVM': 'high-volume manufacturing', # used but not defined in diva2:1333546
+    'HVPE': 'Hydride Vapor Phase Epitaxy', #  diva2:872770
+    'HW': 'hardware', #  diva2:1335836
+    'SW': 'software', #  diva2:1335836
+    'HW/SW': 'hardware/software', # used but not defined in diva2:1317203
+    'HWM14': 'Horizontal Wind Model', #  diva2:1838411
+    'I-V': 'current-voltage', #  diva2:454012
+    'I-VT': 'identification with velocity threshold', #  diva2:1534466
+    'L-I-V': 'light-current-voltage', # used but not defined in diva2:954762
+    'SI-NDVI': 'Single Image - Normalized Difference Vegetation Index', # used but not defined in diva2:1643858
+    'I2C': 'Inter-IC bus protocol', #  diva2:872375
+    'I2V': 'Infrastructure-To-Vehicle Communication', # used but not defined in diva2:612624 - never defined in the thesis
+    'I3D': 'Inflated 3D ConvNet', # used but not defined in diva2:1611632
+    'IA': 'Interference Alignment', #  diva2:616514
+    'IAA-APES': 'Iterative Adaptive Algorithm for Amplitude and Phase Estimation', #  diva2:792205
+    'IAB': 'Integrated Access and Backhaul', #  diva2:1513384
+    'IAB': 'Internet Architecture Board', #  diva2:619479
+    'TIADC': 'Time-Interleaved Analog-to-Digital Converters', #  diva2:539115
+    'IAD': 'Inatable Aerodynamic Decelerator', #  diva2:513480
+    'IAF': 'Integrated Architecture Framework', # model framework - used but not defined in diva2:1678510
+    'IAG': 'Intermediate Access Gateway', #  diva2:470189
+    'IAM': 'Identity and Access Management', #  diva2:617124
+    'IAS': 'individual admin signatures', #  diva2:1614970
+    'CPC': 'Contrastive Predictive Coding', # unsupervised method - used but not defined indiva2:1513487
+    'CTC': 'Connectionist Temporal Classification', #  diva2:1513013
+    'FI': 'Fault Injection', # part of Hybrid FI - see diva2:704884
+    'IB': 'Information bottleneck', #  diva2:1253041
+    'SHJ-IBC': 'Silicon heterojunction interdigitated back-contact', #  diva2:1055990
+    'IBC': 'interdigitated back-contact', #  diva2:1055990 - due to "SHJ -IBC"
+    'IBE': 'ion beam etching', #  diva2:1330838
+    'IBF': 'Improved Best Fit', #  diva2:1467789
+    'IBFD': 'in-band full-duplex', #  diva2:1834183
+    'IBP': 'Indian Buffet Process', #  diva2:1212705
+    'IBR': 'Inverter- Based Resources', #  diva2:1603603
+    'IBVS': 'Image-BasedVisual Servo', #  diva2:1479331
+    'IC-PPP': 'Ionospheric-Constrained Precise Point Positioning', # method - used but not defined in diva2:1504448
+    'IC50': 'Half-maximal inhibitory concentration', # prediction used but not defined in model diva2:1776766 - no full text in DiVA
+    'ICC': 'Intercultural Communication Competence diva2:1337091',
+    'ICCP': 'Inter-Control Center Communications protocol', # used but not defined in diva2:510596 - standardized in IEC 60870/TASE.2)
+    'ICCV': 'International Conference on Computer Vision', # used but not defined in diva2:1704887
+    'ICD-10': 'International Classification of Diseases code 10', # diva2:1316425
+    'ICD-9': 'International Classification of Diseases code 9', # diva2:1616648
+    'ICF': 'Iterative Closest Face', #  diva2:703044
+    'ICI': 'inter-cell interference', #  diva2:538792
+    'ICL': 'Incremental Class Learning', #  diva2:1464868
+    'ICM': 'insulation condition monitoring system', #  diva2:511553
+    'ICML': 'International Conference on Machine Learning', #  diva2:1146595
+    'ICMP': 'Internet Control Message Protocol', # used but not defined in diva2:1039071 - never spelled out in the thesis
+    'ICNIRP': 'International Commission on Non-Ionizing Radiation Protection', #  diva2:1707788
+    'ICP-OES': 'Inductively Coupled Plasma Optical Emission Spectrometer', #  diva2:797029
+    'ICP-RIE': 'inductively coupled plasma reactive ion etching', #  diva2:1118260
+    'ICRA': 'IEEE International Conference on Robotics and Automation', # diva2:1466982
+    'ICRH': 'ion cyclotron resonance heating', #  diva2:1725154
+    'ICT4D': 'ICT for development', #  diva2:825034
+    'ICT4RD': 'ICT for rural development program', #  diva2:415358
+    'ID3': ' Iterative Dichotomiser 3', # algorithm - used but not defined in diva2:927446
+    'IDCM': 'Identifier Change Management', #  diva2:612630
+    'IDF': 'Inverse Document Frequency', #  used but not defined in diva2:411324
+    'TF-IDF': 'Term Frequency-Inverse Document Frequency', # diva2:1750628
+    'IDF1': 'Identification F1 score', # used but not defined in diva2:1594913
+    'IDMS': 'Identity Management System', # diva2:617124
+    'IDP': 'Identity Provider', #  diva2:1716112
+    'IDRS': 'intrusion detection and response systems', #  diva2:1304944
+    'IE2': 'High Efficiency', #  diva2:790867
+    'IE4': 'Super Premium Efficiency', #  diva2:790867
+    'IEC': 'International Electrotechnical Commission', # IEC 60076-7 - diva2:1155097
+    'IEKF': 'invariant extended Kalman filter', #  diva2:1632658
+    'IETF': 'Internet Engineering Task Force', #  diva2:1232126
+    'IETS': 'inelastic electron tunneling spectroscopy', #  diva2:859929
+    'IFBC': 'in-flight broadband connectivity', #  diva2:1303720
+    'IFD': 'Instantaneous Frequency Deviation', #  diva2:1330027
+    'IFDS': 'Interprocedural Finite Distribute Subset', # see diva2:1121249
+    'IFEST': 'industrial Framework for Embedded Systems Tools', #  diva2:730418 also set as "iFEST"
+    'IFFT': 'Inverse Fast Fourier Transform', #  diva2:693424
+    'IFS': 'Iterative Forward Search', # used but not defined in diva2:1464060
+    'IFT': 'Iterative Feedback Tuning', #  diva2:576331
+    'IFTTT': '(If This Then That', # diva2:1584752
+    'IFU': 'Integral Field Unit', # diva2:1822776
+    'IG': 'Induction Generator', #  diva2:470652
+    'IHU': 'Infotainment Head Unit', #  diva2:1698651
+    'IIP3': 'third-order intercept point', # used but not defined in diva2:859813 and not defined in thesis
+    'IIS': 'Internet Information Services', #  diva2:1605998
+    'IIT': 'Illinois Institute of Technology', #  diva2:931271
+    'IKE': 'Intelligent Kernel of Emotions', # diva2:860526
+    'IKN': 'non concession-regulated networks', #  diva2:1749552
+    'ILC': 'Iterative Learning Control', #  diva2:641287
+    'ILP': 'integer linear programming', #  diva2:1055850
+    'ILPC': 'Inner Loop Power Control', #  diva2:508199
+    'ILS': 'iterated local search', #  diva2:811289
+    'ILSVRC': 'Large Scale Visual Recognition Competition', #  data set - used but not defined in diva2:1352561
+    'IM3': 'third order intermodulation product', #  diva2:470923
+    'IMC': 'Internal Model Control', # controller - used but not defined in diva2:582546
+    'IMD': 'Intermodulation distortion', #  diva2:1412690
+    'IMDB': 'Internet Movie Database', # used but not defined in diva2:1795316
+    'IMF': 'Interplanetary Magnetic Field', #  diva2:1838411
+    'IMIT': 'Institute for Microelectronics and Information Technology', # diva2:515045 - KTH institute
+    'IML': 'Interpretable Machine Learning', # used but not defined in diva2:1613200
+    'IMS': 'Internet Protocol multimedia subsystem', #  diva2:826964
+    'INAP': 'Intelligent Network Application Protocol', # used but not defined in diva2:515501 
+    'INDA': 'Introduktion till Datalogi', # course - diva2:1779778
+    'INL': 'integral nonlinearity', #  diva2:575397
+    'INRIA': "Institut national de recherche en sciences et technologies du numérique", #  diva2:1389196 -  English: French National Institute for Research in Computer Science and Automation
+    'INT': 'In- Band Network Telemetry', #  diva2:1609265
+    'IOI': 'Inter-Onset-Interval', #  diva2:1779208
+    'IOT': 'Internet of Things', # used but not defined in diva2:1470645, diva2:1216681, diva2:1335940, 
+    'IOU': 'Intersection Over Union', #  diva2:1501273
+    'IP-PBX': 'Internet Protocol Private Branch Exchange', #  diva2:510434
+    'IPA': 'Interoperable Private Attribution', #  diva2:1801728
+    'IPC': 'Interprocess communication', #  diva2:1451042
+    'IPCA': 'Incremental Principal Component Analysis', # diva2:1377965
+    'IPL': 'Intense Pulsed Light', #  diva2:1332118
+    'IPMA': 'Instituto Português do Mar e da Atmosfera', #  diva2:1726974
+    'IPMG': 'Induced Pseudo-Miss Generation', # diva2:483610
+    'IPN': 'Indoor Positional Navigation', #  diva2:1573384
+    'IPOP': 'IP Over P2P', # diva2:869210
+    'IPR': 'Intellectual property rights', # used but not defined in diva2:928553
+    'IPS': 'Intrusion Protection System', #  diva2:1086769
+    'UCTE': 'Union for the Co-ordination of Transmission of Electricity',
+    'IPTV': 'Internet Protocol television', #  diva2:1071997
+    'IPX': 'IP Packet exchange', #  diva2:799438
+    'IPY': 'International Polar Year', #  diva2:1324682
+    'IR-UWB': 'impulse radio based ultra wideband', #  diva2:516867
+    'IRC': 'Internet Relay Chat', # used but not defined in diva2:570012
+    'IREC': 'Catalonia Institute for Energy Research', #  diva2:1395050
+    'IRF': 'Institutet för rymdfysik', # IRF Uppsala - see diva2:618438
+    'IRG': 'NASA Ames Intelligent Robotics Group', # used but not defined in diva2:572667
+    'IRM': 'Information Resource Management', # company - IRM AB - see diva2:525847
+    'IRNV': ' Input Referred Noise Voltages', # diva2:1231997
+    'IRS': 'Institute of Space Systems', #  diva2:1750947
+    'IRT': 'Inter-reception time', #  diva2:1236698
+    'IR': 'infrared radiation', # diva2:468185, diva2:1088409, ...
+    'IR drop': 'voltage drop', #  diva2:1838529
+    'IS/IT': 'Information Systems / Information Technology', # used but not defined in diva2:497346
+    'IS95': 'Interim Standard 95', # IS95 CDMA - diva2:470923 - also known as CDMAOne
+    'ISAAC': 'Infrared Spectroscopy to Analyse the middle Atmosphere Composition', #  diva2:738463
+    'ISDN': 'Integrated Services Digital Network', # diva2:515374
+    'ISF': 'interstitial ﬂuid', #  diva2:1046844
+    'ISG': 'Information Security Governance', # from title of diva2:497435
+    'ISI': 'inter-symbol interference', # diva2:450183
+    'ISIS': 'Integrerat SambandsInformationsSystem', # software - see diva2:510482
+    'ISM': 'industrial, scientific, and medical', # diva2:1335925, diva2:597800
+    'ISMI': ' individual sample mutual information', # diva2:1736009
+    'ISMIR': 'International Society for Music Information Retrieval', # conference - see diva2:1479301
+    'ISO/OSI': 'International Organization for Standardization (ISO) / Open Systems Interconnection (OSI)', # diva2:572782
+    'ISO/SAE': 'International Organization for Standardization (ISO) / Society of Automotive Engineers (SAE)', # ISO/SAE 21434 - see diva2:1735960
+    'ISPF': 'Internet Service Provider Friendliness', # diva2:558642
+    'ISR': 'Image Super-Resolution', #  diva2:1795911
+    'ISRA': 'information security risk assessment', #  diva2:1349990
+    'ISRF': 'Instrument Spectral Response Function', #  diva2:1552842
+    'ISUP': 'ISDN User Part', # used but not defined in diva2:515501
+    'ISV': 'Indoor scene verification diva2:1517338',
+    'IT-OPAF': 'Organization Performance Analysis Framework', #  diva2:624952
+    'IT-SOFC': 'Intermediate Temperature Solid Oxide Fuel Cells', #  diva2:784553
+    'IT/IS': 'Information Technology / Information Systems', # diva2:761205
+    'ITD': 'Idaho Transportation Department', #  diva2:702430
+    'ITDI': 'IBM Tivoli Directory Integrator', #  diva2:1087275
+    'ITEA2': 'Information Technology for European Advancement', # diva2:578377 - http://www.itea2.org
+    'ITIL': 'Information Technology Infrastructure Library', # framework - see diva2:1118287 - no full text in DiVA
+    'ITL': 'iterative test-last approach', #  diva2:1118867
+    'ITO': 'tin-doped indium oxide', #  diva2:538459
+    'ITP': 'Identity Tracking Performance', # diva2:1501273
+    'ITRS': 'International Roadmap for semiconductors', #  diva2:1091168
+    'ITSC': 'inter-turn short circuit', #  diva2:1527981
+    'ITSM': 'IT Service Management', # used but not defined in diva2:1118287 - no full text
+    'ITU-T': 'ITU Telecommunication Standardization Sector', # used but not defined in diva2:1072638
+    'IUIPC': 'Internet Users’ Information Privacy Concerns', #  diva2:720666
+    'IUC': 'Industrial Development Centre', #  diva2:513170
+    'IVC': 'Inlet Valve Closure ', # method diva2:576331
+    'IVE': 'immersive virtual environment', #  diva2:1471608
+    'IVI': 'In-Vehicle Infotainment', #  diva2:1708534
+    'IVL': 'IVL Svenska Miljöinstitutet', #  diva2:1467363 - English: IVL Swedish Environmental Research Institute
+    'IWD': 'Intelligent Water Drops', #  diva2:1214267
+    'IWL': 'influencer whitelisting', #  diva2:1804553
+    'SIW': 'substrate integrated waveguide', #  diva2:1723243
+    'LIX': 'Lasbarhetsindex', #  diva2:721646
+    'J2EE': 'Java 2 Platform, Enterprise Edition', # J2EE framework diva2:871989
+    'J2ME': 'Java2 Micro Edition', # platform - diva2:568123
+    'J2SE4': 'Java 2 Platform, Standard Edition 4', # used but not defined in diva2:654288
+    'FER': 'Facial Expression Recognition', # diva2:1329976
+    'JAK/STAT': 'Janus kinase/signal transducers and activators of transcription', # signalling pathway - see diva2:654241 - no full text in DiVA
+    'JAK/STAT3': 'Janus kinase 2/signal transducer and activator of transcription 3', # JAK/STAT3 pathway - see diva2:654241 - no full text in DiVA
+    'JBCO': ' Java ByteCode Obfuscator', # obfuscator diva2:753862
+    'JBL': 'James Bullough Lansing', # company JBL - diva2:1805001
+    'JBV': 'Jernbaneverket', # see diva2:613529
+    'MJCF': 'Mobile Java Communication Framework', #  diva2:510606
+    'JCT-VC': 'Joint Collaborative Team on Video Coding', # diva2:471504
+    'JDK13': 'Java Development Kit 13', #  diva2:1466940
+    'JEM': 'Joint Exploration Model', #  diva2:1072638
+    'JPSS': 'Jaccard Proximity-Significance-Singularity', # diva2:1106172
+    'JFET': 'Junction Field Effect Transistor', # used but not defined in diva2:1712829
+    'TRS': 'Tracked Resource Set', # diva2:1136721
+    'JIT': 'Just-in-time', #  diva2:1336751
+    'JSON': 'JavaScript Object Notation', # diva2:539516
+    'JMAG': 'FEM software package', #  diva2:470634
+    'JMH': 'Java Microbench- mark Harness', #  diva2:1123270
+    'JML': 'Java Modeling language', # diva2:654288
+    'JNI': 'Java Native Interface', #  diva2:1109257
+    'JP2': 'JPEG-2000', #  diva2:928014
+    'JPF': 'Java Pathfinder', #  diva2:1105877
+    'JSD': 'Jensen-Shannon Divergence', # diva2:1656562
+    'JSP': 'JavaServer Pages', # diva2:654294
+    'JSR': 'Java standardization request', # diva2:510476
+    'JT': 'Joint Transmission', #  diva2:1088647
+    'JTAG': ' Joint Test Action Group', # diva2:432732
+    'JTC': 'Joint tracking and classication', #  diva2:1203694
+    'JUTAI': 'Java Unit Testing with AI', # diva2:1778114
+    'K-SVD': 'K-singular value decomposition', #  diva2:1645532
+    'KALPIS': 'KALPIS—an Arrow-based Locally and Partially Invertible System', # diva2:1800861
+    'KB': 'knowledge base', #  diva2:1793707
+    'KBSC': 'knowledge-based subset construction', #  diva2:1115157
+    'KD': 'Knowledge Distillation', #  diva2:1722945
+    'KDC': 'Key Distribution Center', #  diva2:1460813
+    'KDD': 'knowledge discover from database', #  diva2:1064081
+    'KEP': 'kinematic endpoint prediction', #  diva2:1702702
+    'KH': 'Kelvin-Helmholtz', #  diva2:470061
+    'KHO': 'Kjell Henriksen-Observatory', #  diva2:1324682
+    'KLT': 'Kanade-Lucas-Tomasi Feature Tracker', # diva2:1215266
+    'KMA': 'KECCAK Message Authentication Code', #  diva2:1111718
+    'KMS': 'Knowledge Management Systems', #  diva2:1110915
+    'MPK': 'Microprocessor Knee', #  diva2:1801363
+    'KNIME': 'Konstanz Information Miner', # data anlysis tool - diva2:762525
+    'KNL': 'Knights Landing', #  diva2:1276962
+    'KNN': 'K-Nearest Neighbor', #  diva2:1707507
+    'RIE': 'reactive ion etching', # diva2:928562
+    'KPCA': 'kernel principal component analysis', # used but not defined in diva2:1700889
+    'KSF': 'Kraven på SäkerhetsFunktioner', #  diva2:511869 - English: Requirements on Security Functions
+    'KSVM': 'kernel support-vector machine', # learning- model - see diva2:1700889
+    'KWP': 'Keyword Protocol', #  diva2:865984
+    'L-G': 'line to ground', # diva2:1504658
+    'L-L': 'line to line', #  diva2:1504658
+    'L/W': 'Length to Width ratio', # diva2:1184320
+    'L2TP': 'Layer 2 Tunneling Protocol', # diva2:511671
+    'L4S': 'Low Latency Low Loss Scalable throughput', # diva2:1372622
+    'LAA': 'License Assisted Access', #  diva2:1096096
+    'LACC': 'look ahead cruise control', #  diva2:1049394
+    'PLAC': 'platoon look ahead controller', #  diva2:662321
+    'LAMBERT': 'Layout-Aware language Modeling using BERT', # diva2:1833610 - full text not in DiVA
+    'LBT': 'Learning-based testing', #  diva2:847215
+    'LCAFDB': 'Life Cycle Assessment of Food Database', # database - used but not defined in diva2:1129950
+    'LCC': 'lifecycle cost', #  diva2:1297262
+    'HVDC LCC': 'high voltage direct current line commutated converters', # diva2:609104
+    'LCD': 'liquid crystal display', # diva2:9977
+    'LCG': 'Linear Congruential Generator', #  diva2:769838
+    'LCM': 'line converter module', #  diva2:1805228
+    'LCMS': 'learning content management system', # used but not defined in diva2:874334 - no full texct in DiVA
+    'LCMV': 'Linear Constrained Minimum Variance', # beamforming algorithm diva2:956118
+    'LCN': 'Laboratory of Communication Networks', # testbed - see diva2:540081
+    'LCOE': 'Levelized Cost of Electricity', # diva2:1299222
+    'LD': 'Laser diffraction', #  diva2:550489
+    'LDAP': 'Lightweight Directory Access Protocol', # diva2:531077
+    'LDFI': 'Lineage-driven fault injection', #  diva2:1305843
+    'LDL': 'low density lipoprotein', #  diva2:654431
+    'LDL': 'LDL∗ decomposition', # diva2:808731
+    'LDLR': 'low density lipoprotein receptor', # gene #  diva2:654431
+    'LDR': 'Low data rate' , # diva2:508199
+    'LDWS': 'lane departure warning systems', #  diva2:893982
+    'LEAR': 'Lasso Estimated Auto Regressive', #  diva2:1833617
+    'LEDBAT': 'Low Extra Delay BAckground Transport', # diva2:526278
+    'LEE': 'light extraction enhancement', #  diva2:1213103
+    'LEIA': 'Live Evidence Information Aggregator', #  diva2:874919
+    'LEO': 'low earth orbit', #  diva2:738916
+    'LEQ': 'Learning Experience Questionnaire ', # diva2:1470217
+    'LES': 'large eddy simulation', # diva2:1614202
+    'RANS': 'Reynolds-averaged Navier-Stokes', # diva2:1614202
+    'LF-PKI': 'Lite Flexible-PKI', #  diva2:1728664
+    'LFS': 'low field side', # diva2:968655
+    'LFV': 'Luftfartsverket', # diva2:458884 - English: Civil Aviation Administration
+    'LFW': 'Labelled Faces in the Wild', #  diva2:654107
+    'LGI': 'local group invariance', #  diva2:1752825
+    'LGPL': 'GNU Lesser General Public License', # diva2:654238 - no full text  and NADA URL invalid
+    'LHR': 'Lower Hybrid Resonance', #  diva2:1543429
+    'LI': 'Lawful Intercept', #  diva2:1272384
+    'LIF': 'Leaky Integrate-and-fire model', #  diva2:1779214
+    'LIF-STDP': 'Leaky Integrate-and-fire model - Spike-timing-depend Plasticity', # diva2:1708851
+    'STDP': 'Spike-timing-depend Plasticity',# diva2:1708851
+    'LIN': 'Local Interconnect Network', #  diva2:1695625
+    'LIOP': 'Local Intensity Order Pooling', # used but not defined in diva2:862394
+    'LKF': 'Linear Kalman Filter', #  diva2:943400
+    'LL': 'low-light', #  diva2:1586980
+    'LLAP': 'Live Long And Process', # diva2:1247796
+    'LLC': 'limited liability company', # Aurenav LLC diva2:556737
+    'LLC': 'Last Level of Cache', # diva2:1534374
+    'LLVM': 'Low Level Virtual Machine', #  compiler framework - diva2:665922
+    'LM': 'language models', #  diva2:1704893
+    'LMIE': 'label-based mutual information estimator', #  model - diva2:1504661
+    'LMP': 'Link Management Protocol', #  diva2:515390
+    'LMPC': 'Learning Model Predictive Control', #  diva2:1299168
+    'LMSA': 'Layered Min-Sum Algorithm', #  diva2:1611415
+    'LN2': 'Liquid Nitrogen', # diva2:1612484
+    'RP-1': 'Rocket Propellant 1', # diva2:1612484
+    'LNA': 'Low Noise Amplifier', # diva2:504589
+    'LNM': 'long-term and short-term memory network', #  diva2:1749197
+    'LNMSA': 'Layered Normalized Min-Sum Algorithm', #  diva2:1611415
+    'LO': 'local oscillator', #  diva2:504589
+    'LO4N': 'Limit of detectable change', #  diva2:1230358 - note this is really "LO&Delta;<sub>N</sub>"
+    'LO4S': 'Limit of detectable change', #  diva2:1230358 - note this is really "LO&Delta;<sub>S</sub>"
+    'LOD': 'Limit of detection', #  diva2:1230358
+    'LOAM': 'LiDAR Odometry And Mapping', #  diva2:1546912
+    'LOB': 'LiDAR Occupancy Boards', #  diva2:1525703
+    'LOC': 'lines of codes', #  diva2:1463855
+    'LOF': 'Local Outlier Factor', #  diva2:877205
+    'LOLO': 'Loss Of Load Occasion', # diva2:1077673
+    'LOLP': 'Loss Of Load Probability', # diva2:1077673
+    'LOMSA': 'Layered Offset Min-Sum Algorithm', #  diva2:1611415
+    'LORETA': 'Low resolution brain electromagnetic tomography', # diva2:700650
+    'LOS': 'length of stay', #  diva2:1472280
+    'LP': 'linear optimization', #  diva2:1140573
+    'LPCC': 'Linear Predictive Cepstral Coefficients', #  diva2:1266588
+    'LPLAN': 'Low Power Local Area Network', # diva2:1326313
+    'LPR': 'license-plate recognition', #  diva2:1251963
+    'LPSP': 'Loss of Power Supply Probability', #  diva2:1421298
+    'LPTN': 'lumped-parameter thermal network', #  diva2:1079866
+    'LPV': 'Linear Parameter Varying', #  diva2:862179
+    'LPV-MPC': 'linear parameter-varying model predictive controller', #  diva2:1485487
+    'LPWA': 'Low-Power Wide Area', #  diva2:1451892
+    'SDRE': 'State Dependent Riccati Equation (SDRE)', #  diva2:576334
+    'LQ': 'Linear Quadratic', #  diva2:573435
+    'LQ/SDRE': 'Linear Quadratic (LQ) / State Dependent Riccati Equation (SDRE)', #  diva2:576334
+    'TSS': 'Two Timescale Separation', #  diva2:576334
+    'LQG': 'Linear Quadratic Generalised', # used but not defined in diva2:471890 but spelled out in chapter 4 of thesis
+    'LQT': 'linear quadratic tracking', #  diva2:1324281
+    'LR': 'Linear regression', #  diva2:1463586
+    'LRHC': 'linear regression harmonic compensation', #  diva2:1249513
+    'LRP': 'Layer-wise Relevance Propagation', #  diva2:1335846
+    'LRU': 'Least Recently Used', # diva2:862185
+    'SB-LRU': 'stateness bounded - LRU', # diva2:862185,
+    'LS': 'Least Squares', #  diva2:538857
+    'LSA': 'Latent Semantic Analysis', #  diva2:911873
+    'LSB': 'least significant bit', # diva2:635168
+    'LSF': 'line spectral frequencies', #  diva2:812686
+    'VLSI': 'Very Large Scale Integration', #  diva2:1705246
+    'LSI': 'Latent Semantic Indexing', #  diva2:1186070
+    'LSO': 'Local System Operator', #  diva2:1089406
+    'LSPA': 'Layered Sum Product Algorithm', #  diva2:1611415
+    'LSPM': 'Line Start Permanent Magnets', #  diva2:799523
+    'LSTM-AED': 'Long Short-term Memory in an auto-encoder decoder network', #  diva2:1468220
+    'LSTMAED': 'Long Short-term Memory in an auto-encoder decoder network', #  diva2:1468220
+    'LSTMVAE': 'Long Short­Term Memory Variational Autoencoder', # diva2:1633162
+    'LSTM-VAE': 'Long Short­Term Memory Variational Autoencoder', # diva2:1633162
+    'LSTQ': 'LiDAR Segmentation and Tracking Quality', # diva2:1725009
+    'LSTS': 'Underwater Systems and Technology Laboratory', # LSTS Porto diva2:1182092
+    'LTA': 'Last-Touch Attribution', #  diva2:1596411
+    'LTCA': 'Long-Term Certificate Authority', #  diva2:612626
+    'LTO': 'link time optimization', #  diva2:665922
+    'LTV': 'linear time-varying', # diva2:575805
+    'LTV-MPC': 'Linear Time-Varying Model Predictive Controller', #  diva2:1805241
+    'LU': 'lower–upper', # diva2:1523039
+    'LUKS': 'Linux Unified Key Setup', # used but not defined in diva2:1616944 - spelled out on page 8 of thesis
+    'LULC': 'land-use and land-cover', # diva2:1639269
+    'LV-FQI': 'Latent-Variable Fitted Q-Iteration', #  diva2:1802828
+    'LV/MV': '(low-voltage/medium-voltage', # used but not defined in diva2:820634
+    'LVAC': 'low voltage alternating current', #  diva2:1749552
+    'LVDC': 'low voltage direct current', #  diva2:1749552
+    'LVDS': 'Low Voltage Differential Signaling', # used but not defined in diva2:1331764
+    'LVLH': 'Local Vertical Local Horizontal', # used but not defined in diva2:1136121
+    'LVT': 'Low threshold', # diva2:704240
+    'LWA': 'leaky-wave antenna', #  diva2:1723248
+    'LWE': 'Learning With Errors', # diva2:1769448
+    'M-LWE': 'Module-Learning With Errors', # diva2:1769448
+    'M-LWR': 'Module-Learning With Rounding', # diva2:1769448
+    'LWR': 'Learning With Rounding', # diva2:1769448
+    'LWJGL': 'Lightweight Java Game Library', #  diva2:607208
+    'LXC': 'Linux Container', # diva2:550740
+    'LXMERT': 'Learning Cross-Modality Encoder Representations from Transformers', #  diva2:1617350
+    'L3': 'level 3', # cache diva2:1622362
+    'M-MIMO': 'massive MIMO', # used but not defined in diva2:1536759
+    'M2I': 'machine-to-infrastructure', #  diva2:1803133
+    'M2PA': 'MTP2-user Peer-to-peer Adaptation layer', # diva2:513146
+    'M2UA': 'MTP2-User Adaptation layer', # diva2:513146
+    'M3UA': 'MTP3 User Adaptation', # diva2:513146
+    'SUA': 'SCCP User Adaptation',  # diva2:513146
+    'MA-IG': 'Multi-agent information gathering', #  diva2:1737822
+    'MAC/IP': ' MAC or IP addresses', #  diva2:1638177
+    'MACD': 'Moving Average Convergence-Divergence', #  diva2:927355
+    'MACH': 'Modular Advanced Control for HVDC', # diva2:930831
+    'MACHTM': 'Modular Advanced Control for HVDC', # diva2:930831
+    'MAIM': 'Mobile Ajax Instant Messenger', #  diva2:209965
+    'MAL': 'Meta Attack Language', # used but not defined in diva2:1698435
+    'MAM': 'media asset management', # used but not defined in diva2:874647 - no full text in DiVA
+    'MAPK': 'Mitogen-Activated Protein Kinase', # used but not defined in diva2:573325
+    'MAPK/ERK': 'Mitogen-Activated Protein Kinase / Extracellular signal-Regulated Kinase', # used but not defined in diva2:654241
+    'MAR': 'mobile augmented reality', #  diva2:1147696
+    'MARL': 'Multi-Agent Reinforcement Learning', #  diva2:1804950
+    'MAS': 'multi-agent systems', #  diva2:1803133
+    'MASH': 'Multistage Noise Shaping', # used but not defined in diva2:468115
+    'MASTNA': 'Multi Agent Securities Trading Negotiation Assistant)', # used but not defined in diva2:934089 - pg 5 of thesis
+    'MATS': 'Mesospheric Airglow/Aerosol Tomography and Spectroscopy', #  diva2:1295727
+    'MAUT': 'Multi-Attribute Utility Theory', # diva2:1331945
+    'S-MAUVE': 'Sequence MAUVE', # diva2:1705987
+    'MAV': 'Micro Aerial Vehicle', #  diva2:872111
+    'MB-LBP': 'multi-block local binary patterns', #  diva2:810985
+    'MB-OFDM': ' MultiBand Orthogonal Frequency Division Modulation', # used but not defined in diva2:483817 - spelled out in thesis pg. 1
+    'MBB': 'mobile broadband', #  diva2:871678
+    'MBCT': 'Mindfulness-Based Cognitive Therapy', #  diva2:1221081
+    'MBE': 'Multibeam echosounder', #  diva2:1711126
+    'MBE': 'molecular beam epitaxy', # diva2:468185
+    'MBMS': 'Multimedia Broadcast Multicast service', #  diva2:667840
+    'MBR': 'minimum', #  bandwidth regenerating
+    'MBSFN': 'Multicast Broadcase Single Frequency Network', # used but not defined in diva2:470183 - not spelled out in thesis
+    'MBSR': 'Mindfulness-based stress reduction', #  diva2:1258723
+    'MCAD': 'mechanical CAD', #  diva2:468776
+    'MCAR': 'missing completely at random', #  diva2:1239198
+    'MCC': 'Mobile Cloud Computing', #  diva2:927836
+    'MCDA': 'multi-criteria decision analysis', #  diva2:1331945
+    'MCDO': 'Monte Carlo Dropout', #  diva2:1416025
+    'MCI': 'Mild Cognitive Impairment', #  diva2:1700453
+    'MCL': 'Markov Clustering Algorithm', # used but not defined in diva2:556816
+    'MCP': 'Maneuver Coordination Protocol', #  diva2:1780857
+    'MCSP': 'minimum circuit size problem', #  diva2:1233107
+    'MCSS': 'Multiple Combinations of Satellites and Systems', #  diva2:903430
+    'ISM': 'Implicit Shape model', # diva2:654242
+    'MD': 'Molecular dynamics', #  diva2:1447341
+    'MD-WSS': 'multi-directional wavelength switches', #  diva2:1055850
+    'MDA': 'Minimum Detectable Activity', #  diva2:1610303
+    'MDD': 'Model Driven Development', #  diva2:618092
+    'MDE': 'Model-Driven Engineering', #  diva2:1501125
+    'MDPA': 'Multi-DSP microprocessor Architecture', # used but not defined in diva2:1164147 - spelled out on pg. 12
+    'MDRNN': 'Multi-Dimensional Recurrent Neural Network', #  diva2:1513013
+    'MDSM': 'Maintenance Decision Support Models', #  diva2:1726974
+    'MDTC': 'Multi Data center Transaction Chain ', #  diva2:1058015
+    'MEF': 'metal enhanced Fluorescence', #  diva2:556807
+    'MEG': 'Magnetoencephalography', # diva2:1702335
+    'MEG/EEG': 'Magnetoencephalography / Electroencephalogram', # diva2:1702335
+    'MEMS': 'Micro Electric Mechanical System', #  diva2:1047641
+    'MESCR': 'Multiple Infeed Effective Short Circuit Ratio', # diva2:609127
+    'MSCR': 'Multiple Infeed Short Circuit Ratio', # diva2:609127
+    'MEX': 'Mobile Extension', #  diva2:510434
+    'MFA': 'micro frontend application', #  diva2:1737853
+    'MFC': 'Microfibrillated cellulose', #  diva2:578294
+    'MFN': 'multi-frequency network', #  diva2:874622
+    'MFS': 'Minor Field Study', #  diva2:754766
+    'MGE': 'Modified Gaussian Elimination', #  diva2:808731
+    'MH': 'magnetic hole', # used but not defined in diva2:1543410
+    'MHS': 'musical hand shaker', #  diva2:525724
+    'MHT': 'Multiple Hypotheses Tracker', #  diva2:470911
+    'OFDM': 'Orthogonal Frequency Division Multiplexing',
+    'MIB': 'Management Information Base', #  diva2:531140
+    'MIC': 'Mixed-Initiative Computing', #  diva2:1597750
+    'MICS': 'Medical Implant Communication System', #  diva2:1712188
+    'MIDI': 'musical instrument communication', #  diva2:862557
+    'MIMO-OFDM': 'Multi Input Multi Output / Orthogonal Frequency Division Multiplexing', # used but not defined in diva2:1297328 - not spelled out in thesis
+    'MIMSO': 'multiple input multiple steered output', #  diva2:1834156
+    'MIP': 'Mixed integer programming', #  diva2:538490
+    'MIREX': 'Music Information Retrieval Evaluation eXchange', # staandards - diva2:1118398
+    'MIS': 'Minimally Invasive Surgery', #  diva2:1835960
+    'MISO': 'many input single output', #  diva2:1253193
+    'MIST-': 'MIniature STudent satellite-',
+    'MIT': 'Massachusetts Institute of Technology', # used but not defined in diva2:817907 - not spelled out in thesis
+    'MITL': 'Metric Interval Temporal Logic', #  diva2:931281
+    'MITM': 'Man in the Middle Attack', #  diva2:1703654
+    'MKL': "Intel's math kernel library", #  diva2:927258
+    'MLD': 'mixed logical dynamical', #  diva2:1135528
+    'MLD': 'maximum likelihood detection', # diva2:1297328
+    'MLFMM': 'Multilevel Fast Multipole Method ', #  diva2:1477566
+    'MLI': 'Multi Layer Insulation', #  diva2:831763
+    'MLM': 'masked language modelling', #  diva2:1740693
+    'MLO': 'Multi-Link Operation', #  diva2:1810969
+    'MLPC': 'multi-layer perceptron classifier', #  diva2:927736
+    'MLR': 'Multiple Linear Regression', #  diva2:1526553
+    'MLS': 'Messaging Layer Security', #  IETF  - diva2:1468327
+    'MMBP/D/1-K': 'Markovian Modulated Bernoulli Process with binomial distributed burst arrivals', #  diva2:534660
+    'MMD': 'Minimum Matching Distance', # used but not defined in diva2:1656562 - note that the thesis uses a strange character mapping - so you cannot search for strings - for example "0LQLPXP 0DWFKLQJ 'LVWDQFH" is 'Minimum Matching Distance'
+    'MMIC': 'Monolithic Microwave Integrated Circuit', #  diva2:1631414
+    'MMML': 'MultiModal Machine Learning', #  diva2:1712814
+    'MMO': 'Massively Multiplayer Online game', #  diva2:1152429
+    'MMO': 'Mercury Magnetospheric Orbiter', # diva2:511690
+    'MTM': 'Mercury Transfer Module', # diva2:511690
+    'MMU': 'memory management unit', #  diva2:1458135
+    'MNAR': 'missing not at random', #  diva2:1239198
+    'MNB': 'Multinomial naive bayes', # used but not defined in diva2:1265893
+    'MNC': 'Mobile Network Code', # used but not defined in diva2:1110221
+    'MOG': 'Mixture of Gaussians', # used but not defined in diva2:1067587
+    'MOGA': 'Multi-Objective Genetic-Algorithm', #  diva2:809641
+    'MOMT': 'Microservice Overview Mapping Tool', #  diva2:1584566
+    'PMOO': 'Pay Multiplexing Only Once', #  diva2:1751344
+    'MOO': 'Multiple Objective Optimization', #  diva2:1838170
+    'MORAN': 'Multi Operator Radio Access Network', # used but not defined in diva2:871952
+    'MORL': 'multi-objective RL', #  diva2:1749930
+    'MOS': 'metal-oxide-semiconductor', #  diva2:470415
+    'MOSES': 'Mobile Opportunistic Services for Experience Sharing', #  diva2:727954
+    'MOSES/ICN': 'Mobile Opportunistic Services for Experience Sharing (MOSES) / Information-Centric Networking (ICN)', #  diva2:727954
+    'MOSS': 'Measure Of Software Similarity', # algorithm - see diva2:1133441
+    'MOTA': 'multiple object tracking accuracy', #  diva2:1620371
+    'MOTP': 'multiple object tracking precision', #  diva2:1620371
+    'MOVPE': 'metal organic vapor phase epitaxy', #  diva2:556848
+    'MPC-CBF': 'Model Predictive Control - Control Barrier Function', # used but not defined in diva2:1704875
+    'MPD': 'Media Presentation description', # used but not defined in diva2:470201 - spelled out in thesis
+    'MPDD': 'Multiple Projection and Distance dimensions', # used but not defined in diva2:766114
+    'MPEG': 'Moving Picture Experts Group',
+    'MPEG-DASH': 'MPEG Dynamic Adaptive Streaming over HTTP', # diva2:507848
+    'MPEG-RVC': 'Moving Picture Experts Group - Reconfigurable Video Coding', # diva2:504563
+    'MPI': 'Message Passing Interface', #  diva2:938293
+    'MPIDE': 'Multi-Platform IDE; Integerade Development Environment', # Digilent Chipkit MPIDE - see diva2:873240
+    'MPL': 'Mobile Premier League', # PayPal MPL app - see diva2:654144 - no full text and NADA URL invalid
+    'MPLS-TE': 'MPLS - Traffic Engineering', # diva2:643975
+    'MPLS-TP': 'MPLS - Transport Profile', # diva2:619406
+    'MPMS': 'multi-track premium music score', #  diva2:872630
+    'MPP': 'Musical Production Process', #  diva2:931547
+    'MPPS': 'Million Packet Per Second', # diva2:1818562
+    'MPPT': 'maximum power point tracker', # diva2:470576
+    'MPS': 'Mobile Positioning System', #  diva2:1088225
+    'MPTCP': 'Multipath TCP', #  diva2:504584
+    'MPV': 'Multi Purpose Vehicles', #  diva2:838903
+    'MPVI': 'Multilevel Pulse-Voltage Injection', #  diva2:1750953
+    'MRAI': 'minimum route advertisement interval', #  diva2:1094742
+    'MRAS': 'Model Reference Adaptive System', #  diva2:1813700
+    'MRC': 'Maximum Ratio Combining', # used but not defined in diva2:1732946 - spelled out in thesis
+    'MRR': 'Modulating Retro Reflector', #  diva2:1232270
+    'MRS': 'Multi-Robot System', #  diva2:1164179
+    'MRSLAM': 'Multi-Robot SLAM', #  diva2:1546912
+    'MRT': 'maximum ratio transmission', #  diva2:1707388
+    'MS-SSIM': 'Multiscale Structural Similarity index', # used but not defined in diva2:1072638
+    'MSA': 'Min-Sum Algorithm', #  diva2:1611415
+    'MSAA': 'Multi-Sample Anti-Aliasing', #  diva2:1701157
+    'MSC-S': 'mobile switching center server', #  diva2:524296
+    'MSCI': 'Morgan Stanley Capital International', # MSCI USA index - used but not defined in diva2:1118031 or in the thesis
+    'MSCKF': 'Multi-State-Constraint Kalman filter', #  diva2:1656572
+    'MSDD': 'Multiple-symbol differential detection', #  diva2:383906
+    'MSDP': 'Mobidoo Mobile Service Delivery Platform', #  diva2:696494
+    'MSDS': 'Material Safety Data Sheets', #  diva2:511771
+    'MSGQ': 'Message Queues', # module - used but not defined in see diva2:402370
+    'MSP': 'MIST Space Protocol', #  diva2:1412174
+    'MSR': 'minimum storage regenerating', #  diva2:560896
+    'MSSQL': 'Microsoft Structured Query Language Server', # used but not defined in diva2:1772625
+    'MSTG': 'Mobile Security Testing Guide', # OWASP - see  diva2:1701868
+    'MSU': 'monosodium urate', # used but not defined in diva2:654241 - no full text in DiVA
+    'MSW': 'municipal solid waste', #  diva2:1380785
+    'MSWI': 'municipal solid waste incineration', #  diva2:1380785
+    'MSX': 'Minimal Sufficient Explanation', #  diva2:1558497
+    'MT': 'Mersenne Twister', #  diva2:769838
+    'MTBF': 'Mean Time Between Failure', #  diva2:1624846
+    'MTC': 'machine type communication', #  diva2:705678
+    'MTDC': 'multi-terminal direct current', #  diva2:1504658
+    'MTG': 'Modern Times Group', # used but not defined in diva2:1374217
+    'MTJ': 'Magnetic Tunnel Junction', #  diva2:492351
+    'MTL': 'Multi-Task Learning', #  diva2:1708538
+    'MTO': 'Master Thesis Orchestrator', #  diva2:1713711
+    'MTP': 'machine learning with decision trees', #  diva2:1702702
+    'MTR': 'Multi Target Regression', #  diva2:1708526
+    'MTTD': 'mean time to detection', #  diva2:1333810
+    'MTTF': 'median time-to-failure', #  diva2:1605680
+    'MUC': 'Message Understanding Conference', # conference - see diva2:654428
+    'MUDM': 'model of UDM', # diva2:1350725
+    'UDM': 'universal design for manuals', # diva2:1350725
+    'MUHAS': 'Muhimbili University of health and Allied Sciences', #  diva2:743934
+    'MUSEIC': 'Multi Sensor Integrated circuit', #  diva2:1213022
+    'MUSHRA': 'MUltiple Stimuli with Hidden Reference and Anchor', # used but not defined in diva2:471472
+    'MUSSE': 'Music and Singing Synthesis Equipment', #  diva2:1791199
+    'MUX': 'Multiplexer', #  diva2:1695625
+    'MV-MPL': 'Multi-View Meta Pseudo Labelling', #  diva2:1799688
+    'MVC': 'Model-View-Controller', #  diva2:648188
+    'MVDR': 'Minimum Variance Distortionless Response', # used but not defined in diva2:1746728 - note a strange character mapping as "MVDR" is "Kp/`"
+    'XLPE MVOHL': 'cross-linked polyethylene medium voltage overhead lines', # diva2:1698132
+    'MVOHL': 'medium voltage overhead lines', # diva2:1698132
+    'MVPRS': 'Multi-Variable Polynomial Response Surface', # diva2:930966
+    'MVS': 'Multi-View Stereo', #  diva2:1112627
+    'MVVM': 'Model View View-Model', #  diva2:1750950
+    'MWCNT': 'Multi Walled Carbon Nano Tube', #  diva2:873252
+    'MZI': 'Mach-Zehnder interferometer', #  diva2:511253
+
     #GQMa
 }
 
@@ -55484,7 +57146,7 @@ company_and_product_names=[
     'Carasoft',
     'Caradoc',
     'CaracalDB',
-    'Capio',
+    'Capio', # diva2:1586047
     'CapsNetby',
     'CapsNets',
     'CarMaker',
@@ -56508,7 +58170,7 @@ company_and_product_names=[
     'Polarion',
     'Poly/ML',
     'PolyBench',
-    'Polyvore',
+    'Polyvore', # Maryland Polyvore data set - see diva2:1472461
     'Ponta',
     'PoseNet',
     'Posit32',
@@ -57909,7 +59571,6 @@ company_and_product_names=[
     'TIA/EIA485',
     'THALES',
     'THEMIS', # diva2:862298
-    'TI',
     'TIDAB', # Högskoleingenjörsutbildning i datateknik
     'TIMIT', # TIMIT dataset diva2:1504139
     'TMC2130',
@@ -58037,12 +59698,652 @@ company_and_product_names=[
     'ASEA',
     'ASAI', # performance indicator - see diva2:750131
     'CAIDI',# performance indicator - see diva2:750131
+    'ASM', # meta programming library for Java - see diva2:1535944
+    'ASP', # part of "ASP.NET Core"
+    'ASSA',
+    'ASTRI', # diva2:1322977
+    'ASU-GARDS', # diva2:654201
+    'ASWO', # ASWO Baltic - company - see diva2:1619651
+    "AMDSEV", # variant of 'AMD-SEV'
+    'ATCP', # diva2:514752
+    'ATIS', # data set - see diva2:1424349
+    'ATP/EMTP', # simulation program - see diva2:931073
+    'AUCROC', # 'AUC-ROC' - as used in diva2:1803957 - no full text
+    'AURES', # simulator - diva2:571746
+    'AWR', # simulation softwarde - NI AWR diva2:1349111 and Cadence AWR Microwave Studio diva2:1834176
+    'AXA', # AXA insurance - France -  company - diva2:1476590
+    'AXI-PACK', # chip bus porotocl - see diva2:1710489
+    '2D-2D', # matching technique - see diva2:860383
+    '2D-3D', # correspondence - see diva2:700304
+    '2022—ABC4ARH', # algorithm - see diva2:1801043
+    'VIDPSO', # algorithm - see diva2:1801043
+    'SA-MDP—', # algorithm - see diva2:1801043
+    'B-H', # curves - see diva2:470656
+    '1R1C', # resistance-capacitance model - see diva2:1793583
+    '2R2C', # resistance-capacitance model - see diva2:1793583
+    '3R2C', # resistance-capacitance model - see diva2:1793583
+    '1X-2020', # part of IEEE "802.1X-2020 standard" - see diva2:1712825
+    '2X2', # 2 by 2 MIMO system - see diva2:578871
+    '4NEC2', # solver - see diva2:652841
+    '128D4', # Xmega 128D4 microcontroller chip - see diva2:1322924
+    '2O3', # from "In 2O3" in diva2:647270 - should have been "In2O3"
+    '/EC', # from an EU directive number - see diva2:432728
+    'B1506A', # Keysight device analyzer - see diva2:1421292
+    'B2H6', # cheical formula - diva2:897684
+    'B3', # B3 Indes - firm - see diva2:1773382
+    'B4', # musical note - see diva2:65410
+    'A4', # musical note - see diva2:654101
+    'E4', # musical note - see diva2:654101
+    'F^#4', # musical note - see diva2:654101
+    'BB84',# Quantum key distribution scheme - see diva2:1779798
+    'B92', # Quantum key distribution scheme - see diva2:1779798
+    'E91', # Quantum key distribution scheme - see diva2:1779798
+    'BALSTM', # neural network - diva2:1376485
+    'BASCOM-AVR', # software - see diva2:871553
+    'BBQ', # case study - Kogi BBQ - see diva2:654243
+    'VANCL', # case study - see diva2:654243
+    'BECS', # Packetfront Software AB -  Network Management Software - see diva2:1084985
+    'BERT-CMC', # Conversational Machine Comprehension (CMC) - see  diva2:1380595
+    'BESTIC', # robot - see diva2:704607
+    'BF4', # 'BF4-'  ion diva2:577797
+    'BG-GFET', # silicon back gate (BG) gpaphence FET - diva2:705921
+    'BGP/MPLS', # VPN - see diva2:515331
+    'BIOVIA', # BIOVIA notebook - product - diva2:1589480
+    'BIR', # binary intermediate language used in HolBA - see diva2:1606484
+    'BIT16', # refrence citation in diva2:1149158
+    'BITX', # businees intelligence application - see diva2:872000
+    'BMC', # used but not defined in  diva2:1067587
+    'BME280', # microntroller - see diva2:1119365
+    'BOSCH', # used in diva2:1737842
+    'BPA', # fuel manufacturing at Westinghouse Sweden Electrics AB -- diva2:654179 -- Bisphenol A - full text at a NADA URL
+    'BRAVIDA', # company that makes the access cards used at KTH - see diva2:816005
+    'BRISK/BRISK', # used but not defined indiva2:952599
+    'BSA', # used but not defined in diva2:1813695
+    'BSIMSOI', # model - see diva2:872774
+    'AUTOCENT', # main autostart function described in diva2:530141
+    'AUTOINST', # autostart function described in diva2:530141
+    'AUTOREC', # autostart function described in diva2:530141
+    'AUTOREP', # autostart function described in diva2:530141
+    'BESSY', # BESSY II synchrotron beamline - see diva2:1333546
+    'BM25', # diva2:1742871
+    'BMI160', # IMU - diva2:1331704
+    'BONMIN', # solver for MINLP - see diva2:565755
+    'BP/BPDN', # signal processing algorithm - used but not defined in diva2:912685 - possibly "Basis pursuit (BP), basis pursuit deNoising (BPDN)"
+    'BSCF', 'BaxSr1-xCoyFe1-yO3−δ', # diva2:784553
+    'BBR', # protocol - diva2:1517343
+    'BUV48A', # diva2:871967
+    'FSICBH15A120', # diva2:871967
+    'BVSCO-2', # test for assessing writing difficulties in Italy - see diva2:1711449
+    'C-16QAM', # diva2:872741
+    'C-64QAM', # diva2:872741
+    'C-38', # Hagelin C-38 (known as the M-209) - diva2:1837724
+    'T52', # Siemens &amp; Halske (also known as Geheimschreiber) - see  diva2:1837724
+    'CHERI', # diva2:1538245
+    'CHERI-RISC-V', # diva2:1538245
+    'ITS-G5',  # diva2:1422828
+    'C2000', # Texas Instruments C2000 - see diva2:1505553
+    'C2960S', # Catalyst C2960S - see diva2:612611
+    'SPEC2000', # benchmark - diva2:859497
+    'C2', # Ericsson Broadcast &amp; Media Services monitoring software - see diva2:883329
+    'C3', # replica selection algorithm - see diva2:827372
+    'C37', # IEEE C37.118 - see diva2:503941
+    'C4', # Swedish C4 corpus - see diva2:1763101
+    'C57', # IEEE C57.91-1995 standard - see diva2:1155097
+    'C60', # Maxeon C60 Gen3 monocrystalline solar cells - see diva2:1713643
+    'C720', # fullerene -  diva2:1110226
+    'CA1', # subregion of the Hippocampus - see diva2:1280738
+    'CA3', # subregion of the Hippocampus - see diva2:1280738
+    'CA50', # crank angle in which the integrated heat release curve reaches its 50% value - see diva2:415344
+    'CALD', # defense against DDOS attachks - see diva2:955075
+    'CANDIDE-3', # parameterised facial animation model diva2:871461
+    'CASSINI', # space probe - see diva2:1822771
+    'CATHERINE', # Thales product - see diva2:1043993
+    'CBF/DCBF', # diva2:1749553
+    'GSM/EDGE', # used but not defined in diva2:538892
+    'CBREAK', # model - see diva2:533304
+    'CC1180DB', # TI chip - see diva2:538746
+    'CC2530', # TI CC2530 Systom-on-Chip - see diva2:935321
+    'CC2650', # diva2:862330
+    'CC430', # TI - see diva2:697252
+    'CDON', # CDON.com - see diva2:842434
+    'CE-HTML', # XML for web design for consumer equipment - see diva2:654393
+    'CE360°VR', # VR applicationm - see diva2:1787312
+    'CEALIST', # research institute - see diva2:763712
+    'CATS', # scalable and partition tolerant Key-Value store - see diva2:617816
+    'CE-CHECK', # website for document searching wrt Conformité Européenne (CE) - see diva2:1256706
+    'CERO', # simulation tool - see diva2:1459712
+    'CERTIFAI', # XAI method - see diva2:1694443
+    'SHAP', # XAI method - see diva2:1694443
+    'CGAL', # library in diva2:699750
+    'CH60015D', # Cree Inc. transistor - see diva2:647564
+    'CHIANTI', # atomic database - see diva2:1264850
+    'CIRED', # International Conference of Energy Distribution - used but not defined in diva2:497323
+    'SIMPOW', # simulator - see  diva2:1821983
+    'CLX', # CLX Communications - now Sinch - see diva2:1751346    
+    'CMIC', # Siemens SICAM CMIC CP-8000 remoteterminal unit - see diva2:1477589
+    'SICAM',# Siemens SICAM CMIC CP-8000 remoteterminal unit - see diva2:1477589
+    'CP-8000',# Siemens SICAM CMIC CP-8000 remoteterminal unit - see diva2:1477589
+    'CNES', # CNES (the French National Center for Space Studies - see diva2:573477
+    'IARES', # rover develped by CNES - see diva2:573477
+    'ONERA', #  see diva2:573477
+    'FACT', # integer factorisation problem - see diva2:769762
+    'CNMF', # see diva2:1324307
+    'COCO', # MS COCO dataset - see diva2:1472682
+    'COCOMO', # model - see diva2:625835
+    'COGS', # simulation software see diva2:1596456
+    'COLDSTORE', # video storage device - see diva2:706726
+    'COM', # Microsoft COM - see diva2:1217515
+    'COM-B', # model - see diva2:1113956
+    'COMSOL',
+    'CONCOCT', # see diva2:1109071
+    'CONMAX', # diva2:432670
+    'COOJA', # simulator - see diva2:512337
+    'COP21', # diva2:1552842
+    'CORAS', # diva2:539185 - no full text in DiVA
+    'CORR', # Soundswell CORR tool - see diva2:654365
+    'CPAC', # CPAC Systems - see diva2:507875
+    'CPLEX', # IBM CPLEX Optimizer - see diva2:1467789
+    'CPRI4', # CPRI4.2  - see diva2:872457
+    'CQ500', # dataset - see diva2:1784235
+    'CREO', # simulation - see diva2:1835627
+    'CRIGEN', # lab - see diva2:1091126
+    'CSAW-M', # dataset diva2:1703315
+    'CSAW-S', #  dataset diva2:1616660
+    'CSD3SVCD', # camera - diva2:1464492
+    'CSS3', # diva2:862539
+    'CTGAN', # tabular GANs, called CTGAN - see diva2:1591892
+    'CHB-MIT', # Boston Children’s Hospital’s Open Source CHB-MIT dataset - see diva2:1749197
+    'CHRONOS2', # FFI Funded Research Project- see diva2:1272253
+    'CIFAR-10', # dataset - see diva2:1165840
+    'CIFAR10', # dataset - see diva2:1823455, diva2:1586990, diva2:927067
+    'COSE', # a social network startup - see  diva2:1815076, diva2:1792997
+    'CST', # electromagnetic analysis tool - see diva2:790654 and diva2:1635013 and others
+    'CUEX', # CUEX algorithm  diva2:931547
+    'CVA6', # diva2:1615024
+    'CVAP/CAS', # depart at KTH - see diva2:654193
+    'CVE-', # CVE sequence numbers - diva2:1619459
+    'CVX', # convex optimization solver - diva2:942115
+    'CX-9020', # Beckhoff CX-9020 PLC
+    'D&M', # D&amp;Mand HELAM model - diva2:1415886
+    'D05', # starting program and year of the student who authored diva2:654428
+    'D3', # visualization framework - diva2:1107724
+    'D32', # classroom number at KTH - see diva2:1609857
+    'D435', # ntel®RealSense™Depth Camera D435 - see diva2:1472410
+    'D4M', # integrated dependency management framework - see diva2:527334
+    'D4SH', # nteractive overview system - see diva2:823781
+    'D8', # a high-rate lattice vector quantizer - see diva2:696519
+    'DALL-E', # DALL·E 2 AI system  - see diva2:1779806
+    'DCC-3', # state in Decentralized Congestion Control (DCC) - see diva2:1236698
+    'DCC-7', # state in Decentralized Congestion Control (DCC) - see diva2:1236698
+    'DCDC', # converter - see diva2:1836844
+    'DCS-8515LH', # D-Link DCS-8515LH - see  diva2:1751363
+    'DCT/IDCT', # used but not defined in diva2:463337
+    'DD-WRT', # customized OS for Linksys WRT54GL wireless router - see diva2:539142
+    'DD1311', # KTH course number - see diva2:654317
+    'DD1337', # KTH course number - see diva2:1337813
+    'DD1338', # KTH course number  - see diva2:1337813
+    'DD143X', # KTH course number - see diva2:810981
+    'DDFTU', # used but not defined in diva2:613216 diva2:606245 - Frascati Tokamak Upgrade (FTU)
+    'DE2', # Altera DE2 - see diva2:1088000
+    'DEAP', # dataset - see diva2:1352566
+    'DEGLMUCB', # a contextual bandit policy - see diva2:1637829
+    'DFTS', # used but not defined in diva2:1217155: - Discrete Fourier Transforms
+    'DGC', # network operator - see diva2:1088648
+    'DHG', # dataset DHG14/28 - see diva2:1224125
+    'DIGHT', # distributed key-value sture being developed by SICS - see diva2:506602
+    'DJI', # DJI drone - see  diva2:1463784
+    'DK', # Nordic nRF52 DK - see diva2:1449832
+    'DM100X', # KTH course number - see diva2:654332
+    'DM1578', # KTH course number - see diva2:1222883
+    'DM1587', # KTH course number - see diva2:1587018
+    'DM2799', # KTH course number - see diva2:1583231
+    'DM9000A', # an open core - see diva2:432670
+    'DORT2002', # radiative transfer model diva2:308052
+    'DREAMS', # monitoring system - see diva2:1088648
+    'DSP/BIOS', # DSP/BIOS Link - see diva2:402370
+    'DVS128', # dataset - see diva2:1779214
+    'DW1000', # Decawave DW1000 - see diva2:1066590
+    'DYAMO', # company - see diva2:1531458
+    'CTU-UHB', # database - <diva2:1597438
+    'CUB2002011', # dataset - diva2:1590915
+    'CWE-119', # common weakness listed in diva2:1350873
+    'CWE-20', # common weakness listed in diva2:1350873
+    'CWE-264', # common weakness listed in diva2:1350873
+    'CWE200', # common weakness listed in diva2:1350873
+    'DEX', # Dalvik Executable file format used by Android - see  diva2:1428211
+    'DFPA', # algorithm - see diva2:1703916
+    'DSV', #  Department of Computer and Systems Sciences (DSV) at Stockholm University diva2:432681
+    'DT1130', #  KTH course number - see diva2:1587018
+    'E1', # Reolink E1 Zoom camera - diva2:1632105
+    'E1-B/C', # Galileo E1-B/C signals- see diva2:1544978
+    'E16', # group E16, department ENERBAT (Energy in buildings and areas) at EDF Research &amp; Development diva2:470564
+    'E34', # KTH classroom - see diva2:1609857
+    'Q33', # KTH classroom - see diva2:1609857
+    'E4T', # E4T MicroGridproject - see  diva2:1443811
+    'E7501', # Intel server - see diva2:470421
+    'E911', # emergency calls - used but not defined in diva2:1182120
+    'EBNA-1', # EBV encoded nuclear antigens - see diva2:654192
+    'EBNA-6', # EBV encoded nuclear antigens - see diva2:654418
+    'ECAPS', # company - see diva2:562755 - also used in diva2:511222
+    'EDB', # EDB Fakel - see diva2:1447390
+    'EDB', # EDB Consulting Group - see diva2:654126
+    'EGR2', # a transcription factor - diva2:654418
+    'EH2720', #  KTH course number - see diva2:1589559
+    'EHLCalendar', # EHLCalendar -  diva2:1092472
+    'EALRTS', # predictive regression test selection tool - used but not defined in diva2:1376305
+    'ECG5000', # dataset - see diva2:1465807
+    'ECMA-368', # ECMA standard - see diva2:483817
+    'ECMA368', # ECMA standard - see diva2:483817
+    'EESEN', # framework - diva2:1165908
+    'EJBCA', # Open-source CA - see diva2:1799790 and diva2:654238
+    'ELECTRA', # model - see diva2:1591952
+    'ELIZA', # chatbot - diva2:812049
+    'ELKOS', # MIND Music Labscustom OS - see diva2:1381368
+    'ELL', # storage format - diva2:811385
+    'ELQ', # javascript library - see diva2:850230
+    'EM27', # Bruker spectrometer - diva2:1552842
+    'EMC2', # project - see diva2:1051460
+    'EMCCD', # Andor CCD camera - see diva2:511510
+    'EMNIST', # dataset - see diva2:1351530
+    'EMOTIV', # headset to record EEG signals - diva2:1142760
+    'EN2720', #  KTH course number - diva2:1772633
+    'ENEA', # company - see diva2:432732
+    'ENGIE', # ENGIE SA - a French company - see diva2:1091126
+    'EOS', # CERN EOS storage system - see https://github.com/cern-eos/eos - diva2:1259247
+    'EP4SGX530KH40C2', # Stratix IV FPGA diva2:1084868
+    'EPANET', # system simulator - see diva2:575799
+    'EPS32', # Espressif Systems' EPS32 - see diva2:1644223
+    'ERT', # Greek public broadcaster - diva2:1705255
+    'ERTFLIX', # streaming service of ERT diva2:1705255
+    'ESP32', # embedded platform - see diva2:1531230
+    'ESP8266', # embedded platform - see diva2:1702179
+    'ESRANGE', # Esrange Space Center- used but not defined in diva2:511132
+    'ESMG', # corporate group - diva2:1230968
+    'ESCARVAL-RISK', # observational cohort study- diva2:1613271
+    "EWSN'17", # testbed - see diva2:1295327
+    'EMQX', # MQTT broker- sse diva2:1466268
+    'EMTDC/PSCAD', # simulation environment - see diva2:609998, diva2:470576, diva2:576284, diva2:1115095
+    'EMTP-RV', # diva2:790575
+    'EQT', # company - see diva2:1757497
+    'ERICSSON', # diva2:470876 - should be set as Ericsson
+    'ES-STATCOM', # diva2:1749929
+    'EU868', # radio band - diva2:1395035
+    'EVAM', # EVAM System - emergency vehicle operating system - see diva2:1155116
+    'EVH2', # proprietary application layer protocol developed by Aptilo Networks - see diva2:538636
+    'EVK1000', # Qorvo's EVK1000 is a two-way ranging (TWR) evaluation kit - diva2:1066590
+    'EXTRAP', # EXTRAP T2R tokamak - see  diva2:550663
+    'EXTRAP-T2R',# tokamak -  see diva2:550663
+    'ETHUCY', # dataset - diva2:1455763
+    'ETK', # Electromagnetic department at KTH - see diva2:930886
+    'EUROSTAG', # oftware for the simulation of power system dynamics - used but not defined in diva2:1177573
+    'F0', # F0.5 score - diva2:1458902 and diva2:654365diva2:654365
+    'F1', # diva2:654365
+    'F2', # diva2:654365
+    'F290LP', # filter - diva2:1822776 and diva2:1822778
+    'G395H', # grating - diva2:1822776 and diva2:1822778
+    'FCOS', # CNN-based object detection framework - see diva2:1833740
+    'FEKO', # Altair FEKO 2019 diva2:1477566
+    'FER2013', # FER2013 dataset diva2:1329976
+    'FF1200R12IE5', # high power IGBT module - see diva2:1414190
+    'FFTW', # library - see diva2:1217155
+    'FCJJ', # 'Oil-paper cable' - see  diva2:1249054
+    'KKJ', # PVC cable  - see  diva2:1249054
+    'N1X', #  PEX cable - see  diva2:1249054
+    'PJM', # PJM Interconnection is a regional transmission organization serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia and the District of Columbia- see used but not defined in diva2:1723220 diva2:515402
+    'FCR-D', # FCR for large disturbances - used but not defined in diva2:1508515
+    'FCR-N', # FCR for normal operating conditions - used but not defined in diva2:1508515
+    'FDP300K', # Reconfigurable Logic Core device diva2:484505
+    'FDSOI-MOSFET', # used but not defined in diva2:704240 and diva2:874680
+    'FFMPEG', # FFmpeg http://www.ffmpeg.org/ - see diva2:346204
+    'FIS', # company - see diva2:1252867
+    'FMCOMMS5', # Analog devices’ FMCOMMS5 transceiver - see diva2:1272287
+    'FORD', # company - see diva2:1548786  - should be set as Ford
+    'FTX', # a cryptocurrency exchange - see diva2:1711510
+    'FXML', # an XML format that enables you to compose JavaFX GUI- used but not defined in diva2:655044
+    'FIA', # part of Greater Than, an insurtech/fintech company from Sweden is providing a mobile app called “FIA SDC (Smart Driving Challenge)” - see pg 14 of diva2:1709486
+    'FIWARE', # Open Source framework of software platform components - " https://www.fiware.org/developers/  -  diva2:1411144
+    'FIX/FAST', # Financial Information eXchange (FIX) / FIX Adapted for Streaming (FAST) - see diva2:654443
+    'FLAMES', # simulation framework diva2:763259
+    'FLIR', # FLIR Systems AB - see diva2:939264
+    'FMT', # open source formatting library - used but not defined in diva2:654220
+    'FOXJ2', # transcription factoor - see diva2:654418
+    'FP', # part of EU FP 7 - used but not defined in diva2:648434 - 7th framework project
+    'FP16', # 16 bit floating point representation - used but not defined in diva2:1702163
+    'FP7', # 7th framework project - used but not defined in diva2:813399
+    'FPD', # used but not defined in diva2:565491 - perhaps Primary Flight Display (PFD)
+    'FR4', #  NEMA grade designation for glass-reinforced epoxy laminate material - used but not defined in diva2:1110795 - can also be set as 'FR-4'
+    'FRIGG', # framework - see diva2:1205386
+    'FTDI', # company - see diva2:613332
+    'G1', # Java HotSpot’s implementation of G1 diva2:754515
+    'G1', # current prototype Generation 1 diva2:1725007
+    'G2', # new Generation 2 (G2) prototype diva2:1725007
+    'G395H/F290LP', # G395H grating / F290LP filter diva2:1822776 and diva2:1822778
+    'G4560', # Intel(R) Pentium(R) CPU G4560
+    'G480', # Scania mining truck - diva2:1046353
+    'G5', # control unit - see diva2:1156737
+    'GAMS', # simulator - diva2:860664
+    'GC-', # garbage collector options - see diva2:1466940
+    'GDF', # company - GDF Suez now ENGIE - see diva2:749089
+    'GEMEP', # dataset - see diva2:1471718
+    'GENIA', # corpus - see diva2:1414451 and diva2:1412656
+    'GENSYS', # simulator diva2:1804286
+    'GGOV1', # standard model of a gas turbine - see diva2:1141375
+    'GH60015D', # Cree transistor model - see diva2:647564
+    'GHERA', # benchmarks - see diva2:1778255
+    'GHZ', # GHZ CENTRE -  diva2:401135
+    'GINMAC', # protocol - diva2:470216 - might alos be set as GinMAC
+    'GLEAMS', # a Learned Embedding for Annotating Mass Spectra - see  diva2:1554629 also https://github.com/bittremieux/GLEAMS
+    'GLTR', # a tool to detect whether a text was generated by a model - used but not defined indiva2:1464539
+    'GMSH', # software - see diva2:1414214 also https://gmsh.info/
+    'GOE', # ABB GOE bushing - see diva2:511553
+    'GOEASY', # project - see diva2:1232462
+    'GPS-SDR-SIM', # simulator - diva2:1544978
+    'GPT-3', # diva2:1692943
+    'GPT-4', # used but not defined in diva2:1799660, diva2:1779792
+    'GPT2', # diva2:1611327
+    'GPT3', # GPT3.5 - see diva2:1800325
+    'GPU-', # GPU-parallel - see diva2:1105951
+    'GRLIB', # open-source Cobham Gaisler GRLIB framework - diva2:1335945
+    'GSON', # open source JAVA library - diva2:512862
+    'GSM/GPRS', # diva2:515363
+    'GSM/WLAN', # diva2:515363
+    'GSPC', # diva2:1822778
+    'GTX1660', # Nvidia GeForce GTX 1650 Max-Q diva2:1779193
+    'GTX460', # Nvidia GeForce GTX460 GPU - see diva2:557179
+    'GTZAN', # dataset - see diva2:1354738
+    'GUISDAP', # Matlab program - see diva2:862312
+    'GELAB', # company - see diva2:648791
+    'GNS3', # network simulator - diva2:1498802  also https://www.gns3.com/
+    'GPT-SWE', # GPT model trained for Swedish - diva2:1704893
+    'H5500', # iPAQ 'H5500'PDA - see diva2:460939
+    'H5550', # iPAQ 'H5500'PDA - seediva2:512696
+    'HAJ', # company HAJ Enterprise - see diva2:1275736
+    'HAKUTO', # Team HAKUTO - see diva2:1191998
+    'HAM10000', # dataset - see diva2:1795931
+    'HB100', # motion sensor - see diva2:873161
+    'HD44780', # Hitachi HD44780 control circuit - see diva2:1232341
+    'HE11', # mode - see diva2:1505910
+    'HEGO', # HEGO Group - see diva2:838928
+    'HEMLIG/RESTRICTED', # security class - see diva2:511869
+    'HERMES', # protocol - see diva2:1749923
+    'HERMES-SP', # project - see diva2:1750939
+    'HHA', # encoding - see diva2:1239567
+    'HIV-B', # used but not defined in diva2:1463584
+    'HLEG', # used but not defined in diva2:1711711
+    'HOL4', # theorem prover - diva2:1265405
+    'HOL', # HOL4 tool diva2:1597929
+    'HORNET', # anonymity service - diva2:1250173
+    'HRP-2', # humanoid robot - see diva2:766237
+    'HST/STIS', # diva2:1188497
+    'HTK', # A toolbox named hidden Markov model toolkit- see diva2:538862
+    'HU', # diva2:1258723 - which stands for "exhale" in Chinese
+    'HYCGE', #  HYCGE learning algorithm - see diva2:706235
+    'HANA', # in-memory database SAP HANA - see diva2:1424397
+    'HPGP', # used but not defined in diva2:470421
+    'HTTP-TCP', # diva2:849145
+    'I-80', # dataset diva2:1367602
+    'Us-101', # dataset diva2:1367602
+    'I-ADMM', # algorithm - diva2:1823470
+    'PI-ADMM1', # algorithm - diva2:1823470
+    'II-VI', # II-VI semiconductor material diva2:900230
+    'III-V', # III-V Lab, France diva2:954762
+    'I/Q', # In-phase and quadrature components - used but not defined in diva2:484516 and diva2:1334569
+    'II1300', # KTH course number - see diva2:1459622
+    'II1302', # KTH course number - see diva2:1617604
+    'II1310', # KTH course number - see diva2:539460
+    'I1', # Model I1 diva2:462939
+    'I4', # part of Industry 4.0 - see diva2:1653009
+    'I420', # CODEC also know as "Planar YUV 4:2:0"- diva2:654414 - NADA URL is invalid 
+    'VP8', # Video Compression Format or Video Compression Specification - CODEC - diva2:654414 - NADA URL is invalid 
+    'IAR', # company - IAR Systems - see diva2:709364
+    ']A', # this is a remnant of the interval 10-12]A in diva2:1150167 - ignore it
+    'BN', # interplanetary magnetic field, θ<sub>BN</sub> - see diva2:753291
+    'CK', # part of MITRE ATT&amp;CK diva2:1647521
+    'CPU-GPU', # diva2:607208 - two well known acronyms
+    'GTA5', # dataset - see diva2:1790995
+    'IBMQX2', # IBM quantum computer - diva2:1381305
+    'IBMQX4', # IBM quantum computer - diva2:1214001
+    'ICDAR', # dataset - see diva2:1464537
+    'ICEYE-1', # satellite - see diva2:1086873
+    'ICING', # model - see diva2:1714148
+    'ICSI', # corpus - see  diva2:1504312 - corpus at https://groups.inf.ed.ac.uk/ami/icsi/download/
+    'ICT4MPOWER', # project - see diva2:546619
+    'IDA', # EQUA's simulator IDA ICE - see diva2:1590898
+    'IDAX', # IDAX 300 Dielectric Spectroscopy Analyser - see diva2:766803
+    'IE1204', # KTH course number - see diva2:1472662
+    'IE1205', # KTH course number - see diva2:1472662
+    'IE120V', # KTH course number - see diva2:1709472
+    'IDE4L', # project - see diva2:930972
+    'IEC-60287', # standard IEC-60255-187-1 - see diva2:1140155
+    'IEC61175', # standard - see diva2:789016
+    'IEC61499', # standard - see diva2:1331871
+    'IEC61850', # standard - see diva2:1331871
+    'IEC61850-IEC61499', # standards - see diva2:1033566
+    'IEEE-', # standard "IEEE- " - see diva2:1464064
+    'IEEE-30', # 30 node system diva2:930844
+    'IEEE-6',  # 6 node system diva2:930844
+    'IEEE-754', # standard - see diva2:1595251
+    'IEEE/802', # IEEE/802.11 standard - see diva2:572782
+    'IEEE738', # standard - see diva2:1071664
+    'IEEE754', # standard "IEEE- 754" see diva2:1464064
+    'IEEE802', # part of IEEE802.15.4 standard - diva2:697252
+    'IKVM', # compiler - used but not defined in diva2:763236 - from the thesis glossary: "An implementation of the Java for Mono and Microsoft .NET Framework"
+    'IL-3', # cytokine - see diva2:1381330
+    'IL-6', # interleukin-6 - see diva2:654241
+    'IL122X', # KTH course number - see diva2:927142
+    'IL2232', # KTH course number - see diva2:1713647
+    'IM3910', # KTH course number - see diva2:512890
+    'IMA', # part of Sivers IMA AB - see diva2:401135
+    'IMAGIC', # centre - see diva2:468185
+    'IMAIL', # project - see diva2:410293
+    'INA226', # chip - see diva2:1613396
+    'INDUSEC', # company - INDUSEC AB - see diva2:871610
+    'INEO', # test equipment - diva2:515374
+    'INET', # INET 4.4 framework - see diva2:1747990
+    'INEX', # benchmark dataset - see diva2:758220
+    'INTMD', # INT mode - diva2:1609265
+    'INTMX', # INT mode - diva2:1609265
+    'INTXD', # INT mode - diva2:1609265
+    'INRIX', # company - see diva2:1590038
+    'INT8', # 8-bit integer representation - see diva2:1702163
+    'INTOSC', # project - see diva2:401135
+    'IORE', # type of train - see diva2:839614
+    'IOS', # Cisco IOS - see diva2:1130323
+    'IOS', # Apple iOS - see diva2:1331201
+    'IP04', # hardware - see diva2:511505
+    'IPAQ', # HP IPAQ Pocket PC H5550 - diva2:512696
+    'IPEC', # Speedfarm IPEC 372 or the IPEC 472 - see diva2:1095703
+    'IPG', # IPG CarMaker - diva2:1140559
+    'IPGSM',  # "IP- GSM" - sss diva2:511678
+    'IPOSIM', # a simulation tool from Infineon Technologies AG - see diva2:1414190
+    'IPS/UPS', # study of a wide area synchronous Electrical transmission grid - see diva2:600471
+    'IPT', # RF Helicon-based Plasma Thruster - see diva2:1543422
+    'IS1200',  # KTH course number - see diva2:647033
+    'ISIC', # dataset - see diva2:1788173
+    'ISIC2019', # dataset - see diva2:1703301
+    'ISIS', # topic in diva2:1105785
+    'ISJ4', # algorithm -  diva2:1635632 - the authors chose this name: The algorithm wasn’t given a name by its initial creator. For the purpose of this document it needs to have a name, ”ISJ4” was chosen for completely arbitrary reasons.
+    'ISO14443', # ISO standard - see diva2:651371
+    'ISO26262', # ISO standard - see diva2:651371
+    'ISO27004', # ISO standard - see diva2:560266
+    'ISOMPEG', # International Organization for Standardization (ISO) Moving Picture Experts Group (MPEG) - see diva2:1703720
+    'ISO-26262/IEC-61508', # ISO standard - see diva2:1713644
+    'ISO-K', # DN 160 ISO-K vacuum tank diva2:931347
+    'ISO/IEC', 'International Organization for Standardization (ISO) / International Electrotechnical Commission (IEC) ', # 
+    'ISO/MPEG', # ISO standard - see diva2:504563
+    'ISOT', # dataset - see diva2:1697557
+    'IT-', # IT-systems - see diva2:1086769
+    'ITEA3', # diva2:1141375
+    'ITER', # diva2:550481 - "The Way" in Latin - https://www.iter.org/
+    'ITT', # company ITT W&amp;WW - ITT Water & Wastewater AB - diva2:470090
+    'IURO', # IURO project diva2:654397
+    'IV-B', # Stage IV-B diva2:1324699
+    'IV1201',  # KTH course number - see diva2:871512
+    'J1939', # J1939 messages - see diva2:654190 - NADA URL is not valid - Society of Automotive Engineers standard SAE J1939 standard
+    'JA-BEJA', # distributed graph partitioning algorithm diva2:874633 - no full text in DiVA
+    'JADE', # JADE ontology development diva2:789016 - JADE based on IEC 61175 signal structure
+    'JAFFE', # dataset diva2:1329976
+    'JC', # David JC MacKay - see diva2:1460849
+    'JEE', # frameworks diva2:654132 - invalid NADA URL
+    'JEPSS', # used but not defined in diva2:1106172 - not spellec oun in the thesis
+    'JIRA', # Atlassian product - diva2:1136721 - Jira™
+    'JIRA-TRS', # Tracked Resource Set adapter for JIRA - see diva2:1136721
+    'JPA2', # JPA 2.0 - used but not defined indiva2:862539
+    'JPEG', # stanard produced by ISO/IEC Joint Photographic Experts Group - used but not defined in diva2:929325
+    'JPEG-2000', # diva2:1417099
+    'JSDOM', # diva2:1107724
+    'JSON-LD', # diva2:654372 - NADA URL invalid - no full text in DiVA
+    'JSON-RPC', # diva2:1463234
+    'K-12', # Kindergarden to 12th grade - see diva2:1697639
+    'K-163', # NIST K-163 curve for ECDH encryption - see diva2:697252
+    'KAIST', # KAIST urban dataset diva2:1656572
+    'KARTAL', # diva2:1800421- - meaning “Eagle” in Turkish
+    'KDDCUP99', # dataset - see diva2:1381418
+    'KECCAK', # algorithm -  diva2:1111718
+    'KEOLABS', # company - diva2:651371
+    'KKAWEB', # KI personnel web - see diva2:1087275
+    'KLU', # algorithm - see diva2:1523039
+    'KN-3B', # cathode - see diva2:1447390
+    'KNEE®', # RHEO KNEE® - see diva2:1801363
+    'KOH', # chemical formula - diva2:928562
+    'KTHID', # KTH local identifier - see diva2:816005
+    'L1', # GPS L1 diva2:1544978
+    'L1', # cache   diva2:872766
+    'L1-L2', # layer 1 and layer 2 caches diva2:1264914
+    'L2', # cache diva2:872766
+    'L2/L3', # human and rodent pyramidal cells (L2/L3) diva2:1703917
+    'LADOK', # database diva2:541212
+    'LANL', # Los Alamos National Laboratory (LANL) geosynchronous satellite data - see diva2:510396
+    'LC0', # a general-purpose neural network - see diva2:1471180
+    'LCL', # filter - used but not defined in  diva2:1299231 - never spelled out in thesis
+    'LEGO', # company/product - see diva2:1659545, diva2:1459622, diva2:654195, diva2:1621806
+    'LEGO®', #company/product - see diva2:1659545
+    'LEGS', # Piezo LEGS projects - see diva2:1046325, diva2:1119186, diva2:1412174
+    'LEMI', # LEMI-020, a small sensor developed by the Lviv Centre of the Institute for Space Research, Ukraine - see diva2:618438
+    'LEON3', # radiation toleterant 32 bit processor with SPARV V8 ISA - used but not defined indiva2:1335945
+    'LFPW', # dataset - see diva2:703050
+    'LIAISON', # chemiluminescence analyzer LIAISON XL - see diva2:1833722
+    'LINDDUN', # framework for privacy threat analysis - used but not defined in diva2:1118272
+    'LINPACK', # benchmark diva2:837145
+    'LM565', #  National Semiconductor LM565 diva2:572683
+    'LMP-103S', # ECAPS  LMP-103S diva2:511222
+    'LN', # Litton LN 200 - diva2:956118
+    'LPC1768', # ARM LPC1768 processor diva2:546759
+    'LSC', # LSC laboratory diva2:485806
+    'LT', # LT Spice diva2:1414205
+    'LTE-Advanced', # diva2:608059
+    'LTE-A', # diva2:785081
+    'LTE-M', # diva2:1326313
+    'LTE-MBSFN', # diva2:470183
+    'LTE/4G', # diva2:1320352
+    'LTE/A', # diva2:1052869
+    'LTE/LTE-A',  # diva2:785081
+    'LTE”', # diva2:572793
+    'LTSPICE', # diva2:1232919
+    'LUPA', # visualization system - diva2:1609439
+    'LUNA16', # dataset diva2:- see 1231003
+    'LXD', # container manager - diva2:1508532
+    'IF/ELSE', # framework - see diva2:681576
+    'IFDS-RA', # algorithm - see diva2:1121249
+    'III/V', # see diva2:1232270
+    'IKEA', # company - see diva2:781626
+    'IP-XACT', # IEEE 1685 XML format - see diva2:1498913
+    'ISM-MMC', # modular multilevel converter with interleaved submodules - see diva2:1750634
+    'IX', # dataplane operating system- see diva2:867903
+    'IXIA', # vendor - IXIA Anue 3500 - see diva2:859500 
+    'IXP2400', # Intel network processor model number - see diva2:515370
+    'IXXAT', # vendor - see  diva2:576416 - https://www.ixxat.com/
+    'JLCPCB',# PCB manufacturer diva2:1702225
+    'JML2',# diva2:654288
+    'JUNO', # dataset diva2:1549048 - Note the second author's name in DiVa does not match the accents on the last name on the paper (pg. 267)
+    'KB-BERT', # model - diva2:1703709
+    'LLVIP', # dataset diva2:1737862
+    'LS-RN', # MemN2N LS-RN - diva2:1701745
+    'M&M', # product name - diva2:654377
+    'M-209', # device - diva2:1837724
+    'M-MNIST', # dataset - see diva2:1322736
+    'M-NNIST', # dataset - see diva2:1779214
+    'M1', # Cat-M1 - diva2:1133526
+    'M10', # M10 stud or nut diva2:757487
+    'M8', # M8 stud diva2:757487
+    'M4', # Cortex M4 diva2:1735960
+    'M6802', # M6802 microprocessor - diva2:872734
+    'M7', # Arm Cortex M7 processor diva2:1584924
+    'MAGGY', # open-source framework for asynchronous and parallel hyperparameter optimization and ablation studies - see  diva2:1349978
+    'MAMA', # Sunstone Systems AB's system integration and workflow platform -  used but not defined in diva2:754449
+    'MAPPER/BIS', # platform - diva2:940822
+    'MASH-', # 2nd-order MASH-1-1 type &Sigma;&Delta; modulator i - see diva2:860031
+    'MATHCAD', # product - used but not defined in diva2:550721
+    'MASON', # multi-agent simulation environment library - used but not defined in diva2:1464540
+    'MATLAB', # programming and numeric computing platform
+    'MATLAB/SIMULINK', # programming and numeric computing platform and simulation
+    'MATLAB®',# programming and numeric computing platform
+    'MATPOWER', # tool package - see diva2:1634405
+    'MAUVE', # method for Measuring the gap between neural text and human text using divergence frontiers diva2:1705987
+    'MAX21000', # chip - see diva2:930969
+    'MAX4172', # chip - see diva2:1613396
+    'MAXUS9', # rocket diva2:1129343
+    'MBDA', # company - see diva2:572778
+    'MDL', # used but not defined in diva2:654242 - no full text in DiVA - NADA URL invalid
+    'MEFISTO', # scientific instrument - see diva2:511690
+    'MEK', #  Swedish sentence completion section of SweSAT- see diva2:1463843
+    'MERGEN', # project - see diva2:1507933 - never spelled out in thesis
+    'MESI', # protocol - used but not defined in diva2:1181043 not spelled out in thesis
+    'METANET', # used but not defined in diva2:1810970 - not spelled out in thesis
+    'METIS', # graph partitioning algorithm -  used but not defined in diva2:860026 - not spelled out in thesis
+    'MIDP', # Java library - see used but not defined in diva2:510476
+    'MIMIC-III', # database - diva2:1735999
+    'MIMIC-IV', # database - diva2:1736003
+    'MINDSTORMS®', # components - see diva2:654195
+    'MINT', # project - see diva2:1710481
+    'MIPS', # processor - see diva2:483610
+    'MIPS32', # processor - see diva2:862773
+    'ML505', # Xilinx ML505 FPGA - see diva2:579236
+    'MNIST', # dataset - used but not defined in diva2:1703317
+    'MODLEM', # used but not defined in diva2:1254853 - not spelled out in thesis - but source cited
+    'MOG2', # OpenCV MOG2 - used but not defined in diva2:1067587
+    'MOGADOR', # used but not defined in diva2:485806
+    'MOREBAC', # experiment - see diva2:939713
+    'MQ', # diva2:1111572 - part of "MQ Telemetry Transport (MQTT)"
+    'MS-CNN', # pedestrian detection system - used but not defined in diva2:1417099
+    'MS-SQL', # database - see diva2:753187
+    'MS/MS', # two­step mass spectrometry experiment - see diva2:1554629
+    'MSCOCO', # dataset - see diva2:1616660
+    'MSN', # Microsoft's MSN Messenger used but not defined in diva2:654323
+    'MSP430', # MSP430 microcontroller - see diva2:668590
+    'MSRS', # dataset - see diva2:1752831
+    'MST', # Micro and Nanosystems (MST) department at KTH - see diva2:1272296
+    'MSU-1', # used but not defined in diva2:654241 - no full text in DiVA - part of "MSU-1.1 cells"
+    'MT5', # Google's MT5 model - see diva2:1602172
+    'MTM-SSA', # toolkit - see diva2:511325
+    'MUUX-E', # usability and user experience of mobile educational environments (evaluation framework) - diva2:1465771
+    'MVA', # mega volt ampere - diva2:470828
+    'MVHEVC', # encoder - see diva2:798112
+    'MW', # megawatt
+    'MY500', # Jet Printer robot called MY500 -see diva2:472299
+    'MYQSL', # database - see diva2:1110610 - likely a miss spelling of MYSQL - no full text in DiVA
+    'MYSQL', # database - see diva2:928708, diva2:617516
+    'MOODLE', # used but not defined in diva2:874334 - no full text
+    'MPEG-1', # diva2:613183
+    'MPEG-2', # diva2:470201, diva2:471504
+    'MPEG-4', # diva2:471504
+    'MPEG-4/H', # part of MPEG-4/H.264 - see diva2:1359818
+    'MUC-4', # terroist corpus - see diva2:411324
+
 
 ]
 
 
 
 common_programming_languages=[  # and libraries, programs
+    'LIBOL', # library diva2:1354558
+    'HECL', # diva2:510476
+    'GNUTLS', # library - diva2:1791392 - also set as GnuTLS
+    'FORTRAN', # diva2:930831
+    'F#', # diva2:654472
+    'COBOL',
+    'CPython',# diva2:912464
+    'C/API', # diva2:912464
     'ANSI-C',
     'Ada',
     'Beamer',
@@ -58056,7 +60357,7 @@ common_programming_languages=[  # and libraries, programs
     'Clojure',
     'CodeQL',    
     'Contiki',
-    'Cython',
+    'Cython',# diva2:912464
     'D3.js', 
     'DirectX',
     'Django',
@@ -58097,7 +60398,7 @@ common_programming_languages=[  # and libraries, programs
     'Joern',
     'Joomla',
     'JupyterLab',
-    'Jython',
+    'Jython', # diva2:912464
     'Kerberos',
     'Klang',
     'Kotlin',
@@ -58165,7 +60466,7 @@ common_programming_languages=[  # and libraries, programs
     'PyData',
     'PyDetex',
     'PyECLib',
-    'PyPy',
+    'PyPy', # diva2:912464
     'PySpark',
     'PyTorch',
     'PyWavelet',
@@ -58380,7 +60681,7 @@ common_programming_languages=[  # and libraries, programs
     'scadaLang',
     'softPosit',
     'strideLang',
-    
+    'C#',    
 ]
 
 names_of_persons=[
@@ -61725,25 +64026,43 @@ names_of_persons=[
 
 common_french_words=[
     "d'Electricité",
+    "d'information",
+    "l'énergie",
+    'Africaine',
     'Agence',
     'Appliqué',
+    'Besoins',
+    'Biosphère',
+    'Centre',
+    'Chemins',
+    'Comitéinternational',
+    'Commissariat',
+    'Communauté',
     'Composent',
     'Ecole',
     'Economie',
     'Electriques',
     'Etudes',
-    'Fonctionnement',
+    'Expression',
+    'Financière',
     'Fonctionnement',
     'Goéland',
+    'Identification',
     'Montrealais',
     'Montréalais',
+    'Objectifs',
     'R´eseau',
     'Réseau',
     'Réseaux',
     'Soufflé',
+    'Spatiales',
     'Système',
     'Systèmes',
+    'Sécurité',
+    'alternatives',
+    'atomique',
     'attaques',
+    'aux',
     'avancé',
     'bouy',
     'carte',
@@ -61754,7 +64073,6 @@ common_french_words=[
     'contrôle',
     'croisière',
     'crêpes', #    'crêpes': {'B2': 'noun'},
-    "d'information",
     'de',
     'des',
     'développement',
@@ -61762,6 +64080,8 @@ common_french_words=[
     'ecole',
     'en',
     'et',
+    'fer',
+    'fédéraux',
     'idéa',
     'informatiques',
     'la',
@@ -61771,24 +64091,29 @@ common_french_words=[
     'montage',
     'nationale',
     'nouveau',
+    'numérique',
     'optronique',
+    'perturbations',
     'pour',
+    'radioélectriques',
     'raison',
     'reseaux',
     'réponse',
     'réseaux',
+    'spécial', #     'sp\u00e9cial',
+    'suisses',
     'sécurité',
-    'sp\u00e9cial',
     'traitement',
     'très',
-    'viol\u00e0',
+    'violà', # 'viol\u00e0',
     'à',
+    'énergies',
 
 ]
 
 common_danish_words=[
     'Aktieselskab',
-    'S/A', # abbreviation for Aktieselskab
+    'A/S', # abbreviation for Aktieselskab
     'Kulge',
     'Selskabs',
     'Skrifter',
@@ -61818,22 +64143,22 @@ common_finnish_words=[
 ]
 
 common_german_words=[
+    'Bundesbahnen',
     'Geheimschreiber',
     'GmbH',
     'Luft-',
     'Naturf', #from the shortened jounrnal name "Z. Naturf"
+    'Raumfahrt',
+    'Schweizerische',
+    'Stahlwerks',
     'Zentrum',
     'achtung',
+    'autobahn',
     'forschungsgruppe',
     'kredite',
     'leistungsmessung',
     'sozialforschung',
     'telekommunikationsnetzte',
-    'autobahn',
-
-    # GQM-for-merger
-    'Raumfahrt',
-    'Stahlwerks',
     'und',
 
 
@@ -61847,22 +64172,23 @@ common_icelandic_words=[
 
 
 common_italian_words=[
+    'Ferrovie',
     'Fondazione',
+    'Italiane',
     'Lamiera',
     'Politecnico',
+    'Poste',
     'adagio',
     'allegro',
     'bacchette',
-    'di',
-    'legato',
-    'metallo',
-    'verniciata',
-
-    # GQM-for-merger    
     'bello',
     'classifica',
-    'Poste',
-    'Italiane',
+    'di',
+    'federali',
+    'legato',
+    'metallo',
+    'svizzere',
+    'verniciata',
 
 ]
 
@@ -65919,6 +68245,7 @@ KTH_ordbok_English_with_CEFR={
 }
 
 common_units=[
+    '̊A', # diva2:1549048
     'meV',
     'MeV',
     'kV',
@@ -66331,7 +68658,6 @@ merged_words={
     'During the', # see diva2:1076221
     'During this', # see diva2:1143517
     'EEG datasets',
-    'EHL Calendar',
     'EISCAT and',
     'EM simulation',
     'EMC simulations',
@@ -78324,12 +80650,15 @@ merged_words={
     'the piezoelectric',
     'through a simple',
     'to the field of',
+    'EA IT', # diva2:1247569
+    'EISCAT UHF',
+    'ENTSO-E RG',
+    'DC direct',
     'point-tocurve using-heading',
     'tele &',
     'Preand',
     'trivalent Er', # diva2:874540 - mo full text in DiVA
     'specified &lt',
-    'DC direct',
     'probability &lt', # diva2:705156
     'everything &', # part of "everything-&-anywhere" diva2:1394927
 }

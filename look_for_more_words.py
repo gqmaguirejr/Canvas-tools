@@ -309,6 +309,8 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'CO₂',
+    '27°C-300°C',
     'SiGe',
     'RMnO',
     'YBa2Cu3O7YBCO', 
@@ -1207,18 +1209,27 @@ def main():
     added_to_unique_words_count=0
     for w in common_english_and_swedish.merged_words:
         wx=w.replace(' ', '')
+        usage_cnt=1
+        # remove the merged word
+        if wx in unique_words:
+            usage_cnt=unique_words[wx]
+            del unique_words[wx]
+
         wx=wx.replace('-', '')
         wx=wx.lower()
         fall_back_words.add(wx)
+
         # if necessary add the words in multiple words to unique_words
         if w.count(' ') > 0:
             ws=w.split(' ')
             for wsw in ws:
                 if wsw in unique_words:
-                    unique_words[wsw]= unique_words[wsw] + 1
+                    unique_words[wsw]= unique_words[wsw] + usage_cnt
                 else:
                     unique_words[wsw]=1
-                    added_to_unique_words_count=added_to_unique_words_count + 1
+                    if Verbose_Flag:
+                        print(f'adding {wsw=}')
+                    added_to_unique_words_count=added_to_unique_words_count + usage_cnt
 
     print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in merged_words')
 
@@ -1234,16 +1245,25 @@ def main():
         actuaL_word=entry.get('c', False)
         if not actuaL_word:
             continue
+
+        usage_cnt=1
+        # remove the miss spelled word
+        if w in unique_words:
+            usage_cnt=unique_words[w]
+            del unique_words[w]
+
+
         # if necessary add the words to unique_words
         if actuaL_word.count(' ') > 0:
             ws=actuaL_word.split(' ')
             for wsw in ws:
                 if wsw in unique_words:
-                    unique_words[wsw]= unique_words[wsw] + 1
+                    unique_words[wsw]= unique_words[wsw] + usage_cnt
                 else:
                     unique_words[wsw]=1
-                    added_to_unique_words_count=added_to_unique_words_count + 1
-                    #print(f'adding word: {wsw=}')
+                    added_to_unique_words_count=added_to_unique_words_count + usage_cnt
+                    if Verbose_Flag:
+                        print(f'adding word: {wsw=}')
 
     print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in miss_spelled_to_correct_spelling')
 
@@ -1697,6 +1717,19 @@ def main():
     save_potential_acronyms(potential_acronyms)
     print(f'unique potential acronyms: {len(potential_acronyms)}')
 
+    if not Verbose_Flag:
+        return
+    
+    first_two_letters=set()
+    for w in potential_acronyms:
+        if len(w) == 1:
+            first_two_letters.add(w)
+        elif len(w) == 2:
+            first_two_letters.add(w)
+        else:
+            first_two_letters.add(w[0]+w[1])
 
+    print(f'{first_two_letters=}')
+    
 if __name__ == "__main__": main()
 
