@@ -309,6 +309,12 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'K-1',
+    'N-1',
+    'N-2',
+    'N1',
+    'N2',
+    'N3',
     'CO₂',
     '27°C-300°C',
     'SiGe',
