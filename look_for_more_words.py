@@ -39,13 +39,42 @@ import miss_spelled_to_correct_spelling
 Numeric_field_width=7
 
 
+def is_numeric_range(w):
+    if w.count('-') == 1:
+        sw=w.split('-')
+        return is_number(sw[0]) and is_number(sw[1])
+    if w.count('‐') == 1:
+        sw=w.split('‐')
+        return is_number(sw[0]) and is_number(sw[1])
+    if w.count('—') == 1:
+        sw=w.split('—')
+        return is_number(sw[0]) and is_number(sw[1])
+    if w.count('..') == 1:
+        sw=w.split('..')
+        return is_number(sw[0]) and is_number(sw[1])
+    # look for alternatives or ratios such as 2.1/2.5
+    if w.count('/') == 1:
+        sw=w.split('/')
+        return is_number(sw[0]) and is_number(sw[1])
+    # otherwise
+    return False
+
+def is_numeric_range_eith_units(w):
+    for u in common_english_and_swedish.common_units:
+        if w.endswith(u):
+            w=w[:-len(u)]
+            return is_numeric_range(w)
+    return False
 
 def remove_products_and_ranges(s):
+    # the following is to avoid getting fooled by ISPO document numbers, such as 15765-1:2011
+    if s.count(':') > 0:
+        return s
     # check for triple product first
     matches = re.findall(r"(\d+[*x]\d+[*x]\d+)", s)
     if not matches:
         # note that the minus sign has to be last otherwise it things a range is being specified
-        matches = re.findall(r"(\d+[\*x/‐~—_-]\d+)", s)
+        matches = re.findall(r"(\d+[\*x‐~—_-]\d+)", s)
         if not matches:
             return s
     matches = list( dict.fromkeys(matches) )
@@ -305,10 +334,81 @@ def is_number(string):
             return True
         if is_float(rr[0]):
             return True
+    # check for comma as decimail point
+    if string.count(',') == 1:
+        string=string.replace(',', '.')
+        return is_number(string)
     # otherwise
     return False
 
 words_to_ignore=[
+    '0.97Bi0.5Na0.5TiO3-0.03BiAlO3',
+    '􀀀0:01',
+    'p.67]', # part of a citation in diva2:1599067
+    'tommasop@kth.se',
+    'studyinsweden.se',
+    'tv4.se',
+    'saadua@kth.se',
+    'r,v',
+    'r>0.6',
+    'kanal5play.se',
+    'java.util.hashmap',
+    'HCl',
+    'L*a*b',
+    'Al-Cu-Fe',
+    'Al70:5Pd21Re8:5',
+    '0.97Bi0.5Na0.5TiO.03BiAlO3',
+    '1,1,1,3,3,3-hexafluoro-2-propanol',
+    '3,4-ethylenedioxythiophene',
+    '2nm/4.2nm',
+    '2nm/4.5nm',
+    'arbetsliv.org',
+    'arbetsmiljowiki.se',
+    'Allastudier.se',
+    'bt.no/tips',
+    'coop.se',
+    'foo.ellemtel.se',
+    'ica.se',
+    'Alltommac.com',
+    'Tenable.sc', # Tenable Security Center - diva2:1702341
+    'CDON.com',
+    'Hotels.com',
+    'King.com',
+    'Salesforce.com',
+    'Udemy.com',
+    'www.apprl.com',
+    'www.eniro.se',
+    'www.hops.io',
+    'www.reddit.com/r/wallstreetbets',
+    'Avito.ru',
+    'Blocket.se',
+    'Chart.js',
+    'Fe-14Cr-2W-0.3Ti-0.24Y',
+    'Ga,In,P',
+    'JModelica.org',
+    'Mat.se',
+    'Nd:YAG',
+    'Ni/SiC/Si',
+    'Nightmare.js',
+    'OfficeUtils.dll',
+    'PeerfactSim.KOM',
+    'PowerModels.jl',
+    'Restaurangkartan.se',
+    'SiGe',
+    'SiOx',
+    'Space-track.org',
+    'Studi.se',
+    'a-Si:H/c-Si',
+    'aSi:H',
+    '[27°C-300°C]',
+    '27°C-300°C',
+    'IEC-2',
+    'N2',
+    'IEC-60255-187-1',
+    'IEC61850-9-2'
+    'IEC61850-IEC61499',
+    'ISO-26262/IEC-61508',
+    'IEC-61508IEC',
     'K-1',
     'N-1',
     'N-2',
@@ -338,7 +438,6 @@ words_to_ignore=[
     '&amp',
     '&gt',
     '&lt',
-     '>',
     '\\',
     ']',
     '_29', # used for ×29.7 in  diva2:1514163
@@ -653,7 +752,7 @@ words_to_ignore=[
     'Au-Si',
     'Ge/GeO',
     'HfO',
-    'Mac71', # from a citation
+    '[Mac71]', # from a citation
 
 ]
 
@@ -663,6 +762,9 @@ prefix_to_ignore=[
     "?", 
     "‘",
     "’",
+    ",",
+    ".",
+    ">",
     '#',
     '$',
     '%',
@@ -681,7 +783,7 @@ prefix_to_ignore=[
     '~',
     '­',
     '®',
-    '°',
+    #'°',
     '±',
     '​', # 'ZERO WIDTH SPACE' (U+200B)
     '‌', # 'ZERO WIDTH NON-JOINER' (U+200C)
@@ -708,13 +810,16 @@ prefix_to_ignore=[
     '',
     '￼',
     '�',    
-    '􀀀',
+    "􀀀", # 'DATA LINK ESCAPE' (U+0010)
 ]
 
 suffix_to_ignore=[
+    '”',
     "'",
-    "?", 
+    "?",
+    "!", 
     "’",
+    ".",
     #'-',
     '%',
     '*',
@@ -728,13 +833,31 @@ suffix_to_ignore=[
     '”',
     '…',
     '�',
+    '\\',
+    '\u200c', # ZERO WIDTH NON-JOINER' (U+200C)
+    '\u200b', # ZERO WIDTH SPACE' (U+200B)
+    '•',
 ]
 
+# milticharacter prefixs
+long_prefix_to_ignore=[
+    '&gt;',
+    '&lt;',
+    '...',
+]
 
+long_suffix_to_ignore=[
+    '...',
+    '"&lt;',
+]
 
 def remove_prefixes(w):
     if len(w) < 1:
         return w
+    for lp in long_prefix_to_ignore:
+        if w.startswith(lp):
+            w=w[len(lp):]
+            return remove_prefixes(w)
     if w[0] in prefix_to_ignore:
         w=w[1:]
         return remove_prefixes(w)
@@ -743,6 +866,10 @@ def remove_prefixes(w):
 def remove_suffixes(w):
     if len(w) < 1:
         return w
+    for lp in long_suffix_to_ignore:
+        if w.endswith(lp):
+            w=w[:-len(lp)]
+            return remove_suffixes(w)
     if w[-1] in suffix_to_ignore:
         w=w[:-1]
         return remove_suffixes(w)
@@ -1188,6 +1315,14 @@ def main():
 
     print(f'{len(unique_words):>{Numeric_field_width}} read in')
 
+    # remove the words to be ignored
+    for w in words_to_ignore:
+        if w in unique_words:
+            del unique_words[w]
+
+    if '27°C-300°C' in unique_words:
+        print("found 1: '27°C-300°C'")
+
     # after removing spaces and dashses, put all of the common_english_words in lower case in a fall_back list 
     fall_back_words=set()
     
@@ -1289,27 +1424,60 @@ def main():
             print('detectionzone in fall-back_words')
 
 
+    words_with_IEC=[]
+    for w in unique_words:
+        if w.find('IEC') >= 0:
+            words_with_IEC.append(w)
+    save_collected_words(words_with_IEC, 'IEC')
+
     for w in unique_words:
         initial_w=w[:]
 
         # remove the following product unimbers - as other wise the remove_products_and_ranges() turns them into 'iU'
-        if w in ['i7-6600U', 'i5-5200U']:
+        if w in ['i7-6600U', 'i5-5200U', ]:
+            number_skipped=number_skipped+1
             continue
 
         w = unicodedata.normalize('NFC',w) #  put everything into NFC form - to make comparisons simpler; also NFC form is the W3C recommended web form
+
+        # these should all have been removed
+        if w in words_to_ignore:
+            number_skipped=number_skipped+1
+            continue
+
+        # skip URLs
+        if w.startswith('http://') or w.startswith('https://'):
+            number_skipped=number_skipped+1
+            continue
+        
+        # skip IEC standard document numbers
+        if w.startswith('IEC-'):
+            number_skipped=number_skipped+1
+            continue
 
         w=remove_prefixes(w)
         w=remove_suffixes(w)
         w=remove_lbracket_number_rbracket(w) # remove [ddd] from words
         if len(w) == 0:
+            number_skipped=number_skipped+1
             continue
 
-        w=remove_products_and_ranges(w)
-        if len(w) == 0:
+        if is_numeric_range(w):
+            number_skipped=number_skipped+1
             continue
+
+        if is_numeric_range_eith_units(w):
+            number_skipped=number_skipped+1
+            continue
+            
+        # w=remove_products_and_ranges(w)
+        # if len(w) == 0:
+        #     number_skipped=number_skipped+1
+        #     continue
 
         w=remove_percentage_range(w)
         if len(w) == 0:
+            number_skipped=number_skipped+1
             continue
 
         w=remove_lbracket_rbracket_pair(w) # remove brackets around a word
@@ -1318,18 +1486,22 @@ def main():
 
         w=remove__single_lbracket(w)
         if len(w) == 0:
+            number_skipped=number_skipped+1
             continue
 
 
         if is_MiscSymbol_or_Pictograph(w):
+            number_skipped=number_skipped+1
             continue
         if is_equation(w):
+            number_skipped=number_skipped+1
             continue
 
         if w.endswith('&amp'):
             w=w[:-4]
 
         if len(w) < 1:
+            number_skipped=number_skipped+1
             continue
         
         if w in common_english_and_swedish.common_units:
@@ -1364,10 +1536,6 @@ def main():
             number_skipped=number_skipped+1
             continue
             
-        if w in words_to_ignore:
-            number_skipped=number_skipped+1
-            continue
-
         if is_number(w):
             number_skipped=number_skipped+1
             continue
@@ -1705,6 +1873,13 @@ def main():
             count_fall_back_cases=count_fall_back_cases+1
             continue
 
+        # re check - as the word my pop up again after the above manipulations
+        if w in words_to_ignore:
+            continue
+
+        if w == 'HCl':
+            nf = w in words_to_ignore
+            print(f'not found: {w} - {initial_w} - {nf=}')
         words_not_found.add(w)
 
 
@@ -1723,7 +1898,7 @@ def main():
     save_potential_acronyms(potential_acronyms)
     print(f'unique potential acronyms: {len(potential_acronyms)}')
 
-    if not Verbose_Flag:
+    if not (Verbose_Flag or True):
         return
     
     first_two_letters=set()
