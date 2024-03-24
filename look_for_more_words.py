@@ -9,6 +9,13 @@
 # Examples:
 # ./look_for_more_words.py /tmp/unique_words-abstracts-English.json
 #
+# to process paired keywords file - key is the english term and the value is the corresponding Swedish term
+# ./look_for_more_words.py --keywords /tmp/unique_words-abstracts-English.json
+#
+# You can also take the multiple word entries in common_English_words, split into individual words
+# and feed these into the program - as if they were in the input unique words:
+# ./look_for_more_words.py --self /tmp/unique_words-abstracts-English.json
+#
 # 2024-01-20
 #
 # G. Q. Maguire Jr.
@@ -1212,6 +1219,13 @@ def main():
                       help="process paired keywords"
     )
 
+    parser.add_option('--self',
+                      dest="self",
+                      default=False,
+                      action="store_true",
+                      help="process paired keywords"
+    )
+
     parser.add_option('--Swedish',
                       dest="swedish",
                       default=False,
@@ -1354,6 +1368,16 @@ def main():
 
 
     print(f'{len(unique_words):>{Numeric_field_width}} read in')
+
+    # add the individual words from multiple words in the common_English_words to the unique_words - as if they were used
+    if options.self:
+        for w in common_english_and_swedish.common_English_words:
+            if w.count(' ') > 0:
+                ws=w.split(' ')
+                for wsw in ws:
+                    if wsw not in unique_words:
+                        unique_words[wsw] = 0
+
 
     # remove the words to be ignored
     for w in words_to_ignore:
@@ -1932,7 +1956,11 @@ def main():
 
 
         if w.isupper():
-            potential_acronyms.add(w)
+            # if the word has the form "(xxx)" - remove the parentheses
+            if w[0] == '(' and w[-1] == ')':
+                potential_acronyms.add(w[1:-1])
+            else:
+                potential_acronyms.add(w)
             number_of_potential_acronyms=number_of_potential_acronyms+1
             continue
 
@@ -1991,7 +2019,8 @@ def main():
         else:
             first_two_letters.add(w[0]+w[1])
 
-    print(f'{first_two_letters=}')
+    if len(first_two_letters) > 0:
+        print(f'{first_two_letters=}')
 
     
 if __name__ == "__main__": main()

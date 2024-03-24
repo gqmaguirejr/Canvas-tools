@@ -2128,7 +2128,7 @@ miss_spelled_to_correct_spelling={
     'Machine Leaming': { 'c': 'Machine Learning'},
     "Powerstrain": { 'c': "Power train"},
     'Swedish subtitle: front end Development': { 'c': 'front end Development', 'n': ' The string "Swedish subtitle:" should not be present in the keyword'},
-    'metadata taggning': { 'c': 'metadata tagging', 'n': 'mixed in fro Swedish?'}, 
+    'metadata taggning': { 'c': 'metadata tagging', 'n': 'mixed in from Swedish?'}, 
     'High-level Sythnesis': { 'c': 'High-level Synthesis'},
     'Performance tuning Performance tuning': { 'c': 'Performance tuning'},
     'Computer Vison': { 'c':     'Computer Vision'},
@@ -2164,21 +2164,15 @@ miss_spelled_to_correct_spelling={
     'M PESA': { 'c': 'M-pesa', 'n': 'mobile money service'},
     'MNS': { 'c': 'NMS', 's': 'diva2:1084985', 'n': 'should probably be Network Management Software - as this is the topic of the thesis'},
     'RBLM)': { 'c': 'RBLM', 's': 'diva2:1823996'},
-    # 'service fascination': {'B2': 'Noun (possibly misspelling of 'service satisfaction')'},
-    # 'Conventional VS non-conventional PD measurement techniques',
-    # * I changed 'commit behavior' to 'commit behaviour' (British English spelling).
-    #     'long short term memmory': {'NA': 'Noun Phrase (Incorrect spelling)'},
-    #'neuron network': {'B2': 'Noun Phrase (Incorrect - should be Neural Network)'},
-    # 'neutrals species': {'B2': 'Noun Phrase'},  # Likely a misspelling of 'neutral species'
-    #'progressve web applications': {'NA': 'Noun Phrase (incorrect spelling)'},
-    #'prosocial behaviour': {'B2': 'Noun Phrase (alternative spelling: behavior)'},
-    #'public fundings': {'NA': 'Noun Phrase (incorrect use of 'funding')'},
-    #     'recommendations systems': {'B2': 'Noun Phrase (Incorrect spelling)'},
-    #'task automatization': {'B2': 'Noun (incorrect spelling - automation)'},
-    #     'metadata taggning': {'B2': 'Noun Phrase'},  # misspelling, should be 'tagging'
-    #     'programming. innehållsförteckning': {'NA': 'Phrase (Swedish for 'programming. table of contents')'},
-    #     'topological dataanalysis': {'B2': 'Noun ( misspelling of 'analysis')'},
-    #     'autonomous drive': {'B2', 'Noun Phrase'},  # Likely a misspelling of 'autonomous driving'
-    #     'neuron network': {'C1', 'Noun (Incorrect use of 'neural network')'},
+    'Very Long Instruction Word (VLIM)': { 'c': 'Very Long Instruction Word (VLIW)', 's': 'diva2:1799787', 'n': 'error in English version of keywords - error in original'},
+    'public fundings': { 'c': 'public funding', 's': 'diva2:1702839', 'n': 'in English keywords'},
+    'autonomous drive': { 'c': 'autonomous driving', 's': 'diva2:1429726', 'n': 'drive used in keyowrds, but driving used in thesis abstract'},
+    'programming. innehållsförteckning': { 'c': 'programming', 's': 'diva2:1090318', 'n': 'innehållsförteckning appears in the English list of keywords, no full text in DiVA'},
+    'Conventional VS non-conventional PD measurement techniques': { 'c': 'Conventional VS non-conventional PD measurement techniques', 's': 'diva2:1800407', 'n': 'in this keyword the VS should be versus or "vs."'},
+    'f)Byzantine': { 'c': 'Byzantine'},
+    'communcation': { 'c': 'communication'},
+    'secre transactions': { 'c': 'secure transactions'},
+    'modications/integrations': { 'c': 'modifications/integrations'},
 
 }
+
