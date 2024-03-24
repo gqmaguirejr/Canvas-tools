@@ -43,6 +43,9 @@ def is_numeric_range(w):
     if w.count('-') == 1:
         sw=w.split('-')
         return is_number(sw[0]) and is_number(sw[1])
+    if w.count('~') == 1:
+        sw=w.split('~')
+        return is_number(sw[0]) and is_number(sw[1])
     if w.count('‐') == 1:
         sw=w.split('‐')
         return is_number(sw[0]) and is_number(sw[1])
@@ -342,6 +345,7 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    ",", # ignore a single comma by itself
     '0.97Bi0.5Na0.5TiO3-0.03BiAlO3',
     '􀀀0:01',
     'p.67]', # part of a citation in diva2:1599067
@@ -1164,6 +1168,21 @@ def in_dictionary(s, words):
     return False
 
 
+def extract_acronym(w):
+    # definitions have the forms:
+    # "variational autoencoder (VAE)"
+    # or
+    # "AI - Artificial Intelligence"
+    if w.endswith(')'):
+        left_paren_offset=w.find('(')
+        if left_paren_offset >= 0 and left_paren_offset < (len(w)-1):
+            return w[left_paren_offset+1:-1]
+    if w.count(' - ') == 1:
+        end_of_acronym=w.find(' - ')
+        return w[:end_of_acronym]
+    return ''
+
+
 def main():
     global Verbose_Flag
     global directory_prefix
@@ -1186,6 +1205,13 @@ def main():
                       help="Run in testing mode"
     )
 
+    parser.add_option('--keywords',
+                      dest="keywords",
+                      default=False,
+                      action="store_true",
+                      help="process paired keywords"
+    )
+
     parser.add_option('--Swedish',
                       dest="swedish",
                       default=False,
@@ -1206,15 +1232,29 @@ def main():
         print("Insuffient arguments\n must provide file_name\n")
         return
 
-    input_file_name=remainder[0]
-    try:
-        if Verbose_Flag:
-            print(f'Trying to read: {input_file_name}')
-        with open(input_file_name, 'r') as f:
-            unique_words=json.load(f)
-    except:
-        print(f'Unable to open file named {input_file_name}')
-        return
+    unique_words=dict()
+    if options.keywords:
+        paired_keywords_file_name=f'{directory_prefix}paired-keywords.json'
+        try:
+            if Verbose_Flag:
+                print(f'Trying to read: {paired_keywords_file_name}')
+            with open(paired_keywords_file_name, 'r') as f:
+                unique_words=json.load(f)
+                print(f'read in {len(unique_words)} keywords')
+        except:
+            print(f'Unable to open file named {paired_keywords_file_name}')
+            return
+
+    else:
+        input_file_name=remainder[0]
+        try:
+            if Verbose_Flag:
+                print(f'Trying to read: {input_file_name}')
+            with open(input_file_name, 'r') as f:
+                unique_words=json.load(f)
+        except:
+            print(f'Unable to open file named {input_file_name}')
+            return
 
     # load in the information about CEFR levels from the various sources
     #################################################################################
@@ -1365,12 +1405,14 @@ def main():
             ws=w.split(' ')
             for wsw in ws:
                 if wsw in unique_words:
-                    unique_words[wsw]= unique_words[wsw] + usage_cnt
+                    if not options.keywords:
+                        unique_words[wsw]= unique_words[wsw] + usage_cnt
                 else:
                     unique_words[wsw]=1
                     if Verbose_Flag:
                         print(f'adding {wsw=}')
-                    added_to_unique_words_count=added_to_unique_words_count + usage_cnt
+                    if not options.keywords:
+                        added_to_unique_words_count=added_to_unique_words_count + usage_cnt
 
     print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in merged_words')
 
@@ -1399,14 +1441,52 @@ def main():
             ws=actuaL_word.split(' ')
             for wsw in ws:
                 if wsw in unique_words:
-                    unique_words[wsw]= unique_words[wsw] + usage_cnt
+                    if not options.keywords:
+                        unique_words[wsw]= unique_words[wsw] + usage_cnt
                 else:
                     unique_words[wsw]=1
-                    added_to_unique_words_count=added_to_unique_words_count + usage_cnt
+                    if not options.keywords:
+                        added_to_unique_words_count=added_to_unique_words_count + usage_cnt
                     if Verbose_Flag:
                         print(f'adding word: {wsw=}')
 
     print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in miss_spelled_to_correct_spelling')
+
+
+    if options.keywords: # extract acronym definitions from keyword
+        words_to_remove=set()
+        added_to_unique_words_count=0
+        for w in unique_words:
+            a=extract_acronym(w)
+            if len(a) >= 1 and a in common_english_and_swedish.well_known_acronyms:
+                words_to_remove.add(w)
+                added_to_unique_words_count=added_to_unique_words_count-1
+                continue
+            # deal with plurals of acronyms
+            if a.endswith('s'):
+                if len(a) >= 1:
+                    a=a[ :-1]
+                    if len(a) >= 1 and a in common_english_and_swedish.well_known_acronyms:
+                        words_to_remove.add(w)
+                        added_to_unique_words_count=added_to_unique_words_count-1
+                        continue
+
+
+        if Verbose_Flag:
+            print(f"{len(words_to_remove)}: {words_to_remove}=")
+        # remove those that were found
+        if len(words_to_remove) > 0:
+            for w in words_to_remove:
+                # remove this entry
+                if w in unique_words:
+                    if Verbose_Flag:
+                        print(f"removing '{w}'")
+                    del unique_words[w]
+                else:
+                    print(f"should remove '{w}' but it is no longer in unique_words")
+
+        print(f'{added_to_unique_words_count:>{Numeric_field_width}} removed the unique words that defined an acronym that is known')
+
 
 
     words_not_found=set()
@@ -1541,7 +1621,8 @@ def main():
             continue
 
         w_with_period=w+'.'
-        if w_with_period in common_english_and_swedish.abbreviations_ending_in_period or \
+        if w in common_english_and_swedish.abbreviations_ending_in_period or \
+           w_with_period in common_english_and_swedish.abbreviations_ending_in_period or \
            w_with_period.lower() in common_english_and_swedish.abbreviations_ending_in_period:
             number_skipped=number_skipped+1
             continue
@@ -1911,6 +1992,7 @@ def main():
             first_two_letters.add(w[0]+w[1])
 
     print(f'{first_two_letters=}')
+
     
 if __name__ == "__main__": main()
 
