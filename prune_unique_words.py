@@ -8,7 +8,7 @@
 # unique_words-for-course-frequency-<course_id>.txt file and prunes out words based on different
 # filtering.
 #
-# One aim is to understand the anguage level used in the course. The lavels are based on the Common European Framework of Reference for Languages: Learning, teaching, assessment (CEFR).
+# One aim is to understand the language level used in the course. The levels are based on the Common European Framework of Reference for Languages: Learning, teaching, assessment (CEFR).
 #
 #
 #
