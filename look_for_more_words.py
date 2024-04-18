@@ -358,12 +358,37 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    '61175IEC',
+    '61499IEC',
+    '61850-9-2IEC61499,',
+    '61850IEC',
+    'IEC',
+    'IEC--1',
+    'IEC-60255-187-1',
+    'IEC-60255-187-1standarden',
+    'IEC-61508ISO26262.',
+    'IEC-standarden',
+    'IEC-standarder',
+    'IEC61499',
+    'IEC61499-systemspecifikation',
+    'IEC61499standarden',
+    'IEC61850',
+    'IEC61850-9-2LE',
+    'IEC61850-IEC61499',
+    'IEC61850-kommunikationsprotokollet',
+    'IEC61850-specifikationsbeskrivning',
+    'IEC61850-standarden',
+    'IEC61850-struktur',
+    'ISO/IEC',
+    'ISO/IECMPEG-standarden',
+    '61850-9-2IEC61499',
+    '"9:1373GW,4:76GW',
     'GQ', # my first two initials - diva2:510423
     '18:00',
     '24:00',
     '50x50',
     '9x9',
-     '8;9􀀀18;6',
+    '8;9􀀀18;6',
     '1/11-2015',
     '11x11',
     '13284-1:2017',
@@ -562,6 +587,11 @@ prefix_to_ignore=[
 ]
 
 suffix_to_ignore=[
+    '',
+    '‚', # u+201a
+    '-',
+    '­',
+    '—',
     '”',
     "'",
     "?",
@@ -1032,6 +1062,9 @@ def main():
         if w.endswith('(amerikansk engelska)'):
             w=w.replace('(amerikansk engelska)', '')
         w=w.strip()
+        if len(w) == 1 and ord(w) == 776: # if just a COMBINING DIAERESIS, skip it
+            continue
+        
         if w not in common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR:
             # skip acronyms
             if w in common_english_and_swedish.well_known_acronyms:
@@ -1146,6 +1179,7 @@ def main():
         fall_back_words.add(w.lower())
     #
     added_to_unique_words_count=0
+    # remove spaces and hypens in merged words to compute fall back words to match unique_words against
     for w in common_english_and_swedish.merged_words:
         wx=w.replace(' ', '')
         usage_cnt=1
@@ -1263,6 +1297,7 @@ def main():
     #
     for w in unique_words:
         initial_w=w[:]
+        w=w.strip()
         #
         # remove the following product unimbers - as other wise the remove_products_and_ranges() turns them into 'iU'
         if w in ['i7-6600U', 'i5-5200U', ]:
