@@ -358,6 +358,9 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    '32x32',
+    '9906:2012',
+    #
     '61175IEC',
     '61499IEC',
     '61850-9-2IEC61499,',

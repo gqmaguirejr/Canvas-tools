@@ -3,7 +3,7 @@
 #
 # ./compute_unique_words_for_pages_in_course.py  course_id
 # 
-# The content is taken from the wikipages in the specified course or from PDF files that have been retried ffrom the course.
+# The content is taken from the wikipages in the specified course or from PDF files that have been retrieved from the course.
 #
 # it outputs a file with the unique words each on a line
 # where xx is the course_id.
@@ -31,7 +31,8 @@
 # ./compute_unique_words_for_pages_in_course.py  --config config-test.json 11544
 #
 # To process the files from a course:
-## The option --dir can be used to specify a directory to be used to get the input tiles and to put the output files in.
+#
+# The option --dir can be used to specify a directory to be used to get the input tiles and to put the output files in.
 # There is also a -P options to process a PDF file.
 # ./compute_unique_words_for_pages_in_course.py --dir ./Internetworking_course/ -P Lecture1-notes-2019.pdf
 #

@@ -2379,4 +2379,7 @@ miss_spelled_to_correct_spelling={
     'frn45,1': {'c': 'frn 45,1', 's': 'diva2:1249005'},
     'hj¨artat': {'c': 'hjärtat'},
     'SEMIP': {'c': 'SEM-IP'},
+    'It-företaget': {'c': 'IT-företaget', 's': 'diva2:1596034', 'n': 'From Uppsala thesis'}, 
+    'L-1': {'c': 'L<sup>-1</sup>', 's': 'diva2:485284'},
+    'SIDHRe': {'c': 'SIHDRe', 's': 'diva2:1776069'},
 }
