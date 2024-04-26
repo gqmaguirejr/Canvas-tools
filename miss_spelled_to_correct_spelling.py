@@ -2599,5 +2599,5 @@ miss_spelled_to_correct_spelling={
     'Ptot': {'c':     'P<sub>tot</sub>', 's': 'diva2:1295503'},
     'Ntot': {'c':     'N<sub>tot</sub>', 's': 'diva2:1295503'},
     'applicatio': {'c': 'application', 's': 'diva2:1098515'},
-    
+    'ITsä:s': {'c': "ITsä's", 's': 'diva2:637123', 'n': 'English abstract uses the Swedish possive for of the acronym for Informationssäkerhetsavdelningen '},
 }
