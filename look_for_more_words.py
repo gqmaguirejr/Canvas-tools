@@ -43,6 +43,8 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
 import common_english_and_swedish
 import miss_spelled_to_correct_spelling
+import diva_merged_words
+import diva_corrected_abstracts
 
 # width to use for outputting numeric values
 Numeric_field_width=7
@@ -1154,7 +1156,7 @@ def main():
     print(f'{len(common_english_and_swedish.mathematical_words_to_ignore):>{Numeric_field_width}} words in mathematical_words_to_ignore')
     print(f'{len(common_english_and_swedish.programming_keywords):>{Numeric_field_width}} words in programming_keywords')
     print(f'{len(common_english_and_swedish.language_tags):>{Numeric_field_width}} words in language_tags')
-    print(f'{len(common_english_and_swedish.merged_words):>{Numeric_field_width}} words in merged_words')
+    print(f'{len(diva_merged_words.merged_words):>{Numeric_field_width}} words in merged_words')
     print(f'{len(miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling):>{Numeric_field_width}} words in miss_spelled_to_correct_spelling')
     print(f'{len(common_english_and_swedish.abbreviations_ending_in_period):>{Numeric_field_width}} words in abbreviations_ending_in_period')
     #
@@ -1203,7 +1205,7 @@ def main():
     #
     added_to_unique_words_count=0
     # remove spaces and hypens in merged words to compute fall back words to match unique_words against
-    for w in common_english_and_swedish.merged_words:
+    for w in diva_merged_words.merged_words:
         wx=w.replace(' ', '')
         usage_cnt=1
         # remove the merged word
@@ -1305,7 +1307,7 @@ def main():
     count_fall_back_cases=0
     #
     # for some testing
-    if options.testing and 'detection zone' in common_english_and_swedish.merged_words:
+    if options.testing and 'detection zone' in diva_merged_words.merged_words:
         print('detection zone present')
         if 'detection zone' in fall_back_words:
             print('detection zone in fall-back_words')
