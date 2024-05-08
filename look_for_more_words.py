@@ -981,6 +981,17 @@ def extract_acronym(w):
     return ''
 
 
+def noun_cefr_levels(my_dict):
+    levels=dict()
+    for cl in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'XX']:
+        cefr_level=my_dict.get(cl, False)
+        if cefr_level and isinstance(cefr_level, str):
+            pos = [s.strip() for s in cefr_level.split(',')]
+            for ps in pos:
+                if ps == 'noun':
+                    levels[cl]='noun'
+    return levels
+
 def main():
     global Verbose_Flag
     global directory_prefix
@@ -1064,11 +1075,79 @@ def main():
     print('Loading some directories')
     directory_location="/z3/maguire/Language_Committee/"
     #directory_location="/home/maguire/Language_Committee/"
-    american_3000_file=directory_location+"American_Oxford_3000.xlsx"
-    #
-    american_3000_words, american_3000_words_plurals, american_3000_df=read_cefr_data(american_3000_file, 'American3000')
-    #
-    american_5000_words, american_5000_words_plurals, american_5000_df=read_cefr_data(american_3000_file, 'American5000')
+    # american_3000_file=directory_location+"American_Oxford_3000.xlsx"
+    # american_3000_words, american_3000_words_plurals, american_3000_df=read_cefr_data(american_3000_file, 'American3000')
+    # american_5000_words, american_5000_words_plurals, american_5000_df=read_cefr_data(american_3000_file, 'American5000')
+    import oxford
+    american_3000_words=dict()
+    american_3000_words_plurals=dict()
+    for w in oxford.american3000_English_words:
+        my_dict = {k: v for k, v in oxford.american3000_English_words.get(w).items() if k != 'plural'}
+        american_3000_words[w]=my_dict
+        p = oxford.american3000_English_words.get(w).get('plural', False)
+        if p:
+            if isinstance(p, str):
+                american_3000_words_plurals[p]=noun_cefr_levels(my_dict)
+            elif isinstance(p, list):
+                for pi in p:
+                    american_3000_words_plurals[pi]=noun_cefr_levels(my_dict)
+            else:
+                print(f'*** unexpected case in handling plural for {w} in  american3000_English_words')
+
+    american_5000_words=dict()
+    american_5000_words_plurals=dict()
+    for w in oxford.american5000_English_words:
+        my_dict = {k: v for k, v in oxford.american5000_English_words.get(w).items() if k != 'plural'}
+        american_5000_words[w]=my_dict
+        p = oxford.american5000_English_words.get(w).get('plural', False)
+        if p:
+            if isinstance(p, str):
+                american_5000_words_plurals[p]=noun_cefr_levels(my_dict)
+            elif isinstance(p, list):
+                for pi in p:
+                    american_5000_words_plurals[pi]=noun_cefr_levels(my_dict)
+            else:
+                print(f'*** unexpected case in handling plural for {w} in  american5000_English_words')
+
+    # include also the British English words
+    # note that plurals are not in the original list of words
+    oxford_3000_words=dict()
+    oxford_3000_words_plurals=dict()
+    for w in oxford.oxford3000_English_words:
+        my_dict = {k: v for k, v in oxford.oxford3000_English_words.get(w).items() if k != 'plural'}
+        oxford_3000_words[w]=my_dict
+        if p:
+            if isinstance(p, str):
+                oxford_3000_words_plurals[p]=noun_cefr_levels(my_dict)
+            elif isinstance(p, list):
+                for pi in p:
+                    oxford_3000_words_plurals[pi]=noun_cefr_levels(my_dict)
+            else:
+                print(f'*** unexpected case in handling plural for {w} in  oxford3000_English_words')
+
+    oxford_5000_words=dict()
+    oxford_5000_words_plurals=dict()
+    for w in oxford.oxford5000_English_words:
+        oxford_5000_words[w]=my_dict
+        if p:
+            if isinstance(p, str):
+                oxford_5000_words_plurals[p]=noun_cefr_levels(my_dict)
+            elif isinstance(p, list):
+                for pi in p:
+                    oxford_5000_words_plurals[pi]=noun_cefr_levels(my_dict)
+            else:
+                print(f'*** unexpected case in handling plural for {w} in  oxford5000_English_words')
+
+    if Verbose_Flag:
+        print(f'{american_3000_words=}')
+        print(f'{american_3000_words_plurals=}')
+
+    print(f'{(len(american_3000_words)+len(american_3000_words_plurals)):>{Numeric_field_width}} words in Oxford American 3000 words (including plurals)')
+    print(f'{(len(american_5000_words)+len(american_5000_words_plurals)):>{Numeric_field_width}} words in Oxford American 5000 words  (including plurals)')
+    print(f'{(len(oxford_3000_words)+len(oxford_3000_words_plurals)):>{Numeric_field_width}} words in Oxford 3000 words')
+    print(f'{(len(oxford_5000_words)+len(oxford_5000_words_plurals)):>{Numeric_field_width}} words in Oxford 5000 words')
+
+
     #
     cefrlex_file=directory_location+"cefrlex-reduced.xlsx"
     words_EFLLex, plurals_EFLLex, df_EFLLex=read_CEFRLLex_data(cefrlex_file, 'EFLLex_NLP4J')
@@ -1445,22 +1524,42 @@ def main():
             number_skipped=number_skipped+1
             continue
         #
-        if in_dictionary(w, american_3000_words) or (w in american_3000_words_plurals):
+        # check Oxford 3000 & 5000 both American and British
+        #
+        if (w in american_3000_words) or (w in american_3000_words_plurals):
             number_skipped=number_skipped+1
             continue
         #
-        if in_dictionary(w, american_5000_words) or (w in american_5000_words_plurals):
+        if (w in american_5000_words) or (w in american_5000_words_plurals):
             number_skipped=number_skipped+1
             continue
         #
-        # check for lower case evrsion
-        if in_dictionary(w.lower(), american_3000_words) or (w in american_3000_words_plurals):
+        # check for lower case version
+        if (w.lower() in american_3000_words) or (w.lower() in american_3000_words_plurals):
             number_skipped=number_skipped+1
             continue
         #
-        if in_dictionary(w.lower(), american_5000_words) or (w in american_5000_words_plurals):
+        if (w.lower() in american_5000_words) or (w.lower() in american_5000_words_plurals):
             number_skipped=number_skipped+1
             continue
+        #
+        if (w in oxford_3000_words) or (w in oxford_3000_words_plurals):
+            number_skipped=number_skipped+1
+            continue
+        #
+        if (w in oxford_5000_words) or (w in oxford_5000_words_plurals):
+            number_skipped=number_skipped+1
+            continue
+        #
+        # check for lower case version
+        if (w.lower() in oxford_3000_words) or (w.lower() in oxford_3000_words_plurals):
+            number_skipped=number_skipped+1
+            continue
+        #
+        if (w.lower() in oxford_5000_words) or (w.lower() in oxford_5000_words_plurals):
+            number_skipped=number_skipped+1
+            continue
+
         #
         if in_dictionary(w.lower(), words_EFLLex): # all the words in EFLLex are in lower case
             number_skipped=number_skipped+1
@@ -1730,7 +1829,7 @@ def main():
                 number_skipped=number_skipped+1
                 continue
         #
-        # also look at the case of an word with a lower case first part but upper or title case following it
+        # also look at the case of a word with a lower case first part but upper or title case following it
         if w.count('-') > 0:
             ws=w.split('-')
             new_wl=list()

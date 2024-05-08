@@ -22345,4 +22345,5 @@ merged_words={
     'NM network',
     'regarding the',
     'coefficients of',
+    'redundancies — a'
 }
