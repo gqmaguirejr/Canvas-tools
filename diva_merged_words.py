@@ -8643,7 +8643,6 @@ merged_words={
     'flows exchanged',
     'flows through',
     'fluctuating prices',
-    'fluid MAG', # diva2:564883
     'flux and',
     'flux gradients', # diva2:1581070
     'flux machine',

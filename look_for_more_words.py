@@ -1156,6 +1156,19 @@ def main():
     #
     kelly_swedish_file=directory_location+"Swedish-Kelly_M3_CEFR.xlsx"
     words_kelly_swedish, plurals_kelly_swedish, df_kelly_swedish=read_Kelly_data(kelly_swedish_file, 'Swedish_M3_CEFR')
+
+    # entries in the dict will have the form: 'acronym': ['expanded form 1', 'expanded form 2',  ... ]
+    well_known_acronyms=dict()
+    for e in common_english_and_swedish.well_known_acronyms_list:
+        if len(e) >= 1:
+            ack=e[0]
+            if len(e) >= 2:
+                d=e[1]
+                current_entry=well_known_acronyms.get(ack, list())
+                current_entry.append(d)
+                well_known_acronyms[ack]=current_entry
+    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} words in well_known_acronyms')
+
     #
     # KTH:s svensk-engelska ordbok
     KTH_svensk_engelska_ordbok_file=directory_location+"kth-ordboken-version-2023-07-01.xlsx"
@@ -1171,7 +1184,7 @@ def main():
         
         if w not in common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR:
             # skip acronyms
-            if w in common_english_and_swedish.well_known_acronyms:
+            if w in well_known_acronyms:
                 continue
             if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
                 continue
@@ -1188,7 +1201,7 @@ def main():
         w=w.strip()
         if w not in common_english_and_swedish.KTH_ordbok_English_with_CEFR:
             # skip acronyms
-            if w in common_english_and_swedish.well_known_acronyms:
+            if w in well_known_acronyms:
                 continue
             if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
                 continue
@@ -1279,7 +1292,7 @@ def main():
     for w in common_english_and_swedish.common_programming_languages:
         fall_back_words.add(w.lower())
     #
-    for w in common_english_and_swedish.well_known_acronyms:
+    for w in well_known_acronyms:
         fall_back_words.add(w.lower())
     #
     added_to_unique_words_count=0
@@ -1351,7 +1364,7 @@ def main():
         added_to_unique_words_count=0
         for w in unique_words:
             a=extract_acronym(w)
-            if len(a) >= 1 and a in common_english_and_swedish.well_known_acronyms:
+            if len(a) >= 1 and a in well_known_acronyms:
                 words_to_remove.add(w)
                 added_to_unique_words_count=added_to_unique_words_count-1
                 continue
@@ -1359,7 +1372,7 @@ def main():
             if a.endswith('s'):
                 if len(a) >= 1:
                     a=a[ :-1]
-                    if len(a) >= 1 and a in common_english_and_swedish.well_known_acronyms:
+                    if len(a) >= 1 and a in well_known_acronyms:
                         words_to_remove.add(w)
                         added_to_unique_words_count=added_to_unique_words_count-1
                         continue
@@ -1581,13 +1594,13 @@ def main():
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.well_known_acronyms:
+        if w in well_known_acronyms:
             number_skipped=number_skipped+1
             continue
         #
         # ignore plural of acronyms
         if w.endswith('s') and len(w) > 1:
-            if w[:-1] in common_english_and_swedish.well_known_acronyms:
+            if w[:-1] in well_known_acronyms:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1849,13 +1862,13 @@ def main():
                 number_skipped=number_skipped+1
                 continue
         #
-        if w in common_english_and_swedish.well_known_acronyms:
+        if w in well_known_acronyms:
             number_skipped=number_skipped+1
             continue
         #
         if w.isupper():
             if  w.endswith('-'):
-                if w[:-1] not in common_english_and_swedish.well_known_acronyms and w[:-1] not in common_english_and_swedish.company_and_product_names:
+                if w[:-1] not in well_known_acronyms and w[:-1] not in common_english_and_swedish.company_and_product_names:
                     potential_acronyms.add(w[:-1])
                     number_of_potential_acronyms=number_of_potential_acronyms+1
             else:
@@ -1863,19 +1876,19 @@ def main():
             number_of_potential_acronyms=number_of_potential_acronyms+1
             continue
         #
-        if w.lower() in common_english_and_swedish.well_known_acronyms:
+        if w.lower() in well_known_acronyms:
             number_skipped=number_skipped+1
             continue
         #
         # ignore plural of acronyms
         if options.swedish:
             if w.lower().endswith(':s') and len(w) > 2:
-                if w[:-2] in common_english_and_swedish.well_known_acronyms:
+                if w[:-2] in well_known_acronyms:
                     number_skipped=number_skipped+1
                     continue
         else:
             if w.lower().endswith('s') and len(w) > 1:
-                if w[:-1] in common_english_and_swedish.well_known_acronyms:
+                if w[:-1] in well_known_acronyms:
                     number_skipped=number_skipped+1
                     continue
         #
