@@ -1167,7 +1167,7 @@ def main():
                 current_entry=well_known_acronyms.get(ack, list())
                 current_entry.append(d)
                 well_known_acronyms[ack]=current_entry
-    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} words in well_known_acronyms')
+    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_english_and_swedish.well_known_acronyms_list)}) well_known_acronyms')
 
     #
     # KTH:s svensk-engelska ordbok
