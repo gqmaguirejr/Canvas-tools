@@ -1110,7 +1110,7 @@ def main():
                 print(f'*** unexpected case in handling plural for {w} in  american5000_English_words')
 
     # include also the British English words
-    # note that plurals are not in the original list of words
+    # note that plurals are not in the original list of words - but were added
     oxford_3000_words=dict()
     oxford_3000_words_plurals=dict()
     for w in oxford.oxford3000_English_words:
@@ -1144,9 +1144,8 @@ def main():
 
     print(f'{(len(american_3000_words)+len(american_3000_words_plurals)):>{Numeric_field_width}} words in Oxford American 3000 words (including plurals)')
     print(f'{(len(american_5000_words)+len(american_5000_words_plurals)):>{Numeric_field_width}} words in Oxford American 5000 words  (including plurals)')
-    print(f'{(len(oxford_3000_words)+len(oxford_3000_words_plurals)):>{Numeric_field_width}} words in Oxford 3000 words')
-    print(f'{(len(oxford_5000_words)+len(oxford_5000_words_plurals)):>{Numeric_field_width}} words in Oxford 5000 words')
-
+    print(f'{(len(oxford_3000_words)+len(oxford_3000_words_plurals)):>{Numeric_field_width}} words in Oxford 3000 words (with added plurals)')
+    print(f'{(len(oxford_5000_words)+len(oxford_5000_words_plurals)):>{Numeric_field_width}} words in Oxford 5000 words  (with added plurals)')
 
     #
     cefrlex_file=directory_location+"cefrlex-reduced.xlsx"
