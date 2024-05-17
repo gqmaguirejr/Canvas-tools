@@ -676,14 +676,18 @@ filename_extentions_to_skip=[
     '.doc',
     '.docx',
     '.html',
+    '.ipynb',
     '.jpg',
     '.js',
 #    '.json',
     '.mods',
     '.pdf',
     '.png',
+    '.ppt',
+    '.pptx',
     '.py',
     '.srt',
+    '.svg',
     '.xls',
     '.xlsx',
     '.xml',
@@ -1532,6 +1536,26 @@ def filter_words_by_list(words, filter_list):
     reduction=initial_number_of_words-len(updated_words)
     return [updated_words, reduction]
 
+def filter_words_by_list_ending_in_period(words, filter_list):
+    updated_words=dict()
+    initial_number_of_words=len(words)
+
+    for w in words:
+        if w in filter_list:
+            continue
+        if w.lower() in filter_list:
+            continue
+        w_period=w+'.'
+        if w_period in filter_list:
+            continue
+        if w_period.lower() in filter_list:
+            continue
+        else:
+            updated_words.update({w: words[w]})
+
+    reduction=initial_number_of_words-len(updated_words)
+    return [updated_words, reduction]
+
 def filter_words_by_list_case_sensitive(words, filter_list):
     updated_words=dict()
     initial_number_of_words=len(words)
@@ -2177,7 +2201,7 @@ def main():
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} miss spelled words removed')
 
 
-        filtered_unique_words_dict, reduction = filter_words_by_list(filtered_unique_words_dict, common_english_and_swedish.abbreviations_ending_in_period)
+        filtered_unique_words_dict, reduction = filter_words_by_list_ending_in_period(filtered_unique_words_dict, common_english_and_swedish.abbreviations_ending_in_period)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} abbreviations_ending_in_period removed')
 
         filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_MiscSymbol_or_Pictograph)
@@ -2406,7 +2430,7 @@ def main():
                 else:
                     if not word.title() in common_english_and_swedish.misc_words_to_ignore:
                         new_filtered_unique_words_dict[word.title()]=copy.deepcopy(unique_words[word.title()])
-                    if not word.lower() in misc_words_to_ignore:
+                    if not word.lower() in common_english_and_swedish.misc_words_to_ignore:
                         new_filtered_unique_words_dict[word.lower()]=copy.deepcopy(unique_words[word.lower()])
                     if Verbose_Flag:
                         print(f'case 2: {word}')
