@@ -4004,5 +4004,7 @@ miss_spelled_to_correct_spelling={
     'Alfv ́en': {'c': 'Alfvén', 's': 'diva2:1549043'},
     'Alfv': {'c': 'Alfvén', 's': 'diva2:1549043'},
     'SSL/TSL': {'c': 'SSL/TLS', 's': 'diva2:769846'},
+    'chaförs': {'c': 'chaufför', 's': 'diva2:1438166', 'n': 'error in original'},  
+
 
 }

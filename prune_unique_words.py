@@ -679,7 +679,7 @@ filename_extentions_to_skip=[
     '.ipynb',
     '.jpg',
     '.js',
-#    '.json',
+    #'.json',
     '.mods',
     '.pdf',
     '.png',
@@ -2210,6 +2210,10 @@ def main():
         filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_number)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} numbers removed')
 
+
+        filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_filename_to_skip)
+        print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} filenames removed')
+
         filtered_unique_words_dict, reduction = filter_words_by_function(filtered_unique_words_dict, is_fraction)
         print(f'{len(filtered_unique_words_dict):>{Numeric_field_width}} words left, {reduction:>{Numeric_field_width}} fractions removed')
 
@@ -3171,6 +3175,7 @@ def main():
                 'domainname': is_domainname,
                 'improbable word':  is_improbable_word,
                 'MiscSymbol_or_Pictograph': is_MiscSymbol_or_Pictograph,
+                'filename': is_filename_to_skip,
             }
             annotated_dict=dict()
             for word in unique_words:
