@@ -11,7 +11,7 @@
 # It also outputs others files, such as one with the raw text from all the wikipages.
 # The pages are separated with lines, such as:
 # ⌘⏩routing-table-search-classless⏪
-# where the page URL is between the markers. This makes it easy to look at the source material, for example when tryign to locate misspellings.
+# where the page URL is between the markers. This makes it easy to look at the source material, for example when trying to locate misspellings.
 #
 # G. Q: Maguire Jr.
 #
@@ -2942,7 +2942,7 @@ def main():
 
     parser.add_option("--dir", dest="dir_prefix",
                       default='./',
-                      help="read configuration from FILE", metavar="FILE")
+                      help="read from FILE", metavar="FILE")
 
 
     parser.add_option('-l', '--ligatures',

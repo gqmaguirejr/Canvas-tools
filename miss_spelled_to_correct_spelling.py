@@ -4005,6 +4005,6 @@ miss_spelled_to_correct_spelling={
     'Alfv': {'c': 'Alfvén', 's': 'diva2:1549043'},
     'SSL/TSL': {'c': 'SSL/TLS', 's': 'diva2:769846'},
     'chaförs': {'c': 'chaufför', 's': 'diva2:1438166', 'n': 'error in original'},  
-
+    'snap-togrid': {'c': 'snap-to-grid', 's': 'diva2:1856316', 'n': 'correct in these, the second hyphen is at the end of the line'},
 
 }

@@ -22344,5 +22344,6 @@ merged_words={
     'NM network',
     'regarding the',
     'coefficients of',
-    'redundancies — a'
+    'redundancies — a',
+    'internet, the', # diva2:1856439 has no space after the comma
 }
