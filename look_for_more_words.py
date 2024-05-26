@@ -17,6 +17,9 @@
 # and feed these into the program - as if they were in the input unique words:
 # ./look_for_more_words.py --self /tmp/unique_words-abstracts-English.json
 #
+# Useful Gemini prompt: 
+#Please generate python dict with the POS and CEFR levels of the following Swedish words. The format of each dict  element should be {'word': {'A1': 'pos', 'A2': 'pos', 'B1': 'pos', 'B2': 'pos', 'C1': 'pos', 'C2': 'pos'}, The levels and part of speech only need to be included when relevant to the word.
+#
 # 2024-01-20
 #
 # G. Q. Maguire Jr.
