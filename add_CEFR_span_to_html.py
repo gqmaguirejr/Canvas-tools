@@ -27,6 +27,7 @@ Verbose_flag=False
 
 from bs4 import BeautifulSoup
 import nltk
+from nltk import RegexpParser
 
 import re
 
@@ -42,6 +43,15 @@ import diva_corrected_abstracts
 
 # width to use for outputting numeric values
 Numeric_field_width=7
+
+# Define a grammar for basic chunking
+grammar = r""" NP: {<DT|JJ|NN.*>+} # Chunk sequences of DT, JJ, NN
+               VP: {<VB.*>} {<NN.*>*} # Chunk VB (verb) followed by optional NN (noun)
+"""
+
+# Create a parser with the grammar
+parser = RegexpParser(grammar)
+
 
 
 # entries in the dict will have the form: 'acronym': ['expanded form 1', 'expanded form 2',  ... ]
@@ -640,6 +650,11 @@ def tokenize_and_pos_tag_html_sentences(html_content):
                 #words = tokenizer.tokenize(text_node)
                 words = nltk.word_tokenize(text_node, language='english')
                 pos_tags = nltk.pos_tag(words)
+
+                # Chunk the POS tagged tokens
+                chunked_sentence = parser.parse(tagged_tokens)
+                # Print the chunked sentence structure (tree)
+                print(f"{chunked_sentence=}")
 
                 # Create new spans for words and POS tags
                 new_spans = []

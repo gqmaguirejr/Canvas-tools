@@ -245,6 +245,19 @@ style_info="""<style>
 
 from bs4 import BeautifulSoup, NavigableString
 import nltk
+from nltk import RegexpParser
+
+# Define a grammar for basic chunking
+grammar = r""" NP: {<DT|JJ|NN.*>+} # Chunk sequences of DT, JJ, NN
+               VP: {<VB.*>} {<NN.*>*} # Chunk VB (verb) followed by optional NN (noun)
+"""
+
+grammar = r"""   NP: {<DT|PP\$>?<JJ>*<NN>}   # chunk determiner/possessive, adjectives and nouns
+      {<NNP>+}                # chunk sequences of proper nouns
+"""
+
+# Create a parser with the grammar
+parser = RegexpParser(grammar)
 
 # Custom formatter function for prettify()
 def custom_formatter(text):
@@ -283,6 +296,11 @@ def tokenize_and_pos_tag_html_sentences(html_content):
                 #words = tokenizer.tokenize(text_node)
                 words = nltk.word_tokenize(text_node, language='english')
                 pos_tags = nltk.pos_tag(words)
+
+                # Chunk the POS tagged tokens
+                chunked_sentence = parser.parse(pos_tags)
+                # Print the chunked sentence structure (tree)
+                print(f"{chunked_sentence=}")
 
                 # Create new spans for words and POS tags
                 new_spans = []

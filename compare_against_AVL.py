@@ -1339,6 +1339,44 @@ def main():
         print(f"{w=}, {pos}")
     print(f'{len(words_not_found)} in words_not_found')
     #
+    # look at POS information
+    #
+    words_not_found=[]
+    #
+    levels_found=set()
+    bogus_levels=set()
+    all_pos_found=set()
+    #
+    available_cefr_levels=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'XX']
+    # for word in words_AVL:
+    #     w=word['word']
+    #     pos=word['pos']
+    #     if w in AVL_words_with_CEFR.avl_words:
+    for w in AVL_words_with_CEFR.avl_words:
+        pos_for_word=AVL_words_with_CEFR.avl_words[w]
+        entry_found_level= [k for k, v in pos_for_word.items()]
+
+        #print(f"{w}: {pos_for_word=}: {entry_found_level}")
+        for cl in entry_found_level:
+            if cl not in available_cefr_levels:
+                print(f"{w}: {pos_for_word=}: {entry_found_level}")
+                bogus_levels.add(cl)
+                
+        if pos_for_word:
+            for cl in available_cefr_levels:
+                cefr_level=pos_for_word.get(cl, False)
+                if cefr_level and isinstance(cefr_level, str):
+                    pos = [s.strip() for s in cefr_level.split(',')]
+                    for ps in pos:
+                        if ps == 'verb' or ps == 'noun' or ps == "Adj":
+                            print(f"{w}: {pos_for_word=}: {entry_found_level}")
+                        all_pos_found.add(ps)
+
+    if len(bogus_levels) > 0:
+        print("Found some bogus CEFR levels, for the following entries")
+        print(f"{bogus_levels=}")
+
+    print(f"{sorted(all_pos_found)=}")
 #
 if __name__ == "__main__": main()
 
