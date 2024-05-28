@@ -19,7 +19,7 @@
 # I began by comparing the AVL words with those of a numnber of word lists and primarily the words that I had collected from a number of courses and from the abstracts of theses
 # in Electrical Engineering and Computer Science at KTH Royal Institue of Technology.
 #
-# I begin by were missing the the previoulsy colleced words
+# I begin by adding the words that were missing from my previoulsy colleced words
 # The program outputs the missing words, in the form:
 # ...
 # w='plaster', v
@@ -29,9 +29,12 @@
 # w='uncheck', v
 # ... 
 # The program reported 8241 in words_not_found, i.e., words that were in AVL, but not in one of the word lists that I was using.
-# [Note that this simple tests only considers English words and does not use any of the specialed lists of peoples names, place names, product names, varioous lists of words in a variety of languages, etc.
+# [Note that this simple tests only considers English words and does not use any of the specialed lists of peoples names, place names, product names, abbreviations ending in periods, varioous lists of words in a variety of languages, etc.
 #
 # I then added the missing words to avl_words, until I had zero missing words. Then I said, why not do them all. The result is below.
+#
+# On 20240-05-27, Mark Davies said I could post this file in github. Be sure to check out the wonderful things that he has done - see https://www.mark-davies.org/
+#
 #
 #
 # 2024-05-26
