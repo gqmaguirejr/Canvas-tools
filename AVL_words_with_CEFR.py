@@ -13605,31 +13605,31 @@ avl_words={
     'realistic': {'B1': 'Adjective'},
     'realistically': {'B1': 'Adverb'},
     'reality': {'B1': 'Noun'},
-    'realization': {'C1': 'Noun'},
-    'realize': {'B1': 'Verb'},
+    'realization': {'B2': 'Noun', 'C1': 'Noun'},
+    'realize': {'B1': 'Verb', 'B2': 'Verb', 'C1': 'Verb'},
     'really': {'A1': 'Adverb'},
-    'realm': {'B2': 'Noun'},
-    'realpolitik': {'C1': 'Noun'},
+    'realm': {'B2': 'Noun', 'C1': 'Noun'}, # Consider C1 when used in the sense of a field of activity or interest.
+    'realpolitik': {'C1': 'Noun', 'C2': 'Noun'}, #  Due to its political and historical context, it could be considered C2.
     'ream': {'B1': 'Noun'},
     'reap': {'A2': 'Verb'},
     'reappear': {'A2': 'Verb'},
     'reappraisal': {'B2': 'Noun'},
-    'rear': {'A2': 'Noun', 'B1': 'Verb, Noun', 'B2': 'Adjective', 'C1': 'Verb'},
+    'rear': {'A2': 'Noun', 'B1': 'Verb, Noun', 'B2': 'Adjective, Verb', 'C1': 'Verb'}, # B2 verb - The verb sense of "to raise" is more common at B2. 
     'rearing': {'B1': 'Noun'},
     'rearrange': {'A2': 'Verb'},
     'rearrangement': {'C1': 'Noun'},
-    'reason': {'A2': 'Noun', 'B2': 'Noun'},
+    'reason': {'A2': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, #  Add the verb form for logical deduction (e.g., "I reasoned that...").
     'reasonable': {'B1': 'Adjective'},
     'reasonableness': {'B1': 'Noun'},
     'reasonably': {'A2': 'Adverb'},
-    'reasoned': {'B2': 'Adjective'},
-    'reasoning': {'B1': 'Noun', 'B2': 'Noun'},
-    'reassemble': {'B1': 'Verb'},
-    'reassert': {'B2': 'Verb'},
-    'reassess': {'B2': 'Verb'},
+    'reasoned': {'B2': 'Adjective', 'C1': 'Adjective'}, # In academic or formal contexts, can be C1.
+    'reasoning': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, # In academic or formal contexts, can be C1.
+    'reassemble': {'B1': 'Verb', 'C1': 'Verb'},
+    'reassert': {'B2': 'Verb', 'C1': 'Verb'},
+    'reassess': {'B2': 'Verb', 'C1': 'Verb'},
     'reassessment': {'B2': 'Noun'},
-    'reassign': {'B2': 'Verb'},
-    'reassurance': {'B1': 'Noun'},
+    'reassign': {'B2': 'Verb', 'C1': 'Verb'},
+    'reassurance': {'A2': 'Noun', 'B1': 'Noun'}, # This can be understood at A2, although the verb "reassure" is B1.
     'reassure': {'B1': 'Verb'},
     'reassuring': {'A2': 'Adjective'},
     'reauthorization': {'B2': 'Noun'},
@@ -13638,7 +13638,7 @@ avl_words={
     'rebellion': {'B1': 'Noun'},
     'rebellious': {'A2': 'Adjective'},
     'rebirth': {'B1': 'Noun'},
-    'reborn': {'B2': 'Verb'},
+    'reborn': {'B2': 'Verb', 'C1': 'Adjective'},
     'rebound': {'A2': 'Verb'},
     'rebuff': {'B1': 'Verb'},
     'rebuild': {'B1': 'Verb'},
@@ -13646,14 +13646,14 @@ avl_words={
     'rebuke': {'B1': 'Verb'},
     'rebut': {'B2': 'Verb'},
     'rebuttal': {'B2': 'Noun'},
-    'recalcitrant': {'C1': 'Adjective'},
+    'recalcitrant': {'C1': 'Adjective', 'C2': 'Adjective'}, # This word is quite formal and might be more suitable for C2.
     'recall': {'B1': 'Verb'},
-    'recapitulate': {'C1': 'Verb'},
+    'recapitulate': {'B2': 'Verb', 'C1': 'Verb'}, # B2 in the sense of "summarize," C1 for more academic usage.
     'recapture': {'B2': 'Verb'},
     'recast': {'B2': 'Verb'},
     'recede': {'B1': 'Verb'},
     'receipt': {'A2': 'Noun'},
-    'receivable': {'C2': 'Adjective'},
+    'receivable': {'B2': 'Adjective', 'C1': 'Adjective', 'C2': 'Adjective'}, #  Could be B2 in a business context, C1 for accounting.
     'receive': {'B1': 'Verb'},
     'received': {'A2': 'Verb'},
     'receiver': {'B2': 'Noun'},
@@ -13666,23 +13666,23 @@ avl_words={
     'receptive': {'B2': 'Adjective'},
     'receptivity': {'B2': 'Noun'},
     'receptor': {'B2': 'Noun'},
-    'recess': {'A1': 'Noun'},
+    'recess': {'A1': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # While A1 is accurate for the school break, it can be B1/B2 for other meanings like a hidden part.
     'recession': {'B2': 'Noun'},
     'recharge': {'B1': 'Verb'},
     'rechargeable': {'B1': 'Adjective'},
-    'recidivism': {'C1': 'Noun'},
+    'recidivism': {'C1': 'Noun', 'C2': 'Noun'}, #  This is a specialized term from criminology, so C2 is more appropriate.
     'recipe': {'A2': 'Noun'},
     'recipient': {'B1': 'Noun'},
-    'reciprocal': {'C1': 'Adjective'},
-    'reciprocate': {'B1': 'Verb'},
-    'reciprocity': {'C1': 'Noun'},
+    'reciprocal': {'B2': 'Adjective', 'C1': 'Adjective'}, # Can be B2 in everyday situations, C1 in more formal or legal contexts.
+    'reciprocate': {'B1': 'Verb', 'B2': 'Verb', 'C1': 'Verb'}, # Can be B2 in everyday situations, C1 in more formal or legal contexts.
+    'reciprocity': {'B2': 'Noun', 'C1': 'Noun'}, # Can be B2 in everyday situations, C1 in more formal or legal contexts.
     'recital': {'B2': 'Noun'},
     'recitation': {'B2': 'Noun'},
     'recite': {'A1': 'Verb'},
     'reckless': {'A2': 'Adjective'},
-    'reckon': {'A1': 'Verb'},
+    'reckon': {'A1': 'Verb', 'B1': 'Verb', 'B2': 'Verb'}, # B1 for the informal meaning "think or suppose," B2 for the formal meaning "calculate or estimate"
     'reckoning': {'B2': 'Noun'},
-    'reclaim': {'B1': 'Verb'},
+    'reclaim': {'B1': 'Verb', 'B2': 'Verb'}, #  B2 for the more complex meaning of "to take back something that was lost or stolen."
     'reclamation': {'B2': 'Noun'},
     'recode': {'B2': 'Verb'},
     'recognition': {'B1': 'Noun'},
@@ -13787,65 +13787,65 @@ avl_words={
     'referent': {'C1': 'Noun'},
     'referential': {'C1': 'Adjective'},
     'referral': {'B1': 'Noun'},
-    'refill': {'A1': 'Noun', 'A2': 'Verb'},
-    'refinance': {'B2': 'Verb'},
-    'refine': {'B2': 'Verb'},
-    'refined': {'B1': 'Adjective'},
+    'refill': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Verb'},
+    'refinance': {'B2': 'Verb', 'C1': 'Verb'}, # C1 Often used in financial contexts
+    'refine': {'B2': 'Verb', 'C1': 'Verb'}, # Consider C1 for more abstract or specialized uses (e.g., refining a theory)
+    'refined': {'B1': 'Adjective', 'B2': 'Adjective'}, #  B2 for the meaning "sophisticated" or "elegant"
     'refinement': {'B2': 'Noun'},
-    'refinery': {'C2': 'Noun'},
+    'refinery': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # B2 for general understanding, C1 for technical discussions
     'reflect': {'B1': 'Verb'},
-    'reflectance': {'C2': 'Noun'},
+    'reflectance': {'C1': 'Noun', 'C2': 'Noun'}, # This is a technical term, so C2 is more appropriate
     'reflected': {'B1': 'Adjective'},
     'reflection': {'B2': 'Noun'},
     'reflective': {'B1': 'Adjective'},
-    'reflectivity': {'C1': 'Noun'},
-    'reflector': {'C1': 'Noun'},
+    'reflectivity': {'B2': 'Noun', 'C1': 'Noun'}, # B2 in general usage, C1 for scientific contexts
+    'reflector': {'B2': 'Noun', 'C1': 'Noun'}, #  B2 in general usage, C1 for scientific contexts
     'reflex': {'B1': 'Noun'},
-    'reflexive': {'B2': 'Adjective'},
-    'reflux': {'C1': 'Noun'},
-    'reforestation': {'B1': 'Noun', 'B2': 'Noun'},
-    'reform': {'B1': 'Noun', 'B2': 'Verb, Noun'},
-    'reformation': {'B1': 'Noun','B2': 'Noun'},
-    'reformed': {'B2': 'Adjective'},
-    'reformer': {'B2': 'Noun'},
-    'reforming': {'B2': 'Verb'},
-    'reformist': {'B2': 'Noun','C1': 'Adjective'},
+    'reflexive': {'B2': 'Adjective', 'C1': 'Adjective'}, # Consider C1 for its grammatical or linguistic sense.
+    'reflux': {'B2': 'Noun', 'C1': 'Noun'}, # B2 in everyday usage, C1 in medical contexts.
+    'reforestation': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, # C1 Often used in environmental discussions
+    'reform': {'B1': 'Noun', 'B2': 'Verb, Noun', 'C1': 'Verb'}, # For significant reforms or changes, C1 is more appropriate
+    'reformation': {'B1': 'Noun','B2': 'Noun', 'C1': 'Noun'},
+    'reformed': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 for for historical or religious reform movements
+    'reformer': {'B2': 'Noun', 'C1': 'Noun'}, # C1 for for historical or religious reform movements
+    'reforming': {'B2': 'Verb', 'C1': 'Verb'}, # C1 for for historical or religious reform movements
+    'reformist': {'B2': 'Noun','C1': 'Adjective'}, # C1 for for historical or religious reform movements
     'reformulate': {'B2': 'Verb'},
     'reformulation': {'C1': 'Noun'},
     'refract': {'C1': 'Verb'},
     'refraction': {'C1': 'Noun'},
     'refractor': {'B2': 'Noun'},
-    'refractory': {'C1': 'Adjective'},
-    'refrain': {'B1': 'Verb', 'B2': 'Noun'},
+    'refractory': {'C1': 'Adjective', 'C2': 'Adjective'}, # C1 in general or medical use, C2 in technical/scientific contexts
+    'refrain': {'B1': 'Verb', 'B2': 'Noun', 'C1': 'Noun'}, # C1 for the meaning "a repeated line in a poem or song"
     'refresh': {'A1': 'Verb'},
     'refreshing': {'A2': 'Adjective'},
     'refrigerant': {'B2': 'Noun'},
     'refrigerate': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Verb'},
-    'refrigeration': {'B2': 'Noun'},
-    'refrigerator': {'A2': 'Noun'},
-    'refuel': {'A2': 'Verb', 'B1': 'Verb'},
+    'refrigeration': {'B1': 'Noun', 'B2': 'Noun'},
+    'refrigerator': {'A2': 'Noun', 'B1': 'Noun'},
+    'refuel': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Verb'}, # B1 for simple refueling of vehicles
     'refuge': {'B1': 'Noun'},
     'refugee': {'A2': 'Noun'},
     'refund': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun', 'C1': 'Verb'},
-    'refurbish': {'B1': 'Verb', 'B2': 'Verb'},
+    'refurbish': {'B1': 'Verb', 'B2': 'Verb'}, # B2 may be more fitting for more extensive renovations or upgrades
     'refusal': {'B1': 'Noun'},
     'refuse': {'A1': 'Verb'},
-    'refutation': {'B2': 'Noun'},
+    'refutation': {'B2': 'Noun', 'C1': 'Noun'}, # This is a formal term, often used in academic or legal contexts
     'refute': {'B2': 'Verb'},
     'regain': {'B1': 'Verb'},
-    'regalia': {'B1': 'Noun','B2': 'Noun'},
-    'regard': {'B1': 'Verb', 'B2': 'Verb'},
+    'regalia': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, # While it can be understood at B1, it is more commonly used at B2 or C1 due to its formal nature and association with ceremonies or traditions
+    'regard': {'B1': 'Verb', 'B2': 'Verb', 'C1': 'Verb'}, # Add the verb in the sense of "to consider or think about something in a particular way" which is a C1 level usage
     'regarding': {'B1': 'Preposition'},
-    'regardless': {'B2': 'Adverb', 'C1': 'Conjunction'},
+    'regardless': {'B2': 'Adverb, Conjunction', 'C1': 'Conjunction'}, # It can be used as a conjunction ("regardless of") at B2 level
     'regards': {'A1': 'Noun','A2': 'Noun','B1': 'Noun','B2': 'Noun'},
     'regenerate': {'B2': 'Verb'},
     'regeneration': {'B2': 'Noun'},
-    'regenerative': {'C1': 'Adjective'},
-    'regent': {'B1': 'Noun','B2': 'Noun'},
-    'reggae': {'A2': 'Noun','B1': 'Noun','B2': 'Noun'},
-    'regime': {'B2': 'Noun'},
-    'regimen': {'B1': 'Noun','B2': 'Noun'},
-    'regiment': {'B1': 'Noun','B2': 'Noun'},
+    'regenerative': {'B2': 'Adjective', 'C1': 'Adjective'}, # Can be B2 in the context of biology or medicine, but C1 for more abstract or technical uses
+    'regent': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, # This term is typically used in historical or political contexts
+    'reggae': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # While A2 is possible for basic recognition, B1 is more appropriate as it requires understanding of music genre
+    'regime': {'B2': 'Noun', 'C1': 'Noun'}, #  While B2 is acceptable for the basic meanings, C1 is more suitable for political or specialized usage
+    'regimen': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, #  While B2 is acceptable for the basic meanings, C1 is more suitable for political or specialized usage
+    'regiment': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Verb'}, # While the noun is B2, the verb form (meaning "to organize strictly") is C1
     'regimental': {'B2': 'Adjective'},
     'region': {'B1': 'Noun'},
     'regional': {'B1': 'Adjective'},
@@ -13855,37 +13855,37 @@ avl_words={
     'registered': {'B1': 'Adjective'},
     'registrar': {'B1': 'Noun'},
     'registration': {'B1': 'Noun'},
-    'registry': {'C1': 'Noun'},
+    'registry': {'B2': 'Noun', 'C1': 'Noun'}, # While B2 is acceptable for general meaning, C1 is suitable for more formal contexts (e.g., Windows registry)
     'regress': {'B2': 'Verb'},
     'regression': {'B1': 'Noun'},
     'regressive': {'B2': 'Adjective'},
-    'regret': {'A2': 'Verb', 'B1': 'Verb', 'C1': 'Noun'},
+    'regret': {'A2': 'Verb', 'B1': 'Verb, Noun', 'B2': 'Noun', 'C1': 'Noun'}, # The noun form is more common at B1/B2
     'regrettable': {'A2': 'Adjective','B1': 'Adjective'},
     'regrettably': {'B2': 'Adverb'},
-    'regroup': {'B1': 'Verb', 'B2': 'Verb'},
+    'regroup': {'B1': 'Verb', 'B2': 'Verb', 'C1': 'Verb'}, # In military or strategic context, C1 may be more appropriate
     'regrowth': {'C1': 'Noun'},
     'regular': {'A1': 'Adjective', 'A2': 'Adjective'},
     'regularity': {'B2': 'Noun'},
     'regularly': {'A2': 'Adverb'},
-    'regulate': {'B2': 'Verb'},
+    'regulate': {'B2': 'Verb', 'C1': 'Verb'}, # In the sense of "control or supervise (something, especially a company or business activity) by means of rules and regulations," it's more C1
     'regulated': {'B1': 'Adjective'},
-    'regulation': {'C1': 'Noun'},
+    'regulation': {'B2': 'Noun', 'C1': 'Noun'}, # Can be B2 in common usage
     'regulator': {'B1': 'Noun'},
     'regulatory': {'B2': 'Adjective'},
     'rehabilitate': {'B1': 'Verb'},
-    'rehabilitation': {'B2': 'Noun'},
-    'rehabilitative': {'B2': 'Adjective'},
+    'rehabilitation': {'B2': 'Noun', 'C1': 'Noun'}, # onsider C1 for medical or legal contexts
+    'rehabilitative': {'B2': 'Adjective', 'C1': 'Adjective'}, # onsider C1 for medical or legal contexts
     'rehearsal': {'A2': 'Noun'},
-    'rehearse': {'B1': 'Verb', 'B2': 'Verb'},
+    'rehearse': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Verb'}, # The verb can be understood at A2 for basic practice or preparation
     'reification': {'C1': 'Noun'},
-    'reify': {'C1': 'Verb'},
+    'reify': {'C1': 'Verb', 'C2': 'Verb'}, # This is a very formal and philosophical term, so it might be more appropriate for C2
     'reign': {'B1': 'Verb', 'C1': 'Noun', 'B2': 'Verb'},
     'reigning': {'B2': 'Adjective'},
     'reimburse': {'B2': 'Verb'},
     'reimbursement': {'B2': 'Noun'},
-    'rein': {'A2': 'Noun','B1': 'Noun','B2': 'Noun','C1': 'Verb'},
-    'reincarnation': {'B2': 'Noun'},
-    'reindeer': {'A2': 'Noun','B1': 'Noun','B2': 'Noun'},
+    'rein': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun, Verb', 'C1': 'Verb'}, # The verb form "to rein in" meaning to control or restrain, is B2
+    'reincarnation': {'B2': 'Noun', 'C1': 'Noun'}, # This could be considered C1 due to its religious and philosophical connotations
+    'reindeer': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # A2 for basic recognition, B1 for more detailed knowledge of the anima
     'reinforce': {'B2': 'Verb'},
     'reinforcement': {'B2': 'Noun'},  # Reinforcement
     'reinforcer': {'B2': 'Noun'},
@@ -13897,44 +13897,44 @@ avl_words={
     'reinterpretation': {'B2': 'Noun'},
     'reintroduce': {'B1': 'Verb'},
     'reintroduction': {'B2': 'Noun'},
-    'reinvent': {'B2': 'Verb'},
+    'reinvent': {'B2': 'Verb', 'C1': 'Verb'}, # Consider C1 as these words often imply significant change or innovation
     'reinvention': {'C1': 'Noun'},
-    'reinvigorate': {'B2': 'Verb'},
+    'reinvigorate': {'B2': 'Verb', 'C1': 'Verb'}, # Often used in formal contexts
     'reiterate': {'B1': 'Verb'},
     'reject': {'B2': 'Verb'},
     'rejected': {'A2': 'Verb'},
     'rejection': {'B1': 'Noun'},
     'rejoice': {'B1': 'Verb', 'B2': 'Verb'},
-    'rejoin': {'B1': 'Verb','B2': 'Verb'},
-    'rejoinder': {'B2': 'Noun'},
+    'rejoin': {'B1': 'Verb', 'B2': 'Verb'}, # The meaning "to answer or reply sharply" is B2
+    'rejoinder': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # This is a formal term, so C1 or C2 is more appropriate
     'rejuvenate': {'B1': 'Verb'},
     'rekindle': {'B1': 'Verb'},
     'relapse': {'B1': 'Verb'},
     'relate': {'B1': 'Verb'},
     'related': {'B2': 'Adjective'},
-    'relatedness': {'C2': 'Noun'},
+    'relatedness': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, #  B2 in simple contexts, C1 for more abstract or psychological uses
     'relation': {'A2': 'Noun'},
     'relational': {'B2': 'Adjective'},
     'relationship': {'B1': 'Noun'},
     'relative': {'A2': 'Adjective', 'B1': 'Noun'},
     'relatively': {'B2': 'Adverb'},
-    'relativism': {'C1': 'Noun'},
-    'relativist': {'C1': 'Noun'},
-    'relativistic': {'C1': 'Adjective'},
+    'relativism': {'C1': 'Noun', 'C2': 'Noun'}, # Consider C2 due to the complex philosophical nature of these terms
+    'relativist': {'C1': 'Noun', 'C2': 'Noun'}, # Consider C2 due to the complex philosophical nature of these terms
+    'relativistic': {'C1': 'Adjective', 'C2': 'Adjective'}, # Consider C2 due to the complex philosophical nature of these terms
     'relativity': {'C1': 'Noun'},
     'relax': {'A1': 'Verb'},
     'relaxation': {'B1': 'Noun'},
     'relaxed': {'A2': 'Adjective'},
     'relaxing': {'A2': 'Adjective'},
-    'relay': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'},
+    'relay': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun, Verb', 'C1': 'Noun'}, # B2 Add the verb form meaning "to pass on information or a message."
     'release': {'A2': 'Verb', 'B1': 'Noun'},
-    'released': {'B1': 'Verb'},
+    'released': {'B1': 'Verb', 'B2': 'Adjective'}, # Consider adding the meaning "made public" which is B2
     'relegate': {'B1': 'Verb'},
-    'relentless': {'B2': 'Adjective', 'C1': 'Adverb'},
-    'relentlessly': {'B2': 'Adverb'},
+    'relentless': {'B2': 'Adjective', 'C1': 'Adverb'}, # These can be B2 in informal contexts but C1 in more intense or persistent situations
+    'relentlessly': {'B2': 'Adverb', 'C1': 'Adverb'}, # These can be B2 in informal contexts but C1 in more intense or persistent situations
     'relevance': {'B2': 'Noun'},
     'relevant': {'B1': 'Adjective'},
-    'reliability': {'C1': 'Noun'},
+    'reliability': {'B2': 'Noun', 'C1': 'Noun'}, # Can be B2 in everyday use, C1 in technical or statistical contexts
     'reliable': {'A2': 'Adjective'},
     'reliably': {'B1': 'Adverb'},
     'reliance': {'B1': 'Noun'},
@@ -13942,71 +13942,71 @@ avl_words={
     'relic': {'B1': 'Noun'},
     'relief': {'B1': 'Noun'},
     'relieve': {'B1': 'Verb'},
-    'religion': {'B1': 'Noun'},
-    'religiosity': {'C1': 'Noun'},
-    'religious': {'C2': 'Adjective'},
+    'religion': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, # While B1 is the general level, religious discussions can often involve C1 vocabulary and concepts
+    'religiosity': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for basic understanding, C1 for deeper discussions about faith or belief systems
+    'religious': {'B2': 'Adjective', 'C1': 'Adjective', 'C2': 'Adjective'}, # B2 for basic understanding, C1 for deeper discussions about faith or belief systems
     'religiously': {'B2': 'Adverb'},
     'relinquish': {'B2': 'Verb'},
-    'reliquary': {'B2': 'Noun'},
-    'relish': {'B1': 'Verb', 'B2': 'Noun'},
-    'relive': {'B2': 'Verb'},
+    'reliquary': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # This is a specialized term related to religious artifacts, so it may be more appropriate for C1 or even C2
+    'relish': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Noun'}, # he verb form (meaning "to enjoy") could be introduced at A2
+    'relive': {'B2': 'Verb', 'C1': 'Verb'}, # Consider C1, as this verb often implies revisiting emotional or significant experiences
     'relocate': {'B1': 'Verb'},
     'relocation': {'B1': 'Noun'},
-    'reluctance': {'B1': 'Noun'},
+    'reluctance': {'B1': 'Noun', 'B2': 'Noun'}, # While understandable at B1, it may be more suitable for B2 due to its nuanced meaning
     'reluctant': {'B1': 'Adjective'},
     'reluctantly': {'B1': 'Adverb'},
     'rely': {'A2': 'Verb'},
-    'rem': {'C1': 'Noun'},
+    'rem': {'C1': 'Noun', 'C2': 'Noun'}, # This is a unit of radiation measurement and is likely C2
     'remain': {'B1': 'Verb'},
     'remainder': {'B1': 'Noun'},
     'remaining': {'A2': 'Adjective'},
     'remains': {'B1': 'Noun'},
-    'remake': {'B2': 'Verb'},
-    'remand': {'C1': 'Verb'},
+    'remake': {'B1': 'Noun', 'B2': 'Verb'}, # Consider adding the noun form, which is common at B1/B2
+    'remand': {'B2': 'Verb', 'C1': 'Verb, Noun'}, # B2 for the general sense of "to send back," C1 for legal contexts
     'remark': {'A2': 'Noun', 'B1': 'Verb'},
     'remarkable': {'B2': 'Adjective'},
-    'remarkably': {'C1': 'Adverb'},
+    'remarkably': {'B2': 'Adverb', 'C1': 'Adverb'}, # The meaning "surprisingly" is more common at B2
     'remarriage': {'C1': 'Noun'},
     'remarry': {'B2': 'Verb'},
-    'remedial': {'B2': 'Adjective'},
-    'remediate': {'C1': 'Verb'},
-    'remediation': {'C1': 'Noun'},
-    'remedy': {'A2': 'Noun', 'B2': 'Noun', 'C1': 'Verb'},
+    'remedial': {'B1': 'Adjective', 'B2': 'Adjective'}, # an be B1 in the sense of "intended to correct or improve".
+    'remediate': {'B2': 'Verb', 'C1': 'Verb'}, # B2 for simple corrective actions, C1 for more complex or environmental remediation
+    'remediation': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for simple corrective actions, C1 for more complex or environmental remediation
+    'remedy': {'A2': 'Noun', 'B1': 'Verb', 'B2': 'Noun', 'C1': 'Verb'},
     'remember': {'A1': 'Verb'},
-    'remembrance': {'B2': 'Noun'},
+    'remembrance': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for the act of remembering, B2 for a memorial or keepsake
     'remind': {'B1': 'Verb'},
     'reminder': {'A2': 'Noun'},
-    'reminisce': {'B1': 'Verb'},
-    'reminiscence': {'C1': 'Noun'},
-    'reminiscent': {'C1': 'Adjective'},
+    'reminisce': {'B1': 'Verb', 'B2': 'Verb'},
+    'reminiscence': {'B2': 'Noun', 'C1': 'Noun'},
+    'reminiscent': {'B2': 'Adjective', 'C1': 'Adjective'},
     'remission': {'B2': 'Noun'},
-    'remittance': {'C1': 'Noun'},
-    'remnant': {'B2': 'Noun'},
-    'remodel': {'A2': 'Verb'},
+    'remittance': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for simple money transfer, C1 in financial/legal contexts
+    'remnant': {'B1': 'Noun', 'B2': 'Noun'},
+    'remodel': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Verb'}, # B1 for simple changes, B2 for major renovations
     'remorse': {'B1': 'Noun'},
     'remote': {'A1': 'Adjective'},
-    'remotely': {'B2': 'Adverb'},
+    'remotely': {'B2': 'Adverb', 'C1': 'Adverb'}, # Consider C1 for meanings like "slightly" or "in the slightest degree"
     'remoteness': {'B2': 'Noun'},
     'removable': {'B2': 'Adjective'},
-    'removal': {'B1': 'Noun'},
+    'removal': {'A2': 'Noun', 'B1': 'Noun'}, # Could be A2 in basic contexts (e.g., "removal of a stain")
     'remove': {'A2': 'Verb'},
-    'remuneration': {'B2': 'Noun'},
-    'renaissance': {'C1': 'Noun'},
-    'renal': {'C1': 'Adjective'},
+    'remuneration': {'B2': 'Noun', 'C1': 'Noun'}, # This is a formal term for payment, often used in professional settings
+    'renaissance': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for the historical period, C1 for the broader meaning of "revival"
+    'renal': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 in everyday contexts, C1 in medical terms
     'rename': {'A2': 'Verb'},
-    'render': {'B2': 'Verb'},
-    'rendering': {'B1': 'Noun', 'B2': 'Verb'},
+    'render': {'B2': 'Verb', 'C1': 'Verb'}, # Consider C1 for more abstract uses like "rendering a judgment"
+    'rendering': {'B1': 'Noun', 'B2': 'Verb', 'C1': 'Noun'},  # As a technical term for creating images or models, it's C1
     'rendezvous': {'B2': 'Noun'},
-    'rendition': {'B2': 'Noun'},
+    'rendition': {'B2': 'Noun', 'C1': 'Noun'}, # C1 for artistic or musical performance, or a legal interpretation
     'renegade': {'B2': 'Noun', 'C1': 'Adjective'},
     'renege': {'B2': 'Verb'},
-    'renegotiate': {'C1': 'Verb'},
+    'renegotiate': {'B2': 'Verb', 'C1': 'Verb'}, # B2 in simpler contexts, C1 for complex negotiations (e.g., contracts)
     'renew': {'B1': 'Verb'},
     'renewable': {'B1': 'Adjective'},
-    'renewables': {'C1': 'Noun'},
+    'renewables': {'B2': 'Noun', 'C1': 'Noun'}, # 2 for general understanding, C1 for discussions about energy
     'renewal': {'B1': 'Noun'},
-    'renewed': {'B1': 'Adjective'},
-    'renounce': {'B2': 'Verb'},
+    'renewed': {'B1': 'Adjective', 'B2': 'Adjective'}, # Consider B2 for the meaning "resumed after an interruption".
+    'renounce': {'B2': 'Verb', 'C1': 'Verb'}, # Often used in legal or formal contexts
     'renovate': {'B1': 'Verb'},
     'renovation': {'B1': 'Noun'},
     'renown': {'B2': 'Noun'},
@@ -14018,61 +14018,61 @@ avl_words={
     'rentier': {'C1': 'Noun'},
     'renunciation': {'B2': 'Noun'},
     'reopen': {'A2': 'Verb'},
-    'reorder': {'B1': 'Verb'},
-    'reorganization': {'C1': 'Noun'},
-    'reorganize': {'C1': 'Verb'},
+    'reorder': {'B1': 'Verb', 'B2': 'Verb'}, # Can be B1 for simple actions like reordering food
+    'reorganization': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for everyday changes, C1 for structural or corporate reorganizations
+    'reorganize': {'B2': 'Verb', 'C1': 'Verb'}, # B2 for everyday changes, C1 for structural or corporate reorganizations
     'reorientation': {'C1': 'Noun'},
     'repair': {'A1': 'Verb', 'A2': 'Verb'},
     'reparation': {'B1': 'Noun'},
-    'repatriate': {'B2': 'Verb'},
-    'repatriation': {'B2': 'Noun'},
+    'repatriate': {'B2': 'Verb', 'C1': 'Verb'}, # often has legal and political connotations, making C1 more suitable
+    'repatriation': {'B2': 'Noun', 'C1': 'Noun'}, # often has legal and political connotations, making C1 more suitable
     'repay': {'A2': 'Verb'},
     'repayment': {'B1': 'Noun'},
-    'repeal': {'B2': 'Verb'},
+    'repeal': {'B2': 'Verb', 'C1': 'Noun'}, # Added noun form (meaning "the act of revoking a law").
     'repeat': {'A1': 'Verb'},
     'repeatability': {'C2': 'Noun'},
     'repeatable': {'B1': 'Adjective'},
     'repeated': {'B1': 'Adjective', 'B2': 'Adverb'},
-    'repeatedly': {'A2': 'Adverb'},
+    'repeatedly': {'A2': 'Adverb', 'B1': 'Adverb'}, # Can be B1 in everyday usage
     'repeating': {'B1': 'Verb'},
-    'repel': {'B2': 'Verb'},
+    'repel': {'B2': 'Verb', 'C1': 'Verb'}, # Consider C1 for the more figurative or scientific sense of "to cause aversion or disgust"
     'repent': {'B1': 'Verb'},
-    'repentance': {'B2': 'Noun'},
+    'repentance': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for basic understanding, B2 for deeper theological or philosophical contexts
     'repercussion': {'C1': 'Noun'},
-    'repertoire': {'B2': 'Noun'},
-    'repertory': {'B2': 'Noun'},
-    'repetition': {'B2': 'Noun'},
-    'repetitive': {'B1': 'Adjective'},
+    'repertoire': {'B2': 'Noun', 'C1': 'Noun'}, # Consider C1, as it's often used in artistic or professional contexts
+    'repertory': {'B2': 'Noun', 'C1': 'Noun'}, # Similar to "repertoire," it's more commonly used in specialized contexts
+    'repetition': {'B1': 'Noun', 'B2': 'Noun'},
+    'repetitive': {'A2': 'Adjective', 'B1': 'Adjective'},
     'replace': {'A2': 'Verb'},
     'replacement': {'A1': 'Noun', 'A2': 'Noun'},
     'replay': {'A2': 'Noun', 'B1': 'Verb', 'C1': 'Noun','C2': 'Verb'},
-    'replenish': {'B2': 'Verb'},
-    'replete': {'B2': 'Adjective'},
-    'replica': {'B1': 'Noun'},
-    'replicate': {'C1': 'Verb'},
-    'replication': {'C2': 'Noun'},
+    'replenish': {'B1': 'Verb', 'B2': 'Verb'},
+    'replete': {'B2': 'Adjective', 'C1': 'Adjective'}, # his word is quite formal and often used in literary or academic contexts
+    'replica': {'A2': 'Noun', 'B1': 'Noun'}, # Can be A2 for a simple copy, B1 for a more exact reproduction
+    'replicate': {'B2': 'Verb', 'C1': 'Verb'}, # Can be used at B2 in everyday contexts (e.g., "replicate a recipe")
+    'replication': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # B2 for general copying, C1 for scientific or technical replication
     'reply': {'A2': 'Noun, Verb'},
-    'report': {'A2': 'Noun, Verb', 'B1': 'Verb, Noun'},
+    'report': {'A2': 'Noun, Verb', 'B1': 'Verb, Noun', 'B2': 'Verb'}, # Consider adding B2 for formal reporting, such as "reporting to a supervisor".
     'reported': {'B1': 'Adjective'},
-    'reportedly': {'B2': 'Adverb'},
+    'reportedly': {'B2': 'Adverb', 'C1': 'Adverb'}, # C1 Often used in journalism and formal reports.
     'reporter': {'B1': 'Noun'},
-    'reporting': {'B2': 'Noun'},
+    'reporting': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for basic reports, C1 for journalistic or financial reporting
     'reposition': {'B2': 'Verb'},
-    'repository': {'C1': 'Noun'},
+    'repository': {'B2': 'Noun', 'C1': 'Noun'}, #  B2 in the general sense of a storage place, C1 in more technical contexts (e.g., code repository)
     'represent': {'B2': 'Verb'},
     'representation': {'B2': 'Noun'},
-    'representational': {'C1': 'Adjective'},
+    'representational': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 in everyday use, C1 in the context of art or politics
     'representative': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Adjective'},
-    'representativeness': {'C1': 'Noun'},
+    'representativeness': {'B2': 'Noun', 'C1': 'Noun'}, # his is a more complex concept, often discussed in statistical or research contexts, making C1 more suitable.
     'repress': {'B2': 'Verb'},
     'repressed': {'B2': 'Adjective'},
     'repression': {'B2': 'Noun'},
     'repressive': {'B2': 'Adjective'},
-    'reprimand': {'B1': 'Noun'},
-    'reprint': {'A2': 'Noun', 'A2': 'Verb', 'B2': 'Noun'},
-    'reprisal': {'B2': 'Noun'},
+    'reprimand': {'B1': 'Noun', 'B2': 'Verb'},
+    'reprint': {'A2': 'Noun', 'A2': 'Verb', 'B1': 'Noun, Verb', 'B2': 'Noun'},
+    'reprisal': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for general retaliation, but C1 in political or military contexts
     'reproduce': {'B1': 'Verb'},
-    'reproducible': {'C1': 'Adjective'},
+    'reproducible': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 in everyday use, C1 in scientific contexts
     'reproduction': {'B2': 'Noun'},
     'reproductive': {'B1': 'Adjective'},
     'reptile': {'A2': 'Noun'},
@@ -14080,7 +14080,7 @@ avl_words={
     'republican': {'B2': 'Adjective'},
     'republicanism': {'B2': 'Noun'},
     'repudiate': {'B2': 'Verb'},
-    'repudiation': {'C2': 'Noun'},
+    'repudiation': {'C1': 'Noun', 'C2': 'Noun'}, #  C1 in general, but C2 in legal contexts
     'repugnant': {'C1': 'Adjective'},
     'repulse': {'B2': 'Verb'},
     'repulsion': {'B2': 'Noun'},
@@ -14088,79 +14088,79 @@ avl_words={
     'reputable': {'B2': 'Adjective'},
     'reputation': {'B1': 'Noun'},
     'repute': {'B2': 'Noun'},
-    'request': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Verb', 'B2': 'Noun'},
-    'requested': {'A2': 'Adjective'},
+    'request': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Verb', 'B2': 'Noun'}, # A2 for simple requests, B1 for more formal requests (e.g., in a business setting).
+    'requested': {'A2': 'Adjective', 'B1': 'Adjective'},
     'require': {'B1': 'Verb'},
     'required': {'B1': 'Verb'},
     'requirement': {'B1': 'Noun'},
-    'requisite': {'B2': 'Adjective'},
+    'requisite': {'B2': 'Adjective', 'C1': 'Adjective'}, # This is a formal word, so C1 is more appropriate
     'reread': {'A2': 'Verb'},
     'resale': {'B2': 'Noun'},
-    'reschedule': {'B2': 'Verb'},
+    'reschedule': {'B1': 'Verb', 'B2': 'Verb'},
     'rescind': {'B2': 'Verb'},
     'rescue': {'A1': 'Verb', 'A2': 'Verb'},
     'rescuer': {'B1': 'Noun'},
     'research': {'B1': 'Noun'},
-    'research-based': {'C1': 'Adjective'},
+    'research-based': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for basic understanding, C1 for academic or scientific contexts
     'researcher': {'B2': 'Noun'},
     'resection': {'B2': 'Noun'},
-    'resell': {'B2': 'Verb'},
+    'resell': {'B1': 'Verb', 'B2': 'Verb'},
     'resemblance': {'B1': 'Noun'},
     'resemble': {'B1': 'Verb'},
     'resent': {'B1': 'Verb'},
     'resentful': {'B1': 'Adjective'},
-    'resentment': {'B2': 'Noun'},
-    'reservation': {'A2': 'Noun', 'B1': 'Noun'},
-    'reserve': {'A2': 'Noun, Verb'},
+    'resentment': {'B1': 'Noun', 'B2': 'Noun'},
+    'reservation': {'A2': 'Noun', 'B1': 'Noun'}, # B1 for the meaning of doubts or misgivings
+    'reserve': {'A2': 'Noun, Verb', 'B1': 'Verb'}, # The verb meaning "to book" or "set aside" is common at B1
     'reserved': {'B1': 'Adjective'},
-    'reservist': {'B2': 'Noun'},
-    'reservoir': {'B2': 'Noun'},
+    'reservist': {'B2': 'Noun', 'C1': 'Noun'}, # Consider C1 due to the specialized nature of these word (military)
+    'reservoir': {'B2': 'Noun', 'C1': 'Noun'}, # Consider C1 due to the specialized nature of these words (engineering)
     'reset': {'A2': 'Verb'},
-    'resettle': {'B2': 'Verb'},
-    'resettlement': {'B2': 'Noun'},
-    'reshape': {'B2': 'Verb'},
-    'reside': {'B1': 'Verb'},
-    'residence': {'A2': 'Noun'},
+    'resettle': {'B2': 'Verb', 'C1': 'Verb'}, #  often used in social and political contexts, suggesting C1 is more appropriate
+    'resettlement': {'B2': 'Noun', 'C1': 'Noun'}, # often used in social and political contexts, suggesting C1 is more appropriate
+    'reshape': {'B2': 'Verb', 'C1': 'Verb'}, # Consider C1 when discussing the transformation of ideas, organizations, etc.
+    'reside': {'B1': 'Verb', 'B2': 'Verb'},
+    'residence': {'A2': 'Noun', 'B2': 'Noun'},
     'residency': {'B2': 'Noun'},
     'resident': {'B1': 'Noun', 'B2': 'Adjective'},
     'residential': {'B2': 'Adjective'},
-    'residual': {'B2': 'Adjective'},
-    'residuals': {'B2': 'Noun'},
-    'residue': {'B1': 'Noun'},
+    'residual': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 in technical or scientific contexts
+    'residuals': {'B2': 'Noun', 'C1': 'Noun'}, # C1 in technical or scientific contexts
+    'residue': {'B1': 'Noun', 'B2': 'Noun'},
     'resign': {'B1': 'Verb'},
-    'resignation': {'B1': 'Noun'},
-    'resilience': {'B2': 'Noun'},
-    'resiliency': {'B2': 'Noun'},
-    'resilient': {'B2': 'Adjective'},
-    'resin': {'B2': 'Noun'},
+    'resignation': {'B1': 'Noun', 'B2': 'Noun'}, # B2 for the meaning of accepting an unpleasant situation
+    'resilience': {'B2': 'Noun', 'C1': 'Noun'}, # C1 due to their psychological and technical connotations
+    'resiliency': {'B2': 'Noun', 'C1': 'Noun'}, # C1 due to their psychological and technical connotations
+    'resilient': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 due to their psychological and technical connotations
+    'resin': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for general understanding, B2 for technical uses (e.g., in manufacturing)
     'resist': {'B1': 'Verb'},
-    'resistance': {'B2': 'Noun'},
+    'resistance': {'B1': 'Noun', 'B2': 'Noun'}, # 
     'resistant': {'B2': 'Adjective'},
     'resolute': {'B2': 'Adjective'},
     'resolutely': {'B2': 'Adverb'},
-    'resolution': {'B1': 'Noun'},
-    'resolve': {'A2': 'Verb', 'B2': 'Verb'},
-    'resonance': {'B2': 'Noun'},
+    'resolution': {'B1': 'Noun', 'B2': 'Noun'}, # B2 for the meaning of a formal decision
+    'resolve': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Verb'}, # B1 for meanings like "to find a solution" or "to decide".
+    'resonance': {'B2': 'Noun', 'C1': 'Noun'}, # C1 for technical or metaphorical uses (e.g., in physics or literature)
     'resonant': {'B2': 'Adjective'},
-    'resonate': {'B2': 'Verb'},
+    'resonate': {'B2': 'Verb', 'C1': 'Verb'}, # Consider C1 for its figurative use (e.g., "the idea resonated with me")
     'resonator': {'C1': 'Noun'},
-    'resort': {'A2': 'Noun', 'B1': 'Verb'},
+    'resort': {'A2': 'Noun', 'B1': 'Verb', 'B2': 'Noun'}, # As a noun, "resort" (a place for vacation) is more common at B2
     'resounding': {'B2': 'Adjective'},
-    'resource': {'B2': 'Noun'},
-    'resourceful': {'B2': 'Adjective'},
-    'resourcefulness': {'C1': 'Noun'},
+    'resource': {'B1': 'Noun', 'B2': 'Noun'},
+    'resourceful': {'B1': 'Adjective', 'B2': 'Adjective'},
+    'resourcefulness': {'B1': 'Noun', 'C1': 'Noun'},
     'respect': {'A1': 'Noun', 'A2': 'Verb, Noun','B1': 'Noun'},
     'respectability': {'B2': 'Noun'},
     'respectable': {'A2': 'Adjective'},
     'respected': {'A2': 'Adjective'},
     'respectful': {'A2': 'Adjective'},
-    'respectfully': {'B1': 'Adverb'},
-    'respecting': {'A2': 'Preposition'},
-    'respective': {'B2': 'Adjective'},
-    'respectively': {'B2': 'Adverb'},
+    'respectfully': {'A2': 'Adverb', 'B1': 'Adverb'}, # A2 for basic politeness, B1 for expressing disagreement politely
+    'respecting': {'A2': 'Preposition', 'B1': 'Preposition'}, # This is a more formal preposition, so B2 is more appropriate
+    'respective': {'B1': 'Adjective', 'B2': 'Adjective'}, # 
+    'respectively': {'B1': 'Adverb', 'B2': 'Adverb'},
     'respiration': {'B2': 'Noun'},
-    'respirator': {'B2': 'Noun'},
-    'respiratory': {'B1': 'Adjective'},
+    'respirator': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for a simple mask, B2 for medical respirator or more complex respiratory issues
+    'respiratory': {'B1': 'Adjective', 'B2': 'Adjective'}, # B1 for a simple mask, B2 for medical respirator or more complex respiratory issues
     'respite': {'B2': 'Noun'},
     'respond': {'A2': 'Verb'},
     'respondent': {'B2': 'Noun'},
@@ -14169,12 +14169,12 @@ avl_words={
     'responsibility': {'B2': 'Noun'},
     'responsible': {'A2': 'Adjective'},
     'responsibly': {'B1': 'Adverb'},
-    'responsive': {'B1': 'Adjective'},
-    'responsiveness': {'C1': 'Noun'},
+    'responsive': {'B1': 'Adjective', 'B2': 'Adjective'},
+    'responsiveness': {'B2': 'Noun', 'C1': 'Noun'},
     'rest': {'A1': 'Noun', 'B1': 'Verb'},
     'restart': {'A2': 'Verb'},
-    'restate': {'B2': 'Verb'},
-    'restatement': {'C1': 'Noun'},
+    'restate': {'B1': 'Verb', 'B2': 'Verb'},
+    'restatement': {'B1': 'Noun', 'C1': 'Noun'},
     'restaurant': {'A1': 'Noun'},
     'resting': {'A2': 'Verb'},
     'restitution': {'B2': 'Noun'},
@@ -14193,74 +14193,74 @@ avl_words={
     'restriction': {'B1': 'Noun'},
     'restrictive': {'B2': 'Adjective'},
     'restroom': {'A2': 'Noun'},
-    'restructure': {'C2': 'Verb'},
-    'restructuring': {'C1': 'Noun'},
-    'result': {'A2': 'Noun', 'B1': 'Noun'},
-    'resultant': {'C2': 'Adjective'},
+    'restructure': {'B2': 'Verb', 'C1': 'Verb', 'C2': 'Verb'}, # B2 for simple changes, C1 for major reorganizations
+    'restructuring': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for simple changes, C1 for major reorganizations
+    'result': {'A2': 'Noun', 'B1': 'Noun'}, # 2 for basic meaning, B1 for more complex results
+    'resultant': {'C1': 'Adjective', 'C2': 'Adjective'},
     'resulting': {'B1': 'Adjective'},
     'resume': {'A2': 'Noun, Verb'},
-    'resumption': {'B2': 'Noun'},
+    'resumption': {'B2': 'Noun', 'C1': 'Noun'},
     'resurface': {'B2': 'Verb'},
-    'resurgence': {'C1': 'Noun'},
-    'resurgent': {'B2': 'Adjective'},
-    'resurrect': {'C1': 'Verb'},
-    'resurrected': {'C1': 'Adjective'},
-    'resurrection': {'C1': 'Noun'},
-    'resuscitate': {'B2': 'Verb'},
+    'resurgence': {'C1': 'Noun'}, # C1 in political or economic contexts
+    'resurgent': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 in political or economic contexts
+    'resurrect': {'B2': 'Verb', 'C1': 'Verb'}, # Can be B2 in figurative senses (e.g., "resurrect an old idea")
+    'resurrected': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for figurative meanings, C1 for religious contexts
+    'resurrection': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for figurative meanings, C1 for religious contexts
+    'resuscitate': {'B2': 'Verb', 'C1': 'Verb'}, # C1 in medical contest
     'resuscitation': {'C1': 'Noun'},
-    'retail': {'B1': 'Noun', 'B2': 'Noun'},
-    'retailer': {'B2': 'Noun'},
-    'retailing': {'B2': 'Noun'},
+    'retail': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Verb'}, # B1 for the general concept, B2 for business/economics contexts; C1 meaning "to sell goods to the public"
+    'retailer': {'B2': 'Noun', 'C1': 'Noun'}, # C1 In the context of business and commerce
+    'retailing': {'B2': 'Noun', 'C1': 'Noun'}, # C1 In the context of business and commerce
     'retain': {'C1': 'Verb'},
-    'retainer': {'C1': 'Noun'},
+    'retainer': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for a fee paid in advance, C1 in legal contexts
     'retake': {'B1': 'Verb'},
     'retaliate': {'B2': 'Verb'},
     'retaliation': {'B2': 'Noun'},
-    'retaliatory': {'C1': 'Adjective'},
-    'retard': {'B1': 'Verb'},
-    'retardation': {'C1': 'Noun'},
+    'retaliatory': {'C1': 'Adjective'}, # B2 for general retaliation, C1 in more formal contexts
+    'retard': {'B1': 'Verb', 'C1': 'Verb'}, # C1 in medical or psychological contexts
+    'retardation': {'C1': 'Noun'}, # C1 in medical or psychological contexts
     'retarded': {'C1': 'Adjective'},
     'retell': {'B1': 'Verb'},
     'retelling': {'C1': 'Noun'},
     'retention': {'B2': 'Noun'},
-    'retest': {'B2': 'Verb'},
-    'rethink': {'B1': 'Verb'},
+    'retest': {'B1': 'Verb', 'B2': 'Verb'}, # B1 level if the context is simple (e.g., retaking a test)
+    'rethink': {'B1': 'Verb', 'B2': 'Verb'}, # B2 in the sense of reconsidering or reevaluating
     'rethinking': {'B2': 'Noun'},
-    'reticence': {'C1': 'Noun'},
+    'reticence': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for general unwillingness to speak, C1 for a more formal or literary context
     'reticent': {'B2': 'Adjective'},
     'retina': {'B2': 'Noun'},
-    'retinal': {'B2': 'Adjective'},
+    'retinal': {'B2': 'Adjective', 'C1': 'Adjective'},
     'retire': {'A2': 'Verb'},
     'retired': {'A2': 'Adjective'},
-    'retiree': {'C1': 'Noun'},
+    'retiree': {'B2': 'Noun', 'C1': 'Noun'},
     'retirement': {'B1': 'Noun'},
     'retool': {'C1': 'Verb'},
-    'retort': {'B2': 'Noun'},
-    'retrace': {'B2': 'Verb'},
-    'retract': {'B1': 'Verb'},
-    'retraction': {'C1': 'Noun'},
+    'retort': {'B1': 'Noun', 'B2': 'Noun'}, # While the noun is B2, consider adding the verb form (B1) for a sharp or witty reply
+    'retrace': {'B1': 'Verb', 'B2': 'Verb'}, #  B1 for the literal meaning of "to go back over (a path)".
+    'retract': {'B1': 'Verb', 'B2': 'Verb'}, # 2 for formal statements or retracting an offer or accusation
+    'retraction': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for a simple withdrawal, C1 for formal statements (e.g., in publishing)
     'retrain': {'B2': 'Verb'},
     'retraining': {'B2': 'Noun'},
-    'retreat': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Noun'},
+    'retreat': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Noun'}, # A2 for physical retreat, B1 for metaphorical withdrawal
     'retrenchment': {'C1': 'Noun'},
     'retribution': {'B2': 'Noun'},
     'retributive': {'C1': 'Adjective'},
     'retrieval': {'B2': 'Noun'},
     'retrieve': {'B1': 'Verb'},
-    'retroactive': {'C2': 'Adjective'},
-    'retrofit': {'B2': 'Verb'},
+    'retroactive': {'C1': 'Adjective', 'C2': 'Adjective'},
+    'retrofit': {'B2': 'Verb', 'C1': 'Verb'}, # C1 when it involves complex engineering or technology upgrades
     'retrospect': {'C1': 'Noun'},
     'retrospective': {'C1': 'Adjective'},
     'retrospectively': {'B2': 'Adverb'},
-    'return': {'A1': 'Verb', 'B1': 'Noun, Verb'},
+    'return': {'A1': 'Verb', 'B1': 'Noun, Verb'}, #  A1 for the basic meaning, B1 for more complex returns (e.g., financial returns)
     'returning': {'A2': 'Verb'},
     'reunification': {'B1': 'Noun'},
     'reunion': {'A2': 'Noun'},
     'reunite': {'A2': 'Verb'},
     'reusable': {'B1': 'Adjective'},
     'reuse': {'A1': 'Noun', 'B1': 'Verb'},
-    'revamp': {'B1': 'Verb'},
-    'reveal': {'B2': 'Verb'},
+    'revamp': {'B1': 'Verb', 'B2': 'Verb'}, # B2 for more extensive or thorough renovations
+    'reveal': {'B2': 'Verb', 'C1': 'Verb'}, # C1 when it implies uncovering hidden or confidential information
     'revealed': {'B1': 'Verb'},
     'revealing': {'B2': 'Adjective'},
     'revel': {'C1': 'Noun', 'B2': 'Verb'},
@@ -14270,51 +14270,51 @@ avl_words={
     'revenue': {'B2': 'Noun'},
     'reverberate': {'B2': 'Verb'},
     'reverberation': {'C1': 'Noun'},
-    'revere': {'B1': 'Verb'},
-    'revered': {'B1': 'Adjective'},
-    'reverence': {'B2': 'Noun'},
-    'reverie': {'B2': 'Noun'},
-    'reversal': {'B2': 'Noun'},
+    'revere': {'B1': 'Verb', 'B2': 'Verb'}, #  B2 in the sense of "to respect deeply"
+    'revered': {'B1': 'Adjective', 'B2': 'Adjective'}, #  B2 when applied to someone highly respected
+    'reverence': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for basic respect, B2 for deeper veneration
+    'reverie': {'B2': 'Noun', 'C1': 'Noun'}, # C1 poetic term for a daydream
+    'reversal': {'B1': 'Noun', 'B2': 'Noun'},
     'reverse': {'A1': 'Verb', 'B1': 'Verb'},
-    'reversible': {'B2': 'Adjective'},
-    'reversion': {'C1': 'Noun'},
-    'revert': {'B1': 'Verb'},
-    'review': {'A2': 'Noun', 'B1': 'Verb'},
+    'reversible': {'B1': 'Adjective', 'B2': 'Adjective'}, # B1 for basic meaning, B2 for scientific or technical contexts
+    'reversion': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for general reversion to a previous state, C1 for legal or biological contexts
+    'revert': {'B1': 'Verb', 'B2': 'Verb'}, # B2 for the meaning of "to return to a previous state or condition"
+    'review': {'A2': 'Noun', 'B1': 'Verb', 'B2': 'Verb'}, # B2 for more formal reviews (e.g., literature review)
     'reviewer': {'B1': 'Noun'},
-    'revise': {'B1': 'Verb'},
+    'revise': {'B1': 'Verb', 'B2': 'Verb'}, # B2 when revising a text or policy
     'revised': {'B1': 'Adjective'},
-    'revision': {'B2': 'Noun'},
-    'revisionism': {'C1': 'Noun'},
-    'revisionist': {'B2': 'Noun'},
-    'revisit': {'B1': 'Verb'},
+    'revision': {'B1': 'Noun', 'B2': 'Noun'}, 
+    'revisionism': {'C1': 'Noun', 'C2': 'Noun'},
+    'revisionist': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'},
+    'revisit': {'B1': 'Verb', 'B2': 'Verb'}, # B1 for the literal meaning of "to visit again," but B2 is more suitable for revisiting ideas or concepts
     'revitalization': {'B2': 'Noun'},
     'revitalize': {'B2': 'Verb'},
-    'revival': {'B2': 'Noun'},
-    'revive': {'A2': 'Verb'},
+    'revival': {'B1': 'Noun', 'B2': 'Noun'}, 
+    'revive': {'A2': 'Verb', 'B1': 'Verb'}, # B1 level in the sense of "to bring back to life"
     'revived': {'A2': 'Adjective'},
     'revoke': {'B2': 'Verb'},
     'revolt': {'A2': 'Noun', 'B1': 'Verb'},
     'revolution': {'B2': 'Noun'},
     'revolutionary': {'B2': 'Adjective'},
-    'revolutionize': {'C1': 'Verb'},
-    'revolve': {'B1': 'Verb'},
+    'revolutionize': {'B2': 'Verb', 'C1': 'Verb'}, # B2 for a basic understanding, C1 for discussing significant societal or technological change
+    'revolve': {'B1': 'Verb', 'B2': 'Verb'}, # B2 For figurative uses like "revolve around a topic"
     'revolver': {'A2': 'Noun'},
     'revolving': {'B2': 'Adjective'},
     'revulsion': {'B2': 'Noun'},
-    'reward': {'B1': 'Noun', 'B2': 'Verb, Noun'},
+    'reward': {'A2': 'Verb', 'B1': 'Noun', 'B2': 'Verb, Noun'},
     'rewarding': {'B1': 'Adjective'},
     'rework': {'B1': 'Noun', 'A2': 'Verb'},
-    'rewrite': {'B1': 'Verb'},
+    'rewrite': {'B1': 'Verb', 'B2': 'Verb'}, # In the context of significantly changing a text or rewriting history, it could be B2
     'rewriting': {'C1': 'Verb'},
-    'rhetoric': {'C1': 'Noun'},
-    'rhetorical': {'B2': 'Adjective'},
-    'rhetorically': {'C1': 'Adverb'},
-    'rheumatoid': {'B2': 'Adjective'},
-    'rhinitis': {'B2': 'Noun'},
+    'rhetoric': {'B2': 'Noun', 'C1': 'Noun'}, # B2 in general usage, C1 for academic study of rhetoric
+    'rhetorical': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 when used in the context of rhetorical analysis or literary criticism
+    'rhetorically': {'B2': 'Adverb', 'C1': 'Adverb'}, # B2 in everyday use, C1 in more analytical contexts
+    'rheumatoid': {'B2': 'Adjective', 'C1': 'Adjective'}, # This is a medical term, so C1 is more suitable
+    'rhinitis': {'B2': 'Noun', 'C1': 'Noun'}, # This is a medical term for inflammation of the nasal mucous membrane, so C1 is more appropriate
     'rhino': {'A2': 'Noun'},
-    'rho': {'C2': 'Noun'},
-    'rhyme': {'A1': 'Noun', 'A2': 'Noun'},
-    'rhythm': {'B1': 'Noun'},
+    'rho': {'C1': 'Noun', 'C2': 'Noun'}, # This is a Greek letter used in mathematics and science, so C1 or C2 is more suitable
+    'rhyme': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Verb'}, # A1 for basic understanding, A2 for more complex rhymes
+    'rhythm': {'A2': 'Noun', 'B1': 'Noun'},
     'rhythmic': {'B1': 'Adjective'},
     'rib': {'A1': 'Noun'},
     'ribbon': {'A1': 'Noun'},
@@ -14328,67 +14328,67 @@ avl_words={
     'ride': {'A1': 'Verb', 'A2': 'Noun'},
     'rider': {'A2': 'Noun'},
     'ridge': {'A2': 'Noun'},
-    'ridicule': {'B1': 'Noun','B2': 'Verb'},
+    'ridicule': {'B1': 'Noun, Verb', 'B2': 'Verb'},
     'ridiculous': {'A2': 'Adjective'},
     'riding': {'A2': 'Noun'},
-    'rife': {'B2': 'Adjective'},
+    'rife': {'B2': 'Adjective', 'C1': 'Adjective'},
     'rifle': {'B1': 'Noun'},
-    'rift': {'B2': 'Noun'},
-    'rig': {'A2': 'Noun', 'B1': 'Noun'},
+    'rift': {'B1': 'Noun', 'B2': 'Noun'}, # 1 for a simple crack or split, B2 for a more serious disagreement
+    'rig': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Verb'},
     'right': {'A1': 'Adjective', 'A2': 'Noun'},
     'right-hand': {'B1': 'Adjective'},
-    'right-wing': {'B2': 'Adjective'},
+    'right-wing': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 for political discussions
     'righteous': {'A2': 'Adjective'},
     'righteousness': {'B2': 'Noun'},
     'rightful': {'B2': 'Adjective'},
     'rightfully': {'B2': 'Adverb'},
     'rightist': {'B2': 'Noun'},
     'rightly': {'A1': 'Adverb'},
-    'rigid': {'B2': 'Adjective'},
-    'rigidity': {'B2': 'Noun'},
+    'rigid': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 in everyday use, but C1 for more abstract or scientific contexts (e.g., rigidity in a material)
+    'rigidity': {'B2': 'Noun', 'C1': 'Noun'}, # B2 in everyday use, but C1 for more abstract or scientific contexts (e.g., rigidity in a material)
     'rigidly': {'B2': 'Adverb'},
-    'rigor': {'B2': 'Noun'},
+    'rigor': {'B2': 'Noun', 'C1': 'Noun'},
     'rigorous': {'C1': 'Adjective'},
-    'rigorously': {'B2': 'Adverb'},
-    'rim': {'A1': 'Noun'},
-    'rime': {'B1': 'Noun'},
+    'rigorously': {'B2': 'Adverb', 'C1': 'Adverb'},
+    'rim': {'A1': 'Noun', 'B1': 'Verb'}, # "to form an outer edge around something"
+    'rime': {'B1': 'Noun', 'B2': 'Noun'}, 
     'rind': {'A2': 'Noun'},
     'ring': {'A1': 'Noun', 'A1': 'Verb'},
     'ringing': {'A2': 'Verb'},
     'rink': {'A1': 'Noun'},
     'rinse': {'A2': 'Verb'},
-    'riot': {'B1': 'Noun'},
-    'rioting': {'B1': 'Noun'},
+    'riot': {'B1': 'Noun', 'B2': 'Noun'}, # while B1 is acceptable, consider B2 for more serious or large-scale riots
+    'rioting': {'B1': 'Noun', 'B2': 'Noun'}, # while B1 is acceptable, consider B2 for more serious or large-scale riots
     'rip': {'A2': 'Verb'},
-    'riparian': {'C1': 'Adjective'},
+    'riparian': {'C1': 'Adjective', 'C2': 'Adjective'}, # a specialized ecological term
     'ripe': {'A1': 'Adjective'},
     'ripen': {'A1': 'Verb'},
-    'ripple': {'A2': 'Noun'},
-    'rise': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Verb'},
+    'ripple': {'A2': 'Noun', 'B1': 'Verb'},
+    'rise': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Verb', 'B2': 'Noun'},
     'risen': {'B1': 'Verb'},
-    'riser': {'A1': 'Noun'},
+    'riser': {'A1': 'Noun', 'B1': 'Noun'}, # B1 for its use in construction (e.g., stair riser)
     'rising': {'A2': 'Verb', 'B1': 'Adjective', 'B2': 'Noun'},
-    'risk': {'A1': 'Noun', 'A2': 'Noun', 'B2': 'Noun'},
-    'risk-taking': {'B2': 'Noun', 'C1': 'Adjective'},
+    'risk': {'A1': 'Noun', 'A2': 'Noun', 'B2': 'Noun'}, #  A2 for basic understanding, B1 for general risks, and B2 for more complex or financial risk
+    'risk-taking': {'B2': 'Noun', 'C1': 'Adjective'}, #  B2 for the noun, C1 for the adjective in the context of risk assessment or management
     'risky': {'A2': 'Adjective'},
     'rite': {'B2': 'Noun'},
     'ritual': {'B1': 'Noun'},
-    'ritualistic': {'B2': 'Adjective'},
-    'ritualized': {'B2': 'Adjective'},
-    'ritually': {'B1': 'Adverb'},
-    'rival': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Adjective'},
+    'ritualistic': {'B2': 'Adjective', 'C1': 'Adjective'},
+    'ritualized': {'B2': 'Adjective', 'C1': 'Adjective'},
+    'ritually': {'B1': 'Adverb', 'B2': 'Adverb'}, # B2 for general use, C1 for religious or ceremonial contexts
+    'rival': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Adjective, Verb'},
     'rivalry': {'A2': 'Noun'},
     'river': {'A1': 'Noun'},
     'riverbank': {'A2': 'Noun'},
-    'riverbed': {'B2': 'Noun'},
-    'riverine': {'C1': 'Adjective'},
+    'riverbed': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for basic understanding, B2 for geographical or environmental contexts
+    'riverine': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 in general usage, C1 for ecological or scientific contexts
     'road': {'A1': 'Noun'},
-    'roadblock': {'B1': 'Noun'},
+    'roadblock': {'B1': 'Noun', 'B2': 'Noun'}, # B2 for figurative meanings (e.g., obstacles in a plan)
     'roadside': {'A2': 'Noun'},
     'roadway': {'A2': 'Noun'},
-    'roam': {'B1': 'Verb'},
+    'roam': {'A2': 'Verb', 'B1': 'Verb'}, # A2 for physical wandering, B1 for metaphorical wandering (e.g., "thoughts roaming"
     'roar': {'A1': 'Verb'},
-    'roast': {'A1': 'Verb'},
+    'roast': {'A1': 'Verb', 'B1': 'Noun', 'B1': 'Noun'}, 
     'roasted': {'A1': 'Adjective'},
     'rob': {'A2': 'Verb'},
     'robber': {'A2': 'Noun'},
@@ -14408,132 +14408,132 @@ avl_words={
     'rod': {'A2': 'Noun'},
     'rodent': {'A2': 'Noun'},
     'rodeo': {'A2': 'Noun'},
-    'rogue': {'B2': 'Adjective'},
+    'rogue': {'B2': 'Adjective', 'C1': 'Noun'},
     'role': {'B1': 'Noun'},
-    'role-playing': {'B2': 'Noun'},
-    'roll': {'A1': 'Verb', 'A2': 'Noun'},
+    'role-playing': {'B1': 'Noun', 'B2': 'Noun'},
+    'roll': {'A1': 'Verb', 'A2': 'Noun', 'B1': 'Verb'},
     'roller': {'A2': 'Noun'},
     'rolling': {'A2': 'Adjective'},
-    'romance': {'B2': 'Noun'},
-    'romantic': {'A2': 'Adjective', 'B2': 'Adjective'},
-    'romanticism': {'B2': 'Noun'},
-    'romanticize': {'B2': 'Verb'},
+    'romance': {'B1': 'Noun', 'B2': 'Noun'},
+    'romantic': {'A2': 'Adjective', 'B1': 'Adjective', 'B2': 'Adjective'}, # B2 is accurate for the artistic/literary movement, B1 is sufficient for basic understanding (e.g., "romantic dinner")
+    'romanticism': {'B1': 'Noun', 'B2': 'Noun'}, # B2 is accurate for the artistic/literary movement, B1 is sufficient for basic understanding (e.g., "romantic dinner")
+    'romanticize': {'B1': 'Verb', 'B2': 'Verb'}, # B2 is accurate for the artistic/literary movement, B1 is sufficient for basic understanding (e.g., "romantic dinner")
     'roof': {'A1': 'Noun'},
-    'roofing': {'A2': 'Noun'},
+    'roofing': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # B1 for the material, B2 for the process of installing a roof
     'rooftop': {'A2': 'Noun'},
-    'rookie': {'A2': 'Noun'},
+    'rookie': {'A2': 'Noun', 'B1': 'Noun'}, 
     'room': {'A1': 'Noun', 'A2': 'Noun'},
     'roommate': {'A2': 'Noun'},
-    'roomy': {'A2': 'Adjective'},
+    'roomy': {'A2': 'Adjective', 'B1': 'Adjective'},
     'roost': {'A2': 'Noun'},
-    'root': {'A2': 'Noun', 'C2': 'Verb'},
+    'root': {'A2': 'Noun', 'B1': 'Verb', 'C2': 'Verb'},
     'rooted': {'B2': 'Adjective'},
     'rope': {'A1': 'Noun'},
     'rosary': {'A2': 'Noun'},
     'rose': {'A1': 'Noun'},
     'rosemary': {'A2': 'Noun'},
     'rosette': {'A2': 'Noun'},
-    'roster': {'B2': 'Noun'},
-    'rosy': {'A2': 'Adjective'},
-    'rot': {'A2': 'Noun'},
-    'rotary': {'B2': 'Adjective'},
-    'rotate': {'A2': 'Verb'},
+    'roster': {'B1': 'Noun', 'B2': 'Noun'},
+    'rosy': {'A2': 'Adjective', 'B1': 'Adjective'}, # 1 for the meaning "optimistic" or "promising"
+    'rot': {'A2': 'Noun', 'B1': 'Verb'},
+    'rotary': {'B1': 'Adjective', 'B2': 'Adjective'}, # B1 for general rotation, B2 for the rotary engine or phone dial
+    'rotate': {'A2': 'Verb', 'B1': 'Verb', 'B2': 'Verb'}, # B1 for simple rotation, B2 for more complex or technical uses
     'rotating': {'B1': 'Verb'},
-    'rotation': {'B1': 'Noun'},
-    'rotational': {'B2': 'Adjective'},
+    'rotation': {'B1': 'Noun', 'B2': 'Noun'}, # B2 for technical rotations (e.g., crop rotation)
+    'rotational': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 for technical or physics-related contexts
     'rotator': {'C1': 'Noun'},
     'rote': {'A2': 'Adjective'},
     'rotor': {'B2': 'Noun'},
     'rotten': {'A2': 'Adjective'},
     'rotting': {'A2': 'Adjective'},
     'rouge': {'A2': 'Noun'},
-    'rough': {'A1': 'Adjective'},
-    'roughly': {'A2': 'Adverb'},
+    'rough': {'A1': 'Adjective', 'B1': 'Adverb'},
+    'roughly': {'A2': 'Adverb', 'B1': 'Adverb'},
     'roughness': {'B1': 'Noun'},
-    'round': {'A1': 'Adjective, Adverb', 'A2': 'Noun', 'B1': 'Verb, Preposition'},
+    'round': {'A1': 'Adjective, Adverb', 'A2': 'Noun', 'B1': 'Verb, Preposition', 'B2': 'Adjective'}, # B2 In the sense of "complete" or "thorough" 
     'rounded': {'B2': 'Adjective'},
     'rounding': {'A2': 'Adjective'},
     'roundtable': {'B2': 'Noun'},
     'roundup': {'A2': 'Noun'},
-    'rouse': {'A2': 'Verb'},
-    'rout': {'A2': 'Noun'},
+    'rouse': {'A2': 'Verb', 'C1': 'Verb'}, # r C1 for the more figurative or literary sense, like "rouse emotions"
+    'rout': {'A2': 'Noun', 'C1': 'Noun, Verb'}, # C1 for the meaning of a decisive defeat
     'route': {'A2': 'Noun', 'B1': 'Verb'},
     'router': {'C1': 'Noun'},
-    'routine': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Adjective'},
+    'routine': {'A2': 'Noun', 'B1': 'Noun, Adjective', 'B2': 'Adjective'},
     'routinely': {'B2': 'Adverb'},
     'routing': {'B2': 'Noun'},
     'rover': {'A2': 'Noun'},
-    'roving': {'B2': 'Adjective'},
-    'row': {'A1': 'Noun, Verb', 'A2': 'Verb, Noun'},
+    'roving': {'B1': 'Adjective', 'B2': 'Adjective'}, # B1 in simpler contexts, B2 in more literary or figurative uses
+    'row': {'A1': 'Noun, Verb', 'A2': 'Verb, Noun', 'B1': 'Noun'}, # B1 for meanings like "a noisy argument" or "a serious disagreement"
     'rowing': {'A2': 'Noun'},
     'royal': {'B1': 'Adjective'},
     'royalist': {'B2': 'Noun'},
-    'royalty': {'B2': 'Noun'},
+    'royalty': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for general royalty (kings, queens), C1 for its meaning in relation to payments to authors or musicians
     'rub': {'A1': 'Verb', 'A2': 'Noun'},
     'rubber': {'A1': 'Noun', 'A2': 'Noun'},
-    'rubbish': {'A1': 'Noun', 'A2': 'Adjective'},
-    'rubble': {'A2': 'Noun'},
-    'rubric': {'C1': 'Noun'},
-    'rude': {'A1': 'Adjective'},
-    'rudimentary': {'A2': 'Adjective'},
-    'rug': {'A1': 'Noun'},
+    'rubbish': {'A1': 'Noun', 'A2': 'Adjective'}, # A2 for both meanings (trash, nonsense)
+    'rubble': {'A2': 'Noun', 'B1': 'Noun'}, # B1 might be more appropriate for a larger quantity or in a disaster context
+    'rubric': {'B2': 'Noun', 'C1': 'Noun'}, # C1 is accurate for academic contexts, it can be B2 in general usage (meaning "a set of instructions or rules")
+    'rude': {'A1': 'Adjective', 'B1': 'Adjective'}, # B1 for more nuanced uses like "rude awakening"
+    'rudimentary': {'A2': 'Adjective', 'B1': 'Adjective', 'B2': 'Adjective'},
+    'rug': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Noun'}, # A2 for a simple rug, B1 for different types or discussing home decor
     'rugby': {'A2': 'Noun'},
-    'rugged': {'B1': 'Adjective'},
+    'rugged': {'A2': 'Adjective', 'B1': 'Adjective'}, # 2 for describing rough terrain, B1 for describing a person's appearance
     'ruin': {'A2': 'Noun','B1': 'Verb'},
-    'ruined': {'B1': 'Verb'},
+    'ruined': {'A2': 'Adjective', 'B1': 'Verb'},
     'rule': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Verb'},
-    'rule-making': {'C2': 'Noun'},
-    'ruler': {'A2': 'Noun'},
-    'ruling': {'B1': 'Noun', 'B2': 'Adjective, Noun'},
+    'rule-making': {'C1': 'Noun', 'C2': 'Noun'},
+    'ruler': {'A1': 'Noun', 'A2': 'Noun'}, # A1 a measuring tool
+    'ruling': {'B1': 'Noun', 'B2': 'Adjective, Noun', 'C1': 'Adjective, Noun'}, # C1 for a legal decision (noun) or in the sense of "dominant" (adjective)
     'rum': {'A2': 'Noun'},
     'rumble': {'A2': 'Verb'},
     'rumor': {'A2': 'Noun'},
     'run': {'A1': 'Verb'},
-    'run-up': {'C1': 'Noun'},
+    'run-up': {'B2': 'Noun', 'C1': 'Noun'}, # B2 in the context of preparation or lead-up, C1 for financial contexts
     'runaway': {'B1': 'Noun'},
     'rung': {'B1': 'Noun'},
     'runner': {'A2': 'Noun'},
-    'runner-up': {'C1': 'Noun'},
+    'runner-up': {'B2': 'Noun', 'C1': 'Noun'},
     'running': {'A2': 'Verb'},
     'runoff': {'B2': 'Noun'},
     'runway': {'A2': 'Noun'},
-    'rupture': {'B2': 'Noun', 'C1': 'Verb'},
+    'rupture': {'B2': 'Noun, Verb', 'C1': 'Verb'},
     'rural': {'A2': 'Adjective'},
     'ruse': {'B2': 'Noun'},
     'rush': {'A1': 'Verb', 'A2': 'Noun'},
     'rust': {'A1': 'Noun'},
-    'rustic': {'B1': 'Adjective'},
-    'rusty': {'B1': 'Adjective'},
-    'rut': {'B1': 'Noun'},
-    'ruthless': {'B2': 'Adjective'},
-    'ruthlessly': {'B2': 'Adverb'},
-    's/he': {'A1': 'Pronoun'},
-    'sabbatical': {'C1': 'Noun'},
-    'saber': {'B2': 'Noun'},
-    'sabotage': {'B1': 'Noun'},
-    'sac': {'A2': 'Noun'},
+    'rustic': {'A2': 'Adjective', 'B1': 'Adjective'}, # A2 for a simple country-style, B1 for more nuanced descriptions of rural life or charm
+    'rusty': {'A2': 'Adjective', 'B1': 'Adjective'}, # A2 level in the literal sense
+    'rut': {'B1': 'Noun', 'B2': 'Noun'}, # B2 for the figurative meaning (e.g., "stuck in a rut")
+    'ruthless': {'B2': 'Adjective', 'C1': 'Adjective'},
+    'ruthlessly': {'B2': 'Adverb', 'C1': 'Adverb'},
+    's/he': {'A1': 'Pronoun', 'B1': 'Pronoun'}, # B2 a more formal and gender-neutral pronoun
+    'sabbatical': {'B2': 'Noun', 'C1': 'Noun'}, # C1 is accurate for academic usage, B2 might be suitable in informal contexts
+    'saber': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for the basic concept, B2 for historical or fencing context
+    'sabotage': {'B1': 'Noun', 'B2': 'Verb'},
+    'sac': {'A2': 'Noun', 'B2': 'Noun'}, # B2 In biological contexts 
     'sack': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Verb'},
     'sacrament': {'C1': 'Noun'},
-    'sacramental': {'C2': 'Adjective'},
+    'sacramental': {'B2': 'Adjective', 'C1': 'Adjective', 'C2': 'Adjective'}, # B2 for a basic understanding, C1 for religious context 
     'sacred': {'B1': 'Adjective'},
-    'sacredness': {'C2': 'Noun'},
-    'sacrifice': {'A2': 'Noun', 'B1': 'Verb, Noun', 'B2': 'Verb'},
-    'sacrificial': {'B2': 'Adjective'},
+    'sacredness': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # 2 for general understanding, C1 for religious or philosophical discussions
+    'sacrifice': {'A2': 'Noun', 'B1': 'Verb, Noun', 'B2': 'Noun, Verb'}, # B2 when referring to a sacrifice in a broader sense (e.g., "making a sacrifice for your career")
+    'sacrificial': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 in religious or historical contexts
     'sad': {'A1': 'Adjective'},
-    'sadden': {'B1': 'Verb'},
-    'saddle': {'A2': 'Noun', 'B1': 'Verb'},
-    'sadism': {'C2': 'Noun'},
-    'sadistic': {'C2': 'Adjective'},
+    'sadden': {'A2': 'Verb', 'B1': 'Verb'}, # Could be understood at A2, but B1 for more nuanced expressions of sadness
+    'saddle': {'A2': 'Noun, Verb', 'B1': 'Verb'}, # A2 verb form, meaning "to burden someone with a responsibility"
+    'sadism': {'C1': 'Noun', 'C2': 'Noun'},
+    'sadistic': {'C1': 'Adjective', 'C2': 'Adjective'},
     'sadly': {'A1': 'Adverb'},
     'sadness': {'B1': 'Noun'},
     'safari': {'B1': 'Noun'},
-    'safe': {'A1': 'Adjective', 'A2': 'Adjective'},
+    'safe': {'A1': 'Adjective', 'A2': 'Adjective'}, # A1 for basic safety, A2 for more complex ideas (e.g., "safe haven")
     'safeguard': {'B2': 'Noun'},
     'safely': {'A2': 'Adverb'},
     'safety': {'A2': 'Noun'},
     'sag': {'A2': 'Verb'},
     'saga': {'B2': 'Noun'},
-    'sage': {'B1': 'Noun'},
+    'sage': {'B1': 'Noun', 'B2': 'Adjective'},
     'said': {'A1': 'Verb (past participle)', 'A1': 'Verb'},
     'sail': {'A1': 'Noun', 'A1': 'Verb'},
     'sailboat': {'A2': 'Noun'},
@@ -14541,292 +14541,293 @@ avl_words={
     'sailor': {'A2': 'Noun'},
     'saint': {'A2': 'Noun'},
     'saintly': {'C1': 'Adjective'},
-    'sake': {'B1': 'Noun'},
+    'sake': {'A2': 'Noun', 'B1': 'Noun'}, # A2 for basic use (e.g., "for the sake of"), B1 for more complex expressions (e.g., "for Pete's sake")
     'salad': {'A1': 'Noun'},
-    'salamander': {'A2': 'Noun'},
-    'salaried': {'C1': 'Adjective'},
-    'salary': {'B2': 'Noun'},
-    'sale': {'A1': 'Noun'},
-    'sales': {'B2': 'Noun'},
-    'salesman': {'A2': 'Noun'},
-    'salespeople': {'B2': 'Noun'},
-    'salesperson': {'A2': 'Noun'},
-    'salience': {'C2': 'Noun'},
-    'salient': {'C1': 'Adjective'},
+    'salamander': {'A2': 'Noun', 'B1': 'Noun'}, # Might be B1 if referring to specific species or cultural references; GQMJr: Also a cooking appliance
+    'salaried': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for basic understanding, C1 for employment discussions
+    'salary': {'B1': 'Noun', 'B2': 'Noun'},
+    'sale': {'A1': 'Noun', 'B1': 'Noun'},
+    'sales': {'B1': 'Noun', 'B2': 'Noun'},
+    'salesman': {'A2': 'Noun', 'B1': 'Noun'},
+    'salespeople': {'B1': 'Noun', 'B2': 'Noun'},
+    'salesperson': {'A2': 'Noun', 'B1': 'Noun'},
+    'salience': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # B2 for general importance, C1 for technical or academic contexts
+    'salient': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for general importance, C1 for technical or academic contexts
     'saline': {'B2': 'Adjective'},
     'salinity': {'C2': 'Noun'},
-    'saliva': {'B1': 'Noun'},
-    'salivary': {'C1': 'Adjective'},
+    'saliva': {'B1': 'Noun', 'B2': 'Noun'}, # B2 for everyday usage
+    'salivary': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for everyday usage
     'salmon': {'A1': 'Noun'},
-    'salmonella': {'C2': 'Noun'},
-    'salon': {'B1': 'Noun'},
-    'saloon': {'B1': 'Noun'},
+    'salmonella': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # B2 for general knowledge of food poisoning, C1 for medical discussions
+    'salon': {'B1': 'Noun', 'B2': 'Noun'}, # B1 is acceptable for the general meaning, consider B2 for specialized salons (e.g., hair salon, beauty salon)
+    'saloon': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for a general meaning, B2 for a bar or a type of car
     'salsa': {'B1': 'Noun'},
     'salt': {'A1': 'Noun'},
     'saltwater': {'B1': 'Noun'},
     'salty': {'A2': 'Adjective'},
-    'salutary': {'B1': 'Adjective'},
+    'salutary': {'B1': 'Adjective', 'B2': 'Adjective', 'C1': 'Adjective'}, # This is a fairly formal adjective, often used in writing
     'salute': {'A2': 'Noun', 'A2': 'Verb'},
-    'salvage': {'A2': 'Verb', 'A2': 'Noun'},
+    'salvage': {'A2': 'Verb', 'A2': 'Noun', 'B1': 'Noun, Verb'},
     'salvation': {'A2': 'Noun'},
-    'salvific': {'B2': 'Adjective'},
+    'salvific': {'B2': 'Adjective', 'C1': 'Adjective', 'C2': 'Adjective'}, # a specialized religious term, so C1 or C2 is more appropriate
     'samba': {'A1': 'Noun'},
-    'same': {'A1': 'Adjective', 'A2': 'Adjective', 'B1': 'Adverb'},
-    'same-gender': {'A1': 'Adjective'},
-    'same-sex': {'B1': 'Adjective'},
+    'same': {'A1': 'Adjective', 'A2': 'Adjective', 'B1': 'Adverb'}, # A1 for basic use, A2 for more nuanced understanding.
+    'same-gender': {'A1': 'Adjective', 'A2': 'Adjective'}, # B2 in discussions about social issues
+    'same-sex': {'B1': 'Adjective', 'B2': 'Adjective'}, # B2 in discussions about social issues
     'sameness': {'B1': 'Noun'},
-    'sample': {'A1': 'Noun', 'B1': 'Noun'},
+    'sample': {'A1': 'Noun', 'B1': 'Noun, Verb'}, # A1 for a small amount, B1 for a representative example; B2 verb form, meaning "to try a small amount of something"
     'sampler': {'A2': 'Noun'},
-    'sampling': {'B2': 'Noun'},
-    'sanctify': {'B1': 'Verb'},
-    'sanction': {'A2': 'Noun', 'A2': 'Verb', 'B2': 'Noun', 'C1': 'Verb'},
-    'sanctity': {'B2': 'Noun'},
-    'sanctuary': {'A2': 'Noun'},
-    'sand': {'A1': 'Noun', 'B1': 'Verb', 'B2': 'Verb'},  # Sand something to smooth it (rub with sandpaper) (b1 verb); Sprinkle with sand (icy road) or fill with sand (harbor) (B2 verb)
+    'sampling': {'B2': 'Noun', 'C1': 'Noun'}, # C1 in the context of statistical sampling
+    'sanctify': {'B1': 'Verb', 'C1': 'Verb'}, # C1 in religious or legal connotations
+    'sanction': {'A2': 'Noun', 'A2': 'Verb', 'B2': 'Noun', 'C1': 'Verb'}, # C1 in religious or legal connotations
+    'sanctity': {'B2': 'Noun', 'C1': 'Noun'}, # C1 in religious or legal connotations
+    'sanctuary': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # B1 for a place of refuge, B2 for a nature reserve or a holy place
+    'sand': {'A1': 'Noun', 'B1': 'Verb', 'B2': 'Verb'},  # Sand something to smooth it (rub with sandpaper) (b1 verb); Sprinkle with sand (icy road) or fill with sand (harbor) (B2 verb); verb form, meaning "to smooth or polish with sandpaper" (B1) or "to sprinkle or fill with sand" (B2).
     'sandal': {'A1': 'Noun'},
-    'sandstone': {'B1': 'Noun'},
+    'sandstone': {'A2': 'Noun', 'B1': 'Noun'},
     'sandwich': {'A1': 'Noun'},
     'sandy': {'A1': 'Adjective'},
     'sane': {'A1': 'Adjective'},
-    'sanguine': {'B2': 'Adjective'},
-    'sanitarian': {'B2': 'Noun'},
-    'sanitary': {'B1': 'Adjective'},
-    'sanitation': {'B2': 'Noun'},
-    'sanitize': {'B1': 'Verb'},
-    'sanity': {'B2': 'Noun'},
-    'sap': {'A2': 'Noun', 'A2': 'Verb'},
+    'sanguine': {'B2': 'Adjective', 'C1': 'Adjective'}, # C2 a fairly formal adjective, often used in writing
+    'sanitarian': {'B2': 'Noun'}, # B2 related to hygiene and public health
+    'sanitary': {'B1': 'Adjective', 'B2': 'Adjective'}, # B2 related to hygiene and public health
+    'sanitation': {'B2': 'Noun'}, # B2 related to hygiene and public health
+    'sanitize': {'B1': 'Verb', 'B2': 'Verb'}, # B2 related to hygiene and public health
+    'sanity': {'B2': 'Noun', 'C1': 'Noun'}, # C1 as it's often used in legal or psychological contexts
+    'sap': {'A2': 'Noun', 'A2': 'Verb', 'B1': 'Verb'}, # B1 meaning "to weaken or drain"  
     'sapling': {'A2': 'Noun'},
-    'sarcasm': {'B2': 'Noun'},
-    'sarcastic': {'B1': 'Adjective'},
-    'sarcoidosis': {'B2': 'Noun'},
-    'sarcoma': {'C2': 'Noun'},
-    'sarcophagus': {'B2': 'Noun'},
+    'sarcasm': {'B1': 'Noun', 'B2': 'Noun'}, # While B2 is technically correct, the concept of sarcasm can be understood at B1
+    'sarcastic': {'A2': 'Adjective', 'B1': 'Adjective'}, # A2 for basic understanding, B1 for recognizing sarcasm in more complex situations
+    'sarcoidosis': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # C1 and C2 as medical terms
+    'sarcoma': {'C1': 'Noun', 'C2': 'Noun'}, # C1 and C2 as medical terms
+    'sarcophagus': {'B2': 'Noun', 'C1': 'Noun'}, # a historical term, so C1 is more suitable
     'sardine': {'A2': 'Noun'},
-    'satanic': {'B1': 'Adjective'},
+    'satanic': {'B1': 'Adjective', 'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for general understanding, C1 for discussions of religion or the occult
     'satellite': {'B2': 'Noun'},
     'satin': {'A2': 'Noun'},
-    'satire': {'B2': 'Noun'},
-    'satirical': {'B2': 'Adjective'},
-    'satirize': {'B2': 'Verb'},
-    'satisfaction': {'B2': 'Noun'},
+    'satire': {'B2': 'Noun', 'C1': 'Noun'},
+    'satirical': {'B2': 'Adjective', 'C1': 'Adjective'},
+    'satirize': {'B2': 'Verb', 'C1': 'Verb'},
+    'satisfaction': {'B1': 'Noun', 'B2': 'Noun'},
     'satisfactorily': {'B1': 'Adverb'},
     'satisfactory': {'A2': 'Adjective'},
     'satisfied': {'A2': 'Adjective'},
     'satisfy': {'B1': 'Verb'},
-    'satisfying': {'B2': 'Adjective'},
-    'saturate': {'B2': 'Verb'},
-    'saturated': {'B1': 'Adjective'},
-    'saturation': {'C1': 'Noun'},
+    'satisfying': {'B1': 'Adjective', 'B2': 'Adjective'},
+    'saturate': {'B2': 'Verb', 'C1': 'Verb'}, # B2 for everyday use, C1 for scientific or technical contexts
+    'saturated': {'B1': 'Adjective', 'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for everyday use, C1 for scientific or technical contexts
+    'saturation': {'B2': 'Noun', 'C1': 'Noun'},
     'sauce': {'A1': 'Noun'},
     'saucepan': {'A2': 'Noun'},
     'saucer': {'A2': 'Noun'},
-    'sauropod': {'B2': 'Noun'},
+    'sauropod': {'B2': 'Noun', 'C1': 'Noun'},# While B2 is accurate, consider C1 due to the specialized nature of this term (dinosaur type)
     'sausage': {'A1': 'Noun'},
     'sauté': {'A2': 'Verb'},
     'savage': {'B1': 'Noun'},
     'savagery': {'B2': 'Noun'},
     'savanna': {'A2': 'Noun'},
     'savannah': {'A2': 'Noun'},
-    'save': {'A1': 'Verb', 'A2': 'Verb'},
-    'saver': {'B2': 'Noun'},
-    'saving': {'A2': 'Noun', 'B1': 'Adjective'},
-    'savior': {'A2': 'Noun'},
+    'save': {'A1': 'Verb', 'A2': 'Verb'}, # A1 for the basic meaning, A2 for more complex situations (e.g., saving money)
+    'saver': {'B1': 'Noun', 'B2': 'Noun'}, #  This can be understood at B1, especially in the context of saving money.
+    'saving': {'A2': 'Noun, Verb', 'B1': 'Adjective'}, # A2 verb form in the present participle form, as in "saving money."
+    'savior': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # B1 for a general understanding, B2 for religious context
+    'saviour': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # B1 for a general understanding, B2 for religious context - GQMJr added 
     'savor': {'B1': 'Verb'},
-    'savvy': {'B2': 'Adjective'},
+    'savvy': {'B2': 'Adjective', 'C1': 'Adjective'}, # often used in business or technology contexts and could be considered C1
     'saw': {'A1': 'Verb', 'A2': 'Noun'},
     'sawdust': {'A1': 'Noun'},
-    'sawmill': {'A2': 'Noun'},
+    'sawmill': {'A2': 'Noun',  'B1': 'Noun'},
     'saxophone': {'A2': 'Noun'},
     'say': {'A1': 'Verb', 'A2': 'Verb'},
     'saying': {'A1': 'Noun'},
     'scab': {'A1': 'Noun'},
     'scaffold': {'B1': 'Noun'},
     'scaffolding': {'B1': 'Noun'},
-    'scale': {'A2': 'Noun', 'B2': 'Noun'},
-    'scaling': {'B1': 'Noun'},
+    'scale': {'A2': 'Noun', 'B1': 'Verb', 'B2': 'Noun'}, # B1 verb form, meaning "to climb up or over something steep."
+    'scaling': {'B1': 'Noun, Verb'}, # B1 verb form, meaning "to make something bigger or smaller."
     'scallop': {'A2': 'Noun'},
     'scalp': {'A1': 'Noun'},
     'scalpel': {'B1': 'Noun'},
     'scam': {'A2': 'Noun'},
-    'scan': {'A1': 'Verb', 'A2': 'Noun'},
+    'scan': {'A1': 'Verb', 'A2': 'Noun', 'B1': 'Verb'},
     'scandal': {'B2': 'Noun'},
     'scandalous': {'B1': 'Adjective'},
     'scanner': {'B1': 'Noun'},
-    'scanning': {'B2': 'Adjective'},
-    'scant': {'B1': 'Adjective'},
-    'scapegoat': {'B2': 'Noun'},
+    'scanning': {'B1': 'Verb', 'B2': 'Adjective'},
+    'scant': {'B1': 'Adjective', 'B2': 'Adjective'}, # While B1 is acceptable, this word is often used in more formal or written contexts
+    'scapegoat': {'B2': 'Noun', 'C1': 'Noun'}, # C1 in social or political contexts
     'scar': {'A1': 'Noun'},
     'scarce': {'A2': 'Adjective'},
     'scarcely': {'A2': 'Adverb'},
-    'scarcity': {'B2': 'Noun'},
+    'scarcity': {'B2': 'Noun', 'C1': 'Noun'}, # C1 in the context of economics
     'scare': {'A2': 'Verb'},
     'scared': {'A1': 'Adjective'},
     'scarf': {'A1': 'Noun'},
     'scarlet': {'A1': 'Adjective'},
     'scary': {'A1': 'Adjective'},
-    'scathing': {'B2': 'Adjective'},
-    'scatter': {'B1': 'Verb'},
-    'scattered': {'B1': 'Adjective'},
-    'scattering': {'B2': 'Noun'},
-    'scavenge': {'B1': 'Verb'},
+    'scathing': {'B2': 'Adjective', 'C1': 'Adjective'}, # C1 a strong word often used in critical reviews or opinions
+    'scatter': {'A2': 'Verb', 'B1': 'Verb'}, # 2 for basic scattering (e.g., seeds)
+    'scattered': {'B1': 'Adjective'}, # , B1 for the adjective meaning "spread out"
+    'scattering': {'B2': 'Noun'}, # B2 for the noun "scattering" in a scientific context.
+    'scavenge': {'B1': 'Verb', 'B2': 'Verb'}, # B1 in the basic sense of "search for food," but B2 for more specialized uses (e.g., animals scavenging) 
     'scavenger': {'B1': 'Noun'},
     'scenario': {'B1': 'Noun'},
     'scene': {'B1': 'Noun'},
     'scenery': {'B1': 'Noun'},
-    'scenic': {'A2': 'Adjective'},
-    'scent': {'A1': 'Noun'},
-    'schedule': {'A2': 'Noun', 'B1': 'Noun'},
-    'scheduled': {'B2': 'Adjective'},
+    'scenic': {'A2': 'Adjective', 'B1': 'Adjective'},
+    'scent': {'A1': 'Noun', 'B1': 'Verb'},
+    'schedule': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Verb'},
+    'scheduled': {'B1': 'Verb', 'B2': 'Adjective'},
     'scheduling': {'B1': 'Noun'},
-    'schema': {'C1': 'Noun'},
-    'schematic': {'B2': 'Noun'},
-    'scheme': {'A2': 'Noun'},
-    'schism': {'B2': 'Noun'},
-    'schizophrenia': {'C1': 'Noun'},
-    'schizophrenic': {'C1': 'Adjective'},
+    'schema': {'C1': 'Noun', 'C2': 'Noun'}, # This is a technical term in psychology or computing, so C2 is more appropriate.
+    'schematic': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for a simple diagram, B2 for a technical drawing, and add the adjective form
+    'scheme': {'A2': 'Noun', 'B1': 'Verb'}, # B1 verb form, meaning "to make a secret or devious plan."
+    'schism': {'B2': 'Noun', 'C1': 'Noun'}, # C1 in religious or political contexts
+    'schizophrenia': {'C1': 'Noun', 'C2': 'Noun'}, 
+    'schizophrenic': {'C1': 'Adjective', 'C2': 'Adjective'},
     'scholar': {'B1': 'Noun'},
-    'scholarly': {'C1': 'Adjective'},
-    'scholarship': {'C1': 'Noun'},
-    'scholastic': {'C1': 'Adjective'},
-    'school': {'A1': 'Noun', 'C2': 'Noun'},
+    'scholarly': {'B2': 'Adjective', 'C1': 'Adjective'},
+    'scholarship': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, # B1 for the general concept of financial aid for students, B2 for academic achievement or research funding.
+    'scholastic': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for general educational matters, C1 for academic or formal contexts
+    'school': {'A1': 'Noun', 'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # B2 for "school of thought" or "school of fish," C1 for academic institutions or disciplines.
     'school-age': {'A2': 'Adjective'},
     'school-aged': {'A2': 'Adjective'},
-    'school-based': {'B1': 'Adjective'},
-    'school-related': {'B1': 'Adjective'},
-    'school-wide': {'B1': 'Adjective'},
+    'school-based': {'A2': 'Adjective', 'B1': 'Adjective'},
+    'school-related': {'A2': 'Adjective', 'B1': 'Adjective'},
+    'school-wide': {'A2': 'Adjective', 'B1': 'Adjective'},
     'schoolchild': {'A2': 'Noun'},
     'schoolhouse': {'A1': 'Noun'},
     'schooling': {'A1': 'Noun'},
     'schoolteacher': {'A1': 'Noun'},
     'schoolwork': {'A2': 'Noun'},
-    'schooner': {'B1': 'Noun'},
-    'sci-fi': {'B1': 'Noun'},
+    'schooner': {'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun'}, #  This is a type of sailing vessel, so B2 for basic knowledge, C1 for sailing enthusiasts.
+    'sci-fi': {'A2': 'Noun', 'B1': 'Noun'}, # A2 for basic understanding, B1 for fans of the genre.
     'science': {'A2': 'Noun'},
-    'science-fiction': {'B2': 'Noun'},
-    'scientific': {'B1': 'Adjective'},
-    'scientifically': {'C1': 'Adverb'},
-    'scientist': {'B2': 'Noun'},
+    'science-fiction': {'B1': 'Noun', 'B2': 'Noun'},
+    'scientific': {'B1': 'Adjective', 'B2': 'Adjective'}, # B2 for more complex scientific concepts
+    'scientifically': {'B2': 'Adverb', 'C1': 'Adverb'}, # B2 for general use, C1 for academic or technical contexts
+    'scientist': {'B1': 'Noun', 'B2': 'Noun'},
     'scissors': {'A2': 'Noun'},
-    'sclerosis': {'C1': 'Noun'},
-    'scoff': {'B1': 'Verb'},
+    'sclerosis': {'C1': 'Noun', 'C2': 'Noun'}, # C1 or C2 as a medical term
+    'scoff': {'B1': 'Verb', 'B2': 'Verb'}, # While the basic meaning can be understood at B1, the connotation of derision makes it more suitable for B2.
     'scold': {'A2': 'Verb'},
     'scoop': {'A2': 'Noun'},
-    'scope': {'B1': 'Noun'},
-    'score': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Noun', 'B2': 'Verb'},
+    'scope': {'B1': 'Noun', 'B2': 'Noun'}, # Consider B2 for more complex meanings like "the scope of a project"
+    'score': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Noun', 'B2': 'Noun, Verb'}, # A1/A2 for basic meaning (points), B1 for the act of scoring, B2 noun for musical scores or film scores
     'scorecard': {'B2': 'Noun'},
     'scorer': {'A2': 'Noun'},
     'scoring': {'A2': 'Noun'},
-    'scorn': {'B2': 'Noun'},
+    'scorn': {'B2': 'Noun', 'C1': 'Noun'}, # C2 noun form is typically used in more literary or formal contexts
     'scorpion': {'B1': 'Noun'},
     'scour': {'B1': 'Verb'},
     'scourge': {'B2': 'Noun'},
-    'scout': {'A2': 'Noun'},
-    'scramble': {'A2': 'Verb'},
-    'scrap': {'A1': 'Noun', 'A2': 'Noun'},
+    'scout': {'A2': 'Noun, Verb'},
+    'scramble': {'A2': 'Verb', 'B1': 'Verb'}, # A2 for the literal meaning (e.g., eggs), B1 for more figurative uses (e.g., to scramble for a solution)
+    'scrap': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Noun'}, # B1 noun for "a small piece" or "a fight" 
     'scrape': {'A1': 'Verb', 'B1': 'Verb'},
     'scratch': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Verb'},
     'scream': {'A1': 'Verb, Noun', 'A2': 'Noun'},
-    'screen': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Verb'},
-    'screening': {'B2': 'Noun'},
+    'screen': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Verb'}, # B1 for the meaning of "to show a film/video," B2 for "to examine or filter"
+    'screening': {'B1': 'Noun', 'B2': 'Noun'}, # B1 In the medical sense (e.g., cancer screening)
     'screenplay': {'B2': 'Noun'},
-    'screw': {'A2': 'Noun'},
+    'screw': {'A2': 'Noun', 'B1': 'Verb'}, # B1 verb  for the slang meaning of "to cheat or swindle someone"
     'screwdriver': {'A2': 'Noun'},
-    'scribble': {'A2': 'Verb'},
-    'scribe': {'A2': 'Noun'},
-    'script': {'A2': 'Noun'},
-    'scriptural': {'C1': 'Adjective'},
-    'scripture': {'A2': 'Noun'},
+    'scribble': {'A1': 'Noun', 'A2': 'Verb'},
+    'scribe': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # B1 for a general writer, B2 for a historical copyist
+    'script': {'A2': 'Noun', 'B2': 'Noun'}, # B2 for a screenplay or computer script,
+    'scriptural': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for basic understanding, C1 for religious contexts
+    'scripture': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # B2 for basic understanding, C1 for religious contexts
     'scroll': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Noun', 'B2': 'Verb'},
     'scrub': {'A2': 'Verb'},
     'scrubber': {'B1': 'Noun'},
-    'scrupulous': {'B2': 'Adjective'},
+    'scrupulous': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for general carefulness, C1 for legal or ethical contexts
     'scrupulously': {'C2': 'Adverb'},
-    'scrutinize': {'B2': 'Verb'},
-    'scrutiny': {'C1': 'Noun'},
-    'scuba': {'B1': 'Noun'},
-    'sculpt': {'B1': 'Verb'},
-    'sculpted': {'B1': 'Adjective'},
-    'sculptor': {'B1': 'Noun'},
-    'sculptural': {'B2': 'Adjective'},
-    'sculpture': {'B2': 'Noun'},
-    'scurry': {'A2': 'Verb'},
-    'scuttle': {'A2': 'Verb'},
+    'scrutinize': {'B2': 'Verb', 'C1': 'Verb'}, # B2 for general carefulness, C1 for legal or ethical contexts
+    'scrutiny': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for general carefulness, C1 for legal or ethical contexts
+    'scuba': {'A2': 'Noun', 'B1': 'Noun'}, # While B1 is acceptable, A2 might be more appropriate for a general understanding
+    'sculpt': {'B1': 'Verb', 'B2': 'Verb'}, # can be used at B1 level, especially if the context is related to art or design
+    'sculpted': {'B1': 'Adjective', 'B2': 'Adjective'}, # can be used at B1 level, especially if the context is related to art or design
+    'sculptor': {'B1': 'Noun', 'B2': 'Noun'}, # can be used at B1 level, especially if the context is related to art or design
+    'sculptural': {'B1': 'Adjective', 'B2': 'Adjective'}, # can be used at B1 level, especially if the context is related to art or design
+    'sculpture': {'B1': 'Noun', 'B2': 'Noun'}, # can be used at B1 level, especially if the context is related to art or design
+    'scurry': {'A2': 'Verb', 'B1': 'Verb'}, #  While A2 is acceptable for the basic meaning of "move quickly," B1 might be more appropriate for more figurative uses (e.g., "The news sent him scurrying back to the office")
+    'scuttle': {'A2': 'Verb', 'B1': 'Verb'}, #  While A2 is acceptable for the basic meaning of "move quickly," B1 might be more appropriate for more figurative uses (e.g., "The news sent him scurrying back to the office")
     'sea': {'A2': 'Noun'},
-    'sea-level': {'B1': 'Noun'},
-    'seabed': {'B1': 'Noun'},
-    'seabird': {'B1': 'Noun'},
-    'seaboard': {'B1': 'Noun'},
-    'seafloor': {'B1': 'Noun'},
-    'seafood': {'A2': 'Noun'},
-    'seagrass': {'B1': 'Noun'},
-    'seahorse': {'B1': 'Noun'},
-    'seal': {'A2': 'Noun', 'A2': 'Noun', 'B2': 'Verb'},
+    'sea-level': {'A2': 'Noun', 'B1': 'Noun'}, # A2 level in basic geographical contexts
+    'seabed': {'A2': 'Noun', 'B1': 'Noun'},
+    'seabird': {'A2': 'Noun', 'B1': 'Noun'},
+    'seaboard': {'A2': 'Noun', 'B1': 'Noun'},
+    'seafloor': {'A2': 'Noun', 'B1': 'Noun'},
+    'seafood': {'A2': 'Noun', 'B1': 'Noun'},
+    'seagrass': {'A2': 'Noun', 'B1': 'Noun'},
+    'seahorse': {'A2': 'Noun', 'B1': 'Noun'},
+    'seal': {'A2': 'Noun', 'A2': 'Noun', 'B1': 'Verb', 'B2': 'Verb'}, # B1 verb meaning "to close securely" 
     'sealed': {'A2': 'Verb'},
     'seam': {'A2': 'Noun'},
     'seaman': {'B1': 'Noun'},
-    'seamless': {'B2': 'Adjective'},
-    'seamlessly': {'B2': 'Adverb'},
-    'search': {'A1': 'Verb', 'A2': 'Noun'},
-    'searchable': {'C2': 'Adjective'},
+    'seamless': {'B1': 'Adjective', 'B2': 'Adjective'}, # B1 for the literal meaning, B2 for the figurative meaning of "smooth and continuous"
+    'seamlessly': {'B1': 'Adverb', 'B2': 'Adverb'}, # B1 for the literal meaning, B2 for the figurative meaning of "smooth and continuous"
+    'search': {'A1': 'Verb', 'A2': 'Noun', 'B1': 'Noun'}, # B1 noun for the meaning "in search of"
+    'searchable': {'C1': 'Adjective', 'C2': 'Adjective'}, # C2 a technical term related to online search engines
     'searcher': {'B1': 'Noun'},
-    'seashore': {'B1': 'Noun'},
-    'seaside': {'B1': 'Noun'},
+    'seashore': {'A2': 'Noun', 'B1': 'Noun'},
+    'seaside': {'A2': 'Noun', 'B1': 'Noun'},
     'season': {'A1': 'Noun'},
-    'seasonal': {'B1': 'Adjective'},
-    'seasonally': {'B2': 'Adverb'},
-    'seasoned': {'B2': 'Adjective'},
-    'seasoning': {'B1': 'Noun'},
+    'seasonal': {'A2': 'Adjective', 'B1': 'Adjective'},
+    'seasonally': {'A2': 'Adverb', 'B1': 'Adverb', 'B2': 'Adverb'},
+    'seasoned': {'B1': 'Adjective', 'B2': 'Adjective'}, # B1 in the sense of "experienced"
+    'seasoning': {'A2': 'Noun', 'B1': 'Noun'},
     'seat': {'A1': 'Noun', 'B1': 'Verb'},
     'seated': {'A2': 'Adjective'},
-    'seating': {'A2': 'Noun'},
+    'seating': {'A2': 'Noun', 'B1': 'Noun'},
     'seawater': {'A2': 'Noun'},
-    'seaweed': {'B1': 'Noun'},
-    'secede': {'C1': 'Verb'},
-    'secession': {'C1': 'Noun'},
-    'secessionist': {'B2': 'Noun'},
-    'secluded': {'B2': 'Adjective'},
-    'seclusion': {'C1': 'Noun'},
+    'seaweed': {'A2': 'Noun', 'B1': 'Noun'},
+    'secede': {'B2': 'Verb', 'C1': 'Verb'},
+    'secession': {'B2': 'Noun', 'C1': 'Noun'},
+    'secessionist': {'B2': 'Noun', 'C1': 'Noun'},
+    'secluded': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for general understanding, C1 for more nuanced uses in literature or philosophy
+    'seclusion': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for general understanding, C1 for more nuanced uses in literature or philosophy
     'second': {'A1': 'Number, Noun', 'A2': 'Noun', 'B1': 'Adjective'},
-    'second-class': {'B2': 'Noun'},
-    'second-generation': {'B1': 'Noun'},
-    'second-grade': {'B1': 'Noun'},
+    'second-class': {'A2': 'Noun', 'B2': 'Noun'},
+    'second-generation': {'A2': 'Noun', 'B1': 'Noun'},
+    'second-grade': {'A2': 'Noun', 'B1': 'Noun'},
     'second-hand': {'A2': 'Adjective'},
-    'second-largest': {'B2': 'Noun'},
-    'second-order': {'C1': 'Adjective'},
-    'secondarily': {'B2': 'Adverb'},
+    'second-largest': {'A2': 'Noun', 'B2': 'Noun'},
+    'second-order': {'B2': 'Adjective', 'C1': 'Adjective'},
+    'secondarily': {'B1': 'Adverb', 'B2': 'Adverb'},
     'secondary': {'B1': 'Adjective'},
-    'secondly': {'A2': 'Adverb'},
-    'secrecy': {'C2': 'Noun'},
+    'secondly': {'A2': 'Adverb', 'B1': 'Adverb'},
+    'secrecy': {'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun'}, # B2 for the general concept of secrecy, C1 for political or legal contexts
     'secret': {'A2': 'Adjective, Noun', 'B1': 'Adjective'},
     'secretariat': {'C1': 'Noun'},
     'secretary': {'B1': 'Noun'},
-    'secretary-general': {'B2': 'Noun'},
-    'secrete': {'C1': 'Verb'},
-    'secretion': {'C1': 'Noun'},
-    'secretive': {'C1': 'Adjective'},
+    'secretary-general': {'B2': 'Noun', 'C1': 'Noun'},
+    'secrete': {'B2': 'Verb', 'C1': 'Verb'}, # 2 for the basic meaning of "to hide," C1 for biological or technical contexts
+    'secretion': {'B2': 'Noun', 'C1': 'Noun'}, # 2 for the basic meaning of "to hide," C1 for biological or technical contexts
+    'secretive': {'B2': 'Adjective', 'C1': 'Adjective'},
     'secretly': {'B1': 'Adverb'},
-    'sect': {'C1': 'Noun'},
-    'sectarian': {'C1': 'Adjective'},
+    'sect': {'B2': 'Noun', 'C1': 'Noun'}, #  B2 for general understanding, C1 for religious or political contexts
+    'sectarian': {'B2': 'Adjective', 'C1': 'Adjective'}, #  B2 for general understanding, C1 for religious or political contexts
     'section': {'C1': 'Noun'},
-    'sectional': {'B1': 'Adjective'},
+    'sectional': {'A2': 'Adjective', 'B1': 'Adjective'},
     'sector': {'B2': 'Noun'},
-    'sectoral': {'C1': 'Adjective'},
+    'sectoral': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for general understanding, C1 for economic or political contexts
     'secular': {'B2': 'Adjective'},
     'secularism': {'C1': 'Noun'},
     'secularist': {'C1': 'Noun'},
     'secularization': {'C1': 'Noun'},
-    'secure': {'B1': 'Adjective','B2': 'Verb, Adjective'},
+    'secure': {'B1': 'Adjective', 'B2': 'Verb, Adjective', 'C1': 'Verb'}, # B2 in the sense of "obtain" or C1 in the sense of "make safe"
     'securely': {'A2': 'Adverb'},
     'security': {'B2': 'Noun'},
-    'sedan': {'C1': 'Noun'},
-    'sedative': {'C1': 'Noun'},
-    'sedentary': {'B1': 'Adjective'},
-    'sediment': {'C1': 'Noun'},
-    'sedimentary': {'C1': 'Adjective'},
+    'sedan': {'B2': 'Noun', 'C1': 'Noun'}, # This is a common word for a type of car and can be understood at B2 level
+    'sedative': {'B2': 'Noun, Adjective', 'C1': 'Noun'}, # B2 for the basic understanding of a calming medication
+    'sedentary': {'B1': 'Adjective', 'B2': 'Adjective'}, # B2 level, especially in the context of lifestyle
+    'sediment': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for basic understanding, especially in the context of geography or geology
+    'sedimentary': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for basic understanding, especially in the context of geography or geology
     'sedimentation': {'B2': 'Noun'},
-    'seduce': {'B1': 'Verb'},
-    'seduction': {'C1': 'Noun'},
-    'seductive': {'C1': 'Adjective'},
+    'seduce': {'B1': 'Verb', 'B2': 'Verb', 'C1': 'Verb'}, # B2 for the basic meaning, but C1 for more nuanced or literary contexts
+    'seduction': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for the basic meaning, but C1 for more nuanced or literary contexts
+    'seductive': {'B2': 'Adjective', 'C1': 'Adjective'}, # B2 for the basic meaning, but C1 for more nuanced or literary contexts
     'see': {'B2': 'Verb'},
     'seed': {'A1': 'Noun', 'A2': 'Noun, Verb', 'B1': 'Verb', 'B2': 'Verb', 'C1': 'Verb', 'C2': 'Verb (transitive)'},
     'seedling': {'C1': 'Noun'},
@@ -14838,11 +14839,11 @@ avl_words={
     'seeming': {'B2': 'Adjective'},
     'seemingly': {'B2': 'Adverb'},
     'seep': {'C1': 'Verb'},
-    'seepage': {'C1': 'Noun'},
-    'seer': {'C1': 'Noun'},
+    'seepage': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for general understanding, C1 for technical or scientific contexts
+    'seer': {'B2': 'Noun', 'C1': 'Noun'}, # B2 for a fortune-teller, C1 for a visionary or prophet
     'segment': {'B1': 'Noun'},
-    'segmentation': {'B2': 'Noun'},
-    'segmented': {'C1': 'Adjective'},
+    'segmentation': {'B2': 'Noun', 'C1': 'Noun'},
+    'segmented': {'B2': 'Adjective', 'C1': 'Adjective'},
     'segregate': {'B2': 'Verb'},
     'segregated': {'B2': 'Adjective'},
     'segregation': {'B2': 'Noun'},
@@ -14857,7 +14858,7 @@ avl_words={
     'selectively': {'B2': 'Adverb'},
     'selectivity': {'C1': 'Noun'},
     'selenium': {'C1': 'Noun'},
-    'self': {'A1': 'Noun'},
+    'self': {'A1': 'Noun', 'B1': 'Noun'},
     'self-actualization': {'C1': 'Noun'},
     'self-administered': {'C1': 'Adjective'},
     'self-assessment': {'B2': 'Noun'},
