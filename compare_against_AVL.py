@@ -966,15 +966,17 @@ def read_KTH_svensk_engelska_ordbok_file(filenamme, sheetname):
     return [swedish_words, english_words, df]
 
 # return a tripple of words, words_plurals, dataframe
-def read_AVL_data(filenamme, sheetname):
+def read_AVL_data(filename, sheetname):
     global Verbose_Flag
     #
-    df = pd.read_excel(open(filenamme, 'rb'), sheet_name=sheetname)
+    df = pd.read_excel(open(filename, 'rb'), sheet_name=sheetname)
     # the spreadsheet columns are:
     # ID	band	status	word	Pos	COCA-All	COCA-Acad	ratio	disp	range
     # use a list as there may be multiple instances of a given word, due to multiple contexts
     words = []
     #
+    if Verbose_Flag:
+        print(f"processing '{filename}'")
     for index, row in  df.iterrows():
         id=row['ID']
         word=row['word']
@@ -984,11 +986,13 @@ def read_AVL_data(filenamme, sheetname):
         pos=row['Pos']
 
         if not (word) and id == 2523: #  2523 the word is FALSE, but the pos is 'j'
-            print(f"{index=} {id=} {word=} {pos=}")
+            if Verbose_Flag:
+                print(f"{index=} {id=} {word=} {pos=}")
             word='false'
         elif not isinstance(word, str):
             if isinstance(word, float) and math.isnan(word):
-                print(f"{index=} {id=} {word=} {pos=}")
+                if Verbose_Flag:
+                    print(f"{index=} {id=} {word=} {pos=}")
                 if id == 8729:
                     word ='null' # with pos j
                 if id == 17841:
@@ -1283,6 +1287,8 @@ def main():
     print(f'{len(miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling):>{Numeric_field_width}} words in miss_spelled_to_correct_spelling')
     print(f'{len(common_english_and_swedish.abbreviations_ending_in_period):>{Numeric_field_width}} words in abbreviations_ending_in_period')
     print(f'{len(words_AVL):>{Numeric_field_width}} words in AVL')
+    print(f'{len(AVL_words_with_CEFR.avl_words):>{Numeric_field_width}} words in AVL_words_with_CEFR.avl_words')
+
     #
     # entries in the dict will have the form: 'acronym': ['expanded form 1', 'expanded form 2',  ... ]
     well_known_acronyms=dict()

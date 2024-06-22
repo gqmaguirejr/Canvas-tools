@@ -316,6 +316,7 @@ avl_words={
     'Politburo': {'B2': 'Noun'},
     'Polynesian': {'B1': 'Noun', 'B2': 'Adjective'},
     'Portuguese': {'A2': 'Adjective, Noun', 'B1': 'Adjective'},
+    'Preposition': {'A2': 'Noun'},
     'Presbyterian': {'B2': 'Noun','C1': 'Adjective'},
     'Protestant': {'B1': 'Noun'},
     'Prussian': {'B2': 'Adjective'},
@@ -4044,8 +4045,8 @@ avl_words={
     'cranberry': {'A2': 'Noun', 'B1': 'Noun'},
     'crane': {'A2': 'Noun', 'B1': 'Noun'},
     'cranial': {'C1': 'Adjective', 'C2': 'Adjective'},
-    'crank': {'A2': 'Noun', 'B1': 'Noun'},
     'crank': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Verb'},
+    'crank': {'A2': 'Noun', 'B1': 'Noun'},
     'crap': {'B1': 'Noun (vulgar)', 'C1': 'Noun'},  # Consider marking vulgar
     'crash': {'A1': 'Noun, Verb', 'B1': 'Verb'},
     'crate': {'A1': 'Noun', 'A2': 'Noun'},
@@ -10902,8 +10903,8 @@ avl_words={
     'naive': {'A2': 'Adjective', 'B1': 'Adjective'},
     'naively': {'B2': 'Adverb'},
     'naivete': {'B2': 'Noun', 'C1': 'Noun'},
-    'naiveté': {'C1': 'Noun'}, # added GQMJr
     'naivety': {'B1': 'Noun'},
+    'naiveté': {'C1': 'Noun'}, # added GQMJr
     'naked': {'A1': 'Adjective'},
     'naked-eye': {'B2': 'Noun', 'C2': 'Adjective'},
     'nakedness': {'B1': 'Noun', 'B2': 'Noun'},
@@ -11260,7 +11261,7 @@ avl_words={
     'notorious': {'B1': 'Adjective', 'B2': 'Adjective'},
     'notoriously': {'B1': 'Adverb', 'B2': 'Adverb'},
     'notwithstanding': {'C1': 'Adverb, Conjunction', 'C2': 'Conjunction'},
-    'Noun': {'A1': 'Noun'},
+    'noun': {'A1': 'Noun'},
     'nourish': {'A2': 'Verb', 'B1': 'Verb'},
     'nourishment': {'A2': 'Noun', 'B1': 'Noun'},
     'novel': {'A2': 'Adjective', 'B1': 'Adjective', 'B2': 'Noun'},
@@ -12858,7 +12859,7 @@ avl_words={
     'preoccupation': {'B2': 'Noun', 'C1': 'Noun'},
     'preoccupied': {'B1': 'Adjective', 'B2': 'Adjective'},
     'preoperative': {'C1': 'Adjective'},
-    'Preposition': {'A2': 'Noun'},
+    'prep': {'A2': 'Noun'},
     'prepaid': {'B2': 'Adjective'},
     'preparation': {'B2': 'Noun'},
     'preparatory': {'B2': 'Adjective'},
@@ -18007,9 +18008,9 @@ avl_words={
     'vibrato': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for the general concept of shaking or quivering, B2 for musical terms
     'vicarious': {'B2': 'Adjective', 'C1': 'Adjective'},
     'vicariously': {'B2': 'Adverb', 'C1': 'Adverb'},
+    'vice president': {'B1': 'Noun'}, # added GQMJR
     'vice': {'A2': 'Noun', 'B1': 'Noun'}, # A2 basic meaning of "bad habit"
     'vice-president': {'B1': 'Noun', 'B2': 'Noun'},
-    'vice president': {'B1': 'Noun'}, # added GQMJR
     'viceroy': {'B2': 'Noun', 'C1': 'Noun'}, # B2 is acceptable for the general meaning, consider C1 for historical or political contexts
     'vicinity': {'B1': 'Noun'},
     'vicious': {'B1': 'Adjective'},
@@ -18418,8 +18419,8 @@ avl_words={
     'windmill': {'A2': 'Noun', 'B1': 'Noun'}, # While A2 is acceptable, B1 might be more appropriate for understanding its energy production function
     'window': {'A1': 'Noun'},
     'windrow': {'B1': 'Noun', 'B2': 'Noun'}, # B2 a specialized agricultural term
-    'windshield': {'A2': 'Noun'},
     'windscreen': {'A2': 'Noun'}, # added GQMJr
+    'windshield': {'A2': 'Noun'},
     'windy': {'A2': 'Adjective', 'B1': 'Adjective'}, # B1 for a bird's wing, B2 for metaphorical uses or technical wings (e.g., airplane wings)
     'wine': {'A1': 'Noun'},
     'winery': {'B2': 'Noun'},
@@ -18591,8 +18592,8 @@ avl_words={
     'yielding': {'B2': 'Adjective'},
     'yo-yo': {'A1': 'Noun', 'A2': 'Noun'},
     'yoga': {'A2': 'Noun'},
-    'yogurt': {'A2': 'Noun'},
     'yoghurt': {'A2': 'Noun'}, # added GQMJr
+    'yogurt': {'A2': 'Noun'},
     'yoke': {'B1': 'Noun', 'B2': 'Noun'}, # While B1 is acceptable for the noun (a wooden crosspiece for oxen), consider adding B2 for the verb (to join together)
     'yolk': {'A2': 'Noun'},
     'yon': {'C1': 'Adjective', 'C2': 'Adjective'},
