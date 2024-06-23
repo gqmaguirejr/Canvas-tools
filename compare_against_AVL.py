@@ -54,6 +54,7 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
 import common_english_and_swedish
+import common_acronyms
 import miss_spelled_to_correct_spelling
 import diva_merged_words
 import diva_corrected_abstracts
@@ -1189,7 +1190,7 @@ def main():
 
     # entries in the dict will have the form: 'acronym': ['expanded form 1', 'expanded form 2',  ... ]
     well_known_acronyms=dict()
-    for e in common_english_and_swedish.well_known_acronyms_list:
+    for e in common_acronyms.well_known_acronyms_list:
         if len(e) >= 1:
             ack=e[0]
             if len(e) >= 2:
@@ -1197,7 +1198,7 @@ def main():
                 current_entry=well_known_acronyms.get(ack, list())
                 current_entry.append(d)
                 well_known_acronyms[ack]=current_entry
-    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_english_and_swedish.well_known_acronyms_list)}) well_known_acronyms')
+    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) (unique) well_known_acronyms')
 
     #
     # KTH:s svensk-engelska ordbok
@@ -1292,7 +1293,7 @@ def main():
     #
     # entries in the dict will have the form: 'acronym': ['expanded form 1', 'expanded form 2',  ... ]
     well_known_acronyms=dict()
-    for e in common_english_and_swedish.well_known_acronyms_list:
+    for e in common_acronyms.well_known_acronyms_list:
         if len(e) >= 1:
             ack=e[0]
             if len(e) >= 2:
@@ -1300,7 +1301,7 @@ def main():
                 current_entry=well_known_acronyms.get(ack, list())
                 current_entry.append(d)
                 well_known_acronyms[ack]=current_entry
-    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_english_and_swedish.well_known_acronyms_list)}) well_known_acronyms')
+    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) (dict) well_known_acronyms')
     #
     words_not_found=[]
     #
@@ -1383,6 +1384,52 @@ def main():
         print(f"{bogus_levels=}")
 
     print(f"{sorted(all_pos_found)=}")
+
+    # check overlapp with other sources
+    avl_missing_from_american_3000_words=[]
+    for w in american_3000_words:
+        if w not in AVL_words_with_CEFR.avl_words:
+            avl_missing_from_american_3000_words.append(w)
+
+    print(f"{len(avl_missing_from_american_3000_words)=}")
+    if len(avl_missing_from_american_3000_words) > 0:
+        print(f"{avl_missing_from_american_3000_words=}")
+
+    avl_missing_from_american_5000_words=[]
+    for w in american_5000_words:
+        if w not in AVL_words_with_CEFR.avl_words:
+            avl_missing_from_american_5000_words.append(w)
+
+    print(f"{len(avl_missing_from_american_5000_words)=}")
+    if len(avl_missing_from_american_5000_words) > 0:
+        print(f"{avl_missing_from_american_5000_words=}")
+
+    ce_missing_words=[]
+    for w in avl_missing_from_american_3000_words:
+        if w in well_known_acronyms:
+            continue
+        if w not in common_english_and_swedish.common_English_words:
+            ce_missing_words.append(w)
+    for w in avl_missing_from_american_5000_words:
+        if w in well_known_acronyms:
+            continue
+        if w not in common_english_and_swedish.common_English_words:
+            ce_missing_words.append(w)
+
+    print(f"{len(ce_missing_words)=} {ce_missing_words=}")
+
+    #american_5000_words:
+    #oxford_3000_words:
+    #oxford_5000_words:
+
+    avl_missing_words=[]
+    for w in AVL_words_with_CEFR.avl_words:
+        if w not in common_english_and_swedish.common_English_words:
+            avl_missing_words.append(w)
+
+    print(f"{len(avl_missing_words)=} {avl_missing_words=}")
+
+    
 #
 if __name__ == "__main__": main()
 

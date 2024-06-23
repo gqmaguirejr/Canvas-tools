@@ -4994,6 +4994,16 @@ well_known_acronyms_list=[
     ['IMPP', 'Instant Messaging and Presence Protocol'],
     ['IPPM', 'Intermediate-Path Performance Monitoring'],
     ['IPPM', 'IP Performance Metrics'],
+    ['CD', 'Compact Disc'],
+    ['DVD', 'Digital Video Disc'],
+    ['TV', 'Television'],
+    ['AIDS', 'Acquired Immune Deficiency Syndrome'],
+    ['ID', 'identifier'],
+    ['DJ', 'Disc Jockey'],
+    ['IQ', 'intelligence quotient'],
+    ['MP', 'member of Parliament'],
+    ['GI', 'gastrointestinal'],
+    ['GI', 'Government Issue'], # often used by soldiers to refer to themselves
 
 ]
 

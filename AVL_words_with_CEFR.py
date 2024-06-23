@@ -10273,7 +10273,7 @@ avl_words={
     'meditate': {'A2': 'Verb', 'B1': 'Verb'},
     'meditation': {'B1': 'Noun', 'B2': 'Noun'},
     'meditative': {'B1': 'Adjective', 'B2': 'Adjective'},
-    'medium': {'A1': 'Noun', 'A2': 'Adjective', 'B1': 'Moun, Adjective'},
+    'medium': {'A1': 'Noun', 'A2': 'Adjective', 'B1': 'Noun, Adjective'},
     'medium-size': {'A2': 'Adjective', 'B1': 'Adjective'},
     'medium-sized': {'A2': 'Adjective', 'B1': 'Adjective'},
     'meek': {'B1': 'Adjective', 'B2': 'Adjective'},
