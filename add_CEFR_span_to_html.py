@@ -24,10 +24,12 @@
 # G. Q. Maguire Jr.
 #
 Verbose_flag=False
+#Verbose_flag=True
 
 from bs4 import BeautifulSoup
 import nltk
 from nltk import RegexpParser
+
 
 import re
 
@@ -37,16 +39,24 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
 import common_english_and_swedish
+import common_acronyms
 import miss_spelled_to_correct_spelling
 import diva_merged_words
 import diva_corrected_abstracts
+import AVL_words_with_CEFR
 
 # width to use for outputting numeric values
 Numeric_field_width=7
 
 # Define a grammar for basic chunking
-grammar = r""" NP: {<DT|JJ|NN.*>+} # Chunk sequences of DT, JJ, NN
-               VP: {<VB.*>} {<NN.*>*} # Chunk VB (verb) followed by optional NN (noun)
+grammar = r""" NP: {<DT>?<JJ.*>*<NN.*>+}   # Chunk sequences of DT, JJ, NN
+                   {<PRP>}                # Pronouns
+                   {<PRP\$><NN.*>+}       # Possessive pronouns followed by nouns
+                   {<CD><NN.*>+}          # Cardinal numbers followed by nouns
+                   {<NN.*><IN><NN.*>+}    # Nouns followed by a preposition and more nouns
+               VP: {<VB.*>+}             # Chunk all verbs together
+                   {<MD><VB.*>+}        # Chunk modal verbs with main verbs
+                   {<RB.*>?<VB.*>+}     # Allow optional adverbs before verbs
 """
 
 # Create a parser with the grammar
@@ -56,7 +66,7 @@ parser = RegexpParser(grammar)
 
 # entries in the dict will have the form: 'acronym': ['expanded form 1', 'expanded form 2',  ... ]
 well_known_acronyms=dict()
-for e in common_english_and_swedish.well_known_acronyms_list:
+for e in common_acronyms.well_known_acronyms_list:
     if len(e) >= 1:
         ack=e[0]
         if len(e) >= 2:
@@ -66,7 +76,7 @@ for e in common_english_and_swedish.well_known_acronyms_list:
             well_known_acronyms[ack]=current_entry
 
 if Verbose_flag:
-    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_english_and_swedish.well_known_acronyms_list)}) well_known_acronyms')
+    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) well_known_acronyms')
 
 special_dicts = {
     'common_English_words': common_english_and_swedish.common_English_words,
@@ -349,6 +359,14 @@ def get_cefr_levels(language, word):
         if celf_levels:
             return celf_levels, 'thousand_most_common_words_in_English'
         #
+        celf_levels=AVL_words_with_CEFR.avl_words.get(word, False)
+        if celf_levels:
+            return celf_levels, 'AVL'
+
+        celf_levels=AVL_words_with_CEFR.avl_words.get(word.lower(), False)
+        if celf_levels:
+            return celf_levels, 'AVL'
+
         celf_levels=common_english_and_swedish.common_English_words.get(word, False)
         if celf_levels:
             return celf_levels, 'common_English_words'
@@ -413,6 +431,7 @@ def get_cefr_levels(language, word):
 
 
 def get_cefr_level(language, word, pos, context):
+    global Verbose_flag
     if Verbose_flag:
         print(f"get_cefr_level('{language}', '{word}', '{pos}', {context})")
 
@@ -457,9 +476,13 @@ def get_cefr_level(language, word, pos, context):
 
     for wl in level_order:
         pos_in_level=cefr_levels.get(wl, 'False')
+        if Verbose_flag:
+            print(f"{wl=} {pos_in_level}")
         if pos_in_level:
             pos_in_level=pos_in_level.lower().split(',')
             pos_in_level=[p.strip() for p in pos_in_level]
+
+            print(f"second print: {wl=} {pos_in_level}")
 
             # handle wild card of POS
             if 'et al.' in pos_in_level:
@@ -484,13 +507,17 @@ def get_cefr_level(language, word, pos, context):
                     return wl, src
                 if 'verb past participle' in pos_in_level:
                     return wl, src
-                if '(verb) past participle' in pos_in_level:
+                if 'verb (past participle)' in pos_in_level:
                     return wl, src
-                if 'Verb (Past Participle)' in pos_in_level:
+                if 'verb' in pos_in_level:
                     return wl, src
 
             if pos in ['VBG']:
                 if 'verb gerund or present participle' in pos_in_level:
+                    return wl, src
+                if 'verb (present participle)' in pos_in_level:
+                    return wl, src
+                if 'verb' in pos_in_level:
                     return wl, src
                 if 'verb' in pos_in_level:
                     return wl, src
@@ -652,13 +679,15 @@ def tokenize_and_pos_tag_html_sentences(html_content):
                 pos_tags = nltk.pos_tag(words)
 
                 # Chunk the POS tagged tokens
-                chunked_sentence = parser.parse(tagged_tokens)
+                chunked_sentence = parser.parse(pos_tags)
                 # Print the chunked sentence structure (tree)
                 print(f"{chunked_sentence=}")
+                if Verbose_flag:
+                    chunked_sentence.draw()
 
                 # Create new spans for words and POS tags
                 new_spans = []
-                if text_node.parent.name in ['i', 's', 'strong'] and len(pos_tags) >= 1 and pos_tags[0][1] not in ['(', ')', ',', '.', '$',  "``", "''"]:
+                if text_node.parent.name in ['i', 's', 'strong', 'em', 'span', 'a', 'b'] and len(pos_tags) >= 1 and pos_tags[0][1] not in ['(', ')', ',', '.', '$',  "``", "''"]:
                     if Verbose_flag:
                         print(f"parent is a {pos_tags[0][1]}: {text_node.parent=} -  text: {text_node.string}")
                     new_spans.append(soup.new_string(' '))
@@ -723,7 +752,7 @@ html_content="""<p lang="en-US">Welcome to IK1552: Internetworking. The course s
 <p lang="en-US">Information about the course is available from the Canvas course room. (There are also a link to the course room from my homepage -&nbsp; <a href="https://people.kth.se/~maguire/">https://people.kth.se/~maguire/</a>)</p>
 <p lang="en-US">Key buttons to use on the lefthand menu in this Canvas course room are:</p>
 <p lang="en-US"><a title="Syllabus" href="https://canvas.kth.se/courses/31168/assignments/syllabus"><strong>Syllabus</strong></a> - This will show the assignments and their due dates (you can also see information about the assignments at <strong>Assignments</strong>)</p>
-<p lang="en-US"><a title="Modules" href="https://canvas.kth.se/courses/31168/modules" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules" data-api-returntype="[Module]"><strong>Modules</strong></a> - This will show all of the various modules of pages available for the course. You should start with <a title="Spring 2022: lecture notes, Zoom session recordings , and other material" href="https://canvas.kth.se/courses/31168/modules/70911" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules/70911" data-api-returntype="Module">Spring 2022: lecture notes, Zoom session recordings , and other material</a>. You will also find videos from the 2019 year's course at <a title="Videos 2019" href="https://canvas.kth.se/courses/31168/modules/60503" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules/60503" data-api-returntype="Module">Videos 2019</a> and a video from 2018 at <a title="Videos 2018" href="https://canvas.kth.se/courses/31168/modules/60504" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules/60504" data-api-returntype="Module">Videos 2018. </a> Additional modules may be added over time.&nbsp;</p>
+<p lang="en-US"><a title="Modules" href="https://canvas.kth.se/courses/31168/modules" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules" data-api-returntype="[Module]"><strong>Modules</strong></a> - This will show all of the various modules of pages available for the course. You should start with <a title="Spring 2022: lecture notes, Zoom session recordings , and other material" href="https://canvas.kth.se/courses/31168/modules/70911" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules/70911" data-api-returntype="Module">Spring 2022: lecture notes, Zoom session recordings , and other material</a>. You will also find videos from the 2019 year's course at <a title="Videos 2019" href="https://canvas.kth.se/courses/31168/modules/60503" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules/60503" data-api-returntype="Module">Videos 2019</a> and a video from 2018 at <a title="Videos 2018" href="https://canvas.kth.se/courses/31168/modules/60504" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/modules/60504" data-api-returntype="Module">Videos 2018.</a>  Additional modules may be added over time.&nbsp;</p>
 <p lang="en-US"><a title="Announcements" href="https://canvas.kth.se/courses/31168/announcements"><strong>Announcements</strong></a> - This will show all of the announcements that have been made in the course.</p>
 <p lang="en-US"><a title="Discussions" href="https://canvas.kth.se/courses/31168/discussion_topics" data-api-endpoint="https://canvas.kth.se/api/v1/courses/31168/discussion_topics" data-api-returntype="[Discussion]"><strong>Discussions</strong></a> - This is a place to create and participate in discussions for the course. For example, if you are looking for a study partner or a partner to work on the final report for the course - use a discussion (there are two discussions created for these purposes).</p>
 <p lang="en-US"><a title="Collaborations" href="https://canvas.kth.se/courses/31168/collaborations"><strong>Collaborations</strong> </a>- web tools to enable groups of students to collaborate</p>

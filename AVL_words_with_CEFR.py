@@ -621,7 +621,7 @@ avl_words={
     'adaptive': {'C1': 'Adjective'},
     'add': {'C2': 'Verb'},
     'add-on': {'B2': 'Noun'},
-    'added': {'A2': 'Adjective'},
+    'added': {'A2': 'Adjective, Verb (past participle)'},
     'adder': {'A2': 'Noun'},
     'addict': {'B1': 'Noun'},  # Someone who is physically or mentally dependent on a substance
     'addiction': {'B2': 'Noun'},
@@ -13738,7 +13738,7 @@ avl_words={
     'recur': {'B1': 'Verb'},
     'recurrence': {'B2': 'Noun'},
     'recurrent': {'C1': 'Adjective'},
-    'recurring': {'B2': 'Adjective'},
+    'recurring': {'B2': 'Adjective, Verb (present participle)'},
     'recursive': {'C1': 'Adjective'},
     'recyclable': {'A2': 'Adjective', 'B2': 'Adjective'},
     'recycle': {'A2': 'Verb'},

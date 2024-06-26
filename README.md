@@ -3114,6 +3114,40 @@ In the above tuning includes adding new prefix and suffix strings or new filteri
 
 **Warning** adding new words seems an unending task due to the different words used in different courses.
 
+## language_tag_a_course.py
+
+### Purpose
+To go throught a course and add HTML language attribute to relevant elements
+
+### Input
+```bash
+./language_tag_a_course.py course_id lang
+```
+
+### Output
+Outbputs some information as it works (such as the page title and the transformed contents);
+With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program.
+
+### Note 
+Currently only handles "Pages".
+
+### Example - adding "en" tag - for English
+
+```bash
+./language_tag_a_course.py 751 en
+```
+
+### Second Example - adding "sv" tag - for Swedish
+```bash
+./language_tag_a_course.py 53524 sv
+```
+### Third example - adding "en-US" tag - for English as spoken in the US
+
+```bash
+./language_tag_a_course.py 751 'en-US'
+```
+
+
 <!-- 
 
 ## xxx.py
