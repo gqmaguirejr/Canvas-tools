@@ -3,9 +3,9 @@
 #
 # ./language_tag_a_course.py course_id lang
 #
-# Output: To go throught a course and add HTML language attribute to relevant elements
+# Purpose: To go throught a course and add HTML language attribute to relevant elements
 #
-#
+# Outputs:
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
@@ -112,6 +112,10 @@ def process_course(course_id, lang):
     # start by processing Pages
     process_pages(course_id, lang)
 
+    # process the syllabus
+    Verbose_Flag=True
+    process_syllabus(course_id, lang)
+
 
 def process_pages(course_id, lang):
     global Verbose_Flag
@@ -189,9 +193,60 @@ def transform_body(html_content, lang):
             node.attrs['lang']=lang
 
         html_content = str(soup)
-        print(f"transformed {html_content=}")
+        if Verbose_Flag:
+            print(f"transformed {html_content=}")
 
     return html_content, changed_flag
+
+def process_syllabus(course_id, lang):
+    global Verbose_Flag
+    global testing_mode_flag # if set to True do _not_ write the modified contents
+
+    print(f"processing syllabus for course {course_id}")
+
+    payload={}
+
+    # Note that the syllabus is simply an HTML page
+    #url=f"{baseUrl}/courses/{course_id}/assignments/syllabus"
+    #print(f"{url=}")
+
+    url=f"{baseUrl}/courses/{course_id}"
+    print(f"{url=}")
+
+    payload={
+        'include[]': 'syllabus_body' # include the “syllabus_body” witht he response
+    }
+
+
+    r = requests.get(url, headers = header, data=payload)
+    if Verbose_Flag:
+        print("r.status_code: {}".format(r.status_code))
+    if r.status_code == requests.codes.ok:
+        page_response = r.json()
+        print(f"{page_response}")
+    else:
+        print("Error in getting syllabus for course_id: {}".format(course_id))
+        return False
+
+    if len(page_response['syllabus_body']) > 0:
+        encoded_output = bytes(page_response['syllabus_body'], 'UTF-8')
+
+    if Verbose_Flag:
+        print(f"encoded_output before: {encoded_output}")
+
+    # do the processing here
+    transformed_encoded_output, changed=transform_body(encoded_output, lang)
+
+    if testing_mode_flag or not changed: # do not do the update
+        return
+
+    # update the page
+    payload={"course[syllabus_body]": transformed_encoded_output}
+    r = requests.put(url, headers = header, data=payload)
+    if Verbose_Flag:
+        print(f"{r.status_code=}")
+        if r.status_code != requests.codes.ok:
+            print(f"Error when updating syllabus at {url=} ")
 
 def main():
     global Verbose_Flag
