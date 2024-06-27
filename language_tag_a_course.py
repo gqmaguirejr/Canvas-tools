@@ -90,11 +90,11 @@ def list_pages(course_id):
         for p_response in page_response:  
             list_of_all_pages.append(p_response)
 
-            while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header)  
-                page_response = r.json()  
-                for p_response in page_response:  
-                    list_of_all_pages.append(p_response)
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                list_of_all_pages.append(p_response)
 
     if Verbose_Flag:
         for p in list_of_all_pages:
@@ -127,11 +127,11 @@ def list_assignments(course_id):
         for p_response in page_response:  
             list_of_all_assignments.append(p_response)
 
-            while r.links.get('next', False):
-                r = requests.get(r.links['next']['url'], headers=header)  
-                page_response = r.json()  
-                for p_response in page_response:  
-                    list_of_all_assignments.append(p_response)
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                list_of_all_assignments.append(p_response)
 
     if Verbose_Flag:
         for p in list_of_all_assignments:
@@ -140,6 +140,43 @@ def list_assignments(course_id):
     if Verbose_Flag:
         print(f"{list_of_all_assignments=}")
     return list_of_all_assignments
+
+def list_quizzes(course_id):
+    global Verbose_Flag
+
+    list_of_all_quizzes=[]
+
+    # Use the Canvas API to get the list of quizzes for this course
+    #GET /api/v1/courses/:course_id/quizzes
+
+    url = f"{baseUrl}/courses/{course_id}/quizzes"
+    payload={
+    }
+
+    if Verbose_Flag:
+        print(f"{url=}")
+
+    r = requests.get(url, headers = header, data=payload)
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            list_of_all_quizzes.append(p_response)
+
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                list_of_all_quizzes.append(p_response)
+
+    if Verbose_Flag:
+        for p in list_of_all_quizzes:
+            print(f"{p['title']}")
+
+    return list_of_all_quizzes
+
+
+
 
 def process_pages(course_id, lang):
     global Verbose_Flag
@@ -154,7 +191,7 @@ def process_pages(course_id, lang):
         if not p['published']:
             continue
 
-        print(f"processing '{p['title']}'")
+        print(f"processing page: '{p['title']}'")
         if Verbose_Flag:
             print(f"{p['url']=}")
 
@@ -209,7 +246,7 @@ def process_assignments(course_id, lang):
         if not p['published']:
             continue
 
-        print(f"processing '{p['name']}'")
+        print(f"processing assigngement: '{p['name']}'")
         if Verbose_Flag:
             print(f"{p['id']=}")
 
@@ -301,6 +338,154 @@ def process_syllabus(course_id, lang):
         if r.status_code != requests.codes.ok:
             print(f"Error when updating syllabus at {url=} ")
 
+def process_quizzes(course_id, lang):
+    global Verbose_Flag
+    global testing_mode_flag # if set to True do _not_ write the modified contents
+
+    print(f"processing quizzes for course {course_id}")
+
+    quizzes_list=list_quizzes(course_id)
+
+    if Verbose_Flag:
+        print(f"{quizzes_list=}")
+
+    for p in quizzes_list:
+        # skip unpublished quizzes
+        if not p['published']:
+            continue
+
+        print(f"processing quiz: '{p['title']}'")
+        if Verbose_Flag:
+            print(f"{p['id']=}")
+
+        # GET /api/v1/courses/:course_id/quizzes/:id
+        url = f"{baseUrl}/courses/{course_id}/quizzes/{p['id']}"
+
+        payload={}
+        r = requests.get(url, headers = header, data=payload)
+        if Verbose_Flag:
+            print(f"{r.status_code=}")
+        if r.status_code == requests.codes.ok:
+            page_response = r.json()
+
+            # check that the response was not None
+            pr=page_response["description"]
+            if not pr:
+                continue
+
+            # modified the code to handle empty description - there is nothing to do
+            if len(pr) == 0:
+                continue
+
+            if len(pr) > 0:
+                encoded_output = bytes(page_response["description"], 'UTF-8')
+
+            if Verbose_Flag:
+                print(f"encoded_output before: {encoded_output}")
+
+            # do the processing here
+            transformed_encoded_output, changed=transform_body(encoded_output, lang)
+
+            if not testing_mode_flag and changed: # do not do the update
+                # update the page
+                payload={"quiz[description]": transformed_encoded_output}
+                r = requests.put(url, headers = header, data=payload)
+                if Verbose_Flag:
+                    print(f"{r.status_code=}")
+                if r.status_code != requests.codes.ok:
+                    print(f"Error when updating page {p['title']} with ID {p['id']} ")
+
+            # process the questions in this quiz
+            list_of_all_questions=[]
+            # GET /api/v1/courses/:course_id/quizzes/:quiz_id/questions
+            url = f"{baseUrl}/courses/{course_id}/quizzes/{p['id']}/questions"
+            payload={}
+            if Verbose_Flag:
+                print(f"{url=}")
+
+            r = requests.get(url, headers = header, data=payload)
+            if r.status_code == requests.codes.ok:
+                page_response=r.json()
+
+                for p_response in page_response:  
+                    list_of_all_questions.append(p_response)
+
+                while r.links.get('next', False):
+                    r = requests.get(r.links['next']['url'], headers=header)  
+                    page_response = r.json()  
+                    for p_response in page_response:  
+                        list_of_all_questions.append(p_response)
+
+            if Verbose_Flag:
+                for q in list_of_all_questions:
+                    print(f"{q['question_name']}")
+                        
+
+            # for each quiz questions get the text fields and update as needed:
+
+            for q in list_of_all_questions:
+                payload={}      # initialize payload
+
+                if Verbose_Flag:
+                    print(f"{q=}")
+
+                # GET /api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id
+                url = f"{baseUrl}/courses/{course_id}/quizzes/{p['id']}/questions/{q['id']}"
+
+                question_text_fields = ['question_text',  'correct_comments_html', 'incorrect_comments_html', 'neutral_comments_html']
+                for qtf in question_text_fields:
+                    txt=q[qtf]
+                    if txt and isinstance(txt, str) and len(txt) > 0:
+                        if qtf == 'question_text' and txt[0] != '<': # if the question_txt is not in HTML, the wrap it in a <p> </p>
+                            encoded_txt = bytes('<p>'+txt+'</p>', 'UTF-8')
+                        else:
+                            encoded_txt = bytes(txt, 'UTF-8')
+
+                        if Verbose_Flag:
+                            print(f"before: {encoded_txt}")
+
+                        # do the processing here
+                        transformed_encoded_output, changed=transform_body(encoded_txt, lang)
+                        if changed:
+                            payload[f'question[{qtf}]'] = transformed_encoded_output
+
+                # "answers": null
+                changed_answer=False
+                updated_answers=[]
+                for ans in q['answers']:
+                    txt=ans.get('html', None)
+                    if txt and isinstance(txt, str) and len(txt) > 0:
+                        encoded_txt = bytes(txt, 'UTF-8')
+
+                        if Verbose_Flag:
+                            print(f"before: {encoded_txt}")
+
+                        # do the processing here
+                        transformed_encoded_output, changed=transform_body(encoded_txt, lang)
+                        if changed:
+                            ans['html']=transformed_encoded_output
+                            changed_answer=True
+                        updated_answers.append(ans)
+
+                # Note the special format that has to be used to updated the answers - otherwise you get a 500 error.
+                # See https://github.com/instructure/canvas-lms/issues/2045
+                # and https://community.canvaslms.com/t5/Canvas-Developers-Group/Canvas-API-call-to-update-an-existing-quiz-question-fails-with/m-p/558693
+                if changed_answer:
+                    for idx, a in enumerate(updated_answers):
+                        for prop in a.keys():
+                            payload[f'question[answers][{idx}][{prop}]']=a[prop]
+
+                if Verbose_Flag:
+                    print(f"{payload=}")
+
+                if not testing_mode_flag and len(payload) > 0: # do the update
+                    # update the page
+                    r = requests.put(url, headers = header, data=payload)
+                    if Verbose_Flag:
+                        print(f"{r.status_code=}")
+                    if r.status_code != requests.codes.ok:
+                        print(f"Error when updating page {q['question_name']} with ID {q['id']} ")
+
 def process_course(course_id, lang):
     global Verbose_Flag
     # for the different type of resources, call the relevant processing function 
@@ -314,6 +499,8 @@ def process_course(course_id, lang):
     # Process the assignments
     process_assignments(course_id, lang)
 
+    # Process (classic) qquizzes
+    process_quizzes(course_id, lang)
 
 def transform_body(html_content, lang):
     global Verbose_Flag
