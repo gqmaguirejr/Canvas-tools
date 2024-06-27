@@ -407,66 +407,45 @@ def unique_words_for_syllabus_in_course(course_id):
     global total_raw_text
     global total_raw_HTML
 
-    payload={}
+    url=f"{baseUrl}/courses/{course_id}"
+    print(f"{url=}")
 
-    # Note that the syllabus is simply an HTML page
-    url=f"https://canvas.kth.se/courses/{course_id}/assignments/syllabus"
+    payload={
+        'include[]': 'syllabus_body' # include the “syllabus_body” witht he response
+    }
+
 
     r = requests.get(url, headers = header, data=payload)
     if Verbose_Flag:
         print("r.status_code: {}".format(r.status_code))
     if r.status_code == requests.codes.ok:
-        body = r.content.decode("utf-8")
-
+        page_response = r.json()
+        print(f"{page_response}")
     else:
         print("Error in getting syllabus for course_id: {}".format(course_id))
         return False
 
+    if len(page_response['syllabus_body']) > 0:
+        body = bytes(page_response['syllabus_body'], 'UTF-8')
+    else:
+        body = bytes('', 'UTF-8')
+
     if Verbose_Flag:
         print(f'body after decode utf-8: {body}')
 
-    env_pattern = re.compile('ENV = ({.*?});', re.DOTALL)
-
-    matches = env_pattern.search(body)
-
-    body=matches.group(1)
-
-    if isinstance(body, str) and len(body) > 0:
-        body=body.replace('\\u003c', '\u003c')
-        body=body.replace('\\u003e', '\u003e')
-        body=body.replace('\\"', '"')
-        body=body.replace('\\n', '\n')
-        body=body.replace( "\\u0026" , "&" )
-
-
-        start_of_syllabus_body='"SYLLABUS_BODY":"'
-        offset_to_body=body.find(start_of_syllabus_body)
-        if offset_to_body < 0:
-            print('No syllabus body found')
-            return False
-
-        effective_end_of_body='","notices":[],"active_context_tab":"syllabus"'
-        offset_to_end_of_body=body.find(effective_end_of_body)
-        if offset_to_end_of_body < offset_to_body:
-            print('No end to syllabus body found')
-            return False
-
-        body='<html>'+body[offset_to_body+len(start_of_syllabus_body):offset_to_end_of_body]+'</html>'
-        #save all of the bodies
-        total_raw_HTML=total_raw_HTML+f"\n⌘⏩syllabus⏪\n"+body
+    #save all of the bodies
+    total_raw_HTML=total_raw_HTML+f"\n⌘⏩syllabus⏪\n"+body
 
         
-        spaced_body = re.sub("</", " </", body)
-        document = html.document_fromstring(spaced_body)
-        # replace the BR tags with a space
-        for br in document.xpath("*//br"):
+    spaced_body = re.sub("</", " </", body)
+    document = html.document_fromstring(spaced_body)
+    # replace the BR tags with a space
+    for br in document.xpath("*//br"):
+        br.tail = " " + br.tail if br.tail else " "
+        for br in document.xpath("*//BR"):
             br.tail = " " + br.tail if br.tail else " "
-            for br in document.xpath("*//BR"):
-                br.tail = " " + br.tail if br.tail else " "
 
-        raw_text = document.text_content()
-    else:               # nothing to process
-        raw_text = ""
+    raw_text = document.text_content()
 
     if Verbose_Flag:
         print("raw_text: {}".format(raw_text))

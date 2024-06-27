@@ -90,7 +90,7 @@ def list_pages(course_id):
         for p_response in page_response:  
             list_of_all_pages.append(p_response)
 
-            while r.links['current']['url'] != r.links['last']['url']:  
+            while r.links.get('next', False):
                 r = requests.get(r.links['next']['url'], headers=header)  
                 page_response = r.json()  
                 for p_response in page_response:  
@@ -105,17 +105,41 @@ def list_pages(course_id):
     return list_of_all_pages
 
 
-def process_course(course_id, lang):
+def list_assignments(course_id):
     global Verbose_Flag
-    # for the different type of resources, call the relevant processing function 
 
-    # start by processing Pages
-    process_pages(course_id, lang)
+    list_of_all_assignments=[]
 
-    # process the syllabus
-    Verbose_Flag=True
-    process_syllabus(course_id, lang)
+    # Use the Canvas API to get the list of assignments for this course
+    #GET /api/v1/courses/:course_id/assignmenst
 
+    url = f"{baseUrl}/courses/{course_id}/assignments"
+    payload={
+    }
+
+    if Verbose_Flag:
+        print(f"{url=}")
+
+    r = requests.get(url, headers = header, data=payload)
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            list_of_all_assignments.append(p_response)
+
+            while r.links.get('next', False):
+                r = requests.get(r.links['next']['url'], headers=header)  
+                page_response = r.json()  
+                for p_response in page_response:  
+                    list_of_all_assignments.append(p_response)
+
+    if Verbose_Flag:
+        for p in list_of_all_assignments:
+            print(f"{p['name']}")
+
+    if Verbose_Flag:
+        print(f"{list_of_all_assignments=}")
+    return list_of_all_assignments
 
 def process_pages(course_id, lang):
     global Verbose_Flag
@@ -172,6 +196,124 @@ def process_pages(course_id, lang):
             if r.status_code != requests.codes.ok:
                 print(f"Error when updating page {p['title']} at {p['url']} ")
     
+def process_assignments(course_id, lang):
+    global Verbose_Flag
+    global testing_mode_flag # if set to True do _not_ write the modified contents
+
+    print(f"processing assignments for course {course_id}")
+
+    assignment_list=list_assignments(course_id)
+
+    for p in assignment_list:
+        # skip unpublished assignments
+        if not p['published']:
+            continue
+
+        print(f"processing '{p['name']}'")
+        if Verbose_Flag:
+            print(f"{p['id']=}")
+
+        # Get individual assignments by ID
+        # GET /api/v1/courses/:course_id/assignments/:id
+        url = f"{baseUrl}/courses/{course_id}/assignments/{p['id']}"
+
+        payload={}
+        r = requests.get(url, headers = header, data=payload)
+        if Verbose_Flag:
+            print(f"{r.status_code=}")
+        if r.status_code == requests.codes.ok:
+            page_response = r.json()
+
+            # check that the response was not None
+            pr=page_response["description"]
+            if not pr:
+                continue
+
+            # modified the code to handle empty description - there is nothing to do
+            if len(pr) == 0:
+                continue
+
+            if len(pr) > 0:
+                encoded_output = bytes(page_response["description"], 'UTF-8')
+
+            if Verbose_Flag:
+                print(f"encoded_output before: {encoded_output}")
+
+            # do the processing here
+            transformed_encoded_output, changed=transform_body(encoded_output, lang)
+
+            if testing_mode_flag or not changed: # do not do the update
+                continue           
+
+            # update the assignment's description
+            payload={"assignment[description]": transformed_encoded_output}
+            r = requests.put(url, headers = header, data=payload)
+            if Verbose_Flag:
+                print(f"{r.status_code=}")
+            if r.status_code != requests.codes.ok:
+                print(f"Error when updating assignment {p['name']} with ID: {p['id']} ")
+    
+
+
+def process_syllabus(course_id, lang):
+    global Verbose_Flag
+    global testing_mode_flag # if set to True do _not_ write the modified contents
+
+    print(f"processing syllabus for course {course_id}")
+
+    url=f"{baseUrl}/courses/{course_id}"
+    if Verbose_Flag:
+        print(f"{url=}")
+
+    payload={
+        'include[]': 'syllabus_body' # include the “syllabus_body” witht he response
+    }
+
+
+    r = requests.get(url, headers = header, data=payload)
+    if Verbose_Flag:
+        print("r.status_code: {}".format(r.status_code))
+    if r.status_code == requests.codes.ok:
+        page_response = r.json()
+        if Verbose_Flag:
+            print(f"{page_response}")
+    else:
+        print("Error in getting syllabus for course_id: {}".format(course_id))
+        return False
+
+    if len(page_response['syllabus_body']) > 0:
+        encoded_output = bytes(page_response['syllabus_body'], 'UTF-8')
+
+    if Verbose_Flag:
+        print(f"encoded_output before: {encoded_output}")
+
+    # do the processing here
+    transformed_encoded_output, changed=transform_body(encoded_output, lang)
+
+    if testing_mode_flag or not changed: # do not do the update
+        return
+
+    # update the page
+    payload={"course[syllabus_body]": transformed_encoded_output}
+    r = requests.put(url, headers = header, data=payload)
+    if Verbose_Flag:
+        print(f"{r.status_code=}")
+        if r.status_code != requests.codes.ok:
+            print(f"Error when updating syllabus at {url=} ")
+
+def process_course(course_id, lang):
+    global Verbose_Flag
+    # for the different type of resources, call the relevant processing function 
+
+    # start by processing Pages
+    process_pages(course_id, lang)
+
+    # process the syllabus
+    process_syllabus(course_id, lang)
+
+    # Process the assignments
+    process_assignments(course_id, lang)
+
 
 def transform_body(html_content, lang):
     global Verbose_Flag
@@ -198,55 +340,7 @@ def transform_body(html_content, lang):
 
     return html_content, changed_flag
 
-def process_syllabus(course_id, lang):
-    global Verbose_Flag
-    global testing_mode_flag # if set to True do _not_ write the modified contents
 
-    print(f"processing syllabus for course {course_id}")
-
-    payload={}
-
-    # Note that the syllabus is simply an HTML page
-    #url=f"{baseUrl}/courses/{course_id}/assignments/syllabus"
-    #print(f"{url=}")
-
-    url=f"{baseUrl}/courses/{course_id}"
-    print(f"{url=}")
-
-    payload={
-        'include[]': 'syllabus_body' # include the “syllabus_body” witht he response
-    }
-
-
-    r = requests.get(url, headers = header, data=payload)
-    if Verbose_Flag:
-        print("r.status_code: {}".format(r.status_code))
-    if r.status_code == requests.codes.ok:
-        page_response = r.json()
-        print(f"{page_response}")
-    else:
-        print("Error in getting syllabus for course_id: {}".format(course_id))
-        return False
-
-    if len(page_response['syllabus_body']) > 0:
-        encoded_output = bytes(page_response['syllabus_body'], 'UTF-8')
-
-    if Verbose_Flag:
-        print(f"encoded_output before: {encoded_output}")
-
-    # do the processing here
-    transformed_encoded_output, changed=transform_body(encoded_output, lang)
-
-    if testing_mode_flag or not changed: # do not do the update
-        return
-
-    # update the page
-    payload={"course[syllabus_body]": transformed_encoded_output}
-    r = requests.put(url, headers = header, data=payload)
-    if Verbose_Flag:
-        print(f"{r.status_code=}")
-        if r.status_code != requests.codes.ok:
-            print(f"Error when updating syllabus at {url=} ")
 
 def main():
     global Verbose_Flag
