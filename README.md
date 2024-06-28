@@ -3134,7 +3134,7 @@ Currently supports pages, syllabus, assignments, (classic) qquizzes, discussions
 Note that only the 10 most recent entries within a discussion are processed - as this is a limitation of the API call being used to fetch them.
 
 Note that announcements are considered between 1 year ago today and 70 days from today. Also, announcements and their replies are like discussions,
-# hence the limitation to the 10 most recent applies
+hence the limitation to the 10 most recent applies
 
 The program does not do any checking of the lang tag that the user provides on the command line. Additionally, there is no "undo" operation, so it should be used with care.
 
@@ -3143,12 +3143,10 @@ The element <h1 class="page-title"> will not have the language tag set to the in
 <div class="show-content user_content clearfix enhanced" data-resource-type="wiki_page.body" data-resource-id="104962" data-lti-page-content="true">
  
     <h1 class="page-title">Ethics / Code of Honor and Regulations</h1>
-``` 
- 
  
     <h2>Ethics</h2>
 <p>As examples of a code of professional ethics, see <a href="http://www.ieee.org/about/corporate/governance/p7-8.html" ...
-
+``` 
 
 ### Example - adding "en" tag - for English
 
