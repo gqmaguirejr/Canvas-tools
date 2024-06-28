@@ -13,6 +13,8 @@
 #
 ### Input
 # The `lang` should specify a language code - see [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646).
+# With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program.
+# With the option "-t" or "--testing", the program does not update the strings with the modified HTML.
 # 
 # Outputs:
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
@@ -24,6 +26,13 @@
 # ./language_tag_a_course.py 751 en
 #
 # ./language_tag_a_course.py 53524 sv
+#
+# Notes
+# Currently, the program supports pages, syllabus, assignments, (classic) qquizzes, discussions, and announcements.
+#
+# As the program only adds the lang attribute to top-level elements that do not have a lang attribute, you can run the program again and it will not process the element again. This conveniently lets you run the script multiple times.
+#
+# The program does not do *any* checking of the lang tag that the user provides on the command line. **Additionally, there is *no* "undo" operation, so it should be used with care.**
 #
 # Note that only the 10 most recent entries within a discussion are processed - as this is a limitation of the API call being used to fetch them.
 # Note that announcements are considered between 1 year ago today and 70 days from today. Also, announcements and their replies are like discussions,
@@ -891,24 +900,24 @@ def process_course(course_id, lang):
     global testing_mode_flag
     # for the different type of resources, call the relevant processing function 
 
-    if not testing_mode_flag:
-        # start by processing Pages
-        process_pages(course_id, lang)
+    # start by processing Pages
+    process_pages(course_id, lang)
 
-        # process the syllabus
-        process_syllabus(course_id, lang)
+    # process the syllabus
+    process_syllabus(course_id, lang)
 
-        # Process the assignments
-        process_assignments(course_id, lang)
+    # Process the assignments
+    process_assignments(course_id, lang)
 
-        # Process (classic) qquizzes
-        process_quizzes(course_id, lang)
+    # Process (classic) qquizzes
+    process_quizzes(course_id, lang)
 
-        # Process Discussions
-        process_discussions(course_id, lang)
+    # Process Discussions
+    process_discussions(course_id, lang)
 
-        # Process Announcements
-        process_announcements(course_id, lang)
+    # Process Announcements
+    process_announcements(course_id, lang)
+
 
 def transform_body(html_content, lang):
     global Verbose_Flag
