@@ -16,6 +16,9 @@
 #
 # ./language_tag_a_course.py 53524 sv
 #
+# Note that only the 10 most recent entries within a discussion are processed - as this is a limitation of the API call being used to fetch them.
+# Note that announcements are considered between 1 year ago today and 70 days from today. Also, announcements and their replies are like discussions,
+# hence the limitation to the 10 most recent applies
 # 
 # G. Q. Maguire Jr.
 #
@@ -29,6 +32,10 @@ import pprint
 import optparse
 import sys
 import json
+
+from datetime import datetime, date, timedelta
+import isodate                  # for parsing ISO 8601 dates and times
+import pytz                     # for time zones
 
 # Use Python Pandas to create XLSX files
 import pandas as pd
@@ -211,6 +218,48 @@ def list_discussion_topics(course_id):
 
     return list_of_all_topics
 
+def list_announcements(course_id):
+    global Verbose_Flag
+
+    list_of_all_announcements=[]
+
+    end_date = date.today() + timedelta(days=10*7) # a term into the future
+    start_date = date.today().replace(year=end_date.year-1)
+
+    start_date_str=start_date.strftime('%Y-%m-%d')
+    end_date_str=end_date.strftime('%Y-%m-%d')
+
+    # Use the Canvas API to get the list of announcements
+    # GET /api/v1/announcements
+    url = f"{baseUrl}/announcements"
+
+    payload={
+        'context_codes[]': f'course_{course_id}',
+        'active_only': True,
+        'start_date': start_date_str, # yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.
+        'end_date': end_date_str
+    }
+
+    if Verbose_Flag:
+        print(f"{url=}")
+
+    r = requests.get(url, headers = header, data=payload)
+    if r.status_code == requests.codes.ok:
+        page_response=r.json()
+
+        for p_response in page_response:  
+            list_of_all_announcements.append(p_response)
+
+        while r.links.get('next', False):
+            r = requests.get(r.links['next']['url'], headers=header)  
+            page_response = r.json()  
+            for p_response in page_response:  
+                list_of_all_announcements.append(p_response)
+
+    if Verbose_Flag:
+        print(f"{list_of_all_announcements}")
+
+    return list_of_all_announcements
 
 def process_pages(course_id, lang):
     global Verbose_Flag
@@ -532,7 +581,7 @@ def process_discussions(course_id, lang):
         print(f"{discussion_list=}")
 
     for p in discussion_list:
-        # skip unpublished quizzes
+        # skip unpublished discussions
         if not p['published']:
             continue
 
@@ -609,9 +658,161 @@ def process_discussions(course_id, lang):
 
                 if Verbose_Flag:
                     print(f"{q=}")
-                if q['recent_replies']:
+                if q.get('recent_replies', None):
                     for rep in q['recent_replies']:
                         recent_replies.append(rep)
+
+                txt=q['message']
+                if txt and isinstance(txt, str) and len(txt) > 0:
+                    encoded_txt = bytes(txt, 'UTF-8')
+
+                    if Verbose_Flag:
+                        print(f"before: {encoded_txt}")
+
+                    # do the processing here
+                    transformed_encoded_output, changed=transform_body(encoded_txt, lang)
+                    if changed:
+                        payload['message'] = transformed_encoded_output
+
+                if Verbose_Flag:
+                    print(f"{payload=}")
+
+                if not testing_mode_flag and len(payload) > 0: # do the update
+                    # update the entry
+                    url = f"{baseUrl}/courses/{course_id}/discussion_topics/{p['id']}/entries/{q['id']}"
+                    r = requests.put(url, headers = header, data=payload)
+                    if Verbose_Flag:
+                        print(f"{r.status_code=}")
+                    if r.status_code != requests.codes.ok:
+                        print(f"Error when updating entry {q['message']} with ID {q['id']} ")
+
+            for q in recent_replies:
+                payload={}      # initialize payload
+
+                if Verbose_Flag:
+                    print(f"{q=}")
+
+                txt=q['message']
+                if txt and isinstance(txt, str) and len(txt) > 0:
+                    encoded_txt = bytes(txt, 'UTF-8')
+
+                    if Verbose_Flag:
+                        print(f"before: {encoded_txt}")
+
+                    # do the processing here
+                    transformed_encoded_output, changed=transform_body(encoded_txt, lang)
+                    if changed:
+                        payload['message'] = transformed_encoded_output
+
+                if Verbose_Flag:
+                    print(f"{payload=}")
+
+                if not testing_mode_flag and len(payload) > 0: # do the update
+                    # update the entry
+                    url = f"{baseUrl}/courses/{course_id}/discussion_topics/{p['id']}/entries/{q['id']}"
+                    r = requests.put(url, headers = header, data=payload)
+                    if Verbose_Flag:
+                        print(f"{r.status_code=}")
+                    if r.status_code != requests.codes.ok:
+                        print(f"Error when updating entry {q['message']} with ID {q['id']} ")
+
+def process_announcements(course_id, lang):
+    global Verbose_Flag
+    global testing_mode_flag # if set to True do _not_ write the modified contents
+
+    print(f"processing announcements for course {course_id}")
+
+    announcement_list=list_announcements(course_id)
+
+    if Verbose_Flag:
+        print(f"{announcement_list=}")
+
+    for p in announcement_list:
+        if not isinstance(p, dict): # check that it is a dict, as I found one instance where this was a string!
+            continue
+
+        print(f"processing announcement: '{p['title']}'")
+        # skip unpublished announcements
+        if not p.get('published', None):
+            print(f"no published field for {p}")
+            continue
+
+        if Verbose_Flag:
+            print(f"{p['id']=}")
+
+        # GET /api/v1/courses/:course_id/discussion_topics/:id
+        url = f"{baseUrl}/courses/{course_id}/discussion_topics/{p['id']}"
+
+        payload={}
+        r = requests.get(url, headers = header, data=payload)
+        if Verbose_Flag:
+            print(f"{r.status_code=}")
+        if r.status_code == requests.codes.ok:
+            page_response = r.json()
+
+            # check that the response was not None
+            pr=page_response["message"]
+            if not pr:
+                continue
+
+            # modified the code to handle empty message - there is nothing to do
+            if len(pr) == 0:
+                continue
+
+            if len(pr) > 0:
+                encoded_output = bytes(page_response["message"], 'UTF-8')
+
+            if Verbose_Flag:
+                print(f"encoded_output before: {encoded_output}")
+
+            # do the processing here
+            transformed_encoded_output, changed=transform_body(encoded_output, lang)
+
+            if not testing_mode_flag and changed: # do not do the update
+                # update the page
+                payload={"message": transformed_encoded_output}
+                r = requests.put(url, headers = header, data=payload)
+                if Verbose_Flag:
+                    print(f"{r.status_code=}")
+                if r.status_code != requests.codes.ok:
+                    print(f"Error when updating page {p['title']} with ID {p['id']} ")
+
+
+            # process the entires under this announcement as if it were a discussion topic
+            list_of_all_entries=[]
+            # GET /api/v1/courses/:course_id/discussion_topics/:topic_id/entries
+            url = f"{baseUrl}/courses/{course_id}/discussion_topics/{p['id']}/entries"
+            payload={}
+            if Verbose_Flag:
+                print(f"URL for entries {url=}")
+
+            r = requests.get(url, headers = header, data=payload)
+            if r.status_code == requests.codes.ok:
+                page_response=r.json()
+
+                for p_response in page_response:  
+                    list_of_all_entries.append(p_response)
+
+                while r.links.get('next', False):
+                    r = requests.get(r.links['next']['url'], headers=header)  
+                    page_response = r.json()  
+                    for p_response in page_response:  
+                        list_of_all_entries.append(p_response)
+
+            if Verbose_Flag:
+                print(f"{list_of_all_entries=}")
+                        
+
+            # for each entry get the message and update as needed:
+            recent_replies=[]
+            for q in list_of_all_entries:
+                payload={}      # initialize payload
+
+                if Verbose_Flag:
+                    print(f"{q=}")
+
+                for rep in q.get('recent_replies', None):
+                    recent_replies.append(rep)
 
                 txt=q['message']
                 if txt and isinstance(txt, str) and len(txt) > 0:
@@ -671,6 +872,7 @@ def process_discussions(course_id, lang):
 
 def process_course(course_id, lang):
     global Verbose_Flag
+    global testing_mode_flag
     # for the different type of resources, call the relevant processing function 
 
     if not testing_mode_flag:
@@ -689,7 +891,8 @@ def process_course(course_id, lang):
         # Process Discussions
         process_discussions(course_id, lang)
 
-
+        # Process Announcements
+        process_announcements(course_id, lang)
 
 def transform_body(html_content, lang):
     global Verbose_Flag

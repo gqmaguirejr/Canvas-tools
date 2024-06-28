@@ -3129,7 +3129,13 @@ Outbputs some information as it works (such as the page title and the transforme
 With the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program.
 
 ### Note 
-Currently only handles "Pages".
+Currently supports pages, syllabus, assignments, (classic) qquizzes, discussions, and announcements. 
+
+Note that only the 10 most recent entries within a discussion are processed - as this is a limitation of the API call being used to fetch them.
+
+Note that announcements are considered between 1 year ago today and 70 days from today. Also, announcements and their replies are like discussions,
+# hence the limitation to the 10 most recent applies
+
 
 ### Example - adding "en" tag - for English
 
