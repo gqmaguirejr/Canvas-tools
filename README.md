@@ -3117,7 +3117,14 @@ In the above tuning includes adding new prefix and suffix strings or new filteri
 ## language_tag_a_course.py
 
 ### Purpose
-To go throught a course and add HTML language attribute to relevant elements
+To go throught a course and add the HTML language attribute to relevant elements (currently, at the top-level of the content).
+
+Canvas has a problem in that (1)  the GUI and (2) the course contents are both set to the same language based on the course language setting.
+
+Technically, this is because the HTML language attribute is set from the value of locale in the header in `apps/views/layouts/_head.html.erb` and locale is set via a line in `lib/locale_selection.rb` - with a course language setting overriding any choice of language by the user.
+
+This means that the user looses the ability to have the GUI for this course in their choice of language. While this might make sense in conjunction with a language course (such as a course in French, Swedish, Japanese, etc.) - it does not make sense for other courses.
+
 
 ### Input
 ```bash
