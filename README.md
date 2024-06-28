@@ -3127,6 +3127,8 @@ This means that the user looses the ability to have the GUI for this course in t
 
 
 ### Input
+The `lang` should specify a language code - see [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646).
+
 ```bash
 ./language_tag_a_course.py course_id lang
 ```

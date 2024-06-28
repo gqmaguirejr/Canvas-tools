@@ -11,6 +11,9 @@
 #
 # This means that the user looses the ability to have the GUI for this course in their choice of language. While this might make sense in conjunction with a language course (such as a course in French, Swedish, Japanese, etc.) - it does not make sense for other courses.
 #
+### Input
+# The `lang` should specify a language code - see [RFC 5646](https://datatracker.ietf.org/doc/html/rfc5646).
+# 
 # Outputs:
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
