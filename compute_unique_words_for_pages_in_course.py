@@ -420,15 +420,18 @@ def unique_words_for_syllabus_in_course(course_id):
         print("r.status_code: {}".format(r.status_code))
     if r.status_code == requests.codes.ok:
         page_response = r.json()
+        print(f"{r.encoding=}")
         print(f"{page_response}")
+
     else:
         print("Error in getting syllabus for course_id: {}".format(course_id))
         return False
 
     if len(page_response['syllabus_body']) > 0:
-        body = bytes(page_response['syllabus_body'], 'UTF-8')
+        #body = bytes(page_response['syllabus_body'], 'UTF-8')
+        body = page_response['syllabus_body']
     else:
-        body = bytes('', 'UTF-8')
+        body = ''
 
     if Verbose_Flag:
         print(f'body after decode utf-8: {body}')
