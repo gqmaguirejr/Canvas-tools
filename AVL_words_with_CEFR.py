@@ -16155,7 +16155,7 @@ avl_words={
     'subdued': {'B1': 'Adjective'},
     'subfield': {'B2': 'Noun'},
     'subgroup': {'B1': 'Noun'},
-    'subject': {'A1': 'Noun','A2': 'Noun, Verb'},
+    'subject': {'A1': 'Noun', 'A2': 'Noun, Verb'},
     'subjective': {'B1': 'Adjective', 'B2': 'Adjective'},
     'subjectively': {'B1': 'Adverb', 'B2': 'Adverb'},
     'subjectivity': {'B2': 'Noun', 'C1': 'Noun'},
@@ -18551,7 +18551,7 @@ avl_words={
     'write': {'A1': 'Verb'},
     'write-off': {'B1': 'Noun', 'B2': 'Noun'}, # B1 for a vehicle write-off, B2 for a financial write-off
     'writer': {'A2': 'Noun', 'B1': 'Noun'},
-    'writing': {'A2': 'Noun'},
+    'writing': {'A2': 'Noun, verb gerund or present participle, adjective'},
     'written': {'A2': 'Adjective'},
     'wrong': {'A1': 'Adjective'},
     'wrongdoing': {'B1': 'Noun', 'B2': 'Noun'},
