@@ -470,7 +470,9 @@ def process_pages(course_id):
         print(f"processing page: '{p['title']}'")
         if p['title'] == 'Reference Books and Other Materials': # skip this page for now
             continue
-        if p['title'] !=  'Ethics / Code of Honor and Regulations':
+        if p['title'] ==  'Ethics / Code of Honor and Regulations':
+            continue
+        if p['title'] != 'Overview':
             continue
         if Verbose_Flag:
             print(f"{p['url']=}")
@@ -1156,6 +1158,7 @@ def pos_tag_html_with_context(html_content):
     return html.unescape(tagged_html) # Decode the html before returning the string
 
 def tokenize_and_CEFR_tag_html_sentences(html_content):
+    global Verbose_Flag
     """
     Based on POS and CEFR information for words tag HTML content, considering context by grouping text within elements.
     Preserves all HTML markup and avoids incorrect spacing.
@@ -1168,13 +1171,15 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
     """
     soup = BeautifulSoup(html_content, 'html.parser')
     text = soup.get_text()  # Extract text from HTML
-    print(f"{text}")
+    if Verbose_Flag:
+        print(f"{text}")
     # Tokenize and POS tag words in the extracted text
     # using regular expression tokenizer
     words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
     tagged_words = nltk.pos_tag(words)
-    print(f"{words=} {tagged_words=}")
-    # Remove the period from the list of words
+    if Verbose_Flag:
+        print(f"{words=} {tagged_words=}")
+    # Remove the punctuation from the list of words
     for w in words:
         for ci in [ ',', '.', ':', '$', '--', "``", "''", '(', ')', '[', ']', '{', '}', '<', '>', '-' ]:
             try:
@@ -1183,14 +1188,18 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
                 del tagged_words[period_index]
             except ValueError:
                 pass
-    print(f"after cleaning {tagged_words=}")
+    if Verbose_Flag:
+        print(f"after cleaning {tagged_words=}")
     #
     # Zip the original and tagged words together
     tagged_word_list = list(zip(words, tagged_words))
-    print(f"{tagged_word_list=}")
+    if Verbose_Flag:
+        print(f"{tagged_word_list=}")
     #
     def process_my_string(s, tagged_words, i=0):
-        print(f"process_my_string({s}, tagged_words, {i=})")
+        global Verbose_Flag
+        if Verbose_Flag:
+            print(f"process_my_string({s}, tagged_words, {i=})")
         if i >= len(tagged_words):
             return s
         word, tag = tagged_words[i]
@@ -1203,8 +1212,162 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
             return s
     #
     tagged_html=process_my_string(html_content, tagged_words, 0)
-    print(f"{tagged_html=}")
+    tagged_html=clean_tagged_html(tagged_html)
+    if Verbose_Flag:
+        print(f"{tagged_html=}")
     return html.unescape(tagged_html) # Decode the html before returning the string
+
+# replace "<span class="CEFRA1">i</span>.<span class="CEFRXX">e</span>."
+# with "<span lang="latin" class="CEFRA1">i.e.</span>"
+
+def simplify_cefr_span_of_float(html_text):
+    """
+    Simplifies HTML spans with CEFR level and number into a single span.
+
+    Replace floats such as
+         <span class="CEFRXX">1</span>.<span class="CEFRXX">5</span>
+    with <span class="CEFRA2">1.5</span>
+
+    Args:
+        html_text: The HTML string to modify.
+
+    Returns:
+        The modified HTML string with simplified CEFR spans.
+    """
+    pattern = r'<span class="CEFR\w+">(\d+)</span>\.<span class="CEFR\w+">(\d+)</span>'
+    replacement = r'<span class="CEFRA2">\1.\2</span>'  
+    # Use re.sub with the count=0 argument to replace all occurrences
+    # 
+    modified_text = re.sub(pattern, replacement, html_text, count=0)
+    return modified_text
+
+#
+# Define the mapping of abbreviations to CEFR levels and language
+abbreviation_levels = {
+    'e.g.': {'cefr': 'B2', 'lang': 'la'},
+    'etc.': {'cefr': 'B1', 'lang': 'la'},
+    'i.a.': {'cefr': 'C1', 'lang': 'la'},
+    'i.e.': {'cefr': 'B2', 'lang': 'la'},
+    'i.g.': {'cefr': 'C2', 'lang': 'la'},
+    'w.r.t.': {'cefr': 'C1', 'lang': 'en'},
+    'M.Sc.': {'cefr': 'B2', 'lang': 'en', 'note': 'Master of Science (academic context)'},
+    'M.S.E.E.': {'cefr': 'C1', 'lang': 'en', 'note': 'Master of Science in Electrical Engineering (highly specialized academic context)'},
+    'Mr.': {'cefr': 'A1', 'lang': 'en', 'note': 'Mister (title of respect for men)'},
+    'Mrs.': {'cefr': 'A1', 'lang': 'en', 'note': 'Missus (title of respect for married women('},
+    'Ms.': {'cefr': 'A1', 'lang': 'en', 'note': 'Miss (title of respect for women, marital status unknown)'},
+    'N.J.': {'cefr': 'B2', 'lang': 'en', 'note': 'New Jersey, US state'},
+    'Ph.': {'cefr': 'C1', 'lang': 'en', 'note': 'Physics (academic/scientific context)'},
+    'Ph.D.': {'cefr': 'B2', 'lang': 'en', 'note': 'Doctor of Philosophy (academic context)'},
+    'Phys.': {'cefr': 'C1', 'lang': 'en', 'note': 'Physics (academic/scientific context)'},
+    'Prof.': {'cefr': 'B2', 'lang': 'en', 'note': 'Professor (academic title)'},
+    'prof.': {'cefr': 'B2', 'lang': 'en', 'note': 'Professor (academic title)'}, # informal abbreviation
+    'Q.E.D.': {'cefr': 'C2', 'lang': 'la', 'note': 'quod erat demonstrandum'},  # used in formal proofs
+    'S.A.': {'cefr': 'B2', 'lang': 'fr', 'note': 'Société Anonyme '}, # (French), or limited company.
+    'S.A.S.': {'cefr': 'B2', 'lang': 'fr', 'note': 'Société par Actions Simplifiée'}, # simplified joint-stock company.
+    'Tekn.': {'cefr': 'C1', 'lang': 'sv', 'note': 'Teknologie (academic title)'},
+    'U.K.': {'cefr': 'A2', 'lang': 'en', 'note': 'United Kingdom'},
+    'U.S.': {'cefr': 'A2', 'lang': 'en', 'note': 'United States'},
+    'U.S.A.': {'cefr': 'A2', 'lang': 'en', 'note': 'United States of America'},
+    'U.S.C.': {'cefr': 'C1', 'lang': 'en', 'note': 'United States Code (law), or University of Southern California (higher education)'},
+
+    'A.I.': {'cefr': 'B1', 'lang': 'en', 'note': 'Artificial Intelligence'}, 
+    'Assoc.': {'cefr': 'B2', 'lang': 'en', 'note': 'Associate'}, 
+    'B.A.': {'cefr': 'B2', 'lang': 'en', 'note': 'Bachelor of Arts'},
+    'B.S.': {'cefr': 'B2', 'lang': 'en', 'note': 'Bachelor of Science'},
+    'Corp.': {'cefr': 'B2', 'lang': 'en', 'note': 'Corporation'},
+    'D.A.': {'cefr': 'C1', 'lang': 'en', 'note': 'District Attorney (legal context)'},
+    'D.C.': {'cefr': 'B2', 'lang': 'en', 'note': 'Washington D.C.'},
+    'Dr.': {'cefr': 'A2', 'lang': 'en', 'note': 'Doctor (title)'},
+    'E.U.': {'cefr': 'B1', 'lang': 'en', 'note': 'European Union'},
+    'G.Q.': {'cefr': 'C1', 'lang': 'en', 'note': "Gentlemen's Quarterly (magazine) or initials"}, 
+    'I.T.': {'cefr': 'B1', 'lang': 'en', 'note': 'Information Technology'},
+    'Inc.': {'cefr': 'B2', 'lang': 'en', 'note': 'Incorporated (business)'},
+    'Jr.': {'cefr': 'A2', 'lang': 'en', 'note': 'Junior (suffix for names)'},
+    'Ltd.': {'cefr': 'B2', 'lang': 'en', 'note': 'Limited (company)'},
+    'M.A.': {'cefr': 'B2', 'lang': 'en', 'note': 'Master of Arts'},
+    'M.I.T.': {'cefr': 'B2', 'lang': 'en', 'note': 'Massachusetts Institute of Technology'},
+    'a.k.a.': {'cefr': 'B2', 'lang': 'en', 'note': 'Also known as'},
+    'al.': {'cefr': 'C1', 'lang': 'la', 'note': 'alii'}, # "and others"
+    'e.g.': {'cefr': 'B2', 'lang': 'la', 'note': 'exempli gratia'},  # meaning "for example"
+    'etc.': {'cefr': 'B1', 'lang': 'la', 'note': 'et cetera'},  # meaning "and so on"
+    'i.a.': {'cefr': 'C1', 'lang': 'la', 'note': 'inter alia'},  #meaning "among other things"
+    'i.e.': {'cefr': 'B2', 'lang': 'ls', 'note': 'id est'},  # meaning "that is"
+    'i.g.': {'cefr': 'C2', 'lang': 'ls', 'note': 'igitur'},  # meaning "therefore"
+    'i.i.d.': {'cefr': 'C2', 'lang': 'en', 'note': 'independent and identically distributed'}, # Statistics term
+    'a.m.': {'cefr': 'A2', 'lang': 'la', 'note': 'Ante Meridiem (time)'},
+    'p.m.': {'cefr': 'A2', 'lang': 'la', 'note': 'Post Meridiem (time)'},
+    'v.s.': {'cefr': 'B2', 'lang': 'en', 'note': 'Versus '},
+    'vs.': {'cefr': 'B2', 'lang': 'en', 'note': 'Versus '},
+    'n.d.': {'cefr': 'B2' , 'lang': 'en', 'note': 'No date'},
+    'd.o.f.': {'cefr': 'C1', 'lang': 'en', 'note': 'Degrees of freedom (statistics)'},
+    'sq.': {'cefr': 'B1', 'lang': 'en', 'note': 'Square'},
+
+
+    't.ex./t.ex': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
+    't.ex./t.ex': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
+    's.k.': {'cefr': 'B1', 'lang': 'sv', 'note': 'Så kallad'},   #  "so-called"
+    'p.g.a.': {'cefr': 'A2', 'lang': 'sv', 'note': 'På grund av'},  #  "due to" or "because of"
+    'o.k.s.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Och liknande'},  #  "and the like"
+    'o.s.v.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Och så vidare'},  # "and so on"
+    'm.a.o.': {'cefr': 'B2', 'lang': 'sv', 'note': 'Med andra ord'},  # "in other words"
+    'm.fl.': {'cefr': 'B2', 'lang': 'sv', 'note': 'Med flera'},  #  "with several" or "among others"
+    'm.m.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Med mera'},  # "and more"
+    'V.S.B.': {'cefr': 'C2', 'lang': 'sv', 'note': 'Vilket skulle bevisas'},  # "which was to be proven"
+    'v.s.b.': {'cefr': 'C2', 'lang': 'sv', 'note': 'Vilket skulle bevisas'},  # "which was to be proven"
+    'v.s.v.': {'cefr': 'C2', 'lang': 'sv', 'note': 'Vilket skulle visas'},  #  "which was to be shown"
+    'ö.h.t.': {'cefr': 'B1', 'lang': 'sv', 'note': 'Överhuvudtaget'},  # "at all" or "in general"
+    'm.h.a.': {'cefr': 'B2', 'lang': 'sv', 'note': 'Med hjälp av'},  # "with the help of"
+    'eng.': {'cefr': 'B1', 'lang': 'sv', 'note': 'engelska '}, # Short for English
+    'm.a.p.': {'cefr': 'C1', 'lang': 'sv', 'note': 'Med avseende på'}, # "with respect to"
+    'P.S.S.': {'cefr': 'B2', 'lang': 'sv', 'note': 'På samma sätt'},  # "in the same way"
+    'p.s.s.': {'cefr': 'B2', 'lang': 'sv', 'note': 'På samma sätt'},  # "in the same way"
+    'D.v.s.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Det vill säga'},  # "that is" or "in other words"
+    'd.v.s.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Det vill säga'},  # "that is" or "in other words"
+    'i.a.f.': {'cefr': 'A2', 'lang': 'sv', 'note': 'I alla fall'},  # "in any case" or "at least"
+    'i.o.m.': {'cefr': 'B2', 'lang': 'sv', 'note': 'I och med'},  # "with" or "as a result of"
+    't.o.m.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till och med'},  # "even" or "up to and including"
+    'u.å.': {'cefr': 'B2', 'lang': 'sv', 'note': 'Under årens lopp'},  # "Over the years"
+    'p.u.': {'cefr': 'B2', 'lang': 'sv', 'note': 'Per undantag'},  # "By exception" or "As an exception"
+
+
+
+}
+
+def simplify_abbreviations(html_text, abbreviation_levels):
+    """
+    Simplifies HTML spans for multiple abbreviations with specified CEFR levels and languages.
+
+    Args:
+        html_text (str): The HTML string to modify.
+        abbreviation_levels (dict): A dictionary mapping abbreviations to their CEFR levels and languages.
+
+    Returns:
+        The modified HTML string with simplified and tagged spans.
+    """
+    for abbreviation, info in abbreviation_levels.items():
+        cefr_level = info["cefr"]
+        lang = info["lang"]
+        # Use a more robust pattern that handles any number of periods
+        if abbreviation.count('.') < 1:
+            continue
+        pattern=""
+        parts=abbreviation.split('.')
+        for i in range(0, len(parts)-1):
+            pattern = pattern+fr"""<span class="CEFR\w+">{parts[i]}</span>\."""
+        print(f"pattern: {pattern}")
+        # Replacement string with escaped abbreviation
+        replacement = (
+            fr'<span lang="{lang}" class="CEFR{cefr_level}">{abbreviation}</span>'
+        )
+        # Replace the pattern in the HTML text
+        html_text = re.sub(pattern, replacement, html_text, count=0)
+    #
+    return html_text
+
+def clean_tagged_html(tagged_html):
+    tagged_html=simplify_cefr_span_of_float(tagged_html)
+    tagged_html=simplify_abbreviations(tagged_html, abbreviation_levels)
+    return tagged_html
 
 def transform_body(html_content):
     global Verbose_Flag
@@ -1387,6 +1550,12 @@ def get_cefr_level(language, word, pos, context):
     # Note if the word is not found with a relevant POS in a given source, we check the next source
     if language == 'en':
         src='top_100_English_words'
+        celf_levels=common_english_and_swedish.top_100_English_words.get(word, False)
+        if celf_levels:
+            cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+
         celf_levels=common_english_and_swedish.top_100_English_words.get(word.lower(), False)
         if celf_levels:
             cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
@@ -1541,7 +1710,9 @@ def get_lowest_cefr_level(language, word, context, src, cefr_levels):
 
 
 def get_cefr_level_without_POS(language, word, context):
-    print(f"get_cefr_level_without_POS({language}, {word}, {context})")
+    global Verbose_Flag
+    if Verbose_Flag:
+        print(f"get_cefr_level_without_POS({language}, {word}, {context})")
     celf_levels=False
     src=None
     # handle punctuation
@@ -1555,6 +1726,12 @@ def get_cefr_level_without_POS(language, word, context):
     # Note if the word is not found with a relevant POS in a given source, we check the next source
     if language == 'en':
         src='top_100_English_words'
+        celf_levels=common_english_and_swedish.top_100_English_words.get(word, False)
+        if celf_levels:
+            cfl, src=get_lowest_cefr_level(language, word, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+
         celf_levels=common_english_and_swedish.top_100_English_words.get(word.lower(), False)
         if celf_levels:
             cfl, src=get_lowest_cefr_level(language, word, context, src, celf_levels)
@@ -1656,6 +1833,8 @@ def get_cefr_level_without_POS(language, word, context):
     if word in common_english_and_swedish.names_of_persons:
         return 'B2', 'names_of_persons'
 
+    if word in well_known_acronyms:
+        return get_lowest_cefr_level('en', word, None, 'well_known_acronyms', get_acronym_cefr_levels(word))
     #
     return 'XX', 'unknown'
 
@@ -1706,7 +1885,8 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
 
     if word in well_known_acronyms:  # Perhaps  used the 'cefr' property of the entry
         cefr_levels = get_acronym_cefr_levels(word)
-        print(f"'{word}' {cefr_levels=}")
+        if Verbose_Flag:
+            print(f"'{word}' {cefr_levels=}")
         if len(cefr_levels) == 0:
             return 'C2', 'well_known_acronyms'
         elif len(cefr_levels) == 1:
@@ -1741,7 +1921,8 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
             pos_in_level=pos_in_level.lower().split(',')
             pos_in_level=[p.strip() for p in pos_in_level]
             # note that pos_in_levels now a list 
-            print(f"second print: '{word}' {pos=} {wl=} {pos_in_level}")
+            if Verbose_Flag:
+                print(f"second print: '{word}' {pos=} {wl=} {pos_in_level}")
 
             # handle wild card of POS
             if 'et al.' in pos_in_level:
@@ -1984,6 +2165,41 @@ def tokenize_and_pos_tag_html_sentences(soup):
             continue
     return soup
 
+def is_float(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
+    
+def is_number(string):
+    # deal with the fact that LaTeX can set a minus sign
+    if len(string) > 1 and string[0] == '\u2212':
+        string = '-' + string[1:]
+    #
+    if len(string) > 0:
+        if not (string[0] == '-' or string[0] == '+'):
+            if not string[0].isdigit():
+                return False
+    rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", string)
+    if rr and len(rr) == 1:
+        if is_float(rr[0]):
+            return True
+    # otherwise
+    return False
+
+hex_digits='0123456789abcdefABCDEF'
+
+def is_hex_number(string):
+    if string.startswith('0x'):
+        for c in string[2:]:
+            if c not in hex_digits:
+                return False
+        return True
+    else:
+        return False
+
+
 def main():
     global Verbose_Flag
     global testing_mode_flag # if set to true do _not_ write the modified contents
@@ -2029,6 +2245,11 @@ def main():
     course_id=remainder[0]
 
     setup_acronyms()
+    x1=get_acronym_cefr_levels('ECTS')
+    print(f"get_acronym_cefr_levels: {x1}")
+    x=get_lowest_cefr_level('en', 'ECTS', None, 'bogus', get_acronym_cefr_levels('ECTS'))
+    print(f"is ECTS in ancronyms? {x}")
+    
     if Verbose_Flag:
         print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) well_known_acronyms')
 

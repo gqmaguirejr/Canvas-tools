@@ -3098,7 +3098,7 @@ avl_words={
     'clinical': {'B1': 'Adjective'},
     'clinically': {'C2': 'Adverb'},
     'clinician': {'C1': 'Noun'},
-    'clip': {'A1': 'Noun, Verb', 'A2': 'Noun', 'B1': 'Verb'},
+    'clip': {'A1': 'Noun, Verb', 'A2': 'Noun', 'B1': 'Verb', 'B2': 'Verb'}, # the B2 version means to hit or strike something
     'clipboard': {'A1': 'Noun', 'A2': 'Noun'},
     'clipping': {'B1': 'Noun'},
     'clique': {'B1': 'Noun', 'B2': 'Noun'}, # B1 wrt social groups

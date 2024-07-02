@@ -5019,6 +5019,8 @@ well_known_acronyms_list=[
     ['MRI', 'Magnetic Resonance Imaging', {'cefr': 'C2'}],
     ['EEG', 'Electroencephalogram', {'cefr': 'C2'}],
     ['PCR', 'Polymerase Chain Reaction', {'cefr': 'C2'}],
+    ['ECTS', 'European Credit Transfer and Accumulation System', {'cefr': 'C1'}],
+
 ]
 
 
