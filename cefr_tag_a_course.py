@@ -35,6 +35,7 @@ import pprint
 import optparse
 import sys
 import json
+import re
 
 from datetime import datetime, date, timedelta
 import isodate                  # for parsing ISO 8601 dates and times
@@ -48,9 +49,9 @@ from bs4 import BeautifulSoup
 
 import nltk
 from nltk import RegexpParser
+from nltk.tokenize import word_tokenize
+import html
 
-
-import re
 
 import sys
 sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module_folder
@@ -1103,6 +1104,108 @@ def remove_existing_CEFR_markup(s):
     return s
 
 
+# The following function was developed on 2024-06-30 in interaction with Google Gemin Advanced
+# It is based on my suggestion to compute the POS for words and then back substitute the tagged
+# version into the text of the html_content - rather that struggling with BeautifulSoup
+def pos_tag_html_with_context(html_content):
+    """
+    POS tags HTML content, considering context by grouping text within elements.
+    Preserves all HTML markup and avoids incorrect spacing.
+
+    Args:
+        html_content (str): The HTML content to be tagged.
+
+    Returns:
+        str: The HTML content with POS tags inserted around words.
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+    text = soup.get_text()  # Extract text from HTML
+    # Tokenize and POS tag words in the extracted text
+    # using regular expression tokenizer
+    words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
+    tagged_words = nltk.pos_tag(words)
+    # Remove the period from the list of words
+    try:
+        period_index = words.index(".")
+        del words[period_index]
+        del tagged_words[period_index]
+    except ValueError:
+        pass
+    #
+    # Zip the original and tagged words together
+    tagged_word_list = list(zip(words, tagged_words))
+    #
+    # Create a regular expression to match the words in order
+    pattern = re.compile(r"|".join(map(re.escape, words)))
+    # Function to replace words with their tagged versions
+    def replace_with_tags(match, count=[0]):
+        # count the number of time tag_words has been called
+        # count is a list to be used as a mutable default argument so it will retain its value after every function call
+        word = match.group(0)
+        if count[0] < len(tagged_word_list):
+            _, (tagged_word, tag) = tagged_word_list[count[0]]
+            if tagged_word == word:
+                # Only return a tagged word if it is the next tagged word in tagged_word_list
+                count[0] += 1
+                return f"<{tag}>{html.escape(word)}</{tag}>"
+        return word  # Return the original word if no tag was found (e.g., punctuation)
+    #
+    # Replace words in the original HTML content with their tagged versions
+    tagged_html = pattern.sub(replace_with_tags, html_content)
+    #
+    return html.unescape(tagged_html) # Decode the html before returning the string
+
+def tokenize_and_CEFR_tag_html_sentences(html_content):
+    """
+    Based on POS and CEFR information for words tag HTML content, considering context by grouping text within elements.
+    Preserves all HTML markup and avoids incorrect spacing.
+
+    Args:
+        html_content (str): The HTML content to be tagged.
+
+    Returns:
+        str: The HTML content with span tags with CEFR attribute inserted around words.
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+    text = soup.get_text()  # Extract text from HTML
+    print(f"{text}")
+    # Tokenize and POS tag words in the extracted text
+    # using regular expression tokenizer
+    words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
+    tagged_words = nltk.pos_tag(words)
+    print(f"{words=} {tagged_words=}")
+    # Remove the period from the list of words
+    for w in words:
+        for ci in [ ',', '.', ':', '$', '--', "``", "''", '(', ')', '[', ']', '{', '}', '<', '>', '-' ]:
+            try:
+                period_index = words.index(ci)
+                del words[period_index]
+                del tagged_words[period_index]
+            except ValueError:
+                pass
+    print(f"after cleaning {tagged_words=}")
+    #
+    # Zip the original and tagged words together
+    tagged_word_list = list(zip(words, tagged_words))
+    print(f"{tagged_word_list=}")
+    #
+    def process_my_string(s, tagged_words, i=0):
+        print(f"process_my_string({s}, tagged_words, {i=})")
+        if i >= len(tagged_words):
+            return s
+        word, tag = tagged_words[i]
+
+        prefix, word, suffix = s.partition(word)
+        if word:
+            cefr_level, source = get_cefr_level('en', word, tag, None)
+            return prefix+f'<span class="CEFR{cefr_level}">{html.escape(word)}</span>'+process_my_string(suffix, tagged_words, i+1)
+        else:
+            return s
+    #
+    tagged_html=process_my_string(html_content, tagged_words, 0)
+    print(f"{tagged_html=}")
+    return html.unescape(tagged_html) # Decode the html before returning the string
+
 def transform_body(html_content):
     global Verbose_Flag
     if Verbose_Flag:
@@ -1117,13 +1220,13 @@ def transform_body(html_content):
     # Remove existing CEFR markup
     soup=remove_existing_CEFR_markup(soup)
 
-    modified_soup=tokenize_and_pos_tag_html_sentences(soup)
+    modified_HTML=tokenize_and_CEFR_tag_html_sentences(str(soup))
 
-    html_content = style_info+str(soup)
+    new_html_content = style_info+modified_HTML
     if Verbose_Flag:
-        print(f"transformed {html_content=}")
+        print(f"transformed {new_html_content=}")
 
-    return html_content, changed_flag
+    return new_html_content, changed_flag
 
 def find_sentences_in_tag(tag):
     global Verbose_Flag
@@ -1839,13 +1942,13 @@ def tokenize_paragraph(soup, e):
         print(f"magic: {cefr_level} '{word}'")
         if Verbose_Flag:
             print(f"word: '{word}', pos: '{pos}', cefr level: {cefr_level}, source: {source}")
-            span = soup.new_tag('span', attrs={'class': f'CEFR{cefr_level}'})
-            span.string = word
-            # add space between word spans, except before punctuation
-            if Verbose_Flag:
+        span = soup.new_tag('span', attrs={'class': f'CEFR{cefr_level}'})
+        span.string = word
+        # add space between word spans, except before punctuation
+        if Verbose_Flag:
                 print(f"{word=} - {new_spans=}")
-            # if len(new_spans) == 0:
-            #     new_spans.append(soup.new_string(' '))
+        # if len(new_spans) == 0:
+        #     new_spans.append(soup.new_string(' '))
         if len(new_spans) > 0 and last_word not in ["’"] and word not in [',', '.', '?', ':', "’"]:
             new_spans.append(soup.new_string(' '))
         last_word=word
