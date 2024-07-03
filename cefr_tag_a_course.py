@@ -477,15 +477,17 @@ def process_pages(course_id):
             continue
 
         print(f"processing page: '{p['title']}'")
-        if p['title'] == 'Reference Books and Other Materials': # skip this page for now
-            continue
         if p['title'] ==  'Ethics / Code of Honor and Regulations':
             continue
         if p['title'] ==  'Overview':
             continue
         if p['title'] == 'Course home page':
             continue
-        if p['title'] != 'Welcome to II2210':
+        if p['title'] == 'Welcome to II2210':
+            continue
+        if p['title'] == 'Learning outcomes':
+            continue
+        if p['title'] != 'Reference Books and Other Materials':
             continue
         if Verbose_Flag:
             print(f"{p['url']=}")
@@ -2202,18 +2204,87 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
                     return wl, src
 
             # for handling POS tagging from spaCy + UDPipe
-            if pos in ['Noun']:
-                if 'noun' in pos_in_level:
+            if pos in ['ADJ']:  # adjective
+                if 'adjective' in pos_in_level:
                     return wl, src
 
-            if pos in ['CCONJ']:
+            if pos in ['ADP']: # adposition
+                if 'preposition' in pos_in_level:
+                    return wl, src
+
+            if pos in ['ADV']: # adverb
+                if 'adverb' in pos_in_level:
+                    return wl, src
+
+            if pos in ['AUX']: # auxiliary
+                if 'modal verb' in pos_in_level:
+                    return wl, src
+
+            if pos in ['CCONJ']: # conjunction
                 if 'conjunction' in pos_in_level:
                     return wl, src
 
-            if pos in ['VERB']:
+            if pos in ['CCONJ']: # coordinating conjunction
+                if 'conjunction' in pos_in_level:
+                    return wl, src
+
+            if pos in ['DET']: # determiner
+                if 'determiner' in pos_in_level:
+                    return wl, src
+                if 'article' in pos_in_level:
+                    return wl, src
+
+            if pos in ['INTJ']: # interjection
+                if 'interjection' in pos_in_level:
+                    return wl, src
+
+            if pos in ['NOUN']: # Noun
+                if 'noun' in pos_in_level:
+                    return wl, src
+
+            if pos in ['NUM']: # numeral
+                if 'cardinal number' in pos_in_level:
+                    return wl, src
+                if 'numeral' in pos_in_level:
+                    return wl, src
+
+            if pos in ['PART']: # particle
+                if 'particle' in pos_in_level:
+                    return wl, src
+
+
+            if pos in ['PRON']: # pronoun
+                if 'possessive pronoun' in pos_in_level:
+                    return wl, src
+                if 'pronoun' in pos_in_level:
+                    return wl, src
+
+            if pos in ['PROPN']: # # proper noun
+                if 'proper noun' in pos_in_level:
+                    return wl, src
+                if 'noun' in pos_in_level:
+                    return wl, src
+
+            if pos in ['PUNCT']: # punctuation
+                if 'punctuation' in pos_in_level:
+                    return wl, src
+
+            if pos in ['SCONJ']: # subordinating conjunction
+                if 'subordinating conjunction' in pos_in_level:
+                    return wl, src
+
+            if pos == 'SYM': # Symbol
+                return 'A1', 'fixed'
+
+            if pos in ['VERB']: # verb
                 if 'verb' in pos_in_level:
                     return wl, src
 
+            if pos in ['X']: # other
+                if 'other' in pos_in_level:
+                    return wl, src
+
+            # there is also SPACE as a POS, which is just a space
 
     print(f"no result for get_specific_cefr_level({language}, {word}, {pos}, {context}, {src})")
     return False, src
@@ -2400,10 +2471,12 @@ def main():
     course_id=remainder[0]
 
     setup_acronyms()
-    x1=get_acronym_cefr_levels('ECTS')
-    print(f"get_acronym_cefr_levels: {x1}")
-    x=get_lowest_cefr_level('en', 'ECTS', None, 'bogus', get_acronym_cefr_levels('ECTS'))
-    print(f"is ECTS in ancronyms? {x}")
+
+    if testing_mode_flag:
+        x1=get_acronym_cefr_levels('ECTS')
+        print(f"get_acronym_cefr_levels: {x1}")
+        x=get_lowest_cefr_level('en', 'ECTS', None, 'bogus', get_acronym_cefr_levels('ECTS'))
+        print(f"is ECTS in ancronyms? {x}")
     
     if Verbose_Flag:
         print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) well_known_acronyms')
