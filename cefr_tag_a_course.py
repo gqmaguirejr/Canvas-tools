@@ -472,7 +472,11 @@ def process_pages(course_id):
             continue
         if p['title'] ==  'Ethics / Code of Honor and Regulations':
             continue
-        if p['title'] != 'Overview':
+        if p['title'] ==  'Overview':
+            continue
+        if p['title'] == 'Course home page':
+            continue
+        if p['title'] != 'Welcome to II2210':
             continue
         if Verbose_Flag:
             print(f"{p['url']=}")
@@ -1157,6 +1161,65 @@ def pos_tag_html_with_context(html_content):
     #
     return html.unescape(tagged_html) # Decode the html before returning the string
 
+def get_unique_languages(html_content):
+    """
+    Extracts all unique language codes used in lang attributes from an HTML string.
+
+    Args:
+        html_content (str): The HTML content to process.
+
+    Returns:
+        set: A set of unique language codes found in the HTML.
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+    #
+    # Find all elements with a 'lang' attribute
+    lang_elements = soup.find_all(lambda tag: tag.has_attr('lang'))
+    #    
+    # Collect all unique language values from these elements 
+    languages = {tag['lang'] for tag in lang_elements}
+    #
+    return languages
+
+def process_my_string(s, tagged_words, lang, i):
+    global Verbose_Flag
+    if Verbose_Flag:
+        print(f"process_my_string({s}, tagged_words, {lang}, {i=})")
+    if i >= len(tagged_words):
+        return s
+    word, tag = tagged_words[i]
+
+    prefix, word, suffix = s.partition(word)
+    if word:
+        cefr_level, source = get_cefr_level(lang, word, tag, None)
+        if cefr_level == 'XX':
+            return prefix+f'{html.escape(word)}'+process_my_string(suffix, tagged_words, lang, i+1)
+        else:
+            return prefix+f'<span class="CEFR{cefr_level}">{html.escape(word)}</span>'+process_my_string(suffix, tagged_words, lang, i+1)
+    else:
+        return s
+
+def get_text_by_language(html_content, target_lang):
+    """
+    Extracts text content in a specific language from an HTML string.
+
+    Args:
+        html_content (str): The HTML content to process.
+        target_lang (str): The target language code (e.g., "en", "fr", "es").
+
+    Returns:
+        str: The extracted text content in the target language.
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+    # Find all elements with the 'lang' attribute matching the target language
+    elements = soup.find_all(lang=target_lang)
+
+    # Extract and combine the text content from those elements
+    text = ' '.join(element.get_text(separator=' ', strip=True) for element in elements)
+
+    return text
+
 def tokenize_and_CEFR_tag_html_sentences(html_content):
     global Verbose_Flag
     """
@@ -1169,49 +1232,43 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
     Returns:
         str: The HTML content with span tags with CEFR attribute inserted around words.
     """
-    soup = BeautifulSoup(html_content, 'html.parser')
-    text = soup.get_text()  # Extract text from HTML
-    if Verbose_Flag:
-        print(f"{text}")
-    # Tokenize and POS tag words in the extracted text
-    # using regular expression tokenizer
-    words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
-    tagged_words = nltk.pos_tag(words)
-    if Verbose_Flag:
-        print(f"{words=} {tagged_words=}")
-    # Remove the punctuation from the list of words
-    for w in words:
-        for ci in [ ',', '.', ':', '$', '--', "``", "''", '(', ')', '[', ']', '{', '}', '<', '>', '-' ]:
-            try:
-                period_index = words.index(ci)
-                del words[period_index]
-                del tagged_words[period_index]
-            except ValueError:
-                pass
-    if Verbose_Flag:
-        print(f"after cleaning {tagged_words=}")
-    #
-    # Zip the original and tagged words together
-    tagged_word_list = list(zip(words, tagged_words))
-    if Verbose_Flag:
-        print(f"{tagged_word_list=}")
-    #
-    def process_my_string(s, tagged_words, i=0):
-        global Verbose_Flag
-        if Verbose_Flag:
-            print(f"process_my_string({s}, tagged_words, {i=})")
-        if i >= len(tagged_words):
-            return s
-        word, tag = tagged_words[i]
+    languages_in_content=get_unique_languages(html_content)
 
-        prefix, word, suffix = s.partition(word)
-        if word:
-            cefr_level, source = get_cefr_level('en', word, tag, None)
-            return prefix+f'<span class="CEFR{cefr_level}">{html.escape(word)}</span>'+process_my_string(suffix, tagged_words, i+1)
-        else:
-            return s
-    #
-    tagged_html=process_my_string(html_content, tagged_words, 0)
+    tagged_html=html_content
+    for lang in languages_in_content:
+        #soup = BeautifulSoup(html_content, 'html.parser')
+        #text = soup.get_text()  # Extract text from HTML
+        text=get_text_by_language(tagged_html, lang)
+        if Verbose_Flag:
+            print(f"{lang=} {text=}")
+        # Tokenize and POS tag words in the extracted text
+        # using regular expression tokenizer
+        words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
+        tagged_words = nltk.pos_tag(words)
+        if Verbose_Flag:
+            print(f"{words=} {tagged_words=}")
+        # Remove the punctuation from the list of words
+        for w in words:
+            for ci in [ ',', '.', ':', '$', '--', "``", "''", '(', ')', '[', ']', '{', '}', '<', '>', '-' ]:
+                try:
+                    period_index = words.index(ci)
+                    del words[period_index]
+                    del tagged_words[period_index]
+                except ValueError:
+                    pass
+        if Verbose_Flag:
+            print(f"after cleaning {tagged_words=}")
+        #
+        # Zip the original and tagged words together
+        tagged_word_list = list(zip(words, tagged_words))
+        if Verbose_Flag:
+            print(f"{tagged_word_list=}")
+            #
+        tagged_html=process_my_string(tagged_html, tagged_words, lang, 0)
+        if Verbose_Flag:
+            print(f"before cleaning {tagged_html=}")
+
+
     tagged_html=clean_tagged_html(tagged_html)
     if Verbose_Flag:
         print(f"{tagged_html=}")
@@ -1334,6 +1391,7 @@ abbreviation_levels = {
 }
 
 def simplify_abbreviations(html_text, abbreviation_levels):
+    global Verbose_Flag
     """
     Simplifies HTML spans for multiple abbreviations with specified CEFR levels and languages.
 
@@ -1354,7 +1412,8 @@ def simplify_abbreviations(html_text, abbreviation_levels):
         parts=abbreviation.split('.')
         for i in range(0, len(parts)-1):
             pattern = pattern+fr"""<span class="CEFR\w+">{parts[i]}</span>\."""
-        print(f"pattern: {pattern}")
+        if Verbose_Flag:
+            print(f"pattern: {pattern}")
         # Replacement string with escaped abbreviation
         replacement = (
             fr'<span lang="{lang}" class="CEFR{cefr_level}">{abbreviation}</span>'
@@ -1562,6 +1621,7 @@ def get_cefr_level(language, word, pos, context):
             if cfl:
                 return cfl, src
 
+        # note that the entries in thousand_most_common_words_in_English are all in lower case
         src='thousand_most_common_words_in_English'
         celf_levels=common_english_and_swedish.thousand_most_common_words_in_English.get(word.lower(), False)
         if celf_levels:
@@ -1597,6 +1657,13 @@ def get_cefr_level(language, word, pos, context):
                 return cfl, src
 
         src='KTH_ordbok_English_with_CEFR'
+        celf_levels=common_english_and_swedish.KTH_ordbok_English_with_CEFR.get(word, False)
+        if celf_levels:
+            cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+
+        src='KTH_ordbok_English_with_CEFR'
         celf_levels=common_english_and_swedish.KTH_ordbok_English_with_CEFR.get(word.lower(), False)
         if celf_levels:
             cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
@@ -1614,6 +1681,14 @@ def get_cefr_level(language, word, pos, context):
                 return cfl, src
 
         #
+        src='common_swedish_words'
+        celf_levels=common_english_and_swedish.common_swedish_words.get(word.lower(), False)
+        if celf_levels:
+            cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+
+        #
         src='common_swedish_technical_words'
         celf_levels=common_english_and_swedish.common_swedish_technical_words.get(word, False)
         if celf_levels:
@@ -1622,8 +1697,23 @@ def get_cefr_level(language, word, pos, context):
                 return cfl, src
 
         #
+        src='common_swedish_technical_words'
+        celf_levels=common_english_and_swedish.common_swedish_technical_words.get(word.lower(), False)
+        if celf_levels:
+            cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+
+        #
         src='KTH_ordbok_Swedish_with_CEFR'
         celf_levels=common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR.get(word, False)
+        if celf_levels:
+            cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+        #
+        src='KTH_ordbok_Swedish_with_CEFR'
+        celf_levels=common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR.get(word.lower(), False)
         if celf_levels:
             cfl, src=get_specific_cefr_level(language, word, pos, context, src, celf_levels)
             if cfl:
