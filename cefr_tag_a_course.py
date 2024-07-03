@@ -50,6 +50,10 @@ from bs4 import BeautifulSoup
 import nltk
 from nltk import RegexpParser
 from nltk.tokenize import word_tokenize
+# for the following two you will (once) have to do: nltk.download('bcp47')
+from nltk.langnames import langname
+from nltk.langnames import langcode
+
 import html
 
 
@@ -1220,6 +1224,19 @@ def get_text_by_language(html_content, target_lang):
 
     return text
 
+# NLTK uses ISO 639 code for languages
+# more specifically the ISO 639-3 three letter codes
+# while we assume the content is language tagged according to RFC 5646
+# RFC 5646 states in its list of rules for the primary language subtag:
+#    1. Two-character primary language subtags were defined in the IANA
+#       registry according to the assignments found in the standard "ISO
+#       639-1:2002, Codes for the representation of names of languages --
+#       Part 1: Alpha-2 code" [ISO639-1], or using assignments
+#       subsequently made by the ISO 639-1 registration authority (RA) or
+#       governing standardization bodies.
+def convert_to_ISO_639_code(lang):
+    return langcode(langname(lang), typ=3 )
+
 def tokenize_and_CEFR_tag_html_sentences(html_content):
     global Verbose_Flag
     """
@@ -1244,7 +1261,7 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
         # Tokenize and POS tag words in the extracted text
         # using regular expression tokenizer
         words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
-        tagged_words = nltk.pos_tag(words)
+        tagged_words = nltk.pos_tag(words, lang=convert_to_ISO_639_code(lang))
         if Verbose_Flag:
             print(f"{words=} {tagged_words=}")
         # Remove the punctuation from the list of words
