@@ -46,6 +46,7 @@ import pandas as pd
 
 # use BeautifulSoup to process the HTML
 from bs4 import BeautifulSoup
+import bs4
 
 import nltk
 from nltk import RegexpParser
@@ -53,6 +54,10 @@ from nltk.tokenize import word_tokenize
 # for the following two you will (once) have to do: nltk.download('bcp47')
 from nltk.langnames import langname
 from nltk.langnames import langcode
+
+#
+import spacy_udpipe
+
 
 import html
 
@@ -1205,7 +1210,8 @@ def process_my_string(s, tagged_words, lang, i):
 
 def get_text_by_language(html_content, target_lang):
     """
-    Extracts text content in a specific language from an HTML string.
+    Extracts text content in a specific language from an HTML string, 
+    handling nested elements with different languages.
 
     Args:
         html_content (str): The HTML content to process.
@@ -1215,14 +1221,24 @@ def get_text_by_language(html_content, target_lang):
         str: The extracted text content in the target language.
     """
     soup = BeautifulSoup(html_content, 'html.parser')
-
-    # Find all elements with the 'lang' attribute matching the target language
-    elements = soup.find_all(lang=target_lang)
-
-    # Extract and combine the text content from those elements
-    text = ' '.join(element.get_text(separator=' ', strip=True) for element in elements)
-
-    return text
+    extracted_text = []
+    def traverse_and_extract(element, current_lang=None):
+        """Recursively traverses the HTML tree to extract text in the target language."""
+        #
+        if isinstance(element, bs4.element.NavigableString):
+            # Find closest parent with 'lang' attribute
+            parent = element.find_parent(lambda tag: tag.has_attr('lang'))
+            if parent: # Check if parent exists before getting the 'lang' attribute
+                current_lang = parent.get('lang') or current_lang
+            if current_lang == target_lang:
+                extracted_text.append(element.strip())
+        elif isinstance(element, bs4.element.Tag) and element.name != 'script':  # Exclude script tags
+            for child in element.children:
+                traverse_and_extract(child, current_lang)
+    #
+    traverse_and_extract(soup)
+    #
+    return ' '.join(extracted_text)
 
 # NLTK uses ISO 639 code for languages
 # more specifically the ISO 639-3 three letter codes
@@ -1236,6 +1252,22 @@ def get_text_by_language(html_content, target_lang):
 #       governing standardization bodies.
 def convert_to_ISO_639_code(lang):
     return langcode(langname(lang), typ=3 )
+
+def words_and_pos_info(txt, lang):
+    global nlp
+    wrds=[]
+    wrds_pos=[]
+
+    if not nlp.get(lang, False):
+        print(f'*** add spacy_udpipe.download("{lang}) to main()')
+        return
+
+    doc = nlp[lang](txt)
+    for token in doc:
+        print(token.text, token.lemma_, token.pos_, token.dep_)
+        wrds.append(token.text)
+        wrds_pos.append( [token.text, token.pos_])
+    return   wrds, wrds_pos
 
 def tokenize_and_CEFR_tag_html_sentences(html_content):
     global Verbose_Flag
@@ -1260,8 +1292,9 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
             print(f"{lang=} {text=}")
         # Tokenize and POS tag words in the extracted text
         # using regular expression tokenizer
-        words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
-        tagged_words = nltk.pos_tag(words, lang=convert_to_ISO_639_code(lang))
+        #words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
+        #tagged_words = nltk.pos_tag(words, lang=convert_to_ISO_639_code(lang))
+        words, tagged_words = words_and_pos_info(text, lang)
         if Verbose_Flag:
             print(f"{words=} {tagged_words=}")
         # Remove the punctuation from the list of words
@@ -1966,7 +1999,7 @@ def get_acronym_cefr_levels(w):
 def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_src):
     global Verbose_Flag
     if Verbose_Flag:
-        print(f"get_specific_cefr_level('{language}', '{word}', '{pos}', {context}, {src})")
+        print(f"get_specific_cefr_level('{language}', '{word}', '{pos}', {context}, {src}, {cerf_levels_from_src})")
 
     level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
 
@@ -2167,6 +2200,21 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
             if pos in ['POS']:
                 if 'genitive' in pos_in_level:
                     return wl, src
+
+            # for handling POS tagging from spaCy + UDPipe
+            if pos in ['Noun']:
+                if 'noun' in pos_in_level:
+                    return wl, src
+
+            if pos in ['CCONJ']:
+                if 'conjunction' in pos_in_level:
+                    return wl, src
+
+            if pos in ['VERB']:
+                if 'verb' in pos_in_level:
+                    return wl, src
+
+
     print(f"no result for get_specific_cefr_level({language}, {word}, {pos}, {context}, {src})")
     return False, src
 
@@ -2311,7 +2359,7 @@ def main():
     global Verbose_Flag
     global testing_mode_flag # if set to true do _not_ write the modified contents
     global well_known_acronyms
-
+    global nlp # dict of spaCy + UDPipe pipelines
 
     parser = optparse.OptionParser()
 
@@ -2359,6 +2407,15 @@ def main():
     
     if Verbose_Flag:
         print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) well_known_acronyms')
+
+    nlp=dict()
+    spacy_udpipe.download("en") # download English model
+    spacy_udpipe.download("sv") # download Swedish model
+    # set up two spaCy + UDPipe pipelines
+    nlp['en'] = spacy_udpipe.load("en")
+    nlp['sv'] = spacy_udpipe.load("sv")
+
+
 
     process_course(course_id)
 
