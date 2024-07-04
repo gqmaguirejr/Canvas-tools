@@ -62,7 +62,6 @@ import spacy_udpipe
 import html
 
 
-import sys
 sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module_folder
 sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
@@ -1475,9 +1474,65 @@ def simplify_abbreviations(html_text, abbreviation_levels):
     #
     return html_text
 
+def combine_names_in_html(html_text, names_of_persons):
+    """
+    Combines consecutive name spans in HTML based on a provided list of names.
+
+    Args:
+        html_text: The HTML string to modify.
+        names_of_persons: A list of valid person names (e.g., ["John", "Mary", "Doe"]).
+
+    Returns:
+        The modified HTML string with combined name spans.
+    """
+    # Regular expression patterns for name combinations
+    pattern_with_initial_not_following_span = r'<span class="CEFR\w+">([\w-]+)</span>\s*([\w-]).\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_initial = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">\s*([\w-])\s*</span>.\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_firstname_span_lastname = r'([\w-]+\s*[\w-]*)\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern =              r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    #
+    def replace_name_with_initials(match):
+        """Helper function to replace the name with the correct tag."""
+        first_name, initial, last_name = match.groups()
+        first_name=first_name.strip()
+        initial=initial.strip()
+        last_name=last_name.strip()
+        print(f"{first_name=} {initial=} {last_name=}")
+        #
+        # Check if we have an initial
+        if initial:
+            combined_name = f"{first_name} {initial}. {last_name}"
+        #
+        if (first_name in names_of_persons) and (last_name in names_of_persons):
+            return f'<span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
+    def replace_name(match):
+        """Helper function to replace the name with the correct tag."""
+        first_name, last_name = match.groups()
+        first_name=first_name.strip()
+        last_name=last_name.strip()
+        print(f"{first_name=}  {last_name=}")
+        #
+        combined_name = f"{first_name} {last_name}"
+        print(f"{combined_name=}")
+        #
+        print(f"{(first_name in names_of_persons)=} {(last_name in names_of_persons)=} {combined_name=}")
+        if (first_name in names_of_persons) and (last_name in names_of_persons):
+            return f'<span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
+    #
+    # Apply replacements
+    html_text = re.sub(pattern_with_initial_not_following_span, replace_name_with_initials, html_text)
+    html_text = re.sub(pattern_with_initial, replace_name_with_initials, html_text)
+    html_text = re.sub(pattern_firstname_span_lastname, replace_name, html_text)
+    html_text = re.sub(pattern, replace_name, html_text)
+    html_text = re.sub(pattern, replace_name, html_text)
+    return html_text
+
 def clean_tagged_html(tagged_html):
     tagged_html=simplify_cefr_span_of_float(tagged_html)
     tagged_html=simplify_abbreviations(tagged_html, abbreviation_levels)
+    tagged_html=combine_names_in_html(tagged_html, common_english_and_swedish.names_of_persons)
     return tagged_html
 
 def transform_body(html_content):
@@ -2264,6 +2319,8 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
                     return wl, src
                 if 'noun' in pos_in_level:
                     return wl, src
+                if word in common_english_and_swedish.names_of_persons:
+                    return 'A1', 'names_of_persons'
 
             if pos in ['PUNCT']: # punctuation
                 if 'punctuation' in pos_in_level:
