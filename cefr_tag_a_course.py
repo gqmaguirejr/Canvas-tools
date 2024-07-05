@@ -1138,7 +1138,7 @@ def pos_tag_html_with_context(html_content):
     text = soup.get_text()  # Extract text from HTML
     # Tokenize and POS tag words in the extracted text
     # using regular expression tokenizer
-    words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
+    words = nltk.regexp_tokenize(text, r"(\w+\-\s?\w+)|(\w+)") # was "\w+|[^\w\s-]"
     tagged_words = nltk.pos_tag(words)
     # Remove the period from the list of words
     try:
@@ -1293,7 +1293,7 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
             print(f"{lang=} {text=}")
         # Tokenize and POS tag words in the extracted text
         # using regular expression tokenizer
-        #words = nltk.regexp_tokenize(text, r"\w+|[^\w\s]")
+        #words = nltk.regexp_tokenize(text, r"[\w-\s]+|[^\w\s-]")
         #tagged_words = nltk.pos_tag(words, lang=convert_to_ISO_639_code(lang))
         words, tagged_words = words_and_pos_info(text, lang)
         if Verbose_Flag:
@@ -1488,7 +1488,9 @@ def combine_names_in_html(html_text, names_of_persons):
     # Regular expression patterns for name combinations
     pattern_with_initial_not_following_span = r'<span class="CEFR\w+">([\w-]+)</span>\s*([\w-]).\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_with_initial = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">\s*([\w-])\s*</span>.\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_first_initial = r'\s([\w]).\s<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_firstname_span_lastname = r'([\w-]+\s*[\w-]*)\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_hyphen = r'<span class="CEFR\w+">([\w-]+)</span>-(\w*)\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern =              r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
     #
     def replace_name_with_initials(match):
@@ -1502,26 +1504,68 @@ def combine_names_in_html(html_text, names_of_persons):
         # Check if we have an initial
         if initial:
             combined_name = f"{first_name} {initial}. {last_name}"
-        #
-        if (first_name in names_of_persons) and (last_name in names_of_persons):
-            return f'<span class="CEFRA1">{combined_name}</span>'
+            if (first_name in names_of_persons) and (last_name in names_of_persons):
+                return f'<span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
+    def replace_name_with_first_initial(match):
+        """Helper function to replace the name with the correct tag."""
+        initial,  middle_name, last_name = match.groups()
+        initial=initial.strip()
+        middle_name=middle_name.strip()
+        last_name=last_name.strip()
+        print(f"{initial=} {middle_name=} {last_name=}")
+        #
+        # Check if we have an initial
+        if initial:
+            combined_name = f"{initial}. {middle_name} {last_name}"
+            if (middle_name in names_of_persons) and (last_name in names_of_persons):
+                # need to ensure there is a space before the span
+                return f' <span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
+    def replace_hyphenated_name(match):
+        """Helper function to replace the name with the correct tag."""
+        first_name,  middle_name, last_name = match.groups()
+        first_name=first_name.strip()
+        middle_name=middle_name.strip()
+        last_name=last_name.strip()
+        print(f"replace_hyphenated_name: {first_name=}-{middle_name=} {last_name=}")
+        #
+        # Check if we have an initial
+        if middle_name:
+            combined_name = f"{first_name}-{middle_name} {last_name}"
+            if (first_name in names_of_persons) and (middle_name in names_of_persons) and (last_name in names_of_persons):
+                return f'<span class="CEFRA1">{combined_name}</span>'
+        else:
+            combined_name = f"{first_name}-{last_name}"
+            if (first_name in names_of_persons) and (last_name in names_of_persons):
+                return f'<span class="CEFRA1">{combined_name}</span>'
+            if combined_name in common_english_and_swedish.company_and_product_names:
+                return f'<span class="CEFRA1">{combined_name}</span>'
+
+        return match.group(0) # Return original if not a name
+
     def replace_name(match):
         """Helper function to replace the name with the correct tag."""
         first_name, last_name = match.groups()
         first_name=first_name.strip()
         last_name=last_name.strip()
-        print(f"{first_name=}  {last_name=}")
+        print(f"replace_name: {first_name=}  {last_name=}")
         #
         combined_name = f"{first_name} {last_name}"
-        print(f"{combined_name=}")
+        print(f"replace_name: {combined_name=}")
         #
         print(f"{(first_name in names_of_persons)=} {(last_name in names_of_persons)=} {combined_name=}")
         if (first_name in names_of_persons) and (last_name in names_of_persons):
             return f'<span class="CEFRA1">{combined_name}</span>'
+        if combined_name in common_english_and_swedish.place_names:
+            return f'<span class="CEFRA1">{combined_name}</span>'
+        if combined_name in common_english_and_swedish.company_and_product_names:
+            return f'<span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
     #
     # Apply replacements
+    html_text = re.sub(pattern_with_hyphen, replace_hyphenated_name, html_text)
+    html_text = re.sub(pattern_with_first_initial, replace_name_with_first_initial, html_text)
     html_text = re.sub(pattern_with_initial_not_following_span, replace_name_with_initials, html_text)
     html_text = re.sub(pattern_with_initial, replace_name_with_initials, html_text)
     html_text = re.sub(pattern_firstname_span_lastname, replace_name, html_text)
@@ -1986,6 +2030,13 @@ def get_cefr_level_without_POS(language, word, context):
             if cfl:
                 return cfl, src
 
+        src='common_swedish_words'
+        celf_levels=common_english_and_swedish.common_swedish_words.get(word.lower(), False)
+        if celf_levels:
+            cfl, src=get_lowest_cefr_level(language, word, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+
         #
         src='common_swedish_technical_words'
         celf_levels=common_english_and_swedish.common_swedish_technical_words.get(word, False)
@@ -1995,8 +2046,21 @@ def get_cefr_level_without_POS(language, word, context):
                 return cfl, src
 
         #
+        src='common_swedish_technical_words'
+        celf_levels=common_english_and_swedish.common_swedish_technical_words.get(word.lower(), False)
+        if celf_levels:
+            cfl, src=get_lowest_cefr_level(language, word, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+
+        #
         src='KTH_ordbok_Swedish_with_CEFR'
         celf_levels=common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR.get(word, False)
+        if celf_levels:
+            cfl, src=get_lowest_cefr_level(language, word, context, src, celf_levels)
+            if cfl:
+                return cfl, src
+        celf_levels=common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR.get(word.lower(), False)
         if celf_levels:
             cfl, src=get_lowest_cefr_level(language, word, context, src, celf_levels)
             if cfl:
@@ -2296,6 +2360,8 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
             if pos in ['NOUN']: # Noun
                 if 'noun' in pos_in_level:
                     return wl, src
+                if 'acronym' in pos_in_level:
+                    return wl, src
 
             if pos in ['NUM']: # numeral
                 if 'cardinal number' in pos_in_level:
@@ -2306,7 +2372,6 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
             if pos in ['PART']: # particle
                 if 'particle' in pos_in_level:
                     return wl, src
-
 
             if pos in ['PRON']: # pronoun
                 if 'possessive pronoun' in pos_in_level:
@@ -2544,7 +2609,6 @@ def main():
     # set up two spaCy + UDPipe pipelines
     nlp['en'] = spacy_udpipe.load("en")
     nlp['sv'] = spacy_udpipe.load("sv")
-
 
 
     process_course(course_id)
