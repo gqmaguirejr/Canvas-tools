@@ -34,6 +34,8 @@ import requests, time
 import pprint
 import optparse
 import sys
+sys.setrecursionlimit(10**6)    # increase recusion limit
+
 import json
 import re
 
@@ -1474,6 +1476,37 @@ def simplify_abbreviations(html_text, abbreviation_levels):
     #
     return html_text
 
+def my_search_replace(pattern, transform_function, S, offset=0):
+    """
+    Search for a pattern and then apply the transform_function to the match
+    Note: Unlike re.sub() this function will continue the search with the next character from where the search started
+          when there was not a match. In contrast, re.sub() continues with the next character after the pattern.
+          As a result this function can support "overlapping" patterns.
+
+    Args:
+        pattern: a regex pattern
+        transform_function: a function that will be called with the result of the match with the pattern
+        S: string to modify.
+        offset: a starting offset for the search
+
+    Returns:
+        The modified string S
+    """
+    #print(f"my_search_replace({pattern}, transform_function, '{S}', {offset=})")
+    compiled_pattern = re.compile(pattern)
+    match = compiled_pattern.search(S, offset)
+    if match:
+        prefix=S[:match.start()]
+        replacement=transform_function(match)
+        suffix=S[match.end():]
+        #print(f"'{prefix=}', '{replacement=}', '{suffix=}'")
+        return prefix+my_search_replace(pattern, transform_function, replacement+suffix, offset+1)
+    else:
+        if (offset < len(S)) and (len(S) > 1):
+            return my_search_replace(pattern, transform_function, S, offset+1)
+        else:
+            return S
+
 def combine_names_in_html(html_text, names_of_persons):
     """
     Combines consecutive name spans in HTML based on a provided list of names.
@@ -1491,7 +1524,9 @@ def combine_names_in_html(html_text, names_of_persons):
     pattern_with_first_initial = r'\s([\w]).\s<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_firstname_span_lastname = r'([\w-]+\s*[\w-]*)\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_with_hyphen = r'<span class="CEFR\w+">([\w-]+)</span>-(\w*)\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_hyphen_post_middle = r'<span class="CEFR\w+">([\w-]+)</span>\s*(\w*)-<span class="CEFR\w+">([\w-]+)</span>'
     pattern =              r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_place_comma_place = r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>,\s*<span class="CEFR\w+">([\w-]+)</span>'
     #
     def replace_name_with_initials(match):
         """Helper function to replace the name with the correct tag."""
@@ -1543,6 +1578,20 @@ def combine_names_in_html(html_text, names_of_persons):
                 return f'<span class="CEFRA1">{combined_name}</span>'
 
         return match.group(0) # Return original if not a name
+    def replace_hyphenated_post_middle_name(match):
+        """Helper function to replace the name with the correct tag."""
+        first_name,  middle_name, last_name = match.groups()
+        first_name=first_name.strip()
+        middle_name=middle_name.strip()
+        last_name=last_name.strip()
+        print(f"replace_hyphenated_post_middle_name: {first_name=} {middle_name=}-{last_name=}")
+        #
+        # Check if we have a first, middle, and last name
+        if middle_name:
+            if (first_name in names_of_persons) and (middle_name in names_of_persons) and (last_name in names_of_persons):
+                combined_name = f"{first_name} {middle_name}-{last_name}"
+                return f'<span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
 
     def replace_name(match):
         """Helper function to replace the name with the correct tag."""
@@ -1562,15 +1611,42 @@ def combine_names_in_html(html_text, names_of_persons):
         if combined_name in common_english_and_swedish.company_and_product_names:
             return f'<span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
+    def replace_place_comma_place(match):
+        first_name, last_name = match.groups()
+        first_name=first_name.strip()
+        last_name=last_name.strip()
+        print(f"replace_place_comma_place: {first_name=}  {last_name=}")
+        #
+        combined_name = f"{first_name}, {last_name}"
+        print(f"replace_place_comma_place: {combined_name=}")
+        #
+        print(f"{(first_name in common_english_and_swedish.place_names)=} {(last_name in common_english_and_swedish.place_names)=} {combined_name=}")
+        if (first_name in common_english_and_swedish.place_names) and (last_name in common_english_and_swedish.place_names):
+            return f'<span class="CEFRA1">{combined_name}</span>'
+        if combined_name in common_english_and_swedish.place_names:
+            return f'<span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
+
+
     #
     # Apply replacements
-    html_text = re.sub(pattern_with_hyphen, replace_hyphenated_name, html_text)
-    html_text = re.sub(pattern_with_first_initial, replace_name_with_first_initial, html_text)
-    html_text = re.sub(pattern_with_initial_not_following_span, replace_name_with_initials, html_text)
-    html_text = re.sub(pattern_with_initial, replace_name_with_initials, html_text)
-    html_text = re.sub(pattern_firstname_span_lastname, replace_name, html_text)
-    html_text = re.sub(pattern, replace_name, html_text)
-    html_text = re.sub(pattern, replace_name, html_text)
+    # html_text = re.sub(pattern_with_hyphen, replace_hyphenated_name, html_text)
+    # html_text = re.sub(pattern_with_hyphen_post_middle, replace_hyphenated_post_middle_name, html_text)
+    # html_text = re.sub(pattern_with_first_initial, replace_name_with_first_initial, html_text)
+    # html_text = re.sub(pattern_with_initial_not_following_span, replace_name_with_initials, html_text)
+    # html_text = re.sub(pattern_with_initial, replace_name_with_initials, html_text)
+    # html_text = re.sub(pattern_firstname_span_lastname, replace_name, html_text)
+    # html_text = re.sub(pattern, replace_name, html_text)
+    # html_text = re.sub(pattern, replace_name, html_text)
+    html_text = my_search_replace(pattern_with_hyphen, replace_hyphenated_name, html_text)
+    html_text = my_search_replace(pattern_with_hyphen_post_middle, replace_hyphenated_post_middle_name, html_text)
+    html_text = my_search_replace(pattern_with_first_initial, replace_name_with_first_initial, html_text)
+    html_text = my_search_replace(pattern_with_initial_not_following_span, replace_name_with_initials, html_text )
+    html_text = my_search_replace(pattern_with_initial, replace_name_with_initials, html_text)
+    html_text = my_search_replace(pattern_firstname_span_lastname, replace_name, html_text)
+    html_text = my_search_replace(pattern_place_comma_place, replace_place_comma_place, html_text )
+    html_text = my_search_replace(pattern, replace_name, html_text )
+    html_text = my_search_replace(pattern, replace_name, html_text)
     return html_text
 
 def clean_tagged_html(tagged_html):
@@ -2360,8 +2436,6 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
             if pos in ['NOUN']: # Noun
                 if 'noun' in pos_in_level:
                     return wl, src
-                if 'acronym' in pos_in_level:
-                    return wl, src
 
             if pos in ['NUM']: # numeral
                 if 'cardinal number' in pos_in_level:
@@ -2407,6 +2481,11 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
                     return wl, src
 
             # there is also SPACE as a POS, which is just a space
+
+            # If no POS above matches, check if it is an acronym
+            if 'acronym' in pos_in_level:
+                return wl, src
+
 
     print(f"no result for get_specific_cefr_level({language}, {word}, {pos}, {context}, {src})")
     return False, src
