@@ -74,7 +74,7 @@ import miss_spelled_to_correct_spelling
 import diva_merged_words
 import diva_corrected_abstracts
 import AVL_words_with_CEFR
-import common_acronyms
+
 
 # width to use for outputting numeric values
 Numeric_field_width=7
@@ -134,14 +134,17 @@ special_dicts = {
     'common_italian_words': common_english_and_swedish.common_italian_words,
 }
 
-footer="""<hr>
+def create_footer():
+    global current_page_url
+    return f"""<hr>
 <footer>
 <p class"CEFRColorCodes">Color codes for CEFR levels: <span class="CEFRA1">A1</span>, <span class="CEFRA2">A2</span> , <span class="CEFRB1">B1</span>,
   <span class="CEFRB2">B2</span>, <span class="CEFRC1">C1</span>, <span class="CEFRC2">C2</span>,
   <span class="CEFRXX">XX</span>, and <span class="CEFRNA">NA</span>.</p>
-<p>Automatically generated from the HTML for the page <a href="https://canvas.kth.se/courses/31168/pages/welcome-to-the-internetworking-course">https://canvas.kth.se/courses/31168/pages/welcome-to-the-internetworking-course</a>.
+<p>Automatically generated from the HTML for the page <a href="{current_page_url}">{current_page_url}</a>.
 </footer>
 """
+
 style_info="""<style>
   .CEFRA1{
     background-color: rgba(0, 255, 8,  0.3);
@@ -467,7 +470,8 @@ def list_announcements(course_id):
 def process_pages(course_id):
     global Verbose_Flag
     global testing_mode_flag # if set to True do _not_ write the modified contents
-
+    global current_page_url
+    
     print(f"processing pages for course {course_id}")
 
     page_list=list_pages(course_id)
@@ -488,8 +492,11 @@ def process_pages(course_id):
             continue
         if p['title'] == 'Learning outcomes':
             continue
-        if p['title'] != 'Reference Books and Other Materials':
+        if p['title'] == 'Reference Books and Other Materials':
             continue
+        if p['title'] != 'Concept of Multiplexing and Demultiplexing':
+            continue
+        current_page_url=p['url']
         if Verbose_Flag:
             print(f"{p['url']=}")
 
@@ -1193,15 +1200,45 @@ def get_unique_languages(html_content):
     #
     return languages
 
+string_field_width=20
+def my_partition(s, pat):
+    print(f"my_partition('{s:{string_field_width}.{string_field_width}}', '{pat}')")
+    if len(s) == 0:
+        return '', '', ''
+    # look for the Start_of_text_Marker and stop at the End_of_text_Marker
+    sm=s.find(Start_of_text_Marker)
+    em=s.find(End_of_text_Marker)
+    if sm < 0 or em < 0:        #  there is no text here to process
+        return s, '', ''
+    before_marker=s[0:sm]
+    after_marker=s[em:]
+    between_markers=s[sm+len(Start_of_text_Marker):em]
+    print(f"{len(between_markers)=}")
+    if len(between_markers) < len(pat):
+        return before_marker, '', after_marker[len(End_of_text_Marker):]
+    #
+    prefix, w, suffix = between_markers.partition(pat)
+    # if not w:
+    #     return s, '', ''
+    return before_marker+prefix, w, Start_of_text_Marker+suffix+after_marker
+
+
+
 def process_my_string(s, tagged_words, lang, i):
     global Verbose_Flag
     if Verbose_Flag:
-        print(f"process_my_string({s}, tagged_words, {lang}, {i=})")
+        print(f"process_my_string({s:<20.20}, tagged_words, {lang}, {i=})")
+    # if the start marker reaches the end marker, then remove them
+    if s.startswith(Start_of_text_Marker+End_of_text_Marker):
+        s=s[len(Start_of_text_Marker+End_of_text_Marker):]
+
     if i >= len(tagged_words):
         return s
     word, tag = tagged_words[i]
 
-    prefix, word, suffix = s.partition(word)
+    #prefix, word, suffix = s.partition(word)
+    prefix, word, suffix = my_partition(s, word)
+    #print(f"{prefix=}, {word=}, {suffix=}")
     if word:
         cefr_level, source = get_cefr_level(lang, word, tag, None)
         if cefr_level == 'XX':
@@ -1209,9 +1246,10 @@ def process_my_string(s, tagged_words, lang, i):
         else:
             return prefix+f'<span class="CEFR{cefr_level}">{html.escape(word)}</span>'+process_my_string(suffix, tagged_words, lang, i+1)
     else:
-        return s
+        return prefix+process_my_string(suffix, tagged_words, lang, i)
+    #return s
 
-def get_text_by_language(html_content, target_lang):
+def old_get_text_by_language(html_content, target_lang):
     """
     Extracts text content in a specific language from an HTML string, 
     handling nested elements with different languages.
@@ -1234,7 +1272,8 @@ def get_text_by_language(html_content, target_lang):
             if parent: # Check if parent exists before getting the 'lang' attribute
                 current_lang = parent.get('lang') or current_lang
             if current_lang == target_lang:
-                extracted_text.append(element.strip())
+                #extracted_text.append(element.strip())
+                extracted_text.append(element)
         elif isinstance(element, bs4.element.Tag) and element.name != 'script':  # Exclude script tags
             for child in element.children:
                 traverse_and_extract(child, current_lang)
@@ -1242,6 +1281,180 @@ def get_text_by_language(html_content, target_lang):
     traverse_and_extract(soup)
     #
     return ' '.join(extracted_text)
+
+def get_text_by_language(html_content, target_lang):
+    """
+    Extracts text content in a specific language from an HTML string, 
+    handling nested elements with different languages.
+
+    Args:
+        html_content (str): The HTML content to process.
+        target_lang (str): The target language code (e.g., "en", "fr", "es").
+
+    Returns:
+        str: The extracted text content in the target language.
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+    extracted_text = []
+    def traverse_and_extract(element, current_lang=None):
+        """Recursively traverses the HTML tree to extract text in the target language."""
+        #
+        # We use type and not isinstance since comments, cdata, etc are subclasses that we don't want
+        if type(element) == bs4.NavigableString:
+            parent_tags = (t for t in element.parents if type(t) == bs4.Tag)
+            hidden = False
+            for parent_tag in parent_tags:
+                # Ignore any text inside a non-displayed tag
+                # We also behave is if scripting is enabled (noscript is ignored)
+                # The list of non-displayed tags and attributes from the W3C specs:
+                if (parent_tag.name in ('area', 'base', 'basefont', 'datalist', 'head', 'link',
+                                        'meta', 'noembed', 'noframes', 'param', 'rp', 'script',
+                                        'source', 'style', 'template', 'track', 'title', 'noscript') or
+                    parent_tag.has_attr('hidden') or
+                    (parent_tag.name == 'input' and parent_tag.get('type') == 'hidden')):
+                    hidden = True
+                    break
+            if hidden:
+                return
+
+            # Find closest parent with 'lang' attribute
+            parent = element.find_parent(lambda tag: tag.has_attr('lang'))
+            if parent: # Check if parent exists before getting the 'lang' attribute
+                current_lang = parent.get('lang') or current_lang
+            if current_lang == target_lang:
+                extracted_text.append(element.strip())
+        #elif isinstance(element, bs4.element.Tag) and element.name != 'script':  # Exclude script tags
+        elif isinstance(element, bs4.element.Tag) and element.name != 'script':  # Exclude script tags
+            for child in element.children:
+                traverse_and_extract(child, current_lang)
+    #
+    traverse_and_extract(soup)
+    #
+    return ' '.join(extracted_text)
+
+# The following two markers will be used to "decorate" the text strings in the soup,
+# in this way simple string matching and replacement can be done on these text strings
+# without a risk of being confused with instances of the same strings that might occur
+# in a anchor title or other places that are not part of the displayed text.
+#
+# The markers are designed to have a very low probablability of being in any HTML pages
+# Start_of_text_Marker=STX + a private use character + DC1 (XON)  + RobotFace
+# End_of_text_Marker=RobotFace + DC3 (XOFF) + a private use area (PUA) character + ETX
+# Where we have used the following ASCII character:
+# STX Start of Text 0x02
+# ETX End of Text   0x03
+# DC1 (XON)         0x11
+# DC3 (XOFF)        0x13
+# the RobotFace is U+1F916
+# and the private use area character will bx U+E830 (from the PUA U+E830 to U+E88F)
+Start_of_text_Marker = chr(0x0002)+chr(0xE830)+chr(0x11)+chr(0x1F916)
+End_of_text_Marker = chr(0x1F916)+chr(0x13)+chr(0xE830)+chr(0x03)
+
+
+def decorate_by_language(html_content, target_lang):
+    """
+    Decorates text content in a specific language from an HTML string, 
+    handling nested elements with different languages.
+
+    The decorations are a special Start_of_text_Marker and End_of_text_Marker
+
+    Args:
+        html_content (str): The HTML content to process.
+        target_lang (str): The target language code (e.g., "en", "fr", "es").
+
+    Returns:
+        str: The decorated string
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+    extracted_text = []
+    def traverse_and_decorate(element, current_lang=None):
+        """Recursively traverses the HTML tree to extract text in the target language."""
+        #
+        # We use type and not isinstance since comments, cdata, etc are subclasses that we don't want
+        if type(element) == bs4.NavigableString:
+            parent_tags = (t for t in element.parents if type(t) == bs4.Tag)
+            hidden = False
+            for parent_tag in parent_tags:
+                # Ignore any text inside a non-displayed tag
+                # We also behave is if scripting is enabled (noscript is ignored)
+                # The list of non-displayed tags and attributes from the W3C specs:
+                if (parent_tag.name in ('area', 'base', 'basefont', 'datalist', 'head', 'link',
+                                        'meta', 'noembed', 'noframes', 'param', 'rp', 'script',
+                                        'source', 'style', 'template', 'track', 'title', 'noscript') or
+                    parent_tag.has_attr('hidden') or
+                    (parent_tag.name == 'input' and parent_tag.get('type') == 'hidden')):
+                    hidden = True
+                    break
+            if hidden:
+                return
+
+            # Find closest parent with 'lang' attribute
+            parent = element.find_parent(lambda tag: tag.has_attr('lang'))
+            if parent: # Check if parent exists before getting the 'lang' attribute
+                current_lang = parent.get('lang') or current_lang
+            if current_lang == target_lang:
+                element.replace_with(Start_of_text_Marker + element + End_of_text_Marker)
+        #elif isinstance(element, bs4.element.Tag) and element.name != 'script':  # Exclude script tags
+        elif isinstance(element, bs4.element.Tag) and element.name != 'script':  # Exclude script tags
+            for child in element.children:
+                traverse_and_decorate(child, current_lang)
+    #
+    traverse_and_decorate(soup)
+    #
+    return str(soup)
+
+def undecorate_by_language(html_content, target_lang):
+    """
+    Decorates text content in a specific language from an HTML string, 
+    handling nested elements with different languages.
+
+    The decorations are a special Start_of_text_Marker and End_of_text_Marker
+
+    Args:
+        html_content (str): The HTML content to process.
+        target_lang (str): The target language code (e.g., "en", "fr", "es").
+
+    Returns:
+        str: The decorated string
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+    extracted_text = []
+    def traverse_and_undecorate(element, current_lang=None):
+        """Recursively traverses the HTML tree to extract text in the target language."""
+        #
+        # We use type and not isinstance since comments, cdata, etc are subclasses that we don't want
+        if type(element) == bs4.NavigableString:
+            parent_tags = (t for t in element.parents if type(t) == bs4.Tag)
+            hidden = False
+            for parent_tag in parent_tags:
+                # Ignore any text inside a non-displayed tag
+                # We also behave is if scripting is enabled (noscript is ignored)
+                # The list of non-displayed tags and attributes from the W3C specs:
+                if (parent_tag.name in ('area', 'base', 'basefont', 'datalist', 'head', 'link',
+                                        'meta', 'noembed', 'noframes', 'param', 'rp', 'script',
+                                        'source', 'style', 'template', 'track', 'title', 'noscript') or
+                    parent_tag.has_attr('hidden') or
+                    (parent_tag.name == 'input' and parent_tag.get('type') == 'hidden')):
+                    hidden = True
+                    break
+            if hidden:
+                return
+
+            # Find closest parent with 'lang' attribute
+            parent = element.find_parent(lambda tag: tag.has_attr('lang'))
+            if parent: # Check if parent exists before getting the 'lang' attribute
+                current_lang = parent.get('lang') or current_lang
+            if current_lang == target_lang and element.startswith(Start_of_text_Marker) and element.endswith(End_of_text_Marker):
+                element.replace_with(element[len(Start_of_text_Marker): -len(End_of_text_Marker)]) # Slice the string between the markers
+        elif isinstance(element, bs4.element.Tag) and element.name != 'script':  # Exclude script tags
+            for child in element.children:
+                traverse_and_undecorate(child, current_lang)
+    #
+    traverse_and_undecorate(soup)
+    #
+    return str(soup)
+
+
 
 # NLTK uses ISO 639 code for languages
 # more specifically the ISO 639-3 three letter codes
@@ -1256,10 +1469,21 @@ def get_text_by_language(html_content, target_lang):
 def convert_to_ISO_639_code(lang):
     return langcode(langname(lang), typ=3 )
 
+def extract_iso_code(bcp_identifier):
+    language, _ = bcp_identifier.split('-', 1)
+    if 2 <= len(language) <=3:
+        # this is a valid ISO-639 code or is grandfathered
+        return language
+    else:
+        # handle non-ISO codes
+        raise ValueError(bcp_identifier)
+    
 def words_and_pos_info(txt, lang):
     global nlp
     wrds=[]
     wrds_pos=[]
+
+    lang=extract_iso_code(lang)
 
     if not nlp.get(lang, False):
         print(f'*** add spacy_udpipe.download("{lang}) to main()')
@@ -1317,7 +1541,9 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
         if Verbose_Flag:
             print(f"{tagged_word_list=}")
             #
+        tagged_html=decorate_by_language(tagged_html, lang)
         tagged_html=process_my_string(tagged_html, tagged_words, lang, 0)
+        tagged_html=undecorate_by_language(tagged_html, lang)
         if Verbose_Flag:
             print(f"before cleaning {tagged_html=}")
 
@@ -1528,6 +1754,13 @@ def combine_names_in_html(html_text, names_of_persons):
     pattern =              r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_place_comma_place = r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>,\s*<span class="CEFR\w+">([\w-]+)</span>'
     #
+    pattern_KTH = r'<span class="CEFR\w+">KTH</span>\s*<span class="CEFR\w+">Royal</span>\s*<span class="CEFR\w+">Institute</span>\s*<span class="CEFR\w+">of</span>\s*<span class="CEFR\w+">Technology</span>'
+
+    # There is a problem with </span><span><span class ...
+    pattern_span_span_without_preceeding_space = r'</span><span><span class="'
+    # Similarly for </span><span class="dont-index"><span class="CEFRA1">
+    pattern_spanplus_span_without_preceeding_space = r'</span><span\s*([\w"=-]*)><span class='
+    #
     def replace_name_with_initials(match):
         """Helper function to replace the name with the correct tag."""
         first_name, initial, last_name = match.groups()
@@ -1626,7 +1859,19 @@ def combine_names_in_html(html_text, names_of_persons):
         if combined_name in common_english_and_swedish.place_names:
             return f'<span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
-
+    def replace_spanplus_span_without_preceeding_space(match):
+        """Helper function to add a space before spans without preceeding space(s)."""
+        print(f"{match.groups()=}")
+        if len(match.groups()) == 0:
+            return match.group(0) # Return original if not a name
+        span_attrs = match.group(1)
+        print(f"{span_attrs=}")
+        #
+        if not span_attrs:
+            return f'</span> <span><span class='
+        if span_attrs in ['class="dont-index']:
+            return f'</span> <span {span_attrs}><span class='
+        return match.group(0) # Return original if not a name
 
     #
     # Apply replacements
@@ -1638,6 +1883,13 @@ def combine_names_in_html(html_text, names_of_persons):
     # html_text = re.sub(pattern_firstname_span_lastname, replace_name, html_text)
     # html_text = re.sub(pattern, replace_name, html_text)
     # html_text = re.sub(pattern, replace_name, html_text)
+
+    html_text = re.sub(pattern_KTH, '<span class="CEFRA2">KTH Royal Institute of Technology</span>', html_text)
+
+ 
+    #html_text = re.sub(pattern_span_span_without_preceeding_space, '</span> <span><span class=', html_text)
+    html_text = my_search_replace(pattern_span_span_without_preceeding_space, replace_spanplus_span_without_preceeding_space, html_text)
+
     html_text = my_search_replace(pattern_with_hyphen, replace_hyphenated_name, html_text)
     html_text = my_search_replace(pattern_with_hyphen_post_middle, replace_hyphenated_post_middle_name, html_text)
     html_text = my_search_replace(pattern_with_first_initial, replace_name_with_first_initial, html_text)
@@ -1671,7 +1923,7 @@ def transform_body(html_content):
 
     modified_HTML=tokenize_and_CEFR_tag_html_sentences(str(soup))
 
-    new_html_content = style_info+modified_HTML
+    new_html_content = style_info+modified_HTML+create_footer()
     if Verbose_Flag:
         print(f"transformed {new_html_content=}")
 
@@ -1823,6 +2075,7 @@ def check_cefr_levels_for_POS(cefl_levels, pos, context):
     return False
 
 def get_cefr_level(language, word, pos, context):
+    language=extract_iso_code(language)
     celf_levels=False
     src=None
     # handle punctuation
@@ -2173,6 +2426,10 @@ def get_cefr_level_without_POS(language, word, context):
     if word in well_known_acronyms:
         return get_lowest_cefr_level('en', word, None, 'well_known_acronyms', get_acronym_cefr_levels(word))
     #
+    # If the word starts with a '-', remove the dash and look again
+    if word.startswith('-'):
+        return get_cefr_level_without_POS(language, word[1:], context)
+
     return 'XX', 'unknown'
 
 def get_acronym_cefr_levels(w):
@@ -2296,8 +2553,6 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
                     return wl, src
                 if 'verb' in pos_in_level:
                     return wl, src
-                if 'verb' in pos_in_level:
-                    return wl, src
 
             if pos in ['VBZ']:
                 if 'verb 3rd person present' in pos_in_level:
@@ -2412,7 +2667,11 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
                     return wl, src
 
             if pos in ['AUX']: # auxiliary
+                if 'verb (modal)' in pos_in_level:
+                    return wl, src
                 if 'modal verb' in pos_in_level:
+                    return wl, src
+                if 'verb' in pos_in_level:
                     return wl, src
 
             if pos in ['CCONJ']: # conjunction
@@ -2473,6 +2732,10 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
                 return 'A1', 'fixed'
 
             if pos in ['VERB']: # verb
+                if 'verb gerund or present participle' in pos_in_level:
+                    return wl, src
+                if 'verb (present participle)' in pos_in_level:
+                    return wl, src
                 if 'verb' in pos_in_level:
                     return wl, src
 
@@ -2578,6 +2841,15 @@ def tokenize_and_pos_tag_html_sentences(soup):
             paragraph.clear()
             for ns in new_spans:
                 paragraph.append(ns)
+        elif paragraph.name == 'div':
+            children = paragraph.findChildren(recursive=False) # changed from False
+            for child in children:
+                new_spans=tokenize_paragraph(soup, child)
+                # replace the original text with the new spans
+                #child.replace_with(*new_spans)
+                child.clear()
+                for ns in new_spans:
+                    child.append(ns)
         elif paragraph.name == 'ul':
             children = paragraph.findChildren(recursive=False)
             for child in children:
