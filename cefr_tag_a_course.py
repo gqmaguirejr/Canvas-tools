@@ -492,10 +492,11 @@ def process_pages(course_id):
             continue
         if p['title'] == 'Learning outcomes':
             continue
-        if p['title'] == 'Reference Books and Other Materials':
+        if p['title'] == 'Concept of Multiplexing and Demultiplexing':
             continue
-        if p['title'] != 'Concept of Multiplexing and Demultiplexing':
+        if p['title'] != 'Reference Books and Other Materials':
             continue
+
         current_page_url=p['url']
         if Verbose_Flag:
             print(f"{p['url']=}")
@@ -1273,7 +1274,7 @@ def process_my_string(s, tagged_words, lang, i):
             if not txt:
                 return
             words_and_separators = re.split(r'(\s+|[.,:;!?])', txt)
-            print(f"{words_and_separators=}")
+            #print(f"{words_and_separators=}")
             parent = element.parent  # parent of the original element
             original_siblings = list(element.previous_siblings)
             new_content = []
@@ -1283,7 +1284,7 @@ def process_my_string(s, tagged_words, lang, i):
             tagged_index=i
             pos_to_use = 'X'
             for item in words_and_separators:
-                print(f"{item=}")
+                #print(f"{item=}")
                 if not item:
                     continue
                 if item.strip():
@@ -1306,7 +1307,7 @@ def process_my_string(s, tagged_words, lang, i):
                         new_content.append(wrapped_word)
                         #parent.insert_before(wrapped_word)
                 else:
-                    print(f"about to insert_before with {item=}")
+                    #print(f"about to insert_before with {item=}")
                     new_content.append(NavigableString(item))
                     #parent.insert_before(NavigableString(item))
             #
@@ -1547,6 +1548,8 @@ def convert_to_ISO_639_code(lang):
     return langcode(langname(lang), typ=3 )
 
 def extract_iso_code(bcp_identifier):
+    if bcp_identifier.count('-') == 0:
+        return bcp_identifier
     language, _ = bcp_identifier.split('-', 1)
     if 2 <= len(language) <=3:
         # this is a valid ISO-639 code or is grandfathered
@@ -1624,6 +1627,8 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
         if Verbose_Flag:
             print(f"before cleaning {tagged_html=}")
 
+        if lang in ['en', 'en-US']:
+            tagged_html=combine_English_words_in_html(tagged_html)
 
     tagged_html=clean_tagged_html(tagged_html)
     if Verbose_Flag:
@@ -1647,7 +1652,7 @@ def simplify_cefr_span_of_float(html_text):
     Returns:
         The modified HTML string with simplified CEFR spans.
     """
-    pattern = r'<span class="CEFR\w+">(\d+)</span>\.<span class="CEFR\w+">(\d+)</span>'
+    pattern = r'<span class="CEFR\w+">(\d+)</span><span class="CEFRA1">.</span><span class="CEFR\w+">(\d+)</span>'
     replacement = r'<span class="CEFRA2">\1.\2</span>'  
     # Use re.sub with the count=0 argument to replace all occurrences
     # 
@@ -1714,7 +1719,19 @@ abbreviation_levels = {
     'n.d.': {'cefr': 'B2' , 'lang': 'en', 'note': 'No date'},
     'd.o.f.': {'cefr': 'C1', 'lang': 'en', 'note': 'Degrees of freedom (statistics)'},
     'sq.': {'cefr': 'B1', 'lang': 'en', 'note': 'Square'},
-
+    # Months
+    'Jan.': {'cefr': 'A2', 'lang': 'en', 'note': 'January'},
+    'Feb.': {'cefr': 'A2', 'lang': 'en', 'note': 'February'},
+    'Mar.': {'cefr': 'A2', 'lang': 'en', 'note': 'March'},
+    'Apr.': {'cefr': 'A2', 'lang': 'en', 'note': 'April'},
+    'June.': {'cefr': 'A2', 'lang': 'en', 'note': 'June'},
+    'Jul.': {'cefr': 'A2', 'lang': 'en', 'note': 'July'},
+    'Aug.': {'cefr': 'A2', 'lang': 'en', 'note': 'August'},
+    'Sep.': {'cefr': 'A2', 'lang': 'en', 'note': 'September'},
+    'Sept.': {'cefr': 'A2', 'lang': 'en', 'note': 'September'},
+    'Oct.': {'cefr': 'A2', 'lang': 'en', 'note': 'October'},
+    'Nov.': {'cefr': 'A2', 'lang': 'en', 'note': 'November'},
+    'Dec.': {'cefr': 'A2', 'lang': 'en', 'note': 'December'},
 
     't.ex./t.ex': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
     't.ex./t.ex': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
@@ -1767,7 +1784,7 @@ def simplify_abbreviations(html_text, abbreviation_levels):
         pattern=""
         parts=abbreviation.split('.')
         for i in range(0, len(parts)-1):
-            pattern = pattern+fr"""<span class="CEFR\w+">{parts[i]}</span>\."""
+            pattern = pattern+fr"""<span class="CEFR\w+">{parts[i]}</span><span class="CEFRA1">.</span>"""
         if Verbose_Flag:
             print(f"pattern: {pattern}")
         # Replacement string with escaped abbreviation
@@ -1803,7 +1820,8 @@ def my_search_replace(pattern, transform_function, S, offset=0):
         replacement=transform_function(match)
         suffix=S[match.end():]
         #print(f"'{prefix=}', '{replacement=}', '{suffix=}'")
-        return prefix+my_search_replace(pattern, transform_function, replacement+suffix, offset+1)
+        # Note that the search continue on the replacement + suffix
+        return prefix+my_search_replace(pattern, transform_function, replacement+suffix, 1)
     else:
         if (offset < len(S)) and (len(S) > 1):
             return my_search_replace(pattern, transform_function, S, offset+1)
@@ -1812,7 +1830,7 @@ def my_search_replace(pattern, transform_function, S, offset=0):
 
 def combine_names_in_html(html_text):
     """
-    Combines consecutive name spans in HTML based on a provided list of names.
+    Combines consecutive name spans in HTML
 
     Args:
         html_text: The HTML string to modify.
@@ -1825,8 +1843,10 @@ def combine_names_in_html(html_text):
     #
     pattern_KTH = r'<span class="CEFR\w+">KTH</span>\s*<span class="CEFR\w+">Royal</span>\s*<span class="CEFR\w+">Institute</span>\s*<span class="CEFR\w+">of</span>\s*<span class="CEFR\w+">Technology</span>'
     pattern_firstname_space_lastname = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
-    pattern_with_initial = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span><span class="CEFRA1">.</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
-    pattern_with_first_initial = r'<span class="CEFR\w+">([\w-]+)</span><span class="CEFRA1">.</span>\s<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_initial = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-])</span><span class="CEFRA1">.</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_first_initial = r'<span class="CEFR\w+">([\w-])</span><span class="CEFRA1">.</span>\s<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_three_names = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+
 
 
     pattern_with_hyphen = r'<span class="CEFR\w+">([\w-]+)</span>-(\w*)\s*<span class="CEFR\w+">([\w-]+)</span>'
@@ -1844,7 +1864,7 @@ def combine_names_in_html(html_text):
         first_name=first_name.strip()
         initial=initial.strip()
         last_name=last_name.strip()
-        print(f"{first_name=} {initial=} {last_name=}")
+        print(f"{first_name=} {initial=}. {last_name=}")
         #
         # Check if we have an initial
         if initial:
@@ -1949,11 +1969,26 @@ def combine_names_in_html(html_text):
         if span_attrs in ['class="dont-index']:
             return f'</span> <span {span_attrs}><span class='
         return match.group(0) # Return original
+    def replace_three_names(match):
+        """Helper function to replace the name with the correct tag."""
+        first_name,  middle_name, last_name = match.groups()
+        first_name=first_name.strip()
+        middle_name=middle_name.strip()
+        last_name=last_name.strip()
+        print(f"replace_three_names: {first_name=} {middle_name=} {last_name=}")
+        #
+        # Check if we have a first, middle, and last name
+        if middle_name:
+            if (first_name in common_english_and_swedish.names_of_persons) and (middle_name in common_english_and_swedish.names_of_persons) and (last_name in common_english_and_swedish.names_of_persons):
+                combined_name = f"{first_name} {middle_name} {last_name}"
+                return f'<span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
 
     #
     # Apply replacements
 
     html_text = re.sub(pattern_KTH, '<span class="CEFRA2">KTH Royal Institute of Technology</span>', html_text)
+    html_text = my_search_replace(pattern_with_three_names, replace_three_names, html_text)
     html_text = my_search_replace(pattern_with_initial, replace_name_with_initials, html_text)
     html_text = my_search_replace(pattern_with_first_initial, replace_name_with_first_initial, html_text)
     html_text = my_search_replace(pattern_firstname_space_lastname, replace_name, html_text)
@@ -1965,6 +2000,38 @@ def combine_names_in_html(html_text):
     # html_text = my_search_replace(pattern_with_hyphen_post_middle, replace_hyphenated_post_middle_name, html_text)
     # html_text = my_search_replace(pattern, replace_name, html_text )
     # html_text = my_search_replace(pattern, replace_name, html_text)
+    return html_text
+
+def combine_English_words_in_html(html_text):
+    """
+    Combines consecutive spans in HTML based on these phrases appearing in common_english_words.common_English_words
+
+    Args:
+        html_text: The HTML string to modify.
+
+    Returns:
+        The modified HTML string with combined spans.
+    """
+    # Regular expression patterns for name combinations
+    pattern_words_pairs = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    #
+    def replace_word_pair(match):
+        """Helper function to replace the name with the correct tag."""
+        first_word, second_word = match.groups()
+        first_word=first_word.strip()
+        second_word=second_word.strip()
+        combined_words = f"{first_word} {second_word}"
+        #
+        if combined_words in common_english_and_swedish.common_English_words:
+            print(f"replace_word_pair: {first_word=}  {second_word=} with {combined_words=}")
+            cefr_level, source = get_cefr_level_without_POS('en', combined_words, None)
+            print(f"{cefr_level}, {source}")
+            if cefr_level != 'XX':
+                return f'<span class="CEFR{cefr_level}">{html.escape(combined_words)}</span>'
+        return match.group(0) # Return original
+    #
+    # Apply replacements
+    html_text = my_search_replace(pattern_words_pairs, replace_word_pair, html_text)
     return html_text
 
 def clean_tagged_html(tagged_html):
