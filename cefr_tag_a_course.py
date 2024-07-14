@@ -47,7 +47,7 @@ import pytz                     # for time zones
 import pandas as pd
 
 # use BeautifulSoup to process the HTML
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString, Tag
 import bs4
 
 import nltk
@@ -1224,7 +1224,7 @@ def my_partition(s, pat):
 
 
 
-def process_my_string(s, tagged_words, lang, i):
+def old_process_my_string(s, tagged_words, lang, i):
     global Verbose_Flag
     if Verbose_Flag:
         print(f"process_my_string({s:<20.20}, tagged_words, {lang}, {i=})")
@@ -1248,6 +1248,83 @@ def process_my_string(s, tagged_words, lang, i):
     else:
         return prefix+process_my_string(suffix, tagged_words, lang, i)
     #return s
+
+def process_my_string(s, tagged_words, lang, i):
+    # do NOT HTML entities
+    #html_content = html.unescape(html_content)
+    global Verbose_Flag
+    if Verbose_Flag:
+        print(f"process_my_string({s:<20.20}, tagged_words, {lang}, {i=})")
+
+    if i >= len(tagged_words):
+        return s
+
+    soup = BeautifulSoup(s, 'html.parser')
+    def _wrap_words(element):
+        # Only process NavigableString elements that have a parent Tag
+        if (isinstance(element, NavigableString) and
+            element.parent is not None and
+            isinstance(element.parent, Tag) and
+            element.parent.name not in ['script', 'style'] and
+            not any(cls in element.parent.get('class', []) for cls in ['word', 'CEFRA1', 'CEFRA2',  'CEFRB1', 'CEFRB2',  'CEFRC1', 'CEFRC2', 'CEFRXX', 'CEFRNA'] ) # Skip if already wrapped
+            #element.parent.get('class') != ['word'] # Skip if already wrapped
+            ):
+            txt = element.strip()
+            if not txt:
+                return
+            words_and_separators = re.split(r'(\s+|[.,:;!?])', txt)
+            print(f"{words_and_separators=}")
+            parent = element.parent  # parent of the original element
+            original_siblings = list(element.previous_siblings)
+            new_content = []
+
+            # Wrap words and insert, keeping separators as they are
+
+            tagged_index=i
+            pos_to_use = 'X'
+            for item in words_and_separators:
+                print(f"{item=}")
+                if not item:
+                    continue
+                if item.strip():
+                    if False and item in [',', '.']:
+                        wrapped_word = soup.new_tag("span", attrs={"class": "word"})
+                        wrapped_word.string = item
+                        parent.insert_before(wrapped_word)
+                    else:
+                        # look for the word in tagged_words, starting with entry tagged_index
+                        # when you find the word get the pos_tag and update the index for the next word
+                        for j in range(tagged_index, len(tagged_words)):
+                            word, pos_tag = tagged_words[j]
+                            if item.strip() == word:
+                                pos_to_use=pos_tag
+                                tagged_index=j+1
+                            
+                        cefr_level, source = get_cefr_level(lang, item, pos_to_use, None)
+                        wrapped_word = soup.new_tag("span", attrs={"class": f"CEFR{cefr_level}"})
+                        wrapped_word.string = item
+                        new_content.append(wrapped_word)
+                        #parent.insert_before(wrapped_word)
+                else:
+                    print(f"about to insert_before with {item=}")
+                    new_content.append(NavigableString(item))
+                    #parent.insert_before(NavigableString(item))
+            #
+            #element.replace_with(NavigableString('')) # Replace element with empty string to prevent further processing
+            element.replace_with(*new_content)
+        elif isinstance(element, Tag):
+            # Process text in this tag first (before recursing)
+            if element.string:
+                _wrap_words(element.string)
+            for child in list(element.children): 
+                if child != element.string:  # Avoid processing the same string twice
+                    _wrap_words(child)
+
+    _wrap_words(soup)
+    return str(soup)
+
+
+
 
 def old_get_text_by_language(html_content, target_lang):
     """
@@ -1541,9 +1618,9 @@ def tokenize_and_CEFR_tag_html_sentences(html_content):
         if Verbose_Flag:
             print(f"{tagged_word_list=}")
             #
-        tagged_html=decorate_by_language(tagged_html, lang)
+        #tagged_html=decorate_by_language(tagged_html, lang)
         tagged_html=process_my_string(tagged_html, tagged_words, lang, 0)
-        tagged_html=undecorate_by_language(tagged_html, lang)
+        #tagged_html=undecorate_by_language(tagged_html, lang)
         if Verbose_Flag:
             print(f"before cleaning {tagged_html=}")
 
@@ -1733,31 +1810,31 @@ def my_search_replace(pattern, transform_function, S, offset=0):
         else:
             return S
 
-def combine_names_in_html(html_text, names_of_persons):
+def combine_names_in_html(html_text):
     """
     Combines consecutive name spans in HTML based on a provided list of names.
 
     Args:
         html_text: The HTML string to modify.
-        names_of_persons: A list of valid person names (e.g., ["John", "Mary", "Doe"]).
 
     Returns:
         The modified HTML string with combined name spans.
     """
     # Regular expression patterns for name combinations
-    pattern_with_initial_not_following_span = r'<span class="CEFR\w+">([\w-]+)</span>\s*([\w-]).\s*<span class="CEFR\w+">([\w-]+)</span>'
-    pattern_with_initial = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">\s*([\w-])\s*</span>.\s*<span class="CEFR\w+">([\w-]+)</span>'
-    pattern_with_first_initial = r'\s([\w]).\s<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
-    pattern_firstname_span_lastname = r'([\w-]+\s*[\w-]*)\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_place_comma_place='<span class="CEFR\\w+">([\\w-]+\\s*[\\w-]*)</span><span class="CEFRA1">,</span>\\s*<span class="CEFR\\w+">([\\w-]+)</span>'
+    #
+    pattern_KTH = r'<span class="CEFR\w+">KTH</span>\s*<span class="CEFR\w+">Royal</span>\s*<span class="CEFR\w+">Institute</span>\s*<span class="CEFR\w+">of</span>\s*<span class="CEFR\w+">Technology</span>'
+    pattern_firstname_space_lastname = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_initial = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span><span class="CEFRA1">.</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_with_first_initial = r'<span class="CEFR\w+">([\w-]+)</span><span class="CEFRA1">.</span>\s<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+
+
     pattern_with_hyphen = r'<span class="CEFR\w+">([\w-]+)</span>-(\w*)\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_with_hyphen_post_middle = r'<span class="CEFR\w+">([\w-]+)</span>\s*(\w*)-<span class="CEFR\w+">([\w-]+)</span>'
     pattern =              r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
-    pattern_place_comma_place = r'<span class="CEFR\w+">([\w-]+\s*[\w-]*)</span>,\s*<span class="CEFR\w+">([\w-]+)</span>'
-    #
-    pattern_KTH = r'<span class="CEFR\w+">KTH</span>\s*<span class="CEFR\w+">Royal</span>\s*<span class="CEFR\w+">Institute</span>\s*<span class="CEFR\w+">of</span>\s*<span class="CEFR\w+">Technology</span>'
 
     # There is a problem with </span><span><span class ...
-    pattern_span_span_without_preceeding_space = r'</span><span><span class="'
+    pattern_span_span_without_preceeding_space = r'</span><span><span class='
     # Similarly for </span><span class="dont-index"><span class="CEFRA1">
     pattern_spanplus_span_without_preceeding_space = r'</span><span\s*([\w"=-]*)><span class='
     #
@@ -1772,7 +1849,7 @@ def combine_names_in_html(html_text, names_of_persons):
         # Check if we have an initial
         if initial:
             combined_name = f"{first_name} {initial}. {last_name}"
-            if (first_name in names_of_persons) and (last_name in names_of_persons):
+            if (first_name in common_english_and_swedish.names_of_persons) and (last_name in common_english_and_swedish.names_of_persons):
                 return f'<span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
     def replace_name_with_first_initial(match):
@@ -1786,7 +1863,7 @@ def combine_names_in_html(html_text, names_of_persons):
         # Check if we have an initial
         if initial:
             combined_name = f"{initial}. {middle_name} {last_name}"
-            if (middle_name in names_of_persons) and (last_name in names_of_persons):
+            if (middle_name in common_english_and_swedish.names_of_persons) and (last_name in common_english_and_swedish.names_of_persons):
                 # need to ensure there is a space before the span
                 return f' <span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
@@ -1801,11 +1878,11 @@ def combine_names_in_html(html_text, names_of_persons):
         # Check if we have an initial
         if middle_name:
             combined_name = f"{first_name}-{middle_name} {last_name}"
-            if (first_name in names_of_persons) and (middle_name in names_of_persons) and (last_name in names_of_persons):
+            if (first_name in common_english_and_swedish.names_of_persons) and (middle_name in common_english_and_swedish.names_of_persons) and (last_name in common_english_and_swedish.names_of_persons):
                 return f'<span class="CEFRA1">{combined_name}</span>'
         else:
             combined_name = f"{first_name}-{last_name}"
-            if (first_name in names_of_persons) and (last_name in names_of_persons):
+            if (first_name in common_english_and_swedish.names_of_persons) and (last_name in common_english_and_swedish.names_of_persons):
                 return f'<span class="CEFRA1">{combined_name}</span>'
             if combined_name in common_english_and_swedish.company_and_product_names:
                 return f'<span class="CEFRA1">{combined_name}</span>'
@@ -1821,7 +1898,7 @@ def combine_names_in_html(html_text, names_of_persons):
         #
         # Check if we have a first, middle, and last name
         if middle_name:
-            if (first_name in names_of_persons) and (middle_name in names_of_persons) and (last_name in names_of_persons):
+            if (first_name in common_english_and_swedish.names_of_persons) and (middle_name in common_english_and_swedish.names_of_persons) and (last_name in common_english_and_swedish.names_of_persons):
                 combined_name = f"{first_name} {middle_name}-{last_name}"
                 return f'<span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
@@ -1836,8 +1913,8 @@ def combine_names_in_html(html_text, names_of_persons):
         combined_name = f"{first_name} {last_name}"
         print(f"replace_name: {combined_name=}")
         #
-        print(f"{(first_name in names_of_persons)=} {(last_name in names_of_persons)=} {combined_name=}")
-        if (first_name in names_of_persons) and (last_name in names_of_persons):
+        print(f"{(first_name in common_english_and_swedish.names_of_persons)=} {(last_name in common_english_and_swedish.names_of_persons)=} {combined_name=}")
+        if (first_name in common_english_and_swedish.names_of_persons) and (last_name in common_english_and_swedish.names_of_persons):
             return f'<span class="CEFRA1">{combined_name}</span>'
         if combined_name in common_english_and_swedish.place_names:
             return f'<span class="CEFRA1">{combined_name}</span>'
@@ -1863,7 +1940,7 @@ def combine_names_in_html(html_text, names_of_persons):
         """Helper function to add a space before spans without preceeding space(s)."""
         print(f"{match.groups()=}")
         if len(match.groups()) == 0:
-            return match.group(0) # Return original if not a name
+            return f'</span> <span><span class='
         span_attrs = match.group(1)
         print(f"{span_attrs=}")
         #
@@ -1871,40 +1948,29 @@ def combine_names_in_html(html_text, names_of_persons):
             return f'</span> <span><span class='
         if span_attrs in ['class="dont-index']:
             return f'</span> <span {span_attrs}><span class='
-        return match.group(0) # Return original if not a name
+        return match.group(0) # Return original
 
     #
     # Apply replacements
-    # html_text = re.sub(pattern_with_hyphen, replace_hyphenated_name, html_text)
-    # html_text = re.sub(pattern_with_hyphen_post_middle, replace_hyphenated_post_middle_name, html_text)
-    # html_text = re.sub(pattern_with_first_initial, replace_name_with_first_initial, html_text)
-    # html_text = re.sub(pattern_with_initial_not_following_span, replace_name_with_initials, html_text)
-    # html_text = re.sub(pattern_with_initial, replace_name_with_initials, html_text)
-    # html_text = re.sub(pattern_firstname_span_lastname, replace_name, html_text)
-    # html_text = re.sub(pattern, replace_name, html_text)
-    # html_text = re.sub(pattern, replace_name, html_text)
 
     html_text = re.sub(pattern_KTH, '<span class="CEFRA2">KTH Royal Institute of Technology</span>', html_text)
-
- 
-    #html_text = re.sub(pattern_span_span_without_preceeding_space, '</span> <span><span class=', html_text)
+    html_text = my_search_replace(pattern_with_initial, replace_name_with_initials, html_text)
+    html_text = my_search_replace(pattern_with_first_initial, replace_name_with_first_initial, html_text)
+    html_text = my_search_replace(pattern_firstname_space_lastname, replace_name, html_text)
+    html_text = my_search_replace(pattern_place_comma_place, replace_place_comma_place, html_text )
     html_text = my_search_replace(pattern_span_span_without_preceeding_space, replace_spanplus_span_without_preceeding_space, html_text)
 
-    html_text = my_search_replace(pattern_with_hyphen, replace_hyphenated_name, html_text)
-    html_text = my_search_replace(pattern_with_hyphen_post_middle, replace_hyphenated_post_middle_name, html_text)
-    html_text = my_search_replace(pattern_with_first_initial, replace_name_with_first_initial, html_text)
-    html_text = my_search_replace(pattern_with_initial_not_following_span, replace_name_with_initials, html_text )
-    html_text = my_search_replace(pattern_with_initial, replace_name_with_initials, html_text)
-    html_text = my_search_replace(pattern_firstname_span_lastname, replace_name, html_text)
-    html_text = my_search_replace(pattern_place_comma_place, replace_place_comma_place, html_text )
-    html_text = my_search_replace(pattern, replace_name, html_text )
-    html_text = my_search_replace(pattern, replace_name, html_text)
+
+    # html_text = my_search_replace(pattern_with_hyphen, replace_hyphenated_name, html_text)
+    # html_text = my_search_replace(pattern_with_hyphen_post_middle, replace_hyphenated_post_middle_name, html_text)
+    # html_text = my_search_replace(pattern, replace_name, html_text )
+    # html_text = my_search_replace(pattern, replace_name, html_text)
     return html_text
 
 def clean_tagged_html(tagged_html):
     tagged_html=simplify_cefr_span_of_float(tagged_html)
     tagged_html=simplify_abbreviations(tagged_html, abbreviation_levels)
-    tagged_html=combine_names_in_html(tagged_html, common_english_and_swedish.names_of_persons)
+    tagged_html=combine_names_in_html(tagged_html)
     return tagged_html
 
 def transform_body(html_content):
@@ -2085,6 +2151,33 @@ def get_cefr_level(language, word, pos, context):
         return 'B1', 'punctuation'
     if word in ['-',]: # add ellipses
         return 'C1', 'punctuation'
+    # consider single letters A1
+    if len(word) == 1:
+        return 'A1', 'single letter'
+
+    if is_number(word):
+        return 'A1', 'number'
+
+    # an approximate number
+    if word.startswith('~') and len(word) >= 2 and is_number(word[1:]):
+        return 'B1', 'number'
+
+    if is_integer_range_or_ISSN(word):
+        return 'A1', 'numeric range or ISSN'
+
+    if word.startswith('(') and len(word) >= 2:
+        word=word[1:]
+    if word.endswith(')') and len(word) >= 2:
+        word=word[:-1]
+    if word.startswith('[') and len(word) >= 2:
+        word=word[1:]
+    if word.endswith(']') and len(word) >= 2:
+        word=word[:-1]
+    if word.startswith("‘") and len(word) >= 2: # lieft single quotation mark
+        word=word[1:]
+    if word.endswith("’") and len(word) >= 2: # right single quotation mark
+        word=word[:-1]
+
 
     # Note if the word is not found with a relevant POS in a given source, we check the next source
     if language == 'en':
@@ -2551,8 +2644,13 @@ def get_specific_cefr_level(language, word, pos, context, src, cerf_levels_from_
                     return wl, src
                 if 'verb (present participle)' in pos_in_level:
                     return wl, src
+                if 'verb (gerund)' in pos_in_level:
+                    return wl, src
                 if 'verb' in pos_in_level:
                     return wl, src
+
+
+
 
             if pos in ['VBZ']:
                 if 'verb 3rd person present' in pos_in_level:
