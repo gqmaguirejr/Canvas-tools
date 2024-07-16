@@ -22346,4 +22346,6 @@ merged_words={
     'coefficients of',
     'redundancies — a',
     'internet, the', # diva2:1856439 has no space after the comma
+    'challenge in',
+
 }

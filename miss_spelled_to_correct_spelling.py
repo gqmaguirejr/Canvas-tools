@@ -4007,5 +4007,15 @@ miss_spelled_to_correct_spelling={
     'chaförs': {'c': 'chaufför', 's': 'diva2:1438166', 'n': 'error in original'},  
     'snap-togrid': {'c': 'snap-to-grid', 's': 'diva2:1856316', 'n': 'correct in thesis, the second hyphen is at the end of the line'},
     'Alfve´n': {'c': 'Alfvén', 's': 'diva2:1725188', 'n': 'correct in thesis'},
-
+    'st.ages': {'c': 'stages'},
+    'initialZernike': {'c': 'initial Zernike'},
+    'offcials': {'c': 'officials'},
+    'cosist': {'c': 'consist'},
+    'anslutningsgrundf¨or': {'c': 'anslutningsgrundför'},
+    'e˙ekten': {'c': 'effekten'},
+    'e˙ektivt': {'c': 'effektivt'},
+    'e!ekt': {'c': 'effekt'},
+    'problems/strenghts': {'C': 'problems/strengths'},
+    'injuries.However': {'c': 'injuries. However'},
+    'object-detectiopn': {'c': 'object-detection'},
 }

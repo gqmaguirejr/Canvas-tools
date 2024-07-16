@@ -1842,6 +1842,10 @@ def combine_names_in_html(html_text):
     pattern_place_comma_place='<span class="CEFR\\w+">([\\w-]+\\s*[\\w-]*)</span><span class="CEFRA1">,</span>\\s*<span class="CEFR\\w+">([\\w-]+)</span>'
     #
     pattern_KTH = r'<span class="CEFR\w+">KTH</span>\s*<span class="CEFR\w+">Royal</span>\s*<span class="CEFR\w+">Institute</span>\s*<span class="CEFR\w+">of</span>\s*<span class="CEFR\w+">Technology</span>'
+
+    pattern_van_der_lastname=r'<span class="CEF\w+">van</span>\s+<span class="CEFR\w+">der</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+    pattern_de_lastname=r'<span class="CEFR\w+">de</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
+
     pattern_firstname_space_lastname = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_with_initial = r'<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-])</span><span class="CEFRA1">.</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
     pattern_with_first_initial = r'<span class="CEFR\w+">([\w-])</span><span class="CEFRA1">.</span>\s<span class="CEFR\w+">([\w-]+)</span>\s*<span class="CEFR\w+">([\w-]+)</span>'
@@ -1983,11 +1987,34 @@ def combine_names_in_html(html_text):
                 combined_name = f"{first_name} {middle_name} {last_name}"
                 return f'<span class="CEFRA1">{combined_name}</span>'
         return match.group(0) # Return original if not a name
+    def replace_pattern_van_der_lastname(match):
+        """Helper function to replace the name with the correct tag."""
+        last_name = match.group(1)
+        last_name=last_name.strip()
+        #
+        if (last_name in common_english_and_swedish.names_of_persons):
+            print(f"{last_name=}")
+            combined_name = f"van der {last_name}"
+            return f'<span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
+    def replace_pattern_de_lastname(match):
+        """Helper function to replace the name with the correct tag."""
+        last_name = match.group(1)
+        last_name=last_name.strip()
+        #
+        if (last_name in common_english_and_swedish.names_of_persons):
+            print(f"{last_name=}")
+            combined_name = f"de {last_name}"
+            return f'<span class="CEFRA1">{combined_name}</span>'
+        return match.group(0) # Return original if not a name
 
     #
     # Apply replacements
 
     html_text = re.sub(pattern_KTH, '<span class="CEFRA2">KTH Royal Institute of Technology</span>', html_text)
+    html_text = my_search_replace(pattern_van_der_lastname, replace_pattern_van_der_lastname, html_text)
+    html_text = my_search_replace(pattern_de_lastname, replace_pattern_de_lastname, html_text)
+
     html_text = my_search_replace(pattern_with_three_names, replace_three_names, html_text)
     html_text = my_search_replace(pattern_with_initial, replace_name_with_initials, html_text)
     html_text = my_search_replace(pattern_with_first_initial, replace_name_with_first_initial, html_text)
@@ -3118,6 +3145,61 @@ def main():
     
     if Verbose_Flag:
         print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) well_known_acronyms')
+
+    if testing_mode_flag:
+        # Check for duplicate names
+        existing_names=set()
+        duplicate_names=set()
+        for n in common_english_and_swedish.names_of_persons:
+ 	    if n in existing_names:
+                duplicate_names.add(n)
+ 	    else:
+ 		existing_names.add(n)
+        if len(duplicate_names) > 0:
+            print(f"Duplicate names found in common_english_and_swedish.names_of_persons: {duplicate_names}")
+
+        def get_POS_of_word(w, d):
+            #
+            pos_found=set()
+            if w in d:
+                try:
+                    entry=d.get(w)
+                    for k, v in entry.items():
+                        for poss in v.split(','):
+                            poss=poss.strip()
+                            if poss in ['', '"Contraction', '(Verb) past participle', '. verb 3rd person present', '3rd Person Singular)', '3rd person singular)', '6', '8', '???']:
+                                print(f"suspect POS: {w}, {poss=}")
+                            pos_found.add(poss)
+                except:
+                    print(f"error in {w}")
+            return pos_found
+
+        def get_cefr_levels_of_word(w, d):
+            #
+            cefr_levels_found=set()
+            if w in d:
+                try:
+                    entry=d.get(w)
+                    for k, v in entry.items():
+                        cefr_levels_found.add(k)
+                except:
+                    print(f"error in {w}")
+            return cefr_levels_found
+
+        def check_words_in_dict(d):
+            all_POS=set()
+            all_cefr_levels=set()
+            for w in d:
+                pos_found=get_POS_of_word(w, d)
+                all_POS=all_POS.union(pos_found)
+                cefr_levels_found=get_cefr_levels_of_word(w, d)
+                all_cefr_levels=all_cefr_levels.union(cefr_levels_found)
+            print(f"{sorted(all_cefr_levels)=}")
+            print(f"{sorted(all_POS)=}")
+
+        check_words_in_dict(common_english_and_swedish.common_English_words)
+
+
 
     nlp=dict()
     spacy_udpipe.download("en") # download English model
