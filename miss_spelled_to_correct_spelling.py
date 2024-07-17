@@ -4018,4 +4018,11 @@ miss_spelled_to_correct_spelling={
     'problems/strenghts': {'C': 'problems/strengths'},
     'injuries.However': {'c': 'injuries. However'},
     'object-detectiopn': {'c': 'object-detection'},
+    'L2-gainis': {'c': 'L2-gain is'},
+    'cost-eective': {'c': 'cost-effective'}, # missing ligature
+    'cost-inecient': {'c': 'cost-inefficient'},  # missing ligature
+    'cost-savingrate': {'c': 'cost-saving rate'},  # missing space
+    'semi-strucutured': {'c': 'semi-structured'},
+    'well-knownmethod'; {'c': 'well-known method'},
+    'existingREST-basedMWS': {'c': 'existing REST-based MWS'},
 }
