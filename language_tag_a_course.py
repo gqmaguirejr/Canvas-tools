@@ -4,6 +4,8 @@
 # ./language_tag_a_course.py course_id lang
 #
 # Purpose: To go throught a course and add HTML language attribute to relevant elements (currently, at the top-level of the content).
+# While this is perhaps too extensive (as there mmight be elements that have no need for a "lang" attribute, it was simple to do.)
+#
 #
 # Canvas has a problem in that (1)  the GUI and (2) the course contents are both set to the same language based on the course language setting.
 #
@@ -934,9 +936,17 @@ def transform_body(html_content, lang):
         if Verbose_Flag:
             print(f"{len(top_level_elements)=}")
 
-        changed_flag=True
         for node in top_level_elements:
+            # The list of non-displayed tags and attributes from the W3C specs:
+            if (node.name in ('area', 'base', 'basefont', 'datalist', 'head', 'link',
+                              'meta', 'noembed', 'noframes', 'param', 'rp', 'script',
+                              'source', 'style', 'template', 'track', 'title', 'noscript') or
+                node.name == 'input' or
+                node.has_attr('hidden')):
+                continue
+
             node.attrs['lang']=lang
+            changed_flag=True
 
         html_content = str(soup)
         if Verbose_Flag:

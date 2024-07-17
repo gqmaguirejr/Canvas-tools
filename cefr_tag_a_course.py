@@ -14,7 +14,8 @@
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
-# ./language_tag_a_course.py --config config-test.json  course_id lang
+# ./cefr_tag_a_course.py --config config-test.json  course_id
+#
 #
 # Example:
 # ./cefr_tag_a_course.py 751
