@@ -4,7 +4,6 @@
 # ./language_tag_a_course.py course_id lang
 #
 # Purpose: To go throught a course and add HTML language attribute to relevant elements (currently, at the top-level of the content).
-# While this is perhaps too extensive (as there mmight be elements that have no need for a "lang" attribute, it was simple to do.)
 #
 #
 # Canvas has a problem in that (1)  the GUI and (2) the course contents are both set to the same language based on the course language setting.
@@ -33,6 +32,7 @@
 # Currently, the program supports pages, syllabus, assignments, (classic) qquizzes, discussions, and announcements.
 #
 # As the program only adds the lang attribute to top-level elements that do not have a lang attribute, you can run the program again and it will not process the element again. This conveniently lets you run the script multiple times.
+# As there mmight be elements that have no need for a "lang" attributem  the code does not tag some elements. NB This is currently non-displayed or hidden elements.
 #
 # The program does not do *any* checking of the lang tag that the user provides on the command line. **Additionally, there is *no* "undo" operation, so it should be used with care.**
 #
