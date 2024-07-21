@@ -5031,6 +5031,8 @@ well_known_acronyms_list=[
     {'LANL', 'Los Alamos National Lab', {'cefr': 'B2'}],
     {'LANL/SOPA', 'Los Alamos National Lab/Synchronous Orbit Particle Analyzer', {'cefr': 'C1'}],
     {'OAS', 'Over-the air-synchronization', {'cefr': 'B2'}},
+    {'afe', 'automatic frequency estimation', {'cefr': 'B2'}},
+
 ]
 
 

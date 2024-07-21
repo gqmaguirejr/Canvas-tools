@@ -4053,5 +4053,6 @@ miss_spelled_to_correct_spelling={
     'Vehicle-toeverything': {'c': 'Vehicle-to-everything'},
     'vehicleto-building': {'c': 'vehicle-to-building'},
     'Vehicleto-Vehicle': {'c': 'Vehicle-to-Vehicle'},
-
+    'acousticspecies-identification': {'c': 'acoustic species-identification'},
+    'agilematurity': {'c': 'agile maturity'},
 }
