@@ -5020,7 +5020,17 @@ well_known_acronyms_list=[
     ['EEG', 'Electroencephalogram', {'cefr': 'C2'}],
     ['PCR', 'Polymerase Chain Reaction', {'cefr': 'C2'}],
     ['ECTS', 'European Credit Transfer and Accumulation System', {'cefr': 'C1'}],
-
+    {'ToA', 'Time of Arrival', {'cefr': 'B1'}],
+    {'ToF', 'Tome of Flight', {'cefr': 'B1'}],
+    {'CoMIR', 'Contrastive Multimodal Image Representation for Registration Framework', {'cefr': 'B2'}],
+    {'ADHD', 'Attention-deficit/hyperactivity disorder', {'cefr': 'C1'}],
+    {'CFL-condition', 'Courant–Friedrichs–Lewy condition', {'cefr': 'C1'}],
+    {'CHCs', 'community health clubs',  {'s': ['diva2:1191282'], 'cefr': 'C1'}},
+    {'HRC', 'Human-Robot-Collaboration', {'cefr': 'C1'}],
+    {'SOPA', 'Synchronous Orbit Particle Analyzer', {'cefr': 'C1'}],
+    {'LANL', 'Los Alamos National Lab', {'cefr': 'B2'}],
+    {'LANL/SOPA', 'Los Alamos National Lab/Synchronous Orbit Particle Analyzer', {'cefr': 'C1'}],
+    {'OAS', 'Over-the air-synchronization', {'cefr': 'B2'}},
 ]
 
 
