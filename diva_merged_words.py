@@ -22347,5 +22347,12 @@ merged_words={
     'redundancies — a',
     'internet, the', # diva2:1856439 has no space after the comma
     'challenge in',
+    'also the',
+    'and energy',
+    'and enhance',
+    'and today',
+    'applied Computer',
+    'approach based',
+    'of Things',
 
 }

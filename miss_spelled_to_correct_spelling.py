@@ -7,6 +7,14 @@
 #
 # G. Q. Maguire Jr.
 #
+# miss_spelled_to_correct_spelling is a dict where the key is the misspelling,
+# and the value is a dict having the following possible keys:
+#  'c':  a corrected version of the string  [mandatory]
+#  's':  information about the source or sources
+#          if multiple sources, they are placed in a list
+#          Each source is typically of the form: 'diva2:ddddddd''
+#  'n':  a note about this entry
+#
 
 miss_spelled_to_correct_spelling={
     "IDS’es": {'c': "IDSes", 's': 'diva2:1350710'}, # The plural does not need the apostrophe
@@ -4023,23 +4031,23 @@ miss_spelled_to_correct_spelling={
     'cost-inecient': {'c': 'cost-inefficient'},  # missing ligature
     'cost-savingrate': {'c': 'cost-saving rate'},  # missing space
     'semi-strucutured': {'c': 'semi-structured'},
-    'well-knownmethod'; {'c': 'well-known method'},
+    'well-knownmethod': {'c': 'well-known method'},
     'existingREST-basedMWS': {'c': 'existing REST-based MWS'},
-    'optimizationof': ['c'. 'optimization of'},
-    'engineeringof': ['c': 'engineering of'},
+    'optimizationof': {'c': 'optimization of'},
+    'engineeringof': {'c': 'engineering of'},
     'Histogramof': {'c': 'Histogram of'},
     'AirConditioning': {'c': 'air conditioning'},
     'All-in-One\"system': {'c': 'all-in-one system'},
     'All-in-One\"test': {'c': 'all-in-one test'},
     'Anatease': {'c': 'Anatase', 's': 'diva2:873252', 'n': 'misspelling in original thesis' },
     'BluetoothLowEnergy': {'c': 'Bluetooth Low Energy'},
-    'BusinessIntelligence': {'c': 'Business Intelligence':},
+    'BusinessIntelligence': {'c': 'Business Intelligence'},
     'MasterThesis': {'c': "Master's Thesis"},
-    'Networkon-Chip': {'s': 'network-on-chip'},
+    'Networkon-Chip': {'c': 'network-on-chip'},
     'non-operationaland': {'c': 'non-operational and'},
     'non-codingDNA': {'c': 'non-coding DNA'},
     'nonethe-less': {'c': 'nonetheless'},
-    "Pearson’schi-squared"': {'c': "Pearson’s chi-squared"},
+    "Pearson’schi-squared": {'c': "Pearson’s chi-squared"},
     'Pon-tryagin': {'c': 'Pontryagin', 'n': 'mathematician: Lev Semyonovich Pontryagin'},
     'rule-basedsystems': {'c': 'rule-based systems'},
     'Sequence-toSequence': {'c': 'Sequence-to-Sequence'},
@@ -4055,4 +4063,39 @@ miss_spelled_to_correct_spelling={
     'Vehicleto-Vehicle': {'c': 'Vehicle-to-Vehicle'},
     'acousticspecies-identification': {'c': 'acoustic species-identification'},
     'agilematurity': {'c': 'agile maturity'},
+    'aneight-bit': {'c': 'an eight-bit'},
+    "antenna’sradiation": {'c': "antenna’s radiation"},
+    'antennaimplant': {'c': 'antenna implant'},
+    'arambient': {'c': 'Ar ambient', 's': 'diva2:873936', 'n': 'Error in title, the title is correct on the thesis itself'},
+    'arbitrarynon-standard': {'c': 'arbitrary non-standard'},
+    'associates1': {'c': 'associates'},
+    "aster’sthesis": {'c': "Master’s thesis"},
+    'audio classication': {'c': 'audio classification'},
+    'auto-tunerallows': {'c': 'auto-tuner allows'},
+    'autonomousagents': {'c': 'autonomous agents'},
+    'avialable': {'c': 'available'},
+    'aworking': {'c': 'a working'},
+    'bachelor-degree': {'c': "bachelor's degree"},
+    'backwardscompatible': {'c': 'backwards compatible'},
+    'bacterias': {'c': "bacteria's", 's': 'diva2:724022', 'n': 'error in original'},
+    'banditproblems': {'c': 'bandit problems'},
+    'basecost': {'c': 'base cost'},
+    'beatGoogLeNet': {'c': 'beat GoogLeNet', 's': 'diva2:1686618', 'n': 'an Uppsala thesis'},
+    'K167': {'c': 'Ki67', 's': 'diva2:1871789', 'n': 'Spelling error in original'},
+    'Aworking': {'c': 'A working', 's': 'diva2:558839'},
+    'DTLS-basedapproach': {'c': 'DTLS-based approach', 's': ' diva2:847246'},
+    'IPC:s': {'c': 'IPCs', 's': 'diva2:1867779', 'n': 'Error in orginal'},
+    'nopublicly': {'c': 'no publicly'},
+    'pansharpening': {'c': 'pan sharpening'},
+    'peopleworking': {'c': 'people working'},
+    'threedecades': {'c': 'three decades'},
+    'protectionthat': {'c': 'protection that'},
+    'protocolto': {'c': 'protocol to'},
+    'security.Datagram': {'c': 'security. Datagram'},
+    'capabilities—CifCafDet': {'c': 'capabilities — CifCafDet'},
+    'multicastrequests': {'c': 'multicast requests'},
+    'meassurement': {'c': 'measurement'},
+    'powerplants': {'c':'power plants'},
+    'varation': {'c': 'varaition', 's': 'diva2:1868375', 'n': 'errpr in original'},
+    'percievable': {'c': 'perceivable', 's': 'diva2:1868188'},
 }

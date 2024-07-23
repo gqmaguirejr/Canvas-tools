@@ -46,8 +46,10 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
 import common_english_and_swedish
 import miss_spelled_to_correct_spelling
+import common_acronyms
 import diva_merged_words
 import diva_corrected_abstracts
+import AVL_words_with_CEFR
 
 # width to use for outputting numeric values
 Numeric_field_width=7
@@ -364,6 +366,8 @@ def is_number(string):
 
 words_to_ignore=[
     'swastika/penis', # diva2:1198914
+    '9.515.8',
+    'v4.2',
     '0,0,1',
     '0.4,0.6',
     '1,0,0',
@@ -1161,7 +1165,7 @@ def main():
 
     # entries in the dict will have the form: 'acronym': ['expanded form 1', 'expanded form 2',  ... ]
     well_known_acronyms=dict()
-    for e in common_english_and_swedish.well_known_acronyms_list:
+    for e in common_acronyms.well_known_acronyms_list:
         if len(e) >= 1:
             ack=e[0]
             if len(e) >= 2:
@@ -1169,7 +1173,7 @@ def main():
                 current_entry=well_known_acronyms.get(ack, list())
                 current_entry.append(d)
                 well_known_acronyms[ack]=current_entry
-    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_english_and_swedish.well_known_acronyms_list)}) well_known_acronyms')
+    print(f'{(len(well_known_acronyms)):>{Numeric_field_width}} unique acronyms in ({len(common_acronyms.well_known_acronyms_list)}) well_known_acronyms')
 
     #
     # KTH:s svensk-engelska ordbok
@@ -1493,6 +1497,10 @@ def main():
             continue
         #
         if w in common_english_and_swedish.common_units:
+            number_skipped=number_skipped+1
+            continue
+        # check for units after converting to lower case
+        if w.lower() in common_english_and_swedish.common_units:
             number_skipped=number_skipped+1
             continue
         #

@@ -11,6 +11,18 @@
 #
 # G. Q. Maguire Jr.
 #
+# well_known_acronyms_list is a list of acronym_:entries
+#   The list structure has been used becuase there can be many different
+#   means for a given acronym.
+#
+# Each acronym_:entry is a list and has the form:
+#  acronym, expanded_form, extras_dict
+#
+#  Note that the optional extras_dict can contain the following keys and values:
+#   's': list of sources
+#           each source is s string, typeically of the form: 'diva2:ddddddd'
+#   'cefr': string containing a CEFR level, such as 'B2'
+#
 
 # consider adding support for these
 well_known_acronyms_list=[
@@ -2483,7 +2495,7 @@ well_known_acronyms_list=[
     ['MICS', 'Medical Implant Communication System', {'s': ['diva2:1712188']}],
     ['MIDI', 'musical instrument communication', {'s': ['diva2:862557']}],
     ['MIKEY', 'Multimedia Internet KEYing'],
-    ['MILP', 'mixed integerlinear problem'],
+    ['MILP', 'mixed integer linear problem'],
     ['MIMO', 'Multi Input Multi Output'],
     ['MIMO-OFDM', 'Multi Input Multi Output / Orthogonal Frequency Division Multiplexing', {'s': ['diva2:1297328'], 'n': 'used but not defined- not spelled out in thesis'}],
     ['MIMSO', 'multiple input multiple steered output', {'s': ['diva2:1834156']}],
@@ -5020,19 +5032,45 @@ well_known_acronyms_list=[
     ['EEG', 'Electroencephalogram', {'cefr': 'C2'}],
     ['PCR', 'Polymerase Chain Reaction', {'cefr': 'C2'}],
     ['ECTS', 'European Credit Transfer and Accumulation System', {'cefr': 'C1'}],
-    {'ToA', 'Time of Arrival', {'cefr': 'B1'}],
-    {'ToF', 'Tome of Flight', {'cefr': 'B1'}],
-    {'CoMIR', 'Contrastive Multimodal Image Representation for Registration Framework', {'cefr': 'B2'}],
-    {'ADHD', 'Attention-deficit/hyperactivity disorder', {'cefr': 'C1'}],
-    {'CFL-condition', 'Courant–Friedrichs–Lewy condition', {'cefr': 'C1'}],
-    {'CHCs', 'community health clubs',  {'s': ['diva2:1191282'], 'cefr': 'C1'}},
-    {'HRC', 'Human-Robot-Collaboration', {'cefr': 'C1'}],
-    {'SOPA', 'Synchronous Orbit Particle Analyzer', {'cefr': 'C1'}],
-    {'LANL', 'Los Alamos National Lab', {'cefr': 'B2'}],
-    {'LANL/SOPA', 'Los Alamos National Lab/Synchronous Orbit Particle Analyzer', {'cefr': 'C1'}],
-    {'OAS', 'Over-the air-synchronization', {'cefr': 'B2'}},
-    {'afe', 'automatic frequency estimation', {'cefr': 'B2'}},
-
+    ['ToA', 'Time of Arrival', {'cefr': 'B1'}],
+    ['ToF', 'Tome of Flight', {'cefr': 'B1'}],
+    ['CoMIR', 'Contrastive Multimodal Image Representation for Registration Framework', {'cefr': 'B2'}],
+    ['ADHD', 'Attention-deficit/hyperactivity disorder', {'cefr': 'C1'}],
+    ['CFL-condition', 'Courant–Friedrichs–Lewy condition', {'cefr': 'C1'}],
+    ['CHCs', 'community health clubs',  {'s': ['diva2:1191282'], 'cefr': 'C1'}],
+    ['HRC', 'Human-Robot-Collaboration', {'cefr': 'C1'}],
+    ['SOPA', 'Synchronous Orbit Particle Analyzer', {'cefr': 'C1'}],
+    ['LANL', 'Los Alamos National Lab', {'cefr': 'B2'}],
+    ['LANL/SOPA', 'Los Alamos National Lab/Synchronous Orbit Particle Analyzer', {'cefr': 'C1'}],
+    ['OAS', 'Over-the air-synchronization', {'cefr': 'B2'}],
+    ['afe', 'automatic frequency estimation', {'cefr': 'B2'}],
+    ['ASTRE', 'Atmosphere-Space Transition Region Explorer', {'cefr': 'B2'}],
+    ['A2C', 'Advantage Actor Critic', {'s': 'diva2:1871151'}],
+    ['BETH', 'BPF-extended tracking honeypot', {'s': 'diva2:1871153'}],
+    ['CAF', 'Composite Association Field', {'s': 'diva2:1860777'}],
+    ['CERT', 'Computer Emergency Response Team', {'s': 'diva2:1868197'}],
+    ['CIF', 'Composite Intensity Field', {'s': 'diva2:1860777'}],
+    ['CNN-BLSTM', 'CNN-Bidirectional LSTM', {'s': 'diva2:1870944', 'n': 'Not spelled out in thesis'}],
+    ['EMEA', 'Europe, Middle East, and Africa', {'s': 'diva2:1868373'}],
+    ['FPY', 'first-pass yield', {'s': 'diva2:1868381'}],
+    ['HER2', 'Human Epidermal growth factor Receptor 2', {'s': 'diva2:1871789'}],
+    ['HMD-AR', 'Head-mounted Display (HMD) Augmented Reality (AR) ', {'s': 'diva2:1868182'}],
+    ['Ki67', 'Antigen Kiel 67', {'s': 'diva2:1871789', 'n': 'Spelling error in original K167, should be Ki67'}],
+    ['MRTF', 'mean radial tooth force', {'s': 'diva2:1870946'}],
+    ['NTGK', 'Newman, Tiedemann, Gu, and Kim Model', {'s': 'diva2:1868209'}],
+    ['NVH', 'Non-Volatile Memory', {'s': 'diva2:654108'}],
+    ['PGR', 'Progesterone receptor', {'s': 'diva2:1871789'}],
+    ['PV-BESS', 'photovoltaic (PV) Battery Energy Storage System (BESS)', {'s': 'diva2:1868203'}],
+    ['VBPI', 'Variational Approach to Bayesian Phylogenetic Inference', {'s': 'diva2:1871793'}],
+    ['CifCafDet', 'Composite Intensity Field (CIF) Composite Association Field (CAF) detect', {'s': 'diva2:1860777'}],
+    ['CifDet', 'Composite Intensity Field (CIF) detect', {'s': 'diva2:1860777'}],
+    ['DeePMOS', 'DeePMOS: Deep Posterior Mean-Opinion-Score', {'s': 'diva2:1870944'}],
+    ['DeePMOS-B', 'DeePMOS: Deep Posterior Mean-Opinion-Score - Beta distribution', {'s': 'diva2:1870944', 'n': 'The B like character is  \mathcal{B}'}],
+    ['GradNorm', 'gradient normalization (algorithm)', {'s': 'diva2:1868218'}],
+    ['MILP', 'Mixed-Integer Linear Programming', {'s': 'diva2:1868203'}],
+    ['aSIR', 'adaptive SIR-model', {'s': 'diva2:1597283'}],
+    ['IHC', 'immunohistochemistry', {'s': 'diva2:1871789', 'n': 'acronym not used in abstract, but is used in thesis'}],
+    
 ]
 
 
