@@ -4098,4 +4098,23 @@ miss_spelled_to_correct_spelling={
     'powerplants': {'c':'power plants'},
     'varation': {'c': 'varaition', 's': 'diva2:1868375', 'n': 'errpr in original'},
     'percievable': {'c': 'perceivable', 's': 'diva2:1868188'},
+    'benifit': {'c': 'benefit', 's': 'diva2:654427'},
+    'bi-metalCu-Al': {'c': 'bi-metal Cu-Al'},
+    'biopsignals': {'c': 'biopotential signals', 'n': 'diva2:432665', 'n': 'term introduce in original abstract'},
+    'black-boxencapsulation': {'c': 'black-box encapsulation', 's': 'diva2:1380808', 'n': 'correct in original'},
+    'breakthroughin': {'c':     'breakthrough in'},
+    'bredth': {'c': 'breadth'},
+    'carbonfootprint': {'c': 'carbon footprint'},
+    'channels–is': {'c': 'channels – is', 's': 'diva2:1335852', 'n': 'the dashes are to set off a parenthetical'},
+    'variants–where': {'c': 'variants – where', 's': 'diva2:1335852', 'n': 'the dashes are to set off a parenthetical'},
+    'choicefell': {'c': 'choice fell'},
+    'choice”-recommendations': {'c': 'choice” - recommendations', 's': 'diva2:1710202', 'n': 'end of a quoted "next choice" as the thired type of recommendations - the dash seems unneeded'},
+    'classifysynthesizer': {'c': 'classify synthesizer'},
+    'closed-loopcorrection': {'c': 'closed-loop correction', 's': 'diva2:1295396'},
+    'closed-loopre-simulation': {'c': 'closed-loopre-simulation', 's': 'diva2:1188687'},
+    'codeto-code': {'c': 'code-to-code'},
+    'collaborationnetwork': {'c': 'collaboration network'},
+    'communicationfor': {'c': 'communication for'},
+
+    
 }

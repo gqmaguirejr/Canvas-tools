@@ -5072,5 +5072,3 @@ well_known_acronyms_list=[
     ['IHC', 'immunohistochemistry', {'s': 'diva2:1871789', 'n': 'acronym not used in abstract, but is used in thesis'}],
     
 ]
-
-
