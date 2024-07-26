@@ -1224,6 +1224,9 @@ def main():
     #
     print(f'{len(common_english_and_swedish.common_swedish_technical_words):>{Numeric_field_width}} words in common Swedish technical words')
     #
+    print(f'{len(common_english_and_swedish.chemical_elements):>{Numeric_field_width}} words in chemical_elements')
+    print(f'{len(common_english_and_swedish.chemical_elements_symbols):>{Numeric_field_width}} words in chemical_elements_symbols')
+
     print(f'{len(common_english_and_swedish.common_danish_words):>{Numeric_field_width}} words in common Danish words')
     #
     print(f'{len(common_english_and_swedish.common_french_words):>{Numeric_field_width}} words in common French words')
@@ -1493,6 +1496,18 @@ def main():
             w=w[:-4]
         #
         if len(w) < 1:
+            number_skipped=number_skipped+1
+            continue
+        #
+        # check for names and symbols of elements
+        if w in common_english_and_swedish.chemical_elements:
+            number_skipped=number_skipped+1
+            continue
+        if w.lower() in common_english_and_swedish.chemical_elements:
+            number_skipped=number_skipped+1
+            continue
+
+        if w in common_english_and_swedish.chemical_elements_symbols:
             number_skipped=number_skipped+1
             continue
         #

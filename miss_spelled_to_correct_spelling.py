@@ -4115,6 +4115,13 @@ miss_spelled_to_correct_spelling={
     'codeto-code': {'c': 'code-to-code'},
     'collaborationnetwork': {'c': 'collaboration network'},
     'communicationfor': {'c': 'communication for'},
+    "conductors’positions": {'c': "conductors’ positions", 's': 'diva2:1271491'},
+    'constraints…': {'c': 'constraints …', 's': 'diva2:609994'},
+    'controlledusing': {'c': 'controlled using', 's': 'diva2:860672'},
+    'conventionalH1': {'c': 'conventional H<sub>∞</sub>', 's': 'diva2:1485487'},
+    'coreferencere': {'c': 'coreference', 's': 'diva2:1414451', 'n': 'correct in original'},
+    'counterparities': {'c': 'counterparties'},
 
-    
+
+
 }

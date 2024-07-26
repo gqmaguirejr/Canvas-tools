@@ -717,6 +717,7 @@ well_known_acronyms_list=[
     ['COSE', 'CBOR Object Signing and Encryption', {'s': ['diva2:1255401']}],
     ['COTS', 'Commerciall-off-the-Shelf'],
     ['COVID 19', 'Coronavirus Disease 2019'],
+    ['COVID-19', 'COronaVIrus Disease 2019'],
     ['COVID19', 'Coronavirus Disease 2019', {'s': ['diva2:1597397', 'diva2:1836842']}],
     ['CP', 'classical platform', {'s': ['diva2:1272204']}],
     ['CP-ABE', 'Ciphertext-Policy Attribute-Based Encryption', {'s': ['diva2:1725010']}],
