@@ -44,7 +44,8 @@ sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module
 sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
-import common_english_and_swedish
+import common_english
+import common_swedish
 import miss_spelled_to_correct_spelling
 import common_acronyms
 import diva_merged_words
@@ -79,7 +80,7 @@ def is_numeric_range(w):
     return False
 
 def is_numeric_range_eith_units(w):
-    for u in common_english_and_swedish.common_units:
+    for u in common_english.common_units:
         if w.endswith(u):
             w=w[:-len(u)]
             return is_numeric_range(w)
@@ -1188,13 +1189,13 @@ def main():
         if len(w) == 1 and ord(w) == 776: # if just a COMBINING DIAERESIS, skip it
             continue
         
-        if w not in common_english_and_swedish.KTH_ordbok_Swedish_with_CEFR:
+        if w not in common_swedish.KTH_ordbok_Swedish_with_CEFR:
             # skip acronyms
             if w in well_known_acronyms:
                 continue
             if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
                 continue
-            levels=common_english_and_swedish.common_swedish_words.get(w, False)
+            levels=common_swedish.common_swedish_words.get(w, False)
             if levels:
                 print(f"'{w}': {levels},")
             else:
@@ -1205,67 +1206,67 @@ def main():
         if w.endswith('(amerikansk engelska)'):
             w=w.replace('(amerikansk engelska)', '')
         w=w.strip()
-        if w not in common_english_and_swedish.KTH_ordbok_English_with_CEFR:
+        if w not in common_english.KTH_ordbok_English_with_CEFR:
             # skip acronyms
             if w in well_known_acronyms:
                 continue
             if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
                 continue
-            levels=common_english_and_swedish.common_English_words.get(w, False)
+            levels=common_english.common_English_words.get(w, False)
             if levels:
                 print(f"'{w}': {levels},")
             else:
                 if Verbose_Flag:
                     print(f'missing English: {w}')
     #
-    print(f'{len(common_english_and_swedish.common_English_words):>{Numeric_field_width}} words in common English words')
+    print(f'{len(common_english.common_English_words):>{Numeric_field_width}} words in common English words')
     #
-    print(f'{len(common_english_and_swedish.common_swedish_words):>{Numeric_field_width}} words in common Swedish words')
+    print(f'{len(common_swedish.common_swedish_words):>{Numeric_field_width}} words in common Swedish words')
     #
-    print(f'{len(common_english_and_swedish.common_swedish_technical_words):>{Numeric_field_width}} words in common Swedish technical words')
+    print(f'{len(common_swedish.common_swedish_technical_words):>{Numeric_field_width}} words in common Swedish technical words')
     #
-    print(f'{len(common_english_and_swedish.chemical_elements):>{Numeric_field_width}} words in chemical_elements')
-    print(f'{len(common_english_and_swedish.chemical_elements_symbols):>{Numeric_field_width}} words in chemical_elements_symbols')
+    print(f'{len(common_english.chemical_elements):>{Numeric_field_width}} words in chemical_elements')
+    print(f'{len(common_english.chemical_elements_symbols):>{Numeric_field_width}} words in chemical_elements_symbols')
 
-    print(f'{len(common_english_and_swedish.common_danish_words):>{Numeric_field_width}} words in common Danish words')
+    print(f'{len(common_english.common_danish_words):>{Numeric_field_width}} words in common Danish words')
     #
-    print(f'{len(common_english_and_swedish.common_french_words):>{Numeric_field_width}} words in common French words')
+    print(f'{len(common_english.common_french_words):>{Numeric_field_width}} words in common French words')
     #
-    print(f'{len(common_english_and_swedish.common_finnish_words):>{Numeric_field_width}} words in common Finnish words')
+    print(f'{len(common_english.common_finnish_words):>{Numeric_field_width}} words in common Finnish words')
     #
-    print(f'{len(common_english_and_swedish.common_german_words):>{Numeric_field_width}} words in common German words')
+    print(f'{len(common_english.common_german_words):>{Numeric_field_width}} words in common German words')
     #
-    print(f'{len(common_english_and_swedish.common_icelandic_words):>{Numeric_field_width}} words in common Icelandic words')
+    print(f'{len(common_english.common_icelandic_words):>{Numeric_field_width}} words in common Icelandic words')
     #
-    print(f'{len(common_english_and_swedish.common_italian_words):>{Numeric_field_width}} words in common Italian words')
+    print(f'{len(common_english.common_italian_words):>{Numeric_field_width}} words in common Italian words')
     #
-    print(f'{len(common_english_and_swedish.common_latin_words):>{Numeric_field_width}} words in common Latin words')
+    print(f'{len(common_english.common_latin_words):>{Numeric_field_width}} words in common Latin words')
     #
-    print(f'{len(common_english_and_swedish.common_norwegian_words):>{Numeric_field_width}} words in common Norwegian words')
+    print(f'{len(common_english.common_norwegian_words):>{Numeric_field_width}} words in common Norwegian words')
     #
-    print(f'{len(common_english_and_swedish.common_portuguese_words):>{Numeric_field_width}} words in common Portuguese words')
+    print(f'{len(common_english.common_portuguese_words):>{Numeric_field_width}} words in common Portuguese words')
     #
-    print(f'{len(common_english_and_swedish.common_spanish_words):>{Numeric_field_width}} words in common Spanish words')
+    print(f'{len(common_english.common_spanish_words):>{Numeric_field_width}} words in common Spanish words')
     #
-    print(f'{len(common_english_and_swedish.common_units):>{Numeric_field_width}} words in common units')
+    print(f'{len(common_english.common_units):>{Numeric_field_width}} words in common units')
     #
-    print(f'{len(common_english_and_swedish.names_of_persons):>{Numeric_field_width}} words in names_of_persons')
-    print(f'{len(common_english_and_swedish.place_names):>{Numeric_field_width}} words in place_names')
-    print(f'{len(common_english_and_swedish.company_and_product_names):>{Numeric_field_width}} words in company_and_product_names')
-    print(f'{len(common_english_and_swedish.misc_words_to_ignore):>{Numeric_field_width}} words in misc_words_to_ignore')
+    print(f'{len(common_english.names_of_persons):>{Numeric_field_width}} words in names_of_persons')
+    print(f'{len(common_english.place_names):>{Numeric_field_width}} words in place_names')
+    print(f'{len(common_english.company_and_product_names):>{Numeric_field_width}} words in company_and_product_names')
+    print(f'{len(common_english.misc_words_to_ignore):>{Numeric_field_width}} words in misc_words_to_ignore')
     print(f'{len(words_to_ignore):>{Numeric_field_width}} words in words_to_ignore')
-    print(f'{len(common_english_and_swedish.mathematical_words_to_ignore):>{Numeric_field_width}} words in mathematical_words_to_ignore')
-    print(f'{len(common_english_and_swedish.programming_keywords):>{Numeric_field_width}} words in programming_keywords')
-    print(f'{len(common_english_and_swedish.language_tags):>{Numeric_field_width}} words in language_tags')
+    print(f'{len(common_english.mathematical_words_to_ignore):>{Numeric_field_width}} words in mathematical_words_to_ignore')
+    print(f'{len(common_english.programming_keywords):>{Numeric_field_width}} words in programming_keywords')
+    print(f'{len(common_english.language_tags):>{Numeric_field_width}} words in language_tags')
     print(f'{len(diva_merged_words.merged_words):>{Numeric_field_width}} words in merged_words')
     print(f'{len(miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling):>{Numeric_field_width}} words in miss_spelled_to_correct_spelling')
-    print(f'{len(common_english_and_swedish.abbreviations_ending_in_period):>{Numeric_field_width}} words in abbreviations_ending_in_period')
+    print(f'{len(common_english.abbreviations_ending_in_period):>{Numeric_field_width}} words in abbreviations_ending_in_period')
     #
     print(f'{len(unique_words):>{Numeric_field_width}} read in')
     #
     # add the individual words from multiple words in the common_English_words to the unique_words - as if they were used
     if options.self:
-        for w in common_english_and_swedish.common_English_words:
+        for w in common_english.common_English_words:
             if w.count(' ') > 0:
                 ws=w.split(' ')
                 for wsw in ws:
@@ -1283,22 +1284,22 @@ def main():
     # after removing spaces and dashses, put all of the common_english_words in lower case in a fall_back list 
     fall_back_words=set()
     #
-    for w in common_english_and_swedish.common_English_words:
+    for w in common_english.common_English_words:
         w=w.replace(' ', '')
         w=w.replace('-', '')
         fall_back_words.add(w.lower())
     #
     # add lower case version of varioous lists of words to the fall_back list - to cover cases such as "sinkhorn"
-    for w in common_english_and_swedish.names_of_persons:
+    for w in common_english.names_of_persons:
         fall_back_words.add(w.lower())
     #
-    for w in common_english_and_swedish.place_names:
+    for w in common_english.place_names:
         fall_back_words.add(w.lower())
     #
-    for w in common_english_and_swedish.company_and_product_names:
+    for w in common_english.company_and_product_names:
         fall_back_words.add(w.lower())
     #
-    for w in common_english_and_swedish.common_programming_languages:
+    for w in common_english.common_programming_languages:
         fall_back_words.add(w.lower())
     #
     for w in well_known_acronyms:
@@ -1500,26 +1501,26 @@ def main():
             continue
         #
         # check for names and symbols of elements
-        if w in common_english_and_swedish.chemical_elements:
+        if w in common_english.chemical_elements:
             number_skipped=number_skipped+1
             continue
-        if w.lower() in common_english_and_swedish.chemical_elements:
+        if w.lower() in common_english.chemical_elements:
             number_skipped=number_skipped+1
             continue
 
-        if w in common_english_and_swedish.chemical_elements_symbols:
+        if w in common_english.chemical_elements_symbols:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_units:
+        if w in common_english.common_units:
             number_skipped=number_skipped+1
             continue
         # check for units after converting to lower case
-        if w.lower() in common_english_and_swedish.common_units:
+        if w.lower() in common_english.common_units:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.mathematical_words_to_ignore:
+        if w in common_english.mathematical_words_to_ignore:
             number_skipped=number_skipped+1
             continue
         #
@@ -1552,13 +1553,13 @@ def main():
             continue
         #
         w_with_period=w+'.'
-        if w in common_english_and_swedish.abbreviations_ending_in_period or \
-           w_with_period in common_english_and_swedish.abbreviations_ending_in_period or \
-           w_with_period.lower() in common_english_and_swedish.abbreviations_ending_in_period:
+        if w in common_english.abbreviations_ending_in_period or \
+           w_with_period in common_english.abbreviations_ending_in_period or \
+           w_with_period.lower() in common_english.abbreviations_ending_in_period:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.programming_keywords:
+        if w in common_english.programming_keywords:
             number_skipped=number_skipped+1
             continue
         #
@@ -1611,11 +1612,11 @@ def main():
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.thousand_most_common_words_in_English_old:
+        if w.lower() in common_english.thousand_most_common_words_in_English_old:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.misc_words_to_ignore:
+        if w in common_english.misc_words_to_ignore:
             number_skipped=number_skipped+1
             continue
         #
@@ -1629,115 +1630,115 @@ def main():
                 number_skipped=number_skipped+1
                 continue
         #
-        if w in common_english_and_swedish.place_names:
+        if w in common_english.place_names:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.company_and_product_names:
+        if w in common_english.company_and_product_names:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_programming_languages:
+        if w in common_english.common_programming_languages:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_swedish_words:
+        if w in common_swedish.common_swedish_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_swedish_words:
+        if w.lower() in common_swedish.common_swedish_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_swedish_technical_words:
+        if w in common_swedish.common_swedish_technical_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_swedish_technical_words:
+        if w.lower() in common_swedish.common_swedish_technical_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.names_of_persons:
+        if w in common_english.names_of_persons:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_English_words:
+        if w in common_english.common_English_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_English_words:
+        if w.lower() in common_english.common_English_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_danish_words:
+        if w in common_english.common_danish_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_german_words:
+        if w in common_english.common_german_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_german_words:
+        if w.lower() in common_english.common_german_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_icelandic_words:
+        if w in common_english.common_icelandic_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_icelandic_words:
+        if w.lower() in common_english.common_icelandic_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_latin_words:
+        if w in common_english.common_latin_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_latin_words:
+        if w.lower() in common_english.common_latin_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_norwegian_words:
+        if w in common_english.common_norwegian_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_norwegian_words:
+        if w.lower() in common_english.common_norwegian_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_portuguese_words:
+        if w in common_english.common_portuguese_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_portuguese_words:
+        if w.lower() in common_english.common_portuguese_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_finnish_words:
+        if w in common_english.common_finnish_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_french_words:
+        if w in common_english.common_french_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_french_words:
+        if w.lower() in common_english.common_french_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_spanish_words:
+        if w in common_english.common_spanish_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_spanish_words:
+        if w.lower() in common_english.common_spanish_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w in common_english_and_swedish.common_italian_words:
+        if w in common_english.common_italian_words:
             number_skipped=number_skipped+1
             continue
         #
-        if w.lower() in common_english_and_swedish.common_italian_words:
+        if w.lower() in common_english.common_italian_words:
             number_skipped=number_skipped+1
             continue
         #
@@ -1751,7 +1752,7 @@ def main():
                 else:
                     new_wl.append(wsw.lower())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_English_words:
+            if new_w in common_english.common_English_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1765,7 +1766,7 @@ def main():
                 else:
                     new_wl.append(wsw.title())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_English_words:
+            if new_w in common_english.common_English_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1779,7 +1780,7 @@ def main():
                 else:
                     new_wl.append(wsw.title())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_English_words:
+            if new_w in common_english.common_English_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1796,7 +1797,7 @@ def main():
                     else:
                         new_wl.append(wsw.title())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_English_words:
+            if new_w in common_english.common_English_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1810,11 +1811,11 @@ def main():
                 else:
                     new_wl.append(wsw.title())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_English_words:
+            if new_w in common_english.common_English_words:
                 number_skipped=number_skipped+1
                 continue
         #
-        if w.lower() in common_english_and_swedish.common_English_words:
+        if w.lower() in common_english.common_English_words:
             number_skipped=number_skipped+1
             continue
         #
@@ -1828,7 +1829,7 @@ def main():
                 else:
                     new_wl.append(wsw.lower())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_swedish_words:
+            if new_w in common_swedish.common_swedish_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1842,7 +1843,7 @@ def main():
                 else:
                     new_wl.append(wsw.title())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_swedish_words:
+            if new_w in common_swedish.common_swedish_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1863,7 +1864,7 @@ def main():
                     else:
                         new_wl.append(wsw.title())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_swedish_words:
+            if new_w in common_swedish.common_swedish_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1883,7 +1884,7 @@ def main():
                     else:
                         new_wl.append(wsw.title())
             new_w="-".join(new_wl)
-            if new_w in common_english_and_swedish.common_swedish_words:
+            if new_w in common_swedish.common_swedish_words:
                 number_skipped=number_skipped+1
                 continue
         #
@@ -1893,7 +1894,7 @@ def main():
         #
         if w.isupper():
             if  w.endswith('-'):
-                if w[:-1] not in well_known_acronyms and w[:-1] not in common_english_and_swedish.company_and_product_names:
+                if w[:-1] not in well_known_acronyms and w[:-1] not in common_english.company_and_product_names:
                     potential_acronyms.add(w[:-1])
                     number_of_potential_acronyms=number_of_potential_acronyms+1
             else:

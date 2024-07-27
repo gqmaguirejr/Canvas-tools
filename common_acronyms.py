@@ -3177,7 +3177,7 @@ well_known_acronyms_list=[
     ['PMP', 'Platoon Management Protocol', {'s': ['diva2:1636674']}],
     ['PMR', 'Professional Mobile Radio', {'s': ['diva2:691654']}],
     ['PMSG', 'Permanent Magnet Synchronous Generator', {'s': ['diva2:470652']}],
-    ['PMSM', 'permanent magnet synchronousmotor', {'s': ['diva2:571104']}],
+    ['PMSM', 'permanent magnet synchronous motor', {'s': ['diva2:571104']}],
     ['PMU', 'Phasor Measurement Unit'],
     ['PMaSynRM', 'Permanent-Magnet-Assisted Synchronous Reluctance Machine'],
     ['PN', 'phase noise'],
@@ -5071,5 +5071,9 @@ well_known_acronyms_list=[
     ['MILP', 'Mixed-Integer Linear Programming', {'s': 'diva2:1868203'}],
     ['aSIR', 'adaptive SIR-model', {'s': 'diva2:1597283'}],
     ['IHC', 'immunohistochemistry', {'s': 'diva2:1871789', 'n': 'acronym not used in abstract, but is used in thesis'}],
-    
+    ['DLDP', 'Device link detection protocol'],
+    ['DotA', 'Defense of the Ancients'],
+    ['DRA', 'dielectric resonator antenna'],
+    ['EMF', 'Electromagnetic Field'],
+    ['EMF', 'electromotive force'],
 ]
