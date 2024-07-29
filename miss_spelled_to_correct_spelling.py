@@ -4182,6 +4182,18 @@ miss_spelled_to_correct_spelling={
     'fundamented': {'c': 'founded', 's': 'diva2:744967', 'n': 'error in the original'},
     'futuresegmentation': {'c': 'future segmentation'},
     'futurework': {'c': 'future work'},
-    
+    'gap…': {'c': 'gap …'}, # the programs should probably separate all ellipses from words
+    'gene-environmentinteraction': {'c': 'gene-environment interaction'},
+    'generateddatabase': {'c': 'generated database'},
+    'generative&discriminative': {'c': 'generative & discriminative'},
+    'global—are': {'c': 'global — are'},
+    'goalstate': {'c': 'goal state'},
+    'grid­following': {'c':'grid-following'}, # the dash is 0xad - U+00AD Soft Hyphen (SHY) 
+    'grid­forming': {'c': 'grid-forming'}, # the dash is 0xad - U+00AD Soft Hyphen (SHY)
+    'grid-­following': {'c':'grid-following'}, # the dash is 0xad - U+00AD Soft Hyphen (SHY) 
+    'grid-­forming': {'c': 'grid-forming'}, # the dash is 0xad - U+00AD Soft Hyphen (SHY)
+    'groundcontrol': {'c': 'ground control'},
+    'guess-ing': {'c': 'guess-ing', 's': 'diva2:860991', 'n': 'the dash was from hyphenation at the end of line'},
+
 }
 
