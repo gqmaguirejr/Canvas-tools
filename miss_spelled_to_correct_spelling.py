@@ -4194,6 +4194,28 @@ miss_spelled_to_correct_spelling={
     'grid-­forming': {'c': 'grid-forming'}, # the dash is 0xad - U+00AD Soft Hyphen (SHY)
     'groundcontrol': {'c': 'ground control'},
     'guess-ing': {'c': 'guess-ing', 's': 'diva2:860991', 'n': 'the dash was from hyphenation at the end of line'},
-
+    'halleffect':  {'c': 'Hall effect'},
+    'head-shoulderdetection': {'c': 'head-shoulder detection'},
+    'heathcare': {'c': 'heathcare', 's': 'diva2:1600236', 'n': 'error in original'},
+    'heavy-dutyvehicles': {'c': 'heavy-duty vehicles', 's': 'diva2:1443829'},
+    'hereat': {'c': 'here at', 's': 'diva2:1076208'},
+    'hetrogenous': {'c': 'heterogeneous', 's': 'diva2:927166', 'n': 'error in original'},
+    'hierachy': {'c': 'hierarchy'},
+    'Hierachy': {'c': 'Hierarchy'},
+    'hierarchy clustering': {'c': 'hierarchical clustering', 's': 'diva2:911873', 'n': 'error in original'},
+    'high-frequencies': {'A2': 'high frequencies'},
+    'high-level-synthesis': {'c': 'high-level synthesis'},
+    'high-levelapplications': {'c': 'high-level applications', 's': 'diva2:789016'},
+    'high-levelplanning': {'c': 'high-level planning', 's': 'diva2:1548712'},
+    'highly)-normalized': {'c': 'highly-normalized'},
+    'historgram': {'c': 'histogram'},
+    'histrogram': {'c': 'histogram'},
+    'human-vehicleinteraction': {'C': 'human-vehicle interaction'},
+    'human-readble': {'c': 'human-readable'},
+    'hydo-power': {'c': 'hydro-power', 's': 'diva2:1728662', 'n': 'error in original'},
+    'hypens': {'c': 'hyphens'},
+    'i.e.layout': {'c': 'i.e.,  layout'},
+    'iPhone.When': {'c': 'iPhone. When'},
+    
 }
 
