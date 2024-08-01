@@ -4216,6 +4216,31 @@ miss_spelled_to_correct_spelling={
     'hypens': {'c': 'hyphens'},
     'i.e.layout': {'c': 'i.e.,  layout'},
     'iPhone.When': {'c': 'iPhone. When'},
+    'identifiedtime-varying': {'c': 'identified time-varying'},
+    'idealworld': {'c': 'ideal world'},
+    'condi-tions': {'c': 'conditions'},
+    'condition-ally': {'c': 'conditionally'},
+    'consump-tion': {'c': 'consumption'},
+    'format-ted': {'c': 'formatted'},
+    'identifica­tion': {'c': 'identification'},
+    'identifys': {'c': 'identifies'},
+    'illnass': {'c': 'illness'},
+    'illustated': {'c': 'illustrated'},
+    'imageclassification': {'c': 'image classification', 's': ['diva2:1142915', 'diva2:1135693']},
+    'image-to-Image': {'c': 'image-to-image'},
+    'implemen-tation': {'c': 'implementation'},
+    'implementa-tion': {'c': 'implementation'},
+    'implementingdata-entry': {'c': 'implementing data-entry'},
+    'implementions': {'c': 'implementations'},
+    'importanceof': {'c': 'importance of', 's': 'diva2:853249'},
+    'in-complete': {'c': 'incomplete', 's': 'diva2:1638177'},
+    'in-sight': {'c': 'insight', 's': 'diva2:1582903'},
+    'inbuilding': {'c': 'in-building'},
+    'indoorenvironment': {'c': 'indoor environment', 's': 'diva2:618087'},
+    'inflow-and': {'c': 'inflow and', 's': 'diva2:610062', 'n': 'the dash is unnecessary'},
+    'informationretrieval': {'c': 'information retrieval'},
+
+
     
 }
 
