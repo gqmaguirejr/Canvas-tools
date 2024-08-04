@@ -5076,4 +5076,7 @@ well_known_acronyms_list=[
     ['DRA', 'dielectric resonator antenna'],
     ['EMF', 'Electromagnetic Field'],
     ['EMF', 'electromotive force'],
+    ['RITS', 'Recurrent Imputation for Time Series'],
+    ['CDR', 'constructive design research'],
+    
 ]
