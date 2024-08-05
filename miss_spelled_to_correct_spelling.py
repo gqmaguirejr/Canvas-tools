@@ -4308,6 +4308,9 @@ miss_spelled_to_correct_spelling={
     'multiarmedbandit': {'c': 'multi-armed bandit'},
     'multicprocessors': {'c': 'multiprocessors'},
     'Mulilayer': {'c': 'Multilayer', 's': 'diva2:1352765', 'n': 'error in original'},
+    'multiprocessorsystems-on-chip': {'c': 'multiprocessor systems-on-chip', 's': 'diva2:618110', 'n': 'correct in original'},
+    'mutli-object': {'c': 'multi-object'},
+    'mutlithreading': {'c': 'multithreading'},
 
 }
 
