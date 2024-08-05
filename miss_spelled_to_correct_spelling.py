@@ -4311,7 +4311,26 @@ miss_spelled_to_correct_spelling={
     'multiprocessorsystems-on-chip': {'c': 'multiprocessor systems-on-chip', 's': 'diva2:618110', 'n': 'correct in original'},
     'mutli-object': {'c': 'multi-object'},
     'mutlithreading': {'c': 'multithreading'},
-
+    'nanocrystaline': {'c': 'nanocrystalline', 's': 'diva2:523691', 'n': 'error in original'},
+    'naphtha-lene': {'c': 'naphthalene'},
+    'nanostructrured': {'c': 'nanostructured'},
+    'ndnSIM': {'c': 'ndnSIMv2.1 simulator', 's': 'diva2:1039090'}, # 
+    'near-eld': {'c': 'near-field', 's': ['diva2:726393', 'diva2:1354488']},
+    'needn': {'c': "needn't"},
+    'networks’ability': {'c': "networks’ ability", 's': 'diva2:1635607'},
+    'non-correctclicks': {'c': 'non-correct clicks'},
+    'non-metalic': {'c': 'non-metallic'},
+    'non-negativefactorisation': {'c': 'non-negative factorisation'},
+    'non-operationaland': {'c': 'non-operational and'},
+    'non-standardfunctionality': {'c': 'non-standard functionality', 's': 'diva2:1295364'},
+    'non-steadystate': {'c': 'non-steady state', 's': 'diva2:606245'},
+    'non-thermalelectron': {'c': 'non-thermal electron', 's': 'diva2:1332086'},
+    'nonlinearcontrol': {'c': 'nonlinear control'},
+    'nonreactivetank': {'c': 'nonreactive tank'},
+    'notifications—may': {'c': 'notifications — may'},
+    'nowdays': {'c': 'nowadays'},
+    'Nowdays': {'c': 'Nowadays'},
+    
 }
 
 

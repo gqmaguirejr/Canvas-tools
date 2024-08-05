@@ -2733,7 +2733,7 @@ well_known_acronyms_list=[
     ['NEMA', 'National Electrical Manufacturers Association', {'s': ['diva2:604497'], 'n': 'US trade assocation'}],
     ['NEO', 'Near-Earth Object'],
     ['NEPP', 'North European Energy Perspectives Project', {'s': ['diva2:1249024']}],
-    ['NER', 'Named Entity Recog­nition'],
+    ['NER', 'Named Entity Recognition'],
     ['NF', 'Network Function'],
     ['NFC', 'Near Field Communication', {'s': ['diva2:862212']}],
     ['NFF', 'near field focus', {'s': ['diva2:1573363']}],
