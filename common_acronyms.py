@@ -5078,5 +5078,5 @@ well_known_acronyms_list=[
     ['EMF', 'electromotive force'],
     ['RITS', 'Recurrent Imputation for Time Series'],
     ['CDR', 'constructive design research'],
-    
+    ['LF2', 'Leap-Frog'], # integration method
 ]

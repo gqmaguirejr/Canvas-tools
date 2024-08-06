@@ -4330,7 +4330,21 @@ miss_spelled_to_correct_spelling={
     'notifications—may': {'c': 'notifications — may'},
     'nowdays': {'c': 'nowadays'},
     'Nowdays': {'c': 'Nowadays'},
+    'occured': {'c': 'occurred', 's': 'diva2:1714134', 'n': 'error in orginal'},
+    'occuring': {'c': 'occurring', 's': ['diva2:1703911', 'diva2:1702325', 'diva2:654223'], 'n': 'error in orginal'},
+    'ochestrator': {'c': 'orchestrator'},
+    'Ochestrator': {'c': 'Orchestrator'},
+    'ofmetal-dielectric': {'c': 'of metal-dielectric', 's': 'diva2:1453586'},
+    'ofnon-IID': {'c': 'of non-IID', 's': 'diva2:1499100'},
+    'open-and': {'c': 'open and', 's': 'diva2:1709125', 'n': 'The dash is really not needed'},
+    'out-door': {'c': 'outdoor', 's': 'diva2:1471509', 'n': 'error in original'},
+    'outperformstheexisting': {'c': 'outperforms the existing'},
+    'over-all': {'c': 'overall', 's': 'diva2:1230122'},
+    'over-come': {'c': 'overcome', 's': 'diva2:850230', 'n': 'many unnecessary hyphrens in abstract, due to hyphenation'},
+
     
+
+
 }
 
 
