@@ -5079,4 +5079,10 @@ well_known_acronyms_list=[
     ['RITS', 'Recurrent Imputation for Time Series'],
     ['CDR', 'constructive design research'],
     ['LF2', 'Leap-Frog'], # integration method
+    ['PBPs', 'preliminary breakdown pulses'],
+    ['PBPs', 'Penicillin-binding proteins'],
+    ['PBps', 'petabyte per second'],
+    ['Pbps', 'petabits per second'],
+    ['CMA', 'Cybersecurity Maturity Assessment'],
+    
 ]

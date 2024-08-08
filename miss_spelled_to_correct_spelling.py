@@ -4341,10 +4341,39 @@ miss_spelled_to_correct_spelling={
     'outperformstheexisting': {'c': 'outperforms the existing'},
     'over-all': {'c': 'overall', 's': 'diva2:1230122'},
     'over-come': {'c': 'overcome', 's': 'diva2:850230', 'n': 'many unnecessary hyphrens in abstract, due to hyphenation'},
-
+    'pallet&testing': {'c': 'pallet & testing'},
+    'pay\\-ment': {'c': 'payment'},
+    'peerto-peer': {'c': 'peer-to-peer', 's': 'diva2:1095622'},
+    'penetrationtesting': {'c': 'penetration testing'},
+    'perform,including': {'c': 'perform, including'},
+    'performance,currently': {'c': 'performance, currently'},
+    'permanentmagnet assisted synchronous reluctance motors': {'c': 'permanent magnet assisted synchronous reluctance motors', 's': 'diva2:1249540'},
+    'permitivity': {'c': 'permittivity', 's': 'diva2:1573363', 'n': 'error in original'},
+    'phosphorusconcentrations': {'c': 'phosphorus concentrations'},
+    'phyiscal': {'c': 'physical'},
+    'physicalplatform': {'c': 'physical platform'},
+    'pictureof': {'c': 'pictureof'},
+    'picturequality': {'c': 'picturequality', 's': 'diva2:1666107', 'n': 'correct in original'}, # UU thesis
+    'pipe-lined': {'c': 'pipelined', 's': 'diva2:766162'},
+    'pixelby-pixel': {'c': 'pixel-by-pixel', 's': 'diva2:1713353', 'n': 'hyphen at the end of a line'},
+    'pixelsbetween': {'c': 'pixels between'},
+    'placesthrough-hole': {'c': 'places through-hole'},
+    'playa': {'c': 'play a', 's': 'diva2:1548999'},
+    'polydimetylsiloxane': {'c': 'polydimethylsiloxane'},
+    'Polydimetylsiloxane': {'c': 'polydimethylsiloxane'},
+    'polyvalentpitch-shifting': {'c': 'polyvalent pitch-shifting', 's': 'diva2:1381398', 'n': 'correct in original'},
+    'positoning': {'c': 'positioning'},
+    'powerful_': {'c': 'powerful'},
+    'predictivecontrol': {'c': 'predictive control', 's': ['diva2:1130024', 'diva2:1354472', 'diva2:1140559']},
+    'preforms': {'c': 'performs', 's': 'diva2:1709493', 'n': 'error in orginal'},
+    'Practice’-goals': {'c': "Practice goals"},
+    'prespective': {'c': 'perspective', 's': 'diva2:654254'},
+    'pressrelease': {'c': 'press release'},
+    'privacy-preservingproperties': {'c': 'privacy-preservingproperties', 's': 'diva2:1823470'},
+    'privacypreserving': {'c': 'privacy preserving', 's': 'diva2:1835948'},
+    'projet': {'c': 'project', 's': 'diva2:654167', 'n': 'error in original'},
+    'projetct': {'c': 'project', 's': 'diva2:1247558', 'n': 'error in original'},
     
-
-
 }
 
 
