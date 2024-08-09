@@ -5084,5 +5084,6 @@ well_known_acronyms_list=[
     ['PBps', 'petabyte per second'],
     ['Pbps', 'petabits per second'],
     ['CMA', 'Cybersecurity Maturity Assessment'],
-    
+    ['rRNA', 'ribosomal RNA'],
+
 ]

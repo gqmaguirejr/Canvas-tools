@@ -4382,6 +4382,23 @@ miss_spelled_to_correct_spelling={
     'putdemands': {'c': 'put demands'},
     'proof-of-conceptusing': {'c': 'proof-of-concept using'},
     'proof-ofconceptregarding': {'c': 'proof-ofconcept regarding'},
+    'questions—can': {'c': 'questions — can', 's': 'diva2:1463843', 'n': 'dash start a parenthetical'},
+    'quantifing': {'c': 'quantifying'},
+    'quasi-dynamicmethodology': {'c': 'quasi-dynamic methodology'},
+    'questionnarie': {'c': 'questionnaire', 's': ['diva2:958222', 'diva2:820944'], 'n': 'In diva2:958222 the error is in the original'},
+    'quizbased': {'c': 'quiz-based'},
+    'prefechers': {'c': 'prefetchers'},
+    'preminent': {'c': 'preeminent', 's': 'diva2:570007', 'n': 'error in original'},
+    'randomizedrst-order': {'c': 'randomizedrst-order', 's': 'diva2:1142713', 'n': 'missing ligature'},
+    'randomnly': {'c': 'randomly'},
+    'ratingsusing': {'c': 'ratings using'},
+    'rawdata': {'c': 'rawdata', 's': 'diva2:806746'},
+    're-though': {'c': 're-thought', 's': 'diva2:1078389', 'n': 'error in original'},
+
+    
+    
+
+    
     
     
     
