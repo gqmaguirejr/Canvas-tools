@@ -4373,6 +4373,20 @@ miss_spelled_to_correct_spelling={
     'privacypreserving': {'c': 'privacy preserving', 's': 'diva2:1835948'},
     'projet': {'c': 'project', 's': 'diva2:654167', 'n': 'error in original'},
     'projetct': {'c': 'project', 's': 'diva2:1247558', 'n': 'error in original'},
+    'prompts—such': {'c': 'prompts — such', 's': 'diva2:1460022', 'n': 'dash starts a parenthetical'},
+    'notifications—may': {'c': 'notifications — may', 's': 'diva2:1460022', 'n': 'dash end a parenthetical'},
+    'protectedby': {'c': 'protected by'},
+    'publicnetwork': {'c': 'public network'},
+    'punctur-ing': {'c': 'puncturing'},
+    'purposes,such': {'c': 'purposes, such'},
+    'putdemands': {'c': 'put demands'},
+    'proof-of-conceptusing': {'c': 'proof-of-concept using'},
+    'proof-ofconceptregarding': {'c': 'proof-ofconcept regarding'},
+    
+    
+    
+    
+    
     
 }
 
