@@ -4394,18 +4394,33 @@ miss_spelled_to_correct_spelling={
     'ratingsusing': {'c': 'ratings using'},
     'rawdata': {'c': 'rawdata', 's': 'diva2:806746'},
     're-though': {'c': 're-thought', 's': 'diva2:1078389', 'n': 'error in original'},
+    'real- time systems': {'c': 'real-time systems'},
+    'real-time.This': {'c': 'real-time. This'},
+    'real-time-capability': {'c': 'real-time capability', 's': 'diva2:1067587', 'n': 'correct in original'},
+    'real-timedata': {'c': 'real-time data'},
+    'real-word': {'c': 'real-world', 's': ['diva2:1597929', 'diva2:1193593', 'diva2:1039132'], 'n': 'error in orginal'},
+    'realtime database': {'c' 'real-time database'},
+    'realtime linux': {'c': 'real-time linux', 's': 'diva2:868398', 'n': 'error in original'},
+    'realtime systems': {'c': 'real-time systems'},
+    'realtime': {'c': 'real-time'},
+    'recognition–on': {'c': 'recognition – on'},
+    'recogniton': {'c': 'recognition'},
+    'reflectsthe': {'c':     'reflects the'},
+    'refrences': {'c': 'references', 'S': 'diva2:1356610', 'n': 'error in original'},
+    'regressionOptimized': {'c': 'regression optimized'},
+    'regularinference': {'c': 'regular inference'},
+    'reinforce-ment': {'c': 'reinforcement'},
+    'rejectwater': {'c': 'reject water'},
+    'relatedsecond': {'c': 'related second'},
+    'remaing': {'c': 'remaining'}, # not sure where this came from
+    'representaton': {'c': 'representation', 's': 'diva2:467860', 'n': 'error in original'}, # UU
+    'reproducability': {'c': 'reproducibility', 's': ['diva2:1108935', 'diva2:1259247'], 'n': 'error in original'},
+    'required—and': {'c': 'required — and', 's': 'diva2:811238', 'n': 'dash for start of a parenthetical'},
+    'research-through': {'c': 'research-through-design', 's': 'diva2:823781', 'n': 'error in handling hyphen at the end of a line'},
+    'researchwork': {'c': 'research work'},
+    'pro-active': {'c': 'proactive', 'S': 'diva2:1129549'},
+    'publcations': {'c': 'publications'},
 
-    
-    
 
-    
-    
-    
-    
-    
-    
-    
 }
-
-
 
