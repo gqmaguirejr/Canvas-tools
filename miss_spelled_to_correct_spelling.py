@@ -4420,7 +4420,10 @@ miss_spelled_to_correct_spelling={
     'researchwork': {'c': 'research work'},
     'pro-active': {'c': 'proactive', 'S': 'diva2:1129549'},
     'publcations': {'c': 'publications'},
-
-
+    'Representaton': {'c': 'Representation'},
+    'proposesmartphone-based': {'c': 'propose smartphone-based'},
+    'researchthrough': {'c': 'research through'},
+    'round-triptimes': {'c': 'round-trip times', 's': 'diva2:1666107'}, # UU
+    
 }
 
