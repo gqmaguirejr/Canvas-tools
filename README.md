@@ -3176,6 +3176,28 @@ The element <code>&lt;h1 class="page-title"&gt;</code> will not have the languag
 ./language_tag_a_course.py 751 'en-US'
 ```
 
+## list_acounts_and_courses.py
+
+### Purpose
+To generate a spreasheet of account and course information (potentially those with a given school_code)
+
+### Input
+```bash
+./list_acounts_and_courses.py [school_code]
+```
+
+### Output
+A shreadshet with sheets "Accounts" and the name of the subaccount [if necessary truncated to 30 letters). If you specify a school code, such as EECS, you get a file: accounts-me-EECS.xlsx else accounts-me.xlsx
+
+### Note 
+The accounts are limited to those for which you have administrative access.
+
+### Example
+
+```bash
+ ./list_acounts_and_courses.py EECS
+
+```
 
 <!-- 
 

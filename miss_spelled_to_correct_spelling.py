@@ -4424,6 +4424,13 @@ miss_spelled_to_correct_spelling={
     'proposesmartphone-based': {'c': 'propose smartphone-based'},
     'researchthrough': {'c': 'research through'},
     'round-triptimes': {'c': 'round-trip times', 's': 'diva2:1666107'}, # UU
-    
+    'reach-ability': {'c': 'reachability'},
+    'safereinforcement learning': {'c': 'safe reinforcement learning'},
+    'safereinforcement': {'c': 'safe reinforcement'},
+    'safety-preservingcontrol': {'c': 'safety-preserving control', 's': 'diva2:1140173'},
+
+
 }
+
+
 
