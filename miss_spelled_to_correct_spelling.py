@@ -4428,8 +4428,10 @@ miss_spelled_to_correct_spelling={
     'safereinforcement learning': {'c': 'safe reinforcement learning'},
     'safereinforcement': {'c': 'safe reinforcement'},
     'safety-preservingcontrol': {'c': 'safety-preserving control', 's': 'diva2:1140173'},
-
-
+    'reconguration': {'c': 'reconfiguration', 's': 'diva2:1078389'},
+    'redish': {'c': 'reddish'},
+    'referencedistribution':  {'c': 'reference distribution'},
+    
 }
 
 
