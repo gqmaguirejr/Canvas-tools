@@ -4431,7 +4431,16 @@ miss_spelled_to_correct_spelling={
     'reconguration': {'c': 'reconfiguration', 's': 'diva2:1078389'},
     'redish': {'c': 'reddish'},
     'referencedistribution':  {'c': 'reference distribution'},
-    
+    'samplesexperiment': {'c': 'samples experiment'},
+    'reprsentation': {'c': 'representation', 's': 'diva2:171813'}, # UU
+    'convergence—where': {'c': 'convergence — where', 's': 'diva2:1881839', 'n': 'em dash stsrts parenthetical'},
+    'e­machine': {'c': 'e-machine', 's': 'diva2:1888360'},
+    'turn­on/off': {'c': 'turn-on/off', 's': 'diva2:1888360'},
+    'intertwined—can': {'c': 'intertwined—can', 's': 'diva2:1881839', 'n': 'dash starts parenthetical'},
+    'H2S': {'c': 'H<sub>2</sub>S', 's': 'diva2:1884899', 'n': 'correct in the original'},
+    'R2': {'c': 'R<sup>2</sup>', 's': 'diva2:1884899', 'n': 'correct in the original'},
+    'responsegenerator': {'C': 'response generator'},
+
 }
 
 

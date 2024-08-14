@@ -366,6 +366,8 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    '1,486,800,000',
+    '185,665.97',
     'swastika/penis', # diva2:1198914
     '9.515.8',
     'v4.2',
