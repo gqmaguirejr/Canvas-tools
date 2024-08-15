@@ -4440,7 +4440,12 @@ miss_spelled_to_correct_spelling={
     'H2S': {'c': 'H<sub>2</sub>S', 's': 'diva2:1884899', 'n': 'correct in the original'},
     'R2': {'c': 'R<sup>2</sup>', 's': 'diva2:1884899', 'n': 'correct in the original'},
     'responsegenerator': {'C': 'response generator'},
-
+    'scalablepassive': {'c': 'scalable passive'},
+    'space-quali_ed': {'c': 'space-qualified', 's': 'diva2:1524918'},
+    'self-learningagents': {'c': 'self-learning agents', 's': 'diva2:1548984'},
+    'self-organizingmaps': {'c': 'self-organizing maps'},
+    'sustain-able': {'c': 'sustainable'},
+    
 }
 
 
