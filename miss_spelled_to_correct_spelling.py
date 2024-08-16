@@ -1971,8 +1971,6 @@ miss_spelled_to_correct_spelling={
     "T˙": { 'c': '.', 's': 'diva2:470652', 'n': 'the period at the end of the sentence has appeared above the "T" at the start of the next sentence - error in original abstract'}, 
     'UNTS': { 'c': 'UMTS', 's': 'diva2:859579', 'n': 'error in original abstract'},
     'V1080': { 'c': '1080', 's': 'diva2:784553', 'n': 'The V is from the page number!'},
-    'VPL': 'visual programming language', #  diva2:1794924
-    'VPLMN': 'Visited Public Land Mobile Network', #  diva2:1068217
     'WCDAM': { 'c': 'WCDMA', 's': 'diva2:635168', 'n': 'error in original abstract'},
     '̊C': { 'c': '˚C', 's': 'diva2:862315'},
     '́E': { 'c': 'CIGRÉ', 's': '# diva2:1548999'},
@@ -4369,6 +4367,7 @@ miss_spelled_to_correct_spelling={
     'Practice’-goals': {'c': "Practice goals"},
     'prespective': {'c': 'perspective', 's': 'diva2:654254'},
     'pressrelease': {'c': 'press release'},
+   
     'privacy-preservingproperties': {'c': 'privacy-preservingproperties', 's': 'diva2:1823470'},
     'privacypreserving': {'c': 'privacy preserving', 's': 'diva2:1835948'},
     'projet': {'c': 'project', 's': 'diva2:654167', 'n': 'error in original'},
@@ -4399,7 +4398,7 @@ miss_spelled_to_correct_spelling={
     'real-time-capability': {'c': 'real-time capability', 's': 'diva2:1067587', 'n': 'correct in original'},
     'real-timedata': {'c': 'real-time data'},
     'real-word': {'c': 'real-world', 's': ['diva2:1597929', 'diva2:1193593', 'diva2:1039132'], 'n': 'error in orginal'},
-    'realtime database': {'c' 'real-time database'},
+    'realtime database': {'c': 'real-time database'},
     'realtime linux': {'c': 'real-time linux', 's': 'diva2:868398', 'n': 'error in original'},
     'realtime systems': {'c': 'real-time systems'},
     'realtime': {'c': 'real-time'},
@@ -4445,8 +4444,32 @@ miss_spelled_to_correct_spelling={
     'self-learningagents': {'c': 'self-learning agents', 's': 'diva2:1548984'},
     'self-organizingmaps': {'c': 'self-organizing maps'},
     'sustain-able': {'c': 'sustainable'},
-    
+    'seriallink': {'c': 'serial link'},
+    'seriallinks': {'c': 'serial links'},
+    'short-and': {'c': 'short- and', 's': 'diva2:1214405', 'n': 'part of short- and long-term'},
+    'signal­': {'c': 'signal ­', 's': 'diva2:1698116', 'n': 'part of signal- and message-level'},
+    'single-viewDI': {'c': 'single-view DI', 's': 'diva2:1470639', 'n': 'corect in original'},
+    'singlestain': {'c': 'single-stain', 's': 'diva2:1871789', 'n': 'correct in original'},
+    'singlesided linear induction motor': {'c': 'single-sided linear induction motor', 's': 'diva2:874367', 'n': 'correct in original'},
+    'singleoptimization': {'c':'single optimization'},
+    'the- sis': {'c': 'thesis', 's': 'diva2:1458904, diva2:1499098'},
+    'analy- sis' : {'c': 'analysis', 's': 'diva2:1214412'},
+    'sltJJatlon': {'c': 'situation', 's': 'diva2:1632786'},  # UU
+    'socie-ties': {'c': 'societies'},
+    "social´sschedule": {'c': "social´s schedule"},
+    'solvingall-in-one': {'c': 'solving all-in-one'},
+    'solutionsfor': {'c': 'solutions for', 's': 'diva2:713473'},
+    'solv­ing': {'c': 'solving', 's': ['diva2:1540101', 'diva2:1705245', 'diva2:1708151', 'diva2:1711717', 'diva2:1763096', 'diva2:1773422', 'diva2:1588227', 'diva2:1588227']},
+    'sum­marization': {'c': 'summarization'},
+    'supervisedlearning': {'c': 'supervised learning'},
+    'surveillanceapplications': {'c': 'surveillance applications'},
+    'start-upsoperating': {'c': 'start-ups operating', 's': 'diva2:742569'},
+    'state-actionpairs': {'c': 'state-action pairs', 's': 'diva2:1140768'},
+    'star— social network': {'c': 'star — social network', 's': 'diva2:512878'},
 }
 
-
-
+#'shigher': {'B2': 'Noun'},  # Word meaning unclear, might require more context
+#'showt': {'B2': 'Noun'},  # Word meaning unclear, might require more context
+#'socially-held': {'C2': 'Noun'},
+#"social´s schedule": {'C1': 'Noun Phrase'},
+#'streami': {'A1': 'Noun'},

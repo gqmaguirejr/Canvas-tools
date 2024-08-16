@@ -5107,4 +5107,9 @@ well_known_acronyms_list=[
     ['SMNN', 'shallow multilayer neural network', {'s': 'diva2:1884881'}],
     ['XGB', 'Extreme Gradient Boost', {'s': 'diva2:1884902'}],
     ['MPLS', 'Multiprotocol Label Switching', {'cefr': 'C2'}],
+    ['smFRET', 'single-molecule fluorescence resonance energy transfer', {'s': 'diva2:1704155', 'n': 'UU'}],
+    ['SFPSP', 'Solo First Pair Second Programming', {'s': 'diva2:1584585', 'n': 'UU'}],
+    ['VPL', 'visual programming language', {'s': 'diva2:1794924'}],
+    ['VPLMN', 'Visited Public Land Mobile Network', {'s': 'diva2:1068217'}],
+    
 ]
