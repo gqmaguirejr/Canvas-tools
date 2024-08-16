@@ -4460,12 +4460,25 @@ miss_spelled_to_correct_spelling={
     'solvingall-in-one': {'c': 'solving all-in-one'},
     'solutionsfor': {'c': 'solutions for', 's': 'diva2:713473'},
     'solv­ing': {'c': 'solving', 's': ['diva2:1540101', 'diva2:1705245', 'diva2:1708151', 'diva2:1711717', 'diva2:1763096', 'diva2:1773422', 'diva2:1588227', 'diva2:1588227']},
+    'strategies:improving': {'c': 'strategies: improving'},
     'sum­marization': {'c': 'summarization'},
     'supervisedlearning': {'c': 'supervised learning'},
     'surveillanceapplications': {'c': 'surveillance applications'},
     'start-upsoperating': {'c': 'start-ups operating', 's': 'diva2:742569'},
     'state-actionpairs': {'c': 'state-action pairs', 's': 'diva2:1140768'},
     'star— social network': {'c': 'star — social network', 's': 'diva2:512878'},
+    'covertraffic': {'c': 'covert traffic'},
+    'cloudbased': {'c': 'cloud based'},
+    'touse': {'c': 'to use'},
+    'sub-ghz': {'c': 'sub-GHz'},
+    'sub-meV': {'c': 'sub-MeV'},
+    'sub-optimalMIMO': {'c': 'sub-optimal MIMO', 's': 'diva2:1479310'},
+    'sub-thz': {'c': 'sub-THz'},
+    'suppliment': {'c': 'supplement'},
+    'syncrhonization': {'c': 'synchronization'},
+    'syncrhonization': {'C2': 'Noun'},
+    'syncronize': {'c': 'synchronize'},
+
 }
 
 #'shigher': {'B2': 'Noun'},  # Word meaning unclear, might require more context
@@ -4473,3 +4486,4 @@ miss_spelled_to_correct_spelling={
 #'socially-held': {'C2': 'Noun'},
 #"social´s schedule": {'C1': 'Noun Phrase'},
 #'streami': {'A1': 'Noun'},
+#    'system—a': {'B2': 'Noun Phrase'},  # Assuming typo, could be 'system as a'
