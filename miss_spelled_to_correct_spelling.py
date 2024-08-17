@@ -4453,6 +4453,7 @@ miss_spelled_to_correct_spelling={
     'singlesided linear induction motor': {'c': 'single-sided linear induction motor', 's': 'diva2:874367', 'n': 'correct in original'},
     'singleoptimization': {'c':'single optimization'},
     'the- sis': {'c': 'thesis', 's': 'diva2:1458904, diva2:1499098'},
+    'the-sis': {'c': 'thesis', 's': 'diva2:1458904, diva2:1499098'},
     'analy- sis' : {'c': 'analysis', 's': 'diva2:1214412'},
     'sltJJatlon': {'c': 'situation', 's': 'diva2:1632786'},  # UU
     'socie-ties': {'c': 'societies'},
@@ -4478,12 +4479,28 @@ miss_spelled_to_correct_spelling={
     'syncrhonization': {'c': 'synchronization'},
     'syncrhonization': {'C2': 'Noun'},
     'syncronize': {'c': 'synchronize'},
+    'throughcluster': {'c': 'through cluster', 's': 'diva2:753928', 'n': 'the space is missing in the title'},
+    'testinga': {'c': 'testing a', 's': 'diva2:1586062'},
+    "social´sschedule": {'c': "social´s schedule", 's': 'diva2:677075', 'n': 'space missing in title'},
+    'trans-mission': {'c': 'transmission'},
+    'transitdata': {'c': 'transit data'},
+    'technol-ogy': {'c': 'technology'},
+    'technology_': {'c':    'technology _'},
+    'techo-economic': {'c': 'techno-economic'},
+    'telepresense': {'c': 'telepresence'},
+    'superscipt': {'c': 'superscript'},
+    'three-Hop': {'c': 'three-hop'},
+    'trade-os': {'c': 'trade-offs'},
+    'tranformation': {'c': 'transformation'},
+    'tranformed': {'c': 'transformed'},
+    'tweetStream': {'c': 'tweet Stream'},
 
 }
 
 #'shigher': {'B2': 'Noun'},  # Word meaning unclear, might require more context
 #'showt': {'B2': 'Noun'},  # Word meaning unclear, might require more context
 #'socially-held': {'C2': 'Noun'},
-#"social´s schedule": {'C1': 'Noun Phrase'},
+
 #'streami': {'A1': 'Noun'},
 #    'system—a': {'B2': 'Noun Phrase'},  # Assuming typo, could be 'system as a'
+#    'termate': {'A2': 'Noun'},

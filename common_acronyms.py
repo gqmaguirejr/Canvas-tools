@@ -5111,5 +5111,7 @@ well_known_acronyms_list=[
     ['SFPSP', 'Solo First Pair Second Programming', {'s': 'diva2:1584585', 'n': 'UU'}],
     ['VPL', 'visual programming language', {'s': 'diva2:1794924'}],
     ['VPLMN', 'Visited Public Land Mobile Network', {'s': 'diva2:1068217'}],
+    ['Tflite', 'TensorFlow Lite'],
+    ['TOR', 'Top Of Rack'],
     
 ]

@@ -9987,7 +9987,7 @@ merged_words={
     'identifying erroneous',
     'identifying individual', # diva2:1145498
     'identifying technical',
-    'identifys takeholders', # diva2:1148551
+    'identify stakeholders', # diva2:1148551
     'if a',
     'if problem',
     'if the',
