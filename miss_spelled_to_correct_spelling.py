@@ -4522,6 +4522,15 @@ miss_spelled_to_correct_spelling={
     'vi-sion': {'c': 'vision'},
     'visulization': {'c': 'visualization'},
     'vulnerabilty': {'c': 'vulnerability'},
+    'wavequide': {'c': 'waveguide'},
+    'webuser-interface': {'c': 'web user-interface', 's': 'diva2:618745'},
+    'words→scramlbing': {'c':'words → scrambling', 's': 'diva2:1232315', 'n': 'represents a set of operations - note misspelling of scrambling'},
+    'sentences→filtering': {'c': 'sentences → filtering', 's': 'diva2:1232315', 'n': 'represents a set of operations'},
+    'Worst-case': {'c': 'worst-case'},
+    'WorstCase': {'c': 'worst-case'},
+    'worstcase': {'c': 'worst-case'},
+
+
 }
 
 #'shigher': {'B2': 'Noun'},  # Word meaning unclear, might require more context
@@ -4536,4 +4545,6 @@ miss_spelled_to_correct_spelling={
 #    'varial': {'C2': 'Noun'},
 #    'vehicula': {'B1': 'Noun'},
 #     'vi-sion': {'B2': 'Proper Noun'}, # is this just a hyphenated version of "vision"?
+#     'worki': {'XX': 'Incomplete Word'},
 
+#     'weere': {'B2': 'Noun'},  # Assuming you meant 'were' but can't determine part of speech without context
