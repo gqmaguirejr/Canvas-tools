@@ -4518,7 +4518,10 @@ miss_spelled_to_correct_spelling={
     'userful': {'c': 'useful'},
     'ue-gas': {'c': 'flue-gas'},
     'ultra-dens': {'c': 'ultra-dens'},
-
+    'vendor-independencewithin': {'c': 'vendor-independence within', 's': 'diva2:1331871'},
+    'vi-sion': {'c': 'vision'},
+    'visulization': {'c': 'visualization'},
+    'vulnerabilty': {'c': 'vulnerability'},
 }
 
 #'shigher': {'B2': 'Noun'},  # Word meaning unclear, might require more context
@@ -4530,3 +4533,7 @@ miss_spelled_to_correct_spelling={
 #    'termate': {'A2': 'Noun'},
 #'ultra-dens': {'B2': 'Adjective'},
 #     'utomation': {'A1': 'Noun'}, # likely "automation"
+#    'varial': {'C2': 'Noun'},
+#    'vehicula': {'B1': 'Noun'},
+#     'vi-sion': {'B2': 'Proper Noun'}, # is this just a hyphenated version of "vision"?
+
