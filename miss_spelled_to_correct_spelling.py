@@ -4494,6 +4494,30 @@ miss_spelled_to_correct_spelling={
     'tranformation': {'c': 'transformation'},
     'tranformed': {'c': 'transformed'},
     'tweetStream': {'c': 'tweet Stream'},
+    'vulnera-bilities': {'c': 'vulnerabilities'},
+    'withe': {'c': 'with e', 's': 'diva2:1368334', 'n': 'missing space before "e.g."'},
+    'workseeks': {'c': 'work seeks'},
+    'xrays': {'c': 'x-rays'},
+    'ydimensions': {'c': 'y-dimensions',  's': 'diva2:1847107', 'n': 'hyphen at the end of a line, part of "x- and y-dimensions"'},
+    'well-bywellmodel': {'c': 'well-by-well model'},
+    'voxelbased': {'c': 'voxel-based'},
+    'voxelfield': {'c': 'voxel field', 's': 'diva2:1216324'},
+    'super- vised': {'c': 'supervised', 's': 'diva2:927736'},
+    'under-utilizationLearnability': {'c': 'under-utilization Learnability'},
+    'underSpecial': {'c': 'under Special'},
+    'underuncertainty': {'c': 'under uncertainty'},
+    'unintelligable': {'c': 'unintelligible'},
+    'unlincensed': {'c': 'unlicensed', 's': 'diva2:570007', 'n': 'error in original'},
+    'upwardself-initiated': {'c': 'upward self-initiated', 's': 'diva2:1556731'},
+    'usedself-calibration': {'c': 'used self-calibration', 's': 'diva2:1453588'},
+    'usability-testsessions': {'c': 'usability-test sessions'},
+    'use-end': {'c': "use-end's", 's': 'diva2:470183', 'n': 'part of "use-end’s channel condition"'},
+    'useability': {'c': 'usability', 's': 'diva2:654254', 'n': 'error in original'},
+    'user-cantered': {'c': 'user-centered', 's': 'diva2:654316', 'n': 'error in original'},
+    'user-labelleddata': {'c': 'user-labelled data', 's': 'diva2:1793576'},
+    'userful': {'c': 'useful'},
+    'ue-gas': {'c': 'flue-gas'},
+    'ultra-dens': {'c': 'ultra-dens'},
 
 }
 
@@ -4504,3 +4528,5 @@ miss_spelled_to_correct_spelling={
 #'streami': {'A1': 'Noun'},
 #    'system—a': {'B2': 'Noun Phrase'},  # Assuming typo, could be 'system as a'
 #    'termate': {'A2': 'Noun'},
+#'ultra-dens': {'B2': 'Adjective'},
+#     'utomation': {'A1': 'Noun'}, # likely "automation"
