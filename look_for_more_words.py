@@ -366,6 +366,29 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    '-',
+    '--',
+    '&amp;',
+    '&lt;',
+    '[.]',
+    "\'",
+    '<7p>',
+    'IEC--1',
+    'IEC-60255-187-1',
+    'IEC-61508',
+    'ISO26262',
+    '[BIT16]',
+    '[mac71]',
+    'v1',
+    'v1080',
+    '0-90',
+    '2..6',
+    '2..69',
+    '24:5',
+    '4{5',
+    '6m/s2',
+    '89.85',
+    '8×8',
     '1,486,800,000',
     '185,665.97',
     'swastika/penis', # diva2:1198914
@@ -1308,6 +1331,7 @@ def main():
         fall_back_words.add(w.lower())
     #
     added_to_unique_words_count=0
+    list_of_added_words=[]
     # remove spaces and hypens in merged words to compute fall back words to match unique_words against
     for w in diva_merged_words.merged_words:
         wx=w.replace(' ', '')
@@ -1330,6 +1354,7 @@ def main():
                         unique_words[wsw]= unique_words[wsw] + usage_cnt
                 else:
                     unique_words[wsw]=1
+                    list_of_added_words.append(wsw)
                     if Verbose_Flag:
                         print(f'adding {wsw=}')
                     if not options.keywords:
@@ -1364,12 +1389,115 @@ def main():
                         unique_words[wsw]= unique_words[wsw] + usage_cnt
                 else:
                     unique_words[wsw]=1
+                    list_of_added_words.append(wsw)
                     if not options.keywords:
                         added_to_unique_words_count=added_to_unique_words_count + usage_cnt
                     if Verbose_Flag:
                         print(f'adding word: {wsw=}')
+
     #
     print(f'{added_to_unique_words_count:>{Numeric_field_width}} added to the unique words based on those that occurred in miss_spelled_to_correct_spelling')
+    
+    add_words_file_name=f'{directory_prefix}extra_added_words.json'
+    real_additional_words=[]
+    for w in list_of_added_words:
+        if len(w) >= 2:
+            if w[0] == '-':
+                w=w[1:]
+        if is_number(w):
+            continue
+        if w.endswith(','):
+            w=w[:-1]
+        if w.endswith('?'):
+            w=w[:-1]
+        if w.startswith('•'):
+            w=w[1:]
+        if w.startswith('”') or w.startswith('“'):
+            w=w[1:]
+        if w.startswith("'"):
+            w=w[1:]
+        if w.startswith("{"):
+            w=w[1:]
+        if w.startswith("‘"):
+            w=w[1:]
+
+        if w in words_to_ignore:
+            continue
+        if w in well_known_acronyms:
+            continue
+        if w in common_english.abbreviations_ending_in_period:
+            continue
+        if w in common_english.common_English_words:
+            continue
+        if w in common_english.names_of_persons:
+            continue
+        if w in common_english.abbreviations_ending_in_period:
+            continue
+        if w in common_english.thousand_most_common_words_in_English:
+            continue
+        if w in common_english.chemical_names_and_formulas:
+            continue
+        if w in common_english.common_urls:
+            continue
+        if w in common_english.place_names:
+            continue
+        if w in common_english.company_and_product_names:
+            continue
+        if w in common_english.common_programming_languages:
+            continue
+        if w in common_english.common_units:
+            continue
+    
+        if w in common_swedish.common_swedish_words:
+            continue
+        if w in common_swedish.common_swedish_technical_words:
+            continue
+        if w in words_kelly_swedish:
+            continue
+
+        if w.endswith('.'):
+            w=w[:-1]
+        if w.endswith(':'):
+            w=w[:-1]
+        if w in well_known_acronyms:
+            continue
+        if w in common_english.abbreviations_ending_in_period:
+            continue
+        if w in common_english.common_English_words:
+            continue
+        if w in common_english.names_of_persons:
+            continue
+        if w in common_english.abbreviations_ending_in_period:
+            continue
+        if w in common_english.thousand_most_common_words_in_English:
+            continue
+        if w in common_english.chemical_names_and_formulas:
+            continue
+        if w in common_english.common_urls:
+            continue
+        if w in common_english.place_names:
+            continue
+        if w in common_english.company_and_product_names:
+            continue
+        if w in common_english.common_programming_languages:
+            continue
+        if w in common_english.common_units:
+            continue
+
+        if w.istitle():
+            w=w.lower()
+        if w in common_english.common_English_words:
+            continue
+        if w in common_swedish.common_swedish_words:
+            continue
+        if w in common_swedish.common_swedish_technical_words:
+            continue
+
+        real_additional_words.append(w)
+
+    with open(add_words_file_name, 'w') as f:
+        f.write(json.dumps(real_additional_words, ensure_ascii=False))
+        print(f"finished writing {add_words_file_name} with {len(real_additional_words)} words")
     #
     if options.keywords: # extract acronym definitions from keyword
         words_to_remove=set()
