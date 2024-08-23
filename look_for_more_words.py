@@ -366,6 +366,9 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'H<sub>∞</sub>',
+    'style=\'text-decoration:overline\'>2</span>1',
+    "style=\"text-decoration:overline\">2</span>1",
     '-',
     '--',
     '&amp;',
@@ -387,6 +390,7 @@ words_to_ignore=[
     '24:5',
     '4{5',
     '6m/s2',
+    '6m/s2.',
     '89.85',
     '8×8',
     '1,486,800,000',
@@ -1401,25 +1405,37 @@ def main():
     add_words_file_name=f'{directory_prefix}extra_added_words.json'
     real_additional_words=[]
     for w in list_of_added_words:
+        if w in words_to_ignore:
+            continue
+        # ignore known misspelled words
+        if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
+            continue
         if len(w) >= 2:
             if w[0] == '-':
                 w=w[1:]
         if is_number(w):
             continue
-        if w.endswith(','):
-            w=w[:-1]
-        if w.endswith('?'):
-            w=w[:-1]
-        if w.startswith('•'):
-            w=w[1:]
-        if w.startswith('”') or w.startswith('“'):
-            w=w[1:]
-        if w.startswith("'"):
-            w=w[1:]
-        if w.startswith("{"):
-            w=w[1:]
-        if w.startswith("‘"):
-            w=w[1:]
+
+        # remove matching parens
+        if True:
+            if w.startswith('(') and w.endswith(")"):
+                w=w[1:-1]
+
+            if w.endswith("..."):
+                w=w[:-3]
+            if w.endswith(',') or w.endswith(';') or  w.endswith('-') or w.endswith('?') or w.endswith('“'):
+                w=w[:-1]
+            if w.startswith("``",):
+                w=w[2:]
+            if w.endswith("''"):
+                w=w[:-2]
+            if w.startswith('•') or w.startswith('.') or w.startswith('”') or w.startswith('“') or\
+               w.startswith("'") or w.startswith("{") or w.startswith("‘") or w.startswith("‚") or\
+               w.startswith("’") or w.startswith("%") or w.startswith(":"):
+                w=w[1:]
+
+        if len(w) == 0:
+            continue
 
         if w in words_to_ignore:
             continue
@@ -1463,6 +1479,8 @@ def main():
             continue
         if w in common_english.abbreviations_ending_in_period:
             continue
+        if w in common_english.thousand_most_common_words_in_English:
+            continue
         if w in common_english.common_English_words:
             continue
         if w in common_english.names_of_persons:
@@ -1483,15 +1501,29 @@ def main():
             continue
         if w in common_english.common_units:
             continue
-
-        if w.istitle():
-            w=w.lower()
-        if w in common_english.common_English_words:
-            continue
         if w in common_swedish.common_swedish_words:
             continue
         if w in common_swedish.common_swedish_technical_words:
             continue
+        if w in common_english.common_german_words:
+            continue
+        if w in words_kelly_swedish:
+            continue
+
+        if w.istitle():
+            wl=w.lower()
+            if wl in common_english.common_English_words:
+                continue
+            if wl in common_swedish.common_swedish_words:
+                continue
+            if wl in common_swedish.common_swedish_technical_words:
+                continue
+            if wl in common_swedish.common_swedish_words:
+                continue
+            if wl in common_swedish.common_swedish_technical_words:
+                continue
+            if wl in words_kelly_swedish:
+                continue
 
         real_additional_words.append(w)
 
