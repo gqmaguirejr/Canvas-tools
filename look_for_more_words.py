@@ -366,6 +366,18 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'IEC',
+    'IEC--1',
+    'IEC-60255-187-1',
+    'IEC-60287',
+    'IEC-61508',
+    'IEC-63442',
+    'IEC61499,',
+    'KPIECE',
+    "cm􀀀3",
+    '​', # 0x200b
+    '‌', # 0x200c
+    'nm/4',
     'H<sub>∞</sub>',
     'style=\'text-decoration:overline\'>2</span>1',
     "style=\"text-decoration:overline\">2</span>1",
@@ -1410,6 +1422,10 @@ def main():
         # ignore known misspelled words
         if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
             continue
+        # ignore abbreviations ending in period
+        if w in common_english.abbreviations_ending_in_period:
+            continue
+
         if len(w) >= 2:
             if w[0] == '-':
                 w=w[1:]
@@ -1423,16 +1439,28 @@ def main():
 
             if w.endswith("..."):
                 w=w[:-3]
-            if w.endswith(',') or w.endswith(';') or  w.endswith('-') or w.endswith('?') or w.endswith('“'):
+
+
+            if w.endswith(',') or w.endswith(';') or  w.endswith('-') or\
+               w.endswith('?') or w.endswith('!') or w.endswith('.') or w.endswith(':'):
                 w=w[:-1]
-            if w.startswith("``",):
+            if  w.endswith('“') or w.endswith("’") or w.endswith('”'):
+                w=w[:-1]
+            if w.startswith("``"):
                 w=w[2:]
+            if w.startswith("\\"):
+                w=w[1:]
             if w.endswith("''"):
                 w=w[:-2]
             if w.startswith('•') or w.startswith('.') or w.startswith('”') or w.startswith('“') or\
                w.startswith("'") or w.startswith("{") or w.startswith("‘") or w.startswith("‚") or\
                w.startswith("’") or w.startswith("%") or w.startswith(":"):
                 w=w[1:]
+            # repeat these for once that were inside quotation marks
+            if w.endswith(',') or w.endswith(';') or  w.endswith('-') or\
+               w.endswith('?') or w.endswith('!') or w.endswith('.') or w.endswith(':'):
+                w=w[:-1]
+
 
         if len(w) == 0:
             continue
@@ -1440,8 +1468,6 @@ def main():
         if w in words_to_ignore:
             continue
         if w in well_known_acronyms:
-            continue
-        if w in common_english.abbreviations_ending_in_period:
             continue
         if w in common_english.common_English_words:
             continue
@@ -1462,6 +1488,8 @@ def main():
         if w in common_english.common_programming_languages:
             continue
         if w in common_english.common_units:
+            continue
+        if w in AVL_words_with_CEFR.avl_words:
             continue
     
         if w in common_swedish.common_swedish_words:
@@ -1471,10 +1499,6 @@ def main():
         if w in words_kelly_swedish:
             continue
 
-        if w.endswith('.'):
-            w=w[:-1]
-        if w.endswith(':'):
-            w=w[:-1]
         if w in well_known_acronyms:
             continue
         if w in common_english.abbreviations_ending_in_period:
@@ -1487,8 +1511,6 @@ def main():
             continue
         if w in common_english.abbreviations_ending_in_period:
             continue
-        if w in common_english.thousand_most_common_words_in_English:
-            continue
         if w in common_english.chemical_names_and_formulas:
             continue
         if w in common_english.common_urls:
@@ -1500,6 +1522,8 @@ def main():
         if w in common_english.common_programming_languages:
             continue
         if w in common_english.common_units:
+            continue
+        if w in AVL_words_with_CEFR.avl_words:
             continue
         if w in common_swedish.common_swedish_words:
             continue
@@ -1514,9 +1538,7 @@ def main():
             wl=w.lower()
             if wl in common_english.common_English_words:
                 continue
-            if wl in common_swedish.common_swedish_words:
-                continue
-            if wl in common_swedish.common_swedish_technical_words:
+            if wl in AVL_words_with_CEFR.avl_words:
                 continue
             if wl in common_swedish.common_swedish_words:
                 continue
@@ -1525,6 +1547,13 @@ def main():
             if wl in words_kelly_swedish:
                 continue
 
+        if w in miss_spelled_to_correct_spelling.miss_spelled_to_correct_spelling:
+            continue
+
+        # some last trash to remove
+        if w in ['Tr', 'e.g', "dumb'", 'ss', "cost'cost'", 's.k', 'H', '´', 'A∗', 'T', 'Q', 'al']:
+            continue
+        
         real_additional_words.append(w)
 
     with open(add_words_file_name, 'w') as f:

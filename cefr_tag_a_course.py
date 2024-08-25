@@ -1734,8 +1734,8 @@ abbreviation_levels = {
     'Nov.': {'cefr': 'A2', 'lang': 'en', 'note': 'November'},
     'Dec.': {'cefr': 'A2', 'lang': 'en', 'note': 'December'},
 
-    't.ex./t.ex': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
-    't.ex./t.ex': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
+    't.ex.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
+    't.ex': {'cefr': 'A2', 'lang': 'sv', 'note': 'Till exempel'},
     's.k.': {'cefr': 'B1', 'lang': 'sv', 'note': 'Så kallad'},   #  "so-called"
     'p.g.a.': {'cefr': 'A2', 'lang': 'sv', 'note': 'På grund av'},  #  "due to" or "because of"
     'o.k.s.': {'cefr': 'A2', 'lang': 'sv', 'note': 'Och liknande'},  #  "and the like"
