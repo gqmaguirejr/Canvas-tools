@@ -565,6 +565,10 @@ merged_words={
     'years, numerous',
     'simple blobdetector',
     'AC voltage',
+    'DC voltage',
+    'Protein Purification',
+    'Protein Structure',
+    "Miniature Circuit Breakers",
 
 }
     

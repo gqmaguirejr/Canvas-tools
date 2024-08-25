@@ -26,5 +26,14 @@ miss_spelled_to_correct_spelling={
     "􏰀 chemical modification􏰀": {'c': "chemical modification"},
     "work enviroment": {'c': "work environment"},
     "working enviroment": {'c': "working environment"},
+    'database managment system': {'c': 'database management system'},
+    'Edifact': {'c': 'EDIFACT', 'n': 'an acronym'},
+    'En- semble LSTM': {'c': 'Ensemble LSTM'},
+    'Swedish Institute for  Standards': {'c': 'Swedish Institute for Standards'},
+    'Swedish Institute of Standards': {'Swedish Institute for Standards'},
+    'machine learning personal- ization': {'c':'machine learning personal ization'},
+    'masspectrometry': {'c': 'mass spectrometry', 's': 'diva2:1455012', 'n': 'no full text'},
+    'wheatstonebridge': {'c': 'Wheatstone bridge'},
+    "ooyala iq": {'c': "Ooyala IQ"},
 
 }
