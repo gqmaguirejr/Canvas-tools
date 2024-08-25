@@ -178,5 +178,5 @@ well_known_acronyms_list=[
     ['dbt', 'Data Build Tool'],
     ['mAbs','Monoclonal Antibodies'],
     ['mMSCs', 'mouse mesenchymal stem cells', {'s': 'diva2:1266796'}],
-
+    ['GDPR', 'General Data Protection Regulation'],
 ]

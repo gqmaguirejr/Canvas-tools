@@ -35,5 +35,12 @@ miss_spelled_to_correct_spelling={
     'masspectrometry': {'c': 'mass spectrometry', 's': 'diva2:1455012', 'n': 'no full text'},
     'wheatstonebridge': {'c': 'Wheatstone bridge'},
     "ooyala iq": {'c': "Ooyala IQ"},
+    'temperature profiles': {'c': 'temperature profiles'},
+    'textbf{0.765': {'c': '\textbf{0.765}'},
+    'textbf{0.867': {'c': '\textbf{0.867}'},
+    'textbf{0.940': {'c': '\textbf{0.940}'},
+    'genera-tion': {'c': 'generation'},
+    'termooxidative': {'c': 'thermooxidative', 's': 'diva2:745531', 'n': 'no full text'},
+    'timeresoluted': {'c': 'time resolved', 's': 'diva2:743504', 'n': 'no full text'},
 
 }

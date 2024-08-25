@@ -44326,6 +44326,36 @@ common_English_words={
     'note accuracy': {'B2': 'Noun Phrase'},
     'notified body': {'B2': 'Noun Phrase'},
     'music theory': {'B2': 'Noun Phrase'},
+    'bromodeoxyuridine': {'C1': 'Noun'},
+    'fluorescein-Di-b-D-galactopyranoside': {'C2': 'Noun'},
+    'Fluorescein-Di-b-D-Galactopyranoside': {'C2': 'Noun'},
+    'Health-Toolbox': {'B2': 'Noun'},
+    'ICA-based': {'C1': 'Adjective (compound)'},
+    'Laccases': {'C1': 'Noun (plural)'}, # type of enzyme.
+    'melamine-urea-formaldehyde': {'B2': 'Noun'},
+    'microneedles': {'B2': 'Noun (plural)'},
+    'O2m': {'C1': 'Noun, Abbreviation'}, # This is likely an abbreviation for a specific term or concept.
+    'pretreated': {'B2': 'Adjective, Verb (past tense), Verb (past participle)'},
+    'TMAs': {'C1': 'Noun (plural), Abbreviation'},
+    'aeruginosa': {'C1': 'Noun'}, # species of bacteria.
+    'cofetal': {'C1': 'Adjective'},
+    'dibutyl': {'B2': 'Adjective'},
+    'endolysins': {'C1': 'Noun (plural)'},
+    'fasting': {'B1': 'Noun, Verb (gerund), Verb (present participle)'},
+    'finances': {'A2': 'Noun (plural)'},
+    'gig-economy': {'B2': 'Noun Phrase'},
+    'hotpressed': {'B2': 'Adjective, Verb (past tense), Verb (past participle)'},
+    'hydroxytoulene': {'C1': 'Noun'},
+    'malodours': {'B2': 'Noun (plural)'},
+    'mistakes': {'A1': 'Noun (plural)'},
+    'monomer': {'B2': 'Noun'},
+    'mucin-rich': {'B2': 'Adjective (compound)'},
+    'nigra': {'C1': 'Noun'},
+    'on-market': {'B2': 'Adjective'},
+    'self-aggregation': {'B2': 'Noun'},
+    'smart-shoe': {'B2': 'Noun'},
+    'temperature-programmed': {'B2': 'Adjective (compound)'},
+    'volume-regulated': {'B2': 'Adjective (compound)'},
 }
 
 chemical_elements_symbols={
@@ -44574,6 +44604,108 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    "1,10-phenanthroline-5,6-dione",
+    "1,3,5-triallyl-1,3,5-triazinane-2,4,6-trione",
+    "1,3,5-tris[",
+    "1,5,7-triazabicyclo[4.4.0]dec-5-ene",
+    "1,8-diazabicyclo[5.4.0]undec-7-ene",
+    "1-Bromo-3",
+    "1-butyl-3-methyl-imidazolium",
+    "1-butyl-3-methylimidazolium",
+    "10-phenyl-10H",
+    "12Co4.5K/CeO",
+    "1H,1H,2H,2Hperfluorooctyl",
+    "2,2'-bipyridine-6,6'-dicarboxylic",
+    "2,2,2-trifluoroethyl",
+    "2,2,6,6-tetramethylpiperidin-4-yl",
+    "2,4,6-trioxo-1,3,5-triazinane-1,3,5-triyl",
+    "2,6-di-tert-butyl-4-methylphenol",
+    "2,6-ditert-butylcyclohexa-2,5-diene-1,4-dione",
+    "2-bromo-2methylpropanoyl",
+    "2-chloro-1,3,2-dioxaphospholane",
+    "2-methyl-2-butanol",
+    "2-methylene-1,3-dioxepane",
+    "2-tert-butyl-4-methoxyphenol",
+    "2-tert-butyl-45-tert-butyl-4-hydroxy-2-methylphenyl",
+    "2’,6’-dihydroxyacetophenone",
+    "2’,7’-Dichlorofluorescein",
+    "2’,7’-dichlorodihydrofluorescein",
+    "3,3,5,5-tetramethylpiperidin-4-yl",
+    "3,3-diphenylprop-2-en-1-ol",
+    "3,5-ditert-butyl-4-hydroxybenzaldehyde",
+    "3,6-di-2-pyridyl-1,2,4,5-tetrazine",
+    "3-[33,5-ditert-butyl-4-hydroxyphenyl",
+    "3-chloro-2-hydroxy-1-propansulfonic",
+    "3-hydroxybutyrate-co-3-hydroxyvalerate",
+    "33,5-ditert-butyl-4-hydroxyphenyl",
+    "3hexene1",
+    "3‐ethylbenzothiazoline‐6‐sulfonic",
+    "4-Cyano-4phenylcarbonothioylthio",
+    "4-methylhexyl-3-[3benzotriazol-2-yl",
+    "4-tert-butyl-3-hydroxy-2,6-dimethylphenyl",
+    "5,6-benzo-2-methylene-1,3-dioxepane",
+    "5-bromo-1-pentanal",
+    "5-tert-butyl-4-hydroxyphenyl]propanoate",
+    '15-crown-5', # ester - see diva2:766170
+    '18-crown-6',  # ester - see diva2:766170
+    "CaCO",
+    "CaCl",
+    "CaCl2",
+    "CaO",
+    "CaSO",
+    "CaSO4",
+    "Caesium-137",
+    "Mg-Al",
+    "Mg0.2Ni0.2Cu0.2Co0.2Zn0.2O",
+    "MgCO",
+    "MgCoNiZn",
+    "MgO",
+    "MgSO",
+    "MgSO4",
+    "N,Nethyldiisopropylamine",
+    "N-Isopropylacrylamide",
+    "N-acetylglucosamine",
+    "N-acetylglutamine",
+    "N-acetylmuramic",
+    "N-dimethylformamide",
+    "N-ethyl-N,N-diisopropylammonium",
+    "N-fertilizer",
+    "N-heterocyclic",
+    "N-isopropylacrylamid",
+    "N-methyl-D-aspartate",
+    "N-morpholino",
+    "N-oxide-4,4’-bipyridine",
+    "N2-dimethylamino",
+    "Na-CaO",
+    "Na2CO3",
+    "Na2S",
+    "Na2SO4",
+    "Na3T",
+    "NaAlg",
+    "NaBr",
+    "NaCO3",
+    "NaCl",
+    "NaClO2",
+    "NaF",
+    "NaHCO",
+    "NaI",
+    "NaNO3",
+    "NaOCl",
+    "NaOH",
+    "NaSCN",
+    "NaSO",
+    "NiBP",
+    "NiCl2",
+    "NiCoP",
+    "NiFeO",
+    "NiMH",
+    "NiMo",
+    "O-acetyl",
+    "O-acetyl-4-Omethylglucuronoxylan",
+    "O-acetyl-galactoglucomannan",
+    "O-acetylated",
+    "Ribulose-1,5-bisphosphate",
+
     "T93A/F154A", # enzymes - see diva2:1217588
     'Er3+',
     'Cu-Al',
@@ -45128,9 +45260,13 @@ place_names=[
     'WY', # Wyoming
 
     "Earth‘s",    
+    "Fagersta",
+    "Saudi Arabia",
     'Aachen',
+    'Aalborg',
     'Aalto',
     'Aberdeen', 
+    'Abisko',
     'Achterbahn',
     'Africa', # {'A1': 'Noun'}
     'Ain',
@@ -45142,6 +45278,7 @@ place_names=[
     'Aldebaran',
     'Alesund',
     'Alexandria',
+    'Allendale', # diva2:174133
     'Alps',
     'Alto', 
     'America',
@@ -45157,11 +45294,12 @@ place_names=[
     'Antipolis',
     'Anue',
     'Arabia',
+    'Arboga',
+    'Arctic',
     'Argentinos', # Argentinos Juniorsfootball team
     'Arismore',
     'Aritco',
     'Arlington', 
-    'Arctic',
     'Asia',
     'Asia-Pacific',
     'Asketorp',
@@ -45174,10 +45312,14 @@ place_names=[
     'Australia', 
     'Austria', 
     'Avalon',    
+    'Avedøre',
+    'Avesta',
     'Babylon',
+    'Baden', # diva2:174150
     'Baltic',
     'Baltimore',
     'Bangalore',
+    'Bangladesh',
     'Bangor',
     'Banten',
     'Barcelona', 
@@ -45194,6 +45336,7 @@ place_names=[
     'Berkeley',
     'Berlin',
     'Berne',
+    'Birka',
     'Blekinge',
     'Bloomington',
     'Boca',
@@ -45211,6 +45354,7 @@ place_names=[
     'Braunschweig',
     'Brazil', 
     'Breivik',
+    'Brescia',
     'Briey',
     'Brisbane', 
     'Bristol', 
@@ -45230,6 +45374,7 @@ place_names=[
     'Burgundy',
     'Burlingame',
     'Burlington',
+    'Cairngorms', # mountains in Scotlan
     'Cairo', 
     'Calgary',
     'Calif',
@@ -45254,6 +45399,7 @@ place_names=[
     'Champaign',
     'Chapel',
     'Chennai', 
+    'Chernobyl',
     'Cheshire',
     'Chicago', 
     'Chichester',
@@ -45267,15 +45413,19 @@ place_names=[
     'Colorado',
     'Columbia',
     'Columbus', 
+    'Congo',
     'Conn',
     'Copenhagen',
     'Craeye',
     'Croatia',
     'Cuba',
+    'Daichii',
+    'Dakar',
     'Dalarna',
     'Dallas', 
     'Danderyd',
     'Dar',
+    'Darmstadt',
     'Daytona',
     'Delaware', 
     'Delft',
@@ -45294,24 +45444,30 @@ place_names=[
     'Dulles',
     'Dunedin',
     'Dushanbe',
+    'Duvbacken',    
     'Dyviks',
     'EU-wide',
+    'East Africa',
     'Eastlake', 
     'Ecuador',
+    'Edinburgh',
     'Eegmond',
     'Egypt',
     'Eindhoven',
+    'Ekeby',
     'Ekerö',
     'Emirates',
     'England', 
+    'Enköping',
+    'Enköpings',
     'Es',
+    'Eskilstuna',
     'Espoo/Helsinki', 
     'Est',
     'Estonia',
     'Ethiopia',
     'Etna',
     'European-wide',
-    "Fagersta",
     'Fairfax',
     'Falun',
     'Fano',
@@ -45319,40 +45475,58 @@ place_names=[
     'Fennoscandia',
     'Fiji', 
     'Finland', 
+    'Finspång',
     'Florida', 
     'Forsbacka',
+    'Forsmark',
     'France', 
     'Francisco',
     'Frankfurt', 
     'Frederiksberg',
     'Freiburg',
+    'Fukushima',
     'Gaborone',
     'Gainesville',
     'Gaithersburg',
+    'Galten',
     'Galway',
+    'Garpenberg',
     'Geneva', 
     'Georgetown', 
     'Georgia',
+    'Gerais', # Minas Gerais, Brazil
     'Germany', 
+    'Ghana',
+    'Gimo',    
     'Glasgow', 
     'Gothenburg',
     'Gotland',
     'Grand Est',
     'Great-Britain',
     'Greece', 
+    'Greenland',
     'Greenwich', 
     'Grenoble', 
     'Grythyttan',
+    'Guadalquivir', # river basin in Spain
     'Guanajuato',
     'Guyana',
+    'Gällivare',
     'Gävle',
+    'Gävleborg',
+    'Götaland',
+    'Götalands-region',
+    'Götalands-regionen',
     'Göteborg',
+    'Göteborgs',
     'Haiti',
     'Hallamshire',
+    'Hallsberg',    
     'Hallstahammar',
     'Hallstavik',
-    'Hampshire',
     'Hammarberg',
+    'Hammarby',
+    'Hampshire',
     'Hankasalmi', # Finland
     'Haparanda',
     'Harlem',
@@ -45360,17 +45534,23 @@ place_names=[
     'Havana',
     'Haven',
     'Hawaii',
+    'Headingley',
     'Healdsburg',
+    'Hedesunda',
     'Heidelberg', 
     'Helenalund',
     'Helmond',
+    'Helsingborg',
     'Helsinki',
+    'Henriksdal',
     'Herlev',    
     'Herndon',
+    'Himmerfjärden',
     'Hoboken',
     'Hogdalen',
     'Holland',
     'Hollywood',
+    'Honduras',
     'Honolulu', 
     'Hornsgatan',
     'Houston',
@@ -45379,6 +45559,7 @@ place_names=[
     'Hungary',
     'Husby',
     'Häggvik',
+    'Högdalen',
     'Iceland',
     'Idaho',
     'Illinois',
@@ -45389,6 +45570,7 @@ place_names=[
     'Iraq',
     'Ireland', 
     'Isafjordsgatan',
+    'Islamabad',
     'Israel',
     'Italia',
     'Italy',
@@ -45403,11 +45585,13 @@ place_names=[
     'Jordan', 
     'Joux',
     'Jämtland',
-    'Köln',
+    'Järna',
+    'Jönköping',
     'Kalix',
     'Kampala',    
     'Kansas',
     'Karachi', 
+    'Karlshamn',
     'Karlskrona',
     'Karlsruhe',
     'Karlstad',
@@ -45416,11 +45600,15 @@ place_names=[
     'Kayamandi',
     'Kenya',
     'Kibera',
+    'Kimmswick',
     'Kirehe',
     'Kirkland',
     'Kiruna',
     'Kista',
     'Kistagången',
+    'Klinthagen',
+    'Koper', # Gulf of Koper
+    'Koping',
     'Korea',
     'Kosovo',
     'Kreta',
@@ -45431,13 +45619,20 @@ place_names=[
     'Kulturskolan',
     'Kulyab',
     'Kundo',
+    'Kundur',
+    'Kungsberget',
     'Kungsholmen',
     'Kungsholmen',
     'Kungsholmens',
     'Kungsängen',
+    'Kungsörnen',
     'Kurdistan',
     'Kyiv',
     'Kyoto',
+    'Käppala',
+    'Käppalas',
+    'Köln',
+    'Köpenhamn',
     'Köping',
     'Ladakh', # India
     'Lagos', 
@@ -45446,7 +45641,9 @@ place_names=[
     'Latvia',
     'Lebanon',
     'Leicester',
+    'Leiden',
     'Leuwidamar',
+    'Libya',    
     'Lidingö',
     'Liechtenstein',
     'Liege',
@@ -45460,8 +45657,8 @@ place_names=[
     'Livermore',
     'Ljungan',
     'London',
-    'Los',
     'Los Alamos',
+    'Los',
     'Louvain',
     'Ludvika',
     'Lugoba',
@@ -45473,10 +45670,12 @@ place_names=[
     'Luxembourg',
     'Lyngby', 
     'Lyon',
+    'Lövsta',
     'Lübeck',
     'Maarten', 
     'Madrid', 
     'Madurai',
+    'Majapahit',
     'Makumba',    
     'Malaysia',
     'Maldive',
@@ -45500,6 +45699,7 @@ place_names=[
     'Miami',
     'Milan',
     'Milwaukee',
+    'Minas', # Minas Gerais, Brazil
     'Minneapolis',
     'Minnesota',
     'Mongolia', 
@@ -45515,8 +45715,12 @@ place_names=[
     'Moscow', 
     'Mozambique',
     'Mugumu',
+    'Mumbai',
     'Munchen',
     'Munich',
+    'Mälardalen',
+    'Mälardalens',
+    'Mälarstäder',
     'Mårtsbo',
     'N.Y',
     'NY',
@@ -45528,16 +45732,18 @@ place_names=[
     'Netherland',    
     'Netherlands',
     'Nevada',
+    'New York',
     'Newark', 
     'Newbury',
     'Newport',
-    'New York',
     'Nicaragua',
     'Nicosia',
     'Nigeria',
+    'NorraDjurgårdenstaden',
     'Norrköping',
     'Norrland',
     'Norrmalm',
+    'Norrtälje',
     'North-America',
     'North/South',
     'Northeast',
@@ -45546,6 +45752,8 @@ place_names=[
     'Nuremberg',
     'Nurmijärvi',
     'Nykvarn',
+    'Nyköping',
+    'Nynäshamn',
     'Nynäshamns',
     'Närdingen',
     'Oakland',
@@ -45558,6 +45766,7 @@ place_names=[
     'Oman',
     'Ontario',
     'Oregon',
+    'Orlando',
     'Orleans',
     'Osaka', 
     'Oslo', 
@@ -45583,6 +45792,7 @@ place_names=[
     'Pennsauken', 
     'Pennsylvania',
     'Peru',
+    'Petersburg',
     'Philadelphia',
     'Phoenix',
     'Pisa',
@@ -45592,11 +45802,13 @@ place_names=[
     'Poland',
     'Pondicherry',
     'Portland',
+    'Porto',
     'Portugal',
     'Potsdam',
     'Poughkeepsie',
     'Prague', 
     'Prairie',
+    'Primorsk',
     'Princeton',
     'Prinecton',
     'Quebec',
@@ -45618,15 +45830,20 @@ place_names=[
     'Rochester',
     'Romania',
     'Rome', 
+    'Ronneby',
     'Ropsten',
     'Rosa', # such as in Santa Rosa
+    'Rosersberg',
+    'Roslags-Näsby',
     'Rouen', # France
     'Russia',
+    'Rustorp',
     'Rwanda',
+    'Sala',    
     'Salaam',
     'San',
-    'Santa',
     'Santa Rosa',
+    'Santa',
     'Santiago', 
     'Sao', 
     'Scandinavian',
@@ -45642,6 +45859,7 @@ place_names=[
     'Shanghai',
     'Sheffield',
     'Shenandoah',
+    'Sickla',
     'Singapore',
     'Skagerrak',
     'Skeboå',
@@ -45650,6 +45868,7 @@ place_names=[
     'Skellefteälven',
     'Skellefteå',
     'Skurup',
+    'Skåne',
     'Slovenia',
     'Slussen',
     'Smedjebacken',
@@ -45673,7 +45892,10 @@ place_names=[
     'Stanford',
     'Stavlo',
     'Stellenbosch',
+    'Stenbäckens',
     'Stenungsund',
+    'Sterling', # Sterling, VA
+    'Sternö',
     'Stockholm',
     'Stockholm-Arlanda',
     'Stockholm-Bangkok',
@@ -45687,6 +45909,7 @@ place_names=[
     'Stockholms', 
     'Stony',
     'Strathclyde',
+    'Strängnäs',
     'Stuttgart', 
     'Sudan',
     'Suez',
@@ -45699,6 +45922,8 @@ place_names=[
     'Switzerland',
     'Sydney',
     'Séglien',     # France
+    'Söderhalls', # diva2:1219952
+    'Söderledstunneln', # diva2:841964
     'Södermalm',
     'Södertälje',
     'Södertörns',
@@ -45715,10 +45940,13 @@ place_names=[
     'Tihany',
     'Tinguiririca',
     'Tirunelveli',
+    'Tiunda', # diva2:1788904
     'Tivoli',
     'Tobago',
     'Tocina',
     'Tokyo', 
+    'Tomteboda',
+    'Tongji', # University - diva2:1275456
     'Torino', 
     'Toronto', 
     'Toulouse',
@@ -45732,18 +45960,23 @@ place_names=[
     'Tromsø',
     'Trondheim',
     'Trujillo', # Peru
+    'Tsinghua',
     'Tumba',
+    'Tunadal', # diva2:284934
     'Turin',
+    'Turku',
     'Tyresö',
+    'US',
+    'USA',
     'Uganda',
     'Ukraine',
     'Umeå',
-    'Uppsala',
-    'Upper Saddle',
     'Upper Saddle River',
     'Upper Saddle River, NJ',
-    'US',
-    'USA',
+    'Upper Saddle',
+    'Uppland',
+    'Uppsala',
+    'Uppsalas',
     'Utah',
     'Utrecht',
     'Utøya',
@@ -45754,9 +45987,19 @@ place_names=[
     'Vienna',
     'Virginia',
     'Visby',
+    'Vissberga',
     'Vällingby',
+    'Värmdö',
     'Värmland',
+    'Värmlandområdet',
+    'Värnamo',
+    'Västafrika',
+    'Västafrikas',
+    'Västerhaninge',
+    'Västervik',
     'Västerås',
+    'Västmanland',
+    'Växjö',
     'Warsaw', 
     'Washington',
     'Waterloo',
@@ -45774,191 +46017,50 @@ place_names=[
     'York',
     'Zambia', 
     'Zealand',
+    'Zeebrügge',
     'Zerbst',
     'Zimbabwe',
     'Zinkensdamm',    
     'Zurich',
     'Zött',
     'Zürich',
+    'Ältasjön',
     'Älvkarleby',
     'Älvsjö',
+    'Åkersberga',
     'Åkervik',
+    'Åland',
+    'Ålands',
     'Ålesund',
-    'Ångermanälven',
-    'Östermalm',
-    'Kundur',
-    'Birka',
-    'Koper', # Gulf of Koper
-    'Koping',
-    'NorraDjurgårdenstaden',
-    "Saudi Arabia",
-    'East Africa',
-
-    'Abisko',
-    'Avesta',
-    'Arboga',
-    'Enköping',
-    'Enköpings',
-    'Eskilstuna',
-    'Götalands-regionen',
-    'Göteborgs',
-    'Hammarby',
-    'Karlshamn',
-    'Köpenhamn',
-    'Lövsta',
-    'Mälardalens',
-    'Mälarstäder',
-    'Sickla',
-    'Stenbäckens',
-    'Sterling', # Sterling, VA
-    'Strängnäs',
-    'Sternö',
-    'Uppland',
-    'Värmdö',
-    'Västafrika',
-    'Västafrikas',
-    'Västervik',
-    'Örebro',
-    'Henriksdal',
-    'Hedesunda',
-    'Himmerfjärden',
-    'Käppala',
-    'Käppalas',
-    'Uppsalas',
-    'Norrtälje',
-    'Galten',
-    'Avedøre',
-    'Årstra',
-    'Åtvidaberg',
     'Ånge',
-    'Honduras',
-    'Högdalen',
-    'Brescia',
-    'Porto',
-    'Zeebrügge',
-    'Bangladesh',
-    'Leiden',
-    'Baden', # diva2:174150
-    'Congo',
-    'Edinburgh',
-    'Nyköping',
-    'Nynäshamn',
-    'Aalborg',
-    'Värmlandområdet',
-    'Värnamo',
-    'Västerhaninge',
-    'Västmanland',
-    'Växjö',
-    'Vissberga',
-    'Allendale', # diva2:174133
-    'Turku',
-    'Cairngorms', # mountains in Scotlan
-    'Chernobyl',
-    'Tomteboda',
-    'Tiunda', # diva2:1788904
-    'Tongji', # University - diva2:1275456
-    'Tsinghua',
-    'Tunadal', # diva2:284934
-    'Primorsk',
-    'Söderledstunneln', # diva2:841964
-    'Söderhalls', # diva2:1219952
-    'Skåne',
-    'Sala',    
-    'Ronneby',
-    'Rosersberg',
-    'Roslags-Näsby',
-    'Rustorp',
-    'Darmstadt',
-    'Dakar',
-    'Daichii',
-    'Duvbacken',    
-    'Ekeby',
-    'Fukushima',
-    'Forsmark',
-    'Finspång',
-    'Ghana',
-    'Gävleborg',
-    'Götaland',
-    'Götalands-region',
-    'Greenland',
-    'Garpenberg',
-    'Gällivare',
-    'Guadalquivir', # river basin in Spain
-    'Gimo',    
-    'Minas', # Minas Gerais, Brazil
-    'Gerais', # Minas Gerais, Brazil
-    'Helsingborg',
-    'Hallsberg',    
-    'Headingley',
-    'Jönköping',
-    'Kungsberget',
-    'Kungsörnen',
-    'Järna',
-    'Klinthagen',
-    'Kimmswick',
-    'Libya',    
-    'Mumbai',
-    'Mälardalen',
-    'Majapahit',
-    'Petersburg',
-    'Pará',     # Brazil
-    'ParameterStack', # data type - diva2:1367527
-    'ParaView', # diva2:174154
-    'PaperOpt', # diva2:217241, diva2:530102
-    'Pandaboard', # diva2:670529
-    'PanSTARRS', # diva2:1325765
-    'Pan-STARRS1', # dataset - diva2:1367603
-    'PanNuke', # dataset - diva2:1709948
-    'Pachyderm', # platform - diva2:1711840
-    'PTPd', # diva2:174150 - IEEE-1588 PTPd
-    'PLESpaces', # diva2:544350
-    'PForDelta', # compression algorithm - diva2:859712, diva2:859712
-    'PDMLink', # versioning system - diva2:443105
-    'Qutrit', # diva2:1640955
-    'QuickXplain', # diva2:1663634
-    'QuickCheck', # framework - diva2:495832, diva2:343744
-    'QuantoJump', # game - diva2:819985
-    'Qualitrack', # system - diva2:343935
-    'Quadriwave', # diva2:1755852
-    'Qtronic', # Conformiq™ Qtronic™ testing tool - diva2:343741
-    'QDTrans', # diva2:1159325
-    'Q-linea', # company - diva2:491686
-    'Oᴍᴇʟᴇᴛᴛᴇ', # tool - diva2:1806967
-    'Ovako', # company - diva2:457482
-    'Ostrich', # diva2:1610991 - Black Ostrich security scanner
-    'OscaR/CBLS', # diva2:875504, diva2:954752
-    'Orlando',
-    'OoO', # diva2:1283204
-    'OpenEHR', # diva2:310787
-    'OpenEdge', # diva2:235716
-    'OpenLink', # diva2:527658
-    'OpenPaperOpt', # diva2:217241
-    'OpenSim', # diva2:1590755
-    'OpenThread', # diva2:1198727
-    'OpenTripPlanner', # diva2:1769987
-    'Opturion', # CPX Opturion - diva2:875504
-    'OmpSs-2', # diva2:1665281
-    'OmpSs-2@ArgoDSM', # diva2:1665281
-    'OmpSs-2@Cluster', # diva2:1665281
-    'OmpSs-2task-based', # diva2:1665281
-    'OmpSs2@ArgoDSM', # diva2:1665281
-    'Opta', # diva2:1245916
-    'OptiStim', # diva2:1766628
-    'Optuna', # diva2:1694882
-    'Omniverse', # tool - diva2:1795778
-    'Octane', # benchmark - diva2:1626575
-    'Objektor', # Objektor AB - diva2:277336
-    'OCaml', # diva2:235718
-    'Speech-to-Speech', # diva2:1540841
-    'Stridslednings', # diva2:1765935
-    'Studio.Net', # diva2:343840
-    'TriviaQA', # diva2:1545786
-    'README.md', # file name - diva2:1738025
-    'Seco ', # Seco Tools - diva2:692136, diva2:814195, diva2:1448861
-    'RLC/MAC-hs', # diva2:174009
-    'RESThing', # diva2:276773
-    'RDGMap', # game - diva2:1613275
-    'sC8', # diva2:1755852
+    'Ångermanälven',
+    'Årstra',
+    'Åstrand',
+    'Åtvidaberg',
+    'Örebro',
+    'Öresund',
+    'Österdalälven',
+    'Östergötland',
+    'Östermalm',
+    'Borås',
+    'Botkyrka',
+    'Olympus',
+    'Norrbotten',
+    'Norrvatten',
+    'Norrvattens',
+    'Norsborg',
+    'Nynas',
+    'Näsby',
+    'Näsbys',
+    'Nytorp',
+    'Philippines',
+    'Skutskär',
+    'Skytteholms',
+    'Skänninge',
+    'Skarpnäck',
+    'Skavlöten',
+    'Småland',
+    
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -52812,8 +52914,74 @@ company_and_product_names=[
     'Tobii Dynavox',
     'Ooyala IQ', # JSON API - see diva2:935724
     'Ooyala', # Ooyala IQ JSON API - see diva2:935724
-
-
+    "E.ON:s",
+    "SmartStore.NET",
+    'Pará',     # Brazil
+    'ParameterStack', # data type - diva2:1367527
+    'ParaView', # diva2:174154
+    'PaperOpt', # diva2:217241, diva2:530102
+    'Pandaboard', # diva2:670529
+    'PanSTARRS', # diva2:1325765
+    'Pan-STARRS1', # dataset - diva2:1367603
+    'PanNuke', # dataset - diva2:1709948
+    'Pachyderm', # platform - diva2:1711840
+    'PTPd', # diva2:174150 - IEEE-1588 PTPd
+    'PLESpaces', # diva2:544350
+    'PForDelta', # compression algorithm - diva2:859712, diva2:859712
+    'PDMLink', # versioning system - diva2:443105
+    'Qutrit', # diva2:1640955
+    'QuickXplain', # diva2:1663634
+    'QuickCheck', # framework - diva2:495832, diva2:343744
+    'QuantoJump', # game - diva2:819985
+    'Qualitrack', # system - diva2:343935
+    'Quadriwave', # diva2:1755852
+    'Qtronic', # Conformiq™ Qtronic™ testing tool - diva2:343741
+    'QDTrans', # diva2:1159325
+    'Q-linea', # company - diva2:491686
+    'Oᴍᴇʟᴇᴛᴛᴇ', # tool - diva2:1806967
+    'Ovako', # company - diva2:457482
+    'Ostrich', # diva2:1610991 - Black Ostrich security scanner
+    'OscaR/CBLS', # diva2:875504, diva2:954752
+    'OoO', # diva2:1283204
+    'OpenEHR', # diva2:310787
+    'OpenEdge', # diva2:235716
+    'OpenLink', # diva2:527658
+    'OpenPaperOpt', # diva2:217241
+    'OpenSim', # diva2:1590755
+    'OpenThread', # diva2:1198727
+    'OpenTripPlanner', # diva2:1769987
+    'Opturion', # CPX Opturion - diva2:875504
+    'OmpSs-2', # diva2:1665281
+    'OmpSs-2@ArgoDSM', # diva2:1665281
+    'OmpSs-2@Cluster', # diva2:1665281
+    'OmpSs-2task-based', # diva2:1665281
+    'OmpSs2@ArgoDSM', # diva2:1665281
+    'Opta', # diva2:1245916
+    'OptiStim', # diva2:1766628
+    'Optuna', # diva2:1694882
+    'Omniverse', # tool - diva2:1795778
+    'Octane', # benchmark - diva2:1626575
+    'Objektor', # Objektor AB - diva2:277336
+    'OCaml', # diva2:235718
+    'Speech-to-Speech', # diva2:1540841
+    'Stridslednings', # diva2:1765935
+    'Studio.Net', # diva2:343840
+    'TriviaQA', # diva2:1545786
+    'README.md', # file name - diva2:1738025
+    'Seco ', # Seco Tools - diva2:692136, diva2:814195, diva2:1448861
+    'RLC/MAC-hs', # diva2:174009
+    'RESThing', # diva2:276773
+    'RDGMap', # game - diva2:1613275
+    'sC8', # diva2:1755852
+    'Safeline',
+    'Moco',
+    'Perstorp',
+    'Plantagen',
+    'Pfizer',
+    'Sherwin-Williams',
+    'Skarpatorpsskolan',
+    'Snäckviken',
+    'Skaraborg',
 ]
 
 
@@ -55868,6 +56036,7 @@ names_of_persons=[
     'Pennycook',
     'Penrose',
     'Per-Johan',
+    'Per-Åke',
     'Perchet',
     'Perkins',
     'Perlin',
@@ -56158,6 +56327,7 @@ names_of_persons=[
     'Samir',
     'Sammy',
     'Sams', # possive of Sam - used in diva2:1773583
+    'Sandborg',
     'Sanches',
     'Sancus',
     'Sandbakken',
@@ -56284,6 +56454,8 @@ names_of_persons=[
     'Shenker',
     'Shepard',
     'Shepler',
+    'Shepp',
+    'Shepp‑Logan',
     'Shermach',
     'Shiduan',
     'Shikano',
@@ -58700,6 +58872,12 @@ common_units={
     '€MWh': {'B2': 'Unit'},  #  of energy cost - Euro megawatt-hour - Requires prior knowledge of MWh
     '℃': {'A2': 'Unit'},  #  of temperature - degrees Celsius
     '°C': {'A2': 'Unit'},  #  of temperature - degrees Celsius
+    'ᵒC': {'A2': 'Unit'}, 
+    '€/kg': {'A2': 'Unit'}, 
+    '€/t': {'A2': 'Unit'}, 
+    '€/tCO2': {'A2': 'Unit'}, 
+    '€/tonne': {'A2': 'Unit'}, 
+    '€/year': {'A2': 'Unit'}, 
     'Ω': {'B1': 'Unit'}, #  of electrical resistance - ohm
 }
 
