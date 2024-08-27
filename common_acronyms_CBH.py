@@ -179,4 +179,14 @@ well_known_acronyms_list=[
     ['mAbs','Monoclonal Antibodies'],
     ['mMSCs', 'mouse mesenchymal stem cells', {'s': 'diva2:1266796'}],
     ['GDPR', 'General Data Protection Regulation'],
+    ['SCA', 'Spinocerebellar ataxia'],
+    ['AD', 'Atopic dermatitis'],
+    ['CSF', 'cerebrospinal fluid'],
+    ['SBA', 'suspension bead array'],
+    ['SLC17A6', 'Solute Carrier Family 17 Member 6'],
+    ['MAP1A', 'Microtubule Associated Protein 1A'],
+    ['MAP2', 'Microtubule Associated Protein 2'],
+    ['TSE', 'twin-s crew extruder', {'s': 'diva2:1136064'}],
+    ['SBMA', '[2-(methacryloyloxy)ethyl] dimethyl-(3-sulfopropyl)</p><p>ammonium hydroxide', {'s': 'diva2:1175545'}],
+
 ]
