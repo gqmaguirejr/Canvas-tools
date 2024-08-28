@@ -188,5 +188,9 @@ well_known_acronyms_list=[
     ['MAP2', 'Microtubule Associated Protein 2'],
     ['TSE', 'twin-s crew extruder', {'s': 'diva2:1136064'}],
     ['SBMA', '[2-(methacryloyloxy)ethyl] dimethyl-(3-sulfopropyl)</p><p>ammonium hydroxide', {'s': 'diva2:1175545'}],
+    ['pDADMAC', 'diallydimethylammoinium chloride', {'s': 'diva2:1876747'}],
+    ['MMT', 'montmorillonite clay', {'s': 'diva2:1876747'}],
+
+
 
 ]

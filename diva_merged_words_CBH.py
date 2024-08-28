@@ -3141,6 +3141,23 @@ merged_words={
     'extremely time-consuming',
     'engorgement diaphanography',
     'estimated at',
+    'difficult for',
+    'difficulties to',
+    'difficul tires',
+    'diffusion sensitizing',
+    'diffusion tensor',
+    'dispersion that',
+    'documents kept',
+    'dynamics at',
+    'due to',
+    'depends on',
+    'detection oligos',
+    'differs from',
+    'depth understanding',
+    'designed a',
+    'detectable in',
+    'dimer when',
+    'doing this',
     
 }
     
