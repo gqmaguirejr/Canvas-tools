@@ -441,6 +441,27 @@ miss_spelled_to_correct_spelling={
     'myekosuppression': {'c': 'myelosuppression', 's': 'diva2:860338', 'n': 'no full text'},
     'myelosupression':  {'c': 'myelosuppression', 's': 'diva2:860338', 'n': 'no full text'},
     'myleosupression':  {'c': 'myelosuppression', 's': 'diva2:860338', 'n': 'no full text'},
+    'nitrogren': {'c':  'nitrogen', 's': 'diva2:1170378', 'n': 'error in original'},
+    'n-buytl': {'c': 'n-butyl', 's': 'diva2:1339368'},
+    'n-buytlacrylate': {'c':  'n-butyl acrylate', 's': 'diva2:1339368'},
+    'n-ctyl': {'c': 'n-octyl', 's': 'diva2:848199', 'n': 'no full text'},
+    'nanboodies': {'c': 'nanobodies', 's': 'diva2:1711725', 'n': 'no full text'},
+    'nanofi': {'c':  'nanofibrils', 's': 'diva2:1150933'},
+    'naphtenic': {'c':'naphthenic', 's': 'diva2:506104', 'n': 'error in original'},
+    'nderstand': {'c': 'understand', 's': 'diva2:801776', 'n': 'no full text'},
+    'ndings': {'c':'findings', 's': 'diva2:731857', 'n': 'missing ligature'},
+    'neral': {'C1': 'Noun'}, # also known as citral B - see diva2:930817
+    'neurosergical': {'c': 'neurosurgical', 's': 'diva2:720785', 'n': 'error in original'},
+    'sur-gical': {'c': 'surgical', 's': 'diva2:720785', 'n': 'error in original'},
+    'neurprotective': {'c': 'neuroprotective', 's': 'diva2:744699', 'n': 'no full text'},
+    'nolecule': {'c': 'molecule', 's': 'diva2:744722', 'n': 'no full text'},
+    'nto': {'c': 'not to', 's': 'diva2:853640', 'n': 'no full text'},
+    'ob-ject': {'c': 'object', 's': 'diva2:1561106', 'n': 'hyphen at end of line in original'},
+    'ob­ser­va­tion': {'c': 'ob­ser­va­tion', 's': 'diva2:537187'},
+    'organiza-tional': {'c': 'organiza-tional', 's': 'diva2:458457'},
+    'os-cilloscopes': {'c': 'oscilloscopes', 's': 'diva2:1109332'},
+
+
 
 
 

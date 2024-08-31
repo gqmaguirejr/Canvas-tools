@@ -227,6 +227,7 @@ well_known_acronyms_list=[
     ['MOSIC', 'Monoclonal StoichiometrIC', {'s': 'diva2:855825'}],
     ['CVC', 'central venous catheterization', {'s': 'diva2:1086147'}],
     ['LCO', 'luminescent</p><p>conjugated oligothiophene', {'s': 'diva2:1145272'}],
+    ['SOS', 'Sodium octyl sulfate', {'s': 'diva2:848199'}],
     
 
 ]
