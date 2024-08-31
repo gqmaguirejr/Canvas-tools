@@ -65,8 +65,8 @@ well_known_acronyms_list=[
     ['DOSY', 'Diffusion Ordered Spectroscopy'],
     ['DPMS', 'dolicholphosphate mannosesynthase', {'s': 'diva2:1219274'}],
     ['DSC', 'Differential scanning calorimetry'],
-    ['DSP','digital signal processing'],
-    ['ECG',    'Electrocardiography', {'cefr': 'B2'}],
+    ['DSP', 'digital signal processing'],
+    ['ECG', 'Electrocardiography', {'cefr': 'B2'}],
     ['EDI','Electronic data interchange', {'cefr': 'B2'}],
     ['EDIFACT', 'United Nations rules for Electronic Data Interchange for Administration, Commerce and Transport', {'cefr': 'B2'}],
     ['EIS',    'Electrochemical impedance spectroscopy', {'cefr': 'C1'}],
@@ -216,5 +216,17 @@ well_known_acronyms_list=[
     ['SNG', 'synthetic methane', {'s': 'diva2:1519525'}],
     ['NG', 'natural gas', {'s': 'diva2:1519525'}],
     ['HARM', 'Hand Arm Risk Assessment Method', {'s': 'diva2:537187'}],
+    ['PVP-PCL', 'Polyvinyl pyrrolidone-Polycaprolactone', {'s': 'diva2:720734'}],
+    ['PLA-PVP', 'Poly lactide-Polyvinyl pyrrolidone', {'s': 'diva2:720734'}],
+    ['MBAs' 'Martian Brine Analogues'],
+    ['DOE', 'Design of Experiments', {'s': 'diva2:852451'}],
+    ['LiBOB', 'lithium bis(oxalato)borate', {'s': 'diva2:1577131'}],
+    ['TFEB', 'Transcription factor EB', {'s': 'diva2:1586242'}],
+    ['SPPS', 'Solid-Phase Peptide Sythesis', {'s': 'diva2:744725'}],
+    ['PCCAs', 'Phase Changing Contrast Agents', {'s': 'diva2:1325213'}],
+    ['MOSIC', 'Monoclonal StoichiometrIC', {'s': 'diva2:855825'}],
+    ['CVC', 'central venous catheterization', {'s': 'diva2:1086147'}],
+    ['LCO', 'luminescent</p><p>conjugated oligothiophene', {'s': 'diva2:1145272'}],
     
+
 ]
