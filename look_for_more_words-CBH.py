@@ -368,6 +368,7 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'pp.926-937',
     '́',
     '́s',
     '̊',
