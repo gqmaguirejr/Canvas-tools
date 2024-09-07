@@ -5203,7 +5203,6 @@ well_known_acronyms_list=[
     ['TEC/TYC', 'thiol-ene coupling/thiol-yne coupling', {'s': 'diva2:1361820'}],
     ['DPMS', 'dolicholphosphate mannosesynthase', {'s': 'diva2:1219274'}],
     ['ISTD', 'Intern standard', {'s': 'diva2:1859260'}],
-    ['mMSCs', 'mouse mesenchymal stem cells', {'s': 'diva2:1266796'}},
-    ['MSCs', 'Mesenchymal stromal cells' 's': 'diva2:1454998'}},
-
+    ['mMSCs', 'mouse mesenchymal stem cells', {'s': 'diva2:1266796'}],
+    ['MSCs', 'Mesenchymal stromal cells',  {'s': 'diva2:1454998'}],
 ]

@@ -1378,6 +1378,7 @@ common_English_words={
     'August-November': {'B2': 'Noun Phrase'},
     'December–February': {'A2': 'Noun Phrase'},
     'February-July': {'B2': 'Noun Phrase'},  # Specific time period
+    'March-April': {'B2': 'Noun Phrase'},
 
     # seasons
     'Spring': {'A1': 'Proper Noun', 'B2': 'Verb'}, # (season)
@@ -47826,7 +47827,6 @@ common_English_words={
     'iOS-version': {'A2': 'Noun Phrase'},
     'iPhone-based': {'A2': 'Adjective (compound)'},
     'iPhone/iPod': {'A2': 'Noun Phrase'}, 
-    'iStone': {'A1': 'Noun'}, 
     'ides': {'B2': 'Noun (plural)'}, 
     'ilealis': {'B2': 'Adjective'}, 
     'ill-adapted': {'B1': 'Adjective'}, 
@@ -51444,7 +51444,6 @@ common_English_words={
     'without/with': {'A1': 'Preposition'},
     'ws2': {'C1': 'Noun, Abbreviation'},
     'wt/v': {'C1': 'Noun, Abbreviation'},
-    'xMAP': {'C1': 'Noun, Abbreviation'},
     'xmax': {'C1': 'Noun, Abbreviation'},
     'xmin': {'C1': 'Noun, Abbreviation'},
     'tertiolecta': {'C1': 'Noun'}, # part of "Dunaliella tertiolecta" - see diva2:854656
@@ -51457,7 +51456,416 @@ common_English_words={
     'uidA': {'C1': 'Noun'}, # a type of gene of E. coli - see diva2:1588399
     'yaiO': {'C1': 'Noun'}, # a type of gene of E. coli - see diva2:1588399
     '16S rRNA': {'C1': 'Noun'}, # a type of gene of E. coli - see diva2:1588399
-
+    'Albanywire': {'C1': 'Noun'}, # special type of screen for dewatering
+    'Stratexwire': {'C1': 'Noun'}, # special type of screen for dewatering
+    "I’m": {'A1': 'Contraction'}, # conmtraction of "I am"
+    'Linux-computers': {'B2': 'Noun (plural)'},
+    'anal': {'B2': 'Adjective'},
+    'appreciative': {'B1': 'Adjective'},
+    'apprentice': {'B2': 'Noun'},
+    'bag-in-box': {'B1': 'Noun'},
+    'baseboard': {'B2': 'Noun'}, # diva2:1667911
+    'Beggiatoa': {'B2': 'Noun'}, # bacteria - diva2:804978
+    'Alba': {'A1': 'Noun'},
+    'Albatross': {'A1': 'Noun'}, # the children's ward Albatross, Karolinska University Hospital in Huddinge diva2:1238138
+    'asparagine': {'A2': 'Noun'},
+    'aspergillus': {'B2': 'Noun'},
+    'atherosclerotic': {'C1': 'Adjective'},
+    'Actinobacteria': {'B2': 'Noun'},
+    'Acinetobacter': {'B2': 'Noun'},
+    'Acetohydroxamic': {'C1': 'Adjective'},
+    'Acetivibrio': {'B2': 'Noun'},
+    'Acacia': {'B1': 'Noun'},
+    'Abacavir': {'B2': 'Noun'}, #  antiretroviral drug
+    'video-call': {'A2': 'Noun', 'A2': 'Verb'},
+    'yoyo': {'A1': 'Noun'},
+    'Autoline': {'B2': 'Noun, Proper Noun'}, # ABB L&W Autoline automated paper and board testing system
+    'NPC-down': {'C1': 'Noun, Abbreviation'},
+    'AC-track': {'C1': 'Noun'},
+    'legislations': {'B2': 'Noun (plural)'},
+    'benzylalcohol': {'C1': 'Noun'},
+    'transcranial': {'C2': 'Adjective'},
+    'triceps': {'C2': 'Noun'},
+    'tunic': {'B2': 'Noun'},
+    'two-wire': {'B2': 'Adjective'},
+    'terminally': {'B2': 'Adverb'},
+    'ulcer': {'B1': 'Noun'},
+    'ultrasound-mediated': {'C2': 'Adjective'},
+    'vegetative': {'B2': 'Adjective'},
+    'UV-B-absorbing': {'C2': 'Adjective'},
+    'UV-absorbance': {'C2': 'Noun'},
+    'UV-absorbing': {'C2': 'Adjective'},
+    'UV-based': {'C2': 'Adjective'},
+    'UV-conjugation': {'C2': 'Noun'},
+    'UV-curable': {'C2': 'Adjective'},
+    'UV-cured': {'C2': 'Adjective'},
+    'UV-detection': {'C2': 'Noun'},
+    'UV-exposure': {'C2': 'Noun'},
+    'UV-induced': {'C2': 'Adjective'},
+    'UV-lamps': {'C2': 'Noun'},
+    'UV-protection': {'C2': 'Noun'},
+    'UV-protective': {'C2': 'Adjective'},
+    'UV-radiation': {'C2': 'Noun'},
+    'UV-reactor': {'C2': 'Noun'},
+    'UV-spectroscopy': {'C2': 'Noun'},
+    'UV-stabilisers': {'C2': 'Noun'},
+    'UV-treatment': {'C2': 'Noun'},
+    'T-helper': {'B2': 'Adjective'}, # cells - see diva2:1788568
+    'Spinocerebellar': {'C2': 'Adjective'},
+    'Staphylococcus': {'B2': 'Noun'},
+    'Streptococcus': {'B2': 'Noun'},
+    'solute': {'B2': 'Noun'},
+    'Solanum': {'B2': 'Noun'}, # Solanum tuberosum - see diva2:854692
+    'secretory': {'C1': 'Adjective'}, # diva2:1886015
+    'sealer': {'B2': 'Noun'}, # diva2:1045594
+    'SEK/MWh': {'B2': 'Unit'},
+    'SEK/hour': {'B2': 'Unit'},
+    'SEK/kg': {'B2': 'Unit'},
+    'SEC-analysis': {'C2': 'Noun'},
+    'SEC-resin': {'C2': 'Noun'},
+    'SECA-directive': {'C2': 'Noun'},
+    'SEHPOS-process': {'C2': 'Noun'},
+    'SEI-free': {'C2': 'Adjective'},
+    'STING-dependent': {'C1': 'Adjective'},
+    'STING-mediated': {'C1': 'Adjective'},
+    'SDS-PAGE-quantified': {'C2': 'Adjective'},
+    'SCR-catalyst': {'C2': 'Noun'},
+    'S-linked': {'C2': 'Adjective'},
+    'S-phase': {'C2': 'Noun'},
+    'S-transferase': {'C2': 'Noun'},
+    'Ru-involved': {'C2': 'Adjective'},
+    'radiant': {'B1': 'Adjective'},
+    'raven': {'A1': 'Noun'},
+    'relic': {'B1': 'Noun'},
+    'research': {'B1': 'Verb'},
+    'repetitive': {'B2': 'Adjective'},
+    'Purkinje': {'C2': 'Noun'},
+    'Putrescine': {'C2': 'Noun'},
+    'RNA-binding': {'C2': 'Adjective'},
+    'Purdue model': {'B2': 'Noun'},
+    'prostate-specific': {'C2': 'Adjective'},
+    'prostatectomy': {'C2': 'Noun'},
+    'protamines': {'C2': 'Noun'},
+    'proteinase': {'C2': 'Noun'},
+    'protégé': {'B2': 'Noun'},
+    'Rubisco-PRK': {'C2': 'Noun'},
+    'probiotic': {'B2': 'Noun'},
+    'Pro-loop': {'B2': 'Noun'}, # diva2:1602676
+    'pretargeted': {'C2': 'Adjective'},
+    'S.cerevisiae': {'C2': 'Noun'},
+    'polypropylene-blend': {'C2': 'Noun'},
+    'post-exertional': {'C2': 'Adjective'},
+    'Ponseti method': {'B2': 'Noun'}, # diva2:1219499
+    'polypropylen/PP': {'C2': 'Noun'},
+    'polygenic': {'C1': 'Adjective'},
+    'polyadenylated': {'C2': 'Adjective'},
+    'polybrominated': {'C2': 'Adjective'},
+    'polybutylene': {'C2': 'Noun'},
+    'polycarboxylate': {'C2': 'Noun'},
+    'Polonica': {'C2': 'Noun'}, # part of 'Ceratocystis Polonica' - see diva2:826735
+    'Pluronic-based': {'C1': 'Adjective'},
+    'playing-related': {'B2': 'Adjective'},
+    'Plug-in-Gait': {'B2': 'Noun'},
+    'pixelation': {'B2': 'Noun'},
+    'phylogenomic': {'C1': 'Adjective'},
+    'photoconjugation': {'C1': 'Noun'},
+    'Phragmites': {'C1': 'Noun'},
+    'phosphatase': {'C1': 'Noun'},
+    'Phosphorus-31': {'C1': 'Noun'},
+    'pharamacovigilance': {'C1': 'Noun'},
+    'pharmacopeias': {'C1': 'Noun'},
+    'phase-change': {'B2': 'Noun'},
+    'Paralympics': {'A2': 'Noun'},
+    'Petri-dishes': {'B2': 'Noun'},
+    'Phase-Liquid': {'B2': 'Noun'},
+    'orthostatic': {'C1': 'Adjective'},
+    'PET-bottles': {'B1': 'Noun'},
+    'PET-imaging': {'C1': 'Noun'},
+    'PFAS-containing': {'C1': 'Adjective'},
+    'PLA-based': {'C1': 'Adjective'},
+    'oilspill': {'B2': 'Noun'},
+    'olefin-to-paraffin': {'C2': 'Noun'},
+    'olfactometry': {'C2': 'Noun'},
+    'octet-analysis': {'C2': 'Noun'}, # diva2:1219373
+    'octetanalys': {'C2': 'Noun'}, # diva2:1219373
+    'OSTE/Glass-beads': {'C2': 'Noun'}, # diva2:1446069
+    'OLS-model': {'C2': 'Noun'},
+    'OH-group': {'C2': 'Noun'},
+    'OH-production': {'C2': 'Noun'},
+    'OH-region': {'C2': 'Noun'},
+    'OH-signals': {'C2': 'Noun'},
+    'OCR-engine': {'B2': 'Noun'},
+    'OCR-engines': {'B2': 'Noun'},
+    'OCV-curve': {'C2': 'Noun'},
+    'O-centered': {'B2': 'Adjective'},
+    'O-content': {'B2': 'Noun'},
+    'O-glycans': {'C2': 'Noun'},
+    'O-impregnated': {'C2': 'Adjective'},
+    'O-linked': {'C2': 'Adjective'},
+    'O-N/Influent': {'C1': 'Noun'},
+    'nucleotide-binding': {'C1': 'Adjective'},
+    'nowdays': {'A2': 'Adverb'},
+    'Notre': {'B1': 'Noun'},
+    'Nordic-produced': {'B2': 'Adjective'},
+    'non-IP': {'B2': 'Adjective'},
+    'non-sequenced': {'B2': 'Adjective'},
+    'non-parametrical': {'B2': 'Adjective'},
+    'nonactin-based': {'C1': 'Adjective'},
+    'Nok/kg': {'B2': 'Unit'}, # Norwegian kronor per ton - see diva2:1528286
+    'No-shift': {'B2': 'Adjective'},
+    'Nm<sup>3</sup>/h': {'B2': 'Unit'}, # Normal Cubic Metres Per Hour
+    'NmL': {'B2': 'Unit'},# Nominal liters
+    'NmL/min': {'B2': 'Unit'}, # Nominal liters per minute
+    'neutropenia': {'C2': 'Noun'},
+    'Nernstian': {'C2': 'Adjective'}, # diva2:1340072
+    'Mucilaginibacter': {'B2': 'Noun'},
+    'Mycobacterium': {'B2': 'Noun'},
+    'Mycoplasma': {'B2': 'Noun'},
+    'N-terminal': {'C1': 'Adjective'},
+    'Metachromatic': {'C1': 'Adjective'}, # diva2:1454410
+    'Methanosarcina': {'C2': 'Noun'}, # diva2:1038973
+    'metabolome': {'B2': 'Noun'},
+    'Mars-like': {'A2': 'Adjective'},
+    'marginalization': {'C1': 'Noun'},
+    'materiel': {'C1': 'Noun'},
+    'Maillard reaction': {'B2': 'Noun'},
+    'macular': {'C2': 'Adjective'},
+    'MS1-spectra': {'C1': 'Noun'},
+    'MS2-spiked': {'C1': 'Adjective'},
+    'MSEK/year': {'C1': 'Unit'},
+    'MTO-models/theories': {'C1': 'Noun'},
+    'MMP-cleavable': {'C1': 'Adjective'},
+    'MRI-only': {'C1': 'Adjective'},
+    'MJ/Kg': {'C1': 'Unit'},
+    'MJ/kg': {'C1': 'Unit'},
+    'MJ/m': {'C1': 'Unit'},
+    'ML/year': {'C1': 'Unit'},
+    'MEA-based': {'C1': 'Adjective'},
+    'MED1-occupied': {'C1': 'Adjective'},
+    'MAP-curve': {'C2': 'Noun'},
+    'MATLAB-algorithm': {'C2': 'Noun'},
+    'MATLAB-script': {'C2': 'Noun'},
+    'MBR-pilot': {'C2': 'Noun'},
+    'MBR-reactors': {'C1': 'Noun'},
+    'MBs/ml': {'C1': 'Unit'},
+    'MDSC-like': {'C1': 'Adjective'},
+    'lytic': {'C2': 'Adjective'},
+    'Lyme': {'B2': 'Noun'},
+    'Luv color space': {'B2': 'Noun'},
+    'Luffa': {'B2': 'Noun'},
+    'Low-LA-factor': {'C2': 'Noun'},
+    'local-field-potential': {'C2': 'Noun'},
+    'Log-transforemd': {'C2': 'Adjective'},
+    'LogD': {'C2': 'Noun'}, # diva2:953399
+    'live/dead': {'B2': 'Adjective'}, # ratio
+    'L-Arginine': {'B2': 'Noun'},
+    'L-Glutamic': {'B2': 'Adjective'},
+    'L-Lactide': {'B2': 'Noun'},
+    'L-arabinose': {'B2': 'Noun'},
+    'L-asparagine': {'B2': 'Noun'},
+    'L-cells': {'B2': 'Noun'},
+    'L-cysteine': {'B2': 'Noun'},
+    'L-lactate': {'B2': 'Noun'},
+    'L-lactic': {'B2': 'Adjective'},
+    'laminated': {'B2': 'Adjective'},
+    'leukocyte': {'A2': 'Noun'},
+    'LFP-based': {'B2': 'Adjective'},
+    'Knight shift': {'B2': 'Noun'},
+    'K-alumina': {'A1': 'Noun'},
+    'K-promoted': {'A1': 'Adjective'},
+    'K-wire': {'A1': 'Noun'},
+    'jumpsuit': {'A1': 'Noun'},
+    'Job-Demands-Control-Support': {'A1': 'Noun'},
+    "I’m": {'A1': 'Pronoun'},
+    'IBD-risk': {'C1': 'Noun'},
+    'IC-booster': {'C1': 'Noun'},
+    'Human-Machine-Interface': {'C1': 'Noun'},
+    'human-derived': {'B2': 'Adjective'},
+    'hydrocortisone': {'C1': 'Noun'},
+    'hydrolyzation': {'C1': 'Noun'},
+    'hydrotreated': {'C1': 'Adjective'},
+    'hydrotreated-oil': {'C1': 'Noun'},
+    'horseradish': {'B1': 'Noun'},
+    'hot-water': {'A2': 'Adjective'},
+    'histamine': {'B2': 'Noun'},
+    'histocompatibillity': {'C2': 'Noun'},
+    'homopropargylglycine': {'C2': 'Noun'},
+    'heteronuclear': {'B2': 'Adjective'},
+    'Hepatitis-C': {'B1': 'Noun'},
+    'headlong': {'B2': 'Adjective'},
+    'heredity': {'B2': 'Noun'},
+    'Haber-Bosch process': {'B2': 'Noun'},
+    'HEPA-filtered': {'C1': 'Adjective'},
+    'HER2-binding': {'C1': 'Adjective'},
+    'HER2-overexpression': {'C1': 'Noun'},
+    'HER2-positive': {'C1': 'Adjective'},
+    'HFD-feeding': {'C1': 'Noun'},
+    'HFD-induced': {'C1': 'Adjective'},
+    'HIV-1-derived': {'C1': 'Adjective'},
+    'HSA-coupled': {'C1': 'Adjective'},
+    'habenula': {'B2': 'Noun'},
+    'gastroenterology': {'B2': 'Noun'},
+    'Galactoglucomannan': {'C1': 'Noun'},
+    'GTPase-activating': {'C1': 'Adjective'},
+    'furthermore': {'B2': 'Adverb'},
+    'GC-columns': {'C1': 'Noun'},
+    'GFP-fusion': {'C1': 'Noun'},
+    'GFP-tagged': {'C1': 'Adjective'},
+    'Fussarium': {'B2': 'Noun'}, # fungi - see diva2:839241
+    'furtherly': {'C1': 'Adverb'},
+    'Fragaria': {'B2': 'Noun'}, # genus
+    'esther': {'B2': 'Noun'},
+    'expectedly': {'B1': 'Adverb'},
+    'electrocorticogram': {'C2': 'Noun'},
+    'enthalpy': {'C2': 'Noun'},
+    'environmental®': {'B1': 'Adjective'},
+    'ecolabel': {'B2': 'Noun'},
+    'ESI-current': {'C2': 'Noun'},
+    'ESI-needles': {'C2': 'Noun'},
+    'ESI-voltage': {'C2': 'Noun'},
+    'ESP-feed': {'C1': 'Noun'},
+    'EUR/kg': {'B1': 'Unit'},
+    'ECG-gated': {'B2': 'Adjective'},
+    'ECM-like': {'B2': 'Adjective'},
+    'ECM-scaffold': {'B2': 'Noun'},
+    'EMG-based': {'C2': 'Adjective'},
+    'EMG-electrodes': {'C2': 'Noun'},
+    'EMG-equipment': {'C2': 'Noun'},
+    'EMG-measurements': {'C2': 'Noun'},
+    'EMG-shields': {'C2': 'Noun'},
+    'EML4-ALK-driven': {'C2': 'Adjective'},
+    'EML4-ALK-positive': {'C2': 'Adjective'},
+    'EOF-measurements': {'C2': 'Noun'},
+    'EPR/Spin-trapping': {'C2': 'Noun'},
+    'E-modulus': {'B2': 'Noun'},
+    'E-value': {'B2': 'Noun'},
+    'ECF-mass': {'B2': 'Noun'},
+    'dramatify': {'B2': 'Verb'},
+    'dystrophy': {'B2': 'Noun'},
+    'drug-loaded': {'B2': 'Adjective'},
+    'Drosophila': {'B2': 'Noun'},
+    'DpnI-digested': {'B2': 'Adjective'},
+    'dodecyltrimethylammonium': {'B2': 'Adjective'},
+    'domain-derived': {'B2': 'Adjective'},
+    'dimensionally': {'B2': 'Adverb'},
+    'dimethicone': {'C1': 'Noun'},
+    'dipalmitoylphosphatidylcholine': {'C1': 'Noun'},
+    'discretising': {'C1': 'Verb'},
+    'Dn-treated': {'B2': 'Adjective'},
+    'Dispersin': {'C1': 'Noun'}, 
+    'DispersinB': {'C1': 'Noun'}, # Dispersin B (also known as DspB or DispersinB) is a 40 kDa glycoside hydrolase - see  diva2:1219373
+    'Dispersin B': {'C1': 'Noun'},
+    'DspB': {'C1': 'Noun'},
+    'Diflunisal': {'C1': 'Noun'}, # drug - diva2:506052
+    'design-study': {'B2': 'Noun'},
+    'Diazepam': {'C1': 'Noun'},
+    'Diels-Alderase': {'C1': 'Noun'},
+    'difformable': {'C1': 'Adjective'},
+    'dithiobis': {'C1': 'Noun'},
+    'Diels Alder reaction': {'C1': 'Noun'}, # see diva2:419586
+    'deacetylated': {'C1': 'Adjective'},
+    'Death-domain': {'C1': 'Noun'},
+    'defibrillators': {'B2': 'Noun'},
+    'dehydrins': {'C1': 'Noun'},
+    'Dexa-mediated': {'C1': 'Adjective'},
+    'Day-1': {'B2': 'Adjective'},
+    'Dame': {'A1': 'Noun'},
+    'Dactylium': {'C1': 'Noun'},
+    'Cu-based': {'C1': 'Adjective'},
+    'Cyanobateria': {'B2': 'Noun'},
+    'D-dimer': {'C1': 'Noun'},
+    'DNA-regions': {'C1': 'Noun'},
+    'DNS-queries': {'C1': 'Noun'},
+    'DNSSEC-secured': {'C1': 'Adjective'},
+    'DNSSEC-signed': {'C1': 'Adjective'},
+    'DOC-concentration': {'C1': 'Noun'},
+    'DOC-levels': {'C1': 'Noun'},
+    'DOC-reduction': {'C1': 'Noun'},
+    'DOC-removal': {'C1': 'Noun'},
+    'DOTA-chelator': {'C1': 'Noun'},
+    'DPP-catalysed': {'C1': 'Adjective'},
+    'cross-hatch': {'B2': 'Verb'},
+    'cruciate': {'C1': 'Adjective'},
+    'crispant': {'C1': 'Adjective'}, # CRISPR-Cas9 engineered animals - diva2:1876236
+    'Coscinodiscus': {'C2': 'Noun'}, # genus
+    'CountVectorsFeaturizer': {'C2': 'Noun'}, # diva2:1562950
+    'Cpigenome-Wide': {'C2': 'Adjective'},
+    'cordillera': {'B2': 'Noun'},
+    'Confidentiality-Integrity-Availability': {'C1': 'Noun'},
+    'concurring': {'C1': 'Adjective'},
+    'Compl': {'B2': 'Abbreviation'}, # as part of "ΔE<sub>Compl</sub>" - see diva2:1519504
+    'Collagen-PEG-Maleimide': {'C2': 'Noun'},
+    'Collagen-PEG-maleimide': {'C2': 'Noun'},
+    'Collect/Click': {'A2': 'Verb'},
+    'circulated': {'B1': 'Verb'},
+    'coconut-based': {'B2': 'Adjective'},
+    'coeruleus': {'C2': 'Adjective'},
+    'Chat-Bison': {'C2': 'Noun'},
+    'Chat-bison': {'C2': 'Noun'},
+    'Chatbot-optimization': {'C1': 'Noun'},
+    'chemical/solvent': {'B1': 'Noun'},
+    'Charpy impact testing': {'B2': 'Noun'}, # Charpy impact testing - see diva2:839628
+    'ChIP-qPCR': {'C2': 'Noun'},
+    'ChIP-sequencing': {'C2': 'Noun'},
+    'Cepheid': {'B2': 'Noun'},
+    'ceratocystis': {'C2': 'Noun'},
+    'cetrimonium': {'C2': 'Noun'},
+    'Centro': {'A1': 'Noun'}, # diva2:1115111
+    'Centro-group': {'B1': 'Noun'}, # diva2:1115111
+    'Cell-picker': {'C2': 'Noun'}, # diva2:826695
+    'Cell-pickers': {'C2': 'Noun'},# diva2:826695
+    'Casein-Yeast': {'C2': 'Noun'},
+    'Caspase-3': {'C2': 'Noun'},
+    'Caspian': {'B1': 'Adjective'},
+    'Caulobacter': {'C2': 'Noun'},
+    'C-pep': {'C1': 'Noun'},
+    'C-peptide': {'B2': 'Noun'},
+    'C-terminus': {'C1': 'Noun'},
+    'C:N-ratio': {'C1': 'Noun'},
+    'CAD-software': {'B2': 'Noun'},
+    'Bolivar': {'B1': 'Noun'}, # Venezuelan Bolivar
+    'benzylalcohol': {'B2': 'Noun'},
+    'biodesign': {'B2': 'Noun'},
+    'bioelectronic': {'B2': 'Adjective'},
+    'CE-mark': {'B2': 'Noun'},
+    'benzophenone': {'B2': 'Noun'},
+    'Bifidobacterium': {'B2': 'Noun'},
+    'Begonia': {'B2': 'Noun'},
+    'Begoniaceae': {'B2': 'Noun'}, # family of flowerin gplants
+    'Beta-synuclein': {'B2': 'Noun'}, # protein - see diva2:1455009
+    'Bacillus': {'B1': 'Noun'},
+    'Bacteroides': {'B1': 'Noun'},
+    'Bacteroidetes': {'B1': 'Noun'},
+    'Bacteroidia': {'B2': 'Noun'},
+    'balm': {'B2': 'Noun'},
+    'BIS-lists': {'C1': 'Noun'},
+    'BMD-levels': {'C1': 'Noun'},
+    'BMD-values': {'C1': 'Noun'},
+    'BSA-containing': {'C1': 'Adjective'},
+    'B-cell': {'B2': 'Noun'},
+    'B-cells': {'B2': 'Noun'},
+    'B-domain': {'C1': 'Noun'},
+    'B-particles': {'C2': 'Noun'},
+    'B.subtili': {'B2': 'Noun'},
+    'B.subtilis': {'B1': 'Noun'},
+    'B0-inhomogeneities': {'C1': 'Noun'},
+    'BA-operation': {'B2': 'Noun'},
+    'BA-operations': {'B2': 'Noun'},
+    'BA-operatives': {'B2': 'Noun'},
+    'BAM-files': {'C1': 'Noun'},
+    'BED-files': {'C1': 'Noun'},
+    'BFB-boiler': {'C1': 'Noun'},
+    'A-mode': {'B2': 'Noun'},
+    'EF-hand': {'C2': 'Noun'},
+    'ED-coatings': {'C2': 'Noun'},
+    'Htt-protein': {'C2': 'Noun'},
+    'Ls-Dyna': {'C2': 'Noun'},
+    'Ls-PrePost': {'C2': 'Noun'},
+    'MFC-XG-Pectin': {'C1': 'Noun'},
+    'Acidimicrobiia': {'C1': 'Noun (Plural)'},
+    'Mutual-Saliency': {'C1': 'Noun Phrase'},
+    'pronation': {'B2': 'Noun'},
+    'supination': {'B2': 'Noun'},
 }
     
 chemical_elements_symbols={
@@ -51706,6 +52114,8 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    "diammonium salt of 2, 2‐azino‐bis(3‐ethylbenzothiazoline‐6‐sulfonic acid", # see diva2:1592494
+    "AA’B<sub>2</sub>O<sub>6</sub>", # see diva2:1185488
     'H<sub>2</sub>pdc',
     'Zr02',
     'ZrO',
@@ -53197,7 +53607,94 @@ place_names=[
     'Lillsjön', # spring - see diva2:826701
     'Nytorp', # spring - see diva2:826701
     'Trefaldighetskällan', # spring - see diva2:826701
-
+    'Dhaka', # Bangladesh
+    'Flemingsberg',
+    'Ghent',
+    'Guangdong',
+    'Guangxi',
+    'Gåshaga',
+    'Halmstad',
+    'Hanoi',
+    'Haninge',
+    'Hasselfors',
+    'Hägernäsviken',
+    'Höganäs',
+    'Högbytorp',
+    'Kalmar',
+    'Karlskoga',
+    'Kronoberg',
+    'Käringsjön',
+    'Kållered',
+    'Lappkärrsberget',
+    'Lausanne',
+    'Oskarshamns',
+    'Nockebybanan',
+    'Rosenlund',
+    'Roslagbanan',
+    'Roslags',
+    'Rönningesjön',
+    'Rönnskär',
+    'Stureby',
+    'Stångtjärnsbäck',
+    'Sundsvalls',
+    'Södertäljes',
+    'Tallinn',
+    'Upplands',
+    'Upplands-Bro',
+    'Uruguay',
+    'Valhalla',
+    'Vallentuna',
+    'Vallentunna',
+    'Säbysjön',
+    'Norsborg’s',
+    'Edsviken',
+    'Rotebro',
+    'Vietnam',
+    'Albany',
+    'Vegastaden', #
+    'Toledo',
+    'Uddevalla',
+    'Tianjin',
+    'Salems',
+    'Borås',
+    'Porsgrunn', # Norway
+    'Montes del Plata', # Uruguay
+    'Montes', # Montes del Plata, Uruguay
+    'Plata', # part of Montes del Plata, Uruguay
+    'São Paulo',
+    'Olkiluoto', # Finland
+    'Ockelbo', # kommun
+    'Käppala',
+    'Nile',
+    'Nacka',
+    'Malmberget',
+    'Macclesfield', # England
+    'Löttingelund',
+    'Löt',
+    'Loudden',
+    'Longmont',
+    'Kyushu',
+    'Kumla',
+    'Jessore', # Bangladesh
+    'Khulna', # Bangladesh
+    'Jhumjhumpur', # Bangladesh
+    'Kattegat',
+    'Port Jérôme',
+    'Jérôme', # part of "Port Jérôme"
+    'Gravenchon',
+    'Össur', # Iceland
+    'Jordbro',
+    'Hagby',
+    'Falu',
+    'Talara', # Peru
+    'Drevviken', # a lake in Sweden
+    'Danderyds',
+    'Dajugezhuang', # in Tianjin, China
+    'Cochabamba', # Bolivia
+    'El Carmen', # El Carmen, Pando, in Bolivia
+    'Brest', # France
+    'Suresnes', # France
+    
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -58494,7 +58991,7 @@ company_and_product_names=[
     'Systrace', # diva2:1585650
     'Syvab', # diva2:898981
     'Syvabs', # diva2:898981
-    'SÖRAB',
+    'SÖRAB', # see diva2:899310
     'T-GCN', # used but not defined in diva2:1836833 - see thesis reference [7]
     'T-Mobile',
     'T0_3B', # model - diva2:1849284
@@ -60158,11 +60655,604 @@ company_and_product_names=[
     "Redbiotec's rePAX®", # see diva2:801739
     'rePAX®', # "Redbiotec's rePAX®" - see diva2:801739
     'High-Five™', # see diva2:801739
+    'ArgusEye®',
+    'Elekta',
+    'ExxonMobil',
+    'Feelgood',
+    'Feelgoods',
+    'Ficocipa/Renault',
+    'FileMaker',
+    'FlexFilm',
+    'FlexMap3D',
+    'Fujifilm',
+    'Geant4',
+    'Hamamatsu',
+    'HyperWorks',
+    'Ingenia',
+    'Innventias',
+    'IntelliSpace',
+    'IntelliVue',
+    'Intelliflex',
+    'Kimab',
+    'Kronjäst',
+    'LKABs',
+    'Mitsubishi',
+    'Multiphysics®',
+    'MyEasyLab',
+    'MyScania',
+    "Mälarenergi`s",
+    'PivotTables',
+    'Polonite®',
+    'Polonite®/ha',
+    'Posture Score',
+    'Potential EP',
+    'Potential ODP',
+    'PowerBox',
+    'Powercell',
+    'Powerformer',
+    'Quanterix',
+    'QuickStep',
+    'Quattro',
+    'R-software',
+    'Ragn-Sell',
+    'SIX®-pilot',
+    'SIX®-process',
+    'Sahlgrenska',
+    'SciLife',
+    'SciLifeLab',
+    'SimaPro',
+    'SpacyTokenizer',
+    'SparkFuns',
+    'StanzaTokenizer',
+    'StarterKit',
+    'System®',
+    'Södersjukhusets',
+    'Universitetssjukhus',
+    'WhitespaceTokenizer',
+    'Nikon',
+    'Roslagsvatten',
+    'Akzo',
+    'AlfaLaval',
+    'Allyn',
+    'AdBlue®',
+    'Bayer',
+    'Beckers',
+    'Billerud',
+    'Unity Barracuda', # diva2:1799173
+    'Barracuda', # diva2:1799173
+    'SHL Medical AB', # diva2:1654726
+    'Alba Nova University Center', # see diva2:826695
+    'AlbaNova University Center',
+    'Veidekke Entreprenad AB', # diva2:1602803
+    'Veidekke', # Veidekke Entreprenad AB - diva2:1602803
+    'Yoyo Technology AB', # diva2:799255
+    'Yoyo', # 'Yoyo Technology AB' - see  diva2:799255
+    'NeoviusSignalsystem och Data AB', # see diva2:1775282
+    'Neovius', # 'Neovius Data och Signalsystem  AB' - see diva2:1775282
+    'AA6063', # aluminium alloy - see  diva2:720728
+    'A380',  # aluminium alloy - see  diva2:720728
+    'ABD-Z-Z', # diva2:1876286
+    'ACGIH®', # see diva2:1820608
+    'ACGIH', # see diva2:1820608
+    'ACO Hud Nordic', # see diva2:723762
+    'ACO', # see diva2:723762
+    'ACS-150', # from ABB - see diva2:1352383
+    'AD7124-8', # Analog devices -  see diva2:1838323
+    'ADAS1000', # Analog devices - see diva2:912275
+    'AE', # HIV-1 subtype see diva2:1586215
+    'AFA Fastigheter', # diva2:1786728
+    'AFA', # AFA  Fastigheter - see diva2:1786728
+    'AFA Insurance', # diva2:1176452
+    'AFA Insurance', # diva2:1176452 - actually "Afa Försäkring" or "Afa Insurance Brokers Pty. Ltd."
+    'AF2-HWP8-75-X', # AFM device - see diva2:1588565
+    'AF1000', # Escherichia coli AF1000  strain - see diva2:744716
+    'AIPVAQDLNAPSDWDSR', # amino acid sequence: AIPVAQDLNAPSDWDSR - see diva2:1472200
+    'ALBA', # computer program - see diva2:741024
+    'ALBERT', # ALBERT: A Lite BERT for Self-supervised Learning of Language Representations (https://www.arxiv.org/abs/1909.11942) - see diva2:1451804
+    'XLM-R', # model (https://ai.meta.com/blog/-xlm-r-state-of-the-art-cross-lingual-understanding-through-self-supervision/) - see diva2:1451804
+    'ALTEF®', # a unique and durable anodised aluminium oxide coating with Teflon® impregnation - used but not defined in diva2:871624
+    'ALTEF', # a unique and durable anodised aluminium oxide coating with Teflon® impregnation - used but not defined in diva2:871624
+    'AMAPRTLLL', #  Qdm with the sequence AMAPRTLLL - see diva2:1673971
+    'AQAERTPEL', # peptide 001 (AQAERTPEL) - see diva2:1673971
+    'ANACONDA', # DIR method - see diva2:1598039
+    'ANTEK', # ANTEK (nitrogen) analysis - see diva2:782402 - no full text
+    'Antek', # 'Antek nitrogen analyzer system'  - see diva2:782402 - no full text
+    'AOM/DSS', # a chemically induced mice model of colitis - see diva2:1595200
+    'AP114', # antimicrobial peptide from  Adenium Biotech, Denmark - see diva2:1674014
+    'AR3C', # monoclonal antibodies- see diva2:1454428
+    'HEPC3', # monoclonal antibodies- see diva2:1454428
+    'HEPC74', # monoclonal antibodies- see diva2:1454428
+    'HCV1', # monoclonal antibodies- see diva2:1454428
+    'AR9271', # a Wi-Fi chip from Qualcomm Atheros - see diva2:628192
+    'ARTIS', # Siemens ARTIS Pheno - see  diva2:1451190
+    'AT-LSTM', # AT-LSTM model - see diva2:1764511
+    'ATIS-0600315.2007', # Alliance for Telecommunications Industry Solutions standard - diva2:628811
+    'AVISO', # AVISO CellCelektor - see diva2:826695
+    'CellCelector™', # product from AVISO  - see diva2:826695
+    'AVL Cruise M', # software - see diva2:1669790
+    'A4CLINICS', # program A4CLINICS developed by VASCOPS gMBh - see diva2:1142654
+    'VASCOPS', # VASCOPS gMBh - see diva2:1142654 - see diva2:1142654
+    'A431', # cell line - see diva2:856188
+    'A498', # A498 renal carcinoma cells - see diva2:1504212
+    'A375', # A375 melanoma cells - see diva2:1738587
+    'A23187', # calcium ionophore A23187 - see diva2:1711605
+    'A123', # LFP-based A123 Systems ANR26650m1-B batteries - see diva2:1467631
+    'A-L', # gel prototype - Prototype A-L - see diva2:826706
+    'A-H', # models - see diva2:1667575
+    'A-F', # grading scheme - see diva2:738455
+    'A-498', # cancer cells- see diva2:1454420
+    'B006', # a complex in Telge Nät - see diva2:826712
+    'B210', # a complex in Telge Nät - see diva2:826712
+    'Clab', # a complex in Telge Nät - see diva2:826712
+    'B05', # DUF152 members - see diva2:1044163
+    'B10', # DUF152 members - see diva2:1044163
+    'Dv152',  # DUF152 members - see diva2:1044163
+    'B100', # biofuel - see diva2:1228545
+    'B10', # biofuel - see diva2:1228545
+    'HVO', # biofuel - see diva2:1228545
+    'B12', # vitamin B12 - see diva2:1672956
+    'B1', # boiler B1, a bio-fired fluidized bed boiler - see diva2:1145307
+    'B2', # boiler B2, a waste-fired grate incinerator - see diva2:1145307
+    'B3LYP',  #functional for the geometry optimizations - see diva2:525899
+    'M06-2X', # functional for single point calculations - see diva2:525899
+    'B7-H3', # breast cancer-related receptor - see diva2:1873319
+    'HER2', # breast cancer-related receptor - see diva2:1873319
+    'HER3', # breast cancer-related receptor - see diva2:1873319
+    'B72', # geriatric unit at Karolinska University Hospital in Huddinge diva2:738455
+    'B74', # geriatric unit at Karolinska University Hospital in Huddinge diva2:738455
+    'BA.2', # omicron variant  - see diva2:1770221
+    'BA.2.75', # omicron variant - see diva2:1770221
+    'BAMSE', # BAMSE cohort, a longitudinal birth cohort study based in Stockholm - see diva2:1886015
+    'BAPA', # phosphonic acid etching monomer BAPA<sup>bisPhn</sup> - see diva2:1691024
+    'BARBARA', # EU project BARBARA - see diva2:1243274
+    'BAS-P', # Byggarbetsmiljösamordnare för planering och projektering - see diva2:1223022
+    'BAS P', # Byggarbetsmiljösamordnare för planering och projektering - see diva2:1223022
+    'BAS U', #  Byggarbetsmiljösamordnare för utförande - see diva2:1223022
+    'BCD', # BCD Vanguard heatexchange - see diva2:1673485
+    'CSC14', # heatexchange - see diva2:1673485
+    'BD Kiestra', # BD Kiestra Total Lab Automation - see diva2:643954
+    'Kiestra', # BD Kiestra Total Lab Automation - see diva2:643954
+    'UFT100', # Antrad Medical UFT100 - see diva2:952760
+    'Antrad Medical', # see diva2:952760
+    'Antrad', # Antrad Medical - see diva2:952760
+    'OLS-BERT', # model- see diva2:1602883
+    'DNABERT', # BERT model trained on DNA - see diva2:1676068
+    'BG', # a mixture of glucose and glycosidic levulinates - see diva2:1159711
+    'BIRGIT', # motion simulation platform - see diva2:742143
+    'BL21', # strain 21 of Escherichia coli
+    'BMAL1', # clock gene - see diva2:1741633
+    'BMP-2', # growth factor - see diva2:624871
+    'BioNOmadix BN-EMG2-T', # diva2:1448228
+    'BioNOmadix', # diva2:1448228
+    'BN-EMG2-T', # BioNOmadix BN-EMG2-T - see diva2:1448228
+    'SparkFuns MyoWear', #  muscle sensor - see diva2:1448228
+    'MyoWear', #  muscle sensor - see diva2:1448228
+    'BR1', # tank for treating waste water diva2:1272715
+    'BR2', # tank for treating waste water diva2:1272715
+    'BR3', # tank for treating waste water diva2:1272715
+    'BR4', # tank for treating waste water diva2:1272715
+    'BR5', # tank for treating waste water diva2:1272715
+    'BR6', # tank for treating waste water diva2:1272715
+    'MBR1', # membrane bioreactor for treating waste water diva2:1272715
+    'MBR2', # membrane bioreactor for treating waste water diva2:1272715
+    'BRISQUE', # image quality assessment algorithm - see diva2:1109808
+    'BIOPHEN™', # diva2:1673960
+    'B-SPORT+', # project - diva2:1640551 
+    'BT-474', # cell line - see diva2:1673943
+    'MCF-7', # cell line - see diva2:1673943
+    'BW-A', # blackwater - see diva2:1774440
+    'BW-B', # blackwater - see diva2:1774440
+    'C-18', # C-18 column (250x4.6 mm, 5 µm particle size) from Crompack (column no 5) - see diva2:1722942
+    'C-C', # carbon-carbon double bonds - see diva2:1701750
+    'C-H', # carbon-hydrogen - see diva2:1701750
+    'C-PAM', # C-PAM 1510 - diva2:827334
+    'C-RAD', # company in Uppsala -  diva2:1239066
+    'C-RAD Sentinel', # diva2:1239066
+    'Sentinel', # C-RAD  device - see diva2:1239066
+    'C-rate', # charging or discharging current rate
+    'C/10', # C-rate 10 hours - see diva2:1813278
+    'C/14' # C-rate 14 hours - see diva2:1813278
+    'C/4', # C-rate 4 hours - see diva2:1595744
+    'C/10-30', #  Acrylates C/10-30 Alkylcrosspolymer - see diva2:1352187
+    'C/N', # carbon to nitrogen ration - see diva2:1170374
+    'C1-NR', # a continuously stirred reactor - see  diva2:1705257
+    'D1-R', # a continuously stirred reactor - see  diva2:1705257
+    'D2-NR', # a continuously stirred reactor - see  diva2:1705257						   'C10', # C10 diamine - 1,10-decanediamine - see diva2:1876702
+    'C6', # C6 diamine - HMDA - see diva2:1876702
+    'C10-C40'# oil index diva2:1824409 - actually C<sub>10</sub> C<sub>40</sub>
+    'C12-15', # C12-15 Alkyl Benzoate - see diva2:1887578
+    'C18', # C18 50 mm column - see diva2:1674050
+    'C2-4', # oligomerisation reactor C<sub>2-4</sub> - see diva2:1472049
+    'C20', # C<SUB>20</SUB> - see diva2:1472049
+    'C2.BPA', # immunoglobulin binding protein domain, C2, benzoylphenylalanine(BPA -  diva2:853815
+    'CYANEX 272', # C272 - see diva2:1549280
+    'C272', # CYANEX 272 - see diva2:1549280
+    'C30S', # Mettler Toledo C30S Compact Karl Fischer-coulometer - see diva2:1384216
+    'C41', # Escherichia coli (E. coli) competent cells - see diva2:1421360
+    'C43', # Escherichia coli (E. coli) competent cells - see diva2:1421360
+    'Rosetta 2', # Escherichia coli (E. coli) competent cells - see diva2:1421360
+    'C57B1', # C57B1 mice - see diva2:744699
+    'C57B1/6J', # C57B1/6J laboratory mice - see diva2:1421348
+    'C57BL/6', # wild-type mice (C57BL/6 - see diva2:1833684
+    'C57BL/J6', # C57BL/J6 mice - see diva2:1259565
+    'C7', # vertebrate - see diva2:1186504
+    'T4', # vertebrate - see diva2:1186504
+    'L1/S5', # vertebrate - see diva2:1186504
+    'C7942CA-22', # CMOS flat panel Hamamatsu C7942CA-22 - see diva2:867631
+    'CAACTTG', # nucleotide sequence CAACTTG diva2 - see :1552810
+    'CAPRIN1', # a cytoplasmic activation/proliferation-associated protein - see  diva2:1876706
+    'CAPZA2', # gene - see diva2:860338
+    'CAS9', # likely should be "Cas9" diva2:1774777
+    'CAS9/LSD1', # likely should be "Cas9 with LSD1" diva2:1774777
+    'CBM1C', # xylanase AcXyn10A CBM1C diva2:1571882
+    'CBM6', # diva2:1454416
+    'CBM􀏲', # diva2:1454416
+    'CBS-QB3', # method - see diva2:419586
+    'CCL5', # gene - see diva2:1741976
+    'CDC42', # Rho GTPase CDC42 - see diva2:1595081
+    'CD16', # diva2:1876708
+    'CD163', # diva2:1454998
+    'CD19', # immune oncology protein - see diva2:1674033
+    'CD5', # immune oncology protein - see diva2:1674033
+    'CD8', # immune oncology protein - see diva2:1674033
+    'CD206', # diva2:1454998
+    'CD3', # diva2:1876241
+    'CD38', # diva2:1711587
+    'CD4', #diva2:1886088
+    'CD4/CD8', # diva2:1886088
+    'CD40', # diva2:1519510
+    'CD6', # proein - see diva2:1886088
+    'LAG3', # proein - see diva2:1886088
+    'CXCL13', # proein - see diva2:1886088
+    'CD63', # diva2:1876708
+    'CD9', # diva2:1788576
+    'TSG101', # diva2:1788576
+    'EML4-ALK', # diva2:1788576
+    'CDKN2A', # gene - see diva2:1774777
+    'CDKN2B', # gene - see diva2:1774777
+    'CDR3', # diva2:1454862
+    'CEEQUAL', # certification - see diva2:1602803
+    'CENPA', # marker - see diva2:1886093
+    'CENPC', # marker - see diva2:1886093
+    'PR3', # marker - see diva2:1886093
+    'MPO', # marker - see diva2:1886093
+    'Uddeholm', # company
+    'Ultrasonix',# Medical Corporation
+    'Umbraco', # open source CMS
+    'Umicore', # company
+    'UniSart',
+    'UniSart®',
+    'Unscrambler', # Unscrambler X (Camo AS - see diva2:1427516
+    'Uponor',
+    'Vaio', # Sony Vaio - see diva2:573478
+    'Valdescorriel', # Valdescorriel Biodiesel plant - see diva2:443295
+    'Vanax', # diva2:441386
+    'VarScan2', # SCNA detection, algorithms in sequencing data - see diva2:855720
+    'ExomeCNV', # SCNA detection, algorithms in sequencing data - see diva2:855720
+    'ControlFreeC', # SCNA detection, algorithms in sequencing data - see diva2:855720
+    'BICseq', # SCNA detection, algorithms in sequencing data - see diva2:855720
+    'HMMcopy', # SCNA detection, algorithms in sequencing data - see diva2:855720
+    'CNAnorm', # SCNA detection, algorithms in sequencing data - see diva2:855720
+    'Veridex', # diva2:853465
+    'Ubbelohde', # Ubbelohde capillary viscometer - see diva2:1643939
+    'Topsoe', # Haldor Topsoe - see diva2:849441,
+    'Topsøe', # Haldor Topsøe A/S - see diva2:930492
+    'Thalassiosira', # Thalassiosira eccentrica - see diva2:722724
+    'Talon', # Sternal Talon - see diva2:631384
+    'Sternal', # Sternal Talon - see diva2:631384
+    'Strangler', # Strangler Fig Pattern - see diva2:1738884
+    'Sonora', # Sonora Medical System in Longmont, USA - diva2:559963
+    'Shear-Lag', # model - see diva2:898813
+    'Serpent', # simulation code - see diva2:722717
+    'Sativa', # Cannabis Sativa - see diva2:1471667
+    'Sartorius', # Sartorius Stedim Biotech - see diva2:801773
+    'Sarcina', # Sarcina ventriculi - see diva2:1454474
+    'Saprolegnia', # Saprolegnia parasitica - see diva2:1673630
+    'Sanger', # Sanger sequencing - see diva2:801911, diva2:1875849, diva2:1454847
+    'Sangair', # company 
+    'Sangairs', # company possessive
+    'Sanfilippo', # Sanfilippo syndrome - diva2:744738
+    'Sandqvist', # organization - see diva2:1880468
+    'Sanchi', # Sanchi oiltanker spill  - see diva2:1382141
+    'SaltX', # company: SaltX technology - diva2:1693494
+    'Salk', # Salk Institute for Biological Studies - see diva2:1776843
+    'Saint-Gobain',
+    'Sal-1', # enzyme - see diva2:1219373
+    'Safeline Sweden AB',
+    'Safeline', #  Sweden AB
+    'Safelines',
+    'Saccharomyces', # Saccharomyces Cerevisiae - see diva2:1722997
+    'Saccharina', # Saccharina Latissima - see diva2:846141
+    'Sabic', # company - see diva2:413150
+    'Rugosa', # Candida Rugosa Lipase - see diva2:413358
+    'Romboutsia', # Romboutsia ilealis - see diva2:1454474
+    'Pseudomonas', # bacteria - see diva2:1588399
+    'Prontoderm', # product of B. Braun Medical AB - see diva2:1275060
+    'Promulgen', # Promulgen D from Lubrizol - see diva2:1593458
+    'Promis.e', # CAD program - see diva2:1322549
+    'Progressor', # Tindeq Progressor 300 diva2:1770624
+    'Tindeq', # Tindeq Progressor 300 diva2:1770624
+    'Profoto', # company - see diva2:1437409
+    'Procudan', # Danish packaging company - diva2:1770889
+    'Procedia', # part of journal name "Energy Procedia" - diva2:1585015
+    'ProFlex-XC', # diva2:1373338
+    'ProCeas',
+    'ProCalc', # Vicon ProCalc - see diva2:1692806
+    'Vicon', # Vicon ProCalc - see diva2:1692806
+    'Printex U',  # reference carbon black - diva2:826709
+    'Printex',  # reference carbon black - diva2:826709
+    'Vulcan XC 72', # reference carbon black - diva2:826709
+    'Vulcan', # reference carbon black - diva2:826709
+    'Primona', # company - diva2:1217609
+    'Penguin Winter Jumpsuit', # diva2:1455898
+    'HUAMAO', # diva2:1455898
+    'Primaloft', # diva2:1455898
+    'PreZero', # diva2:1824415
+    'Kovik', # diva2:1824415
+    'Selpaxt', # diva2:1824415
+    'Chromafora', # diva2:1824415
+    'Prada', # 2013 data set - see diva2:1593557
+    'Funzionano AS', # diva2:1677480
+    'Funzionano', # diva2:1677480
+    'DirectLiNGAM', # diva2:1527788
+    'Ceratocystis Polonica', # diva2:826735
+    'Grosmannia penicillata', # diva2:826735
+    'Ophiostoma picea', # diva2:826735
+    'Ips typographus', # spruce bark beetle diva2:826735
+    'Polestar', # company - diva2:1795584
+    'Polarn o. Pyret', # diva2:1786734
+    'Polarn', # Polarn o. Pyret diva2:1786734
+    'Pyret', # Polarn o. Pyret diva2:1786734
+    'Pluronic',
+    'Pluronic®',
+    'Pleurotus ostreatus', # diva2:1711913
+    'Pleurotus', # part of Pleurotus ostreatus - see diva2:1711913
+    'ostreatus', # part of Pleurotus ostreatus - see diva2:1711913
+    'Ganoderma lucidum',  # diva2:1711913
+    'Ganoderma',  #part of 'Ganoderma lucidum'- see diva2:1711913
+    'lucidum',  #part of 'Ganoderma lucidum'- see diva2:1711913
+    'Plantagon', # company
+    'Pixelgen Technologies AB', #
+    'Pixelgen', # Pixelgen Technologies AB
+    'Pioneiros Distillery', # Pioneiros Distillery - see diva2:445206
+    'Pioneiros', # Pioneiros Distillery - see diva2:445206
+    'Pieris Napi', # diva2:787218
+    'Pieris', # part of "Pieris Napi" - see diva2:787218
+    'Napi', # part of "Pieris Napi" - see diva2:787218
+    'PicsArt', # application - see diva2:1045579
+    'Cura', # software - see diva2:1045579
+    'Pickering emulsion', # diva2:1643939
+    'Pickering', # part of "Pickering emulsion" - see diva2:1643939
+    'Pichia pastoris', # diva2:416899
+    'Pichia', #  part of "Pichia pastoris'" diva2:416899
+    'pastoris', #  part of "Pichia pastoris'" diva2:416899
+    'PiFace', # diva2:912275
+    'Phytophthora capsici', # diva2:1610055
+    'Phytophthora', # part of "Phytophthora capsici" - see diva2:1610055
+    'capsici', # part of "Phytophthora capsici" - see diva2:1610055
+    'PITG_01029', # a pectinesterase protein - see diva2:1454477
+    'PITG_02545', # a pectinesterase protein - see diva2:1454477
+    'PhyloWGS', # software - diva2:1454852
+    'Expands', # software - diva2:1454852
+    'DNAJC18', # chaperone gene  - diva2:1454852
+    'Phu San Hospital', # diva2:1349899
+    'Phi3', # large language model - see diva2:1865680
+    'PhenoImager Fusion microscope', # diva2:1711575
+    'PhenoImager Fusion', # part of "PhenoImager Fusion microscope" diva2:1711575
+    'PhenoImager', # part of "PhenoImager Fusion microscope" diva2:1711575
+    'ARTIS Pheno', # a Siemens product - see diva2:1451190
+    'Pheno', # part of "'ARTIS Pheno'" - see diva2:1451190
+    'Lillydoo', # diva2:1574756
+    'Naty', # diva2:1574756
+    'Pampers Pure', # diva2:1574756
+    'Kit &amp; Kin', # diva2:1574756
+    'Bambo Nature', # diva2:1574756
+    'Love &amp; Green', # diva2:1574756
+    'Moltex', # diva2:1574756
+    'Seventh Generation', # diva2:1574756
+    'The Honest company', # diva2:1574756
+    'Hello Bello', # diva2:1574756
+    'Tooshies by Tom', # diva2:1574756
+    'Olink', # Olink Proteomics AB - diva2:1774737
+    'Olink®', # diva2:1774737
+    'Octapharma', # company - diva2:1673642
+    'Octanate®', # Octapharma Octanate® - see diva2:1673642
+    'Octanate', # Octapharma Octanate® - see diva2:1673642
+    'Octagam', # Octapharma Octagam - see diva2:1813276
+    'Oasis', # tool - diva2:706730
+    'Nylon11', # diva2:1352500
+    'Nuwiq®', # diva2:1876253
+    'Nudt2', # Nudix hydrolase MTH1 in soluable form - see diva2:801790
+    'MTH1', # Nudix hydrolase MTH1 - see diva2:801790
+    'Noxon', # company - see diva2:1528483
+    'Novus Scientific', # Novus Scientific - see diva2:778826
+    'Novus', # Novus Scientific - see diva2:778826
+    'Novelda', # company - see diva2:1061512
+    'Notoph-thalmus viridescens', # "Notoph-thalmus viridescens" - red spotted salamnder - see diva2:852471
+    'Notoph-thalmus', # part of "Notoph-thalmus viridescens" - red spotted salamnder - see diva2:852471
+    'viridescens', # part of "Notoph-thalmus viridescens" - red spotted salamnder - see diva2:852471
+    'Notcvh', # transcription control - see diva2:854686 (no full text)
+    'Notch1', # glioma cell lines - diva2:744703
+    'Notch2',  # glioma cell lines - diva2:744703
+    'Notch3',  # glioma cell lines - diva2:744703
+    'Notch1-3',  # glioma cell lines - diva2:744703
+    'Notch4',  # receptor - diva2:744703
+    'Norosensor', # biosensor - see diva2:848988
+    'Norner', # Norner AS - diva2:1674050
+    'Nordicstation', # company - see diva2:751100 and diva2:751697
+    'Hyflon', # Hyflon AD - see diva2:1575004
+    'Node-Red', # application - see diva2:1116008
+    'HEK293T', # cells - diva2:1876708
+    'Nmap', # utility - see diva2:661292
+    'Nicotiana benthamiana', #  see diva2:1454438
+    'Nicotiana', # part of "Nicotiana benthamiana'" - see diva2:1454438
+    'benthamiana', # part of "Nicotiana benthamiana'" - see diva2:1454438
+    'Mettler', # company
+    'Mettler-Toledo', # company
+    'Moringa oleifera', # diva2:801916
+    'Moringa', # part of "Moringa oleifera" - see diva2:801916
+    'oleifera', # part of "Moringa oleifera" - see diva2:801916
+    'Neisser Methylene Blue Metachromatic staining protocol', #  diva2:1454410
+    'MediaFire', # diva2:1866444
+    'MILD-net', # diva2:1296028
+    'Lyme borreliosis', # diva2:930817
+    'Luvly', # Luvly AB - see diva2:1866444
+    'Lunaphore', # company - see diva2:1711575
+    'Luminex®',  # company - see diva2:852274
+    'Luminex', # company - see diva2:852274
+    'xMAP', # Luminex® xMAP® - see diva2:1672946
+    'xMAP®', # Luminex® xMAP® - see diva2:1672946
+    '7-AAD', # cells - see diva2:852274
+    'Lumify', # Philips- see diva2:1569062
+    'Lubrizol', # company
+    'Lucy application', # see diva2:1843037
+    'Loupas 2D-autocorrector', # algorithm diva2:908846
+    'Shepp Logan Phantom', # diva2:1127993
+    'LodeSTAR', # singe shot self-supervised learning method - see diva2:1784839
+    'Litsea cubeba', # diva2:930817
+    'Litsea', # part of "Litsea cubeba" diva2:930817
+    'cubeba', # part of "Litsea cubeba" diva2:930817
+    'Kyushu University', # diva2:1086147
+    'Maidashi Kyushu University Hospital', # diva2:1086147
+    'Kuro Sumi', # tattoo ink - see diva2:1446946
+    'Kuro', # part of "Kuro Sumi" tattoo ink - see diva2:1446946
+    'Sumi', # part of "Kuro Sumi" tattoo ink - see diva2:1446946
+    'Kingfisher Flex', # benchtop automated extraction instrument - see diva2:1739048
+    'Kingfisher', # see diva2:1739048
+    'Giraffe® OmniBed® incubator', # diva2:854766
+    'Giraffe® OmniBed® incubator', # part of "Giraffe® OmniBed® incubator" - see diva2:854766
+    'Giraffe®', # part of "Giraffe® OmniBed® incubator" - see diva2:854766
+    'OmniBed®', # part of "Giraffe® OmniBed® incubator" - see diva2:854766
+    'Kaa', # IoT platform - see diva2:1188778
+    'Ka-bands',
+    'K100', # protein - see diva2:1142521
+    'Y102', # protein - see diva2:1142521
+    'Jurkat', # cell line - see diva2:1873319
+    'Jurkat-CD16a', # luciferase reporter cell line - see diva2:1873319
+    'Juno-Izumo1', # protein interaction - see diva2:1447074
+    'K2C', # prosthetic feet - see  diva2:1373338
+    'K2 Sensation',  # prosthetic feet - see  diva2:1373338
+    'Joncryl', # diva2:1352500
+    'Joncryl®', # acrylic resins & emulsions - diva2:1352500
+    'Jira', # software tool - see diva2:1451583
+    'Jehander', # company - see diva2:1151090
+    'Jeffamine', # diva2:1357105
+    'Jeffamine<sup>®</sup>', # diva2:1357105
+    'Jeffamines', # diva2:1357105
+    'Jatropha curcas oil', # diva2:460871
+    'curcas', # diva2:460871
+    'Jatropha', # diva2:460871
+    'Janthinobacterium', # soil bacteria - see diva2:1574743
+    'Hyperlight', # microalgal cultivation system - <diva2:854656
+    'Hyperlight®', # microalgal cultivation system - <diva2:854656
+    'Hyperfine', # tool - see diva2:1865014 and diva2:1865110
+    'Hylobius abietis', # pine weevil - see  diva2:787916
+    'Hylobius', # part of "Hylobius abietis" - see  diva2:787916
+    'abietis', # part of "Hylobius abietis" - see  diva2:787916
+    'HisTrap™ FF column',  # diva2:1823423
+    'His-tag', # trademarked name for polyhistidine-tag - see diva2:1454449, diva2:1673989, diva2:1447074
+    'Heterobasidion annosum', # tree fungus - see  diva2:787916
+    'Heterobasidion', # part of "Heterobasidion annosum" - see  diva2:787916
+    'annosum', # part of "Heterobasidion annosum" - see  diva2:787916
+    'Hermetia illucens)', # Black soldier fly - see diva2:1454452
+    'Hermetia)', # part of "'Hermetia illucens)'"- see diva2:1454452
+    'illucens)', # part of "'Hermetia illucens)'"- see diva2:1454452
+    'Halobacterium', # genus
+    'Halomonas', # genus
+    'Halophiles', # bacteria
+    'Giotto', # framework - see diva2:1711597
+    'Squidpy', # framework - see diva2:1711597
+    'GeneXpert', # assay - see  diva2:1602704
+    'Ganoderma', # genus
+    'Gasterosteus', # genus
+    'Gamry', # Gamry Instruments - company - see diva2:1655628
+    'Gadus', # genus - diva2:854709
+    'FreeStyle', # trademarked cerll line FreeStyle™ - see diva2:744738 - abstract missing the TM
+    'Eon', # company - see diva2:1695148
+    'Omexom Infratek Sverige AB', # company - see diva2:1695148
+    'Ecoscope', # instrument - see diva2:827333
+    'Ecohelix', # company - see diva2:1785530
+    'Ecobränsle', # company
+    'Ecobränsles', # company possessive
+    'EcoSwell', # company - see diva2:1784842
+    'Eclat', # algorithm - see diva2:1081737
+    'iStone', # 'iStone AB company - see diva2:1081737 
+    'Ebecryl', # resin - see diva2:1710221
+    'EBECRYL', # see diva2:1710221
+    'EchoPAC', # program - see diva2:1702428
+    'EasyMining', # company - see diva2:1723002, diva2:827343
+    'EasyMag', # product - see diva2:1739048
+    'Easton', # company - see diva2:1110811
+    'Easton Synergy 380', # product - see diva2:1110811
+    'Dynavox', # company diva2:1877495
+    'Tobii Dynavox', # company diva2:1877495
+    'Dunaliella tertiolecta', # diva2:854656
+    'Dunaliella', # part of "Dunaliella tertiolecta" diva2:854656
+    'tertiolecta', # part of "Dunaliella tertiolecta" diva2:854656
+    'Dual-Luciferase', # assay - see diva2:1876707
+    'Dual-Luciferase® Reporter (DLR™) Assay System', 
+    'Doxygen', # software - diva2:912275
+    'Docklin', # Docklin Digital - company - see diva2:1082553
+    'Daudi', # cells - sse diva2:1595216
+    'Darknet', # neural network - keyword for diva2:1451776
+    'Daphnia magna', # diva2:1589974
+    'Daphnia', # part of "Daphnia magna" - see diva2:1589974
+    'Danio rereio', # diva2:854709
+    'Danio rereio', # part of "Danio rereio" diva2:854709
+    'rereio', # part of "Danio rereio" diva2:854709
+    'Oryzias latipes', # diva2:854709
+    'Oryzias', # part of "Oryzias latipes" diva2:854709
+    'latipes', # part of "Oryzias latipes" diva2:854709
+    'Gasterosteus aculeatus', # diva2:854709
+    'Gasterosteus', # part of "Gasterosteus aculeatus" diva2:854709
+    'aculeatus', # part of "Gasterosteus aculeatus" diva2:854709
+    'Gadus morhua', # diva2:854709
+    'Gadus', # part of "Gadus morhua" diva2:854709
+    'morhua', # part of "Gadus morhua" diva2:854709
+    'Cyperus rotundus', # diva2:1708920
+    'Cyperus', # part of "Cyperus rotundus" diva2:1708920
+    'rotundus', # part of "Cyperus rotundus" diva2:1708920
+    'Cura', # software - see diva2:1045579
+    'Crompack', # company - see diva2:1722942
+    'CrossFit®', # diva2:1773745
+    'Cortus', # company - see diva2:1092235
+    'Consid', # Consid AB - company - diva2:1322501
+    'Conscia', # company - see diva2:1864158
+    'Condias', # company - see diva2:1676731
+    'Concanavalin A', # diva2:460576
+    'Concanavalin', # part of "Concanavalin A" diva2:460576
+    'CompactRIO', # controller - see diva2:1681542
+    'Comamonas dentitrificans', # bacterium - diva2:459254
+    'Comamonas', # diva2:459254
+    'CodeLink', # array - see diva2:744724
+    'Cinderella', # Viking Line ship - diva2:1765032
+    'Chemcad', # simulator - diva2:1555594
+    'Cellupsheres', # product of Cellutech AB
+    'Cellutech', # company - diva2:1170240
+    'Centriair', # company - <diva2:505431
+    'Cellufil', # Cellufil Project - diva2:1562003
+    'CellTM', # Attana CellTM 200 biosensor  - diva2:1454421
+    'Cellcolabs', # company - diva2:1788580
+    'Cellruptor', # see diva2:459300
+    'CellCelektor', # AVISO CellCelektor - see diva2:826695
+    'Bueno', #part of "Kaffe Bueno" -diva2:1843588
+    'Botch', # protein  diva2:744703
+    'Botch receptors', # diva2:744703
+    'Biologique Recherche', # cosmetics company - see diva2:413468
+    'Biacore', # company - diva2:1876278
+    'Berga', # Berga Greenhouse project - diva2:563793
+
 ]
 
 
 
 common_programming_languages=[ # libraries and functions
+    'ControlFreeC', # tool - diva2:855720
+    'Dlib', # libraries - see diva2:912680
+    'Javacode',
+    'Gromacs',
+    'GromacsPython',
+    'DirectX11',
     'YANG modeling language',
     'Python-can', # library provides Controller Area Network support for Python
     'Emscripten', # compiler tool chain for WebAssembly
@@ -60721,6 +61811,7 @@ names_of_persons=[
     'Adeel',
     'Adele',
     'Adhari',
+    'Adhikari',
     'Adigozalov',
     'Adolf',
     'Adriano',
@@ -60748,6 +61839,7 @@ names_of_persons=[
     'Akther',
     'Al-Hassan',
     'Al-Naamany',
+    'Alabdulkarem',
     'Alan',
     'Alasuutari',
     'Albert',
@@ -60900,6 +61992,8 @@ names_of_persons=[
     'Bajwa',
     'Baker',
     'Baki',
+    'Baldyga',
+    'Balkandjiev',
     'Ballard',
     'Baloo',
     'Banga',
@@ -60952,10 +62046,12 @@ names_of_persons=[
     'Belongie',
     'Bemnet',
     'Ben-Jacob',
+    'Bendtsen',
     'Bengt',
     'Benjamin',
     'Benjamin-Bona-Mahony',
     'Benny',
+    'Benson',
     'Bentley',
     'Bergendahl',
     'Berggren',
@@ -61016,6 +62112,7 @@ names_of_persons=[
     'Blackwell',
     'Bladh',
     'Blakeley',
+    'Blanc',
     'Bland Altman',
     'Blasius',
     'Bloebaum',
@@ -61031,6 +62128,8 @@ names_of_persons=[
     'Boden',
     'Bodleian',
     'Bodner',
+    'Boer',
+    'de Boer',
     'Bogdanov',
     'Bohner',
     'Boklund',
@@ -61058,6 +62157,7 @@ names_of_persons=[
     'Boukadoum',
     'Boulton',
     'Bourdoucen',
+    'Bourne',
     'Boussinesq',
     'Bowen',
     'Bowie',
@@ -61073,8 +62173,10 @@ names_of_persons=[
     'Braden',
     'Bradley',
     'Bradner',
+    'Bradford',
     'Brady',
     'Braess',
+    'Braga',
     'Bragdon',
     'Bragg',
     'Braitenberg',
@@ -61206,12 +62308,16 @@ names_of_persons=[
     'Chandy-Lamport',
     'Chandy/Misra/Bryantt',
     'Chang',
+    'Chapagain',
     'Chapin',
     'Chapman',
+    'Chapman-Jouget',
     'Chapmann',
+    'Carmen',
     'Charles',
     'Charlie',
     'Charny',
+    'Charpy',
     'Chassang',
     'Chatzigeorgiou',
     'Chatzimarkakis',
@@ -61281,6 +62387,7 @@ names_of_persons=[
     'Collins',
     'Colomb',
     'Colossus',
+    'Compton',
     'Conchon',
     'Conejo',
     'Connelly',
@@ -61300,6 +62407,7 @@ names_of_persons=[
     'Cornell',
     'Coronis',
     'Corrado', # Corrado Gini
+    'Corringer',
     'Cortana',
     'Cosma',
     'Costanza',
@@ -61321,10 +62429,12 @@ names_of_persons=[
     'Crays',
     'Creidi',
     'Crescenzi',
+    'Crespo',
     'Cresswell-Moorcock', # has dash of 0x2d
     'Cresswell–Moorcock', # has dash of 0x2013
     'Crick',
     'Criminisi',
+    'Cristian',
     'Cronbach',
     'Crowcroft',
     'Croxall',
@@ -61344,6 +62454,7 @@ names_of_persons=[
     'Daedalus',
     'Dabrovic',
     'Dagiuklas',
+    'Dahan',
     'Dahlbom',
     'Dahlin',
     'Dahlman',
@@ -61363,8 +62474,10 @@ names_of_persons=[
     'Dang',
     'Daniel',
     'Daniele',
+    'Daniels',
     'Danielsen',
     'Danley',
+    'Darcy',
     'Darden',
     'Darrell',
     'Darth',
@@ -61430,12 +62543,15 @@ names_of_persons=[
     'Deventer',
     'Dever',
     'Devlic',
+    'DeWitte',
+    'De Witte',
     'Dhabi',
     'Dharma',
     'Dhesikan',
     'DiBiase',
     'Diana',
     'Dias',
+    'Diels',
     'Dietz',
     'Diffie-Hellman',
     'Dijkstra',
@@ -61449,6 +62565,7 @@ names_of_persons=[
     'Discroll',
     'Djeiran',
     'Dlugan',
+    'Dobbins',
     'Dokoohaki',
     'Dolly',
     'Dominguez',
@@ -61462,6 +62579,7 @@ names_of_persons=[
     'Dongarra',
     'Donna',
     'Donovan',
+    'Dopazo',
     'Dorado',
     'Doran',
     'Dormans',
@@ -61469,6 +62587,7 @@ names_of_persons=[
     'Doshi',
     'Dou',
     'Doug',
+    'Dougherty',
     'Douglas',
     'Douskalis',
     'Doya',
@@ -61477,6 +62596,7 @@ names_of_persons=[
     'Dresner',
     'Driscoll',
     'Druschel',
+    'Duan',
     'Duarte',
     'Dubins',
     'Dubojs',
@@ -61494,6 +62614,7 @@ names_of_persons=[
     'Duquenoy',
     'Durbin',
     'Duric',
+    'Duesenfeld',
     'Duthil',
     'Dutta',
     'Duxbury',
@@ -61584,6 +62705,7 @@ names_of_persons=[
     'Esibov',
     'Eslami',
     'Espinola',
+    'Esther',
     'Estrin',
     'Ettus',
     'Eugene',
@@ -61638,6 +62760,7 @@ names_of_persons=[
     'Fern',
     'Fernanda',
     'Fernández',
+    'Fernández-Seara',
     'Ferrans',
     'Festor',
     'Feynman',
@@ -61659,6 +62782,7 @@ names_of_persons=[
     'Fleischer',
     'Flesch',
     'Flesch-Kincaid',
+    'Flodgren',
     'Florenteng',
     'Florian',
     'Florianopolis',
@@ -61717,6 +62841,7 @@ names_of_persons=[
     'Gabor',
     'Gabriel',
     'Gaffney',
+    'Gage',
     'Gagliano',
     'Galbraith',
     'Galerkin',
@@ -61783,6 +62908,7 @@ names_of_persons=[
     'Ghanbari',
     'Ghasemirahni',
     'Ghatoore',
+    'Ghebremicheal',
     'Ghemawat',
     'Ghosh',
     'Gianinazzi',
@@ -61867,6 +62993,8 @@ names_of_persons=[
     'Grensjös',
     'Greta',
     'Grifes',
+    'Griffin',
+    'Griffiths',
     'Griggs',
     'Grima',
     'Grimaldi',
@@ -61884,6 +63012,7 @@ names_of_persons=[
     'Guilder',
     'Guildford',
     'Guilford',
+    'Guillard',
     'Guillen',
     'Guimera',
     'Gulliksen',
@@ -61904,7 +63033,9 @@ names_of_persons=[
     'Gustafson',
     'Gustav',
     'Gutenberg',
+    'Gutiérrez',
     'Gutman',
+    'Gutmann',
     'Guttenberg',
     'Guttman',
     'Gyllensten',
@@ -61916,6 +63047,7 @@ names_of_persons=[
     'Gāti',
     'Haar',
     'Haberler',
+    'Haber-Bosch',
     'Habib',
     'Hacksaw',
     'Hadamard',
@@ -62187,11 +63319,13 @@ names_of_persons=[
     'Jakobson',
     'Jakobsson',
     'Jaksic',
+    'Jamadi',
     'James',
     'Jamika',
     'Jan',
     'Jana',
     'Jane',
+    'Janeway',
     'Jang',
     'Janne',
     'Jansen',
@@ -62262,6 +63396,7 @@ names_of_persons=[
     'Jon-Erik',
     'Jon-Olov',
     'Jonas',
+    'Jonasson',
     'Jonathan',
     'Jones',
     'Jonsson',
@@ -62270,7 +63405,9 @@ names_of_persons=[
     'Jorgo',
     'Jose',
     'Josef',
+    'Josefin',
     'Josefine',
+    'Josephine',
     'Josefsson',
     'Joseph',
     'Josh',
@@ -62306,7 +63443,9 @@ names_of_persons=[
     'Kaeli',
     'Kafka',
     'Kahn',
+    'Kai',
     'Kailash',
+    'Kaiser',
     'Kajko-Mattsson',
     'Kalai',
     'Kalbfleisch',
@@ -62348,6 +63487,7 @@ names_of_persons=[
     'Kasparsky',
     'Kaspersky',
     'Kate',
+    'Katarina',
     'Katherine',
     'Kathryn',
     'Katja',
@@ -62400,6 +63540,7 @@ names_of_persons=[
     'Khurram',
     'Kiefer',
     'Kiesel',
+    'Kikkoman',
     'Kilmer',
     'Kim',
     'Kimball',
@@ -62435,6 +63576,7 @@ names_of_persons=[
     'Klåvus',
     'Kmean',
     'Knappe',
+    'Knight',
     'Knott',
     'Knudsen',
     'Knuth',
@@ -62514,6 +63656,7 @@ names_of_persons=[
     'Kyriakakis',
     'Kán',
     'Könemann',
+    'König',
     'Köpp',
     'Köster',
     'LaRose',
@@ -62569,6 +63712,7 @@ names_of_persons=[
     'Lazer',
     'Lazzaro',
     'Lear',
+    'Le Blanc',
     'Lee',
     'Leer',
     'Lees',
@@ -62645,6 +63789,7 @@ names_of_persons=[
     'Liszt',
     'Litton',
     'Liu',
+    'Liungman',
     'Liverman',
     'Livingood',
     'Lix',
@@ -62655,6 +63800,7 @@ names_of_persons=[
     'Loebner',
     'Loehnert',
     'Loewner',
+    'Logan',
     'Lohr',
     'Lois',
     'Lomax',
@@ -62711,6 +63857,7 @@ names_of_persons=[
     'Machanavajjhala',
     'Machin',
     'Macho',
+    'MacKenzie'
     'Mackinlay',
     'Macy',
     'Madani',
@@ -62718,6 +63865,7 @@ names_of_persons=[
     'Madry',
     'Mae',
     'Magnus',
+    'Magnusson',
     'Maguire',
     'Mah',
     'Mahabadi',
@@ -62725,6 +63873,7 @@ names_of_persons=[
     'Mahapatra',
     'Mahler',
     'Mahy',
+    'Maillard',
     'Makarov',
     'Makeham',
     'Malchau',
@@ -62740,6 +63889,7 @@ names_of_persons=[
     'Mann',
     'Mann-Whitney',
     'Mannheim',
+    'Mannich',
     'Manning',
     'Manso',
     'Manuel',
@@ -62807,6 +63957,7 @@ names_of_persons=[
     'Matthew',
     'Matthews',
     'Matthias',
+    'Mattias',
     'Matti',
     'Mattias',
     'Mattisson',
@@ -62852,6 +64003,7 @@ names_of_persons=[
     'Md',
     'Mealling',
     'Mealy',
+    'Mears',
     'Medusa',
     'Medvedev',
     'Meghna',
@@ -62884,6 +64036,7 @@ names_of_persons=[
     'Micali',
     'Michael',
     'Michel',
+    'Michaelis-Menten',
     'Michelson',
     'Midas',
     'Miguel',
@@ -62894,7 +64047,9 @@ names_of_persons=[
     'Mike',
     'Mikulcak',
     'Militära',
+    'Milena',
     'Mills',
+    'Milorad',
     'Ming-Shuang',
     'Mingkun',
     'Mingui',
@@ -62975,6 +64130,7 @@ names_of_persons=[
     'Murray',
     'Mustafa',
     'Mustonen',
+    'Myrman',
     'Myungchul',
     'Mächler',
     'Mägi',
@@ -63002,6 +64158,7 @@ names_of_persons=[
     'Narendran',
     'Nasaw',
     'Nash',
+    'Nasim',
     'Naslund',
     'Nassar',
     'Nathan',
@@ -63061,6 +64218,8 @@ names_of_persons=[
     'Noor-E-Gagan',
     'Norbert',
     'Nordkalk',
+    'Nordlund',
+    'Norén',
     'Norichika',
     'Norman',
     'Normann',
@@ -63082,12 +64241,14 @@ names_of_persons=[
     'Nylén',
     'Nyquist',
     'Nyquist-Shannon',
+    'Nyström',
     'Näslund',
     'Núñez',
     'Obama',
     'Obenberger',
     'Obukhov',
     'Ochiai',
+    'Odnevall',
     'Odin',
     'Odlyzko',
     'Odom',
@@ -63140,6 +64301,7 @@ names_of_persons=[
     'Oulasvirta',
     'Ove',
     'Owen',
+    'Pablo',
     'Pacejka',
     'Pach',
     'Pachler',
@@ -63157,6 +64319,7 @@ names_of_persons=[
     'Pandasalso',
     'Pandora',
     'Pang',
+    'Paganin',
     'Paolo',
     'Papadakis',
     'Papadias',
@@ -63238,6 +64401,7 @@ names_of_persons=[
     'Pettis',
     'Pfautz',
     'Phan',
+    'Phelps',
     'Phil',
     'Philip',
     'Philipp',
@@ -63245,6 +64409,7 @@ names_of_persons=[
     'Phillip',
     'Pia',
     'Piaget',
+    'Piazza',
     'Pick',
     'Picoco',
     'Picton',
@@ -63261,11 +64426,14 @@ names_of_persons=[
     'Pisner',
     'Pizer',
     'Pjothi',
+    'Plamen',
+    'Plamen',
     'Plank',
     'Plutt',
     'Po-Ju',
     'Poisson',
     'Poissons',
+    'Poisson-Boltzmann',
     'Polk',
     'Polonium',
     'Polya',
@@ -63274,6 +64442,7 @@ names_of_persons=[
     'Poon',
     'Popescu',
     'Popper',
+    'Porras',
     'Porta',
     'Porter',
     'Portman',
@@ -63281,6 +64450,7 @@ names_of_persons=[
     'Porzak',
     'Postel',
     'Povoa',
+    'Považay',
     'Powell',
     'Poynting',
     'Praeger',
@@ -63304,6 +64474,7 @@ names_of_persons=[
     'Pugh',
     'Pujolle',
     'Pulver',
+    'Puntland',
     'Puntila',
     'Purrington',
     'Putin',
@@ -63445,6 +64616,7 @@ names_of_persons=[
     'Rooster',
     'Rorest',
     'Rosenberg',
+    'Rosdahl',
     'Rosenbloom',
     'Rosenblum',
     'Rosenbluth',
@@ -63464,6 +64636,7 @@ names_of_persons=[
     'Rubik',
     'Ruddy',
     'Rudolf',
+    'Ruddlesden-Popper',
     'Rui',
     'Rullen',
     'Rumi',
@@ -63475,10 +64648,12 @@ names_of_persons=[
     'Russ',
     'Russell',
     'Rutherford',
+    'Ruza',
     'Rümmer',
     'Rydberg',
     'Rydh',
     'Rytina',
+    'Rytter',
     'Rümmer',
     'Saad',
     'Saad-Falcon',
@@ -63486,19 +64661,25 @@ names_of_persons=[
     'Sabin',
     'Sackett',
     'Saeki', # Saeki Laboratory at Tokyo Institute of Technology
+    'Saeman',
     'Saffian',
+    'Saffman-Taylor',
     'Sagberg',
+    'Sahlens',
+    'Sahlén',
     'Saikat',
     'Saint-Laguë',
     'Sainte-Laguë',
     'Sakhawat',
     'Salama',
     'Saleem',
+    'Salmén',
     'Salgueiro',
     'Saligrama',
     'Salowey',
     'Saltzer',
     'Sam', # used in diva2:1773583
+    'Samei',
     'Samer',
     'Samir',
     'Sammy',
@@ -63528,11 +64709,13 @@ names_of_persons=[
     'Sarvas',
     'Sarwar',
     'Sasse',
+    'Satija',
     'Sato',
     'Satoshi',
     'Satratzemi',
     'Saturn',
     'Satya',
+    'Sauguet',
     'Savitri',
     'Savolainen',
     'Scanziani',
@@ -63858,6 +65041,7 @@ names_of_persons=[
     'Theremin', # diva2:1351746
     'Thernelius',
     'Thevenin',
+    'Thibault',
     'Thistlewaite',
     'Thomas',
     'Thompson',
@@ -63879,6 +65063,7 @@ names_of_persons=[
     'Tobagi',
     'Todd',
     'Toeplitz',
+    'Tokuda',
     'Tollmar',
     'Tomas',
     'Tomlinson-Harashima',
@@ -63951,6 +65136,7 @@ names_of_persons=[
     'Vahdat',
     'Valasek',
     'Valderas',
+    'Valentini',
     'Valizadeh',
     'Valkó',
     'Valls',
@@ -63958,6 +65144,7 @@ names_of_persons=[
     'Varadhan',
     'Varaiya',
     'Varghese',
+    'Varona',
     'Varsa',
     'Varzim',
     'Vasileva',
@@ -63971,6 +65158,7 @@ names_of_persons=[
     'Vega',
     'Vehovar',
     'Veibell',
+    'Veide',
     'Veikkolainen',
     'Veit',
     'Veizades',
@@ -64079,6 +65267,7 @@ names_of_persons=[
     'Weinkauf',
     'Weir',
     'Weissman',
+    'Weisz-Prater',
     'Welch',
     'Welding',
     'Well-BeingWhite',
@@ -64279,9 +65468,10 @@ names_of_persons=[
     'Öhman',
     'Össur',
     'Östrand',
+    'Øi',
     'Šarić',
+    'Čavić',
 ]
-
 
 common_french_words={
     "d'Electricité": {'B1': 'Noun (compound)'},
@@ -64294,10 +65484,12 @@ common_french_words={
     'Biosphère': {'B1': 'Noun'},
     'Centre': {'A1': 'Noun'},
     'Chemins': {'A2': 'Noun'},
+    'Chimie': {'B1': 'Noun'},
     'Comitéinternational': {'B1': 'Noun'},
     'Commissariat': {'B2': 'Noun'},
     'Communauté': {'B1': 'Noun'},
     'Composent': {'B1': 'Verb'},
+    'Condensée': {'B1': 'Adjective'},
     'Ecole': {'A1': 'Noun'},
     'Economie': {'B1': 'Noun'},
     'Electricite': {'B1': 'Noun'},
@@ -64308,6 +65500,8 @@ common_french_words={
     'Fonctionnement': {'B2': 'Noun'},
     'Goéland': {'B2': 'Noun'},
     'Identification': {'B2': 'Noun'},
+    'Laboratoire': {'B1': 'Noun'},
+    'Matière': {'B1': 'Noun'},
     'Montrealais': {'C1': 'Noun'},
     'Montréalais': {'C1': 'Noun'},
     'Objectifs': {'B1': 'Noun'},
@@ -64513,6 +65707,7 @@ common_portuguese_words=[
 ]
 
 common_spanish_words={
+    'Bueno': {'A1': 'Adjective'},
     'Nuestra Señora': {'B1': 'Noun Phrase'}, # Our Lady, a religious title for Mary, mother of Jesus
     'nuestra': {'A2': 'Possessive Adjective (Feminine, Singular)'}, # our
     'señora': {'A2': 'Noun'},
@@ -64525,6 +65720,7 @@ common_spanish_words={
     'de':  {'A1': 'Preposition'}, # Of, from
     'higuera': {'B1': 'Noun'}, # fig tree
     'la': {'A1': 'Article'}, # The, feminine singular
+    'plata': {'A2': 'Noun'}, # silver and money
     'salud': {'A2': 'Interjection'},
 
 }
@@ -66111,6 +67307,7 @@ abbreviations_ending_in_period=[
     'Assoc.',
     'B.A.',
     'B.S.',
+    'C.I.A.',
     'Corp.',
     'D.A.',
     'D.C.',
