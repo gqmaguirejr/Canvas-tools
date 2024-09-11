@@ -1379,6 +1379,7 @@ common_English_words={
     'December–February': {'A2': 'Noun Phrase'},
     'February-July': {'B2': 'Noun Phrase'},  # Specific time period
     'March-April': {'B2': 'Noun Phrase'},
+    'April-June': {'B2': 'Noun Phrase'},
 
     # seasons
     'Spring': {'A1': 'Proper Noun', 'B2': 'Verb'}, # (season)
@@ -51011,7 +51012,6 @@ common_English_words={
     'sapiens': {'C1': 'Noun'},
     'savings-application': {'B2': 'Noun Phrase'},
     'scMap': {'C1': 'Noun, Abbreviation'},
-    'scPred': {'C1': 'Noun, Abbreviation'},
     'scaffolds/devices': {'C1': 'Noun Phrase'},
     'scaled-out': {'C1': 'Adjective, Verb (past tense), Verb (past participle)'},
     'scintillator-based': {'C1': 'Adjective (compound)'},
@@ -51866,6 +51866,749 @@ common_English_words={
     'Mutual-Saliency': {'C1': 'Noun Phrase'},
     'pronation': {'B2': 'Noun'},
     'supination': {'B2': 'Noun'},
+    'X-chromosome': {'B2': 'Noun Phrase'},
+    'X-containing': {'B2': 'Adjective (compound)'},
+    'X-factor': {'B2': 'Noun Phrase'},
+    'X-linked': {'B2': 'Adjective (compound)'},
+    'X-shirt': {'A2': 'Noun Phrase'},
+    'X-variables': {'B2': 'Noun Phrase'},
+    'Y-linked': {'B2': 'Adjective (compound)'},
+    'Y-probes': {'B2': 'Noun Phrase'},
+    'Wolbachia': {'B2': 'Noun'}, # genus
+    'liquid-to-gas': {'C2': 'Adjective'},
+    'non-distracting': {'C1': 'Adjective'},
+    'school-aged': {'B2': 'Adjective'},
+    'short-distance': {'B1': 'Adjective'},
+    'test-control': {'C1': 'Adjective'},
+    'Chitotriosidase-1': {'C2': 'Noun'},
+    'CleanMAP-Technology': {'C2': 'Noun'},
+    'CleanMAP-technology': {'C2': 'Noun'},
+    'clustering-constrained': {'C2': 'Adjective'},
+    'Co-combustion': {'C1': 'Noun'},
+    'Co-electrolysis': {'C2': 'Noun'},
+    'Cu-ASC': {'C2': 'Noun'},
+    'Cu-H': {'C2': 'Noun'},
+    'Cu-sintering': {'C2': 'Noun'},
+    'Cu-sites': {'C2': 'Noun'},
+    'Cu-thin': {'C2': 'Adjective'},
+    'Cu-water': {'C2': 'Noun'},
+    'CuI-complex': {'C2': 'Noun'},
+    'CuI-thin': {'C2': 'Adjective'},
+    'Cys-loop': {'C2': 'Noun'},
+    'D,L-lactic': {'C2': 'Adjective'},
+    'D-Ala-D-Lac': {'C2': 'Noun'},
+    'D-Lac': {'C2': 'Noun'},
+    'D-Lac-terminated': {'C2': 'Adjective'},
+    'D-donors': {'C2': 'Noun'},
+    'D-factory': {'C2': 'Noun'},
+    'D-lactide': {'C2': 'Noun'},
+    'D-mannopyranose': {'C2': 'Noun'},
+    'D-optimal': {'C2': 'Adjective'},
+    'D1-like': {'C2': 'Adjective'},
+    'DB-Seq': {'C2': 'Noun'},
+    'DBCO-NHS-ester': {'C2': 'Noun'},
+    'DC-components': {'C2': 'Noun'},
+    'DD-filter': {'C2': 'Noun'},
+    'DD-washer': {'C2': 'Noun'},
+    'DEC-process': {'C2': 'Noun'},
+    'DES-model': {'C2': 'Noun'},
+    'DGDN-loop': {'C2': 'Noun'},
+    'DIR-methods': {'C2': 'Noun'},
+    'DMG-test': {'C2': 'Noun'},
+    'DNA-conjugated': {'C2': 'Adjective'},
+    'DNA-guided': {'C2': 'Adjective'},
+    'DNA-pixel': {'C2': 'Noun'},
+    'DNA-pixels': {'C2': 'Noun'},
+    'DNA-probe': {'C2': 'Noun'},
+    'DNA-probes': {'C1': 'Noun'},
+    'Eley-Rideal-type': {'C1': 'Adjective'},
+    'EpCAM-binding': {'C2': 'Adjective'},
+    'ErbB3-signaling': {'C2': 'Adjective'},
+    'ErbB3-targeting': {'C2': 'Adjective'},
+    'Esomeprazole-enzyme': {'C2': 'Noun'},
+    'Esomeprazole-production': {'C1': 'Noun'},
+    'Ethylene-propylene-diene-monomer': {'C1': 'Noun'},
+    'F-domain': {'C1': 'Noun'},
+    'F-domains': {'C1': 'Noun'},
+    'F-particles': {'C2': 'Noun'},
+    'F-protein': {'C1': 'Noun'},
+    'F-statistic': {'C2': 'Noun'},
+    'FDA-approved': {'B2': 'Adjective'},
+    'FDG-avid': {'C2': 'Adjective'},
+    'FE-model': {'C1': 'Noun'},
+    'FK506-binding': {'C2': 'Adjective'},
+    'FSW-joints': {'C2': 'Noun'},
+    'FTIR-analysis': {'C1': 'Noun'},
+    'FTIR-image': {'C1': 'Noun'},
+    'Flash-crash': {'B2': 'Noun'}, 
+    'Forty-seven': {'A1': 'Number'}, 
+    'Gas-Module': {'A1': 'Noun'},
+    'Gas-Modules': {'A1': 'Noun'},
+    'Laissez-Faire': {'B2': 'Noun'},
+    'NGS-based': {'C1': 'Adjective'},
+    'NH3-based': {'C1': 'Adjective'},
+    'NIR-instrument': {'C1': 'Noun'},
+    'NIR-instruments': {'C1': 'Noun'},
+    'NK-cell': {'C1': 'Noun'},
+    'NLU-model': {'C1': 'Noun'},
+    'NMC-based': {'C1': 'Adjective'},
+    'NOC-department': {'C1': 'Noun'},
+    'NOM-removal': {'C1': 'Noun'},
+    'NOx-\\xad‐conversion': {'C1': 'Noun'},
+    'Na-dominant': {'C1': 'Adjective'},
+    'NaOH-based': {'C1': 'Adjective'},
+    'NaOH/PEG-solution': {'C1': 'Noun'},
+    'Nano-Liquid': {'C1': 'Noun'},
+    'Nanoparticle-based': {'C1': 'Adjective'},
+    'Ni-Cr-Mo-based': {'C1': 'Adjective'},
+    'Ni-doped': {'C1': 'Adjective'},
+    'Ni-free': {'C1': 'Adjective'},
+    'Nickel-Titanium': {'B2': 'Noun'},
+    'P-donor': {'C1': 'Noun'},
+    'P-fertilizer': {'C1': 'Noun'},
+    'P-sheets': {'C1': 'Noun'},
+    'PO-bleaching': {'C1': 'Noun'},
+    'PO-press': {'C1': 'Noun'},
+    'PO-reactors': {'C1': 'Noun'},
+    'POS-terminals': {'C1': 'Noun'},
+    'PP-blend': {'C1': 'Noun'},
+    'PPO-Rapeseed': {'C1': 'Noun'},
+    'PPi-PFK': {'C1': 'Noun'},
+    'PPi-PFKs': {'C1': 'Noun'},
+    'PPi-dependent': {'C1': 'Adjective'},
+    'PPy-SDS': {'C1': 'Noun'},
+    'PRK-Rubisco': {'C1': 'Noun'},
+    'PRM-assay': {'C1': 'Noun'},
+    'PSMA-binders': {'C1': 'Noun'},
+    'PSMA-expressing': {'C1': 'Adjective'},
+    'PUSi-A': {'C1': 'Noun'},
+    'PUSi-B': {'C1': 'Noun'},
+    'PVA-coatings': {'C1': 'Noun'},
+    'PVA-graphite': {'C1': 'Noun'},
+    'PVA-shelled': {'C1': 'Adjective'},
+    'PVB-based': {'C1': 'Adjective'},
+    'PVC-based': {'C1': 'Adjective'},
+    'PZT-based': {'C1': 'Adjective'},
+    'Pairwise-Independent': {'C1': 'Adjective'},
+    'Pd-Al2O3': {'C1': 'Noun'},
+    'Pd-based': {'C1': 'Adjective'},
+    'Pedar-X': {'C1': 'Noun'},
+    'Pt-RuO': {'C1': 'Noun'},
+    'Pt-based': {'C1': 'Adjective'},
+    'Pyrrolysyl-tRNA': {'C1': 'Noun'},
+    'Python-bindings': {'B2': 'Noun'},
+    'Q-Med': {'B2': 'Noun'},
+    'Q-dummy': {'B2': 'Noun'},
+    'Q-equivalent': {'B2': 'Noun'},
+    'Q-methodologywas': {'B2': 'Noun'},
+    'Q-treated': {'B2': 'Adjective'},
+    'Q1-press': {'B2': 'Noun'},
+    'Qa-1': {'B2': 'Noun'},
+    'Qa-1b/001': {'B2': 'Noun'},
+    'RAMS-parameters': {'B2': 'Noun'},
+    'REACH-regulation': {'B2': 'Noun'},
+    'SPR-measurements': {'C1': 'Noun'},
+    'SQL-view': {'B2': 'Noun'},
+    'SR-Site': {'C1': 'Noun'},
+    'ST-amplitude': {'C1': 'Noun'},
+    'ST-depression': {'C1': 'Noun'},
+    'ST-value': {'C1': 'Noun'},
+    'STAR-pLysS': {'C1': 'Noun'},
+    'STEAM-based': {'B2': 'Adjective'},
+    'SUVA-value': {'C1': 'Noun'},
+    'SUVA-values': {'C1': 'Noun'},
+    'SWOT-model': {'B2': 'Noun'},
+    'Schiff-base': {'C1': 'Noun'},
+    'Sector-Wise': {'B2': 'Adjective'},
+    'Sequence-specific': {'C1': 'Adjective'},
+    'Sequenced-based': {'C1': 'Adjective'},
+    'Servo-i': {'B2': 'Noun'},
+    'Sf-rhabdovirus': {'C1': 'Noun'},
+    'Si-wafers': {'C1': 'Noun'},
+    'Smart-seq': {'C1': 'Noun'},
+    'Smart-seq3xpress': {'C1': 'Noun'},
+    'Solvent-casted': {'C1': 'Adjective'},
+    'Space-Solid': {'C1': 'Noun'},
+    'Spatially-Resolved': {'C1': 'Adjective'},
+    'SpheriCal-molecules': {'C1': 'Noun'},
+    'Spiro-OMeTAD': {'C1': 'Noun'},
+    'Sprague-Dawley': {'C1': 'Noun'},
+    'Strep-tag': {'C1': 'Noun'},
+    'SubER-method': {'C1': 'Noun'},
+    'Super-G': {'B1': 'Noun'},
+    'Suzuki-Miyaura-type': {'C1': 'Adjective'},
+    'Swedish-based': {'B2': 'Adjective'},
+    'T-bases': {'C1': 'Noun'},
+    'T-mixer': {'C1': 'Noun'},
+    'T-statistic': {'C1': 'Noun'},
+    'T2-value': {'C1': 'Noun'},
+    'T2D-RBCs': {'C1': 'Noun'},
+    'TATA-promoter': {'C1': 'Noun'},
+    'TBA-alginate': {'C1': 'Noun'},
+    'TCB-labs': {'B2': 'Noun'},
+    'TCR-like': {'C1': 'Adjective'},
+    'TEC-based': {'B2': 'Adjective'},
+    'TEM-simulator': {'C1': 'Noun'},
+    'TEMPO-oxidation': {'C1': 'Noun'},
+    'TEMPO-oxidised': {'C1': 'Adjective'},
+    'TEMPO-oxidized': {'C1': 'Adjective'},
+    'TEMPO-periodate': {'C1': 'Noun'},
+    'TFA/MQ-water': {'C1': 'Noun'},
+    'THS-facility': {'B2': 'Noun'},
+    'THS-stream': {'C1': 'Noun'},
+    'THS-water': {'B2': 'Noun'},
+    'TLV-format': {'B2': 'Noun'},
+    'TOC-content': {'C1': 'Noun'},
+    'TRIS-HCl': {'C1': 'Noun'},
+    'TV-rating': {'B1': 'Noun'},
+    'TV-ratings': {'B1': 'Noun'},
+    'TakeCare-unit': {'B2': 'Noun'},
+    'Teflon-like': {'B2': 'Adjective'},
+    'Ten-layer': {'B2': 'Adjective'},
+    'Text-Bison': {'C1': 'Noun'},
+    'Three-wire': {'B2': 'Adjective'},
+    'Ti-pretreatment': {'C1': 'Noun'},
+    'Time-gated': {'C1': 'Adjective'},
+    'Tot-N': {'C1': 'Noun'},
+    'Track-To-Learn': {'B2': 'Noun'},  
+    'Transposase-Accessible': {'C1': 'Adjective'},
+    'Tris-AAm': {'C1': 'Noun'},
+    'Tumor-associated': {'C1': 'Adjective'},
+    'Tyrosin-Bradykinin': {'C1': 'Noun'},
+    'U-well': {'C1': 'Noun'},
+    'U-wells': {'C1': 'Noun'},
+    'UDP-Glucose': {'C1': 'Noun'},
+    'UDP-sugar': {'C1': 'Noun'},
+    'UF-filter': {'C1': 'Noun'},
+    'UHPLC-MSanalysis': {'C1': 'Noun'},
+    'UPLC-equipment': {'C1': 'Noun'},
+    'UPS-systems': {'B2': 'Noun'},
+    'V-end': {'B2': 'Noun'},
+    'VBC-Cul2': {'C1': 'Noun'},
+    'VF-filter': {'C1': 'Noun'},
+    'VOC-concentration': {'C1': 'Noun'},
+    'VOC-reduction': {'C1': 'Noun'},
+    'VR-diversion': {'B2': 'Noun'},
+    'VR-experience': {'B2': 'Noun'},
+    'VRLA-batteries': {'B2': 'Noun'},
+    'VoIP-network': {'B2': 'Noun'},
+    'VoIP-protocols': {'B2': 'Noun'},
+    'WAN-connection': {'B2': 'Noun'},
+    'Word-files': {'A2': 'Noun'},
+    'Work-task': {'B1': 'Noun'},
+    'Working-time': {'B1': 'Noun'},
+    'alkali-based': {'B2': 'Adjective'},
+    'at-line': {'B2': 'Adjective'},
+    'SPE-cartridge': {'B2': 'Noun Phrase'},
+    'SPECT-devices': {'B2': 'Noun Phrase'},
+    'SPME-fibers': {'B2': 'Noun Phrase'},
+    'SPME-method': {'B2': 'Noun Phrase'},
+    'SPR-based': {'B2': 'Adjective (compound)'},
+    'VS/L-day': {'B2': 'Noun Phrase'},
+    'VVG-net': {'B2': 'Noun Phrase'},
+    'Voith-beater': {'B2': 'Noun Phrase'},
+    'WER-value': {'B2': 'Noun Phrase'},
+    'WG-Silica': {'B2': 'Noun Phrase'},
+    'Water-Ethanol-Ethyl': {'B2': 'Noun Phrase'},
+    'Wind-to-Methanol': {'B2': 'Noun Phrase'},
+    'Xe-Ar': {'B2': 'Noun Phrase'},
+    'A-value': {'B2': 'Noun Phrase'},
+    'A/G-MNase': {'B2': 'Noun Phrase'},
+    'AAV-based': {'B2': 'Adjective (compound)'},
+    'AAV-gene': {'B2': 'Noun Phrase'},
+    'ABD-Derived': {'B2': 'Adjective (compound)'},
+    'ABD-fused': {'B2': 'Adjective (compound)'},
+    'ABP-tag': {'B2': 'Noun Phrase'},
+    'AC-components': {'B2': 'Noun Phrase'},
+    'AC-filter': {'B2': 'Noun Phrase'},
+    'AC-reactor': {'B2': 'Noun Phrase'},
+    'AD-converter': {'B2': 'Noun Phrase'},
+    'AD-converters': {'B2': 'Noun Phrase'},
+    'ADAPT-library': {'B2': 'Noun Phrase'},
+    'AF-black': {'B2': 'Noun Phrase'},
+    'AF-green': {'B2': 'Noun Phrase'},
+    'AFM-imaging': {'B2': 'Noun Phrase'},
+    'AI-analysis': {'B2': 'Noun Phrase'},
+    'AI-designed': {'B2': 'Adjective (compound)'},
+    'AI-solutions': {'B2': 'Noun Phrase'},
+    'AI-tool': {'B2': 'Noun Phrase'},
+    'AI/ML-based': {'B2': 'Adjective (compound)'},
+    'AJAX-calls': {'B2': 'Noun Phrase'},
+    'AKD-coated': {'B2': 'Adjective (compound)'},
+    'ANCA-associated': {'B2': 'Adjective (compound)'},
+    'API-calls': {'B2': 'Noun Phrase'},
+    'API-removal': {'B2': 'Noun Phrase'},
+    'API-unit': {'B2': 'Noun Phrase'},
+    'AR-System': {'B2': 'Noun Phrase'},
+    'AR-system': {'B2': 'Noun Phrase'},
+    'ARM-Core': {'B2': 'Noun Phrase'},
+    'ARP-poisoning': {'B2': 'Noun Phrase'},
+    'ATEX-directive': {'B2': 'Noun Phrase'},
+    'ATRX-derived': {'B2': 'Adjective (compound)'},
+    'ATSM-standard': {'B2': 'Noun Phrase'},
+    'Ac-CoA': {'B2': 'Noun Phrase'},
+    'acetone-chloroform-methanol': {'B2': 'Noun Phrase'},
+    'acrylonitrile-butadiene-styrene': {'B2': 'Noun Phrase'},
+    'Activities-specific': {'B2': 'Adjective (compound)'},
+    'Affibody-AAVs': {'B2': 'Noun Phrase'},
+    'Airlaid-nonwoven': {'B2': 'Adjective (compound)'},
+    'Al-bound': {'B2': 'Adjective (compound)'},
+    'Aliphatic-OH': {'B2': 'Noun Phrase'},
+    'alkali-soluble': {'B2': 'Adjective (compound)'},
+    'alkyl-crosspolymer': {'B2': 'Noun Phrase'},
+    'Analysis-Differential': {'B2': 'Noun Phrase'},
+    'anti-infection': {'B2': 'Adjective (compound)'},
+    'anti-angiogenesis': {'B2': 'Noun Phrase'},
+    'anti-flammability': {'B2': 'Noun Phrase'},
+    'antibody-staining': {'B2': 'Noun Phrase'},
+    'Apolipoprotein-related': {'B2': 'Adjective (compound)'},
+    'Ara-C': {'B2': 'Noun Phrase'},
+    'Arg-Gly-Asp': {'B2': 'Noun Phrase'},
+    'Auto-PIMD': {'B2': 'Noun Phrase'},
+    'Avi-tagged': {'B2': 'Adjective (compound)'},
+    'Bangladeshi-market': {'B2': 'Noun Phrase'},
+    'Bio-Layer': {'B2': 'Noun Phrase'},
+    'Bio-Works': {'B2': 'Noun Phrase'},
+    'BioCon-process': {'B2': 'Noun Phrase'},
+    'BioSilk-foams': {'B2': 'Noun Phrase'},
+    'Biomass-To-Liquid': {'B2': 'Noun Phrase'},
+    'Bland-Altman plot': {'B2': 'Noun Phrase'},
+    'Bosutinib-treated': {'B2': 'Adjective (compound)'},
+    'Buf-2': {'B2': 'Noun Phrase'},
+    'Bulk-ROP': {'B2': 'Noun Phrase'},
+    'C-Class': {'B2': 'Noun Phrase'},
+    'C-Green': {'B2': 'Noun Phrase'},
+    'C-Libraries': {'B2': 'Noun Phrase'},
+    'C-Raclopride': {'B2': 'Noun Phrase'},
+    'C-based': {'B2': 'Adjective (compound)'},
+    'C-reactive': {'B2': 'Adjective (compound)'},
+    'C-samples': {'B2': 'Noun Phrase'},
+    'C-terminally': {'B2': 'Adverb'},
+    'C-\xad‐rates': {'B2': 'Noun Phrase'},
+    'C5-Condensed': {'B2': 'Adjective (compound)'},
+    'CAAC-ruthenium': {'B2': 'Noun Phrase'},
+    'CAD-relevant': {'B2': 'Adjective (compound)'},
+    'CAD-software,slicing': {'B2': 'Noun Phrase'},
+    'CAD-tools': {'B2': 'Noun Phrase'},
+    'CAGE-oriented': {'B2': 'Adjective (compound)'},
+    'CAN-frames': {'B2': 'Noun Phrase'},
+    'CBE-mix': {'B2': 'Noun Phrase'},
+    'CBH-school': {'B2': 'Noun Phrase'},
+    'CE-analysis': {'B2': 'Noun Phrase'},
+    'CE-fractioning': {'B2': 'Noun Phrase'},
+    'CE-part': {'B2': 'Noun Phrase'},
+    'CH-region': {'B2': 'Noun Phrase'},
+    'CH-signals': {'B2': 'Noun Phrase'},
+    'CIC-C1q': {'B2': 'Noun Phrase'},
+    'CKA-monomers': {'B2': 'Noun Phrase'},
+    'CLP-regulation': {'B2': 'Noun Phrase'},
+    'CNF-carboxy': {'B2': 'Noun Phrase'},
+    'CNF-coated': {'B2': 'Adjective (compound)'},
+    'CNF-dispersion': {'B2': 'Noun Phrase'},
+    'CNF-stabilized': {'B2': 'Adjective (compound)'},
+    'CNT-filled': {'B2': 'Adjective (compound)'},
+    'CO2-e/kWh': {'B2': 'Noun Phrase'},
+    'CO2-heavy': {'B2': 'Adjective (compound)'},
+    'CRISPR-interference': {'B2': 'Noun Phrase'},
+    'CRISPR/Cas-system': {'B2': 'Noun Phrase'},
+    'CRISPRi-mediated': {'B2': 'Adjective (compound)'},
+    'CRISPi-mediated': {'B2': 'Adjective (compound)'},
+    'CRM-systems': {'B2': 'Noun Phrase'},
+    'CS-correctors': {'B2': 'Noun Phrase'},
+    'CS-g-PVAc': {'B2': 'Noun Phrase'},
+    'CSS-template': {'B2': 'Noun Phrase'},
+    'CST-derivatives': {'B2': 'Noun Phrase'},
+    'CT-domain': {'B2': 'Noun Phrase'},
+    'CT-domains': {'B2': 'Noun Phrase'},
+    'CT-images': {'B2': 'Noun Phrase'},
+    'CTAB-rich': {'B2': 'Adjective (compound)'},
+    'CTV-name': {'B2': 'Noun Phrase'},
+    'CYP450-enzymes': {'B2': 'Noun Phrase'},
+    'carbon-limitation': {'B2': 'Noun Phrase'},
+    'Cardiac-Locomotor': {'B2': 'Noun Phrase'},
+    'DP-Acra': {'B2': 'Noun Phrase'},
+    'DP-Euca': {'B2': 'Noun Phrase'},
+    'E-caalue': {'B2': 'Noun Phrase'}, 
+    'EC:PC-based': {'B2': 'Adjective (compound)'},
+    'EOL”-battery': {'B2': 'Noun Phrase'},
+    'ERE-TATA-Luc': {'B2': 'Noun Phrase'},
+    'El-Vis': {'B2': 'Noun Phrase'},
+    'Ethanol-MethylethylketoneToluene': {'B2': 'Noun Phrase'},
+    'Ethanol2-propanol-Water': {'B2': 'Noun Phrase'},
+    'Ex-4': {'B2': 'Noun Phrase'},
+    'Exendin-4': {'B2': 'Noun Phrase'},
+    'ExpiCHO-cell': {'B2': 'Noun Phrase'},
+    'Extraction-Gas': {'B2': 'Noun Phrase'},
+    'EziG-protein': {'B2': 'Noun Phrase'},
+    'F-AXs': {'B2': 'Noun Phrase'},
+    'F-Scanner': {'B2': 'Noun Phrase'},
+    'F/U-molar': {'B2': 'Noun Phrase'},
+    'FD-fNIRS': {'B2': 'Noun Phrase'},
+    'FFI-funded': {'B2': 'Adjective (compound)'},
+    'FS-layer': {'B2': 'Noun Phrase'},
+    'FTO-coated': {'B2': 'Adjective (compound)'},
+    'FUD-programs': {'B2': 'Noun Phrase'},
+    'Fatty-fish-Lipid-factor': {'B2': 'Noun Phrase'},
+    'Fatty-fish-lipid-factor': {'B2': 'Noun Phrase'},
+    'Fc-binding': {'B2': 'Noun Phrase'},
+    'Fc-receptor': {'B2': 'Noun Phrase'},
+    'Fe-ASC': {'B2': 'Noun Phrase'},
+    'Fe-B': {'B2': 'Noun Phrase'},
+    'Fe-Cu': {'B2': 'Noun Phrase'},
+    'Fe-Ni/ZSM-5': {'B2': 'Noun Phrase'},
+    'Fe-based': {'B2': 'Adjective (compound)'},
+    'Fe/ZSM-5': {'B2': 'Noun Phrase'},
+    'Fenton-type': {'B2': 'Adjective (compound)'},
+    'First-In': {'B2': 'Noun Phrase'},
+    'First-Out': {'B2': 'Noun Phrase'},
+    'Flag-GPER1': {'B2': 'Noun Phrase'},
+    'Flow-i': {'B2': 'Noun Phrase'},
+    'Fmoc-Ohe-Wang': {'B2': 'Noun Phrase'},
+    'Free-Electron': {'B2': 'Noun Phrase'},
+    'Free-OH': {'B2': 'Noun Phrase'},
+    'Free-spaced': {'B2': 'Adjective (compound)'},
+    'Frustrated-Lewis': {'B2': 'Adjective (compound)'},
+    'G-4RepCT': {'B2': 'Noun Phrase'},
+    'G-Flex': {'B2': 'Noun Phrase'},
+    'G-flex': {'B2': 'Noun Phrase'},
+    'G-tot': {'B2': 'Noun Phrase'},
+    'G1-and': {'B2': 'Noun Phrase'},
+    'G2/M-phase': {'B2': 'Noun Phrase'},
+    'G5-4RepCT': {'B2': 'Noun Phrase'},
+    'G5-silk': {'B2': 'Noun Phrase'},
+    'GABA-elicited': {'B2': 'Adjective (compound)'},
+    'GC-column': {'B2': 'Noun Phrase'},
+    'GDC-NiO': {'B2': 'Noun Phrase'},
+    'GFN-4RepCT': {'B2': 'Noun Phrase'},
+    'GIRF-correction': {'B2': 'Noun Phrase'},
+    'GMP-Systems': {'B2': 'Noun Phrase'},
+    'GO/rGO-free': {'B2': 'Adjective (compound)'},
+    'GOND-filled': {'B2': 'Adjective (compound)'},
+    'GP-4RepCT': {'B2': 'Noun Phrase'},
+    'Gaussian-shaped': {'B2': 'Adjective (compound)'},
+    'Ge-MS': {'B2': 'Noun Phrase'},
+    'GiST/SP-GiST': {'B2': 'Noun Phrase'},
+    'GitLab-based': {'B2': 'Adjective (compound)'},
+    'Glu-TMP-Bz': {'B2': 'Noun Phrase'},
+    'GluN2b-subunit': {'B2': 'Noun Phrase'},
+    'Glucagon-like': {'B2': 'Adjective (compound)'},
+    'Gly-Arg-Gly-Asp-Ser': {'B2': 'Noun Phrase'},
+    'Gram-specific': {'B2': 'Adjective (compound)'},
+    'Gram-specifically': {'B2': 'Adverb'},
+    'Gram-staining': {'B2': 'Noun Phrase'},
+    'Guaiacyl-OH': {'B2': 'Noun Phrase'},
+    'Gz-tolerance': {'B2': 'Noun Phrase'},
+    'H-Factor': {'B2': 'Noun Phrase'},
+    'H-bonded': {'B2': 'Adjective (compound)'},
+    'H-nuclear': {'B2': 'Adjective (compound)'},
+    'H2-based': {'B2': 'Adjective (compound)'},
+    'HARM-method': {'B2': 'Noun Phrase'},
+    'HCl-P': {'B2': 'Noun Phrase'},
+    'HDL-cholesterol': {'B2': 'Noun Phrase'},
+    'HEPES-concentrations': {'B2': 'Noun Phrase'},
+    'HFF-filter': {'B2': 'Noun Phrase'},
+    'HFIP-extraction': {'B2': 'Noun Phrase'},
+    'HIII-model': {'B2': 'Noun Phrase'},
+    'HIII-simulations': {'B2': 'Noun Phrase'},
+    'HML-method': {'B2': 'Noun Phrase'},
+    'HPLC-system': {'B2': 'Noun Phrase'},
+    'HPW-mod-T2': {'B2': 'Noun Phrase'},
+    'HR-role': {'B2': 'Noun Phrase'},
+    'HRV-Analysis': {'B2': 'Noun Phrase'},
+    'HTC-biochar': {'B2': 'Noun Phrase'},
+    'HTC-process': {'B2': 'Noun Phrase'},
+    'HTC-technology': {'B2': 'Noun Phrase'},
+    'HTC-water': {'B2': 'Noun Phrase'},
+    'HTH-QG-FN-4RepCT-PM2': {'B2': 'Noun Phrase'},
+    'HTH-tag': {'B2': 'Noun Phrase'},
+    'HTO-perspective': {'B2': 'Noun Phrase'},
+    'HUT-method': {'B2': 'Noun Phrase'},
+    'HV-supply': {'B2': 'Noun Phrase'},
+    'HW-platform': {'B2': 'Noun Phrase'},
+    'Hexoskin-shirt': {'B2': 'Noun Phrase'},
+    'IGF-complexes': {'B2': 'Noun Phrase'},
+    'IGF-system': {'B2': 'Noun Phrase'},
+    'IR-analysis': {'B2': 'Noun Phrase'},
+    'IR-analyzer': {'B2': 'Noun Phrase'},
+    'IR-drop': {'B2': 'Noun Phrase'},
+    'IR-dryer': {'B2': 'Noun Phrase'},
+    'IR-heating': {'B2': 'Noun Phrase'},
+    'IR-power': {'B2': 'Noun Phrase'},
+    'IT-SOFCs': {'B2': 'Noun Phrase'},
+    'IT-sector': {'B2': 'Noun Phrase'},
+    'IVDR-approved': {'B2': 'Adjective (compound)'},
+    'IgG-binding': {'B2': 'Noun Phrase'},
+    'IgG-fluorophore': {'B2': 'Noun Phrase'},
+    'IgG-producing': {'B2': 'Adjective (compound)'},
+    'Il-13': {'B2': 'Noun Phrase'},
+    'Imatinib-treated': {'B2': 'Adjective (compound)'},
+    'Immune-orchestrating': {'B2': 'Adjective (compound)'},
+    'Immuno-SILAC': {'B2': 'Noun Phrase'},
+    'Inter-Sentence': {'B2': 'Adjective (compound)'},
+    'Ionisation-Time-Of-Flight-Mass': {'B2': 'Noun Phrase'},
+    'JAK2_V617F-express': {'B2': 'Noun Phrase'},
+    'KP-Acra': {'B2': 'Noun Phrase'},
+    'KP-Euca': {'B2': 'Noun Phrase'},
+    'L/kg-VS': {'B2': 'Noun Phrase'},
+    'LCQ-instrument': {'B2': 'Noun Phrase'},
+    'LED-prototype': {'B2': 'Noun Phrase'},
+    'LGB-method': {'B2': 'Noun Phrase'},
+    'LHD-operators': {'B2': 'Noun Phrase'},
+    'LHD-vehicle': {'B2': 'Noun Phrase'},
+    'LLA-co-CL': {'B2': 'Noun Phrase'},
+    'LRH-1-RE-Luc': {'B2': 'Noun Phrase'},
+    'LTO-based': {'B2': 'Adjective (compound)'},
+    'LUMA-analysis': {'B2': 'Noun Phrase'},
+    'LabView-based': {'B2': 'Adjective (compound)'},
+    'LabView-code': {'B2': 'Noun Phrase'},
+    'Lac-containing': {'B2': 'Adjective (compound)'},
+    'Lanasol--a': {'B2': 'Noun Phrase'},
+    'LbL-system': {'B2': 'Noun Phrase'},
+    'Leucine-Enkephalin': {'B2': 'Noun Phrase'},
+    'Leucine-Rich-Repeat-Kinase': {'B2': 'Noun Phrase'},
+    'Li-TFSI': {'B2': 'Noun Phrase'},
+    'LiP-SMap': {'B2': 'Noun Phrase'},
+    'Light-Off': {'B2': 'Noun Phrase'},
+    'Light-Optical': {'B2': 'Adjective (compound)'},
+    'Lithium-titanate-oxide': {'B2': 'Noun Phrase'},
+    'M-HEOs': {'B2': 'Noun Phrase'},
+    'M/G-ratio': {'B2': 'Noun Phrase'},
+    'MALDI-ToF': {'B2': 'Noun Phrase'},
+    'MJ/kg-CO': {'B2': 'Noun Phrase'},
+    'MW/kg-CO2': {'B2': 'Noun Phrase'},
+    'Mandometer-clinics': {'B2': 'Noun Phrase'},
+    'Mass-balance': {'B2': 'Noun Phrase'},
+    'Mediator-occupied': {'B2': 'Adjective (compound)'},
+    'Medico-biological': {'B2': 'Adjective (compound)'},
+    'Mefp-1': {'B2': 'Noun Phrase'},
+    'MemGold-HT96': {'B2': 'Noun Phrase'},
+    'Metal-ligand': {'B2': 'Noun Phrase'},
+    'Metal-on-polymer': {'B2': 'Noun Phrase'},
+    'Micro-3/4/5/6/7hrs': {'B2': 'Noun Phrase'},
+    'Micro-indentation': {'B2': 'Noun Phrase'},
+    'Micro-membrane': {'B2': 'Noun Phrase'},
+    'MilliQ-water': {'B2': 'Noun Phrase'},
+    'Mini-Traction': {'B2': 'Noun Phrase'},
+    'Mixed-linkage': {'B2': 'Noun Phrase'},
+    'Mo-modification': {'B2': 'Noun Phrase'},
+    'Motion-mode': {'B2': 'Noun Phrase'},
+    'Multi-Inlet': {'B2': 'Noun Phrase'},
+    'Multi-exposure': {'B2': 'Noun Phrase'},
+    'N-technology': {'B2': 'Noun Phrase'},
+    'N-terminus': {'B2': 'Noun Phrase'},
+    'NER-tasks': {'B2': 'Noun Phrase'},
+    'NFC-film': {'B2': 'Noun Phrase'},
+    'NFC-films': {'B2': 'Noun Phrase'},
+    'NFC-g-Polymer': {'B2': 'Noun Phrase'},
+    'NFC-technologies': {'B2': 'Noun Phrase'},
+    'NI-DAQmx': {'B2': 'Noun Phrase'},
+    'NN-intervals': {'B2': 'Noun Phrase'},
+    'NO2-N/h': {'B2': 'Noun Phrase'},
+    'NO3-N/h': {'B2': 'Noun Phrase'},
+    'NOx-N/g': {'B2': 'Noun Phrase'},
+    'NOx-\xad‐': {'B2': 'Noun Phrase'},
+    'NPC-up': {'B2': 'Noun Phrase'},
+    'NaOHnrp-NaOHrp': {'B2': 'Noun Phrase'},
+    'Ni-GDC': {'B2': 'Noun Phrase'},
+    'Ni-MgAl2O4': {'B2': 'Noun Phrase'},
+    'Ni-NTA': {'B2': 'Noun Phrase'},
+    'Ni/K-alumina': {'B2': 'Noun Phrase'},
+    'Ni/ZSM-5': {'B2': 'Noun Phrase'},
+    'NiMo/gamma-Al2O3': {'B2': 'Noun Phrase'},
+    'OEGMA-co-TFEMA': {'B2': 'Noun Phrase'},
+    'OH<sup>-</sup>': {'B2': 'Noun Phrase'},
+    'P-MWOs': {'B2': 'Noun Phrase'},
+    'P-s': {'B2': 'Noun Phrase'},
+    'PAC-dosage': {'B2': 'Noun Phrase'},
+    'PAN-based': {'B2': 'Adjective (compound)'},
+    'PASH-Process': {'B2': 'Noun Phrase'},
+    'PASH-process': {'B2': 'Noun Phrase'},
+    'PB-b-PSBMA': {'B2': 'Noun Phrase'},
+    'PBS-variant': {'B2': 'Noun Phrase'},
+    'PBT-assessment': {'B2': 'Noun Phrase'},
+    'PCL-system': {'B2': 'Noun Phrase'},
+    'PCL-systems': {'B2': 'Noun Phrase'},
+    'PCR-based': {'B2': 'Adjective (compound)'},
+    'PD-modeled': {'B2': 'Adjective (compound)'},
+    'PDB-files': {'B2': 'Noun Phrase'},
+    'PDF-file': {'B2': 'Noun Phrase'},
+    'PDMAEMA-b-PDEGMA': {'B2': 'Noun Phrase'},
+    'PDMS-carboxylic': {'B2': 'Adjective (compound)'},
+    'PDZ-domains': {'B2': 'Noun Phrase'},
+    'PEA-detection': {'B2': 'Noun Phrase'},
+    'PEG-based': {'B2': 'Adjective (compound)'},
+    'PEG-diacrylate': {'B2': 'Noun Phrase'},
+    'PEG-dithiol': {'B2': 'Noun Phrase'},
+    'PEG-maleimide': {'B2': 'Noun Phrase'},
+    'PEG20K-Gx-OH': {'B2': 'Noun Phrase'},
+    'PEG6K-Gx-OH': {'B2': 'Noun Phrase'},
+    'PEGA-co-HEAA': {'B2': 'Noun Phrase'},
+    'PET-applications': {'B2': 'Noun Phrase'},
+    'PET-coated': {'B2': 'Adjective (compound)'},
+    'PET-gate': {'B2': 'Noun Phrase'},
+    'PET-like': {'B2': 'Adjective (compound)'},
+    'PFAS-substances': {'B2': 'Noun Phrase'},
+    'PFI-mill': {'B2': 'Noun Phrase'},
+    'PFPA-thioacid': {'B2': 'Noun Phrase'},
+    'PFPAs-thioacid': {'B2': 'Noun Phrase'},
+    'PH-dependence': {'B2': 'Noun Phrase'},
+    'PHA-producing': {'B2': 'Adjective (compound)'},
+    'PKA-dependent': {'B2': 'Adjective (compound)'},
+    'PKC-ɵ': {'B2': 'Noun Phrase'},
+    'PLA-coated': {'B2': 'Adjective (compound)'},
+    'PLA-structures': {'B2': 'Noun Phrase'},
+    'PLA-variant': {'B2': 'Noun Phrase'},
+    'PMMA-g-PDMS': {'B2': 'Noun Phrase'},
+    'REVAQ-certificate': {'B2': 'Noun Phrase'},
+    'RFB-performance': {'B2': 'Noun Phrase'},
+    'RGB-cameras': {'B2': 'Noun Phrase'},
+    'RGB-depth': {'B2': 'Noun Phrase'},
+    'RGD-containing': {'B2': 'Adjective (compound)'},
+    'RM26-conjugate': {'B2': 'Noun Phrase'},
+    'RM26-conjugates': {'B2': 'Noun Phrase'},
+    'RMS-value': {'B2': 'Noun Phrase'},
+    'RNA-sequencing': {'B2': 'Noun Phrase'},
+    'RNAi-mediated': {'B2': 'Adjective (compound)'},
+    'RSF1010-based': {'B2': 'Adjective (compound)'},
+    'RT-centers': {'B2': 'Noun Phrase'},
+    'RT-qPCR': {'B2': 'Noun Phrase'},
+    'RVE-measurements': {'B2': 'Noun Phrase'},
+    'Raman-based': {'B2': 'Adjective (compound)'},
+    'Raney-Ni': {'B2': 'Noun Phrase'},
+    'Rate-dependency': {'B2': 'Noun Phrase'},
+    'Receptor-2': {'B2': 'Noun Phrase'},
+    'RnKICD-integrated': {'B2': 'Adjective (compound)'},
+    'Robotic-assisted': {'B2': 'Adjective (compound)'},
+    'Robotic-powered': {'B2': 'Adjective (compound)'},
+    'SAM-testet': {'B2': 'Noun Phrase'},
+    'SDSPAGE.G5-FN-4RepCT': {'B2': 'Noun Phrase'},
+    'SEM-analysis': {'B2': 'Noun Phrase'},
+    'SEPHOS-Process': {'B2': 'Noun Phrase'},
+    'SEPHOS-process': {'B2': 'Noun Phrase'},
+    'SESAL-Phos': {'B2': 'Noun Phrase'},
+    'SF-spectra': {'B2': 'Noun Phrase'},
+    'SF-spectroscopy': {'B2': 'Noun Phrase'},
+    'SG-Si': {'B2': 'Noun Phrase'},
+    'SGD-framework': {'B2': 'Noun Phrase'},
+    'SIS-PrEST': {'B2': 'Noun Phrase'},
+    'SIS-PrESTs': {'B2': 'Noun Phrase'},
+    'SLS-parts': {'B2': 'Noun Phrase'},
+    'SOS-rich': {'B2': 'Adjective (compound)'},
+    'b-PMMA': {'B2': 'Noun Phrase'},
+    'b-value': {'B2': 'Noun Phrase'},
+    'bSSFP-images': {'B2': 'Noun Phrase'},
+    'Hantzsch reaction': {'B2': 'Noun'},  # diva2:1616922
+    'IR-spectra': {'B2': 'Noun Phrase'},
+    'Immunohistochemical': {'C1': 'Adjective'},
+    'L/hr': {'A2': 'Unit'}, # diva2:720771
+    'Lactobacillus': {'B1': 'Noun'}, 
+    'Laws/regulations': {'B2': 'Noun Phrase'},
+    'Leukopenia': {'B2': 'Noun'},
+    'Leukotriene': {'B2': 'Noun'},
+    'levelised': {'B2': 'Adjective'},
+    'Lidocaine': {'B2': 'Noun'},
+    'Linagliptin': {'B2': 'Noun'},
+    'Lipoid': {'B2': 'Adjective'},
+    'Method/Implementation': {'B2': 'Noun Phrase'},
+    'microbiologic': {'B2': 'Adjective'},
+    'Micrococcus': {'B2': 'Noun'}, # genus
+    'microcomputer': {'B1': 'Noun'},
+    'microtubule': {'B2': 'Noun'},
+    'Desorption/Ionisation': {'B2': 'Noun Phrase'},
+    'maltose': {'B1': 'Noun'},
+    'pulldown': {'B2': 'Noun, Verb'},
+    'moisturizers': {'A2': 'Noun (plural)'},
+    'monooxygenase': {'B2': 'Noun'},
+    'neuroflexor': {'B2': 'Noun'},
+    'neuronavigation': {'B2': 'Noun'},
+    'oxidizer': {'B2': 'Noun'},
+    'perfluorooctanesulfonate': {'B2': 'Noun'},
+    'perfluorpentane': {'B2': 'Noun'},
+    'radioimmunotherapy': {'B2': 'Noun Phrase'},
+    'Results/Conclusions': {'B2': 'Noun Phrase'},
+    'Results/conclusions': {'B2': 'Noun Phrase'},
+    'radioligands': {'B2': 'Noun (plural)'},
+    'riflescopes': {'B2': 'Noun (plural)'},
+    'acidfied': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'averagely': {'B1': 'Adverb'},
+    'avidin': {'B2': 'Noun'},
+    'copurification': {'B2': 'Noun'},
+    'cortexes': {'B2': 'Noun (plural)'},
+    'diglycerides': {'B2': 'Noun (plural)'},
+    'evaporative': {'B2': 'Adjective'},
+    'interspersed': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'ketone': {'B1': 'Noun'},
+    'metabolise': {'B2': 'Verb (present tense)'},
+    'motoneuronal': {'B2': 'Adjective'},
+    'neuromotor': {'B2': 'Adjective'},
+    'phonology': {'B2': 'Noun'},
+    'plasticizing': {'B2': 'Verb (present participle), Verb (gerund)'},
+    'polymorph': {'B2': 'Noun'},
+    'reesei': {'B2': 'Noun'},
+    'rinses': {'B1': 'Verb (present tense)'},
+    'thermophoresis': {'B2': 'Noun'},
+    'trapezoidal': {'B2': 'Adjective'},
+    'quantification': {'B2': 'Noun'},
+    'raceways': {'B2': 'Noun (plural)'}, 
+    'rectiverter': {'B2': 'Noun'},  # # combined AC UPS and DC power supply
+    're‐arranging': {'B2': 'Verb (gerund), Verb (present participle)'},
+    'Rhodobacter': {'B2': 'Noun'}, # genus
+    'Robinsoniella': {'B2': 'Noun'},
+    'SEK/m': {'A2': 'Unit'},
+    'SEK/month': {'A2': 'Unit'},
+    'SEK/year': {'A2': 'Unit'},
+    'SO2/year': {'B1': 'Unit'},
+    'MXene': {'B2': 'Noun'},
+    'Silicibacter': {'B2': 'Noun'},
+    'Simonkolleite': {'B2': 'Noun'},
+    'Gordaite': {'B2': 'Noun'},
+    'Sinorhizobium': {'B2': 'Noun'},
+    'Somatropin': {'B2': 'Noun'},
+    'Specchidea': {'B2': 'Noun'},
+    'Spermosens': {'B2': 'Noun'}, 
+    'Sphingosine': {'B2': 'Noun'},
+    'Spodoptera': {'B2': 'Noun'},
+    'subcloning': {'B2': 'Noun'},
+    'superaggregates': {'B2': 'Noun (plural)'},
+    'Synechococcus': {'B2': 'Noun'}, # genus of cyanobacteria.
+    'Synechosystis': {'B2': 'Noun'}, # genus of cyanobacteria.
+    'TWh/year': {'B1': 'Unit'},
+    'Telomeres': {'B2': 'Noun (plural)'},
+    'Thalossiosira': {'B2': 'Noun'}, 
+    'Thedimannosides': {'B2': 'Noun (plural)'},  
+    'Thermoanaerobacter': {'B2': 'Noun'},
+    'Thermobifida': {'B2': 'Noun'},
+    'Thermococcus': {'B2': 'Noun'},
+    'Thermodynamically': {'B2': 'Adverb'},
+    'Thioflavin': {'B2': 'Noun'}, 
+    'Thrombocytopenia': {'B2': 'Noun'},
+    'Tinuvin': {'B2': 'Noun'},
+    'Trichoderma': {'B2': 'Noun'},
+    'Tunicates': {'B2': 'Noun (plural)'},
+    'Turbuhaler': {'B2': 'Noun'},
+    'Typhimurium': {'B2': 'Noun'},
+    'W/cm': {'B1': 'Unit'},
+    'Vitae': {'B1': 'Noun (plural)'},
+    'Yeasts': {'B1': 'Noun (plural)'},
+    'dB/cm': {'B2': 'Unit'},
+    'Al/L': {'B2': 'Unit'}, # Aluminum per liter
+    'Al/mL': {'B2': 'Unit'},# Aluminum per milliliter
+    'deammonification': {'B2': 'Noun'},
+    'Ephrin': {'B2': 'Noun'},
+    'Eukaryota': {'B2': 'Noun'},
+    'Exoelectrogenic': {'B2': 'Adjective'},
+    'Feruloyl': {'B2': 'Noun'}, 
+    'Fickian': {'B2': 'Adjective'},
+    'Firmicutes': {'B2': 'Noun'},
+    'fixator': {'B2': 'Noun'},
+    'Flavisolibacter': {'B2': 'Noun'},
+    'flocculating': {'B2': 'Verb (present participle), Verb (gerund)'},
+    'freeness': {'B1': 'Noun'}, 
+    'functionalizable': {'B2': 'Adjective'},
+    'Ginkgoites': {'B2': 'Noun (plural)'}, # genus
+    'Gloeobacter': {'B2': 'Noun'}, # genus
+    'Gloeotrichia': {'B2': 'Noun'}, # genus
+
 }
     
 chemical_elements_symbols={
@@ -53694,6 +54437,61 @@ place_names=[
     'El Carmen', # El Carmen, Pando, in Bolivia
     'Brest', # France
     'Suresnes', # France
+    'Wycombe',
+    'High Wycombe',
+    'Värtahamnen',
+    'Arkels tingstad',
+    'Arkels',
+    'Hagbyån', # river in Sweden
+    'Karbyån',
+    'Henriksdal',
+    'Henriksdals',
+    'Huntington', # Long Island, NY
+    'Igelbäcken',
+    'Igelsta',
+    'Idbäcken',
+    'Kattastrand',
+    'Korsnäs',
+    'Kristinehamn',
+    'Käppala',
+    'Lao',
+    'Leuna', # Germany
+    'Lidköping',
+    'Lindholmen',
+    'Rimbo',
+    'Orebro',
+    'Ornö',
+    'Ormstaån',
+    'Sofielund',
+    'Storsjön',
+    'Bornsjön',
+    'Silverskopan',
+    'Pershagen',
+    'Pando', # Bolivia
+    'Phu',   # 'Phu San'
+    'Mälaren',
+    'Slite',
+    'Snuggan',
+    'Trollhättan',
+    'Teknikringen',
+    'Tiquipaya',
+    'Täby',
+    'Tveta',
+    'Vilsta',
+    'Vimmerby',
+    'Vomb',
+    'Vombs', # possessive
+    'Wyoming',
+    'Ådal', # region in Finland
+    'Ådalen', # river in Sweden
+    'Fyrisån', # river in Uppsala
+    'Främby',
+    'Frövi',
+    'Fredrikstad',
+    'Gribbylund',
+    'Grödinge',
+    'Gärtuna',
+    'Görväln',
     
 ]
 
@@ -60624,7 +61422,6 @@ company_and_product_names=[
     'Östersjökompaniet',
     "Arduino's",
     'va-verksaktiebolag',
-    'Acustica Spackel', # see diva2:911592
     'Zelboraf®',
     'Zubal', # phantom - see diva2:575241
     'Zonemaster', # see diva2:1322207
@@ -60690,7 +61487,7 @@ company_and_product_names=[
     'PowerBox',
     'Powercell',
     'Powerformer',
-    'Quanterix',
+    'Quanterix', # Corp. - company
     'QuickStep',
     'Quattro',
     'R-software',
@@ -60936,6 +61733,7 @@ company_and_product_names=[
     'Veridex', # diva2:853465
     'Ubbelohde', # Ubbelohde capillary viscometer - see diva2:1643939
     'Topsoe', # Haldor Topsoe - see diva2:849441,
+    'Haldor', # Haldor Topsøe A/S - see diva2:930492
     'Topsøe', # Haldor Topsøe A/S - see diva2:930492
     'Thalassiosira', # Thalassiosira eccentrica - see diva2:722724
     'Talon', # Sternal Talon - see diva2:631384
@@ -61241,6 +62039,417 @@ company_and_product_names=[
     'Biologique Recherche', # cosmetics company - see diva2:413468
     'Biacore', # company - diva2:1876278
     'Berga', # Berga Greenhouse project - diva2:563793
+    'Yervoy®', # Ipilimumab- see diva2:801778
+    'Vestergaard', # company - see diva2:416448
+    'Affibody®', # diva2:1672937
+    'Biacore®', # diva2:851740
+    'Circulose®', #diva2:1598431
+    'His•Bind®', # diva2:1454447 - note that DiVA only has the abstracts
+    'Living Machines®', # diva2:563793
+    'Matrimid®', # diva2:1892941
+    'RNAscope®', # diva2:1741440
+    'Shimmer-Research®', # diva2:644642
+    'Sippi®', # diva2:856549
+    'SpheriCal®-APH', # diva2:1676636
+    'SurgiPlan®', # diva2:720785
+    'Leksell SurgiPlan®',  # diva2:720785
+    'Tenax®', # diva2:1686263
+    'Tween80®', # diva2:1809085
+    'Woodrooll®', # diva2:1092235
+    'Biosilk™', # diva2:1741440
+    'A-sten', # diva2:1824429
+    'Anneberg-Skanstull', #  tunnel project - see diva2:1873164
+    'Anti-SORT1', # diva2:1876286
+    'Bruker-instrument', # diva2:827181
+    'Fischer-coulometer', # diva2:1384216
+    'Thermo-Calc', # software - diva2:441386
+    'pta-ack', # gene diva2:1454454
+    'Big-FISH', # object detection method - see diva2:1784839
+    'Arkpacken', # sheet packaging area at Billerud Korsnäs' factory in Frövi - see  diva2:1547059
+    'Hajenterprise', # company - see diva2:1562563
+    'Hagner', # company - see diva2:1556362
+    'Hellisheiði', # power plant - see diva2:839272
+    'Healthineers', # Siemens Healthineers- see diva2:1128719
+    'Hytrack', # software system - see diva2:1877502
+    'ImageStream', # diva2:1153028
+    'Infektionsverktyget', # The Anti-Infection Tool - see diva2:755523
+    'Ingka', # Ingka Investments - see diva2:1886018
+    'OX2', # OX2 AB - see diva2:1886018
+    'Aurora Wind Park', # company  - see diva2:1886018
+    'InceptionResNetV2', # diva2:1667450
+    'Inteno', # company - see diva2:935006
+    'Instron', # company - see diva2:1110811
+    'Inconel', # nickel-chromium-based superalloy - diva2:850864
+    'Intan', # diva2:1692695
+    'MouseOx', # diva2:1692695
+    'Intenze', # brand - see diva2:1446946
+    'Cyperus Involukratus', # diva2:1433825
+    'Involukratus', # part of "Cyperus Involukratus" - see diva2:1433825
+    'Fresenius Kabi AB', # company -  diva2:1275060
+    'Fresenius', # part of "'Fresenius Kabi AB'" - company -  diva2:1275060
+    'Kabi', # part of "'Fresenius Kabi AB'" - company -  diva2:1275060
+    'Karda', # Karolinska's internal data warehouse - see diva2:952481
+    'Kemicond', # diva2:953499
+    'Kemira', # company - see diva2:839318
+    'Kemwater', # a Kemira product  - see diva2:839318
+    'Kentor', # company - see diva2:859831
+    'Kitkins', # WEPA product - see diva2:859173
+    'Megasweep', # WEPA product - see diva2:859173
+    'Keronite', # company - see diva2:720728
+    'Klason lignin', # diva2:721067
+    'exo-', # diva2:744724 Thermo Scientific Klenow Fragment
+    'exo', # diva2:744724 Thermo Scientific Klenow Fragment
+    'Klenow Fragment', # diva2:744724
+    'Klenow', # diva2:744724
+    'Kluyveromyces lactis', # yeast - see diva2:1223586
+    'Kluyveromyces', # part of "Kluyveromyces lactis" yeast - see diva2:1223586
+    'Kuriverter', # diva2:1105650
+    'Kuriverter®' # diva2:1105650
+    'Krüss', # company - see diva2:1865616
+    'Kothapalli',
+    'Brewing Költur', # diva2:849405
+    'Költur', # part of "Brewing Költur" - see diva2:849405
+    'Krafft point', # diva2:721862 and diva2:776949
+    'Konsul', # LKAB test mine - see diva2:1459493
+    'Lunaphore LabSat', #  diva2:1711575
+    'LabSat', #  part of "Lunaphore LabSat" - see diva2:1711575
+    'Lunaphore COMET', # part of "Lunaphore COMET" - see diva2:1711575    
+    'COMET', # part of "Lunaphore COMET" - see diva2:1711575    
+    'Magritek', # part of "Magritek LabSpec" - diva2:787913
+    'LabSpec', # part of "Magritek LabSpec" - diva2:787913
+    'Labmessage', # Karolinska Hospital software module - see diva2:639711
+    'LactateStat', # instrument - see diva2:1568199
+    'Lanasol', # diva2:839241
+    'Lanasols', # diva2:839241
+    'Saccharina Latissima', # "Saccharina Latissima" - see diva2:778288
+    'Latissima', # "Saccharina Latissima" - see diva2:778288
+    'Laminara',  # "Laminara Saccharina" - see diva2:778288
+    'Lantmannen', # diva2:1571931
+    'LanguageModelFeaturizer', # diva2:1562950
+    'Thermomyces Lanuginosus', # "Thermomyces Lanuginosus" - diva2:839581
+    'Thermomyces', # "Thermomyces Lanuginosus" - diva2:839581
+    'Lanuginosus', # "Thermomyces Lanuginosus" - diva2:839581
+    'Anopheles Gambiae Sensu Lato',  # "Anopheles Gambiae Sensu Lato" - see diva2:1433825
+    'Anopheles',  # "Anopheles Gambiae Sensu Lat0" - see diva2:1433825
+    'Gambiae',  # "Anopheles Gambiae Sensu Lato" - see diva2:1433825
+    'Sensu',  # "Anopheles Gambiae Sensu Lat0" - see diva2:1433825
+    'Latu',  # "Anopheles Gambiae Sensu Lato" - see diva2:1433825
+    'Lewis acid', # diva2:1676670
+    'Lewy bodies', # diva2:851765
+    'Libero', # brand - diva2:1574756
+    'LignoBoost®', # diva2:1159624
+    'LignoBoost', # diva2:1159624
+    'Avesta Lillfors', # power plant - see diva2:724746
+    'Lillfors', # 
+    'Elekta Linac', # diva2:1331767
+    'LinnéFiler', # databaase - see diva2:639711
+    'Lucy', # appllication - see diva2:1843037
+    'Luv', # color scale - see diva2:623529
+    'Siemens Micromaster 440', # diva2:1352383
+    'Micromaster', # diva2:1352383
+    'MistraBiotech', # diva2:802843
+    'MistraPharma', # diva2:744729
+    'MitoSegNet', # diva2:1591713
+    'Misicuni', # Misicuni project - see diva2:442685
+    'Miscanthus sinensis', # diva2:1455911
+    'Miscanthus', # part of "Miscanthus sinensis" - diva2:1455911
+    'sinensis', # part of "Miscanthus sinensis" - diva2:1455911
+    'Metodicum', # company - see diva2:1192209
+    'Saint-Gobain Sekurit Scandinavia AB', # diva2:1251128
+    'Sekurit', # part of "Saint-Gobain Sekurit Scandinavia AB" diva2:1251128
+    'Shapiro Wilk test', # diva2:1707731
+    'SklearnIntentClassifier', # diva2:1562950
+    'Sippi', # diva2:856549
+    'Sippi®', # diva2:856549
+    'Soderenergi', # company - see diva2:1229284
+    'Pampers', # brand - see diva2:1574756
+    'Panametrics', # company - see diva2:750462
+    'Paperfront', # simulation software - diva2:1261107
+    'Globus Pallidus', # also known as "paleostriatum" or "dorsal pallidum" a subcortical part of the brain - see diva2:755541
+    'Globus', # part of "Globus Pallidus" also known as "paleostriatum" or "dorsal pallidum" a subcortical part of the brain - see diva2:755541
+    'Pallidus', # part of "Globus Pallidus" also known as "paleostriatum" or "dorsal pallidum" a subcortical part of the brain - see diva2:755541
+    'PacBio', # company - see diva2:853824
+    'Paebbl', # Paebbl AB - diva2:1769208
+    'Parera', # Parera AB - see diva2:627682
+    'Fjärrdrift', # service from Parera AB - see diva2:627682
+    'EXPCI ParisTech', # diva2:853705
+    'EXPCI', # part of "EXPCI ParisTech" - see diva2:853705
+    'ParisTech', # part of "EXPCI ParisTech" - see diva2:853705
+    'Pas', # diva2:506052 - could this be "p-aminosalicylic acid (PAS)" - no full text
+    'Paxymer', # Paxymer AB- see diva2:1382133
+    'Pechini', # method - see diva2:1723019
+    'Personec', # an IT system - see diva2:676923
+    'Petromyzon marinus', # lamprey - see diva2:854709
+    'Petromyzon', # part of "Petromyzon marinus"  - see diva2:854709
+    'marinus', # part of "Petromyzon marinus"  - see diva2:854709
+    'Peyona', # drug - see diva2:1249269
+    'Pfam', # database - see diva2:801744
+    'Ponseti', # method - see diva2:1219499
+    'Propagine',  # drug - diva2:1340064
+    'Metagin', # drug - diva2:1340064
+    'Prospa', # software for a spectrometer - see diva2:787913
+    'Protac', # technology - see diva2:744697
+    'Protax', # technologyy - see diva2:744697
+    'Prüfbau', # company
+    'Pulmac', # Pulmac 2000 - diva2:898813 - actually "Pulmac Zero-Span 2000 Tester" tensile strength tester
+    'PulpEye', # company - pulp analyzer - see diva2:505453
+    'Purdue', # model - see diva2:1864545
+    'PureCol', # collagen gels - see diva2:1873216
+    'Paenibacillus', # genus of bacteria - see diva2:744734
+    'Parageobacillus', #  genus of bacteria from the family of Bacillaceae - see 
+    'Parageobacillus thermogluosidasius', # diva2:1672890
+    'Melibiose Permease', # data sets - diva2:610758
+    'Melibiose', # part of " Melibiose Permease" - diva2:610758
+    'Permease', # part of " Melibiose Permease" - diva2:610758
+    'Peroba/Garapeira', # diva2:723822
+    'Phaeodactylum tricornutum', # part of "Phaeodactylum tricornutum"- see diva2:1541351
+    'Phaeodactylum', # part of "Phaeodactylum tricornutum"- see diva2:1541351
+    'tricornutum', # part of "Phaeodactylum tricornutum"- see diva2:1541351						
+    'Qlean', # diva2:1877710
+    'QleanAir', # company - diva2:1877710
+    'QuPath', # QuPath: Open source software for digital pathology image analysis- see diva2:1788568
+    'Quantifications', # diva2:744717 - no full text
+    'Quarkus', # Java stack - see diva2:1864417
+    'Radiobotics', # Danish company - see diva2:1575512
+    'RBknee', # software from 'Radiobotics - see diva2:1575512
+    'RaceRunning', # sport - see diva2:1235942
+    'Ramudden', # Ramudden AB - see diva2:1876705
+    'Ranitidine', # pharmaceutical - see diva2:1353871
+    'Ramlibacter', # "Ramlibacter sp." - bacterium - see diva2:744696
+    'Ralstonia', # part of "Ralstonia eutropha" - see diva2:1455015
+    'Ragn', # part of "Ragn-Sells" - company name
+    'ReformTech', # company - ReformTech Heating Technologies AB - see diva2:721622 and diva2:1096827
+    'Raf', # affibody binding protein - see diva2:744697
+    'Ras',  # affibody binding protein - see diva2:744697
+    'Rattus norvegicus', # see  diva2:1711896
+    'Rattus', # part of 'Rattus norvegicus' -  see  diva2:1711896
+    'Recipharm', # company name "Recipharm Pharmaceutical Development AB"
+    'Recipharm', # company 'Recipharm Karlskoga AB', # company name see diva2:1340064
+    'Renewcell', # company name - see diva2:1811874 and diva2:1598431
+    'Recopharma', # company - see diva2:416899
+    'Redbiotec', # company - see diva2:801739
+    'rePAX®', # Redbiotec product  - see diva2:801739
+    'Redfield formula', # see diva2:923546
+    'Relizyme', # diva2:1257721 - should probably be ReliZyme™ - no full text
+    'Relizyme™ HFA 403', # https://www.resindion.com/resindion/technical/PTDS_ReliZyme/PTDS_relizyme_HFA403.pdf
+    'ReliZyme™', 
+    'Rhizomucor Miehei', # fungi - diva2:839581
+    'Rhizomucor', # part of "Rhizomucor Miehei" - diva2:839581
+    'Miehei', # part of "Rhizomucor Miehei" - diva2:839581				       
+    'Remazol', # Remazol Brilliant Blue R (RBBR) dye - see diva2:1095506
+    'RenFuel', # company - see diva2:1096813
+    'Renova', # company - see diva2:1784927, diva2:1296147, diva2:1352888
+    'RepCap', # plasmids - see diva2:1770285
+    'ResAP', # part of #ResAP 2008" - Council of Europe Resolution (CoE ResAP)(2008) - see diva2:1446946
+    'ResNeXt101', # neural network - see diva2:1667450
+    'Rho', # part of "Rho GTPase CDC42" - see diva2:1595081 - Rho sub-family of Ras super-family GTPases
+    'RiskMix', # checmicals - see diva2:1786739
+    'Ritec', # company - see diva2:637933
+    'Roborock', # robot vacuum - see diva2:1667487
+    'Scanacon', # company - Scanacon AB - see diva2:1470389
+    'Scandion', # clinic - see diva2:1686437
+    'Scenedesmus dimorphus', # - see diva2:854656
+    'Scenedesmus', # part of "Scenedesmus dimorphus" - see diva2:854656
+    'dimorphus', # part of "Scenedesmus dimorphus" - see diva2:854656
+    'Screenmaster', # part of "Hagner Screenmaster" - see diva2:1556362
+    'TechnoTeam', # company - see diva2:1556362
+    'SeaTrack', # model from SMHI - see diva2:460291
+    'Semaphorin', # proteins - see diva2:849535
+    'SensAbues', # exhailted air sample - see diva2:792025
+    'SenISS', # software - see diva2:1569962 and diva2:1340060
+    'Seurat', # framework - see diva2:1711597
+    'Servicia Medical', # diva2:953809
+    'Servicia', # part of "Servicia Medical" - diva2:953809
+    'ShapeUp Club', # company - see diva2:628033
+    'ShapeUp', # part of "ShapeUp Club" - company - see diva2:628033
+    'Sharelock', # management system - see diva2:934286
+    'Shisa', # part of "Shisa like 2B (FAM159B)" . see diva2:1595524
+    'Shisa like 2B (FAM159B)', # protein diva2:1595524
+    'Signality', # Signality A - company - tracking data - see diva2:1770126
+    'Wyscout', # company - see diva2:1770126
+    'Silk/MXene', # evaluaiton of both Silk and MXene - see diva2:1558645
+    'Simris', # Simris Alg - Simris Alg AB - company - see diva2:1541351
+    'Simris Alg', # Simris Alg AB - company - see diva2:1541351
+    'PSS Sincal', # diva2:1218172
+    'Sincal', # part of "'PSS Sincal'" - see  diva2:1218172
+    'PSS®SINCAL', # Siemens Integrated network simulator 
+    'SingleCellNet', # tool - see diva2:1571396
+    'SingleR', # tool - see diva2:1571396
+    'ClustifyR', # tool - see diva2:1571396
+    'scPred', # tool - see diva2:1571396
+    'Smartbudget', # service - see diva2:628610
+    'SocioBalance', # game - see diva2:1764819
+    'Sockstress', # network stress testing program - see diva2:1742506
+    'Softronics', # company - see diva2:627803
+    'SonoVue', # microbubbles - see diva2:630125
+    'SonoVue®',  # microbubbles - see diva2:630125
+    '3MiCRON',  # European project - see diva2:630125
+    'Sorin Group', # diva2:1673485
+    'Sorin', # part of "Sorin Group" - see diva2:1673485
+    'Acustica Spackel', # product of Bioisolator diva2:911592
+    'Acustica', # part of "Acustica Spackel" product of Bioisolator diva2:911592
+    'Spackel', # part of "Acustica Spackel" product of Bioisolator diva2:911592
+    'Spatstat', # R package Spatstat - see diva2:1886100
+    'SpinTube', # used in diva2:801733 - should it be "SPINtube"? - no full text
+    'SpliceView', # program - diva2:1886100
+    'Stallbacka', # substation Stallbacka in Trollhättan - see diva2:1109133
+    'Stanely', # part of "Stanley Security Sverige AB" - see diva2:1451776
+    'Stardog', # graph database - see diva2:1764820
+    'GraphDB', # graph database - see diva2:1764820
+    'Stedim', #part of "Sartorius Stedim Biotech" -  diva2:801773
+    'Stegia', # Stegia AB - see diva2:1080331
+    'Stixon', # Stixon AB - diva2:1880124
+    'StratEx', # a  laboraty paper machine - see  diva2:911592
+    'Suonobouno', # Suonobouno AB - see diva2:1669425
+    'Supela', # Supela 240 - see diva2:1593458
+    'Tween 80', #see diva2:1593458
+    'Tween 80', # part of "Tween 80" - see diva2:1593458
+    'Span 20', # see diva2:1593458
+    'Span', # # part of "Span 20" - see diva2:1593458
+    'Suzuki‐Miyaura coupling', # diva2:765776
+    'Svea Vind Offshore', # diva2:1845134
+    'Svea', # part of "Svea Vind Offshore" - see diva2:1845134
+    'Swedishtwins', # database "The Swedish Twin Registry" - see diva2:845713
+    'Swerea', # part of "Swerea Kimab" - see diva2:777202
+    'Swerea Kimab', #  diva2:777202
+    'Svinryggens', # landfill site - see diva2:882335
+    'Swestep', # Swestep AB - see diva2:1209351
+    'Electronic Sudometer', # diva2:659303
+    'Sudometer', # part of "Electronic Sudometer" - see diva2:659303
+    'Superfloc', # product "Superfloc A 1883 " - see diva2:1584737
+    'SUPERFLOC®',  # product "Superfloc A 1883 " - see diva2:1584737
+    'Surae', # part of "Triceps Surae" - see diva2:1119292
+    'SustainComp', # European SustainComp Project - see diva2:769474
+    'Sydvatten', # Sydvatten AB - diva2:1859331
+    'TC TECH Sweden AB', # company
+    'TCTechs', # possibly "TC TECH Sweden AB" - see diva2:721601
+    'Talari', # Talari Networks - owned by Oracle - see diva2:1322082 and diva2:1322911
+    'Talari SD-WAN', # diva2:1322082 and diva2:1322911
+    'TaqMan', # diva2:1586215
+    'TaqMan®', # see diva2:1586215
+    'Taxotere', # medicine - see diva2:895264
+    'Techkon', # spectrophotometer - TECHKON GmbH - see diva2:1584730
+    'TeloHAEC', # cell line - see diva2:1774777
+    'Tenofovir', # medication - see diva2:1886088
+    'Terco', # company - see diva2:812041
+    'ThermoScan', # Braun ThermoScan PRO 6000 - see diva2:1578222
+    'Timestream', # part of "AWS Timestream" - see diva2:1838920
+    'Toolgate', # company - see diva2:1786728
+    'Tooshies', # brand - see diva2:1574756
+    'Tracy', # company - Tracy Trackers  - see diva2:1109332
+    'TioHundras', # hospital ward at Norrtälje hospital - diva2:741366
+    'Trametes', # part of "Trametes versicolor" -  diva2:1472023
+    'TransRUnet', # neural network model - see diva2:1770535
+    'Transeco', # part of "Transeco Däckservice (Transeco Tire Service)" - company - see diva2:1146009
+    'Transtema', # part of "Transtema Network Service" - see diva2:1738689
+    'Traxmate', # Traxmate tracking system - see diva2:1612938
+    'TreeWell', # leachate treatment method - see diva2:945315
+    'Trixie', # food dispenser - Trixie TX9 - see diva2:1561552
+    'Trojaniello', # company - see diva2:1296096
+    'Voith', # Voith laboratory - see diva2:1093650
+    'VivoTrax', # IONP VivoTrax (Magnetic Insight) - see diva2:1569353
+    'Vialit', # company - see diva2:1214017
+    'Vialit plateshock test method', # diva2:1214017
+    'Viscozyme', # diva2:1455163
+    'Viscozyme®', # diva2:1455163
+    'Wandercraft', # company - see diva2:1708400
+    'WebFlux', # Reactive Webflux application - see diva2:1763111:
+    'Wergonic', # company - see diva2:1820622
+    'Widespace', # company - see diva2:900602
+    'Winflows', # software - see diva2:1723016
+    'Wipcore', # Wipcore eNOVA 5.3 - ecommerce platform - see diva2:567837
+    'Umbraco', # CMS  - see diva2:567837
+    'Episerver', # Episerver Commerce 1 R2 SP1 - ecommerce platform - see diva2:567837
+    'Workbeads', # Bio-Works Workbeads 40/1000 SEC - see diva2:1640359
+    'WinRT', # Windows real-time OS - see diva2:628489
+    'Workington', # Iggesund Paperboard Workington Ltd - see diva2:1315694
+    'XL1Blue', # Escherichia coli strain - see diva2:1711566
+    'Xbrane', # Xbrane Biopharma AB  - company - see diva2:1711587
+    'Xenium', # platform - see diva2:1886100
+    'Xenopus', # part of "Xenopus tropicalis" - see  diva2:854709
+    'Xeround', # cloud database service provider - see diva2:557762
+    'Xirallic', # diva2:1136102
+    'Xylanases', # diva2:1571882
+    'Yarrowia', # part of "Yarrowia lipolytica" - see diva2:1571856
+    'Ådallines', # Ådalen Line - Ådalsbanan - diva2:818853
+    'baht/L', # Thailand baht per liter - see  diva2:1209351
+    'baht/l', # Thailand baht per liter - see  diva2:1209351
+    'baht/liter', # Thailand baht per liter - see  diva2:1209351
+    'DigiTemp', # diva2:563082
+    'DeAmmon', # technology for treating ammonium rich waste wanter - see diva2:1464188
+    'DeCLIC', # a prokaryotic pLGIC - see diva2:1586240
+    'DeepEdit', # deep learning method - see diva2:1801804
+    'DeepSpeech', # deep learning speech recgnition model- see diva2:1865206
+    'DeepSpot', # deep learning model - see diva2:1784839
+    'DeepSurv', # a DNN - see diva2:1770583
+    'Dermnet', # DNN - see diva2:950147
+    'EEGNet', # diva2:1563705
+    'Diagnostica', # company - see diva2:1774619
+    'Diagnostica STAGO', #  diva2:1774619
+    'Diaion', # diva2:460871
+    'DIAION™', 
+    'Descutan', # body wash - see diva2:1275060
+    'Develosil', # company - see diva2:1893183
+    'Dexcom', # company - see diva2:1872004
+    'Exp', # part of "Net Exp", 'short for Network Expertise Sweden AB - see diva2:1014931
+    'Expancel', # product name - see diva2:779089
+    'Expancel®', # product name - see diva2:779089
+    'Exxentric', # company - see diva2:1770281
+    'Energianalys', # part of "Industriell Energianalys AB" - company - diva2:460449
+    'EnginZyme', # part of "EnginZyme AB" - company - diva2:1711807
+    'Enteritidis', # part of "Salmonella Enteritidis" -  diva2:1597566
+    'Entreprenad', # part of "Veidekke Entreprenad AB" - company - diva2:1602803
+    'Episurf', # Episurf Medical -company  - diva2:1801804 
+    'ErgoGPT', # model - see diva2:1893379
+    'Exergi', # company
+    'Etimo', # Etimo AB - company - diva2:1287193
+    'EVQuant', # assay - see diva2:1876708
+    'Edufluvac', # project - see diva2:801739
+    'Ehrfeld', # company - diva2:723772
+    'Eka', # part of "Eka Chemicals" - now known as Akzo Nobel Pulp &amp; Performance Chemicals -  company -diva2:722685
+    'Eksmodell', # diva2:932555 - no full text
+    'Electropuls', # Instron Electropuls E3000 - see diva2:1110811
+    'Elmax', # tool steel - see diva2:441386
+    'EmbedSeg', # deep learning method - see diva2:1591713
+    'EnBase', # EnBase is a product by BioSilta - see diva2:459279
+    'Biosilta', # company - see diva2:459279
+    'Farnesene', # isomer - diva2:826739 - no full text
+    'FastTextFeaturizer', # software component - diva2:1562950
+    'FauI', # enzyme - diva2:744724
+    'MiSeq', # enzyme - diva2:744724
+    'BbvI', # enzyme - diva2:744724
+    'BmpI', # enzyme - diva2:744724
+    'BsmFI', # enzyme - diva2:744724
+    'MmeI', # enzyme - diva2:744724
+    'GsuI', # enzyme - diva2:744724
+    'BpuEI', # enzyme - diva2:744724
+    'FeedPlate', # SMFP08003 FeedPlate - diva2:1672937
+    'FeedPlate®', # diva2:1672937
+    'Fickian diffusion', # diva2:720769
+    'Fillan', # waste water treatment plant - see diva2:1873286
+    'Filtralite', # product - see diva2:1824420
+    'Filtralite®', # product - see diva2:1824420
+    'Filtrasorb', # product - diva2:744729
+    'Filtrasorb®', # product - diva2:744729
+    'Fimea', # Finnish Medicines Agency (FIMEA) - diva2:1568127
+    'FirstCall', # diva2:559963
+    'FirstDerm', # dataset - diva2:1282440
+    'Firstlight', # part of "Firstlight Media"  company - diva2:1667517
+    'Flexident', # Flexident AB - company - diva2:1868395
+    'Flopam', # Flopam EM 33 - polymer - diva2:1584737
+    'FlowCytobot', # diva2:1774747
+    'FlowJo', # software - diva2:1876241
+    'Flowlab', # simulation model - diva2:663278
+    'Fontune', # press - diva2:444286
+    'Foralyn', # tackifier - diva2:1592489			     
+    'Foralyn™', # tackifier - diva2:1592489
+    'Abalyn', # tackifier - diva2:1592489
+    'Formox', # part of "Perstorp Formox" - see diva2:720723
+    'Gardobond', # diva2:778114
+    'Gardobond®', # diva2:778114
+    'Grosmannia', # part of "Grosmannia penicillata" - see diva2:826735
+    'GreenAll', # absorbent - see diva2:1642791
+
 
 ]
 
@@ -62020,6 +63229,7 @@ names_of_persons=[
     'Baum',
     'Baum-Welch',
     'BaumWelch',
+    'Brunauer-Emmett-Teller', 
     'Baxter',
     'Bayes',
     'Bayesian-Hebbian',
@@ -62114,6 +63324,7 @@ names_of_persons=[
     'Blakeley',
     'Blanc',
     'Bland Altman',
+    'Bland-Altman',
     'Blasius',
     'Bloebaum',
     'Blom',
@@ -62247,6 +63458,7 @@ names_of_persons=[
     'Caleb',
     'Callaghan',
     'Calvin',
+    'Calvin-Benson-Bassham',
     'Camarillo',
     'Camenisch',
     'Camilla',
@@ -65317,6 +66529,7 @@ names_of_persons=[
     'Wilson',
     'Winkler',
     'Winograd',
+    'Wingqvist',
     'Winston',
     'Winterbottom',
     'Winters',
@@ -65471,6 +66684,131 @@ names_of_persons=[
     'Øi',
     'Šarić',
     'Čavić',
+    'Eftedal-Brubakk',
+    'Entner-Doudoroff',
+    'Fernández-Seara',
+    'Friedel-Crafts',
+    'Gouy-Chapman',
+    'Klemera-Doubal',
+    'Kohn-Sham',
+    'Koutecky-Levich',
+    'Kramers-Kronig',
+    'McCabe-Thiele',
+    'Newman-Kwart',
+    'Owren-Koller',
+    'Palmgren-Miners',
+    'Pan-Tompkins',
+    'Savitzy-Golay',
+    'Schopper-Riegler',
+    'Schumann-Runge',
+    'Semmes-Weinstein',
+    'Tsai-Wu',
+    'Winter-Kennedy',
+    'Arjen',
+    'Hoekstra',
+    'Howland',
+    'Higashiyama',
+    'Hildebrand',
+    'Hippel',
+    'von Hippel',
+    'Hoffmeister',
+    'Heusser',
+    'Hamedi',
+    'Hampson',
+    'Hartley',
+    'Hantzsch',
+    'Hedenqvist',
+    'Hedhammar',
+    'My',
+    'Huisgen',
+    'Ihrner',
+    'Kari',
+    'Tuppurainen',
+    'Kazi',
+    'Kjaer',
+    'Klason',
+    'Kleiven',
+    'Svein',
+    'Kosuri',
+    'Krafft',
+    'Lantz',
+    'Laine',
+    'Langelier',
+    'Laranci',
+    'Larancis',
+    'Lassen',
+    'Leonid',
+    'Sigal',
+    'Leite',
+    'Lester',
+    'Lewis',
+    'Lewy',
+    'Lidbeck',
+    'Lieb',
+    'Lindau',
+    'Loupas',
+    'MacKenzie',
+    'Mises',
+    'Green-Lagrange',
+    'Brüel',
+    'Robertson',
+    'Robertsons',
+    'Schalk',
+    'Schanz',
+    'Schiff',
+    'Schulze',
+    'Shapiro',
+    'Wilk',
+    'Sjögren',
+    'Soroka',
+    'Passenier',
+    'Sharpanskykh',
+    'de Boer',
+    'Phadatare',
+    'Rafieyan',
+    'Ravin',
+    'Redfield',
+    'Rockbergs', # possessive - from diva2:1687457
+    'Rockberg',
+    'Sbrodov',
+    'Senge',
+    'Seo',
+    'Siegrist',
+    'Sonogashira',
+    'Sonner',
+    'Studic',
+    'Suzuki‐Miyaura',
+    'Svedendahl',
+    'Humble',
+    'Teillaud',
+    'Tinseths',
+    'Townsend',
+    'Weng',
+    'Xiaogai',
+    'Diebolder',
+    'Dibas',
+    'Esteves',
+    'Erichsen', # after Abraham M. Erichsen
+    'Efimov',
+    'Fenton',
+    'Fernandez',
+    'Navarro',
+    'Ficher',
+    'Fick',
+    'Fourati',
+    'Franck',
+    'Franks',
+    'Fuchs',
+    'Froude',
+    'Gennarelli',
+    'Gibb',
+    'Gleason',
+    'Grady',
+    'Grignard',
+    'Gräf',
+
+
+
 ]
 
 common_french_words={
@@ -65727,6 +67065,7 @@ common_spanish_words={
 
 # note that these are considered in a case sensitive manner
 programming_keywords={
+    'xor',
     'argc',
     'argv',
 
