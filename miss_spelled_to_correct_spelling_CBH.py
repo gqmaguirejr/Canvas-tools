@@ -659,7 +659,7 @@ miss_spelled_to_correct_spelling={
     'tetrakis[3,5-bis': {'c': "tetrakis[3,5-bis(trifluoromethyl)phenyl]borate", 's': 'diva2:1690568'},
     'technially': {'c': 'technically', 's': 'diva2:854845', 'n': 'no full text'},
     'tech\xadnical': {'c': 'technical', 's': 'diva2:537187'},
-    'Autho\\xadrity': {'c': 'Authority', 's': 'diva2:537187'},
+    'Autho\xadrity': {'c': 'Authority', 's': 'diva2:537187'},
     'Overexpressin': {'c': 'Overexpression', 's': 'diva2:801712'},
     'Octetanalysisindicated': {'c': 'Octet-analysis is indicated', 's': 'diva2:1219373'},
     'AA’B': {'c': "AA’B<sub>2</sub>O<sub>6</sub>", 's': 'diva2:1185488'},
@@ -711,6 +711,7 @@ miss_spelled_to_correct_spelling={
     'CS-graftPVAc': {'c': 'CS-graft-PVAc', 's': 'diva2:1528487'},
     'Ever-inclreasing': {'c': 'Ever-increasing', 's': 'diva2:801894', 'n': 'no full text'},
     'How-ever': {'c': 'However', 's': 'diva2:1331767'},
+    'How­ever': {'c': 'However', 's': 'diva2:460449'},
     'RM26-conjuagtes': {'c': 'RM26-conjugates', 's': 'diva2:1595504'},
     'Ragn-­‐Sells': {'c': 'Ragn-Sells', 's': 'diva2:827149'},
     'SO2­-bearing': {'c': 'SO2-bearing', 's': 'diva2:1607300'},
@@ -816,5 +817,24 @@ miss_spelled_to_correct_spelling={
     'Escherechia': {'c': 'Escherichia', 's': 'diva2:1774768', 'n': 'error in original'},
     'Fkbp51mute': {'c': 'Fkbp51<sup>mute</sup>', 's': 'diva2:1711888'},
     'Fur­thermore': {'c': 'Furthermore', 's': 'diva2:537187', 'n': 'the abstract is full of \xad soft hyphens'},
-    
+    'Actvity': {'c': 'Activity', 's': 'diva2:537187'},
+    'Adipo': {'c': 'Adipo<sup>LEP</sup>', 's': 'diva2:1875773'},
+    'Anaesthesiology': {'c': 'Anesthesiology', 'n': 'alternative spelling - as used in the thesis'},
+    'Alzhaimer': {'c': 'Alzheimer', 's': 'diva2:744722'},
+    'Assess­ments': {'c': 'Assessments', 's': 'diva2:537187'},
+    'AttanaCellTM': {'c': 'Attana Cell™', 's': 'diva2:1454421'},
+    'Attanas': {'c': "Attana's", 's': 'diva2:1369906', 'n': 'no full text'},
+    'Accirate': {'c': 'Accurate', 's': 'diva2:855720', 'n': 'no full text'},
+    'Afribody': {'c': 'Affibody', 's': 'diva2:744697', 'n': 'no full text'},
+    'CAncercare': {'c': 'Cancer care', 's': 'diva2:1392274', 'n': 'the capitalization and spacing are for use in the acronym INCA'},
+    'CO2portion': {'c': 'CO<sub>2</sub> portion', 's': 'diva2:505342', 'n': 'correct in original'},
+    'Calorimetrry': {'c': 'Calorimetry', 's': 'diva2:720781', 'n': 'no full text'},
+    'Cuurent': {'c': 'Current', 's': 'diva2:744723', 'n': 'no full text'},
+    'Cythochrome': {'c': 'Cytochrome', 's': 'diva2:1095524'},
+    'Csproperties': {'c': 'C properties', 's': 'diva2:812041', 'n': 'error in original'},
+    'Ctvalues': {'c': 'Ct-values', 's': 'diva2:1602704', 'n': 'correct in original'},
+    'Autho­rity': {'c': 'Authority', 's': 'diva2:537187'},
+
+
+
 }

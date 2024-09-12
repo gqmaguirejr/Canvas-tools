@@ -52608,6 +52608,57 @@ common_English_words={
     'Ginkgoites': {'B2': 'Noun (plural)'}, # genus
     'Gloeobacter': {'B2': 'Noun'}, # genus
     'Gloeotrichia': {'B2': 'Noun'}, # genus
+    'Aenopheles': {'B2': 'Noun'}, 
+    'Aeromonas': {'B2': 'Noun'},
+    'Agaricus': {'B2': 'Noun'}, 
+    'Aktos': {'B2': 'Noun'},
+    'Alphaproteobacteria': {'B2': 'Noun'},
+    'Aminotransferase': {'B2': 'Noun'},
+    'Amphiphysin': {'B2': 'Noun'},
+    'Anabaena': {'B2': 'Noun'},
+    'antifoam': {'B2': 'Noun'},
+    'Aphanomyces': {'B2': 'Noun'},
+    'Apolipoprotein': {'B2': 'Noun'},
+    'aquacultured': {'B2': 'Adjective'},
+    'Arabiensis': {'B2': 'Noun'},
+    'bionics': {'B2': 'Noun'},
+    'biopharmaceuticals': {'B2': 'Noun (plural)'},
+    'Borneol': {'B2': 'Noun'},
+    'Brachioradialis': {'B2': 'Noun'},
+    'Brachymonas': {'B2': 'Noun'},
+    'Branchiostoma': {'B2': 'Noun'},
+    'by‐passing': {'B2': 'Verb (gerund), Verb (present participle)'},
+    'bracatingas': {'B2': 'Noun (plural)'}, 
+    'carbachol': {'B2': 'Noun'},
+    'carbonic': {'B2': 'Adjective'},
+    'carbomer': {'B2': 'Noun'},
+    'cardioverter': {'B2': 'Noun'},
+    'Chitinophaga': {'B2': 'Noun'},
+    'Chlamydomonas': {'B2': 'Noun'},
+    'Chromobacterium': {'B2': 'Noun'},
+    'Chryseobacterium': {'B2': 'Noun'},
+    'Cladophora': {'B2': 'Noun'},
+    'clinicopathologic': {'B2': 'Adjective'},
+    'Clostridia': {'B2': 'Noun (plural)'},
+    'Clostridium': {'B2': 'Noun'},
+    'chronical': {'B1': 'Adjective'}, # British spelling
+    'Clinoleic': {'B2': 'Noun'}, # emulsion of 80% olive oil and 20% soy oil
+    'Chem.': {'B1': 'Abbreviation'}, # abbreviation for chemistry
+    'catanoinic': {'B2': 'Adjective'},
+    'Cupriavidus': {'B2': 'Noun'},
+    'Cyanobacteriia': {'B2': 'Noun'},
+    'Cyperene': {'B2': 'Noun'},
+    'J/cm': {'B2': 'Unit'},
+    'handsheets': {'B1': 'Noun (plural)'},
+    'Hermetia': {'B2': 'Noun'},
+    'insecticidal': {'B2': 'Adjective'},
+    'Ipilimumab': {'B2': 'Noun'},
+    'isopropyl': {'B2': 'Noun'},
+    'Ixodes': {'B2': 'Noun'},
+    'iso': {'B1': 'Noun, Adjective, Prefix'}, 
+    'iso α-acid': {'B2': 'Noun Phrase'},
+    'α-acid': {'B2': 'Noun Phrase'},
+    'β-acid': {'B2': 'Noun Phrase'},
 
 }
     
@@ -54492,6 +54543,17 @@ place_names=[
     'Grödinge',
     'Gärtuna',
     'Görväln',
+    'Alsterån',
+    'Bergavik',
+    'Bergvik',
+    'Bolmen', # Lake in southern Sweden - diva2:839318
+    'Braviken',
+    'Campinas', # Brazil
+    'Hallsta', # diva2:1694001
+    'Henrikdal',
+    'Margretelund',
+    'Munksund',
+    'Mörrum',
     
 ]
 
@@ -61797,6 +61859,8 @@ company_and_product_names=[
     'Grosmannia penicillata', # diva2:826735
     'Ophiostoma picea', # diva2:826735
     'Ips typographus', # spruce bark beetle diva2:826735
+    'Ips', # part of "Ips typographus" - diva2:826735
+    'typographus',  # part of "Ips typographus" - diva2:826735
     'Polestar', # company - diva2:1795584
     'Polarn o. Pyret', # diva2:1786734
     'Polarn', # Polarn o. Pyret diva2:1786734
@@ -61996,7 +62060,7 @@ company_and_product_names=[
     'Daphnia magna', # diva2:1589974
     'Daphnia', # part of "Daphnia magna" - see diva2:1589974
     'Danio rereio', # diva2:854709
-    'Danio rereio', # part of "Danio rereio" diva2:854709
+    'Danio', # part of "Danio rereio" diva2:854709
     'rereio', # part of "Danio rereio" diva2:854709
     'Oryzias latipes', # diva2:854709
     'Oryzias', # part of "Oryzias latipes" diva2:854709
@@ -62449,6 +62513,127 @@ company_and_product_names=[
     'Gardobond®', # diva2:778114
     'Grosmannia', # part of "Grosmannia penicillata" - see diva2:826735
     'GreenAll', # absorbent - see diva2:1642791
+    'AemionTM', # diva2:1588565
+    'Aemion+™', # diva2:1588565
+    'Aloka', # company - see diva2:559963
+    'Alvim', # Alvim waste water treatment plant - diva2:1296147 and diva2:1352888
+    'Ameroyal', # Ameroyal® 642 Antiscalant - diva2:1723016
+    'Ameroyal®', # diva2:1723016
+    'Amunix', # part of "Amunix Pharmaceuticals" - see diva2:744738
+    'Apotekens', # company - possessive
+    'Antaris', # company - see diva2:1340060
+    'Aplex', # part of "Aplex Bio AB" - company - diva2:1586543
+    'Aquastar', # company - diva2:1455920
+    'Attana', # Attana AB - diva2:1454421
+    'Atalante', # company - diva2:1708400
+    'Atheros', # company - diva2:628192
+    'Alite',  # Ca₃SiO₅ - diva2:1427516
+    'Alcontrol', # part of "ALcontrol Group Limited" - company - diva2:945315 - now part of Synlab Limited
+    'Acosense', # company - see diva2:722685
+    'Acospector', # product of 'Acosense' - see diva2:722685
+    'Auddly', # company - diva2:935212
+    'Auranest', # company - diva2:1562606
+    'Avecto', # tool - Privilege Guard - a2:904943
+    'Avicel', # part of "Avicel® Microcrystalline Cellulose" diva2:1870097
+    'Avicel®', # diva2:1870097
+    'Bambo', # brand - diva2:1574756
+    'BioAge', # package - see diva2:1841314
+    'BioUPGRADE', # a collaborative platform diva2:1823423
+    'BiofiberTech', # BiofiberTech Sweden AB - company - diva2:1673496
+    'FibraQ™', # product of BiofiberTech Sweden AB - diva2:1673496
+    'Biofloc', # polymer - diva2:1584737
+    'Bioisolator', # company - diva2:911592
+    'Biologique', # part of "Biologique Recherch" - company - diva2:413468
+    'Biopharma', # part of "Xbrane Biopharma AB" - company - diva2:1711587
+    'Biosorbe', # Biosorbe Ab - company - diva2:1642791
+    'Biovitrum', # part of "Swedish Orphan Biovitrum" - company - diva2:1253525
+    'BlazingGraph', # graph database - diva2:1764820
+    'BlueZ', # Bluetooth library - diva2:936117
+    'Bluemix', # IBM Bluemix cloud - diva2:1116008
+    'Blynk', # app - diva2:1838323
+    'Bomem', # Bomem 3600 NIR-instrument - a2:1340060
+    'Brandywine', # part of "Brandywine tomatoes" - diva2:1528485
+    'Brenntaplus', # diva2:1170378
+    'Brij', # diva2:1096867
+    'Brij™', # diva2:1096867
+    'Bruker', # company - see diva2:827181
+    'Calmark', # Calmark Sweden AB - company - diva2:855924
+    'Camo', # part of "Camo AS" - company - diva2:1427516
+    'Canis', # part of "Canis lupis" -  diva2:1745402
+    'Canis lupis', # diva2:1745402
+    'Cannabidiol', # diva2:1471667
+    'canola', # Rapeseed oil - diva2:1887578
+    'Capitex', # part of "Vitec Capitex" - company - diva2:1322419
+    'Carbotrace', # optotracer - diva2:1689374
+    'Carbotrace™',# optotracer - diva2:1689374
+    'CardioEchoBase', # echocardiography database at Karolinska University Hospital - diva2:641967
+    'Ciona', # part of 'Ciona intestinalis' -  diva2:745018
+    'Clavelina', # part of 'Clavelina lepadiformis' -  diva2:745018
+    'Chanjo', # coverage analysis tool - diva2:744710
+    'CareLigo', # company - diva2:1356233
+    'Causal3DIdent', # dataset - see diva2:1667575
+    'ChlorOut', # diva2:778828
+    'CleanoSpector', # part of "SITA CleanoSpector" diva2:1865616
+    'Krüss', # part of "Krüss Scientific" - company - diva2:1865616
+    'ClearBlu', # part of "ClearBlu Environmental®" - company - diva2:1454464
+    'ClickMucins', # diva2:1219371 - possibly this should be two words
+    'Cytiva', # company with the following grands ÄKTA, Amersham, HyClone, MabSelect and Whatman - company - diva2:1677009
+    'DDAnalytics', # company - diva2:1739120
+    'DIETClassifier', # diva2:1562950
+    'Hewlett Packard', # diva2:573478
+    'Hewlett', # part of "'Hewlett Packard' - diva2:573478
+    'Packard', # part of "'Hewlett Packard' - diva2:573478
+    'HexaBody antibodies', # diva2:1823394
+    'HexaBody', # diva2:1823394
+    'HexDetect', # diva2:1823394
+    'HexBlock', # diva2:1823394
+    'HeadmasterDev', # application - see diva2:1665357
+    'Hexoskin', # company - diva2:951687
+    'IvfServices', # program
+    'Irgafos', # diva2:1786734
+    'Irgafos®', # diva2:1786734
+    'Irganox', # diva2:745566
+    'Irganox®',  # diva2:745566
+    'Iopsys', # company - diva2:819067
+    'Izumo1', # gene - diva2:1447074
+    'Living Machines®', # diva2:563793
+    'Organica Water',  # diva2:563793
+    'Solar Aquatics™', # diva2:563793
+    'Maidashi', # part of "Maidashi Kyushu University Hospital" - diva2:1086147
+    'Maidashi Kyushu University Hospital', # diva2:1086147
+    'Mailbot', # diva2:1451767
+    'Mals', # diva2:1823394
+    'Mando', # part of "Mando Group AB" - diva2:773317
+    'Mandometer', # diva2:773317
+    'Mandolean', # part of "Mandolean Clinics" - diva2:825595
+    'Massbank', # database - diva2:1242507
+    'Metlin', # database - diva2:1242507
+    'Mastersizer', # Laser Diffraction Analyzer - diva2:1593458
+    'Matrigel', # diva2:1738587
+    'Mavatar', # company - diva2:1773582
+    'Mawell', # company - diva2:628492
+    'Medicals', # part of "Observe Medicals" -  diva2:826642
+    'Medonic', # Medonic M32 device - see diva2:1186700
+    'Meepo', # Meepo AB - diva2:724365
+    'Mellifiq', # company - diva2:1701750
+    'Merox', # diva2:1590902
+    'Meva', # part of "Meva Energy AB" - diva2:1888212
+    'Mialite', # software - diva2:1298660
+    'MilliQ', # ultrapure water - diva2:1708920
+    'MinTeq', # software - diva2:846045
+    'Medusa', # software - diva2:846045
+    'Modorefmassa', # carrier fibers - see diva2:827347
+    'Moligo', # part of "Moligo Technologies" - company - diva2:1823416
+    'Moqups', # diva2:1145354
+    'Movprep',# diva2:1223368
+    'Omnipaque', # diva2:1223368
+    'Mowilith', # Mowilith DM 105 - diva2:854315
+    'Mowilith®', # diva2:854315
+    'Multicem', # <diva2:1602803
+    'Multisim', # simulator - see diva2:800585
+    'Muurolene', # diva2:826739
+    'Myon', # Myon Aktos system - diva2:1238966
+
 
 
 ]
@@ -66806,6 +66991,31 @@ names_of_persons=[
     'Grady',
     'Grignard',
     'Gräf',
+    'Almgren',
+    'Alois',
+    'Apró',
+    'Ashworth',
+    'Assya',
+    'Boujemaoui',
+    'Arfert',
+    'Acrivos',
+    'Bollini',
+    'Bonferroni',
+    'Borchardt',
+    'Borghese',
+    'Broemstrup',
+    'Brønsted',
+    'Carlsberg',
+    'Cherns',
+    'Crouzier',
+    'Carenco',
+    'Cullins',
+    'Ising',
+    'Malusek',
+    'Marzullo',
+    'Murphree',
+
+
 
 
 

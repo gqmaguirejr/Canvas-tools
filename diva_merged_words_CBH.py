@@ -4253,6 +4253,27 @@ merged_words={
     'Good and',
     'HMI / Ergonomics',
     'H3K4me1, H3K27Ac',
-    
+    'Background: Approximately',
+    'Barracuda — a', # diva2:1799173
+    'CBM6 carbohydrate', # diva2:1454416
+    'CNR calculation', # diva2:1237160
+    'CNF / dendrimer',
+    'CVCs, the',
+    'Carbotrace 680',
+    'Clabs and',
+    'Crystallisation experiments',
+    'Current fingerprinting',
+    'DMF / water',
+    'DMAc / LiCl',
+    'HVO / Internal',
+    'Ipad / Iphone',
+    'MATLAB / Aspen',
+    'MHC / peptide',
+    'Markov decision',
+    'Mass balances',
+    'Mechanics / Generalized',
+    'Mechanics / Poisson',
+    'Met222Gly / Leu217Met',
+    'NMC / graphite',
 
 }
