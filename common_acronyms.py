@@ -5194,15 +5194,4 @@ well_known_acronyms_list=[
     ['QL', 'Quasi-Likelihood', {'s': 'diva2:1886186'}],
     ['RFECV', 'Recursive Feature Elimination with Cross-Validation', {'s': 'diva2:1886374'}],
 
-    # the following are from CBH
-    ['R,L,C', 'Resistor, Inductor, and Capacitor'],
-    ['EVs', 'electric vehicles'],
-    ['TATO', 'triazine-trione', {'s': 'diva2:1361820'}],
-    ['TEC', 'thiol-ene coupling', {'s': 'diva2:1361820'}],
-    ['TYC', 'thiol-yne coupling', {'s': 'diva2:1361820'}],
-    ['TEC/TYC', 'thiol-ene coupling/thiol-yne coupling', {'s': 'diva2:1361820'}],
-    ['DPMS', 'dolicholphosphate mannosesynthase', {'s': 'diva2:1219274'}],
-    ['ISTD', 'Intern standard', {'s': 'diva2:1859260'}],
-    ['mMSCs', 'mouse mesenchymal stem cells', {'s': 'diva2:1266796'}],
-    ['MSCs', 'Mesenchymal stromal cells',  {'s': 'diva2:1454998'}],
 ]

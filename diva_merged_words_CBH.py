@@ -4033,7 +4033,6 @@ merged_words={
     'From Swedish',
     'Gymnastik och',
     'Gymnastik och Idrottshögskolan',
-    'HMM copy',
     'HP and',
     'HS sorption',
     'Healthcare, Physiotherapists',
@@ -4086,8 +4085,6 @@ merged_words={
     'Pulse Inversion',
     'Quarkus was',
     'RBC derived',
-    'RB knee',
-    'RB knees',
     'REF and',
     'REST was',
     'Radboud University',
@@ -4206,7 +4203,7 @@ merged_words={
     'are: 1',
     'average Fat',
     'aid on',
-    'attention on'
+    'attention on',
     'PspC allele', # diva2:1147592
     'Rectal prolapse',
     'SPME can',
@@ -4273,7 +4270,23 @@ merged_words={
     'Mass balances',
     'Mechanics / Generalized',
     'Mechanics / Poisson',
-    'Met222Gly / Leu217Met',
     'NMC / graphite',
+    'Mw,Mn',
+    'NaOH / PEG',
+    'NaOH / urea',
+    'Nickel Directive', # diva2:573478
+    'OH- also', # diva2:1677786
+    'TLS_AES_128_GCM_SHA256, with',
+    'Ag / AgCl',
+    'AuI / AgI',
+    'Co / Al',
+    'CuO / CeO',
+    'Fe / CeO',
+    'Fe / Mn',
+    'Li / K',
+    'PtPd / Al',
+    'PtRu / C',
+    'Si / Al',
+
 
 }

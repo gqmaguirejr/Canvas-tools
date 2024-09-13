@@ -670,6 +670,7 @@ miss_spelled_to_correct_spelling={
     'AVV': {'c': 'AAV', 's': 'diva2:1621933', 'n': 'no full text - seems to be spelled correct in Swedish abstract'},
     'BMIM[BF': {'c': '1-butyl-3-methylimidazolium tetrafluoroborate (BMIM[BF<sub>4</sub>]', 's': 'diva2:1758817'},
     'BRF': {'c': 'BFR', 's': 'diva2:625004', 'n': 'error in original - it should be referring to Brominated flame retardant'},
+    'BRFs': {'c': 'BFRs', 's': 'diva2:625004', 'n': 'error in original - it should be referring to Brominated flame retardant'},
     'BSPORT': {'c': 'B-SPORT+', 's': 'diva2:1640551', 'n': 'hyphen split over linebreak'},
     'KD': {'c': 'K<sub>D</sub>', 's': 'diva2:1673943'},
     'C-NMR': {'c': '<sup>13</sup>C-NMR', 's': 'diva2:730241'},
@@ -732,6 +733,7 @@ miss_spelled_to_correct_spelling={
     'recognitioniv': {'c': 'recognition', 's': 'diva2:1451552', 'n': 'correct in original'},
     'oscilloskope': {'c': 'oscilloscope', 's': 'diva2:1350183'},
     'is- Can': {'c': 'is - Can', 's': 'diva2:1786728'},
+    'isCan': {'c': 'is - Can', 's': 'diva2:1786728'},
     'beahavior': {'c': 'behavior', 's': 'diva2:825595', 'n': 'error in original'},
     'benet': {'c': 'benefit', 's': 'diva2:1260679', 'n': 'missing ligature'},
     'aect': {'c': 'affect', 's': 'diva2:1344757', 'n': 'missing ligature'},
@@ -834,7 +836,13 @@ miss_spelled_to_correct_spelling={
     'Csproperties': {'c': 'C properties', 's': 'diva2:812041', 'n': 'error in original'},
     'Ctvalues': {'c': 'Ct-values', 's': 'diva2:1602704', 'n': 'correct in original'},
     'Autho­rity': {'c': 'Authority', 's': 'diva2:537187'},
-
-
+    'NOx-­‐conversion': {'c':  'NOx-conversion', 's': 'diva2:847267'},
+    'Netiher': {'c':  'Neither', 's': 'diva2:744730', 'n': 'no full text'},
+    'Otical': {'c': 'OPTICAL®', 's': 'diva2:744706', 'n': 'no full text'},
+    'absen': {'c': 'absent', 's': 'diva2:801905', 'n': 'no full text'},
+    'Oxidizern': {'c': 'the Oxidizer', 's': 'diva2:827330', 'n': 'error in original'},
+    "HOFF’s": {'c': "HOFF’s", 's': 'diva2:1290440', 'n': 'error in original'},
+    'BBM:s': {'c': "BBM's", 's': 'diva2:820269', 'n': 'error in original'},
+    'BluVIPR': {'c': 'Blue VIPR', 's': 'diva2:1595031', 'n': 'no full text'},
 
 }

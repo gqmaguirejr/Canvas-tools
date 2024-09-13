@@ -368,6 +368,8 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'p&lt',
+    'p&gt',
     '6&lt;pH&lt;10',
     '7&lt;pH&lt;10',
     '17.3/17.3-coating',
@@ -1169,6 +1171,39 @@ def noun_cefr_levels(my_dict):
                     levels[cl]='noun'
     return levels
 
+def is_chemical_formula(formula):
+    global Verbose_Flag
+    # Check for valid element symbols
+    elements=list()
+    i=0
+    while i < len(formula):
+        if Verbose_Flag:
+            print(f"{i}: {formula[i]}")
+        if formula[i].isdigit():
+            i=i+1
+            continue
+        if formula[i].isupper():  # Check for uppercase letters
+            if i + 1 < len(formula) and formula[i + 1].islower():  # Check for optional lowercase letters
+                element = formula[i:i+2]
+                i=i+2
+                elements.append(element)
+            else:
+                element = formula[i]
+                elements.append(element)
+                i=i+1
+        else:
+            return False # as there should not be an cases cuh as this
+    if Verbose_Flag:
+        print(elements)
+    #
+    if len(elements) < 1:
+        return False
+    for element in elements:
+        if element not in common_english.chemical_elements_symbols:  # Check if element symbol exists in the dictionary
+            return False
+    return True
+    
+
 def main():
     global Verbose_Flag
     global directory_prefix
@@ -1680,6 +1715,19 @@ def main():
         if w in miss_spelled_to_correct_spelling_CBH.miss_spelled_to_correct_spelling:
             continue
 
+        # check for names and symbols of elements
+        if w in common_english.chemical_elements:
+            continue
+        if w.lower() in common_english.chemical_elements:
+            continue
+
+        if w in common_english.chemical_elements_symbols:
+            continue
+
+        # check for simple chemical formulas
+        if is_chemical_formula(w):
+            continue
+
         # some last trash to remove
         if w in ['Tr', 'e.g', "dumb'", 'ss', "cost'cost'", 's.k', 'H', '´', 'A∗', 'T', 'Q', 'al', "­", "–", "—", "…", "→", "_",]:
             continue
@@ -1737,11 +1785,13 @@ def main():
         if 'detectionzone' in fall_back_words:
             print('detectionzone in fall-back_words')
     #
-    words_with_IEC=[]
-    for w in unique_words:
-        if w.find('IEC') >= 0:
-            words_with_IEC.append(w)
-    save_collected_words(words_with_IEC, 'IEC')
+    # words_with_IEC=[]
+    # for w in unique_words:
+    #     if w.find('IEC') >= 0:
+    #         words_with_IEC.append(w)
+    # save_collected_words(words_with_IEC, 'IEC')
+
+    words_with_chemical_formulas=[]
     #
     for w in unique_words:
         initial_w=w[:]
@@ -1830,6 +1880,12 @@ def main():
             continue
 
         if w in common_english.chemical_elements_symbols:
+            number_skipped=number_skipped+1
+            continue
+
+        # check for simple chemical formulas
+        if is_chemical_formula(w):
+            words_with_chemical_formulas.append(w)
             number_skipped=number_skipped+1
             continue
         #
@@ -2062,6 +2118,7 @@ def main():
         if w.lower() in common_english.common_italian_words:
             number_skipped=number_skipped+1
             continue
+
         #
         # check for temrs like "FPGA-Based" if "FPGA-based" is in the dict()
         if w.count('-') > 0:
@@ -2262,6 +2319,8 @@ def main():
     print(f'{number_of_potential_acronyms=}')
     print(f'{count_fall_back_cases=}')
     #
+    save_collected_words(words_with_chemical_formulas, 'chemical_formulas')
+
     if options.swedish:
         save_collected_words(words_not_found, 'Swedish')
     else:

@@ -52177,7 +52177,6 @@ common_English_words={
     'Buf-2': {'B2': 'Noun Phrase'},
     'Bulk-ROP': {'B2': 'Noun Phrase'},
     'C-Class': {'B2': 'Noun Phrase'},
-    'C-Green': {'B2': 'Noun Phrase'},
     'C-Libraries': {'B2': 'Noun Phrase'},
     'C-Raclopride': {'B2': 'Noun Phrase'},
     'C-based': {'B2': 'Adjective (compound)'},
@@ -52659,7 +52658,11 @@ common_English_words={
     'iso α-acid': {'B2': 'Noun Phrase'},
     'α-acid': {'B2': 'Noun Phrase'},
     'β-acid': {'B2': 'Noun Phrase'},
-
+    'Nm/g': {'B2': 'Unit'},
+    'Optomyography': {'B2': 'Noun'}, # see diva2:738673
+    'xor': {'B2': 'Noun, Verb'},
+    'abating': {'B1': 'Verb (present participle), Verb (gerund)'},
+    
 }
     
 chemical_elements_symbols={
@@ -54554,6 +54557,9 @@ place_names=[
     'Margretelund',
     'Munksund',
     'Mörrum',
+    'Natick', # Massachusetts
+    'Ningxia', # China
+    'Ortviken',
     
 ]
 
@@ -54595,6 +54601,13 @@ company_and_product_names=[
     # font names
     'Arial',
 
+    # likely voltages
+    '2V',
+    '10V',
+    '12V',
+    '15V',
+    '50V',
+    '230V',
 
     "A-phase",
     "ACSLsmall", # ACSL<sub>small</sub>a subset of ACSL - see diva2:1801590
@@ -61533,7 +61546,7 @@ company_and_product_names=[
     'IntelliVue',
     'Intelliflex',
     'Kimab',
-    'Kronjäst',
+    'Kronjäst', # company 
     'LKABs',
     'Mitsubishi',
     'Multiphysics®',
@@ -61541,6 +61554,7 @@ company_and_product_names=[
     'MyScania',
     "Mälarenergi`s",
     'PivotTables',
+    'Polonite', # diva2:720771
     'Polonite®',
     'Polonite®/ha',
     'Posture Score',
@@ -61643,6 +61657,7 @@ company_and_product_names=[
     'B006', # a complex in Telge Nät - see diva2:826712
     'B210', # a complex in Telge Nät - see diva2:826712
     'Clab', # a complex in Telge Nät - see diva2:826712
+    'Clabs', # complex in Telge Nät  - diva2:826712
     'B05', # DUF152 members - see diva2:1044163
     'B10', # DUF152 members - see diva2:1044163
     'Dv152',  # DUF152 members - see diva2:1044163
@@ -61790,7 +61805,7 @@ company_and_product_names=[
     'ExomeCNV', # SCNA detection, algorithms in sequencing data - see diva2:855720
     'ControlFreeC', # SCNA detection, algorithms in sequencing data - see diva2:855720
     'BICseq', # SCNA detection, algorithms in sequencing data - see diva2:855720
-    'HMMcopy', # SCNA detection, algorithms in sequencing data - see diva2:855720
+    'HMMcopy', # SCNA detection, algorithms in sequencing data - see diva2:855720 - software for bias-free copy number estimation
     'CNAnorm', # SCNA detection, algorithms in sequencing data - see diva2:855720
     'Veridex', # diva2:853465
     'Ubbelohde', # Ubbelohde capillary viscometer - see diva2:1643939
@@ -61858,6 +61873,8 @@ company_and_product_names=[
     'Ceratocystis Polonica', # diva2:826735
     'Grosmannia penicillata', # diva2:826735
     'Ophiostoma picea', # diva2:826735
+    'Ophiostoma', # part of "Ophiostoma picea" - diva2:826735
+    'picea', # part of "Ophiostoma picea" - diva2:826735
     'Ips typographus', # spruce bark beetle diva2:826735
     'Ips', # part of "Ips typographus" - diva2:826735
     'typographus',  # part of "Ips typographus" - diva2:826735
@@ -62633,6 +62650,113 @@ company_and_product_names=[
     'Multisim', # simulator - see diva2:800585
     'Muurolene', # diva2:826739
     'Myon', # Myon Aktos system - diva2:1238966
+    'Nanologica', # company - diva2:1787061
+    'Navetti', # company - diva2:1109910
+    'Neisser', # part of "Neisser Methylene Blue Metachromatic staining" - diva2:1454410
+    'NetNod', # company - diva2:1667984
+    'NetNods', # company - diva2:1667984 (possessive)
+    'Neuronics', # department t KTH - see diva2:872966
+    'NeutrAvidin', # protein - diva2:1049472
+    'Nextera', # Norweign company - diva2:744730
+    'Nipype', # Nipype Neuroimaging Python library - diva2:1799683
+    'OAuth', # protocol -diva2:753370
+    'Omexom', # company - diva2:1764102
+    'Omnipose', # deep neural network image-segmentation algorithm - diva2:1776843
+    'OpenBCI', # company - diva2:1448228
+    'OpenCap', # software - diva2:1869802
+    'OpenFaaS', # diva2:1738884
+    'OpenFaaS®', # diva2:1738884
+    'Opoka', # rock - diva2:720771
+    'OptiTopo', # topography measurement device- diva2:1240203
+    'Organica', # part of "Organica Water" - diva2:563793
+    'OrganoClick', # company - diva2:782796
+    'OrientDB', # graph database - diva2:1764820
+    'Oriflame', # part of "Oriflame Holding AG" - cosmetics company - diva2:442919
+    'OriginPro', # software - diva2:1729091
+    'Ortivus', # part of "Ortivus MobiMed AB" - company - diva2:1678204
+    'MobiMed', # part of "Ortivus MobiMed AB" - company - diva2:1678204
+    'Osciprime', # Open Source Android Oscilloscope - diva2:659303:
+    'OsmY', # osmotically inducible gene in Escherichia coli - diva2:801723
+    'Ossur', # company - diva2:731857
+    'Össur hf.', # a company based in Iceland
+    'Osteoprotegerin', # protein - diva2:1095518
+    'Otc', # part of "Sn(Otc)2" -  diva2:506052 - stannous octoate - the 2 should be a subscript - no full text
+    'OPTICAL', # part of "OPTICAL® 20" diva2:744706
+    'Oxsilan', # iva2:778114
+    'Oxsilan®', # diva2:778114
+    'C-Green', # company - diva2:1723023
+    'OxyPower', # part of  "C-Green's OxyPower HTC-technology" - diva2:1723023
+    'Ozonetech', # company - diva2:1242467
+    'PyBaMM', # Python mathematical battery modelling - diva2:1593557
+    'PyMOL', # software - diva2:1770259
+    'PyQt4', # library - see diva2:953514
+    'PylRS', # Pyrrolysyl-tRNA synthetase - diva2:1038973
+    'Terco', # company - diva2:812041 
+    'Tercos', # company - diva2:812041 - (possessive)
+    'MSME', # sequence - diva2:1231794
+    'TeloHEAC', # cell line - diva2:1774777
+    'PST', # part of "Tercos PST 2220 Transmission Line and Distribution Module" - diva2:812041
+    'PP/elastomer',  # composite
+    'PLA/AcSKL', # composite
+    'PLA/Cellulose', # composite
+    'PLA/Lignin15', # composite
+    'PLA/Lignin19', # composite
+    'PLA/ManSKL', # composite
+    'PLA/chitosan', # composite
+    'PLA/modified', # composite
+    'PLA/wood', # composite
+    'Met222Gly/Leu217Met', # enzyme - diva2:893748
+    'LIVI', # LIVI laboratory - see diva2:1178039
+    'SÖRABs', # possesive of SÖRAB
+    'MRBrainS13', # a MICCAI grand challenge - diva2:949994 - spelled both ways in the abstract - the correct version is this one - see https://mrbrains13.isi.uu.nl/index.html
+    'MRBrainsS13', # a MICCAI grand challenge -  diva2:949994 - spelled both ways in the abstract
+    'MRTrix3Tissue', # fork of MRtrix3 project - diva2:1463915
+    'ATPase', # protein,  - diva2:1788558, diva2:1454420
+    'ATPases', # class of enzymes
+    'Aspergillus aculeatus', # fungus
+    'Aspergillus', # genus
+    'Acti4', # software - diva2:1509359
+    'ADAPT_EpCAM_02', # ADAPT that targets EpCAM - see diva2:1642418
+    'ADAPT_EpCAM_02_X11N', # ADAPT that targets EpCAM targeting mutants one variant - see diva2:1642418
+    'ADAPT_EpCAM_08', # ADAPT that targets EpCAM - see diva2:1642418
+    'ADAPT_TNFα5_V17I', # ADAPT that targets TNFα - see diva2:1642418
+    'ADAPT_TNFα5_M22Q', # ADAPT that targets TNFα - see diva2:1642418
+    'Samsung SDI', # company - Samsung SDI Co., Ltd.
+    'Samsung SDI INR21700-40T', # battery - see diva2:1467631
+    'INR21700-40T', # Samsung SDI battery - see diva2:1467631
+    'Samsung SDI INR21700-50E' # battery - see diva2:1467631
+    'INR21700-50E' # Samsung SDI battery - see diva2:1467631
+    'A123', # A123 Systems, LLC, a subsidiary of Wanxiang Group Holdings
+    'A123 Systems ANR26650m1-B', # battery - see diva2:1467631
+    'ANR26650m1-B', # A123 Systems battery - see diva2:1467631
+    'NADB_Rossmann', # protein superfamily - see diva2:1741842
+    'AdoMet_MTases', # protein superfamily - see diva2:1741842
+    'PknB_PASTA_kin', # protein superfamily - see diva2:1741842
+    'Agaricus meleagris', # poisonous mushroom - diva2:464930
+    'VaMyGyn', # database - diva2:1711594
+    'KOLBIBAKT', # database - diva2:1711594
+    'DNBSEQ™', # DBM sequencing technology - see diva2:1711594
+    'DNBSEQ', # DBM sequencing technology - see diva2:1711594
+    'AtMAN1',  # endo-β-mannanases - diva2:464997
+    'AtMAN6', # endo-β-mannanases - diva2:464997
+    'AtMAN7', # endo-β-mannanases - diva2:464997
+    'BALB/c', # strain of mice- see diva2:849535
+    'BP-b-PSBMA', # a biopolimer - diva2:852786
+    'BP-b-PSBMA200', # a biopolimer - diva2:852786
+    'BP-<em>b</em>-PSBMA200', # a biopolimer - diva2:852786
+    'BirA', # BirA enzyme - diva2:1711566
+    'AviTag™-BirA', # diva2:1711566
+    'Bl21DE3', # strain of E. coli - see diva2:1454472
+    'G5-FN-4RepCT', # Recombinant silk - see diva2:1454837
+    'TLS_AES_128_GCM_SHA256', # encryption suite - see diva2:1451799
+    'FGY217', # yeast strain - diva2:1454447
+    'LoGSA', # yeast strain - diva2:1454447
+    'GM12878', # a lymphoblastoid cell line - see diva2:1471134
+    'EN1811', # European standard - EN 1811:2023 - see diva2:573478
+    'RBknee', # AI software - diva2:1575512
+    'RBknees', # AI software - diva2:1575512 (possessive)
+
+
 
 
 
@@ -67014,6 +67138,12 @@ names_of_persons=[
     'Malusek',
     'Marzullo',
     'Murphree',
+    'Neretnieks',
+    'Nissle',
+    'Ostwald',
+    'Overhauser',
+
+
 
 
 
@@ -68954,3 +69084,27 @@ abbreviations_ending_in_period=[
     'Nov.',
     'Dec.',
 ]
+
+# name: abbreviation (a) and short abbreviation (s)
+amino_acids={
+    'Alanine':       {'a': 'Ala', 's':  'A'},
+    'Arginine':      {'a': 'Arg', 's':  'R'},
+    'Asparagine':    {'a': 'Asn', 's':  'N'},
+    'Aspartic Acid': {'a': 'Asp', 's':  'D'},
+    'Cysteine':      {'a': 'Cys', 's':  'C'},
+    'Glutamic Acid': {'a': 'Glu', 's':  'E'},
+    'Glutamine':     {'a': 'Gln', 's':  'Q'},
+    'Glycine':       {'a': 'Gly', 's':  'G'},
+    'Histidine':     {'a': 'His', 's':  'H'},
+    'Isoleucine':    {'a': 'Ile', 's':  'I'},
+    'Leucine':       {'a': 'Leu', 's':  'L'},
+    'Lysine':        {'a': 'Lys', 's':  'K'},
+    'Methionine':    {'a': 'Met', 's':  'M'},
+    'Phenylalanine': {'a': 'Phe', 's':  'F'},
+    'Proline':       {'a': 'Pro', 's':  'P'},
+    'Serine':        {'a': 'Ser', 's':  'S'},
+    'Threonine':     {'a': 'Thr', 's':  'T'},
+    'Tryptophan':    {'a': 'Trp', 's':  'W'},
+    'Tyrosine':      {'a': 'Tyr', 's':  'Y'},
+    'Valine':        {'a': 'Val', 's':  'V'},
+}
