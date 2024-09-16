@@ -4287,6 +4287,14 @@ merged_words={
     'PtPd / Al',
     'PtRu / C',
     'Si / Al',
-
-
+    'CH4 as',
+    'CHIT1 in',
+    'CO2 eq', # diva2:442651
+    'Ca - 4668', # diva2:1519517
+    'GAP43 is',
+    'GH16 glycoside',
+    'MB with', # diva2:1237160
+    'MHS as', # diva2:1438504
+    'Model 2', # diva2:1315699
+ 
 }

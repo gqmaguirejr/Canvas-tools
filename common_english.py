@@ -46565,7 +46565,6 @@ common_English_words={
     'enzymatically': {'C1': 'Adverb'},
     'enzyme-2': {'C2': 'Noun'},
     'enzyme-linked': {'C2': 'Adjective'},
-    'enzyme-X': {'C2': 'Noun'},
     'enzyme-based': {'B2': 'Adjective (compound)'},
     'enzyme-catalyzed': {'C1': 'Adjective'},
     'enzyme-linked': {'C1': 'Adjective'},
@@ -50067,7 +50066,6 @@ common_English_words={
     'petro-chemically': {'C1': 'Adverb'}, 
     'petroleum-water': {'B2': 'Noun Phrase'}, 
     'pg/mL': {'C1': 'Noun Phrase'},
-    'ph-GAP43': {'C1': 'Noun Phrase'}, 
     'ph7': {'B2': 'Noun Phrase'}, 
     'phaC': {'C1': 'Noun'},
     'pharmacokinetic/pharmacodynamic': {'C1': 'Adjective Phrase'}, 
@@ -52643,6 +52641,7 @@ common_English_words={
     'chronical': {'B1': 'Adjective'}, # British spelling
     'Clinoleic': {'B2': 'Noun'}, # emulsion of 80% olive oil and 20% soy oil
     'Chem.': {'B1': 'Abbreviation'}, # abbreviation for chemistry
+    'Chem': {'B1': 'Abbreviation'}, # abbreviation for chemistry
     'catanoinic': {'B2': 'Adjective'},
     'Cupriavidus': {'B2': 'Noun'},
     'Cyanobacteriia': {'B2': 'Noun'},
@@ -52911,6 +52910,8 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'BMIM[BF<sub>4</sub>]',
+    'CO<sub>2</sub>',
     "diammonium salt of 2, 2‐azino‐bis(3‐ethylbenzothiazoline‐6‐sulfonic acid", # see diva2:1592494
     "AA’B<sub>2</sub>O<sub>6</sub>", # see diva2:1185488
     'H<sub>2</sub>pdc',
@@ -54560,7 +54561,7 @@ place_names=[
     'Natick', # Massachusetts
     'Ningxia', # China
     'Ortviken',
-    
+    'Käppala',
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -55647,7 +55648,7 @@ company_and_product_names=[
     'Canvas', # Canvas LMS
     'Capella',
     'Capgemini',
-    'Capio', # diva2:1586047
+    'Capio', # company - diva2:1586047
     'Capita',
     'CapsNet',
     'CapsNetby',
@@ -62755,10 +62756,117 @@ company_and_product_names=[
     'EN1811', # European standard - EN 1811:2023 - see diva2:573478
     'RBknee', # AI software - diva2:1575512
     'RBknees', # AI software - diva2:1575512 (possessive)
+    'BphG1', # phytochrome - see diva2:804978
+    'BxPc3', # pancreatic cancer cell line - see diva2:801712
+    'C1q', # C1q is the first protein in the classical pathway of the complement system - diva2:1813276
+    'CIC-C1q ELISA', # measurement method - diva2:1823394
+    'CD16a', # CD16a is a receptor for the Fc portion of IgGs - see diva2:1873319
+    'SK-BR-3', # breast cancer cell line
+    'CaRA', # a phage display library - diva2:1886090
+    'CaRA_scFv_1', # protein from CaRA library - see diva2:1642428
+    'CaRA_scFv_2', # protein from CaRA library - see diva2:1642428
+    'CaRA_G-CSF_1', # protein from CaRA library - see diva2:1642428
+    'CaRA_G-CSF_3', # protein from CaRA library - see diva2:1642428
+    'Ce3-Ce4', # part of "IgE Ce3-Ce4" - see diva2:1886090
+    'HaCaT', # epithelial cell line - see diva2:1873298
+    'HEKa', # epithelial cell line - see diva2:1873298
+    'Caco-2',  # epithelial cell line - see diva2:1873298
+    'HDMEC', # endothelial cell line - see diva2:1873298
+    'CmAA10', # a protein, specifically an enzyme - see diva2:1421041
+    'AffimAb',  # a specific class of monoclonal antibodies (mAbs) that have an affibody conjugated to them - see diva2:1519510
+    'Con-24hrs', # short for Conventional Condensation Reaction after running the experiment for 24 hours - see §2.2 of diva2:1159711 - not spelled out in thesis!
+    'Cpin', # see diva2:1873210
+    'Cpin_2580', # Chitinophaga pinensis DSM 2588 (bacteria) Gene - see diva2:1873210
+    'Cpin_2580-18s', # plasmid from 'Cpin_2580' - see diva2:1873210
+    'CxHy', # generic formula for hydrocarbons - see diva2:724105
+    'Cy', # Cyanine - Fluorescein Tyramide is fluorescent reagent - see diva2:1741440
+    'Cy 5', #Cyanine 5 Tyramide - Fluorescein Tyramide is fluorescent reagent - see diva2:1741440
+    'Cy 3', #Cyanine 3 Tyramide - Fluorescein Tyramide is fluorescent reagent  - see diva2:1741440
+    'CysC', # APS kinase domain - diva2:459241 - no full text
+    'CysN', # ATP sulfurylase enzyme - diva2:459241 - no full text
+    'cysNC', #  Bifunctional enzyme CysN/CysC  - diva2:459241
+    'Cysbio', # Danish company - diva2:1873267
+    'A4', # unnamed compound from Cysbio - see diva2:1873267 - no full text
+    'Enzyme-X', # unnamed enzyme from Cysbio - see diva2:1873267 - no full text
+    'D2-like', # D2 like receptor - see diva2:744997
+    'DGC', #'DGC Access AB' - company - diva2:648355
+    'DModX', # the distance for each observation to the model - see diva2:1340060
+    "Hotelling's T2", # the distance from the observation to the center of the model - see diva2:1340060
+    'IVL', # part of "'IVL Svenska Miljöinstitutet AB'" - company - see diva2:1469306
+    'Daxx', # Death-domain asssociated protein 6 - see diva2:744727
+    'Def2svp', # Ahlrichs basis basis set def2-SVP - diva2:1353093 - see also https://knowleslab.princeton.edu/wp-content/uploads/2022/10/Density-Functional-Theory-Jackson-Deobald.pdf
+    'Def2tzvpp', # Ahlrichs basis set def2-TZVPP - diva2:1353093 - see also https://knowleslab.princeton.edu/wp-content/uploads/2022/10/Density-Functional-Theory-Jackson-Deobald.pdf
+    'Gaussian 16', # a computational chemistry program - see diva2:1353093
+    'PBE0', # DFT functional PBE0 mixes the Perdew–Burke–Ernzerhof (PBE) exchange energy and Hartree–Fock exchange energy in a set 3:1 ratio, along with the full PBE correlation energy - see diva2:1353093
+    'D/Dn', # chlorine dioxide stage (D) and a near neutral pH chlorine dioxide (Dn) stage - see diva2:1796617
+    'Q+X', # DTPA (Q) + xylanase (X) pretreated pulp - see diva2:1796617
+    'Q-treated pulp stream', # DTPA (Q) treated pulp stream  - see diva2:1796617
+    'E4orf6', # adenoviral protein - see diva2:1798830 - no full text
+    'Praktikertjänst', # health care company - diva2:1866084
+    'ErbB3', # gene - see diva2:744721
+    'EziG', # EziG-protein carriers from EnginZyme AB - see diva2:1711807
+    'FBPase', # Fructose 1,6-bisphosphatase enzyme- diva2:1593450
+    'FN-4RepCT-PM2', # a protein kinase A phosphorylation site - see diva2:1741844
+    'FXa', # 'Factor Xa'  an enzyme in the serine protease family - see diva2:1673960
+    'Fc:Fc', # binding interactions between the Fc (fragment crystallizable) regions of two or more antibodies - diva2:1823394
+    'Fc:Fc', # interaction - diva2:1823394
+    'Fc', # 'fragment crystallizable' - ['diva2:853815', 'diva2:801899', 'diva2:1823394', 'diva2:1711587'. 'diva2:1642453']
+    'Fc receptor',
+    'Fe:P', # activated sludge ratios of Fe:P - see diva2:1105668
+    'α5β3 GABAARs', # α5β3 γ-Aminobutyric acid type-A receptors - see diva2:1788591
+    'GABAergic', # a synapse is GABAergic if it uses GABA as its neurotransmitter - used in diva2:755541 but not defined in abstract or thesis
+    'GATv2 regression model', # diva2:1745401
+    'GATv2 link prediction model', # diva2:1745401
+    'GH30s', # plural of GH30 - see diva2:1673978
+    'GPT-SW3', # a large language model for the Swedish language - diva2:1766791
+    'SpATA', # transaminases from Silicibacter pomeroyi - diva2:1711807
+    'GoHz', # company - see diva2:1352383
+    'HZ-50-1105', # GoGhz 5 kVA Single Phase 230V 50Hz to 110V 60Hz Converter - diva2:1352383
+    'GroELS', # a chaperone system - see diva2:1873267
+    'Gz', # head-to-toe  gravitoinertial (+Gz) forces - see diva2:1678223
+    'GO/CS/mRNA', # complex of Graphene oxide (GO), chitosan (CS), and messager RNA (mRNA) - diva2:1864782
+    'GO/polyelectrolyte', # complex of Graphene oxide (GO) and polyelectrolyte - diva2:1864782
+    'GO/PEI', # complex of Graphene oxide (GO) and polyethyleneimine (PEI) - diva2:1864782
+    'GO/CS', # complex of Graphene oxide (GO) and chitosan (CS) - diva2:1864782
+    'GO/rGO', # complex of Graphene oxide (GO) and reduced graphene oxide (rGO) - see diva2:1454460
+    'H1N1_Wisc588_HA', # influenza virus - diva2:1886084 - likely a specific strain of the influenza A virus (subtype H1N1) likely identified in Wisconsin
+    '[Ru(bda)L<sub>2</sub>]', # ruthenium complex of bda: This is likely an abbreviation for 2,2'-bipyridine-6,6'-dicarboxylic acid with two pyridyl ligands - see diva2:855425
 
-
-
-
+    '[Ru(pdc)L<sub>3</sub>]', # ruthenium complex of 2,6-pyridinedicarboxylic acid with 3 pyridyl ligands - see diva2:855425
+    'HCl/m', # HCl/m<sup>3</sup> - see diva2:1723016
+    'HDFn', # cell line - see diva2:1571941
+    'HP2560p', # laptop - HP2560p - see diva2:573478
+    'Hes5', # gene - see diva2:744703
+    'Hey1', # gene - see diva2:744703
+    'HiFiBIO', # company - see diva2:853705
+    'Hik34', # gene - diva2:855806
+    'HpaII', # restriction enzyme - see diva2:1045581
+    'HxB', # gene - diva2:1823394
+    'IIs', # Type IIs restriction enzyme - see diva2:744724
+    'IU/mL', # biological activity in International Unit (IU) per mL - see diva2:1673960 and diva2:1876253
+    'Factor IXa', # enhances thrombin generation by providing factor Xa on the platelet surface - see diva2:1673960
+    'IXa', # Factor IXa enhances thrombin generation by providing factor Xa on the platelet surface - see diva2:1673960
+    'Ib', # subclass of MHC (Major Histocompatibility Complex) molecules - see diva2:1673971
+    'IgA', # subtype IgG - see diva2:1595045
+    'IgM', # subtype IgG - see diva2:1595045
+    'Im][BMB]', # part of  "[C<sub>6</sub>C<sub>1</sub>Im][BMB]" - see diva2:1618270
+    'Iohexol', # Iodine based contrast agent for X-ray - see diva2:1223368    
+    'Jag1', # ligand - see diva2:744703
+    'Jag2', # ligand - see diva2:744703
+    'Jak2', # Janus Kinase 2 gene -  diva2:1711924
+    'Jak2V617F', #  Jak2V617F  or JAK2_V617F JAK2 V617F activating tyrosine kinase mutation  - see diva2:1711924
+    'JurkatCD16a', # Jurkat- CD16a luciferase reporter cell line diva2:1873319
+    'Kd', # dissociation constant - see diva2:922823 and diva2:1447074
+    'LegExx', # flywheel-based leg extension machine (LegExx by Exxentric AB - diva2:1770624
+    'L-forms', #  L-isomers - see diva2:446999
+    'MRVox2D', # tool - diva2:1355024
+    'MRtrix', # software package for analyzing diffusion data - see diva2:1799683
+    'MVC/mL', # Millions of Cells per Milliliter - diva2:459272 - no full text
+    'Machines®', # part of "Living Machines®" - see diva2:563793
+    'Me1', # the metal ion is likely to be magnesium hydroxide (made by mixing sodium hydroxide dissolved in water with magnesium chloride) -  see the UMU thesis diva2:538758 - note thtat diva2:779089 does not say what the metal ion is
+    'Med14', # gene - see diva2:1876200
+    'MkOne', # prototype MkOne - diva2:900602
+    'MsAcT', # acyltransferase from Mycobacterium smegmatis - diva2:1217588
 
 ]
 
@@ -68675,6 +68783,8 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    'Mkr': {'B1': 'Unit'}, # megakronor
+    'Gkr': {'B1': 'Unit'}, # gigakronor
     'C/min': {'B2': 'Unit'}, #  Coulombs per minute
     'CO2-eq./km': {'B2': 'Unit Phrase'},  # CO2 equivalent per kilometer - Unit of emission intensity
     'Exabits/s': {'B2': 'Unit'},  # Exabits per second - data transfer rate
@@ -68693,6 +68803,8 @@ common_units={
     'Gbps': {'B2': 'Unit'}, # Gigabits per second
     'Gigabits/s': {'B2': 'Unit'},  # Gigabits per second - data transfer rate
     'Gigabits/second': {'B2': 'Unit'},  # Same as Gigabits/s
+    'GPa': {'B2': 'Unit'}, #  Gigapascal
+    'Gtons': {'B2': 'Unit'}, # Giga tons
     'Gs': {'B2': 'Unit'},  #  Galling Units - diva2:1323575 - Needs more context for certainty
     'Gy/s': {'B2': 'Unit'},  # Gray per second - Unit of radiation dose rate
     'Hz': {'A1': 'Unit', 'A2': 'Unit'}, # Hertz
