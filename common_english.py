@@ -52661,7 +52661,8 @@ common_English_words={
     'Optomyography': {'B2': 'Noun'}, # see diva2:738673
     'xor': {'B2': 'Noun, Verb'},
     'abating': {'B1': 'Verb (present participle), Verb (gerund)'},
-    
+    'in­vehicle': {'B2': 'Adjective (compound)'},
+    'In­vehicle': {'B2': 'Adjective (compound)'},    
 }
     
 chemical_elements_symbols={
@@ -54562,6 +54563,8 @@ place_names=[
     'Ningxia', # China
     'Ortviken',
     'Käppala',
+    'São', # part of "São Paulo" - see diva2:445206
+
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -62788,6 +62791,7 @@ company_and_product_names=[
     'Cysbio', # Danish company - diva2:1873267
     'A4', # unnamed compound from Cysbio - see diva2:1873267 - no full text
     'Enzyme-X', # unnamed enzyme from Cysbio - see diva2:1873267 - no full text
+    'enzyme-X', # unnamed enzyme from Cysbio - see diva2:1873267 - no full text
     'D2-like', # D2 like receptor - see diva2:744997
     'DGC', #'DGC Access AB' - company - diva2:648355
     'DModX', # the distance for each observation to the model - see diva2:1340060
@@ -62867,12 +62871,89 @@ company_and_product_names=[
     'Med14', # gene - see diva2:1876200
     'MkOne', # prototype MkOne - diva2:900602
     'MsAcT', # acyltransferase from Mycobacterium smegmatis - diva2:1217588
-
+    'NO3/gVSS', # mg NO<sub>3</sub>/gVSS, h. This means the rate is measured as the amount of nitrate (NO<sub>3</sub>) removed per gram of volatile suspended solids (gVSS) per hour (h) - see diva2:1584719
+    'MQ-P', # extraction method for loosely bound P - diva2:1257820
+    'BD-P', # extraction method for Fe/Mn bound P - BD=bicarbonate/dithionite - diva2:1257820
+    'NaOHrp1', # extraction method for Al-bound P(), rp=reactive phosphorus - set rp as subscript  - diva2:1257820
+    'NaOHnrp2', # extraction method for P, nrp - non-reactive  phosphorus set nrp as subscript  - diva2:1257820
+    'NaOHnrp-NaOHrp', # extraction method for organically bound P - diva2:1257820
+    'HCl-P',  # extraction method for Ca bound P  - diva2:1257820
+    'NbCslB', # genome from Nicotianabenthamiana - see diva2:1454438
+    'Ni@Co', # a Core-shell nanomaterial with Ni core with a Co shell - see diva2:1532156
+    'DIPY', # Diffusion Imaging in Python documentation - see diva2:1799683
+    'Ou/m', # oror units per cubic meter - Ou/m<sup>3</sup> - diva2:1352888
+    'Ou/m3', # oror units per cubic meter - diva2:1296147
+    'PA306s', # anionic type ion-exchange catalyst (Diaion PA306s) - diva2:460871
+    'PAC/l', # polyaluminum chloride (PAC) per liter
+    'PAX/l', # polyaluminiumklorid - polyaluminiumchloride (PAX-21) per liter - see diva2:860831
+    'PIX/l', #  iron chloride (PIX-111)  per liter - see diva2:860831
+    'PEGylation', # he process of attaching polyethylene glycol (PEG) molecules to a molecule or material - diva2:1672863 - no full text
+    'ζ-potential', # Zeta potential (ζ-potential) is a measure of the electrostatic potential that exists at the surface of a particle when it is suspended in a liquid diva2:1672863 - no full text
+    'PexRD54', # RxLR effector protein PexRD54 from <em>Phytophthora infestans - see diva2:1886094
+    'PlySs2', # endolysin - diva2:1219373 - no full text - PlySs2 endolysin (GenBank Accession AGF87539)
+    'ProteinR1', # possible prognostic biomarker to predict the severity of COVID-19 - diva2:1886089
+    'QPix', # part of "QPix 400 Microbial Colony Pickers" - diva2:826695
+    'Qdm', # amino acid seqence AMAPRTLLL - diva2:1673971
+    'QprESTs', #  labelled recombinant protein fragments covering regions of proteins with low homology and span over 50-150 amino acids of the sequence - diva2:855926
+    'RPL13a', # gene - diva2:1741633
+    'β-actin', # gene diva2:1741633
+    'RnKICD', #  α-ketoisocaproate dioxygenase from Rattus norvegicus (RnKICD) - diva2:1711896    
+    '<em>Rn</em>KICD', #  α-ketoisocaproate dioxygenase from Rattus norvegicus (RnKICD) - diva2:1711896
+    'RxLR', # effector protein PexRD54 from <em>Phytophthora infestans</em - diva2:1886094
+    'SaSt', # relative angle between L5/S1 and the Sternum - diva2:1186504
+    'Sf9', # Sf9 cell line - see diva2:1471149
+    'SiHa', # cell line - see diva2:1723011
+    'SigB', #  a specific sigma factor found in Bacillus subtilis and other bacteria. It is involved in the regulation of stress response genes - see diva2:855806
+    'Soxtec', # company diva2:542088
+    'Soxtec™',  # company diva2:542088
+    'SpO2', # serum pressure oxygen
+    'SpO', # part of "SpO<sub>2</sub>" - diva2:1640740
+    'SpTA', # transaminase derived from Silicibacter pomeroyi - see diva2:1823428
+    'Tac', # program "Storm Tac" - see diva2:442757
+    'StormTac', # program  - see diva2:442757
+    'TetON3G', # perhaps this is part of "Tet-On® 3G", # Inducible Expression Systems - diva2:1774777 - no full text
+    'Thy1.1', # Thy1.1<sup>+</sup>  gene (Thymus Cell Antigen 1.1, CD90. 1 - see diva2:1595031
+    'Thy1.1<sup>+</sup>', #  gene (Thymus Cell Antigen 1.1, CD90. 1 - see diva2:1595031
+    'Ti,W', # part of "(Ti,W)C" - see diva2:505669
+    'U/mg', # Units per milligram - see diva2:1823423
+    'UV/Vis', # UV-Vis spectroscopy - diva2:1592494, diva2:1869346, diva2:1446973, diva2:895273
+    'Vklass', # application - see diva2:903112
+    'Vscan', #  Vscan Air ultrasound system - see  diva2:1678204
+    'Vscan Air™', # a GE brand - see diva2:1678204
+    'W/pin', # Watts per reacot ping (a reactor fuel assembly) - diva2:722717, diva2:722712, diva2:722710
+    'Xception', # ANN architecture - see diva2:1296028
+    'Ycf30', # protein - see diva2:855806
+    'ZTaq', # affibody - see diva2:744697
+    'Z<sub>Taq</sub>', # affibody - see diva2:744697
+    'Taq',  # Thermus aquaticus DNA polymerase
+    'bEnd.3', # murine endothelial (bEnd.3) cells - diva2:1711427
+    'bpy', # part of "[Co(bpy)3]2+/3+ redox system" - see  diva2:1172532
+    'dACTT', #epresents a specific SNP where the DNA sequence "ACTT" is deleted (indicated by "d" for deletion)., note: Exon 67: The sentence mentions that the SNP dACTT is located in exon 67 of the HTT gene - see diva2:1454463
+    'd]', # part of "triamine (trimethylolpropane tris[poly(propylene glycol), amine terminated] ether" - see  diva2:1676972
+    'd<sub>sz/sub>', # shell thickness - see diva2:1290440
+    'kPa]', # part of "[cm<sup>3</sup> µm/m<sup>2</sup> day kPa]" - see diva2:856149
+    'pAffi1#336', # pAffi1#336 vector - see diva2:1711566
+    'COD/gCOD', # part of " gCH<sub>4</sub>-COD/gCOD<sub>fed</sub>" - see diva2:1774440
+    "AA’PbI3", # part of chemical formula AA’PbI3 (A = Cs, A’ = dimethylammonium or ethylammonium) - see diva2:1446973
+    'As/g', # arsenic (As) per gram - see diva2:13210
+    'Co-Ni', # 'cobalt and nickel' - see diva2:1549280
+    'Co:Ni', # cobalt and nickel ratio - see diva2:1549280
+    '(BMIM[BF<sub>4</sub>]', # part of " 1-butyl-3-methylimidazolium tetrafluoroborate (BMIM[BF<sub>4</sub>]) " - see diva2:1758817
+    'A:8-oxo-dG', # nucleotides pair - see diva2:1216733
+    '4Rep-G-/G5-CT', # protein - see diva2:1216733
+    '4h15', # 4 hours and 15 minutes - see diva2:1532610
+    'A/cm', # part of "A/cm<sup>2</sup>" in diva2:1588565, diva2:1627230, diva2:461870, diva2:1583626
+    'xxx', # place holder for elided text in diva2:1136152 - no full text    
+    'xx', # place holder for elided text in diva2:1136152 - no full text    
+    'Xe', # xenon - see diva2:1785031
+    'aq', # part of " NaClO<sub>4</sub><em>(aq)</em>" in  diva2:1094060
+    "~85ᵒC", # a melting temperature
 ]
 
 
 
 common_programming_languages=[ # libraries and functions
+    'NiBabel', # python library for accessing various image format - see diva2:1799683
     'ControlFreeC', # tool - diva2:855720
     'Dlib', # libraries - see diva2:912680
     'Javacode',
@@ -68783,6 +68864,9 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    'Pa·s': {'B1': 'Unit'}, # viscosity (pascal second)
+    'mPa·s': {'B1': 'Unit'}, # viscosity - millipascal second
+    'N/cm': {'B1': 'Unit'}, # Newtons/cm
     'Mkr': {'B1': 'Unit'}, # megakronor
     'Gkr': {'B1': 'Unit'}, # gigakronor
     'C/min': {'B2': 'Unit'}, #  Coulombs per minute
@@ -69047,6 +69131,9 @@ common_units={
     '€/tonne': {'A2': 'Unit'}, 
     '€/year': {'A2': 'Unit'}, 
     'Ω': {'B1': 'Unit'}, #  of electrical resistance - ohm
+    'W/mK': {'B1': 'Unit'}, #  Watts per Metre Kelvin (W/mK) - for assesing insulation
+    'Wh': {'B1': 'Unit'}, # Watt hour - see diva2:1764511
+    '°/s': {'B1': 'Unit'}, # degrees per second
 }
 
 

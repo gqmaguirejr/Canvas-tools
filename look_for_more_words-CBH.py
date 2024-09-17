@@ -368,6 +368,8 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    "****UNKNOWN***", # a private marker I have used
+    '$&lt;$',
     'p&lt',
     'p&gt',
     '6&lt;pH&lt;10',
@@ -1644,6 +1646,8 @@ def main():
             continue
         if w in common_english.chemical_names_and_formulas:
             continue
+        if w in common_english.chemical_elements_symbols:
+            continue
         if w in common_english.common_urls:
             continue
         if w in common_english.place_names:
@@ -1677,6 +1681,8 @@ def main():
         if w in common_english.abbreviations_ending_in_period:
             continue
         if w in common_english.chemical_names_and_formulas:
+            continue
+        if w in common_english.chemical_elements_symbols:
             continue
         if w in common_english.common_urls:
             continue
