@@ -61729,7 +61729,7 @@ company_and_product_names=[
     'Sentinel', # C-RAD  device - see diva2:1239066
     'C-rate', # charging or discharging current rate
     'C/10', # C-rate 10 hours - see diva2:1813278
-    'C/14' # C-rate 14 hours - see diva2:1813278
+    'C/14', # C-rate 14 hours - see diva2:1813278
     'C/4', # C-rate 4 hours - see diva2:1595744
     'C/10-30', #  Acrylates C/10-30 Alkylcrosspolymer - see diva2:1352187
     'C/N', # carbon to nitrogen ration - see diva2:1170374
@@ -61737,7 +61737,7 @@ company_and_product_names=[
     'D1-R', # a continuously stirred reactor - see  diva2:1705257
     'D2-NR', # a continuously stirred reactor - see  diva2:1705257						   'C10', # C10 diamine - 1,10-decanediamine - see diva2:1876702
     'C6', # C6 diamine - HMDA - see diva2:1876702
-    'C10-C40'# oil index diva2:1824409 - actually C<sub>10</sub> C<sub>40</sub>
+    'C10-C40', # oil index diva2:1824409 - actually C<sub>10</sub> C<sub>40</sub>
     'C12-15', # C12-15 Alkyl Benzoate - see diva2:1887578
     'C18', # C18 50 mm column - see diva2:1674050
     'C2-4', # oligomerisation reactor C<sub>2-4</sub> - see diva2:1472049
@@ -62948,6 +62948,28 @@ company_and_product_names=[
     'Xe', # xenon - see diva2:1785031
     'aq', # part of " NaClO<sub>4</sub><em>(aq)</em>" in  diva2:1094060
     "~85ᵒC", # a melting temperature
+    'BHN_418', # strain of S. pneumoniaewhich diva2:1147592
+    'CHK1/2', # CHK1 and CHK2 proteins - diva2:1454864
+    'CI-1', # Akzo Nobel colision inhibitor - see diva2:442816
+    'CI-2', # Akzo Nobel colision inhibitor - see diva2:442816
+    'CI-4', # Akzo Nobel colision inhibitor - see diva2:442816
+    'CI-5', # Akzo Nobel colision inhibitor - see diva2:442816
+    'CI-6', # Akzo Nobel colision inhibitor - see diva2:442816
+    'CIELAB', # CIELAB colour scale - see diva2:1707195
+    'CKAN', # an open-source DMS (data management system) - see diva2:723341
+    'CLEARFIL SE BOND', # commerical primer - see diva2:1691024
+    'CLEARFIL', # part of 'CLEARFIL SE BOND' - see diva2:1691024
+    'CLIO', # Audiomatica's CLIO Pocket an electroacustic measurement system - see diva2:952512
+    'CML 2001 method', # Centrum voor Milieuwetenschappen (CML) the L is for Leiden - diva2:1437409
+    'CML', # part of "CML 2001 method" - diva2:1437409
+    'CMS600B-3', # CONTEC CMS600B-3 ultrasound machine - diva2:1569062
+    'CONTEC', # company - diva2:1569062
+    'CNFA', # a Cellulose nanofibrils (CNF) - see diva2:1146077
+    'CNN-LSTM', # model - see diva2:1795984
+    'COLO205', # cell line - diva2:1876708
+    'COMET-22', # "an ensemble between a COMET estimator model trained with Direct Assessments and a newly proposed multitask model trained to predict sentence-level scores along with OK/BAD word-level tags derived from Multidimensional Quality Metrics error annotations" - diva2:1762891 - see https://aclanthology.org/2022.wmt-1.52/
+    'COPZ1', # gene - see diva2:1876236
+
 ]
 
 

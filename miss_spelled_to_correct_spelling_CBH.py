@@ -905,5 +905,7 @@ miss_spelled_to_correct_spelling={
     'A/cm2': {'c': 'A/cm<sup>2</sup>',  's': 'diva2:1679390', 'n': 'correct in original'},
     'xonstructs': {'c': 'constructs', 's': 'diva2:744727', 'n': 'no full text'},
     'xtarget': {'c': 'x target', 's': 'diva2:1471149', 'n': 'no full text of the thesis - only the abstract and cover are in the full text'},
-
+    '13C': {'c': '<sup>13</sup>C', 's': 'diva2:460507', 'n': 'no full text'},
+    'CO2-NH3': {'c': 'CO<sub>2</sub>-NH<sub>3</sub>', 's': 'diva2:1555594', 'n': 'error in original'},
+    
 }

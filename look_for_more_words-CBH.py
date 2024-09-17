@@ -2333,6 +2333,14 @@ def main():
         save_collected_words(words_not_found, 'English')
     #
     # save the potential acronyms
+    to_be_deleted=[]
+    for pa in potential_acronyms:
+        if pa in common_acronyms_CBH.well_known_acronyms_list:
+            to_be_deleted.append(pa)
+
+    for pa in to_be_deleted:
+        del potential_acronyms[pa]
+        
     save_potential_acronyms(potential_acronyms)
     print(f'unique potential acronyms: {len(potential_acronyms)}')
     #

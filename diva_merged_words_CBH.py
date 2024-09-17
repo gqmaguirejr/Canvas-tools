@@ -4297,11 +4297,13 @@ merged_words={
     'MHS as', # diva2:1438504
     'Model 2', # diva2:1315699
     'N &gt; 1', # from diva2:724784 - it need not be spaced
-    'P $ &lt; $ 0.05', # diva2:1186252 - it need not be spaced
+    'P $&lt;$ 0.05', # diva2:1186252 - it need not be spaced
     'R &gt; 0.8', # diva2:1774747 - it need not be spaced
     'R2 &gt; 0.9942', # diva2:1690568 - it need not be spaced
     'PSMA Nb9', # diva2:1876708
     'Yellow 1', # diva2:1520348
     'be a', # diva2:1528033
     "~ 85 ᵒC",
+    'CPU-, RAM-', # diva2:1217939
+    
 }
