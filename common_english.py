@@ -62969,6 +62969,96 @@ company_and_product_names=[
     'COLO205', # cell line - diva2:1876708
     'COMET-22', # "an ensemble between a COMET estimator model trained with Direct Assessments and a newly proposed multitask model trained to predict sentence-level scores along with OK/BAD word-level tags derived from Multidimensional Quality Metrics error annotations" - diva2:1762891 - see https://aclanthology.org/2022.wmt-1.52/
     'COPZ1', # gene - see diva2:1876236
+    'CRABI-18', # CRABI-18 is Child Restraint and Airbag Interaction - Standard CRABI 18MO ATD 930910-000 - for 18 Month old children  diva2:1339533 - see also https://www.humaneticsgroup.com/products/anthropomorphic-test-devices/child/crabi-series
+    'CREBBP', # gene - see diva2:1791933
+    'CRY1', # gene - cryptochrome circadian regulator 1 - see diva2:1741633 - PDF is images of pages
+    'CST-DERIV-1', # cholesterol derivative - see diva2:1471149
+    'CST-DERIV-2', # cholesterol derivative - see diva2:1471149
+    'CT-CT', # registering CT images with other CT images - see diva2:1458645
+    'CUDA8.0.61', # CUDA8.0.61 programming environment - see diva2:1127754
+    'CW511L', # lead-free brass - see diva2:1585150
+    'CW724R', # lead-free brass - see diva2:1585150
+    'CYANEX', # series of extractants - see diva2:1549280
+    'CYANEX®', # series of extractants - see diva2:1549280
+    'D1', # dopamine binding 1 - see diva2:744997
+    'D2', # dopamine binding 2 - see diva2:744997
+    'D10', # candidate sequence - see diva2:744727 - no full text
+    'D90/D10', # D10 refers to the diameter of the smallest 10 % of the particles in the sample and D90 refers to the diameter below which 90 % of the particles are in the sample - see diva2:1446956
+    'D90/D50/D10', # D50 represents the diameters of 50 % of the particles - diva2:1446956
+    'D111', # ligand - diva2:744703
+    'D113', # ligand - diva2:744703
+    'D114', # ligand - diva2:744703
+    'D39', # PspC is obtained from the D39 strain of S. pneumoniae diva2:1147592
+    'D3', # class according to SS-EN 204:2001 - D3 is for use in indoors with short contact with running water/ high humidity 
+    'D4', # class according to SS-EN 204:2001 - D4 is for use indoors with frequent contact with running water/high humidity 
+    'D76N', # pathogenic variant of β2-microglobulin - see diva2:1454862
+    'DAPI', # dataset - see diva2:1464746
+    'DCTN1', # gene - see diva2:1876236
+    'DDAB/Q311', # gemini surfactant with one with dodecanoyl chains and a three-carbon spacer - diva2:779115
+    'DDAB/Q39', # gemini surfactant with decanoyl chains and a three-carbon spacer - diva2:779115
+    'DDAB/Q69', # gemini surfactant with one with decanoyl chains and a six-carbon spacer - diva2:779115
+    'DICOM', # image format diva2:1678204
+    'DIMPLE', # algorithm diva2:1886100
+    'DMF-SEC', # Size Exclusion Chromatography (SEC) using Dimethylformamide (DMF) - see  diva2:1709297
+    'LL37', # human antimicrobial peptide - diva2:1095159
+    'DMS3', # phage DMS3 bacteriophages on T4P - see diva2:1697738
+    'T4P', # Type IV pili - see diva2:1697738
+    'DN100', # nominal pipe size  diva2:1742567
+    'DN150', # nominal pipe size  diva2:1742567
+    'DN200', # nominal pipe size  diva2:1742567
+    'DN20', # district  heating pipes - diva2:1742567
+    'DN25', # district  heating pipes - diva2:1742567
+    'DN32', # district  heating pipes - diva2:1742567
+    'DN50', # district  heating pipes - diva2:1742567
+    'DN65', # district  heating pipes - diva2:1742567
+    'DN80', # district  heating pipes - diva2:1742567
+    'DNSSEC', # security extensions for DNS - see diva2:1762601
+    'DP2', # mixed-linkage glucans (MLGs) S. meliloti jave  only G4GR repeating units connected via 1,3-β-linkages - diva2:1454474
+    'DP3', # mixed-linkage glucans (MLGs) of S. ventriculi have trisaccharide G4G3GR units- diva2:1454474
+    'DP6', # mixed-linkage glucans (MLGs) of S. ventriculi have hexasaccharide G4G3G4G4G3GR units - diva2:1454474
+    'DP3-DP8', # 3 to 8 repeating units  - diva2:1454474
+    'DP4', # 4 repeating units  - diva2:1454474
+    'DP5', # 5 repeating units  - diva2:1454474
+    'DP6', # 6 repeating units  - diva2:1454474
+    'DPB', # 8 repeating units  - diva2:1454474
+    'DS18B20', # Dallas Semiconductor temperature sensor - diva2:563082
+    'DTC', 'dual audio frequency track circuit' # diva2:819194
+    'DTC-24', # Alstom DTC - see diva2:819194
+    'DTC-921', # Alstom DTC - see diva2:819194
+    'DUF152', # proteinfamily diva2:1044163
+    'DV1', # discharge water from Falu Återvinning sampling point 1 - see diva2:543837
+    'DV3', # discharge water from Falu Återvinning sampling point 3 - see diva2:543837
+    'DV4', # discharge water from Falu Återvinning sampling point 4 - see diva2:543837
+    'DV5', # discharge water from Falu Återvinning sampling point 5 - see diva2:543837
+    'DV', # Illumina introduced the DV<sub>200</sub> metric, which is the percentage of fragments < 200 nucleotides - see diva2:868456
+    'DSM', # part of "DSM 44535" - see diva2:744661
+    'E01', # part of antiidiotypic for the HER2-binding affiboday (Z<sub>E01</sub> - see diva2:744736
+    'E2A', # gene - diva2:1798830
+    'E3000', # part of "Instron Electropuls E3000" - see diva2:1110811
+    'EBILOCK', # a product series from Bombardier Transportation Signal AB - see diva2:1562805
+    'ECAT', # Siemens ECAT product family - diva2:949921
+    'EDN3', # gene - see diva2:1774568
+    'EFA',  # AstraZeneca's Ersättningsfabriken - see diva2:1148229
+    'EFO', # company - see diva2:1170222
+    'EKA', # company - Eka Chemicals - see diva2:827347
+    'ELK', # ELK Stack - compoed of Elasticsearch, Kibana, Beats, and Logstash - see diva2:1081737
+    'EON', # company - see diva2:923546
+    'EQLQ', # Nexans' EQLQ Easy® brand of 450/750 Volt wiring
+    'ER2738', # Escherichia coli strain - diva2:1711566
+    'XL1Blue', # Escherichia coli strain - diva2:1711566
+    'TG1', # Escherichia coli strain - diva2:1711566
+    'EXX1', # a novel TCR-like antibody - see diva2:1673971
+    'E-022052', # Bacillus licheniformis (E-022052) - see diva2:744734
+    'F-HX4', # hypoxic biomarker <sup>18</sup>F-HX4 - see diva2:1344585
+    'F-NMR', # <sup>19</sup>F-NMR - see diva2:442696
+    'F/NH2', # Formaldehyde/amine groups molar ratio - see diva2:851285
+    'F/U', # F/U molar ratio - diva2:722739
+    'F88A/A231F', # point mutations - see diva2:744712, no full text
+    'FAM159B', # protein Shisa like 2B (FAM159B) - see diva2:1595524
+    'NMDAR-PDZ' # 'N-methyl-D-aspartate receptor (NMDAR)/PDZ domain interactions' - see diva2:1642416
+    'FDG-PET-CT', # FDG PET-CT study - see diva2:1770535
+    'FF/PQ', # quercetin-anchored mixed micelle systems - diva2:782774
+    'LF/PQ', # quercetin-anchored mixed micelle systems - diva2:782774
 
 ]
 

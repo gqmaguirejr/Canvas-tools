@@ -907,5 +907,10 @@ miss_spelled_to_correct_spelling={
     'xtarget': {'c': 'x target', 's': 'diva2:1471149', 'n': 'no full text of the thesis - only the abstract and cover are in the full text'},
     '13C': {'c': '<sup>13</sup>C', 's': 'diva2:460507', 'n': 'no full text'},
     'CO2-NH3': {'c': 'CO<sub>2</sub>-NH<sub>3</sub>', 's': 'diva2:1555594', 'n': 'error in original'},
-    
+    'CRISPR/Cas': {'c': 'CRISPR/Cas9', 's': 'diva2:1595031', 'n': 'no full text'},
+    'DCS': {'c': 'DCA', 's': 'diva2:744718', 'n': 'no full text'},
+    'DSM444535': {'c': 'DSM44535', 's': 'diva2:744661', 'n': 'no full text'},
+    'EXPCI': {'c': 'ESPCI', 's': 'diva2:853705', 'n': 'no full text'},
+    'FE100C': {'c': 'Fe<sub>100</sub>', 's': 'diva2:895264', 'n': 'no full text - there seems to be a 4 and 6 potentially in front of the formula'},
+
 }

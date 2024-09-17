@@ -4305,5 +4305,7 @@ merged_words={
     'be a', # diva2:1528033
     "~ 85 ᵒC",
     'CPU-, RAM-', # diva2:1217939
-    
+    'CP/MAS 13C', # diva2:460507
+    'EU 2017/745', # diva2:1679123
+    'ALBERT, XLM-R', # diva2:1451804
 }
