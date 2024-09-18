@@ -912,5 +912,15 @@ miss_spelled_to_correct_spelling={
     'DSM444535': {'c': 'DSM44535', 's': 'diva2:744661', 'n': 'no full text'},
     'EXPCI': {'c': 'ESPCI', 's': 'diva2:853705', 'n': 'no full text'},
     'FE100C': {'c': 'Fe<sub>100</sub>', 's': 'diva2:895264', 'n': 'no full text - there seems to be a 4 and 6 potentially in front of the formula'},
-
+    'F‑NMR': {'c': 'F-NMR', 's': 'diva2:442696'},  # dash is 0x2011
+    'GABAAR': {'c': 'GABA<sub>A</sub>R','s': 'diva2:1788591'},
+    'H2/CO': {'c': "H<sub>2</sub>/CO<sub>2</sub>", 's': 'diva2:1454460', 'n': 'correct in original'},
+    'H2/CO2': {'c': "H<sub>2</sub>/CO<sub>2</sub>", 's': 'diva2:951121', 'n': 'correct in original'},
+    'H2O2': {'c': "H<sub>2</sub>/O<sub>2</sub>", 's': 'diva2:951121', 'n': 'correct in original'},
+    'H2O/1': {'c': "H<sub>2</sub>O/1%", 's': ' diva2:1528289', 'n': 'correct in original'},
+    'HPLCUV': {'c': 'HPLC-UV', 's': 'diva2:1382130'},
+    'HPLC- UV': {'c': 'HPLC-UV', 's': 'diva2:1382130'},
+    'HS-SPME- GC-MS': {'c': 'HS-SPME-GC-MS', 's': 'diva2:1722997'},
+    'HIILIC': {'c': 'HILIC', 's': 'diva2:1678492', 'n': 'no full text'},
+    
 }

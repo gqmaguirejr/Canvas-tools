@@ -54583,6 +54583,10 @@ company_and_product_names=[
     'DT1130', #  KTH course number - see diva2:1587018
     'EH2720', #  KTH course number - see diva2:1589559
     'EN2720', #  KTH course number - diva2:1772633
+    'HI1024', # Introduction to Programming - KTH course number - see diva2:1738037
+    'HI1038', # Project Course in Data and Network Technology - KTH course number - see diva2:1738037
+    'HE1028', # Microcomputer Technology - KTH course number - see diva2:1738037
+    'HI1025', # Operating Systems - KTH course number - see diva2:1738037
     'IE1204', # KTH course number - see diva2:1472662
     'IE1205', # KTH course number - see diva2:1472662
     'IE120V', # KTH course number - see diva2:1709472
@@ -63098,6 +63102,50 @@ company_and_product_names=[
     'GII.4', # norovirus - see diva2:1876228
     'GLX481304', # inhibitor - see diva2:1833684
     'GNAS', # gene - diva2:1774568
+    'GP-G', # part of "N-terminal glycine sequence (GP-G<sub>3</sub>-4RepCT)" - see diva2:1348113
+    'GPD1', # one of the two isoforms of glycerol 3-phosphate dehydrogenase (GPDH) - diva2:1823407
+    'GPD2', # one of the two isoforms of glycerol 3-phosphate dehydrogenase (GPDH) - diva2:1823407
+    'GPER1', # receptor - see diva2:1471139
+    'GPQAIAGQ', # amino acid sequence GPQAIAGQ - see diva2:744736
+    'GREB1', # gene - see diva2:1876707
+    'GROMACS', # molecular dynamic simulation software - see diva2:853152
+    'GSSG', # amino acid glycine-serine linker (-GSSG-) - see  diva2:412845
+    'GTN', # part of "GT 50" an Alfa Laval separator for gas turbine fuel treatment - see diva2:505636
+    'GTX', # part of "Nvidia GeForce GTX 1070 GPU" - see diva2:1127754
+    'H-2D', # MHC class Ia H-2D - see diva2:1673971
+    'H/C', # molar ratios of H/C - see diva2:1295394
+    'H3.3', # histone - diva2:744727 - no full text
+    'H4', # histone - diva2:744727 - no full text
+    'H4/H3.3', # heterpdimer - see diva2:744727 - no full text
+    'H:C', # hydrogen to carbon ration diva2:1157552
+    'HALU', # Hälso Arbetsmiljö och Livsstilsundersökning - English: Work Health and Lifestyle - see diva2:821745
+    'HCN]', # part of "dimeric hydrogen bonds of the type 𝐴 − 𝐻 ⋅⋅⋅ 𝐵, where 𝐴𝐻 is an alkyne, alcohol, or thiol and 𝐵 = [𝐵𝑟<sup>−</sup>, 𝐶𝑙<sup>−</sup>, 𝑁𝐻<sub>3</sub>, 𝐻𝐶𝑁]" - see diva2:1519504
+    'HCT116', # cell line - see diva2:1586235
+    'HD180', # Huntington diseases cell line - diva2:1454463
+    'HD70', # Huntington diseases cell line - diva2:1454463
+    'HEK-293', # cell line - see diva2:867489
+    'HEK239FT', # cell line - see diva2:1711919
+    'HEK293', # cell line - see diva2:867489
+    'HEK293F', # cell ine - see diva2:1711919
+    'HEPG2', # cell line - see diva2:1876707
+    'HER2:342', # part of "HER2 (Z<sub>HER2:342</sub>)" - see  diva2:744736
+    'HFA', # part of "Relizyme HFA 403" - see diva2:1257721
+    'HFCS-55', # High  Fructose  Corn  Syrup - see diva2:855383
+    'HFCS-90', # High  Fructose  Corn  Syrup - see diva2:855383
+    'HIST1H3A', # histone cluster - see diva2:1038989
+    'HIV-1', # genome - see diva2:1586215
+    'HK-2', # papilloma virus-transformed proximal tubular cells - see diva2:1454420
+    'HMV', # software - diva2:826697 - no full text
+    'HS-95', # program developed by - see diva2:1869697
+    'HT29', # cell line - see diva2:1723011
+    'HTPFR18650', # lithium iron phosphate battery - see diva2:1593557
+    'HX711', # Avia Semiconductor’s 24-bit AD-converter diva2:1838323
+    'HYCAUNAIS', # Powerto-Gas (PtG) project - see diva2:1519525
+    'HZ50-1105', # GoHz ”HZ-50-1105” rotary frequency converter - see diva2:1352383
+    'H‑NMR', # part of "<sup>1</sup>H-NMR" - see diva2:720734
+    'I-III', # part of "BSCP (GMFCS level I-III)" - see diva2:1186252
+    'I-IV', # numbering of 4 different compounds - see  diva2:1845879
+    'I-VI', # numbering of experiments - see diva2:792025
 
 ]
 
