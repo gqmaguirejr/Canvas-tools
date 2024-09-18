@@ -367,16 +367,20 @@ def is_number(string):
     # otherwise
     return False
 
+# note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
     '2000/60/EG',
     '2002/95/EC',
     '2002/96/EC',
     '2006/42/EC',
+    '2006/42/EC”',
     '2009/104/EC',
+    '2009/104/EC”',
     '2009/104/EC',
     '93/42/EEC',
     '94/9/EC/2003',
+    '94/9/EC/2003.',
     '$&lt;$',
     'p&lt',
     'p&gt',

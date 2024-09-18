@@ -63067,7 +63067,38 @@ company_and_product_names=[
     'FR-D 700', # Mitsubishi "FR-D 700" - diva2:1352383
     'FVIII:C', # a reagent kit BIOPHEN™ FVIII:C - see diva2:1673960
     'FXYD', # protein family - diva2:1788558
-    
+    'FTH1', # gene - see diva2:1741976
+    'G-/G5-CT', # protein - see diva2:1738580
+    'G-CT', # N-terminal glycine (G-CT) - see diva2:1774447
+    'G166L/M222C', # double variant of SC - see diva2:881652
+    'G166L/M222F', # double variant of SC - see diva2:881652
+    'G2019S', # Pathogenic mutations in LRRK2 - see diva2:1259565
+    'LRKK2/G2019S', # Caucasian LRKK2/G2019S mutant - see diva2:1259565
+    'G3', # 3rd generation - see diva2:827181
+    'G4', # 4th generation - see diva2:827181
+    'G5', # 5th generation - see diva2:827181
+    'G3-PCL', # part of "PEG<sub>2k</sub>-G3-PCL<sub>30</sub>" - see diva2:506081
+    'G3BP1/2', # protein - diva2:1823441 - no full text
+    'UBAP2L-DUF', # derived peptide - see  diva2:1823441 - no full text
+    'G3BP1-NTF2', # see  diva2:1823441 - no full text
+    'G3BP1/UBAP2L-N', # see  diva2:1823441 - no full text
+    'G3BP2', # see  diva2:1823441 - no full text
+    'UBAP2L-N', # see  diva2:1823441 - no full text
+    'G4G3G4G4G3GR', # trisaccharide - see diva2:1454474
+    'G4G3GR', # trisaccharide - see diva2:1454474
+    'G4GR', # repeating units - see diva2:1454474
+    'GEANT4', # GEANT4 simulation toolkit - see diva2:946382
+    'GENTRANS',  # program - see diva2:1472200
+    'SIMUL5', # program - see diva2:1472200
+    'GEOMET', # a flake system of aluminum and zinc - see  diva2:441388
+    'GFP-TFEB', # cell line - see diva2:1586242
+    'GHX-1F12', # HexDetect VHH clone - see diva2:1823394
+    'GHX-2E1', # HexDetect VHH clone - see diva2:1823394
+    'GII.2', # norovirus - see diva2:1876228
+    'GII.4', # norovirus - see diva2:1876228
+    'GLX481304', # inhibitor - see diva2:1833684
+    'GNAS', # gene - diva2:1774568
+
 ]
 
 
