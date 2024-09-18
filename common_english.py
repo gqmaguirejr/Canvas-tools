@@ -63055,16 +63055,25 @@ company_and_product_names=[
     'F/U', # F/U molar ratio - diva2:722739
     'F88A/A231F', # point mutations - see diva2:744712, no full text
     'FAM159B', # protein Shisa like 2B (FAM159B) - see diva2:1595524
-    'NMDAR-PDZ' # 'N-methyl-D-aspartate receptor (NMDAR)/PDZ domain interactions' - see diva2:1642416
+    'NMDAR-PDZ', # 'N-methyl-D-aspartate receptor (NMDAR)/PDZ domain interactions' - see diva2:1642416
     'FDG-PET-CT', # FDG PET-CT study - see diva2:1770535
     'FF/PQ', # quercetin-anchored mixed micelle systems - diva2:782774
     'LF/PQ', # quercetin-anchored mixed micelle systems - diva2:782774
-
+    'FI-2010', # dataset - see diva2:1837826
+    'FLS2', # defense-related plant receptor kinase - see  diva2:1552810
+    'SERK1',# defense-related plant receptor kinase - see  diva2:1552810
+    'FORMAMP', # project - see diva2:852802    
+    'FR-D', # Mitsubishi "FR-D 700" - diva2:1352383
+    'FR-D 700', # Mitsubishi "FR-D 700" - diva2:1352383
+    'FVIII:C', # a reagent kit BIOPHEN™ FVIII:C - see diva2:1673960
+    'FXYD', # protein family - diva2:1788558
+    
 ]
 
 
 
 common_programming_languages=[ # libraries and functions
+    'FMRIB', # software library - see diva2:1298660
     'NiBabel', # python library for accessing various image format - see diva2:1799683
     'ControlFreeC', # tool - diva2:855720
     'Dlib', # libraries - see diva2:912680
