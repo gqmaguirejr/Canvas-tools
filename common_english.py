@@ -54564,6 +54564,7 @@ place_names=[
     'Ortviken',
     'Käppala',
     'São', # part of "São Paulo" - see diva2:445206
+    'uMkhanyakude', # uMkhanyakude District Municipality - South Africa
 
 ]
 
@@ -62732,8 +62733,8 @@ company_and_product_names=[
     'Samsung SDI', # company - Samsung SDI Co., Ltd.
     'Samsung SDI INR21700-40T', # battery - see diva2:1467631
     'INR21700-40T', # Samsung SDI battery - see diva2:1467631
-    'Samsung SDI INR21700-50E' # battery - see diva2:1467631
-    'INR21700-50E' # Samsung SDI battery - see diva2:1467631
+    'Samsung SDI INR21700-50E', # battery - see diva2:1467631
+    'INR21700-50E', # Samsung SDI battery - see diva2:1467631
     'A123', # A123 Systems, LLC, a subsidiary of Wanxiang Group Holdings
     'A123 Systems ANR26650m1-B', # battery - see diva2:1467631
     'ANR26650m1-B', # A123 Systems battery - see diva2:1467631
@@ -63146,7 +63147,87 @@ company_and_product_names=[
     'I-III', # part of "BSCP (GMFCS level I-III)" - see diva2:1186252
     'I-IV', # numbering of 4 different compounds - see  diva2:1845879
     'I-VI', # numbering of experiments - see diva2:792025
-
+    'ICE-I3', # a specific substance- diva2:756805
+    'ICP-QQQ-MS', # Triple quadrupole ICP-MS is a type of tandem mass spectrometer (MS/MS) - see diva2:1446946
+    'IDUN', # IDUN Minerals AB - company - diva2:1340061
+    'IEC62353', # IEC62353 as its electrical safety test standard - see diva2:1684046
+    'IGFBP1', # liver-derived protein IGFBP1 - see diva2:1574700
+    'IGV P1', # boiler - see diva2:1229284
+    'IGV P2', # boiler - see diva2:1229284
+    'IGV P3', # boiler - see diva2:1229284
+    'IKV', # boiler - see diva2:1229284
+    'IIIA', # Mucopolysaccharidosis (MPS) type IIIA - see diva2:1253525
+    'IKVAV', # peptide - see diva2:744700
+    'RGD',   # peptide - see diva2:744700
+    'YIGSE', # peptide - see diva2:744700
+    'IL-13', # Type 2 cytokine - see diva2:1711605
+    'IL-4', # Type 2 cytokine - see diva2:1711605
+    'IL-23', # heterodimeric cytokine - diva2:1642420, diva2:854047
+    'IL-33', # gene in the IL-1 family - diva2:1711924
+    'IL-4/IL-10', # cytokine combination - see diva2:211075
+    'IL-4/IL-13', # receptor - see diva2:1711605
+    'anti-IL4Ra', #antagonist of the joint IL-4/IL-13 receptor - see diva2:1711605
+    'IL-8', # cytokine - see diva2:1621936
+    'TNF-α', # cytokine - see diva2:1621936
+    'ILC2KO', # Group 2 innate lymphoid cells (ILC2) knockout - see diva2:1711924
+    'INNVENTIA', # INNVENTIA AB - company - diva2:769474
+    'INSTRON', # tensile testing machine - see diva2:1463598
+    'IOM', # part of "DeLaval’s embedded system IOM 200" - see diva2:1561327
+    'IRAM', # two types of carbon steel (IRAM 1010/1040) - see diva2:846108
+    'IV-VI', # index number of experiments - see diva2:792025
+    'IX71', # part of "transmission optical microscope (OLYMPUS IX71)" - see diva2:750462
+    'J.P', # part of "J.P. Morgan" - see diva2:1799365
+    'J1939-TPMS', #  air pressure monitoring system - see diva2:1146009
+    'JF', # initial of author "Leite JF" - see diva2:1155208
+    'JK321', # E. coli cell line JK321 - see diva2:1454436
+    'JM', # part of author name "Sonner JM" - see diva2:1155208
+    'PJ', # part of author name "Corringer PJ" - see diva2:1155208
+    'RJ', # part of author name "Howard RJ" - see diva2:1155208
+    'JOAB', # company - truck manufacturer - diva2:1784927
+    'JTI', # Swedish Institute of Agricultural and Environmental Engineering - see diva2:827231
+    'JZU840', # train Object Controller System -  diva2:1562805
+    'OCS950'# train Object Controller Systems -  diva2:1562805
+    'K0.25WO3', # "K<sub>0.25</sub>WO<<sub>3</sub>" bronze - diva2:846859
+    'KAFFAGE-BD®', # ingredient Kaffe Bueno's Beauty Balm - diva2:1843588
+    'KAFFAGE®', # brand of Kaffe Bueno - diva2:1843588
+    'KATJON]', # part of "cadmium [μg Cd/ kg KATJON]" - see diva2:826697
+    'KBS-3', # method - see diva2:1340075
+    'SKB', # Swedish Nuclear Fuel and Waste Management Company (Swedish: Svensk Kärnbränslehantering AB) - see diva2:1340075
+    'KDV', # process for converting organic material in diesel - see diva2:1209351 - see also https://alphakatholdings.com/the-kdv-process/
+    'KM5', # Kartongmaskin 5 refers to the carton board machine number five from BillerudKorsnäs at Frövi production unit in Sweden - see diva2:744734
+    'KM71H', # Pichia pastoris KM71H strain - see diva2:1823423
+    'KU-55933', # kinase inhibitor - see diva2:1788563
+    'L-35', # functionalized Pluronic® L-35 - see diva2:852860
+    'L/D', # poly(D,L-lactic acid) ratio - see diva2:745016
+    'L/G', # liquid-to-gas ratio - see diva2:1894946
+    'L10951-01', # Hamamatsu microfocus L10951-01 X-ray tube - see diva2:867631
+    'L10951-04', # Hamamatsu microfocus X-ray source L10951-04 - see diva2:761213
+    'L12A', # enzyme - see diva2:1217588
+    'L2A', # basin at KBR - see diva2:1574709
+    'L2B', # basin at KBR - see diva2:1574709
+    'L2]', # part of "hydrophilic ligands [Ru(bda)L2]" - see diva2:855425
+    'L35', # Pluronic L35 - see diva2:782774
+    'L3]', # part of "[Ru(pdc)L3]" - see diva2:855425
+    'L428', # Hodgkin's lymphoma L428 cells - see diva2:1876163
+    'L5/S1', # vertebrates - see diva2:1186504
+    'L7-4', # linear array transducer L7-4 - see diva2:944126
+    'LARA', # LARA Diagnostics - company - diva2:967699
+    'LC300', # part of "Geobacillus sp. LC300" - see diva2:1770213
+    'LCQ',  # possibly a Thermo Fisher Scientific LCQ Deca XP Plus mass spectrometer - see diva2:827181 - no full text
+    'LCT-13910', # lactose intolerance genetic variants LCT-13910 - see diva2:1739048
+    'LEP', # part of "Adipo<sup>LEP</sup>" - see diva2:1875773
+    'LEWATIT®', # part of "LEWATIT® S 5128" -  diva2:1382118
+    'LFA-1', # receptor - see diva2:802029
+    'LKAB', # 'Luossavaara-Kiirunavaara Aktiebolag' - company - diva2:1459493
+    'LMK', # software from TechnoTeam (Germany) - see diva2:1556362
+    'LOC729296', # gene - see diva2:1774568
+    'LRP6', # gene - see diva2:1788585
+    'LSD1', # repressor - see diva2:1774777
+    'LT-2949', # Primal LT-2949 emulsion - see diva2:854315
+    'LTA', # eco-efficient LTA 420 kV circuit breaker - see diva2:1565345
+    'LTD4', # LTD4 (CYSLT1) receptor - see diva2:1711605
+    'LUHMES', # Lund human mesencephalic (LUHMES) cell line - see diva2:1875743
+    'LX', # the amounts of silica - see diva2:506877
 ]
 
 
@@ -69064,6 +69145,7 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    'Litres per minute': {'B1': 'Unit'},
     'Pa·s': {'B1': 'Unit'}, # viscosity (pascal second)
     'mPa·s': {'B1': 'Unit'}, # viscosity - millipascal second
     'N/cm': {'B1': 'Unit'}, # Newtons/cm

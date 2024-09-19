@@ -922,5 +922,8 @@ miss_spelled_to_correct_spelling={
     'HPLC- UV': {'c': 'HPLC-UV', 's': 'diva2:1382130'},
     'HS-SPME- GC-MS': {'c': 'HS-SPME-GC-MS', 's': 'diva2:1722997'},
     'HIILIC': {'c': 'HILIC', 's': 'diva2:1678492', 'n': 'no full text'},
+    'ISPTA': {'c': 'spatial peak-time average intensity (I<sub>SPTA</sub>)', 's': 'diva2:944126', 'n': 'correct in original'},
+    'K0.25WO3': {'c': 'K<sub>0.25</sub>WO<<sub>3</sub>', 's': 'diva2:846859', 'n': 'correct in original'},
     
+
 }

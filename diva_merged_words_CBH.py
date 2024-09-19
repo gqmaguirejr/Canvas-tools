@@ -4308,4 +4308,6 @@ merged_words={
     'CP/MAS 13C', # diva2:460507
     'EU 2017/745', # diva2:1679123
     'ALBERT, XLM-R', # diva2:1451804
+    'ISO 13485:2016', # diva2:1686441
+
 }
