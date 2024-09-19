@@ -924,6 +924,14 @@ miss_spelled_to_correct_spelling={
     'HIILIC': {'c': 'HILIC', 's': 'diva2:1678492', 'n': 'no full text'},
     'ISPTA': {'c': 'spatial peak-time average intensity (I<sub>SPTA</sub>)', 's': 'diva2:944126', 'n': 'correct in original'},
     'K0.25WO3': {'c': 'K<sub>0.25</sub>WO<<sub>3</sub>', 's': 'diva2:846859', 'n': 'correct in original'},
-    
-
+    'M-1': {'c': 'M<sup>-1</sup>', 's': 'diva2:1770888', 'n': 'the URL to the full text points to another thesis'},
+    's-1': {'c': 's<sup>-1</sup>', 's': 'diva2:1770888', 'n': 'the URL to the full text points to another thesis'},
+    'XMA': {'c': 'X<sub>MA</sub>', 's': 'diva2:745016', 'n': 'no full text'},
+    'XRA': {'c': 'X<sub>RA</sub>', 's': 'diva2:745016', 'n': 'no full text'},
+    'Xc':  {'c': 'X<sub>c</sub>', 's': 'diva2:745016', 'n': 'no full text'},
+    'MBC': {'c': 'MCB', 's': 'diva2:1184399', 'n': 'error in original'},
+    "LPN’s": {'c': 'LNPs', 's': 'diva2:1455909', 'n': 'error in original'},
+    'MIC': {'c': "MIC<sub>100</sub>", 's': 'diva2:1741842', 'n': 'correct in original'},
+    'MIEX': {'c': 'MIEX<sup>®</sup>', 's': 'diva2:543884'},
+    'MNPMOCP': {'c': 'MNP-MOCP','s': 'diva2:1240231', 'n': 'no full text'},
 }

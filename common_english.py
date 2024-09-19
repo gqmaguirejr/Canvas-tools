@@ -63228,6 +63228,48 @@ company_and_product_names=[
     'LTD4', # LTD4 (CYSLT1) receptor - see diva2:1711605
     'LUHMES', # Lund human mesencephalic (LUHMES) cell line - see diva2:1875743
     'LX', # the amounts of silica - see diva2:506877
+    'M-1000', # Huntsman Corporation JEFFAMINE® M-series monoamine Polyethylene glycol (PEG) based molecular weight of 1000 g/mol - diva2:782402
+    'M-2005', # Huntsman Corporation JEFFAMINE® M-series monoamine Polypropylene glycol (PPG) based molecular weight of 2005 g/mol - diva2:782402
+    'M-2070',  # Huntsman Corporation JEFFAMINE® M-series monoamine Polyethylene glycol (PEG) based molecular weight of 2000 g/mol - diva2:782402
+    'M-600', # Huntsman Corporation JEFFAMINE® M-series monoamine Polypropylene glycol (PPG) based molecular weight of 600 g/mol - diva2:782402 - see also https://www.huntsman.com/docs/Documents/JEFFAMINE%C2%AE%20Polyetheramines%20Formulation%20Guide.pdf
+    'M-1', # part of "rate constant measured was 1.25 ∙ 106 M-1 s-1" - see  diva2:1770888
+    'M11', # model station with the interlocking system - Fagersta C - see  diva2:972629
+    'M95', # model station with the interlocking system - Skänninge - see  diva2:972629
+    'M205W', # M205W mutant of Gloeobacter violaceus ligand gated ion channel - see diva2:1155208 - no full text
+    'M2-M3', # loop - see diva2:1602676
+    'β1-β2', # loop - see diva2:1602676
+    'β6-β7', # loop - see diva2:1602676
+    'β8-β9', # loop - see diva2:1602676
+    'M20', # part of "AlfaLaval M20 device" - see diva2:1229795    
+    'M32', # reference measuring device (Medonic M32) - see diva2:1186700
+    'M30NW', # stainless steel M30NW (ISO 5832-9) - see diva2:1219564
+    '316L', # stainless steel 316 L (ISO 5832-1) - see diva2:1219564
+    'TA6V',  # Ti6Al4V (ISO 5832-3) - see diva2:1219564
+    'MAESTRO', # marker-based tool  see diva2:1571396
+    'SCINA',  # marker-based tool  see diva2:1571396
+    'MAT_PLASTIC_KINEMATIC', # material 3 from the LS-DYNA material library - see diva2:971422 - see also https://lsdyna.ansys.com/dynamat/
+    'MAT_PLASTICITY_WITH_DAMAGE', # material 81 from the LS-DYNA material library - see diva2:971422 - see also https://lsdyna.ansys.com/dynamat/
+    'MAT_DAMAGE_2', # material 105 from the LS-DYNA material library - see diva2:971422 - see also https://lsdyna.ansys.com/dynamat/
+    'MBP855CONNECT', # part of "Motorola MBP855CONNECT" diva2:1681213
+    'MCF-17', # Mesocellular foam (MCF) - mesoporous silica (MCF-17) - see diva2:953717 - no full text
+    'MCF-7', # breast cancer subtypes MCF-7 (luminal-like) - see diva2:1571941
+    'MDA-MB-231', # breast cancer subtype (basal-like) cell line- see diva2:1571941
+    'MDA-MB_231', # breast cancer subtype (basal-like) cell line - see diva2:1711581
+    'MDCKII', # MDCKII cells - see diva2:1591713
+    'MED1', # Mediator subunit - see diva2:1876173
+    'MEF-1', # mouse fibroblasts (MEF-1 cells) - see diva2:744738
+    'MICCAI', # part of "MICCAI 2012 brain MRI datasets" - see  diva2:1362867
+    'MINTEQ', # software - part of "Visual MINTEQ" - see diva2:1156069
+    'WHAM', # software - see diva2:1156069
+    'MIR31HG', # gene - see  diva2:1774777
+    'MIRO', # digital whiteboard software - diva2:1877495 - the company sets the name as "Miro"
+    'MIT', # part of "Physionet MIT database" - see diva2:779332
+    'MIT-BIH', # part of "MIT-BIH Arrhythmia database" - see diva2:757429
+    'MKR', # part of "Arduino MKR NB 1500" - see diva2:1667162
+    'MODDE', # UMETRICS AB. Modde - see diva2:1142521
+    'MODDE®', # Design of Experiments (DOE) software - part of Umetrics™ Suite of Data Analytic Solutions  - see diva2:1142521
+
+
 ]
 
 
@@ -69145,6 +69187,7 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    'MEUR': {'A2': 'Unit'}, # million €
     'Litres per minute': {'B1': 'Unit'},
     'Pa·s': {'B1': 'Unit'}, # viscosity (pascal second)
     'mPa·s': {'B1': 'Unit'}, # viscosity - millipascal second
