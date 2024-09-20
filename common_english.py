@@ -63348,6 +63348,21 @@ company_and_product_names=[
     'POLH', # DNA polymerase eta - NM_006502 forward: "AGGAATAAACCTTGTGCAGTTGT" - see diva2:1216733
     'POLQ', # DNA Polymerase theta - POLQ NM_199420 - forward "ACCTCTCCATCAAGGCATTTCT" - see diva2:1216733
     'POROS', # part of "cation exchange chromatography consisting of POROS XS resin" - see diva2:1142521
+    'PPH-β', # polypropylene copolymers - see diva2:777114 - no full text
+    'PPH-α', # polypropylene copolymers - see diva2:777114 - no full text
+    'PRIMA-1', # a drug that reactivate the tumour suppressor gene p53 - see  diva2:848284
+    'PRO/II', # simulator program - diva2:722697
+    'PSI-BLAST', # software for searching protein databases - see diva2:1642802
+    'PYREG', # part of "PYREG 500" - PYREG is a German company - see diva2:1295394
+    'QRM', # QRM is a company - 'QRM Quality Assurance in Radiology and Medicine GmbH' - diva2:867631
+    'QRS', # the QRS complex is a combination of Q wave, R wave and S wave - diva2:1601275
+    'QTPIE', # company - see diva2:1841512
+    'Q175', # Q175 Huntington's disease mouse - see diva2:1823408
+    'Q311', # gemini surfactant with dodecanoyl chains and a three-carbon spacer - see diva2:779115
+    'Q39', # gemini surfactant with decanoyl chains and a three-carbon spacer  - see diva2:779115
+    'Q69', # gemini surfactant with decanoyl chains and a six-carbon spacer  - see diva2:779115
+    'Q3D', # International Council for Harmonization (ICH) provides a guideline regarding elemental impurities (ICH Q3D) - see diva2:1096823
+    
 ]
 
 
