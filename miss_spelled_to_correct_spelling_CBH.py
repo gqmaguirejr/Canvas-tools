@@ -942,5 +942,9 @@ miss_spelled_to_correct_spelling={
     'min)': {'c': 'minutes', 's': 'diva2:1217827'},
     'PEG-PL7.5KG2.5KA': {'c': 'PEG-PL<sub>7.5K</sub>G<sub>2.5K</sub>A', 's': 'diva2:1809085', 'n': 'correct in original'},
     'PEG2K-PCL2K': {'c': 'PEG<sub>2K</sub>-PCL<sub>2Kz/sub>', 's': 'diva2:1809085', 'n': 'correct in original'},
-    
+    'PEG20K-G2-OH': {'c': 'PEG<sub>20K</sub>-G<sub>2</sub>-OH', 's': 'diva2:765806', 'n': 'no full text'},
+    'PIX': {'c': 'PIX-111', 's': 'diva2:860831', 'n': 'PIX is used in the abstract aas shorthand for PIX-111'},
+    'PL': {'c': 'PL -1520', 's': 'diva2:827347', 'n': 'correct in origina; the space before the - is in the DiVA abstract onlyl'},
+
+
 }

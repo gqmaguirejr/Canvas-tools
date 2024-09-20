@@ -61740,7 +61740,8 @@ company_and_product_names=[
     'C/N', # carbon to nitrogen ration - see diva2:1170374
     'C1-NR', # a continuously stirred reactor - see  diva2:1705257
     'D1-R', # a continuously stirred reactor - see  diva2:1705257
-    'D2-NR', # a continuously stirred reactor - see  diva2:1705257						   'C10', # C10 diamine - 1,10-decanediamine - see diva2:1876702
+    'D2-NR', # a continuously stirred reactor - see  diva2:1705257
+    'C10', # C10 diamine - 1,10-decanediamine - see diva2:1876702
     'C6', # C6 diamine - HMDA - see diva2:1876702
     'C10-C40', # oil index diva2:1824409 - actually C<sub>10</sub> C<sub>40</sub>
     'C12-15', # C12-15 Alkyl Benzoate - see diva2:1887578
@@ -63336,9 +63337,17 @@ company_and_product_names=[
     'PAX-XL100:ALG', # diva2:1859331
     'PCM600', # software - ABB PCM600 - see diva2:1560929
     'PD-L1', # immune regulating protein PD-L1 - see diva2:1788576
-
-    
-    
+    'PEG4000', # Polyethylene glycol 4000 has a molar mass of 3500 - 4500 g/mol - see diva2:1673971
+    'PFAS11', # a group of 11 PFAS, see "Tabell 1" of diva2:1584731: Perfluorbutansulfonsyra (PFBS), Perfluorbutansyra (PFBA), Perfluorpentansyra (PFPeA), Perfluorhexansyra (PFHxA), Perfluorheptansyra (PFHpA), Perfluoroktansulfonsyra (PFOS), Fluortelomersulfonsyra (6:2 FTS), Perfluorhexansulfonsyra (PFHxS), Perfluoroktansyra (PFOA), Perfluornonansyra (PFNA), Perfluordekansyra (PFDA)
+    'PFAS4', # a group of 4 PFAS chemicals: PFOA, PFOS, Perfluorohexyl Sulfonate (PFHxS), and Perfluorononanoic Acid (PFNA) - see diva2:1772281
+    'PFR-A', # a plug flow reactor - see diva2:1705257
+    'PFR-T', # a plug flow reactor - see diva2:1705257
+    'PHREEQC', # software - see diva2:1108876
+    'PIMD', # distance between the Optic nerve head Pigment epithelium Central Limit (OPCL) and the Inner limit of the Retina Closest Point (IRCP) - see diva2:1878316
+    'PM30', # part of "NMR Prole MOUSE PM30" - see diva2:787913
+    'POLH', # DNA polymerase eta - NM_006502 forward: "AGGAATAAACCTTGTGCAGTTGT" - see diva2:1216733
+    'POLQ', # DNA Polymerase theta - POLQ NM_199420 - forward "ACCTCTCCATCAAGGCATTTCT" - see diva2:1216733
+    'POROS', # part of "cation exchange chromatography consisting of POROS XS resin" - see diva2:1142521
 ]
 
 
