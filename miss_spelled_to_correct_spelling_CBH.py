@@ -934,4 +934,13 @@ miss_spelled_to_correct_spelling={
     'MIC': {'c': "MIC<sub>100</sub>", 's': 'diva2:1741842', 'n': 'correct in original'},
     'MIEX': {'c': 'MIEX<sup>®</sup>', 's': 'diva2:543884'},
     'MNPMOCP': {'c': 'MNP-MOCP','s': 'diva2:1240231', 'n': 'no full text'},
+    'MRCK': {'c': 'MRCKβ', 's': 'diva2:1595081', 'n': 'no full text'},
+    'Na+ ,K + -ATPase': {'c': 'Na<sup>+</sup>,K<sup>+</sup>-ATPase', 's': 'diva2:1454420', 'n': 'correct in original'},
+    'OH~60': {'c': "OH<sup>-</sup> (~60 min)", 's': 'diva2:1217827', 'n': 'correct in original - there was a newline after the superscript'},
+    'OJT': {'c': 'OIT', 's': 'diva2:1770889', 'n': 'no full text'},
+    '(~60': {'c': '~60', 's': 'diva2:1217827'},
+    'min)': {'c': 'minutes', 's': 'diva2:1217827'},
+    'PEG-PL7.5KG2.5KA': {'c': 'PEG-PL<sub>7.5K</sub>G<sub>2.5K</sub>A', 's': 'diva2:1809085', 'n': 'correct in original'},
+    'PEG2K-PCL2K': {'c': 'PEG<sub>2K</sub>-PCL<sub>2Kz/sub>', 's': 'diva2:1809085', 'n': 'correct in original'},
+    
 }

@@ -59532,7 +59532,7 @@ company_and_product_names=[
     'Silico',
     'Silverlight',
     'Sim',
-    'SimCLR',
+    'SimCLR', # a self-supervising framework that uses data augmentations to learn without labels- see diva2:1667575
     'SimCorp',
     'SimEvents', # diva2:941630
     'SimMechanics',
@@ -63268,8 +63268,77 @@ company_and_product_names=[
     'MKR', # part of "Arduino MKR NB 1500" - see diva2:1667162
     'MODDE', # UMETRICS AB. Modde - see diva2:1142521
     'MODDE®', # Design of Experiments (DOE) software - part of Umetrics™ Suite of Data Analytic Solutions  - see diva2:1142521
+    'CBS-QB3', # a composite method, using B3LYP for geometric optimization then MP2, MP4, CCSID to determine energy and other properties - see diva2:419586
+    'M06-2X', # density functional is a high-nonlocality functional with double the amount of nonlocal exchange (2X) - see diva2:419586
+    'MPI3D', # dataset diva2:1667575
+    'MPSR7', # ion exchange resin - see diva2:1382118
+    'SCAV3', # ion exchange resin - see diva2:1382118
+    'S6368A', # ion exchange resin - see diva2:1382118
+    'S5528', # ion exchange resin - see diva2:1382118
+    'MQTT', # messaging protocol - see diva2:1116008
+    'MR1', # ligand - see diva2:1455892
+    'MRCKβ', # Cdc42bpb - CDC42 Binding Protein Kinase Beta - see diva2:1595081
+    'MSMS', # coupled HPLC and UHPLC mass spectrometry - see diva2:1708920
+    'MTAP', # gene - see diva2:1774777    
+    'MUTYH', # gene - see diva2:1216733
+    'MW-G-30', # a Ganoderma lucidum-based composite material grown on medium particle-wheat bran  - see diva2:1672910 - no full text - uncertain
+    'MX-80', # part of "Bentonite clay of the type Wyoming MX-80" - see diva2:1340075
+    'MYC', # transcription factor - see diva2:1876194
+    'MYC2', # transcription factor - see diva2:1552810
+    'N-I-P', # part of "Mesoporous N-I-P solar cells" - see diva2:1446973
+    'N-MWO', # Nynas AB's naphthenic medical white oil - see diva2:1593458
+    'P-MWO', # a paraffinic medical white oil - see diva2:1593458
+    'N593H/H446E', # Escherichia coli mutant - see diva2:464930
+    'N593H/H446N', # Escherichia coli mutant - see diva2:464930
+    'N593H/H446Q', # Escherichia coli mutant - see diva2:464930
+    'N593Q', # Escherichia coli mutant - see diva2:464930
+    'NAC', # oxidative stress inhibitor - see diva2:1833684 - no full text
+    'NAEOTOM', # CT system - part of "NAEOTOM Alpha" - see diva2:1697468
+    'SOMATOM', # CT system - part of "SOMATOM Drive" - see diva2:1697468
+    'Euro NCAP', # European New Car Assessment Programme - see diva2:631278
+    'NCO/OH', # NCO/OH ratio - see diva2:1567932
+    'NECAB2', # a Ca2+-binding protein - see diva2:867489
+    'NEIL1', # gene - see diva2:1216733
+    'NK-92', # natural killer cells - see diva2:1878138
+    'NKG2A', # receptor - see diva2:1673971
+    'NLAB', # part of "NLAB SPIRO® particles" - see diva2:1787061
+    'SPIRO®', # a nanocomposite material made from stable ferromagnetic nanoparticles, including gold and other metals - see  diva2:1787061
+    'NMC622', # part of "LiNi<sub>0.6</sub>Mn<sub>0.2</sub>Co<sub>0.2</sub>O<sub>2</sub>" - see diva2:1577131
+    'NO:NO2', # ratio - see diva2:854727
+    'NOX1', # NOX isoform -  diva2:1833684
+    'NOX2/4', # NOX isoforms -  diva2:1833684
+    'NOX4', # NOX isoform -  diva2:1833684
+    'NPAS2', # gene - see diva2:1741633
+    'PER2', # gene - see diva2:1741633
+    'NPAS3', # transcription factor - see diva2:851765
+    'RFX3', # transcription factor - see diva2:851765
+    'NSC-34', # cell line - see diva2:1586242 - no full text
+    'RPE-1', # cell line - see diva2:1586242 - no full text
+    'RPE-,1', # cell line - see diva2:1586242 - no full text
+    'TFEB', # cell line - see diva2:1586242 - no full text
+    'NTF2', # gene - see diva2:1823441 - mo full text
+    'O/C', # molar ration - see diva2:1295394
+    'O:C', # oxygen to carbon ratio - see diva2:1157552
+    'O:CO', # H<sub>2</sub>O:CO ratio - see diva2:1157552
+    'OBP-PEST', # Aenopheles gambiae mosquito PEST strain - see diva2:412845
+    'OECD 301 F', # screening methods that are used as a primary step to classify the degradability of the substance of interest ( - see diva2:1352187
+    'OH°', # hydroxyl radical - diva2:1562003
+    'OKG', # OKG Aktiebolag - company - see diva2:442833
+    'OLYMPUS', # part of "transmission optical microscope (OLYMPUS IX71) - company name - diva2:750462
+    'OMP', # OMP Solar - company diva2:1784842 - OMP is an Italian company group "OMP s.r.l."
+    'OPTILOGG', # CareLigo OPTILOGG software - see diva2:1356233
+    'OX40', # reporter - see diva2:1823394
+    'P-PM', # glycoproteins produced from Pichia pastoris - see diva2:416899 - no full text
+    'P300/CBP',  # transcriptional coactivator - the two appear to be identical - see diva2:1876200
+    'PA1216', # low melting point polyamide (PA1216) - 171 C -  diva2:1656187
+    'PAA-OH', # hydroxyl terminated poly(acrylic acid) (PAA-OH) - see diva2:1809085
+    'PAX-XL100', # 'Poly aluminum chloride - see diva2:1859331
+    'PAX-XL100:ALG', # diva2:1859331
+    'PCM600', # software - ABB PCM600 - see diva2:1560929
+    'PD-L1', # immune regulating protein PD-L1 - see diva2:1788576
 
-
+    
+    
 ]
 
 
