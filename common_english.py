@@ -63362,7 +63362,42 @@ company_and_product_names=[
     'Q39', # gemini surfactant with decanoyl chains and a three-carbon spacer  - see diva2:779115
     'Q69', # gemini surfactant with decanoyl chains and a six-carbon spacer  - see diva2:779115
     'Q3D', # International Council for Harmonization (ICH) provides a guideline regarding elemental impurities (ICH Q3D) - see diva2:1096823
-    
+    'R,R', # part of "(R,R)-2,3-butanediol (2,3-BDO)" - see diva2:1672923
+    'R-NH', # part of "neutral amine (i.e. R-NH<sub>2</sub>) and charged (R-NH<sub>3</sub>+) groups" - see diva2:1558656
+    'R1-P', # sequential batch reactor - see  diva2:1766538
+    'R2-G', # sequential batch reactor - see diva2:1766538
+    'R2540', # product Ni-free Gardobond R2540 - see diva2:778114
+    'RAMAN', # RAMAN spectroscopy - see diva2:446302
+    'RED96E', # Octet RED96E instrument - diva2:1711587
+    'REF', # reference case - see diva2:1097099
+    'RM26', # a high affinity GRPR binder - see diva2:1595504
+    'RMD80', # Marine residual fuel RMD80 0.1%S (ULSFO 0.1%S) compliant with ISO 8217:2017 (E) used for propulsion of main engines of vessels and boilers combustion - see diva2:1598992
+    'RR3', # part of "NASA RR3 mission" - see diva2:1711597
+    'RTU500', # part of "ABB’s RTU500 series" diva2:1764102
+    'SAM9M10', # Atmel SAM9M10 MCU - see diva2:628192
+    'SAMD9', # tumor suppressor - see diva2:1454829
+    'SAMD9L', # tumor suppressor - see diva2:1454829
+    'SARSA', # algorithm diva2:1355105
+    'SASIB', # Sasib Railway - company - diva2:1562805
+    'SBA-15', # a type of ordered mesoporous silica - see diva2:776941
+    'SCA1', # cell line diva2:1223955
+    'SDI', # part of "# Samsung SDI INR21700-40T and INR21700-50E" diva2:1467631
+    'SECO', # SECO Tools - company - see diva2:505669
+    'SEOM', # company Sollentuna Energi &amp; Miljö (SEOM) - see diva2:1218172
+    'SGSH-XTEN', # a fusion protein created by attaching XTEN (a hydrophilic polymer) to the Sulfamidase (SGSH) enzyme. - see diva2:744738
+    'SHA-1', # SHA-1 Message-Digest Algorithm - see diva2:1321637
+    'SINTEF', # research company - diva2:1527480
+    'SITA', # compamy - diva2:1045583
+    'SK-N-AS', # cell line - see # cell line - see diva2:1673668
+    'SK-N-DZ', # cell line - see 
+    'SK-N-FI', ## cell line - see diva2:1673668
+    'SK-N-SH', # cell line diva2:1454425
+    'SKBR-3', # cell line - see diva2:1554287
+    'SKN-DZ', # cell line - see diva2:1673668
+    'SKOV-3', # cell line - see diva2:1711427
+    'SLC35B2', # ?? - diva2:1833684
+    'SLC7A7', # gene - diva2:860338
+
 ]
 
 

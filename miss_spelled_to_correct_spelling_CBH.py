@@ -945,6 +945,6 @@ miss_spelled_to_correct_spelling={
     'PEG20K-G2-OH': {'c': 'PEG<sub>20K</sub>-G<sub>2</sub>-OH', 's': 'diva2:765806', 'n': 'no full text'},
     'PIX': {'c': 'PIX-111', 's': 'diva2:860831', 'n': 'PIX is used in the abstract aas shorthand for PIX-111'},
     'PL': {'c': 'PL -1520', 's': 'diva2:827347', 'n': 'correct in origina; the space before the - is in the DiVA abstract onlyl'},
-
+    'RP': {'c': 'Reversed-phase', 's': 'diva2:1382130', 'n': 'not spelled out in abstract or thesis'},
 
 }
