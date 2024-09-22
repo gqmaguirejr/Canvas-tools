@@ -946,5 +946,10 @@ miss_spelled_to_correct_spelling={
     'PIX': {'c': 'PIX-111', 's': 'diva2:860831', 'n': 'PIX is used in the abstract aas shorthand for PIX-111'},
     'PL': {'c': 'PL -1520', 's': 'diva2:827347', 'n': 'correct in origina; the space before the - is in the DiVA abstract onlyl'},
     'RP': {'c': 'Reversed-phase', 's': 'diva2:1382130', 'n': 'not spelled out in abstract or thesis'},
+    'SMITH': {'c': 'SMITh', 's': 'diva2:1219371', 'n': 'Université Claude Bernard Lyon 1 - see https://www.icbms.fr/en/team/10-smith-html'},
+    'SO2': {'c': 'SO<sub>2/sub>', 's': 'diva2:777202'},
+    'SO42-': {'c': 'SO<sub>4</sub><sup>2-</sup>', 's': 'diva2:777202'},
+    'SOX': {'c': 'SO<sub>X</sub>',  's': 'diva2:1295394', 'n': 'correct in original'},
+
 
 }

@@ -2310,9 +2310,35 @@ well_known_acronyms_list=[
     ['SL', 'Stockholm’s public transport', {'s': 'diva2:1322080'}],
     ['SLI', 'Start Ignition Lighting', {'s': 'diva2:1577129'}],
     ['SLU', 'Sveriges lantbruksuniversitet', {'s': 'diva2:1690170', 'n': 'no full text', 'eng': 'Swedish University of Agricultural Sciences'}],
+    ['SMHI', 'Swedish Meteorological and Hydrological Institute', {'swe': 'Sveriges meteorologiska och hydrologiska institut'}],
+    ['SNMP', 'Simple network management protocol', {'s': 'diva2:1109808'}],
+    ['SNR', 'signal-to-noise ratio', {'s': 'diva2:575241'}],
+    ['SNS/SQS', 'Amazon Simple Notification Service (SNS) / Amazon Simple Queue Service (SQS)', {'s': 'diva2:1801007'}],
+    ['SO2', 'sulphur dioxide', {'s': 'diva2:777202'}],
+    ['SO2/SO42‐', 'SO<sub>2/sub> / SO<sub>4</sub><sup>2-</sup>', {'s': 'diva2:777202'}],
+    ['SOA', 'sucrose octaacetate', {'s': 'diva2:1693491    '}],
+    ['SOE', 'solid-oxide electrolyser', {'s': 'diva2:1685746'}],
+    ['SOS/CTAB', 'surfactant sodium octyl sulfate (SOS) / cationic surfactant cetyltrimetylammonium bromide (CTAB)', {'s': 'diva2:418821'}],    
+    ['SOS', 'surfactant sodium octyl sulfate', {'s': 'diva2:418821'}],
+    ['CTAB', 'cationic surfactant cetyltrimetylammonium bromide (CTAB)', {'s': 'diva2:418821'}],    
+    ['SFR', "SKB’s Final Repository", {'s': 'diva2:922823'}],
+    ['SPECCA', 'specific primary energy consumption per kilogram of CO<sub>2</sub> avoided', {'s': 'diva2:1542310'}],
+    ['SPECT/CT', 'Single-photon emission computed tomography (SPECT) / computed tomography (CT)', {'s': 'diva2:1445349'}],
+    ['SPIEDAC', 'strain-promoted inverse electrondemand Diels-Alder cycloaddition', {'s': 'diva2:1788558'}],
+    ['SPL', 'sound pressure level', {'s': 'diva2:1163414'}],
+    ['SPM', 'Single Particle Model', {'s': 'diva2:1593557'}],
+    ['SR', 'swelling ratio', {'s': 'diva2:1706987'}],
+    ['SRA', 'surface hip arthroplasty', {'s': 'diva2:1118569'}],
+    ['SRC', 'Schumann-Runge continuum' , {'s': 'diva2:1354390'}],
+    ['SRF', 'solid recycled fuel', {'s': 'diva2:1229284'}],
+    ['SSAB', 'Svenskt Stål AB', {'s': 'diva2:1590902', 'n': 'company', 'eng': 'Swedish Steel'}],
+    ['SSAS', "Microsoft's SQL Server Analysis Services", {'s': 'diva2:628562'}],
+    ['SSD', 'Speech Sound Disorders', {'s': 'diva2:1892928'}],
+    ['SSD', 'Single Shot MultiBox Detector', {'s': 'diva2:1849768'}],
+    ['SSIM', 'Structural Similarity Index', {'s': 'diva2:1222951'}],
+    ['SSRT', 'Slow Strain Rate Test', {'s': 'diva2:461870'}],
     
-    
-    
+
     
 ]
 

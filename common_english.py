@@ -63397,7 +63397,20 @@ company_and_product_names=[
     'SKOV-3', # cell line - see diva2:1711427
     'SLC35B2', # ?? - diva2:1833684
     'SLC7A7', # gene - diva2:860338
-
+    'SMFP08003', # SMFP08003 FeedPlate diva2:1672937
+    'SMITh', # a team at Université Claude Bernard Lyon 1 - see https://www.icbms.fr/en/team/10-smith-html - see diva2:1219371
+    'SMV21', # an aptamer - see diva2:1876228
+    'SPM1D', # statistical package in Matlab - see diva2:1700580
+    'SPM5', # software - see diva2:744997 also https://www.fil.ion.ucl.ac.uk/spm/
+    'SPM8', # software - see diva2:744997 also https://www.fil.ion.ucl.ac.uk/spm/
+    'SPR1226', # pneumococcal surface protein - see diva2:1254197
+    'SQS', # Amazon Simple Queue Service - see diva2:1801007
+    'SR15', # IPCC SR15 -IPCC special report 16 "Global warming of 1.5℃' - see diva2:1627230 and https://www.ipcc.ch/site/assets/uploads/sites/2/2019/06/SR15_Full_Report_High_Res.pdf
+    'SRV', # SRV Återvinning AB - company - see diva2:852451
+    'SS-EN', # standard SS-EN ISO 6509-1:2014 - see diva2:1585753
+    'SS25268:2007', # Swedish standard SS25268:2007 - klassificeras lokalers efterklangstid i fyra olika klasser; ljudklass A, B, C och D -  diva2:1163414
+    'SSEN', # SSEN ISO 13485:2016 - SS-EN ISO 13485 is a quality management standard - diva2:1686441
+    
 ]
 
 
