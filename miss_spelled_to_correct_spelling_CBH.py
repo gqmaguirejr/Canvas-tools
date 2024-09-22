@@ -950,6 +950,8 @@ miss_spelled_to_correct_spelling={
     'SO2': {'c': 'SO<sub>2/sub>', 's': 'diva2:777202'},
     'SO42-': {'c': 'SO<sub>4</sub><sup>2-</sup>', 's': 'diva2:777202'},
     'SOX': {'c': 'SO<sub>X</sub>',  's': 'diva2:1295394', 'n': 'correct in original'},
-
+    'UV- 328': {'c': 'UV-328', 's': 'diva2:1786734', 'n': 'correct in original - the dash is at the end of a line'},
+    'UV-­‐': {'c': 'UV-lamp', 's': 'diva2:778863', 'n': 'no full text'},
+    'UV-­‐ lamp': {'c': 'UV-lamp', 's': 'diva2:778863', 'n': 'no full text'},
 
 }

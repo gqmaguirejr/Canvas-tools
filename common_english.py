@@ -63439,6 +63439,23 @@ company_and_product_names=[
     'TRÅDFRI', # part of "Ikea TRÅDFRI motion sensor communication protocol" - see  diva2:1561761
     'TTL', # part of "TTL Miljöteknik AB" - company - see diva2:721098
     'TX9', # Trixie TX9 food-dispenser - diva2:1561552
+    'U-1690', # human small cell lung cancer cell line - diva2:848284
+    'U2BHX', # a feruloyl esterase - see diva2:1571882
+    'UF-5000', # flow cytometer UF-5000 - see diva2:1894417
+    'UL', # UL LLC - company - a duaghter company to Underwriters Laboratories - see diva2:1785530
+    'UMI-4C', # a technique that combines chromosome conformation capture (4C) and unique molecular identifiers (UMI) - see diva2:1774568
+    'UNISIG', # "As part of UNIFE (the European Rail Industry Association), UNISIG is a technical body responsible for the development, maintenance and updating of the ERTMS and CCS/TMS technical specifications." - see diva2:818853 and https://www.ertms.net/about-ertms/about-unsig/
+    'UPM', # "UPM Formi granulates are  made of pure polypropylene and reinforced with cellulose fiber with a high content of renewable material." - see diva2:1045579
+    'URF3', # protein - see diva2:804978
+    'USD$', # prefix for US dollar amounts - see diva2:1891390
+    'USD/L', # US dollar per liter - see diva2:1209351
+    'V-0', # a category (highest level of flame retardancy) under the UL 94 stanard - see diva2:721592 - no full text
+    'VEBIOS', # venous thromboembolism biomarker study (VEBIOS) - see diva2:1774605
+    'VL', # gene - see diva2:853705, 'n': 'no full text'
+    'VH', # gene - see diva2:853705, 'n': 'no full text'
+    'VLSI', # part of "VLSI Solution" - company - diva2:628192
+    'VTT', # part of "VTT Technical Research Centre of Finland Ltd" - company - see diva2:847267
+    
 ]
 
 
