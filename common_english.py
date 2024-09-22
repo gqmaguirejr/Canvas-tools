@@ -63410,7 +63410,35 @@ company_and_product_names=[
     'SS-EN', # standard SS-EN ISO 6509-1:2014 - see diva2:1585753
     'SS25268:2007', # Swedish standard SS25268:2007 - klassificeras lokalers efterklangstid i fyra olika klasser; ljudklass A, B, C och D -  diva2:1163414
     'SSEN', # SSEN ISO 13485:2016 - SS-EN ISO 13485 is a quality management standard - diva2:1686441
-    
+    'STA', # Stago hemostasis analyzer STA R Max 3 - see diva2:1673960
+    'STAGO', # company  - see diva2:1673960
+    'STB', # Tensor STB angle and STB pistol tools manufactured by Atlas Copco - see diva2:1146723 - Battery powered nutrunner manufactured by Atlas Copco.
+    'STRI', # company - Hitachi Energy Sweden AB, STRI - diva2:935524
+    'SUEZ', # French company - see diva2:1737530
+    'SUVA', # UV (254 nm) absorbance divided by dissolved organic carbon (DOC) concentration  - see diva2:1382118
+    'SYNLAB', # SYNLAB Sverige AB - company - diva2:1739048
+    'T-2', # part of "T-2 toxin" - could be "T-2 mycotoxin" - diva2:1672809 - no full text
+    'T5', # a data warehouse for vital signs at Nya Karolinska Solna approaches - see diva2:824883
+    'Spiro-OMeTAD', # or Spiro-MeOTAD -  CAS 207739-72-8, is a high performance hole transport layer material - diva2:848291
+    'TA50', # Solution containing 50% acetonitrile (ACN) and 50% (0.1%) Trifluoroacetic Acid (TFA) in water - see diva2:1686299
+    'TATA', # related to TATA box, a DNA sequence that is a crucial part of the promoter region of many genes - see diva2:1676068
+    'TMPOS', # the product of alkoxylation of TCPOS - see diva2:1249107
+    'TCRT1010', # Vishay Semiconductors Reflective Optical Sensor With Transistor Output - optical sensor - see diva2:1350183
+    'TF-DS', # denitrification rate for the digested sludge (TF-DS)  diva2:182341
+    'THP', # The abstract says "THP" but could this be "THF" - as in section 3.2 of the thesis - Tetrahydrofurane - diva2:898813
+    'THP-1', # a cell line human monocytic leukemia cells - see diva2:1454459
+    'THY', # part of "THY lyo" most likely refers to the lyophilized (freeze-dried) form of thyme - diva2:782788 - no full text
+    'TIGR4', # TIGR4 strain of S. pneumoniae - see diva2:1147592
+    'TISSIUM', # French company - see diva2:1540188
+    'Esplanad', # Esplanad AB - company - see diva2:753793
+    'TN-C', # electrical power distribution cables using 4 conductors - see diva2:911558
+    'TN-S', # electrical power distribution cables using 5 conductors - see diva2:911558
+    'TP4', # antibody - see diva2:1454436
+    'TP53', # gene mutations - see diva2:1673668
+    'TRITON', # a commercial surfactant TRITON X-100 diva2:723772
+    'TRÅDFRI', # part of "Ikea TRÅDFRI motion sensor communication protocol" - see  diva2:1561761
+    'TTL', # part of "TTL Miljöteknik AB" - company - see diva2:721098
+    'TX9', # Trixie TX9 food-dispenser - diva2:1561552
 ]
 
 
