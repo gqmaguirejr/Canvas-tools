@@ -40776,7 +40776,7 @@ common_English_words={
 
 
     #GQMe
-    # terms below are from XBH
+    # terms below are from CBH
     "Master's": {'B1': 'Noun (possessive)'}, # This is a common possessive noun used to refer to a master's degree.
     "Master’s": {'B1': 'Noun (possessive)'}, # This is a common possessive noun used to refer to a master's degree. - the ’ is 0x2019
     "Stockholm's water and waste": {'A2': 'Noun'},
@@ -61347,6 +61347,8 @@ company_and_product_names=[
     'SnowCLR',
     'ArcFace',
     'AVX-512', # Intel 512 bitinstructions
+
+    # Additions below this for CBH
     'CICIDS2017', # dataset - see diva2:1886185
     'RKNN', # SDK - see diva2:1886212
     'SDL_net',
@@ -61381,7 +61383,7 @@ company_and_product_names=[
     'Spring Boot', # see diva2:1763111
     'StandIN', # project - see diva2:950592
     'Starlink', # SpaceX - see diva2:1843155
-     'Starlinks',
+    'Starlinks',
     'SwiftKotlin',
     'SwiftVitals', # see diva2:1880124
     'TakeCare', # database - see diva2:639711
@@ -63455,7 +63457,30 @@ company_and_product_names=[
     'VH', # gene - see diva2:853705, 'n': 'no full text'
     'VLSI', # part of "VLSI Solution" - company - diva2:628192
     'VTT', # part of "VTT Technical Research Centre of Finland Ltd" - company - see diva2:847267
-    
+    'WSPQFEK',  # an 8 amino acid long sequence (WSPQFEK) - see diva2:412845
+    'X-100', # a commercial surfactant TRITON X-100 diva2:723772
+    'XCAT', # 4D-extended cardiac torso (XCAT) phantom - diva2:1771127
+    'XS', # part of "POROS XS resin" "POROS™ XS Strong Cation Exchange Resin" - see diva2:1142521
+    'XTEN', # XTEN is a specifically designed, synthetic polymer that is highly hydrophilic (water-loving) and lacks any defined secondary or tertiary structure. It's often used as a molecular extension in biopharmaceutical applications. - see diva2:744738
+    'YASARA', # software - Yet Another Scientific Artificial Reality Application. see diva2:893748 , 'n': 'no full text'
+    'Z-ABD', # monomeric construct - diva2:1876286 - see The selected constructs (ABD-Z-Z)
+    'Z-G<sub>5</sub>-4RepCT', #  amount of coupled product estimated on the coatings - see  diva2:1348113
+    'Z963', # Photoconjugation of the affibody Zwt was performed to crosslink both the Fc of IgG and the anti-idiotypic affibody Z963- - see diva2:1642453
+    'ZHER2:2891', # an antibody Z<sub>ZHER2:2891</sub> - see diva2:1886092
+    'ZHER2:342',  # an antibody Z<sub>HER2:342</sub>- see diva2:1886092
+    'ZNF831', # gene - diva2:1774568
+    'ZO-1', # gene - diva2:1554287
+    'ZS1-ORANGE-22', # affibody - see diva2:1687457
+    'ZYP-5052', # ZYP-5052 auto-induction medium - see diva2:882778
+    'XC', # part of "Vulcan XC 72" - diva2:826709
+    'XX', # elided information - see diva2:1136125
+    'XXX', # elided information - see diva2:1136125
+    'XXXXX', # elided information - see diva2:778306
+    '10R5', # part of "Pluronic 10R5" - see diva2:782774
+    'Đ', # a common abbreviation used in polymer science to represent the polydispersity index (PDI) or molar mass dispersity - see diva2:853121
+    '][BMB]', # bis(mandelato)borate (BMB) as part of a chemical formula - see diva2:1618270
+    # end of additions for CBH
+
 ]
 
 

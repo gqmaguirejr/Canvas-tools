@@ -953,5 +953,17 @@ miss_spelled_to_correct_spelling={
     'UV- 328': {'c': 'UV-328', 's': 'diva2:1786734', 'n': 'correct in original - the dash is at the end of a line'},
     'UV-­‐': {'c': 'UV-lamp', 's': 'diva2:778863', 'n': 'no full text'},
     'UV-­‐ lamp': {'c': 'UV-lamp', 's': 'diva2:778863', 'n': 'no full text'},
+    'WWT': {'c': 'WWTP', 's': 'diva2:1296147', 'n': 'correct in original - but the character spacing makes it look as if there is a space'},
+    'WWT P': {'c': 'WWTP', 's': 'diva2:1296147', 'n': 'correct in original - but the character spacing makes it look as if there is a space'},
+    'WWWTP': {'c': 'WWTP', 's': 'diva2:744729', 'n': 'no full text'},
+    'PAX- XL100X': {'c': 'PAX-XL100', 's': 'diva2:1859331'},
+    'XL100': {'c': 'PAX-XL100', 's': 'diva2:1859331'},
+    'Z-G': {'c': 'Z-G<sub>5</sub>-4RepCT', 's': 'diva2:1348113', 'n': 'no full text'},
+    '॰C': {'c': '˚C', 's': 'diva2:1674050', 'n': 'error in original'},
+    'H</p><p>2/O2': {'c': 'H<sub>2</sub>2/O<sub>2</sub>', 's': 'diva2:1096860', 'n': 'correct in original'},
+    '2/O2': {'c': 'H<sub>2</sub>2/O<sub>2</sub>', 's': 'diva2:1096860', 'n': 'correct in original'},
+    '°A': {'c': 'Å', 's': 'diva2:1219274', 'n': 'correct in original'},
+    '̊C': {'c': '℃', 's': 'diva2:1555594'}, 
+    'ͦC': {'c': '℃', 's': 'diva2:953658', 'n': 'correct in original'},
 
 }
