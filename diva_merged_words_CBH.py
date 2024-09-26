@@ -3327,7 +3327,6 @@ merged_words={
     'good convergence',
     'good potential',
     'grafted to',
-    'granule traps',
     'greater impact',
     'green, has',
     'greenhouse gas emissions',
