@@ -2503,5 +2503,7 @@ well_known_acronyms_list=[
     ['ZL', 'zwitterion-type lignin', {'s': 'diva2:1777458'}],
     ['mAbs', 'monoclonal antibodies', {'s': 'diva2:1519510'}],
     ['RAM', 'Random Access Memory', {'s': 'diva2:1217939'}],    
+    ['ee', 'Enantiomeric excess', {'s': 'diva2:765778'}],
+
 ]
 
