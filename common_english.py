@@ -69661,6 +69661,7 @@ common_units={
     '℃': {'A2': 'Unit'},  #  of temperature - degrees Celsius
     '°C': {'A2': 'Unit'},  #  of temperature - degrees Celsius
     'ᵒC': {'A2': 'Unit'}, 
+    'ᵒK': {'A2': 'Unit'},  #  of temperature - degrees Kelvin
     '€/kg': {'A2': 'Unit'}, 
     '€/t': {'A2': 'Unit'}, 
     '€/tCO2': {'A2': 'Unit'}, 
