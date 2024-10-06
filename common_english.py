@@ -1380,6 +1380,7 @@ common_English_words={
     'February-July': {'B2': 'Noun Phrase'},  # Specific time period
     'March-April': {'B2': 'Noun Phrase'},
     'April-June': {'B2': 'Noun Phrase'},
+    'January-June': {'B2': 'Noun Phrase'},
 
     # seasons
     'Spring': {'A1': 'Proper Noun', 'B2': 'Verb'}, # (season)
@@ -1438,6 +1439,7 @@ common_English_words={
     'Basque': {'B2': 'Adjective, Noun, Demonym'},
     'Bavarian': {'B2': 'Adjective, Noun, Demonym'},
     'Belgian': {'A2': 'Adjective, Noun, Demonym'},
+    'Bermudan': {'B2': 'Adjective, Noun, Demonym'},
     'Bolivian': {'B1': 'Adjective, Noun, Demonym'},
     'Bosnian': {'B1': 'Adjective, Noun, Demonym'},
     'Brazilian': {'A2': 'Demonym, Adjective'},
@@ -1607,6 +1609,7 @@ common_English_words={
     'Swedish, Norwegian': {'A2': 'Adjective Phrase'},
     'Swiss': {'A2': 'Adjective, Noun'},
     'Syrian': {'A2': 'Adjective, Noun'},
+    'Tahitian': {'B1': 'Adjective, Noun, Demonym'},
     'Taiwanese': {'B1': 'Adjective, Noun, Demonym'},
     'Tamil': {'B2': 'Adjective, Noun, Demonym'},
     'Tanzanian': {'A2': 'Adjective, Noun'},
@@ -52663,6 +52666,206 @@ common_English_words={
     'abating': {'B1': 'Verb (present participle), Verb (gerund)'},
     'in­vehicle': {'B2': 'Adjective (compound)'},
     'In­vehicle': {'B2': 'Adjective (compound)'},    
+
+    # for SCI
+    "Student's-$t$": {'C1': 'Noun phrase'},
+    'Cooper Pair Box': {'C1': 'Noun phrase'}, # diva2:755939
+    'berthing': {'B1': 'Verb (present participle), Verb (gerund)'},
+    'blindsight': {'B2': 'Noun'},
+    'copulas': {'B2': 'Noun (plural)'},
+    'carouseling': {'B2': 'Verb (gerund), Verb (present participle)'},
+    'Strouhal frequencies': {'B2': 'Noun Phrase'},
+    'Koopman operator': {'C1': 'Noun Phrase'},
+    'Lax function': {'B2': 'Noun Phrase'},
+    'Mesh-generation': {'B2': 'Noun Phrase'},
+    'mesh-generation': {'B2': 'Noun Phrase'},
+    'densify': {'B2': 'Verb'},
+    'steels': {'B1': 'Noun (plural)'},
+    'basebanding': {'B2': 'Noun, Verb (gerund)'},
+    'univalence': {'B2': 'Noun'},
+    'coverages': {'B1': 'Noun (plural)'},
+    'preassumption': {'B2': 'Noun'},
+    'aerobraking': {'B2': 'Noun'},
+    'bike-sharing': {'B1': 'Noun Phrase'},
+    'bikes': {'A2': 'Noun (plural)'},
+    'sedatives': {'B1': 'Noun (plural)'},
+    'colour-magnitude': {'B2': 'Adjective (compound)'},
+    'three-wheeled': {'B1': 'Adjective (compound)'},
+    'perovskites': {'B2': 'Noun (plural)'},
+    'trustfully': {'B2': 'Adverb'},
+    'composite-based': {'B2': 'Adjective (compound)'},
+    'non-heated': {'B2': 'Adjective (compound)'},
+    'regimes': {'B1': 'Noun (plural)'},
+    'semi-structured': {'B2': 'Adjective (compound)'},
+    'Semi-structured': {'B2': 'Adjective (compound)'},
+    'eyeglasses': {'A2': 'Noun (plural)'},
+    'micrography': {'B2': 'Noun'},
+    'porpoising': {'B2': 'Noun, Verb (gerund)'},
+    'tension-compression': {'B2': 'Noun Phrase'},
+    'micromotion': {'B2': 'Noun'},
+    'downscaling': {'B2': 'Noun, Verb (gerund)'},
+    'dreams': {'A1': 'Noun (plural)'},
+    'dropbeacon': {'B2': 'Noun'},
+    'geoengineering': {'B2': 'Noun'},
+    'stigmatism': {'B2': 'Noun'}, # Possible spelling error: 'astigmatism' 
+    'orthotropic': {'B2': 'Adjective'},
+    'cover-geometry': {'B2': 'Noun Phrase'},
+    'reprofiling': {'B2': 'Noun, Verb (gerund)'},
+    'quasi-geostrophy': {'B2': 'Noun'},
+    'user-adaptivity': {'B2': 'Noun'},
+    'astigmatism': {'B2': 'Noun'},
+    'stars': {'A1': 'Noun (plural)'},
+    'torise': {'B2': 'Verb'}, # Possible spelling error: 'torsion' or 'torus' 
+    'bi-directionally': {'B2': 'Adverb'},
+    'lightcurve': {'B2': 'Noun'},
+    'spatter-overlap': {'B2': 'Noun Phrase'},
+    'inflow-conditions': {'B2': 'Noun Phrase'},
+    'mortgages': {'B1': 'Noun (plural)'},
+    'consultations': {'B1': 'Noun (plural)'},
+    'demineralization': {'B2': 'Noun'},
+    'disciplines': {'B1': 'Noun (plural)'},
+    'decision tree': {'B2': 'Noun Phrase'},
+    'mixtures': {'B1': 'Noun (plural)'},
+    'kayaks': {'A2': 'Noun (plural)'},
+    'nuclides': {'B2': 'Noun (plural)'},
+    'data-pulses': {'B2': 'Noun Phrase'},
+    'fairtrade': {'B1': 'Noun, Adjective'},
+    'characterisation': {'B2': 'Noun'},
+    'Lap-shear': {'B2': 'Noun Phrase'},
+    'preloads': {'B2': 'Noun (plural)'},
+    'stems': {'B1': 'Noun (plural)'},
+    'centralizer': {'B2': 'Noun'},
+    'axisymmetric': {'B2': 'Adjective'},
+    'axisymmetrical': {'B2': 'Adjective'},
+    'S-N curves': {'B2': 'Noun Phrase'}, #  a graph that plots the relationship between the stress amplitude (S) applied to a material and the number of cycles (N) to failure.
+    'SN curves': {'B2': 'Noun Phrase'}, #  a graph that plots the relationship between the stress amplitude (S) applied to a material and the number of cycles (N) to failure.
+    'SN-curves': {'B2': 'Noun Phrase'}, #  a graph that plots the relationship between the stress amplitude (S) applied to a material and the number of cycles (N) to failure.
+    'zeta function': {'B2': 'Noun Phrase'},
+    'andragogy': {'B2': 'Noun'},
+    'turbochargers': {'B2': 'Noun (plural)'},
+    'cryostat': {'B2': 'Noun'},
+    'propagators': {'B2': 'Noun (plural)'},
+    'chute aerator': {'B2': 'Noun Phrase'},
+    'aerator': {'B1': 'Noun'},
+    "aerator's": {'B1': 'Noun (possessive)'},
+    'ansatz': {'B2': 'Noun'},
+    'down-pull': {'B2': 'Noun Phrase'},
+    'daedalean': {'B2': 'Adjective'},
+    'Ramanujan graphs': {'B2': 'Noun Phrase'},
+    'Kadison-Singer conjecture': {'C1': 'Noun Phrase'},
+    'adventitia': {'B2': 'Noun'}, # outermost layer of a blood vessel
+    'tunica adventitia': {'B2': 'Noun Phrase'},
+    'Reynolds number': {'B2': 'Noun Phrase'},
+    'abattoir': {'B2': 'Noun'},
+    'abductors': {'B2': 'Noun (plural)'},
+    'abelian': {'B2': 'Adjective'},
+    'aberrant': {'B2': 'Adjective'},
+    'aberration': {'B2': 'Noun'},
+    'abides': {'B1': 'Verb (third-person present tense)'},
+    'abrasive': {'B1': 'Adjective, Noun'},
+    'absolute/squared': {'B2': 'Noun Phrase'},
+    'accelerance': {'B2': 'Noun'},
+    'accelerate-driven': {'B2': 'Adjective (compound)'},
+    'acceleration-rate': {'B2': 'Noun Phrase'},
+    'acceleration/braking': {'B2': 'Noun Phrase'},
+    'accept/reject': {'B1': 'Noun Phrase'},
+    'acceptive': {'B2': 'Adjective'},
+    'accompanies': {'B1': 'Verb (third-person present tense)'},
+    'accounting-based': {'B2': 'Adjective (compound)'},
+    'accrete': {'B2': 'Verb'},
+    'accretes': {'B2': 'Verb (third-person present tense)'},
+    'acetophenone': {'B2': 'Noun'},
+    'acid-functionalized': {'B2': 'Adjective (compound)'},
+    'acl': {'B2': 'Noun, Abbreviation'},
+    'acl-reconstruction': {'B2': 'Noun Phrase'},
+    'acoustic-optic': {'B2': 'Adjective (compound)'},
+    'acoustician': {'B2': 'Noun'},
+    'acousto-optics': {'B2': 'Noun'},
+    'acoustoelastic': {'B2': 'Adjective'},
+    'acquirer': {'B2': 'Noun'},
+    'acrylics': {'B1': 'Noun (plural)'},
+    'actinide': {'B2': 'Noun'},
+    'actinides': {'B2': 'Noun (plural)'},
+    'active-set': {'B2': 'Noun Phrase'},
+    'actuaries': {'B2': 'Noun (plural)'},
+    'actuations': {'B2': 'Noun (plural)'},
+    'actuator-disc': {'B2': 'Noun Phrase'},
+    'actuator-disk': {'B2': 'Noun Phrase'},
+    'actuators/drives': {'B2': 'Noun Phrase'},
+    'addends': {'B2': 'Noun (plural)'},
+    'additionless': {'B2': 'Adjective'},
+    'additively': {'B2': 'Adverb'},
+    'additively-manufactured': {'B2': 'Adjective (compound)'},
+    'adductors': {'B2': 'Noun (plural)'},
+    'adherend': {'B2': 'Noun'},
+    'adherends': {'B2': 'Noun (plural)'},
+    'adherens': {'B2': 'Noun'},
+    'adhesively': {'B2': 'Adverb'},
+    'adjoining': {'B1': 'Adjective, Verb (present participle)'},
+    'adjustable-rate': {'B2': 'Adjective (compound)'},
+    'adoptability': {'B2': 'Noun'},
+    'adrenaline': {'B1': 'Noun'},
+    'advantages/disadvantages': {'B1': 'Noun Phrase'},
+    'advected': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'adventitia': {'B2': 'Noun'},
+    'adventitial': {'B2': 'Adjective'},
+    'adverse-pressure-gradient': {'B2': 'Noun Phrase'},
+    'adversities': {'B1': 'Noun (plural)'},
+    'aero-acoustics': {'B2': 'Noun'},
+    'aero-elastic': {'B2': 'Adjective (compound)'},
+    'aero-engine': {'B2': 'Noun Phrase'},
+    'aero-modelling': {'B2': 'Noun'},
+    'aero-structural': {'B2': 'Adjective (compound)'},
+    'aerodynamical': {'B2': 'Adjective'},
+    'aerodynamics-related': {'B2': 'Adjective (compound)'},
+    'aerodynes': {'B2': 'Noun (plural)'},
+    'aeroelastic': {'B2': 'Adjective'},
+    'aeroelasticity': {'B2': 'Noun'},
+    'aerofoil': {'B2': 'Noun'}, 
+    'aeronautic': {'B2': 'Adjective'},
+    'aeronautics/astronautics': {'B2': 'Noun Phrase'},
+    'aerospace-component': {'B2': 'Noun Phrase'},
+    'aerothermal': {'B2': 'Adjective'},
+    'aerotriangulating': {'B2': 'Verb (present participle), Verb (gerund)'},
+    'aerotriangulation': {'B2': 'Noun'},
+    'affectations': {'B2': 'Noun (plural)'},
+    'affibody-conjugated': {'B2': 'Adjective (compound)'},
+    'affluent': {'B2': 'Adjective'},
+    'aft': {'B2': 'Adverb'},
+    'aft-body': {'B2': 'Noun Phrase'},
+    'after-sale': {'B2': 'Adjective (compound)'},
+    'afterglow': {'B2': 'Noun'},
+    'age-hardened': {'B2': 'Adjective (compound)'},
+    'age-hardening': {'B2': 'Noun, Verb (gerund)'},
+    'agent-environment': {'B2': 'Noun Phrase'},
+    'aggregational': {'B2': 'Adjective'},
+    'agonists': {'B2': 'Noun (plural)'},
+    'agree-ment': {'B1': 'Noun'},
+    'agrivoltaic': {'B2': 'Adjective'},
+    'agrivoltaics': {'B2': 'Noun (plural)'},
+    'aileron': {'B2': 'Noun'},
+    'ailerons': {'B2': 'Noun (plural)'},
+    'air-cooled': {'B2': 'Adjective (compound)'},
+    'air-fuel': {'B2': 'Adjective (compound)'},
+    'air-launched': {'B2': 'Adjective (compound)'},
+    'air-spring': {'B2': 'Noun Phrase'},
+    'air/ZnO': {'B2': 'Noun Phrase'},
+    'air/gas': {'B2': 'Noun Phrase'},
+    'aircraft/airliner': {'B2': 'Noun Phrase'},
+    'airdrop': {'B1': 'Noun, Verb'},
+    'airdropped': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'airflows': {'B2': 'Noun (plural)'},
+    'airfoil': {'B2': 'Noun'},
+    'airfoil-shaped': {'B2': 'Adjective (compound)'},
+    'airfoils': {'B2': 'Noun (plural)'},
+    'airframer': {'B2': 'Noun'},
+    'airframes': {'B2': 'Noun (plural)'},
+    'airliner': {'B1': 'Noun'},
+    'aftward': {'B1': 'Adverb'},
+    'age-determine': {'B2': 'Verb'},
+    'Iron-ore': {'B2': 'Noun Phrase'},
+    'iron-ore': {'B2': 'Noun Phrase'},
+    #end for SCI - SCIe
 }
     
 chemical_elements_symbols={
@@ -53293,6 +53496,17 @@ chemical_names_and_formulas=[
 ]
 
 common_urls=[
+    'futhead.com',
+    'Flightradar24.com',
+    'transfermarkt.co.uk',
+    'Lektion.se',
+    'lection.se',
+    'Tranfermarkt.com',
+    'basketball-reference.com',
+    'www.nepp.se',
+    'pricerunner.se',
+    'prisjakt.nu',
+
     'www.4sonora.com',
     'idtracker.ai',
     'va.se',
@@ -54565,6 +54779,82 @@ place_names=[
     'Käppala',
     'São', # part of "São Paulo" - see diva2:445206
     'uMkhanyakude', # uMkhanyakude District Municipality - South Africa
+    'Ingolstadt',
+    'Kungsträdgården',
+    'Königsberg',
+    'Kvarndammen',
+    'Landvetter',
+    'Lappeenranta', # Finland
+    'London-Amsterdam',
+    'Luleå-Ockelbo',
+    'Lögdeälv',
+    'Luzon', # Philippines
+    'Malaga',
+    'Malaren',
+    'Malmö-Hallsberg',
+    'Norrkoping',
+    'Norrmalm/Vasastan',
+    'Nordmaling',
+    'Rundvik',
+    'New-Zealand',
+    'Napa',
+    'Narvik',
+    'Himalayas',
+    'Ganges',
+    'Belgrade',
+    'Bergshamra',
+    'Palma',
+    'Vasastan',
+    'Vattenvägen',
+    'Stadsgården',
+    'Björbo',
+    'Cannes', # France
+    'Campeltown',
+    'Islay',
+    'Scotland',
+    'Siberia',
+    'Barsebäck',
+    'Skärholmen',
+    'Stornnforsen',
+    'Vaasa', # Finland
+    'Grenchen', # Switzerland
+    'Tahiti',
+    'Punaruu', # valley in Tahiti
+    'Abstatt', # Germany
+    'Strasbourg', #France
+    'Addis', # Addis Abeba
+    'Abeba', # Addis Abeba
+    'Flamanville', # France
+    'Johanneshovsbron',
+    'Kobe',
+    'Mantes-La-Ville',
+    'Mälarstrand',
+    'Ramsjöåsen', # a BRF
+    'Riksgränsen',
+    'Ringhals',
+    'Rinkeby',
+    'Rinkeby-Kista',
+    'Russia-Ukraine',
+    'Saltsjö-Boo',
+    'Sarajevo',
+    'Sardinia',
+    'Sjövägen',
+    'Skansbron',
+    'Skanstullbron',
+    'Skellefteälvenin',
+    'Skeppsbron',
+    'Skövde',
+    'Stadsgårdskajen',
+    'Stockholm,Sweden',
+    'Stockholm-Gothenburg',
+    'Stockholm-Gotland',
+    'Stockholm-Göteborg',
+    'Strömsholmen',
+    'Sturegallerian',
+    'Sturegatan',
+    'Venezuela',
+
+
 
 ]
 
@@ -61245,7 +61535,7 @@ company_and_product_names=[
     'SGCC-State', # SGCC-State Grid corporation of China - see diva2:1888256
     'Sandvik Coromant',
     'B-L072Z-LRWAN1', # STM32 B-L072Z-LRWAN1 Discovery kit - see diva2:1876688
-    'Thales Alenia Space',
+    'Thales Alenia Space', # diva2:1162961
     'Sentimentics', # company
     'CluStic', # graph drawing software - see diva2:882369
     'Verificatum', # Verificatum AB
@@ -63481,6 +63771,249 @@ company_and_product_names=[
     '][BMB]', # bis(mandelato)borate (BMB) as part of a chemical formula - see diva2:1618270
     # end of additions for CBH
 
+    # start for SCI
+    'Nestlé',
+    'Run_CTviewer.exe',
+    'CreditMetrics', # framework - see diva2:571402
+    'Legrand',
+    'Lycoming',
+    'Maersk',
+    'Matlab®/Simulink®',
+    'Merck',
+    'Morningstar',
+    'Morningstar-provided',
+    'Nordpool',
+    'Notar',
+    'NuSTAR',
+    'Nyx Earth Crew spacecraft',
+    'Nyx', #  Earth Crew spacecraft - see diva2:1900954
+    'Norske Veritas', # Det Norske Veritas (DNV) - see diva2:796782
+    'Norske', # Det Norske Veritas (DNV) - see diva2:796782
+    'Veritas', # Det Norske Veritas (DNV) - see diva2:796782
+    'Germanischer Lloyds', # Germanischer Lloyds (GL) - see diva2:796782
+    'Germanischer', # Germanischer Lloyds (GL) - see diva2:796782
+    'Lloyds', # Germanischer Lloyds (GL) - see diva2:796782
+    'Nomura', # bank - see diva2:1795177
+    'Noctua', # company - see diva2:1707846
+    'Nexialog', # Nexialog Consulting - company - see diva2:1800496
+    'Newt', # research project for amphibious craft concept Newt - see diva2:1198967
+    'Nemoh', # open source coftware - see diva2:1263450
+    'Navient', # ”Navient Student Loan Trust 2015-2” - dataset - see diva2:942695
+    'Navara', # Nissan Navara  - see diva2:1285840
+    'Hilux', # Toyota Hilux - see diva2:1285840
+    'D-Max', # Isuzu D-Max - see diva2:1285840
+    'Panavia', # Panavia F 2.0 -see diva2:878377
+    'Panc1', # Panc1 cell - see diva2:1571175
+    'Ostlänken', # high speed Swedish train line - see diva2:1656020:
+    'Oxeon', # Oxeon TeXtreme weave - see diva2:783996
+    'UpInTheBlue', #  project - see diva2:783996
+    'TeXtreme®', # Oxeon´s TeXtreme ® fabrics diva2:783997
+    'Crescit', # Crescit Asset Management - see diva2:1443981
+    'Convini', # company - see diva2:1341248
+    'Oldroyd-B', # based fluids - see diva2:1528247
+    'Azipod', # propeller systems - see diva2:1285486
+    'Betamate', # adhesive - Betamate 1496f - see diva2:919831
+    'SikaPower', # adhesive - SikaPower 498 - see diva2:919831
+    'Anticorit', # anti-corrosive oil - Anticorit RP 3802 - see diva2:919831
+    'Renoform', # drawing oil - Renoform 3802 - see diva2:919831
+    'Bliwa', # insurance company - see diva2:1827745
+    'Blueair', # company - see diva2:1163182
+    'BlueBus', # French company - BlueBus 6m IT3 - diva2:1871683
+    'Blue-project', # project part of the "Up in the Blue-project" - see diva2:783997
+    'Citroën', # company -  C-Zero electric vehicles - see diva2:1183366
+    'Emov', # car sahring service - see diva2:1183366
+    'Group PSA', # Peugeot S.A. - see diva2:1183366
+    'PSA', # Peugeot S.A. - see diva2:1183366    
+    'CitySki', # company - see diva2:1450306, diva2:1572690
+    'Cityski', # company - see diva2:1348448
+    'InVIGO', # project in EU CleanSky2 - diva2:1701474
+    'CleanSky2', # project in EU CleanSky2 - diva2:1701474
+    'Cassiopée', # modules - software for computational fluid dynamics - see diva2:1701474
+    'Mycronic', # company - Mycronic AB - see diva2:1040726
+    'Fraunhofer-Chalmers', # Fraunhofer-Chalmers Centre  - see diva2:1040726
+    'IBOFlow', # simulation software - see diva2:1040726
+    'Caterpillar', # Caterpillar Propulsion - see diva2:894068
+    'Polarcus', # seismic vessel - see diva2:894068
+    'PROCAL', #  software  - see diva2:894068
+    'Cargotec', # Cargotec Sweden AB - see diva2:439972, diva2:491776
+    'XS 144 crane', # - see diva2:439972
+    'Capri', # software developed by the ONERA - see diva2:894185, diva2:550422
+    'ONERA', # company - see diva2:550422
+    'Marketing Mix', # a Porter’s five forces analysis- see diva2:942654
+    'CoRot', # space-based photometric mission - see diva2:1896438
+    'Kepler/K2', # space-based photometric mission - see diva2:1896438
+    'TESS', # space-based photometric mission - see diva2:1896438
+    'Fluent®', # ANSYS® CFD software - see diva2:1110830
+    'ANSYS® Fluent®', # CFD software - see diva2:1110830
+    'ANSYS®', # software - see diva2:1110830
+    'ANSYS/Workbench', # software
+    'ANSYSWorkbench', # software
+    'Libor', # Libor Market Model - see diva2:578792
+    'Libor-OIS', # Libor-OIS basis spread - diva2:802181
+    'Digimat', # software - see diva2:1334020
+    'Digimat-Abaqus',  # software - see diva2:1334020
+    'ÅF', # company - see diva2:1334020
+    'Dr.Mueller AG', # Swiss company - see diva2:867867
+    'Dr.Mueller', # Swiss company - see diva2:867867
+    'FUNDAMIX®', # vibromixer - see diva2:867867
+    'Clay Institute Millennium problems', # see diva2:645796
+    'scipy.integrate.odeint', # see diva2:917991
+    'elsA', # aerodynamic solver -  diva2:444284
+    'Flettner rotors', # see diva2:1900951
+    'DynaRigs', # see diva2:1900951
+    'Oceanbird', # see diva2:1900951
+    'Neoliner', # see diva2:1900951
+    'Mauric Company', # a French Design office - see diva2:1900951
+    'Mauric', # Mauric Company - a French Design office - see diva2:1900951
+    'Masonite Beams AB', # Masonite Beams AB -company  - see diva2:618218
+    'Masonite', # Masonite Beams AB -company  - see diva2:618218
+    'Byggma ASA', # Norwegian company - see diva2:618218
+    'Byggma', # Norwegian company - see diva2:618218
+    'Fura-2', #  ratiometric dye - see diva2:1774381
+    'Nastran', # finite element analyis software - see diva2:550422
+    'NASTRAN', # finite element analyis software
+    'MSC Nastran', # diva2:1900946
+    'Douglas DC-3', # see diva2:1900946
+    'Discrete Gust Model',  # see diva2:1900946
+    'Dornier 328', # aircraft - see diva2:1189541
+    'Dornier', # aircraft company - see diva2:1189541
+    "Volvo's", # possessive form of company name - see diva2:1110812
+    'AVL Vicura', # company name - see  diva2:1247161
+    'Vicura', # part of the ompany name 'AVL Vicura' - see  diva2:1247161
+    'Uniper', # company name - see diva2:1110830
+    'code_saturne', # software - see diva2:1643670
+    'Daedalean', # company name - see diva2:1781251
+    'Shinkansen N700A', # train - see diva2:854573
+    'Shinkansen', # train company - see diva2:854573
+    'N700A', # train - see diva2:854573
+    'Transrapid TR09',  # train - see diva2:854573
+    'Transrapid',  # traincompany  - see diva2:854573
+    'TR09',  # train - see diva2:854573
+    'Intercity-Express ICE3', # train - see diva2:854573
+    'Intercity-Express', # train company - see diva2:854573
+    'ICE3', # train - see diva2:854573
+    'SCMaglev ML0X1', # train - see diva2:854573
+    'SCMaglev', # train company - see diva2:854573
+    'ML0X1', # train - see diva2:854573
+    'Smartflyer', # electric aircraft company - diva2:1546615
+    'Soda Syphon', # company  - see diva2:1083779
+    'Syphon', # part of "Soda Syphon" company name  - see diva2:1083779
+    'STAR-CCM+', # CFD software - see diva2:1083779
+    'PHOENIX5', # deterministic lattice physics codeis being developed at Westinghouse Sweden AB - see diva2:895396
+    'LjungaLab AB', # 'LjungaLab AB' - company - see diva2:642316
+    'LjungaLab', # 'LjungaLab AB' - company - see diva2:642316
+    'CB189', # internal standard at LjungaLab AB - see diva2:642316
+    'Claudin7', # protein - see diva2:1577149
+    'AERMOD', # atmospheric dispersion model - see diva2:459344
+    'G7P', # Electricité de Tahiti power group - see diva2:459344
+    'G8P', # Electricité de Tahiti power group - see diva2:459344
+    'OpenFOAM', # open source environment - see diva2:1110767
+    'CSEM', # Swiss technology organisation - see diva2:1110767
+    'DASSAULT AVIATION', # company - see diva2:405926
+    'DASSAULT', # company - see diva2:405926
+    'ELFINI®', # finite element software - see diva2:405926
+    'DES/DDES', # a hybrid RANS-LES simulation - see diva2:1857264
+    'NACA0012', # 2-D NACA0012 airfoil  - see diva2:1857264
+    'FEELINGS', # a ground station - see diva2:1891378
+    'PICOLO', #an atmospheric turbulence simulator - see diva2:1891378
+    'LISA', #an adaptive optics bench - see diva2:1891378
+    'ABAQUS', # simulator - see diva2:1900873
+    'ABAQUS/Explicit', # software 
+    'ABAQUS/Standard', # software 
+    'Abaqus/Explicit', # software 
+    'HELIOS', # nuclear data library - see diva2:895396
+    'Serpent', # nuclear data library - see diva2:895396
+    'IgG1', # Immunoglobulin G1 (IgG1) - see diva2:1332273
+    'MIMIC', # multimodal clinical benchmark dataset - see diva2:1859964
+    'SkyCab AB', # company - see diva2:891537
+    'SkyCab', # SkyCab AB - company - see diva2:891537
+    'RCAN', # deep learning model - see diva2:1875954
+    'Bioservos', # company - see diva2:839835
+    'L1', # Sun-Earth Lagrangian point L1 - see diva2:1673538
+    "L1'", # sub-Lagrangian point - see diva2:1880347
+    'C1-C2', # spinal joints - see diva2:860546
+    'Head-C1', # spinal joints - see diva2:860546
+    'C6' # spinal joints - see diva2:860546
+    'C7', # spinal joints - see diva2:860546
+    'C5', # spinal joints - see diva2:860546
+    'T1', # spinal joints - see diva2:860546
+    'C3', # spinal joints - see diva2:860546
+    'T3', # spinal joints - see diva2:860546
+    'A220-100', # aircraft - see diva2:1900930
+    'A320neo', # aircraft - see diva2:1900930
+    'LEAP-1A35A', #  engine - see diva2:1900930
+    'PW1524G', #  engine - see diva2:1900930
+    'PW1127G-JM', #  engine - see diva2:1900930
+    'Flightradar24', # company/service  - see diva2:1900930
+    'EI mass', # Emission index of non-volatile particulate matter mass, corrected for overall system loss - see diva2:1900930
+    'EI num', # Emission Index of non-volatile particulate matter number, corrected for overall system loss - see diva2:1900930
+    'Abagram', #  a system that transforms patterns on a grid into textual passwords - see diva2:550297
+    'AcBuilder', # geometry module in CEASIOM - see diva2:787508
+    'CPACSCreator', # improved tool based on CPACS - see diva2:787508
+    'Technology&amp;Strategy', # a French-German consulting company - see diva2:1082039
+    'Acad', # company - see diva2:1527799
+    'Accenta Plast', # company - see diva2:545132
+    'Accenta', # part of "Accenta Plast" company - see diva2:545132
+    'Southwest Windpower',  # company - see diva2:545132
+    'Skyllermarks Pressar AB', # company - see diva2:545132
+    'Skyllermarks', # part of 'Skyllermarks Pressar AB' - company - see diva2:545132
+    'Skystream', # Southwest Windpower’s Skystream 3.7 turbine - see diva2:545132
+    'FuturEnergy',  # company - see diva2:545132
+    "FuturEnergy’s FE10XX", # turbine - see diva2:545132
+    "FE10XX", # a FuturEnergy turbine - see diva2:545132
+    'S822', # NREL blade profile family - see diva2:545132
+    'S833', # NREL blade profile family - see diva2:545132
+    'CyberKnife® system', # diva2:1832739
+    'Accuray Incorporated', # company diva2:1832739
+    'Accuray', # company - diva2:1832739
+    'AeroTRAIN', # project - diva2:653271
+    'EPR', # formerly European Pressurised Reactor, then internationalised Evolutionary Power Reactor, now simply EPR - see diva2:1669916
+    'Aeroball', # part of an incore neutron measurement system - see diva2:1669916
+    'Aevotec 800', # an 8-meter high-speed craft - designed by Poseidon Konsult - see diva2:1145330
+    'Aevotec', # an 8-meter high-speed craft - designed by Poseidon Konsult - see diva2:1145330
+    'Poseidon Konsult', # company - see diva2:1145330
+    'DNV-GL', # "Rules For Classification of High Speed Light Craft" from DNV - see diva2:1145330
+    'SAAB Aeronautics JAS 39 Gripen', # aircraft - see diva2:664507
+    'JAS 39', # aircraft - see diva2:664507
+    'Gripen', # aircraft - see diva2:664507
+    'XFOIL', # turbulence model - see diva2:1674019
+    'MH61', # airfoil - see diva2:1674019
+    'MH104', # airfoil - see diva2:1674019
+    'Class 66 locomotive', # diva2:1780538
+    'Aktivitus', # company in Solna - see diva2:852463
+    'Aixplorer', # part of 'Aixplorer Ultrasound Imaging' - see diva2:1890023
+    'Verasonics', # company - see diva2:1890023
+    'Real Madrid', # soccer club - see diva2:942565
+    'Juventus', # soccer club - see diva2:942565
+    'Everton', # soccer club - see diva2:942565
+    'Juktan Power Station', # diva2:1843160
+    'Juktan', # part of "Juktan Power Station" - see diva2:1843160
+    'Isuzu', # company - see diva2:1285840
+    'Kiwa', # company - see diva2:1800189
+    'Kongsberg', # part of "Kongsberg Maritime" - see diva2:1680206
+    'Kremer', # part of "Kremer International Marathon prize" - company diva2:852543
+    'Kronborsten', # Aktiebolaget Kronborsten - company - see diva2:942711
+    'Kronborstens',
+    'Laholm', # company - see diva2:1356885
+    'Nackademin', # company - see diva2:1827778
+    'Peab', # construction company - see diva2:408819
+    'RaySearch', # company - see diva2:902335
+    'Ringhals-1', # reactor - see diva2:447365
+    'Simulink®', # software
+    'Skandia', # company
+    'Skandion', # clinic in Uppsala
+    'Winteria®', # company - see diva2:1351779
+    'ASCIIMathML', # math markup for web pages - see diva2:515568
+    'MathML', # math markup language
+    'Erik Penser Bank', # diva2:1827763
+    'XMController', # software - see diva2:1854853
+    'XMReconstructor', # software - see diva2:1854853
+    'SlicerRadiomics®', # diva2:1781504
+    'RadiomicsShape', # features - see diva2:1781504
+    'MSE-evaluation', # MSE (mean square error) - evaluation - see diva2:1781504
+    'HealthCare™', # a trademark of GE HealthCare™' - see diva2:1781504
+    #end for SCI - SCIc
+
 ]
 
 
@@ -64071,6 +64604,7 @@ names_of_persons=[
     'Ahmed',
     'Aho',
     'Aimee',
+    'Ainslie',
     'Aiswarya',
     'Aitchison',
     'Aizu',
@@ -64254,6 +64788,8 @@ names_of_persons=[
     'Bartle',
     'Bartlett',
     'Bassam',
+    "Bass-Guivarc'h",
+    'Bastankhah',
     'Batagelj',
     'Batson',
     'Baudot',
@@ -64287,6 +64823,7 @@ names_of_persons=[
     'Belmont',
     'Belongie',
     'Bemnet',
+    'Ben',
     'Ben-Jacob',
     'Bendtsen',
     'Bengt',
@@ -64329,6 +64866,7 @@ names_of_persons=[
     'Bharitkar',
     'Bhattacharyya',
     'Bianca',
+    'Bianchetti',
     'Bichir',
     'Bierman',
     'Bifet',
@@ -64862,6 +65400,7 @@ names_of_persons=[
     'Duthil',
     'Dutta',
     'Duxbury',
+    'Dvir',
     'Dwivedi',
     'Dwork',
     'Dyer',
@@ -64870,7 +65409,9 @@ names_of_persons=[
     'Dzyaloshinskii–Moriya',
     'Eastin',
     'Eberhart',
+    'Eberhardt',
     'Echeverría',
+    'Eckhardt',
     'Edmond-Karp',
     'Edmonds-Karp',
     'Edmonds-Karps',
@@ -65178,6 +65719,7 @@ names_of_persons=[
     'Gladstone',
     'Glaser',
     'Glasman-Deal',
+    'Glasserman',
     'Glenn',
     'Glitho',
     'Globisch',
@@ -65598,6 +66140,7 @@ names_of_persons=[
     'Jefferson',
     'Jeffrey',
     'Jena',
+    'Jendel',
     'Jennifer',
     'Jennings',
     'Jenny',
@@ -65957,6 +66500,7 @@ names_of_persons=[
     'Lazzaro',
     'Lear',
     'Le Blanc',
+    'Lebesgue',
     'Lee',
     'Leer',
     'Lees',
@@ -66472,6 +67016,7 @@ names_of_persons=[
     'Norton',
     'Norwell',
     'Nostratic',
+    'Nouri',
     'Noz',
     'Ntounas',
     'Nucci',
@@ -66689,6 +67234,7 @@ names_of_persons=[
     'Porras',
     'Porta',
     'Porter',
+    'Porté-Agel',
     'Portman',
     'Portunus',
     'Porzak',
@@ -67337,6 +67883,7 @@ names_of_persons=[
     'Trombe',
     'Trossen',
     'Trump',
+    'Tryding',
     'Tsang',
     'Tschofenig',
     'Tseitin',
@@ -67865,18 +68412,417 @@ names_of_persons=[
     'Nissle',
     'Ostwald',
     'Overhauser',
-
-
-
-
-
+    'Edman',
+    'Edwards-Wilkinson',
+    'Ehrenfried',
+    'Ehrnberg',
+    'Eilenberg-Mac',
+    'Eilenberg-Moore',
+    'Eisenstein',
+    'Erdos-Mirsky',
+    'Erlenmaier',
+    'Euler-Bernoulli',
+    'Euler-Lagrangian',
+    'Euler-Maruyma',
+    'Friedlander',
+    'Friedmann',
+    'Friedmann-Lemaître-Robertson-Walker',
+    'Friedrichs',
+    'Frobenius',
+    'Geiger',
+    'Georgi',
+    'Gerdes',
+    'Giacconi',
+    'Giacomo',
+    'Gibbs-Thomson',
+    'Gibson',
+    'Glickman',
+    'Glosten',
+    'Glosten-Jagannathan-Runkle',
+    'Goldston',
+    'Gompertz-Makeham',
+    'Goodfellow',
+    'Gooding',
+    'Goodwin',
+    'Grassmann',
+    'Grassmann-Cayley',
+    'Gromov',
+    'Gromov-Hausdorff',
+    'Gross-Neveu',
+    'Gross-Pitaevskii',
+    'Groth',
+    'Grothendieck',
+    'Grunsky',
+    'Gudmundsson',
+    'Guldhammer',
+    'Gumbel-Hougaard',
+    'Gurney',
+    'Gurson-Tvergaard-Needleman',
+    'Gurvits',
+    'Gutierrez-Farewik',
+    'Gómez',
+    'Haggmark',
+    'Haglund',
+    'Hahn',
+    'Haiman',
+    'Haldane-Shastry',
+    'Hallered',
+    'Halley',
+    'Hammerstein-Wiener',
+    'Harling',
+    'Harrison',
+    'Harvald',
+    'Hashin',
+    'Hassan',
+    'Hasse',
+    'Hausman',
+    'Haviland',
+    'Hawkes',
+    'Hawkings',
+    'Hazus',
+    'Heaviside',
+    'Hector',
+    'Hegselmann',
+    'Heilmann',
+    'Helbing',
+    'Hele-Shaw',
+    'Hellström',
+    'Henderson-Hasselbalch',
+    'Henri',
+    'Henstock-Kurzweil',
+    'Hercowitz',
+    'Hermann-Föttinger',
+    'Hermite-Birkhoff',
+    'Hill-Clohessy-Wiltshire',
+    'Jacobi-Davidson',
+    'Jarrow',
+    'Jarzynski',
+    'Jensen',
+    'Jerome',
+    'Jimenez',
+    'Jin',
+    'Johnson-Cook',
+    'Jones-Wilkins-Lee',
+    'Jorgensen',
+    'Josephson',
+    'Joukowski',
+    'Joukowsky',
+    'Juhnke-Kubitzke',
+    'Jørgen',
+    'Kapitza',
+    'Kadison-Singer',
+    'Kaliske-Schmidt',
+    'Kaluza-Klein',
+    'Kardar-Parisi-Zhang',
+    'Karush',
+    'Karush-Kuhn-Tucker',
+    'Kasner',
+    'Kasparov',
+    'Kruskal-Szekeres',
+    'Kuhn',
+    'Kullback-Liebler',
+    'Kronig',
+    'Kronig-Penney',
+    'Landau-Zener',
+    'Landau-Zener-Stückelberg-Majorana',
+    'Laplace-Stieltjes',
+    'Laundauer-Büttiker',
+    'Lax-Friedrich',
+    'Ledoit-Wolf',
+    'Lee-Carter',
+    'Lennard-Jones',
+    'Lennart',
+    'Leonhard',
+    'Leroux',
+    'Lesbesgue',
+    'Lesmond',
+    'Lev',
+    'Li-Po',
+    'Lehman',
+    'Leijonmarck',
+    'Leiviskä',
+    'Brändén',
+    'Leander',
+    'Betke',
+    'McMullen',
+    'Savage',
+    'Visontai',
+    'Laurent',
+    'Gourc',
+    'Marchant',
+    'Lieb-Thirring',
+    'Lindblad',
+    'Lindborg',
+    'Linusson',
+    'Lipschitz',
+    'Lomb-Scargle',
+    'Lopéz',
+    'Lorentz',
+    'Lovelock',
+    'Lovász',
+    'Löwner',
+    'Loewner',
+    'MacKinlay',
+    'Macdonald',
+    'Mach-Zehner',
+    'Maddox',
+    'Madin-Darby',
+    'Maxwell-Boltzmann',
+    'Mazur',
+    'McDonnell',
+    'McMullen',
+    'Mermin-Peres',
+    'Messier-Bugatti-Dowty',
+    'Monge-Kantorovich',
+    'Nicolas',
+    'Nicolson',
+    'Nieuport',
+    'Nieuwenhuis',
+    'Nordström',
+    'Nowicki',
+    'Nygårds',
+    'Nyman',
+    'Noether',
+    'Norberg',
+    'Newton-Cotes',
+    'Newton-Euler',
+    'Newman-Penrose',
+    'Newmark',
+    'Niazi',
+    'Ardekani',
+    'Neveu',
+    'Elgered',
+    'Nikolic',
+    'Nilsen',
+    'Ninomiya',
+    'Nesterov',
+    'Nelson-Siegel',
+    'Nelson-Siegel-Svensson',
+    'Neher',
+    'Shraiman',
+    'Nash-Moser',
+    'Navier-Cauchy',
+    'Navier-Stokes-Brinkman',
+    'Navier-Stokes-equations',
+    'Belousov-Zhabotinski',
+    'Benjamin-Ono',
+    'Bergström-Boyce',
+    'Bernhard',
+    'Bernoulli-Euler',
+    'Bernoulli-type',
+    'Bechterew',
+    'Beck',
+    'Pak',
+    'Pak-Stanley',
+    'Athanasiadis',
+    'Omiros',
+    'Papaspiliopoulos',
+    'Palmer',
+    'Palmgren-Miner',
+    'Ovegård',
+    'Zachrissson',
+    'Oukaili',
+    'Fatn',
+    'Vasicek',
+    'Ornstein-Uhlenbeck',
+    'Cox-Ingersoll-Ross',
+    'Craig-Bampton',
+    'Craig-Chang',
+    'Crank-Nicolson',
+    'Cremer',
+    'Coxeter',
+    'Courant',
+    'Cornish-Fisher',
+    'Considère',
+    'Bingham',
+    'Cooper',
+    'Bessel',
+    'Bethe',
+    'Bethe-Bloch',
+    'Berkeelar',
+    'De Giorgi',
+    'Betke',
+    'Bezout',
+    'Bianchi',
+    'Biham',
+    'Biot-Allard',
+    'Birkho',
+    'Björner',
+    'Yao',
+    'Black-Litterman',
+    'Black­Scholes',
+    'Black­Scholes­Merton',
+    'Blaschke',
+    'Bloch',
+    'Blomqvist',
+    'Blondeau',
+    'Blount',
+    'Savitsky',
+    'Dawson',
+    'Brown',
+    'Steen',
+    'Bobke',
+    'Clauser',
+    'Szilard',
+    'Clausius',
+    'Clemedson',
+    'Clement',
+    'Roussel',
+    'Christoffersen',
+    'Christiaan',
+    'Huygen',
+    'Young',
+    'Christensen',
+    'Spalart-Allmaras',
+    'Carthart',
+    'Fama-French',
+    'Fama',
+    'French',
+    'Carreau',
+    'Carreau-Yasuda',
+    'Carl-Gustaf®',
+    'Carleson',
+    'Carr',
+    'Casimir',
+    'Cauchy-Riemann',
+    'Cayley',
+    'Cayley-Dickson',
+    'Caslav',
+    'Wigner',
+    'Brukner',
+    'Carini',
+    'Strouhal',
+    'Calogero-Moser',
+    'Calogero-Sutherland',
+    'Calogero-Moser-Sutherland',
+    'Canham-Helfrich',
+    'Szegö',
+    'Lax',
+    'Schwarzschild',
+    'Seaborg',
+    'Schramm',
+    'Schramm-Loewner',
+    'Shack-Hartmann',
+    'Shen',
+    'Sheppard',
+    'Shiller',
+    'Shimko',
+    'Shipley',
+    'Siddarth',
+    'Sidney',
+    'Sieurin',
+    'Placket',
+    'Matheus',
+    'Rabi',
+    'Adamkowski',
+    'Yildirim',
+    'Hull-White',
+    'Mercurio',
+    'Riemann',
+    'Aref',
+    'Sepp',
+    'Silvanius',
+    'Kassapoglou',
+    'Tu',
+    'Yuhai',
+    'Priestley',
+    'Plinth',
+    'Pilorget',
+    'Holens-Ðoković',
+    'Ramanujan',
+    'Spielman',
+    'Wanless',
+    'Godsil',
+    'Mohar',
+    'Lieb',
+    'Aavatsmark',
+    'Achard',
+    'Kalker',
+    'Aguiar-Bergeron-Sottile',
+    'Ahlfors',
+    'Ahlqvist',
+    'Ajdén',
+    'Alfred',
+    'Alfredsson',
+    'Alireza',
+    'Spalart-Allmaras',
+    'Allmaras',
+    'Coles',
+    'Wadcock',
+    'Vinuesa',
+    'LaGuardia',
+    'Lagrangian-Eulerian',
+    'Glosten-Jagannathan-Runkle',
+    'Jagannathan',
+    'Jegadeesh',
+    'Titman',
+    'Moskowtozt',
+    'Donoho',
+    'Jager',
+    'Wellner',
+    'Stepanova',
+    'Pavlenko',
+    'Keplerian',
+    'Kinchin-Pease',
+    'Kitaev',
+    'Klee',
+    'Klein-Gordon',
+    'Kochen-Specker',
+    'Koenigsegg','Kronborg',
+    'Kuramoto-Sivashinsky',
+    'Lackenby',
+    'Lahey',
+    'Langley',
+    'Peaceman-Rachford',
+    'Douglas-Rachford',
+    'Pontecorvo-Maki-Nakagawa-Sakata',
+    'Poissonian',
+    'Prandtl-Glauert',
+    'Riccardo',
+    'Riemann-Hilbert',
+    'Rindeskär',
+    'Riska',
+    'Willhelmson',
+    'Rudolph',
+    'Ruiz',
+    'Ruiz-Chen',
+    'Ruijsenaars-Schneider',
+    'Runge-Kutta-Fehlberg',
+    'Sinkhorn-Knopp',
+    'Sobol',
+    'Sprague-Grundy',
+    'Stern-Gerlach',
+    'Stokesian',
+    'Strassen-Winograd',
+    'Tyler',
+    'Tyler-Ledoit-Wolf',
+    'Törnqvist',
+    'Vitoria-Gasteiz',
+    'Vlasov',
+    'Weinberg',
+    'Weinrib-Halperin',
+    'Weyl',
+    'Wess-Zumino-Witten',
+    'Weil-Petersson',
+    'Watts-Strogatz',
+    'Wigner-Seitz',
+    'Wikander',
+    'Wilcox',
+    'Wolf-Rayet',
+    'Yang-Mills',
+    'Zachary',
+    'Zetterström',
+    'Zwicky',
+    'Penser',
 
 
 ]
 
 common_french_words={
     "d'Electricité": {'B1': 'Noun (compound)'},
+    'd’Etudes': {'B1': 'Noun (plural)'},
     "d'information": {'B1': 'Noun (compound)'},
+    "l'Energie": {'B1': 'Noun'},
     "l'énergie": {'B1': 'Noun'},
     'Africaine': {'B1': 'Adjective'},
     'Agence': {'B1': 'Noun'},
@@ -67893,6 +68839,7 @@ common_french_words={
     'Condensée': {'B1': 'Adjective'},
     'Ecole': {'A1': 'Noun'},
     'Economie': {'B1': 'Noun'},
+    'Electricité': {'B1': 'Noun'},
     'Electricite': {'B1': 'Noun'},
     'Electriques': {'B1': 'Noun (plural)'},
     'Etudes': {'B1': 'Noun (plural)'},
@@ -68005,6 +68952,8 @@ common_finnish_words=[
 common_german_words=[
     'Bundesbahnen',
     'Einstellung',
+    'Flughafen',
+    'Gedankenexperiment',
     'Geheimschreiber',
     'GmbH',
     'Luft-',
@@ -69671,6 +70620,12 @@ common_units={
     'W/mK': {'B1': 'Unit'}, #  Watts per Metre Kelvin (W/mK) - for assesing insulation
     'Wh': {'B1': 'Unit'}, # Watt hour - see diva2:1764511
     '°/s': {'B1': 'Unit'}, # degrees per second
+    'Km/hr': {'A1': 'Unit'}, # kilometers per hour
+    'NOK/kWh': {'B2': 'Unit'},  # Norwegian Krone per kilowatt-hour - Unit of energy cost
+    'Wh/kg': {'B1': 'Unit'},
+    'Wh/km': {'B1': 'Unit'},
+
+
 }
 
 
@@ -69760,6 +70715,7 @@ abbreviations_ending_in_period=[
     'w.r.t.',
     'a.k.a.',
     'al.',
+    'ca.',
     'e.g.',
     'eq.',  # for an equation reference
     'etc.',
