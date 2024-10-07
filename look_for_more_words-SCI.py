@@ -376,6 +376,22 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    '<dt><em>x</em>',
+    '<em>G</em></td></tr>',
+    '<em>f</em>,<em>g</em>〉',
+    '<em>u</em>(<em>x</em>)',
+    '<td><em>x</em>',
+    '<td>ℒ<sup>*</sup><em>u</em>(<em>x</em>)',
+    'ℒ<sup>*</sup><em>g</em>〉',
+    '∂<em>G</em></td></tr>'
+    '〈<em>f</em>',
+    '〈ℒ',
+    '∂<em>G</em></td></tr>',
+    '〈<em>f</em>',
+    'cite{Park4',
+    'cite{Roper2010',
+    'cite{complex',
+    'cite{flagser',
     'doi:10.1016/j.engfracmech.2017.03.020',
     '12:28',
     '2000/60/EG',
