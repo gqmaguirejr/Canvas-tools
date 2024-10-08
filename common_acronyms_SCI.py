@@ -250,5 +250,19 @@ well_known_acronyms_list=[
     ['dpa', 'displacements per atom', {'s': 'diva2:1739571'}],
     ['dpa/year', 'displacements per atom', {'s': 'diva2:420212'}],
     ['dwfs', 'dry water flow solver', {'s': 'diva2:545172'}],
-    
+    ['PTO', 'Power Take-off', {'s': 'diva2:783984'}],
+    ['CPO', 'CorPower Ocean', {'s': 'diva2:783984'}],
+    ['WEC', 'Wave Energy Converters', {'s': 'diva2:783984'}],
+    ['FSI', 'fluid-structure interaction', {'s': 'diva2:839875'}],
+    ['POD', 'proper orthogonal decomposition method', {'s': 'diva2:963050'}],
+    ['FP', '”Fingerprintization', {'s': 'diva2:1720668'}],
+    ['EVT', 'Extreme Value Theory', {'s': 'diva2:1761921'}],
+    ['GANs', 'General Adversarial Networks', {'s': 'diva2:1761921'}],
+    ['AESIR', 'Association of EngineeringStudents in Rocketry', {'s': 'diva2:1673875'}],
+    ['LiDAR', 'Light Detection And Ranging', {'s': 'diva2:1571710'}],
+    ['SNSPD', 'single photondetector', {'s': 'diva2:1571710'}],
+    ['OTDR', 'Optical Time Domain reflectrometry', {'s': 'diva2:1571710'}],
+    ['GRBs', 'Gamma ray bursts', {'s': 'diva2:740888'}],
+    ['MDP', 'minimum detectable polarisation', {'s': 'diva2:740888'}],
+
 ]
