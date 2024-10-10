@@ -377,6 +377,14 @@ def is_number(string):
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
     '<dt><em>x</em>',
+    '<em>S</em>'
+    '<em>p</em><sup>4</sup>',
+    '<em>p</em><sup>3</sup>',
+    '<em>p</em>-groups',
+    '<em>p</em><sup>2</sup>',
+    '<em>p</em><sup>3</sup>',
+    '<em>p</em><sup>4</sup>'
+    '<dt><em>x</em>',
     '<em>G</em></td></tr>',
     '<em>f</em>,<em>g</em>〉',
     '<em>u</em>(<em>x</em>)',
@@ -874,6 +882,11 @@ long_suffix_to_ignore=[
 def remove_prefixes(w):
     if len(w) < 1:
         return w
+
+    # leave in-line LaTeX (i.e., string of the form $xxx$
+    if w[0] == '$' and len(w) >= 2 and not w[1].isdigit():
+        return w
+        
     for lp in long_prefix_to_ignore:
         if w.startswith(lp):
             w=w[len(lp):]
