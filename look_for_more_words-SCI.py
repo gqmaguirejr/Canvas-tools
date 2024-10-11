@@ -377,7 +377,7 @@ def is_number(string):
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
     '<dt><em>x</em>',
-    '<em>S</em>'
+    '<em>S</em>',
     '<em>p</em><sup>4</sup>',
     '<em>p</em><sup>3</sup>',
     '<em>p</em>-groups',
