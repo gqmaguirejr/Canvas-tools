@@ -716,7 +716,7 @@ miss_spelled_to_correct_spelling={
     'recieved': {'c': 'received', 's': 'diva2:1249325', 'n': 'no full text'},
     'heptapeptid': {'c': 'heptapeptide', 's': 'diva2:1345189', 'n': 'error in original'},
     'theisis': {'c': 'theisis', 's': 'diva2:545132', 'n': 'error in original'},
-    'tapespring boom': {'c': 'tape-spring boom', 's': 'diva2:620604', 'n': 'correct in original'},
+    'tapespringboom': {'c': 'tape-spring boom', 's': 'diva2:620604', 'n': 'correct in original'},
     'ocatave': {'c': 'ocatave', 's': 'diva2:1335482', 'n': 'error in original'},
     'oer': {'c': 'offer', 's': 'diva2:551173', 'n': 'missing ligature'},
     'ocking': {'c': 'ocking', 's': 'diva2:561907', 'n': 'missing ligature'},
@@ -787,6 +787,7 @@ miss_spelled_to_correct_spelling={
     'rechnique': {'c':     'rechnique', 's': 'diva2:1849713', 'n': 'correct in original'},
     'recla-mations': {'c': 'recla-mations', 's': 'diva2:1145332', 'n': 'unnecessary hyphen'},
     're- ective': {'c': 'reflective', 's': 'diva2:550016', 'n': 'missing ligature; unnecessary hyphen'},
+    'reective': {'c': 'reflective', 's': 'diva2:550016', 'n': 'missing ligature'},
     'rene': {'c': 'refine', 's': 'diva2:1110812', 'n': 'missing ligature'},
     'rened': {'c': 'refined', 's': 'diva2:1110830', 'n': 'missing ligature'},
     'renedin': {'c': 'refined in', 's': 'diva2:1083484', 'n': 'missing ligature'},
@@ -808,168 +809,197 @@ miss_spelled_to_correct_spelling={
     'stiness': {'c': 'stiffness', 's': 'diva2:1350191', 'n': 'missing ligature'},
     'sti˙ness': {'c': 'stiffness', 's': 'diva2:918986', 'n': 'missing ligature'},
     'Dierent': {'c': 'Dierent', 's': ['diva2:556492', 'diva2:756141', 'diva2:501400', 'diva2:1768252'], 'n': 'missing ligature'},
+    'turbine-tted': {'c': 'turbine-fitted', 's': 'diva2:618333'},
+    'ttbar': {'c': 'tt̄', 's': 'diva2:1900086'},
+    'tted': {'c': 'fitted', 's': ['diva2:1040726', 'diva2:770260'], 'n': 'missing ligature'},
+    'tting': {'c': 'fitting', 's': ['diva2:872575', 'diva2:770260'], 'n': 'missing ligature'},
+    'towrds': {'c': 'towards', 's': 'diva2:1640100', 'n': 'correct in original'},
+    'tip-o': {'c': 'tip-off', 's': 'diva2:1083057', 'n': 'correct in original'},
+    'three­-dimensional': {'c': 'three-dimensional', 's': 'diva2:1579573', 'n': 'unnecessary hyphen'},
+    'thougha': {'c': 'though a', 's': 'diva2:1757046'},
+    '\\textbf{BDM}$_1$-elements': {'c': '<bold>BDM</bold><sub>1</sub>-elements', 's': 'diva2:403154'},
+    '\\textbf{BDM}$_1$': {'c': '[<bold>BDM</bold><sub>1</sub>', 's': 'diva2:1849663'},
+    '\\textbf{BDM}-elements': {'c': '[<bold>BDM</bold>-elements', 's': 'diva2:1849663'},
+    'teady': {'c': 'unsteady', 's': 'diva2:652385', 'n': 'correct in original'},
+    # '\\textbf{': {'c': '<bold>'},
+    '\\textit{': {'c': '<em>'},
+    '\\texttt{': {'c': '<tt>'},
+    'speci': {'c': 'specific', 's': ['diva2:561001', 'diva2:419447'], 'n': 'missing ligature'},
+    'speci': {'c': 'specifically', 's': 'diva2:1527800', 'n': 'missing ligature'},
+    'speci-men': {'c':  'specimen', 's': 'diva2:1380341', 'n': 'unnecessary hyphen'},
+    'specic': {'c': 'specific', 's': ['diva2:729147', 'diva2:572275', 'diva2:736615', 'diva2:1033230', 'diva2:1033189', 'diva2:1110812', 'diva2:753669', 'diva2:1156411', 'diva2:721892', 'diva2:729112', 'diva2:1057217', 'diva2:612201', 'diva2:1057261', 'diva2:760030', 'diva2:503940', 'diva2:1078083'], 'n': 'missing ligature'},
+    'specically': {'c': 'specifically', 's': ['diva2:1083484', 'diva2:1183391', 'diva2:648544', 'diva2:814442', 'diva2:1018419'], 'n': 'missing ligature'},
+    'specied': {'c': 'specified', 's': ['diva2:853494', 'diva2:1057261'], 'n': 'missing ligature'},
+    'specifc': {'c': 'specific', 's': 'diva2:667759'}, 'n': 'missing ligature',
+    'specificaly': {'c': 'specifically', 's': 'diva2:933300', 'n': 'missing ligature'},
+    'speedsteady-state': {'c': 'speed steady-state', 's': 'diva2:1189528', 'n': 'correct in original; error in handling newline'},
+    'spinalfractures': {'c': 'spinal fractures', 's': 'diva2:860546', 'n': 'correct in original; error in handling newline'},
+    'spinalimplants': {'c': 'spinal implants', 's': 'diva2:860546', 'n': 'correct in original; error in handling newline'},
+    'spreaded': {'c': 'spread', 's': 'diva2:1342462', 'n': 'error in original'},
+    'ssion': {'c': 'fission', 's': 'diva2:839851', 'n': 'missing ligature'},
+    'statiscally': {'c': 'statistically', 's': 'diva2:1894671', 'n': 'error in original'},
+    'stellarstream': {'c': 'stellar stream', 's': 'diva2:1781270', 'n': 'correct in original; error in handling newline'},
+    'stirensulfonate': {'c': 'styrenesulfonate', 's': 'diva2:1800223', 'n': 'error in original'},
+    'storeduce': {'c': 'to reduce', 's': 'diva2:1237800', 'n': 'correct in original; merged and incorrectly split'},
+    'manage': {'c': 'manages', 's': 'diva2:1237800', 'n': 'correct in original; merged and incorrectly split'},
+    'stragy': {'c': 'strategy', 's': 'diva2:839173', 'n': 'error in original'},
+    'strati': {'c': 'stratification', 's': 'diva2:435252', 'n': 'missing ligature'},
+    'stratigies': {'c': 'strategies', 's': 'diva2:1640100', 'n': 'correct in original'},
+    'strenght': {'c': 'strength', 's': 'diva2:550297', 'n': 'correct in original'},
+    'strucutral': {'c': 'structural', 's': 'diva2:1475542', 'n': 'correct in original'},
+    'strucutre': {'c': 'structure', 's': 'diva2:1140141', 'n': 'error in original'},
+    'stucture': {'c': 'structure', 's': 'diva2:405436', 'n': 'error in original'},
+    'stuctures': {'c': 'structures', 's': 'diva2:609183', 'n': 'correct in original'},
+    'studiyng': {'c':  'studying', 's': 'diva2:898111', 'n': 'error in original'},
+    'studyLarge-Eddy': {'c': 'study Large-Eddy', 's': 'diva2:1705120', 'n': 'correct in original; error in handling newline'},
+    'sturctured': {'c': 'structured', 's': 'diva2:1465543', 'n': 'error in original'},
+    'success-fully': {'c': 'successfully', 's': 'diva2:1083779', 'n': 'unnecessary hyphen'},
+    'successfull': {'c': 'successful', 's': 'diva2:642353', 'n': 'correct in original'},
+    'suctionwing': {'c': 'suction wing', 's': 'diva2:1740119', 'n': 'no full text'},
+    'suficient': {'c': 'sufficient', 's': 'diva2:1298377', 'n': 'missing ligature'},
+    'supe-rior': {'c': 'superior', 's': 'diva2:1380198', 'n': 'unnecessary hyphen'},
+    'superymmetry': {'c': 'supersymmetry', 's': 'diva2:813471', 'n': 'error in original'},
+    'supression': {'c': 'suppression', 's': 'diva2:1476282', 'n': 'no full text'},
+    'surafce': {'c': 'surface', 's': 'diva2:1716282', 'n': 'error in original'},
+    'surrondings': {'c': 'surroundings', 's': 'diva2:642353', 'n': 'correct in original'},
+    'sweept': {'c': 'swept', 's': 'diva2:545132', 'n': 'error in original'},
+    'swirlmotions': {'c': 'swirl motions', 's': 'diva2:1127576', 'n': 'correct in original; error in handling newline'},
+    'swopped': {'c': 'swapped', 's': 'diva2:813229', 'n': 'error in original'},
+    'symmetricor': {'c': 'symmetric or', 's': 'diva2:1089907', 'n': 'correct in original; error in handling newline'},
+    'synhtesis': {'c': 'synthesis', 's': 'diva2:919486', 'n': 'error in original'},
+    'systematisation': {'B2': 'Noun'}, # Possible spelling error: 'systematization'
+    'systemsize': {'c': 'system size', 's': 'diva2:1820859', 'n': 'correct in original'},
+    'system—the': {'c': 'system&mdash;the', 's': 'diva2:893813'},
+    'satises': {'c': 'satisfies', 's': 'diva2:648544', 'n': 'correct in original'},
+    'scanltings': {'c': 'scantlings', 's': 'diva2:612201', 'n': 'error in original'},
+    'scattnernet': {'c': 'scatternet', 's': 'diva2:1146339', 'n': 'error in original'},
+    'schapoid': {'c': 'scaphoid', 's': 'diva2:1478959', 'n': 'error in original'},
+    'scholls': {'c': 'skills', 's': 'diva2:575399', 'n': 'correct in original; but page is simply an image'},
+    'sci': {'c': 'scikit', 's': 'diva2:1341567', 'n': 'no full text'},
+    'scienti': {'c': 'scientific', 's': 'diva2:558597', 'n': 'missing ligature'},
+    'scientic': {'c': 'scientific', 's': 'diva2:612201', 'n': 'missing ligature'},
+    'secont': {'c': 'second', 's': 'diva2:575399', 'n': 'correct in original; but page is simply an image'},
+    'seldomely': {'c': 'eldomly', 's': 'diva2:1779337', 'n': 'error in original'},
+    'self-heatingfrom': {'c': 'self-heating from', 's': 'diva2:1804716', 'n': 'correct in original'},
+    'self-su cient': {'c': 'self-sufficient', 's': 'diva2:1583521', 'n': 'missing ligature'},
+    'semiemprical': {'c': 'semiempirical', 's': 'diva2:1719737', 'n': 'error in original'},
+    'seminarif': {'c': 'seminar if', 's': 'diva2:515581', 'n': 'abstract does not match that in the thesis'},
+    'separeted': {'c': 'separated', 's': 'diva2:560224', 'n': 'error in original'},
+    'seperate': {'c': 'separate', 's': 'diva2:1355018', 'n': 'error in original'},
+    'shery': {'c': 'fishery', 's': 'diva2:1033242', 'n': 'missing ligature'},
+    'shick': {'c': 'shock', 's': 'diva2:839901', 'n': 'error in original; the word "shick" is never again used in the thesis'},
+    'shipdesign': {'c': 'ship design', 's': 'diva2:618333', 'n': 'correct in original; error in handling newline'},
+    'short,and': {'c': 'short, and', 's': 'diva2:1571214', 'n': 'no full text'},
+    'showes': {'c': 'shows', 's': 'diva2:849695', 'n': 'error in original'},
+    'signcantly': {'c': 'significantly', 'n': 'no full textdiva2:405436', 'n': 'missing ligature'},
+    'signicance': {'c': 'significance', 's': ['diva2:1163154', 'diva2:813380', 'diva2:556472'], 'n': 'missing ligature'},
+    'signicant': {'c': 'significant', 's': ['diva2:760102', 'diva2:814331', 'diva2:1163154', 'diva2:1183391', 'diva2:648544', 'diva2:802625', 'diva2:503940'], 'n': 'missing ligature'},
+    'signicantly': {'c': 'significantly', 's': ['diva2:839875', 'diva2:1083484', 'diva2:1110812', 'diva2:1040707', 'diva2:648544', 'diva2:1542528', 'diva2:1189528', 'diva2:503940'], 'n': 'missing ligature'},
+    'signiffcantly': {'c': 'significantly', 's': 'diva2:1221481', 'n': 'correct in original'},
+    'simluate': {'c': 'simulate', 's': 'diva2:1640118', 'n': 'correct in original'},
+    'simluations': {'c': 'simulations', 's': 'diva2:787497', 'n': 'error in original'},
+    'simpli': {'c': 'simplifications', 's': 'diva2:531096', 'n': 'missing ligature'},
+    'simplications': {'c':  'simplifications', 's': ['diva2:839875', 'diva2:1083484', 'diva2:853494'], 'n': 'missing ligature'},
+    'simplicies': {'c': 'simplices', 's': 'diva2:1737006', 'n': 'error in original'},
+    'thisimplies': {'c': 'this implies', 's': 'diva2:642321'},
+    'simplies': {'c': 'simplifies', 's': 'diva2:1078070', 'n': 'correct in original'},
+    'simplifications/assumptions': {'B2': 'Noun Phrase'},
+    'simulationns': {'c': 'simulations', 's': 'diva2:1715158', 'n': 'error in original'},
+    'qualititative': {'c': 'qualitative', 's': 'diva2:228384', 'n': 'correct in original'},
+    'quantaties': {'c': 'quantities', 's': ['diva2:1640118', 'diva2:1859952'], 'n': 'correct in original'},
+    'quanti': {'c': 'quantified', 's': 'diva2:435252', 'n': 'missing ligature'},
+    'quantication': {'c': 'quantification', 's': ['diva2:618564', 'diva2:562186'], 'n': 'missing ligature'},
+    'quanties': {'c': 'quantifies', 's': 'diva2:1136781', 'n': 'missing ligature'},
+    'quanutum': {'c': 'quantum', 's': 'diva2:1568326', 'n': 'correct in original'},
+    'qubitunitary': {'c': 'qubit unitary', 's': 'diva2:1846658', 'n': 'correct in original; error in handling newline'},
+    'questionniare': {'c': 'questionnaire', 's': 'diva2:642353', 'n': 'correct in original'},
+    'randomally': {'c': 'randomly', 's': 'diva2:1229169', 'n': 'no full text'},
+    '\\rangle$': {'c': '⟩', 's': 'diva2:1736958'},
+    '$\\langle': {'c': '⟨', 's': 'diva2:1736958'},
+    '$\\Delta': {'c': '&Delta;'},
+    '$\\Gamma': {'c': '&Gamma;'},
+    '$\\Gamma\\backslash': {'c': '&Gamma;\\'},
+    '$\\Gamma_{HH\\mapsto': {'c': '&Gamma;<sub>{HH&RightTeeArrow;'},
+    '$\\Lambda$': {'c': '&Lambda;'},
+    '$\\Lambda$CDM': {'c': '&Lambda;CDM'},
+    '$\\alpha$': {'c': '&alpha;'},
+    '$\\alpha$--graphyne': {'c': '&alpha;--graphyne'},
+    '$\\alpha$-cumyl': {'c': '&alpha;-cumyl'},
+    '$\\alpha$-methyl': {'c': '&alpha;-methyl'},
+    '$\\bb': {'c': '$\\bb', 's': 'diva2:1731898'}, # $\bb R^3$-valued  ℝ<sup>3</sup>-value
+    '$\\delta_{CP}$': {'c': '&delta;<sub>CP</sub>'},
+    '$\\delta_{\\mathrm{CP}}$': {'c': '&delta;<sub>CP</sub>' },
+    '$\\lambda$': {'c': '&lambda;'},
+    '$\\lim_{T': {'c': '<em>lim</em><sub>T</sub>'},
+    '$\\mapsto$': {'c': '&RightTeeArrow;'},
+    '$\\mathbb{F}_q$': {'c': '&Fopf;<sub>q</sub>'}, # &Fopf; is 𝔽
+    '$\\mu$': {'c': '&mu;'},
+    '$\\omega$': {'c': '&omega;'},
+    '$\\operatorname{LWE}$': {'c': 'LWE'},
+    '$\\operatorname{RLWE}$': {'c': 'RLWE'},
+    '$\\partial_t': {'c': '<em>partial</em><sub>t</sub>'},
+    '$\\pi$': {'c': '&pi;'},
+    '$\\psi$': {'c': '&psi;'},
+    '$\\sF$': {'c': '<em>sF</em>'},
+    '$\\tau_3': {'c': '&tau;<sub>3</sub>'},
+    '$\\textbf{GL': {'c': '<bold>GL'},
+    '$\\textbf{SL': {'c': '<bold>SL'},
+    '$\\varphi': {'c': 'φ'},
+    '$\\xi$': {'c': '&xi;'},
+    '$\\zeta$': {'c': '&zeta;'},
 
-
+    'rankd': {'c': '<span>rank-(<em>d</em> + 2)</span>', 's': 'diva2:1691401', 'n': 'there are two variants of this'},
+    'rankd': {'c': '<span>rank-(<em>d</em> + 1)</span>', 's': 'diva2:1691401', 'n': 'there are two variants of this'},
+    'rare-­earth': {'c': 'rare-earth', 's': 'diva2:1595164', 'n': 'unnecessary hyphen'},
+    'rare­-earth': {'c': 'rare-earth', 's': 'diva2:1595164', 'n': 'unnecessary hyphen'},
+    'ratev': {'c': 'rate <em>v</em>', 's': 'diva2:562498', 'n': 'correct in original'},
+    'hand': {'c': '<em>h</em> and', 's': 'diva2:562498', 'n': 'correct in original'},
+    'raymuon': {'c': 'ray muon', 's': 'diva2:408821'},
+    're-construction': {'c': 'reconstruction', 's': 'diva2:1776549', 'n': 'unnecessary hyphen'},
+    're-covery': {'c': 'recovery', 's': 'diva2:1679050', 'n': 'unnecessary hyphen'},
+    're-duction': {'c': 'reduction', 's': 'diva2:1880872', 'n': 'unnecessary hyphen'},
+    're-enforcing': {'c': 'reinforcing', 's': 'diva2:281929', 'n': 'unnecessary hyphen'},
+    'realisitic': {'c': 'realistic', 's': 'diva2:1888835', 'n': 'error in original'},
+    'realtionship': {'c': 'relationship', 's': 'diva2:556691', 'n': 'no full text'},
+    'recent-made': {'c': 'recently made', 's': 'diva2:1812798', 'n': 'error in original'},
+    'recomended': {'c': 'recommended', 's': 'diva2:545132', 'n': 'error in original'},
+    'recommondation': {'c': 'recommendation', 's': 'diva2:1139864', 'n': 'error in original'},
+    'refered': {'c': 'referred', 's': 'diva2:618564', 'n': 'no full text'},
+    'refered': {'c': 'referred', 's': 'diva2:1571111', 'n': 'error in original'},
+    'regressiong': {'c': 'regression', 's': 'diva2:1423684'},
+    'relativly': {'c': 'relatively', 's': 'diva2:787497', 'n': 'error in original'},
+    'repetability': {'c': 'repeatability', 's': 'diva2:408868', 'n': 'error in original'},
+    'requierements': {'c': 'requirements', 's': 'diva2:1040617', 'n': 'error in original'},
+    'reponse': {'c': 'response', 's': 'diva2:608438', 'n': 'error in original'},
+    'represet': {'c': 'represent', 's': 'diva2:1800343', 'n': 'correct in original'},
+    'respectivly': {'c': 'respectively', 's': 'diva2:1335361', 'n': 'error in original'},
+    'responsability': {'c': 'responsibility', 's': 'diva2:872192', 'n': 'error in original'},
+    'responsibles': {'c': 'responsible', 's': 'diva2:515843', 'n': 'error in original; Swinglish'},
+    'resut': {'c': 'result', 's': 'diva2:642353', 'n': 'correct in original'},
+    'retailors': {'c': 'retailers', 's': 'diva2:1222198', 'n': 'error in original'},
+    'rigourous': {'c': 'rigorous', 's': 'diva2:748282', 'n': 'error in original'},
+    'roughtnesses': {'c': 'roughnesses', 's': 'diva2:1528239', 'n': 'correct in original'},
+    'route-dependant': {'c': 'route-dependent', 's': 'diva2:846130', 'n': 'error in original'},
+    'rovice': {'c': 'provide', 's': 'diva2:1538389', 'n': 'correct in original'},
+    'rstly': {'c': 'firstly', 's': 'diva2:667759', 'n': 'missing ligature'},
+    'rstturbines': {'c':  'first turbines', 's': 'diva2:1078078', 'n': 'missing ligature'},
+    'rythms': {'c': 'rhythms', 's': 'diva2:1751466', 'n': 'error in original'},
+    'k}-means': {'c': 'k</em>-means', 's': 'diva2:1846355'},
+    '\\degree': {'c': '&deg;'},
+    '\\emph{': {'c': '<em>'},
+    '\\eta$': {'c': '&eta;'},
+    '\\kappa': {'c': '&kappa;'},
+    '\\lambda': {'c': '&lambda;'},
+    '\\leq': {'c': '&leq;'},
+    '\\partial': {'c': '&part;'},
+    '\\rightarrow': {'c': '&rightarrow;'},
+    'Booli}': {'c': 'Booli</em>', 's': 'diva2:1319781'},
+    'SST}': {'c': 'SST</em>', 's': 'diva2:1673875'}, 
 
 }
 
+
 junk={
-    'smoothdose-at-volume': {'B2': 'Noun Phrase'}, # Possible spelling error: 'smooth dose-at-volume' 
-    'solderjoint': {'B2': 'Noun'}, # Possible spelling error: 'solder joint'
-    'solitonequation': {'B2': 'Noun'}, # Possible spelling error: 'soliton equation'
-    'soundpressure': {'B2': 'Noun'}, # Possible spelling error: 'sound pressure' 
-    'soundtrading': {'B2': 'Noun'}, # Possible spelling error: 'sound trading'
-    'soundwave': {'B2': 'Noun'}, # Possible spelling error: 'sound wave'
-    'speci': {'B2': 'Noun'}, # Possible spelling error: 'specie'
-    'speci-men': {'B1': 'Noun'}, # Possible spelling error: 'specimen' 
-    'specic': {'B1': 'Adjective'}, # Possible spelling error: 'specific'
-    'specically': {'B1': 'Adverb'}, # Possible spelling error: 'specifically'
-    'specied': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'specified'
-    'specifc': {'B1': 'Adjective'}, # Possible spelling error: 'specific'
-    'specificaly': {'B1': 'Adverb'}, # Possible spelling error: 'specifically'
-    'speedsteady-state': {'B2': 'Noun Phrase'}, # Possible spelling error: 'speed steady-state'
-    'spinalfractures': {'B2': 'Noun (plural)'}, # Possible spelling error: 'spinal fractures'
-    'spinalimplants': {'B2': 'Noun (plural)'}, # Possible spelling error: 'spinal implants'
-    'spiroid': {'B2': 'Noun'}, # Possible spelling error: 'spiroid' - no clear suggestion
-    'splitted': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'split'
-    'spreaded': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'spread'
-    'ssion': {'B2': 'Noun'}, # Possible spelling error: 'fission'
-    'standardhöjning': {'B2': 'Noun'}, # Possible spelling error: 'standardhöjning' - no clear suggestion
-    'statiscally': {'B1': 'Adverb'}, # Possible spelling error: 'statistically'
-    'stellarstream': {'B2': 'Noun'}, # Possible spelling error: 'stellar stream'
-    'stirensulfonate': {'B2': 'Noun'}, # Possible spelling error: 'styrenesulfonate'
-    'storeduce': {'B2': 'Verb'}, # Possible spelling error: 'storeduce' - no clear suggestion
-    'stragy': {'B2': 'Noun'}, # Possible spelling error: 'strategy'
-    'strati': {'B2': 'Noun (plural)'}, # Possible spelling error: 'strata'
-    'stratigies': {'B1': 'Noun (plural)'}, # Possible spelling error: 'strategies'
-    'strenght': {'B1': 'Noun'}, # Possible spelling error: 'strength'
-    'striven': {'B1': 'Verb (past participle)'}, # Possible spelling error: 'strived'
-    'strucutral': {'B2': 'Adjective'}, # Possible spelling error: 'structural'
-    'strucutre': {'B1': 'Noun'}, # Possible spelling error: 'structure'
-    'stucture': {'B1': 'Noun'}, # Possible spelling error: 'structure'
-    'stuctures': {'B1': 'Noun (plural)'}, # Possible spelling error: 'structures'
-    'studiyng': {'B1': 'Verb (gerund)'}, # Possible spelling error: 'studying'
-    'studyLarge-Eddy': {'B2': 'Noun Phrase'}, # Possible spelling error: 'study Large-Eddy'
-    'sturctured': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'structured'
-    'stylised': {'B2': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'stylized'
-    'success-fully': {'B1': 'Adverb'}, # Possible spelling error: 'successfully'
-    'successfull': {'B1': 'Adjective'}, # Possible spelling error: 'successful'
-    'suctionwing': {'B2': 'Noun'}, # Possible spelling error: 'suction wing'
-    'suficient': {'B1': 'Adjective'}, # Possible spelling error: 'sufficient'
-    'supe-rior': {'B1': 'Adjective'}, # Possible spelling error: 'superior'
-    'superpositioning': {'B2': 'Noun'}, # Possible spelling error: 'superposition'
-    'superymmetry': {'B2': 'Noun'}, # Possible spelling error: 'supersymmetry'
-    'supression': {'B2': 'Noun'}, # Possible spelling error: 'suppression'
-    'surafce': {'B1': 'Noun'}, # Possible spelling error: 'surface'
-    'surrondings': {'B1': 'Noun (plural)'}, # Possible spelling error: 'surroundings'
-    'svårighetsmodellen': {'B2': 'Noun'}, # Possible spelling error: 'svårighetsmodellen' - no clear suggestion
-    'sweept': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'swept'
-    'swirlmotions': {'B2': 'Noun (plural)'}, # Possible spelling error: 'swirl motions'
-    'swopped': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'swapped'
-    'symmetricor': {'B2': 'Noun'}, # Possible spelling error: 'symmetric or' 
-    'symmetries—and': {'B2': 'Noun Phrase'}, # Possible spelling error: 'symmetries and'
-    'synhtesis': {'B2': 'Noun'}, # Possible spelling error: 'synthesis'
-    'systematisation': {'B2': 'Noun'}, # Possible spelling error: 'systematization'
-    'systemsize': {'B2': 'Noun'}, # Possible spelling error: 'system size'
-    'system—the': {'B2': 'Noun Phrase'}, # Possible spelling error: 'system, the'
 
-    'satises': {'B1': 'Verb (third-person present tense)'}, # Possible spelling error: 'satisfies'
-    'satisficingly': {'B2': 'Adverb'}, # Possible spelling error: 'satisfyingly'
-    'scaleability': {'B2': 'Noun'}, # Possible spelling error: 'scalability'
-    'scanltings': {'B2': 'Noun (plural)'}, # Possible spelling error: 'scantlings'
-    'scattnernet': {'B2': 'Noun'}, # Possible spelling error: 'scatternet'
-    'schapoid': {'B2': 'Noun'}, # Possible spelling error: 'scaphoid'
-    'scholls': {'B2': 'Noun (plural)'}, # Possible spelling error: 'shoals'
-    'sci': {'B2': 'Noun, Abbreviation'}, # Possible spelling error: 'sci' - no clear suggestion
-    'scienti': {'B1': 'Noun'}, # Possible spelling error: 'scientist'
-    'scientic': {'B1': 'Adjective'}, # Possible spelling error: 'scientific'
-    'secont': {'B1': 'Noun'}, # Possible spelling error: 'second'
-    'segways': {'B2': 'Noun (plural)'}, # Possible spelling error: 'segways' - no clear suggestion
-    'seism': {'B2': 'Noun'}, # Possible spelling error: 'seism' - no clear suggestion
-    'seldomely': {'B2': 'Adverb'}, # Possible spelling error: 'seldom'
-    'self-heatingfrom': {'B2': 'Noun Phrase'}, # Possible spelling error: 'self-heating from'
-    'self-organised': {'B2': 'Adjective (compound)'}, # Possible spelling error: 'self-organized' 
-    'self-su cient': {'B2': 'Adjective (compound)'}, # Possible spelling error: 'self-sufficient'
-    'semiemprical': {'B2': 'Adjective'}, # Possible spelling error: 'semiempirical'
-    'seminarif': {'B2': 'Noun'}, # Possible spelling error: 'seminar'
-    'separeted': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'separated'
-    'seperate': {'B1': 'Verb'}, # Possible spelling error: 'separate'
-    'sgnss': {'B2': 'Noun (plural)'}, # Possible spelling error: 'sgnss' - no clear suggestion
-    'shery': {'B2': 'Noun'}, # Possible spelling error: 'shery' - no clear suggestion
-    'shick': {'B2': 'Noun'}, # Possible spelling error: 'shick' - no clear suggestion
-    'shipdesign': {'B2': 'Noun'}, # Possible spelling error: 'ship design'
-    'shock­compression': {'B2': 'Noun Phrase'}, # Possible spelling error: 'shock compression'
-    'short,and': {'B2': 'Noun Phrase'}, # Possible spelling error: 'short, and'
-    'showa': {'B2': 'Noun, Abbreviation'}, #  Possible spelling error: 'showa' - no clear suggestion
-    'showes': {'B1': 'Verb (third-person present tense)'}, # Possible spelling error: 'shows'
-    'signcantly': {'B1': 'Adverb'}, # Possible spelling error: 'significantly'
-    'signicance': {'B1': 'Noun'}, # Possible spelling error: 'significance'
-    'signicant': {'B1': 'Adjective'}, # Possible spelling error: 'significant'
-    'signicantly': {'B1': 'Adverb'}, # Possible spelling error: 'significantly'
-    'signiffcantly': {'B1': 'Adverb'}, # Possible spelling error: 'significantly'
-    'simluate': {'B1': 'Verb'}, # Possible spelling error: 'simulate'
-    'simluations': {'B1': 'Noun (plural)'}, # Possible spelling error: 'simulations'
-    'simpli': {'B1': 'Verb'}, # Possible spelling error: 'simplify'
-    'simplications': {'B2': 'Noun (plural)'}, # Possible spelling error: 'simplifications
-    'simplicies': {'B2': 'Noun (plural)'}, # Possible spelling error: 'simplices'
-    'simplies': {'B1': 'Noun (plural)'}, # Possible spelling error: 'simplices'
-    'simplifications/assumptions': {'B2': 'Noun Phrase'},
-    'simulationns': {'B2': 'Noun (plural)'}, # Possible spelling error: 'simulations'
-
-'qualititative': {'B1': 'Adjective'}, # Possible spelling error: 'qualitative'
-'quantaties': {'B1': 'Noun (plural)'}, # Possible spelling error: 'quantities'
-'quanti': {'B2': 'Noun, Abbreviation'}, # Possible spelling error: 'quanti' - no clear suggestion
-'quantication': {'B1': 'Noun'}, # Possible spelling error: 'quantification'
-'quanties': {'B1': 'Noun (plural)'}, # Possible spelling error: 'quantities'
-'quanutum': {'B2': 'Noun'}, # Possible spelling error: 'quantum'
-'qubitunitary': {'B2': 'Noun'}, # Possible spelling error: 'qubit unitary'
-'questionniare': {'B1': 'Noun'}, # Possible spelling error: 'questionnaire'
-'randomally': {'B1': 'Adverb'}, # Possible spelling error: 'randomly'
-'rangle$': {'B2': 'Noun'}, # Possible spelling error: 'rangle' - no clear suggestion 
-'rankd': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'ranked'
-'rare-­earth': {'B2': 'Noun'}, # Possible spelling error: 'rare-earth'
-'rare­-earth': {'B2': 'Noun'}, # Possible spelling error: 'rare-earth'
-'ratev': {'B2': 'Noun, Abbreviation'}, # Possible spelling error: 'ratev' - no clear suggestion
-'raymuon': {'B2': 'Noun'}, # Possible spelling error: 'ray muon'
-'rayon-fibre': {'B2': 'Noun Phrase'}, # Possible spelling error: 'rayon fiber'
-'re-construction': {'B1': 'Noun'}, # Possible spelling error: 'reconstruction'
-'re-covery': {'B1': 'Noun'}, # Possible spelling error: 'recovery'
-'re-duction': {'B1': 'Noun'}, # Possible spelling error: 'reduction'
-'re-enforcing': {'B1': 'Verb (gerund)'}, # Possible spelling error: 'reinforcing'
-'realises': {'B1': 'Verb (third-person present tense)'}, # Possible spelling error: 'realizes'
-'realisitic': {'B1': 'Adjective'}, # Possible spelling error: 'realistic'
-'realtionship': {'B1': 'Noun'}, # Possible spelling error: 'relationship'
-'recent-made': {'B2': 'Adjective (compound)'}, # Possible spelling error: 'recently made'
-'recognises': {'B1': 'Verb (third-person present tense)'}, # Possible spelling error: 'recognizes'
-'recomended': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'recommended'
-'recommondation': {'B2': 'Noun'}, # Possible spelling error: 'recommendation'
-'reective': {'B2': 'Adjective'}, # Possible spelling error: 'reflective'
-'refered': {'B1': 'Verb (past tense), Verb (past participle)'}, # Possible spelling error: 'referred'
-'reglemente': {'B2': 'Noun, Adjective'}, # Possible spelling error: 'reglemente' - no clear suggestion 
-'regressiong': {'B2': 'Noun'}, # Possible spelling error: 'regression'
-'regriding': {'B2': 'Noun, Verb (gerund)'}, # Possible spelling error: 'regriding' - no clear suggestion
-'relaminarise': {'B2': 'Verb'}, # Possible spelling error: 're-laminate'
-'relativly': {'B1': 'Adverb'}, # Possible spelling error: 'relatively'
-'repetability': {'B2': 'Noun'}, # Possible spelling error: 'repeatability'
-'requierements': {'B1': 'Noun (plural)'}, # Possible spelling error: 'requirements'
-'reponse': {'B1': 'Noun'}, # Possible spelling error: 'response'
-'represet': {'B2': 'Verb'}, # Possible spelling error: 'represent'
-'reprofiled': {'B2': 'Verb (past tense), Verb (past participle)'},
-'respectivly': {'B1': 'Adverb'}, # Possible spelling error: 'respectively'
-'responsability': {'B2': 'Noun'}, # Possible spelling error: 'responsibility'
-'responsibles': {'B2': 'Noun (plural)'}, # Possible spelling error: 'responsibles' - no clear suggestion
-'resut': {'B1': 'Noun'}, # Possible spelling error: 'result'
-'retailors': {'B1': 'Noun (plural)'}, # Possible spelling error: 'retailers'
-'rigourous': {'B2': 'Adjective'}, # British spelling: 'rigorous'
-'riskparametrar': {'B2': 'Noun (plural)'}, # Possible spelling error: 'riskparametrar' - no clear suggestion
-'root-mean-square’-value': {'B2': 'Noun Phrase'}, # Possible spelling error: 'root-mean-square value'
-'rothalpy': {'B2': 'Noun'}, # Possible spelling error: 'enthalpy'
-'roughtnesses': {'B1': 'Noun (plural)'}, # Possible spelling error: 'roughnesses'
-'route-dependant': {'B2': 'Adjective (compound)'}, # Possible spelling error: 'route-dependent'
-'rovice': {'B2': 'Noun'}, # Possible spelling error: 'rovice' - no clear suggestion 
-'rstly': {'B1': 'Adverb'}, # Possible spelling error: 'firstly'
-'rstturbines': {'B2': 'Noun (plural)'}, # Possible spelling error: 'first turbines' 
-'rules”-method': {'B2': 'Noun Phrase'}, # Possible spelling error: 'rules-method'
-'rythms': {'B1': 'Noun (plural)'}, # Possible spelling error: 'rhythms'
 
     }

@@ -376,6 +376,13 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    '<em>h</em>',
+    '<em>v</em>',
+    '<span>rank-(<em>d</em>',
+    'BDM}$_1$-elements',
+    'BDM}-elements',
+    'BDM}_1',
+    '<sup>st</sup>',
     '<dt><em>x</em>',
     '<em>S</em>',
     '<em>p</em><sup>4</sup>',
@@ -799,7 +806,7 @@ prefix_to_ignore=[
     '=',
     #'>',
     '@',
-    '\\',
+    #'\\', # don't ignore these to keep LaTeX commands
     '`',
     '{',
     '|',

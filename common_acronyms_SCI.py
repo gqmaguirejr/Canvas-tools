@@ -324,6 +324,22 @@ well_known_acronyms_list=[
     ['IBM', 'Immersed Boundary Method', {'s': 'diva2:839832'}],
     ['VANS', 'Volume-Averaged</p><p>Navier-Stokes', {'s': 'diva2:839832'}],
     ['SNSPD', 'superconducting nanowire single photon detector', {'s': 'diva2:1571710'}],
-
+    ['CT', 'X-ray computed tomography', {'s': 'diva2:405436'}],
+    ['SEM', 'spectral element method', {'s': 'diva2:405436'}],
+    ['POD', 'Proper Orthogonal Decomposition', {'s': 'diva2:405436'}],
+    ['DMD', 'Dynamic Mode Decomposition', {'s': 'diva2:405436'}],
+    ['WIMPs', 'Weakly interactive massive particles', {'s': 'diva2:813471'}],
+    ['DM', 'dark matter', {'s': 'diva2:813471'}],
+    ['MSSM', 'minimal supersymmetric model', {'s': 'diva2:813471'}],
+    ['SUSY', 'supersymmetry', {'s': 'diva2:813471'}],
+    ['LSP', 'lightest supersymmetric particle', {'s': 'diva2:813471'}],
+    ['SCEs', 'solid composite electrolytes', {'s': 'diva2:1716282'}],
+    ['MPS', 'mesoporous silica', {'s': 'diva2:1716282'}],
+    ['SNP', 'nanosized silica powder', {'s': 'diva2:1716282'}],
+    ['ILE', 'Ionic Liquid electrolyte', {'s': 'diva2:1716282'}],
+    ['EIS', 'electrochemical impedance spectroscopy', {'s': 'diva2:1716282'}],
+    ['GB', 'Glovebox', {'s': 'diva2:1716282'}],
+    ['sgnss', 'Segment Container Carrier Sgns(s)', {'s': 'diva2:1057256', 'n': 'not speed out in the thesis , but the answer can be found from the URL in the first reference'}],
+    ['CDI', 'Capacitive Deionization', {'s': 'diva2:1571214'}],
 
 ]

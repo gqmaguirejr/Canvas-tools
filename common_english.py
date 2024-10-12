@@ -56597,6 +56597,36 @@ common_English_words={
     'system-device': {'B2': 'Noun Phrase'},
     'system-manufacturer': {'B2': 'Noun Phrase'},
     'systematics': {'B2': 'Noun (plural)'},
+    'spiroid': {'B2': 'Noun'}, # a shape resembling a spiral or helix -  used in diva2:1440647
+    'splitted': {'B1': 'Verb (past tense), Verb (past participle)'}, # archaic, generally replaced by 'split' - diva2:1714255
+    'striven': {'B1': 'Verb (past participle)'}, # used in diva2:660320
+    'stylised': {'B2': 'Verb (past tense), Verb (past participle)'}, # British English
+    'stylized': {'B2': 'Verb (past tense), Verb (past participle)'}, # American English
+    'superpositioning': {'B2': 'Noun'}, # used in diva2:1499840
+    'symmetries—and': {'B2': 'Noun Phrase'},
+    'systematisation': {'B2': 'Noun'},
+    'satisficingly': {'B2': 'Adverb'}, # used in diva2:902529
+    'scaleability': {'B2': 'Noun'}, # used in diva2:1596315 - also spelled 'scalability'
+    'segways': {'B2': 'Noun (plural)'},
+    'seism': {'B2': 'Noun'}, # see https://www.merriam-webster.com/dictionary/seism
+    'self-organised': {'B2': 'Adjective (compound)'},
+    'self-organized': {'B2': 'Adjective (compound)'},
+    'shock­compression': {'B2': 'Noun Phrase'},
+    'simplices': {'C1': 'Noun (plural)'},
+    'simplifications/assumptions': {'B2': 'Noun Phrase'},
+    'rayon-fibre': {'B2': 'Noun Phrase'},
+    'realises': {'B1': 'Verb (third-person present tense)'},
+    'realizes': {'B1': 'Verb (third-person present tense)'},
+    'recognises': {'B1': 'Verb (third-person present tense)'},
+    'recognizes': {'B1': 'Verb (third-person present tense)'},
+    'regriding': {'B2': 'Noun, Verb (gerund)'},
+    'relaminarise': {'B2': 'Verb'},
+    'relaminarize': {'B2': 'Verb'},
+    'reprofiled': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'retailors': {'B1': 'Noun (plural)'},
+    'root-mean-square’-value': {'B2': 'Noun Phrase'}, # used in diva2:1466860
+    'rothalpy': {'B2': 'Noun'}, # rotational stagnation enthalpy
+    'rules”-method': {'B2': 'Noun Phrase'},
 
     #end for SCI - SCIe
 }
@@ -67822,6 +67852,9 @@ company_and_product_names=[
     'Winteria®', # company - see diva2:1351779
     'LN Akustikmiljö AB', # company - see diva2:549788
     'Akustikmiljö', # company - see diva2:549788
+    'tsfresh', # library - see diva2:1473420
+    'TNG-50', # simulation project - see diva2:1569839
+
     #end for SCI - SCIc
 
 ]
