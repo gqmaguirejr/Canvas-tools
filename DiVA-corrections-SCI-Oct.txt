@@ -24,4 +24,7 @@ https://kth.diva-portal.org/smash/get/diva2:1900086/FULLTEXT01.pdf - the file
 will not open and it appears to have been truncated - as the usual PDF file
 ending is not present.
 ----------------------------------------------------------------------
-
+The full text fo diva2:1873390 
+https://kth.diva-portal.org/smash/get/diva2:1873390/FULLTEXT01.pdf
+seems to be blank pages - the file is truncated and cannot be repaired.
+----------------------------------------------------------------------

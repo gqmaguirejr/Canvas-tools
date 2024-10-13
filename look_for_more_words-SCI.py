@@ -376,6 +376,8 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    '<em>r<sub>ext</sub>est}}',
+    '<em>z</em>',
     '<em>h</em>',
     '<em>v</em>',
     '<span>rank-(<em>d</em>',
@@ -797,6 +799,8 @@ prefix_to_ignore=[
     ">",
     '#',
     '$',
+    '£',
+    '€',
     '%',
     '*',
     '+',
@@ -841,6 +845,8 @@ prefix_to_ignore=[
     '￼',
     '�',    
     "􀀀", # 'DATA LINK ESCAPE' (U+0010)
+    '«',
+
 ]
 
 suffix_to_ignore=[
@@ -872,12 +878,15 @@ suffix_to_ignore=[
     '\u200c', # ZERO WIDTH NON-JOINER' (U+200C)
     '\u200b', # ZERO WIDTH SPACE' (U+200B)
     '•',
+    '»',
+
 ]
 
-# milticharacter prefixs
+# multicharacter prefixs
 long_prefix_to_ignore=[
     '&gt;',
     '&lt;',
+    '&mdash;',
     '...',
 ]
 
@@ -889,11 +898,11 @@ long_suffix_to_ignore=[
 def remove_prefixes(w):
     if len(w) < 1:
         return w
-
+    #
     # leave in-line LaTeX (i.e., string of the form $xxx$
     if w[0] == '$' and len(w) >= 2 and not w[1].isdigit():
         return w
-        
+    #
     for lp in long_prefix_to_ignore:
         if w.startswith(lp):
             w=w[len(lp):]
@@ -1663,8 +1672,10 @@ def main():
             if w.endswith("..."):
                 w=w[:-3]
 
-
-            if w.endswith(',') or w.endswith(';') or  w.endswith('-') or\
+            # do not remoe HTML named chars
+            if w.endswith(',') or\
+               (w.endswith(';') and not w[0] == '&') or\
+               w.endswith('-') or\
                w.endswith('?') or w.endswith('!') or w.endswith('.') or w.endswith(':'):
                 w=w[:-1]
             if  w.endswith('“') or w.endswith("’") or w.endswith('”'):
@@ -1680,7 +1691,7 @@ def main():
                w.startswith("’") or w.startswith("%") or w.startswith(":") or w.startswith("("):
                 w=w[1:]
             # repeat these for once that were inside quotation marks
-            if w.endswith(',') or w.endswith(';') or  w.endswith('-') or\
+            if w.endswith(',') or (w.endswith(';') and not w[0] == '&') or  w.endswith('-') or\
                w.endswith('?') or w.endswith('!') or w.endswith('.') or w.endswith(':'):
                 w=w[:-1]
 
@@ -1853,6 +1864,7 @@ def main():
     #         words_with_IEC.append(w)
     # save_collected_words(words_with_IEC, 'IEC')
 
+    number_HTMLskipped=0
     words_with_chemical_formulas=[]
     #
     for w in unique_words:
@@ -1866,6 +1878,12 @@ def main():
         #
         w = unicodedata.normalize('NFC',w) #  put everything into NFC form - to make comparisons simpler; also NFC form is the W3C recommended web form
         #
+        # skip HTML named symbols, of the form: &xxxx;
+        if len(w) > 2:
+            if w[0] == '&' and w[-1] == ';':
+                number_HTMLskipped=number_HTMLskipped+1
+                continue
+                
         # these should all have been removed
         if w in words_to_ignore:
             number_skipped=number_skipped+1
@@ -2259,7 +2277,7 @@ def main():
             number_skipped=number_skipped+1
             continue
         #
-        # check for temrs like "FPGA-Based" if "FPGA-based" is in the dict()
+        # check for terms like "FPGA-Based" if "FPGA-based" is in the dict()
         if w.count('-') > 0:
             ws=w.split('-')
             new_wl=list()
@@ -2378,6 +2396,7 @@ def main():
     print(f'{len(words_not_found)} in words_not_found')
     #print(f'{words_not_found} in words_not_found')
     print(f'{number_skipped=}')
+    print(f'{number_HTMLskipped=}')
     print(f'{number_of_potential_acronyms=}')
     print(f'{count_fall_back_cases=}')
     #
