@@ -1616,7 +1616,7 @@ def main():
         if not entry:
             continue
         if not isinstance(entry, dict):
-            print(f'{entry=}')
+            print(f'{w=} {entry=}')
             continue
         actuaL_word=entry.get('c', False)
         if not actuaL_word:

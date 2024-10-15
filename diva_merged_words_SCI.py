@@ -7702,6 +7702,22 @@ merged_words={
     'By investigating',
     'By relating',
     'Photonic crystals',
-
+    'CAD model was',
+    'CFD model',
+    'CEASIOM, a',
+    "CERN’s Large",
+    'CGALs implementation',
+    'CGI cylinder',
+    'CL, max',
+    'CNES to',
+    'CNG is',
+    'Cessna 172',
+    'Chebyshev function',
+    'CorPower Ocean',
+    'Counting CT',
+    'CD spectra',
+    'Center in', # see diva2:1334020
+    'Coherence Tomography',
+    
 }
 

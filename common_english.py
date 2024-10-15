@@ -57261,6 +57261,92 @@ common_English_words={
     'Attention/Memory': {'B2': 'Noun Phrase'}, 
     'Q-score': {'B2': 'Noun Phrase'}, 
     'as-cast': {'B2': 'Adjective (compound)'},
+    'scotch': {'B1': 'Noun, Verb'},
+    'B-modules': {'B2': 'Noun Phrase'},
+    'B-plane': {'B2': 'Noun Phrase'},
+    'B-splines': {'B2': 'Noun Phrase'},
+    'BEMT-equations': {'B2': 'Noun Phrase'},
+    'BEMT-method': {'B2': 'Noun Phrase'},
+    'BEV-based': {'B2': 'Adjective (compound)'},
+    'BIC-test': {'B2': 'Noun Phrase'},
+    'BRIGADE/Plus': {'B2': 'Noun Phrase'},
+    'Banking-data': {'B2': 'Noun Phrase'},
+    'Bell-type': {'B2': 'Adjective (compound)'},
+    'S-Lay': {'B2': 'Noun Phrase'}, # theory to address drilling pipe lines
+    'Beam-Rotor': {'B2': 'Noun Phrase'},
+    'black­box': {'B1': 'Noun'},
+    'Blended-Wing-Body': {'B2': 'Noun Phrase'},
+    'Body-In-White': {'B2': 'Noun Phrase'}, # an unpainted car body
+    'Brachiocephalic': {'B2': 'Adjective'},
+    'Bragg-wavelength': {'B2': 'Noun Phrase'},
+    'Brezzi-Douglas-Marini-elements': {'B2': 'Noun Phrase'},
+    'Tomography-Angiography': {'B2': 'Noun Phrase'},
+    'C-Zero': {'B2': 'Noun Phrase'},
+    'C-operator': {'B2': 'Noun Phrase'},
+    'C-pillar': {'B2': 'Noun'},
+    'C-rail': {'B2': 'Noun Phrase'},
+    'C-wing': {'B2': 'Noun Phrase'},
+    'CAD-modeler': {'B2': 'Noun'},
+    'CAD-modelled': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'CAESES/FRIENDSHIP-Framework': {'B2': 'Noun Phrase'},
+    'CAPM-model': {'B2': 'Noun Phrase'},
+    'CETI-model': {'B2': 'Noun Phrase'},
+    'CFD-based': {'B2': 'Adjective (compound)'},
+    'CFD-code': {'B2': 'Noun Phrase'},
+    'CFD-model': {'B2': 'Noun Phrase'},
+    'CFD-simulations': {'B2': 'Noun Phrase'},
+    'CFD-solver': {'B2': 'Noun Phrase'},
+    'CNN-BiLSTM': {'B2': 'Noun Phrase'},
+    'CNN/Daily': {'B2': 'Noun Phrase'}, 
+    'CO2/kWh': {'B2': 'Noun Phrase'},
+    'CP-conserving': {'B2': 'Adjective (compound)'},
+    'CP-solvers': {'B2': 'Noun Phrase'},
+    'CP-violating': {'B2': 'Adjective (compound)'},
+    'CP-violation': {'B2': 'Noun Phrase'},
+    'CP-well-suited': {'B2': 'Adjective (compound)'},
+    'CT-A-based': {'B2': 'Adjective (compound)'},
+    'CT-number': {'B2': 'Noun Phrase'},
+    'CT-practice': {'B2': 'Noun Phrase'},
+    'Cache-blocked': {'B2': 'Adjective (compound)'},
+    'Car/Truck': {'B1': 'Noun Phrase'},
+    'Carlo-algorithm': {'B2': 'Noun Phrase'},
+    'Carlo-generated': {'B2': 'Adjective (compound)'},
+    'Carreau-law': {'B2': 'Noun Phrase'},
+    'Chain-Ladder': {'B2': 'Noun Phrase'},
+    'Chain-ladder': {'B2': 'Noun Phrase'},
+    'Chief/Deputy': {'B2': 'Noun Phrase'},
+    'Circular-Restricted-3-Body-Reference': {'B2': 'Noun Phrase'},
+    'Climate-Economy': {'B2': 'Noun Phrase'},
+    'ClustGeo-method': {'B2': 'Noun Phrase'},
+    'Compton-scatterings': {'B2': 'Noun (plural)'}, 
+    'Conductor-like': {'B2': 'Adjective (compound)'},
+    'Configuration-A': {'B2': 'Noun Phrase'},
+    'Configuration-B': {'B2': 'Noun Phrase'},
+    'Continuous-energy': {'B2': 'Adjective (compound)'},
+    'Core-collapse': {'B2': 'Noun Phrase'},
+    'Coriolis-accelerations': {'B2': 'Noun Phrase'},
+    'Cost-Quality-Delivery': {'B2': 'Noun Phrase'},
+    'CubeSat-sized': {'B2': 'Adjective (compound)'},
+    'CO2-taxes': {'B2': 'Noun Phrase'},
+    'CSP-polynomial': {'B2': 'Noun Phrase'},
+    'CSP-triple': {'B2': 'Noun Phrase'},
+    'certifying': {'B2': 'Verb (gerund), Verb (present participle)'},
+    'Centrale': {'B2': 'Noun'},
+    'centroidal': {'B2': 'Adjective'},
+    'circulant': {'B2': 'Adjective, Noun'},
+    'cislunar': {'B2': 'Adjective'},
+    'collapsible': {'B2': 'Adjective'},
+    'collectivity': {'B2': 'Noun'},
+    'contrarily': {'B2': 'Adverb'},
+    'convectivity': {'B2': 'Noun'},
+    'corpuscular': {'B2': 'Adjective'},
+    'countryman': {'B1': 'Noun'},
+    'cowardice': {'B2': 'Noun'},
+    'coyote': {'B1': 'Noun'},
+    'Gemcitabine': {'B2': 'Noun'},
+    'Carboplatin': {'B2': 'Noun'},
+    'Cytosine': {'B2': 'Noun'},
+    'Cu2O-sensors': {'B2': 'Noun Phrase'},
 
     #end for SCI - SCIe
 }
@@ -57511,6 +57597,12 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'Copper/Copper',
+    'Cr,Nb',
+    'Cr:YAG',
+    'Co-Fe',
+    'Cl/Cd',
+    'Cl2:Ar',
     'Al0.65Ga0.35As/GaAs',
     'Fe-10Cr-4Al',
     'Fe-Ni-Cr',
@@ -57896,6 +57988,7 @@ chemical_names_and_formulas=[
 ]
 
 common_urls=[
+    'JModelica.org',
     'futhead.com',
     'Flightradar24.com',
     'transfermarkt.co.uk',
@@ -59269,6 +59362,14 @@ place_names=[
     'Bosnia',
     'Bothnia',
     'Bremen',
+    'Bergeforsen', # dam in northern Sweden
+    'Gakgatla', # Botswana
+    'Campbeltown',
+    'Chicuque',
+    'La Guajira, Colombia',
+    'Colombia',
+    
+
 
 ]
 
@@ -62368,7 +62469,7 @@ company_and_product_names=[
     'Learnlib', # diva2:678847
     'Lector62x',
     'LeetCode',
-    'Lego',
+    'Lego', # company
     'Leica', # diva2:1045479
     'Leksell',
     'Lenet',
@@ -62775,7 +62876,7 @@ company_and_product_names=[
     'MindReader', # unsupervised classifier - diva2:1803636
     'MindWave',
     'Mindsition',
-    'Mindstorms',
+    'Mindstorms', # a Lgo product
     'Minecraft',
     'Minhash', # diva2:676130 - part of "Minhash Locality Sensitive Hashing (MinHash LSH)"
     'Mini-ROCKET',
@@ -68603,6 +68704,133 @@ company_and_product_names=[
     'DB Cargo', #    'Deutsche Bahn Cargo AG' - see diva2:1583459
     'Pipistrel Alpha Electro', # airplane - see diva2:1510573
     'Pipistrel', # company - see diva2:1510573
+    'Bangods', # good carried by rail model - see diva2:1289344
+    'Samgods', # general goods transport model - see diva2:1289344
+    'Greenely', # Swedish company - see diva2:864063
+    'Bdot', # acquistion mode for satellite de-orbit - see diva2:401124
+    'Bspin', # safe hold mode for satellite de-orbit - see diva2:401124
+    'HJM', # approach - see diva2:578792
+    'CellScales BioTester 5000', # - see diva2:1572684
+    'CellScales', # company - see diva2:1572684
+    'BioTester', # - see diva2:1572684
+    'Bioservo', # company - see diva2:839835
+    'Syntouch Biotac', # see diva2:1558807
+    'Syntouch', # company - see diva2:1558807
+    'Biotac', # a Syntouchproduct - see diva2:1558807
+    'Oldroyd-B', # fluid model - see diva2:526641
+    'FENE-P', # fluid model - see diva2:526641
+    'Botho', # University - see diva2:1689547
+    'Boulaware Deser ghost', # see diva2:1604711
+    'Boulaware Deser', # see diva2:1604711
+    'Boulaware', # see diva2:1604711
+    'Deser', # see diva2:1604711
+    'Boxster', # Porsche Boxster- see diva2:754040
+    "Bo’Bo",  # vehicle - see diva2:1263438
+    'PlatoonSim', # a simulator of autonomous vehicles - see diva2:1342449
+    'Braker', # and ECU module dof r calculating breaking -  diva2:1342449
+    'IfU', # department at RWTH - see diva2:516076
+    'TER BreizhGO', # an entiry of SNCF - see diva2:1546796
+    'TER', # an entiry of SNCF - see diva2:1546796
+    'BreizhGO', # an entiry of SNCF - see diva2:1546796
+    'Brekke &amp; Strand', # acoustic consultancy firm - see diva2:1465511
+    'Brekke', # part of "Brekke &amp; Strand" - acoustic consultancy firm - see diva2:1465511
+    'Strand', # part of "Brekke &amp; Strand" - acoustic consultancy firm - see diva2:1465511
+    'Brent', # oil - see diva2:1757046
+    'NYKCool', # company - see diva2:549800
+    'VM 8:an', # ski life at Åre ski resort - see diva2:1827834
+    'Sadelexpressen', # ski life at Åre ski resort - see diva2:1827834
+    'Bräckeliften',  # ski life at Åre ski resort - see diva2:1827834
+    'Corpower Ocean AB', # company - see diva2:901716
+    'Corpower', #  part of " CorpowerOcean AB" - company - see diva2:901716
+    'WaveSpring', # product of Corpower Ocean AB
+    'Buice and Eaton 2D diffuser', #  see diva2:1458913
+    'Buice', # part of "Buice and Eaton 2D diffuser" -  see diva2:1458913
+    'Eaton', # part of "Buice and Eaton 2D diffuser" -  see diva2:1458913
+    'Combat Boat 90H', # boat - see diva2:1440160
+    'Buster Magnum', # boat - see diva2:1440160
+    'Buster', # "Buster Magnum" boat - see diva2:1440160
+    'Butong AB', # company diva2:1263422
+    'Butong', # company diva2:1263422
+    'Bygghemma', # company - see diva2:1211258
+    'Bx', # term in equation at diva2:612264
+    'Inkonova Batonomous', #  system - see diva2:1298486
+    'Inkonova', #  company - see diva2:1298486
+    'Batonomous', #  Inkonova product - see diva2:1298486
+    'BATonomous', # BATonomous Moon cave Explorer (BAT-ME)  - see diva2:1298486
+    'Cessna', # company
+    'Callisto', # demonstrator - see diva2:1380181
+    'CannSeal', # sealing stand-alone tool - see diva2:866714
+    'AGR CannSeal AS', # Norwegian company - diva2:866714
+    'CarSim', # see diva2:783982
+    'CarMaker', # see diva2:783982
+    'CarRealTime', # see diva2:783982
+    'IPG CarMaker', # see diva2:783982
+    'VI-Grade CarRealTime', # see diva2:783982
+    'Carbo-Link', # 'Carbo-Link AG - company - diva2:1788396
+    'CasADi', # software - see diva2:743430
+    'SaberHarness', # part of Scania’s design environment - see diva2:1900919
+    'Catia V5', # part of Scania’s design environment - see diva2:1900919
+    'Catia', # part of Scania’s design environment - see diva2:1900919
+    'Catloc', # part of OPUS suite software - see diva2:877595
+    'Simlox', # part of OPUS suite software - see diva2:877595
+    'OPUS10', # OPUS suite software - see diva2:877595
+    'Cboe VIX', # a measure of volatility - see diva2:1450575
+    'Cboe', # a measure of volatility - see diva2:1450575
+    'MV Cemfjord', # ship - see diva2:1759262
+    'Cemfjord', # ship - see diva2:1759262
+    'Centaurus X-3', # Cen X-3 binary system - see diva2:1879359
+    'Cen X-3', # 'Centaurus X-3'  binary system - see diva2:1879359
+    'Cen', # 'Centaurus X-3'  binary system - see diva2:1879359
+    'X-3', # 'Centaurus X-3'  binary system - see diva2:1879359
+    'Proxima Centauri', # diva2:1546116
+    'Centauri', # diva2:1546116
+    'Proxima', # diva2:1546116
+    'Cesàro', # filter - see diva2:1780561
+    'Lanczos',# filter - see diva2:1780561
+    'Chaboche', # model diva2:1639715
+    'Zorflex FM10 Chemivron', # activated carbon - see diva2:1679050
+    'Chemivron', # activated carbon - see diva2:1679050
+    'Choquet', # company - see diva2:508575
+    'Citadis', # Alstom trams - see diva2:1207002
+    'Clyde', # Clyde Space Ltd - company - see diva2:1255170
+    'Cobra', # Cobra Probe, a dynamic multi-hole pressure probe - see diva2:1111155
+    'Pula', # Botswanan currency - see diva2:1213813
+    'Code2Vec', # embedding - see diva2:1656357
+    'cuBERT', #  models - see diva2:1656357
+    'Colbeam', # Colbeam EC3 is a beam and column program - see diva2:1794954
+    'Singlet-scalar', #Electroweak Singlet-scalar ($S$) - see diva2:1577999
+    'Higgs-boson', # Higgs-boson ($H$) - see diva2:1577999
+    'Higgs-portal', # Higgs-portal mechanism - see diva2:1577999
+    'Dark-scalar', # Dark-scalar singlet - see diva2:1577999
+    'Higgs-Dark', # scalar coupling $k$ - see diva2:1577999
+    'Comae', # X Comae Berenices - an variable active galaxy - see diva2:1436867
+    'Coman-trade', # a specific 35 days trade involving 8 ports - see diva2:796751
+    'Crown', # Crown class specialized reefer ships - see diva2:796751
+    'ClassNK', # brand name for Nippon Kaiji Kyokai classification society - see diva2:796751
+    'Commun. Math. Phys.', # abbreviation for the journal 'Communications in Mathematical Physics' - see diva2:818366
+    'Commun.', # abbreviation for 'Communications' - see diva2:818366
+    'Math.', # abbreviation for Mathematical - see diva2:818366
+    'Phys.', # abbreviation for the Physics - see diva2:818366
+    'Converged-CFD', # software - see diva2:1083220 and https://convergecfd.com/
+    'Copluas', # simulator - see diva2:1795154
+    'TRACE', # reactor code models - see diva2:447164
+    'PWR PACTEL', # test facility - see diva2:447164 and https://atomi.lut.fi/eds/Info/General/pwr_pactel/default.htm
+    'PACTEL', # test facility - see diva2:447164 and https://atomi.lut.fi/eds/Info/General/pwr_pactel/default.htm
+    'Corep', # COREP - the standardized reporting framework issued by the European Banking Authority (EBA) for the Capital Requirements Directive reporting - see diva2:726205
+    'Corps', # part of "Amphibious Corps." - see diva2:1440160
+    'Couette', # a type of flow - see diva2:1372261
+    'Moraberg AB', # company - see diva2:1655382
+    'Moraberg', # company - see diva2:1655382
+    'Crab Pulsar', # see diva2:1229898
+    'Crab', #  Pulsar - see diva2:1229898
+    'NuSTAR X-ray telescope', # see diva2:1229898
+    'CsCsHM', # test statistic - see diva2:1514599 and diva2:1116990
+    'CubeSub', # a submersible testbed with the CubeSat form factor - see diva2:1057226
+    'Cunni velocity', # see diva2:917942
+    'CyberKnife', # Accuray's product - see diva2:1832739
+    'CyberKnife®', # Accuray's product - see diva2:1832739
+    'CIBot', # agent - uses Montecarlo tree search for to find the best path - see diva2:1229050
+
     #end for SCI - SCIc
 
 ]
@@ -73495,10 +73723,97 @@ names_of_persons=[
     'Podolsky',
     'Planck',
     'Poincaré',
-
-
-
-
+    'Bai',
+    'Phuong',
+    'Bao',
+    'BarabsiAlbert',
+    'Bara´basi-Albert',
+    'Zico',
+    'Kotler',
+    'Batra',
+    'Baur',
+    'Belcher',
+    'Belenchia',
+    'Bohr',
+    'Benedicks',
+    'Benford',
+    'Benhamou',
+    'Koehler',
+    'Benzi',
+    'Berenger',
+    'Roe',
+    'Boffeta',
+    'Poiseuille',
+    'Boettcher',
+    'Schrödinger',
+    'Bogoliubov',
+    'Bogolyubov',
+    'Bohm',
+    'Bokrantz',
+    'Box-Cox',
+    'Box-Jenkins',
+    'Box-design',
+    'Bolancé',
+    'Bouchaud',
+    'Kyle',
+    'Kármán',
+    'Busch',
+    'Fierz',
+    'Vainshtein',
+    'Bourgeois',
+    'Brall',
+    'Bregman',
+    'Breguet',
+    'Bretschneider',
+    'Brita',
+    'Melén',
+    'Holtrop',
+    'Mennen',
+    'Broadie',
+    'Detemple',
+    'Ikonen',
+    'Toivanen',
+    'Bruggeman',
+    'Strandroth',
+    'Brüde)',
+    'Falnes',
+    'Budal',
+    'Hals',
+    'Todalshaug',
+    'Bullinaria',
+    'Caron',
+    'Bäcklund',
+    'Brüde',
+    'Calinski-Harabasz',
+    'Caetano',
+    'Komatsu',
+    'Calvet',
+    'Canton',
+    'Cantor',
+    'Caralong',
+    'Carhart',    
+    'Righi',
+    'Ceretta',
+    'Tjernberg',
+    'Zomorodian',
+    'Chachólski',
+    'Chan-Darwiche',
+    'Chandra',
+    'Chang-Chang',
+    'Chenney',
+    'Cherenkov',
+    'Chern',
+    'Chevalier',
+    'Chlebek',
+    'Cirac',
+    'Cochrane-Orcutt',
+    'Maxwell-Boltzmann',
+    'Coleman',
+    'Exner',
+    'Costabel',
+    'Kawata',
+    'Curie',
+    'Cunni',
 ]
 
 common_french_words={
@@ -73512,6 +73827,7 @@ common_french_words={
     'Appliqué': {'B1': 'Noun', 'B2': 'Adjective'},
     'Atmosphérique': {'B1': 'Adjective'},
     'Besoins': {'A2': 'Noun (plural)'},
+    'Biologie': {'B1': 'Adjective'},
     'Biosphère': {'B1': 'Noun'},
     'Centre': {'A1': 'Noun'},
     'Chemins': {'A2': 'Noun'},
@@ -73532,6 +73848,7 @@ common_french_words={
     'Fonctionnement': {'B2': 'Noun'},
     'Goéland': {'B2': 'Noun'},
     'Identification': {'B2': 'Noun'},
+    'Institute': {'A2': 'Noun'},
     'Laboratoire': {'B1': 'Noun'},
     'Matière': {'B1': 'Noun'},
     'Montrealais': {'C1': 'Noun'},
@@ -73542,6 +73859,7 @@ common_french_words={
     'Réseaux': {'B2': 'Noun'},
     'Soufflé': {'A2': 'Noun'},
     'Spatiales': {'B2': 'Adjective (plural)'},
+    'Structurale': {'B1': 'Noun'},
     'Système': {'B1': 'Noun'},
     'Systèmes': {'B1': 'Noun'},
     'Sécurité': {'B2': 'Noun'},
