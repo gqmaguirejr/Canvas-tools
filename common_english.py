@@ -57347,6 +57347,126 @@ common_English_words={
     'Carboplatin': {'B2': 'Noun'},
     'Cytosine': {'B2': 'Noun'},
     'Cu2O-sensors': {'B2': 'Noun Phrase'},
+    'D-league': {'B2': 'Noun Phrase'},
+    'D/E-ratio': {'B2': 'Noun Phrase'},
+    'DAQ-module': {'B2': 'Noun Phrase'},
+    'DCA-inference': {'B2': 'Noun Phrase'},
+    'DCB-specimen': {'B2': 'Noun Phrase'},
+    'DIC-analyse': {'B2': 'Verb'},
+    'DIC-analyses': {'B2': 'Noun (plural)'},
+    'DNS-code': {'B2': 'Noun Phrase'},
+    'DNS-data': {'B2': 'Noun Phrase'},
+    'DNV-formula': {'B2': 'Noun Phrase'},
+    'DNV-rules': {'B2': 'Noun Phrase'},
+    'DNV-standard': {'B2': 'Noun Phrase'},
+    'DNV-yield': {'B2': 'Noun Phrase'},
+    'DOS-Score': {'B2': 'Noun Phrase'},
+    'DOS-score': {'B2': 'Noun Phrase'},
+    'DVH-based': {'B2': 'Adjective (compound)'},
+    'Decoy-State': {'B2': 'Noun Phrase'},
+    'Define-Realize-Analyze-Control': {'B2': 'Noun Phrase'},
+    'Delta-hedging': {'B2': 'Noun Phrase'},
+    'Demonstrator-Alpha': {'B2': 'Noun Phrase'},
+    'Deutsche-Aktien-Index': {'B2': 'Noun Phrase'},
+    'Dirichlet-multinomial': {'B2': 'Adjective (compound)'},
+    'Dirichlet-to-Neumann': {'B2': 'Noun Phrase'},
+    'Double-Cantilever': {'B2': 'Noun Phrase'},
+    'Driver-in-Loop': {'B2': 'Noun Phrase'},
+    'JAXA-lead': {'B2': 'Noun Phrase'},
+    'Departure-Sensitive': {'B2': 'Adjective (compound)'},
+    'Depressurised': {'B2': 'Verb (past tense), Verb (past participle)'}, # British English
+    'Diagonally': {'B1': 'Adverb'},
+    'Diffusion/Growth': {'B2': 'Noun Phrase'},
+    'dramatization': {'B2': 'Noun'},
+    'Dutch-roll': {'B2': 'Noun Phrase'},
+    'E-boost': {'B2': 'Noun Phrase'},
+    'E-drives': {'B2': 'Noun Phrase'},
+    'E-fleet': {'B2': 'Noun Phrase'},
+    'E-glass': {'B2': 'Noun Phrase'},
+    'E-wave': {'B2': 'Noun Phrase'},
+    'EBIT-margin': {'B2': 'Noun Phrase'},
+    'EBITDA-margin': {'B2': 'Noun Phrase'},
+    'ECCS-models': {'B2': 'Noun Phrase'},
+    'ECM-mimicking': {'B2': 'Adjective (compound)'},
+    'ECSS-Design': {'B2': 'Noun Phrase'},
+    'EDS-analysis': {'B2': 'Noun Phrase'},
+    'ELM-space': {'B2': 'Noun Phrase'},
+    'EM-algorithm': {'B2': 'Noun Phrase'},
+    'EOQ-model': {'B2': 'Noun Phrase'},
+    'ESG-factors': {'B2': 'Noun Phrase'},
+    'ESG-profiles': {'B2': 'Noun Phrase'},
+    'ESG-reporting': {'B2': 'Noun Phrase'},
+    'ESG-risk': {'B2': 'Noun Phrase'},
+    'ESG-to-variability': {'B2': 'Noun Phrase'},
+    'EU-common': {'B2': 'Adjective (compound)'},
+    'EU-legislation': {'B2': 'Noun Phrase'},
+    'EU-project': {'B2': 'Noun Phrase'},
+    'EU-projects': {'B2': 'Noun Phrase'},
+    'EV/EBIT-multiple': {'B2': 'Noun Phrase'},
+    'EV/EBITDA-multiple': {'B2': 'Noun Phrase'},
+    'EV/Sales': {'B2': 'Noun Phrase'},
+    'EVT-tails': {'B2': 'Noun Phrase'},
+    'Error-Reduction': {'B2': 'Noun Phrase'},
+    'Euler-scheme': {'B2': 'Noun Phrase'},
+    'Earth-like': {'B2': 'Adjective (compound)'},
+    'Earthly': {'B1': 'Adjective'},
+    'eigenstate': {'B2': 'Noun'},
+    'elastoviscoplastic': {'B2': 'Adjective'},
+    'Euro-U.S': {'B2': 'Noun Phrase'}, 
+    'eurocopter': {'B2': 'Noun'},
+    'europeans': {'B1': 'Noun (plural)'},
+    'Eye-Sat': {'B2': 'Noun Phrase'},
+    'eyepieces': {'B1': 'Noun (plural)'},
+    'crushtest': {'B2': 'Noun'},
+    'droptest': {'B2': 'Noun'},
+    'F-centric': {'B2': 'Adjective (compound)'},
+    'F-statistics': {'B2': 'Noun Phrase'},
+    'FAT-curves': {'B2': 'Noun Phrase'},
+    'FBP-based': {'B2': 'Adjective (compound)'},
+    'FDR-derived': {'B2': 'Adjective (compound)'},
+    'FE-analyses': {'B2': 'Noun (plural)'},
+    'FE-analysis': {'B2': 'Noun'},
+    'FE-arm': {'B2': 'Noun Phrase'},
+    'FE-code': {'B2': 'Noun Phrase'},
+    'FE-computations': {'B2': 'Noun (plural)'},
+    'FE-contacts': {'B2': 'Noun Phrase'},
+    'FE-modeling': {'B2': 'Noun'}, # US spelling
+    'FE-modelling': {'B2': 'Noun'}, # British spelling
+    'FE-simulation': {'B2': 'Noun Phrase'},
+    'FE-simulations': {'B2': 'Noun (plural)'},
+    'FE-software': {'B2': 'Noun Phrase'},
+    'FEA-model': {'B2': 'Noun Phrase'},
+    'FEA-models': {'B2': 'Noun Phrase'},
+    'FEM-analysis': {'B2': 'Noun Phrase'},
+    'FEM-implementations': {'B2': 'Noun (plural)'},
+    'FEM-model': {'B2': 'Noun Phrase'},
+    'FEM-models': {'B2': 'Noun Phrase'},
+    'FEM-program': {'B2': 'Noun Phrase'},
+    'FEM-programme': {'B2': 'Noun Phrase'}, # British spelling
+    'FEM-programs': {'B2': 'Noun (plural)'},
+    'FEM-simulation': {'B2': 'Noun Phrase'},
+    'FEM-software': {'B2': 'Noun Phrase'},
+    'FISST-concept': {'B2': 'Noun Phrase'},
+    'FLRW-model': {'B2': 'Noun Phrase'},
+    'FLRW-solutions': {'B2': 'Noun Phrase'},
+    'FMCG-companies': {'B2': 'Noun Phrase'},
+    'FMCG-company': {'B2': 'Noun Phrase'},
+    'FRF-function': {'B2': 'Noun Phrase'},
+    'FRP-materials': {'B2': 'Noun Phrase'},
+    'FRP-suitable': {'B2': 'Adjective (compound)'},
+    'FTE-value': {'B2': 'Noun Phrase'},
+    'FTIR-measurements': {'B2': 'Noun Phrase'},
+    'FTIR-spectrum': {'B2': 'Noun Phrase'},
+    'FX-currencies': {'B2': 'Noun Phrase'},
+    'FX-market': {'B2': 'Noun Phrase'},
+    'Favre-averaged': {'B2': 'Adjective (compound)'},
+    'Fe-diffusion': {'B2': 'Noun Phrase'},
+    'Feedback-theory': {'B2': 'Noun Phrase'},
+    'Fenton-like': {'B2': 'Adjective (compound)'},
+    'Flapped-wing': {'B2': 'Noun Phrase'},
+    'Fourier-method': {'B2': 'Noun Phrase'},
+    'Full-Field': {'B2': 'Noun Phrase'} ,
+    'FNO-based': {'B2': 'Adjective (compound)'},
 
     #end for SCI - SCIe
 }
@@ -59368,7 +59488,7 @@ place_names=[
     'Chicuque',
     'La Guajira, Colombia',
     'Colombia',
-    
+    'Herzegovina',
 
 
 ]
@@ -68622,6 +68742,7 @@ company_and_product_names=[
     'Enter Fonder', # diva2:1055187
     'Fonder', # company - Enter Fonder - diva2:1055187
     'Fukushima-Daiichi ', # nuclear power plant - see diva2:1888179
+    'Fukushima-Daiichi',
     'ArcelorMittal', # company - see 'ArcelorMittal',
     'ArianeGroup', # company
     'ArianeWorks', # company
@@ -68782,6 +68903,7 @@ company_and_product_names=[
     'Cen X-3', # 'Centaurus X-3'  binary system - see diva2:1879359
     'Cen', # 'Centaurus X-3'  binary system - see diva2:1879359
     'X-3', # 'Centaurus X-3'  binary system - see diva2:1879359
+    'Centaurus', # 'Centaurus X-3'  binary system - see diva2:1879359
     'Proxima Centauri', # diva2:1546116
     'Centauri', # diva2:1546116
     'Proxima', # diva2:1546116
@@ -68830,6 +68952,102 @@ company_and_product_names=[
     'CyberKnife', # Accuray's product - see diva2:1832739
     'CyberKnife®', # Accuray's product - see diva2:1832739
     'CIBot', # agent - uses Montecarlo tree search for to find the best path - see diva2:1229050
+    'Correli 3.0', # Digital Volume Correlation method - see diva2:1903490
+    'Correli', # Digital Volume Correlation method - see diva2:1903490
+    'CGAL', # CGAL - see diva2:515607
+    'DASYLab', # software - diva2:14161
+    'DICE2016R2', # model - see diva2:1818051
+    'Dai-ichi', # see diva2:447049
+    'Dakota', # optimization platform - see diva2:1896066
+    'Datscha', # a commercial market information provider - see diva2:1446594
+    'DeV17', # KTH Formula Student's vehicle - see diva2:1778751
+    'DeV18', # KTH Formula Student's vehicle - see diva2:1778751
+    'DeepCore', # Cherenkov detectors - see diva2:1626655
+    'IceCube',  # Cherenkov detectors - see diva2:1626655
+    'PINGU', # proposed upgraqde to DeepCore - see diva2:1626655
+    'IFGM', # adversarial method - diva2:1342233
+    'DeepFool', # adversarial method - diva2:1342233
+    'DeepHit', # risk model - see diva2:1720698
+    'RCC', # an 8 mm high by 8 mm wide cylidrical projectile - see diva2:561774
+    'Phobos', # Martian Moon - see diva2:1465554
+    'Deimos', # Martian Moon - see diva2:1465554n
+    'Delft-Tire', # program for tire modelling - see diva2:846168
+    '∆TOF', # change in the time of flight - see diva2:1576919
+    'DeltaX', # metric used in diva2:783982
+    'Diab', #Diab AB - company - see diva2:1356885
+    'Dial-a-Ride-Problem', # see diva2:1115346
+    'Digerator',# a device used in §3.3.1 of diva2:956397
+    'DirEdgeConv', # Edge Convolutions - see diva2:1320133
+    'DirSplineConv', #  see diva2:1320133
+    'Dirlik', # a semi-emperical method - see diva2:1360702
+    'Dockstavarvet', # company - see diva2:1183380
+    'DropSat', # project - see diva2:1595637
+    'Dometic', # group - a company - see diva2:1332609
+    'Dometics', # possessive for of name - see diva2:1332609
+    'Domineering', # game - see diva2:729112
+    'Domineerings', # game - see diva2:729112
+    'Duffryn', # part of "Powell Duffryn Rail" - see diva2:1852460
+    'Dufour',# Dufour Aerospace - see diva2:1292412
+    'DuraSense®', # sdustainable biocomposite - see diva2:1677530
+    'Durst', # criteria - see diva2:1279822
+    'Dyck', # path - see diva2:820906
+    'Dyneema', # fiber composite - see diva2:866655
+    'DynoTRAIN', # measurement campaign - see diva2:550442
+    "D’Italia", # part of "Rally D’Italia" - see diva2:503320
+    'Excel®', # software
+    'Europlexus', # software developed by the CEA (Commissariat a l'Energie Atomique) - see diva2:839851
+    'Eurostoxx50', # Index - see diva2:1795589
+    'Euromonitor', # part of "Bloomberg Intelligence and Euromonitor" - see diva2:1083779
+    'Esso Osaka', # ship - see iva2:1183319
+    'Esso', # part of "Esso Osaka" - ship - see iva2:1183319
+    'Eurocode', # design codes - see ['diva2:430650', 'diva2:491776', 'diva2:618335']
+    'Eurocodes', # design code- see diva2:441454
+    'E5-2630v2', # Intel Xeon processor - see diva2:818343
+    'ECadherin', # junciton protein - see diva2:1577149
+    'Easterlin paradox', # see diva2:1210790
+    'Ecolometer', # Volvo sales-tool - see diva2:1505242
+    'Basel Pillar II capital', # see diva2:1212110
+    'EcosimPro', # software - see diva2:656449
+    'Glicko rating system', # see diva2:940690
+    'Glicko', # see diva2:940690
+    'EduPack', # software - part of "Ansys Granta EduPack" - see diva2:1800339
+    'Theorema Egregium', # Latin for "Remarkable Theorem" - diva2:1334765
+    'Theorema', # diva2:1334765
+    'Egregium', # diva2:1334765
+    'Eikon', # Refinitiv’s program - see diva2:1757074
+    'Orbis', # Bureau van Dijk’s program - see diva2:1757074
+    'Elba', # student project at KTH - see diva2:757156
+    'EdQu', # company - see diva2:940690
+    'Ellipsys3D', # CDF fluid solver- see diva2:609092
+    'Emrax', # Slovenian electric aircraft engine manufacturer - company - see diva2:818293
+    'Mälaren Hästklinik AB', # company - see diva2:849693
+    'Havsfonden', # ESG fund - see diva2:1849108
+    'Envisat', # non operating satellite - see diva2:812509
+    'Episurf Medical', # company - see diva2:1574783
+    'Episealers', # patient-specific implants from Episurf  - see diva2:1574783
+    'Nakashima Propeller Co.', # company - see diva2:920001
+    'Epolam', # Epolam 5015 resin - see diva2:920001
+    'FoilCart', # small passanger vessel - see diva2:1737350
+    'Eppler', # 'Eppler E836' hydrofoil - company - see diva2:1737350
+    'ZPARQ', # company - see diva2:1737350
+    'Erlang-2', # distribution rate - see diva2:1204650
+    'Essity', # Swedish company - see diva2:1781274
+    'Sinch', # Swedish company - see diva2:1781274
+    'A32', # a light rail vehcicle - see diva2:1357359
+    'Fama-MacBeth', # procedure - see diva2:1431618
+    'Free-To-Play', # industry - see diva2:1720705
+    'FEniCS-HPC', # software - see diva2:1282827
+    'F_Top_300-scores', # "a measure indicating the amount of relevant images retrieved among the top 300 recommended images" - see diva2:1720668
+    'Ffowcs-Williams', # part of 'Ffowcs-Williams Hawkings acoustic analogy' - see diva2:1680206 and diva2:1057181
+    'FtsZ-ring', # concerns FtsZ protein - see diva2:1764258
+    'F1gen', # truck silencer model CAS1 F1gen - see diva2:1737474
+    'FINEŠ/Marine', # software package - see diva2:1359848
+    'FaStrip', # a combination of FASTSIM and Strip theory - see diva2:1263438
+    'Femfat', # gradient adjusted method see diva2:1639715
+    'Fenestron', # trademark of Airbus Helicopters - see diva2:652356
+    'FiberLab', # a machine made by PTS (Papiertechnische Stiftung) - see diva2:866819
+    'FinCCI', # software - see diva2:433851
+    'FloMaster', # modeling software - see diva2:1808437
 
     #end for SCI - SCIc
 
@@ -73726,8 +73944,7 @@ names_of_persons=[
     'Bai',
     'Phuong',
     'Bao',
-    'BarabsiAlbert',
-    'Bara´basi-Albert',
+    'Barábasi-Albert',
     'Zico',
     'Kotler',
     'Batra',
@@ -73814,6 +74031,78 @@ names_of_persons=[
     'Kawata',
     'Curie',
     'Cunni',
+    'Felkeland',
+    'Obdrzalek',
+    'Donadi-Hossenfelder',
+    'Drossel-Schwabl',
+    'Drucker-Prager',
+    'Dirac-Majorana',
+    'Dick-Nielsen',
+    'Dickson',
+    'Lagrangian',
+    'Dabney',
+    'Dalio',
+    'Dantzig-Wolfe',
+    'Delany‐Bazley',
+    'Delin',
+    'Derrida',
+    'Gingold',
+    'Lobb',
+    'Desyst',
+    'Parl',
+    'How',
+    'Dimopoulos',
+    'Dizier', # Aatually St. 'Dizier',
+    'Dvali',
+    'Dubrana',
+    'Turnbull',
+    'Lando',
+    'Dupire',
+    'Dynkin',
+    'Dyson',
+    "D’Amico",
+    'Eyring',
+    'Ewald',
+    'Eulerian',
+    'Tveit',
+    'Mendelson',
+    'Rauhut',
+    'Eady',
+    'Easterlin',
+    'Eliashberg',
+    'Ellis',
+    'Embrechts',
+    'Enblom',
+    'Enger',
+    'Håkan',
+    'Hölder',
+    'Nakashima',
+    'Eppinger',
+    'Fermi-Pasta-Ulam-Tsingou',
+    'Fatemi-Socie',
+    'Faber',
+    'Faisst',
+    'Moehlis',
+    'Faleskog',
+    'Kroon',
+    'Faradaic',
+    'Faltings',
+    'Fatna',
+    'Federico',
+    'Feinstein',
+    'Thapa',
+    'Feix',
+    'Fejér',
+    'Feldhütter',
+    'Ferdian',
+    'Ferguson',
+    'Feshbach',
+    'Findley',
+    'Finnveden',
+    'Flagser',
+    'Flettner',
+    'Floquet',
+    
 ]
 
 common_french_words={
@@ -73923,6 +74212,7 @@ common_french_words={
 common_danish_words=[
     'Aktieselskab',
     'A/S', # Abbreviation for Aktieselskab
+    'Danske',
     'Kulge',
     'Selskabs',
     'Skrifter',
@@ -74012,10 +74302,12 @@ common_italian_words=[
 
 common_latin_words=[
     'Communitatis',
+    'Egregium',
     'Europeae',
     'Gambusia', #     'Gambusia affinis',
     'Nota',
     'Salmo', # salmon - diva2:817628 - Salmo salar L. and Salmo trutta L.
+    'Theorema',
     'ab',
     'ad', # ad hoc
     'ad-hoc',

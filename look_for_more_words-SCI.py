@@ -376,6 +376,19 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    '&Delta;',
+    '&isinv;',
+    '&mdash;',
+    '<em>E</em>[sup<em><sub>t&isinv;T</sub></em>',
+    '<em>X<sub>1</sub>,...,X<sub>m</sub></em>',
+    '<em>X<sub>t</sub></em>]',
+    '<em>k[x,y]/k[x,y]/k</em></sub><sup>2</sup>',
+    'Quot<sub>⊕<sup>2</sup>',
+    'data-classname=\'equation\'',
+    'data-title=\'\''
+    'src=\'http://www.diva-portal.org/cgi-bin/mimetex.cgi?%5Cwidehat%7BErr%7D\'',
+    '[0.05,0.5]$',
+    'Cl<sup>-</sup>',
     '<em>r<sub>ext</sub>est}}',
     '<em>z</em>',
     '<em>h</em>',
