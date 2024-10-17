@@ -7755,8 +7755,20 @@ merged_words={
     'Frenet frame',
     'FNO-based model',
     'The difficulty',
-
-
-
+    'George Lakoff',
+    'GRB emission',
+    'GPa and',
+    'G \\end{align*} gives',
+    'GaAs quantum',
+    'Gas Chromatography',
+    'Generic data',
+    'HDPE supported',
+    'HVAC-R technician',
+    'Here the',
+    'Hällered Proving',
+    'I and',
+    'Heat Pump',
+    'GDP per',
+    
 }
 

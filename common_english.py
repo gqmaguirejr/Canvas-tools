@@ -57467,7 +57467,63 @@ common_English_words={
     'Fourier-method': {'B2': 'Noun Phrase'},
     'Full-Field': {'B2': 'Noun Phrase'} ,
     'FNO-based': {'B2': 'Adjective (compound)'},
-
+    'fractionally': {'B2': 'Adverb'},
+    'HC-fusion': {'B2': 'Noun Phrase'},
+    'G-center': {'B2': 'Noun Phrase'},
+    'G-centers': {'B2': 'Noun Phrase'},
+    'G-forces': {'B2': 'Noun Phrase'},
+    'G-vectoring': {'B2': 'Noun'},
+    'GA-lignin': {'B2': 'Noun Phrase'},
+    'GA-lignin-based': {'B2': 'Adjective (compound)'},
+    'GA-lignin/PEGDE': {'B2': 'Noun Phrase'},
+    'GARCH-estimated': {'B2': 'Adjective (compound)'},
+    'GARCH-type': {'B2': 'Adjective (compound)'},
+    'GDP-growth': {'B2': 'Noun Phrase'},
+    'GGA-based': {'B2': 'Adjective (compound)'},
+    'GP-LVMs': {'B2': 'Noun Phrase'},
+    'GPGPU-based': {'B2': 'Adjective (compound)'},
+    'GPS-aided': {'B2': 'Adjective (compound)'},
+    'GRP-laminates': {'B2': 'Noun Phrase'},
+    'GSL-model': {'B2': 'Noun Phrase'},
+    'GT-Power': {'B2': 'Noun Phrase'},
+    'GUI-assisted': {'B2': 'Adjective (compound)'},
+    'GaAs-based': {'B2': 'Adjective (compound)'},
+    'GaN-HEMTs': {'B2': 'Noun (plural)'},
+    'GaN-on-Si': {'B2': 'Noun Phrase'},
+    'GaN-on-SiC': {'B2': 'Noun Phrase'},
+    'Game-option-valuation-library': {'B2': 'Noun Phrase'},
+    'Gas-Cooled': {'B2': 'Adjective (compound)'},
+    'Gas-cooled': {'B2': 'Adjective (compound)'},
+    'Gblss-y': {'B2': 'Noun'},
+    'GeN-Foam': {'B2': 'Noun Phrase'}, 
+    'Gibson-Assembly': {'B2': 'Noun Phrase'},
+    'Goods”-company': {'B2': 'Noun Phrase'},
+    'Greek-efficient': {'B2': 'Adjective (compound)'},
+    'HLM-cooled': {'B2': 'Adjective (compound)'},
+    'HP-protein': {'B2': 'Noun Phrase'},
+    'HTC-treated': {'B2': 'Adjective (compound)'},
+    'Haar-function': {'B2': 'Noun Phrase'},
+    'Hafnium-content': {'B2': 'Noun Phrase'},
+    'Hardware-in-Loop': {'B2': 'Noun Phrase'},
+    'Hardware-in-loop': {'B2': 'Noun Phrase'},
+    'Heat-soak': {'B2': 'Noun Phrase'},
+    'Hf-content': {'B2': 'Noun Phrase'},
+    'Hidden-variable': {'B2': 'Noun Phrase'},
+    'High-Granularity': {'B2': 'Adjective (compound)'},
+    'Hubbard-like': {'B2': 'Adjective (compound)'},
+    'Hydrostatic-Seasonal-Time': {'B2': 'Noun Phrase'},
+    'IC-engine': {'B2': 'Noun Phrase'},
+    'ICE-driveline': {'B2': 'Noun Phrase'},
+    'garnet': {'B1': 'Noun'},
+    'general': {'B1': 'Noun, Adjective'},
+    'generals': {'B1': 'Noun (plural)'},
+    'glovebox': {'B1': 'Noun'},
+    'glyoxylic': {'B2': 'Adjective'},
+    'goverance': {'B2': 'Noun'}, # Possible spelling error: 'governance'
+    "Gaussianity": {'B2': 'Noun'},
+    'hydrates': {'B1': 'Verb (third-person present tense)'},
+    'hydroelectricity': {'B2': 'Noun'}
+    
     #end for SCI - SCIe
 }
     
@@ -57717,6 +57773,11 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'H2O/Ethanol',
+    'GaAs/AlGaAs',
+    'GaAs/Si',
+    'GaAsP/Si',
+    'GaP/Si',
     'Copper/Copper',
     'Cr,Nb',
     'Cr:YAG',
@@ -59489,7 +59550,14 @@ place_names=[
     'La Guajira, Colombia',
     'Colombia',
     'Herzegovina',
-
+    'Gabon',
+    'Gdynia', # port
+    'Kokkola', # port
+    'Guiana', # French Guiana
+    'French Guiana',
+    'Hemsö',
+    'Holmsund',
+    
 
 ]
 
@@ -69039,6 +69107,7 @@ company_and_product_names=[
     'FEniCS-HPC', # software - see diva2:1282827
     'F_Top_300-scores', # "a measure indicating the amount of relevant images retrieved among the top 300 recommended images" - see diva2:1720668
     'Ffowcs-Williams', # part of 'Ffowcs-Williams Hawkings acoustic analogy' - see diva2:1680206 and diva2:1057181
+    'Ffowcs', # part of 'Ffowcs-Williams' - see diva2:1680206
     'FtsZ-ring', # concerns FtsZ protein - see diva2:1764258
     'F1gen', # truck silencer model CAS1 F1gen - see diva2:1737474
     'FINEŠ/Marine', # software package - see diva2:1359848
@@ -69048,6 +69117,84 @@ company_and_product_names=[
     'FiberLab', # a machine made by PTS (Papiertechnische Stiftung) - see diva2:866819
     'FinCCI', # software - see diva2:433851
     'FloMaster', # modeling software - see diva2:1808437
+    'Kongsberg Maritime', # company - see diva2:1680206
+    'Kongsberg', # part of 'Kongsberg Maritime' -  company - see diva2:1680206
+    'FluTAS', # flow solver - see diva2:1848437
+    'Flucs', # CFD solver - see diva2:1167206
+    'NACA0012', # airfoil - see diva2:1167206
+    'Framatome', # company - see diva2:1897932
+    'Froda', # part of "Froda Företagslån" - company see diva2:1450546
+    'FtsZ', # protein - see diva2:1764258
+    'Fura Red™', # trademark of Thermo Fischer
+    'Fura', # part of "Fura Red" - see diva2:1774381
+    'Fusion360', # design software - see diva2:1817475
+    'FuturEnergys', # company - see diva2:545132
+    'GEMini™', # detector - see diva2:824324
+    'GEMManager', # software  - see diva2:824324
+    'C-RAD Imaging AB', # company  - see diva2:824324
+    'Hällered', # company - see diva2:1527916
+    'Krafthandel', # part of "Telge Krafthandel" - see diva2:820015
+    'GKN-Aerospace', # company - see diva2:894052
+    'HealthWatch', # a questionnaire - see diva2:658555
+    'IBMQ-Melbourne', # a quantum computer - see diva2:1590473
+    'Hyper-Kamiokande', # neutrino observatory - see diva2:1796308
+    'Hölder-1/2', # function - see diva2:794612
+    'G-code', # gemetry code instructions for CNC - see diva2:1579573
+    'NanoMAX', # beam line at MAX IV synchrotron facility - see diva2:1579573
+    'GCaMP6m', # calcium sensing protein - see diva2:1904651
+    'GConvGRU', # convolutional model - see diva2:1656345
+    'GEBTAero', #open-source aeroelastic code - see diva2:1670995
+    'LEAP', # an encoder that features LEArnable toPology augmentation of the original graph - see diva2:1800248
+    'ROBEX', # a Airbus Defence and Space research project - see diva2:813229
+    'MOTH', # a Airbus Defence and Space deep-sea glider - see diva2:813229
+    'GSea', # "part of "GSea Design" - company - see diva2:1238408
+    'SU(5)', # group - see diva2:1570997
+    'SO(10)', # group  - see diva2:1570997
+    'Z2', #  flavour symmetry - see diva2:1570997
+    'Z3', #  flavour symmetry - see diva2:1570997
+    'Z4', #  flavour symmetry - see diva2:1570997
+    'U(1)', #  flavour symmetry - see diva2:1570997
+    'GW/Retarder', # a coolant pipe installation on a Scania engine - see diva2:1714428
+    'Gabi', # life cycle assessment (LCA) software  - see diva2:1183366
+    'Ganz', # Ganz Motor Kft. - Hungarian company - bogies - see diva2:1583513
+    'Pacelab APD', # aircraft design platform (APD) from PACE GmbH
+    'Pacelab', # aircraft design platform (APD) from PACE GmbH
+    'GasTurb', # gas turbine software company - https://www.gasturb.com/ - see diva2:1900962
+    'DI Gasell', # Dagens Industri Gaselltävlingen prize - diva2:1450559
+    'Gasell', # Dagens Industri Gaselltävlingen prize - diva2:1450559
+    'GeoClaw', # an open-source package within the Clawpack project for simulating shallow earth-surface flows involving water-wave propagation and inundation - see diva2:1737164
+    'Madgraph', # a Matrix Element Correction (MEC) generator - see diva2:1812797
+    'Gaussino', # experiment-independent framework for Gauss simulator - see diva2:1812797
+    'LHCb', # experiment - one of the main detectors at the Large Hadron Collider (LHC) diva2:1812797
+    'GeoGebra', # interactive geometry software - see diva2:558597
+    'Gerosion', # Icelandic R&amp;D company - see diva2:1651173
+    'GetswishAB', # company - see diva2:1757049
+    'Getswish', # company - see diva2:1757049
+    'Gjensidige', # part of "Gjensidige Försäkring" - company - see diva2:1849167
+    'Gleechi', # company - see diva2:1137873
+    'Globalis', # interactive world atlas - see Globalis and https://globalis.se 
+    'Globen', # Stockholm Globe Arena - see diva2:1335494
+    'GomSpace', # nanosatellite company - see diva2:1380177
+    'GradeIndex', # part of "Investment GradeIndex" - see diva2:1800259
+    'Grasshopper', # part of "Rhino 7 Grasshopper" modeling software - see diva2:1737350
+    'GreenSteam', # company - see diva2:1528127
+    'Gt', # gigaton - see diva2:1698107
+    'Hachette', # company - see diva2:942570
+    'Hackenbush', # two player game
+    'Hardox', # type of SSAB steel - see diva2:1900864
+    'HeartSolver', # FEniCS-HPC HeartSolver - see diva2:1436915
+    'Helicilel', # # software - diva2:1198967
+    'Vectura Consulting AB', # company - see diva2:676695
+    'Hessenbergs', # upper Hessenbergs - see diva2:736211
+    'Gevo', # Gevo - is the company name - part of "Gevo ATJ-SPK" - fuel - see diva2:1871588
+    'Hextreme', # part of "ANSA Hextreme Mesh" - see diva2:1834483
+    'Hideaways', # part of "The Hideaways Club" - see diva2:1894666
+    'HotelApart', # company - see diva2:942689
+    'Hybrix', # type of steel - see diva2:691992
+    'HydroGUI', # simulation model - see diva2:917943
+    'Hydrolift', # part of "Hydrolift AS" - company - see ['diva2:1306995', 'diva2:612181']
+    'HyperMorph', # software - see diva2:1500046 and https://ahoopes.github.io/hypermorph/
+    'Hypermesh', # software from Altair - see diva2:874332
 
     #end for SCI - SCIc
 
@@ -74102,7 +74249,59 @@ names_of_persons=[
     'Flagser',
     'Flettner',
     'Floquet',
-    
+    'Ilian',
+    'Fokine',
+    'Forman',
+    'Forsgren',
+    'Monz',
+    'Ram-Lak',
+    'Fourmeau',
+    'Fraleigh',
+    'Franzblau',
+    'Frenet',
+    'Fridsma',
+    'Fronsdal',
+    'Kametani',
+    'Fukagata',
+    'Fung',
+    'Funke',
+    'Furstenberg',
+    'Förster',
+    'Lakoff',
+    'Mortimer',
+    'Mróz',
+    'Kifer',
+    'Kallsen',
+    'Kühn',
+    'Longstaff',
+    'Garry',
+    'Gasiorowicz',
+    'Gaspar',
+    'Gil',
+    'Gaston',
+    'Gegenbauer',
+    'Gentry',
+    'Giorgi',
+    'De Giorgi',
+    'Glauert',
+    'Gneiting',
+    'Gower',
+    'Grizzle',
+    'Gubian',
+    'Gârleanu',
+    'Tuhfe',
+    'Göçmen',
+    'Penney',
+    'Helmi',
+    'Heryudono',
+    'Kowalewski',
+    'Heston',
+    'Hookean',
+    'Hou',
+    'Hovey',
+    'Taguchi',
+    'Hänsel',
+    'Hüning',
 ]
 
 common_french_words={
@@ -74251,6 +74450,7 @@ common_german_words=[
     'Gedankenexperiment',
     'Geheimschreiber',
     'GmbH',
+    'Großer',
     'Luft-',
     'Naturf', #from the shortened jounrnal name "Z. Naturf"
     'Raumfahrt',

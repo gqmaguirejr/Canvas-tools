@@ -1173,7 +1173,24 @@ miss_spelled_to_correct_spelling={
     'FCS-­setup': {'c': 'FCS-setup', 's': 'diva2:1571205', 'n': 'unnecessary hyphen'},
     'FE‐contact': {'c': 'FE-contact', 's': 'diva2:514154'},
     'FfowcsWilliams': {'c': 'Ffowcs Williams', 's': 'diva2:1110752', 'n': 'correc in original'},
-
+    'Fordjupning': {'c': 'Fördjupning', 's': 'diva2:853529', 'n': 'correct in original; error in dealing with the composed character for "ö"'},
+    'Fourieer': {'c': 'Fourier', 's': 'diva2:1781241', 'n': 'error in original'},
+    'Fundemental': {'c': 'Fundamental', 's': 'diva2:1849103', 'n': 'correct in original'},
+    'Futher': {'c': 'Further', 's': 'diva2:1852464', 'n': 'no full text'},
+    'GEMiniTM': {'c': 'GEMini™', 's': 'diva2:824324', 'n': 'no full text'},
+    'H_\\infty': {'c': 'H<sub>&infin;</sub>', 's': 'diva2:1670746'},
+    'Health-Watch': {'c': 'HealthWatch', 's': 'diva2:658555', 'n': 'unnecessary hyphen'},
+    'Hyper-Hamiokande': {'c': 'Hyper-Kamiokande', 's': 'diva2:1796308', 'n': 'correct in original'},
+    'G­-code': {'c': 'G-code', 's': 'diva2:1579573', 'n': 'unnecessary hyphen'},
+    'H--&gt;yy': {'c': 'H&rightarrow;&gamma;&gamma;', 's': 'diva2:1626684', 'n': 'correct in original'},
+    'HH-&gt;bbyy': {'c': 'HH&rightarrow;b<span style="text-decoration: overline;">b</span>&gamma;&gamma;', 's': 'diva2:1626684', 'n': 'correct in original'},
+    'HH--&gt;bbyy': {'c': 'HH&rightarrow;b<span style="text-decoration: overline;">b</span>&gamma;&gamma;', 's': 'diva2:1626684', 'n': 'correct in original'},
+    'GABAAR': {'c': 'GABA<sub>A</sub>R', 's': 'diva2:1345189', 'n': 'correct in original'},
+    'Gausian': {'c': 'Gaussian', 's': 'diva2:1464278', 'n': 'error in original'},
+    'H2/day': {'c': 'H<sub>2</sub>/day', 's': 'diva2:653258', 'n': 'no full text'},
+    'HPD:s': {'c': 'HPDs', 's': 'diva2:1253239', 'n': 'error in original'},
+    'HealthCareTM': {'c': 'HealthCare™', 's': 'diva2:1781504', 'n': 'correct in original'},
+    'Hevo': {'c': 'Gevo', 's': 'diva2:1871588', 'n': 'error in original'}
 
 }
 
