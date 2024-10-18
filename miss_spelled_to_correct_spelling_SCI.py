@@ -1190,7 +1190,25 @@ miss_spelled_to_correct_spelling={
     'H2/day': {'c': 'H<sub>2</sub>/day', 's': 'diva2:653258', 'n': 'no full text'},
     'HPD:s': {'c': 'HPDs', 's': 'diva2:1253239', 'n': 'error in original'},
     'HealthCareTM': {'c': 'HealthCare™', 's': 'diva2:1781504', 'n': 'correct in original'},
-    'Hevo': {'c': 'Gevo', 's': 'diva2:1871588', 'n': 'error in original'}
+    'Hevo': {'c': 'Gevo', 's': 'diva2:1871588', 'n': 'error in original'},
+    'InPHEMTs': {'c': 'InP HEMTs', 's': 'diva2:1804716', 'n': 'correct in original'},
+    'gm': {'c': '<em>g<sub>m</sub></em>', 's': 'diva2:1804716'}, # transconductance
+    'RON': {'c': '<em>R<sub>ON</sub></em>', 's': 'diva2:1804716'}, # channel resistance
+    'Insprired': {'c': 'Inspired', 's': 'diva2:1800177', 'n': 'correct in original'},
+    'K_{2,n}': {'c': '<em>K<sub>{2,n}</sub></em>', 's': 'diva2:1829764', 'n': 'correct in original'},
+    'Krup-skii': {'c': 'Krupskii', 's': 'diva2:1085448', 'n': 'unnecessary hyphen'},
+    'Kemission': {'c': '<em>K<&alpha;</sub></em> emission'},
+    'in</p><p>2': {'c': 'in <em>&chi;</em><sup>2</sup>', 's': 'diva2:651680'},
+    'Kd': {'c': '<em>K<sub>d</sub></em>', 's': 'diva2:770271', 'n': 'correct in original'},
+    'Kp': {'c': '<em>K<sub>p</sub></em>', 's': 'diva2:770271', 'n': 'correct in original'},
+    'Ki': {'c': '<em>K<sub>i</sub></em>', 's': 'diva2:770271', 'n': 'correct in original'},
+    "Kimura</p><p>´</p><p>s triple</p><p>collision": {'c': "Kimura's triple collision", 's': 'diva2:560862', 'n': 'correct in original'},
+    "MATLAB</p><p>´</p><p>S": {'c': "MATLAB´s", 's': 'diva2:560862', 'n': 'correct in original'},
+    'L_min': {'c': '<em>L<sub>min</sub></em>', 's': 'diva2:1678931', 'n': 'correct in original'},
+    'Likelyhood': {'c': 'Likelyhood', 's': 'diva2:572278', 'n': 'error in original'},
+    'Linfinity': {'c': '<em>L<sub>&infin;</sub></em>', 's': 'diva2:1342233', 'n': 'correct in original'},
+    'Kelvin’s': {'c': "Kelvin's", 's': 'diva2:1880418', 'n': 'change from 0x2019 to apostrophe'},
+
 
 }
 

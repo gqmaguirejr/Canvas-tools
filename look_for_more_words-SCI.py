@@ -376,6 +376,10 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    "580",
+    "Kimura's"
+    '<em>K<&alpha;</sub></em>',
+    '<em>&chi;</em><sup>2</sup>',
     'Gro83', # a citation
     '&Delta;',
     '&isinv;',

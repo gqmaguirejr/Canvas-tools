@@ -57522,8 +57522,70 @@ common_English_words={
     'goverance': {'B2': 'Noun'}, # Possible spelling error: 'governance'
     "Gaussianity": {'B2': 'Noun'},
     'hydrates': {'B1': 'Verb (third-person present tense)'},
-    'hydroelectricity': {'B2': 'Noun'}
-    
+    'hydroelectricity': {'B2': 'Noun'},
+    'IFN-and': {'B2': 'Noun Phrase'},
+    'III-Vs': {'B2': 'Noun Phrase'}, 
+    'IL-measurement': {'B2': 'Noun Phrase'}, 
+    'ILS-department': {'B2': 'Noun Phrase'},
+    'IPO-data': {'B2': 'Noun Phrase'},
+    'IR806-ethanol': {'B2': 'Noun Phrase'},
+    'IT-consultants': {'B2': 'Noun Phrase'},
+    'IT-knowledge': {'B2': 'Noun Phrase'},
+    'IT-retailer': {'B2': 'Noun Phrase'},
+    'IT-workforce': {'B2': 'Noun Phrase'},
+    'Integrate-and-re': {'B2': 'Verb Phrase'},
+    'Intra-sector': {'B2': 'Adjective (compound)'},
+    'IoU-score': {'B2': 'Noun Phrase'},
+    'Ion-Propulsion': {'B2': 'Noun Phrase'},
+    'Iron-bird': {'B2': 'Noun Phrase'},
+    'Isomap-algorithm': {'B2': 'Noun Phrase'},
+    'J-connector': {'B2': 'Noun Phrase'},
+    'J-integral': {'B2': 'Noun Phrase'},
+    'J-method': {'B2': 'Noun Phrase'},
+    'J-tube': {'B2': 'Noun Phrase'},
+    'J-turn': {'B2': 'Noun Phrase'},
+    'J-values': {'B2': 'Noun Phrase'},
+    'Joint-interface': {'B2': 'Noun Phrase'},
+    'K-theory': {'B2': 'Noun Phrase'},
+    'KTH-Aero': {'B2': 'Noun Phrase'},
+    'Kane-Mele': {'B2': 'Noun Phrase'},
+    'Koopman-based': {'B2': 'Adjective (compound)'},
+    'Korteweg-de': {'B2': 'Noun Phrase'},
+    'Kronecker-factored': {'B2': 'Adjective (compound)'},
+    'Kx-factor': {'B2': 'Noun Phrase'},
+    'L-brackets': {'B2': 'Noun Phrase'},
+    'L-class': {'B2': 'Noun Phrase'},
+    'L-curve': {'B2': 'Noun Phrase'},
+    'L-drive': {'B2': 'Noun Phrase'},
+    'L-plate': {'B2': 'Noun Phrase'},
+    'L-profile': {'B2': 'Noun Phrase'},
+    'L-shaped': {'B2': 'Adjective (compound)'},
+    'L0-attack': {'B2': 'Noun Phrase'},
+    'L2-error': {'B2': 'Noun Phrase'},
+    'L2-norm': {'B2': 'Noun Phrase'},
+    'LCA-based': {'B2': 'Adjective (compound)'},
+    'LED-headlamp': {'B2': 'Noun Phrase'},
+    'LED-headlamps': {'B2': 'Noun Phrase'},
+    'LED-lights': {'B2': 'Noun Phrase'},
+    'LINEST-function': {'B2': 'Noun Phrase'},
+    'LLL-algorithm': {'B2': 'Noun Phrase'},
+    'LLaMA-Instruct': {'B2': 'Noun Phrase'},
+    'LSTM-network': {'B2': 'Noun Phrase'},
+    'LYSO-based': {'B2': 'Adjective (compound)'},
+    'Lamb-wave': {'B2': 'Noun Phrase'},
+    'Laplace-transform': {'B2': 'Noun Phrase'},
+    'Lasso-based': {'B2': 'Adjective (compound)'},
+    'Least-Square': {'B2': 'Noun Phrase'},
+    'Li-ions': {'B2': 'Noun Phrase'},
+    'Loss-Induced': {'B2': 'Adjective (compound)'},
+    'interaural': {'B2': 'Adjective'},
+    'intercooler': {'B2': 'Noun'},
+    'interferon': {'B2': 'Noun'},
+    'interfleet': {'B2': 'Noun'},
+    'intermodulated': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'kagome': {'B2': 'Noun'},
+    'lifelimiting': {'B2': 'Adjective'},
+    'Marknadsaktivitet': {'B1': 'Noun'},
     #end for SCI - SCIe
 }
     
@@ -57773,6 +57835,10 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'Li/Ion',
+    'InP',
+    'NbN',
+    'InAs/GaAs',
     'H2O/Ethanol',
     'GaAs/AlGaAs',
     'GaAs/Si',
@@ -59557,6 +59623,11 @@ place_names=[
     'French Guiana',
     'Hemsö',
     'Holmsund',
+    'Inhambane', # province in Mozambique
+    'Istres', # in the south of France
+    'Lille',
+    'Ofoten', # Norwegin rail line
+
     
 
 ]
@@ -69195,6 +69266,51 @@ company_and_product_names=[
     'Hydrolift', # part of "Hydrolift AS" - company - see ['diva2:1306995', 'diva2:612181']
     'HyperMorph', # software - see diva2:1500046 and https://ahoopes.github.io/hypermorph/
     'Hypermesh', # software from Altair - see diva2:874332
+    'IIa', # model reference - see diva2:1709501
+    'IIb', # model reference - see diva2:1709501
+    'IKEAs', # possessive  for of company name - see diva2:558443
+    'IPG/TruckMaker', # simulation model - see diva2:1670746
+    'Icelandair', # company - see diva2:1263425
+    'Icem', # software - part of "Ansys Icem" - see diva2:1830907
+    'Inductrack', # based on Electro- Magnetic Suspension (EMS) and Electro-Dynamic Suspension (EDS)  see diva2:1838563
+    'Isami', # an Airbus calculation software package - see diva2:1871503
+    'Internest', # French company - see diva2:1356998
+    'Intrum', # credit management services company - see diva2:1334411
+    'Invar', # effect or composition - see diva2:415054
+    'IonQ', # quantum computer - see diva2:1590473
+    'JSBSim', # flight simulator - see diva2:1583510
+    'Joint1', # main joint - see diva2:1348434
+    'K20m', # GPU - NVIDIA Tesla K20m - see diva2:735921
+    'Kevlar', # tradename for para-aramid - see ['diva2:1547235', 'diva2:737645']
+    'Kaneka', # company - see diva2:1729237
+    'Kanthal', # company - see diva2:1450286
+    'KERRCONV*REFLIONX', # model - see diva2:651680
+    'KiTS19', # KiTS19 Challenge dataset - see diva2:1680315
+    'Komrad', # implementation of the Kompaneets RMS Approximation (KRA) - see diva2:1678908
+    'Kreativum', # a science center in Karlshamn, Sweden - see diva2:574119
+    'Kwant', # a Python package - see diva2:1789641
+    'L7e', # categry of vehicle - see diva2:1247532 - see also https://www.transportstyrelsen.se/TSFS/TSFS%202021_10%20r%C3%A4ttelse%201.pdf
+    'Laaips962', # a two-axle freight wagon - see diva2:1852457
+    'Lavalin', # company - SNC Lavalin (formerly Interfleet Technology) - see  diva2:1082719
+    'Lavals', # company - part of "Alfa Laval" - see diva2:574345
+    'Liga', # "La Liga" - diva2:942565
+    'LightIce', # class of vessel - see diva2:891555
+    'LinMotion', # company - see diva2:1127927
+    'LinearWave', # theory - diva2:666775
+    'Litecoin', # digial coin - see diva2:1800177
+    'LitterBox', # numbered stationary ashtrays - see diva2:586974
+    'LitterLott', # lottery out of litter  - see diva2:586974
+    'LitterPress', # mobile ashtrays - see diva2:586974
+    'LoFTR', # detection algorithm - see diva2:1779448
+    'SIFT', # detection algorithm - see diva2:1779448
+    'Lynk', # company - part of "Lynk & Co." - see diva2:1698352
+    'Looptime', # company - see diva2:725385
+    'Intralipid', # this is a brandname - see diva2:1878576
+    'Mjöllnir', # name of rocket - see diva2:1881325
+    'Marieann', # part of a tanker ship's name "M/T Gotland Marieann" - see  diva2:618595
+
+
+
 
     #end for SCI - SCIc
 
@@ -74302,7 +74418,50 @@ names_of_persons=[
     'Taguchi',
     'Hänsel',
     'Hüning',
+    'Inozemtsev',
+    'Irvine',
+    'Kac',
+    'Wolpert',
+    'Kakeya',
+    'Kalkbrener',
+    'Willing',
+    'Kaphle',
+    'Karpel',
+    'Roger',
+    'Kellerer',
+    'Kepler',
+    'Kerr',
+    'Khanna',
+    'Kiel',
+    'Kolm',
+    'Kompaneets',
+    'Kompaneyets',
+    'Kondratyev',
+    'Konno',
+    'Krahmer',
+    'Kraus',
+    'Krause',
+    'Kuo',
+    'Kuznets',
+    'Källerfelt',
+    'Takahashi',
+    'Yokoi',
+    'Wüthrich',
+    'Langevin',
+    'Lanie',
+    'Lantoine',
+    'Liou',
+    'Lode',
+    'Loehr',
+    'Luani',
+    'Lucor',
+    'Lo',
+    'Kimura',
+    'Marius-Corné',
+
+
 ]
+
 
 common_french_words={
     "d'Electricité": {'B1': 'Noun (compound)'},
@@ -74451,12 +74610,15 @@ common_german_words=[
     'Geheimschreiber',
     'GmbH',
     'Großer',
+    'Linien',
+    'Luft',
     'Luft-',
     'Naturf', #from the shortened jounrnal name "Z. Naturf"
     'Raumfahrt',
     'Schweizerische',
     'Schwerionenforschung',
     'Stahlwerks',
+    'Wiener',
     'Zentrum',
     'achtung',
     'autobahn',
@@ -76209,6 +76371,7 @@ abbreviations_ending_in_period=[
     'U.S.',
     'U.S.A.',
     'U.S.C.',
+    'Kern.', # short for kernel
 
     'al.', # part of "et al."
     'w.r.t.',

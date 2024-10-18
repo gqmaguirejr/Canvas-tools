@@ -7769,6 +7769,18 @@ merged_words={
     'I and',
     'Heat Pump',
     'GDP per',
-    
+    'Kalkbrener and',
+    'Kelvin’s statements',
+    'Kernel Method',
+    'Li-ions are' ,
+    'LiBs as',
+    'SIFT and',
+    'Luft und',
+    'Low rail', # diva2:1464110
+    'MW assisted',
+    'Mean-Variance framework',
+    'Mitigation actions',
+    'More seismic',
+
 }
 
