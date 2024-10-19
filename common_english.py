@@ -54875,6 +54875,7 @@ common_English_words={
     'manufacturing-cost': {'B2': 'Noun Phrase'},
     'manufacturing-induced': {'B2': 'Adjective (compound)'},
     'many-body': {'B2': 'Adjective (compound)'},
+    'Many-body': {'B2': 'Adjective (compound)'},
     'many-processor': {'B2': 'Adjective (compound)'},
     'marble': {'B1': 'Noun, Verb'},
     'marital': {'B1': 'Adjective'},
@@ -57585,7 +57586,143 @@ common_English_words={
     'intermodulated': {'B2': 'Verb (past tense), Verb (past participle)'},
     'kagome': {'B2': 'Noun'},
     'lifelimiting': {'B2': 'Adjective'},
-    'Marknadsaktivitet': {'B1': 'Noun'},
+    'multi-body-system': {'B2': 'Noun Phrase'},
+    'multi-curve': {'B2': 'Noun Phrase'},
+    'multi-mirror': {'B2': 'Noun Phrase'},
+    'multi-cylinder': {'B2': 'Adjective (compound)'},
+    'multi-directionality': {'B2': 'Noun'},
+    'multi-period': {'B2': 'Adjective (compound)'},
+    'multi-pillars': {'B2': 'Noun Phrase'},
+    'multiconfigurational': {'B2': 'Adjective'},
+    'multiengine': {'B2': 'Noun, Adjective'},
+    'multifractal': {'B2': 'Adjective, Noun'},
+    'Multiphysics-based': {'B2': 'Adjective (compound)'},
+    'multiple-angle': {'B2': 'Noun Phrase'},
+    'multiresolutional': {'B2': 'Adjective'},
+    'M-Edge': {'B2': 'Noun Phrase'},
+    'M-sequence': {'B2': 'Noun Phrase'},
+    'M/D/c-queues': {'B2': 'Noun Phrase'},
+    'M/M/2-and': {'B2': 'Noun Phrase'},
+    'M/M/2-model': {'B2': 'Noun Phrase'},
+    'M/M/8-approach': {'B2': 'Noun Phrase'},
+    'MBL-systems': {'B2': 'Noun Phrase'},
+    'MCMC-scheme': {'B2': 'Noun Phrase'},
+    'MILP-part': {'B2': 'Noun Phrase'},
+    'MOX-fuel': {'B2': 'Noun Phrase'},
+    'MPAA-ratings': {'B2': 'Noun Phrase'},
+    'MWL-laboratory': {'B2': 'Noun Phrase'},
+    'Mach-number': {'B2': 'Noun Phrase'},
+    'Markov-Switching': {'B2': 'Noun Phrase'},
+    'Markov-assumptions': {'B2': 'Noun Phrase'},
+    'Markov-based': {'B2': 'Adjective (compound)'},
+    'Mass-spring-damper': {'B2': 'Noun Phrase'},
+    'Mean-Absolute': {'B2': 'Noun Phrase'},
+    'Metaheuristic-based': {'B2': 'Adjective (compound)'},
+    'Method-of-Moments': {'B2': 'Noun Phrase'},
+    'Michelson-interferometer': {'B2': 'Noun Phrase'},
+    'Micro-perforated': {'B2': 'Adjective (compound)'},
+    'Mid-Side': {'B2': 'Noun Phrase'},
+    'Middle-thirds': {'B2': 'Noun Phrase'},
+    'Mie-resonance': {'B2': 'Noun Phrase'},
+    'Mie-scattering': {'B2': 'Noun Phrase'},
+    'Mini-EUSO': {'B2': 'Noun Phrase'},
+    'Mistral-Instruct': {'B2': 'Noun Phrase'},
+    'Model-to-Text': {'B2': 'Noun Phrase'},
+    'Monocular-Inertial': {'B2': 'Adjective (compound)'},
+    'Moon-Sun': {'B2': 'Noun Phrase'},
+    'Morse-potential': {'B2': 'Noun Phrase'},
+    'Multi-Body-Simulation': {'B2': 'Noun Phrase'},
+    'Müller-BBM': {'B2': 'Noun Phrase'},
+    'matchday': {'B2': 'Noun'}, 
+    'Maytagging': {'B2': 'Noun, Verb (gerund)'}, 
+    'merocyanine': {'B2': 'Noun'},
+    'microbead': {'B2': 'Noun'},
+    'medoid': {'B2': 'Noun'}, 
+    'medoids': {'B2': 'Noun (plural)'},
+    'MeV/nucleon': {'B2': 'Noun Phrase'},
+    'Microscopy/Energy': {'B2': 'Noun Phrase'},
+    'N-case': {'B2': 'Noun Phrase'},
+    'N-doped': {'B2': 'Adjective (compound)'},
+    'N-flavor': {'B2': 'Noun Phrase'},
+    'N-soliton': {'B2': 'Noun Phrase'},
+    'Na,K-ATPase': {'B2': 'Noun Phrase'},
+    'Na/K-ATPase': {'B2': 'Noun Phrase'},
+    'Nano-indentation': {'B2': 'Noun Phrase'},
+    'Nb-based': {'B2': 'Adjective (compound)'},
+    'Near-Rectilinear': {'B2': 'Adjective (compound)'},
+    'Neo-Hookean': {'B2': 'Adjective'},
+    'Neuro-Causal': {'B2': 'Adjective (compound)'},
+    'NiCr-based': {'B2': 'Adjective (compound)'},
+    'Nitride-based': {'B2': 'Adjective (compound)'},
+    'NixFe1-x': {'B2': 'Noun Phrase'},
+    'Non-Hodgkin': {'B2': 'Adjective (compound)'},
+    'Nordic-type': {'B2': 'Adjective (compound)'},
+    'Neck/thyroid': {'B2': 'Noun Phrase'},
+    'O-method': {'B2': 'Noun Phrase'}, 
+    'OIS-rates': {'B2': 'Noun Phrase'}, 
+    'One-motor': {'B2': 'Noun Phrase'}, 
+    'One-wheel': {'B2': 'Noun Phrase'},
+    'Out-of-Time-Order-Correlator': {'B2': 'Noun Phrase'},
+    'Output-shaft': {'B2': 'Noun Phrase'},
+    'Oversimplifications': {'B2': 'Noun (plural)'},
+    'P-Fusion': {'B2': 'Noun Phrase'},
+    'P-positions': {'B2': 'Noun Phrase'},
+    'P/E-ratios': {'B2': 'Noun Phrase'},
+    'PCA-preprocessed': {'B2': 'Adjective (compound)'},
+    'PCA-reduction': {'B2': 'Noun Phrase'},
+    'PD-control': {'B2': 'Noun Phrase'},
+    'PD-controlled': {'B2': 'Adjective (compound)'},
+    'PD-models': {'B2': 'Noun Phrase'},
+    'PDMS-glass': {'B2': 'Noun Phrase'},
+    'PEP-derived': {'B2': 'Adjective (compound)'},
+    'PEST-analysis': {'B2': 'Noun Phrase'},
+    'PGA-tour': {'B2': 'Noun Phrase'},
+    'PGA-tours': {'B2': 'Noun Phrase'},
+    'PI-controllers': {'B2': 'Noun Phrase'},
+    'PID-controllers': {'B2': 'Noun Phrase'},
+    'PIT-based': {'B2': 'Adjective (compound)'},
+    'PIT-ness': {'B2': 'Noun'}, # Possible spelling error: 'PIT-ness' - no clear suggestion
+    'PK-Huset': {'B2': 'Noun Phrase'},
+    'PMI-index': {'B2': 'Noun Phrase'},
+    'PPP-terms': {'B2': 'Noun Phrase'},
+    'PT-symmetric': {'B2': 'Adjective (compound)'},
+    'PTA-valuation': {'B2': 'Noun Phrase'},
+    'PTO-shaft': {'B2': 'Noun Phrase'},
+    'PTO-shaftis': {'B2': 'Noun Phrase'}, # Possible spelling error: 'PTO-shafts'
+    'PV-applications': {'B2': 'Noun Phrase'},
+    'PV-cells': {'B2': 'Noun Phrase'},
+    'PaRIS-algorithm': {'B2': 'Noun Phrase'},
+    'Partially-Averaged': {'B2': 'Adjective (compound)'},
+    'Peak-Width': {'B2': 'Noun Phrase'},
+    'Peaks-Over-Threshold': {'B2': 'Noun Phrase'},
+    'Phase-0': {'B2': 'Noun Phrase'},
+    'Pipe-In-Pipe': {'B2': 'Noun Phrase'},
+    'Poisson-Gamma': {'B2': 'Adjective (compound)'},
+    'Post-Impact': {'B2': 'Noun Phrase'},
+    'Pre-concept': {'B2': 'Noun Phrase'},
+    'Prize-winning': {'B2': 'Adjective (compound)'},
+    'Pseudo-Quicksort': {'B2': 'Noun Phrase'},
+    'Pseudo-inverse': {'B2': 'Noun Phrase'},
+    'Pursuit-and-Evasion': {'B2': 'Noun Phrase'},
+    'Q-plot': {'B2': 'Noun Phrase'},
+    'Q-switched': {'B2': 'Adjective (compound)'},
+    'QCD-like': {'B2': 'Adjective (compound)'},
+    'QCD-scale': {'B2': 'Noun Phrase'},
+    'QD-based': {'B2': 'Adjective (compound)'},
+    'QFD-method': {'B2': 'Noun Phrase'},
+    'QNP-group': {'B2': 'Noun Phrase'},
+    'Quasi-Linkage': {'B2': 'Noun Phrase'},
+    'Quasi-Normal': {'B2': 'Adjective (compound)'},
+    'PEEK/carbon': {'B2': 'Noun Phrase'},
+    'PEGylated': {'B2': 'Adjective'},
+    'PMA/ionomycin': {'B2': 'Noun Phrase'},
+    'Packsize': {'B2': 'Noun'},
+    'paragliders': {'B1': 'Noun (plural)'},
+    'percussive': {'B2': 'Adjective'},
+    'peroxydisulfate': {'B2': 'Noun'},
+    'phylogeny': {'B2': 'Noun'},
+    'polychlorinated': {'B2': 'Adjective'},
+    'precharged': {'B2': 'Adjective'},
     #end for SCI - SCIe
 }
     
@@ -57835,6 +57972,12 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'NaCl-UCl3-PuCl3',
+    'NaYF4:Yb-Er',
+    'NaYF4:Yb-Mn',
+    'Nb/Au',
+    'Ni/Ge/Au/Nb/Au',
+    'Nickel-Manganese-Cobalt',
     'Li/Ion',
     'InP',
     'NbN',
@@ -59627,6 +59770,12 @@ place_names=[
     'Istres', # in the south of France
     'Lille',
     'Ofoten', # Norwegin rail line
+    'Mureaux', # part of "Les Mureaux"
+    'Les Mureaux',
+    'Nîmes', # France
+    'Wien',
+    'Papa', # Papa New Guinea
+    'Papa New Guinea',
 
     
 
@@ -69308,8 +69457,115 @@ company_and_product_names=[
     'Intralipid', # this is a brandname - see diva2:1878576
     'Mjöllnir', # name of rocket - see diva2:1881325
     'Marieann', # part of a tanker ship's name "M/T Gotland Marieann" - see  diva2:618595
-
-
+    'MDSuite', # software - see diva2:1740195
+    'SERPENT', # Monte Carlo simulation software - see diva2:1817048
+    'Sontech', # company - see diva2:458126
+    'MacrOmega', # French hyperspectral imager  - see diva2:1380157
+    'SARIMA', # (financial) deposit volume model - diva2:1319886
+    'SARIMAX', # (financial) deposit volume model - diva2:1319886
+    #'Majorana', # part of "Majorana fermions" - see diva2:1229270 - moved to names
+    'Nasdaq100', # top 100 NASDAQ stocks - see diva2:839186
+    'If Skadeförsäkring AB', # insurance company - see diva2:1719348
+    'If', # part of "If Skadeförsäkring AB" insurance company - see diva2:1719348
+    'ManagerZone', # game from the company Power Challenge - see diva2:1114076
+    'Power Challenge', # company - see diva2:1114076
+    'Maribot', # part of "Maribot Vane" an autonomous sailboat project- see diva2:1222440
+    'Marignane', # part of "Airbus Helicopters Marignane" - see diva2:891551
+    'Markt', # part of "Media Markt" - company - see diva2:839184
+    'Marsblade', # company - see diva2:1450330
+    'MSC.Marc Mentat', # FE-software - see diva2:458362
+    'MSC.Marc', # part of 'MSC.Marc Mentat' - see diva2:458362
+    'Mentat', # part of 'MSC.Marc Mentat' - see diva2:458362
+    'MSC', # company - "MSC Software Corporation" - originally 'MacNeal-Schwendler Corporation
+    'Merlin', # part of "Merlin MP521 engineering flight simulator" -  see diva2:1127926
+    'MetNet', # a DNN developed by Google AI - see diva2:1686717
+    'Metry', # Metry AB - company - see diva2:1294504
+    'Microstar', # part of "Microstar Laboratories" - comnpany - see diva2:919812
+    'Milky', # part of "Milky Way" - see diva2:1781270
+    'Millau', # part of "Millau Viaduct" - see diva2:1083484
+    'Minitab', # "Minitab 16" - statistical program - see diva2:690036
+    'Miniwash', # portable boat wash - see diva2:550414
+    'Mipelec', # software - see diva2:1292423
+    'Mirage', # part of "Mitsubishi Mirage" - see diva2:1229031
+    'Mirion', # Mirion Technologies - company - see diva2:1655236
+    'ModeFrontier', # a multi-objective optimisation software environment - see diva2:1356933
+    'MotoGP', # motorcycle racing - see diva2:654876
+    'Motor1', # one of two motors used in diva2:742541
+    'Motor3', # one of two motors used in diva2:742541
+    'Motronic', # Bosch electronic engine management systems - see diva2:753961
+    'Trionic', # Saab electronic engine management systems - see diva2:753961
+    'MoveAbility', # lab at KTH - see diva2:1440629
+    'MoveByBike', # company - see diva2:1441661
+    'MultiModN', # multimodal machine learning system - see diva2:1859964
+    'Multipsi', # library - see diva2:1849658
+    'Murex', # software provider - see diva2:1415888
+    'MyFID', # company - see diva2:1827798
+    'NFCSim', # software - see diva2:13112:
+    'ORION', # software - see diva2:13112:
+    'NPxxY', #  a sequence of amino acids with the following pattern: N: Asparagine; P: Proline; xx: Two arbitrary amino acids; Y: Tyrosine - see diva2:1779454
+    'Vidura', # part SRT Vidura Wheel - see diva2:1247303
+    'NanoProp', # GomSpace NanoProp 3U - see diva2:1516110
+    'Nanolab', # part of "Albanova Nanolab" - see diva2:1682149
+    'Natixis', # company - see diva2:802173
+    'Neosat', # ESA’s Neosat program - see diva2:1739387
+    'Nepa', # company - see diva2:1212197
+    'Neptus', # provides an operator with a user interface for realtime control and feedback from vehicles - see diva2:919846
+    'DUNE', # software running on-board vehicles - see diva2:919846
+    'Noise2Inverse', # framework for denoising data - see diva2:1872999
+    'Nord2000', # noise prediciton method - see diva2:1516081 - and https://www.boverket.se/sv/PBL-kunskapsbanken/nyheter-pa-pbl-kunskapsbanken/nord2000/
+    'CNOSSOS', # noise prediciton method - see diva2:1516081
+    'Obstetrix', # KS obstetric data base - see diva2:1163154
+    'OceanWave3D', # flow solver - see diva2:1082021
+    'Odeon', # simulator - see diva2:439876
+    'Ole', # part of "Bygg Ole" - company - see diva2:942666
+    'OneWeb', # company with LEO satellites - see diva2:1719738
+    'OpenMDAO', # frmdiva2:1881325aework - see diva2:1528147
+    'OpenRocket', # software - see diva2:1881325
+    'OpenSky', # Daedalean AI's  "The OpenSky Network" - see diva2:1781251
+    'Openprop', # open-source software for Matlab - see diva2:1698340
+    'Opera-2D', # 2D inite element modelling software - see diva2:1795011
+    'Opteron', # AMD processor brandname - see diva2:560434
+    'OptiMale', # fully elastic unmanned aerial vehicle - see diva2:1360722
+    'Optimica', # language extension - see diva2:743430
+    'Optimus', # software - see ['diva2:754257', 'diva2:753742']
+    'Orfeus', # wind farm assessment models - see diva2:1526433
+    'WAsP', # wind farm assessment models - see diva2:1526433
+    'Orca3D', # part of "Orca3D Marine CFD environment" - see diva2:1698179
+    'Orexplore', # Orexplore AB - company - see diva2:1464969
+    'Osquavia', # airfoil - see diva2:894080
+    'Occludin', # protein - see diva2:1577149
+    'Maxon', # company - see diva2:1127927
+    'Paritech', # part of "Arts &amp; Métiers Paritech" company name - see diva2:1070423
+    'Patria', # Finnish defense company - see diva2:892101
+    'Paydrive', # company - see diva2:1817012
+    'Maersk Pelican', # ship - see diva2:1528140
+    'Pelican', # "Maersk Pelican" ship - see diva2:1528140
+    'Pelletron',  # particle accelerator "NEC Pelletron" - diva2:1798454
+    'Penta', # part of "Volvo Penta" - see diva2:1505242
+    'Peregrine', # part of "Peregrine Lunar Lander project of Astrobotic Technologies, Inc." - see diva2:1158448
+    'Perfexion', # part of Elekta's "Leksell Gamma Knife Perfexion - see diva2:827429
+    'Perfo2000', # software - see diva2:1499365
+    'Permalloy', # trademark of Western Electric - see ['diva2:430778', 'diva2:1283259', 'diva2:1283259']
+    'Peterstep', # company - see diva2:1527828
+    'Petrel', # part of "Maribot Petrel project" - see diva2:1360256
+    'Peugeot', # company - see diva2:1189542
+    'PhimecaSoft', # software - see diva2:1237795
+    'Pitchfork', # bifurcation - see diva2:1089907
+    'PnPn', # method for discretization - see diva2:1811656
+    'PnPn−2',  # method for discretization - see diva2:1811656
+    'PoGOLino', # smaller evrsion of PoGoLite - see diva2:652319
+    'PointNet', # see diva2:1320133
+    'Poseidon', # part of "Poseidon Konsult" - company - diva2:1145330
+    'PossPOW', # algorithm - see diva2:1114359
+    'Powel', # part of "Powell Duffryn Rail" - company - see diva2:1852460
+    'PowerFLOW', # CFD software (This is the correct capitalization as per https://www.3ds.com/products/simulia/powerflow) - see diva2:1834483
+    'PowerFlow', # CFD software - see diva2:1083070
+    'Paptic', # a type of porous paper containing a mixture of softwood and lyocell fibers - see diva2:1800318
+    'Paptic®', # a type of porous paper containing a mixture of softwood and lyocell fibers - see diva2:1800318
+    'PreSubscribed', # variable name - see diva2:1833714
+    'Predge', # company - see diva2:1599583
+    'PredgeAB', # company - see diva2:1599583
+    'Prefab',  #  prefabricerade betongelement (Prefab)" - see body of diva2:726182
 
 
     #end for SCI - SCIc
@@ -74458,7 +74714,92 @@ names_of_persons=[
     'Lo',
     'Kimura',
     'Marius-Corné',
-
+    'Maa',
+    'Maass',
+    'Mack',
+    'Maes',
+    'Timmerman',
+    'Timoshenko',
+    'Malamud',
+    'Semyon',
+    'Hosmer-Leme',
+    'Mallows',
+    'Manakov',
+    'Mandl',
+    'Mangoldt',
+    'Marc',
+    'Mardia',
+    'Marija',
+    'Simics',
+    'Markwitz',
+    'de Prado',
+    'Prado',
+    'Matherne',
+    'Matsuzaki',
+    'Torii',
+    'Yuji',
+    'Meijer',
+    'Rossby',
+    'Mehrotra',
+    'Mellor',
+    'Menter',
+    'Merton',
+    'Meyers',
+    'Mezrich',
+    'Delany-Bazley-Miki',
+    'Miki',
+    'Millar',
+    'Milstein',
+    'Majorana',
+    'Mnëv',
+    'Mohr',
+    'Molchanov',
+    'Morabito',
+    'Morales',
+    'Selover',
+    'Morison',    
+    'Starke',
+    'Muckenhoupt',
+    'Muller',
+    'Mullins',
+    'Munjal',
+    'Murnaghan',
+    'Musk',
+    'Viklund',
+    'Seyfert',
+    'Nadal',
+    'Ng',
+    'Oreg-Lutchyn',
+    'Ollivier-Ricci',
+    'Odqvist',
+    'Olergard',
+    'Olsen',
+    'Vignale',
+    'Onfelt',
+    'Orr',
+    'Wang-Landau',
+    'Wheeler-Jonas',
+    'Quadrio',
+    'Pao',
+    'Pedersen',
+    'Peltola',
+    'Perron',
+    'Petermann',
+    'Petrov',
+    'Petz',
+    'Pfeffer',
+    'Phillips',
+    'Picard',
+    'Pidd',
+    'Pintz',
+    'Piterbarg',
+    'Polhamus',
+    'Polyak',
+    'Pompe',
+    'Potts',
+    'Poussin',
+    'Prandtl',
+    
 
 ]
 
@@ -74500,6 +74841,8 @@ common_french_words={
     'Matière': {'B1': 'Noun'},
     'Montrealais': {'C1': 'Noun'},
     'Montréalais': {'C1': 'Noun'},
+    'Mécanique': {'B1': 'Noun'},
+    'Métiers': {'B1': 'Noun (plural)'},
     'Objectifs': {'B1': 'Noun'},
     'R´eseau': {'B2': 'Noun'},
     'Réseau': {'B2': 'Noun'},
@@ -76006,6 +76349,10 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    'Oe': {'B1': 'Unit'}, # oersted
+    'Nmm': {'B1': 'Unit'}, # newtons millimeter (torque)
+    'N/m': {'B1': 'Unit'}, # newtons per meter
+    'MWe': {'B1': 'Unit'}, # megawatt of electrical capacity
     'deg/s': {'B1': 'Unit'}, # degrees per second
     'dBA': {'B1': 'Unit'}, # decibel acoustic
     'MEUR': {'A2': 'Unit'}, # million €
@@ -76054,6 +76401,7 @@ common_units={
     'MSps': {'B2': 'Unit'},  # Megasamples per second - alternative phrasing) - Sampling rate (likely B2 for more specific engineering terms
     'MWh/h': {'B2': 'Unit'},  # Megawatt-hours per hour - Rate of energy transfer - likely B2 for power engineering terms
     'MWh/year': {'B2': 'Unit'},  # Megawatt-hours per year - Energy consumption rate - likely B2 for power engineering terms
+    'MWh': {'B2': 'Unit'},  # Megawatt-hours
     'Mb': {'B1': 'Unit'},  # Megabit - Unit of data storage
     'Mbit/s': {'B2': 'Unit'},  # Megabit per second - data transfer rate
     'Mbits/s': {'B2': 'Unit'},  # Same as Mbit/s

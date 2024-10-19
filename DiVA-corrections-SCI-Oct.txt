@@ -30,3 +30,7 @@ seems to be blank pages - the file is truncated and cannot be repaired.
 ----------------------------------------------------------------------
 diva2:736211 has the text of the summary and not that of the abstract, as the DiVA abstract
 ----------------------------------------------------------------------
+Are 'diva2:754257' and  'diva2:753742' duplicates?
+----------------------------------------------------------------------
+The Swedish abstract for diva2:1595164 is actually in English.
+----------------------------------------------------------------------

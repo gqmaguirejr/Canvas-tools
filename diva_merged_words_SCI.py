@@ -69,7 +69,6 @@ merged_words={
     'MHz. Using',
     'MILP. The',
     'MPa. For',
-    'MSC. Marc',
     'MTMD. Finally',
     'MVA. All',
     'Matlab. The',
@@ -7781,6 +7780,29 @@ merged_words={
     'Mean-Variance framework',
     'Mitigation actions',
     'More seismic',
+    'M/T Gotland',
+    'multiple factors',
+    'F. Mercurio',
+    'M. Bianchetti',
+    'M6 to',
+    'Timoshenko in',
+    'Hosmer-Leme show',
+    'Miki model',
+    'NC size',
+    'N are',
+    'NOx, 55%',
+    'OPS-SAT flyby',
+    'ViT architectures',
+    'WAPS aerodynamic',
+    'WCM is',
+    'Wind-tunnel aeroacoustic',
+    'PMA/ionomycin stimulation',
+    'Path Method',
+    'Power Unit',
+    
+    
 
 }
+
+
 
