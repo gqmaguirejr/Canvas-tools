@@ -7799,10 +7799,30 @@ merged_words={
     'PMA/ionomycin stimulation',
     'Path Method',
     'Power Unit',
+    'RANS simulations',
+    'UAV, a',
+    'Riemann hypothesis',
+    'redox titration',
+    'SWOT-analysis to',
+    'SCB specimen',
+    'SEB Investment',
+    'SIEMENS Solid',
+    'SKL regions',
+    'SNSPDs emerge',
+    'SPH method',
+    'SRtP assessment',
+    'Schur complements',
+    'Similar results',
+    'Spread Function',
+    'SCMaglev ML0X1',
+    'Sandwich Sheet',
+    'Shear Stress',
+    'Single Scatter',
+    'Solid Mechanics',
+    'Space industry',
+    'Stage 2',
+    'Student Germany',
+    'TM to',
+    'Taylor polynomial',
     
-    
-
 }
-
-
-

@@ -376,6 +376,10 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    '<em>RNG',
+    'k−&epsilon;</em>',
+    'SST</em>',
+    '<em>k−&epsilon',
     '<em>s</em><sup>13</sub>',
     '&sim;',
     '𝒪(λ)',

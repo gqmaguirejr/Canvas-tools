@@ -54875,7 +54875,6 @@ common_English_words={
     'manufacturing-cost': {'B2': 'Noun Phrase'},
     'manufacturing-induced': {'B2': 'Adjective (compound)'},
     'many-body': {'B2': 'Adjective (compound)'},
-    'Many-body': {'B2': 'Adjective (compound)'},
     'many-processor': {'B2': 'Adjective (compound)'},
     'marble': {'B1': 'Noun, Verb'},
     'marital': {'B1': 'Adjective'},
@@ -57723,6 +57722,129 @@ common_English_words={
     'phylogeny': {'B2': 'Noun'},
     'polychlorinated': {'B2': 'Adjective'},
     'precharged': {'B2': 'Adjective'},
+    'R-Vine': {'B2': 'Noun Phrase'},
+    'R-peak': {'B2': 'Noun Phrase'},
+    'R-phycoerythrin': {'B2': 'Noun Phrase'},
+    'R-square': {'B2': 'Noun Phrase'},
+    'R2-values': {'B2': 'Noun Phrase'},
+    'RANS-based': {'B2': 'Adjective (compound)'},
+    'RANS-methods': {'B2': 'Noun Phrase'},
+    'RI-measuring': {'B2': 'Adjective (compound)'},
+    'RL-derived': {'B2': 'Adjective (compound)'},
+    'RLC-like': {'B2': 'Adjective (compound)'},
+    'ROCAUC-score': {'B2': 'Noun Phrase'},
+    'RRT*-planner': {'B2': 'Noun Phrase'},
+    'Ratings-Based': {'B2': 'Adjective (compound)'},
+    'Rayleigh-Bénard': {'B2': 'Noun Phrase'},
+    'Rayleigh-Plesset': {'B2': 'Noun Phrase'},
+    'Rayleigh-Ritz': {'B2': 'Noun Phrase'},
+    'Re-valuing': {'B2': 'Verb (gerund), Verb (present participle)'},
+    'Regression/Kernel': {'B2': 'Noun Phrase'},
+    'Reynolds-Stress': {'B2': 'Noun Phrase'},
+    'Reynolds-numbers': {'B2': 'Noun Phrase'},
+    'Reynolds-stress': {'B2': 'Noun Phrase'},
+    'Rh-GQDs': {'B2': 'Noun Phrase'},
+    'Ricci-flat': {'B2': 'Adjective (compound)'},
+    'Ricci-flatness': {'B2': 'Noun'},
+    'Riesz-means': {'B2': 'Noun Phrase'},
+    'Riesz-representer': {'B2': 'Noun Phrase'},
+    'Ro-Pax': {'B2': 'Noun Phrase'},
+    'RoRo-vessel': {'B2': 'Noun Phrase'},
+    'Rubidium-based': {'B2': 'Adjective (compound)'},
+    'repacking': {'B2': 'Noun, Verb (gerund)'},
+    'rocketry': {'B2': 'Noun'},
+    'S-functions': {'B2': 'Noun Phrase'},
+    'S-matrix': {'B2': 'Noun Phrase'},
+    'S-plane': {'B2': 'Noun Phrase'},
+    'S-series': {'B2': 'Noun Phrase'},
+    'S-shape': {'B2': 'Noun Phrase'},
+    'S/N-curves': {'B2': 'Noun Phrase'},
+    'SAT-model': {'B2': 'Noun Phrase'},
+    'SCB-specimen': {'B2': 'Noun Phrase'},
+    'SDR-platform': {'B2': 'Noun Phrase'},
+    'SEE-SEP-model': {'B2': 'Noun Phrase'},
+    'SEIR-model': {'B2': 'Noun Phrase'},
+    'SEM-system': {'B2': 'Noun Phrase'},
+    'SGD-type': {'B2': 'Noun Phrase'},
+    'SHAP-analysis': {'B2': 'Noun Phrase'},
+    'SL-routes': {'B2': 'Noun Phrase'},
+    'SN-curve': {'B2': 'Noun Phrase'},
+    'SPH-method': {'B2': 'Noun Phrase'},
+    'STELIN-algorithm': {'B2': 'Noun Phrase'},
+    'STL-geometry': {'B2': 'Noun Phrase'},
+    'SUV-category': {'B2': 'Noun Phrase'},
+    'Saint-Cloud': {'B2': 'Noun Phrase'},
+    'Saint-Eloi': {'B2': 'Noun Phrase'},
+    'Schur-type': {'B2': 'Adjective (compound)'},
+    'Set-Based': {'B2': 'Adjective (compound)'},
+    'Set-pieces': {'B2': 'Noun Phrase'},
+    'Shear-diaphragm': {'B2': 'Noun Phrase'},
+    'Short-Temporal': {'B2': 'Adjective (compound)'},
+    'SiN-based': {'B2': 'Adjective (compound)'},
+    'Simple-implicit': {'B2': 'Adjective (compound)'},
+    'Single-Lens': {'B2': 'Noun Phrase'},
+    'Smoothness-Increasing': {'B2': 'Adjective (compound)'},
+    'Solow-Swan': {'B2': 'Noun Phrase'},
+    'Source-switching': {'B2': 'Noun Phrase'},
+    'Spatio-Temporary': {'B2': 'Adjective (compound)'},
+    'Spin-vortices': {'B2': 'Noun Phrase'},
+    'Split-52': {'B2': 'Noun Phrase'},
+    'Stochastic-Volatility-Simultaneous-Jumps': {'B2': 'Noun Phrase'},
+    'Stop-specific': {'B2': 'Adjective (compound)'},
+    'Sun-Moon-Spacecraft': {'B2': 'Noun Phrase'},
+    'Sun-planet': {'B2': 'Noun Phrase'},
+    'Supersonic-Hypersonic': {'B2': 'Adjective (compound)'},
+    'Susceptible-Exposed-INfectious-Recovered': {'B2': 'Noun Phrase'},
+    'Susceptible-Infectious-Recovered': {'B2': 'Noun Phrase'},
+    'Swiss-roll': {'B2': 'Noun Phrase'},
+    'SEK/pipe': {'B2': 'Noun Phrase'},
+    'scour': {'B1': 'Verb, Noun'}, 
+    'semidefinite': {'B2': 'Adjective'},
+    'sharks': {'A2': 'Noun (plural)'},
+    'shrugging': {'B1': 'Verb (gerund), Verb (present participle)'},
+    'Simulation/VaR': {'B2': 'Noun Phrase'},
+    'skid': {'B1': 'Noun, Verb'},
+    'sloppy': {'B1': 'Adjective'},
+    'sloppiness': {'B2': 'Noun'},
+    'smallsats': {'B2': 'Noun (plural)'},
+    'spondylitis': {'B2': 'Noun'},
+    'steals': {'B1': 'Verb (third-person present tense)'},
+    'sublaminate': {'B2': 'Verb'},
+    'superluminescent': {'B2': 'Adjective'},
+    'T-Sylvester': {'B2': 'Noun Phrase'},
+    'T-fillet': {'B2': 'Noun Phrase'},
+    'T-joints': {'B2': 'Noun Phrase'},
+    'T-junctions': {'B2': 'Noun Phrase'},
+    'T-pieces': {'B2': 'Noun Phrase'},
+    'T-shaped': {'B2': 'Adjective (compound)'},
+    'T-welded': {'B2': 'Adjective (compound)'},
+    'T1-parameter': {'B2': 'Noun Phrase'},
+    'T1-value': {'B2': 'Noun Phrase'},
+    'TE-box': {'B2': 'Noun Phrase'},
+    'TE-boxes': {'B2': 'Noun (plural)'},
+    'TE-paste': {'B2': 'Noun Phrase'},
+    'TECS-based': {'B2': 'Adjective (compound)'},
+    'TER-BreizhGO': {'B2': 'Noun Phrase'},
+    'TMS-induced': {'B2': 'Adjective (compound)'},
+    'TRU-content': {'B2': 'Noun Phrase'},
+    'TU-Dresden': {'B2': 'Noun Phrase'},
+    'TeV-PeV': {'B2': 'Noun Phrase'},
+    'Thermally-controlled': {'B2': 'Adjective (compound)'},
+    'Thermo-elastic-plastic': {'B2': 'Adjective (compound)'},
+    'Three-pillars': {'B2': 'Noun Phrase'},
+    'Ti-6Al-4V': {'B2': 'Noun Phrase'},
+    'Ti-6Al4V': {'B2': 'Noun Phrase'},
+    'TiO2-PBA': {'B2': 'Noun Phrase'},
+    'Tollmien-Schlichting': {'B2': 'Noun Phrase'},
+    'Torino-Novara': {'B2': 'Noun Phrase'},
+    'Tp-play': {'B2': 'Noun Phrase'}, # used in diva2:787494 - no full text
+    'Transmon-design': {'B2': 'Noun Phrase'},
+    'Triple-Use': {'B2': 'Noun Phrase'},
+    'Trotter-decomposed': {'B2': 'Adjective (compound)'},
+    'Ts-diagrams': {'B2': 'Noun Phrase'}, 
+    'Tsuruga-2': {'B2': 'Noun Phrase'},
+    'Tube-CPX': {'B2': 'Noun Phrase'},
+
     #end for SCI - SCIe
 }
     
@@ -57972,6 +58094,8 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'SiO2/Si',
+    'Sb2Te3/PVDF',
     'NaCl-UCl3-PuCl3',
     'NaYF4:Yb-Er',
     'NaYF4:Yb-Mn',
@@ -59776,9 +59900,13 @@ place_names=[
     'Wien',
     'Papa', # Papa New Guinea
     'Papa New Guinea',
-
+    'Prussia',
+    'Qingdao', # China
+    'Ryningsnäs', # Swedish forest
+    'Slätta',
+    'Sävast',
+    'Torslanda',
     
-
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -69566,6 +69694,140 @@ company_and_product_names=[
     'Predge', # company - see diva2:1599583
     'PredgeAB', # company - see diva2:1599583
     'Prefab',  #  prefabricerade betongelement (Prefab)" - see body of diva2:726182
+    'ProWood', # part of a product name "ProWood Maxi" made by "Lifts All AB" - see diva2:1044882
+    'ProWood Maxi', # part of a product name - made by "Lifts All AB" - see diva2:1044882
+    'Lifts All AB', # company - see diva2:1044882
+    'ProbLCF', # postprocessor for Siemen's SafePG tool - see diva2:1279807
+    'Procera', # part of "Procera Networks" - company - see diva2:827694
+    'Prodrive', # a British motorsport group - see diva2:503320
+    'Proj', # a topological space - see diva2:1689505
+    'Spec', # a topological space - see diva2:1689505
+    'PyCIM', #  information model interpreter - see diva2:1163171 and diva2:1142969
+    'PyQt', # Python package for Qt graphics - see diva2:1816858
+    'QuTip', # simulator - see diva2:1682170
+    'QuaLiKiz', # transport model - see diva2:1848656
+    'quant', # short for "quantitative analyst" - diva2:839179
+    'Quintus', # company - see diva2:1136781
+    'Quot', # factor - see diva2:557257
+    'Q‑switching', # giant pulse formation- see diva2:464882
+    "M/T", # as part of a ship's name it means "motor/tanker" - see for example "M/T Gotland Marieann" in diva2:618595
+    'R1000m', # simulated track radius - see diva2:1841286
+    'R1300m', # simulated track radius - see diva2:1841286
+    'R400m',  # simulated track radius - see diva2:1841286
+    'RBSDyn', # software - see diva2:1162961
+    'Racefox', # company - see diva2:1333510
+    'Radioss', # solver - see diva2:1576919
+    'Rafale', # Dassault Rafale - company - see diva2:652366
+    'Rail/XPI', # fuel systems (Common Rail/XPI) - see diva2:872932 - no full text
+    'Raith', # electron beam lithography system - see diva2:451204
+    'Ramböll', # company - see diva2:545027
+    'Rambøll', # Danish company - see diva2:1082021
+    'Ramriggen', # Scania test rig - diva2:867738
+    'RateBeer', # website - see diva2:1120068 - ratebeer.com
+    'Ratebeer', # website - see diva2:1120068 (incorrect capitalization)
+    'RavenPack', # s asource for data sets - see diva2:1215664 and https://www.ravenpack.com/
+    'Rc4', # Rc4 locomotive - see diva2:1852458
+    'ReOrbit', # ReOrbit Oy - company - see diva2:1871555
+    'Refinitiv', # company - see diva2:1319725
+    'Regina', # a type of train - made by Bombardier Transportation - see diva2:1852491
+    'Renardières', # EDF laboraroty les Renardières - see diva2:1819058
+    'RessCapital', # company - see diva2:1799803
+    'Rexroth', # Bosch Rexroth - company - see diva2:1247567
+    'Rhapsody', # part of modelling tool "Rhapsody Architect for SYstems Engineers" - see diva2:1701360
+    'RiskMetrics', # company (acquired by MSCI in 2010) - see diva2:1083070
+    'RiskSpectrum', # "RiskSpectrum Software" - company - see diva2:1745694 and https://www.riskspectrum.com/
+    'RoPax', # ferries - see diva2:1816751
+    'RoboScope', # project - see diva2:516076
+    'Roll2Rail', # EU project - see diva2:1298383
+    'Rondinella', # grape Rondinella - see diva2:1652519
+    'Vera Rubin Observatory', # see diva2:1569839
+    'Rut241', # Teltonika RUT241 Industrial Cellular Router - see diva2:1879604
+    'SIM7600G-H', # LTE modem  - see diva2:1879604
+    'Rz', #peak to valley height - roughness - see diva2:917938
+    'Rådet', # part of "Brottsförebyggande Rådet" - see diva2:1833665
+    'Brottsförebyggande Rådet', # organization - see diva2:1833665
+    'Svensk Mäklarstatistik ', # organization -  see diva2:1833665
+    'Régiolis', # wheel - type of multiunit train built by Alstom - see diva2:872206
+    'SIEMENS', # company
+    'Sabena', # part of "Sabena Technics" - company - see diva2:1698165
+    'Sachs', # part of "Goldman Sachs" - company - see diva2:1415888
+    'Saevfors', # part of "Saevfors Consulting" - see diva2:1456866
+    'SailGP', # company - see diva2:1817072
+    'Salome', # meshing software - see diva2:1739031
+    'Saipem', # company - see 'diva2:919659',
+    'Sankey', # diagram - a helpful illustration to analyse the energy consumption and losses for a battery-electric truck- see diva2:1503976
+    'Sasol', # part of "Sasol FT-SPK" fuel - see  diva2:1871588
+    'Seaware', # Seaware AB - company - diva2:618571
+    'SeqGAN', # ANN model - see ediva2:1372108
+    'Serpent2', # Mote Carlo code - see diva2:1543459
+    'Serpent2/POLCA8', # Mote Carlo code - see diva2:1543459
+    'Shift2Rail', # European rail initiative - see diva2:1246222
+    'FR8RAIL', # project in Shift2Rail - see diva2:1246222
+    'Shinkasen', # high speed rail system in Japan - see diva2:854573
+    'Shipflow', # CFD software - see diva2:1236507
+    'ShotLink', # golf database - see diva2:1450567
+    'ShuffleNetV2', # ANN - see diva2:1432668
+    'SimRod', #testing platform SimRod is an electric vehicle developed by Siemens PLM Software Simcenter - see diva2:1379753
+    'Simcenter', # Siemens PLM Software Simcenter - see diva2:1379753
+    'SimSAC', # project - SimSAC project, which aims to <strong>Sim</strong>ulate <strong>S</strong>tability A<strong>nd <strong>C</strong>ontrol Characteristics - see diva2:458090
+    'Simerics', # company with CFD package - see diva2:1698179
+    'Simian', # "Simian army " part of Netflix - see diva2:1216905
+    'Simpack', # Simpack- Multibody Simulation Software - see diva2:1583513
+    'Simulia', # "Simulia Fe-Safe" - software - see diva2:1900961
+    'Simufact', # "MSC Simufact" for additive manufacturing - see diva2:1249033
+    'Sineton', # company - see diva2:757135
+    'Skistar', # company - see diva2:1827834
+    'SkySails', # part of "SkySails Power GmbH" - company - see diva2:1270437
+    'Skywalker', # "Skywalker X8" - UAV - see diva2:1441558
+    'Skywise', # "Skywise Code Workbook application" - see diva2:1646392
+    'Smite', # Vehiconomic's three wheeled prototype vehicle - see diva2:608125
+    'Snecma', # company - see 'diva2:653238', 'diva2:539446', 'diva2:530870', 'diva2:491850', 'diva2:754257', 'diva2:753742']
+    'Socata', # plane - Socata TB20 GT - see diva2:693935
+    'SOCATA', # was a French company producing aircraft
+    'SoftiMAX', # beamline at MAX IV - see diva2:1880296
+    'SolidEdge', # software - diva2:1441692
+    'Sorpas', # Sorpas 3D - simulation software - see diva2:915628
+    'SoundPLAN', # SoundPLAN GmbH - software for noise simulation - see diva2:1516081
+    'Sparte', # solver - see diva2:1154527
+    'Spinactor', # Spinactor AB - company - see diva2:726182
+    'St1', # Strouhal frequencies St1 = 0:023, St2 = 0:121 and St3 = 0:144, where it is noted that St3 = St1 + St2 - see diva2:1109465
+    'St2', # Strouhal frequencies St1 = 0:023, St2 = 0:121 and St3 = 0:144, where it is noted that St3 = St1 + St2 - see diva2:1109465
+    'St3', # Strouhal frequencies St1 = 0:023, St2 = 0:121 and St3 = 0:144, where it is noted that St3 = St1 + St2 - see diva2:1109465
+    'Starship', # mission scenario - see diva2:1871579
+    'StayAt', # part of "StayAt HotelApart AB" - company - see diva2:942689
+    'Stellantis', # company - see diva2:1707859
+    'StoXX', # "STOXX® Europe 600" - company and their stock index -  see diva2:1214280 - Error in the original and no full text
+    'StockRepublic', # softwre company - see diva2:1880206
+    'Stokeslets', # method for solving Stokes equaiton in a viscous incompressible fluid - see diva2:735918
+    'Strenx', # Strenx 960MC high strength steel - see diva2:1247563
+    'StyleGAN2', # GAN model - see diva2:1721327
+    'SuperWeld', # Audi postprocess - see 'SuperWeld',
+    'Swegon', # company - see diva2:1335459
+    'Sycamore', # Google quantum computer - see diva2:1590473
+    'SynNet', # mmodel - see diva2:1849685
+    'Syntell', # company - see diva2:1751952
+    'Sysmex', # company - see  diva2:1876073
+    'Sysmex XN-1000', # product - see diva2:1876073
+    'XN-1000', # Sysmex product - see diva2:1876073
+    'SåNätt', # project - see diva2:691992
+    'Södermäklarna', # company - see diva2:604562
+    'T,p', # "T,p pair" represents a specific combination of temperature (T) and pressure (p) used in the steam exposure tests - see diva2:956397
+    'TAITherm', # simulation tool - see diva2:1511584
+    'TFLearn', # python package - see diva2:1335510
+    'Taycan', # Porsche Taycan - see diva2:1876090
+    'TeXtreme', # Oxeon TeXtreme weave - see diva2:783996, diva2:1288441, and diva2:783997
+    'Technip', # company - see diva2:839851
+    'Technofan', # company - see diva2:1145326
+    'Tegel', # airport - Berlin Tegel - see diva2:1341350
+    'Terms—traffic', # index reconstruction - see diva2:1519872
+    'Thr68', # residue around - diva2:1781244
+    'Titan', # Nvidia GPU product family - see 'diva2:818343'
+    'Tomlab', # a Matlab toolbox - see diva2:802587
+    'Tomo', # part of "Ocean Tomo’s auction results" - see diva2:838545
+    'Tonnetz', # audio features - see diva2:1577386
+    'Topaz', # ship - "Crown Topaz" - see diva2:796751
+    'Tosca', # "Tosca Fluid" by Dassault Systèmes - see diva2:1645435
+    'Trackfire', # SAAB Trackfire remote weapon platform - see diva2:787512
 
 
     #end for SCI - SCIc
@@ -74799,6 +75061,100 @@ names_of_persons=[
     'Potts',
     'Poussin',
     'Prandtl',
+    'Pritchard',
+    'Przemieniecki',
+    'Puck',
+    'Purcell',
+    'Pyotr',
+    'Pärs', # possessive form
+    'Pólya',    
+    'Quandt',
+    'Rabas',
+    'Ralph',
+    'Vince',
+    'Raymer',
+    'Reissner',
+    'Reuss',
+    'Voigt',
+    'Reynold',
+    'Richter',
+    'Riesz',
+    'Rigde',
+    'Rinehimer',
+    'Uddin',
+    'Riquier',
+    'Ristinmaa',
+    'Ritz',
+    'Rockafellar',
+    'Uryasev',
+    'Rofail',
+    'Rognes',
+    'Roper',
+    'Rosen',
+    'Rubinfeld',
+    'Rubin',
+    'Runkle',
+    'Rupp',
+    'Räumlich',
+    'Sabine',
+    'Sacco',
+    'Sahimi',
+    'Saramito',
+    'Sarmast',
+    'Sattarzadeh',
+    'Savkoor',
+    'Schlieren', # see ['diva2:608463', 'diva2:1876793']
+    'Schläfli',
+    'Schoen',
+    'Schoutens',
+    'Spiegeleer',
+    'Scolamiero',
+    'Seebeck',
+    'Selberg',
+    'Serre',
+    'Sfard',
+    'Vygotsky',
+    'Shore',
+    'Wigley',
+    'Simo',
+    'Särkkä',
+    'Simpson',
+    'Sylvester',
+    'Stenger',
+    'Sinha',
+    'Skorokhod',
+    'Skote',
+    'Smit',
+    'Sobolev',
+    'Solus',
+    'Venturello',
+    'Vera',
+    'Sortino',
+    'Spühler',
+    'Srinivasa',
+    'Staffan',
+    'Steinberg',
+    'Stephenson',
+    'Stieltjes',
+    'Strehl',
+    'Strömqvist',
+    'Suvdantstseg',
+    'Svelander',
+    'Sylow',
+    'Södergren',
+    'Tsu-Esaki',
+    'Takens',
+    'Takeuchi',
+    'Tasche',
+    'Tauberian',
+    'Teichmüller',
+    'Teusink',
+    'Tingstrom',
+    'Tipler',
+    'Tisserand',
+    'Tjaereborg',
+    'Tobin',
+    'Tracey',
     
 
 ]
@@ -74852,6 +75208,7 @@ common_french_words={
     'Structurale': {'B1': 'Noun'},
     'Système': {'B1': 'Noun'},
     'Systèmes': {'B1': 'Noun'},
+    'Suisse': {'B1': 'Noun'},
     'Sécurité': {'B2': 'Noun'},
     'alternatives': {'B1': 'Noun (plural)'},
     'atomique': {'B2': 'Adjective'} ,
