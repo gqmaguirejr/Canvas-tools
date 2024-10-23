@@ -34,3 +34,14 @@ Are 'diva2:754257' and  'diva2:753742' duplicates?
 ----------------------------------------------------------------------
 The Swedish abstract for diva2:1595164 is actually in English.
 ----------------------------------------------------------------------
+Are diva2:1045047 and diva2:1033220 duplicates?
+----------------------------------------------------------------------
+Are diva2:839893 and diva2:737929 duplicates?
+The abstract for the second is the same except for two spaces.
+----------------------------------------------------------------------
+
+
+
+
+
+

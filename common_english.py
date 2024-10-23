@@ -1624,6 +1624,7 @@ common_English_words={
     'Venetian': {'B2': 'Adjective, Noun, Demonym'},
     'Venezuelan': {'B1': 'Adjective, Noun, Demonym'},
     'Vietnamese': {'A2': 'Adjective, Noun, Demonym'},
+    'Wayúu': {'B2': 'Adjective, Noun, Demonym'}, # indigenous group residing in Alta Guajira - see diva2:1780244
     'Welsh': {'A2': 'Adjective, Noun, Demonym'},
     'Yemeni': {'B2': 'Adjective, Noun, Demonym'},
     'Yoruba': {'B2': 'Noun, Demonym'},
@@ -57844,6 +57845,93 @@ common_English_words={
     'Ts-diagrams': {'B2': 'Noun Phrase'}, 
     'Tsuruga-2': {'B2': 'Noun Phrase'},
     'Tube-CPX': {'B2': 'Noun Phrase'},
+    'taxies': {'B1': 'Verb (third-person present tense)'},
+    'transpiration': {'B2': 'Noun'},
+    'turbocharging': {'B2': 'Noun, Verb (gerund)'},
+    'transuranium': {'B2': 'Adjective'},
+    'visualizability': {'B2': 'Noun'},
+    'uncapped': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'unicorns': {'B1': 'Noun (plural)'},
+    'Volatility-Cap-Target-Level': {'B2': 'Noun Phrase'},
+    'Volume-Averaged': {'B2': 'Adjective (compound)'},
+    'Vietoris-Rips': {'B2': 'Noun Phrase'},
+    'U-matrices': {'B2': 'Noun Phrase'},
+    'U-nation': {'B2': 'Noun Phrase'},
+    'U-nets': {'B2': 'Noun (plural)'}, 
+    'U-space': {'B2': 'Noun Phrase'},
+    'UAM-vehicles': {'B2': 'Noun Phrase'},
+    'US/European': {'B2': 'Noun Phrase'}, 
+    'USD/tonne': {'B2': 'Noun Phrase'},
+    'UT-checked': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'Ultra-Thick': {'B2': 'Adjective (compound)'},
+    'Urea-SCR': {'B2': 'Noun Phrase'},
+    'V-configuration': {'B2': 'Noun Phrase'},
+    'V-foil': {'B2': 'Noun Phrase'},
+    'V-shape': {'B2': 'Noun Phrase'},
+    'V-tail': {'B2': 'Noun Phrase'},
+    'VAE-Clustering': {'B2': 'Noun Phrase'},
+    'VAE-clustering': {'B2': 'Noun Phrase'},
+    'VAR-model': {'B2': 'Noun Phrase'},
+    'VCTL-option': {'B2': 'Noun Phrase'}, 
+    'VI-CarRealTime': {'B2': 'Noun Phrase'},
+    'VI-CarRealtime': {'B2': 'Noun Phrase'},
+    'VI-Grade': {'B2': 'Noun Phrase'},
+    'VI-Motorsport': {'B2': 'Noun Phrase'},
+    'VI-Rail': {'B2': 'Noun Phrase'},
+    'VINNOVA-funded': {'B2': 'Adjective (compound)'},
+    'VLM-codes': {'B2': 'Noun Phrase'},
+    'VLM-implementation': {'B2': 'Noun Phrase'},
+    'VMAT-arc': {'B2': 'Noun Phrase'},
+    'VMAT-arcs': {'B2': 'Noun Phrase'},
+    'VMAT-delivery': {'B2': 'Noun Phrase'},
+    'Value-at-Risks': {'B2': 'Noun Phrase'},
+    'Vector-boson': {'B2': 'Noun Phrase'},
+    'Vehicle-to-motorcycle': {'B2': 'Noun Phrase'},
+    'UV-related': {'B2': 'Adjective (compound)'},
+    'Upper/First': {'B2': 'Noun Phrase'},
+    'VaR-backtesting': {'B2': 'Noun Phrase'},
+    'WHR-system': {'B2': 'Noun Phrase'},
+    'Wall-Adapting': {'B2': 'Adjective (compound)'},
+    'Wall-Modeled': {'B2': 'Adjective (compound)'},
+    'Westinghouse-type': {'B2': 'Adjective (compound)'},
+    'X-joint': {'B2': 'Noun Phrase'},
+    'X-wire': {'B2': 'Noun Phrase'},
+    'X-­ray': {'B1': 'Noun'}, # Possible spelling error: 'X-ray'
+    'XL-Calibur': {'B2': 'Noun Phrase'},
+    'Y-variable': {'B2': 'Noun Phrase'},
+    'Yukawa-type': {'B2': 'Adjective (compound)'},
+    'Z-ring': {'B2': 'Noun Phrase'},
+    'Zero-dimensional': {'B2': 'Adjective (compound)'},
+    'Zircaloy-4': {'B2': 'Noun Phrase'},
+    'washout': {'B2': 'Noun, Verb'},
+    'W/panel': {'B2': 'Noun Phrase'},
+    'X-joints': {'B2': 'Noun (plural)'},
+    'rubber-penetrated': {'B2': 'Adjective (compound)'},
+    'self-interaction': {'B2': 'Noun Phrase'},
+    'shock-front': {'B2': 'Noun Phrase'},
+    't-Copula': {'B2': 'Noun Phrase'}, # Possible spelling error: 't-copula'
+    't-copula': {'B2': 'Noun Phrase'},
+    't-distribution': {'B2': 'Noun Phrase'},
+    't-noise': {'B2': 'Noun Phrase'},
+    'upskilling': {'B2': 'Noun, Verb (gerund)'},
+    'wires-rubber': {'B2': 'Noun Phrase'},
+    'mini-colonies': {'B2': 'Noun Phrase'},
+    'n-mass': {'B2': 'Noun Phrase'},
+    'n-space': {'B2': 'Noun Phrase'},
+    'kymographs': {'B2': 'Noun (plural)'},
+    'depth-to-length': {'B2': 'Noun Phrase'},
+    'Veno-arterial': {'B2': 'Noun Phrase'},
+    'air-drying': {'B2': 'Noun Phrase'},
+    'algebras—to': {'B2': 'Noun Phrase'},
+    'antineutrinos': {'B2': 'Noun (plural)'},
+    'ascension': {'B2': 'Noun'},
+    'cytoarchitecture': {'B2': 'Noun'},
+    'discussable': {'B2': 'Adjective'},
+    'gestation': {'B2': 'Noun'},
+    'pDR1m-based': {'B2': 'Adjective (compound)'},
+    'postbounce': {'B2': 'Noun, Adjective'}, 
+    'traffics': {'B1': 'Noun (plural)'},
+    'levitating': {'B2': 'Verb (gerund), Verb (present participle)'},
 
     #end for SCI - SCIe
 }
@@ -58094,6 +58182,15 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'Yb:KYW',
+    'Zr/C',
+    'U,Am', # combination of elements - see diva2:1519571
+    'U,Pu', # combination of elements - see diva2:1519571
+    'U,Zr', # combination of elements - see diva2:1873390
+    'UZr,U-Th',# combination of elements - see diva2:1873390
+    'U-N-Si',
+    'U-Th-Zr',
+    'U-Zr',
     'SiO2/Si',
     'Sb2Te3/PVDF',
     'NaCl-UCl3-PuCl3',
@@ -59906,7 +60003,11 @@ place_names=[
     'Slätta',
     'Sävast',
     'Torslanda',
-    
+    'Tôhoku', # Japan
+    'Varanasi Bend',
+    'Varanasi',
+    'Vi11arnche',
+
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -69828,9 +69929,63 @@ company_and_product_names=[
     'Topaz', # ship - "Crown Topaz" - see diva2:796751
     'Tosca', # "Tosca Fluid" by Dassault Systèmes - see diva2:1645435
     'Trackfire', # SAAB Trackfire remote weapon platform - see diva2:787512
+    'Trackmate', # software - see diva2:1807977
+    'TrainTech', # part of "TrainTech Engineering Sweden AB" - company - see diva2:1852460
+    'TransUnet', # deep learning model - see diva2:1880247
+    'TransponderTech', # part of "Saab TransponderTech" - company  see diva2:1364282
+    'Transrail', # part of "Transrail Sweden AB" - company - see diva2:1527832
+    'TreeSPH', # computer code - see diva2:72949
+    'TrueBalance', # a conversational agent - see diva2:1869718
+    'TrueFidelity', # trademark - see diva2:1781504
+    'TrueFidelity™', # trademark - see diva2:1781504
+    'Tubel', # evaporators - see diva2:1249786
+    'Tunica', # part of "Tunica Adventitia" - see diva2:561462
+    'Turbomatch', # software - see diva2:1816881
+    'Tyrens', # Tyrens AB - company - see diva2:1215870
+    'Spalart', # part of "Spalart-Allmaras (SA)" - see diva2:1674019
+    'UNet_alt', # ANN network - see diva2:1781504
+    'Unibaps', # company possessive - Unibap - see diva2:1739362
+    'Uniti', # electric vehcile - see diva2:1247532
+    'UnitySteer', # steering code package for game engine Unity3D - see diva2:1045047and the likely duplicate diva2:1033220
+    'VASP', # simulator - see diva2:1130148
+    'VAsp', # a specical capitalization of VASP for use in another acronym - see diva2:1130148
+    'Valispace', # software - see diva2:1613411
+    'Valueguard-KTH', # part of "Nasdaq OMX Valueguard-KTH Housing Index (HOX)" - see diva2:630452
+    'Vapiano', # company "Vapiano Sturegatan" - see diva2:942540
+    'Vehiconomic', # company - see diva2:608125
+    'VelHel-4', # stream of 7 stars - see diva2:1781270
+    'VeloxChem', # quantum chemistry software - see diva2:1877620
+    'Ventus-2c', # sailplane - see diva2:398320
+    'Verity', # a postprocessor - see diva2:874332
+    'Vestas', # part of "Vestas Wind Systems A/S" - company - see diva2:1640040
+    'ViennaCL', # software - see diva2:735921
+    'Vins', # part of "Guide Hachette des Vins" - see diva2:942570
+    'Västtrafik', # railway company - see diva2:1247381
+    'Wallfast', # real estate company - see diva2:1757054
+    'WarpX', # particle-in-cell code - see diva2:1877614
+    'Watty', # company - see diva2:694343
+    'Weldox', # structural steel - Weldox 1300 - see diva2:706283
+    'WindSim', # simulator - see diva2:1353070
+    'Wordcatcher', # game - see diva2:574119
+    'Wortmann', # company - Wortmann FX 74-CL5-140 - see diva2:852940
+    'Yovinn', # Yovinn AB - company - see diva2:872192
+    'Zeppelins', # airships - see diva2:1528148
+    'Zeux', # Volvo Construction Equiipment autonomous wheel loader prototype - see diva2:1871469
+    'Zuchongzhi', # a quantum computer built in China - see diva2:1590473
+    'Zorflex', # Chemivron's product "Zorflex FM10 Chemivron" - see diva2:1679050
+    'Zircaloy', # tradename - fuel cladding - see diva2:956397
+    'Zbee', # Clean Motion ZBee - electric vehicle - see diva2:1288430
+    'ZBee', # Clean Motion ZBee - electric vehicle - see diva2:1288430
+    'ZPARQ', # company - see diva2:1737350
+    'Ymer', # "Ymer Technology AB" - company - see diva2:1658652
+    'iDSC', # Microstar Laboratories iDSC 1816 data acquisition card - see diva2:919812
+    'iGH', # iGH Research Group at EPFL - see diva2:1859964
+    'iSwap', # a Clifford and symmetric quantum gate - see diva2:1682170
+    'iTraXX', # a market index of the 125 most liquid European entiries - see diva2:1214280 - no full text
+    'kRPM', # thousand RPM - used in diva2:1440755
 
 
-    #end for SCI - SCIc
+    #End for SCI - SCIc
 
 ]
 
@@ -75155,8 +75310,56 @@ names_of_persons=[
     'Tjaereborg',
     'Tobin',
     'Tracey',
+    'Tran',
+    'Trodden',
+    'Tsiolkovsky',
+    'Tuma',
+    'Turkington',
+    'Yazdani',
+    'Simson',
+    'Urbain',
+    'Le Verrier',
+    'Verrier',
+    'Vallée',
+    'Valverde',
+    'Varillon',
+    'Vellekoop',
+    'Venkatesham',
+    'Verde',
+    'Vernam',
+    'Vicsek',
+    'Virág',
+    'Voce',
+    'Volker',
+    'Vries',
+    'Vygotskij',
+    'Wachspress',
+    'Waerden',
+    'Wagner',
+    'Wanner',
+    'Wannier',
+    'Wenz',
+    'Westerborn',
+    'Westlen',
+    'Whiffen',
+    'Wick',
+    'Wijkmark',
+    'Windkessel',
+    'Windsor',
+    'Wöhler',
+    'Yanggratoke',
+    'Yukalov',
+    'Zanos',
+    'Zeeman',
+    'Zehnder',
+    'Zeilberger',
+    'Zetocha',
+    'Zinsmeister',
+    'Zak',
+    'Xing',
     
 
+    
 ]
 
 
@@ -75210,6 +75413,8 @@ common_french_words={
     'Systèmes': {'B1': 'Noun'},
     'Suisse': {'B1': 'Noun'},
     'Sécurité': {'B2': 'Noun'},
+    'Télédétection': {'B1': 'Adjective'},
+    'Vins': {'A1': 'Noun (plural)'},
     'alternatives': {'B1': 'Noun (plural)'},
     'atomique': {'B2': 'Adjective'} ,
     'attaques': {'B2': 'Noun (plural)'},
@@ -75319,6 +75524,7 @@ common_german_words=[
     'Schwerionenforschung',
     'Stahlwerks',
     'Wiener',
+    'Windkannal',
     'Zentrum',
     'achtung',
     'autobahn',
