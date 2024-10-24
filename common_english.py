@@ -56136,7 +56136,7 @@ common_English_words={
     'scarring': {'B2': 'Noun, Verb (gerund)'},
     'scatterometer': {'B2': 'Noun'},
     'scavenged': {'B2': 'Verb (past tense), Verb (past participle)'},
-    'sccm': {'B2': 'Noun, Abbreviation'},
+    'sccm': {'B2': 'Noun, Abbreviation'}, #  stands for standard cubic centimeters per minute.
     'scintillators': {'B2': 'Noun (plural)'},
     'scorpion': {'B1': 'Noun'},
     'screwed': {'B1': 'Verb (past tense), Verb (past participle)'},
@@ -57932,7 +57932,10 @@ common_English_words={
     'postbounce': {'B2': 'Noun, Adjective'}, 
     'traffics': {'B1': 'Noun (plural)'},
     'levitating': {'B2': 'Verb (gerund), Verb (present participle)'},
-
+    '1/3-octave': {'B2': 'Noun Phrase'},
+    'k-simplicial': {'B2': 'Adjective'},
+    'm-gon': {'B2': 'Noun'},
+    
     #end for SCI - SCIe
 }
     
@@ -69983,7 +69986,43 @@ company_and_product_names=[
     'iSwap', # a Clifford and symmetric quantum gate - see diva2:1682170
     'iTraXX', # a market index of the 125 most liquid European entiries - see diva2:1214280 - no full text
     'kRPM', # thousand RPM - used in diva2:1440755
-
+    'cPerturb', # software to preterb C code - see diva2:1238555
+    'i3', # BMW i3 - see diva2:1229031
+    'i7-2600', # Intel core i7-2600 CPU - see diva2:556492
+    'l-bit', # l-bit theory - see  diva2:1722680
+    'l-bits', # set of quasi-local integrals of motion - see diva2:1722680
+    'rFactor', # simulation software - see diva2:754040
+    'maxSim', # pooling method - see diva2:1720668
+    'tEIGEN', # family - see diva2:1319851
+    'k€0.5-5', # range of cost per kg for suborbital payloads -  in k€ - see diva2:919666
+    '10534-2:1998', # ISO standard - see diva2:1263422
+    '1998:674', # Swedish law - see diva2:1247391
+    '25268:2007', # Swedish standard SS 25268:2007 - see diva2:549788
+    '3744:2010', # standard SS-EN ISO 3744:2010 - see diva2:746412
+    '2005:15', # AFS 2005:15  - see diva2:846154
+    '-45/45]s', # sequence of angles for plys of glass fiber reinforced plastic - see diva2:561581
+    '0/90]s', # sequence of angles for plys of glass fiber reinforced plastic - see diva2:561581
+    '16:14', # ratio of Cl2 to Ar - see diva2:1572121
+    '1:15', # scale model - see diva2:618585
+    '1:19', # scale model - see diva2:1082698
+    '1:390', # scale - see diva2:1879507
+    '1:40', # rail inclination - see diva2:1247303
+    '1:50', #scaling - see diva2:550427 and diva2:1110830
+    '22Mnb5', # press hardened boron alloyed steel - diva2:919841
+    '22NiCrMoV12-7', # steel alloy- see diva2:1478040
+    '3:1', # modulator contrast of 3:1 - see diva2:408868 and aspect ration in diva2:1335505
+    '3h6h', # 3 h cold and 6 h warm - see diva2:1057101
+    '4h8h', # 4 h cold and 8 h warm - see diva2:1057101
+    '256x192', # resolution - see diva2:938784
+    'm-files', # MatLab files - see diva2:492075
+    '25‒35', # range - see diva2:1707826
+    'c/1000', # phase velocity - see diva2:1682149
+    '35x5', # dimensions - see diva2:1642991
+    'sTeLIC', # prokaryotic member of the pentameric ligand-gated ion channel family - seediva2:1867423
+    'sPEeD12953', # analysis program from Danish Exergy Technology (DXT) - see diva2:1801552
+    '1:1-3:1', # fineness ratio range - see diva2:1788396
+    '13979-­‐1', # standard EN 13979-1 - see diva2:872206
+    '98:24', # method Elforsk 98:24 - see diva2:510132
 
     #End for SCI - SCIc
 
@@ -76912,6 +76951,10 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    'pcm': {'B1': 'Unit'}, # Per Cent Mille - see diva2:895396:
+    'kpc': {'B1': 'Unit'}, # kilo parsec = 3.08567758 · 10^19 m --- see diva2:1796308
+    'kNm/deg': {'B2': 'Unit'}, # torsional stiffness - kN m per degree
+    'm/min': {'B1': 'Unit'}, # meters per minute
     'Oe': {'B1': 'Unit'}, # oersted
     'Nmm': {'B1': 'Unit'}, # newtons millimeter (torque)
     'N/m': {'B1': 'Unit'}, # newtons per meter

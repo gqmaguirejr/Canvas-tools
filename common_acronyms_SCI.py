@@ -875,5 +875,7 @@ well_known_acronyms_list=[
     ['MAPE', 'mean absolute percentage error', {'s': 'diva2:1514716'}],
     ['wMAPE', 'weighted mean average percentage error', {'s': 'diva2:1514716', 'n': 'not spelled out in abstract, see equation 3.19'}],
     ['wPCC', 'wind powered car carrier', {'s': 'diva2:1501876'}],
-
+    ['DXT', 'Danish Exergy Technology', {'s': 'diva2:1801552'}],
+    ['fBM', 'fractional Brownian Motion', {'s': 'diva2:1800201'}],
+    
 ]
