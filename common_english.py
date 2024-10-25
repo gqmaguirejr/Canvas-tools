@@ -70072,7 +70072,19 @@ company_and_product_names=[
     'CFM', # company - diva2:1087206
     'CFX.11', # commercial CFD code - see diva2:650418
     'CLA-A-250', # Swegon silencer CLA-A-250 - see diva2:1335459
-    
+    'CL', # quivers CL(f) and CL(f; f) - see diva2:1120565
+    'CMA-FS', # CMA-ES along with feasibility rules was used, referred to as CMA-FS - see diva2:1794961
+    'CMA-ODL', # CMA-FS with optimization data leveraging (ODL) - see diva2:1794961
+    'CNES05', # simulating the flow in a combustion chamber  - see diva2:1306988
+    'CNOT', # quantum gate - see diva2:1707748
+    'CORQUENCH', # program - see diva2:433851
+    'CTM', # strain testing - diva2:1639715 - no full text
+    'CTT', # CTT Systems AB - company - see diva2:891472
+    'CUMFAT', # an in-house developed program for life prediction - see diva2:1287155
+    'CXCL2', # chemokine CXCL2 - see diva2:1045587
+    'CXCR2', # CXCR2 receptor - see diva2:1045587
+    'CYRANO3', # tool - see diva2:1728803
+
     #End for SCI - SCIc
 
 ]

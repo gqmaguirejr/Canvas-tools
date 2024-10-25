@@ -1528,6 +1528,8 @@ miss_spelled_to_correct_spelling={
     'ABB2': {'c': 'ABB', 's': 'diva2:742541', 'n': '2 is a footnote: "http://new.abb.com/se (Accessed 25 Aug 2014)."'},
     'ANSYSCFX': {'c': 'ANSYS CFX', 's': 'diva2:1083783', 'n': 'correct in original'},
     'CD1': {'c': 'CD', 's': 'diva2:1478013', 'n': '1 is a footnote: "MD – Machine Direction; CD – Cross Direction"'},
+    'COMSOL1': {'c': 'COMSOL', 's': 'diva2:742541', 'n': '2 is a footnote: "2http://new.abb.com/se (Accessed 25 Aug 2014)."'}, 
+
 }
 
 junklist=[
