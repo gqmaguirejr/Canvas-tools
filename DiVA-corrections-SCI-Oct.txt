@@ -60,3 +60,12 @@ corrected abstract:
 If MathJax were installed one could replace the long HTML with:
  $F(f) = \int_{a}^{b}(f^{\prime\prime}(x))^2 dx + \lambda \sum_{i=1}^{n} (f(x_i) -y_i)^2$
 ----------------------------------------------------------------------
+In diva2:557257
+
+<p>For a field k and a grading of the polynomial ringk[t] with Hilbert functionh, we consider the Quot functor Quoth V , where V = ? di =1k[t] is a finitely generated and free k[t]-module. The Quot functor parametrizes, for any k-algebra B, homogeneous B [t]-submodulesN⊆B⊗kV such that the graded components of the quotient( B⊗kV)/Nare locally freeB-modules of rank given byh. We find that it is locallyrepresentable by a polynomial ring over kin a finite number of variables. Finally, weshow that there is a scheme that represents the Quot functor that is both smooth and irreducible.</p>
+
+
+Corrected abstract:
+<p>For a field <em>k</em> and a grading of the polynomial ring <em>k[t]</em> with Hilbert function <em>h</em>, we consider the Quot functor Quoth <em>V<span style="display: inline-flex;"><span style="display: flex; flex-direction: column; font-size: 0.8rem;"><sup>h</sup><sub>V</sub></span></span></em> , where <em>V = &otimes; b<span style="display: inline-flex;"><span style="display: flex; flex-direction: column; font-size: 0.8rem;"><sup>d</sup><sub>i=1</sub></span></span> k[t]</em> is a finitely generated and free <em>k[t]</em>-module. The Quot functor parametrizes, for any <em>k</em>-algebra <em>B</em>, homogeneous <em>B[t]</em>-submodules <em>N ⊆ B⊗<sub>k</sub>V</em> such that the graded components of the quotient (<em>B⊗<sub>k</sub>V</em>)/N are locally free <em>B</em>-modules of rank given by <em>h</em>. We find that it is locally representable by a polynomial ring over <em>k</em> in a finite number of variables. Finally, we show that there is a scheme that represents the Quot functor that is both smooth and irreducible.</p>
+
+----------------------------------------------------------------------

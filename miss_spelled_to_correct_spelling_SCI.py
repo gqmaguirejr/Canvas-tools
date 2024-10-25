@@ -1523,7 +1523,11 @@ miss_spelled_to_correct_spelling={
     's_13': {'c': 's_13', 's': 'diva2:1807246', 'n': 'correct in original'},
 
     "F(f) =</p><p>R</p><p></p><p>b</p><p>a</p><p></p><p>(f00(x))2dx +</p><p>P</p><p></p><p>n</p><p>i</p><p></p><p>=1(f(xi) 􀀀 yi)2": {'c': '<em>F(f) = &int;<span style="display: inline-flex;"><span style="display: flex; flex-direction: column; font-size: 0.8rem;"><sup style="position: relative; top: -0.5rem; left: 0.05rem;">b</sup> <sub style="position: relative; bottom: -0.3rem; left: -0.1rem;">a</sub></span></span>(f&Prime;(x))<sup>2</sup> dx + &lambda; &sum;<span style="display: inline-flex;"><span style="display: flex; flex-direction: column; font-size: 0.8rem;"><sup style="position: relative; top: -0.5rem; left: 0.05rem;">n</sup><sub style="position: relative; bottom: -0.5rem; left: 0.05rem;">i=1</sub></span></span>(f(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup></em>', 's': 'diva2:571089'}, # latex: $F(f) = \int_{a}^{b}(f^{\prime\prime}(x))^2 dx + \lambda \sum_{i=1}^{n} (f(x_i) -y_i)^2$
-
+    '2:5_': {'c': '2.5&deg;', 's': 'diva2:1218549', 'n': 'correct in original'},
+    '1_': {'c': '1&deg;', 's': 'diva2:1218549', 'n': 'correct in original'},
+    'ABB2': {'c': 'ABB', 's': 'diva2:742541', 'n': '2 is a footnote: "http://new.abb.com/se (Accessed 25 Aug 2014)."'},
+    'ANSYSCFX': {'c': 'ANSYS CFX', 's': 'diva2:1083783', 'n': 'correct in original'},
+    'CD1': {'c': 'CD', 's': 'diva2:1478013', 'n': '1 is a footnote: "MD – Machine Direction; CD – Cross Direction"'},
 }
 
 junklist=[

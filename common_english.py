@@ -70023,7 +70023,56 @@ company_and_product_names=[
     '1:1-3:1', # fineness ratio range - see diva2:1788396
     '13979-­‐1', # standard EN 13979-1 - see diva2:872206
     '98:24', # method Elforsk 98:24 - see diva2:510132
-
+    '1,1,0', # ARIMA (1,1,0) modeling software -  diva2:828193
+    '1.8.1', # HELIOS 1.8.1 - see diva2:895396
+    '2.0.0', # OpenFOAM 2.0.0 - see diva2:1040684
+    '2.1.1', # section refrence - see diva2:1761916
+    '2.5:1', # magnification ratio of 2.5:1 - see diva2:1876088
+    '3.4.3', # section reference - see diva2:436407
+    '4.0.5', # 'IPG CarMaker 4.0.5', # see diva2:783982
+    '4.1.3', # chapter (section) cross reference - see diva2:1701360
+    '8.1.0', # the software SIMULIA Tosca Structure 8.1.0 - see diva2:1070456
+    '8.2.1', # 'Mechanical Simulation CarSim 8.2.1', # see diva2:783982
+    'V14', # 'VI-Grade CarRealTime V14', # see diva2:783982
+    'A340-600', # Airbus A340-600 - see diva2:612190
+    'ADELINE', # project - see diva2:1198968
+    'AFS', # publications of Arbetsmiljöverket - see diva2:1253239
+    'ALLEGRA', # project - see diva2:1110752
+    'ALTO', # ALTO mission to LEO - see diva2:1871579
+    'ASTEC', # code - see diva2:433851
+    'ASTOS', # software - see diva2:1871639
+    'ATR', # plane manufacturer - see diva2:1341556
+    'AUV62-AT', # Saab AUV for anti-submarine warefare training - see diva2:1360752 and https://www.saab.com/products/auv62-at
+    'AVL Motortestcenter AB', # company - see diva2:1503984
+    'AVL MTC AB', # company see diva2:1087218
+    'AVL', # company - see diva2:1087218 and  diva2:1503984
+    'BHG', # BHG Group conglomerate - see diva2:1894675
+    'Vitvaruexperten', # retailer - part of BHG Group -see diva2:1894675 
+    'Menter BSL', # turbulence model - see  diva2:1548349
+    'BSL', # part of 'Menter BSL'  turbulence model - see  diva2:1548349
+    'C-3', # collaboration between KTH and EAFIT - project - see diva2:1817067
+    'C-31', # Hydrolift C-31 - boat - see diva2:612181
+    'DC-3', # Douglas DC-3 - plane - see diva2:1900946
+    'CAAS-3S', # system produced by Mirion Technologies - see diva2:1655236
+    'CABRI', # experimental reactor - see diva2:1689719
+    'CAC40', # French stock market index of the 40 biggest companies - diva2:839851
+    'CAESES', # a CAD-modeler - see diva2:1528136
+    'CALLISTO', # flight demonstrator - see diva2:1739365
+    'CAM-B3LYP', # hybrid exchange–correlation functional combining CAM and B3LYP - see diva2:122987
+    'CAS1', #  truck silencer model CAS1 F1gen - see diva2:1737474
+    'CASC', # company - see diva2:802507
+    'CATIA', # 3D CAD software - see diva2:1380334
+    'CATO', # DriverAdvisory System - see diva2:1527832
+    'CD-9', #  gene encoding a protein that is a member of the transmembrane 4 superfamily- see diva2:1766767
+    'CENELEC', # European Committee for Electrotechnical Standardization - standards orgainization - see diva2:1207027
+    'OPTIFLO', # solution package within Bombardier Transportation's Rail Control Solutions - see diva2:1207027
+    'DOORS', # requirement management tool used in Bombardier Transportation's Rail Control Solutions - see diva2:1207027
+    'CES', # Ansys Granta Design CES Selector - see diva2:1057041
+    'CEVT', # China Euro Vehicle Technology, a joint venture between Volvo Cars and Geely Automobile - see diva2:1737392
+    'CFM', # company - diva2:1087206
+    'CFX.11', # commercial CFD code - see diva2:650418
+    'CLA-A-250', # Swegon silencer CLA-A-250 - see diva2:1335459
+    
     #End for SCI - SCIc
 
 ]
@@ -75396,7 +75445,7 @@ names_of_persons=[
     'Zinsmeister',
     'Zak',
     'Xing',
-    
+    'A.T.', # from A.T. Rinehimer
 
     
 ]
@@ -75544,7 +75593,9 @@ common_finnish_words=[
 ]
 
 common_german_words=[
+    'Aktiengesellschaft',
     'Bahn',
+    'Bayerische',
     'Bundesbahnen',
     'Deutsche',
     'Deutschland',
@@ -75557,11 +75608,13 @@ common_german_words=[
     'Linien',
     'Luft',
     'Luft-',
+    'Motoren',
     'Naturf', #from the shortened jounrnal name "Z. Naturf"
     'Raumfahrt',
     'Schweizerische',
     'Schwerionenforschung',
     'Stahlwerks',
+    'Werke',
     'Wiener',
     'Windkannal',
     'Zentrum',
