@@ -1249,7 +1249,7 @@ well_known_acronyms_list=[
     ['EGARCH', 'exponential GARCH', {'s': 'diva2:1106221'}],
     ['EGFP', 'Enhanced Green Fluorescent Protein', {'s': 'diva2:430996'}],
     ['FRAP', 'fluorescent recovery after photobleaching', {'s': 'diva2:430996'}],
-    ['EGR)', 'emissionsrenande system', {'s': 'diva2:754073', 'eng': 'emission cleaning system', 'n': 'not spelled out in abstract'}],
+    ['EGR', 'emissionsrenande system', {'s': 'diva2:754073', 'eng': 'emission cleaning system', 'n': 'not spelled out in abstract'}],
     ['EGT', 'Exhaust Gas Temperature', {'s': 'diva2:1816881', 'n': 'not spelled out in abstract; no full text in DiVA'}],
     ['EHD', 'electrohydrodynamic', {'s': 'diva2:652224'}],
     ['EIOPA', 'European Insurance and Occupational Pensions Authority', {'s': 'diva2:1038792'}],
@@ -1306,8 +1306,8 @@ well_known_acronyms_list=[
     ['EVS', 'Enhanced Voice Services', {'s': 'diva2:1057217'}],
     ['EW-MBSE', 'Electronic Warefare - Model-Based Systems Engineering (MBSE)', {'s': 'diva2:1701360'}],
     ['EWB', 'Engineering WorkBench', {'s': 'diva2:1287155'}],
-
-
+    ['EPS', 'Earnings Per Share', {'s': 'diva2:1450550'}],
+    ['NOMXCRSP', 'average credit spread in the NOMX-index', {'s': 'diva2:1450550'}],
 
 
 ]

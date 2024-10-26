@@ -70166,6 +70166,8 @@ company_and_product_names=[
     'EVAL', # Siemens, the in-house tool used to perform fatigue life analysis - see diva2:1279807
     'EXE', # executable program - see diva2:919812
     'EYESAT', # CNES CubeSat demonstrator - see diva2:1255163
+    'EUR-SEK', # echange rate - diva2:1114471
+    'USD-SEK', # echange rate - diva2:1114471
 
     #End for SCI - SCIc
 
