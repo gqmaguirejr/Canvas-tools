@@ -1529,6 +1529,11 @@ miss_spelled_to_correct_spelling={
     'ANSYSCFX': {'c': 'ANSYS CFX', 's': 'diva2:1083783', 'n': 'correct in original'},
     'CD1': {'c': 'CD', 's': 'diva2:1478013', 'n': '1 is a footnote: "MD – Machine Direction; CD – Cross Direction"'},
     'COMSOL1': {'c': 'COMSOL', 's': 'diva2:742541', 'n': '2 is a footnote: "2http://new.abb.com/se (Accessed 25 Aug 2014)."'}, 
+    'DNSB': {'c': 'DSNB', 's': 'diva2:1796308', 'n': 'error in original'},
+    'E0': {'c': '<em>E<sub>0</sub></em>', 's': 'diva2:1640055', 'n': 'correct in original'},
+    'JEMEUSO': {'c': 'JEM-EUSO', 's': 'diva2:1130118', 'n': 'correct in original; error in handling hypen at end of line'},
+    'ES0:05': {'c': 'ES<sub>0.05</sub>', 's': 'diva2:957659', 'n': 'correct in original'},
+    
 
 }
 

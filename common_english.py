@@ -60664,7 +60664,7 @@ company_and_product_names=[
     'AstraZeneca',
     'Astrakan',
     'Astrid-2',
-    'Astrium',
+    'Astrium', # EADS Astrium
     'Astros',                   # baseball team
     'Atari',
     'Atari-breakout',
@@ -70084,6 +70084,88 @@ company_and_product_names=[
     'CXCL2', # chemokine CXCL2 - see diva2:1045587
     'CXCR2', # CXCR2 receptor - see diva2:1045587
     'CYRANO3', # tool - see diva2:1728803
+    'D1.1', # standard AWS D1.1 - see diva2:491776
+    'D11', # Volvo D11 engine - see diva2:754073
+    'DC1306', # Scania DC1306 engine - see diva2:754073
+    'D214', # Train Signature ERRI D214 1999 - see diva2:430650
+    'D7136', # ASTM D7136 standard - see diva2:783996
+    'DAC', # capture CO2 directly from the atmosphere (DAC) - see diva2:1568320
+    'DANTE', # subroutine - see diva2:1352113
+    'DASSAULT-AVIATION', # company diva2:405926
+    'DATCOM', # semiempirical method - see diva2:1360650
+    'DBEST', # computer program - see diva2:1137877
+    'DBL600', # laminate - see diva2:618600
+    'DBL850', # laminate - see diva2:618600
+    'DBLT800', # laminate - see diva2:618600
+    'DC-X', # space vehicle - see diva2:1739365
+    'RVT', # space vehicle - see diva2:1739365
+    'Falcon 9',  # space vehicle - see diva2:1739365
+    'DC60', # distortion coefficient - see diva2:1698347
+    'DEBORA', # DEBORA experimental data base - see diva2:408153
+    'DEBRISK', # software - DEBRISK computes the trajectory and the survivability of the spacecraft - see diva2:1642576
+    'DEDALE', #  experiment- see diva2:408153
+    'DEKRA', # DEKRA Industrial AB - company - diva2:898111
+    'DIV2K', # data set - see diva2:1695513
+    'DKR', # buggy - perhaps part of "Peugeot 3008 DKR" - see diva2:1189542 - no full text in DiVA
+    'DL2', # Race Technology DL2 data logger - see diva2:891479
+    'DLA/SDT/SPC', # service division within CNES - see diva2:1467149 - no full text in DiVA
+    'CNES/DLA/SDT/SPC', # service division - see diva2:1467149 - no full text in DiVA
+    'DMSO', # Dimethyl sulfoxide - solvent - see diva2:1775641
+    'NUPACK', # a DNA/RNA predicton package - see diva2:1780228
+    'DNV-OS-F101', # Det Norske Veritas® standard for Line pipe for oil and other combustible liquids, natural gas and other gaseous media - see diva2:857656
+    'DNV-RP-F110', # Det Norske Veritas®  recommended practice (RP) for design methodology and criteria to fulfil the functional requirements regarding global buckling in DNV-ST-F101 - see diva2:878361
+    'DNW-NWB', 'Niedergeschwindigkeits-Windkanal Braunschweig' # wind tunnel diva2:787489
+    'SORT-1', # soot sample - diva2:1509432
+    'FORCED 360', # soot sample - diva2:1509432
+    'DOE H2A', #  model - see diva2:653258
+    'DOMEX500', # specimens - see diva2:1639715
+    'DOPG', # 1,2-dioleoyl-sn-glycero-3-phosphoglycerol lipid - see diva2:1579558
+    'DP420', # 3M DP420 adhesive - see diva2:1359766
+    'DP490', # 3M DP490 adhesive - see diva2:1183380
+    'DR3', # Gaia DR3 database - see diva2:1781270
+    'DRD450-80S4XS', # reach stacker truck (Kalmar DRD450-80S4XS) - see diva2:753944
+    'DREAM4', # benchmark collection DREAM4 Challenge - see diva2:754702
+    'DWR-932', # D-Link DWR-932 router - see diva2:1879604
+    'E106', # gene cite - see diva2:1867423
+    'E160', # gene cite - see diva2:1867423
+    'E1619', # INSEAN E1619 submarine propeller - see diva2:1799888
+    'E2611-09', # ASTM E2611-09 standard - see diva2:1263422
+    'E836', # Eppler E836 - model - see diva2:1737350
+    'EAC', # Spaceship EAC - an initiative run by the European Space Agency at the European Astronaut Centre (EAC) in Cologne, Germany- see diva2:1871533
+    'EAF', # EAF 99 data library - see diva2:13112
+    'JEF', # JEF 3.0 data library - see diva2:13112
+    'EAFIT', # private university in Columbia - diva2:1817067
+    'JEM-EUSO', # project - see diva2:760081
+    'ECO1', # ECO1 general aviation aircraft - see diva2:894080
+    'ECO2', # part of "Centre for ECO2 Vehicle Design" - see diva2:872192
+    'ECSS-E-TM-10-25', # standard ECSS-E-TM-10-25 - see diva2:1503719
+    'EDAG', # EDAG, Inc. - see diva2:608422
+    'EDC-NHS', # chemical coupling method commonly used in bioconjugation reactions. It stands for 1-Ethyl-3-(3-dimethylaminopropyl)carbodiimide hydrochloride (EDC) and N-hydroxysuccinimide (NHS) - see diva2:1576394 - the thesis cannot be searched
+    'APOGEE', # experiment  see diva2:1750461
+    'GJR-GARCH', # an asymmetric version of the GARCH - see diva2:1106221
+    'EGARCH/GJR-GARCH', # combination of EGARCH and GJR-GARCH - see diva2:1106221
+    'EII', # identifier for a Gaussian mixture model in Table 2.2 on page 12 in the thesis - see diva2:1319859
+    'ELO', # actually this should be "Elo" after "Arpad Elo" - see diva2:1823776
+    'ENERCON', # wind company - see diva2:1707348
+    'EPOC', # Emotiv EPOC sensor - diva2:753867
+    'Emotiv', # company - diva2:753867    
+    'ERCOFTAC', #  centrifugal pump - see diva2:549815
+    'EURSEK', # exchange rate - diva2:1180809
+    'EUR/SEK', # foreign exchange rate - see diva2:957659
+    'EUR/NOK', # foreign exchange rate - see diva2:957659
+    'EUR/USD', # foreign exchange rate - see diva2:957659
+    'USD/SEK', # foreign exchange rate - see diva2:957659
+    'USD/NOK', # foreign exchange rate - see diva2:957659
+    'ESA6DOF', # 6U cubesat propulsion system - see diva2:1817018
+    'ESAF', # simulation software - see diva2:1130118
+    'ESP-32', # ESP-32 board - see diva2:1698044
+    'ESP32-CAM', # module for digital imaging- see  diva2:1876088
+    'ESTEC', # ESTEC database - see diva2:1555097
+    'ETR500', # ETR500 high speed train - see diva2:618585
+    'EV/EBIT', # Electrics vehicles per EBIT - see diva2:942663
+    'EVAL', # Siemens, the in-house tool used to perform fatigue life analysis - see diva2:1279807
+    'EXE', # executable program - see diva2:919812
+    'EYESAT', # CNES CubeSat demonstrator - see diva2:1255163
 
     #End for SCI - SCIc
 
