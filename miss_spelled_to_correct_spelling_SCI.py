@@ -1533,7 +1533,20 @@ miss_spelled_to_correct_spelling={
     'E0': {'c': '<em>E<sub>0</sub></em>', 's': 'diva2:1640055', 'n': 'correct in original'},
     'JEMEUSO': {'c': 'JEM-EUSO', 's': 'diva2:1130118', 'n': 'correct in original; error in handling hypen at end of line'},
     'ES0:05': {'c': 'ES<sub>0.05</sub>', 's': 'diva2:957659', 'n': 'correct in original'},
-    
+    'FIXII': {'c': 'FIX-II', 's': 'diva2:529135', 'n': 'error in original; error handling "- " in original'},
+    'FRET­-DNA': {'c': 'FRET-DNA', 's': 'diva2:1571205', 'n': 'correct in original; error handling hyphen at end of line'},
+    'F_SCORE': {'c': 'F-score', 's': 'diva2:570392', 'n': 'error in original'}, # Piotroski F-score
+    'F˙': {'c': 'Ḟ', 's': 'diva2:1528247', 'n': 'correct in original'},
+    'ε˙': {'c': 'ε&#x307;', 's': 'diva2:1528247', 'n': 'correct in original'}, # using combining dot with epsilon
+    'σ¨': {'c': 'σ&#x308;', 's': 'diva2:1528247', 'n': 'correct in original'}, # using combining diaeresis with epsilon
+    '<em>εST B</em>': {'c': '<em>ε<sub>STB</sub></em>', 's': 'diva2:1528247', 'n': 'correct in original'},
+    '<em> εST B</em>': {'c': '<em> ε<sub>STB</sub></em>', 's': 'diva2:1528247', 'n': 'correct in original'},
+    'GABA$_A$R': {'c': 'GABA<sub>A<(sub>R', 's': 'diva2:1729765'},
+    'GABA(A)R': {'c': 'GABA<sub>A<(sub>R', 's': 'diva2:1729765'},
+    '\\(H_\\infty\\)': {'c': '<em>H<sub>&infin;</sub></em>', 's': 'diva2:1670746', 'n': 'correct in original'},
+    'HMTL': {'c': 'HTML', 's': 'diva2:612210', 'n': 'error in original'},
+    'IMDb': {'c': 'IMDb', 's': 'diva2:1163212', 'n': 'error in original; no full text in DiVA'}, # https://www.imdb.com/ - website - IMDb.com, Inc.
+
 
 }
 

@@ -70168,6 +70168,80 @@ company_and_product_names=[
     'EYESAT', # CNES CubeSat demonstrator - see diva2:1255163
     'EUR-SEK', # echange rate - diva2:1114471
     'USD-SEK', # echange rate - diva2:1114471
+    'F-15C', # plane - McDonnell Douglas F-15C - see diva2:1737356
+    'F/A-18A', # plane - Boeing F/A-18A  - see diva2:1737356
+    'F-18', # plane - see diva2:1360247
+    'F$', # part of a LaTeX equation - see diva2:1751413
+    'F.$', # part of a LaTeX equation - see diva2:1751413
+    'F404-GE-402', # F404-GE-402 turbofan jet engines - see diva2:1216812
+    'FAIR/DICE', # discrete time hybrid of DICE and FAIR - see diva2:1188950
+    'FAST-LTS', #  regression algorithm - see diva2:1113509
+    'FASTSIM', # simulator - see diva2:1263438
+    'FBD', # programming language - see diva2:1380258
+    'LAD',  # programming language - see diva2:1380258
+    'FE-DESIGN', # company - see diva2:875212
+    'FEMFAT', # postprocessor - see diva2:874332
+    'FEX', # Innventia FEX paper-machine - see diva2:538302
+    'FFT-POD', # modal decomposition in the Fourier domain (FFT-POD)  - see diva2:1640100
+    'ONERA', # French Aerospace Lab - diva2:1154527
+    'FISST', # fuselage design - see diva2:805298
+    'FIX-II', # program and experiments for Loss-of-coolant accident (LOCA) - see diva2:529135
+    'FLUMES', # FLUMES Iron Bird - actuator test rig - diva2:1583510
+    'FLYCHK', # software - see diva2:1890962
+    'FM10', # Chemivron Zorflex FM10 - see diva2:1679050
+    'LEISA', # DLR’s LEISA project - see diva2:412700
+    'FRANC3D', # software - see diva2:1354585
+    'FRANCE', # France (capitalized in French style in an address) - see diva2:1162961
+    'FSG', # FSG group - company - diva2:1538389
+    'GX-6300', # Axotec GX-6300 - see diva2:813229
+    'G$', # part of LaTeX equation - see diva2:1736958
+    'G10', # G10 basket - see diva2:1574239
+    'G1X', # radar - see diva2:1360711
+    'G29', # Logitech G29 steering wheel - see diva2:1670559
+    'GARCH-X', # model - see diva2:1319888
+    'GARCH/ARCH', # model - see diva2:1106221
+    'GENSYS®', # modeling software - see diva2:1207002
+    'GH-2', # two-states ground-hook suspension - see diva2:1670746
+    'SH-2', # a two-states sky-hook control suspension - see diva2:1670746
+    'GJ', # GJ constant - see §2.7 of diva2:605178
+    'J', # J constant - see §2.8 of diva2:605178
+    'GKN Aerospace Engine Systems', # company - see diva2:113350
+    'GKN Aerospace', # company - see diva2:1133508
+    'GKN', # GKN Ltd - company -  see diva2:1133508
+    'GM0', # initial metacentric height GM<sub>0</sub>  - see diva2:796759 and https://assets.publishing.service.gov.uk/media/6441189f22ef3b000f66f5dc/MSIS43_Intact_Stability_R05.23.pdf
+    'GMRES', # iterative solver - see diva2:1686479
+    'GOTHIC', # software - see diva2:452811
+    'GPR183', # protein receptor - see diva2:1871175
+    'GPR61', # protein receptor - see diva2:1871175
+    'GRB160625B', # bright gamma ray burst - see diva2:1678908
+    'GRB211211', # gamma ray burst - see diva2:1751613
+    'GT-SUITE', # software - see diva2:1465545
+    'GT', # Socata TB20 GT aircraft - see diva2:693935
+    'GT', # GeForce GTX 560 Ti graphic processing unit - see diva2:556492
+    'GT4', # BMW M4 GT4 - see diva2:1844980
+    'GVC', # Department of Earth Science (GVC) at the University of Gothenburg - see diva2:920005
+    'GWW92', # citaitonm in diva2:1334817
+    'H$', # part of LaTeX equation - see diva2:1751413
+    'H-NMR', # <sup>1</sup>H-NMR - see diva2:460536
+    'H2A', # DOE H2A model - see diva2:653258
+    'H4-24MW', # H4-24MW type Hexicon AB platform - diva2:839893
+    'HEEDS', # HEEDS MDO - software - see diva2:1737473
+    'HIAB', # HIAB XS 144 crane - see diva2:439972
+    'HL60', # HL60 leukemia cells - see diva2:1879615
+    'HX02', # electrical autonomous transporter - see diva2:1251783
+    'NOK-SEK', # exchange rate - see diva2:1334632
+    'ICEM', # Ansys ICEM - software - see diva2:1083080
+    'SEK/EUR' # exchange rate - see diva2:1334344,
+    'SEK/USD', # exchange rate - see diva2:1334344,
+    'ICM-54', 'International Congress of Mathematicians in 1954' # lecture  - see diva2:1074362
+    'ICM-98', 'International Congress of Mathematicians in !998' # lecture  - see diva2:1074362
+    'ID.3', # VW ID.3 - see diva2:1844980
+    'IEC60268-16', # IEC 60268-16 standard - see diva2:1253239
+    'IGT', # IGT F1 laboratory printing press - IGT Testing Systems company  - diva2:1746374
+    'ILLIQ', # e illiquidity measure - see §3.2.1 on pg. 21 of diva2:1799808
+    'MEC',   # portfolio-wide average at each time point - see §3.2.2 on pg. 21 of diva2:1799808
+    'IMA-M21', # f Hexcel’s UD uncured carbon/epoxy IMA-M21 prepreg strips - see diva2:1360268
+    'IMDb', # https://www.imdb.com/ - website - see diva2:1163212
 
     #End for SCI - SCIc
 
@@ -75542,7 +75616,7 @@ names_of_persons=[
     'Zak',
     'Xing',
     'A.T.', # from A.T. Rinehimer
-
+    'H.S.M', # H.S.M. Coxeter - Harold Scott MacDonald Coxeter - see diva2:1334807
     
 ]
 
@@ -75697,6 +75771,7 @@ common_german_words=[
     'Deutschland',
     'Einstellung',
     'Flughafen',
+    'Flugzeug',
     'Gedankenexperiment',
     'Geheimschreiber',
     'GmbH',
@@ -75719,6 +75794,7 @@ common_german_words=[
     'forschungsgruppe',
     'kredite',
     'leistungsmessung',
+    'nachster',
     'sozialforschung',
     'telekommunikationsnetzte',
     'und',
@@ -77126,6 +77202,7 @@ common_units={
     'GFLOP/s': {'B2': 'Unit'}, # Gigaflops per second
     'GFLOPs': {'B1': 'Unit'},
     'GHz': {'A2': 'Unit', 'B2': 'Unit'}, # Gigahertz
+    'GW': {'B2': 'Unit'},  # Gigawatt
     'GWh': {'B2': 'Unit'},  # Gigawatt-hour - Unit of energy
     'Gb/s': {'B2': 'Unit'},  # Gigabits per second - alternative to Gigabits/s
     'Gbit/s': {'B2': 'Unit'},  # Same as Gb/s
