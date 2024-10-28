@@ -79,3 +79,18 @@ Corrected abtract:
 
 diva2:1816881: <p>Gas turbines can experience various changes that affect their performance. Compressor fouling is one of the leading causes that deteriorate the gas turbine performance. This research aims to investigate the impact of compressor fouling on the performance of gas turbines and the rotodynamic behavior of gas turbines. Fouling was simulated as a reduction of mass flow and a reduction of compressor is entropic efficiency by using Turbomatch software. A rotor–bearing model was created to analyze the vibration behavior dueto compressor fouling by using MADYN 2000 software and that particle deposition leads to rotor imbalance. The results show that the main variations for performance are power output, pressure ratio and EGT. For the rotodynamic model, the result illustrates an increase in vibration level for the first and second bearings and a decrease for the third bearing. The results also predicted that parameters mass flow, compressor discharge temperature or specific fuel consumption show a similar trend compared to the increase in vibrations. This result can be used in conjunction with GPA analysis to predict the fouling condition and help in identifying the severity of the fouling condition.</p>
 ----------------------------------------------------------------------
+In diva2:1216708 merged words and innecessary text:
+
+<p>In this project, we aim to find a method for obtainingthe factors in a bull/bear market factor model for asset returnand variance, given an optimal portfolio. The proposed methodwas derived using the Karush-Kuhn-Tucker (KKT) conditionsfor optimal solutions to the convex Markowitz portfolio selectionproblem. For synthetic data where all necessary parameters wereknown exactly, the method could give bounds on the factors. Theexact values of the factors were obtained when short selling wasallowed, and in some instances when short selling was forbidden.The method was evaluated on real-world data with varyingresults, possibly due to estimation errors and invalid assumptionsabout the model of the investor.I. INTRODUC</p>
+
+
+Corrected abtract:
+
+<p>In this project, we aim to find a method for obtainingthe factors in a bull/bear market factor model for asset returnand variance, given an optimal portfolio. The proposed method was derived using the Karush-Kuhn-Tucker (KKT) conditions for optimal solutions to the convex Markowitz portfolio selection problem. For synthetic data where all necessary parameters were known exactly, the method could give bounds on the factors. The exact values of the factors were obtained when short selling was allowed, and in some instances when short selling was forbidden. The method was evaluated on real-world data with varying results, possibly due to estimation errors and invalid assumptions about the model of the investor.</p>
+
+----------------------------------------------------------------------
+In diva2:1900086 there is an error in the PDF, it will fail to load - see
+https://kth.diva-portal.org/smash/get/diva2:1900086/FULLTEXT01.pdf
+
+The file seems to have been cut off after 14,680,064 bytes.
+----------------------------------------------------------------------

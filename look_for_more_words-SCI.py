@@ -2569,9 +2569,17 @@ def main():
     for pa in potential_acronyms:
         if pa in common_acronyms_SCI.well_known_acronyms_list:
             to_be_deleted.append(pa)
+        # If pa is initials
+        if isinstance(pa, str) and pa.find('.') > 0:
+            pa_letters=pa.replace('.',  '')
+            if pa_letters.isupper():
+                pa_with_period=pa+'.'
+                if pa_with_period in common_english.names_of_persons:
+                    to_be_deleted.append(pa)
+
 
     for pa in to_be_deleted:
-        del potential_acronyms[pa]
+        potential_acronyms.remove(pa)
         
     save_potential_acronyms(potential_acronyms)
     print(f'unique potential acronyms: {len(potential_acronyms)}')

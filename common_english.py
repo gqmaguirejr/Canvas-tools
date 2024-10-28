@@ -58185,6 +58185,7 @@ chemical_elements={
 }
 
 chemical_names_and_formulas=[
+    'NaCl-UCl3-PuCl3',
     'Yb:KYW',
     'Zr/C',
     'U,Am', # combination of elements - see diva2:1519571
@@ -68704,6 +68705,7 @@ company_and_product_names=[
     'MDA-MB-231', # breast cancer subtype (basal-like) cell line- see diva2:1571941
     'MDA-MB_231', # breast cancer subtype (basal-like) cell line - see diva2:1711581
     'MDCKII', # MDCKII cells - see diva2:1591713
+    'MDCK-II', # MDCK-II cells - see diva2:1636179
     'MED1', # Mediator subunit - see diva2:1876173
     'MEF-1', # mouse fibroblasts (MEF-1 cells) - see diva2:744738
     'MICCAI', # part of "MICCAI 2012 brain MRI datasets" - see  diva2:1362867
@@ -70233,8 +70235,8 @@ company_and_product_names=[
     'ICEM', # Ansys ICEM - software - see diva2:1083080
     'SEK/EUR' # exchange rate - see diva2:1334344,
     'SEK/USD', # exchange rate - see diva2:1334344,
-    'ICM-54', 'International Congress of Mathematicians in 1954' # lecture  - see diva2:1074362
-    'ICM-98', 'International Congress of Mathematicians in !998' # lecture  - see diva2:1074362
+    'ICM-54', # International Congress of Mathematicians in 1954 - lecture  - see diva2:1074362
+    'ICM-98', # International Congress of Mathematicians in !998 - lecture  - see diva2:1074362
     'ID.3', # VW ID.3 - see diva2:1844980
     'IEC60268-16', # IEC 60268-16 standard - see diva2:1253239
     'IGT', # IGT F1 laboratory printing press - IGT Testing Systems company  - diva2:1746374
@@ -70242,6 +70244,108 @@ company_and_product_names=[
     'MEC',   # portfolio-wide average at each time point - see §3.2.2 on pg. 21 of diva2:1799808
     'IMA-M21', # f Hexcel’s UD uncured carbon/epoxy IMA-M21 prepreg strips - see diva2:1360268
     'IMDb', # https://www.imdb.com/ - website - see diva2:1163212
+    'INSEAN E1619', # non-cavitating generic submarine propeller - see diva2:1799888
+    'IOSHEXA', # project - see diva2:1613333
+    'SAB', # SAV Group - company - see diva2:1613333 and  https://www.sabgroup.it/
+    'SAB-LS', # Italian company "SAB Launch Services S.r.l." - providing launch services (LS) for small satellites - see diva2:1613333
+    'IPHOBAC', # EU-project - see diva2:1720815
+    'IPOPT', # open source software for non-linear optimization - see diva2:1150741
+    'IR806', # dye - see diva2:1679013
+    'ISAAC', # rocket experiment - see diva2:651784
+    'XSPEC', # spectral fitting program - see diva2:1568137
+    'ISO11904-2:2004', # ISO standard - see diva2:1253239
+    'ISO119041:2002', # ISO standard - see diva2:1253239
+    'ISO362-1:2007', # ISO standard - see diva2:784003
+    'ISO8608:2016', # ISO standard - see diva2:1465518
+    'IT3', # BlueBus 6m IT3 - make and model - see diva2:1871683
+    'I<sub>THD</sub>', # Total Harmonic Current Distortion - see diva2:1571161
+    'ITP', # occupational pension - see diva2:1038792
+    'ITP 2', # defined benefit pension - see diva2:1038792
+    'I-V', # current–voltage- see diva2:560204
+    'J1441', # SAE J1441 - see diva2:1642450
+    'J2', # J2 zonal harmonic - see diva2:1871555
+    'JPADS10K', # parachute - see diva2:1163147 - hould probably be set at "JPAD 10K" - see https://airborne-sys.com/product/dragonfly-army-cargo-delivery-parachute/
+    'JPY/USD', # exchange rate - see diva2:562079
+    'JS1', # glider - see diva2:894181
+    'Carl-Gustaf®', # recoilless rifle- see diva2:1698174
+    'KMF', # KMF Ventures - company - see diva2:515504
+    'KTH-NASA', # generic fighter research model - see diva2:1244326
+    'KVD', # KVD Kvarndammen AB - company - see diva2:942652
+    'L<sub>0</sub>', # distance metric - see diva2:1342233
+    'L<sub>1</sub>', # distance metric - see diva2:1342233
+    'L<sub>2</sub>', # distance metric - see diva2:1342233
+    'L<sub>&infin;</sub>', # distance metric - see diva2:1342233
+    'L125P', # mutation of GPR183 - see diva2:1871175
+    'L.CBA', # Deutsche Bahn Cargo AG (DB Cargo) department “Operative Locomotives and Budget Planning Germany” (L.CBA 22) - see diva2:1583459
+    'L2000', # L2000 wind tunnel at KTH - see diva2:1881041
+    'L50', # 50th percentile sound level - see diva2:1441970
+    'L90', # 90th percentile sound level - see diva2:1441970
+    'LA50', # the L50 level with  A-weighting filter - see diva2:1441970
+    'LA90', # the L90 level with  A-weighting filter - see diva2:1441970
+    'LAMMPS', # simulaiton package - see diva2:1130148
+    'LIGHTSTRUCT', # VINNOVA-funded research and development project - see diva2:784006
+    'LINES', # data set - see diva2:1593015
+    'LINEST', # Microsoft Excel 2010 built-in function - see diva2:692167
+    'MoreBac', #bacterial experiment - see diva2:1142952
+    'LM-3A', # LM-3A Launch Vehicle - see diva2:1289533
+    'LMS', # LMS Amesim - simulation oftware - see diva2:893827
+    'LS', # LS DYNA (Ansys LS-DYNA) modeling system - see diva2:618555
+    'LS-DYNA®', # Ansys LS-DYNA® - modeling system - see diva2:1478013
+    'REINERTSEN', # company - see diva2:618555
+    'LX­14', # LX­14 high explosive - see diva2:1573058
+    'L₁', # adaptive control - see diva2:617156
+    'M/M/12', # M/M/1 with 12 rooms - queuing system - see diva2:1894665
+    'M6', # bolt size - diva2:1576894
+    'M60',# bolt size - diva2:1576894
+    'MADYN', # MADYN 2000 software - see diva2:1816881
+    'MATLAB/SIMULINK®', # software - see diva2:1189550
+    'XRF-GPU', # simulation software using GPU parallelization - see diva2:1162773
+    'MC-GPU', # Monte-Carlo (MC) simulation oftware for runinng on a GPU - see diva2:1162773
+    'MCLUST', # MCLUST family - software for model-based clustering - see diva2:1319851
+    'MCNP5', # Los Alamos National Laboratory stochastic Monte Carlo code - see diva2:939506
+    'POLCA7', # Westinghouse 3D core simulator - see diva2:939506
+    'MCNP', # Monte Carlo based code - see diva2:1655236
+    'MDO', # HEEDS MDO - design space exploration software - diva2:1737473 - no ful text
+    'MDS-UPDRS II', #  see diva2:1827798
+    'MDS-UPDRS III', #  see diva2:1827798
+    'MELCOR', # MELCOR severe accident code - see diva2:1888155
+    "Student’s t-distribution", # diva2:932785
+    'MIL-F-8785', # standard - see diva2:1900918
+    'MIL-F-8785C',# standard - see diva2:1817055
+    'MK18', # MK18 conceptual blended wing-body UAV - see diva2:1646404
+    'MK3',  # BAE Systems 57mm MK3 marine artillery - see diva2:1290659
+    'QLIRO', # company - see diva2:1719774
+    'MLX01', # SCMaglev MLX01 - see diva2:854573
+    'MP2', # Industrial Optimizers AB’s MP2 software - diva2:1517478
+    'MP521', # Merlin MP521 engineering flight simulator - see diva2:1127926
+    'SPESI', # CEA's SPESI service - see diva2:1689719
+    'MSXB', # Microstar Laboratories MSXB 042 quick-connect card - see diva2:919812
+    'MTB', # mountain bike suspension fork - diva2:1816700 - no full text in DiVA
+    'MTR', # MTR Express - see diva2:1114111
+    'MTR2000', # BS Verkstäder railway maintenance vehicle - see diva2:846153
+    'MTX', # Scania MTX after-treatment system  - see diva2:1645435
+    'MW60000', # PEI MW60000 ' should be Polyethyleneimine, M.W. 60,000 where Molecular Weight (g/mol) - see diva2:1904652
+    'MX', # Vicon MX - diva2:550016
+    'NA64', # experiment at CERN - see diva2:1896429
+    'NACA-4', # NACA-4 digits profiles - see diva2:1465546
+    'NACA-63-412', # NACA-63-412 profile for both rudder and centerboard wing - see diva2:1341345
+    'NACA0021', # NACA0012 airfoil benchmark model - see diva2:1282827
+    'NACA4412', # NACA4412 wing profile - see diva2:1728303
+    'NACA45018',# airfoil - see diva2:1583439
+    'NACA64', # NACA profile - see diva2:737567
+    'NACA65', # NACA profile - see diva2:737567
+    'NACA65-009', # NACA65-009 blade - see diva2:1462107
+    'NANF-B', # NANF that operates in the 850 nm window - see diva2:1781509 and https://doi.org/10.1038/s41467-020-19910-7
+    'NANOBED', # hardware-in-the-loop testbed - see diva2:1255170
+    'NASGRO', # crack propagation software - see diva2:1740831
+    'NEC', # 5 MV NEC Pelletron - see diva2:1798454
+    'Nek5000', # software Nek5000   - diva2:609183
+    'NEOS', # internet based solver - diva2:1427632
+    'NEWT', # conceptual vehicle - diva2:784045
+    'NF-A8', # Noctua (NF-A8) fans diva2:1707846
+    'NGC-4395', # micro Seyfert galaxy - see diva2:651680
+    'NGFR', # NGFR receptor - see diva2:1045587
+    'NGM', # NGM SME - a Swedish marketplace - see diva2:1833714
 
     #End for SCI - SCIc
 
@@ -75616,12 +75720,16 @@ names_of_persons=[
     'Zak',
     'Xing',
     'A.T.', # from A.T. Rinehimer
-    'H.S.M', # H.S.M. Coxeter - Harold Scott MacDonald Coxeter - see diva2:1334807
-    
+    'H.S.M.', # H.S.M. Coxeter - Harold Scott MacDonald Coxeter - see diva2:1334807
+    'J.W.', # J.W. Grizzle - see diva2:1653319
+    'D.L.', # D.L. Rubinfeld - see diva2:1757012
+    'M.T.', # M.T. Stamps - see diva2:1781501
+
 ]
 
 
 common_french_words={
+    "d’Acoustique": {'B1': 'Noun (compound)'},
     "d'Electricité": {'B1': 'Noun (compound)'},
     'd’Etudes': {'B1': 'Noun (plural)'},
     "d'information": {'B1': 'Noun (compound)'},
@@ -75650,12 +75758,14 @@ common_french_words={
     'Etudes': {'B1': 'Noun (plural)'},
     'Expression': {'B2': 'Noun'},
     'Financière': {'B2': 'Noun'},
+    'Fluides': {'A2': 'Noun'},
     'Fonctionnement': {'B2': 'Noun'},
     'Goéland': {'B2': 'Noun'},
     'Identification': {'B2': 'Noun'},
     'Institute': {'A2': 'Noun'},
     'Laboratoire': {'B1': 'Noun'},
     'Matière': {'B1': 'Noun'},
+    'Mécanique': {'B1': 'Noun'},
     'Montrealais': {'C1': 'Noun'},
     'Montréalais': {'C1': 'Noun'},
     'Mécanique': {'B1': 'Noun'},

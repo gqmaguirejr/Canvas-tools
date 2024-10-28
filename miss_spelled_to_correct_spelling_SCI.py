@@ -1545,8 +1545,27 @@ miss_spelled_to_correct_spelling={
     'GABA(A)R': {'c': 'GABA<sub>A<(sub>R', 's': 'diva2:1729765'},
     '\\(H_\\infty\\)': {'c': '<em>H<sub>&infin;</sub></em>', 's': 'diva2:1670746', 'n': 'correct in original'},
     'HMTL': {'c': 'HTML', 's': 'diva2:612210', 'n': 'error in original'},
-    'IMDb': {'c': 'IMDb', 's': 'diva2:1163212', 'n': 'error in original; no full text in DiVA'}, # https://www.imdb.com/ - website - IMDb.com, Inc.
+    'IMDB': {'c': 'IMDb', 's': 'diva2:1163212', 'n': 'error in original; no full text in DiVA'}, # https://www.imdb.com/ - website - IMDb.com, Inc.
+    'INSTITUE': {'c': 'INSTITUTE', 's': 'diva2:720261', 'n': 'correct in original; unnecessary text in DiVA'},
+    'INTRODUC': {'c': 'INTRODUCTION', 's': 'diva2:1216708', 'n': 'correct in original; unnecessary text'}, # The abstract has part of the title of seciton "I"
+    'ITHD': {'c': 'I<sub>THD</sub>', 's': 'diva2:1571161', 'n': 'correct in original'}, # Total Harmonic Current Distortion 
+    'JAVA': {'c': 'Java', 's': 'diva2:902524', 'n': 'error in original; error in capitalization in abstract'},
+    'L0': {'c': 'L<sub>0</sub>', 's': 'diva2:1342233', 'n': 'correct in original'}, 
+    'L1': {'c': 'L<sub>1</sub>', 's': 'diva2:1342233', 'n': 'correct in original'}, 
+    'L2': {'c': 'L<sub>2</sub>', 's': 'diva2:1342233', 'n': 'correct in original'}, 
+    'Linfinity': {'c': 'L<sub>&infin;</sub>', 's': 'diva2:1342233', 'n': 'correct in original'}, 
+    'VIRGO': {'c': 'VIRGO', 's': 'diva2:1695944', 'n': 'error in original; Virgo is not an acronym'},
+    'LS-DYNA.A': {'c': 'LS-DYNA. A', 's': 'diva2:1236998', 'n': 'correct in original'},
+    'LSZM': {'c': 'LZSM', 's': 'diva2:1879424', 'n': 'error in original'},
+    'M.T': {'c': 'M.T.', 's': 'diva2:1781501', 'n': 'error in original'}, # The author's middle initial should have a period after it
+   'MATLABRO': {'c': 'MATLAB®', 's': 'diva2:853494', 'n': 'correct in original'},
+    'M_T': {'c': 'M<sub>T</sub>', 's': 'diva2:1900086', 'n': 'The PDF file appears to be truncated - so one cannot open it'},  
 
+    'UC1.1 O0.3 N0.2': {'c': 'UC<sub>1.1</sub>O<sub>0.3</sub>N<sub>0.2</sub>', 's': 'diva2:740812', 'n': 'correct in original'},
+    'UC1.1': {'c': 'UC<sub>1.1</sub>', 's': 'diva2:740812', 'n': 'correct in original'},
+    'O0.3': {'c': 'O<sub>0.3</sub>', 's': 'diva2:740812', 'n': 'correct in original'},
+    'N0.2': {'c': 'N<sub>0.2</sub>', 's': 'diva2:740812', 'n': 'correct in original'},
+    'NEK5000': {'c': 'Nek5000', 's': 'diva2:609183', 'n': 'correct in original'},
 
 }
 
