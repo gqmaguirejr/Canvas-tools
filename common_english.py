@@ -70386,6 +70386,41 @@ company_and_product_names=[
     'PROMETHEE', # multi-criteria decision making method - see diva2:1303001
     'PSG2', # software - see diva2:436407
     'PYTHIA', # a program for the generation of high-energy physics collision events - see diva2:516126
+    'Q#', # quantum programming langauge - diva2:1436927
+    'Q2', # 2nd quarter - diva2:1349670
+    'Q3', # 3d quarter - diva2:1349670
+    'R,Q', # model - see diva2:1894675
+    'R250T', # Regina 250 intercity train - see diva2:1849148
+    'R2log', # loss function - see diva2:1319675'
+    'R5A', #  Saab TransponderTech airborne transponder - see diva2:1364282
+    'R6', # R6 defect assessment analysis - see diva2:1903464
+    'RADIOSS', # a solver in the Altair HyperWorks 13.0 software suite - see diva2:1040695
+    'REBLISS', # proposed modified version of BLISS - see diva2:935425
+    'RECT', # Scania RECT group - see diva2:1189605
+    'RELAP5', # Idaho National Laboratory simulator - see diva2:1351514
+    'REVT', # REVT department at Scania CV AB - diva2:940927
+    'RG', # derived functor - see diva2:1751413
+    'RH', # derived functor - see diva2:1751413 and relative humidity - diva2:1716282
+    'RH$', # part of LaTeX equaiton in diva2:1751413
+    'RH-0.5', # relative humidity of 0.5% - see diva2:1716282
+    'RHEA', # RHEA System S.A.- company - diva2:1503719
+    'RHZE2', # driver valve - see diva2:1057256
+    'RICOH', # RICOH THETA S camera - see diva2:1113509
+    'RIO', # NI Compact RIO - se diva2:1586506
+    'RIVTAC', # RIVTAC® (High-speed impact nailing) - see diva2:1207110
+    'RIVTAC®', # RIVTAC® (High-speed impact nailing) - see diva2:1207110
+    'RMG', # crack depth meter RMG 4015 - see diva2:1800189
+    'RND', # function - see diva2:650335
+    'ROCAUC', # metric - set as one acronym in diva2:1431097
+    'ROSA-V', # ROSA-V Test 6-1 - see diva2:529136
+    'RP', # Anticorit RP 3802 anti-corrosive oil - see diva2:919831
+    'RS232', # serial interface standard - see diva2:813229
+    'RSTRUCT', # computational tool - see diva2:612217
+    'RTCC', # group for Dynamics and Strength analysis at Scania CV AB - see diva2:1639715
+    'RUAG', # RUAG Space - company - diva2:1263411
+    'RUFS-1', # satellite call sign - see diva2:866080
+
+
     #End for SCI - SCIc
 
 ]
@@ -75764,6 +75799,7 @@ names_of_persons=[
     'D.L.', # D.L. Rubinfeld - see diva2:1757012
     'M.T.', # M.T. Stamps - see diva2:1781501
     'P.L.', # P.L. Davis - see diva2:1083070
+    'R.T.', # Richard T. Lahey Jr - see diva2:650418 and also https://doi.org/10.1016/j.nucengdes.2020.111018
 ]
 
 

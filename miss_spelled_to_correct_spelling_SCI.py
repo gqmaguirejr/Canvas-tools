@@ -1570,6 +1570,13 @@ miss_spelled_to_correct_spelling={
     'ORCAFLEXTM': {'c': 'Orcaflex™', 's': 'diva2:919804', 'n': 'error in original'}, 
     'PUGH': {'c': 'Pugh', 's': 'diva2:1817476', 'n': 'error in original'}, 
     'P_N': {'c': 'P<sub>N</sub>', 's': 'diva2:741918', 'n': 'correct in original'},
+    'Q_0': {'c': 'Q<sub>0</sub>', 's': 'diva2:1849663', 'n': 'correct in original'}, 
+    'R.T': {'c': 'R.T.', 's': 'diva2:650418', 'n': 'error in original; no full text in DiVA'}, # Richard T. Lahey Jr - see  and also https://doi.org/10.1016/j.nucengdes.2020.111018
+    'etal.': {'c': 'et al.', 's': 'diva2:650418', 'n': 'error in original'},
+    'R2LOG': {'c': 'R2log', 's': 'diva2:1319675', 'n': 'error in original English abstract - correct in Swedish abstract; see equation 3.30 on page 23'},
+    'RA p02': {'c': 'R<span style="display: inline-flex;"><span style="display: flex; flex-direction: column; font-size: 0.8rem;"><sup>A</sup><sub>p02</sub></span></span>', 's': 'diva2:1348434', 'n': 'correct in original'}, # most of the equations and some text were incorrect - there is an overall corrected abstract has been written
+    'RAMS1': {'c': 'RAMS', 's': 'diva2:1057120', 'n': '1 is a foot note saying "Reliability, Availability, Maintainability, Safety"'},
+    'RN G': {'c': 'RNG', 's': 'diva2:1779369', 'n': 'correct in original'},
 
 }
 
