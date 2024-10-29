@@ -70346,7 +70346,46 @@ company_and_product_names=[
     'NGC-4395', # micro Seyfert galaxy - see diva2:651680
     'NGFR', # NGFR receptor - see diva2:1045587
     'NGM', # NGM SME - a Swedish marketplace - see diva2:1833714
-
+    'NMBT', # Scania NMBT - see diva2:1357325
+    'NRAM', # proposed solution at Scania to take data from an accelerated engine cell measurement to synthesis a test giving equivalent damage in the testing environment"- see diva2:1712896
+    'NT2011', # KTH NT2011 wind tunnel - see diva2:839881
+    'NTIRE', # NTIRE challenge on Single Image Super Resolution (SISR) - see diva2:1695513
+    'NXT', # Scania NXT project - see diva2:1380196
+    'Euro NCAP', # diva2:1440868
+    'OASIS', # OASIS open access brain imaging dataset - see diva2:1431609
+    'ODE45', # Matlabs ODE45 is an ODE solver - see diva2:560862
+    'ODEON', # silumation software - see diva2:1698331
+    'OECD/MCCI', # projects - see diva2:433851
+    'OECD/NEA', # OECD/NEA ROSA/LSTF project - see diva2:529136
+    'OKQ8', # company - see diva2:1832723
+    'OMXC20', # Nordic equity index - see diva2:725958
+    'OMXH25', # Nordic equity index - see diva2:725958
+    'OMXS30', # Nordic equity index - see diva2:725958
+    'OMXS30-2019', # implied volatility surface data - see diva2:1431654
+    'OMXSGI', # OMX Stockholm All-Share Gross Index - see diva2:1831431
+    'OPL', # modeling language - see diva2:904606
+    'OPS-SAT', # ESA OPS-SAT project - see diva2:1583521
+    'OPTIBRUI', # analytical software - see diva2:1145326
+    'Orcaflex™', # software from Orcina Ltd - see diva2:919804
+    'P1-2', # parameters P9-10, and P5-6 - diva2:1844980
+    'P3-4',# parameters - diva2:1844980
+    'P5-6',# parameters - diva2:1844980
+    'P7-8',# parameters - diva2:1844980
+    'P9-10',# parameters- diva2:1844980
+    'PAM-CRASH', # FE explicit commercial code - diva2:1207066
+    'PATRIUS', # Space mechanics library - see diva2:1255165
+    'PDF4LHC', # working group - see diva2:1626684
+    'PENELOPE', # software for the Monte Carlo simulation of coupled electron–photon transport - see diva2:1162773
+    'PERMAS', # finite element method model - see diva2:461192
+    'PGENESIS', # simulator - see diva2:560434
+    'PGRH', # <em>creux</em> PGRH - the name given to the pressure drop when the magnitude is high - diva2:1110758
+    'PICARD', # satellite - see diva2:1216812
+    'PITCAR', # a small electric 4 wheeler - diva2:1070423
+    'POLCA-T', # software - see diva2:1745587
+    'POLCA8', # Westinghouse BWR nodal core simulator - see diva2:1543459
+    'PROMETHEE', # multi-criteria decision making method - see diva2:1303001
+    'PSG2', # software - see diva2:436407
+    'PYTHIA', # a program for the generation of high-energy physics collision events - see diva2:516126
     #End for SCI - SCIc
 
 ]
@@ -75724,7 +75763,7 @@ names_of_persons=[
     'J.W.', # J.W. Grizzle - see diva2:1653319
     'D.L.', # D.L. Rubinfeld - see diva2:1757012
     'M.T.', # M.T. Stamps - see diva2:1781501
-
+    'P.L.', # P.L. Davis - see diva2:1083070
 ]
 
 

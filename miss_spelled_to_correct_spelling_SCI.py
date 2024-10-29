@@ -1566,6 +1566,10 @@ miss_spelled_to_correct_spelling={
     'O0.3': {'c': 'O<sub>0.3</sub>', 's': 'diva2:740812', 'n': 'correct in original'},
     'N0.2': {'c': 'N<sub>0.2</sub>', 's': 'diva2:740812', 'n': 'correct in original'},
     'NEK5000': {'c': 'Nek5000', 's': 'diva2:609183', 'n': 'correct in original'},
+    'ORCAFELXTM': {'c': 'Orcaflex™', 's': 'diva2:919804', 'n': 'error in original'}, 
+    'ORCAFLEXTM': {'c': 'Orcaflex™', 's': 'diva2:919804', 'n': 'error in original'}, 
+    'PUGH': {'c': 'Pugh', 's': 'diva2:1817476', 'n': 'error in original'}, 
+    'P_N': {'c': 'P<sub>N</sub>', 's': 'diva2:741918', 'n': 'correct in original'},
 
 }
 
