@@ -1577,6 +1577,9 @@ miss_spelled_to_correct_spelling={
     'RA p02': {'c': 'R<span style="display: inline-flex;"><span style="display: flex; flex-direction: column; font-size: 0.8rem;"><sup>A</sup><sub>p02</sub></span></span>', 's': 'diva2:1348434', 'n': 'correct in original'}, # most of the equations and some text were incorrect - there is an overall corrected abstract has been written
     'RAMS1': {'c': 'RAMS', 's': 'diva2:1057120', 'n': '1 is a foot note saying "Reliability, Availability, Maintainability, Safety"'},
     'RN G': {'c': 'RNG', 's': 'diva2:1779369', 'n': 'correct in original'},
+    'SDNR2': {'c': 'SDNR<sup>2</sup>', 's': 'diva2:405436', 'n': 'correct in original'},
+    'SMC2': {'c': 'SMC<sup>2</sup>', 's': 'diva2:872346', 'n': 'correct in original'},
+    'TC': {'c': 'T<sub>C</sub>', 's': 'diva2:1682149', 'n': 'correct in original'},
 
 }
 

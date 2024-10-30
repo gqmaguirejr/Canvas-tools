@@ -376,6 +376,8 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    'R<span',
+    '0.8rem;\"><sup>A</sup><sub>p02</sub></span></span>',
     '<em>',
     'ε<sub>STB</sub></em>',
     '<em>F(f)',

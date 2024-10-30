@@ -70419,8 +70419,85 @@ company_and_product_names=[
     'RTCC', # group for Dynamics and Strength analysis at Scania CV AB - see diva2:1639715
     'RUAG', # RUAG Space - company - diva2:1263411
     'RUFS-1', # satellite call sign - see diva2:866080
-
-
+    'S-N', # curve - a plot of the magnitude of an alternating stress versus the number of cycles to failure - see diva2:861956
+    'SA104X', # KTH course number - Degree Project in Engineering Physics - see diva2:720261
+    'SA105X', # KTH course number - Degree Project in Vehicle Engineering, First Cycle - see diva2:821551
+    'SAF2507', # super duplex stainless steel alloy - see diva2:1145353
+    'SAMCEF', # solver - see diva2:692548
+    'SAP2000', # FEA software - ee diva2:1083484
+    'BRIGADE/Plus',  # FEA software - ee diva2:1083484
+    'SCRAM', # an emergency shutdown of a nuclear reactor - see diva2:1771786
+    'SD271X', # KTH course code - degree project in Naval Architecture - diva2:1270437
+    'J154817.92+351128.0', # SDSS identifier for a galaxy - see  diva2:741109
+    'SDT', # algorithm - see diva2:802097
+    'SEK/EUR', # exchange rate - see diva2:562079
+    'SEK/USD', # exchange rate - see diva2:562079
+    'SEPSPOT', # software - diva2:1380164
+    'GMAT', # software - diva2:1380164
+    'SERCA', # membrane protein - see diva2:813972
+    'SEVAP', # software - see diva2:1319481
+    'SGT-700', # combustion system of Siemens Energy  - see diva2:1578571
+    'SGT-600', # combustion system of Siemens Energy  - see diva2:1578571
+    'SGT-750', # combustion system of Siemens Energy  - see diva2:1198916
+    'SGT800', # Siemens Energy Gas turbine 800 - see diva2:1705120
+    'SICOMP', # swerea SICOMP in Piteå - see diva2:549824
+    'SIDLAB', # 1D linear acoustic code (SIDLAB) - see diva2:509606
+    'SIM4', # simulator - see diva2:492864
+    'SIMATIC', # Siemens’ software SIMATIC Step 7 - see diva2:1380258
+    'SIMLA', # software - see diva2:865271
+    'SIMPACK', # multibody simulation software - see diva2:1614091, diva2:1450298, diva2:1499343
+    'SIMSON', # pseudo-spectral code - see diva2:1638073
+    'SIMULIA', # CFD software SIMULIA PowerFLOW - see diva2:1360232
+    'SIX30RX', # stock index - see diva2:818384
+    'SJ', # SJ AB - company - diva2:1247381, diva2:1761858
+    'SMC<sup>2</sup>', # algorithm - see diva2:872346
+    'SOL144', # part of MSC Nastran software - see diva2:1900946
+    'SOLIDWORKS', # SOLIDWORKS Flow Simulation - see diva2:891472
+    'SORPAS', # simulation program - see diva2:1801500
+    'SORT-1', # soot type with higher ash content - see diva2:1509432
+    'SQPARAA', # heptapeptid - see diva2:1345189
+    'SR1', # signal region 1 - diva2:516126
+    'SR2', # signal region 2 - diva2:516126
+    'SR3', # signal region 3 - diva2:516126
+    'SRIM/TRIM', # program - see diva2:1473413
+    'SS$', # part of a  LaTeX expression - see diva2:1577999
+    'SS-ISO', # part of stnard number - SS-ISO 2631-5 and SS-ISO 2631-1 - see diva2:1379727
+    'SSAB', # company - formerly "Svenskt Stål AB" - see diva2:1578526
+    'SSM2018:18', # Swedish handbook SSM2018:18 "Procedure for Safety Assessment of Components with Defects" - see diva2:1903464
+    'SS‐EN', # Swedish stanard  - European Standard
+    'ST9', # Solid Edge ST9 - software - diva2:1244647
+    'STELIN', # algorithm - see diva2:405988
+    'STILRIDE', # STILRIDE AB - company - diva2:1817847
+    'STOXX', # stock index - see diva2:1656073
+    'STS45', # Telescopic beam of the spreader STS45 - see diva2:491776
+    'SUPAERO', # ISAE-SUPAERO Institut Supérieur de l'Aéronautique et de l'Espace - diva2:405926
+    'T1T2', # T1 and T2 vertebrae - see diva2:860546
+    'T44', # Swedish diesel locomotive, class T44 - see diva2:1852464
+    'T800', # carbon fibers - see diva2:1357370
+    'TALL-3D', # experimental facility - see diva2:435252
+    'TARANIS', # spacecraft - see diva2:612188
+    'TAROT', #  network of telescopes - see diva2:1698383
+    'TAUOLA', # a high-precision tau decay simulation library diva2:1865478
+    'TB20', # Socata TB20 GT aircraft - see diva2:693935
+    'TCR', # TCR Transonic Cruiser - see diva2:439828
+    'TD2.10', # part of project name - see diva2:1583477
+    'TE00', # eigenmode - see diva2:1807973
+    'TM00', # eigenmode - see diva2:1807973
+    'TF25SA', # Powell Duffryn TF25SA running gear - see diva2:1852460
+    'TIMESAT', # progra for analysing time series satellite data - see diva2:1137877
+    'TM5', # transmembrane helix 5 of the beta2-adrenergic receptor -see diva2:1781244
+    'TM6', # transmembrane helix 6 of the beta2-adrenergic receptor -see diva2:1781244
+    'TN2514', # experimental campaign - see diva2:787489
+    'TN2540', # experimental campaign - see diva2:787489
+    'TPX', # Öhlins Racing AB damper - see diva2:503320
+    'TRACE/PARCS', # model - see diva2:447365
+    'TRANSURANUS', # fuel performance code - see diva2:1597876
+    'TTS', #  BorgWarner TTS AB - company - see diva2:650438
+    'TV6', # TV channel - diva2:725051
+    'TV8', # TV channel - diva2:725051
+    'TV3', # TV channel - diva2:725051
+    'TV10', # TV channel - diva2:725051
+    'TWILIGHT', # EU-project TWILIGHT - see diva2:1720815
     #End for SCI - SCIc
 
 ]
@@ -75970,6 +76047,8 @@ common_german_words=[
     'Schweizerische',
     'Schwerionenforschung',
     'Stahlwerks',
+    'Technische',
+    'Universität',
     'Werke',
     'Wiener',
     'Windkannal',
