@@ -58184,7 +58184,10 @@ chemical_elements={
 
 }
 
+
+
 chemical_names_and_formulas=[
+    'UN-U<sub>3</sub>Si<sub>2</sub>', # see diva2:919081
     'NaCl-UCl3-PuCl3',
     'Yb:KYW',
     'Zr/C',
@@ -70498,6 +70501,55 @@ company_and_product_names=[
     'TV3', # TV channel - diva2:725051
     'TV10', # TV channel - diva2:725051
     'TWILIGHT', # EU-project TWILIGHT - see diva2:1720815
+    'US$', # currency amount - see diva2:1900953
+    'USIBOR®', # USIBOR® 1500P AS150 - Al-coated 22MnB5 - see diva2:919841
+    'VEGA', # Vega rocket - see diva2:1351107
+    'VERA', # Volvo’s concept for driverless, electric truck technology - see diva2:1328898
+    'VESO CONCEPT', # company - diva2:1070423
+    'VESO', # VESO CONCEPT - company - diva2:1070423
+    'VM', # VM 8:an - sometimes written VM8:an - skilift - diva2:1827834
+    'VUMAT', # subroutine implemented in Abaqus/Explicit to defined a user defined material's (elastic-plastic) vehavior - see diva2:919848
+    'WAVGEN', # Rambøll’s analytical tool WAVGEN - see diva2:1082021
+    'X05', # Alstom trams Citadis X05 - see diva2:1207002
+    'X55', # SJ's X55 trains - see diva2:1247381
+    'X61', # Västtrafik's X61 trains - see diva2:1247381
+    'X8', # Skywalker X8 aircraft - see diva2:1441558
+    'XB', # part of Sylvester equation AX + XB<sup>T</sup> = C - see diva2:1251347
+    'XC90', # Volvo XC90 car - see diva2:1057263
+    'XE6', # Cray XE6 system - see diva2:560434
+    'XI', # part of "Apollo XI Lunar Module" - see  diva2:1871579
+    'XMM-Newton', # ESA X-ray Multi-Mirror Mission - see diva2:1436867
+    'XPI', # Scania's XPI fuel system - see diva2:1503984
+    'XWB-1000', # Airbus A350 XWB-1000 - see  diva2:1871503, diva2:1528083
+    'XY', # XY plane or model diva2:1701469, diva2:1548352, diva2:1720907
+    'Y/Q', # ratio - the lateral wheel forces (Y) / vertical wheel forces (Q)  see diva2:1247303, diva2:784028
+    'YADE', # open-source software - see diva2:1334283
+    'Z<sup>1</sup>', # gauge boson - see diva2:403154
+    'ZH', # part of "ZH--&gt;bbyy" - see diva2:1626684
+    '°C-400', # part of a temperature range - see diva2:1509432
+    '74-CL5-140', # Wortmann FX 74-CL5-140 airfoil - see diva2:852940
+    '2006:M12-2016:M12', # time period - see diva2:1117015
+    '1/2/3D', # scatterin medi ain 1, 2, or 3 dimensions - see diva2:488441
+    '$X$', # variable - see diva2:1185917
+    '$T', # part of a LaTeX equation in 'diva2:1751424', 'diva2:1751424', 'diva2:1763236', 'diva2:1548622'
+    '$R_{D',# part of a LaTeX equation in diva2:1763236
+    '$R_{P', # part of a LaTeX equation in diva2:1763236
+    '$RG$', # part of a LaTeX equation in diva2:1751413
+    '$RH$', # part of a LaTeX equation in diva2:1751413
+    '$F.$', # part of a LaTeX equation in diva2:1751413
+    '$F$', # part of a LaTeX equation in diva2:1751413
+    '$H', # part of a LaTeX equation in diva2:1569839
+    'v$', # part of a LaTeX equation in diva2:1817008
+    't$', # part of a LaTeX equation in diva2:1335380
+    'max}$', # part of a LaTeX equation in diva2:1763236
+    'max}/R_{D', # part of a LaTeX equation in diva2:1763236
+    '$r',  # part of a LaTeX equation in diva2:1569839
+    'x-x_c', #  # part of a LaTeX equation in diva2:612264
+    '$~km',  # part of a LaTeX equation in diva2:1577144
+    '$N$', # variable in diva2:1335380
+    'q,t-Catalan', # polynomial - see diva2:820906
+    'k[t]-module', # diva2:557257
+    'x2.9', # zoom setting - see diva2:1541213    
     #End for SCI - SCIc
 
 ]
@@ -76047,6 +76099,7 @@ common_german_words=[
     'Schweizerische',
     'Schwerionenforschung',
     'Stahlwerks',
+
     'Technische',
     'Universität',
     'Werke',

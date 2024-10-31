@@ -1580,7 +1580,19 @@ miss_spelled_to_correct_spelling={
     'SDNR2': {'c': 'SDNR<sup>2</sup>', 's': 'diva2:405436', 'n': 'correct in original'},
     'SMC2': {'c': 'SMC<sup>2</sup>', 's': 'diva2:872346', 'n': 'correct in original'},
     'TC': {'c': 'T<sub>C</sub>', 's': 'diva2:1682149', 'n': 'correct in original'},
-
+    'RQ': {'c': 'R<sub>Q</sub>', 's': 'diva2:1682149', 'n': 'correct in original'},
+    'UN-U': {'c': 'UN-U<sub>3</sub>Si<sub>2</sub>', 's': 'diva2:919081'},
+    'UO$_2$': {'c': 'UO<sub>2</sub>', 's': 'diva2:1597876'},
+    'VG': {'c': 'V<sub>G</sub>', 's': 'diva2:1804716', 'n': 'correct in original'},
+    'VD': {'c': 'V<sub>D</sub>', 's': 'diva2:1804716', 'n': 'correct in original'},
+    'Z1': {'c': 'Z<sup>1</sup>', 's': 'diva2:403154', 'n': 'correct in original'},
+    '$L_0$': {'c': '<em>L<sub>0</sub></em>', 's': 'diva2:1720701'},
+    '$H_0$': {'c': '<em>H<sub>0</sub></em>', 's': 'diva2:1569839'},
+    '<em>S</em>¯ <img src="http://www.diva-portal.org/cgi-bin/mimetex.cgi?%5Ctau" />': {'c': '<em>S<sup>-&tau;</sup></em>', 's': 'diva2:756141'},
+    'traf-</p><p>c': {'c': 'traffic', 's': 'diva2:1045073', 'n': 'missing ligature'},
+    'n-In0.65Ga0.35As': {'c': '<em>n</em>-In<sub>0.65</sub>Ga<sub>0.35</sub>As', 's': 'diva2:1692150', 'n': 'correct in original'}, 
+    'v2.1.0.In': {'c': 'v2.1.0. In', 's': 'diva2:784016'},
+    'm_3': {'c': 'm<sub>3</sub>', 's': 'diva2:1577144', 'n': 'correct in original'}, 
 }
 
 junklist=[
