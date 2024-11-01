@@ -70550,6 +70550,9 @@ company_and_product_names=[
     'q,t-Catalan', # polynomial - see diva2:820906
     'k[t]-module', # diva2:557257
     'x2.9', # zoom setting - see diva2:1541213    
+    'Ƭ', # Kendall’s Ƭ - see diva2:558590
+    'Ƴ' # variable - see diva2:725051
+
     #End for SCI - SCIc
 
 ]

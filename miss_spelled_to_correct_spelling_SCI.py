@@ -1593,6 +1593,15 @@ miss_spelled_to_correct_spelling={
     'n-In0.65Ga0.35As': {'c': '<em>n</em>-In<sub>0.65</sub>Ga<sub>0.35</sub>As', 's': 'diva2:1692150', 'n': 'correct in original'}, 
     'v2.1.0.In': {'c': 'v2.1.0. In', 's': 'diva2:784016'},
     'm_3': {'c': 'm<sub>3</sub>', 's': 'diva2:1577144', 'n': 'correct in original'}, 
+    ' abase ': {'c': ' a base ', 's': 'diva2:405988', 'n': 'correct in original'},
+    ' bea ': {'c': ' be a ', 's': 'diva2:1528127'},
+    'Inan ': {'c': 'In an ', 's': 'diva2:1741184'},
+    ' ina ': {'c': ' in a ', 's': ['diva2:1737438', 'diva2:488441']},
+    ' ata ': {'c': ' a ta ', 's': ['diva2:1780558', 'diva2:1770544']},
+    ' interestin ': {'c': ' interest in ', 's': 'diva2:783984'},
+    ' isto ': {'c': ' is to ', 's': ['diva2:1142926', 'diva2:1142952', 'diva2:1120353', 'diva2:1509441', 'diva2:1781251', 'diva2:1120590', 'diva2:1519872']},
+    ' ona ': {'c': ' on a ', 's': ['diva2:1285492', 'diva2:1698044']},
+
 }
 
 junklist=[
