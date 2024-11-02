@@ -1601,7 +1601,7 @@ miss_spelled_to_correct_spelling={
     ' interestin ': {'c': ' interest in ', 's': 'diva2:783984'},
     ' isto ': {'c': ' is to ', 's': ['diva2:1142926', 'diva2:1142952', 'diva2:1120353', 'diva2:1509441', 'diva2:1781251', 'diva2:1120590', 'diva2:1519872']},
     ' ona ': {'c': ' on a ', 's': ['diva2:1285492', 'diva2:1698044']},
-
+    ' isin ': {'c':' is in ', 's': 'diva2:1464101'},
 }
 
 junklist=[
