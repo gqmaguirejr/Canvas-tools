@@ -1616,7 +1616,8 @@ miss_spelled_to_correct_spelling={
     'accopanied': {'c': 'accompanied', 's': 'diva2:1905716', 'n': 'correct in original'},
     'layerover': {'c': 'layer over', 's': 'diva2:1908827', 'n': 'correct in original'},
     're-assess': {'c': 'reassess', 's': 'diva2:1907989'},
-
+    ' di↵er ': {'c': ' differ ', 's': 'diva2:1120495'},
+    ' di↵erent ': {'c': ' different ', 's': 'diva2:1120495'},
 
 }
 
