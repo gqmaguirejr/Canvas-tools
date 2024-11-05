@@ -1595,7 +1595,7 @@ miss_spelled_to_correct_spelling={
     'm_3': {'c': 'm<sub>3</sub>', 's': 'diva2:1577144', 'n': 'correct in original'}, 
     ' abase ': {'c': ' a base ', 's': 'diva2:405988', 'n': 'correct in original'},
     ' bea ': {'c': ' be a ', 's': 'diva2:1528127'},
-    'Inan ': {'c': 'In an ', 's': 'diva2:1741184'},
+    ' Inan  ': {'c': ' In an ', 's': 'diva2:1741184'},
     ' ina ': {'c': ' in a ', 's': ['diva2:1737438', 'diva2:488441']},
     ' ata ': {'c': '  at a ', 's': ['diva2:1780558', 'diva2:1770544']},
     ' interestin ': {'c': ' interest in ', 's': 'diva2:783984'},
@@ -1604,6 +1604,20 @@ miss_spelled_to_correct_spelling={
     ' isin ': {'c':' is in ', 's': 'diva2:1464101'},
     'Rigde': {'c': 'Ridge', 's': 'diva2:1678918', 'n': 'error in original'},
     " it's ": {'c': " its ", 's': 'diva2:1678918', 'n': 'error in original'},
+    'o↵': {'c': 'off', 's': 'diva2:1528146', 'n': 'correct in original'}, 
+    ' interestin ': {'c': ' interest in ', 's': 'diva2:783984'},
+    ' isto ': {'c': ' is to ', 's': ['diva2:1142926', 'diva2:1142952', 'diva2:1120353', 'diva2:1509441', 'diva2:1781251', 'diva2:1120590', 'diva2:1519872']},
+    ' ina ': {'c': ' in a ', 's': ['diva2:1737438', 'diva2:488441']},
+    ' inan ': {'c': ' in an ', 's': ['diva2:1881327', 'diva2:1216849', 'diva2:1142922', 'diva2:1120498', 'diva2:1247161']},
+    ' inenhancing ': {'c': ' in enhancing ', 's': 'diva2:1892771'},
+     ' fromeach ': {'c':  ' from each ', 's': 'diva2:1908827'},
+    ' abase ': {'c': ' a base ', 's': 'diva2:405988'},
+    ' materialsis ': {'c': ' materials is ', 's': 'diva2:1907989'},
+    'accopanied': {'c': 'accompanied', 's': 'diva2:1905716', 'n': 'correct in original'},
+    'layerover': {'c': 'layer over', 's': 'diva2:1908827', 'n': 'correct in original'},
+    're-assess': {'c': 'reassess', 's': 'diva2:1907989'},
+
+
 }
 
 junklist=[

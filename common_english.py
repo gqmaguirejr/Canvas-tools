@@ -57935,7 +57935,28 @@ common_English_words={
     '1/3-octave': {'B2': 'Noun Phrase'},
     'k-simplicial': {'B2': 'Adjective'},
     'm-gon': {'B2': 'Noun'},
-    
+    'Tritium-Producing': {'B2': 'Adjective (compound)'},
+    'aberrated': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'antenna-tilt': {'B2': 'Noun Phrase'},
+    'dataset-dependent': {'B2': 'Adjective (compound)'},
+    'delta-gamma': {'B2': 'Noun Phrase'},
+    'diffractive': {'B2': 'Adjective'},
+    'exacerbation': {'B2': 'Noun'},
+    'high-confinement': {'B2': 'Adjective (compound)'},
+    'laser-welded': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'metalenses': {'B2': 'Noun (plural)'},
+    'micro-optics': {'B2': 'Noun Phrase'},
+    'nano-lithographic': {'B2': 'Adjective (compound)'},
+    'nano-lithography': {'B2': 'Noun'},
+    'profit-loss': {'B2': 'Noun Phrase'},
+    'reaffirming': {'B2': 'Verb (gerund), Verb (present participle)'},
+    'rubberized': {'B2': 'Verb (past tense), Verb (past participle)'},
+    'scrutinizes': {'B2': 'Verb (third-person present tense)'},
+    'smaller-scale': {'B2': 'Adjective (compound)'},
+    'subnitrides': {'B2': 'Noun (plural)'},
+    'trainability': {'B2': 'Noun'},
+    'unmatching': {'B2': 'Adjective, Verb (gerund)'},
+
     #end for SCI - SCIe
 }
     
@@ -75932,6 +75953,8 @@ names_of_persons=[
     'M.T.', # M.T. Stamps - see diva2:1781501
     'P.L.', # P.L. Davis - see diva2:1083070
     'R.T.', # Richard T. Lahey Jr - see diva2:650418 and also https://doi.org/10.1016/j.nucengdes.2020.111018
+    'Öktem',
+    'Adler',
 ]
 
 

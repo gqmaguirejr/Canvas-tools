@@ -376,6 +376,8 @@ def is_number(string):
 # note that these are matched the _incoming_ unique words
 words_to_ignore=[
     "****UNKNOWN***", # a private marker I have used
+    '\\cite{Mask-R-CNN',
+    '\\cite{segment-anything',
     'v6.9.1',
     'v2.1.0',
     'R<span',
