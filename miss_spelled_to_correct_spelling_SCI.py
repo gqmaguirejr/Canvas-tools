@@ -21,7 +21,9 @@
 # The outer span keeps the content inline and treats the inner contexts as a flex box.
 # The innter space sets the superscipt and subscript within a vertical display flex box and slightly reduces the font size.
 #
-
+# Big-O notation and exteending radical over expression
+# from:  diva2:1776606 -  𝒪(𝑥 e<sup>&minus;𝑐&radic;<span style="text-decoration: overline;">log 𝑥</span></sup>) and that the Riemann hypothesis implies the significantly improved upper bound 𝒪(&radic;<span style="text-decoration: overline;">𝑥</span> log 𝑥).
+# 
 miss_spelled_to_correct_spelling={
     "Nestl\\'e": {'c': 'Nestlé', 's': 'diva2:1341413'},
     'eectively': {'c': 'effectively', 's': ['diva2:1528145', 'diva2:1109484'], 'n': 'missing ligature'},
