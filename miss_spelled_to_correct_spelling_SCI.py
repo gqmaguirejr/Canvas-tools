@@ -65,7 +65,7 @@ miss_spelled_to_correct_spelling={
     'diffference': {'c': 'diffference', 's': 'diva2:1640127', 'n': 'correct in original'},
     'differnt': {'c': 'different', 's': 'diva2:1040641', 'n': 'no full text'},
     'di­vide': {'c': 'divide', 's': 'diva2:586974', 'n': 'unnecessary hyphen'},
-    'di˙erence': {'c': 'di˙erence', 's': 'diva2:892115', 'n': 'missing ligature'},
+    'di˙erence': {'c': 'difference', 's': 'diva2:892115', 'n': 'missing ligature'},
     'Traÿc': {'c': 'Traÿc', 's': 'diva2:892115', 'n': 'missing ligature'},
     'throt-tle': {'c': 'throt-tle', 's': 'diva2:892115', 'n': 'unnecessary hyphen'},
     'di˙erent': {'c': 'different', 's': ['diva2:877595', 'diva2:1380198', 'diva2:891912', 'diva2:919302', 'diva2:1328904', 'diva2:891537', 'diva2:1440147', 'diva2:1087823'], 'n': 'missing ligature'},
