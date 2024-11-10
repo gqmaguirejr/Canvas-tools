@@ -57956,6 +57956,7 @@ common_English_words={
     'subnitrides': {'B2': 'Noun (plural)'},
     'trainability': {'B2': 'Noun'},
     'unmatching': {'B2': 'Adjective, Verb (gerund)'},
+    'baseflow': {'B2': 'Noun (compound)'},
 
     #end for SCI - SCIe
 }
@@ -75955,6 +75956,7 @@ names_of_persons=[
     'R.T.', # Richard T. Lahey Jr - see diva2:650418 and also https://doi.org/10.1016/j.nucengdes.2020.111018
     'Öktem',
     'Adler',
+    'Bézout',
 ]
 
 

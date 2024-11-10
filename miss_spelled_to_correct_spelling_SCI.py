@@ -1620,6 +1620,16 @@ miss_spelled_to_correct_spelling={
     're-assess': {'c': 'reassess', 's': 'diva2:1907989'},
     ' di↵er ': {'c': ' differ ', 's': 'diva2:1120495'},
     ' di↵erent ': {'c': ' different ', 's': 'diva2:1120495'},
+    'parameterat': {'c': 'parameter at', 's': 'diva2:1088402', 'n': 'correct in original'},
+    ' orthe ': {'c': ' or the ', 's': 'diva2:783990', 'n': 'correct in original'},
+    ' asto ': {'c': ' as to ', 's': 'diva2:894206'},
+    ' onan ': {'c': ' on an ', 's': ['diva2:1110812', 'diva2:852969']},
+    ' implementa ': {'c': ' implement a ', 's': 'diva2:1682170'},
+    ' aset ': {'c': ' a set ', 's': 'diva2:1720668'},
+    ' usto ': {'c': ' us to ', 's': ['diva2:1695944', 'diva2:1671528']},
+    ' resultin ': {'c': ' result in ', 's': 'diva2:852972'},
+    ' overa ': {'c': ' over a ', 's': 'diva2:1799888'},
+    ' Computeris ': {'c': ' Computer is ', 's': 'diva2:1698414', 'n': 'correct in original'},
 
 }
 
