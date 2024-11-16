@@ -57963,6 +57963,7 @@ common_English_words={
     'carbodies': {'C1': 'Noun (plural)'},
     'deeptriangle': {'C1': 'Noun'}, # a specific type of recurrent neural network (RNN) developed by Kuo for loss reserving in property and casualty (P&C) insurance
     'undertray': {'C1': 'Noun'},
+    'loopholes': {'B2': 'Noun (plural)'},
 
     #end for SCI - SCIe
 }
