@@ -57957,6 +57957,12 @@ common_English_words={
     'trainability': {'B2': 'Noun'},
     'unmatching': {'B2': 'Adjective, Verb (gerund)'},
     'baseflow': {'B2': 'Noun (compound)'},
+    'superdeterminism': {'C1': 'Noun'},
+    'superdeterministic': {'C1': 'Adjective (compound)'},
+    'carbody': {'C1': 'Noun'},
+    'carbodies': {'C1': 'Noun (plural)'},
+    'deeptriangle': {'C1': 'Noun'}, # a specific type of recurrent neural network (RNN) developed by Kuo for loss reserving in property and casualty (P&C) insurance
+    'undertray': {'C1': 'Noun'},
 
     #end for SCI - SCIe
 }
@@ -60036,7 +60042,6 @@ place_names=[
     'Varanasi Bend',
     'Varanasi',
     'Vi11arnche',
-
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -70574,6 +70579,7 @@ company_and_product_names=[
     'x2.9', # zoom setting - see diva2:1541213    
     'Ƭ', # Kendall’s Ƭ - see diva2:558590
     'Ƴ' # variable - see diva2:725051
+    'AmountNewlyIssued', # name of a model in 'diva2:1833714'
 
     #End for SCI - SCIc
 

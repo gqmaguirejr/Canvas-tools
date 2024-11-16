@@ -1630,6 +1630,8 @@ miss_spelled_to_correct_spelling={
     ' resultin ': {'c': ' result in ', 's': 'diva2:852972'},
     ' overa ': {'c': ' over a ', 's': 'diva2:1799888'},
     ' Computeris ': {'c': ' Computer is ', 's': 'diva2:1698414', 'n': 'correct in original'},
+    #'computation a',
+    'keepin': {'c': 'keep in', 's': 'diva2:783994', 'n': 'correct in original'},
 
 }
 
