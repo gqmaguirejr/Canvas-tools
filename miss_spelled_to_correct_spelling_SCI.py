@@ -468,7 +468,7 @@ miss_spelled_to_correct_spelling={
     'exible': {'c': 'flexible', 's': 'diva2:435252', 'n': 'correct in original'},
     'experince': {'c': 'experience', 's': 'diva2:1163212', 'n': 'no full text'},
     'exsisting': {'c': 'existing', 's': 'diva2:1244672', 'n': 'error in original'},
-    'extremly': {'c': 'extremely', 's': ['diva2:1774376', 'diva2:1773163']},
+    'extremly': {'c': 'extremely', 's': ['diva2:1774376', 'diva2:1773163']}, # for diva2:1773163 the error is in the original
     'accross': {'c': 'across', 's': 'diva2:1640036', 'n': 'no full text'},
     'far-eld': {'c': 'far-field', 's': 'diva2:608463', 'n': 'missing ligature'},
     'for-ward': {'c': 'forward', 's': 'diva2:1776549', 'n': 'unnecessary hyphen'},
@@ -962,7 +962,7 @@ miss_spelled_to_correct_spelling={
     're-construction': {'c': 'reconstruction', 's': 'diva2:1776549', 'n': 'unnecessary hyphen'},
     're-covery': {'c': 'recovery', 's': 'diva2:1679050', 'n': 'unnecessary hyphen'},
     're-duction': {'c': 'reduction', 's': 'diva2:1880872', 'n': 'unnecessary hyphen'},
-    're-enforcing': {'c': 'reinforcing', 's': 'diva2:281929', 'n': 'unnecessary hyphen'},
+    #'re-enforcing': {'c': 'reinforcing', 's': 'diva2:281929', 'n': 'unnecessary hyphen'},
     'realisitic': {'c': 'realistic', 's': 'diva2:1888835', 'n': 'error in original'},
     'realtionship': {'c': 'relationship', 's': 'diva2:556691', 'n': 'no full text'},
     'recent-made': {'c': 'recently made', 's': 'diva2:1812798', 'n': 'error in original'},
@@ -1058,7 +1058,7 @@ miss_spelled_to_correct_spelling={
     'wheelcorner': {'c': 'wheel corner', 's': 'diva2:503940', 'n': 'correct in original; error in handling newline'},
     'windtunnel': {'c': 'wind tunnel', 's': ['diva2:1880821', 'diva2:1078086', 'diva2:1670946', 'diva2:1140141']}, # a number of theses write it as a single word
     'windturbines': {'c': 'wind turbines', 's': ['diva2:435361', 'diva2:1078083' ], 'n': 'correct in the original; error in handling newline in the first, while the send hyphenates it at a newline'},
-    'windwaves': {'c': 'wind waves', 's': 'diva2:706783', 'n': 'correct in the original; hyphen at a newline'},
+    'windwaves': {'c': 'wind-waves', 's': 'diva2:706783', 'n': 'correct in the original; hyphen at a newline'},
     'wingarea': {'c': 'wing area', 's': 'diva2:757456', 'n': 'error in original; set as a single word'},
     'well-confinedregion': {'c': 'well-confined region', 's': 'diva2:937846', 'n': 'correct in original; error in handling newline'},
     'waveconditions': {'c':  'wave conditions', 's': 'diva2:1816751', 'n': 'correct in original; error in handling newline'}, 
@@ -1304,7 +1304,7 @@ miss_spelled_to_correct_spelling={
     'TrueFidelityTM': {'c': 'TrueFidelity™', 's': 'diva2:1781504', 'n': 'correct in original'},
     'Verication': {'c': 'Verification', 's': ['diva2:679062', 'diva2:1528145'], 'n': 'missing ligature'},
     'Universit´e': {'c': 'Université', 's': 'diva2:1436915', 'n': 'correct in original'},
-    'Uncented': {'c': 'Uncented', 's': 'diva2:693601', 'n': 'error in original'}, # see https://en.wikipedia.org/wiki/Unscented_transform
+    'Uncented': {'c': 'Unscented', 's': 'diva2:693601', 'n': 'error in original'}, # see https://en.wikipedia.org/wiki/Unscented_transform
     'VMATarc': {'c': 'VMAT-arc', 's': 'diva2:1141825', 'n': 'correct in original; error in handling hyphen at end of line'},
     'VaR0:05': {'c': 'VaR<sub>0.05</sub>', 's': 'diva2:559489', 'n': 'correct in original'},
     'Valuegua': {'c': 'Valueguards  real model in order to see if any improvement can be found.', 's': 'diva2:630452', 'n': 'correct in original; part of the last sentences is missing in DiVA'},
