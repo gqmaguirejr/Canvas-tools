@@ -57964,6 +57964,8 @@ common_English_words={
     'deeptriangle': {'C1': 'Noun'}, # a specific type of recurrent neural network (RNN) developed by Kuo for loss reserving in property and casualty (P&C) insurance
     'undertray': {'C1': 'Noun'},
     'loopholes': {'B2': 'Noun (plural)'},
+    'supermassive': {'C1': 'Adjective (compound'},
+
 
     #end for SCI - SCIe
 }
