@@ -57965,8 +57965,7 @@ common_English_words={
     'undertray': {'C1': 'Noun'},
     'loopholes': {'B2': 'Noun (plural)'},
     'supermassive': {'C1': 'Adjective (compound'},
-
-
+    'taylor-made': {'B2': 'Adjective (compound'},
     #end for SCI - SCIe
 }
     

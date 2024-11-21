@@ -6254,7 +6254,6 @@ merged_words={
     'targets an',
     'task, then',
     'task of',
-    'taylor made',
     'teachers in',
     'teams all',
     'teams were',
