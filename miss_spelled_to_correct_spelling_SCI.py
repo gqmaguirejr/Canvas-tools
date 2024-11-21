@@ -609,7 +609,7 @@ miss_spelled_to_correct_spelling={
     'mar-gins': {'c': 'mar-gins', 's': 'diva2:1380845', 'n': 'unnecessary hyphen'},
     'massow': {'c': 'mass flow', 's': 'diva2:1040617'},
     'masss': {'c': 'mass', 's': 'diva2:1604711', 'n': 'error in original'},
-    'matematic': {'c': 'matematic', 's': 'diva2:408819', 'n': 'error in original'},
+    'matematic': {'c': 'mathematic', 's': 'diva2:408819', 'n': 'error in original'},
     'materilas': {'c': 'materilas', 's': 'diva2:575399', 'n': 'correct in original'},
     'measn': {'c': 'means', 's': 'diva2:612216', 'n': 'error in original'},
     'meassurements': {'c': 'measurements', 's': 'diva2:1229744', 'n': 'no full text'},
@@ -645,7 +645,7 @@ miss_spelled_to_correct_spelling={
     'nally': {'c': 'finally', 's': ['diva2:1038860', 'diva2:644350'], 'n': 'missing ligature'},
     'nancial': {'c': 'financial', 's': ['diva2:1083484', 'diva2:1880206', 'diva2:729641'], 'n': 'missing ligature'},
     'nanobrils': {'c': 'nanofibrils', 's': 'diva2:1334312', 'n': 'missing ligature'},
-    'nding': {'c': 'nding', 's': ['diva2:736615', 'diva2:651260', 'diva2:1163154', 'diva2:644820'], 'n': 'missing ligature'},
+    'nding': {'c': 'finding', 's': ['diva2:736615', 'diva2:651260', 'diva2:1163154', 'diva2:644820'], 'n': 'missing ligature'},
     'ndings': {'c': 'findings', 's': 'diva2:736615'},
     'nds': {'c': 'nds', 's': 'diva2:605820', 'n': 'missing ligature'},
     'ndsuitable': {'c': 'findsuitable', 's': 'diva2:1285492'},
@@ -1635,7 +1635,7 @@ miss_spelled_to_correct_spelling={
     'taylormade': {'c': 'taylor-made', 's': 'diva2:1446465', 'n': 'error in original'},
     'questionnare': {'c': 'questionnaire', 's': 'diva2:658555', 'n': 'error in original'},
     'adivsable': {'c': 'advisable', 's': 'diva2:658555', 'n': 'error in original'},
-
+    'bahavior': {'c': 'behavior', 's': 'diva2:756141', 'n': 'error in original'},
 
 }
 
