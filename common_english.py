@@ -57966,6 +57966,8 @@ common_English_words={
     'loopholes': {'B2': 'Noun (plural)'},
     'supermassive': {'C1': 'Adjective (compound'},
     'taylor-made': {'B2': 'Adjective (compound'},
+    'shadowgraph': {'C1': 'Noun (compound)'},
+
     #end for SCI - SCIe
 }
     

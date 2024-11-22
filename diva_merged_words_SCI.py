@@ -5864,7 +5864,6 @@ merged_words={
     'several places',
     'several strategies',
     'severely affect',
-    'shadow graph',
     'shall be',
     'shape, dimensions',
     'shape, which',
@@ -7235,7 +7234,7 @@ merged_words={
     'understanding of',
     'understand maintenance',
     'understand what',
-    'under steer',
+    #'under steer', # one wword in 'diva2:1183313'
     'underwater quadcopter',
     'underwater vehicle',
     'underwhelming',
