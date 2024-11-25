@@ -569,7 +569,7 @@ miss_spelled_to_correct_spelling={
     'independant': {'c': 'independent', 's': 'diva2:651091', 'n': 'error in original'},
     'insignicant': {'c': 'insignificant', 's': 'diva2:760102', 'n': 'missing ligature'},
     'integrate-and-re': {'c': 'integrate-and-remodel', 's': 'diva2:753649'},
-    'interations': {'c': 'interactions', 's': 'diva2:1591789', 'n': 'correct in original'},
+    'interations': {'c': 'interactions', 's': 'diva2:1591789', 'n': 'error in original'},
     'intermidiate': {'c': 'intermediate', 's': 'diva2:1431627', 'n': 'error in original'},
     'interdepencies': {'c': 'interdependencies', 's': 'diva2:1319706', 'n': 'error in original'},
     'intererst': {'c': 'interest', 's': 'diva2:839877', 'n': 'correct in original'},
