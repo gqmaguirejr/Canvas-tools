@@ -57968,6 +57968,7 @@ common_English_words={
     'taylor-made': {'B2': 'Adjective (compound'},
     'shadowgraph': {'C1': 'Noun (compound)'},
     'granularlike': {'C1': 'Adjective'},
+    'plexi-glass': {'B1': 'Noun'}, # note that Plexiglass is a proper noun as it is a breand name
     #end for SCI - SCIe
 }
     
