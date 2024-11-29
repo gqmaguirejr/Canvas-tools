@@ -57969,7 +57969,10 @@ common_English_words={
     'shadowgraph': {'C1': 'Noun (compound)'},
     'granularlike': {'C1': 'Adjective'},
     'plexi-glass': {'B1': 'Noun'}, # note that Plexiglass is a proper noun as it is a breand name
-    'indraft': {'B2': 'Noun, Verb'}
+    'indraft': {'B2': 'Noun, Verb'},
+    'rallycross': {'B2': 'Noun'},
+    'allbeit': {'B2': 'Conjunction'}, # used in diva2:550524
+
     #end for SCI - SCIe
 }
     
