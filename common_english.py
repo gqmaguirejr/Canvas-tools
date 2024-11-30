@@ -57972,6 +57972,7 @@ common_English_words={
     'indraft': {'B2': 'Noun, Verb'},
     'rallycross': {'B2': 'Noun'},
     'allbeit': {'B2': 'Conjunction'}, # used in diva2:550524
+    'overpressure': {'B2': 'Noun'}, # used in diva2:45281
 
     #end for SCI - SCIe
 }
@@ -70589,7 +70590,8 @@ company_and_product_names=[
     'Ƭ', # Kendall’s Ƭ - see diva2:558590
     'Ƴ' # variable - see diva2:725051
     'AmountNewlyIssued', # name of a model in 'diva2:1833714'
-
+    'ElectronDamage', # name of a program in 'diva2:420212'
+    'SystemWeaver', # name of software used in (all lower case) 'diva2:1737392'
     #End for SCI - SCIc
 
 ]

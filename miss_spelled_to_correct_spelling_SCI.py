@@ -1648,7 +1648,7 @@ miss_spelled_to_correct_spelling={
     'bahavior': {'c': 'behavior', 's': 'diva2:756141', 'n': 'error in original'},
     'diffrent': {'c': 'different', 's': 'diva2:1593000', 'n': 'error in original'},
     'intererst': {'c': 'interest', 's': 'diva2:839877', 'n': 'error in original'},
-
+    'reachin': {'c': 'reach in', 's': 'diva2:1040641', 'n': 'no full text'},
 
 }
 
