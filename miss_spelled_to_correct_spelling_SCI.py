@@ -1649,6 +1649,7 @@ miss_spelled_to_correct_spelling={
     'diffrent': {'c': 'different', 's': 'diva2:1593000', 'n': 'error in original'},
     'intererst': {'c': 'interest', 's': 'diva2:839877', 'n': 'error in original'},
     'reachin': {'c': 'reach in', 's': 'diva2:1040641', 'n': 'no full text'},
+    'events,like': {'c': 'events, like', 's': 'diva2:1523822', 'n': 'error in original'},
 
 }
 

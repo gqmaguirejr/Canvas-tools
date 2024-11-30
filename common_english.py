@@ -57973,7 +57973,7 @@ common_English_words={
     'rallycross': {'B2': 'Noun'},
     'allbeit': {'B2': 'Conjunction'}, # used in diva2:550524
     'overpressure': {'B2': 'Noun'}, # used in diva2:45281
-
+    'afterpulsing': {'C1': 'Noun (gerund), Verb ((present participle)'}, # used in 'diva2:1679022'
     #end for SCI - SCIe
 }
     
