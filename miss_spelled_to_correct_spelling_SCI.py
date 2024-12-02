@@ -1650,7 +1650,9 @@ miss_spelled_to_correct_spelling={
     'intererst': {'c': 'interest', 's': 'diva2:839877', 'n': 'error in original'},
     'reachin': {'c': 'reach in', 's': 'diva2:1040641', 'n': 'no full text'},
     'events,like': {'c': 'events, like', 's': 'diva2:1523822', 'n': 'error in original'},
-
+    'evaluated.The': {'c': 'evaluated. The', 's': 'diva2:738150', 'n': 'error in original'},
+    'polezero': {'c': 'pole-zero', 's': 'diva2:605852', 'n': 'correct in original'},
+    'problems.Last': {'c': 'problems. Last', 's': 'diva2:649477', 'n': 'error in original'},
 }
 
 junklist=[

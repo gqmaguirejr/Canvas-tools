@@ -57974,6 +57974,7 @@ common_English_words={
     'allbeit': {'B2': 'Conjunction'}, # used in diva2:550524
     'overpressure': {'B2': 'Noun'}, # used in diva2:45281
     'afterpulsing': {'C1': 'Noun (gerund), Verb ((present participle)'}, # used in 'diva2:1679022'
+    'repairperson': {'A2': 'Noun'}, # used in diva2:1645990
     #end for SCI - SCIe
 }
     
