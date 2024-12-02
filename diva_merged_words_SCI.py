@@ -458,7 +458,6 @@ merged_words={
     'estimated. This',
     'estimation. The',
     'estimations. The',
-    'et.al',
     'etc, are',
     'etc., which',
     'etc.; and',
@@ -5198,7 +5197,6 @@ merged_words={
     'output parameters',
     'output values',
     'output variables',
-    'out shining',
     'outs in',
     'outsourced while',
     'out to',
@@ -7223,7 +7221,7 @@ merged_words={
     'understanding of',
     'understand maintenance',
     'understand what',
-    #'under steer', # one wword in 'diva2:1183313'
+    #'under steer', # one wword in 'diva2:1183313', 'diva2:891485'
     'underwater quadcopter',
     'underwater vehicle',
     'underwhelming',

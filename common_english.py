@@ -57975,6 +57975,8 @@ common_English_words={
     'overpressure': {'B2': 'Noun'}, # used in diva2:45281
     'afterpulsing': {'C1': 'Noun (gerund), Verb ((present participle)'}, # used in 'diva2:1679022'
     'repairperson': {'A2': 'Noun'}, # used in diva2:1645990
+    'outshining': {'B2': 'Verb (present participle)'},
+    'understeer': {'B2': 'Noun'},
     #end for SCI - SCIe
 }
     
