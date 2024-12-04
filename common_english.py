@@ -57977,6 +57977,10 @@ common_English_words={
     'repairperson': {'A2': 'Noun'}, # used in diva2:1645990
     'outshining': {'B2': 'Verb (present participle)'},
     'understeer': {'B2': 'Noun'},
+    'astigmatism': {'B2': 'Noun'},
+    'oversize': {'B2': 'Noun, Adjective'},
+    'waterlines': {'B2': 'Noun (plural)'},
+    
     #end for SCI - SCIe
 }
     
