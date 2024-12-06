@@ -1510,7 +1510,6 @@ merged_words={
     'an ELM',
     'an Internet',
     'an SDR',
-    'an abelian',
     'an accident',
     'an accuracy',
     'an added',

@@ -57980,7 +57980,7 @@ common_English_words={
     'astigmatism': {'B2': 'Noun'},
     'oversize': {'B2': 'Noun, Adjective'},
     'waterlines': {'B2': 'Noun (plural)'},
-    
+    'anabelian': {'C1': 'Adjective', 'C2': 'Adjective'},
     #end for SCI - SCIe
 }
     
