@@ -57981,6 +57981,8 @@ common_English_words={
     'oversize': {'B2': 'Noun, Adjective'},
     'waterlines': {'B2': 'Noun (plural)'},
     'anabelian': {'C1': 'Adjective', 'C2': 'Adjective'},
+    'workpiece': {'B2': 'Noun'},
+
     #end for SCI - SCIe
 }
     
