@@ -57982,6 +57982,7 @@ common_English_words={
     'waterlines': {'B2': 'Noun (plural)'},
     'anabelian': {'C1': 'Adjective', 'C2': 'Adjective'},
     'workpiece': {'B2': 'Noun'},
+    'underdamped': {'C1': 'Adjective'},
 
     #end for SCI - SCIe
 }

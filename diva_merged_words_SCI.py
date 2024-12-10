@@ -7200,7 +7200,6 @@ merged_words={
     'under a',
     'under body',
     'under collateralization',
-    'under damped',
     'under determination',
     'under estimations',
     'under estimation to',
