@@ -5216,7 +5216,6 @@ merged_words={
     #'over performs',
     'over predicts',
     'over relaxation',
-    'over set',
     'over simplification',
     'over speed',
     'over steering',

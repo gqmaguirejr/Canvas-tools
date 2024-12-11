@@ -57983,6 +57983,7 @@ common_English_words={
     'anabelian': {'C1': 'Adjective', 'C2': 'Adjective'},
     'workpiece': {'B2': 'Noun'},
     'underdamped': {'C1': 'Adjective'},
+    'overset': {'B2': 'Verb (past participle), Adjective'}, # used in diva2:1040644
 
     #end for SCI - SCIe
 }
