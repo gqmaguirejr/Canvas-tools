@@ -76228,6 +76228,8 @@ common_latin_words=[
     'hallux', # big toe
     'hoc',
     'initio',
+    'in situ',
+    'in vivo',
     'interent',
     'jure', # de jure
     'machina',

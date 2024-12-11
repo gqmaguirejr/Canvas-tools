@@ -1654,7 +1654,7 @@ miss_spelled_to_correct_spelling={
     'polezero': {'c': 'pole-zero', 's': 'diva2:605852', 'n': 'correct in original'},
     'problems.Last': {'c': 'problems. Last', 's': 'diva2:649477', 'n': 'error in original'},
     'et.al.': {'c': 'et al.', 's': 'diva2:970930', 'n': 'error in original'},
-
+    'in-situ': {'c': '<em>in situ</em>', 's': 'diva2:1255173 ', 'n': 'error in original'},
 }
 
 junklist=[
