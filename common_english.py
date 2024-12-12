@@ -57984,7 +57984,7 @@ common_English_words={
     'workpiece': {'B2': 'Noun'},
     'underdamped': {'C1': 'Adjective'},
     'overset': {'B2': 'Verb (past participle), Adjective'}, # used in diva2:1040644
-
+    'undercompaction': {'B2': 'Noun'},
     #end for SCI - SCIe
 }
     

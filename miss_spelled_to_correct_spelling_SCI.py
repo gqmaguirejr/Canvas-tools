@@ -1655,6 +1655,8 @@ miss_spelled_to_correct_spelling={
     'problems.Last': {'c': 'problems. Last', 's': 'diva2:649477', 'n': 'error in original'},
     'et.al.': {'c': 'et al.', 's': 'diva2:970930', 'n': 'error in original'},
     'in-situ': {'c': '<em>in situ</em>', 's': 'diva2:1255173 ', 'n': 'error in original'},
+    'VAE-clusterinng': {'c': 'VAE-clustering', 's': 'diva2:1432666', 'n': 'error in original'}, 
+
 }
 
 junklist=[
