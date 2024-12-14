@@ -1656,7 +1656,10 @@ miss_spelled_to_correct_spelling={
     'et.al.': {'c': 'et al.', 's': 'diva2:970930', 'n': 'error in original'},
     'in-situ': {'c': '<em>in situ</em>', 's': 'diva2:1255173 ', 'n': 'error in original'},
     'VAE-clusterinng': {'c': 'VAE-clustering', 's': 'diva2:1432666', 'n': 'error in original'}, 
-
+    'Interesst': {'c': 'Interest', 's': 'diva2:1213813', 'n': 'error in original'},
+    'analyzed': {'c': 'analysed', 's': 'diva2:1213813', 'n': 'error in original'},
+    'coefficent': {'c': 'coefficient', 's': 'diva2:1285840', 'n': 'error in original'},
+    'conforming': {'c': 'confirming', 's': 'diva2:1214786 ', 'n': 'correct in original'}, 
 }
 
 junklist=[
