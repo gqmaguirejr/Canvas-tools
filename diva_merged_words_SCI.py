@@ -98,7 +98,6 @@ merged_words={
     'Södertälje. Intensity',
     'T. Jendel',
     'Technology. We',
-    'Test. Lab',
     'ToFERDA. Experiments',
     'Tu. The',
     'Tvärbanan. An',

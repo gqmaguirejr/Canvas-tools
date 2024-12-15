@@ -1661,7 +1661,7 @@ miss_spelled_to_correct_spelling={
     'coefficent': {'c': 'coefficient', 's': 'diva2:1285840', 'n': 'error in original'},
     'conforming': {'c': 'confirming', 's': 'diva2:1214786 ', 'n': 'correct in original'}, 
     'occipitalparietal': {'c': 'occipital-parietal', 's': 'diva2:560435', 'n': 'correct in original'},
-
+    '"Sweidsh': {'c': 'Swedish', 's': 'diva2:942671', 'n': 'error in original'}, 
 }
 
 junklist=[
