@@ -70604,6 +70604,7 @@ company_and_product_names=[
     'AmountNewlyIssued', # name of a model in 'diva2:1833714'
     'ElectronDamage', # name of a program in 'diva2:420212'
     'SystemWeaver', # name of software used in (all lower case) 'diva2:1737392'
+    'DefocusTracker', # open source module - used in 'diva2:1776910'
     #End for SCI - SCIc
 
 ]

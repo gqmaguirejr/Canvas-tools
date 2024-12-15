@@ -7673,7 +7673,6 @@ merged_words={
     'Dependent Plasticity',
     'Defence Research',
     'Defense Research',
-    'Defocus Tracker',
     'DLE burner',
     'DM candidates',
     'DNA strands',
