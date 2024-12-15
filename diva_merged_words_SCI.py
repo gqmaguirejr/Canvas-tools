@@ -7081,7 +7081,6 @@ merged_words={
     'trucks since',
     'truck variant',
     'trustworthiness of',
-    'occipital parietal',
     'old aluminium',
     'on-line range',
     'osmotic gradient',

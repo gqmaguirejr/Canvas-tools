@@ -57985,6 +57985,7 @@ common_English_words={
     'underdamped': {'C1': 'Adjective'},
     'overset': {'B2': 'Verb (past participle), Adjective'}, # used in diva2:1040644
     'undercompaction': {'B2': 'Noun'},
+    'occipital-parietal': {'C1': 'Adjective'},
     #end for SCI - SCIe
 }
     

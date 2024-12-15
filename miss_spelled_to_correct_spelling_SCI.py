@@ -1660,6 +1660,8 @@ miss_spelled_to_correct_spelling={
     'analyzed': {'c': 'analysed', 's': 'diva2:1213813', 'n': 'error in original'},
     'coefficent': {'c': 'coefficient', 's': 'diva2:1285840', 'n': 'error in original'},
     'conforming': {'c': 'confirming', 's': 'diva2:1214786 ', 'n': 'correct in original'}, 
+    'occipitalparietal': {'c': 'occipital-parietal', 's': 'diva2:560435', 'n': 'correct in original'},
+
 }
 
 junklist=[
