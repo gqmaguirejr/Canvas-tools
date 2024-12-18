@@ -1662,6 +1662,13 @@ miss_spelled_to_correct_spelling={
     'conforming': {'c': 'confirming', 's': 'diva2:1214786 ', 'n': 'correct in original'}, 
     'occipitalparietal': {'c': 'occipital-parietal', 's': 'diva2:560435', 'n': 'correct in original'},
     '"Sweidsh': {'c': 'Swedish', 's': 'diva2:942671', 'n': 'error in original'}, 
+    'markov': {'c': 'Markov', 's': 'diva2:942711', 'n': 'error in original'}, 
+    'establish': {'c': 'establishes', 's': 'diva2:942711', 'n': 'error in original'}, 
+    'algorithm.A': {'c': 'algorithm. A', 's': 'diva2:743430', 'n': 'error in original'},
+    'transitionis': {'c': 'transition is', 's': 'diva2:756072', 'n': 'correct in original'},
+    'erroneus': {'c': 'erroneous', 's': 'diva2:1877685', 'n': 'error in original'}, 
+    'ESnuSB': {'c': 'ESSnuSB', 's': 'diva2:1791350', 'n': 'error in original'},  
+
 }
 
 junklist=[

@@ -57986,6 +57986,10 @@ common_English_words={
     'overset': {'B2': 'Verb (past participle), Adjective'}, # used in diva2:1040644
     'undercompaction': {'B2': 'Noun'},
     'occipital-parietal': {'C1': 'Adjective'},
+    'sagbend': {'B2': 'Noun'}, # used in 'diva2:549810'
+    'overvalues': {'B2': 'Verb  (present tense, 3rd person plural), Noun (plural)'},
+    'wave numbers': {'B2': 'Noun', 'C1': 'Noun'}, # used in 'diva2:1794800'
+
     #end for SCI - SCIe
 }
     
