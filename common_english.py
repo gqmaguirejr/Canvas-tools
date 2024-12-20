@@ -57989,7 +57989,56 @@ common_English_words={
     'sagbend': {'B2': 'Noun'}, # used in 'diva2:549810'
     'overvalues': {'B2': 'Verb  (present tense, 3rd person plural), Noun (plural)'},
     'wave numbers': {'B2': 'Noun', 'C1': 'Noun'}, # used in 'diva2:1794800'
-
+    'acoustofluidic': {'C1': 'Adjective'},
+    'multi-echelon': {'B2': 'Adjective'},
+    'single-site': {'B2': 'Adjective'},
+    'asymmetrically-weighed': {'C1': 'Adjective'},
+    'closed-section': {'B2': 'Adjective'},
+    'collated': {'B2': 'Verb, Adjective'},
+    'corvettes': {'B2': 'Noun (plural)'},
+    'cross-verification': {'B2': 'Noun'},
+    'cut-generation': {'B2': 'Noun'},
+    'cylinder-based': {'B2': 'Adjective'},
+    'e-Booster': {'B2': 'Noun'},
+    'e-Boosters—using': {'B2': 'Noun Phrase'},
+    'e-Turbo': {'B2': 'Noun'},
+    'glass-fibre/epoxy': {'B2': 'Noun Phrase'},
+    'high-stresses': {'B2': 'Noun (plural)'},
+    'juggernauts': {'B2': 'Noun (plural)'},
+    'lap-joint': {'B2': 'Noun'},
+    'lap-joints': {'B2': 'Noun (plural)'},
+    'leaf-springs': {'B2': 'Noun (plural)'},
+    'line-following': {'B2': 'Adjective, Noun (gerund)'},
+    'low-cycle': {'B2': 'Adjective'},
+    'low-viscosity': {'B2': 'Adjective'},
+    'market-driven': {'B2': 'Adjective'},
+    'material-specific': {'B2': 'Adjective'},
+    'micrometre-sized': {'B2': 'Adjective'},
+    'near-Maxwellian': {'C1': 'Adjective'},
+    'near-uniform': {'B2': 'Adjective'},
+    'non-GEO': {'B2': 'Adjective, Noun'},
+    'overparametrisation': {'C1': 'Noun'},
+    'overperform': {'B2': 'Verb'},
+    'overperformance': {'B2': 'Noun'},
+    'overperforms': {'B2': 'Verb'},
+    'polarization-entangled': {'C1': 'Adjective'},
+    'pole-zero': {'B2': 'Noun'},
+    'port-injected': {'B2': 'Adjective'},
+    'pre-fatigued': {'B2': 'Adjective'},
+    'pre-ignition': {'B2': 'Noun'},
+    're-enforcing': {'B2': 'Verb'},
+    'resource-constraint': {'B2': 'Noun'},
+    'splined': {'B2': 'Adjective, Verb (past participle)'},
+    'superchargers': {'B2': 'Noun (plural)'},
+    'vibration-dampening': {'B2': 'Adjective, Noun (gerund)'},
+    'vibration-sensitive': {'B2': 'Adjective'},
+    'OA-algorithm': {'C1': 'Noun'},
+    'supercharging': {'B2': 'Noun, Verb (gerund)'},
+    'shaft-hub': {'B2': 'Noun'},
+    'static/quasi-static': {'B2': 'Adjective Phrase'},
+    'thin-wall': {'B2': 'Adjective'},
+    'three-dimensionally': {'B2': 'Adverb'},
+    'rearmost': {'B2': 'Adjective'},
     #end for SCI - SCIe
 }
     
@@ -60068,6 +60117,8 @@ place_names=[
     'Varanasi Bend',
     'Varanasi',
     'Vi11arnche',
+    'Hamburg-Harburg',
+
 ]
 
 # many of these would be considered {'B2': 'Noun Phrase'} or {'B2': 'Noun (proper name)'}
@@ -70610,7 +70661,12 @@ company_and_product_names=[
     'SystemWeaver', # name of software used in (all lower case) 'diva2:1737392'
     'DefocusTracker', # open source module - used in 'diva2:1776910'
     'Test.Lab', # Siemens data acquisition software - used in 'diva2:1189533'
-
+    "AmountNewlyIssued", # parameter
+    'Econowind VentoFoil', # sail - for ships - used in  diva2:1920463
+    'Econowind', # used in  diva2:1920463
+    'VentoFoil', # used in  diva2:1920463
+    'MicroMAX', # beamline at MAX IV in Lund - used in diva2:1911459
+    'openLCA', # software - used in diva2:1920463
     #End for SCI - SCIc
 
 ]
@@ -75993,6 +76049,9 @@ names_of_persons=[
     'Öktem',
     'Adler',
     'Bézout',
+    'Groszer',
+    'Hohmann',
+
 ]
 
 
@@ -76018,6 +76077,7 @@ common_french_words={
     'Communauté': {'B1': 'Noun'},
     'Composent': {'B1': 'Verb'},
     'Condensée': {'B1': 'Adjective'},
+    'Décret': {'B1': 'Noun'},
     'Ecole': {'A1': 'Noun'},
     'Economie': {'B1': 'Noun'},
     'Electricité': {'B1': 'Noun'},
@@ -76050,6 +76110,7 @@ common_french_words={
     'Suisse': {'B1': 'Noun'},
     'Sécurité': {'B2': 'Noun'},
     'Télédétection': {'B1': 'Adjective'},
+    'Tertiaire': {'B1': 'Noun, Adjective'},
     'Vins': {'A1': 'Noun (plural)'},
     'alternatives': {'B1': 'Noun (plural)'},
     'atomique': {'B2': 'Adjective'} ,

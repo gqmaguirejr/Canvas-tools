@@ -2122,8 +2122,9 @@ well_known_acronyms_list=[
     ['ZEN', 'ZEISS Efficient Navigation', {'s': 'diva2:1679333'}],
     ['p-HCP', 'Premature Human Connectome Project', {'s': 'diva2:1905032'}],
     ['pTIRF', 'rism-based Total Internal Reflection Fluorescence', {'s': 'diva2:1877613'}],
-
-
+    ['NPD', ' Norwegian Petroleum Directorate', {'s': 'diva2:1920232'}],
+    ['CSM-RA', 'Common Safety Method and Risk Assessment', {'s': 'diva2:1920231'}],
+    
 ]
 
 
