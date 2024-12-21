@@ -1704,6 +1704,8 @@ miss_spelled_to_correct_spelling={
     'terminalwidth': {'c': 'terminal width', 's': 'diva2:1882923', 'n': 'correct in original'},
     'kainite': {'c': 'kainate', 's': 'diva2:711192', 'n': 'correct in original'}, # note kainite is a mineral; where as 'kainate" is Kainic acid
     'plcaement': {'c': 'placement', 's': 'diva2:1241900', 'n': 'error in original'},
+    'artifical': {'c': 'artificial', 's': 'diva2:1795591', 'n': 'correct in original'},
+    'the the': {'c': 'the', 's': 'diva2:942654', 'n': 'error in original'},
     
 }
 

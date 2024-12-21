@@ -58039,6 +58039,9 @@ common_English_words={
     'thin-wall': {'B2': 'Adjective'},
     'three-dimensionally': {'B2': 'Adverb'},
     'rearmost': {'B2': 'Adjective'},
+    'underperformance': {'B2': 'Noun'},
+    'thereupon': {'B2': 'Adverb'},
+
     #end for SCI - SCIe
 }
     
