@@ -58041,6 +58041,7 @@ common_English_words={
     'rearmost': {'B2': 'Adjective'},
     'underperformance': {'B2': 'Noun'},
     'thereupon': {'B2': 'Adverb'},
+    'overcovers': {'B2': 'Verb (present tense, 3rd person plural) or Noun (plural)'},
 
     #end for SCI - SCIe
 }

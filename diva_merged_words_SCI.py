@@ -5200,7 +5200,6 @@ merged_words={
     'overall conclusion',
     'overall graphical',
     'overall infected',
-    'over covers',
     'over damped',
     'overestimated, hence',
     'over exploitation',

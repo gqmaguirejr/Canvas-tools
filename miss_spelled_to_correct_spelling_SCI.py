@@ -1706,7 +1706,14 @@ miss_spelled_to_correct_spelling={
     'plcaement': {'c': 'placement', 's': 'diva2:1241900', 'n': 'error in original'},
     'artifical': {'c': 'artificial', 's': 'diva2:1795591', 'n': 'correct in original'},
     'the the': {'c': 'the', 's': 'diva2:942654', 'n': 'error in original'},
-    
+    'linnear': {'c': 'linear', 's': 'diva2:1652575', 'n': 'error in original'},
+    'macro economical': {'c': 'macroeconomical', 's': 'diva2:1652575', 'n': 'correct in original'},
+    'solutiuon' : {'c': 'solution', 's': 'diva2:1342330', 'n': 'correct in original'},
+    'ages': {'c': 'years', 's': 'diva2:1342330', 'n': 'correct in original'},
+    'strides': {'c': 'improvements', 's': 'diva2:1342330', 'n': 'correct in original'},
+    "at's": {'c': "flat's", 's': 'diva2:1117117', 'n': 'missing ligature'},
+    'nite': {'c': 'finite', 's': 'diva2:757682', 'n': 'missing ligature'},
+    'possiblity': {'c': 'possibility', 's': 'diva2:716774', 'n': 'error in original - incorrect in one place'},
 }
 
 junklist=[
