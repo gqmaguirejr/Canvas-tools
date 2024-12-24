@@ -1714,6 +1714,17 @@ miss_spelled_to_correct_spelling={
     "at's": {'c': "flat's", 's': 'diva2:1117117', 'n': 'missing ligature'},
     'nite': {'c': 'finite', 's': 'diva2:757682', 'n': 'missing ligature'},
     'possiblity': {'c': 'possibility', 's': 'diva2:716774', 'n': 'error in original - incorrect in one place'},
+    'armour': {'c': 'armor', 's': 'diva2:1712705', 'n': 'correct in original'},
+    'AUV:s': {'c': 'AUVs', 's': 'diva2:1307253', 'n': 'error in original'},
+    'theories': {'c': 'frameworks', 's': 'diva2:1431630', 'n': 'correct in original'},
+    'theadaption': {'c': 'the adaption', 's': 'diva2:1656447', 'n': 'correct in original'}, 
+    'testcases': {'c': 'test cases', 's': 'diva2:439828', 'n': 'correct in original'},
+    'stocks': {'c': "stock's", 's': 'diva2:827497', 'n': 'error in original'},
+    'deepdrawing': {'c': 'deep-drawing', 's': 'diva2:514164', 'n': 'correct in original'},
+    "Trumps": {'c': "Trump's", 's': 'diva2:1450575', 'n': 'error in original'},
+    'pis': {'c': 'is', 's': 'diva2:1703971', 'n': 'error in original'},
+    'sotware': {'c': 'software', 's': 'diva2:1183331', 'n': 'error in original'},
+    'cad-': {'c': 'CAD-', 's': 'diva2:1207120', 'n': 'error in original'},
 }
 
 junklist=[

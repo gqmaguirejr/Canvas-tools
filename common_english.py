@@ -58042,7 +58042,10 @@ common_English_words={
     'underperformance': {'B2': 'Noun'},
     'thereupon': {'B2': 'Adverb'},
     'overcovers': {'B2': 'Verb (present tense, 3rd person plural) or Noun (plural)'},
-
+    'spacetimes': {'C1': 'Noun (plural)'},
+    'loadcases': {'B2': 'Noun (plural)'},
+    'superlattice': {'C1': 'Noun'},
+    
     #end for SCI - SCIe
 }
     
@@ -70671,6 +70674,7 @@ company_and_product_names=[
     'VentoFoil', # used in  diva2:1920463
     'MicroMAX', # beamline at MAX IV in Lund - used in diva2:1911459
     'openLCA', # software - used in diva2:1920463
+    'solidThinking', # solidThinking Inspire - software - used in diva2:1070456
     #End for SCI - SCIc
 
 ]
