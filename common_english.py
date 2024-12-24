@@ -70675,6 +70675,7 @@ company_and_product_names=[
     'MicroMAX', # beamline at MAX IV in Lund - used in diva2:1911459
     'openLCA', # software - used in diva2:1920463
     'solidThinking', # solidThinking Inspire - software - used in diva2:1070456
+    '*craft', # mission design tool - used in diva2:1255170
     #End for SCI - SCIc
 
 ]

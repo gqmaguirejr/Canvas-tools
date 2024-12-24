@@ -9703,3 +9703,89 @@ Note removed unnecessary paragraph break
 ----------------------------------------------------------------------
 In diva2:1180809   - correct as is
 ----------------------------------------------------------------------
+In diva2:1849148 
+Note: no full text in DiVA
+
+abstract is: 
+<p>This thesis work is performed at Bombardier Transportation in order to evaluate previous work in the field of simplifying the tilt system on a high speed train. The system is modelled in the multi-body simulation program Simpack. </p><p> Current tilting systems are rather expensive, approximately three to six per cent of the total investment; therefore the aim is to investigate the performance of a simplified carbody tilting system. The simulations are connected to the Bombardier Transportation electric multiple unit Regina 250 intercity train, R250T; however the results are meant to be adaptable also to other rail vehicles. The main priority is to investigate whether the subsystems are appropriate for carbody tilt. The subsystems of special interest are the force controlled actuator and rubber-steel laminate springs.  </p><p> The system is designed for 245 mm cant deficiency, the maximum allowed in Sweden. 0.8 m/s2 of lateral acceleration is allowed on the passengers in the middle of the carbody and the actuator should work at a maximum quasi-static force of 25 kN. All of the above criteria are fulfilled during normal operation in all types of curves tested. </p><p> The model has been tested with three different heights of bolster centre of rotation to suit different vehicles. With the lowest value of the centre of rotation the system response is not acceptable. This can be cured with stiffer tilting elements; however this will need an actuator with a higher force output. The R250T is regarded as safe in all tested cases, e.g. normal service, failure scenario and snow packing, as concerns risk of derailment.  </p><p> The rubber laminate springs give the vehicle good ride characteristics regarding tilt angle. It is highly plausible that a rubber spring with the required characteristics can be built; there are existing elements which closely match the needed characteristics used on rail vehicles today.   </p><p> The force controlled actuator is able to create the required tilt angle and provide a safe ride; however the roll angle velocity is not as constant as what a position controlled actuator can perform. It might be possible to solve this with a more advanced control loop, or perhaps use stored track data when possible. The conclusion is that the simplicity of this actuator cannot yet be fully utilized, without further study.  </p>
+
+corrected abstract:
+<p>This thesis work is performed at Bombardier Transportation in order to evaluate previous work in the field of simplifying the tilt system on a high speed train. The system is modelled in the multi-body simulation program Simpack. </p><p> Current tilting systems are rather expensive, approximately three to six per cent of the total investment; therefore the aim is to investigate the performance of a simplified carbody tilting system. The simulations are connected to the Bombardier Transportation electric multiple unit Regina 250 intercity train, R250T; however the results are meant to be adaptable also to other rail vehicles. The main priority is to investigate whether the subsystems are appropriate for carbody tilt. The subsystems of special interest are the force controlled actuator and rubber-steel laminate springs.  </p><p> The system is designed for 245 mm cant deficiency, the maximum allowed in Sweden. 0.8 m/s<sup>2</sup> of lateral acceleration is allowed on the passengers in the middle of the carbody and the actuator should work at a maximum quasi-static force of 25 kN. All of the above criteria are fulfilled during normal operation in all types of curves tested. </p><p> The model has been tested with three different heights of bolster centre of rotation to suit different vehicles. With the lowest value of the centre of rotation the system response is not acceptable. This can be cured with stiffer tilting elements; however this will need an actuator with a higher force output. The R250T is regarded as safe in all tested cases, e.g. normal service, failure scenario and snow packing, as concerns risk of derailment.  </p><p> The rubber laminate springs give the vehicle good ride characteristics regarding tilt angle. It is highly plausible that a rubber spring with the required characteristics can be built; there are existing elements which closely match the needed characteristics used on rail vehicles today.   </p><p> The force controlled actuator is able to create the required tilt angle and provide a safe ride; however the roll angle velocity is not as constant as what a position controlled actuator can perform. It might be possible to solve this with a more advanced control loop, or perhaps use stored track data when possible. The conclusion is that the simplicity of this actuator cannot yet be fully utilized, without further study.  </p>
+
+Note eliminated an unnecessary space at the end of a paragraph and added a superscript
+----------------------------------------------------------------------
+In diva2:1114111 - likely missing space in title:
+"A regression analysis of the factors affecting the ticket price in thetravel industry"
+==>
+"A regression analysis of the factors affecting the ticket price in the travel industry"
+
+Note: no full text in DiVA
+----------------------------------------------------------------------
+In diva2:874361 - likely - unnessary period at end of title:
+"Steel casted slewing house welded to stabilizer beam."
+==>
+"Steel casted slewing house welded to stabilizer beam"
+
+Note: no full text in DiVA
+----------------------------------------------------------------------
+In diva2:872876 - liley - unnessary period at end of title:
+"Uni- and multiaxial ratcheting testing and simulation investigation on the ferritic steel P265."
+==>
+"Uni- and multiaxial ratcheting testing and simulation investigation on the ferritic steel P265"
+
+Note: no full text in DiVA
+----------------------------------------------------------------------
+In diva2:691273 - likley - unnessary period at end of title:
+"Reducerad bränsleförbrukning för fallskärmsflygplan."
+==>
+"Reducerad bränsleförbrukning för fallskärmsflygplan"
+
+Note: no full text in DiVA
+----------------------------------------------------------------------
+In diva2:918983 
+abstract is: 
+<p>The intent of this paper is to investigate the seemingly untested theories regarding modelling of spray formation on planing hulls. This is done by means of 2D and 3D CFD simulations. The motivation for testing these theories is due to the design factors of a conceptual spray deﬂection system used on planing hulls. This technology is presented and its performance evaluated by comparison with current spray rail systems. With an appropriate design of the cross section of the deﬂectors the spray can be redirected aftward and thus recover some of the energy in the spray. It was found that the theory presented by Savitsky and Morabito, where the spray ﬁeld of a planing hull can be represented by a 2D ﬂat planing plate, will overestimate the spray thickness. However a close match between the spray formation on planing hulls and the theory presented by Wagner was found, this theory is that of a wedge being dropped vertically into a calm water surface. The reduced frictional resistance, when using spray deﬂectors, accounts for up to 28%reduction of the total drag and redirecting the spray aftward can reduce the total drag an additional 4%. The spray deﬂectors was found to reduce the wet surface area due to spray to a higher extent than possible with spray rails.</p>
+
+corrected abstract:
+<p>The intent of this paper is to investigate the seemingly untested theories regarding modelling of spray formation on planing hulls. This is done by means of 2D and 3D CFD simulations. The motivation for testing these theories is due to the design factors of a conceptual spray deflection system used on planing hulls. This technology is presented and its performance evaluated by comparison with current spray rail systems. With an appropriate design of the cross section of the deflectors the spray can be redirected aftward and thus recover some of the energy in the spray. It was found that the theory presented by Savitsky and Morabito, where the spray field of a planing hull can be represented by a 2D flat planing plate, will overestimate the spray thickness. However a close match between the spray formation on planing hulls and the theory presented by Wagner was found, this theory is that of a wedge being dropped vertically into a calm water surface. The reduced frictional resistance, when using spray deflectors, accounts for up to 28% reduction of the total drag and redirecting the spray aftward can reduce the total drag an additional 4%. The spray deflectors was found to reduce the wet surface area due to spray to a higher extent than possible with spray rails.</p>
+
+Note - inserted space after "%"
+----------------------------------------------------------------------
+In diva2:814086
+Note: no full text in DiVA
+
+abstract is: 
+<p>The model that describes modern particle physics is known as the standard model, which itself is built upon Yang-Mills theory. Yang-Mills theory is also used in other contexts intheoretical physics. In this report classical Yang-Mills theory and its relation to classical electrodynamics is studied.</p><p>Yang-Mills theory is introduced as a generalization of electrodynamics and for a special case a physical interpretation of the theory is presented. By numerical simulations, the dynamics of the theory are studied and compared to those of electrodynamics.</p><p>The results obtained indicate that Yang-Mills theory can give rise to much more complicated dynamics than classical electrodynamics. However, the special case of Yang-Mills theory considered in this report can be viewed as electrodynamics with extra degrees of freedom.</p>
+
+mc='intheoretical' c='in theoretical'
+
+corrected abstract:
+<p>The model that describes modern particle physics is known as the standard model, which itself is built upon Yang-Mills theory. Yang-Mills theory is also used in other contexts in theoretical physics. In this report classical Yang-Mills theory and its relation to classical electrodynamics is studied.</p><p>Yang-Mills theory is introduced as a generalization of electrodynamics and for a special case a physical interpretation of the theory is presented. By numerical simulations, the dynamics of the theory are studied and compared to those of electrodynamics.</p><p>The results obtained indicate that Yang-Mills theory can give rise to much more complicated dynamics than classical electrodynamics. However, the special case of Yang-Mills theory considered in this report can be viewed as electrodynamics with extra degrees of freedom.</p>
+----------------------------------------------------------------------
+In diva2:1229902 
+abstract is: 
+<p>In 1948, Hendrik Casimir predicted the Casimir effect, an almost negligible at- tractive force between two perfectly conducting parallel plates. Since then, major advancements have been made. This report gives an overview of some of these ad- vancements, as well as the theoretical background of the Casimir effect. The Casimir effect has been calculated for several different shapes as well as dimensions, such as between two perfectly conducting plates in any given dimension, the rectangular box, the spherical shell, the sphere and the plane, and two different hollow spheres. Var- ious corrections to the Casimir effect have also been calculated in order to account for non-zero temperature as well as imperfect conductors. The Casimir effect has also been experimentally verified, with varying error margins. In terms of practical application, none have yet been achieved, even 70 years after its discovery, but the potential applications are very interesting.</p>
+
+corrected abstract:
+<p>In 1948, Hendrik Casimir predicted the Casimir effect, an almost negligible attractive force between two perfectly conducting parallel plates. Since then, major advancements have been made. This report gives an overview of some of these advancements, as well as the theoretical background of the Casimir effect. The Casimir effect has been calculated for several different shapes as well as dimensions, such as between two perfectly conducting plates in any given dimension, the rectangular box, the spherical shell, the sphere and the plane, and two different hollow spheres. Various corrections to the Casimir effect have also been calculated in order to account for non-zero temperature as well as imperfect conductors. The Casimir effect has also been experimentally verified, with varying error margins. In terms of practical application, none have yet been achieved, even 70 years after its discovery, but the potential applications are very interesting.</p>
+
+Note removed several unnecessary hyphens
+----------------------------------------------------------------------
+In diva2:1229050
+Note: no full text in DiVA
+
+abstract is: 
+<p>In February 1996 the IBM computer Deep Blue beat the reigning chess world champion Garry Kasparov in a game of chess. Since then the games in which the computers are beating humans, have become more and more complex. Teaching a computer to play a game may seem like a waste if recourses, but it is a very good way to test different learning methods, that can later be applied to real life problems. This report aims to evaluate the potential of an A*-based program for the Geometry Friends game. The Geometry friends game is a 2D physics based game, where the goal is to collect all the diamonds on the map using one or both of the two available characters. For the proposed AI, the A* algorithm is used to calculated a route between these diamonds. It then identifies critical elements along the path, which when encountered need special actions to pass. The program then navigates between these critical nodes and perform the associated actions, to complete the level. The results of the proposed agents on ten levels are compared to humans trying the same levels as well as agents developed by others. Compared to another agent, the CIBot [8], which uses Montecarlo tree search for to find the best path, the proposed agent performed slightly worse on most levels but did succeed in getting a higher score on two. Compared to the humans the proposed agent only manages to perform better on one level, and loses on the other nine.</p>
+
+[possible] corrected abstract:
+<p>In February 1996 the IBM computer Deep Blue beat the reigning chess world champion Garry Kasparov in a game of chess. Since then the games in which the computers are beating humans, have become more and more complex. Teaching a computer to play a game may seem like a waste if resources, but it is a very good way to test different learning methods, that can later be applied to real life problems. This report aims to evaluate the potential of an A*-based program for the Geometry Friends game. The Geometry friends game is a 2D physics based game, where the goal is to collect all the diamonds on the map using one or both of the two available characters. For the proposed AI, the A* algorithm is used to calculated a route between these diamonds. It then identifies critical elements along the path, which when encountered need special actions to pass. The program then navigates between these critical nodes and perform the associated actions, to complete the level. The results of the proposed agents on ten levels are compared to humans trying the same levels as well as agents developed by others. Compared to another agent, the CIBot [8], which uses Montecarlo tree search for to find the best path, the proposed agent performed slightly worse on most levels but did succeed in getting a higher score on two. Compared to the humans the proposed agent only manages to perform better on one level, and loses on the other nine.</p>
+
+Note should 'recourses' be 'resources'? Or is it an error in the original? [Likely, based on Swedish version.]
+----------------------------------------------------------------------
+In diva2:1163221 - likely missing space in title:
+"Frustrated Magnets and Violation of the Third Lawof Thermodynamics"
+==>
+"Frustrated Magnets and Violation of the Third Law of Thermodynamics"
+
+Note: no full text in DiVA
+----------------------------------------------------------------------
