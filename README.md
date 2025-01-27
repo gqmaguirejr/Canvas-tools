@@ -3199,6 +3199,29 @@ The accounts are limited to those for which you have administrative access.
 
 ```
 
+## extract_dc_meta_data_from_PDF.py
+
+### Purpose
+The program opens the file and extracts the Dublin Core metadata
+
+### Input
+```bash
+./extract_dc_meta_data_from_PDF.py PDF_file_name
+```
+
+### Output
+outputs the XMP XML
+
+### Note 
+This program is little more than a stub - because the decoding of the XML and producting a dict has not yet been done.
+
+### Example
+
+```bash
+./extract_dc_meta_data_from_PDF.py /tmp/KTH_new_cover_experiment_with_configuration_with_Arial.pdf
+```
+
+
 <!-- 
 
 ## xxx.py
