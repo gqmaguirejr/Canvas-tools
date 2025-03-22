@@ -3221,6 +3221,80 @@ This program is little more than a stub - because the decoding of the XML and pr
 ./extract_dc_meta_data_from_PDF.py /tmp/KTH_new_cover_experiment_with_configuration_with_Arial.pdf
 ```
 
+## check_color.py
+
+### Purpose
+The program creats three cells in a spreadsheet and then the
+heck_red_substring() function was used to check for a red substrin gin the cell.
+
+### Input
+```bash
+./check_color.py
+```
+
+### Output
+Cell A1 (abc) has red substring: False
+Cell B1 (def) has red substring: True
+Cell C1 (qwe) has red substring: True
+
+### Note 
+This was a simple test program to explore rich text in a spreadsheet cell.
+
+### Example
+
+```bash
+./check_color.py
+```
+
+## copy_colored_text.py
+
+### Purpose
+Create entries in columns for "eng-draft" and "sv-fraft"
+based upon those entries in the 'eng' and 'sv' columns that were
+set in red (specifically rgb:  #FFFF0000') as these represent
+my proposed words.
+
+The draft columns are to facilitate a native Swedish speaker
+evaluating the proposed 'eng' or 'sv' entries set in red.
+
+### Summary
+
+The program opens the file and copies ext from "eng" to "eng-draft"
+if 'eng' text is red and copies text from "sv" to "sv-draft" if text is red
+ 
+
+### Input
+```bash
+ ./copy_colored_text.py filename
+```
+This program takes a spreadsheet of data based upon those found
+in Computer Sweden's "IT-ord: Ord och uttryck i it-branschen"
+See https://it-ord.idg.se/
+
+The wordlist is a collection of words that are related to IT.
+Here "words" are strings that can include spaces and commas.
+
+As part of the STUNDA activities, I have attempted to find
+English and Swedish word pairs. When either language was missing,
+I have tried with the help of Google's Gemini to identify a suitable word or words. 
+
+I have also tried to classify the words into categories or combinations of
+categories (for examaple, a given word might be the name of a product and
+a company name).
+
+### Output
+Outputs an updated spread sheet in temp.xlsx 
+
+### Note 
+The program contains extensive information about the format of the spreadsheet.
+
+
+### Example
+
+```bash
+./Computer_Sweden/cs_words_ss-edited-20250321-color-draft.xlsx
+```
+
 
 <!-- 
 
