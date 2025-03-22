@@ -230,7 +230,7 @@ def main():
 
     print(f'{eng_column=} {sv_column=} {eng_draft_column=} {sv_draft_column=}')
     # process English columns
-    for index, row in enumerate(ws.rows, start=2):
+    for index, row in enumerate(ws.rows, start=1):
         c = ws.cell(index, eng_column)
         #print(f'{index=} {c=}  {c.value=}  {c.font=}')
         if check_red_substring(c):
@@ -242,7 +242,7 @@ def main():
                     ws.cell(index, eng_draft_column).font=Font(color='FFFF0000')
 
     # process Swedish columns
-    for index, row in enumerate(ws.rows, start=2):
+    for index, row in enumerate(ws.rows, start=1):
         c = ws.cell(index, sv_column)
         if Verbose_Flag:
             print(f'Cell: {index=} {c=}  {c.value=}  {c.font=}')
