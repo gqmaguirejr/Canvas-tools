@@ -71096,7 +71096,6 @@ company_and_product_names=[
     'Microsoft Cortana',
     'Microsoft Courier',
     'Microsoft Dotnet',
-    'Microsoft Dotnet.',
     'Microsoft Equipt',
     'Microsoft Forefront',
     'Microsoft Groove',
@@ -71610,6 +71609,11 @@ company_and_product_names=[
     'Z-Wave',
     'Zettle',
     'ZigZag',
+    'Bunyip information systems',
+    'Ericsson Cordless web screen',
+    'cURL',
+    'Google Doodles',
+    'Digital Research DOS',
 
 ]
 
