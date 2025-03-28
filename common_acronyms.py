@@ -6863,28 +6863,27 @@ less_well_known_acronyms_list=[
     ['.brf', 'web-braille', {'swe': 'web-braille, webb-punktskrift, webb-blindskrift'}], # file format
     ['.exe', 'executable', {'swe': 'xekverbar fil'}],
     ['.gid', 'global index file', {'swe': 'global indexfil'}],
-    ['.info', '.info', {'swe': '.info'}],
+    ['.info', '.info'],
     ['.it', 'countrl domain for Italy', {'swe': 'landsdomän för Italien'}],
     ['.pro', '.pro (top-level domain)', {'swe': '.pro (toppdomän)'}],
     ['.sucks', 'sucks (top level domain)', {'swe': 'sucks (toppdomän)'}],
     ['.tv', 'tv', {'swe': 'tv (landsdomän)'}],
     ['.uno', 'uno (top level domain)', {'swe': 'uno (toppdomän)'}],
     ['.us', 'us (country code top level domain, ccTLD)', {'swe': 'us (landsdomän)'}],
-    ['.wad', 'wad', {'swe': 'wad'}], # format
+    ['.wad', 'wad'], # format
     ['.wwf', 'wwf'],
     ['.xyz', 'xyz (top level domain)', {'swe': 'xyz (toppdomän)'}],
-    ['.zip', 'zip', {'swe': 'zip'}],
+    ['.zip', 'zip'],
     ['10Q', 'Thank you!”', {'swe': 'Tack!"'}],
     ['11', '”it goes to eleven”', {'swe': '”går till elva”'}],
     ['3V', 'volume, variety, velocity', {'swe': 'volym, sort, snabbhet'}],
     ['3d', 'three-dimensional'],
-    ['4T', '4T Sverige AB', {'swe': '4T Sverige AB'}], # company
+    ['4T', '4T Sverige AB'], # company
     ['53X', '”sex”', {'swe': '"sex"'}],
     [':::poof:::', '”I’m gone”', {'swe': '”Ajöss!”'}],
     ['AMA', 'ask me anything', {'swe': 'fråga mig vad som helst'}],
-    ['Aol', 'Aol', {'swe': 'Aol'}], # company
     ['Apache Open Office', 'Openoffice.org'],
-    ['B2G', 'Boot to Gecko', {'swe': 'Boot to Gecko'}], # project
+    ['B2G', 'Boot to Gecko'], # project
     ['BOFH', 'bastard operator from hell', {'swe': 'BOFH'}],
     ['BUMMER', 'Behavior of users modified and made into an empire for rent'],
     ['BYO', 'bring your own…', {'swe': 'ta med din egen…'}],
@@ -7005,16 +7004,15 @@ less_well_known_acronyms_list=[
     ['Panda', 'Google Panda'],
     ['ParAnoIA, Par:anoia, Par‑anoia, Par_anoia', '”Potentially alarming research: Anonymous intelligence agency”', {'swe': 'ParAnoIA'}], # website
     ['Pie', 'Android Pie'], # OS
-    ['Pirate Bay', 'The Pirate Bay', {'swe': 'The Pirate Bay'}], # web site
+    ['Pirate Bay', 'The Pirate Bay'], # web site
     ['Pixar', 'Pixar Animation Studios'], # company
     ['Poverty', 'Break poverty hackathon'], # event
     ['PrintMe', 'EFI PrintMe'], # company
-    ['Project Blackbox', 'Sun modular datacenter', {'swe': 'Projekt Blackbox'}], # project
+    ['Project Blackbox', 'Sun modular datacenter'], # project
     ['PuSH,Hubbub', 'PubSubHubbub'],
     ['RPG', 'role-playing game', {'swe': 'rollspel'}],
-
-    ['Rekognition', 'Amazon Rekognition', {'swe': 'Amazon Rekognition'}], # service, website
-    ['Replicator', 'The Replicator', {'swe': 'The Replicator'}],
+    ['Rekognition', 'Amazon Rekognition'], # service, website
+    ['Replicator', 'The Replicator'],
     ['Retina', 'Retina display', {'swe': 'Retinaskärm'}], # trademark
 
     ['S-DMB', 'Satellit-Digital Multimedia Broadcasting', {'swe': 'satellit-DMB'}],
@@ -7036,19 +7034,19 @@ less_well_known_acronyms_list=[
     ['SAX', 'simple API for XML', {'swe': 'enkelt API för XML'}], # API
     ['SBOM', 'software bill of materials', {'swe': 'mjukvaruförteckning'}],
     ['SC3, SC3', 'Swedish cybercrime center', {'swe': 'Nationellt IT-brottscentrum'}], # organization
-    ['SCAD', 'solid CAD', {'swe': 'solid CAD'}],
+    ['SCAD', 'solid CAD'],
     ['SCAD', 'structural CAD', {'swe': 'strukturell CAD'}],
     ['SCAM', 'Standard content archive management', {'swe': 'standardiserad innehållsarkivhantering'}],
     ['SCIMP', 'Silent circle instant messaging protocol', {'swe': 'Scilent circiles snabbmeddelandeprotokoll'}], # protocol
-    ['SCO Group', 'The SCO Group', {'swe': 'The SCO Group'}], # company
-    ['SCO', 'Santa Cruz Operation', {'swe': 'Santa Cruz Operation'}], # company
-    ['SCSI', 'Small computer system interface', {'swe': 'SCSI (Small Computer System Interface).'}],
-    ['SCSIe', 'SCSI Express', {'swe': 'SCSI Express'}],
+    ['SCO Group', 'The SCO Group'], # company
+    ['SCO', 'Santa Cruz Operation'], # company
+    ['SCSI', 'Small computer system interface'],
+    ['SCSIe', 'SCSI Express'],
     ['SDDC', 'software-defined data center', {'swe': 'programvarudefinierat datacenter, mjukvarudefinierat datacenter'}],
     ['SDH', 'synchronous digital hierarchy', {'swe': 'synkron digital hierarki'}], # standard
     ['SDMI', 'Secure digital music initiative', {'swe': 'initiativet för säker digital musik'}],
     ['SDU', 'service data unit', {'swe': 'tjänstedataenhet'}],
-    ['SEE', 'Symbian exchange and exposition', {'swe': 'Symbian exchange and exposition'}], # event
+    ['SEE', 'Symbian exchange and exposition'], # event
     ['SELinux', 'Security-enhanced Linux', {'swe': 'SELinux'}], # program
     ['SEMA', 'Software engineering measurement & analysis', {'swe': 'Programvaruteknisk mätning och analys'}], # initaive, obsolete
     ['SEO', 'search engine optimization', {'swe': 'sökmotoroptimering'}],
@@ -7057,14 +7055,14 @@ less_well_known_acronyms_list=[
     ['SFF', 'small form factor', {'swe': 'liten formfaktor'}],
     ['SFTP', 'SSH file transport protocol; secure file transport protocol', {'swe': 'SSH filtransportprotokoll; säkert filtransportprotokoll'}],
     ['SG&A', 'selling, general and administration', {'swe': 'försäljnings-, administrations- och allmänna kostnader'}],
-    ['SGI', 'Silicon Graphics', {'swe': 'Silicon Graphics'}], # company
+    ['SGI', 'Silicon Graphics'], # company
     ['SGML', 'Standardized general markup language', {'swe': 'standardiserat allmänt märkspråk'}],
     ['SGSI', 'Swedish government secure intranet', {'swe': 'SGSI (Swedish Government Secure Intranet)'}],
     ['SHS', 'Spreading and retrieval system', {'swe': 'Spridnings- och hämtningssystem'}],
-    ['SIME', 'Scandinavian interactive media event', {'swe': 'Scandinavian interactive media event'}], # event
+    ['SIME', 'Scandinavian interactive media event'], # event
     ['SIMM', 'single inline memory module', {'swe': 'SIMM‑kretsarna, SIMM (single inline memory module)'}],
     ['SIPS URI', 'secure session initiation protocol uniform resource identifier', {'swe': 'SIPS URL (sessionsinitieringsprotokoll säkra uniform resursidentifierare)'}], # URL
-    ['SISU', 'Swedish institute for systems development', {'swe': 'Swedish institute for systems development'}], # institute
+    ['SISU', 'Swedish institute for systems development'], # institute
     ['SITIC', "Sweden's IT Incident Center", {'swe': 'Sveriges IT-incidentcentrum'}], # former organization
     ['SIUN', 'State Inspectorate for Defence Intelligence', {'swe': 'Statens inspektion för försvarsunderrättelseverksamheten'}],
     ['SIUN', 'State Inspectorate for Defence Intelligence', {'swe': 'Statens inspektion för försvarsunderrättelseverksamheten'}], # organizaton
@@ -7087,18 +7085,18 @@ less_well_known_acronyms_list=[
     ['SOHO', 'small office home office', {'swe': 'marknaden för datorer i hemmet och i småföretag'}],
     ['SONET', 'synchronous optical network', {'swe': 'synkront optiskt nätverk'}],
     ['SOTDMA, STDMA', 'self-organizing time division multiple access', {'swe': 'självorganiserande tidsdelningsmultipelåtkomst'}],
-    ['SOX, Sarbox, SOA', 'Sarbanes-Oxley', {'swe': 'Sarbanes-Oxley'}], # law
+    ['SOX, Sarbox, SOA', 'Sarbanes-Oxley'], # law
     ['SP', 'servicepack, service pack', {'swe': 'servicepack'}],
     ['SPAC', 'special purpose acquisition company, blank check company', {'swe': 'förvärvsbolag'}],
     ['SPARQL', 'SPARQL protocol and RDF query language', {'swe': 'SPARQL-protokoll och RDF-frågespråk'}],
-    ['SPEC', 'Standard performance evaluation corporation', {'swe': 'Standard performance evaluation corporation'}], # trade organization
+    ['SPEC', 'Standard performance evaluation corporation'], # trade organization
     ['SPECfp', 'SPEC - floating point', {'swe': 'SPECfp'}], # trademark
     ['SPECint', 'SPEC -int', {'swe': 'SPECint'}], # trademark
     ['SPF', 'Sender Permitted From', {'swe': 'avsändare tillåten från'}],
     ['SPF', 'Sender policy framework', {'swe': 'avsändarpolicyramverk'}],
     ['SPF', 'service pack', {'swe': 'servicepack'}],
     ['SPML', 'Services provisioning markup language', {'swe': 'Markeringsspråk för tillhandahållande av tjänster'}],
-    ['SPN', 'Software preservation network', {'swe': 'Software preservation network'}], # project
+    ['SPN', 'Software preservation network'], # project
     ['SPOC', 'single point of contact', {'swe': 'samlad kontaktpunkt'}],
     ['SPOF', 'single point of failure', {'swe': 'systemkritisk felpunkt'}],
     ['SQLi', 'SQL-injection', {'swe': 'SQL-injektion'}],
@@ -7111,50 +7109,50 @@ less_well_known_acronyms_list=[
     ['SSOT', 'single source of truth', {'swe': 'en enda källa till sanning'}],
     ['SSP', 'storage service provider', {'swe': 'datalagringstjänst'}],
     ['SSTB', 'Swedish software testing board', {'swe': 'Swedish software testing board, ISTQB i Sverige'}],
-    ['SSWC', 'Sweden social web camp', {'swe': 'Sweden social web camp'}],
+    ['SSWC', 'Sweden social web camp'],
     ['SSa', 'serial storage architecture', {'swe': 'SSa'}],
     ['STDM', 'statistical time division multiplex', {'swe': 'statistical time division multiplex; statistisk tidsdelningsmultiplexering; statistisk tidmultiplexering'}],
     ['STEM', 'science, technology, engineering and mathematics', {'swe': 'naturvetenskap, teknik, och matematik'}],
-    ['STEW', 'Software technology exchange workshop', {'swe': 'Software technology exchange workshop'}], # event
-    ['SVB', 'Silicon Valley Bank', {'swe': 'Silicon Valley Bank'}], # company
+    ['STEW', 'Software technology exchange workshop'], # event
+    ['SVB', 'Silicon Valley Bank'], # company
     ['SW-CMM', 'Capability maturity model for software', {'swe': 'Mognadsmodell för kapacitet för programvara'}],
     ['SWAMP', 'Software assurance marketplace', {'swe': 'SWAMP'}],
     ['SWAN', 'Structured wireless-aware network', {'swe': 'Strukturerat trådlöst medvetet nätverk'}],
     ['SWRL', 'Semantic web rule language', {'swe': 'SWRL (Semantic web rule language); regelspråk för semantiska webben; SWRL regelspråk'}],
-    ['SXSW', 'South by Southwest', {'swe': 'South by Southwest'}], # event
+    ['SXSW', 'South by Southwest'], # event
     ['SaaS', 'software-as-a-service', {'swe': 'program som nättjänst'}],
-    ['Sailfish', 'Sailfish OS', {'swe': 'Sailfish OS'}], # OS
-    ['Sajtkoll.se', 'Sajtkoll', {'swe': 'Sajtkoll'}], # website
+    ['Sailfish', 'Sailfish OS'], # OS
+    ['Sajtkoll.se', 'Sajtkoll'], # website
     ['SelSus', 'self‑sustaining', {'swe': 'SelSus'}], # project
     ['Seshat', 'Seshat: Global history databank', {'swe': 'Seshat'}], # database
     ['Si', 'silicon', {'swe': 'kisel'}],
     ['Sigmod, ACM Sigmod', 'Special interest group on management of data', {'swe': 'ACM Sigmod'}], # organization
-    ['Silk', 'Amazon Silk', {'swe': 'Amazon Silk'}], # web browser
-    ['Simputer', 'simple computer', {'swe': 'Simputer'}],
-    ['Snowball', 'AWS Snowball', {'swe': 'AWS Snowball'}], # service
-    ['Snowmobile', 'AWS Snowmobile', {'swe': 'AWS Snowmobile'}],
+    ['Silk', 'Amazon Silk'], # web browser
+    ['Simputer', 'simple computer'],
+    ['Snowball', 'AWS Snowball'], # service
+    ['Snowmobile', 'AWS Snowmobile'],
     ['SoLoMo', 'social, location, mobile', {'swe': 'social, plats, mobil'}], # app
-    ['Solaris', 'Oracle Solaris', {'swe': 'Oracle Solaris'}], # OS
+    ['Solaris', 'Oracle Solaris'], # OS
     ['Soli', 'Project Soli', {'swe': 'Projekt Soli'}], # project
-    ['Sonder', 'Sonder Design', {'swe': 'Sonder Design'}], # company
-    ['Spamhaus', 'Spamhaus Project', {'swe': 'Spamhaus projekt'}], # project
-    ['Spartan', 'Project Spartan', {'swe': 'Project Spartan'}], # project
+    ['Sonder', 'Sonder Design'], # company
+    ['Spamhaus', 'Spamhaus Project'], # project
+    ['Spartan', 'Project Spartan'], # project
     ['Spot', 'Smart personal objects technology', {'swe': 'Teknik för smarta personliga föremål'}],
     ['Sputnik', 'Project Sputnik', {'swe': 'Projekt Sputnik'}], # project
-    ['St0rm', 'Storm', {'swe': 'Storm'}],
-    ['Stadia', 'Google Stadia', {'swe': 'Google Stadia'}], # service
+    ['St0rm', 'Storm'],
+    ['Stadia', 'Google Stadia'], # service
     ['Stanford', 'Stanford University', {'swe': 'Stanford‑universitetet'}], # university
-    ['Star', 'Xerox Star', {'swe': 'Xerox Star'}], # product
-    ['Sun ONE', 'Sun Open Net Environment', {'swe': 'Sun Open Net Environment'}], # trademark
+    ['Star', 'Xerox Star'], # product
+    ['Sun ONE', 'Sun Open Net Environment'], # trademark
     ['Sun', 'Sun Microsystems', {'swe': 'Sun'}], # company
     ['Sunet', 'Swedish university computer network', {'swe': 'Sunet'}],
     ['Sunroof', 'Project Sunroof', {'swe': 'Projekt soltak'}], # project
-    ['Supermicro', 'Super Micro Computer Inc', {'swe': 'Super Micro Computer Inc'}], # company
+    ['Supermicro', 'Super Micro Computer Inc'], # company
     ['Swift', 'Society for worldwide interbank communication', {'swe': 'Samhälle för världsomspännande interbankkommunikation'}],
-    ['Swing', 'Java Swing', {'swe': 'Java Swing'}],
+    ['Swing', 'Java Swing'],
     ['SyncML', 'Synchronization markup language', {'swe': 'SyncML, synkroniseringsmärkningsspråk'}],
     ['SysRq', 'system request', {'swe': 'SysRq'}],
-    ['System V', 'Unix System V', {'swe': 'System V'}], # OS
+    ['System V', 'Unix System V'], # OS
     ['T&M', 'time and materials', {'swe': 'löpande räkning'}],
     ['T-DMB', 'Terrestrial DMB', {'swe': 'marksänd-DMB'}],
     ['T-Web', 'Spoken web, World Wide Telecom Web (WWTW)', {'swe': 'Spoken web, World Wide Telecom Web (WWTW), T‑Web'}],
@@ -7162,22 +7160,22 @@ less_well_known_acronyms_list=[
     ['T2H', 'talk to humans; temp-to-hire', {'swe': 'prata med människor; vikariera att anställa'}], # metaentry, app, program
     ['TACACS', 'Terminal access controller access-control system', {'swe': 'TACACS'}], # protocol
     ['TAI', 'temps atomique international', {'swe': 'internationell atomtid'}], # French words
-    ['TAO', 'Tailored access operations', {'swe': 'Tailored access operations'}],
-    ['TAOCP', 'The art of computer programming', {'swe': 'The art of computer programming'}], # book
-    ['TBT', 'Throwback Thursday', {'swe': 'Throwback Thursday'}],
+    ['TAO', 'Tailored access operations'],
+    ['TAOCP', 'The art of computer programming'], # book
+    ['TBT', 'Throwback Thursday'],
     ['TC-tal', 'characters per ciceo', {'swe': 'tecken per cicero'}],
     ['TCP/IP', 'Transmission control protocol/Internet protocol, Internet protocol suite', {'swe': 'överföringskontrollprotokoll/internetprotokollet, Internetprotokollsvit'}], # protocol suite
-    ['TCPA', 'Telephone consumer protection act', {'swe': 'Telephone consumer protection act'}], # law
-    ['TCPA', 'Trusted computing platform alliance; Telephone consumer protection act'], # metaentry
-    ['TCSEC', 'Trusted computer security evaluation criteria', {'swe': 'Trusted computer security evaluation criteria'}],
+    ['TCPA', 'Telephone consumer protection act'], # law
+    ['TCPA', 'Trusted computing platform alliance'], # alliance
+    ['TCSEC', 'Trusted computer security evaluation criteria'],
     ['TD&R', 'threat detection and response', {'swe': 'hotupptäckt och reaktion'}],
     ['TDV', 'Technical detection and warning system', {'swe': 'Tekniskt detekterings- och varningssystem'}],
-    ['TDV', 'Tribal digital village', {'swe': 'Tribal digital village'}],
-    ['TEK', 'Time equals knowledge', {'swe': 'Time equals knowledge'}], # search engine
-    ['TEMS, TEMS™ Suite', 'Test mobile systems', {'swe': 'TEMS™ Suite'}], # product
+    ['TDV', 'Tribal digital village'],
+    ['TEK', 'Time equals knowledge'], # search engine
+    ['TEMS, TEMS™ Suite', 'Test mobile systems'], # product
     ['TGS', 'ticket granting server', {'swe': 'biljettbeviljande server'}],
     ['TGT', 'ticket granting ticket, ticket to get tickets', {'swe': 'biljettbeviljande biljett'}],
-    ['TIFF', 'tag image file format', {'swe': 'TIFF'}], # format
+    ['TIFF', 'tag image file format'], # format
     ['TIME', 'telecom, it, media, entertainment', {'swe': 'telekom, it, media, underhållning'}],
     ['TIPS', 'Target instant payment settlement', {'swe': 'TARGET Omedelbar betalningsavveckling (TIPS)'}],
     ['TK', 'troll conspiracy (TC)', {'swe': 'trollkonspiration'}],
@@ -7187,13 +7185,13 @@ less_well_known_acronyms_list=[
     ['TMSI', 'temporary mobile subscriber identity', {'swe': 'tillfällig identitet för mobilabonnent'}],
     ['TON', 'Telegram open network', {'swe': 'Telegram öppet nätverk'}],
     ['TOTP', 'time-based one-time password', {'swe': 'tidsbaserat engångslösenord'}],
-    ['TPB, Pirate Bay', 'The Pirate Bay', {'swe': 'The Pirate Bay'}], # website
-    ['TPP', 'Trans-pacific partnership', {'swe': 'Trans-pacific partnership'}], # agreement
-    ['TRILL', 'Transparent interconnection of lots of links', {'swe': 'Transparent interconnection of lots of links (TRILL)'}],
+    ['TPB, Pirate Bay', 'The Pirate Bay'], # website
+    ['TPP', 'Trans-pacific partnership'], # agreement
+    ['TRILL', 'Transparent interconnection of lots of links'],
     ['TRX', 'transaction', {'swe': 'transaktion'}],
-    ['TSG', 'The SCO Group', {'swe': 'The SCO Group'}], # company
+    ['TSG', 'The SCO Group'], # company
     ['TTE', 'time-triggered ethernet', {'swe': 'tidsutlöst ethernet'}],
-    ['TTIP', 'Transatlantic trade and investment partnership', {'swe': 'Transatlantic trade and investment partnership'}], # agreement
+    ['TTIP', 'Transatlantic trade and investment partnership'], # agreement
     ['TTM', 'time-to-market', {'swe': 'marknadsledtid'}],
     ['TTTV', 'Taste the TV', {'swe': 'Smaka på TV:n'}], # prototype
     ['TVC', 'temps, vendors and contractors', {'swe': 'personal från bemanningsföretag, leverantörers anställda och entreprenörers anställda'}],
@@ -7201,17 +7199,17 @@ less_well_known_acronyms_list=[
     ['TXT', 'Intel trusted execution technology', {'swe': 'Intel betrodde exekveringsteknik'}], # product
     ['TaaS', 'testing-as-a-service', {'swe': 'testning som nättjänst'}],
     ['Tablet PC', 'Windows XP Tablet PC Edition', {'swe': 'Tablet PC'}],
-    ['Tandem', 'Tandem Computers Inc', {'swe': 'Tandem Computers Inc'}], # company
+    ['Tandem', 'Tandem Computers Inc'], # company
     ['Tango', 'Project Tango', {'swe': 'Projekt Tango'}],
-    ['Tencent', 'Tencent Holdings Limited', {'swe': 'Tencent Holdings Limited'}], # company
-    ['Tetra', 'Terrestrial trunk radio', {'swe': 'Tetra'}], # standard
-    ['Theora', 'Ogg Theora', {'swe': 'Ogg Theora'}],
-    ['Ti', 'tebi', {'swe': 'tebi'}],
-    ['Tilt brush', 'Google Tilt brush', {'swe': 'Google Tilt brush'}], # program
+    ['Tencent', 'Tencent Holdings Limited'], # company
+    ['Tetra', 'Terrestrial trunk radio'], # standard
+    ['Theora', 'Ogg Theora'],
+    ['Tilt brush', 'Google Tilt brush'], # program
     ['TjOA', 'service-oriented architecture (SOA)', {'swe': 'tjänsteorienterad arkitektur'}],
     ['Tor', 'The onion router', {'swe': 'Tor'}],
-    ['Tru64', 'Tru64 Unix', {'swe': 'Tru64 Unix'}], # OS
-    ['Turing', 'Turing, Alan; Turing Phone', {'swe': 'Turing, Alan; Turing Phone'}], # metaentry
+    ['Tru64', 'Tru64 Unix'], # OS
+    ['Turing', 'Turing, Alan'], # person
+    ['Turing', 'Turing Phone'],
     ['U2F', 'Universal 2nd factor', {'swe': 'Universal 2:a faktorn, Universal tvåfaktorsautentisering'}],
     ['UAC', 'user account control', {'swe': 'User account control (UAC)'}],
     ['UAF', 'Universal authentication framework', {'swe': 'Universal authentication framework (UAF)'}],
@@ -7221,21 +7219,23 @@ less_well_known_acronyms_list=[
     ['UBE', 'unsolicited bulk email', {'swe': 'obeställt massutskick av e‑post'}],
     ['UC&C', 'unified communication and collaboration', {'swe': 'integrerad kommunikation och samarbete'}],
     ['UCE', 'unsolicited commercial email', {'swe': 'obeställd e‑post med reklam'}],
-    ['UCITA', 'Uniform computer information transactions act', {'swe': 'Uniform computer information transactions act'}], # proposed law
+    ['UCITA', 'Uniform computer information transactions act'], # proposed law
     ['UCaaS', 'unified-communications-as-a-service', {'swe': 'integrerad kommunikation som tjänst'}],
-    ['UDDI', 'Universal description, discovery and integration', {'swe': 'UDDI'}],
-    ['UDI', 'Unified display interface', {'swe': 'UDI'}],
+    ['UDDI', 'Universal description, discovery and integration'],
+    ['UDI', 'Unified display interface'],
     ['UDID', 'unique device identifier', {'swe': 'unik enhetsidentifierare (UDID)'}],
     ['UDMA', 'ultra DMA, ultra direct memory access', {'swe': 'ultradirekt minnesåtkomst (UDMA)'}],
     ['UEBA', 'user and entity behavior analytics', {'swe': 'användar- och enhetsbeteendeanalys'}],
-    ['UFB', 'Ultra-fast broadband; Ultra fighting bros; ”unfuckingbelievable”', {'swe': 'Ultrasnabbt bredband; Ultra fighting bros; "ojävligt trovärdigt"'}], # metaentry
+    ['UFB', 'Ultra-fast broadband', {'swe': 'Ultrasnabbt bredband'}],
+    ['UFB', 'Ultra fighting bros'],
+    ['UFB', 'unfuckingbelievable', {'swe': 'ojävligt trovärdigt'}],
     ['UHD', 'Ultra high definition television, Super Hi-Vision', {'swe': 'UHD: Ultra HD; Ultra HD-TV'}],
-    ['UIDAI', 'Unique identification authority of India', {'swe': 'Unique identification authority of India'}], # organization
+    ['UIDAI', 'Unique identification authority of India'], # organization
     ['ULL', 'unbundled local loop', {'swe': 'öppet (avmonopoliserat) accessnät'}],
-    ['ULN', 'Unbreakable Linux Network', {'swe': 'Unbreakable Linux Network'}], # service
+    ['ULN', 'Unbreakable Linux Network'], # service
     ['UM', 'unified messaging', {'swe': 'integrerad kommunikation'}],
     ['UM', 'unified messaging', {'swe': 'samlingsinbox'}],
-    ['UMPC', 'Ultra mobile PC', {'swe': 'Ultra mobile PC'}],
+    ['UMPC', 'Ultra mobile PC'],
     ['UNII', 'unlicensed national information infrastructure', {'swe': 'olicensierad nationell informationsinfrastruktur'}],
     ['UP', 'Unified process', {'swe': 'unified process (UP); enhetlig process (UP)'}],
     ['UPI', 'Unified payments interface', {'swe': 'Unified betalningsgränssnitt'}],
@@ -7243,55 +7243,55 @@ less_well_known_acronyms_list=[
     ['UPU', 'universal power unit', {'swe': 'universal power unit (UPU)'}],
     ['URN', 'uniform resource name', {'swe': 'uniformt resursnamn'}],
     ['USB PD', 'USB power delivery', {'swe': 'USB power delivery (USB PD); USB-strömförsörjning'}], # standard
-    ['USB‑IF', 'USB Implementers forum', {'swe': 'USB Implementers forum'}], # trade organization
-    ['USN', 'UltraScience Net', {'swe': 'UltraScience Net'}],
+    ['USB‑IF', 'USB Implementers forum'], # trade organization
+    ['USN', 'UltraScience Net'],
     ['USP', 'unique selling point, unique selling proposition', {'swe': 'unik säljfördel'}],
     ['UT', 'Universal time', {'swe': 'universal tid (UT)'}],
-    ['UT1', 'UT1', {'swe': 'UT1'}],
+    ['UT1', 'UT1'],
     ['UTF', 'Unicode transformation format', {'swe': 'Unicode transformationsformat (UTF)'}],
     ['UTP', 'unshielded twisted pair', {'swe': 'oskärmad partvinnad [kabel]'}],
     ['UUID', 'Universal unique identifier', {'swe': 'UUID, universell unik identifierare (UUID)'}],
-    ['UWP', 'Universal Windows platform', {'swe': 'Universal Windows platform'}], # platform
-    ['Usenix', 'Usenix – the advanced computing systems association', {'swe': 'Usenix – the advanced computing systems association'}], # organization
-    ['V', 'signal; V for Vendetta', {'swe': 'semafor; V för Vendetta'}],
+    ['UWP', 'Universal Windows platform'], # platform
+    ['Usenix', 'Usenix – the advanced computing systems association'], # organization
+    ['V', 'signal', {'swe': 'semafor'}],
+    ['V', 'V for Vendetta', {'swe': 'V för Vendetta'}],
     ['V2L', 'vehicle-to-load', {'swe': 'V2L, fordon-till-last, ström från bilen'}],
     ['VAP', 'Very attacked people', {'swe': 'mycket attackerade personer'}],
-    ['VAP', 'very attacked people', {'swe': 'mycket attackerade personer'}],
     ['VAX', 'Virtual address extension', {'swe': 'virtuell adressutökning'}],
     ['VCR', 'video cassette recorder', {'swe': 'videokassettspelare'}],
     ['VDL', 'VHF Digital Link', {'swe': 'VHF digital länk'}],
     ['VDR', 'video disk recorder', {'swe': 'hårddiskinspelare'}],
-    ['VDSL', 'Very high bit-rate DSL', {'swe': 'VDSL'}],
-    ['VEP', 'Vulnerabilities equities process', {'swe': 'Vulnerabilities equities process (VEP)'}],
-    ['VESA', 'Video electronics standards association', {'swe': 'Video electronics standards association'}], # organization
+    ['VDSL', 'Very high bit-rate DSL'],
+    ['VEP', 'Vulnerabilities equities process'],
+    ['VESA', 'Video electronics standards association'], # organization
     ['VHE', 'Virtual home environment', {'swe': 'virtuell hemmiljö'}],
-    ['VHS', 'Video home system', {'swe': 'VHS'}],
-    ['VK', 'VKontakte', {'swe': 'VKontakte'}], # website
+    ['VHS', 'Video home system'],
+    ['VK', 'VKontakte'], # website
     ['VLOP', 'very large internet platform', {'swe': 'mycket stor internetplattform'}],
     ['VMA', 'Important message to the public', {'swe': 'Viktigt meddelande till allmänheten'}],
     ['VMJGDÅD', '“wait while I google it for you”', {'swe': '”vänta medan jag googlar det åt dig”'}],
     ['VOC', 'voice of the customer', {'swe': 'kundens röst'}],
     ['VOC', 'voice of the customer, voice of the consumer', {'swe': 'kundens röst, konsumentens röst'}],
-    ['VP9', 'VP9', {'swe': 'VP9'}], # software
     ['VPLS', 'virtual private LAN service', {'swe': 'virtuell privat lokalnätstjänst'}],
-    ['VPPA', 'Video privacy protection act', {'swe': 'Video privacy protection act'}], # law
+    ['VPPA', 'Video privacy protection act'], # law
     ['VPU', 'visual processing unit', {'swe': 'grafikprocessor'}],
     ['VRM', 'vendor relationship management', {'swe': 'leverantörshantering'}],
-    ['VRML', 'virtual reality modeling language, virtual reality markup language', {'swe': 'VRML (Virtual Reality Modeling Language), märkspråk för virtuell verklighet'}],
+    ['VRML', 'virtual reality modeling language'],
+    ['VRML', 'virtual reality markup language', {'swe': 'märkspråk för virtuell verklighet'}],
     ['VTL', 'virtual tape library', {'swe': 'virtuellt bandbibliotek'}],
     ['VUCA', 'volatility, uncertainty, complexity, ambiguity', {'swe': 'rörlighet, flyktighet; volatilitet: ovisshet, osäkerhet; komplicerade orsakssamband med inslag av okända faktorer; flertydighet'}],
-    ['Vega', 'Sinclair Spectrum Vega', {'swe': 'Sinclair Spectrum Vega'}], # product
+    ['Vega', 'Sinclair Spectrum Vega'], # product
     ['Verona', 'Microsofts Project Verona', {'swe': 'Microsofts projekt Verona'}],
-    ['ViNR', 'Video over New Radio', {'swe': 'Video över Ny radio'}],
-    ['Vista', 'Windows Vista', {'swe': 'Windows Vista'}], # OS
+    ['ViNR', 'Video over New Radio'],
+    ['Vista', 'Windows Vista'], # OS
     ['Vivalto', 'Vivalto', {'swe': 'Nyhetsbyrån Vivalto Information'}], # company
     ['VoNR', 'Voice over New Radio', {'swe': 'röstsamtal med 5g-teknik'}],
     ['VoW', 'voice over wireless', {'swe': 'telefoni över trådlösa nätverk'}],
     ['Volterra', 'Project Volterra', {'swe': 'Projekt Volterra'}],
-    ['W3C', 'World wide web consortium', {'swe': 'World wide web consortium'}], # organization
+    ['W3C', 'World wide web consortium'], # organization
     ['WAF', 'wife acceptance factor', {'swe': 'acceptansfaktor bland kvinnor; kvinnlig acceptans; faktor för kvinnlig acceptans; acceptansfaktor'}],
     ['WASP', 'white Anglo-Saxon protestant', {'swe': 'vit anglosaxisk protestant'}],
-    ['WBA', 'Wireless broadband alliance', {'swe': 'Wireless broadband alliance'}], # trade organization
+    ['WBA', 'Wireless broadband alliance'], # trade organization
     ['WCDMA, W-CDMA', 'wideband CDMA', {'swe': 'WCDMA, wideband CDMA'}],
     ['WCIT', 'World conference on international telecommunications', {'swe': 'Världskonferens om internationell telekommunikation'}], # event
     ['WCM', 'web content management', {'swe': 'hantering av webbinnehåll'}],
@@ -7308,68 +7308,68 @@ less_well_known_acronyms_list=[
     ['WISPr', 'Wireless internet service provider roaming', {'swe': 'WISPr'}],
     ['WITCH', 'Wolverhampton instrument for teaching computation from Harwell', {'swe': 'Harwell Dekatron'}], # computer
     ['WIZ', 'wireless internet zone', {'swe': 'trådlös internetzon; Wifi-zon'}],
-    ['WLIF, WLI Forum', 'Wireless LAN interoperability forum', {'swe': 'Wireless LAN interoperability forum'}], # organization
-    ['WMA', 'Windows media audio codecs', {'swe': 'WMA (Windows Media Audio-codecs)'}], # file format
+    ['WLIF, WLI Forum', 'Wireless LAN interoperability forum'], # organization
+    ['WMA', 'Windows media audio codecs'], # file format
     ['WMC', 'Wireless Magnetic Communication', {'swe': 'WMC (trådlös magnetisk kommunikation)'}],
-    ['WMI', 'Windows management instrumentation', {'swe': 'Windows management instrumentation'}],
-    ['WOFF', 'Web open font format', {'swe': 'Web open font format (WOFF)'}],
+    ['WMI', 'Windows management instrumentation'],
+    ['WOFF', 'Web open font format'],
     ['WORM', 'write once, read many times', {'swe': 'skriv en gång, läs många gånger'}],
     ['WORN', 'write once, read never', {'swe': 'skriv en gång, läs aldrig'}],
     ['WORO', 'write once, read occasionally', {'swe': 'skriv en gång, läs ibland'}],
     ['WOT', 'Web of trust', {'swe': 'WOT'}], # tool
     ['WP29', 'Article 29 data protection working party', {'swe': 'Artikel 29-gruppen'}],
-    ['WPC', 'Wireless power consortium', {'swe': 'Wireless power consortium'}], # industry consortium
+    ['WPC', 'Wireless power consortium'], # industry consortium
     ['WPS', 'Wi-fi positioning system', {'swe': 'WPS; Wi-fi positioneringssystem; positioneringssystem via wi-fi'}],
     ['WRAN', 'wireless regional area network', {'swe': 'WPS; Wi-fi positioneringssystem; positioneringssystem via wi-fi'}],
     ['WS-BPEL', 'web services business process execution language', {'swe': 'BPEL (Business Process Execution Language)'}],
     ['WS-I', 'Web services interoperability organization', {'swe': 'Interoperabilitetsorganisation för webbtjänster'}],
     ['WSDL', 'Web services descriptive language', {'swe': 'Beskrivande språk för webbtjänster'}],
-    ['WSRI', 'Web science research institute', {'swe': 'Web science research institute'}],
+    ['WSRI', 'Web science research institute'],
     ['WTLS', 'wireless transport layer security', {'swe': 'säkerhet för trådlöst transportlager'}],
-    ['WWDC', 'Worldwide developers conference', {'swe': 'Worldwide developers conference'}], # event
-    ['WWF', 'Windows Workflow Foundation', {'swe': 'Windows Workflow Foundation'}],
+    ['WWDC', 'Worldwide developers conference'], # event
+    ['WWF', 'Windows Workflow Foundation'],
     ['WWTW, T‑Web', 'World Wide Telecom Web', {'swe': 'Spoken web, World Wide Telecom Web (WWTW), T‑Web'}],
     ['WYGIWYS', 'what you get is what you see', {'swe': '"vad du får är vad du ser", resultatorienterat användargränssnitt'}],
-    ['WaSP', 'Web standards project', {'swe': 'Web standards project'}], # group
-    ['Watch', 'Facebook Watch; Apple Watch', {'swe': 'Facebook Watch; Apple Watch'}], # product
-    ['Wave', 'Apache Wave', {'swe': 'Apache Wave'}], # social network
-    ['WebDAV', 'Web-based distribution authoring and versioning', {'swe': 'WebDAV'}],
-    ['WebGL', 'Web graphics library', {'swe': 'WebGL'}],
+    ['WaSP', 'Web standards project'], # group
+    ['Watch', 'Facebook Watch; Apple Watch'], # product
+    ['Wave', 'Apache Wave'], # social network
+    ['WebDAV', 'Web-based distribution authoring and versioning'],
+    ['WebGL', 'Web graphics library'],
     ['Well', 'The Well, Whole earth ’lectronic link', {'swe': 'The Well'}], # forum
     ['Weltimmo', 'The Weltimmo case', {'swe': 'Weltimmo‑målet'}],
-    ['WiBro', 'Wireless Broadband', {'swe': 'WiBro'}],
-    ['WiDi', 'wireless display', {'swe': 'WiDi'}],
-    ['Wikimedia', 'Wikimedia Foundation', {'swe': 'Wikimedia Foundation'}], # foundation
-    ['WinFS', '”Windows Future Storage”', {'swe': 'WinFS'}],
-    ['WinRT', 'Windows Runtime', {'swe': 'Windows Runtime'}], # OS
+    ['WiBro', 'Wireless Broadband'],
+    ['WiDi', 'wireless display'],
+    ['Wikimedia', 'Wikimedia Foundation'], # foundation
+    ['WinFS', '”Windows Future Storage”'],
+    ['WinRT', 'Windows Runtime'], # OS
     ['Wine', '”Wine is not an emulator”', {'swe': 'Wine'}], # project
-    ['Wire', 'The Wire', {'swe': 'The Wire'}],
+    ['Wire', 'The Wire'],
     ['WoT', 'Web of trust', {'swe': 'tillitsringen'}],
     ['WoV', 'window of vulnerability', {'swe': 'sårbarhetsfönster'}],
-    ['WoW', 'World of warcraft', {'swe': 'World of warcraft'}], # game
-    ['WoW', 'World of warcraft', {'swe': 'World of warcraft'}], # game
-    ['Women of vision awards', 'Anita Borg Institute Women of vision awards', {'swe': 'Anita Borg-institutet Women of vision awards'}], # prize
-    ['Word', 'Microsoft Word', {'swe': 'Microsoft Word'}], # program
-    ['Workmail', 'Amazon Workmail', {'swe': 'Amazon Workmail'}],
-    ['World Wire', 'IBM Blockchain World Wire', {'swe': 'IBM Blockchain World Wire'}],
-    ['X', 'Unix; experience; X'], # metaentry
-    ['X/Open', 'X/Open Company Ltd', {'swe': 'X/Open'}], # organization
-    ['XAMPP', 'Cross-platform (=X), Apache, MySQL as well as PHP and Perl', {'swe': 'Cross-platform (=X), Apache, MySQL samt PHP och Perl'}],
-    ['XBT', 'bitcoin', {'swe': 'bitcoin'}],
+    ['WoW', 'World of warcraft'], # game
+    ['Women of vision awards', 'Anita Borg Institute Women of vision awards'], # prize
+    ['Word', 'Microsoft Word'], # program
+    ['Workmail', 'Amazon Workmail'],
+    ['World Wire', 'IBM Blockchain World Wire'],
+    ['X', 'Unix'],
+    ['X', 'experience'],
+    ['X/Open', 'X/Open Company Ltd'], # organization
+    ['XAMPP', 'Cross-platform (=X), Apache, MySQL as well as PHP and Perl'],
+    ['XBT', 'bitcoin'],
     ['XDR', 'X detection and response', {'swe': 'XDR, utökad detektering och respons'}],
     ['XDR', 'external data representation standard', {'swe': 'standard för extern datarepresentation'}],
-    ['XDSL', 'X-digital subscriber line', {'swe': 'XDSL'}],
+    ['XDSL', 'X-digital subscriber line'],
     ['XHTML', 'eXtensible HTML', {'swe': 'Utökningsbar HTML'}],
     ['XLL', 'eXtensible linking language', {'swe': 'eXtensible länkspråk'}],
-    ['XLink', 'XML linking language', {'swe': 'XLink'}],
+    ['XLink', 'XML linking language'],
     ['XOML', 'eXtensive object markup language', {'swe': 'Omfattande objektmarkeringsspråk'}],
     ['XPRL', 'eXtensible public relations language', {'swe': 'Utökbart PR-språk'}],
-    ['XPointer', 'XML pointer language', {'swe': 'XPointer'}],
+    ['XPointer', 'XML pointer language'],
     ['XRI', 'extensible resource identifier', {'swe': 'utökningsbar resursidentifierare'}],
-    ['XT', 'eXtended Technology', {'swe': 'eXtended Technology'}],
+    ['XT', 'eXtended Technology'],
     ['XUL', 'XML user interface language', {'swe': 'XML användargränssnittsspråk'}],
     ['XaaS', 'everything-as-a-service; anything-as-a-service', {'swe': 'allt-som-en-tjänst; vad som helst-som-en-tjänst'}],
-    ['Xerox PARC', 'Xerox Palo Alto Research center', {'swe': 'Xerox Palo Alto Research center'}], # place
+    ['Xerox PARC', 'Xerox Palo Alto Research center'], # place
     ['Y', 'yes, Y/N; why?; year; yellow', {'swe': 'ja, J/N; varför?; år; gul'}], # metaentry
     ['Y2K', 'year 2000', {'swe': 'år 2000'}],
     ['Y2K2X', '2020-problem', {'swe': '2020‑problemet'}],
@@ -7380,7 +7380,8 @@ less_well_known_acronyms_list=[
     ['YPbPr', 'Y=luminance, Pb=chrominance, Pr=chrominance for red minus luminance'],
     ['YTMND', '”You’re the man now, dog”', {'swe': '"Du är mannen nu, hund"'}], # website
     ['Yolo', 'You only look once', {'swe': 'Du tittar bara en gång'}],
-    ['Z', 'IBM Z; generation Z', {'swe': 'IBM Z; generation Z'}], # metaentry
+    ['Z', 'IBM Z'],
+    ['Z', 'generation Z'],
     ['ZBR', 'zero-bug release', {'swe': 'zero-bug release; nollfelversion'}],
     ['ZENworks', 'ZENworks endpoint security management', {'swe': 'ZENworks slutpunktssäkerhetshantering'}],
     ['ZENworks, Novell ZENworks', 'ZENworks endpoint security management'], # program suite
@@ -7390,8 +7391,8 @@ less_well_known_acronyms_list=[
     ['ZMH', 'zone mail hour', {'swe': 'zone mail hour (ZMH); Fidonet-zonposttimme'}],
     ['ZRTP', "Zimmermann's  real‑time protocol", {'swe': 'Zimmermanns realtidsprotokoll'}], # protocol
     ['ZTNA', 'zero trust network access', {'swe': 'nolltillit i nätverk'}],
-    ['ZX Spectrum', 'Sinclair ZX Spectrum', {'swe': 'Sinclair ZX Spectrum'}], # product
-    ['ZX80', 'Sinclair ZX80', {'swe': 'Sinclair ZX80'}], # product
+    ['ZX Spectrum', 'Sinclair ZX Spectrum'], # product
+    ['ZX80', 'Sinclair ZX80'], # product
     ['\\', 'backslash', {'swe': 'bakstreck'}],
     ['anime', 'animation', {'swe': 'animering'}],
     ['animoji', 'animated emoji', {'swe': 'animoji'}],
@@ -7404,7 +7405,7 @@ less_well_known_acronyms_list=[
     ['borg', 'cyborg', {'swe': 'cyborg'}],
     ['bwtdim', '”begin with the decision in mind”', {'swe': '"börja med beslutet i åtanke" (BMBIA)'}],
     ['bwthdik', '”but what the heck do I know?”', {'swe': '"bwthdik" (men vad vet jag?):'}],
-    ['cURL', 'curl', {'swe': 'curl'}],
+    ['cURL', 'curl'],
     ['ccompliance', 'corporate compliance, C compliant', {'swe': 'regelefterlevnad; efterlevnad; företagsefterlevnad'}],
     ['cg-idol', 'computer generated idol', {'swe': 'datoranimerad människofigur; datorgenererad idol'}],
     ['char', 'character', {'swe': 'tecken'}], # data type
@@ -7427,10 +7428,10 @@ less_well_known_acronyms_list=[
     ['dvorak', 'Dvorak simplified keyboard', {'swe': 'Dvorak‑tangentbordet'}],
     ['flarf', 'flarf poetry', {'swe': 'flarfpoesi'}],
     ['flog', 'fake blog, food blog', {'swe': 'fejkblogg, blogg om mat'}],
-    ['foo', 'foobar', {'swe': 'foobar'}],
+    ['foo', 'foobar'],
     ['gaymer', 'gay + gamer', {'swe': 'gaymer'}],
     ['gotcha', '”got you!”', {'swe': 'där fick jag dig!”'}],
-    ['h2g2', 'Hitchhiker’s guide to the galaxy', {'swe': 'Hitchhiker’s guide to the galaxy'}], # website
+    ['h2g2', 'Hitchhiker’s guide to the galaxy'], # website
     ['hdkmb', 'How stupid can you get?', {'swe': 'hur dum kan man bli?'}],
     ['ic', 'in character', {'swe': 'i rollen'}],
     ['img', 'image;', {'swe': '.img – filnamnsändelse för diskavbilder; i HTML: kod för bild'}],
@@ -7444,10 +7445,10 @@ less_well_known_acronyms_list=[
     ['länk', 'hyperlink', {'swe': 'hyperlänk'}],
     ['magnitude', 'order of magnitude', {'swe': 'storleksordning'}],
     ['mojo', 'mobile + journalism', {'swe': 'mojo'}],
-    ['mov', '.mov', {'swe': '.mov'}],
+    ['mov', '.mov'],
     ['name', '.name', {'swe': '.name (toppdomän)'}],
     ['ngTLD, bara nTLD', 'new generic top-level domain, dot brand', {'swe': 'privat toppdomän'}],
-    ['ngmn.org', 'Next generation mobile networks alliance', {'swe': 'Next generation mobile networks alliance'}], # trade organization
+    ['ngmn.org', 'Next generation mobile networks alliance'], # trade organization
     ['nihilartikel, nemoartikel', 'fictitious entries, mountweazels', {'swe': 'spökord'}], # fictitious entries, mountweazels
     ['ninja', 'no income, no job or assets', {'swe': 'ingen inkomst, inget jobb eller tillgångar'}],
     ['oki', '"okay!"', {'swe': '”okej!”'}],
@@ -7491,10 +7492,10 @@ less_well_known_acronyms_list=[
     ['temp', 'temporary', {'swe': 'temporär'}],
     ['tempfil', 'temporary file', {'swe': 'temporär fil'}],
     ['terbo', 'third version', {'swe': 'tredje versionen'}],
-    ['three finger salute', 'ctrl-alt-delete, cmd‑alt‑esc', {'swe': 'ctrl-alt-delete, cmd‑alt‑esc'}],
+    ['three finger salute', 'ctrl-alt-delete, cmd‑alt‑esc'],
     ['thumbnail', 'thumbnail image', {'swe': 'tumnagel, minibild, indexbild'}],
     ['tinterweb', 'the interweb', {'swe': 'Webb-internet, ett ironiskt uttryck som visar på missförståndet att internet och webben är samma sak,'}],
-    ['tracert', 'traceroute, TraceRoute', {'swe': 'traceroute, TraceRoute'}], # program
+    ['tracert', 'traceroute, TraceRoute'], # program
     ['traveling salesman', 'traveling salesman problem', {'swe': 'handelsresandeproblemet'}],
     ['trog mode', 'troglodyte mode', {'swe': 'grottläge, grottmänniskoläge'}],
     ['tty', 'teletypewriter', {'swe': 'teletypeskrivare; teletype; teleprinter; terminal'}],
@@ -7505,7 +7506,7 @@ less_well_known_acronyms_list=[
     ['uCPE', 'universal customer premises equipment', {'swe': 'Universal customer premises equipment (uCPE)'}],
     ['ubik', 'ubiquitous', {'swe': 'ubikvitär'}],
     ['usie', 'us+selfie', {'swe': 'usie'}],
-    ['v6ops', 'IPv6 Operations', {'swe': 'IPv6 Operations'}], # IETF working group
+    ['v6ops', 'IPv6 Operations'], # IETF working group
     ['vCPE', 'virtual customer premises equipment', {'swe': 'virtuell kundutrustning, virtuell slutanvändarutrustning'}],
     ['vCPU', 'virtual central processing unit', {'swe': 'virtuell CPU'}],
     ['vactor', 'virtual actor, synthespian', {'swe': 'virtuell skådespelare, datorskapad skådespelare'}],
@@ -7519,7 +7520,7 @@ less_well_known_acronyms_list=[
     ['vortal', 'voice portal; vertical portal', {'swe': 'röstportal; vertikal portal, specialiserad portal, ämnesportal'}],
     ['wbmp', 'wireless bitmap image', {'swe': 'WBMP; trådlös bitmappsbild'}], # file format
     ['wi-fi', 'wireless fidelity', {'swe': 'wi-fi'}],
-    ['win', 'Windows', {'swe': 'Windows'}],
+    ['win', 'Windows'],
     ['wiz', 'wizard; wireless internet zone', {'swe': 'mästare, virtuos; trådlös internetzon; Wifi-zon'}],
     ['www', 'dubdubdub, triple‑dub', {'swe': 'www'}],
     ['wysiwyg', 'what you see is what you get', {'swe': '"vad du ser är vad du får"'}],
@@ -7533,4 +7534,4 @@ less_well_known_acronyms_list=[
     ['—', 'em dash', {'swe': 'långt tankstreck'}],
     ['∞chan', '”infinitechan”'],
 
-    ]
+]
