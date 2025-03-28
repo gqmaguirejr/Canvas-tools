@@ -62521,7 +62521,7 @@ company_and_product_names=[
     'HOL4', # theorem prover - diva2:1265405
     'HOMER Energy',
     'HORNET', # anonymity service - diva2:1250173
-    'HP-UX',
+    'HP-UX', # OS
     'HP300', #  Climeon’s heat power system called HP300 - diva2:1844580
     'HPGP', # used but not defined in diva2:470421
     'HPL420B2', # ABB's HPL420B2 breaker - diva2:784856
@@ -70710,7 +70710,7 @@ company_and_product_names=[
     'America Online',
     'Amiga',
     'Anoto',
-    'Aol.',
+    'Aol',
     'Apple',
     'Arm',
     'Ascential',
@@ -71614,7 +71614,296 @@ company_and_product_names=[
     'cURL',
     'Google Doodles',
     'Digital Research DOS',
+    # OS
+    'AIX',
+    'Firefox OS',
+    'Garnet OS',
+    '*buntu',
+    'ABC OS based on Dnix',
+    'AlmaLinux',
+    'Android Pie',
+    'Anna',
+    'Anonym OS',
+    'Anonymous-OS',
+    'Arch Linux',
+    'Ark',
+    'Artful Aardvark',
+    'Asahi Linux',
+    'Asianux',
+    'Astra Linux',
+    'Bada',
+    'BeOS',
+    'Belle',
+    'Berkeley Unix',
+    'Bionic Beaver',
+    'Blackberry Tablet OS',
+    'Bottlerocket',
+    'Brillo',
+    'Byzantium',
+    'CBL-Mariner',
+    'Catalina',
+    'Cheetah',
+    'China operating system',
+    'Chrome OS Flex',
+    'Chrome OS',
+    'Chromium OS',
+    'Cisco IOS',
+    'Clear Linux',
+    'CloudLinux',
+    'CloudReady',
+    'ColorOS',
+    'Control program/microcomputers',
+    'Copland',
+    'Copper',
+    'Copperhead',
+    'CoreOS',
+    'Corel Linux',
+    'Cosmic Cuttlefish',
+    'CrunchBang',
+    'Crux',
+    'CRUX',
+    'Cupcake',
+    'CyanogenMod',
+    'Damn Small Linux',
+    'Dapper Drake',
+    'Darwin',
+    'Devuan',
+    'Digital Unix',
+    'Disco Dingo',
+    'Donut',
+    'DuerOS',
+    'Eclair',
+    'Edgy Eft',
+    'Edubuntu',
+    'El Capitan',
+    'Eoan Ermine',
+    'Epoc',
+    'Feisty Fawn',
+    'Focal Fossa',
+    'FortiOS',
+    'FreeBSD',
+    'Freespire',
+    'Froyo',
+    'Frugalware',
+    'Fuchsia',
+    'Gentoo',
+    'Gingerbread',
+    'Gobuntu',
+    'Goobuntu',
+    'GovtOS',
+    'Granite OS',
+    'GrapheneOS',
+    'Groovy Gorilla',
+    'Gutsy Gibbon',
+    'Hardy Heron',
+    'Harmony',
+    'High Sierra',
+    'Hirsute Hippo',
+    'Hoary Hedgehog',
+    'Honeycomb',
+    'Hongmeng',
+    'IBM i',
+    'Ice cream sandwich',
+    'Impish Indri',
+    'Inferno',
+    'Intrepid Ibex',
+    'Irix',
+    'Jaguar',
+    'Jammy Jellyfish',
+    'Jaunty Jackalope',
+    'Jelly Bean',
+    'Just enough operating system',
+    'Kali Linux',
+    'Karmic Koala',
+    'Key lime pie',
+    'Kinetic Kudu',
+    'KitKat',
+    'Kubuntu',
+    'Lindows',
+    'Linspire',
+    'Lineage OS',
+    'Linux Mint',
+    'Lion',
+    'Lollipop',
+    'Longhorn',
+    'Lucid Lynx',
+    'Lunar Lobster',
+    'Mac OS Classic',
+    'Mac OS X',
+    'Mac OS',
+    'Mageia',
+    'Magic Cap',
+    'Mariner',
+    'Marshmallow',
+    'Maverick Meerkat',
+    'Mavericks',
+    'Mbed OS ',
+    'Meego',
+    'Mepis',
+    'Mer',
+    'Microsoft disk operating system',
+    'Midori',
+    'Minix',
+    'Moblin',
+    'Mojave',
+    'Monarch',
+    'Mountain Lion',
+    'Multics',
+    'NeoKylin',
+    'Neutrino',
+    'NextStep',
+    'NodeOS',
+    'Nougat',
+    'Nova Baire',
+    'Nova',
+    'Novell DOS',
+    'Nutty Narwhal',
+    'OS X',
+    'OS/390',
+    'OS/400',
+    'Omega',
+    'OmniROM',
+    'Oneiric Ozelot',
+    'Open SUSE',
+    'Open WebOS',
+    'OpenBSD',
+    'OpenBeOS',
+    'OpenIndiana',
+    'OpenStep',
+    'OpenVMS',
+    'OpenWrt',
+    'Oreo',
+    'Origami',
+    'OxygenOS',
+    'PC-DOS',
+    'PCLinuxOS',
+    'Palm OS',
+    'Panther',
+    'PenPoint',
+    'Peppermint',
+    'Phantom OS',
+    'Pidora',
+    'Pink',
+    'Plan 9',
+    'Precise Pangolin',
+    'PrivatOS',
+    'Puma',
+    'Puppy Linux',
+    'PureOS',
+    'QNX',
+    'Quantal Quetzal',
+    'Qubes OS',
+    'Quick and dirty operating system',
+    'RISC OS',
+    'Raring Ringtail',
+    'Raspbian',
+    'ReactOS',
+    'Red Hat Enterprise Linux',
+    'Red Star OS',
+    'Remix OS',
+    'Replicant',
+    'Sailfish OS',
+    'Satya',
+    'Saucy Salamander',
+    'Silent OS',
+    'Singularity',
+    'Slackware',
+    'Snow Leopard',
+    'Steam OS',
+    'Sulphur',
+    'SunOS',
+    'Syrah',
+    'Tails',
+    'Threshold',
+    'Trisquel',
+    'Tron',
+    'Tru64 Unix',
+    'Trusty Tahr',
+    'Ubuntu Edge',
+    'Ubuntu JeOS',
+    'Ubuntu Phone OS',
+    'Ubuntu for Android',
+    'Ubuntu on tablets',
+    'Ultrix',
+    'Unbreakable Linux',
+    'UnitedLinux',
+    'Unix System V',
+    'UnixWare',
+    'Utopic Unicorn',
+    'Ventura',
+    'Virtual memory system',
+    'Vivid Vervet',
+    'Warp',
+    'Warty Warthog',
+    'WearOS',
+    'Wheezy',
+    'Whistler',
+    'Wily Werewolf',
+    'Wind River Linux',
+    'Windows 10 IoT',
+    'Windows 10 Mobile',
+    'Windows 10 S',
+    'Windows 10',
+    'Windows 11',
+    'Windows 2000',
+    'Windows 7',
+    'Windows 8.1',
+    'Windows 9',
+    'Windows 95',
+    'Windows 98',
+    'Windows Blue',
+    'Windows CE',
+    'Windows Cloud',
+    'Windows Embedded',
+    'Windows ME',
+    'Windows Mobile',
+    'Windows NT',
+    'Windows Phone',
+    'Windows RT',
+    'Windows Runtime',
+    'Windows Server',
+    'Windows Vista',
+    'Windows XP Tablet PC Edition',
+    'Windows XP',
+    'XNU',
+    'Xenial Xerus',
+    'Xenix',
+    'Xubuntu',
+    'Yakketi Yak',
+    'Yggdrasil ',
+    'Yosemite',
+    'Yukon',
+    'Zesty Zapus',
+    'Zircon',
+    'elementary OS',
+    'gLinux',
+    'gNewSense',
+    'gOS',
+    'i5/OS',
+    'iPadOS',
+    'nix',
+    'vw.os',
+    'watchOS',
+    'webOS',
+    'xrOS',
+    'z/OS',
+    'Ångström Distribution',
+    'μClinux',
+    'uClinux',
+    '’nix',
 
+
+    # misc
+    'CD+R',
+    'CD+RW',
+    'CD-R',
+    'CD-ROM',
+    'CD-RW',
+
+    'BT Group', # company
+    'DRM+',
+    'IDI',  # company
+    'Joomla', # program
 ]
 
 
@@ -71881,6 +72170,7 @@ common_programming_languages=[ # libraries and functions
     'Erlang',
     'Erlang/OTP',
     'F#', # diva2:654472
+    'F sharp',
     'FORTRAN', # diva2:930831
     'Falcor',
     'Fortran',
@@ -78647,6 +78937,7 @@ common_units={
     'C/min': {'B2': 'Unit'}, #  Coulombs per minute
     'CO2-eq./km': {'B2': 'Unit Phrase'},  # CO2 equivalent per kilometer - Unit of emission intensity
     'Exabits/s': {'B2': 'Unit'},  # Exabits per second - data transfer rate
+    'GiB': {'B1': 'Unit'}, # gibibyte 2^30 or 1,073,741,824 bytes
     'GB': {'A2': 'Unit'}, #  Gigabyte
     'GF/J': {'B2': 'Unit'},  #  Gigaflop/Joule - diva2:837145 - corrected based on context
     'GF/s': {'B2': 'Unit'},  #  Gigaflop/second - diva2:837145 - corrected based on context
@@ -78655,6 +78946,7 @@ common_units={
     'GHz': {'A2': 'Unit', 'B2': 'Unit'}, # Gigahertz
     'GW': {'B2': 'Unit'},  # Gigawatt
     'GWh': {'B2': 'Unit'},  # Gigawatt-hour - Unit of energy
+    'Gbit': {'A1': 'Unit'}, # gigabit
     'Gb/s': {'B2': 'Unit'},  # Gigabits per second - alternative to Gigabits/s
     'Gbit/s': {'B2': 'Unit'},  # Same as Gb/s
     'Gbit/sec': {'B2': 'Unit'},  # Same as Gb/s - less common
@@ -78671,6 +78963,9 @@ common_units={
     'Hz/cm': {'B2': 'Unit'}, # Hertz per centimeter
     'Joule': {'B1': 'Unit'},  # Unit of energy
     'Joule/bit': {'B2': 'Unit'},  # Unit of energy per bit
+    'kB': {'A1': 'Unit'}, # kilobyte
+    'kHz': {'A1': 'Unit'}, # kilohertz
+    'kbit': {'A1': 'Unit'}, # kilobit
     'KIB/s': {'B2': 'Unit'},  # Kibibit per second - data transfer rate see diva2:668342
     'KiloWatts': {'B1': 'Unit'},  # Kilowatt - Unit of power
     'Kpps': {'B2': 'Unit'},  #  Kilopackets per second - Technical term, likely B2 or higher
@@ -78686,6 +78981,7 @@ common_units={
     'MWh/year': {'B2': 'Unit'},  # Megawatt-hours per year - Energy consumption rate - likely B2 for power engineering terms
     'MWh': {'B2': 'Unit'},  # Megawatt-hours
     'Mb': {'B1': 'Unit'},  # Megabit - Unit of data storage
+    'Mbit': {'B1': 'Unit'},  # Megabit
     'Mbit/s': {'B2': 'Unit'},  # Megabit per second - data transfer rate
     'Mbits/s': {'B2': 'Unit'},  # Same as Mbit/s
     'Mbits/sec': {'B2': 'Unit'},  # Same as Mbit/s - less common
@@ -78698,6 +78994,8 @@ common_units={
     'PB': {'A2': 'Unit'},  # Pentabyte - Unit of data storage . assumed A2 for basic understanding
     'Pbit/s': {'C2': 'Unit'},
     'Pbits/s': {'B1': 'Noun Phrase'},
+    'QB': {'A2': 'Unit'}, # quettabyte
+    'RB': {'A2': 'Unit'}, # ronnabyte
     'S.cm-1': {'B2': 'Unit'},  # Siemens per centimeter - Unit of conductivity
     'SEK/kWh': {'B2': 'Unit'},  # Swedish Krona per kilowatt-hour - Unit of energy cost - likely B2 for specific economic contexts
     'SEK/participant': {'B2': 'Unit'},  # Swedish Krona per participant - Unit of cost per person - likely B2 for specific economic contexts
@@ -78712,6 +79010,7 @@ common_units={
     'Tbyte/s': {'B2': 'Unit'},  # Terabyte per second - data transfer rate
     'TeraWatthours': {'B2': 'Unit'},  # Unit of energy
     'Terawatt-hours': {'B2': 'Unit'},  # Alternative form of Terawatthours
+    'ZB': {'A2': 'Unit'},# zettabyte
     'amp': {'A2': 'Unit (informal)'},  # Informal term for ampere
     'ampere': {'B1': 'Unit'},  # Formal Unit of electric current
     'Ångström': {'B2': 'Noun'},  # While specialized, relatively well-known in scientific contexts. Note that when used as a unit and not a name it should be not be capitalizaed
@@ -78776,6 +79075,7 @@ common_units={
     'hectares': {'A2': 'Unit'},
     'hertz': {'B2': 'Noun'},  # Widely known as a unit of frequency.
     'hrs': {'A1': 'Unit'},
+    'Hz': {'A2': 'Unit'},
     'kA': {'B1': 'Unit'},  # Common Unit in electrical engineering
     'kB': {'B2': 'Unit'},  # Likely refers to kilobytes, technical context - higher level
     'kBar': {'B2': 'Unit'},  # Less common Unit, pressure measurement - higher level
@@ -79099,4 +79399,31 @@ amino_acids={
     'Tryptophan':    {'a': 'Trp', 's':  'W'},
     'Tyrosine':      {'a': 'Tyr', 's':  'Y'},
     'Valine':        {'a': 'Val', 's':  'V'},
+}
+
+binary_prefixes={
+    'Ki': 'kibi', # 2^10
+    'Mi': 'mebi', # 2^20
+    'Gi': 'gibi', # 2^30
+    'Ti': 'tebi', # 2^40
+    'Pi': 'pebi', # 2^50
+    'Ei': 'exbi', # 2^60
+    'Zi': 'zebi', # 2^70
+    'Yi': 'yobi', # 2^80
+    'Ri': 'robi', # 2^90
+    'Qi': 'quebi', # 2^100
+}
+
+decimal_prefixes={
+    'K': 'kilo', # 10^3
+    'M': 'mega', # 10^6
+    'G': 'giga', # 10^9
+    'T': 'tera', # 10^12
+    'P': 'peta', # 10^15
+    'E': 'exa',  # 10^18
+    'Z': 'zetta',  # 10^21
+    'Y': 'yotta',  # 10^24
+    'R': 'ronna',  # 10^27
+    'Q': 'quetta',  # 10^30
+    
 }
