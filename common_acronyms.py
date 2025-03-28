@@ -5390,10 +5390,13 @@ well_known_acronyms_list=[
     ['RÖS', 'Röjande signaler', {'s': ['diva2:1644414']}],
     ['RÖS', 'Tempest', {'swe': 'röjande av strålning'}],
     ['S-BERT', 'Sentence-BERT', {'s': ['diva2:1708540']}],
+    ['S-DMB', 'Satellit-Digital Multimedia Broadcasting', {'swe': 'satellit-DMB'}],
     ['S-HCI', 'Sustainable HCI', {'s': ['diva2:1783640']}],
     ['S-MAUVE', 'Sequence MAUVE', {'s': ['diva2:1705987']}],
     ['S-TDMA', 'Spatial reuse-Time Division Multiple Access', {'s': ['diva2:582531']}],
     ['S.W.O.T', 'strengths, weaknesses, opportunities and threats', {'s': ['diva2:871952'], 'n': 'S.W.O.T.'}],
+    ['S/MIME', 'Secure/Multipurpose Internet Mail Extensions'], # standard
+    ['S/PDIF', 'Sony/Philips digital interface', {'swe': 'Sony/Philips digitalgränssnitt'}], # standard
     ['S11', 'S<sub>11</sub>-parameter', {'s': ['diva2:1635013'], 'n': 'used but not defined - s the voltage reflection coefficient'}],
     ['S2P', 'serial to parallel', {'s': ['diva2:693424']}],
     ['S3D', 'Stereoskopisk 3D', {'s': ['diva2:824967']}],
@@ -5407,15 +5410,23 @@ well_known_acronyms_list=[
     ['SAC', 'Soft Actor Critic', {'s': ['diva2:1704894']}],
     ['SACEM', 'Société des Auteurs, Compositeurs et Éditeurs de Musique', {'s': ['diva2:1304951'], 'n': 'French association'}],
     ['SADA', 'Asperger syndrome, dyslexia or autism', {'s': ['diva2:872131']}],
+    ['SAE', 'System architecture evolution', {'swe': 'systemarkitekturevolution'}],
     ['SAF', 'submerged-arc furnace', {'s': ['diva2:1039097']}],
     ['SAFF', 'Sensed Amplifier Flip Flop', {'s': ['diva2:508449']}],
     ['SAFeBAA', 'Scaled Agile Framework Business Agility Assessment', {'s': ['diva2:1613209']}],
     ['SAFeMM', 'Scaled Agile Framework Maturity Model',  {'s': ['diva2:1613209']}],
+    ['SAFOS', 'Collaboration platform for the public sector', {'swe': 'Samarbetsplattform för offentlig sektor'}],
     ['SAGAT', 'Situation Awareness Global Assessment Technique', {'s': ['diva2:1833805']}],
     ['SAIDI', 'System Average Interruption Duration Index'],
     ['SAIFI', 'System Average Interruption Frequency Index'],
+    ['SAIL', 'Stanford artificial intelligence laboratory'],
+    ['SAIS', 'Swedish artificial intelligence society, Swedish AI Society'],
+    ['SAM', 'security accounts manager'],
+    ['SAM', 'software asset management', {'swe': 'programvarutillgångshantering'}],
+    ['SAMFI', 'Collaboration Group for Information Security', {'swe': 'Samverkansgruppen för informationssäkerhet'}],
     ['SAML', 'Security Assertion Markup Language V2.0', {'s': ['diva2:1118878'], 'swe': 'säkerhetspåståendemärkspråk'}],
     ['SAMM', 'Scaled Agile Maturity Model'],
+    ['SAN', 'storage area network', {'swe': 'datalagringsnät'}],
     ['SANAE', 'South African National Antarctic Expedition', {'s': ['diva2:511327']}],
     ['SAOD', 'Situation Awareness Oriented Design', {'s': ['diva2:823781']}],
     ['SAP', 'security awareness programs', {'s': ['diva2:456704']}],
@@ -5423,6 +5434,7 @@ well_known_acronyms_list=[
     ['SAR', 'Synthetic Aperture Radar'],
     ['SAR', 'search and rescue'],
     ['SAR', 'specific absorption rate'],
+    ['SARC', 'Self-annotated Reddit corpus', {'swe': 'Självkommenterad Reddit-korpus'}],
     ['SARFA', 'Specificity and Relevance Feature Attribution', {'s': ['diva2:1737847']}],
     ['SARIMA', 'Seasonal Autoregressive Integrated Moving Average', {'s': ['diva2:1526553']}],
     ['SARL', 'société à responsibilité limitée', {'n': 'Luxembourgois'}],
@@ -5430,13 +5442,18 @@ well_known_acronyms_list=[
     ['SAS', 'SAS Institute; Serial attached SCSI'], # metaentry
     ['SAS', 'Scandinavian airlines', {'s': ['diva2:1337267']}],
     ['SAS', 'Serial attached SCSI', {'swe': 'seriellt ansluten SCSI'}],
+    ['SAS 70', 'Statement on auditing standards no. 70', {'swe': 'Utlåtande om revisionsstandarder nr. 70'}], # standard
+    ['SASE', 'secure access service edge', {'swe': 'säker kantaccess till tjänster'}],
     ['SASL', 'Simple Authentication and Security Layer ', {'s': ['diva2:691442'], 'n': 'authentication'}],
     ['SAST', 'Static Application Security Testing', {'s': ['diva2:1525559']}],
     ['SAT', 'simultaneous approximation term', {'s': ['diva2:1817176']}],
     ['SATA', 'Serial Advanced Technology Attachment', {'s': ['diva2:579236'], 'swe': 'seriell ATA'}],
+    ['SATAN', 'Security administrator tool for analyzing networks', {'swe': 'SATAN'}], # program
+    ['SATS', 'Small aircraft transportation system', {'swe': 'Transportsystem för små flygplan'}], # project
     ['SAV', 'shared autonomous vehicle', {'s': ['diva2:1412661']}],
     ['SAV2P', 'shared automated vehicle-topedestrian', {'s': ['diva2:1149105']}],
     ['SAVs', 'shared autonomous vehicles', {'s': 'diva2:1412661'}],
+    ['SAX', 'simple API for XML', {'swe': 'enkelt API för XML'}], # API
     ['SB', 'Structural Break', {'s': ['diva2:1843868']}],
     ['SB-LRU', 'stateness bounded - LRU', {'s': ['diva2:862185']}],
     ['SBB', 'Schweizerische Bundesbahnen',  {'s': ['diva2:1728663']}],
@@ -5444,6 +5461,7 @@ well_known_acronyms_list=[
     ['SBERT', 'Sentence BERT', {'s': ['diva2:1711523'], 'n': 'used but not defined, spelled out on pg. 9 of thesis'}],
     ['SBN', 'Serengeti Broadband Network', {'s': ['diva2:1049522']}],
     ['SBO', 'Spin based oscillator', {'s': ['diva2:1232046']}],
+    ['SBOM', 'software bill of materials', {'swe': 'mjukvaruförteckning'}],
     ['SBP', 'shared backup protection', {'s': ['diva2:618805']}],
     ['SBP', 'summation-by-parts', {'s': ['diva2:1817176']}],
     ['SBP-SAT', 'summation by parts (SBP) simultaneous-approximation-term (SAT)'],
@@ -5456,13 +5474,17 @@ well_known_acronyms_list=[
     ['SC', 'supply chain', {'swe': 'leveranskedja'}],
     ['SC-TM', 'Single-Chip Cloud TM', {'s': ['diva2:457389']}],
     ['SC2', 'Starcraft II',  {'s': ['diva2:1335262']}],
+    ['SC3, SC3', 'Swedish cybercrime center', {'swe': 'Nationellt IT-brottscentrum'}], # organization
     ['SCA', 'Side-Channel Attack', {'s': ['diva2:1468521']}],
     ['SCA', 'Software Communications Architecture', {'s': ['diva2:346177']}],
     ['SCA', 'software composition analysis', {'swe': 'analys av mjukvarustacken'}],
+    ['SCAD', 'solid CAD'],
+    ['SCAD', 'structural CAD', {'swe': 'strukturell CAD'}],
     ['SCADA', 'Supervisory Control And Data Acquisition', {'swe': 'övervakning, kontroll och datainsamling'}],
     ['SCADA/DMS', 'SCADA with distributed managemenet system', {'s': ['diva2:1521990']}],
     ['SCADA/EMS', 'SCADA with Energy Management System', {'s': ['diva2:1046339']}],
     ['SCADA/OTS', 'SCADA with Operator Training Simulator (OTS) integration', {'s': ['diva2:1046339']}],
+    ['SCAM', 'Standard content archive management', {'swe': 'standardiserad innehållsarkivhantering'}],
     ['SCAMV', 'Side Channel Abstract Model Validator', {'s': ['diva2:1615024']}],
     ['SCARA', 'Selective Compliance Assembly Robot Arm or Selective Compliance Articulated Robot Arm', {'s': ['diva2:1354472'], 'n': 'type robot'}],
     ['SCB', 'Statistics Sweden', {'s': ['diva2:708676']}],
@@ -5472,12 +5494,15 @@ well_known_acronyms_list=[
     ['SCFQ', 'Self Clock Fair Queueing'],
     ['SCI', 'spinal cord injury', {'s': ['diva2:1814050']}],
     ['SCIM', 'Simple Cloud Identity Management.', {'s': ['diva2:617124'], 'n': 'scheme'}],
+    ['SCIMP', 'Silent circle instant messaging protocol', {'swe': 'Scilent circiles snabbmeddelandeprotokoll'}], # protocol
     ['SCL', 'Substation Configuration Language', {'s': ['diva2:1072554'], 'n': 'standard'}],
     ['SCM', 'Spatial channel model'],
     ['SCM', 'Supplier Centric Model', {'s': ['diva2:934364']}],
     ['SCM', 'storage class memory', {'swe': 'lagringsklassminne'}],
     ['SCM', 'supply chain management', {'swe': 'produktionslogistik'}],
     ['SCN', 'secondary communication network', {'s': ['diva2:925045']}],
+    ['SCO Group', 'The SCO Group'], # company
+    ['SCO', 'Santa Cruz Operation'], # company
     ['SCOM', 'Microsoft Systems Center Operations Manager', {'s': ['diva2:511400']}],
     ['SCOMM', 'Scania Communication Module', {'s': ['diva2:757033']}],
     ['SCOT', 'Social Construction of Technology', {'s': ['diva2:873397']}],
@@ -5485,6 +5510,8 @@ well_known_acronyms_list=[
     ['SCP80', 'Secure Channel Protocol 80'],
     ['SCR', 'Selective Catalytic Reduction', {'s': ['diva2:1199884']}],
     ['SCRN', 'Surface Chemical Reaction Network', {'s': ['diva2:1778263']}],
+    ['SCSI', 'Small computer system interface'],
+    ['SCSIe', 'SCSI Express'],
     ['SCTP', 'stream control transmission protocol', {'s': ['diva2:513178'], 'swe': 'strömningskontrollöverföringsprotokoll'}], # protocol
     ['SCUC', 'security-constrained unit commitment', {'s': ['diva2:538490']}],
     ['SCV', 'sum of conditional variances',  {'s': ['diva2:927557']}],
@@ -5494,10 +5521,12 @@ well_known_acronyms_list=[
     ['SD-WAN', 'Software-Defined Wide Area Network', {'s': ['diva2:1417117'], 'swe': 'mjukvarudefinierat långdistansnätverk'}],
     ['SDC', 'Smart Driving Challenge', {'s': ['diva2:1709486'], 'n': "Greater Than’s FIA SDC app"}],
     ['SDCI', 'State-dependent Causal Inference', {'s': ['diva2:1607620']}],
+    ['SDDC', 'software-defined data center', {'swe': 'programvarudefinierat datacenter, mjukvarudefinierat datacenter'}],
     ['SDES', 'sequential discrete event simulator', {'s': ['diva2:539895']}],
     ['SDF', 'Synchronous Data Flow', {'s': ['diva2:1501125']}],
     ['SDFG', 'Synchronous Data Flow Graph',  {'s': ['diva2:1501125']}],
     ['SDG', 'Sustainable Development Goal'],
+    ['SDH', 'synchronous digital hierarchy', {'swe': 'synkron digital hierarki'}], # standard
     ['SDH/SONET', 'Synchronous Digital Hierarchy(SDH) / Synchronous Optical Networking (SONET)', {'s': ['diva2:1140163']}],
     ['SDK', 'Software Development Kit', {'swe': 'programutvecklingskit'}],
     ['SDL', 'Specification and Description Language', {'s': ['diva2:460412']}],
@@ -5505,6 +5534,7 @@ well_known_acronyms_list=[
     ['SDM', 'Space-division multiplexing', {'s': ['diva2:1356732']}],
     ['SDM', 'Space-division multiplexing', {'s': ['diva2:1356732']}],
     ['SDMA', 'Space Division Multiple Access', {'s': ['diva2:648939'], 'swe': 'virtuell MIMO, rymddelning multipel åtkomst'}],
+    ['SDMI', 'Secure digital music initiative', {'swe': 'initiativet för säker digital musik'}],
     ['SDMS', 'Super-client Driving Multiple Subclients', {'s': ['diva2:1591424'], 'n': 'used but not defined, taken from title'}],
     ['SDN', 'Software Defined Networking', {'swe': 'mjukvarudefinierat nätverk'}],
     ['SDN', 'software-defined networking', {'swe': 'mjukvarudefinierat nätverk'}],
@@ -5515,6 +5545,7 @@ well_known_acronyms_list=[
     ['SDR', 'Software Defined Radio', {'swe': 'mjukvarudefinierad radio'}],
     ['SDRAM', 'Synchronous Dynamic Access Memory', {'s': ['diva2:1181060'], 'swe': 'synkront DRAM'}],
     ['SDRE', 'State Dependent Riccati Equation (SDRE)', {'s': ['diva2:576334']}],
+    ['SDU', 'service data unit', {'swe': 'tjänstedataenhet'}],
     ['SDV', 'self-driving vehicle', {'s': ['diva2:1636793']}],
     ['SDWN', 'Software-defined Wireless Networking', {'s': ['diva2:1394927']}],
     ['SEAMCAT', 'Spectrum Engineering Advanced Monte Carlo Analysis Tool', {'s': 'diva2:1885507'}],
@@ -5522,6 +5553,7 @@ well_known_acronyms_list=[
     ['SEBR', 'spontaneous eye blinking rate', {'s': ['diva2:1334691']}],
     ['SECaaS', 'Security as a Service', {'s': ['diva2:618113']}],
     ['SEDF', 'Simple Earliest Deadline Fist', {'s': ['diva2:563427']}],
+    ['SEE', 'Symbian exchange and exposition'], # event
     ['SEG-YOLO', 'SEG-YOLO: Real-Time Instance Segmentation', {'s': ['diva2:1421305']}],
     ['SEGAN', 'Speech Enhancement Generative Adversarial Network'],
     ['SEH', 'Smart Energy Hub', {'s': ['diva2:1590464']}],
@@ -5532,21 +5564,26 @@ well_known_acronyms_list=[
     ['SEL', 'Single-Event Latch-up', {'s': ['diva2:1499093']}],
     ['SELAQ', 'Student Expectations of Learning Analytics Questionnaire', {'s': ['diva2:1582922']}],
     ['SELU', 'scaled exponential linear unit', {'s': ['diva2:1376521']}],
+    ['SELinux', 'Security-enhanced Linux', {'swe': 'SELinux'}], # program
     ['SEM', 'search engine marketing', {'swe': 'sökmotorbaserad marknadsföring'}],
     ['SEM', 'security event manager', {'swe': 'säkerhetshändelsehanterare'}],
     ['SEM', 'service entertainment module', {'s': ['diva2:1413143']}],
     ['SEM-EDS', 'Scanning Electron Microscopy equipped with Energy Dispersive Spectroscopy', {'s': ['diva2:938903']}],
     ['SEM-IP', 'Soft Error Mitigation-Intellectual Property', {'s': ['diva2:1499093']}],
     ['SEM-IP', 'Soft Error Mitigation-Intellectual Property', {'s': ['diva2:1499093']}],
+    ['SEMA', 'Software engineering measurement & analysis', {'swe': 'Programvaruteknisk mätning och analys'}], # initaive, obsolete
     ['SEMAT', 'Software Engineering Method and Theory', {'s': ['diva2:1088641'], 'swe': 'Programvaruteknik metod och teori'}],
     ['SEMMA', 'Sample, Explore, Modify, Assess', {'s': ['diva2:1250897']}],
     ['SENELEC', 'Senegalese National Society of Electricity', {'s': ['diva2:601608']}],
+    ['SEO', 'search engine optimization', {'swe': 'sökmotoroptimering'}],
     ['SEP', 'Stable Election Protocol', {'s': ['diva2:1111590'], 'n': 'used but not defined, full text is not in DiVA', 'swe': 'programutvecklingsprocess'}],
     ['SEPA', 'Single Euro Payments Area', {'s': ['diva2:1587775'], 'n': 'used but not defined'}],
+    ['SEPSE', 'software engineering process support environment', {'swe': 'stödmiljö för systemutvecklingsprocessen'}],
     ['SER', 'Speech Emotion Recognition', {'s': 'diva2:1885510'}],
     ['SERDES', 'serializer/deserializer', {'s': ['diva2:512899'], 'n': 'used but not defined', 'swe': 'serialiserare/deserialiserare'}],
     ['SERP', 'search engine result page', {'s': ['diva2:680610'], 'swe': 'träffsida'}],
     ['SERPS', 'search engine result pages', {'s': ['diva2:680610']}],
+    ['SETI', 'Search for extra-terrestrial intelligence', {'swe': 'Sök efter utomjordisk intelligens'}], # project
     ['SEU', 'Single-Event Upset'],
     ['SEUD', 'Single Event Upset Detector', {'s': ['diva2:1448700']}],
     ['SEV', 'Secure Encrypted Virtualization', {'s': ['diva2:1737821']}],
@@ -5560,6 +5597,7 @@ well_known_acronyms_list=[
     ['SFD', 'Sequential Feature Detachment', {'s': ['diva2:1849282']}],
     ['SFDR', 'spurious-free dynamic range', {'s': ['diva2:1773405']}],
     ['SFEM', 'Service Fascination Evaluation Model', {'s': ['diva2:941297']}],
+    ['SFF', 'small form factor', {'swe': 'liten formfaktor'}],
     ['SFI', 'Software Fault Injection', {'s': ['diva2:1395015']}],
     ['SFIDF', 'Software Fault Injection/Detection Framework', {'s': ['diva2:1395015']}],
     ['SFM', 'Service Fabric Mesh', {'s': ['diva2:1334210']}],
@@ -5571,15 +5609,21 @@ well_known_acronyms_list=[
     ['SFRA', 'Sweep Frequency Response Analysis', {'s': ['diva2:1537658']}],
     ['SFS', 'Sequential Feature Selector', {'s': ['diva2:1779813']}],
     ['SFS', 'stepless frequency selection', {'swe': 'steglöst frekvensval'}],
+    ['SFTP', 'SSH file transport protocol', {'swe': 'SSH filtransportprotokoll'}],
+    ['SFTP', 'secure file transport protocol', {'swe': 'säkert filtransportprotokoll'}],
     ['SFU', 'selective forwarding unit', {'s': ['diva2:1165928']}],
     ['SG', 'Security Guideline'],
     ['SG', 'Synchronous Generators', {'s': ['diva2:1603603']}],
+    ['SG&A', 'selling, general and administration', {'swe': 'försäljnings-, administrations- och allmänna kostnader'}],
     ['SGAM', 'Smart Grid Architecture Model', {'s': ['diva2:633258']}],
     ['SGD', 'stochastic gradient descent', {'s': ['diva2:929350']}],
     ['SGDC', 'stochastic gradient descent classifier', {'s': ['diva2:1526908']}],
     ['SGG', 'Smart Grid Gotland', {'s': ['diva2:681429']}],
+    ['SGI', 'Silicon Graphics'], # company
+    ['SGML', 'Standardized general markup language', {'swe': 'standardiserat allmänt märkspråk'}],
     ['SGN', 'Semantic Graph Network', {'s': ['diva2:1712821']}],
     ['SGP', 'SPICE Gummel Poon', {'s': ['diva2:1078568']}],
+    ['SGSI', 'Swedish government secure intranet', {'swe': 'SGSI (Swedish Government Secure Intranet)'}],
     ['SGSN-MME', 'Serving GPRS Support Node - Mobility Management Entity', {'s': ['diva2:706299']}],
     ['SGX', 'Software Guard Extension', {'s': ['diva2:1710386']}],
     ['SHA', 'Secure Hash Algorithm', {'swe': 'säker hash-algoritm'}],
@@ -5593,6 +5637,7 @@ well_known_acronyms_list=[
     ['SHNO', 'Spin Hall Nano Oscillator', {'s': ['diva2:1232046']}],
     ['SHRR', 'step height reduction ratio', {'s': ['diva2:1095703']}],
     ['SHiP', 'Search for Hidden Particle'],
+    ['SHS', 'Spreading and retrieval system', {'swe': 'Spridnings- och hämtningssystem'}],
     ['SI', 'Stability Indices', {'s': ['diva2:510598']}],
     ['SI', 'The International System of Units (SI), Système international d’unités', {'swe': 'internationella måttenhetssystemet'}],
     ['SI-NDVI', 'Single Image - Normalized Difference Vegetation Index', {'s': ['diva2:1643858'], 'n': 'used but not defined'}],
@@ -5607,23 +5652,33 @@ well_known_acronyms_list=[
     ['SIM', 'Subscriber Identity Modules', {'s': ['diva2:530930'], 'swe': 'SIM-kort'}],
     ['SIM', 'security information management', {'swe': 'säkerhetsinformationshantering'}],
     ['SIMD', 'single instruction multiple data', {'s': ['diva2:449162'], 'swe': 'enkel instruktion, multipla data'}],
+    ['SIME', 'Scandinavian interactive media event'], # event
+    ['SIMM', 'single inline memory module', {'swe': 'SIMM‑kretsarna, SIMM (single inline memory module)'}],
     ['SIMO', 'Single input multiple outputs', {'s': ['diva2:816032']}],
     ['SIMS', 'Secondary ion mass spectrometry', {'s': ['diva2:556848']}],
     ['SIMT', '(Single Instruction Multiple Threads', {'s': ['diva2:1324030']}],
     ['SINR', 'Signal-to-Interference-plus-Noise ratio', {'s': ['diva2:1710474']}],
     ['SIP', 'Session Initiation Protocol', {'swe': 'sessionsinitieringsprotokoll'}], # protocol
     ['SIPRI', 'Stockholm International Peace Research Institute', {'s': ['diva2:1649674']}],
+    ['SIPS URI', 'secure session initiation protocol uniform resource identifier', {'swe': 'SIPS URL (sessionsinitieringsprotokoll säkra uniform resursidentifierare)'}], # URL
     ['SISO', 'single-inputsingle-output system', {'s': ['diva2:1272287']}],
+    ['SISU', 'Swedish institute for systems development'], # institute
     ['SITL', 'Software-In-The-Loop', {'s': ['diva2:1820239']}],
+    ['SITIC', "Sweden's IT Incident Center", {'swe': 'Sveriges IT-incidentcentrum'}], # former organization
     ['SITS', 'Satellite Image Time Series', {'s': ['diva2:1584546']}],
+    ['SIUN', 'State Inspectorate for Defence Intelligence', {'swe': 'Statens inspektion för försvarsunderrättelseverksamheten'}], # organizaton
+    ['SIV', 'system integrity verifiers', {'swe': 'verifierare av systemintegritet'}],
     ['SIW', 'substrate integrated waveguide', {'s': ['diva2:1723243']}],
     ['SJ', 'Super Junction', {'s': ['diva2:1712829']}],
     ['SJN', 'Shortest Job Next', {'s': ['diva2:1214051']}],
+    ['SJW', 'social justice warrior', {'swe': 'krigare för social rättvisa'}],
     ['SK', 'Selective Kernel', {'s': ['diva2:1800876'], 'n': 'network'}],
+    ['SKU', 'stock keeping unit', {'swe': 'SKU, lagerhållningsenhet'}],
     ['SL', 'AB Storstockholms Lokaltrafik'],
     ['SLA', 'Service Level Agreement', {'swe': 'tjänstenivåavtal'}],
     ['SLAM', 'Simultaneous Localisation and Mapping', {'s': ['diva2:1711126']}],
     ['SLAMS', 'Short Large-Amplitude Magnetic Structures', {'s': ['diva2:1479345']}],
+    ['SLAPP', 'strategic lawsuit against public participation', {'swe': 'SLAPP, strategisk stämning mot offentligt deltagande'}],
     ['SLC', 'Single Lane Change', {'s': ['diva2:1537816']}],
     ['SLC', 'single-level cell', {'swe': 'enkelnivåcell'}],
     ['SLDA', 'Streaming Latent Dirichlet Allocation', {'s': ['diva2:953540']}],
@@ -5631,7 +5686,9 @@ well_known_acronyms_list=[
     ['SLFN', 'Single-hidden Layer Feedforward neural Network'],
     ['SLID', 'Singing-language identification', {'s': ['diva2:1449641']}],
     ['SLIM', 'Starling Instant Messenger'],
+    ['SLIP', 'serial line internet protocol', {'swe': 'seriell linje internetprotokoll'}], # protocol
     ['SLL', 'side-lobe levels', {'s': ['diva2:1631414']}],
+    ['SLM', 'software lifecycle management', {'swe': 'mjukvaruhantering, applikationshantering'}],
     ['SLO', 'Service Level Objective', {'s': ['diva2:929943'], 'n': 'used but not defined'}],
     ['SLP', 'Service Location Protocol', {'s': ['diva2:511010']}],
     ['SLR', 'Systematic Literature Review', {'s': ['diva2:1330746']}],
@@ -5653,6 +5710,7 @@ well_known_acronyms_list=[
     ['SMF', 'Session Management Function', {'s': ['diva2:1820223']}],
     ['SMHI', 'Swedish Meteorological and Hydrological Institute', {'s': ['diva2:1380794']}],
     ['SMI', 'social media influencer', {'s': ['diva2:1804553']}],
+    ['SMID', 'Collaboration against identity theft, Collaboration Group against identity theft and Collaboration Group against ID theft', {'swe': 'Samverkan mot id‑intrång,Samverkansgruppen mot identitetsintrång och Samverkansgruppen mot ID‑intrång'}], # group
     ['SMIB', 'Single Machine Infinite Bus'],
     ['SMIC', 'Semiconductor Manufacturing International Corporation', {'s': ['diva2:432665']}],
     ['SMIL', 'Synchronized Multimedia Integration Language', {'s': ['diva2:511492'], 'n': 'MMS SMIL, Synkroniserat multimediaintegreringsspråk'}],
@@ -5670,15 +5728,20 @@ well_known_acronyms_list=[
     ['SMPC', 'Secure Multi-party Computation', {'s': ['diva2:460412']}],
     ['SMPL', 'Skinned Multi-person Linear', {'s': ['diva2:1500743']}],
     ['SMPM', 'surface-mounted permanent magnet'],
+    ['SMPS', 'switching-mode power supply', {'swe': 'pulserande strömförsörjning'}],
     ['SMS', 'Short Message Service', {'swe': 'textmeddelanden mellan mobiltelefoner'}],
     ['SMS', 'supplier marketing support', {'swe': 'leverantörs marknadsföringsstöd'}],
     ['SMSC', 'Short Message Service Center', {'s': ['diva2:515034']}],
     ['SMT', 'Sparse Merkle Tree'],
     ['SMT', 'Surface Mount Technology', {'s': ['diva2:1230367']}],
     ['SMT-LIB', 'Satisfiability modulo theories (SMT) Library'],
+    ['SMTP MTA-STS', 'simple mail transfer protocol  Mail Transer Agent-strict transport security', {'swe': 'enkelt postöverföringsprotokoll Mail Transfer Agent-strikt transportsäkerhet'}],
+    ['SMTP', 'simple mail transfer protocol', {'swe': 'enkelt protokoll för e-postöverföring'}], # protocol
     ['SMV', 'Symbolic Model Verifier', {'s': ['diva2:1114579']}],
     ['SMVT', 'Stateflow Model Verification Tool', {'s': ['diva2:1592825']}],
     ['SMaRC', 'Swedish Maritime Robotics Center',  {'s': ['diva2:1711126']}],
+    ['SN', 'screen name', {'swe': 'signatur, användarnamn'}],
+    ['SNA', 'Systems network architecture', {'swe': 'Systemnätverksarkitektur'}],
     ['SNB', 'Saddle- Node Bifurcation', {'s': ['diva2:610010']}],
     ['SNC', 'SubNUMA Clustering', {'s': ['diva2:1424397']}],
     ['SNCF', 'Société nationale des chemins de fer français', {'s': ['diva2:1702837'], 'n': 'SNCF Réseau'}],
@@ -5693,12 +5756,15 @@ well_known_acronyms_list=[
     ['SNS', 'Social Networking Sites', {'s': ['diva2:1106801']}],
     ['SNS', 'social network site', {'swe': 'sociala nätverkswebbplats'}],
     ['SNSPD', 'superconducting nanowire single-photon detector', {'s': ['diva2:1712817']}],
+    ['SNUS', 'Swedish network users’ society', {'swe': 'Föreningen Swedish Network Users Society (SNUS)'}], # organization
+    ['SO DIMM', 'small outline dual in-line memory module', {'swe': 'SO DIMM'}],
     ['SO-CFAR', 'Smallest of constant false alarm rate', {'s': ['diva2:1504652']}],
     ['SO2', 'SO<sub>2</sub> is Sulfur dioxide', {'s': ['diva2:815221'], 'n': 'chemical formula'}],
     ['SOA', 'Sarbanes-Oxley Act', {'swe': 'Sarbanes-Oxley'}],
     ['SOA', 'semiconductor optical amplifier', {'swe': 'optisk halvledarförstärkare'}],
     ['SOA', 'service oriented architecture', {'cefr': 'C2', 'swe': 'tjänsteorienterad arkitektur'}],
     ['SOA', 'start of authority', {'swe': 'start av auktoritet'}],
+    ['SOAR', 'security orchestration, automation and response', {'swe': 'orkestrering, automatisering och åtgärdande i it‑säkerhet'}],
     ['SOAT', 'state of the art', {'s': ['diva2:1737842']}],
     ['SOC', 'System-On-Chip', {'swe': 'system på chipp'}],
     ['SOC', 'security operations center', {'swe': 'säkerhetsoperationscenter'}],
@@ -5707,6 +5773,7 @@ well_known_acronyms_list=[
     ['SOD', 'Salient Object Detection', {'s': ['diva2:1706618']}],
     ['SOEC', 'solid oxide cells', {'s': ['diva2:1845153],']}],
     ['SOH', 'State of health', {'s': ['diva2:1723137']}],
+    ['SOHO', 'small office home office', {'swe': 'marknaden för datorer i hemmet och i småföretag'}],
     ['SOI', 'Silicon on Insulator substrates'],
     ['SOIMOSFET', 'Silicon on insulator (SOI) MOSFET'],
     ['SOINN', 'self-organizing incremental neural network', {'s': ['diva2:893039']}],
@@ -5714,6 +5781,7 @@ well_known_acronyms_list=[
     ['SOLAS', 'Safety of Life at Sea'],
     ['SOM', 'self organizing map'],
     ['SOMB', 'Self-Organising Map Batching', {'s': ['diva2:1464517']}],
+    ['SONET', 'synchronous optical network', {'swe': 'synkront optiskt nätverk'}],
     ['SONET/SDH', 'Synchronous Optical Networking (SONET) / Synchronous Digital Hierarchy(SDH)', {'s': ['diva2:703998']}],
     ['SOP', 'Second-Order Perceptron', {'s': ['diva2:1354558']}],
     ['SOPA', 'Stop online piracy act', {'swe': 'Stop online piracy act'}], # proposed law
@@ -5724,11 +5792,15 @@ well_known_acronyms_list=[
     ['SOT', 'Spin-Orbit-Torque', {'s': ['diva2:1264914']}],
     ['SOT-MRAM', 'Spin-orbit torque magnetic random-access memory', {'s': ['diva2:1264914'], 'n': 'used but not defined, no full text in DiVA'}],
     ['SOTA', 'State-of-the-Art'],
+    ['SOTDMA, STDMA', 'self-organizing time division multiple access', {'swe': 'självorganiserande tidsdelningsmultipelåtkomst'}],
     ['SOTPAR2', 'Self Organising Temporal Pattern Recognizer 2', {'s': ['diva2:893039']}],
     ['SOVA', 'Soft-Output Viterbi Algorithm', {'s': ['diva2:483817']}],
+    ['SOX, Sarbox, SOA', 'Sarbanes-Oxley'], # law
+    ['SP', 'servicepack, service pack', {'swe': 'servicepack'}],
     ['SPA', 'Space Plug-and-play Avionics',  {'s': ['diva2:462886']}],
     ['SPA', 'Sum-Product Algorithm'],
     ['SPAA', 'Symposium on Parallelism in Algorithms and Architectures'],    
+    ['SPAC', 'special purpose acquisition company, blank check company', {'swe': 'förvärvsbolag'}],
     ['SPAIR', 'Spatially Invariant Attend Infer and Repeat (AIR) AIR', {'s': ['diva2:1449798'], 'n': ' - not document is not searchable due to character matting - PDF produced by "Mac OS X 10.13.6 Quartz PDFContext"'}],
     ['SPAR', 'Social Partitioning and Replication', {'s': ['diva2:874633'], 'n': 'middleware'}],
     ['SPAR', 'Swedish population address register', {'swe': 'Statens personadressregister'}],
@@ -7000,7 +7072,6 @@ less_well_known_acronyms_list=[
     ['PHB', 'pointy-haired boss', {'swe': 'struthårig chef'}],
     ['PHOBAR', 'photoshopped beyond all recognition', {'swe': 'photoshoppad bortom all igenkänning'}],
     ['PICNIC', '”problem in chair, not in computer”', {'swe': '"problem i stolen, inte i datorn"'}],
-
     ['Panda', 'Google Panda'],
     ['ParAnoIA, Par:anoia, Par‑anoia, Par_anoia', '”Potentially alarming research: Anonymous intelligence agency”', {'swe': 'ParAnoIA'}], # website
     ['Pie', 'Android Pie'], # OS
@@ -7015,79 +7086,6 @@ less_well_known_acronyms_list=[
     ['Replicator', 'The Replicator'],
     ['Retina', 'Retina display', {'swe': 'Retinaskärm'}], # trademark
 
-    ['S-DMB', 'Satellit-Digital Multimedia Broadcasting', {'swe': 'satellit-DMB'}],
-    ['S/MIME', 'Secure/Multipurpose Internet Mail Extensions'], # standard
-    ['S/PDIF', 'Sony/Philips digital interface', {'swe': 'Sony/Philips digitalgränssnitt'}], # standard
-    ['SAE', 'System architecture evolution', {'swe': 'systemarkitekturevolution'}],
-    ['SAFOS', 'Collaboration platform for the public sector', {'swe': 'Samarbetsplattform för offentlig sektor'}],
-    ['SAIL', 'Stanford artificial intelligence laboratory'],
-    ['SAIS', 'Swedish artificial intelligence society, Swedish AI Society'],
-    ['SAM', 'security accounts manager'],
-    ['SAM', 'software asset management', {'swe': 'programvarutillgångshantering'}],
-    ['SAMFI', 'Collaboration Group for Information Security', {'swe': 'Samverkansgruppen för informationssäkerhet'}],
-    ['SAN', 'storage area network', {'swe': 'datalagringsnät'}],
-    ['SARC', 'Self-annotated Reddit corpus', {'swe': 'Självkommenterad Reddit-korpus'}],
-    ['SAS 70', 'Statement on auditing standards no. 70', {'swe': 'Utlåtande om revisionsstandarder nr. 70'}], # standard
-    ['SASE', 'secure access service edge', {'swe': 'säker kantaccess till tjänster'}],
-    ['SATAN', 'Security administrator tool for analyzing networks', {'swe': 'SATAN'}], # program
-    ['SATS', 'Small aircraft transportation system', {'swe': 'Transportsystem för små flygplan'}], # project
-    ['SAX', 'simple API for XML', {'swe': 'enkelt API för XML'}], # API
-    ['SBOM', 'software bill of materials', {'swe': 'mjukvaruförteckning'}],
-    ['SC3, SC3', 'Swedish cybercrime center', {'swe': 'Nationellt IT-brottscentrum'}], # organization
-    ['SCAD', 'solid CAD'],
-    ['SCAD', 'structural CAD', {'swe': 'strukturell CAD'}],
-    ['SCAM', 'Standard content archive management', {'swe': 'standardiserad innehållsarkivhantering'}],
-    ['SCIMP', 'Silent circle instant messaging protocol', {'swe': 'Scilent circiles snabbmeddelandeprotokoll'}], # protocol
-    ['SCO Group', 'The SCO Group'], # company
-    ['SCO', 'Santa Cruz Operation'], # company
-    ['SCSI', 'Small computer system interface'],
-    ['SCSIe', 'SCSI Express'],
-    ['SDDC', 'software-defined data center', {'swe': 'programvarudefinierat datacenter, mjukvarudefinierat datacenter'}],
-    ['SDH', 'synchronous digital hierarchy', {'swe': 'synkron digital hierarki'}], # standard
-    ['SDMI', 'Secure digital music initiative', {'swe': 'initiativet för säker digital musik'}],
-    ['SDU', 'service data unit', {'swe': 'tjänstedataenhet'}],
-    ['SEE', 'Symbian exchange and exposition'], # event
-    ['SELinux', 'Security-enhanced Linux', {'swe': 'SELinux'}], # program
-    ['SEMA', 'Software engineering measurement & analysis', {'swe': 'Programvaruteknisk mätning och analys'}], # initaive, obsolete
-    ['SEO', 'search engine optimization', {'swe': 'sökmotoroptimering'}],
-    ['SEPSE', 'software engineering process support environment', {'swe': 'stödmiljö för systemutvecklingsprocessen'}],
-    ['SETI', 'Search for extra-terrestrial intelligence', {'swe': 'Sök efter utomjordisk intelligens'}], # project
-    ['SFF', 'small form factor', {'swe': 'liten formfaktor'}],
-    ['SFTP', 'SSH file transport protocol; secure file transport protocol', {'swe': 'SSH filtransportprotokoll; säkert filtransportprotokoll'}],
-    ['SG&A', 'selling, general and administration', {'swe': 'försäljnings-, administrations- och allmänna kostnader'}],
-    ['SGI', 'Silicon Graphics'], # company
-    ['SGML', 'Standardized general markup language', {'swe': 'standardiserat allmänt märkspråk'}],
-    ['SGSI', 'Swedish government secure intranet', {'swe': 'SGSI (Swedish Government Secure Intranet)'}],
-    ['SHS', 'Spreading and retrieval system', {'swe': 'Spridnings- och hämtningssystem'}],
-    ['SIME', 'Scandinavian interactive media event'], # event
-    ['SIMM', 'single inline memory module', {'swe': 'SIMM‑kretsarna, SIMM (single inline memory module)'}],
-    ['SIPS URI', 'secure session initiation protocol uniform resource identifier', {'swe': 'SIPS URL (sessionsinitieringsprotokoll säkra uniform resursidentifierare)'}], # URL
-    ['SISU', 'Swedish institute for systems development'], # institute
-    ['SITIC', "Sweden's IT Incident Center", {'swe': 'Sveriges IT-incidentcentrum'}], # former organization
-    ['SIUN', 'State Inspectorate for Defence Intelligence', {'swe': 'Statens inspektion för försvarsunderrättelseverksamheten'}],
-    ['SIUN', 'State Inspectorate for Defence Intelligence', {'swe': 'Statens inspektion för försvarsunderrättelseverksamheten'}], # organizaton
-    ['SIV', 'system integrity verifiers', {'swe': 'verifierare av systemintegritet'}],
-    ['SJW', 'social justice warrior', {'swe': 'krigare för social rättvisa'}],
-    ['SKU', 'stock keeping unit', {'swe': 'SKU, lagerhållningsenhet'}],
-    ['SLAPP', 'strategic lawsuit against public participation', {'swe': 'SLAPP, strategisk stämning mot offentligt deltagande'}],
-    ['SLIP', 'serial line internet protocol', {'swe': 'seriell linje internetprotokoll'}], # protocol
-    ['SLM', 'software lifecycle management', {'swe': 'applikationshantering.'}],
-    ['SLM', 'software lifecycle management', {'swe': 'mjukvaruhantering'}],
-    ['SMID', 'Collaboration against identity theft, Collaboration Group against identity theft and Collaboration Group against ID theft', {'swe': 'Samverkan mot id‑intrång,Samverkansgruppen mot identitetsintrång och Samverkansgruppen mot ID‑intrång'}], # group
-    ['SMPS', 'switching-mode power supply', {'swe': 'pulserande strömförsörjning'}],
-    ['SMTP MTA-STS', 'simple mail transfer protocol  Mail Transer Agent-strict transport security', {'swe': 'enkelt postöverföringsprotokoll Mail Transfer Agent-strikt transportsäkerhet'}],
-    ['SMTP', 'simple mail transfer protocol', {'swe': 'enkelt protokoll för e-postöverföring'}], # protocol
-    ['SN', 'screen name', {'swe': 'signatur, användarnamn'}],
-    ['SNA', 'Systems network architecture', {'swe': 'Systemnätverksarkitektur'}],
-    ['SNUS', 'Swedish network users’ society', {'swe': 'Föreningen Swedish Network Users Society (SNUS)'}], # organization
-    ['SO DIMM', 'small outline dual in-line memory module', {'swe': 'SO DIMM'}],
-    ['SOAR', 'security orchestration, automation and response', {'swe': 'orkestrering, automatisering och åtgärdande i it‑säkerhet'}],
-    ['SOHO', 'small office home office', {'swe': 'marknaden för datorer i hemmet och i småföretag'}],
-    ['SONET', 'synchronous optical network', {'swe': 'synkront optiskt nätverk'}],
-    ['SOTDMA, STDMA', 'self-organizing time division multiple access', {'swe': 'självorganiserande tidsdelningsmultipelåtkomst'}],
-    ['SOX, Sarbox, SOA', 'Sarbanes-Oxley'], # law
-    ['SP', 'servicepack, service pack', {'swe': 'servicepack'}],
-    ['SPAC', 'special purpose acquisition company, blank check company', {'swe': 'förvärvsbolag'}],
     ['SPARQL', 'SPARQL protocol and RDF query language', {'swe': 'SPARQL-protokoll och RDF-frågespråk'}],
     ['SPEC', 'Standard performance evaluation corporation'], # trade organization
     ['SPECfp', 'SPEC - floating point', {'swe': 'SPECfp'}], # trademark
