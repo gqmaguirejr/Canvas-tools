@@ -71905,6 +71905,8 @@ company_and_product_names=[
     'IDI',  # company
     'Joomla', # program
     'VP9',
+    'Sugar', # GUI
+    'CERT-SE', # Swedish CERT
 ]
 
 
@@ -77491,9 +77493,11 @@ common_german_words=[
     'Deutsche',
     'Deutschland',
     'Einstellung',
+    'Entscheidungsproblem',
     'Flughafen',
     'Flugzeug',
     'Gedankenexperiment',
+    'Geheimfernschreiber',
     'Geheimschreiber',
     'GmbH',
     'Großer',
@@ -77502,17 +77506,19 @@ common_german_words=[
     'Luft-',
     'Motoren',
     'Naturf', #from the shortened jounrnal name "Z. Naturf"
+    'Netzwerkdurchsetzungsgesetz',
     'Raumfahrt',
+    'Schlüsselfernschreibmaschine',
     'Schweizerische',
     'Schwerionenforschung',
     'Stahlwerks',
-
     'Technische',
     'Universität',
     'Werke',
     'Wiener',
     'Windkannal',
     'Zentrum',
+
     'achtung',
     'autobahn',
     'forschungsgruppe',
