@@ -141,7 +141,7 @@ well_known_acronyms_list=[
     ['ACID', 'atomicity, consistency, isolation, durability'],
     ['ACIR', 'Adjacent Channel Interference power Ratio ', {'s': ['diva2:874910', 'diva2:680026']}],
     ['ACL', 'Access Control List', {'swe': 'åtkomstlista'}],
-    ['ACM', 'Associaiton for COmputing Machinery'], # organization
+    ['ACM', 'Associaiton for Computing Machinery'], # organization
     ['ACM-W', "Association for Computing Machinery's Council on Women in Computing"], # organization
     ['ACM/IEEE', 'ACM and IEEE'], # organizations
     ['ACM/IEEE-CS', 'ACM and IEEE Computer Society'], # organizations
@@ -1521,6 +1521,7 @@ well_known_acronyms_list=[
     ['DH', 'downhill', {'s': ['diva2:571104']}],
     ['DHA', 'directory harvest attack', {'swe': 'katalogattack; adressgeneratorattack'}],
     ['DHCP', 'Dynamic Host Client protocol', {'s': ['diva2:511010']}], # protocol
+    ['DHCP', 'Dynamic host configuration protocol'], # protocol
     ['DHT', 'Distributed Hash Table', {'swe': 'distribuerad hashtabell'}],
     ['DHTML', 'dynamic HTML', {'swe': 'dynamisk HTML'}],
     ['DI', 'Dagens Industri'], # company; publisher
@@ -2023,6 +2024,8 @@ well_known_acronyms_list=[
     ['ENERBAT', 'Energy in buildings and areas',  {'s': ['diva2:470564']}],
     ['ENIAC', 'Electronic integrator and computer', {'swe': 'Elektronisk integrator och dator'}], # computer
     ['ENISA', 'European Union Agency for Cybersecurity', {'s': ['diva2:1232896'], 'n': 'used but not defined', 'swe': 'Europeiska byrån för nät- och informationssäkerhet'}],
+    ['ENISA', 'European Network and Information Security Agency', {'SWE': 'Europeiska byrån för nät- och informationssäkerhet' # organization
+}],
     ['ENOB', 'Effective number of bits', {'s': ['diva2:1484488'], 'n': 'used but not defined'}],
     ['ENS', 'Energy Not Supplied', {'s': ['diva2:1209661']}],
     ['ENT', 'Entropy calculation and analysis of putative random sequences', {'s': ['diva2:654303'], 'n': 'used but not defined, see pg. 16 of thesis'}],
@@ -2357,6 +2360,7 @@ well_known_acronyms_list=[
     ['FSCW-SynRM', 'fractional-slot concentrated-wound-synchronous reluctance machines'],
     ['FSD', 'fully self-driving [vehicle]', {'swe': 'förarlösa bilar'}],
     ['FSF', 'Free Software Foundation', {'s': ['diva2:458625'], 'swe': 'Stiftelsen för fri programvara'}], # organization
+    ['FSF', 'Free software foundation'],
     ['FSL', 'Few-Shot Learning', {'s': ['diva2:1473064']}],
     ['FSM', 'ﬁnite-state machine', {'swe': 'finit tillståndsmaskin'}],
     ['FSO', 'Free Space Optical', {'s': ['diva2:1818557']}],
@@ -2975,7 +2979,7 @@ well_known_acronyms_list=[
     ['IFRS', 'International financial reporting standards', {'swe': 'International financial reporting standards'}], # organization
     ['IFS', 'Iterative Forward Search', {'s': ['diva2:1464060'], 'n': 'used but not defined'}],
     ['IFT', 'Iterative Feedback Tuning', {'s': ['diva2:576331']}],
-    ['IFTTT', '(If This Then That', {'s': ['diva2:1584752']}],
+    ['IFTTT', 'If This Then That', {'s': ['diva2:1584752'], 'swe': 'Om detta, då det (ODDD)'}],
     ['IFU', 'Integral Field Unit', {'s': ['diva2:1822776']}],
     ['IG', 'Induction Generator', {'s': ['diva2:470652']}],
     ['IGA', 'identity governance and administration', {'swe': 'styrning och administration av identiteter (i en organisations it-system)'}],
@@ -4170,6 +4174,7 @@ well_known_acronyms_list=[
     ['NIS2', 'network and information systems v2', {'swe': 'nätverks- och informationssystem 2'}],
     ['NISQ', 'Noisy Intermediate-Scale Quantum', {'s': ['diva2:1381355'], 'swe': 'brusiga kvantdatorberäkningar i mellanskala'}],
     ['NIST', '(US) National Institute of Standards and Technology',  {'s': ['diva2:1111718']}],
+    ['NIST', '(US) National institute of standards and technology'], # organization
     ['NISÖ', 'National information security exercise', {'swe': 'Nationell informationssäkerhetsövning'}],
     ['NIT', 'Network investigative technique', {'swe': 'NIT, nätverksundersökningsteknik'}],
     ['NITF', 'News industry text format'],
@@ -4480,6 +4485,7 @@ well_known_acronyms_list=[
     ['OSF/1', 'Open software foundation, version 1'],
     ['OSGi', 'Open Service Gateway Initiative'], # pseudoacronym
     ['OSI', 'Open Systems Interconnection', {'n': 'ISO/OSI'}],
+    ['OSI', 'Open source initiative'],
     ['OSINT', 'open source intelligence', {'swe': 'utredning med öppna källor, undersökning med öppna källor'}],
     ['OSIRIS', 'Optimisation SImulations Risk and Statistics for the energy markets',  {'s': ['diva2:558825'], 'n': 'a department at EDF R&D'}],
     ['OSLC', 'Open Services for Lifecycle Collaboration', {'s': ['diva2:1127525']}],
@@ -4526,6 +4532,7 @@ well_known_acronyms_list=[
     ['OVP', 'Open Virtual Platforms', {'s': ['diva2:1710485']}],
     ['OWA', 'Outlook web app'], # product
     ['OWASP', 'Open Worldwide Application Security Project', {'s': ['diva2:1800421']}],
+    ['OWASP', 'Open web application security program'],
     ['OWC', 'Optical Wireless Communication', {'s': ['diva2:1110617']}],
     ['OWL', 'web ontology language', {'swe': 'webbontologispråk'}],
     ['OWPP', 'offshore wind power plant', {'s': ['diva2:714792']}],
@@ -4807,6 +4814,7 @@ well_known_acronyms_list=[
     ['POMDP', 'Partially Observable Markov Decision Process', {'s': ['diva2:1590845']}],
     ['PON', 'Passive Optical Network', {'s': ['diva2:1096090'], 'swe': 'passivt optiskt nätverk'}],
     ['POP3', 'Post Office Protocol 3'], # protocol
+    ['POP3', 'Post office protocol, version 3'],
     ['POS', 'Parts-of-Speech'],
     ['POS', 'point of sale', {'swe': 'försäljningsplats, försäljningspunkt'}],
     ['POSIX', 'Portable Operating System Interface', {'s': ['diva2:1216804'], 'n': 'standards'}],
@@ -5644,6 +5652,7 @@ well_known_acronyms_list=[
     ['SIA', 'self-interstitial', {'s': ['diva2:550481']}],
     ['SIB', 'sodium-ion battery', {'s': ['diva2:1607609']}],
     ['SICS', 'Swedish Institute of Computer Science', {'s': ['diva2:374028'], 'n': 'used but not defined,  not spelled out in thesis'}],
+    ['SICS', 'Swedish institute of computer science'], # institute
     ['SIEM', 'Security Information and Event Management', {'s': ['diva2:1668180'], 'swe': 'säkerhetsinformations- och händelsehantering'}],
     ['SIENT', 'SBR Including or Excluding Near-eld Terms', {'s': ['diva2:1354488']}],
     ['SIHDRe', 'Susceptible, Infected, Hospitalizalized, Dead, Recovered', {'s': ['diva2:1776069'], 'n': 'model'}],
@@ -6942,6 +6951,7 @@ well_known_acronyms_list=[
     ['YOLO', 'You Only Look Once', {'s': ['diva2:1245296'], 'swe': 'Du tittar bara en gång'}],
     ['YPbPr', 'Y=luminance, Pb=chrominance, Pr=chrominance for red minus luminance'],
     ['Yolo', 'You only look once', {'swe': 'Du tittar bara en gång'}],
+    ['YTMND', "You’re the man now, dog", {'swe': 'Du är mannen nu, hund'}], # website
     ['Z', 'IBM Z'],
     ['Z', 'generation Z'],
     ['Z-SFC', 'Z-Space Filling Curves', {'s': ['diva2:850544']}],
@@ -7211,7 +7221,6 @@ well_known_acronyms_list=[
     ['ppm', 'parts per million'],
     ['pquota', 'printer quota', {'swe': 'utskriftstilldelning'}],
     ['pranking4profit', 'pranking for profit', {'swe': 'pranking4profit'}],
-    ['price and revenue optimization', {'swe': 'proffs; pro och kontra, för och emot; pris- och intäktsoptimering'}],
     ['print res', 'print resolution', {'swe': 'utskriftsupplösning'}],
     ['pro', 'price and revenue optimization', {'swe': 'pris- och intäktsoptimering'}],
     ['pro', 'pro et contra', {'swe': 'pro och kontra, för och emot'}],
@@ -7340,9 +7349,9 @@ well_known_acronyms_list=[
     ['–day', 'negative day', {'swe': 'dagnollattack'}],
     ['—', 'em dash', {'swe': 'långt tankstreck'}],
     ['∞chan', '”infinitechan”'],
+    ['SAKINT', 'The Swedish Commission on Security and Integrity Protection', {'swe': 'Säkerhets- och integritetsskyddsnämnden'}], # agency
 
-
-
+    ['CSRG', 'The Austin Common Standards Revision Group'], # standards organization
     ['CGGTY', 'Compiler Guided Greedy Then Youngest'], # from https://arxiv.org/pdf/2503.20481
     #GQMa
 

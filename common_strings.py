@@ -54,28 +54,44 @@ known_toplevel_domains_list=[
     '.ai',
     '.arpa',
     '.asia',
+    '.bit', # top level domain
     '.biz',
+    '.cat', # top level domain
     '.com',
     '.coop', # för kooperativ,
     '.cooperatives',
+    '.dad', # top level domain
+    '.digital', # top level domain
     '.edu',
+    '.foundation', # top level domain
     '.gov',
+    '.icu', # top level domain
     '.info',  # en öppen och generisk toppdomän
     '.int',
+    '.life', # top level domain
+    '.menu', # top level domain
     '.mil',
+    '.mobi', # top level domain
     '.mov', # lanserad 2023 av Google
     '.museum', 
     '.name',
     '.net',
+    '.new', # top level domain
+    '.onion', # top level domain
     '.org',
     '.pro',
+    '.social', # top level domain
     '.stockholm',
     '.sucks',
+    '.tech', # top level domain
     '.tel',
     '.test',
+    '.trade', # top level domain
     '.uno',
+    '.xxx', # top level domain
     '.xyz', 
     '.zip', # lanserad av Google
+    '.ไทย', # top level domain
 
 ]
 
@@ -1465,7 +1481,7 @@ private_toplevel_domains=[
     'ZIPPO',
     'ZONE',
     'ZUERICH',
-}
+]
 
 # using ASCII Compatible Encoding (ACE) prefix
 private_toplevel_domains_IDN=[

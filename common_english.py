@@ -7797,6 +7797,7 @@ common_English_words={
     'canonically': {'B2': 'Adverb'},
     'cantilever': {'A2': 'Noun'},
     'cantilevers': {'A2': 'Noun (plural)'},
+    'canvas': {'B1': 'Noun', 'B2': 'Verb'},
     'canyon': {'A2': 'Noun'},
     'canyons': {'B1': 'Noun (plural)'},
     'cap and trade': {'B2': 'Noun (compound)'},
@@ -58047,6 +58048,13 @@ common_English_words={
     'superlattice': {'C1': 'Noun'},
     
     #end for SCI - SCIe
+
+    'twidget': {'C2': 'Noun'},    # military jargonm for "a small, often unspecified or unidentified, piece of equipment or a small adjustment. It's used to describe something that is small and often unimportant, or that requires a small adjustment." -- Gemini rates it as beyond C2
+    'mountweazels': {'C2': 'Noun'}, # a noun referring to a deliberately inserted fictitious entry in a reference work, such as a dictionary or map, for the purpose of detecting copyright infringement. -- Gemini rates it as beyond C2, as it is "a specialized term, primarily used in legal and publishing contexts." --  based upon 'Mountweazel', 'Lilian Virginia Mountweazel'
+    'crudeware': {'B2': 'Noun'}, # slang/jargon, and not part of general vocabulary: highly specific to the software development world- It would be beyond the CEFR scale.
+    'emulator': {'B2': 'Noun'},
+
+
 }
     
 chemical_elements_symbols={
@@ -62969,6 +62977,7 @@ company_and_product_names=[
     'JPA2', # JPA 2.0 - used but not defined indiva2:862539
     'JPEG', # stanard produced by ISO/IEC Joint Photographic Experts Group - used but not defined in diva2:929325
     'JPEG-2000', # diva2:1417099
+    'JPEG 2000', # file format
     'JPEGand',
     'JSDOM', # diva2:1107724
     'JSON-LD', # diva2:654372 - NADA URL invalid - no full text in DiVA
@@ -71228,6 +71237,7 @@ company_and_product_names=[
     'iPad Pro',
     'iPod',
     'iTunes',
+    'iTunes LP', # file format
     'iWatch',
     'iriver Story',
     'keiboard',
@@ -71907,11 +71917,602 @@ company_and_product_names=[
     'VP9',
     'Sugar', # GUI
     'CERT-SE', # Swedish CERT
+    'H-1B', # US visa type
+    'Privacy shield', # ett avtal som reglerar överföring av data mellan EU och USA
+    'Digital living networks alliance', # alliance
+
+    # apps
+    'AngelFace', 
+    'Autism & Beyond',
+    'Blind',
+    'Boompi',
+    'Convo',
+    'FireChat',
+    'Gas',
+    'Hound',
+    'Jodel',
+    'Kindroid',
+    'MapSwipe',
+    'Peeple',
+    'Rethink',
+    'Returtjänst',
+    'Sharktivity',
+    'Signal',
+    'Snapkidz',
+    'Soundhound',
+    'Speedcam Anywhere',
+    'stalker app',
+    'Tiptapp',
+    'Tor Messenger',
+    'Twidget',
+    'Untappd',
+    'VSCO',
+    'Whistle',
+    'Wire',
+    'Word Lens',
+
+    # attacks
+    'Poodle',
+    'Red October',
+    'Rowhammer',
+    'Row hammer',
+    "Sauron's eye",
+    'service provider attack',
+    'SSDT-attack',
+    'stack smashing',
+    'Zeus',
+
+    'The golden magnifying glass',  # award - 'Det gyllene förstoringsglaset'
+    'Det gyllene förstoringsglaset', # award
+
+    # blog
+    'Groklaw',
+
+    # botnet
+    'Coinminer.Statinko',
+
+    # call
+    'Readers united',
+
+    # campaigns
+    'talk about hate',
+    'Open Access 2020',
+    'Campaign against sex robots',
+    'Reset the Net',
+    'Stop hate for profit',
+
+    'Auto-ID Center',    # center
+
+    'cheese challenge', #challenge
+
+    'Trove', # collection
+
+    'thumb candy', # colloquialism
+
+    'Be',# company
+    'High fidelity', # product; company
+    'International Data Group Inc.', # company
+    'IDG International Data Group AB',  # company
+    'tandem.chat', # company
+    'The screening room', # company,
+    'SR Labs', # company
+
+    'Baby', # computer
+    'Beaglebone', # computer
+    'BeBox', # computer
+    'Colossus', # computer
+    'Mark I', # computer
+    'Manchester Mark I', # historic computer
+    'RS/6000', # computer
+    'Tenerife', # computer
+    'The Machine',  # computer
+    'Xerox Alto', # computer name
+    'zSeries', # computer series
+    'zSeries 900',  # computer series
+    'Digital trade chain',  # consortium
+    'Limo', # consortium
+    'Parlay Group', # consortium
+    'we.trade',  # consortium
+    'Capture the flag', # contest
+    'Bendgate', # controversy
+    'Schrems II', # court case
+    'OneCoin', # cryptocurrency
+    'peercoin', # cryptocurrency
+    'petro', # petromoneda # cryptocurrency
+    'petromoneda', # cryptocurrency
+    'ppcoin', # peercoin,  # cryptocurrency
+    'peercoin',  # cryptocurrency
+    'sand dollar', # cryptocurrency
+    'stablecoin',  # cryptocurrency
+    'Zcash', # cryptocurrency
+    'Shamoon', # data virus
+    'Million mask march', # demonstration, event
+    'WarGames', # film
+    'WebM', # format
+    'Craigslist', # forum
+    'Document Foundation', # foundation
+    'Linux Foundation', # foundation
+    'World Wide Web Foundation', # foundation
+    'Lucky', # framework
+    'MediaPipe',  # framework
+    'PyText',  # framework
+    'yggdrasil',  # framework
+    'Ethics and governance of artificial intelligence fund', # fund
+    'Ice bucket challenge', # fundraising campaign
+    'ALS Ice bucket challenge', # fundraising campaign
+    'Oftel', # government agency
+    'Authors united', # organization; group
+    'Botnik',  # group
+    'Ghostsec', # group
+    'Opdeatheaters',  # group
+    '#Opdeatheaters',  # group
+    'Strider', # group
+    'iDisorder', # illness
+    'netbrain',  # illness
+    'näthjärna' # illness
+    "Deterring America’s technological adversaries act", # law
+    'BBS-lagen', # law
+    'Clarifying lawful overseas use of data act', # law
+    'Communications assistance for law enforcement act', # law
+    'Communications decency act', # law
+    'Computer fraud and abuse act', # law
+    'DATA Act', # law
+    'Dataskyddsförordningen', # law
+    'FRA-lagen', # law
+    'General data protection regulation', # law
+    'Investigatory powers act', # law
+    'Lagen om tillgänglighet till digital offentlig service', # law
+    'Protective security act', # law
+    'Real ID', # law
+    'Section 230', # law
+    'Section 508',  # law
+    'Säkerhetsskyddslagen', # law
+    'The FRA Act',  # law
+    'Utredningsbefogenheter agerar', # law
+    'e-Signature Act', # law
+    'e-signaturlagen', # law
+    'inhämtningslagen', # law
+    'porn block', # law
+    'signals intelligence act', # law
+    'signalspaningslagen', # law
+    'signature act', # law
+    'the acquisition law',  # law
+    'San Bernardino-fallet', # legal case
+    'The Smaranda Bara case', # legal case
+    'Smaranda Bara-fallet', # legal case
+    'Mt. Gox', # marketplace
+    'Wish', # marketplace
+    'Puretone', # music player
+    'telex', # network
+    'Usenet', # network
+    'Yik Yak', # network
+    'Bugdrop', # operation
+    'Alexis de Tocqueville Institution', # organization
+    'Alliance for affordable internet',  # organization
+    'Alliance for open media', # organization
+    'Alliance for wireless power', # organization
+    'Allseen Alliance', # organization
+    'Anita Borg institute for women and technology', # organization
+    'Copyswede', # organization
+    'CryptoChicks', # organization
+    'Data management association international', # organization
+    'Digital due process' # organization
+    'FIDO Alliance',  # organization
+    'Freedom from Facebook and Google',  # organization
+    'Liberty Alliance',  # organization
+    'Musopen',  # organization
+    'OMA SpecWorks', # organization
+    'Old Pirate Bay',  # organization
+    'Open handset alliance', # organization
+    'Open mobile alliance',  # organization
+    'OpenLeaks', # organization
+    'Piratbyrån', # organization
+    'Privacy International',  # organization
+    'RISE ICT',  # organization
+    'RISE Interactive',  # organization
+    'RISE Viktoria', # organization
+    'Red Sky Alliance', # organization
+    'SANS Institute',  # organization
+    'SHARE',  # organization
+    'Sambi',  # organization
+    'Singularity Group',  # organization
+    'Singularity Institute', # organization
+    'Spridningskollen', # organization
+    'Tactical technology collective',  # organization
+    'opencoin',  # organization
+    'Catalyst',  # platform
+    'Meta Horizon Worlds',  # platform
+    'Mojo', # platform
+    'Mono', # platform
+    'Moonlight', # platform
+    'OpenNMS', # platform
+    'Tent.io', # platform
+    'txt.fyi', # platform
+    'A M Turing Award',# prize
+    'BCS Lovelace medal',  # prize
+    'Ig Nobel Prize',  # prize
+    'Nordic free software award',  # prize
+    'Pioneer Award', # prize
+    'Pwnie Awards', # prize
+    'Top companies for women technologists award', # prize
+    'Xprize', # prize
+    'Google Fi', # product
+    'Project Fi', # product
+    'Here', # product
+    'Hum',  # product
+    'Java 2, Micro Platform Edition',  # product
+    'Novell Directory Services', # product
+    'Netware Directory Services', # product
+    'Microsoft Dotnet', # product
+    'Yureka', # product
+    'YU Yureka', # product
+    "Apple's series of processors", # products
+    'id-locator split',  # proposal
+    'Chat Control' # proposed law
+    'ePrivacy', # proposed law
+    'Internet safety act', # proposed law
+    'Uniform computer information transactions act', # proposed law
+    'cjdns', # protocol
+    'Diameter', # protocol
+    'Diffie-Hellman', # protocol
+    'Direct Connect',  # protocol
+    'Edifact', # protocol
+    'OpenSSH', # protocol, software
+    'Sitemaps',  # protocol
+    'SOAP', # pseudoacronym, protocol
+    'SPDY', # protocol
+    'Weave', # protocol
+    'Dynabook', # prototype
+    'Eyeriss', # prototype
+    'Hypertaste', # prototype
+    'Itsy',  # prototype
+    'Millipede', # prototype
+    'NailO',  # prototype
+    'Telepathy', # prototype
+    'TickTock',  # prototype
+    'after work', # pseudo-anglicism    
+    'Computers and Automation', # publication
+    'Edupage',  # publication
+    '2600: The Hacker Quarterly', # publication
+    'Svenskarna och internet', # report
+    'Marty', # robot
+    'efail', # security vulnerability
+    'Bluffakuten', # service
+    'Botcheck.me', # service
+    'Botometer',  # service
+    'eBREV',  # service
+    'eDirectory', # service
+    'Fake name',  # service
+    'Free trial card', # service
+    'GenomSynlig', # service
+    'Google Duplex', # service
+    'Grok', # service
+    'Groove',  # service
+    'IDG Pro',  # service
+    'Integrity VPN',  # service
+    'Internet Noise',  # service
+    'isoHunt',  # service
+    'Izitru', # service
+    'Kazaa',  # service
+    'Keybase',  # service
+    'Kopo Kopo',  # service
+    'Lavabit',  # service
+    'Measurement Lab', # service
+    'M-Pesa', # service
+    'M-Shwari', # service
+    'Manbang',  # service
+    'Messenger', # service
+    'MobileMe',  # service
+    'MSN Direct', # service
+    'Musica piano',  # service
+    'Napster', # service, website
+    'Njalla',  # service, website
+    'NumberSync',  # service, website
+    'Payair',  # service, website
+    'PayPal Here',  # service, website
+    'Plurk',  # service, website
+    'Pony Express', # service, website
+    'Psiphon',  # service, website
+    'Quahl',  # service, website
+    'Rdio', # service, website
+    'Re:scam',  # service, website
+    'Amazon Rekognition',  # service, website
+    'Ripple',  # service
+    'Samizdat Online', # service
+    'Shamail',  # service
+    'Silent mail',  # service
+    'Siri',  # service
+    'skiffer',  # service
+    'SKY ECC',  # service
+    'Slack',  # service
+    'SmileSMS',  # service
+    'Square', # service
+    'Telegram', # service
+    'Torswats', # service
+    'Tutanota',  # service
+    'Twitch', # service
+    'Uphold', # service
+    'Venmo',  # service
+    'Video Shamail',  # service
+    'Viv',  # service
+    'vpntunnel.se',  # website; service
+    'what3words', # service
+    'Whispersync', # service
+    'WHOIS',  # service
+    'WHOIS++',  # service
+    'Wikiplays',  # service
+    'Wimp',# service
+    'Windows Live Messenger',  # service
+    'WyWallet', # service
+    'YouTube DataViewer',  # service
+    'YouTube Premium',  # service
+    'Zinio',  # service
+    'Zoom', # service
+    'Zopa', # service - see zopa.com
+    '1177 Vårdguiden', # service
+    'Cyworld',  # social network
+    'Mycube', # social network
+    'Myspace',  # social network
+    'Nearby', # social network
+    'Nearby Live', # social network
+    'Peach',  # social network
+    'Secret', # social network
+    'So.cl',  # social network
+    'Syme', # social network
+    'tbh',  # social network
+    'Whisper', # social network
+    'Adobe Animate CC', # software
+    'Adobe digital editions', # software
+    'Adobe Reader', # software
+    'Adobe RGB', # software
+    'AliOS', # software
+    'Augment', # software
+    'B.S. Detector', # software
+    'Brave', # software
+    'Cake', # software
+    'Citadel', # software
+    'Coast', # software
+    'Cobalt', # software
+    'Cubase', # software
+    'Cygwin', # software
+    'Dada Engine', # software
+    'DC++', # software
+    'DCS1000', # software
+    'DDOSIM', # software
+    'Dhwani', # software
+    'DivX', # software
+    'DxtER', # software
+    'E[z]RF', # software
+    'Flock', # software
+    'Freedom Box', # software
+    'Gecko', # software
+    'Gianduia', # software
+    'GiD', # software
+    'Go-oo', # software
+    'Gopher', # software
+    'GPTZero', # software
+    'Graffiti', # software
+    'haxie', # software
+    'nginx', # software
+    'O3D', # software
+    'OSSIM', # software
+    'Outlook Express', # software
+    'Polaris', # software
+    'StarOffice', # software
+    'Starsuite', # software
+    'VALL-E', # software
+    'WordPerfect', # software
+    'WordPerfect Office', # software
+    'Xfce', # software
+    'Chocolate rain', # song
+    'United breaks guitars', # song
+    'CalDav', # standard
+    'CDMA2000', # standard
+    'FireWire', # standard
+    'G.fast', # standard
+    'High efficiency video coding', # HEVC, H.265 - standard
+    'HomePlug', # standard
+    'IMT-2000', # standard
+    'IMT–Advanced', # standard
+    'ISO 27701', # standard
+    'ISO/IEC 8859-10', # standard
+    'ISO/IEC 8859-12', # standard
+    'ISO/IEC 8859-13', # standard
+    'ISO/IEC 8859-14', # standard
+    'ISO/IEC 8859-9', # standard
+    'ISO/IEC 8859‑1', # standard
+    'ISO/IEC 8859‑11', # standard
+    'ISO/IEC 8859‑15', # standard
+    'ISO/IEC 8859‑2', # standard
+    'ISO/IEC 8859‑3', # standard
+    'ISO/IEC 8859‑4', # standard
+    'ISO/IEC 8859‑5', # standard
+    'ISO/IEC 8859‑6', # standard
+    'ISO/IEC 8859‑7', # standard
+    'ISO/IEC 8859‑8', # standard
+    'KNX', # standard
+    'PCI DSS', # standard
+    'PCI Express', # standard
+    'PCI Express', # standard
+    'Power 2.0', # standard
+    'RadioDNS', # standard
+    'Red book', # standard
+    'Svefaktura', # standard
+    'Vulkan', # standard
+    'webCGM', # standard
+    'Wi-Fi Direct', # standard
+    'Aurora', # supercomputer
+    'Lovelacetest', # test
+    'Li‑Fi Consortium', # trade association
+    'The Green Grid', # trade association
+    'Green Grid', # trade organization
+    'Wi-Fi Alliance', # trade association
+    'Jericho Forum', # trade organization
+    'Khronos Group', # trade organization
+    'Smart TV Alliance', # trade organization
+    'Clickprint', # trademark
+    'SPECmark', # trademark
+    'Carnegie Mellon', # university
+    'Johns Hopkins University', # university
+    'Massachusetts institute of technology', # university
+    'Gnome', # user environment
+    'Knowledge navigator', # vision
+    'Onion Browser', # web browser
+    'Open Cobalt', # web browser
+    'Opera', # web browser
+    'Rockmelt', # web browser
+    'Vivaldi', # web browser
+    'AdNauseam', # web plugin
+    'Cuil', # web search engine
+    'Gitea', # web service
+    'Open Bay', # web site
+    'PostSecret', # web site
+    'Skiplagged', # web site
+    'XKCD', # webcomic
+    'Allmogens', # website
+    'Ashley Madison', # website
+    'Ask', # website
+    'Ask Delphi', # website
+    'Baike', # website
+    'Chatroulette', # website
+    'Defcad', # website
+    'del.icio.us', # website
+    'Delicious', # website
+    'digg.com', # website
+    'Dreamfilm', # website
+    'Etsy', # website
+    'Excite', # website
+    'Faktisk', # website
+    'Faktiskt.se', # website
+    'Photo forensics', # website
+    'Greatfire', # website
+    'Hitchhiker’s guide to the galaxy', # website
+    'Hidden Wiki', # website
+    'Kickass Torrents', # website
+    'Khelafabook, 5elafabook', # website
+    'Kickass Torrents',
+    'Kickstarter', # website
+    'Killed by Google', # website
+    'Killed by Microsoft', # website
+    'Pappas Appar', # website
+    'Potentially alarming research: Anonymous intelligence agency', # 'ParAnoIA' website
+    'ParAnoIA', # website
+    'Playpen', # website
+    'Privacy not included', # website
+    'Rapidshare', # website
+    'rentahitman.com', # website
+    'Ripoff Report', # website
+    'Sci-Hub', # website
+    'Snopes', # website
+    'Stack Overflow', # website
+    'Swefilmer', # website
+    'Swepiracy', # website
+    'Taobao', # website
+    'TheRealDeal', # website
+    'tystnainte.se', # website
+    'undertexter.se', # website
+    'Vintage pattern wikia', # website
+    'The Viral Reviewer', # website
+    'Viralgranskaren', # website
+    'Wayback machine', # website
+    'Webrangers', # website
+    'Wikenigma', # website
+    'WikiLeaks', # website
+    'XRSone', # website
+    'Mohoro', # working name
+    'Moneypenny', # working name
+    'Monolith Chaconne', # working name
+    'Myst', # working name
+    'Namoroka', # working name
+    'Shiretoko', # working name
+    'Silverthorne', # working name
+    'Blaster', # worm
+    'Conficker', # worm
+    'Teletel', # Minitel network
+
+    # Events
+    'Afrikaburn', # event
+    'Anarchapulco', # event
+    'Banned books week', # event
+    'Birdie', # event
+    'Break poverty', # event
+    '<Br/eak>Poverty', # event
+    'Burning man', # event
+    'CanSecWest', # event
+    'Code', # event
+    'Comdex', # event
+    'Comic Con', # event
+    'Computex', # event
+    'Conference on neural information processing systems', # event
+    'Consensus', # event
+    'Cybersuds', # event
+    'Document freedom day', # event
+    'Dokumentfrihetens dag', # event
+    'DreamHack', # event
+    'Emojicon', # event
+    'F8', # event
+    'foss-north', # event
+    'gamescom', # event
+    'Gamex', # event
+    'Geek pride day', # event
+    'Geekens dag', # event
+    'Gen Con', # event
+    'Grace Hopper celebration', # event
+    'Gnomedex', # event
+    'Good tech conference', # event
+    'Goto', # event
+    'Society and Defense', # event
+    'Folk och försvars', # event
+    'Hope 2002', # event
+    'Towel day', # event
+    'Handduksdagen', # event
+    'HoHoCon', # event
+    'Hackers on planet Earth, Hotel Pennsylvania', # event
+    'IFA', # event
+    'International caps lock day', # event
+    'Internet days', # event
+    'Internetdagarna', # event
+    'Mozilla Festival', # event, pseudoacronym
+    'MWC', # event, pseudoacronym
+    'National day of civic hacking', # event, pseudoacronym
+    'OneWebDay', # event
+    'Poverty hackathon', # event
+    'Quit Facebook day',
+    'Avsluta Facebook-dagen', # event
+    'Respawn', # event
+    'Safer internet day', # event
+    'Säkrare internetdag', # event
+    'Shmoocon', # event
+    'Singles’ day', # event
+    'Singeldagen', # event
+    'Stupid shit no one needs & terrible ideas hackathon, Stupid hackathon', # event
+    'Sundsvall 42', # event
+    'Valentine’s day', # event
+    'Alla hjärtans dag', # event
+    'World usability day', # event
+    'Världsanvändbarhetsdagen', # event
+    'World emoji day', # event
+    'Världsemojidagen', # event
+    'VHacks', # event
+    'Wikimania', # event
+    'Wisdom 2.0', # event
+    'World backup day', # event
+    'Världsbackupdagen', # event
+    'World usability day', # event
+    'Världsanvändbarhetsdagen', # event
+    'XOXO', # event
+    'Break poverty hackathon', # event
+
+    'C3D', # file format
+
+    # GQMc
 ]
 
 
 
 common_programming_languages=[ # libraries and functions
+    'OWL', # web ontology language
+    'React', # library
     'FMRIB', # software library - see diva2:1298660
     'NiBabel', # python library for accessing various image format - see diva2:1799683
     'ControlFreeC', # tool - diva2:855720
@@ -72485,6 +73086,7 @@ common_programming_languages=[ # libraries and functions
 # many of these would be considred: {'B2': 'Noun (proper name)'}
 names_of_persons=[
     #
+    'G Pascal',  # G Pascal Zachary
     'J.Lindeberg',
     'J.Lindebergs',
     'Martinez',
@@ -77327,7 +77929,7 @@ names_of_persons=[
     'Bézout',
     'Groszer',
     'Hohmann',
-
+    'Zennström',
 ]
 
 
@@ -77494,9 +78096,11 @@ common_german_words=[
     'Deutschland',
     'Einstellung',
     'Entscheidungsproblem',
+    'Entscheidungsproblem',
     'Flughafen',
     'Flugzeug',
     'Gedankenexperiment',
+    'Geheimfernschreiber',
     'Geheimfernschreiber',
     'Geheimschreiber',
     'GmbH',
@@ -77507,7 +78111,9 @@ common_german_words=[
     'Motoren',
     'Naturf', #from the shortened jounrnal name "Z. Naturf"
     'Netzwerkdurchsetzungsgesetz',
+    'Netzwerkdurchsetzungsgesetz',
     'Raumfahrt',
+    'Schlüsselfernschreibmaschine',
     'Schlüsselfernschreibmaschine',
     'Schweizerische',
     'Schwerionenforschung',
@@ -77527,12 +78133,9 @@ common_german_words=[
     'nachster',
     'sozialforschung',
     'telekommunikationsnetzte',
+    'umlaut'
     'und',
     'zentrum',
-    'Entscheidungsproblem',
-    'Geheimfernschreiber',
-    'Schlüsselfernschreibmaschine',
-    'Netzwerkdurchsetzungsgesetz',
 
 ]
 
