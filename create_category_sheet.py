@@ -589,6 +589,16 @@ def main():
     # now check to see of this word is known already
     new_words=[]
     for w in unique_words:
+
+        if isinstance(w, float):
+            print(f"float::: '{w}'")
+            continue
+
+        if isinstance(w, int):
+            print(f"float::: '{w}'")
+            continue
+
+
         if w in common_english.common_English_words:
             continue
 
@@ -695,14 +705,17 @@ def main():
             if isinstance(ctg.value, str):
                 if ctg.value and ctg.value[0] == '=': # skip formulas
                     continue
-                if 'jargon' in ctg.value:
-                    continue
-                if 'nät- och sms-språk' in ctg.value:
-                    continue
+                # if 'jargon' in ctg.value:
+                #     continue
+                # if 'nät- och sms-språk' in ctg.value:
+                #     continue
 
             if isinstance(e_word.value, str):
                 ewv=e_word.value.strip()
                 ewv=ewv.replace('\j', ' ')
+
+                if ewv == 'spamment':
+                    print(f"FOUND: '{ewv=}'")
 
             if e_word.value not in new_words:
                 continue
@@ -796,6 +809,25 @@ def main():
             possible=False
             a_match=False
             for w in common_acronyms.well_known_acronyms_list:
+                if len(w) < 2:
+                    print(f"Too short error in entry: {w}")
+                    continue
+                if awv == w[0]:
+                    possible=True
+                if ewv == w[1] or  ewv == w[1]:
+                    a_match=True
+
+            if a_match:
+                print(f"KNOWN: {output_line}")
+            else:
+                if possible:
+                    print(f"POSSIBLE: {output_line}")
+                else:
+                    print(f"NEW: {output_line}")
+
+            possible=False
+            a_match=False
+            for w in common_acronyms.less_well_known_acronyms_list:
                 if len(w) < 2:
                     print(f"Too short error in entry: {w}")
                     continue

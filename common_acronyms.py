@@ -943,7 +943,7 @@ well_known_acronyms_list=[
     ['CEP', 'Complex Event Processing', {'s': ['diva2:872469']}],
     ['CER', 'Character Error Rate', {'s': ['diva2:1463587']}],
     ['CERN', 'European Organization for Nuclear Research', {'s': ['diva2:1557602, diva2:859500, diva2:1252665, diva2:1259247'], 'n': 'used but not defined', 'fre': 'Organisation européenne pour la recherche nucléaire'}],
-    ['CERT', 'Computer Emergency Response Team', {'s': 'diva2:1868197'}],
+    ['CERT', 'Computer Emergency Response Team', {'s': 'diva2:1868197'}], # pseudoacronym
     ['CES', 'Consumer electronics show'], # event
     ['CES', 'Continuously Controlled Electronic Suspension', {'s': ['diva2:584007']}],
     ['CESBIO', "Centre d'Etudes Spatiales de la Biosphère", {'s': ['diva2:1584546']}],
@@ -3134,6 +3134,7 @@ well_known_acronyms_list=[
     ['IS95', 'Interim Standard 95', {'s': ['diva2:470923'], 'n': 'IS95 CDMA - also known as CDMAOne'}],
     ['ISA', 'instruction set architecture', {'swe': 'instruktionsuppsättning'}],
     ['ISAAC', 'Infrared Spectroscopy to Analyse the middle Atmosphere Composition', {'s': ['diva2:738463']}],
+    ['ISACA', 'ISACA'], # pseudoacronym - orginally "Information systems audit and control association"
     ['ISAM', 'indexed sequential access method', {'swe': 'indexsekventiell åtkomstmetod'}],
     ['ISAN', 'international standard audiovisual number', {'swe': 'internationell standard audiovisuellt nummer'}],
     ['ISBN', 'international standard book number', {'swe': 'standardboknummer, internationellt standardboknummer'}],
@@ -7353,6 +7354,10 @@ well_known_acronyms_list=[
 
     ['CSRG', 'The Austin Common Standards Revision Group'], # standards organization
     ['CGGTY', 'Compiler Guided Greedy Then Youngest'], # from https://arxiv.org/pdf/2503.20481
+    ['bae', 'before anyone else', {'swe': 'före någon annan'}], # backronym
+    ['FREAK', 'Factoring RSA Export Keys'],
+    ['tl;dr', 'too long; didn’t read'],
+    
     #GQMa
 
 ]
@@ -7519,6 +7524,7 @@ less_well_known_acronyms_list=[
     ['ninja', 'no income, no job or assets', {'swe': 'ingen inkomst, inget jobb eller tillgångar'}],
     ['ooc', 'out of character', {'swe': '”utanför rollen”'}],
     ['oki', '"okay!"', {'swe': '”okej!”'}],
+    ['ÖMDK', 'over my dead body!', {'swe': 'över min döda kropp!'}], # jargon
 
 ]
 

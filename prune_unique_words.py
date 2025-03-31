@@ -114,6 +114,8 @@
 # Google Bard says it is *A2', while in SVALex it most frequently occurs as 'C1'. and the Kelly list says it is 'A1'.
 # It is common that when there is disagreement, that the levels are +/-1 of the other source(s).
 #
+# 2025.03.31 add levels: 'D1', 'D2' for the Oxford academic levels
+#
 # 2023.12.05
 #
 # G. Q. Maguire Jr.
@@ -1185,7 +1187,7 @@ def is_improbable_word(s):
     return False
 
 def choose_lowest_cefr_level(wl):
-    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'xx']
     for l in level_order:
         if l in wl:
             return l
@@ -1194,7 +1196,7 @@ def choose_lowest_cefr_level(wl):
     return False
 
 def cefr_level_index(wl):
-    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'xx']
     for l in level_order:
         if l in wl:
             return l
@@ -1202,7 +1204,7 @@ def cefr_level_index(wl):
     print(f'error in cefr_level_index({w1})')
 
 def choose_lowest_cefr_level_from_two(w1, w2):
-    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'xx']
     if cefr_level_index(w1) < cefr_level_index(w2):
         return w1
     else:
@@ -1214,14 +1216,14 @@ def choose_lowest_cefr_level_from_two(w1, w2):
     return False
 
 def cefr_level_to_index(li):
-    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'xx']
     for indx, l in enumerate(level_order):
         if li == l:
             return indx
     return False
 
 def compare_cefr_levels(l1, l2):
-    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+    level_order=['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'xx']
     l1i=cefr_level_to_index(l1)
     l2i=cefr_level_to_index(l2)
     if isinstance(l1i, int) and isinstance(l2i, int):
@@ -2814,7 +2816,7 @@ def main():
         #
 
         # Create a data frame to put the satsiical data in
-        col_names =  ['Input', 'Source', 'total', 'percentage', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'xx']
+        col_names =  ['Input', 'Source', 'total', 'percentage', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2', 'xx']
         stats_df  = pd.DataFrame(columns = col_names)
 
 
