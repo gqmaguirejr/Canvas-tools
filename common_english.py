@@ -58171,6 +58171,59 @@ common_English_words={
     'cryptographer': {'C1': 'Noun'}, # Specialized noun, referring to a person who designs or analyzes ciphers.
     'cybercasing': {'xx': 'Verb'}, # Slang, referring to online reconnaissance before committing a crime.
     'cyberchondriacs': {'xx': 'Noun'}, # Slang, referring to people who obsessively research health symptoms online.
+    'cyrillic': {'B2': 'Adjective, Noun'}, # Relatively common word, referring to the Cyrillic alphabet.
+    'dag-tag': {'xx': 'Noun'}, # Jargon, referring to a data aggregation tag.
+    'data drop': {'xx': 'Noun'}, # Slang, referring to a release of data, often unauthorized.
+    'data smog': {'xx': 'Noun'}, # Jargon/Slang, referring to information overload.
+    'data lexicographer': {'xx': 'Noun'}, # Jargon, referring to a person who defines data elements.
+    'datasphere': {'C1': 'Noun'}, # Relatively specialized term, referring to the digital environment.
+    'date': {'A1': 'Noun, Verb', 'A2': 'Noun, Verb'}, # Common word with various meanings (calendar date, romantic appointment).
+    'dead tree': {'xx': 'Noun'}, # Slang, referring to printed documents.
+    'debbie': {'xx': 'Noun'}, # Slang, often derogatory, referring to someone who is negative or pessimistic.
+    'deface': {'B2': 'Verb'}, # Common verb, meaning to vandalize or disfigure.
+    'defenestration': {'C1': 'Noun'}, # Relatively formal word, meaning the act of throwing someone out of a window.
+    'defenestrate': {'C1': 'Verb'}, # Relatively formal word, meaning to throw someone out of a window.
+    'desktop warrior': {'xx': 'Noun'}, # Slang, referring to an office worker who is perceived as unproductive.
+
+    'devnull': {'xx': 'Noun'}, # Technical jargon, referring to a null device in Unix-like operating systems.
+    'dev null': {'xx': 'Noun phrase'}, # Technical jargon, referring to a null device in Unix-like operating systems.
+    '/dev/null': {'xx': 'Noun'}, # Technical notation, referring to a null device in Unix-like operating systems.
+    'dumb fuck module': {'xx': 'Noun phrase'}, # Extremely offensive and vulgar slang, referring to user error.
+    'diaper change': {'A2': 'Noun phrase', 'B1': 'Noun phrase'}, # Common phrase, referring to changing a baby\'s diaper.
+    'digerati': {'xx': 'Noun'}, # Slang, referring to the elite of the digital world.
+    'digital hangover': {'xx': 'Noun phrase'}, # Slang, referring to the negative effects of excessive digital technology use.
+    'digital nomad': {'B2': 'Noun'}, # Relatively common term, referring to someone who works remotely and travels.
+    'digital vegan': {'xx': 'Noun'}, # Slang, referring to someone who tries to avoid digital technology.
+    'disruptive technology': {'B2': 'Noun phrase', 'C1': 'Noun phrase'}, # Common term in business and technology, referring to innovations that change industries.
+    'death march': {'xx': 'Noun phrase'}, # Jargon, referring to a project that is likely to fail.
+    'dog food': {'xx': 'Verb'}, # Jargon, referring to using a company\'s own products internally before release.'
+    'dog food': {'A2': 'Noun', 'xx': 'Verb'}, # Common noun, referring to the food for dogs.; Verb:  Jargon, referring to using a company\'s own products internally before release (often as "to dog food").
+    'doggo': {'xx': 'Noun'}, # Internet slang, referring to a dog.
+    'make a mess and look like an idiot': {'xx': 'Phrase'}, # Informal, descriptive phrase, not standard vocabulary.
+    'dork': {'A2': 'Noun', 'B1': 'Noun'}, # Common noun, referring to a socially awkward or inept person.
+    'dorking': {'xx': 'Verb'}, # Technical slang, referring to using search queries to find vulnerabilities or information.
+    'dot snot': {'xx': 'Noun'}, # Slang, referring to the residue left on a screen after removing a sticker.
+    'dot-commie': {'xx': 'Noun'}, # Slang, referring to someone who worked for a dot-com company.
+    'documents': {'A2': 'Noun'}, # Common noun, referring to written or printed matter.
+    'doxing': {'xx': 'Verb/Noun'}, # Internet slang, referring to publicly revealing someone\'s private information.
+    'doxxing': {'xx': 'Verb, Noun'}, # Variant of "doxing," same meaning.
+    'drailing': {'xx': 'Verb'}, # Slang, "sending embarrassing email when drunk" - drunk dialing (fylleringning) och derailing (köra av spåret)
+    'android': {'B1': 'Noun', 'B2': 'Noun'}, # Common noun, referring to a mobile operating system or a robot.
+    'drone+selfie': {'xx': 'Noun'}, # Slang, referring to a selfie taken with a drone.
+    'to dweet': {'xx': 'Verb'}, # Slang, meaning to send tweets while drunk.
+    'e-anything': {'xx': 'Prefix'}, # General prefix, indicating electronic or online, but individual words are usually classified separately.
+    'e-bandon': {'xx': 'Verb'}, # Slang, blending "electronic" and "abandon," meaning to leave behind one\'s digital presence.
+    'e-lationship': {'xx': 'Noun'}, # Slang, blending "electronic" and "relationship," meaning a relationship conducted online.
+    'elationship': {'xx': 'Noun'}, # Variant of "e-lationship," same meaning.
+    'electronic device': {'A2': 'Noun phrase', 'B1': 'Noun phrase'}, # Common phrase, referring to a device that uses electricity.
+    'earballs': {'xx': 'Noun'}, #  play on "eyeballs," referring to attracting listeners (e.g., in audio broadcasting).
+    'edupunk': {'xx': 'Noun'}, # Slang, referring to a philosophy or movement emphasizing self-directed learning.
+    'eighty-six': {'xx': 'Verb'}, # Slang, meaning to reject or exclude.
+    'to 86': {'xx': 'Verb'}, # Variant of "eighty-six," same meaning.
+    'Error-40': {'xx': 'Noun'}, # Slang, referring to a person who is clueless or missing something.
+    'evil maid': {'xx': 'Noun phrase'}, # Technical jargon, referring to a type of computer attack.
+    'exaflood': {'C2': 'Noun', 'xx': 'Noun'}, # Technical jargon, referring to a massive data flood. - understandable within specifiec fields (C2), but not yet common, hence the xx
+    'exa-tsunami': {'C2': 'Noun', 'xx': 'Noun'}, # Technical jargon, variant of exaflood. - understandable within specifiec fields (C2), but not yet common, hence the xx
 
 
 }

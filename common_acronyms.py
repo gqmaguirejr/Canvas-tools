@@ -7354,7 +7354,6 @@ well_known_acronyms_list=[
 
     ['CSRG', 'The Austin Common Standards Revision Group'], # standards organization
     ['CGGTY', 'Compiler Guided Greedy Then Youngest'], # from https://arxiv.org/pdf/2503.20481
-    ['bae', 'before anyone else', {'swe': 'före någon annan'}], # backronym
     ['FREAK', 'Factoring RSA Export Keys'],
     ['tl;dr', 'too long; didn’t read'],
     
@@ -7386,6 +7385,7 @@ less_well_known_acronyms_list=[
     ['BYOS', 'bring your own software', {'swe': 'ta med din egen mjukvara'}],
     ['BYOSM', 'bring your own social media', {'swe': 'ta med egna sociala medier'}],
     ['BYOX', 'bring your own X', {'swe': 'ta med ditt eget X'}],
+    ['bae', 'before anyone else', {'swe': 'före någon annan'}], # backronym
     ['C. H. I. P', 'cellular vehicle-to-everything.'], # computer
     ['CB3ROB', 'CyberBunker'], # company
     ['CXO', 'chief XXX officer, chief change officer'],
