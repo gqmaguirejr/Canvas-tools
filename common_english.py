@@ -58205,7 +58205,7 @@ common_English_words={
     'dot snot': {'xx': 'Noun'}, # Slang, referring to the residue left on a screen after removing a sticker.
     'dot-commie': {'xx': 'Noun'}, # Slang, referring to someone who worked for a dot-com company.
     'documents': {'A2': 'Noun'}, # Common noun, referring to written or printed matter.
-    'doxing': {'xx': 'Verb/Noun'}, # Internet slang, referring to publicly revealing someone\'s private information.
+    'doxing': {'xx': 'Verb, Noun'}, # Internet slang, referring to publicly revealing someone\'s private information.
     'doxxing': {'xx': 'Verb, Noun'}, # Variant of "doxing," same meaning.
     'drailing': {'xx': 'Verb'}, # Slang, "sending embarrassing email when drunk" - drunk dialing (fylleringning) och derailing (köra av spåret)
     'android': {'B1': 'Noun', 'B2': 'Noun'}, # Common noun, referring to a mobile operating system or a robot.
@@ -58224,6 +58224,288 @@ common_English_words={
     'evil maid': {'xx': 'Noun phrase'}, # Technical jargon, referring to a type of computer attack.
     'exaflood': {'C2': 'Noun', 'xx': 'Noun'}, # Technical jargon, referring to a massive data flood. - understandable within specifiec fields (C2), but not yet common, hence the xx
     'exa-tsunami': {'C2': 'Noun', 'xx': 'Noun'}, # Technical jargon, variant of exaflood. - understandable within specifiec fields (C2), but not yet common, hence the xx
+    'F9': {'xx': 'Noun'}, # Jargon, referring to a function key on a keyboard, often used in specific software or games.
+    'facepalm': {'xx': 'Noun, Verb'}, # Internet slang, referring to the gesture of covering one\'s face in exasperation.
+    '*facepalm*': {'xx': 'Interjection, Phrase'}, # Internet slang, an emphatic form of "facepalm," used in text.
+    '*face palm*': {'xx': 'Interjection, Phrase'}, # Variant of "*facepalm*," same meaning.
+    'face palm': {'xx': 'Noun, Verb'}, # Less common variant of "facepalm," same meaning.
+    'failure': {'A2': 'Noun'}, # Common noun, referring to a lack of success.
+    'faith-driven development': {'xx': 'Noun'}, # Jargon, referring to a software development approach that relies on assumptions rather than evidence.
+    'faketastic': {'xx': 'Adjective'}, # Slang, blending "fake" and "fantastic," meaning deceptively impressive.
+    'fat finger': {'xx': 'Noun, Verb'}, # Slang, referring to a typing error caused by pressing the wrong key.
+    'fauxcellarm': {'xx': 'Noun'}, # Slang, referring to a fake wine cellar or display.
+    'false alarm': {'B1': 'Noun phrase'}, # Common phrase, referring to an alert that turns out to be incorrect.
+    'fully buzzword-compliant': {'xx': 'Adjective phrase'}, # Slang, referring to something that uses many trendy buzzwords.
+    'Fejan': {'xx': 'Noun'}, # Slang, referring to Facebook.
+    'fidget': {'B1': 'Verb, Noun', 'B2': 'Verb, Noun'}, # Common word, referring to restless movements.
+    'fine business': {'xx': 'Phrase'}, # Sarcastic phrase, meaning "not good" or "a disaster."
+    'fingature': {'xx': 'Noun'}, # Slang, blending "finger" and "signature," referring to a signature made with a finger on a touchscreen.
+    'fisking': {'xx': 'Verb, Noun'}, # Internet slang, referring to a detailed, often critical, analysis or debunking.
+    'fear of missing out': {'B2': 'Noun phrase'}, # Common phrase, often abbreviated as FOMO, referring to anxiety about missing social events.
+    'forestware': {'xx': 'Noun'}, # Slang, referring to software that is complex and difficult to navigate.
+    'freetard': {'xx': 'Noun. Offensive slang, blending "free" and "retard," referring to someone who advocates for free software.'},
+    'frenemies': {'B2': 'Noun'}, # Common word, blending "friends" and "enemies," referring to people who have a relationship with elements of both.
+    'friction': {'B2': 'Noun'}, # Common word, referring to conflict or resistance.
+    'fridge bot': {'xx': 'Noun'}, # Slang, referring to a bot or automated system that provides information or advice.
+    'hold on for dear life': {'B2': 'Verb phrase'}, # Common idiom, meaning to hold on tightly.
+    'honeypot': {'xx': 'Noun'}, # Jargon, referring to a decoy system to attract attackers.
+    'honey pot': {'xx': 'Noun'}, # Jargon, referring to a decoy system to attract attackers.
+    'hunt-and-peck': {'xx': 'Verb'}, # Slang, referring to a typing method.
+    'i-anything': {'xx': 'Prefix'}, # General prefix, indicating something related to Apple products, but individual words are usually classified separately.
+    'iBore': {'xx': 'Noun'}, # Slang, a derogatory term for Apple products or users.
+    'idiot': {'A2': 'Noun'}, # Common noun, referring to a foolish person.
+    'iHunch': {'xx': 'Noun'}, # Slang, referring to poor posture caused by using Apple products.
+    'innerwebz': {'xx': 'Noun'}, # Slang, a variant of "interwebs"
+    'internexit': {'xx': 'Noun'}, # Slang, blending "internet" and "exit," referring to leaving the interne.
+    'interweb': {'xx': 'Noun'}, # Slang, variant of "internet".
+    'interwebz': {'xx': 'Noun'}, # Slang, variant of "internet".
+    'intexticated': {'xx': 'Adjective'}, # Slang, blending "internet" and "intoxicated," meaning distracted by the internet.
+    'irritainment': {'xx': 'Noun'}, # Slang, blending "irritation" and "entertainment," referring to annoying entertainment.
+    'The Jargon file': {'xx': 'Noun phrase'}, # Proper noun/title, reference to a dictionary of hacker jargon.
+    'Just a Bunch of Disks': {'xx': 'Noun phrase'}, # Jargon, an acronym for JBOD.
+    'geekerati': {'xx': 'Noun'}, # Slang.
+    'gibbing': {'xx': 'Verb', 'xx': 'Noun'}, # Slang, mainly used in gaming.
+    'gamming marathon': {'xx': 'Noun phrase'}, # Slang.
+    'glasshole': {'xx': 'Noun'}, # Slang.
+    'glurge': {'xx': 'Noun'}, # Slang.
+    'go native': {'xx': 'Verb phrase'}, # Idiom.
+    'goatrope': {'xx': 'Noun'}, # Jargon.
+    'goat rope': {'xx': 'Noun phrase'}, # Variant of goatrope, Jargon.
+    'griefer': {'xx': 'Noun'}, # Slang, mainly used in gaming.
+    'hackerati': {'xx': 'Noun'}, # Slang, referring to the elite of the hacking community.
+    'hackintosh': {'xx': 'Noun'}, # Jargon, referring to a non-Apple computer that runs macOS.
+    'heisenbug': {'xx': 'Noun'}, # Jargon, referring to a software bug that changes behavior when examined.
+    '"highest paid person’s opinion”': {'xx': 'Noun phrase'}, # Jargon, referring to decision-making based on seniority rather than merit.
+    'Illegal file-sharing': {'B2': 'Noun phrase', 'C1': 'Noun phrase'},  #Common phrase, referring to the unauthorized distribution of copyrighted material.
+    'bad sharing': {'xx': 'Noun phrase'}, # Euphemism, referring to Illegal file-sharing.
+    'gadget': {'B1': 'Noun'}, # Common noun, referring to a small, useful machine or device.
+    'old computer': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun'}, # Common noun phrase.
+    'gate': {'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun', 'C1': 'Noun', 'C2': 'Noun', 'A2': 'Verb', 'B1': 'Verb'}, # Common word with multiple meanings.
+    'geek': {'B1': 'Noun', 'B2': 'Noun'}, # Common noun.
+    'plug in': {'A2': 'Verb', 'B1': 'Verb'}, # Common verb phrase.
+    'connect': {'A2': 'Verb', 'B1': 'Verb'}, # Common verb.
+    'glass': {'A1': 'Noun'}, # Common noun.
+    'glitch': {'B1': 'Noun', 'B2': 'Noun', 'B1': 'Verb', 'B2': 'Verb'}, # Common word.    
+    'gremlin': {'B2': 'Noun'}, # Common noun.
+    'grey hat hacker': {'xx': 'Noun phrase'}, # Jargon.
+    'grief': {'B2': 'Verb', 'C1': 'Verb', 'B2': 'Noun', 'C1': 'Noun'}, # Common word.
+    'guru': {'B2': 'Noun'}, # Common noun.
+    'straw man': {'B2': 'Noun'}, # Common term, referring to a logical fallacy.
+    'ham': {'A2': 'Noun'}, # Common noun, referring to a type of meat.
+    'handwaving': {'B2': 'Noun', 'C1': 'Noun'}, # Term used to describe superficial explanation.
+    'hang': {'A2': 'Verb', 'B1': 'Verb'}, # Common verb with multiple meanings.
+    'to hang': {'A2': 'Verb', 'B1': 'Verb'}, # Variant of "hang", same meanings.
+    'juice': {'A2': 'Noun'}, # Common noun, referring to liquid from fruit or vegetables.
+    'juice jacking': {'xx': 'Noun'}, # Jargon, referring to a type of cyberattack.
+    'juicejacking': {'xx': 'Noun'}, # Variant of juice jacking, same meaning.
+    'centaur': {'B2': 'Noun', 'C1': 'Noun'}, # Common noun, referring to a mythical creature.
+    'cool': {'A2': 'Adjective, Noun', 'B1': 'Adjective, Noun', 'B2': 'Noun'}, # Common word with multiple meanings.
+    'killfie': {'xx': 'Noun'}, # Slang, referring to a selfie taken in a dangerous situation.
+    'viral content': {'B2': 'Noun'}, # Common phrase, referring to content that spreads rapidly online.
+    'click magnet': {'xx': 'Noun'}, # Slang, referring to something designed to attract clicks online.
+    'kludge': {'xx': 'Noun, Verb'}, # Jargon, referring to a makeshift or inefficient solution.
+    'kluge': {'xx': 'Noun, Verb'}, # Variant of kludge, same meaning.
+    'commentary': {'B2': 'Noun'}, # Common noun, referring to a spoken or written explanation.
+    'kudos': {'B2': 'Noun'}, # Common noun, referring to praise or credit.
+    'quit': {'A2': 'Verb', 'B1': 'Verb'}, # Common verb, meaning to stop or resign.
+    'laptop zombie': {'xx': 'Noun'}, # Slang, referring to someone engrossed in their laptop.
+    'listicle': {'xx': 'Noun'}, # Slang, referring to an article presented as a list.
+    'lurk more': {'xx': 'Verb phrase'}, # Internet slang, advice to observe before participating online.
+    'magic cookie': {'xx': 'Noun'}, # Jargon, referring to a small piece of data used by websites.
+    'malcode': {'xx': 'Noun'}, # Jargon, short for malicious code.
+    'mandelbug': {'xx': 'Noun'}, # Jargon, referring to a software bug with unpredictable behavior.
+    'meatloaf': {'A2': 'Noun'}, # Common noun, referring to a dish.
+    'Metal': {'A2': 'Noun'}, # Common noun, referring to a type of music.
+    'middle school dance': {'A2': 'Noun'}, # Common phrase, referring to a school dance.
+    'milliwheaton': {'xx': 'Noun'}, # Jargon, a unit of measurement for online popularity.
+    'mod': {'B2': 'Noun', 'B2': 'Verb'}, # Short for modification.
+    'to mod': {'B2': 'Verb'}, # Variant of mod, same meaning.
+    'mommy-save': {'xx': 'Verb'}, # Slang, referring to a feature that helps parents.
+    'monitor shopping': {'xx': 'Verb'}, # Jargon, referring to comparing computer monitors.
+    'rage quit': {'xx': 'Verb'}, # Slang, meaning to abruptly quit in anger.
+    'mouse race': {'xx': 'Noun'}, # Jargon, referring to competition among software.
+    'mug me earphones': {'xx': 'Noun'}, # Slang, referring to headphones that make someone a target.
+    'mystery house': {'xx': 'Noun'}, # Common phrase, referring to a type of game.
+    'newbie': {'xx': 'Noun'}, # Slang, referring to a new or inexperienced person.
+    'newb': {'xx': 'Noun'}, # Variant of newbie, same meaning.
+    'neighbornet': {'xx': 'Noun'}, # Jargon, referring to a local network.
+    'neo-luddite': {'B2': 'Noun'}, # Term, referring to someone opposed to technology.
+    'nerd bird': {'xx': 'Noun'}, # Slang, referring to someone who is nerdy.
+    'nerfto nerf': {'xx': 'Verb'}, # Gaming slang, referring to weakening a character.
+    'nerfing': {'xx': 'Verb'}, # Gaming slang, referring to weakening a character.
+    'nickname': {'A2': 'Noun'}, # Common noun, referring to an informal name.
+    'ninja': {'B1': 'Noun'}, # Common noun, referring to a Japanese warrior.
+    'noisy neighbor': {'xx': 'Noun'}, # Jargon, referring to a source of interference.
+    'noisy neighbour': {'xx': 'Noun'}, # Variant of noisy neighbor, same meaning.
+    'nomophobia': {'xx': 'Noun'}, # Slang, referring to the fear of being without a phone.
+    'noob': {'xx': 'Noun'}, # Variant of newbie, same meaning.
+    'nub': {'xx': 'Noun'}, # Variant of newbie, same meaning.
+    'NoOps': {'xx': 'Noun'}, # Jargon, referring to a hands-off approach to IT.
+    'normie': {'xx': 'Noun'}, # Slang, referring to a mainstream person.
+    'notspot': {'xx': 'Noun'}, # Slang, referring to a place without internet.
+    'the unclickable': {'xx': 'Noun'}, # Jargon, referring to something that cannot be clicked.
+    'disruptive technology': {'B2': 'Noun'}, # Common business phrase.
+    'on-premises': {'B2': 'Adjective'}, # Common business phrase.
+    'malcode': {'xx': 'Noun'}, # Jargon, short for malicious code.
+    'open the drapes': {'xx': 'Verb phrase'}, # Slang, referring to revealing information.
+    'organ donor': {'xx': 'Noun'}, # Slang, referring to someone who shares files.
+    'organizational doxing': {'xx': 'Noun'}, # Jargon, referring to revealing information about a company.
+    'overshare': {'B2': 'Verb'}, # Common verb, meaning to reveal too much.
+    'p0wn': {'xx': 'Verb'},  # Internet/gaming slang, variant of "pwn."
+    'pc bang': {'xx': 'Noun'},  # Term from Korea, referring to a type of internet café.
+    'peanut-buttering': {'xx': 'Verb'},  # Jargon, referring to spreading resources thinly.
+    'per-hop behavior': {'xx': 'Noun'},  # Technical jargon from networking.
+    'percussive maintenance': {'xx': 'Noun'},  # Jargon, humorous term for fixing something by hitting it.
+    'phablet': {'xx': 'Noun'},  # Jargon, referring to a large smartphone.
+    'phile': {'xx': 'Suffix/Noun'},  # Suffix/noun, indicating a love or fondness for something.
+    'phone fishing': {'xx': 'Noun'},  # Slang, referring to phishing scams via phone calls.
+    'phone screwing': {'xx': 'Noun'},  # Slang, referring to a type of phone scam.
+    'phubbing': {'xx': 'Verb'},  # Slang, referring to ignoring someone in favor of a phone.
+    'pink': {'A2': 'Adjective', 'A2': 'Noun'},  # Common word.
+    'pixel counting': {'xx': 'Verb'},  # Technical jargon, referring to analyzing image resolution.
+    'plonk': {'xx': 'Verb'},  # Slang, meaning to place something carelessly.
+    'plugspreading': {'xx': 'Verb'},  # Slang, referring to spreading malware via USB drives.
+    'pogo sticking': {'xx': 'Verb'},  # Technical jargon, referring to a user behavior online.
+    'pointy-haired boss': {'xx': 'Noun'},  # Slang, referring to an incompetent manager.
+    'porch pirate': {'xx': 'Noun'},  # Slang, referring to someone who steals packages from porches.
+    'porn mode': {'xx': 'Noun'},  # Slang, referring to a feature that hides browsing history.
+    'postdigital': {'xx': 'Adjective'},  # Term, referring to the era after digital technology.
+    'prefixes for multiples': {'xx': 'Noun phrase'},  # Technical term.
+    'presentation': {'B1': 'Noun', 'B2': 'Noun'},  # Common word.
+    'presentation': {'B1': 'Noun', 'B2': 'Noun'},  # Redundant entry, should be combined with the previous.
+    'problem exists between chair and keyboard': {'xx': 'Phrase'},  # Jargon, referring to user error.
+    'pundit': {'B2': 'Noun'},  # Common word, referring to an expert commentator.
+    'punk': {'B1': 'Noun', 'B2': 'Noun'},  # Common word with multiple meanings.
+    'pwn': {'xx': 'Verb'},  # Internet/gaming slang, meaning to dominate or defeat.
+    'quantifier': {'C1': 'Noun'},  # Mathematical/linguistic term.
+    'tablet neck': {'xx': 'Noun'},  # Slang, referring to neck pain from tablet use.
+    'tablet pedagogy': {'C1': 'Noun'},  # More specialized educational term.
+    'tablet-based learning': {'B2/C1': 'Noun'},  # Educational term, fairly common.
+    'tech neck': {'xx': 'Noun'},  # Slang, similar to "tablet neck," but broader.
+    'to pimp': {'xx': 'Verb'},  # Slang, meaning to customize or modify.
+    'tp poke': {'xx': 'Verb'},  # Slang, referring to a prank or annoying online action.
+    'ragescroll': {'xx': 'Verb'}, # Internet slang, to scroll rapidly and angrily.
+    'ravioli programming': {'xx': 'Noun'}, # Technical jargon, referring to a modular programming style.
+    'resource description format': {'C1': 'Noun'}, # Technical term, often abbreviated as RDF.
+    'refusenik': {'C1': 'Noun'}, # Term, often with historical context, referring to someone who refuses to comply.
+    'regular user': {'A2': 'Noun'}, # Common phrase.
+    'ringxiety': {'xx': 'Noun'}, # Slang, anxiety about hearing a phone ring.
+    'road warrior': {'B2': 'Noun'}, # Common term, referring to someone who travels frequently for work.
+    'samurai': {'B1': 'Noun'}, # Common noun, referring to a Japanese warrior.
+    'to scrump': {'xx': 'Verb'}, # British slang, to steal fruit from an orchard.
+    'sea-lioning': {'xx': 'Verb'}, # Internet slang, to harass someone with disingenuous questions.
+    'to sea-lion': {'xx': 'Verb'}, # Variant of sea-lioning, same meaning.
+    'to sealion': {'xx': 'Verb'}, # Variant of sea-lioning, same meaning.
+    'sealioning': {'xx': 'Noun'}, # Variant of sea-lioning, same meaning.
+    'gish galloping': {'xx': 'Verb'}, # Internet slang, to overwhelm someone with arguments.
+    'semantic attack': {'xx': 'Noun'}, # Technical jargon, referring to a type of cyberattack.
+    'server hog': {'xx': 'Noun'}, # Technical jargon, referring to a process that uses excessive server resources.
+    'shade': {'xx': 'Noun', 'xx': 'Verb'}, # Slang, referring to a subtle insult or criticism.
+    'sharent': {'xx': 'Noun'}, # Slang, referring to a parent who overshares about their children online.
+    'sharewashing': {'xx': 'Noun'}, # Slang, referring to exaggerating the sharing features of a product.
+    'sheepdip': {'xx': 'Verb'}, # Jargon, referring to encrypting data.
+    'sheep dipping': {'xx': 'Noun'},  # Jargon, referring to the process of giving someone a cover identity for covert operations.
+    'footbath': {'A2': 'Noun'}, # Common noun, referring to a bath for feet.
+    'shitcoin': {'xx': 'Noun'}, # Slang, referring to a cryptocurrency with little value.
+    'skeet': {'xx': 'Verb'}, # Slang, referring to an outdated handheld device or cellphone, so old it\'s only good for target practice.'
+    'beauty contest': {'B2': 'Noun'}, # Common phrase, often used metaphorically in finance.
+    'desktop warrior': {'xx': 'Noun'}, # Slang, referring to an unproductive office worker.
+    'skunkworks': {'xx': 'Noun'}, # Jargon, referring to a secret research and development project.
+    'skunk works': {'xx': 'Noun'}, # Variant of skunkworks, same meaning.
+    'slurping': {'xx': 'Verb'}, # Technical jargon, referring to inefficient data transfer.
+    'smallball': {'xx': 'Noun'}, # Business jargon, referring to a cautious strategy.
+    'smearch': {'xx': 'Verb'}, # Slang, blending "smear" and "search," referring to online character assassination.
+    'smartphone zombie': {'xx': 'Noun'}, # Slang, referring to someone engrossed in their smartphone.
+    'smurfing': {'xx': 'Verb'}, # Slang, referring to structuring transactions to avoid scrutiny.
+    'snail mail': {'B1': 'Noun'}, # Common noun, referring to postal mail.
+    'snailmail': {'B1': 'Noun'}, # Variant of snail mail, same meaning.
+    'snailpaper': {'xx': 'Noun'}, # Slang, variant of snail mail.
+    'snake oil': {'B2': 'Noun'}, # Common phrase, referring to a fraudulent product.
+    'snarf': {'xx': 'Verb'}, # Jargon, referring to copying data quickly.
+    'snipe': {'B2': 'Verb'}, # Common verb, meaning to shoot from a hidden position.
+    'sodcast': {'xx': 'Noun'}, # Slang, blending "sod" and "podcast," referring to a low-quality podcast.
+    'to softmod': {'xx': 'Verb'}, # Jargon, referring to modifying software.
+    'spagetti code': {'xx': 'Noun'}, # Technical jargon, referring to poorly structured code.
+    'spamigation': {'xx': 'Noun'}, # Slang, blending "spam" and "irrigation," referring to spreading spam.
+    'spamment': {'xx': 'Noun'}, # Slang, blending "spam" and "comment," referring to spam comments.
+    'spod': {'xx': 'Noun'}, # Slang, referring to a socially awkward person.
+    'mobile pay': {'B1': 'Noun'}, # Common term.
+    'taskbar lint': {'xx': 'Noun'}, # Slang, referring to clutter on a computer taskbar.
+    'tech bro': {'xx': 'Noun'}, # Slang, referring to a stereotype in the tech industry.
+    'technotard': {'xx': 'Noun'}, # Offensive slang, derogatory term for someone unskilled with technology.
+    'open captions': {'B2': 'Noun'}, # Term used in media accessibility.
+    'file sharing of text': {'B2': 'Noun'}, # Common phrase.
+    'text sharing': {'B2': 'Noun'}, # Common phrase.
+    'three a. m. code': {'xx': 'Noun'}, # Jargon, referring to code written late at night.
+    'thumb strength': {'xx': 'Noun'}, # Slang, referring to dexterity with thumbs.
+    'thumbo': {'xx': 'Noun'}, # Slang, referring to a person skilled with their thumbs.
+    'I had it on the tip of my thumb': {'xx': 'Phrase'}, # Slang, variant of "tip of my tongue."
+    'tivoization': {'xx': 'Noun'}, # Jargon, referring to software restrictions.
+    'touch grass': {'xx': 'Verb'}, # Internet slang, meaning to go outside.
+    'toxic': {'B2': 'Adjective'}, # Common word.
+    'trader': {'B1': 'Noun'}, # Common noun.
+    'triple-dub': {'xx': 'Noun'}, # Slang, abbreviation for triple-double.
+    '(to) tweak': {'B2': 'Verb'}, # Common verb, meaning to adjust.
+    'to tweak': {'B2': 'Verb'}, # Redundant, same as above.
+    'twitchfork mob': {'xx': 'Noun'}, # Internet slang, referring to online harassment.
+    'two commas': {'xx': 'Adjective'}, # Slang, referring to a high net worth.
+    'typeless': {'xx': 'Adjective'}, # Technical jargon.
+    'top geek': {'xx': 'Noun'}, # Slang, referring to a skilled person.
+    'übergeek': {'xx': 'Noun'}, # Variant of top geek.
+    'unbrick': {'xx': 'Verb'}, # Jargon, referring to fixing a device.
+    'the unclickable': {'xx': 'Noun'}, # Jargon, referring to an element that cannot be clicked.
+    'unstrung': {'B2': 'Adjective'}, # Common word.
+    'plain vanilla': {'B2': 'Adjective'}, # Common phrase, meaning basic or standard.
+    'viewser': {'xx': 'Noun'}, # Blend of viewer and user.
+    'virtual workforce': {'B2': 'Noun'}, # Common term.
+    'voodoo programming': {'xx': 'Noun'}, # Jargon, referring to inefficient programming.
+    'warez': {'xx': 'Noun'}, # Slang, referring to pirated software.
+    'war': {'A2': 'Noun'}, # Common noun.
+    'wardriving': {'xx': 'Verb'}, # Jargon, referring to searching for Wi-Fi networks.
+    'wave a dead chicken': {'xx': 'Verb'}, # Jargon, referring to a futile action.
+    'weblet': {'xx': 'Noun'}, # Blend of web and applet.
+    'work and leisure': {'A2': 'Noun'}, # Common phrase.
+    'wetware': {'xx': 'Noun'}, # Jargon, referring to the human brain.
+    'whack': {'B2': 'Verb'}, # Common verb.
+    'white hat hacker': {'xx': 'Noun'}, # Jargon, referring to an ethical hacker.
+    'wikipetter': {'xx': 'Noun'}, # Slang, referring to someone who edits Wikipedia.
+    '”in the wild”': {'xx': 'Adverbial phrase'}, # Jargon, referring to something occurring in real-world conditions.
+    'win': {'A2': 'Verb'}, # Common verb.
+    'windshield warrior': {'xx': 'Noun'}, # Slang, referring to a traveling salesperson.
+    'waste of money, brains and time': {'xx': 'Noun'}, # Slang, referring to something inefficient.
+    'woot': {'xx': 'Interjection'}, # Internet slang, expressing excitement.
+    'yet another': {'A2': 'Adjective'}, # Common phrase.
+    'yak shaving': {'xx': 'Verb'}, # Jargon, referring to unnecessary tasks.
+    'your mileage may vary': {'B2': 'Phrase'}, # Common idiom, meaning results may differ.
+    '”you’re not gonna need it”': {'xx': 'Phrase'}, # Jargon, software development.
+    'yoot': {'xx': 'Noun'}, # Slang, referring to a young person.
+    'youtuber': {'xx': 'Noun'}, # Slang, referring to someone who creates content on YouTube.
+    'zbeba': {'xx': 'Noun'}, # Slang, referring to a good thing.
+    'zen': {'B2': 'Noun'}, # Common noun.
+    'zine': {'B2': 'Noun'}, # Common noun.
+    'e-zine': {'xx': 'Noun'}, # Variant of zine.
+    'to zot': {'xx': 'Verb'}, # Slang, referring to deleting something.
+    'to be zucked': {'xx': 'Verb'},
+    '10-dollar solution': {'xx': 'Noun'}, # Jargon, referring to a simple or inexpensive solution.
+    '1k buffer': {'xx': 'Noun'}, # Technical jargon, referring to a 1 kilobyte buffer.
+    'two-dimensional': {'B2': 'Adjective'}, # Common adjective.
+    'two dimensions': {'B2': 'Noun'}, # Common noun phrase.
+    'something boring': {'A2': 'Noun phrase'}, # Common phrase.
+    'a boring type': {'A2': 'Noun phrase'}, # Common phrase.
+    'alay': {'C1': 'Adjective, Adverbial modifier, Noun', 'C2': 'Adjective, Adverbial modifier, Noun'}, # ett skrivsätt där man blandar in stora bokstäver och siffror efter behag. Siffrorna kan ersätta en­staka bokstäver med grafisk likhet – 4L4y för alay – eller stå för sitt uttal: b4 utläses before. Det är ett ursprungligen indonesiskt fenomen, kopplat till en ungdomskultur. 
+    'SMS language': {'xx': 'Noun'}, # Slang, referring to the language used in SMS messaging.'swe': 'nätspråk'
+    'chatspeak': {'xx': 'Noun'}, # Slang, referring to the abbreviated language used in online chat.'swe': 'nätspråk'
+    'email shorthand': {'xx': 'Noun'}, # Slang, referring to abbreviations and shortcuts used in email.'swe': 'nätspråk'
+    'textese': {'xx': 'Noun'}, # Slang, referring to the language used in text-based digital communication.'swe': 'nätspråk'
+    'texting language': {'xx': 'Noun'}, # Slang, referring to the language used in text messaging.'swe': 'nätspråk'
+    'textspeak': {'xx': 'Noun'}, # Slang, referring to the abbreviated language used in text-based digital communication.'swe': 'nätspråk'
+    'txt-speak': {'xx': 'Noun'}, # Slang, referring to the abbreviated language used in text messaging. 'swe': 'nätspråk'
+    'txtspk': {'xx': 'Noun'}, # Abbreviation of txt-speak.'swe': 'nätspråk'
+    'comma ellipsis': {'xx': 'Noun'}, # Jargon, a stylistic choice in writing to omit words using commas.
+    'pr0n': {'xx': 'Noun'}, # Slang, a euphemistic abbreviation of "pornography".
+    'milk': {'A2': 'Noun', 'B1': 'Verb'}, # Common word with multiple meanings
+    'wrecked': {'B1': 'Adjective', 'B2': 'Verb'} # Common word with multiple meanings
+
 
 
 }

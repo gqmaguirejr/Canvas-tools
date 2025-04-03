@@ -696,6 +696,7 @@ def main():
         for index, row in enumerate(ws.rows, start=2):
             e_word = ws.cell(index, eng_column)
             s_word = ws.cell(index, sv_column)
+            a_word = ws.cell(index, acronym_column)
 
             ctg = ws.cell(index, category_column)
             # skip integer values
@@ -721,6 +722,9 @@ def main():
                 continue
 
             output_line='['
+
+            if isinstance(a_word.value, str):
+                output_line=output_line + f"'{a_word.value}', "
             if isinstance(s_word.value, str):
                 swv=s_word.value.strip()
                 swv=swv.replace('\j', ' ')
@@ -766,6 +770,8 @@ def main():
 
         new_names=sorted(new_names)
         print(f"{new_names=}")
+
+
 
     if not options.acronym_option:
         return

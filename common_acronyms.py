@@ -4643,7 +4643,7 @@ well_known_acronyms_list=[
     ['PCL', 'Point Cloud Library', {'s': ['diva2:1091123']}],
     ['PCM Upstream', 'pulse code modulation upstream', {'swe': 'pulskodsmodulering uppströms'}],
     ['PCM', 'Phase Change Memory', {'s': ['diva2:871913']}],
-    ['PCM', 'Pulse-code modulation', {'s': ['diva2:515374'], 'n': 'PCM link'}],
+    ['PCM', 'Pulse-code modulation', {'s': ['diva2:515374'], 'n': 'PCM link', 'swe': 'pulskodsmodulering'}],
     ['PCMCIA', 'PC Memory Card International Association'],
     ['PCN', 'Payment Channel Network', {'s': ['diva2:1783661']}],
     ['PCN', 'priority communication network',  {'s': ['diva2:925045']}],
@@ -7385,7 +7385,6 @@ less_well_known_acronyms_list=[
     ['BYOS', 'bring your own software', {'swe': 'ta med din egen mjukvara'}],
     ['BYOSM', 'bring your own social media', {'swe': 'ta med egna sociala medier'}],
     ['BYOX', 'bring your own X', {'swe': 'ta med ditt eget X'}],
-    ['bae', 'before anyone else', {'swe': 'före någon annan'}], # backronym
     ['C. H. I. P', 'cellular vehicle-to-everything.'], # computer
     ['CB3ROB', 'CyberBunker'], # company
     ['CXO', 'chief XXX officer, chief change officer'],
@@ -7525,6 +7524,119 @@ less_well_known_acronyms_list=[
     ['ooc', 'out of character', {'swe': '”utanför rollen”'}],
     ['oki', '"okay!"', {'swe': '”okej!”'}],
     ['ÖMDK', 'over my dead body!', {'swe': 'över min döda kropp!'}], # jargon
+    ['afaik', 'as far as I know', {'swe': 'så vitt jag vet'}], # nät- och sms-språk
+    ['AFK', 'away from keyboard', {'swe': 'Inte vid tangentbordet (IVT)'}], # nät- och sms-språk
+    ['AFM', 'away from mouse', {'swe': 'inte vid musen (IVM)'}], # nät- och sms-språk
+    ['ASL', 'age? sex? location?', {'swe': 'Ålder, kön, plats? (ÅKP)'}], # nät- och sms-språk
+    ['bae', 'before anyone else', {'swe': 'före någon annan'}], #  backronym, nät- och sms-språk
+    ['bcnu', "[I’ll] be seeing you", {'swe': '[Jag kommer] att se dig'}], # nät- och sms-språk
+    ['BIB', 'back in business', {'swe': 'tillbaka i tjänst; tillbaka online'}], # nät- och sms-språk
+    ['BRB', 'be right back', {'swe': 'vara tillbaka direkt'}], # nät- och sms-språk
+    ['BSDV', 'Just so you know', {'swe': 'Bara så du vet'}], # nät- och sms-språk
+    ['btw', 'by the way', {'swe': 'förresten, för övrigt'}], # nät- och sms-språk
+    ['CIMM', 'Chuckling in my mind', {'swe': 'skrockar för mig själv'}], # nät- och sms-språk
+    ['CU', 'See you!', {'swe': '"Vi ses!"'}], # nät- och sms-språk
+    ['DBEYR', "don’t believe everything you read", {'swe': 'tro inte på allt du läser'}], # nät- och sms-språk
+    ['DD', 'You then?', {'swe': 'du då?'}], # nät- och sms-språk
+    ['DGAF', "don’t give a fuck", {'swe': 'bry inte ett fan'}], # nät- och sms-språk
+    ['DGAF', "#dgaf", {'swe': 'bry inte ett fan'}], # nät- och sms-språk
+    ['DPT', 'Pull on the spools!', {'swe': 'dra på trissor!'}], # nät- och sms-språk
+    ['DPT', 'Pull on the reels!', {'swe': 'dra på trissor!'}], # nät- och sms-språk
+    ['ELI5', 'explain like I’m five [years old]', {'swe': 'Förklara som för en femåring'}], # nät- och sms-språk
+    ['FTL', 'for the lose', {'swe': 'dåligt'}], # nät- och sms-språk
+    ['FTW', 'for the win', {'swe': 'bra'}], # nät- och sms-språk
+    ['FYI', 'for your information', {'swe': 'FYI, "för din information"'}], # nät- och sms-språk
+    ['G2G', 'got to go', {'swe': 'måste sticka; måste dra'}], # nät- och sms-språk
+    ['GAL', 'Get a life!', {'swe': 'Skaffa dig något bättre att ägna din tid åt.'}], # nät- och sms-språk
+    ['GIYF', 'Google is your friend', {'swe': '"Google är din vän" (GÄDV)'}], # nät- och sms-språk
+    ['GTFO', 'get the fuck out', {'swe': '"Få ut föt fan!"; "stick och dra åt helvete!"'}], # nät- och sms-språk
+    ['hj', '“Lord Jesus!', {'swe': 'Herre jistanes!'}], # nät- och sms-språk
+    ['ICYMI', 'in case you missed it', {'swe': '"ifall du missade det"'}], # nät- och sms-språk
+    ['IMAP', 'I’m gonna', {'swe': '"Jag ska"'}], # nät- och sms-språk
+    ['IMFT', '"agree with the previous speaker"', {'swe': 'instämmer med föregående talare'}], # nät- och sms-språk
+    ['imho', 'in my humble opinion', {'swe': '"enligt min ödmjuka åsikt"'}], # nät- och sms-språk
+    ['IRL', 'in real life', {'swe': 'i verkliga livet'}], # nät- och sms-språk
+    ['JFGI', 'just fucking Google it!', {'swe': 'Googla det för fan!, Fan, googla det!'}], # nät- och sms-språk
+    ['JK', 'just kidding', {'swe': '"skämtar bara"'}], # nät- och sms-språk
+    ['JOOTT', 'just one of those things', {'swe': 'oförklarligt missöde'}], # nät- och sms-språk
+    ['JSPM', "I'm laughing at myself!", {'swe': 'jag skrattar på mig!'}], # nät- och sms-språk
+    ['kthxbi',  'okey, thanks, bye', {'swe': '"okej, tack, hejdå"'}], # nät- och sms-språk
+    ['kthxbye', 'okey, thanks, bye', {'swe': '"okej, tack, hejdå"'}], # nät- och sms-språk
+    ['kthxbai', 'okey, thanks, bye', {'swe': '"okej, tack, hejdå"'}], # nät- och sms-språk
+    ['KWIM', 'know what I mean?', {'swe': 'Vet du vad jag menar?'}], # nät- och sms-språk
+    ['LDL', "Let’s discuss live!", {'swe': 'Låt oss diskutera live!'}], # nät- och sms-språk
+    ['LMAO', 'laughing my ass off', {'swe': 'skratta mig i röv'}], # nät- och sms-språk
+    ['LOL', 'laughing out loud'], # nät- och sms-språk
+    ['LOL', 'lots of love'], # nät- och sms-språk
+    ['LOL', 'living off the land'], # nät- och sms-språk
+    ['LOLWUT, lol wut'], # nät- och sms-språk
+    ['LOLx', 'lots of lots of laughs!', {'swe': '"mycket många skratt!"'}], # nät- och sms-språk
+    ['LOLxxxxx', 'lots of lots of laughs!', {'swe': '"mycket många skratt!"'}], # nät- och sms-språk
+    ['LULZ', 'LULZ', {'swe': 'jätteroligt…; laffs; yuks'}], # nät- och sms-språk
+    ['ne', 'any', {'swe': '"några"'}], # nät- och sms-språk
+    ['ne1', 'anyone', {'swe': '"vem som helst"'}], # nät- och sms-språk
+    ['NSFW', 'not safe for work', {'swe': 'inte säkert för jobbet'}], # nät- och sms-språk
+    ['NSFW', 'not suitable for work', {'swe': 'olämpligt för jobbet'}], # nät- och sms-språk
+    ['NSFW', 'not suitable for wife', {'swe': 'inte lämplig för fru'}], # nät- och sms-språk
+    ['o rly', 'oh, really', {'swe': '"åh, verkligen"'}], # nät- och sms-språk
+    ['OG', 'original gangster', {'swe': 'ursprunglig gangster'}], # nät- och sms-språk
+    ['OICU812', 'oh, I see, you ate one too', {'swe': '"Åh, jag förstår, du åt en också."'}], # nät- och sms-språk
+    ['OMG', 'Oh my god!'], # nät- och sms-språk
+    ['PCM', 'Please call me!', {'swe': 'Snälla ring mig!'}], # nät- och sms-språk
+    ['PMF', 'pardon my French', {'swe': 'ursäkta min franska'}], # nät- och sms-språk
+    ['PMF', 'pure fucking magic', {'swe': 'ren jävla magi'}], # nät- och sms-språk
+    ['PoK', 'Kisses and hugs!', {'swe': 'Puss och kram!'}], # nät- och sms-språk
+    ['POS', 'point of sale'], # nät- och sms-språk
+    ['POS', 'parent over shoulder!'], # nät- och sms-språk
+    ['r0xx0r', '[this] rocks back and forth', {'swe': '[this] rocks fram- och baklänges'}], # nät- och sms-språk
+    ['roxxor', '[this] rocks back and forth', {'swe': '[this] rocks fram- och baklänges'}], # nät- och sms-språk
+    ['ROTF', 'rolling on the floor [laughing]', {'swe': 'rullar på golvet'}], # nät- och sms-språk
+    ['ROTFL', 'rolling on the floor laughing', {'swe': 'rullar på golvet och skrattar'}], # nät- och sms-språk
+    ['ROTFLMAO', 'rolling on the floor laughing my ass off', {'swe': 'rullar på golvet och skrattar ihjäl mig'}], # nät- och sms-språk
+    ['RTFM', 'read the fucking manual!', {'swe': 'läs den jävla manualen!'}], # nät- och sms-språk
+    ['RTWT', 'read the whole thing', {'swe': 'läs hela'}], # nät- och sms-språk
+    ['RUOK?', 'are you OK?', {'swe': 'är du okej?'}], # nät- och sms-språk
+    ['SFW', 'safe for work', {'swe': 'säker för arbete'}], # nät- och sms-språk
+    ['SFW', 'suitable for work', {'swe': 'lämplig för arbete'}], # nät- och sms-språk
+    ['SH', 'same here', {'swe': 'samma här'}], # nät- och sms-språk
+    ['SHVAG', "We've never done it that way", {'swe': 'Så har vi aldrig gjort!'}], # nät- och sms-språk
+    ['SHVAG', "We've always done it that way!", {'swe': 'Så har vi alltid gjort!'}], # nät- och sms-språk
+    ['SMFS', 'social media fatigue syndrome', {'swe': 'utmattningssyndrom på sociala medier'}], # nät- och sms-språk
+    ['srsly', 'seriously', {'swe': '"allvarligt"'}], # nät- och sms-språk
+    ['sry', 'sorry', {'swe': '"ledsen"'}], # nät- och sms-språk
+    ['STFU', 'shut the fuck up!', {'swe': '"håll käften!"'}], # nät- och sms-språk
+    ['STFW', 'Search the fucking web!', {'swe': '"Sök på jävla nätet!"'}], # nät- och sms-språk
+    ['sup?', 'what’s up?', {'swe': 'vad är det?'}], # nät- och sms-språk
+    ['TBH', 'to be honest', {'swe': 'uppriktigt sagt, för att säga som det är'}], # nät- och sms-språk
+    ['thkq', 'Thank you!', {'swe': 'Tack!'}], # nät- och sms-språk
+    ['tttt', 'to tell the truth.', {'swe': 'För att säga som det är…'}], # nät- och sms-språk
+    ['tx', 'thanks!', {'swe': 'tack!'}], # nät- och sms-språk
+    ['VGD', '“What are you doing?', {'swe': 'Vad gör du?'}], # nät- och sms-språk
+    ['w00t', {'swe': 'bra!, hurra!'}], # nät- och sms-språk
+    ['woo+', {'swe': 'bra!, hurra!'}], # nät- och sms-språk
+    ['woo7', {'swe': 'bra!, hurra!'}], # nät- och sms-språk
+    ['wewt', {'swe': 'bra!, hurra!'}], # nät- och sms-språk
+    ['woot', {'swe': 'bra!, hurra!'}], # nät- och sms-språk
+    ['wewt', {'swe': 'bra!, hurra!'}], # nät- och sms-språk
+    ['whafa', 'what the fuck!!?', {'swe': 'vad fan!!?'}], # nät- och sms-språk
+    ['WILF', 'what was I looking for', {'swe': 'vad letade jag efter'}], # nät- och sms-språk
+    ['wtf', 'what the fuck!!?', {'swe': 'vad fan!!?'}], # nät- och sms-språk
+    ['WWJT', 'what would Jesus text', {'swe': 'tänk dig för innan du SMS:ar'}], # nät- och sms-språk
+    ['WWJT', 'what would Jesus tweet', {'swe': 'tweetar något som skadar någon annan'}], # nät- och sms-språk
+    ['Y/N', 'yes or no?', {'swe': '"ja eller nej?"'}], # nät- och sms-språk
+    ['ya rly', 'yeah, really', {'swe': '"ja, verkligen"'}], # nät- och sms-språk
+    ['yoyo', "you’re on your own", {'swe': 'det där är ditt problem, det där får du lösa själv'}], # nät- och sms-språk
+    ['YR', 'yeah, right', {'swe': '"ja, visst"'}], # nät- och sms-språk
+    ['YYSSW', 'yeah, yeah, sure, sure – whatever.', {'swe': '"ja, ja, visst, visst - vad som helst."'}], # nät- och sms-språk
+    ['ZFG', 'zero fucks given', {'swe': 'noll knullar givet'}], # nät- och sms-språk
+    ['ZOMG', 'oh my god', {'swe': 'herregud'}], # nät- och sms-språk
+    ['ZP', 'zero perspiration (=no sweat)', {'swe': 'det vill säga lätt fixat, inga problem, nemas problemas'}], # nät- och sms-språk
+    ['(S)', 'seriously', {'swe': 'detta är allvarligt menat, inte ironiskt'}], # nät- och sms-språk
+    ['2b4uqt', 'Too busy for you, cutie.', {'swe': '"För upptagen för dig, sötnos."'}], # nät- och sms-språk
+    ['2bctnd', 'to be continued', {'swe': '"fortsättning följer"'}], # nät- och sms-språk
+    ['4yeo', 'for your eyes only.', {'swe': '"bara för dina ögon."'}], # nät- och sms-språk
+    ['<3', 'love', {'swe': 'älskar'}], # nät- och sms-språk
+
 
 ]
 
