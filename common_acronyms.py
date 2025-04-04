@@ -23,6 +23,9 @@
 #           each source is s string, typeically of the form: 'diva2:ddddddd'
 #   'cefr': string containing a CEFR level, such as 'B2'
 #
+#
+# Note also that there are a number of separate files, such as common_acronyms_SCI.py, common_acronyms_CBH.py - that are based on collecting acronyms from thesis inm different schools within KTH 
+#
 
 # consider adding support for these
 well_known_acronyms_list=[

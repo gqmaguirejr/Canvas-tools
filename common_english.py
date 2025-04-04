@@ -163,7 +163,48 @@
 #  'Verb (typo in the phrase)',
 #  'Verb Phrase'
  
+# Note: There are some inconsistencies with regard to the use of 0x2014 (em
+# dash), 0x2013 (en dash), and hyphen (0x2d) that are not well resolved. In
+# some cases, the tirst two types of dashses should be considered as if it
+# were a breaking charcater (i.e., much as if there were a space before and
+# after it) - while in other caes, they should be convereted to a hyphen.
+#
 
+# Some potential places for improvements
+#
+# Refine phrase classifications:
+# Noun Phrase - should in some cases be more specific, e.g., for tehcnical terms, some should be "Noun (compoud)
+# Verb phrase - might have a clarigying note, such as "require time-predictability" -> "Verb Phrase (needing predictability)"
+#
+# Add context in parentheses to technical terms when yused in a specific domain, for example
+# "graded-index" -> "Adjective (compound, optics)"
+# or
+# "repeater" -> "Noun (electronics)"
+#
+# Distinguish British vs. American English:
+# For example,
+# "recognisable" -> "Adjective (British English)" 
+#
+# Be Precise with Verb Classifications:
+# For verbs, ensure clarity on tense and form.
+# For example: "recommending" -> "Verb (present participle)"
+#
+# Review CEFR Levels in Specialized Contexts:
+# Some B2 terms might be mor appropriate at C1 or even D levels
+#
+# Correct Errors and Inconsistencies:
+#
+# Provide Definitions or Explanations:
+# to help with less common terms
+#
+# Potentially, this means adding a "Comment" attribute in addiiton to the CEFR
+# level attributes, but this will require some changes to the code
+#
+# Difference in vocabularies by subject area - currently there are comments such as:
+#   # terms below are from CBH
+# that indicate the school from which the thesis that used these terms was from.
+# This does not really differentiate the terms by subject area. This might be a place for
+# further improvement.
 
 # based on the words at https://en.wikipedia.org/wiki/Most_common_words_in_English
 
@@ -2181,6 +2222,7 @@ common_English_words={
     'CPU-usage': {'A2': 'Noun'},
     'CQL-to-FCQL': {'B2': 'Noun Phrase'},  # Likely refers to a conversion process between query languages
     'CRDTs—Conflict': {'B2': 'Noun Phrase'},  # Refers to Conflict-Resolution Data Types
+    'CRDTs-Conflict': {'B2': 'Noun Phrase'},  # Refers to Conflict-Resolution Data Types
     'CRM system': {'B2': 'Noun (compound)'},
     'CRM-experts': {'B2': 'Noun (plural)'},
     'CRM-platform': {'B2': 'Noun'},  # Refers to a Customer Relationship Management platform
@@ -3373,7 +3415,7 @@ common_English_words={
     'NP-completeproblems': {'C2': 'Noun Phrase'},
     'NP-hardness': {'C2': 'Noun'},
     'NPÖ-adopting': {'B2': 'Adjective'},
-    'NRPs': {'None': 'Noun'},
+    'NRPs': {'B2': 'Noun', 'C1': 'Noun'},
     'NTC-value': {'B2': 'Noun Phrase'},
     'NUB/NUB-Bin': {'C2': 'Noun Phrase'},
     'NVU-on-a-chip': {'C2': 'Noun Phrase'},
@@ -3749,7 +3791,7 @@ common_English_words={
     'Rocket-bourneEXperiments': {'B2': 'Noun Phrase'},
     'Rocket-chip': {'B2': 'Noun'},
     'Rogerian': {'B2': 'Adjective'},
-    'Roleplay-prompting': {'None': 'Noun'},
+    'Roleplay-prompting': {'B2': 'Noun', 'C1': 'Noun'},
     'Romanesque': {'C1': 'Adjective, Noun'},  # Art/architecture style
     'Rstar-tree': {'B2': 'Noun'},
     'Runs': {'B2': 'Noun'},  # Can be various parts of speech depending on context
@@ -3947,7 +3989,7 @@ common_English_words={
     'Spotify-like': {'B2': 'Adjective'},
     'Stage-Gate': {'B2': 'Noun'},
     'Standard-232': {'A2': 'Noun Phrase'},
-    'Standard-prompting': {'None': 'Noun'},
+    'Standard-prompting': {'C1': 'Noun', 'C2': 'Noun'},
     'States-run': {'B2': 'Adjective'},
     'Stereo-LiDAR': {'B2': 'Noun Phrase'},
     'Stewart platform': {'B2': 'Noun'},
@@ -3983,7 +4025,7 @@ common_English_words={
     'Swedish tables': {'A2': 'Noun Phrase'},
     'Swedish values': {'B2': 'Noun Phrase'},
     'Swedish-founded': {'B2': 'Adjective (compound)'}, # This is a common compound adjective used to describe companies or organizations founded in Sweden. It's not particularly specialized.
-    'Swedish-speaking': {'None': 'Adjective'},
+    'Swedish-speaking': {'A2': 'Adjective'},
     'Swedish-to-Swedish': {'B2': 'Adjective Phrase'},
     'Swedish/Norwegian': {'A2': 'Adjective'}, # Relating to both Sweden and Norway.
     'Swerling models': {'B2': 'Noun (plural)'},
@@ -4325,7 +4367,7 @@ common_English_words={
     'above-mentioned': {'B2': 'Adjective'},
     'abovementioned': {'B2': 'Adjective'},
     'abrasive-free': {'B2': 'Adjective Phrase'},
-    'abreast': {'B2': 'Adverb, Preposition'},
+    'abreast': {'B2': 'Adverb', 'C1': 'Adjective'}, # B2: Meaning: side by side; C1: Meaning: up to date with
     'abruptly': {'B2': 'Adverb'},
     'absentminded': {'B2': 'Adjective'},
     'absolute localization': {'B2': 'Noun Phrase'},
@@ -9524,7 +9566,7 @@ common_English_words={
     'conceptualizes': {'B2': 'Verb'},
     'conceptualizing': {'C2': 'Verb (present participle)'},
     'conceptually': {'C2': 'Adverb'},
-    'concerning': {'B2': 'Preposition, Adjective'},
+    'concerning': {'B2': 'Preposition'},
     'concerningly': {'B2': 'Adverb'}, # diva2:1823521
     'concerns': {'A2': 'Noun (plural)'},
     'concert-experience': {'A2': 'Noun (compound)'},
@@ -9781,7 +9823,7 @@ common_English_words={
     'considerations': {'B1': 'Noun (plural)'},
     'consideration–making': {'B2': 'Noun (compound)'},
     'considered': {'B1': 'Adjective', 'B2': 'Verb'},
-    'considering': {'B1': 'Preposition, Conjunction, Adverb'},
+    'considering': {'B1': 'Preposition', 'B2': 'Verb (participle)', 'C1': 'Conjunction (subordinating)'}, # B2: As part of a clause, C1: To capture the subordinating conjunction usag
     'considers': {'B2': 'Verb'},
     'consist': {'B1': 'Verb'},
     'consisted': {'A2': 'Verb (past tense), Verb (past participle)'},
@@ -10423,7 +10465,7 @@ common_English_words={
     'counters': {'A1': 'Noun (plural)'},
     'counties': {'B2': 'Noun (plural)'},  # Geographical regions
     'counting efficiency': {'B2': 'Noun (compound)'},
-    'counting': {'B1': 'Preposition, Verb (gerund), Verb (present participle), Noun'},
+    'counting': {'B1': 'Verb (gerund), Verb (present participle), Noun', 'B2': 'Preposition'}, # B2: Less common, meaning "including"
     'countries': {'A1': 'Noun (plural)'},
     'countries/companies': {'B1': 'Noun Phrase'},
     'country/area': {'B1': 'Noun (compound)', 'B2': 'Noun (compound)'},
@@ -10744,7 +10786,7 @@ common_English_words={
     'cryptographic protocols': {'B2': 'Noun (compound)'},
     'cryptographic': {'B2': 'Adjective'},
     'cryptographical': {'B2': 'Adjective'},
-    'cryptographically': {'C12': 'Adverb'},
+    'cryptographically': {'C2': 'Adverb'},
     'cryptography': {'C1': 'Noun'},
     'cryptology': {'B2': 'Noun'},
     'cryptosystem': {'C1': 'Noun'},
@@ -11890,7 +11932,7 @@ common_English_words={
     'design system': {'B2': 'Noun (compound)'},
     'design thinking': {'B2': 'Noun (compound)'},
     'design toolkit': {'B2': 'Noun (compound)'},
-    'design': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Verb', 'B2': 'Adjective', 'C1': 'Preposition'},
+    'design': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Verb', 'B2': 'Adjective'}, # they 'Adjective' is possibly a 'Noun (adjunct)' as in "a deisgn flaw" - additionally rarely/possibly 'C1': 'Preposition'
     'design-based': {'B1': 'Noun (compound)'},
     'design-construct': {'C1': 'Noun (compound)'},
     'design-driven': {'C1': 'Adjective (compound)'},
@@ -13514,7 +13556,7 @@ common_English_words={
     'effacement': {'B2': 'Noun'},
     'effcient': {'A1': 'Adjective'},
     'effect pedal': {'A2': 'Noun (compound)'},
-    'effect': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Noun, Verb', 'B2': 'Noun, Verb, Preposition', 'C1': 'Noun, Verb, Preposition, Adverb', 'C2': 'Noun, Verb, Preposition, Adverb'},
+    'effect': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Noun, Verb', 'B2': 'Noun, Verb, Preposition', 'C1': 'Noun, Verb, Preposition, Adverb', 'C2': 'Noun, Verb, Preposition, Adverb'}, # possibly remove the Preposition and Adverb cases
     'effect-based': {'B2': 'Adjective (compound)'},
     'effected': {'B1': 'Verb (past participle)'},
     'effectible': {'B2': 'Adjective'},
@@ -14737,7 +14779,7 @@ common_English_words={
     'exclude nearfield': {'B2': 'Verb Phrase'},
     'excluded': {'C1': 'Verb (past tense), Verb (past participle)'},
     'excludes': {'C1': 'Verb (third-person present tense)'},
-    'excluding': {'C1': 'Preposition, Verb (gerund), Verb (present participle)'},
+    'excluding': {'B2': 'Preposition, Verb (gerund), Verb (present participle)'},
     'exclusionary': {'B2': 'Adjective'},
     'exclusive-OR': {'B2': 'Noun (compound)'},
     'excreted': {'B2': 'Verb'},  # Past tense of excrete
@@ -15144,7 +15186,7 @@ common_English_words={
     'fail-recovery': {'B2': 'Noun (compound)'},
     'failback': {'B2': 'Noun'},
     'failed-alarm': {'B2': 'Noun d(compound)Phrase'},
-    'failing': {'A2': 'Noun, Preposition'}, #  EFLEX uses the level C1
+    'failing': {'B1': 'Verb (participle)', 'B2': 'Preposition, Noun'}, #  EFLEX uses the level C1
     'failing/joining/leaving': {'B2': 'Verb Phrase'},
     'failover': {'B1': 'Noun'},
     'failover/availability': {'C2': 'Noun'},
@@ -15391,7 +15433,7 @@ common_English_words={
     'feminist media analysis': {'B2': 'Noun (compound)'},
     'femoral': {'C1': 'Adjective'},
     'femtech': {'B2': 'Noun'},
-    'femto': {'A1': 'Noun', 'A2': 'Preposition, Conjunction, Question Word', 'B1': 'Preposition, Conjunction, Question Word', 'B2': 'Idiom, Slang, Informal Expression', 'C1': 'Preposition, Conjunction, Question Word', 'C2': 'Preposition'},
+    'femto': {'C1': 'Prefix'},
     'femto-TVWS': {'B2': 'Noun (compound)'}, # where 'TVWS' is 'TV White Space'
     'femtocell': {'B2': 'Noun'},
     'femtocells': {'B2': 'Noun (plural)'},
@@ -16301,7 +16343,7 @@ common_English_words={
     'frostbite™': {'A2': 'Noun (trademark)'},
     'froward': {'A1': 'Adjective (archaic)'},
     'frugally': {'B2': 'Adverb'},
-    'fruitful': {'b2': 'Adjective'},
+    'fruitful': {'B2': 'Adjective'},
     'fruition': {'B2': 'Noun'},
     'fruits/vegetables': {'A1': 'Noun Phrase'},
     'frustrate': {'B2': 'Verb'},
@@ -16450,7 +16492,7 @@ common_English_words={
     'future Internet': {'B2': 'Noun Phrase'},
     'future segmentation': {'B2': 'Noun (compound)'},  # Likely a compound noun
     'future work': {'B2': 'Noun Phrase'},
-    'future': {'A1': 'Noun', 'B1': 'Adjective', 'B2': 'Adverb', 'C1': 'Preposition', 'C2': 'Conjunction'},
+    'future': {'A1': 'Noun', 'B1': 'Adjective'}, # formely included  'B2': 'Adverb', 'C1': 'Preposition', 'C2': 'Conjunction'
     'future-compatible': {'B2': 'Adjective (compound)'},
     'future-oriented': {'B2': 'Adjective (compound)'},
     'future-proof': {'B2': 'Adjective (compound)'},
@@ -16775,7 +16817,7 @@ common_English_words={
     'geopriv': {'A2': 'Abbreviation'}, # for geographic privacy
     'geoquery': {'B2': 'Noun'},
     'georeference': {'B2':'Noun, Verb'},
-    'georeferenced': {'B21': 'Adjective'},
+    'georeferenced': {'B2': 'Adjective'},
     'georeferencing': {'B2':'Verb (present participle)'},
     'georeplication': {'B2':'Noun'},
     'geoscience': {'B2': 'Noun'},
@@ -16828,7 +16870,7 @@ common_English_words={
     'git': {'A2': 'Noun'}, # version control system
     'git-repository': {'B1': 'Noun (compound)'},
     'github': {'A1': 'Proper Noun'},
-    'given': {'A1': 'Verb, Adjective, Noun, Preposition'},
+    'given': {'B1': 'Verb (participle)', 'B2': 'Adjective, Preposition'}, # # Adjective: Meaning "specified"; preposition: Meaning "considering"
     'giver': {'B2': 'Noun'},
     'givers': {'A1': 'Noun (plural)'},
     'gives': {'A1': 'Verb (third-person singular present tense)'},
@@ -16917,7 +16959,7 @@ common_English_words={
     'golfball': {'A1':'Noun'},
     'golfers': {'A2': 'Noun (plural)'},
     'golfing': {'A1': 'Noun'},
-    'gone': {'A1': 'Verb, Adjective, Preposition'},
+    'gone': {'A1': 'Verb (past participle)'},
     'goodBYE': {'A1': 'Exclamation, Noun'},
     'goodby': {'A1': 'Exclamation, Noun'},
     'goodbye': {'A1': 'Exclamation, Noun'},
@@ -18139,7 +18181,7 @@ common_English_words={
     'human-centred': {'B2': 'Adjective (compound)'},
     'human-centric': {'B2': 'Adjective (compound)'},
     'human-composed': {'B2': 'Adjective (compound)'},
-    'human-computer': {'B1': 'Noun (compound)', 'B2': 'Adjective (compound)', 'C1': 'Preposition, Noun (compound)'},
+    'human-computer': { 'B1': 'Adjective (compound)', 'xx': 'Noun (historical)'}, # as a noun referring to people performing calculations
     'human-computer-interaction': {'B2': 'Noun (compound)'},
     'human-controlled': {'B2': 'Adjective (compound)'},
     'human-created': {'B2': 'Adjective (compound)'},
@@ -18396,7 +18438,7 @@ common_English_words={
     'iOS-users': {'A2': 'Noun (plural)'},
     'iOS-versions': {'A2': 'Noun (plural)'},
     'iPhone Operating System': {'B2': 'Noun (compound)'},
-    'iPhone': {'BÁ2': 'Proper Noun'},
+    'iPhone': {'B2': 'Proper Noun'},
     'iPhone-application': {'B1': 'Noun (compound)'},
     'iPhone-users': {'B1': 'Noun (plural)'},
     'iPhones': {'A1': 'Noun (plural)'},
@@ -18763,7 +18805,7 @@ common_English_words={
     'in-band full duplex': {'B2': 'Noun (compound)'},
     'in-band network telemetry': {'B2': 'Noun (compound)'},
     'in-band': {'A1': 'Adjective'},
-    'in-between': {'B1': 'Adjective', 'B2': 'Noun, Adverb, Preposition'},
+    'in-between': {'B1': 'Adjective', 'B2': 'Noun, Adverb'},
     'in-body': {'A2': 'Adjective'},
     'in-browser': {'B2': 'Adjective'},  # Happening within a web browser
     'in-building': {'B1': 'Adjective'},
@@ -18838,7 +18880,7 @@ common_English_words={
     'in-which': {'B1': 'Relative Pronoun'},
     'in-world space': {'B2': 'Noun (compound)'},
     'in/dependence': {'C2': 'Noun'},
-    'in/out': {'A1': 'Preposition, Adverb'},
+    'in/out': {'A1': 'Prepositional phrase'}, # Informal/technical
     'inaccessibility': {'B2': 'Noun'},
     'inaccessible': {'C1': 'Adjective'},
     'inaccuracies': {'C1': 'Noun (plural)'},
@@ -20127,7 +20169,7 @@ common_English_words={
     'involves': {'B1': 'Verb (third-person present tense)'},
     'involving': {'B1': 'Verb (gerund), Verb (present participle)'},
     'inward': {'B2': 'Adjective, Adverb, Noun'},
-    'inwards': {'B2': 'Adverb, Preposition (intransitive)'},
+    'inwards': {'B2': 'Adverb'},
     'in­': {'A2': 'Prefix'},
     'io': {'A2': 'Noun'},
     'iodide': {'B1': 'Noun'},
@@ -20543,7 +20585,7 @@ common_English_words={
     'kites': {'A2': 'Noun (plural)'},
     'kmeans': {'B1': 'Noun'},
     'knapsack': {'B2': 'Noun'},
-    'knee cartilage bones and menisci': {'NA': 'Noun (compound)'},
+    'knee cartilage bones and menisci': {'B2': 'Noun (compound)', 'C1': 'Noun (compound)'},
     'knee-straining': {'B1': 'Adjective'},
     'kneeling': {'A1': 'Verb (gerund)'},
     'kneeling-to-standing': {'C1': 'Noun Phrase (compound)'},
@@ -20586,6 +20628,7 @@ common_English_words={
     'knowledge/understanding': {'B1': 'Noun (compound)', 'B2': 'Noun (compound)'},
     'knowledgeable': {'C1': 'Adjective'}, #  EFLEX uses the level B1
     'knowledge—indeed': {'B2': 'Noun Phrase'},
+    'knowledge-indeed': {'B2': 'Noun Phrase'},
     'known': {'A1': 'Verb, Adjective'}, #  EFLEX uses the level B2
     'known-vulnerability': {'B2': 'Noun'},
     'knows': {'A1': 'Verb (third-person present tense)'},
@@ -21018,6 +21061,7 @@ common_English_words={
     'levels': {'B1': 'Noun (plural)'},
     'levels-out': {'B2': 'Verb Phrase'},
     'levels—which': {'B2': 'Noun Phrase'},
+    'levels-which': {'B2': 'Noun Phrase'},
     'levenshtein': {'B2': 'Adjective (surname)'},
     'leverage': {'B1': 'Noun, Verb'},
     'leveraged': {'B2': 'Verb (past tense), Verb (past participle)'},
@@ -23096,7 +23140,7 @@ common_English_words={
     'minority-serving': {'B2': 'Adjective'},
     'minors': {'A1': 'Noun (plural)'},
     'minted': {'B1': 'Noun, Verb'},
-    'minus': {'A2': 'Preposition, Adjective, Noun'}, #  EFLEX uses the level C1
+    'minus': {'A2': 'Preposition (arithmetic)', 'B2': 'Adjective (figurative), Noun (grading/mathematics)'}, #  EFLEX uses the level C1
     'minuscule': {'B1': 'Adjective'},
     'minuses': {'B1': 'Noun (plural)'},
     'minutely': {'A2': 'Noun'},
@@ -26301,7 +26345,7 @@ common_English_words={
     'orchestrator': {'B2': 'Noun', 'C2': 'Noun'},
     'orchestrators': {'B2': 'Noun (plural)'},
     'order assignment': {'B2': 'Noun Phrase'},
-    'order': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Adjective', 'B2': 'Preposition', 'C1': 'Interjection'},
+    'order': {'A1': 'Noun', 'A2': 'Verb', 'B1': 'Noun (noun adjunct)', 'C1': 'Interjection'}, # the Interjection could be the use of the noun as an imperative
     'order-independent': {'C1': 'Adjective'},
     'order-of-magnitude': {'B2': 'Noun Phrase'},
     'order-picking-and-placing': {'B2': 'Noun Phrase'},
@@ -26970,7 +27014,7 @@ common_English_words={
     'parsing PDF': {'C1': 'Noun Phrase'},
     'parsing': {'C2': 'Verb (gerund), Verb (present participle)'},
     'parskip': {'B2': 'Noun'},
-    'part': {'A1': 'Noun', 'A2': 'Noun, Preposition', 'B1': 'Noun, Preposition', 'B2': 'Noun, Verb, Preposition', 'C1': 'Noun, Verb, Preposition', 'C2': 'Noun, Verb, Preposition'},
+    'part': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun, Verb', 'C1': 'Noun, Verb', 'C2': 'Noun, Verb'},
     'part-analysis': {'C1': 'Noun Phrase'},
     'part-of': {'A2': 'Preposition'},
     'part-of-speech': {'B1': 'Noun', 'B2': 'Noun'},
@@ -27523,7 +27567,7 @@ common_English_words={
     'phantom': {'B2': 'Noun'},
     'phantoms': {'C1': 'Noun'},
     'pharmaceutical detailing': {'B2': 'Noun Phrase'},
-    'pharmaceutical': {'B2': 'Adjective', 'C12': 'Noun'},
+    'pharmaceutical': {'B2': 'Adjective', 'C1': 'Noun'},
     'pharmaceuticals': {'B2': 'Noun (plural)'},
     'pharmacies': {'B1': 'Noun'},
     'pharmacists': {'B2': 'Noun (plural)'},
@@ -27581,7 +27625,7 @@ common_English_words={
     'phishing': {'B2': 'Noun'},
     'phonation': {'B2': 'Noun'},
     'phone application': {'B2': 'Noun Phrase'},  # American English
-    'phone-based': {'B!': 'Adjective'},
+    'phone-based': {'B1': 'Adjective'},
     'phone-level': {'B1': 'Adjective'},
     'phone-to-phone': {'B1': 'Noun Phrase'},
     'phone/pda/camera': {'A2': 'Noun'},
@@ -28724,7 +28768,7 @@ common_English_words={
     'predictive': {'B2': 'Adjective'},
     'predictively': {'B2': 'Adverb'},
     'predictor': {'B2': 'Noun'},
-    'predictors': {'B21': 'Noun (plural)'},
+    'predictors': {'B2': 'Noun (plural)'},
     'predicts': {'B1': 'Verb (third person singular present tense)'},
     'predisposition': {'B2': 'Noun'},
     'predistorter': {'B2': 'Noun'},
@@ -29025,7 +29069,7 @@ common_English_words={
     'privatise': {'B2': 'Verb'},
     'privatize': {'B2': 'Verb'},
     'privatized': {'B2': 'Verb (past tense), Verb (past participle)'},
-    'privatizing': {'b2': 'Verb (gerund), Verb (present participle)'},
+    'privatizing': {'B2': 'Verb (gerund), Verb (present participle)'},
     'privileged': {'B2': 'Adjective'},
     'privitization': {'B2': 'Noun'},
     'privitized': {'B2': 'Verb (past tense), Verb (past participle)'},
@@ -29176,7 +29220,7 @@ common_English_words={
     'profiler': {'B2': 'Noun'},
     'profilers': {'B2': 'Noun'},
     'profiles': {'B2': 'Noun (plural), Verb (third-person present tense)'},
-    'profiling': {' B2' : 'Noun', 'C2': 'Verb (gerund), Verb (present participle)'},
+    'profiling': {'B2' : 'Noun', 'C2': 'Verb (gerund), Verb (present participle)'},
     'profilometer': {'B2': 'Noun'},
     'profilometry': {'B2': 'Noun'},
     'profit-making': {'B2': 'Adjective'},
@@ -29424,6 +29468,7 @@ common_English_words={
     'prototypes': {'B2': 'Noun (plural)', 'C1': 'Verb (third-person singular present tense)'},
     'prototypes': {'B2': 'Noun (plural)'}, # "Prototypes" can be used as a verb, especially in more technical contexts, referring to the act of creating prototypes. However, it's more common as a noun.
     'prototype—based': {'C1': 'Adjective (compound)'}, # note the em dash 0x2014
+    'prototype-based': {'C1': 'Adjective (compound)'}, # note the dash is 0x2d
     'prototypical': {'B2': 'Adjective'},
     'prototypicality': {'B2': 'Noun'},
     'prototyping': {'B2': 'Verb (gerund), Verb (present participle), Noun'},
@@ -29556,7 +29601,7 @@ common_English_words={
     'public-private': {'B2': 'Adjective (compound)'},
     'publically': {'B2': 'Adverb'}, # British English
     'publications': {'A2': 'Noun (plural)'},
-    'publicised': {'CB': 'Verb (past participle)'},
+    'publicised': {'B2': 'Verb (past participle), Verb (past tense)'},
     'publicising': {'B2': 'Verb (present participle)'},
     'publicize': {'B2': 'Verb'},
     'publicized': {'B2': 'Verb (past participle)'},
@@ -29994,7 +30039,7 @@ common_English_words={
     'railway freight transport': {'B2': 'Noun (compound)'},
     'railway scheduling': {'B2': 'Noun (compound)'},
     'railway traction systems': {'B2': 'Noun (compound)'},
-    'railway': {'B"': 'Noun'}, #  EFLEX uses the level B2
+    'railway': {'B2': 'Noun'}, #  EFLEX uses the level B2
     'railways': {'B2': 'Noun (plural)'},
     'rain attenuation': {'B2': 'Noun (compound)'},
     'rain-bearing': {'B1': 'Adjective'},
@@ -30142,7 +30187,7 @@ common_English_words={
     're-assignments': {'B2': 'Noun (plural)'},
     're-calibrating': {'B2': 'Verb (present participles)'},
     're-calibration': {'B2': 'Noun'},
-    're-compute': {'B12': 'Verb'},
+    're-compute': {'B2': 'Verb'},
     're-configurable': {'B2': 'Adjective'},
     're-create': {'B1': 'Verb'},
     're-creating': {'B1': 'Verb (gerund), Verb (present participle)'},
@@ -30470,6 +30515,7 @@ common_English_words={
     'recommendations': {'B1': 'Noun (plural)'}, 
     'recommendations': {'B2': 'Noun (plural)'},
     'recommendation–based': {'B2': 'Adjective'}, # dash is an em dash #2013
+    'recommendation-based': {'B2': 'Adjective'}, # dash is 0x2d
     'recommended': {'B1': 'Verb (past tense), Verb (past participle)', 'B2': 'Adjective'},
     'recommender system': {'B2': 'Noun (compound)'},
     'recommender': {'B1': 'Noun'},
@@ -30479,7 +30525,7 @@ common_English_words={
     'recompenses': {'C1': 'Noun (plural)'},
     'recompilabilty': {'B2': 'Noun'},
     'recompilable': {'B2': 'Adjective'},
-    'recompilation': {'B22': 'Noun'},
+    'recompilation': {'B2': 'Noun'},
     'recompile': {'B2': 'Verb'},
     'recompiled': {'C2': 'Adjective, Verb'},
     'recompiling': {'C2': 'Verb'},
@@ -31181,7 +31227,7 @@ common_English_words={
     'representation/context': {'B2': 'Noun Phrase'},
     'representational state transfer': {'B2': 'Noun (compound)'},
     'representational': {'B2': 'Adjective', 'C2': 'Noun'},
-    'representations': {'A1': 'Noun', 'A2': 'Noun', 'B1': 'Noun', 'B2': 'Noun, Adjective', 'C1': 'Noun, Verb, Adjective', 'C2': 'Noun, Verb, Adjective, Preposition'},
+    'representations': {'B2': 'Noun (plural)'},
     'representative days': {'B2': 'Noun (compound)'},
     'representativeness': {'B2': 'Noun'},
     'representatives': {'B1': 'Noun (plural)'},
@@ -31516,7 +31562,7 @@ common_English_words={
     'retransmitting': {'B2': 'Verb (gerund), Verb (present participle), Adjective'},
     'retried': {'B2': 'Verb (past tense), Verb (past participle)'},
     'retries': {'B2': 'Verb, Noun (plural)'},
-    'retrieval': {'B21': 'Noun'},
+    'retrieval': {'B2': 'Noun'},
     'retrievals': {'B2': 'Noun (plural)'},
     'retrieve': {'B1': 'Verb'},
     'retrieved': {'B1': 'Verb (past tense), Verb (past participle)'},
@@ -31593,7 +31639,7 @@ common_English_words={
     'review-based': {'B1': 'Noun'},
     'reviewed': {'B2': 'Verb (past participle)'},
     'reviewer': {'B1': 'Noun'},
-    'reviewers': {'B!': 'Noun (plural)'},
+    'reviewers': {'B1': 'Noun (plural)'},
     'reviewing': {'B2': 'Verb (present participle('},
     'reviews': {'A1': 'Noun (plural), Verb (third person singula present tense)'},
     'reviled': {'B2': 'Verb (past tense), Verb (past participle)'},
@@ -32121,7 +32167,7 @@ common_English_words={
     'sandbox': {'B2': 'Noun'},
     'sandboxed': {'B2': 'Adjective', 'C1': 'Verb (past tense), Verb (past participle)'},
     'sandboxes': {'B2': 'Noun (plural)', 'C1': 'Verb (third-person singular present tense)'},
-    'sandboxing': {'C12': 'Verb (present participle)', 'C2': 'Noun'},
+    'sandboxing': {'C1': 'Verb (present participle)', 'C2': 'Noun'},
     'sandwiched': {'B2': 'Adjective, Verb (past tense), Verb (past participle)'},
     'sang': {'A1': 'Verb (past tense)'}, # sing
     'sanitary': {'B2': 'Adjective'},
@@ -32536,7 +32582,7 @@ common_English_words={
     'seismicity': {'B2': 'Noun'},
     'seismological': {'B2': 'Adjective'},
     'seismology': {'B2': 'Noun'},
-    'seized': {'A22': 'Verb (past tense), Verb (past participle)', 'B2': 'Verb (past tense), Verb (past participle)'},
+    'seized': {'A2': 'Verb (past tense), Verb (past participle)', 'B2': 'Verb (past tense), Verb (past participle)'},
     'seizure': {'A2': 'Noun'},
     'seizure-free': {'B2': 'Adjective (compound)'},
     'seizure/collection': {'B2': 'Noun Phrase'},
@@ -32807,7 +32853,7 @@ common_English_words={
     'semi-automate': {'B2': 'Verb'},
     'semi-automated': {'B2': 'Adjective, Verb (past tense), Verb (past participle)'},
     'semi-automatic': {'B1': 'Adjective', 'B2': 'Adjective'},
-    'semi-autonomous': {'B21': 'Adjective'},
+    'semi-autonomous': {'B2': 'Adjective'},
     'semi-centralized': {'B2': 'Adjective, Verb (past tense), Verb (past participle)'},
     'semi-clear': {'B1': 'Adjective'},
     'semi-cliques': {'B2': 'Noun'},
@@ -37030,7 +37076,7 @@ common_English_words={
     'thunderbolt': {'C1': 'Noun'},
     'thunderstorms': {'A2': 'Noun (plural)'},
     'thus': {'B2': 'Adverb'},
-    'thwart': {'B2': 'Verb, Noun, Preposition, Adverb'},
+    'thwart': {'B2': 'Verb, Noun'},
     'thwarts': {'B2': 'Verb (third-person singular present tense), Noun (plural)'},
     'thyristor': {'A2': 'Noun'},
     'thyristor-based': {'B1': 'Adjective'},
@@ -37241,7 +37287,7 @@ common_English_words={
     'timeouts': {'B1': 'Noun (plural)'},
     'timer': {'B1': 'Noun'},
     'timers': {'B1': 'Noun (plural)'},
-    'times': {'A1': 'Noun (plural)', 'A2': 'Noun (plural)', 'B1': 'Noun s', 'B2': 'Noun (plural), Preposition, Verb (third-person singular present tense)', 'C1': 'Noun (plural)', 'C2': 'Noun, Verb (third-person singular present tense)'},
+    'times': {'A1': 'Noun (plural)', 'A2': 'Noun (plural)', 'B1': 'Noun s', 'B2': 'Noun (plural), Preposition, Verb (third-person singular present tense)', 'C1': 'Noun (plural)', 'C2': 'Noun,  Verb (third-person singular present tense)'},
     'timesaving': {'B1': 'Adjective, Verb (gerund), Verb (present participle)'},
     'timescale': {'C1': 'Noun'},
     'timescales': {'B1': 'Noun (plural)'},
@@ -38431,7 +38477,7 @@ common_English_words={
     'undermined': {'B2': 'Adjective, Verb (past tense), Verb (past participle)'},
     'undermines': {'B2': 'Verb (third-person singular present tense)'},
     'undermining': {'B2': 'Verb (gerund), Verb (present participle)'},
-    'underneath': {'B1': 'Preposition, Adverb, Noun'}, #  EFLEX uses the level B2
+    'underneath': {'B1': 'Preposition, Adverb', 'xx': 'Noun (rare)'}, #  EFLEX uses the level B2
     'underperform': {'B2': 'Verb'},
     'underperformed': {'B2': 'Verb (past tense), Verb (past participle)'},
     'underperforming': {'B2': 'Adjective, Verb (gerund), Verb (present participle)'},
@@ -39130,7 +39176,7 @@ common_English_words={
     'usher': {'A2': 'Noun, Verb'},
     'ushered': {'A2': 'Verb (past tense), Verb (past participle)'},
     'using Q-learning': {'B2': 'Verb Phrase'},
-    'using': {'A1': 'Verb, Verb (gerund), Verb (present participle)', 'A2': 'Preposition'},
+    'using': {'A1': 'Verb, Verb (gerund), Verb (present participle)'}, # removed 'A2': 'Preposition'
     'using-heading': {'B1': 'Verb Phrase'},
     'utensils': {'A1': 'Noun (plural)'},
     'uterine': {'B1': 'Adjective'},
@@ -39472,7 +39518,7 @@ common_English_words={
     'video surveillance systems': {'B2': 'Noun (plural)'},
     'video tracking': {'B2': 'Noun Phrase'},
     'video verification': {'B2': 'Noun Phrase'},
-    'video-': {'N2': 'Prefix'},
+    'video-': {'B2': 'Prefix'},
     'video-based': {'B1': 'Adjective (compound)'},
     'video-calling': {'B2': 'Noun Phrase'},
     'video-classification': {'C1': 'Noun Phrase'},
@@ -42977,9 +43023,9 @@ common_English_words={
     'non-cardiac surgery': {'C1': 'Noun'},
     'non-covalent adsorption': {'C1': 'Noun'},
     'non-fluorinated': {'C1': 'Adjective'},
-    'non-small cell lung cancer': {'C0': 'Noun'},
+    'non-small cell lung cancer': {'C1': 'Noun'},
     'non-standard': {'B2': 'Adjective (compound)'},
-    'non-woven': {'C0': 'Adjective'},
+    'non-woven': {'C1': 'Adjective'},
     'norbornene': {'C1': 'Noun'},
     'normal feed': {'B1': 'Noun'},
     'nuclear magnetic resonance': {'B2': 'Noun'},
@@ -43799,7 +43845,7 @@ common_English_words={
     'thermosetting plastic': {'C1': 'Noun'},
     'thermostability': {'C1': 'Noun'},
     'thin film formation': {'C1': 'Noun'},
-    'thin films': {'A0': 'Noun'},
+    'thin films': {'B2': 'Noun (plural)', 'C1': 'Noun (plural, technical)'},
     'thin-layer membranes': {'C1': 'Noun'},
     'thiol-ene chemistry': {'C1': 'Noun'},
     'thiourea': {'C1': 'Noun'},
@@ -43886,7 +43932,7 @@ common_English_words={
     'unsupervised machine learning': {'B2': 'Noun'},
     'unsupervised medical treatments': {'C1': 'Noun'},
     'unsupervised models': {'B2': 'Noun'},
-    'unweighting': {'c1': 'Noun'},
+    'unweighting': {'C1': 'Noun'},
     'update process': {'A2': 'Noun'},
     'upper extremity': {'C1': 'Noun'},
     'upper leg test methods': {'C1': 'Noun'},
@@ -43898,7 +43944,7 @@ common_English_words={
     'urea decomposition': {'C1': 'Noun'},
     'urea deposits': {'C1': 'Noun'},
     'urea dosing': {'C1': 'Noun'},
-    'urea': {'b2': 'Noun'},
+    'urea': {'B2': 'Noun'},
     'urine flow meter': {'C1': 'Noun'},
     'urine output': {'C1': 'Noun'},
     'user experience': {'A2': 'Noun'},
@@ -43916,7 +43962,7 @@ common_English_words={
     'vehicle-to-pedestrian interactions': {'C1': 'Noun'},
     'vein compressibility': {'C1': 'Noun'},
     'velocity estimation': {'B2': 'Noun'},
-    'ventricorder': {'b2': 'Noun'},
+    'ventricorder': {'B2': 'Noun'},
     'vertigo': {'B2': 'Noun'},
     'vestibuloocular reflex': {'C2': 'Noun'},
     'vibrational spectroscopy': {'B2': 'Noun'},
@@ -43969,7 +44015,7 @@ common_English_words={
     'water treatment': {'B1': 'Noun'},
     'waterborne coatings': {'B2': 'Noun'},
     'waterborne primer': {'B2': 'Noun'},
-    'waterflows': {'b2': 'Noun'},
+    'waterflows': {'B2': 'Noun'},
     'waterworks sludge': {'C1': 'Noun'},
     'wavelet transfrom': {'C1': 'Noun'},
     'weapon handling': {'B1': 'Noun'},
@@ -45791,18 +45837,18 @@ common_English_words={
     'chelation': {'C2': 'Noun'},
     'chemically-defined': {'C1': 'Adjective'},
     'chemico-physical': {'C1': 'Adjective'},
-    'chemisorption': {'C3': 'Noun'}, 
+    'chemisorption': {'C2': 'Noun'}, 
     'chemistry-based': {'B2': 'Adjective (compound)'}, 
-    'chemoattractant': {'C3': 'Noun'},
-    'chemocatalytic': {'C3': 'Adjective'},
-    'chemoenzymatic': {'C3': 'Adjective'},
-    'chemogenomic': {'C3': 'Adjective'}, 
-    'chemokines': {'C3': 'Noun (plural)'},
-    'chemolithoautotroph': {'C4': 'Noun'},
-    'chemoradiation': {'C3': 'Noun'},
-    'chemoresistance': {'C3': 'Noun'}, 
-    'chemoselectivity': {'C3': 'Noun'},
-    'chemostats': {'C3': 'Noun (plural)'}, 
+    'chemoattractant': {'C2': 'Noun'},
+    'chemocatalytic': {'C2': 'Adjective'},
+    'chemoenzymatic': {'C2': 'Adjective'},
+    'chemogenomic': {'C2': 'Adjective'}, 
+    'chemokines': {'C2': 'Noun (plural)'},
+    'chemolithoautotroph': {'C2': 'Noun (biological)', 'D2': 'Noun (biological)'},
+    'chemoradiation': {'C2': 'Noun'},
+    'chemoresistance': {'C2': 'Noun'}, 
+    'chemoselectivity': {'C2': 'Noun'},
+    'chemostats': {'C2': 'Noun (plural)'}, 
     'chemotherapeutic': {'C2': 'Adjective'},
     'chemotherapies': {'C2': 'Noun (plural)'},
     'childcare': {'A1': 'Noun'}, 
@@ -45811,23 +45857,23 @@ common_English_words={
     'chiral': {'C2': 'Adjective'},
     'chirality': {'C2': 'Noun'},
     'chitin': {'C2': 'Noun'},
-    'chitin-binding': {'C3': 'Adjective (compound)'}, 
-    'chitin-containing': {'C3': 'Adjective (compound)'}, 
-    'chitinase': {'C3': 'Noun'},
-    'chitinous': {'C3': 'Adjective'}, 
+    'chitin-binding': {'C2': 'Adjective (compound)'}, 
+    'chitin-containing': {'C2': 'Adjective (compound)'}, 
+    'chitinase': {'C2': 'Noun'},
+    'chitinous': {'C2': 'Adjective'}, 
     'chitosan-graft-poly': {'C1': 'Noun Phrase'},
     'chitosan/acetic': {'C1': 'Noun Phrase'}, 
-    'chitosans': {'C3': 'Noun (plural)'},
-    'chloramphenicol': {'C3': 'Noun'}, 
+    'chitosans': {'C2': 'Noun (plural)'},
+    'chloramphenicol': {'C2': 'Noun'}, 
     'chlorate': {'C2': 'Noun'}, 
-    'chlorate-reducing': {'C3': 'Adjective (compound)'},
+    'chlorate-reducing': {'C2': 'Adjective (compound)'},
     'chlorate/ton': {'C2': 'Noun Phrase'}, 
     'chlorhexidine': {'C2': 'Noun'}, 
     'chloride-rich': {'C2': 'Adjective (compound)'},
     'chlorination': {'C2': 'Noun'},
     'chlorinity': {'C2': 'Noun'}, 
     'chlorite': {'C2': 'Noun'},
-    'chlorite delignification': {'C3': 'Noun'},
+    'chlorite delignification': {'C2': 'Noun'},
     'chloroacetic': {'C1': 'Adjective'}, 
     'chlorobenzene': {'C1': 'Noun'},
     'chloroform': {'B2': 'Noun'},
@@ -46774,8 +46820,8 @@ common_English_words={
     'eutrophicated': {'C1': 'Adjective, Verb (past tense), Verb (past participle)'}, 
     'evaporation-driven': {'B2': 'Adjective (compound)'},
     'ex-bed': {'B2': 'Noun Phrase'}, 
-    'ex-situ': {'B2': 'Adjective, Preposition'},
-    'ex-vivo': {'B2': 'Adjective, Preposition'}, 
+    'ex-situ': {'C1': 'Adverb, Adjective'}, # removed Preposition; the Adjective form a sepcialized bilological term
+    'ex-vivo': {'C1': 'Adverb, Adjective'}, # removed Preposition; the Adjective form a sepcialized bilological term
     'exceedances': {'C1': 'Noun (plural)'},
     'excipient': {'B2': 'Noun'},
     'excipients': {'B2': 'Noun (plural)'},
@@ -51278,7 +51324,7 @@ common_English_words={
     'Halobacterium salinarum': {'C1': 'Proper Noun'}, # see diva2:1147592
     'Hbt. salinarum': {'C1': 'Proper Noun'}, # short for Halobacterium salinarum - see diva2:1147592
     'Notoph-thalmus viridescens': {'C1': 'Proper Noun'}, # see diva2:852471
-    'styrene-butadiene': {'A0': 'Noun Phrase.'},
+    'styrene-butadiene': {'C1': 'Noun (chemical)'},
     'solubilizate': {'C2': 'Noun'}, # used in diva2:1096867 in both title and abstract
     'tackifiers': {'C1': 'Noun'},
     'tackiness': {'C1': 'Noun'},
@@ -58064,7 +58110,7 @@ common_English_words={
     #end for SCI - SCIe
 
     'twidget': {'xx': 'Noun'},    # military jargonm for "a small, often unspecified or unidentified, piece of equipment or a small adjustment. It's used to describe something that is small and often unimportant, or that requires a small adjustment." -- Gemini rates it as beyond C2
-    'mountweazels': {'xX': 'Noun'}, # a noun referring to a deliberately inserted fictitious entry in a reference work, such as a dictionary or map, for the purpose of detecting copyright infringement. -- Gemini rates it as beyond C2, as it is "a specialized term, primarily used in legal and publishing contexts." --  based upon 'Mountweazel', 'Lilian Virginia Mountweazel'
+    'mountweazels': {'xx': 'Noun'}, # a noun referring to a deliberately inserted fictitious entry in a reference work, such as a dictionary or map, for the purpose of detecting copyright infringement. -- Gemini rates it as beyond C2, as it is "a specialized term, primarily used in legal and publishing contexts." --  based upon 'Mountweazel', 'Lilian Virginia Mountweazel'
     'crudeware': {'xx': 'Noun'}, # slang/jargon, and not part of general vocabulary: highly specific to the software development world- It would be beyond the CEFR scale.
     'emulator': {'B2': 'Noun'},
 
@@ -58147,7 +58193,7 @@ common_English_words={
     'catfishing': {'xx': 'Verb, Noun'}, # Internet slang, referring to creating a fake online identity to deceive someone.
     'cell mate': {'B1': 'Noun', 'B2': 'Noun'}, # Common noun, referring to someone who shares a prison cell.
     'cellywood': {'xx': 'Noun'}, # Slang, referring to films or videos made using mobile phones.
-    'centaur': {'B2/C1': 'Noun'}, # A mythical creature, half-human, half-horse.
+    'centaur': {'B2': 'Noun', 'C1': 'Noun'}, # A mythical creature, half-human, half-horse.
     'cheugy': {'xx': 'Adjective'}, # Slang, referring to something that is out of date or trying too hard.
     'chicken boner': {'xx': 'Noun phrase'}, # Slang, referring to a small, often insignificant, error or problem.
     'chip jewelry': {'xx': 'Noun'}, # Slang, referring to electronic components worn as jewelry.
@@ -58164,7 +58210,7 @@ common_English_words={
     'cornea gumbo': {'xx': 'Noun'}, # Slang, referring to the eye mucus that accumulates after sleeping.
     'corridor warrior': {'xx': 'Noun'}, # Slang, referring to an office worker who spends a lot of time in meetings or moving between offices.
     'cowbell': {'A2': 'Noun'}, # Common noun, referring to a bell worn by livestock.
-    'creationism': {'B2/C1': 'Noun'}, # Noun, referring to the religious belief that the universe and living organisms originated from specific acts of divine creation.
+    'creationism': {'B2': 'Noun', 'C1': 'Noun'}, # Noun, referring to the religious belief that the universe and living organisms originated from specific acts of divine creation.
     'credibility': {'B2': 'Noun'}, # Common noun, referring to the quality of being believable or trustworthy.
     'credit(s)': {'A2': 'Noun, Verb', 'B1': 'Noun, Verb'}, # Common word with various meanings (belief, praise, academic units, to believe).
     'credentials': {'B2': 'Noun'}, # Plural noun, referring to documents or qualities that qualify someone for a job or task.
@@ -58380,7 +58426,7 @@ common_English_words={
     'quantifier': {'C1': 'Noun'},  # Mathematical/linguistic term.
     'tablet neck': {'xx': 'Noun'},  # Slang, referring to neck pain from tablet use.
     'tablet pedagogy': {'C1': 'Noun'},  # More specialized educational term.
-    'tablet-based learning': {'B2/C1': 'Noun'},  # Educational term, fairly common.
+    'tablet-based learning': {'B2': 'Noun', 'C1': 'Noun'},  # Educational term, fairly common.
     'tech neck': {'xx': 'Noun'},  # Slang, similar to "tablet neck," but broader.
     'to pimp': {'xx': 'Verb'},  # Slang, meaning to customize or modify.
     'tp poke': {'xx': 'Verb'},  # Slang, referring to a prank or annoying online action.
@@ -78685,7 +78731,7 @@ common_french_words={
     'montage': {'B2': 'Noun'},
     'nationale': {'B1': 'Noun'},
     'nouveau': {'A2': 'Adjective'},
-    'numérique': {'B!': 'Noun'},
+    'numérique': {'B1': 'Noun'},
     'optronique': {'C1': 'Noun'},
     'perturbations': {'B2': 'Noun (plural)'},
     'pour': {'A1': 'Preposition'},
