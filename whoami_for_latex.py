@@ -193,8 +193,8 @@ def main():
                 login_id=u['user']['login_id']
                 if login_id == email_address:
                     u_name=u['user']['sortable_name'].split(',')
-                    lastname=u_name[0]
-                    firstname=u_name[1]
+                    lastname=u_name[0].strip()
+                    firstname=u_name[1].strip()
                     kthid=u['user']['sis_user_id']
                     kth_user_info=get_user_by_kthid(kthid)
                     if Verbose_Flag:
@@ -203,8 +203,8 @@ def main():
                         for wi in kth_user_info['worksFor'].get('items'):
                             wi_key=wi['key']
                             if wi_key.count('.') == 3:
-                                wi_name_swe=wi['name']
-                                wi_name_eng=wi['nameEn']
+                                wi_name_swe=wi['name'].strip()
+                                wi_name_eng=wi['nameEn'].strip()
                                 org_path=wi['path']
                                 if org_path[0] == 'a':
                                     school_acronym='ABE'
@@ -218,7 +218,8 @@ def main():
                                     school_acronym='SCI'
                                 else:
                                     print(f"Unknown organization path: {org_path}")
-                                    
+                                    school_acronym='unknown'
+
                         print(f"%If not the first supervisor,")
                         print(f"% then replace supervisorAs with supervisorBs or")
                         print(f"% supervisorCAs as appropriate")
@@ -230,6 +231,7 @@ def main():
                         print("\\supervisorAsKTHID{"+f"{kthid}"+"}")
                         print("%\\supervisorAsSchool{\\schoolAcronym{"+f"{school_acronym}"+"}")
                         print("%\\supervisorAsDepartment{"+f"{wi_name_eng}"+"}")
+                        return
                     else:
                         print(f"%If not the first supervisor,")
                         print(f"% then replace supervisorAs with supervisorBs or")
@@ -237,6 +239,7 @@ def main():
                         print("\\supervisorAsLastname{"+f"{lastname}"+"}")
                         print("\\supervisorAsFirstname{"+f"{firstname}"+"}")
                         print("\\supervisorAsEmail{"+f"{email_address}"+"}")
+                        return
             else:
                 print(f"Could not find user with e-mail address {email_address} in course {course_id}")
 
