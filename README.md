@@ -3296,6 +3296,53 @@ The program contains extensive information about the format of the spreadsheet.
 ```
 
 
+## whoami_for_latex.py
+
+### Purpose
+To get supervisor information for use in the LaTeX thesis temlate
+
+### Input
+```bash
+./whoami_for_latex.py email course_id
+```
+
+### Output
+outputs supervisor information for LaTeX thesis temlate
+
+### Note 
+Requires that you have a KTH_API key
+
+### Example
+
+```bash
+./whoami_for_latex.py maguire@kth.se 11
+%If not the first supervisor,
+% then replace supervisorAs with supervisorBs or
+% supervisorCAs as appropriate
+\supervisorAsLastname{Maguire Jr}
+\supervisorAsFirstname{ Gerald Quentin}
+\supervisorAsEmail{maguire@kth.se}
+% If the supervisor is from within KTH
+% add their KTHID, School and Department info
+\supervisorAsKTHID{u1d13i2c}
+%\supervisorAsSchool{\schoolAcronym{EECS}
+%\supervisorAsDepartment{DEPARTMENT OF COMPUTER SCIENCE}
+maguire@birkz:/z3/maguire/Canvas/Canvas-tools> !!
+./whoami_for_latex.py maguire@kth.se 11
+%If not the first supervisor,
+% then replace supervisorAs with supervisorBs or
+% supervisorCAs as appropriate
+\supervisorAsLastname{Maguire Jr}
+\supervisorAsFirstname{ Gerald Quentin}
+\supervisorAsEmail{maguire@kth.se}
+% If the supervisor is from within KTH
+% add their KTHID, School and Department info
+\supervisorAsKTHID{u1d13i2c}
+%\supervisorAsSchool{\schoolAcronym{EECS}
+%\supervisorAsDepartment{DEPARTMENT OF COMPUTER SCIENCE}
+```
+
+
 <!-- 
 
 ## xxx.py

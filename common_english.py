@@ -58550,9 +58550,20 @@ common_English_words={
     'comma ellipsis': {'xx': 'Noun'}, # Jargon, a stylistic choice in writing to omit words using commas.
     'pr0n': {'xx': 'Noun'}, # Slang, a euphemistic abbreviation of "pornography".
     'milk': {'A2': 'Noun', 'B1': 'Verb'}, # Common word with multiple meanings
-    'wrecked': {'B1': 'Adjective', 'B2': 'Verb'} # Common word with multiple meanings
+    'wrecked': {'B1': 'Adjective', 'B2': 'Verb'}, # Common word with multiple meanings
 
-
+    'Reynolds-Averaged': {'C1': 'Adjective (compound)'}, # Technical term in fluid dynamics
+    'wind-tunnel': {'B2': 'Noun (compound)'},
+    'fibres': {'A2': 'Noun (plural)'  }, # Common noun, plural of 'fibre' (British English)
+    'flow-induced': {'C1': 'Adjective (compound)'},
+    'micro-CT': {'C1': 'Noun (abbreviation)' }, # Abbreviation for micro-computed tomography, a technical term in imaging.
+    'microcracks': {'C1': 'Noun (plural)'}, 
+    'moulding': {'B2': 'Noun, Verb (gerund/present participle)'},
+    'nugget': {'B1': 'Noun'},
+    're-injection': {'B2': 'Noun (compound)'},
+    'viaduct': {'B2': 'Noun'},
+    'vibroacoustic': {'C1': 'Adjective'},
+    'wingspan': {'B1': 'Noun'},
 
 }
     
