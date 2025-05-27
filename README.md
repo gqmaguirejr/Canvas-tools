@@ -3317,7 +3317,23 @@ outputs supervisor information for LaTeX thesis temlate
 ### Note 
 Requires that you have a KTH_API key
 
-### Example
+If you do not have an KTH_API key, then it guesses:
+```bash
+./whoami_for_latex.py --config config-no-API-key.json maguire@kth.se 11 C
+%If not the first supervisor,
+% then replace supervisorAs with supervisorBs or
+% supervisorCAs as appropriate
+\supervisorAsLastname{Maguire Jr}
+\supervisorAsFirstname{Gerald Quentin}
+\supervisorAsEmail{maguire@kth.se}
+% If the supervisor is from within KTH
+% add their KTHID, School and Department info
+\supervisorCsKTHID{u1d13i2c}
+%\supervisorCsSchool{\schoolAcronym{EECS}}
+%\supervisorCsDepartment{Department}
+```
+
+### Example with an API key
 
 ```bash
 ./whoami_for_latex.py maguire@kth.se 11
@@ -3330,8 +3346,8 @@ Requires that you have a KTH_API key
 % If the supervisor is from within KTH
 % add their KTHID, School and Department info
 \supervisorAsKTHID{u1d13i2c}
-%\supervisorAsSchool{\schoolAcronym{EECS}
-%\supervisorAsDepartment{Computer Science}
+\supervisorAsSchool{\schoolAcronym{EECS}}
+\supervisorAsDepartment{Computer Science}
 ```
 
 
@@ -3343,10 +3359,19 @@ Requires that you have a KTH_API key
 % If the supervisor is from within KTH
 % add their KTHID, School and Department info
 \supervisorBsKTHID{u1d13i2c}
-%\supervisorBsSchool{\schoolAcronym{EECS}
-%\supervisorBsDepartment{Computer Science}
+\supervisorBsSchool{\schoolAcronym{EECS}}
+\supervisorBsDepartment{Computer Science}
 ```
 
+### Example for an external supervisor
+```bash
+./whoami_for_latex.py json@company.com 11 C
+Could not find user with e-mail address json@company.com in course 11
+You will need to manually edit the following entry
+\supervisorCsLastname{lastname}
+\supervisorCsFirstname{firstname}
+\supervisorCsEmail{json@company.com}
+```
 
 <!-- 
 

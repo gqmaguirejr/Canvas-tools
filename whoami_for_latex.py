@@ -64,9 +64,15 @@ def initialize(options):
             baseUrl="https://"+configuration["canvas"]["host"]+"/api/v1"
             header = {'Authorization' : 'Bearer ' + access_token}
             payload = {}
-            kth_key=configuration["KTH_API"]["key"]
-            kth_host=configuration["KTH_API"]["host"]
-            kth_header = {'api_key': kth_key, 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            kth_api_info=configuration.get("KTH_API")
+            if kth_api_info:
+                kth_key=kth_api_info["key"]
+                kth_host=kth_api_info["host"]
+                kth_header = {'api_key': kth_key, 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            else:
+                kth_key=None
+                kth_host=None
+                kth_header = None
 
     except:
         print(f"Unable to open configuration file named {config_file}")
@@ -127,6 +133,9 @@ def get_user_by_kthid(kthid):
     # Use the KTH API to get the user information give an orcid
     #"#{$kth_api_host}/profile/v1/kthId/#{kthid}"
 
+    if kth_host is None:
+        return []
+    
     url = f"{kth_host}/profile/v1/kthId/{kthid}"
     if Verbose_Flag:
         print("url: {}".format(url))
@@ -248,8 +257,8 @@ def main():
                         print(f"% If the supervisor is from within KTH")
                         print(f"% add their KTHID, School and Department info")
                         print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
-                        print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}")
-                        print(f"%\\supervisor{supervisor_index}sDepartment"+"{"+f"{wi_name_eng}"+"}")
+                        print(f"\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}}")
+                        print(f"\\supervisor{supervisor_index}sDepartment"+"{"+f"{wi_name_eng}"+"}")
                         return
                     else:
                         print(f"%If not the first supervisor,")
@@ -258,9 +267,25 @@ def main():
                         print("\\supervisorAsLastname{"+f"{lastname}"+"}")
                         print("\\supervisorAsFirstname{"+f"{firstname}"+"}")
                         print("\\supervisorAsEmail{"+f"{email_address}"+"}")
+                        print(f"% If the supervisor is from within KTH")
+                        print(f"% add their KTHID, School and Department info")
+                        print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
+                        print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{EECS}}")
+                        print(f"%\\supervisor{supervisor_index}sDepartment"+"{Department}")
                         return
             else:
                 print(f"Could not find user with e-mail address {email_address} in course {course_id}")
+                print("You will need to manually edit the following entry")
+                if supervisor_index == 'A':
+                    print(f"%If not the first supervisor,")
+                    print(f"% then replace supervisorAs with supervisorBs or")
+                    print(f"% supervisorCAs as appropriate")
+                print(f"\\supervisor{supervisor_index}sLastname"+"{lastname}")
+                print(f"\\supervisor{supervisor_index}sFirstname"+"{firstname}")
+                print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
+                print("% other for a supervisor outside of KTH add their organization info")
+                print(f"\\supervisor{supervisor_index}sOrganization"+ "{xxxxx University, Department of yyyy}")
+
 
 if __name__ == "__main__": main()
 
