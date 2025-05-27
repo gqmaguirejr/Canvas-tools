@@ -2,7 +2,11 @@
 # -*- coding: utf-8 -*-
 # -*- mode: python; python-indent-offset: 4 -*-
 #
-# ./whoami_for_latex.py email course_id
+# ./whoami_for_latex.py email course_id [supervisor_index]
+#
+# The course_id has to be a course where the supervisor is enrolled (as student, teacher, ... )
+#
+# If supervisor_index not specified, it defaults to "A"
 #
 # Output: supervisor information for LaTeX thesis temlate
 #
@@ -15,6 +19,9 @@
 # ./whoami_for_latex.py maguire@kth.se 11
 #
 # ./whoami_for_latex.py --config config-test.json  maguire@kth.se 6434
+#
+# for the 2nd supervisor
+# ./whoami_for_latex.py maguire@kth.se 11 B
 #
 # G. Q. Maguire Jr.
 #
@@ -176,6 +183,10 @@ def main():
     else:
         email_address=remainder[0]
         course_id=remainder[1]
+        if (len(remainder) >= 3):
+            supervisor_index=remainder[2]
+        else:
+            supervisor_index='A'
 
         users=users_in_course(course_id)
         if options.testing:     # if testing only get the list of users and then return
@@ -220,17 +231,25 @@ def main():
                                     print(f"Unknown organization path: {org_path}")
                                     school_acronym='unknown'
 
-                        print(f"%If not the first supervisor,")
-                        print(f"% then replace supervisorAs with supervisorBs or")
-                        print(f"% supervisorCAs as appropriate")
-                        print("\\supervisorAsLastname{"+f"{lastname}"+"}")
-                        print("\\supervisorAsFirstname{"+f"{firstname}"+"}")
-                        print("\\supervisorAsEmail{"+f"{email_address}"+"}")
+                        # set the name in title case
+                        wi_name_eng=wi_name_eng.title()
+
+                        # clean up department names to just have the name
+                        if wi_name_eng.find('Department Of') == 0:
+                            wi_name_eng=wi_name_eng.replace('Department Of', '').strip()
+
+                        if supervisor_index == 'A':
+                            print(f"%If not the first supervisor,")
+                            print(f"% then replace supervisorAs with supervisorBs or")
+                            print(f"% supervisorCAs as appropriate")
+                        print(f"\\supervisor{supervisor_index}sLastname"+"{"+f"{lastname}"+"}")
+                        print(f"\\supervisor{supervisor_index}sFirstname"+"{"+f"{firstname}"+"}")
+                        print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
                         print(f"% If the supervisor is from within KTH")
                         print(f"% add their KTHID, School and Department info")
-                        print("\\supervisorAsKTHID{"+f"{kthid}"+"}")
-                        print("%\\supervisorAsSchool{\\schoolAcronym{"+f"{school_acronym}"+"}")
-                        print("%\\supervisorAsDepartment{"+f"{wi_name_eng}"+"}")
+                        print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
+                        print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}")
+                        print(f"%\\supervisor{supervisor_index}sDepartment"+"{"+f"{wi_name_eng}"+"}")
                         return
                     else:
                         print(f"%If not the first supervisor,")

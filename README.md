@@ -3303,8 +3303,13 @@ To get supervisor information for use in the LaTeX thesis temlate
 
 ### Input
 ```bash
-./whoami_for_latex.py email course_id
+./whoami_for_latex.py email course_id [supervisor_index]
 ```
+
+The course_id has to be a course where the supervisor is enrolled (as student, teacher, ... )
+
+If supervisor_index not specified, it defaults to "A"
+
 
 ### Output
 outputs supervisor information for LaTeX thesis temlate
@@ -3320,26 +3325,26 @@ Requires that you have a KTH_API key
 % then replace supervisorAs with supervisorBs or
 % supervisorCAs as appropriate
 \supervisorAsLastname{Maguire Jr}
-\supervisorAsFirstname{ Gerald Quentin}
+\supervisorAsFirstname{Gerald Quentin}
 \supervisorAsEmail{maguire@kth.se}
 % If the supervisor is from within KTH
 % add their KTHID, School and Department info
 \supervisorAsKTHID{u1d13i2c}
 %\supervisorAsSchool{\schoolAcronym{EECS}
-%\supervisorAsDepartment{DEPARTMENT OF COMPUTER SCIENCE}
-maguire@birkz:/z3/maguire/Canvas/Canvas-tools> !!
-./whoami_for_latex.py maguire@kth.se 11
-%If not the first supervisor,
-% then replace supervisorAs with supervisorBs or
-% supervisorCAs as appropriate
-\supervisorAsLastname{Maguire Jr}
-\supervisorAsFirstname{ Gerald Quentin}
-\supervisorAsEmail{maguire@kth.se}
+%\supervisorAsDepartment{Computer Science}
+```
+
+
+```bash
+./whoami_for_latex.py maguire@kth.se 11 B
+\supervisorBsLastname{Maguire Jr}
+\supervisorBsFirstname{Gerald Quentin}
+\supervisorBsEmail{maguire@kth.se}
 % If the supervisor is from within KTH
 % add their KTHID, School and Department info
-\supervisorAsKTHID{u1d13i2c}
-%\supervisorAsSchool{\schoolAcronym{EECS}
-%\supervisorAsDepartment{DEPARTMENT OF COMPUTER SCIENCE}
+\supervisorBsKTHID{u1d13i2c}
+%\supervisorBsSchool{\schoolAcronym{EECS}
+%\supervisorBsDepartment{Computer Science}
 ```
 
 
