@@ -366,6 +366,13 @@ def is_number(string):
     return False
 
 words_to_ignore=[
+    'SI{14}{\\percent',
+    'SI{2}{km/h',
+    'SI{30}{km/h',
+    'x_1',
+    'x_d',
+    'ɛ',
+    'ɛ&gt;0',
     'IEC',
     'IEC--1',
     'IEC-60255-187-1',
