@@ -80944,10 +80944,10 @@ common_units={
     'µm': {'B1': 'Unit'}, #  of length - micrometer
     'µs': {'B1': 'Unit'}, #  of time - microsecond
     'µsec': {'B1': 'Unit'},  #  of time - microsecond - Same as µs
-    'º': {'A1': 'Symbol'},  # Same as ° - degree symbol
-    'ºC': {'A2': 'Unit'}, #  of temperature - degrees Celsius
+    '°': {'A1': 'Symbol'},  # Same as ° - degree symbol
+    '°C': {'A2': 'Unit'}, #  of temperature - degrees Celsius
     'Å': {'A2': 'Unit'},  #  Angstrom - diva2:1549048
-    '˚C': {'A2': 'Unit'},  # Degree Celsius - Unit of temperature
+    '℃': {'A2': 'Unit'},  # Degree Celsius - Unit of temperature (note this is one character)
     'μW': {'B2': 'Unit'},  #  of power - microwatt - May be less common at A1 level
     'μg/L': {'B2': 'Unit'},  #  of concentration - micrograms per liter - May be less common at A1 level
     'μm/yr': {'B2': 'Unit'},  #  of rate of change in length  - micrometers per year - May be less common at A1 level

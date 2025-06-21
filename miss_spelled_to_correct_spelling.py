@@ -4530,6 +4530,11 @@ miss_spelled_to_correct_spelling={
     'tor': {'c': 'monitor', 's': 'diva2:883329'},
     'hardware-in': {'c': 'hardware-in loop'},
     'day-today': {'c': 'day-to-day', 's': 'diva2:814393'},
+    'stack tacktack-based based based based based based': {'c': 'stack-based', 's': 'diva2:602640'},
+    'an an an address ddress ddress ddress ddress ddress ddress': {'c': 'an address', 's': 'diva2:602640'},
+    'approaches.approaches.approaches.approaches. approaches.approaches.approaches.approaches.approaches.approaches.': {'c': 'approaches.', 's': 'diva2:602640'},
+    'di_ering': {'c': 'differing', 's': 'diva2:792110'},
+    'encodedivrepresentations':  {'c': 'encoded representations', 's': 'diva2:1466265'},
 
 }
 
