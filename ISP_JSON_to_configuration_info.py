@@ -194,6 +194,8 @@ def get_user_info(email, users):
                 print(f"Unable to determine KTHID for {email}")
             return None
     else:
+        # currently only check for the account "EECS - Imported course rounds"
+        # it should check all of the subaccounts that the user runinng the program has administraive access to
         account_id=59
         lastname, firstname, kthid = user_via_search_in_account(email, account_id)
         if not kthid:
