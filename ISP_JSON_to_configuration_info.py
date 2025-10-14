@@ -190,13 +190,15 @@ def get_user_info(email, users):
     if users:
         lastname, firstname, kthid = get_user_name_and_kthid(email, users)
         if not kthid:
-            print(f"Unable to determine KTHID for {email}")
+            if Verbose_Flag:
+                print(f"Unable to determine KTHID for {email}")
             return None
     else:
         account_id=59
         lastname, firstname, kthid = user_via_search_in_account(email, account_id)
         if not kthid:
-            print(f"Unable to determine KTHID for {email}")
+            if Verbose_Flag:
+                print(f"Unable to determine KTHID for {email}")
             return None
 
     if Verbose_Flag:
@@ -323,12 +325,13 @@ def main():
     email=isp_info['student_email']
     if not email:
         print(f"student_email address not found")
-        return
+        return None
 
     user_info=get_user_info(email, users)
     if not user_info:
-        print(f"Cound not get user_info for {email}")
-        return
+        if Verbose_Flag:
+            print(f"Cound not get user_info for {email}")
+        return None
 
     lastname=user_info['lastName']
     firstname=user_info['firstName']
@@ -366,11 +369,28 @@ def main():
 
         user_info=get_user_info(email, users)
         if not user_info:
-            print(f"Cound not get user_info for {email}")
+            if Verbose_Flag:
+                print(f"Cound not get user_info for {email}")
             
-            #print(f"\\supervisor{supervisor_index}sLastname"+"{"+f"{lastname}"+"}")
-            #print(f"\\supervisor{supervisor_index}sFirstname"+"{"+f"{firstname}"+"}")
-            #print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email}"+"}")
+            idx=f"supervisor{supervisor_index}"
+            supervisor_name=isp_info.get(idx)
+            if supervisor_name.count(' ') == 1:
+                supervisor_names=supervisor_name.split(' ')
+                lastname=supervisor_names[1].strip()
+                firstname=supervisor_names[0].strip()
+            else:
+                # splits on the first space
+                supervisor_names=supervisor_name.split(' ', 1)
+                firstname=supervisor_names[0].strip()
+                lastname=supervisor_names[1].strip()
+
+            print(f"% -- supervisor{supervisor_index}")
+            print(f"\\supervisor{supervisor_index}sLastname"+"{"+f"{lastname}"+"}")
+            print(f"\\supervisor{supervisor_index}sFirstname"+"{"+f"{firstname}"+"}")
+
+            idx=f"supervisor{supervisor_index}_email"
+            email=isp_info.get(idx)
+            print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email}"+"}")
 
             continue
 
