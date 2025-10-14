@@ -288,7 +288,6 @@ miss_spelled_to_correct_spelling={
     'EFI2': {'c': 'EFI', 's': 'diva2:1146168', 'n': 'The 2 was for a footnote'},
     'EPRTMreactors1': {'c': 'EPR<sup>TM</sup>reactors<sup>1</sup>', 's': 'diva2:512882'},
     'East-Westdirections': {'c': 'East-West directions', 's': 'diva2:511327'},
-    'East-Westdirections': {'c': 'East-West directions', 's': 'diva2:511327'},
     'Ecpat': {'c': 'ECPAT', 's': 'diva2:1238800', 'n': 'https://ecpat.se/'},
     'Eect': {'c': 'Effect'},
     'Eect': {'c': 'Effect'},

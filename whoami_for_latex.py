@@ -8,12 +8,14 @@
 #
 # If supervisor_index not specified, it defaults to "A"
 #
+# if supervisor_index == 'S', it is a student
+#
 # Output: supervisor information for LaTeX thesis temlate
 #
 # with the option "-v" or "--verbose" you get lots of output - showing in detail the operations of the program
 #
 # Can also be called with an alternative configuration file:
-# ./users-in-course.py --config config-test.json 11
+# ./whoami_for_latex.py --config config-test.json 11
 #
 # Example:
 # ./whoami_for_latex.py maguire@kth.se 11
@@ -187,6 +189,8 @@ def main():
 
     initialize(options)
 
+    orcid = None
+
     if (len(remainder) < 2):
         print("Insuffient arguments - must provide email_address course_id\n")
     else:
@@ -220,24 +224,27 @@ def main():
                     if Verbose_Flag:
                         pprint.pprint(kth_user_info)
                     if kth_user_info:
+                        if kth_user_info.get('researcher') and kth_user_info['researcher'].get('orcid'):
+                            orcid = kth_user_info['researcher'].get('orcid')
+                            
                         for wi in kth_user_info['worksFor'].get('items'):
                             wi_key=wi['key']
                             if wi_key.count('.') == 3:
                                 wi_name_swe=wi['name'].strip()
                                 wi_name_eng=wi['nameEn'].strip()
-                                org_path=wi['path']
-                                if org_path[0] == 'a':
-                                    school_acronym='ABE'
-                                elif org_path[0] == 'c':
-                                    school_acronym='CBH'
-                                elif org_path[0] == 'j':
+                                wi_key_parts=wi_key.split('.')
+                                if wi_key_parts[2] == 'j' or wi_key_parts[2] == 'J':
                                     school_acronym='EECS'
-                                elif org_path[0] == 'm':
+                                elif wi_key_parts[2] == 'a' or wi_key_parts[2] == 'A':
+                                    school_acronym='ABE'
+                                elif wi_key_parts[2] == 'c' or wi_key_parts[2] == 'C':
+                                    school_acronym='CBH'
+                                elif wi_key_parts[2] == 'm' or wi_key_parts[2] == 'M':
                                     school_acronym='ITM'
-                                elif org_path[0] == 's':
+                                elif wi_key_parts[2] == 's' or wi_key_parts[2] == 'S':
                                     school_acronym='SCI'
                                 else:
-                                    print(f"Unknown organization path: {org_path}")
+                                    print(f"Unknown organization path: {wi_key_parts[2]}")
                                     school_acronym='unknown'
 
                         # set the name in title case
@@ -247,32 +254,44 @@ def main():
                         if wi_name_eng.find('Department Of') == 0:
                             wi_name_eng=wi_name_eng.replace('Department Of', '').strip()
 
-                        if supervisor_index == 'A':
+                        if supervisor_index == 'S':
+                            print("% --- Author Information ---")
+                            print(f"\\authorsLastname"+"{"+f"{lastname}"+"}")
+                            print(f"\\authorsFirstname"+"{"+f"{firstname}"+"}")
+                            print(f"\\email"+"{"+f"{email_address}"+"}")
+                            print(f"\\kthid"+"{"+f"{kthid}"+"}")
+                            print(f"\\authorsSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}}")
+                            if orcid:
+                                print(f"\\orcid"+"{"+f"{orcid}"+"}")
+                            # print(f"\\supervisor{supervisor_index}sDepartment"+"{"+f"{wi_name_eng}"+"}")
+                            return
+
+                        elif supervisor_index == 'A':
                             print(f"%If not the first supervisor,")
                             print(f"% then replace supervisorAs with supervisorBs or")
                             print(f"% supervisorCAs as appropriate")
-                        print(f"\\supervisor{supervisor_index}sLastname"+"{"+f"{lastname}"+"}")
-                        print(f"\\supervisor{supervisor_index}sFirstname"+"{"+f"{firstname}"+"}")
-                        print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
-                        print(f"% If the supervisor is from within KTH")
-                        print(f"% add their KTHID, School and Department info")
-                        print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
-                        print(f"\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}}")
-                        print(f"\\supervisor{supervisor_index}sDepartment"+"{"+f"{wi_name_eng}"+"}")
-                        return
-                    else:
-                        print(f"%If not the first supervisor,")
-                        print(f"% then replace supervisorAs with supervisorBs or")
-                        print(f"% supervisorCAs as appropriate")
-                        print("\\supervisorAsLastname{"+f"{lastname}"+"}")
-                        print("\\supervisorAsFirstname{"+f"{firstname}"+"}")
-                        print("\\supervisorAsEmail{"+f"{email_address}"+"}")
-                        print(f"% If the supervisor is from within KTH")
-                        print(f"% add their KTHID, School and Department info")
-                        print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
-                        print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{EECS}}")
-                        print(f"%\\supervisor{supervisor_index}sDepartment"+"{Department}")
-                        return
+                            print(f"\\supervisor{supervisor_index}sLastname"+"{"+f"{lastname}"+"}")
+                            print(f"\\supervisor{supervisor_index}sFirstname"+"{"+f"{firstname}"+"}")
+                            print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
+                            print(f"% If the supervisor is from within KTH")
+                            print(f"% add their KTHID, School and Department info")
+                            print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
+                            print(f"\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}}")
+                            print(f"\\supervisor{supervisor_index}sDepartment"+"{"+f"{wi_name_eng}"+"}")
+                            return
+                        else:
+                            print(f"%If not the first supervisor,")
+                            print(f"% then replace supervisorAs with supervisorBs or")
+                            print(f"% supervisorCAs as appropriate")
+                            print("\\supervisorAsLastname{"+f"{lastname}"+"}")
+                            print("\\supervisorAsFirstname{"+f"{firstname}"+"}")
+                            print("\\supervisorAsEmail{"+f"{email_address}"+"}")
+                            print(f"% If the supervisor is from within KTH")
+                            print(f"% add their KTHID, School and Department info")
+                            print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
+                            print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{EECS}}")
+                            print(f"%\\supervisor{supervisor_index}sDepartment"+"{Department}")
+                            return
             else:
                 print(f"Could not find user with e-mail address {email_address} in course {course_id}")
                 print("You will need to manually edit the following entry")

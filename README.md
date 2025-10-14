@@ -3309,6 +3309,7 @@ To get supervisor information for use in the LaTeX thesis temlate
 The course_id has to be a course where the supervisor is enrolled (as student, teacher, ... )
 
 If supervisor_index not specified, it defaults to "A"
+If supervisor_index == S, then this is the studet author.
 
 
 ### Output
@@ -3316,6 +3317,7 @@ outputs supervisor information for LaTeX thesis temlate
 
 ### Note 
 Requires that you have a KTH_API key
+Adjuste the program for the current value returned from KTH Profile API, as it does not have a 'path' part any longer. 
 
 If you do not have an KTH_API key, then it guesses:
 ```bash
