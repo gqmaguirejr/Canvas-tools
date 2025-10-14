@@ -3375,6 +3375,61 @@ You will need to manually edit the following entry
 \supervisorCsEmail{json@company.com}
 ```
 
+## ISP_JSON_to_configuration_info.py
+### Purpose
+To take the information JSON file produced by extract_dc_meta_data_from_PDF.py and ouput line sthat can be included in to the custom_configuration.tex for a third-cycle thesis.
+
+### Input
+```bash
+./ISP_JSON_to_configuration_info.py xxx.json [course_id]
+```
+
+### Output
+outputs 
+```
+% --- Author Information ---
+\authorsLastname{xxx}
+\authorsFirstname{yyy}
+\email{x@kth.se}
+\kthid{u1xxxxxx}
+\authorsSchool{\schoolAcronym{EECS}}
+\orcid{0000-0001-xxxx-yyyy}
+\authorsDepartment{Computer Science}
+% -- supervisorA
+\supervisorAsLastname{xxxx}
+\supervisorAsFirstname{yyyy}
+\supervisorAsEmail{zzz@kth.se}
+\supervisorAsKTHID{u12eursm}
+\supervisorAsSchool{\schoolAcronym{EECS}}
+\supervisorAsDepartment{Computer Science}
+% -- supervisorB
+\supervisorBsLastname{xxxx}
+\supervisorBsFirstname{yyyy}
+\supervisorBsEmail{zzzz@kth.se}
+\supervisorBsKTHID{u1xxxxx}
+\supervisorBsSchool{\schoolAcronym{EECS}}
+\supervisorBsDepartment{Computer Science}
+```
+
+### Note 
+Currently does not handle external supervisors.
+
+
+### Example
+
+```bash
+./ISP_JSON_to_configuration_info.py /tmp/example.json
+```
+
+or
+
+```bash
+./ISP_JSON_to_configuration_info.py /tmp/example.json  42241
+```
+
+
+
+
 <!-- 
 
 ## xxx.py
@@ -3388,7 +3443,8 @@ To
 ```
 
 ### Output
-outputs 
+outputs
+
 
 ### Note 
 
