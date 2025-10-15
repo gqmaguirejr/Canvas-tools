@@ -77,9 +77,48 @@ def initialize(options):
         print("Please create a suitable configuration file, the default name is config.json")
         sys.exit()
 
+def list_accounts():
+    accounts_found_thus_far=[]
+    # Use the Canvas API to get the list of accounts - I can access
+    #GET /api/v1/accounts
+
+    url = f"{baseUrl}/accounts"
+    if Verbose_Flag:
+       print("url: {}".format(url))
+
+    extra_parameters={'per_page': '100',
+                      'recursive': True,
+                      'include[]': 'sub_account_count'
+    }
+    r = requests.get(url, params=extra_parameters, headers = header)
+    if Verbose_Flag:
+       print("result of getting acounts: {}".format(r.text))
+
+    if r.status_code == requests.codes.ok:
+       page_response=r.json()
+
+       for p_response in page_response:  
+           accounts_found_thus_far.append(p_response)
+
+           # the following is needed when the reponse has been paginated
+           # i.e., when the response is split into pieces - each returning only some of the list of modules
+           # see "Handling Pagination" - Discussion created by tyler.clair@usu.edu on Apr 27, 2015, https://community.canvaslms.com/thread/1500
+           #while r.links['current']['url'] != r.links['last']['url']:  
+           while r.links.get('next', False):
+              r = requests.get(r.links['next']['url'], headers=header)  
+              page_response = r.json()  
+              for p_response in page_response:  
+                  accounts_found_thus_far.append(p_response)
+
+    return accounts_found_thus_far
+
+
+
 # search for user in account by e-mail address
 # https://canvas.kth.se/accounts/59/users?search_term=verardo@kth.se
 def user_via_search_in_account(email_address, account_id):
+    global Verbose_Flag
+
     user_found_thus_far=[]
     url = f"{baseUrl}/accounts/{account_id}/users?search_term={email_address}"
     if Verbose_Flag:
@@ -98,6 +137,8 @@ def user_via_search_in_account(email_address, account_id):
             lastname=u_name[0].strip()
             firstname=u_name[1].strip()
             kthid=u['sis_user_id']
+            if Verbose_Flag:
+                print(f"in user_via_search_in_account, {kthid=}")
             return lastname, firstname, kthid
 
     return None, None, None
@@ -187,6 +228,7 @@ def get_user_name_and_kthid(email_address, users):
 
 def get_user_info(email, users):
     global Verbose_Flag
+    global potential_subaccounts
     if users:
         lastname, firstname, kthid = get_user_name_and_kthid(email, users)
         if not kthid:
@@ -194,14 +236,19 @@ def get_user_info(email, users):
                 print(f"Unable to determine KTHID for {email}")
             return None
     else:
-        # currently only check for the account "EECS - Imported course rounds"
-        # it should check all of the subaccounts that the user runinng the program has administraive access to
-        account_id=59
-        lastname, firstname, kthid = user_via_search_in_account(email, account_id)
-        if not kthid:
-            if Verbose_Flag:
-                print(f"Unable to determine KTHID for {email}")
+        # currently checks the subaccount with the largest id that the user runinng the program has administraive access to
+        account_id=potential_subaccounts[0]
+        if Verbose_Flag:
+            print(f"In get_user_info - {account_id=}")
+        if not account_id:
+            print("No administrative account available")
             return None
+        else:
+            lastname, firstname, kthid = user_via_search_in_account(email, account_id)
+            if not kthid:
+                if Verbose_Flag:
+                    print(f"Unable to determine KTHID for {email}")
+                return None
 
     if Verbose_Flag:
         print(f"{lastname=}, {firstname=}, {kthid=}")
@@ -247,6 +294,7 @@ def get_school_acronym_and_department(user_info):
 
 def main():
     global Verbose_Flag
+    global potential_subaccounts
 
     default_picture_size=128
 
@@ -295,6 +343,15 @@ def main():
     isp_info=None
 
     users = None
+
+    my_accounts=list_accounts()
+    potential_subaccounts=[]
+    for a in my_accounts:
+        if a['name'].find('Imported course rounds') >= 0:
+            potential_subaccounts.append(a['id'])
+    potential_subaccounts=sorted(potential_subaccounts, reverse=True)
+    if Verbose_Flag:
+        print(f"{potential_subaccounts}")
 
     # if a course_id is specified get the information for all users
     if course_id:
