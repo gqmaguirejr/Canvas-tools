@@ -19,6 +19,14 @@
 #
 # ./ISP_JSON_to_configuration_info.py --config config-test.json /tmp/example.json 6434
 #
+# Notes:
+# Mapping of user's email address to a KTHID and other information about them requires:
+# either:
+#  1. specifying a Canvase course room course_id on the command line or
+#  2. having Canvas administrative rights
+# This mapping also requires a KTH Profile API key.
+#
+#
 # based on earlier whoami_for_latex.py
 #
 # G. Q. Maguire Jr.

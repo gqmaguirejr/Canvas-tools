@@ -3422,10 +3422,13 @@ For a INFKTEKN student who has completed a Licentiate degree, it outputs:
 \supervisorBsDepartment{Computer Science}
 ```
 
-### Note 
+### Note
+When used **without** specify a Canvas course room ID, it requires Canvas administrator privlidges. Also, note that currently this only works for a Canvas administrator for sub-account 59 (i.e., "EECS - Imported course rounds").
+
+This mapping also requires a KTH Profile API key.
+
 Currently, experimental support for external supervisors (not tested against data from an actual ISP).
 
-When used **without** specify a Canvas course room ID, it requires Canvas administrator privlidges. Also, note that currently this only works for a Canvas administrator for sub-account 59 (i.e., "EECS - Imported course rounds").
 
 ### Example
 
