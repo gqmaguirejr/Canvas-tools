@@ -313,7 +313,7 @@ def main():
         with open(file_name) as file_ptr:
             isp_info = json.load(file_ptr)
             if not isp_info:
-                print("Unable to get isP_info")
+                print("Unable to get isp_info")
                 sys.exit()
     except:
         print(f"Unable to open json file named {file_name}")
@@ -323,6 +323,39 @@ def main():
     if Verbose_Flag:
         print(f"{isp_info=}")
           
+    # \title{}
+    title=isp_info.get('Title')
+    print(f"\\title"+"{"+f"{title}"+"}")
+
+    # insert placerholders
+    print(f"\\subtitle"+"{"+f""+"}")
+    print(f"\\alttitle"+"{"+f""+"}")
+    print(f"\\altsubtitle"+"{"+f""+"}")
+
+
+    # \courseCycle{3}
+    print(f"\\courseCycle"+"{"+f"3"+"}")
+
+    # \programcode{KTHXXX}
+    programcode=isp_info.get('subject_code')
+    print(f"\\programcode"+"{"+f"{programcode}"+"}")
+
+    print(f"% Use the default subject area for your program or manually specify it")
+    print(f"\\subjectArea"+"{\\programmecodeToString{"+f"{programcode}"+"}}")
+
+    # \degreeName{XXX}
+    prior_exam=isp_info.get('prior_exam')
+    if prior_exam and prior_exam.find('Licentiate') >= 0:
+        print(f"\\degreeName"+"{"+f"Doctorate"+"}")
+    else:
+        print(f"% select the appropriate degree by uncommenting one of the following")
+        print(f"%\\degreeName"+"{"+f"Licentiate"+"}")
+        print(f"%\\degreeName"+"{"+f"Doctorate"+"}")
+
+    print("% To support Doctor of Philosophy and Licentiate of Philosophy degrees in addition to Tekn. Dr. and Tekn. Lic. - Uncomment the following line.")
+    print("%\degreeModifier{Philosophy}")
+
+
     # get author information
     email=isp_info['student_email']
     if not email:
@@ -411,7 +444,6 @@ def main():
             print(f"\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}}")
             print(f"\\supervisor{supervisor_index}sDepartment"+"{"+f"{department}"+"}")
     
-
 
 
 if __name__ == "__main__": main()
