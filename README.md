@@ -3425,6 +3425,7 @@ For a INFKTEKN student who has completed a Licentiate degree, it outputs:
 ### Note 
 Currently, experimental support for external supervisors (not tested against data from an actual ISP).
 
+When used **without** specify a Canvas course room ID, it requires Canvas administrator privlidges. Alos, not that currently this only works for a Canvas administrator for sub-account 59 (i.e., "EECS - Imported course rounds").
 
 ### Example
 
