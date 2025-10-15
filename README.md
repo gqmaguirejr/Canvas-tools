@@ -3385,8 +3385,19 @@ To take the information JSON file produced by extract_dc_meta_data_from_PDF.py a
 ```
 
 ### Output
-outputs 
+For a INFKTEKN student who has completed a Licentiate degree, it outputs:
 ```
+\title{xxxxxx}
+\subtitle{}
+\alttitle{}
+\altsubtitle{}
+\courseCycle{3}
+\programcode{INFKTEKN}
+% Use the default subject area for your program or manually specify it
+\subjectArea{\programmecodeToString{INFKTEKN}}
+\degreeName{Doctorate}
+% To support Doctor of Philosophy and Licentiate of Philosophy degrees in addition to Tekn. Dr. and Tekn. Lic. - Uncomment the following line.
+%\degreeModifier{Philosophy}
 % --- Author Information ---
 \authorsLastname{xxx}
 \authorsFirstname{yyy}
@@ -3412,7 +3423,7 @@ outputs
 ```
 
 ### Note 
-Currently does not handle external supervisors.
+Currently, experimental support for external supervisors (not tested against data from an actual ISP).
 
 
 ### Example
