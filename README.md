@@ -3444,6 +3444,23 @@ or
 
 
 
+## extract_text_split_on_stopwords.py
+
+### Purpose
+To extract words and phrases from a thesis PDF file with an aim to help identify suitable keywords for the thesis.
+
+### Input
+```bash
+./extract_text_split_on_stopwords.py PDF_file
+```
+
+### Output
+outputs  txt file with some words and phrases as well as outputting some common prefixes and common suffixes of these phrases.
+
+
+### Note 
+This ia work in progress and can result in a large number of potential words and phrases that still need to be manually filtered.
+
 
 <!-- 
 
