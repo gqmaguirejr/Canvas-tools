@@ -3462,6 +3462,45 @@ outputs  txt file with some words and phrases as well as outputting some common 
 This ia work in progress and can result in a large number of potential words and phrases that still need to be manually filtered.
 
 
+## extract_terms_from_CSV.py
+
+### Purpose
+Reads a 3-column CSV file (subject,predicate,object) and extracts all
+unique subjects and objects into a new text file, one term per line.
+
+Also outputs narrow terms (NT) and broad terms (BT) as separate files.
+ 
+
+### Input
+```bash
+extract_terms_from_CSV.py input_csv_file output_txt_file
+```
+
+### Output
+Outputs the number of unique terms, the number of narrow terms, and the number of broad terms
+and outputs files with names of the form:
+* base_output_name.txt
+* base_output_name + '_narrow.txt'
+* base_output_name + '_broad.txt'
+
+Success! Wrote 11625 unique terms to '/tmp/ieee_thesaurus_2023_terms.txt'.
+Wrote 7057 narrow terms to '/tmp/ieee_thesaurus_2023_terms_narrow.txt'.
+Wrote 2209 broad terms to '/tmp/ieee_thesaurus_2023_terms_broad.txt'.
+
+
+### Note 
+One might use this with the CSV file: https://github.com/angelosalatino/ieee-taxonomy-thesaurus-rdf/blob/main/source/cleaned_ieee_thesaurus_2023.csv
+
+### Example
+
+```bash
+./extract_terms_from_CSV.py /tmp/cleaned_ieee_thesaurus_2023.csv /tmp/ieee_thesaurus_2023_terms.txt
+Success! Wrote 11625 unique terms to '/tmp/ieee_thesaurus_2023_terms.txt'.
+Wrote 7057 narrow terms to '/tmp/ieee_thesaurus_2023_terms_narrow.txt'.
+Wrote 2209 broad terms to '/tmp/ieee_thesaurus_2023_terms_broad.txt'.
+
+```
+
 <!-- 
 
 ## xxx.py
