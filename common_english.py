@@ -1110,8 +1110,8 @@ thousand_most_common_words_in_English={
     'suggest': {'A2': 'Verb'},
     'summer': {'A1': 'Noun'},
     'sun': {'A1': 'Noun'},
-    'support': {'A1': 'Verb, Noun'},
-    'support': {'A2': 'Verb, Noun'},
+    'support': {'A1': 'Verb, Noun', 'A2': 'Verb, Noun'},
+    'supports': {'B1': 'Verb, Noun (plural)'},
     'supposed': {'B1': 'verb, adjective'},
     'sure': {'A1': 'adjective, adverb'},
     'system': {'A1': 'Noun'},
@@ -2251,6 +2251,7 @@ common_English_words={
     'AS-level': {'B2': 'Noun Phrase'},
     'AS-model': {'B2': 'Noun Phrase'},
     'AS-path': {'B1': 'Noun'},
+    'AS-paths': {'B1': 'Noun (plural)'},
     'AS-patients': {'B2': 'Noun Phrase'},
     'ASF product distribution': {'B2': 'Noun'},
     'ASIC digital circuit design': {'C2': 'Noun Phrase'},
@@ -49976,7 +49977,7 @@ common_English_words={
     'spacial': {'B2': 'Adjective'},
     'spacing': {'C1': 'Noun'},
     'spacings': {'B2': 'Noun (plural)'},
-    'spagetti code': {'xx': 'Noun'}, # Technical jargon, referring to poorly structured code.
+    'spagetti code': {'B2': 'Noun'}, # Technical jargon, referring to poorly structured code.
     'spaghetti': {'B1': 'Noun'},
     'spall': {'B2': 'Noun, Verb'},
     'spallation': {'B2': 'Noun'},
@@ -54525,6 +54526,7 @@ common_English_words={
     'transfemoral': {'B2': 'Adjective'},
     'transfer buses': {'B2': 'Noun (plural)'},
     'transfer': {'A2': 'Noun, Verb'}, # This is a common word in many contexts.
+    'transfers': {'A2': 'Noun (plural), Verb'},
     'transfer-frequency': {'B2': 'Noun Phrase'},
     'transfer-learning': {'B2': 'Noun, Verb (gerund), Verb (present participle)'},
     'transferability': {'C2': 'Noun'},
@@ -57373,6 +57375,7 @@ common_English_words={
     'voluntariness': {'C2': 'Noun'},
     'volunteer-run': {'B2': 'Adjective'},
     'volunteered': {'C1': 'Adjective, Verb (past tense), Verb (past participle)'},
+    'volunteers': {'A2': 'Noun (plural)'},
     'von': {'A1': 'Preposition'},
     'voodoo programming': {'xx': 'Noun'}, # Jargon, referring to inefficient programming.
     'voodoo': {'A2': 'Noun'},
@@ -60070,6 +60073,17 @@ common_English_words={
     'complex propagation policies': {'C1': 'Phrase (Noun Phrase)'},
     'requires knowledge': {'B1': 'Phrase (Verb + Noun)'},
     'nmap': {'C1': 'Noun (Proper Noun)'},
+    'per-neighbor': {'C1': 'Adjective'},
+    'under-submission': {'B2': 'Adjective'},
+    'IOMMU-related': {'B1': 'Adjective', 'B2': 'Adjective'},
+    'DPDK-enabled': {'B2': 'Adjective'},
+    'DPDK-based': {'B2': 'Adjective'},
+    '100-Gbps': {'B2': 'Adjective'},
+    'Compute-Intensiveness': {'B2': 'Noun'},
+    'IR-based': {'B2': 'Adjective'},
+    'invalidation': {'C1': 'Noun'},
+    'headroom': {'B2': 'Noun', 'C1': 'Noun'}, # the figurative meaning is near the C1 level
+    'bitcode': {'C1 (Specialized)': 'Noun'}, # a technical term - The term "Specialized" aligns perfectly with the established linguistic frameworks of English for Specific Purposes (ESP) and English for Academic Purposes (EAP).
 
 }
     
@@ -62377,6 +62391,8 @@ company_and_product_names=[
     '50V',
     '230V',
 
+    'BGPStream',
+    "Cisco\u2019s BGPStream",
     "A-phase",
     "ACSLsmall", # ACSL<sub>small</sub>a subset of ACSL - see diva2:1801590
     "AMDSEV", # variant of 'AMD-SEV'
@@ -66050,6 +66066,7 @@ company_and_product_names=[
     'NVE', # company - NVE Corporation - see diva2:1702239
     'NVIDIA',
     'NVIDIAs',
+    'NVIDIA/Mellanox',
     'NVLink',
     'NX', # Siemens NX - see diva2:1635000
     'NXP', # vendor - diva2:1040491
@@ -74760,7 +74777,14 @@ company_and_product_names=[
     'Artemis',
     'RouteViews',
     'ThousandEyes',
-
+    'iPerf',
+    'CascadeLake', # Intel processor
+    'SkyLake', # Intel processor
+    'IceLake', # Intel processor
+    'AMD EPYC', # AMD processor
+    'EPYC', # AMD processor
+    'Intel VT-d',
+    
 ]
 
 
@@ -80500,7 +80524,27 @@ names_of_persons=[
     'Fontugne',
     'Sermpezis',
     'Sharon Goldberg',
-    'Siddiqui',
+    'Anant Shah',
+    'Anant',
+    'Shah',
+    'Testart',
+    'Christian',
+    'McArthur',
+    'Emile Aben',
+    'Emile',
+    'Aben',
+    'Chiesa',
+    'Barbette',
+    'Roozbeh',
+    'Farshin',
+    'Chakri Padala',
+    'Chakri',
+    'Padala',
+    'Ghasemirahni',
+    'Dumazet',
+    'Fabio',
+    'Luciano',
+    'Verdi',
 
 ]
 
