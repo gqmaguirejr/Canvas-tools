@@ -59,6 +59,7 @@ well_known_acronyms_list=[
     ['5G-PPP', '5g public and private partnership'],
     ['5d-lagring', '5d storage, 5d data storage', {'swe': 'femdimensionell datalagring'}],
     ['5g', 'Fifth generation mobile network',{'swe': 'femte generationens mobilnät'}],
+    ['6G', 'Sixth generation mobile network'],
     ['6LP-GW', '6LoWPAN Neighbor Discovery Proxy - Gateway', {'s': ['diva2:470434']}],
     ['6loWPAN', 'IPv6 over Low power WPAN'],
     ['6lowpan', 'IPv6 over low power wireless personal area networks, IPv6 over low power wireless area networks', {'swe': '6lowpan'}], # IETF working group
@@ -7442,7 +7443,22 @@ well_known_acronyms_list=[
     ['CGGTY', 'Compiler Guided Greedy Then Youngest'], # from https://arxiv.org/pdf/2503.20481
     ['FREAK', 'Factoring RSA Export Keys'],
     ['tl;dr', 'too long; didn’t read'],
-    
+    ['iTLB', 'instruction Translation Lookaside Buffer', {'s': ['diva2:1734287']}],
+    ['IOLTB', 'input/output Translation Lookaside Buffer', {'s': ['diva2:1734287']}],
+    ['ORCA', 'Offloading with RDMA and Cc Accelerator', {'s': ['diva2:1734287']}],
+    ['GbE', 'Gigabit Ethernet', {'s': ['diva2:1734287']}],
+    ['ASPLOS', 'International Conference on Architectural Support for Programming Languages and Operating Systems'],
+    ['ATC', 'Annual Technical Conference'], # USENIX conference
+    ['BESS', 'Berkeley Extensible Software Switch'],
+    ['NSDI', 'Networked Systems Design and Implementation'],
+    ['PCT', 'Patent Cooperation Treaty'],
+    ['w/o', 'without'],
+    ['H/W', 'hardware'],
+    ['S/W', 'software'],
+    ['TX/RX', 'transmit/receive'],
+    ['AutoFDO', 'Automatic Feedback-Directed Optimization', {'s': ['diva2:1734287']}],
+    ['FLEET', 'Fast Lanes for Expedited Execution at 10 Terabits', {'s': ['diva2:1734287']}],
+    ['IOVA-to-PA', 'I/O virtual address to physical address', {'s': ['diva2:1734287']}],
     #GQMa
 
 ]
@@ -7722,7 +7738,6 @@ less_well_known_acronyms_list=[
     ['2bctnd', 'to be continued', {'swe': '"fortsättning följer"'}], # nät- och sms-språk
     ['4yeo', 'for your eyes only.', {'swe': '"bara för dina ögon."'}], # nät- och sms-språk
     ['<3', 'love', {'swe': 'älskar'}], # nät- och sms-språk
-
 
 ]
 

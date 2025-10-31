@@ -13381,8 +13381,7 @@ common_English_words={
     'cleaving': {'B2': 'Verb, Noun'},
     'cleverly': {'B2': 'Adverb'},
     'clevis': {'B2': 'Noun'},
-    'click chemistry': {'B2': 'Noun'},
-    'click chemistry': {'C2': 'Noun'},
+    'click chemistry': {'B2': 'Noun', 'C2': 'Noun'},
     'click data': {'B2': 'Noun'},
     'click magnet': {'xx': 'Noun'}, # Slang, referring to something designed to attract clicks online.
     'click-based': {'B2': 'Adjective (compound)'}, 
@@ -31304,6 +31303,7 @@ common_English_words={
     'linters': {'B2': 'Noun (plural)'},
     'linux': {'A1': 'Noun'},
     'linux-based': {'B1': 'Adjective'},
+    'Linux-based': {'B1': 'Adjective'},
     'lipase': {'C1': 'Noun'}, 
     'lipases': {'C1': 'Noun (plural)'}, 
     'lipid': {'C1': 'Noun'},
@@ -41437,6 +41437,8 @@ common_English_words={
     'pong': {'B1': 'Noun'},
     'pontine': {'B2': 'Adjective'},  # Assuming it refers to the pons in the brain
     'pontoon': {'B1': 'Noun'},
+    'pool': {'B2 (Specialized)': 'Noun/Verb'}, # Noun: resource pool (e.g., memory pool, thread pool); Verb: to pool resources
+    'pools': {'B2 (Specialized)': 'Noun/Verb'}, # Plural noun / 3rd person verb of the above
     'pool-based': {'B1': 'Adjective (compound)'},
     'pool-type': {'B2': 'Adjective (compound)'},
     'poolability': {'C1': 'Noun', 'C2': 'Noun'},
@@ -41501,6 +41503,8 @@ common_English_words={
     'porphyrin': {'C1': 'Noun'},
     'porpoise': {'A2': 'Noun'},
     'porpoising': {'B2': 'Noun, Verb (gerund)'},
+    'port': {'B1 (Specialized)': 'Noun', 'B2 (Specialized)': 'Verb'}, # Noun: a physical  or logical (TCP) connection point [B1]; Verb: to adapt software [B2]
+    'ports': {'B1 (Specialized)': 'Noun', 'B2 (Specialized)': 'Verb'},  # Plural noun / 3rd person verb of the above
     'port-based': {'B1': 'Adjective (compound)'},
     'port-injected': {'B2': 'Adjective'},
     'port-restricted-cone': {'C2': 'Adjective (compound)'},
@@ -45330,6 +45334,7 @@ common_English_words={
     'relaying/replaying': {'B1': 'Verb Phrase (choice)'},
     'relays': {'B1': 'Noun (plural), Verb (third-person present tense)'},
     'released': {'B2': 'Verb (past tense), Verb (past participle), Adjective'},
+    'releases': {'B2': 'Noun (plural), Verb (third-person singular)'}, # Verb: 3rd person singular (e.g., "The company releases updates.") Noun: plural (e.g., "The new software releases are here.")
     'releasing': {'B2': 'Verb (gerund), Verb (present participle)'},
     'relegates': {'B1': 'Verb (third-person present tense)'},
     'relegating': {'B2': 'Verb (present participle)'},
@@ -51960,6 +51965,7 @@ common_English_words={
     'supernovas': {'B2': 'Noun (plural)'},
     'superoleophobicity': {'C1': 'Noun'},
     'superoptimizer': {'B2': 'Noun'},
+    'superoptimizers': {'B2': 'Noun (plural)'},
     'superoxide': {'C2': 'Noun'}, 
     'superparamagnetic': {'B2': 'Adjective'},
     'superposed': {'B2': 'Adjective (compound)'},
@@ -58846,7 +58852,6 @@ common_English_words={
     '”you’re not gonna need it”': {'xx': 'Phrase'}, # Jargon, software development.
 
     # new terms
-    #GQMe
     'easily avoid': {'B1': 'Phrase (Adv + Verb)'},
     'easily detectable': {'B2': 'Phrase (Adv + Adj)'},
     'easily maintain': {'B1': 'Phrase (Adv + Verb)'},
@@ -60084,6 +60089,193 @@ common_English_words={
     'invalidation': {'C1': 'Noun'},
     'headroom': {'B2': 'Noun', 'C1': 'Noun'}, # the figurative meaning is near the C1 level
     'bitcode': {'C1 (Specialized)': 'Noun'}, # a technical term - The term "Specialized" aligns perfectly with the established linguistic frameworks of English for Specific Purposes (ESP) and English for Academic Purposes (EAP).
+    'Harvard architecture': {'B1 (Proper Noun)': 'Noun'}, # Specific named architecture
+    'Haswell architecture': {'B2 (Proper Noun)': 'Noun'}, # Specific named architecture
+    'hierarchical memory system': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept
+    'in-kernel processing': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept
+    'individual contribution': {'B2': 'Noun'}, # Common academic/professional term
+    'individual allocations': {'B2': 'Noun'}, # Common technical/financial term
+    'Internet services': {'B1': 'Noun'}, # Common general term
+    'isovalent': {'C1 (Specialized)': 'Adjective'}, # Technical term (Chemistry/Physics)
+    'Linux kernel': {'B1 (Proper Noun)': 'Noun'}, # Specific named software component
+    'memory subsystem': {'B2 (Specialized)': 'Noun'}, # Foundational technical concept
+    'memory fragmentation': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept
+    'memory footprint': {'B2 (Specialized)': 'Noun'}, # Common technical concept
+    'Moore’s law': {'B1 (Proper Noun)': 'Noun'}, # Specific named law/observation
+    'multicore': {'B2 (Specialized)': 'Adjective/Noun'}, # Common technical term
+    'NFV service chain': {'C1 (Specialized)': 'Noun'}, # Specific technical concept (NFV)
+    'NIC device driver': {'C1 (Specialized)': 'Noun'}, # Specific technical concept
+    'device driver': {'B2 (Specialized)': 'Noun'}, # Foundational technical concept
+    'Nielsen’s law': {'B2 (Proper Noun)': 'Noun'}, # Specific named law/observation
+    'object definition': {'B2 (Specialized)': 'Noun'}, # Foundational programming concept
+    'nominal frequency': {'B2 (Specialized)': 'Noun'}, # Common technical term (electronics/physics)
+    'open issues': {'B1': 'Noun'}, # Common general/project management term
+    'per-page allocation': {'C1 (Specialized)': 'Noun'}, # Specific technical concept (memory management)
+    'percentile probability': {'B2': 'Noun'}, # Common statistical term
+    'processor frequency': {'B2 (Specialized)': 'Noun'}, # Common technical term
+    'programming language': {'A2': 'Noun'}, # Basic computing term
+    'programming languages': {'A2': 'Noun'}, # Basic computing term
+    'research impact': {'B2': 'Noun'}, # Common academic term
+    'research objectives': {'B2': 'Noun'},  # Common academic term
+    'Dennard scaling': {'B2 (Proper Noun)': 'Noun'},
+    'environmental sustainability': {'B2': 'Noun'},
+    'Ethernet MAC addresses': {'B1 (Specialized)': 'Noun'},
+    'Ethernet NIC': {'B1 (Specialized)': 'Noun'},
+    'Ethernet NICs': {'B1 (Specialized)': 'Noun (plural)'},
+    'ethical aspect': {'B2': 'Noun'}, # Common academic/professional term
+    'experiment setup': {'B1': 'Noun'}, # Common scientific/technical term
+    'FIFO queue': {'B2 (Specialized)': 'Noun'}, # Foundational computer science concept
+    'FIFO queues': {'B2 (Specialized)': 'Noun (plural)'},
+    'NF service chain': {'B2 (Specialized)': 'Noun'},
+    'NF service chains': {'B2 (Specialized)': 'Noun (plural)'},
+    'NFV service chains': {'B2 (Specialized)': 'Noun (plural)'},
+    'academic supervisor': {'B2': 'Noun'}, # Common academic role
+    'architectural support': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept
+    'associated data': {'B1': 'Noun'}, # Common technical/general term
+    'COTS servers': {'B2 (Specialized)': 'Noun'}, # Technical term (Commercial Off-The-Shelf)
+    'COVID-19 global pandemic': {'B1 (Proper Noun Phrase)': 'Noun'}, # Specific, widely known event
+    'CPU Utilization': {'B2 (Specialized)': 'Noun'}, # Common technical performance metric (synonym for usage/utilization)
+    'CPU bottleneck': {'B2 (Specialized)': 'Noun'}, # Common technical performance issue
+    'CPU cache': {'B1 (Specialized)': 'Noun'}, # Foundational hardware concept 
+    'CPU core': {'B1 (Specialized)': 'Noun'}, # Foundational hardware concept
+    'CPU stalls': {'C1 (Specialized)': 'Noun'}, # Specific technical performance issue (pipeline stalls)
+    'CPU cost': {'B1 (Specialized)': 'Noun'}, # Common technical/economic term
+    'CPU costs': {'B1 (Specialized)': 'Noun'}, # Plural of the above
+    'CPU cycles': {'B1 (Specialized)': 'Noun'}, # Foundational unit of processor time
+    'CPU load': {'B1 (Specialized)': 'Noun'}, # Common technical performance metric
+    'CPU memory management': {'C1 (Specialized)': 'Noun'}, # Abstract technical OS concept
+    'CPU overhead': {'B2 (Specialized)': 'Noun'}, # Common technical performance concept
+    'CPU overload': {'B2 (Specialized)': 'Noun'}, # Common technical performance issue
+    'CPU registers': {'B1 (Specialized)': 'Noun'}, # Foundational hardware concept
+    'CPU requests': {'B1 (Specialized)': 'Noun'}, # Common term in resource allocation (e.g., Kubernetes)
+    'CPU requires': {'N/A': 'Verb Phrase'}, # Grammatical structure, not a fixed term
+    'CPU resources': {'B1 (Specialized)': 'Noun'}, # Common technical term
+    'CPU saturation': {'B2 (Specialized)': 'Noun'}, # Technical performance state
+    'CPU socket': {'B1 (Specialized)': 'Noun'}, # Foundational hardware term 
+    'CPU usage': {'B1 (Specialized)': 'Noun'}, # Common technical performance metric
+    'CPU utilization': {'B2 (Specialized)': 'Noun'}, # Common technical performance metric (synonym for usage/utilization)
+    'CPU’s cache size': {'B1 (Specialized)': 'Noun Phrase'}, # Specific technical parameter
+    'Cache Allocation Technology': {'B2 (Proper Noun Phrase)': 'Noun'}, # Specific Intel technology name (CAT)
+    'cache line size': {'B2 (Specialized)': 'Noun'}, # Specific technical parameter
+    'cache placement policies': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept (e.g., LRU, FIFO)
+    'data delivery': {'B2 (Specialized)': 'Noun'}, # Common concept in networking/systems
+    'data processing units': {'C1 (Specialized)': 'Noun'}, # Specific hardware type (DPU)
+    'data rate': {'B1 (Specialized)': 'Noun'}, # Foundational technical term (networking/comms)
+    'data center traffic': {'B2 (Specialized)': 'Noun'}, # Specific technical context
+    'data points': {'B1': 'Noun'}, # Common term in data analysis/general usage
+    'Electrical Engineering': {'B1 (Proper Noun Phrase)': 'Noun'}, # Name of academic/professional field
+    'IP packets': {'B1 (Specialized)': 'Noun'}, # Foundational networking concept
+    'locality improvements': {'C1 (Specialized)': 'Noun'}, # Abstract performance optimization concept (CS)
+    'logical cores frequency': {'B2 (Specialized)': 'Noun'}, # Specific CPU parameter (related to hyperthreading)
+    'low-level building blocks': {'B2 (Specialized)': 'Noun'}, # Common abstract concept in software/hardware design
+    'modular frameworks': {'B2 (Specialized)': 'Noun'}, # Common abstract concept in software design
+    'monitoring capabilities': {'B1': 'Noun'},  # Common term in operations/systems management
+    'P4 architecture': {'C1 (Specialized)': 'Noun'}, # Specific programming language/network architecture concept
+    'PCIe bandwidth': {'B2 (Specialized)': 'Noun'}, # Common hardware performance metric 
+    'PCIe bus version': {'B2 (Specialized)': 'Noun'}, # Specific hardware parameter (e.g., PCIe 4.0, 5.0)
+    'PCT Application': {'C1 (Specialized)': 'Noun'}, # Specific legal/business term (Patent Cooperation Treaty)
+    'physical address mapping': {'C1 (Specialized)': 'Noun'}, # Abstract OS/hardware concept
+    'previous attempts': {'B1': 'Noun'}, # Common general/academic phrase
+    'previous research': {'B1': 'Noun'}, # Common academic phrase
+    'research impact': {'B2': 'Noun'}, # Common academic term
+    'research objectives': {'B2': 'Noun'}, # Common academic term
+    'research method': {'B2': 'Noun'}, # Common academic term
+    'single-thread performance': {'B2 (Specialized)': 'Noun'}, # Common CPU performance metric
+    'source code modifications': {'B2 (Specialized)': 'Noun'}, # Common software development term
+    'source-code modifications': {'B2 (Specialized)': 'Noun'}, # Alternative hyphenation
+    'source-code optimizations': {'B2 (Specialized)': 'Noun'}, # Common compiler/software development term
+    'TCP connection': {'B1 (Specialized)': 'Noun'}, # Foundational networking concept
+    'TCP connections': {'B1 (Specialized)': 'Noun'}, # Plural of the above
+    'TCP flow': {'B2 (Specialized)': 'Noun'}, # Common networking concept
+    'TCP mode': {'B2 (Specialized)': 'Noun'}, # Refers to operational state/settings
+    'TCP protocol': {'B1 (Specialized)': 'Noun'}, # Foundational networking concept
+    'TCP re-transmissions': {'B2 (Specialized)': 'Noun'}, # Specific networking behavior/metric
+    'TCP receiver': {'B1 (Specialized)': 'Noun'}, # Role in the TCP protocol
+    'TCP segment': {'B1 (Specialized)': 'Noun'}, # Unit of data in TCP
+    'TCP segments': {'B1 (Specialized)': 'Noun'}, # Plural of the above
+    'TCP socket': {'B1 (Specialized)': 'Noun'}, # Foundational networking programming concept
+    'TCP sockets': {'B1 (Specialized)': 'Noun'}, # Plural of the above
+    'TCP throughput': {'B2 (Specialized)': 'Noun'}, # Common networking performance metric
+    'TLB miss': {'C1 (Specialized)': 'Noun'}, # Specific CPU/OS performance event (Translation Lookaside Buffer)
+    'TLB misses': {'C1 (Specialized)': 'Noun'},  # Plural of the above
+    'antagonization': {'C1': 'Noun'}, # Abstract noun used in academic/scientific contexts (e.g., biology, politics)
+    'contentions': {'C1 (Specialized)': 'Noun'}, # Plural. Can mean arguments (C1 general) or resource competition (C1 Specialized)
+    'copies/converts': {'B1': 'Verb Phrase'}, # Not a single lexical term; a description of actions
+    'data-center-like': {'B2 (Specialized)': 'Adjective'}, # Descriptive technical term
+    'e-transmissions': {'B2 (Specialized)': 'Noun'}, # Common technical/business term (electronic transmissions)
+    'hits': {'B1 (Specialized)': 'Noun, Verb'}, # Foundational concept (e.g., "cache hits," "website hits")
+    'hugepage': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in OS memory management
+    'load-misses': {'C1 (Specialized)': 'Noun'}, # Specific CPU performance event (combining "load" and "cache miss")
+    'mbuf': {'C1 (Specialized)': 'Noun'}, # Specific technical term (memory buffers), common in networking (e.g., DPDK)
+    'mbufs': {'C1 (Specialized)': 'Noun (plural)'}, # Specific technical term (memory buffers), common in networking (e.g., DPDK)
+    'offloading': {'B2 (Specialized)': 'Noun'}, # Common, abstract technical concept (e.g., "TCP offloading")
+    'per-CPU-core': {'B2 (Specialized)': 'Adjective, Adverb'}, # Common technical descriptor
+    'scatter/gather': {'C1 (Specialized)': 'Noun, Adjective'}, # Specific, abstract I/O concept (e.g., "scatter/gather I/O")
+    'scatter-gather': {'C1 (Specialized)': 'Noun, Adjective'}, # Specific, abstract I/O concept (e.g., "scatter/gather I/O")
+    'cross-NF': {'C1 (Specialized)': 'Adjective'}, # Technical term (NF=Network Function)
+    'eBPF-based': {'C1 (Specialized)': 'Adjective'}, # Specific, advanced kernel technology
+    'kernel-bypass': {'C1 (Specialized)': 'Adjective, Noun'}, # Abstract high-performance networking concept
+    'achieves': {'B1': 'Verb'}, # Common general/academic verb
+    'multi-hundred-gigabit-per-second': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'multi-socket': {'B2 (Specialized)': 'Adjective'}, # Common hardware term 
+    'next-level': {'B2': 'Adjective'}, # Common idiomatic/business phrase
+    'no-IOMMU': {'C1 (Specialized)': 'Adjective'}, # Specific technical hardware/OS concept
+    'on-NIC': {'B2 (Specialized)': 'Adjective, Adverb'}, # Common technical descriptor (location of processing)
+    'per-NF': {'C1 (Specialized)': 'Adjective, Adverb'}, # Technical term (NF=Network Function)
+    're-compiling': {'B1 (Specialized)': 'Noun, Verb'}, # Common software development action
+    'reverse-engineer': {'B2': 'Verb'}, # Common concept in tech/engineering
+    'smart/FPGA NICs': {'C1 (Specialized)': 'Noun'}, # Specific, advanced hardware category
+    'design/redesign': {'B1': 'Noun/Verb'}, # Common general and business terms
+    'devirtualization': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept (compilers/virtualization)
+    'devirtualize': {'C1 (Specialized)': 'Verb'}, # The act of devirtualization
+    'hardware-related': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'input/output': {'A2 (Specialized)': 'Noun, Adjective'}, # Foundational computing concept (I/O)
+    'Input/Output': {'A2 (Specialized)': 'Noun, Adjective'}, # Foundational computing concept (I/O)
+    'key-value': {'B2 (Specialized)': 'Adjective, Noun'}, # Foundational database/data structure concept (e.g., key-value store)
+    'link-time': {'C1 (Specialized)': 'Noun, Adjective'}, # Specific phase in compilation
+    'matters': {'A2': 'Noun', 'B1': 'Verb'}, # Noun: "topics/issues" (A2); Verb: "it matters" (B1)
+    'mutilate': {'C1': 'Verb'}, # General, but strong/formal verb (to damage severely)
+    'portions': {'A2': 'Noun'}, # Common general noun (plural of portion)
+    'profile-guided': {'C1 (Specialized)': 'Adjective'}, # Specific concept (e.g., profile-guided optimization, PGO)
+    'round-robin': {'B2 (Specialized)': 'Adjective, Noun'}, # Common algorithm/scheduling concept
+    'round-trip': {'B1 (Specialized)': 'Noun/Adjective'}, # Common networking/general concept (e.g., round-trip time)
+    'single-thread': {'B2 (Specialized)': 'Adjective'}, # Common computing concept
+    'software-based': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'software-related': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'supervisions': {'C1': 'Noun'}, # Plural of supervision, common academic/management term
+    'terabit-per-second': {'B2 (Specialized)': 'Adjective, Noun'}, # Technical unit of data rate (Tbps)
+    'bars': {'C1 (Specialized)': 'Noun'}, # Assuming "memory barriers" (a C1 concept) or "progress bars" (B2)
+    'copy/transform': {'B1': 'Verb Phrase'}, # Description of actions
+    'mempool': {'C1 (Specialized)': 'Noun'}, # Technical term (memory pool)
+    'per-core': {'B2 (Specialized)': 'Adjective/Adverb'}, # Common technical descriptor
+    'replacements': {'B1': 'Noun'}, # Common general noun
+    'speciality': {'B2': 'Noun'},  # Common academic/professional term (UK spelling of specialty)
+    'transmissions': {'B2 (Specialized)': 'Noun'}, # Common technical term (networking/comms)
+    'allocation/release': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in memory/resource management
+    'jumps': {'B1 (Specialized)': 'Noun/Verb'}, # Foundational concept in program execution/assembly
+    'page-table': {'C1 (Specialized)': 'Noun'}, # Core, abstract OS/hardware concept
+    'Click-language': {'C1 (Specialized)': 'Noun'}, # Refers to the language for the Click Modular Router
+    'DMA-aware': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Direct Memory Access)
+    'DMA-ing': {'B2 (Specialized)': 'Verb'}, # The act of performing DMA
+    'NIC-related': {'B1 (Specialized)': 'Adjective'}, # Technical descriptor (Network Interface Card)
+    'SoftNIC': {'C1 (Specialized)': 'Noun'}, # Specific, abstract software-defined networking concept
+    '32-core': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    '18-core': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    '8-core': {'B2 (Specialized)': 'Adjective'},  # Technical descriptor
+    'GetElementPtrInst': {'C1 (Specialized)': 'Noun'}, # an LLVM instruction
+    'n-way': {'B2 (Specialized)': 'Adjective'},  # General technical descriptor (e.g., n-way set associative cache)
+    'grinds': {'B2': 'Verb (third person singular), Noun'}, # Verb: 3rd person singular (e.g., "The CPU grinds on the task"); Noun: plural (e.g., "coffee grinds")
+    'microarchitectural': {'C1 (Specialized)': 'Adjective'}, # Specific technical/academic term (computer engineering)
+    'AllReduce': {'C1 (Specialized)': 'Noun'}, # Specific, abstract algorithm in distributed computing
+    'CPU-to-device': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor for data paths
+    'CPU-to-memory': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor for data paths
+    'ML-related': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (Machine Learning)
+    'reexamining': {'C1': 'Verb, Noun'}, # Common academic verb (gerund/participle)
+    'reframing': {'C1': 'Verb, Noun'},  # Common abstract academic/business verb (gerund/participle)
+    '50/50': {'B1': 'Adjective, Adverb'}, # Common idiomatic expression (fifty-fifty)
+    'multi-100-Gbps': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'multi-hundred-gigabit': {'B2 (Specialized)': 'Adjective'},  # Compound technical descriptor
+    #GQMe
 
 }
     
@@ -61149,6 +61341,10 @@ misc_words_to_ignore=chemical_names_and_formulas + common_urls + java_paths + [
     '<svg>',
     '<video>',
 
+    '≈',
+    '⎧⎨⎩',
+    'TRITA-EECS-AVL',
+    
 
     # GQM-for-merger
 ]    
@@ -64324,6 +64520,7 @@ company_and_product_names=[
     'FashionSynthesis',
     'FastBrush',
     'FastClick',
+    'MiddleClick',
     'FastQ',
     'FastSLAM',
     'FastText',
@@ -74784,12 +74981,61 @@ company_and_product_names=[
     'AMD EPYC', # AMD processor
     'EPYC', # AMD processor
     'Intel VT-d',
-    
+    'NVIDIA/Mellanox ConnectX-6 NIC',
+    'Intel E810 NIC',
+    'NVIDIA/Mellanox mlx5 driver',
+    'NVIDIA Bluefield',
+    'Bluefield',
+    'mlx5',
+    'MLX5',
+    'ConnectX-4',
+    'ConnectX-5',
+    'ConnectX-6',
+    'Ericsson Blog',
+    'Framtidens Forskning', # publication
+    'HPE Slingshot interconnect',
+    'Sandy Bridge',
+    'mTCP',
+    'iPerf-2',
+    'l2fwd',
+    'KLEE',
+    'KLINT',
+    'C-Box',
+    'Ayar Labs',
+    'EuroSys',
+    'PeerJ',
+    'PacketMill',
+    'CacheDirector',
+    'FlowDirector',
+    'FlowBlaze',
+    'NetCache',
+    'Netronome',
+    'OpenBox',
+    'PacketShader',
+    'PayloadPark',
+    'Reframer',
+    'ResQ',
+    'Ribosome',
+    'RPCValet',
+    'Xeon-E5-2667 v3',
+    'Xeon-E5-2667-v3',
+    'X-Change',
+    'SpecINT',
+    'EtherMirror',
+    'AlphaGalileo', # UK news source
+    'Codestitcher',
+    'NVIDIA DOCA',
+    'DOCA',
+    'Flightplan', # Dataplane disaggregation - https://flightplan.cis.upenn.edu/
+    'FastClick-Light',
+    'FlowMon-DPDK',
+
 ]
 
 
 
 common_programming_languages=[ # libraries and functions
+    'OpenMPI',
     'OWL', # web ontology language
     'React', # library
     'FMRIB', # software library - see diva2:1298660
@@ -75358,7 +75604,8 @@ common_programming_languages=[ # libraries and functions
     'urllib3',
     'urllib3-1.24.3',
     'urlretrieve',
-
+    'clang/LLVM',
+    "clang’s C",
 
 ]
 
@@ -80545,7 +80792,23 @@ names_of_persons=[
     'Fabio',
     'Luciano',
     'Verdi',
-
+    'Gerald Q',
+    'Clémentine Maurice',
+    'Clémentine',
+    'Maurice',
+    'Luigi Rizzo',
+    'Luigi',
+    'Rizzo',
+    'Massimo Girondi',
+    'Massimo',
+    'Girondi',
+    'Giordano',
+    'Khaled Elmeleegy',
+    'Khaled',
+    'Elmeleegy',
+    'Tianzhu Zhanget',
+    'Tianzhu',
+    'Zhanget',
 ]
 
 
@@ -80892,6 +81155,7 @@ programming_keywords={
     'println',
     'arcmin2',
     'sqrt',
+    'struct',
     'dict',
     'dicts',
     'str',
@@ -80912,6 +81176,7 @@ language_tags={
 }
 
 miss_spelled_words=[
+    "Nielson’s law", # should be Nielsen’s law
     "Moch",
     "moch",
     'cm􀀀3',
@@ -82147,6 +82412,13 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    'B':  {'B1': 'Unit'}, # byte
+    'b':  {'B1': 'Unit'}, # bit
+    'bit':  {'B1': 'Unit'}, # bit
+    'KiB':  {'B1': 'Unit'}, # Kibibyte
+    'MiB':  {'B1': 'Unit'}, # Mebibyte
+    'Mebibyte':  {'B1': 'Unit'}, # Mebibyte
+    'minute':  {'A1': 'Unit'},
     'pcm': {'B1': 'Unit'}, # Per Cent Mille - see diva2:895396:
     'kpc': {'B1': 'Unit'}, # kilo parsec = 3.08567758 · 10^19 m --- see diva2:1796308
     'kNm/deg': {'B2': 'Unit'}, # torsional stiffness - kN m per degree
@@ -82182,8 +82454,7 @@ common_units={
     'Gbit/s': {'B2': 'Unit'},  # Same as Gb/s
     'Gbit/sec': {'B2': 'Unit'},  # Same as Gb/s - less common
     'Gbits': {'A1': 'Unit'},
-    'Gbps': {'A1': 'Unit'},
-    'Gbps': {'B2': 'Unit'}, # Gigabits per second
+    'Gbps': {'A1': 'Unit', 'B2': 'Unit'}, # Gigabits per second
     'Gigabits/s': {'B2': 'Unit'},  # Gigabits per second - data transfer rate
     'Gigabits/second': {'B2': 'Unit'},  # Same as Gigabits/s
     'GPa': {'B2': 'Unit'}, #  Gigapascal
@@ -82372,6 +82643,7 @@ common_units={
     'milliseconds': {'B1': 'Unit'},
     'mm/yr': {'B1': 'Unit'},  # Assumes understanding of ratios
     'mm2': {'A2': 'Unit'},
+    'Mpps': {'A2': 'Unit'}, # millions of packets per second
     'move/person/year': {'B2': 'Unit Phrase'},  # Unit for measuring travel volume
     'ms': {'A2': 'Unit'},
     'ms': {'A2': 'Unit'},

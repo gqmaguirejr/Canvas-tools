@@ -110,7 +110,7 @@ WordsToFilterOut=[
     'thesis',
     'work',
 
-    # common words to skip (Egqm)
+    # common words to skip
     'ability',
     'achieve',
     'achieved',
@@ -12128,6 +12128,18 @@ def is_integer(s):
     except ValueError:
         return False
 
+hex_digits='0123456789abcdefABCDEF'
+
+def is_hex_number(string):
+    if string.startswith('0x'):
+        for c in string[2:]:
+            if c not in hex_digits:
+                return False
+        return True
+    else:
+        return False
+
+
 # both 10% and 10th
 def is_percentage(s):
     if len(s) > 1 and s[-1] == '%' and is_integer(s[:-1]):
@@ -12141,7 +12153,46 @@ def is_approximate_integer(s):
         return True
     return False
 
+def is_ISO_date(s):
+    if s.count('-') == 2:
+        ds = s.split('-')
+        if is_integer(ds[0]) and is_integer(ds[1]) and is_integer(ds[2]):
+            return True
+    return False
 
+def is_ISBN(s):
+    if s.startswith("978-") and (s.count('-') == 4 or s.count('-') == 3):
+        s=s.replace("-", "")
+        if s.isnumeric():
+            return True
+    # ISBN-13 without additional dashes
+    elif (s.startswith("978-") and s[4:].count('-') == 0) and s[4:].isdigit:
+            return True
+    elif s.count('-') == 3:
+        s=s.replace("-", "")
+        if s.isnumeric():
+            return True
+    # otherwise
+    return False
+    
+
+def is_value_dash_units(s):
+    if s.count('-') == 1:
+        ds = s.split('-')
+        if is_integer(ds[0]) and ds[1] in common_english.common_units:
+            return True
+    return False
+
+def is_integer_range_or_ISSN(string):
+    if string.count('-') == 1:
+        string=string.replace('-', "")
+        return string.isdigit()
+    elif string.count('–') == 1:
+        string=string.replace('–', "")
+        return string.isdigit()
+    # otherwise
+    return False
+    
 
 ligrature_table= {'\ufb00': 'ff', # 'ﬀ'
                   '\ufb03': 'f‌f‌i', # 'ﬃ'
@@ -12243,6 +12294,7 @@ def replace_ligature(s):
     return pattern.sub(lookup, s)
 
 abbreviations_map = {
+    '⎧⎨⎩': '{', # a large left curly brace
     'i.e.': 'id est',
     'e.g.': 'for example',
     'et al.': 'et alii', # 'and others'
@@ -12311,7 +12363,7 @@ def replace_abbreviations(text):
 def remove_suffixes(wl):
     # Sort suffixes by length (longest first) to fix the bug.
     # This ensures '<=' is checked before '='.
-    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥'], key=len, reverse=True)
+    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '{', '*/', '&'], key=len, reverse=True)
     
     new_wl = []
     
@@ -12336,7 +12388,7 @@ def remove_suffixes(wl):
 def remove_prefixes(wl):
     # Sort prefixes by length (longest first) to fix the bug.
     # This ensures '††' is checked before '†'
-    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥'], key=len, reverse=True)
+    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', 'x', '&', '∝', '≥', '/', '=', '->'], key=len, reverse=True)
     
     new_wl = []
     
@@ -12662,6 +12714,18 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        # if w is a series of names of persons, then remove it
+        if ' ' in w:
+            ws = w.split(' ')
+            name_flag=True
+            for ww in ws:
+                if ww not in common_english.names_of_persons:
+                    name_flag=False
+            if name_flag:
+                remove_list.append(w)
+            continue
+
+
         if w in common_english.language_tags:
             remove_list.append(w)
             continue
@@ -12850,6 +12914,130 @@ def remove_known_words(output_lines):
     return remove_list
 
 
+def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set):
+    new_unique_terms=[]
+
+    # remove suffixes and prefixes
+    unique_terms_sorted = remove_prefixes(unique_terms_sorted)
+    unique_terms_sorted = remove_suffixes(unique_terms_sorted)
+
+    print(f"prune_known_from_left start: {len(unique_terms_sorted)=}")
+    for w in unique_terms_sorted:
+        # if len(w) > 2 and w[0:2] == '& ': # unnecessary with the remove_prefixes() above
+        #     w=w[2:]
+        if len(w) == 0:
+            continue
+
+        # known term, so nothing to do
+        if w in grand_union:
+            continue
+
+        # remove possessives
+        if w.endswith('’s') and w[:-2] in grand_union:
+            continue
+
+        if is_integer(w):
+            continue
+
+        if is_hex_number(w):
+            continue
+        
+        if is_integer_range_or_ISSN(w):
+            continue
+
+        if is_ISO_date(w):
+            continue
+        
+        if is_ISBN(w):
+            continue
+        
+        if is_value_dash_units(w):
+            continue
+
+        # remove conference years
+        if w.startswith("’") and len(w) >= 3 and is_integer(w[1:]):
+            continue
+
+        # remove conference names with apostrophy year
+        if w.count("’") == 1:
+            ws=w.split("’")
+            if len(ws[0]) > 0 and ws[0] in grand_union and len(ws[1]) > 0 and is_integer(ws[1]):
+                continue
+
+        # take care of simple assignments, such as MTU=1500
+        if w.count('=') == 1:
+            ws=w.split('=')
+            if ws[0] in grand_union and is_integer(ws[1]):
+                continue
+
+        if w in acronym_filter_set:
+            print(f"{w} found in acronym_filter_set")
+            continue
+
+        if (w not in grand_union) and len(w) > 2 and w[0].isupper() and w[1:].islower():
+            if w.lower() in grand_union:
+                continue
+        if ' ' in w:
+            ws = w.split(' ')
+            # prune known words from the front
+            new_term=''
+            for idx, ww in enumerate(ws):
+                if ww in grand_union:
+                    continue
+                # remove possessives
+                if ww.endswith('’s') and ww[:-2] in grand_union:
+                    continue
+
+                # remove words with trailing hyphens
+                if ww.endswith('-') and ww[:-1] in grand_union:
+                    continue
+                if ww.endswith('-') and ww[:-1].lower() in grand_union:
+                    continue
+
+                if ww.count('-') == 1 and not ww.endswith('-'):
+                    wws=ww.split('-')
+                    if len(wws[0]) > 2 or len(wws[1]) > 2 and\
+                       wws[0][0].isupper() and wws[0][1:].islower() and\
+                       wws[1][0].isupper() and wws[1][1:].islower() and\
+                       wws[0].lower() in grand_union and\
+                       wws[1].lower() in grand_union:
+                       continue
+                    if len(wws[0]) > 2 or len(wws[1]) > 2 and\
+                       wws[0][0].isupper() and wws[0][1:].islower() and\
+                       wws[1].islower() and\
+                       wws[0].lower() in grand_union and\
+                       wws[1] in grand_union:
+                       continue
+
+                if is_integer(ww):
+                    continue
+                if is_hex_number(ww):
+                    continue
+                if is_ISO_date(ww):
+                    continue
+                if is_ISBN(ww):
+                    continue
+                if is_integer_range_or_ISSN(ww):
+                    continue
+                if is_value_dash_units(ww):
+                    continue
+                if ww in acronym_filter_set:
+                    print(f"{ww} found in acronym_filter_set")
+                    continue
+                if len(ww) >= 2 and ww[0].isupper() and ww[1:].islower() and ww.lower() in grand_union:
+                    continue
+
+                if ww not in grand_union:
+                    new_term=" ".join(ws[idx:])
+                    break
+            if new_term:
+                new_unique_terms.append(new_term)
+            continue
+        else:
+            new_unique_terms.append(w)
+
+    return new_unique_terms
+
 def main():
     global Verbose_Flag
     global options
@@ -12906,14 +13094,13 @@ def main():
         #print(f"{acronyms_text}")
         pprint.pprint(f"{acronyms_dict}")
 
-        #output_lines = [l for l in output_lines if l not in acronyms_dict.keys()]
         # Create a new, combined set for filtering
         acronym_filter_set = set()
-        # Loop through your dictionary keys ONCE to build the set
+        # Loop through dictionary keys ONCE to build the set
         for key in acronyms_dict.keys():
             acronym_filter_set.add(key)  # Add the base acronym (e.g., "cdf")
     
-            # Use your smart pluralization rule on the lowercase key
+            # Use pluralization rule on the lowercase key
             if key.endswith('s') or key.endswith('S'):
                 acronym_filter_set.add(key + 'es')  # e.g., "manrses"
             else:
@@ -12937,17 +13124,25 @@ def main():
     # drop strings with '==', as these are not words, but probably an equation
     output_lines = [l for l in output_lines if '==' not in l]
 
-
-
     # remove suffixes and prefixes
     output_lines = remove_suffixes(output_lines)
     output_lines = remove_prefixes(output_lines)
 
-
-
-
     well_known_acronyms = [a[0] for a in common_acronyms.well_known_acronyms_list]
 
+    # augment the well_known_acronyms with plurals
+    well_known_acronym_filter_set=set()
+    for key in well_known_acronyms:
+        well_known_acronym_filter_set.add(key)
+
+        # Use pluralization rule on the lowercase key
+        if key.endswith('s') or key.endswith('S'):
+            well_known_acronym_filter_set.add(key + 'es')  # e.g., "manrses"
+        else:
+            well_known_acronym_filter_set.add(key + 's')   # e.g., "cdfs"
+
+    for w in well_known_acronym_filter_set:
+        well_known_acronyms.append(w)
 
     remove_list = remove_known_words(output_lines)
     remove_list = set(remove_list)
@@ -12975,6 +13170,127 @@ def main():
     # Write the processed text to the output file
     with open(output_txt_unique, "w", encoding="utf-8") as out_file:
         out_file.write(processed_text)
+
+    grand_union = set()
+    for w in common_english.top_100_English_words:
+        grand_union.add(w)
+
+    for w in common_english.thousand_most_common_words_in_English:
+        grand_union.add(w)
+
+    for w in AVL_words_with_CEFR.avl_words:
+        grand_union.add(w)
+
+    for w in common_english.common_English_words:
+        grand_union.add(w)
+
+    for w in common_english.chemical_elements_symbols:
+        grand_union.add(w)
+
+    for w in common_english.chemical_elements:
+        grand_union.add(w)
+
+    for w in common_english.programming_keywords:
+        grand_union.add(w)
+
+    for w in common_english.names_of_persons:
+        grand_union.add(w)
+
+    for w in common_english.language_tags:
+        grand_union.add(w)
+
+    for w in common_english.KTH_ordbok_English_with_CEFR:
+        grand_union.add(w)
+
+    for w in common_english.amino_acids:
+        grand_union.add(w)
+
+    for w in common_english.common_units:
+        grand_union.add(w)
+
+    for w in common_english.binary_prefixes:
+        grand_union.add(w)
+
+    for w in common_english.decimal_prefixes:
+        grand_union.add(w)
+
+    for w in common_english.place_names:
+        grand_union.add(w)
+
+    for w in well_known_acronyms:
+        grand_union.add(w)
+
+    for w in common_english.chemical_names_and_formulas:
+        grand_union.add(w)
+
+    for w in common_english.common_urls:
+        grand_union.add(w)
+
+    for w in common_english.java_paths:
+        grand_union.add(w)
+
+    for w in common_english.company_and_product_names:
+        grand_union.add(w)
+
+    for w in common_english.common_programming_languages:
+        grand_union.add(w)
+
+    for w in common_english.KTH_ordbok_English_with_CEFR:
+        grand_union.add(w)
+
+    for w in common_english.names_of_persons:
+        grand_union.add(w)
+
+    for w in common_english.mathematical_words_to_ignore:
+        grand_union.add(w)
+
+    for w in common_english.miss_spelled_words:
+        grand_union.add(w)
+        
+    for w in common_english.common_latin_words:
+        grand_union.add(w)
+
+    for w in acronym_filter_set:
+        grand_union.add(w)
+
+    for w in common_english.misc_words_to_ignore:
+        grand_union.add(w)
+    # if 'offloading' in grand_union:
+    #     print("'offloading' is in grand_union")
+
+    remove_list = []
+    for w in unique_terms_sorted:
+        # if w is a series of known words, then remove it
+        if ' ' in w:
+            ws = w.split(' ')
+            common_flag=True
+            for ww in ws:
+                if ww not in grand_union:
+                    common_flag=False
+            if common_flag:
+                remove_list.append(w)
+            continue
+
+    unique_terms_sorted = [l for l in unique_terms_sorted if l not in remove_list]
+
+
+    for i in range(0, 10):
+        print(f"{i} {len(unique_terms_sorted)=}")
+        if len(unique_terms_sorted) < 1:
+            print("Nothing left to process")
+            break
+        unique_terms_sorted=prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set)
+
+
+        unique_terms_sorted= set(unique_terms_sorted)
+        unique_terms_sorted = sorted(list(unique_terms_sorted))
+        # Write the processed text to the output file
+        output_txt_pruned = base_output_name + f"-pruned-{i}.txt"
+
+        with open(output_txt_pruned, "w", encoding="utf-8") as out_file:
+            processed_text = "\n".join(unique_terms_sorted)
+            out_file.write(processed_text)
+
 
 
     prefix_results = group_by_prefix(output_lines)
