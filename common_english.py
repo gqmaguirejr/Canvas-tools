@@ -4805,7 +4805,7 @@ common_English_words={
     'Monte-Carlo-based': {'B2': 'Adjective'},
     'Moon-Sun': {'B2': 'Noun Phrase'},
     'Moonwalker': {'B1': 'Noun'},
-    'Moore’s Law': {'B2': 'Proper Noun Phrase'},
+    "Moore’s Law": {'B2': 'Proper Noun Phrase'},
     'Moringa oleifera': {'B2': 'Noun'}, # species of plant.
     'Morse-code': {'B1': 'Noun Phrase'},
     'Morse-potential': {'B2': 'Noun Phrase'},
@@ -60275,6 +60275,56 @@ common_English_words={
     '50/50': {'B1': 'Adjective, Adverb'}, # Common idiomatic expression (fifty-fifty)
     'multi-100-Gbps': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
     'multi-hundred-gigabit': {'B2 (Specialized)': 'Adjective'},  # Compound technical descriptor
+    'superoptimization': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in compiler theory
+    'binsize': {'B2 (Specialized)': 'Noun'}, # Common term in data analysis/histograms
+    'ePrint': {'B2 (Proper Noun)': 'Noun'}, # Specific name of a preprint archive (e.g., IACR ePrint)
+    'objdump': {'B2': 'Noun'}, # Specific name of a software utility
+    'zeros': {'A2': 'Noun, Verb'}, # Basic mathematical/programming term (plural noun or 3rd person verb)
+    'exponentiation': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical operation
+    'deletes': {'B1': 'Verb (third person singular), Noun (plural)'},  # Verb: 3rd person singular (e.g., "He deletes the file."); Noun: plural (e.g., "We tracked all the inserts and deletes.")
+    '8-byte': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'BinarySize': {'B2 (Specialized)': 'Noun'}, # Common technical metric/property
+    'modulo theories': {'C1 (Specialized)': 'Noun'}, # Abstract concept in formal methods/compilers (e.g., SMT)
+    'multiway branch code generation': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in compilers
+    'P4-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor based on a specific language
+    'superoptimized': {'C1 (Specialized)': 'Adjective'}, # Describes output of superoptimization
+    'superoptimisation': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in compiler theory (UK spelling)
+    'programmable/smart NIC': {'C1 (Specialized)': 'Noun'}, # Advanced hardware category 
+    'programmable/smart NICs': {'C1 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'subset/whole': {'B2': 'Noun Phrase'}, # Conceptual pairing
+    'userdata': {'B1 (Specialized)': 'Noun'},  # Common technical term (user data)
+    'modulo': {'B1 (Specialized)': 'Adjective, Preposition, Noun'}, # Foundational mathematical/programming operator
+    'multiway': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., multiway search, multiway branch)
+    'amortizes': {'C1': 'Verb (third person singular)'}, # 3rd person singular. Abstract financial/algorithmic concept
+    'cache-optimized': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'core-specific': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'exhibits': {'B2': 'Verb (third person singular)'}, # 3rd person singular. Common academic/formal verb
+    'fully-establish': {'B2': 'Verb Phrase'}, # Common academic phrase
+    'harms': {'B1': 'Verb (third person singular), Noun'}, # 3rd person singular verb / Plural noun. Common general word.
+    'peaks': {'B1': 'Verb (third person singular), Noun'}, # 3rd person singular verb / Plural noun. Common general word
+    'pkts': {'B1 (Specialized)': 'Noun (plural)'}, # Abbreviation for 'packets'
+    'reorders': {'B1': 'Verb (third person singular)'}, # 3rd person singular. Common general/technical verb
+    'scales': {'B2 (Specialized)': 'Verb, Noun'}, # 3rd person singular verb (e.g., "it scales well") / Plural noun (e.g., "at different scales")
+    'single-socket': {'B2 (Specialized)': 'Adjective'}, # Common hardware descriptor 
+    'smartNIC': {'C1 (Specialized)': 'Noun'}, # Specific, advanced hardware category 
+    'time-scale': {'B2': 'Noun'}, # Common scientific/general term
+    'windows': {'A1': 'Noun (plural)', 'B1 (Specialized)': 'Noun (plural)'}, # Plural. Can be A1 (general) or B1 (technical, e.g., "time windows," "TCP windows")
+    "Amdahl’s Law": {'B2': 'Proper Noun Phrase'},
+    'coflows': {'C1 (Specialized)': 'Noun'}, # Abstract concept in datacenter scheduling
+    'CPU-efficient': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'DDR4': {'B2 (Proper Noun)': 'Noun'}, # Specific, common hardware standard 
+    'elephant/mice': {'C1 (Specialized)': 'Noun Phrase'}, # Metaphorical jargon for network flows
+    'GPU/NIC': {'B2 (Specialized)': 'Noun Phrase'}, # Pairing of two common hardware components
+    'hyper-threading': {'B2 (Proper Noun)': 'Noun'}, # Foundational CPU technology concept
+    'LRO-capable NIC': {'C1 (Specialized)': 'Noun Phrase'}, # Specific technical feature (Large Receive Offload)
+    'Mflows': {'C1 (Specialized)': 'Noun'},
+    'NUMA-aware': {'C1 (Specialized)': 'Adjective'}, # Core, abstract concept in OS/hardware (Non-Uniform Memory Access)
+    'SYN attacks': {'B2 (Specialized)': 'Noun'}, # Foundational network security concept
+    'ACK': {'B1 (Specialized)': 'Noun'}, # Foundational networking acronym (Acknowledgement)
+    'ACKs': {'B1 (Specialized)': 'Noun'}, # Plural of the above
+    'SYN': {'B1 (Specialized)': 'Noun'},  # Foundational networking acronym (Synchronize)
+    '100GbE': {'B2 (Proper Noun)': 'Noun'}, # Specific, common Ethernet standard
+    'Batchy-like': {'C1 (Specialized)': 'Adjective'}, # A derived technical descriptor
     #GQMe
 
 }
@@ -62533,6 +62583,7 @@ place_names=[
     'Electrum',
     'Myanmar',
     'United States',    
+    'Bucharest',
     #GQMp
 
 ]
@@ -62557,6 +62608,7 @@ company_and_product_names=[
     'HI1038', # Project Course in Data and Network Technology - KTH course number - see diva2:1738037
     'HE1028', # Microcomputer Technology - KTH course number - see diva2:1738037
     'HI1025', # Operating Systems - KTH course number - see diva2:1738037
+    'ID3006', # Compilers - KTH course number - see diva2:1734287
     'IE1204', # KTH course number - see diva2:1472662
     'IE1205', # KTH course number - see diva2:1472662
     'IE120V', # KTH course number - see diva2:1709472
@@ -75029,7 +75081,29 @@ company_and_product_names=[
     'Flightplan', # Dataplane disaggregation - https://flightplan.cis.upenn.edu/
     'FastClick-Light',
     'FlowMon-DPDK',
-
+    'IA-64', # Intel processor
+    'Denali', # a goal-directed superoptimizser - see diva2:1734287
+    'Souper', # a synthesizing superoptimizser - see diva2:1734287
+    'GreenThumb', # framework - see diva2:1734287
+    'RouteBricks',
+    'X86-64',
+    'ARMv7-A',
+    'eXpress Data Path',
+    'SIGPLAN/SIGBED Conference',
+    "Hacker’s Assistant",
+    "Hacker’s Delight",
+    'Embecosm Limited',
+    'HotMiddlebox', # conference
+    'Sigplan notices', # publication
+    'LENS', # a bidirectional enumerative search algorithm for superoptimization  - see diva2:1734287
+    'Cachegrind',
+    'tc', # traffic control program
+    'Xeon®',
+    'Batchy',
+    'AccelTCP',
+    'Heracles',
+    'NGNIX',
+    'iperf',
 ]
 
 
@@ -80809,6 +80883,174 @@ names_of_persons=[
     'Tianzhu Zhanget',
     'Tianzhu',
     'Zhanget',
+    'Massalin',
+    'Desmaison',
+    'Dhurjati',
+    'Dobrescu',
+    'Dorn',
+    'Egi',
+    'Eisenbarth',
+    'Emmerich',
+    'Enguehard',
+    'Etalle',
+    'Falsafi',
+    'Ferdman',
+    'Fitch',
+    'Francillon',
+    'Gallenmüller',
+    'Gallo',
+    'Giridharan',
+    'Granlund',
+    'Harchol',
+    'Hardavellas',
+    'Harding',
+    'Hasan',
+    'Heiser',
+    'Heule',
+    'Holz',
+    'Hudek',
+    'Hume',
+    'Hund',
+    'Han',
+    'Iannaccone',
+    'Jangda',
+    'Jannotti',
+    'Juhász',
+    'Jun',
+    'Kaashoek',
+    'Keckler',
+    'Kenner',
+    'Ketema',
+    'Kleyman',
+    'Knies',
+    'Kohli',
+    'Kozsik',
+    'Kreutz',
+    'Krishnamurthy',
+    'Kuznetsov',
+    'Kuźniar',
+    'López-Buedo',
+    'Mahloo',
+    'Manesh',
+    'Mathy',
+    'Musgrave',
+    'Nandugudi',
+    'Nethercote',
+    'Neugebauer',
+    'Oattes',
+    'Patrizio',
+    'Perino',
+    'Peón-Quirós',
+    'Phothilimthana',
+    'Pianese',
+    'Ramos',
+    'Ratnasamy',
+    'Regehr',
+    'Reiter',
+    'Renton',
+    'Rigby',
+    'Rothenberg',
+    'Salim',
+    'Sasnauskas',
+    'Sayle',
+    'Scheitle',
+    'Schkufza',
+    'Schmidtke',
+    'Schulte',
+    'Scouarnec',
+    'Sekar',
+    'Sharifian',
+    'Shi',
+    'Soares',
+    'Soldani',
+    'Steinert',
+    'Sudarikov',
+    'Sunar',
+    'Taneja',
+    'Thakur',
+    'Torr',
+    'Truszczyński',
+    'Turull',
+    'Uhlig',
+    'Verissimo',
+    'Warren',
+    'Watkins',
+    'Weimer',
+    'Wingbermuehle',
+    'Wohlfart',
+    'Wuhib',
+    'Yadhav',
+    'Yarom',
+    'Yorsh',
+    'Zazo',
+    'Zeman',
+    'Zoltán Csörnyei',
+    'Zoltán',
+    'Csörnyei',
+    'Seward',
+    'Ailamaki',
+    'Aker',
+    'Antichi',
+    'Apecechea',
+    'Archit',
+    'Argyraki',
+    'Audzevich',
+    'Auler',
+    'Azodolmolky',
+    'Bansal',
+    'Barroso',
+    'Bastien',
+    'Bhatia',
+    'Bodik',
+    'Bremler-Barr',
+    'Bunel',
+    'Carle',
+    'Chakravarty',
+    'Chamberlain',
+    'Chun',
+    'Collingbourne',
+    'Creswell',
+    'Vos',
+    'Abdul',
+    'Kabbani',
+    'Akshay',
+    'Alexandra',
+    'Fedorova',
+    'Alizadeh',
+    'Blagodurov',
+    'Dietmüller',
+    'Dongsu',
+    'Gaillard',
+    'Gunn',
+    'Hao',
+    'Hassas',
+    'Yeganeh',
+    'Kamali',
+    'Luiz',
+    'Masato',
+    'Yasuda',
+    'McKeown',
+    'Milad',
+    'Sharif',
+    'Neal',
+    'Cardwell',
+    'Rachit',
+    'Sachin',
+    'Saksham',
+    'Shijin',
+    'Rajakrishnan',
+    'Shmoys',
+    'Shuang',
+    'Sincronia',
+    'Yuchung',
+    'Zhuravlev',
+    'Balaji',
+    'Prabhakar',
+    'Cyril',
+    'Edsall',
+    'Gran Alcoz',
+    'Parthasarathy',
+
 ]
 
 
@@ -81000,6 +81242,7 @@ common_german_words=[
     'Stahlwerks',
     'Technische',
     'Universität',
+    'Verlag',
     'Werke',
     'Wiener',
     'Windkannal',
@@ -81070,6 +81313,7 @@ common_latin_words=[
     'ad-hoc',
     'affinis',
     'alia', # used in et alia - inter alia
+    'alii',
     'ante',
     'bene',
     'bene',

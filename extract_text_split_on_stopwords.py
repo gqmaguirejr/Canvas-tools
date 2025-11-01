@@ -12193,6 +12193,14 @@ def is_integer_range_or_ISSN(string):
     # otherwise
     return False
     
+def is_TRITA_number(s):
+    if s.startswith("TRITA-ABE-DLT") or\
+       s.startswith("TRITA-CBH-FOU") or\
+       s.startswith("TRITA-EECS-AVL") or\
+       s.startswith("TRITA-ITM-AVL") or\
+       s.startswith("TRITA-SCI-FOU"):
+        return True
+    return False
 
 ligrature_table= {'\ufb00': 'ff', # 'ﬀ'
                   '\ufb03': 'f‌f‌i', # 'ﬃ'
@@ -12505,15 +12513,20 @@ def extract_text_from_pdf(pdf_path):
     global acronyms_text
     global header_bottom
 
+    output_lines=[]
+
     try:
         doc = pymupdf.open(pdf_path)
         print(f"Successfully opened '{pdf_path}'...")
 
         full_text = ""
         # Extract text from all pages
-        # for page in doc:
-        #     full_text += page.get_text()
+        if False and Verbose_Flag:
+            for page in doc:
+                full_text += page.get_text()
+            print(f"{full_text=}")
 
+        full_text = ""
         acronyms_text = ""
 
         acronyms_found=False
@@ -12538,7 +12551,7 @@ def extract_text_from_pdf(pdf_path):
                     print(f"found header_bottom {header_bottom}")
                     continue
                 
-                # We assume that the lis tof acronyms is before the first page of the main matter
+                # We assume that the list of acronyms is before the first page of the main matter
                 # and has the expected header.
                 # look for acronyms
                 if header_bottom > 0 and not acronyms_found and (lines_in_the_block.startswith('List of Acronyms and abbreviations | ') or lines_in_the_block.startswith('List of acronyms and abbreviations | ')):
@@ -12553,20 +12566,149 @@ def extract_text_from_pdf(pdf_path):
                         break # go to the next page
 
                 # look for first page of the main matter
-                if header_bottom > 0 and not first_page_found and lines_in_the_block.endswith(' | 1\n'):
+                if header_bottom > 0 and not first_page_found and (lines_in_the_block.endswith(' | 1\n') or lines_in_the_block.startswith('2 | ')):
                     first_page_found = True
                     print(f"found first page {pageno}")
 
                 # look for first of the references
-                if header_bottom > 0 and first_page_found and not references_found and lines_in_the_block.lower().startswith('references | '):
+                if header_bottom > 0 and first_page_found and not references_found and (lines_in_the_block.lower().startswith('references | ') or lines_in_the_block.lower().startswith('bibliography | ')):
                     references_found=True
                     print(f"found references page {pageno}")
+
+                if first_page_found and not references_found and lines_in_the_block.startswith('References'):
+                    references_found=True
+                    print(f"found references page {pageno}")
+
 
                 # if we are in the main matter and before the start of the references
                 if y1 > header_bottom and first_page_found and not references_found:
                     full_text += lines_in_the_block
                 else:
                     continue
+
+        if not first_page_found and not references_found:
+            print(f"*** Try a second method to identify the pages ***")
+            page_number_positions=dict()
+            maximum_y0=0
+            maximum_y1=0
+            for pageno, page in enumerate(doc): # iterate the document pages
+                if Verbose_Flag:
+                    print(f"{pageno=}")
+                current_page=page.get_text("blocks", sort=True) # get plain text encoded as UTF-8
+
+                for idx, b in enumerate(current_page):
+                    if Verbose_Flag:
+                        print(f"**** {idx=} {type(b)}****")
+                    x0, y0, x1, y1, lines_in_the_block, block_no, block_type=b
+                    if Verbose_Flag:
+                        print(f"{x0=}, {y0=}, {x1=}, {y1=}, {lines_in_the_block=}, {block_no=}, {block_type=}")
+                    if y0 > maximum_y0:
+                        maximum_y0 = y0
+
+                    if y1 > maximum_y1:
+                        maximum_y1 = y1
+
+            print(f"{maximum_y0=} {maximum_y1=}")
+
+
+            contents_page=False
+            acronyms_page=False
+            first_reference_page=False
+            for pageno, page in enumerate(doc): # iterate the document pages
+                if Verbose_Flag:
+                    print(f"{pageno=}")
+                current_page=page.get_text("blocks", sort=True) # get plain text encoded as UTF-8
+                contents_on_this_page=False
+                acronyms_on_this_page=False
+                list_of_X_on_this_page=False
+                references_on_this_page=False
+
+                for idx, b in enumerate(current_page):
+                    if Verbose_Flag:
+                        print(f"**** {idx=} {type(b)}****")
+                    x0, y0, x1, y1, lines_in_the_block, block_no, block_type=b
+                    if Verbose_Flag:
+                        print(f"{x0=}, {y0=}, {x1=}, {y1=}, {lines_in_the_block=}, {block_no=}, {block_type=}")
+
+                    if y0 > int(maximum_y0) and y1 < int(maximum_y1) + 2:
+                        page_number_positions[pageno] = lines_in_the_block.replace('\n', '')
+
+                    if not acronyms_on_this_page and y0 < maximum_y0 and (lines_in_the_block.lower().find('list of acronyms and abbreviations') >= 0 or lines_in_the_block.find('Acronyms') >= 0):
+                        acronyms_on_this_page=True
+                        print(f"{acronyms_on_this_page=}")
+                        if contents_page != pageno:
+                            acronyms_found=True
+                            acronyms_page=pageno
+                            
+                    if not contents_on_this_page and y0 < maximum_y0 and (lines_in_the_block.lower().find('contents') >= 0 or lines_in_the_block.find('Contents') >= 0):
+                        contents_on_this_page=True
+                        print(f"{contents_on_this_page=}")
+
+                    if not contents_on_this_page and not list_of_X_on_this_page and y0 < maximum_y0 and lines_in_the_block.startswith('List of'):
+                        list_of_X_on_this_page=True
+                        list_of_X_page=pageno
+                        print(f"{list_of_X_on_this_page=}")
+
+                    if not first_reference_page and not references_on_this_page and not contents_on_this_page and y0 < maximum_y0 and\
+                       (lines_in_the_block.lower().startswith('references') or\
+                        lines_in_the_block.lower().startswith('bibliography')):
+                        references_on_this_page=True
+                        first_reference_page=pageno
+
+                if contents_on_this_page and list_of_X_on_this_page:
+                    contents_page=pageno
+                    print(f"found contents page {contents_page}")
+
+            print(f"{page_number_positions=}")
+            for idx, i in enumerate(page_number_positions):
+                if page_number_positions[i] == '1':
+                    first_page_found=True
+                    first_page=int(i)
+                    print(f"found first page {first_page} at {idx=}")
+            if contents_page:
+                print(f"{contents_page=}")
+            if acronyms_page:
+                print(f"{acronyms_page=}")
+            if first_reference_page:
+                print(f"{first_reference_page=}")
+        
+            for pageno, page in enumerate(doc): # iterate the document pages
+                if Verbose_Flag:
+                    print(f"{pageno=}")
+                current_page=page.get_text("blocks", sort=True) # get plain text encoded as UTF-8
+
+                # look for first of the references, when found break out of the loop
+                if pageno >= first_reference_page:
+                    print(f"Reached references, no longer processing pages")
+                    break
+
+                # collect acronyms
+                # Assume the acronyms page is before the first "List of X" pages OR
+                # the acronyms page is just before the first page
+                if acronyms_page < list_of_X_page:
+                    if acronyms_found and pageno >= acronyms_page and pageno < list_of_X_page and pageno < first_page:
+                        acronyms_text += lines_in_the_block
+                        collect_acronyms_from_page(pageno, page)
+                else:
+                    if acronyms_found and pageno >= acronyms_page and pageno < first_page:
+                        prefix1='Acronyms'
+                        prefix2='ACRONYMS'
+                        if lines_in_the_block.startswith(prefix1) or lines_in_the_block.startswith(prefix2):
+                            acronyms_text += lines_in_the_block[len(prefix1):]
+                        else:
+                            acronyms_text += lines_in_the_block
+                        collect_acronyms_from_page(pageno, page)
+
+                if pageno >= first_page:
+                    # if we are in the main matter and before the start of the references
+                    for idx, b in enumerate(current_page):
+                        if Verbose_Flag:
+                            print(f"**** {idx=} {type(b)}****")
+                        x0, y0, x1, y1, lines_in_the_block, block_no, block_type=b
+                        if Verbose_Flag:
+                            print(f"{x0=}, {y0=}, {x1=}, {y1=}, {lines_in_the_block=}, {block_no=}, {block_type=}")
+                        # collect the contents of the page
+                        full_text += lines_in_the_block
 
         full_text=replace_ligature(full_text)
         full_text=replace_abbreviations(full_text)
@@ -12803,6 +12945,10 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_english.common_german_words:
+            remove_list.append(w)
+            continue
+
         #  check for lower case version
         if w.lower() in common_english.top_100_English_words:
             remove_list.append(w)
@@ -12951,6 +13097,9 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set):
         if is_ISBN(w):
             continue
         
+        if is_TRITA_number(w):
+            continue
+        
         if is_value_dash_units(w):
             continue
 
@@ -12984,6 +13133,12 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set):
             for idx, ww in enumerate(ws):
                 if ww in grand_union:
                     continue
+                if ww.isupper() and ww.lower() in grand_union:
+                    continue
+                if ww.istitle() and ww.lower() in grand_union:
+                    continue
+
+
                 # remove possessives
                 if ww.endswith('’s') and ww[:-2] in grand_union:
                     continue
@@ -12996,13 +13151,13 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set):
 
                 if ww.count('-') == 1 and not ww.endswith('-'):
                     wws=ww.split('-')
-                    if len(wws[0]) > 2 or len(wws[1]) > 2 and\
+                    if len(wws[0]) > 2 and len(wws[1]) > 2 and\
                        wws[0][0].isupper() and wws[0][1:].islower() and\
                        wws[1][0].isupper() and wws[1][1:].islower() and\
                        wws[0].lower() in grand_union and\
                        wws[1].lower() in grand_union:
                        continue
-                    if len(wws[0]) > 2 or len(wws[1]) > 2 and\
+                    if len(wws[0]) > 2 and len(wws[1]) > 2 and\
                        wws[0][0].isupper() and wws[0][1:].islower() and\
                        wws[1].islower() and\
                        wws[0].lower() in grand_union and\
@@ -13090,12 +13245,13 @@ def main():
 
     output_lines = extract_text_from_pdf(input_file)
 
+    # Create a new, combined set for filtering
+    acronym_filter_set = set()
+
     if acronyms_found:
         #print(f"{acronyms_text}")
         pprint.pprint(f"{acronyms_dict}")
 
-        # Create a new, combined set for filtering
-        acronym_filter_set = set()
         # Loop through dictionary keys ONCE to build the set
         for key in acronyms_dict.keys():
             acronym_filter_set.add(key)  # Add the base acronym (e.g., "cdf")
@@ -13248,6 +13404,9 @@ def main():
         grand_union.add(w)
         
     for w in common_english.common_latin_words:
+        grand_union.add(w)
+
+    if w in common_english.common_german_words:
         grand_union.add(w)
 
     for w in acronym_filter_set:
