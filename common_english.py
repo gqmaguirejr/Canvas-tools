@@ -19556,7 +19556,7 @@ common_English_words={
     'dragline': {'B2': 'Noun'},
     'dragons': {'A1': 'Noun (plural)'},
     'drags': {'A2': 'Verb'},
-    'drailing': {'xx': 'Verb'}, # Slang, "sending embarrassing email when drunk" - drunk dialing (fylleringning) och derailing (köra av spåret)
+    'drailing': {'xx': 'Verb'}, # Slang, "sending embarrassing email when drunk" - drunk dialing (fylleringning) och derailing (köra av spåret)
     'drain leakage current': {'B2': 'Noun (compound)'},
     'drain-source': {'B1': 'Noun (compound)'},
     'drain-sourcevoltage': {'C1': 'Noun (compound)'},
@@ -65674,7 +65674,7 @@ company_and_product_names=[
     'LLM:s',
     'LLVIP', # dataset diva2:1737862
     'LM565', #  National Semiconductor LM565 diva2:572683
-    'LMP-103S', # ECAPS  LMP-103S diva2:511222
+    'LMP-103S', # ECAPS LMP-103S diva2:511222
     'LMSim',
     'LN', # Litton LN 200 - diva2:956118
     'LPC1768', # ARM LPC1768 processor diva2:546759
@@ -71219,8 +71219,8 @@ company_and_product_names=[
     'HEPG2', # cell line - see diva2:1876707
     'HER2:342', # part of "HER2 (Z<sub>HER2:342</sub>)" - see  diva2:744736
     'HFA', # part of "Relizyme HFA 403" - see diva2:1257721
-    'HFCS-55', # High  Fructose  Corn  Syrup - see diva2:855383
-    'HFCS-90', # High  Fructose  Corn  Syrup - see diva2:855383
+    'HFCS-55', # High Fructose Corn Syrup - see diva2:855383
+    'HFCS-90', # High Fructose Corn Syrup - see diva2:855383
     'HIST1H3A', # histone cluster - see diva2:1038989
     'HIV-1', # genome - see diva2:1586215
     'HK-2', # papilloma virus-transformed proximal tubular cells - see diva2:1454420
@@ -75040,7 +75040,7 @@ company_and_product_names=[
     '802.16a', # IEEE Standard
 
     
-    'Amped Attacks', # pseudonym 
+    'Amped Attacks', # pseudonym
     'Citizen four', # pseudonym
     'Cornwall, Hugo', # pseudonym
     'Dread Pirate Roberts', # pseudonym
