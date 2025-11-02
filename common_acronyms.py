@@ -68,7 +68,7 @@ well_known_acronyms_list=[
     ['8H-8T-8W', 'eight headers, tables and write operations', {'s': ['diva2:1335912']}],
     ['8chan, ∞chan', 'Infinitechan', {'swe': 'Infinitechan'}],
     ['9-AGNRs', '9-armchair graphene nanoribbons'],
-    ['A&U', 'avstavning och utslutning', {'eng': 'hyphenation and justification (H&J)'}],
+    ['A&U', 'avstavning och utslutning', {'eng': 'hyphenation and justification (H&J)'}],
     ['A*Star', 'A* search algorithm'],
     ['A-CGKA', 'administrated CGKA', {'s': ['diva2:1614970']}],
     ['A-GPS', 'Assisted Global Positioning System', {'s': ['diva2:680237'], 'swe': 'Assisterad GPS'}],
@@ -97,7 +97,7 @@ well_known_acronyms_list=[
     ['AAR', 'After Action Reviews'],
     ['AAS', 'Advanced Antenna System', {'s': ['diva2:1632196']}],
     ['AAS', 'American Astronautical Society (AAS)', {'s': ['diva2:1380827'], 'n': 'used but not defined'}],
-    ['AAS/AIAA', 'American Astronautical Society (AAS) /  American Institute of Aeronautics and Astronautics (AIAA) Astrodynamics Specialist Conference', {'s': ['diva2:1380827'], 'n': 'used but not defined'}],
+    ['AAS/AIAA', 'American Astronautical Society (AAS) /  American Institute of Aeronautics and Astronautics (AIAA) Astrodynamics Specialist Conference', {'s': ['diva2:1380827'], 'n': 'used but not defined'}],
     ['AAT-WAC', 'Automated Accessibility Testing of Web Application Components'],
     ['AB', 'Aktiebolag'],
     ['ABA-stacked', 'Bernal stacking sequence'],
@@ -316,7 +316,7 @@ well_known_acronyms_list=[
     ['AMS', 'Aeroball Measurement System', {'s': ['diva2:1669916']}],
     ['AMT', 'Active Management Technology', {'s': ['diva2:508256'], 'n': 'Intel'}],
     ['AMV', 'Armored Modular Vehicle', {'s': ['diva2:892101'], 'n': 'used but not defined'}],
-    ['AMV', 'anime music video', {'swe': 'tecknad musikvideo'}],
+    ['AMV', 'anime music video', {'swe': 'tecknad musikvideo'}],
     ['AMX', 'Advanced Matrix Extension', {'s': ['diva2:1734287']}],
     ['AN', 'Ambient Network'],
     ['ANC', 'active noise cancelation'],
@@ -490,7 +490,7 @@ well_known_acronyms_list=[
     ['AWC', 'Association for women in computing'], # organizatrion
     ['AWG', 'arrayed waveguide grating', {'s': ['diva2:1047653']}],
     ['AWGN', 'additive white gaussian noise', {'s': ['diva2:955018']}],
-    ['AWK', 'Alfred Aho, Peter Weinberger, and Brian Kernighan'], # persons
+    ['AWK', 'Alfred Aho, Peter Weinberger, and Brian Kernighan'], # persons
     ['AWRS', 'Active Rear Wheel Steering', {'s': ['diva2:1380104'], 'n': 'used but not defined- infered from title'}],
     ['AWS', 'Advanced wireless services', {'swe': 'avancerade trådlösa tjänster'}],
     ['AWS', 'Amazon web services'],
@@ -2666,7 +2666,7 @@ well_known_acronyms_list=[
     ['Grace Murray Hopper Award', 'ACM Grace Murray Hopper Award'], # prize
     ['GradNorm', 'gradient normalization (algorithm)', {'s': 'diva2:1868218'}],
     ['Grails', 'Groovy on rails', {'swe': 'Grails'}], # programming environment
-    ['H&J', 'hyphenation and justification', {'swe': 'avstavning och utslutning (A&U)'}],
+    ['H&J', 'hyphenation and justification', {'swe': 'avstavning och utslutning (A&U)'}],
     ['H-CRAN', 'A hybrid cloud radio access network', {'s': ['diva2:1336300']}],
     ['H-T-W', 'number of headers, tables and write operations', {'s': ['diva2:1335912']}],
     ['H/R', 'HEMLIG/RESTRICTED', {'s': ['diva2:511869']}],
@@ -3361,7 +3361,7 @@ well_known_acronyms_list=[
     ['KK', 'main distribution frame', {'swe': 'korskoppling'}],
     ['KLT', 'Kanade-Lucas-Tomasi Feature Tracker', {'s': ['diva2:1215266']}],
     ['KM', 'knowledge management', {'swe': 'kunskapshantering'}],
-    ['KMA', 'KECCAK Message Authentication Code', {'s': ['diva2:1111718']}],
+    ['KMA', 'KECCAK Message Authentication Code', {'s': ['diva2:1111718']}],
     ['KMAC', 'KECCAK Message Authentication Code',  {'s': ['diva2:1111718']}],
     ['KMD', 'Kazaa media desktop'], # program
     ['KMM', 'Kotlin Multiplatform Mobile', {'s': ['diva2:1793389']}],
@@ -5176,7 +5176,7 @@ well_known_acronyms_list=[
     ['RCN', ' Resurscentrum för nätundervisning', {'s': ['diva2:654317'], 'n': 'used but not defined, given on pg. 4 of the thesis - which is currently accessible via a CSC URL'}],
     ['RCNN', 'Faster Region-based convolutional Neural Networks', {'s': ['diva2:1529213']}],
     ['RCP', 'Rich Client Platform', {'s': ['diva2:871897'], 'n': 'Netbeans RCP'}],
-    ['RCR', 'Radial correlation reflectometry', {'s': ['diva2:550497']}],
+    ['RCR', 'Radial correlation reflectometry', {'s': ['diva2:550497']}],
     ['RCS', 'Rich communication services', {'swe': 'RCS (Rich Communication Services)'}],
     ['RCS', 'remote controlled sectionalizers'],
     ['RCV', 'radio controlled vehicles', {'s': ['diva2:1135567']}],
@@ -5365,7 +5365,7 @@ well_known_acronyms_list=[
     ['RQ4', 'Research Question 4'],
     ['RR', 'real reality', {'swe': '”verkliga verkligheten”'}],
     ['RR', 'reference resolution', {'s': ['diva2:1231561']}],
-    ['RR-SS', 'Relevance and Redundancy Sample Selection', {'s': ['diva2:1735861']}],
+    ['RR-SS', 'Relevance and Redundancy Sample Selection', {'s': ['diva2:1735861']}],
     ['RRAM', 'Resistive random-access memory', {'swe': 'resistivt RAM-minne'}],
     ['RRAM', 'resistive random access memory', {'swe': 'resistivt RAM-minne'}],
     ['RRC', 'Radio Resource Control', {'s': ['diva2:1415982'], 'n': 'used but not defined, no full text in DiVA, protocol'}],
@@ -5458,7 +5458,7 @@ well_known_acronyms_list=[
     ['RZM', 'regional zernike moment'],
     ['RaMViD', 'Random-Mask Video Diffusion', {'s': ['diva2:1726971']}],
     ['RaaS', 'ransomware-as-a-service', {'swe': 'gisslanprogram som tjänst'}],
-    ['Rakel', 'Rakel', {'swe': 'Radiokommunikation för effektiv ledningRadiokommunikation för effektiv ledning'}],
+    ['Rakel', 'Rakel', {'swe': 'Radiokommunikation för effektiv ledningRadiokommunikation för effektiv ledning'}],
     ['RankedAS', 'Ranked Ant System'],
     ['ReLU', 'Rectified Linear Unit', {'s': ['diva2:1156251']}],
     ['ReRAM', 'Resistive random-access memory'],
@@ -6799,7 +6799,7 @@ well_known_acronyms_list=[
     ['WAF', 'wife acceptance factor', {'swe': 'acceptansfaktor bland kvinnor; kvinnlig acceptans; faktor för kvinnlig acceptans; acceptansfaktor'}],
     ['WAMC', 'Wide Area Monitoring and Control System', {'s': ['diva2:538783'], 'n': 'used but not defined, no full text in DiVA'}],
     ['WAMP', 'Windows Apache MySQL & PHP', {'s': ['diva2:525458'], 'n': 'used but not defined, spelled out on pg. 8'}],
-    ['WAMP', 'Windows, Apache, MySQL and PHP, Perl, or Python', {'swe': 'Windows, Apache, MySQL och PHP, Perl eller Python'}],
+    ['WAMP', 'Windows, Apache, MySQL and PHP, Perl, or Python', {'swe': 'Windows, Apache, MySQL och PHP, Perl eller Python'}],
     ['WAMPAC', 'Wide Area Monitoring Protection and Control', {'s': ['diva2:1164182'], 'n': 'used but not defined, spelled out on pg. xi of thesis'}],
     ['WAMS', 'Wide Area Monitoring System', {'s': ['diva2:681410']}],
     ['WAN', 'Wide Area Network', {'swe': 'långdistansnätverk, icke-lokala nätverk'}],
@@ -7105,7 +7105,7 @@ well_known_acronyms_list=[
     ['cURL', 'curl'], # program
     ['cancel culture OCD', 'cancel culture OCD', {'swe': 'raderingskulturbetingat tvångssyndrom'}],
     ['caps', 'capitals', {'swe': 'stora bokstäver'}],
-    ['captcha', 'completely automated public Turing test to tell computers and humans apart'],
+    ['captcha', 'completely automated public Turing test to tell computers and humans apart'],
     ['ccTLD', 'country code TLD'],
     ['ccTLD', 'country code top level domain', {'swe': 'landsdomän'}],
     ['ccompliance', 'corporate compliance, C compliant', {'swe': 'regelefterlevnad; efterlevnad; företagsefterlevnad'}],
@@ -7413,7 +7413,7 @@ well_known_acronyms_list=[
     ['wbmp', 'wireless bitmap image', {'swe': 'WBMP; trådlös bitmappsbild'}], # file format
     ['webRTC', 'web real-time communication', {'swe': 'webRTC'}],
     ['webcam', 'web camera', {'swe': 'webbkamera'}],
-    ['wi-fi', 'wireless fidelity', {'swe': 'wi-fi'}], # note that this is not an acronym, but rather a trademaek Wi-Fi
+    ['wi-fi', 'wireless fidelity', {'swe': 'wi-fi'}], # note that this is not an acronym, but rather a trademaek Wi-Fi
     ['win', 'Windows'],
     ['wiz', 'wizard; wireless internet zone', {'swe': 'mästare, virtuos; trådlös internetzon; Wifi-zon'}],
     ['www', 'dubdubdub, triple‑dub', {'swe': 'www'}],
@@ -7651,7 +7651,7 @@ less_well_known_acronyms_list=[
     ['flarf', 'flarf poetry', {'swe': 'flarfpoesi'}],
     ['flog', 'fake blog, food blog', {'swe': 'fejkblogg, blogg om mat'}],
     ['fyborg', 'functional cyborg', {'swe': 'funktionell cyborg'}],
-    ['gaymer', 'gay + gamer', {'swe': 'gaymer'}],
+    ['gaymer', 'gay + gamer', {'swe': 'gaymer'}],
     ['gotcha', '”got you!”', {'swe': 'där fick jag dig!”'}],
     ['groupie', 'group-selfie', {'swe': 'grupp-selfie'}],
     ['h2g2', 'Hitchhiker’s guide to the galaxy'], # website
@@ -7730,8 +7730,8 @@ less_well_known_acronyms_list=[
     ['PoK', 'Kisses and hugs!', {'swe': 'Puss och kram!'}], # nät- och sms-språk
     ['POS', 'point of sale'], # nät- och sms-språk
     ['POS', 'parent over shoulder!'], # nät- och sms-språk
-    ['r0xx0r', '[this] rocks back and forth', {'swe': '[this] rocks fram- och baklänges'}], # nät- och sms-språk
-    ['roxxor', '[this] rocks back and forth', {'swe': '[this] rocks fram- och baklänges'}], # nät- och sms-språk
+    ['r0xx0r', '[this] rocks back and forth', {'swe': '[this] rocks fram- och baklänges'}], # nät- och sms-språk
+    ['roxxor', '[this] rocks back and forth', {'swe': '[this] rocks fram- och baklänges'}], # nät- och sms-språk
     ['ROTF', 'rolling on the floor [laughing]', {'swe': 'rullar på golvet'}], # nät- och sms-språk
     ['ROTFL', 'rolling on the floor laughing', {'swe': 'rullar på golvet och skrattar'}], # nät- och sms-språk
     ['ROTFLMAO', 'rolling on the floor laughing my ass off', {'swe': 'rullar på golvet och skrattar ihjäl mig'}], # nät- och sms-språk
