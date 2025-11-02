@@ -505,6 +505,7 @@ thousand_most_common_words_in_English={
     'day': {'A1': 'Noun'},
     'dead': {'A1': 'Adjective'},
     'deal': {'B2': 'Noun', 'C1': 'Noun'},
+    'deals': {'B2': 'Noun (plural), Verb (third person singular)'}, # Verb: 3rd person singular (e.g., "The paper deals with..."); Noun: plural (e.g., "business deals")
     'death': {'A1': 'Noun'},
     'decade': {'A2': 'Noun'},
     'decide': {'A2': 'Verb'},
@@ -7200,6 +7201,7 @@ common_English_words={
     'adipose tissue biology': {'C1': 'Noun'},
     'adipose': {'B2': 'Adjective'},
     'adjacency': {'B2': 'Noun'},
+    'adjacent': {'B2': 'Adjective'},  # Common formal/academic/technical term for "next to"
     'adjacent-channel': {'B2': 'Adjective'},
     'adjective': {'A2': 'Noun'},
     'adjectives': {'A1': 'Noun (plural)'},
@@ -23320,6 +23322,8 @@ common_English_words={
     'fixtured': {'B2': 'Verb (past tense), Verb (past participle)'},
     'fixtures': {'A1': 'Noun (plural)'},
     'fizz': {'B1': 'Noun, Verb'},
+    'flag': {'B1': 'Noun', 'B2': 'Verb'}, # Noun: Common technical concept (e.g., a software flag, TCP flag) ; Verb: to mark for attention
+    'flags': {'B1': 'Noun (plural)', 'B2': 'Verb (third person singular)'},  # Plural noun / 3rd person verb of the above
     'flagella': {'B2': 'Noun'},
     'flagellin': {'C2': 'Noun'},
     'flagellum': {'C2': 'Noun'},
@@ -24005,12 +24009,13 @@ common_English_words={
     'fractures': {'A2': 'Noun (plural)'},
     'fracturing': {'B2': 'Verb (gerund), Verb (present participle)'},
     'frag': {'B1': 'Noun, Verb'},
+    'fragment': {'B1': 'Noun', 'B2': 'Verb'},
     'fragmentation': {'C2': 'Noun'},
     'fragmentations': {'B2': 'Noun (plural)'},
     'fragmented': {'C1': 'Verb (past tense), Verb (past participle)'},
     'fragmenting': {'C2': 'Verb (gerund), Verb (present participle)'},
     'fragmentise': {'B2': 'Verb'},
-    'fragments': {'B1': 'Noun (plural)'},
+    'fragments': {'B1': 'Noun (plural)', 'B2': 'Verb (third person singular)'},
     'fragrance': {'B1': 'Noun'},
     'fragrances': {'A2': 'Noun (plural)'},
     'frail': {'B2': 'Adjective'},
@@ -24933,6 +24938,8 @@ common_English_words={
     'gig-workers': {'B2': 'Noun (plural)'},
     'giga-pixel': {'B2': 'Noun'},
     'gigabit-speed': {'B2': 'Noun Phrase'},
+    'gigabits': {'A1': 'Unit'},
+    'gigabytes': {'A1': 'Unit'},
     'gigg': {'A2':'Noun', 'B1':'Noun', 'B2':'Noun'},
     'gigging': {'A2': 'Noun, Verb'},
     'gimbal': {'A1': 'Noun'},
@@ -37958,13 +37965,13 @@ common_English_words={
     'offloads': {'B1': 'Verb (third-person singular present tense)'},
     'offs': {'B2': 'Noun (plural)'}, # (Informal term for "time off" or "days off" from work)
     'offset frontal crash': {'B2': 'Noun Phrase'},
-    'offset': {'B1': 'Verb, Noun', 'C2': 'Noun, Verb'}, #  EFLEX uses the level C1
+    'offset': {'B1': 'Noun', 'B2': 'Verb', 'C1 (Specialized)': 'Noun'}, #  EFLEX uses the level C1
     'offset-QAM': {'C2': 'Noun Phrase'},
     'offset-free': {'B1': 'Adjective'},
     'offset-greedy': {'B2': 'Adjective'},
     'offset-type': {'B2': 'Noun'},
     'offsetfilter': {'B2': 'Noun'},
-    'offsets': {'C2': 'Noun (plural), Verb (third-person present tense)'},
+    'offsets': {'B2': 'Verb (third-person present tense)', 'C1': 'Noun (plural)'},
     'offsetting': {'C2': 'Verb (present participle)'},
     'offsettings': {'C2': 'Noun (plural)'},
     'offshoots': {'B2': 'Noun (plural)'},
@@ -39221,6 +39228,7 @@ common_English_words={
     'packed': {'A2': 'Adjective, Verb (past participle)'},
     'packer': {'B1': 'Noun'},
     'packers': {'B1': 'Noun (plural)', 'C1': 'Noun (plural)'},
+    'packet': {'B2': 'Noun'},
     'packet error': {'B2': 'Noun (compound)'},
     'packet interleaving': {'B2': 'Noun Phrase'},
     'packet loss': {'B2': 'Noun (compound)'},
@@ -51450,6 +51458,7 @@ common_English_words={
     'subadditive': {'B2': 'Adjective'},
     'subadditivity': {'B2': 'Noun'},
     'subarctic': {'B2': 'Adjective'},
+    'subarea': {'B2': 'Noun'},
     'subareas': {'B2': 'Noun (plural)'},
     'subarrays': {'A2': 'Noun (plural)'},
     'subassembly': {'B2': 'Noun'},
@@ -53704,6 +53713,7 @@ common_English_words={
     'ticking': {'B1': 'Noun, Verb (gerund), Verb (present participle)'},
     'ticks': {'B1': 'Noun (plural), Verb (third-person present tense)'},
     'tidal': {'B1': 'Noun'},
+    'tie-breaking': {'B1': 'Adjective/Noun'}, # Common concept in games, sports, and voting
     'tie-chain': {'A2': 'Noun'},
     'tie-chains': {'A2': 'Noun (plural)'},
     'tie-line': {'A2': 'Noun'},
@@ -55498,6 +55508,7 @@ common_English_words={
     'unanimous': {'B2': 'Adjective'},
     'unanimously': {'B2': 'Adverb'},
     'unannotated': {'B2': 'Adjective'},
+    'unannounced': {'B2': 'Adjective'}, # Describes something happening without prior notice
     'unanswerable': {'B2': 'Adjective'},
     'unanticipated': {'C2': 'Adjective'}, 
     'unappropriated': {'B2': 'Adjective'},
@@ -57170,6 +57181,7 @@ common_English_words={
     'viscosity': {'B2': 'Noun'},
     'viscous': {'B2': 'Adjective'},
     'visibility': {'B1': 'Noun'},
+    'visible': {'B1': 'Adjective'},  # Able to be seen
     'visible-NIR': {'B2': 'Adjective'},
     'visible-light': {'B2': 'Adjective'},
     'vision and language models': {'C1': 'Noun Phrase'},
@@ -58798,6 +58810,7 @@ common_English_words={
     'zeroth-order': {'C1': 'Adjective'},
     'zeta function': {'B2': 'Noun Phrase'},
     'zeta': {'A2': 'Noun'},
+    'zettabytes': {'A2': 'Unit'},
     'zetasizer': {'C1': 'Noun'},
     'zigzag': {'A1': 'Verb, Noun'},
     'zigzagged': {'B1': 'Adjective, Verb (past tense), Verb (past participle)'},
@@ -60307,6 +60320,7 @@ common_English_words={
     'scales': {'B2 (Specialized)': 'Verb, Noun'}, # 3rd person singular verb (e.g., "it scales well") / Plural noun (e.g., "at different scales")
     'single-socket': {'B2 (Specialized)': 'Adjective'}, # Common hardware descriptor 
     'smartNIC': {'C1 (Specialized)': 'Noun'}, # Specific, advanced hardware category 
+    'smartNICs': {'C1 (Specialized)': 'Noun (plural)'}, # Specific, advanced hardware category 
     'time-scale': {'B2': 'Noun'}, # Common scientific/general term
     'windows': {'A1': 'Noun (plural)', 'B1 (Specialized)': 'Noun (plural)'}, # Plural. Can be A1 (general) or B1 (technical, e.g., "time windows," "TCP windows")
     "Amdahl’s Law": {'B2': 'Proper Noun Phrase'},
@@ -60325,6 +60339,51 @@ common_English_words={
     'SYN': {'B1 (Specialized)': 'Noun'},  # Foundational networking acronym (Synchronize)
     '100GbE': {'B2 (Proper Noun)': 'Noun'}, # Specific, common Ethernet standard
     'Batchy-like': {'C1 (Specialized)': 'Adjective'}, # A derived technical descriptor
+    '1MB': {'B1 (Specialized)': 'Noun'},  # Technical unit of data size (Megabyte)
+    'RDMA-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor for an advanced networking concept
+    'rail-only': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (likely power rail or hardware path)
+    'rebuilder': {'B2 (Specialized)': 'Noun'}, # Technical agent noun (e.g., index rebuilder)
+    'deployment': {'B1 (Specialized)': 'Noun'}, # NOTE: Corrected spelling. Foundational term in software/systems
+    'fixed-function': {'B2 (Specialized)': 'Adjective'}, # Foundational hardware/networking concept
+    'flow-core affinity': {'C1 (Specialized)': 'Noun'}, # Abstract, advanced OS/networking concept
+    'inter-GPU': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor for hardware communication
+    'policer': {'B2 (Specialized)': 'Noun'}, # Specific, foundational concept in networking (traffic management)
+    'self-invalidating': {'C1 (Specialized)': 'Adjective'}, # Abstract technical concept (e.g., in caching)
+    'ring': {'B2 (Specialized)': 'Noun'}, # Foundational data structure (ring buffer) or OS concept (protection ring) 
+    'rings': {'B2 (Specialized)': 'Noun (plural)'},
+    'struggles': {'B1': 'Verb, Noun'}, # 3rd person singular verb / Plural noun. Common general word.
+    'swapper': {'B2 (Specialized)': 'Noun'}, # Foundational OS concept (memory swapping process)
+    'bucketized': {'C1 (Specialized)': 'Adjective'}, # Technical term for discretizing data (binning)
+    'statefulness': {'C1 (Specialized)': 'Noun'}, # Core, abstract concept in system design
+    'arXiv': {'B2 (Proper Noun)': 'Noun'},
+    'arXived': {'B2 (Specialized)': 'Verb'}, # Jargon/verb based on the 'arXiv' proper noun (to post a preprint)
+    'rack-scale systems': {'B2 (Specialized)': 'Noun'}, # Common term in data center architecture 
+    'reaches': {'B1': 'Verb (third person singular), Noun (plural)'}, # 3rd person singular verb / Plural noun. Common general word.
+    'stands': {'A1': 'Verb (third person singular), Noun (plural)'}, # 3rd person singular verb / Plural noun. Basic common word.
+    'post-10-Gbps': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'adding/modifying': {'B1': 'Verb Phrase'}, # Description of common actions
+    'crafts': {'B2': 'Noun (plural), Verb (third person singular)'}, # Noun: plural (e.g., "specialized crafts"); Verb: 3rd person singular (e.g., "The engineer crafts the code.")
+    '2-tuple': {'B1 (Specialized)': 'Noun'}, # pair
+    '3-tuple': {'B1 (Specialized)': 'Noun'}, # triple
+    '4-tuple': {'B1 (Specialized)': 'Noun'}, # Quadruple
+    '5-tuple': {'B1 (Specialized)': 'Noun'}, # Foundational concept in networking/math
+    '6-tuple': {'B1 (Specialized)': 'Noun'}, # In networking, this term sometimes appears in the context of IPv6, where the standard 5-tuple is augmented with the Flow Label field.
+    'n-tuple': {'B1 (Specialized)': 'Noun'}, # In mathematics, "n-tuple" is the general term for an ordered list or sequence of n elements. In relational database theory, a single row (or record) in a table is formally called an n-tuple, where n is the number of columns (attributes).
+    'grey-colored': {'A2': 'Adjective'},  # Simple compound descriptive adjective
+    'UseCases': {'B1 (Specialized)': 'Noun'}, # Foundational software/systems engineering concept
+    'CamelCase': {'B1 (Proper Noun)': 'Noun'}, # The name of a common typing convention
+    'ASIC-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor for an advanced hardware type 
+    'CPU-demanding': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor for workloads
+    'CPU-hungry': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor, synonym for CPU-demanding
+    'configuration-based': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'MTU-sized': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Maximum Transmission Unit)
+    'Multi-Pipeline': {'B2 (Specialized)': 'Adjective'}, # Architectural concept (often a proper noun/name)
+    'multi-pipeline': {'B2 (Specialized)': 'Adjective'}, # General architectural concept
+    'multi-100-Gbps': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'NIC-CPU': {'B2 (Specialized)': 'Adjective'}, # Describes an interface or interaction
+    'WorkPackage': {'B1 (Specialized)': 'Noun'}, # Common project management term
+    'WritablePacket': {'B1 (Specialized)': 'Noun'}, # Specific software object/class name
+
     #GQMe
 
 }
@@ -75043,6 +75102,9 @@ company_and_product_names=[
     'ConnectX-4',
     'ConnectX-5',
     'ConnectX-6',
+    'ConnectX®-6',
+    'ConnectX-8',
+    'ConnectX®-7',
     'Ericsson Blog',
     'Framtidens Forskning', # publication
     'HPE Slingshot interconnect',
@@ -75104,6 +75166,36 @@ company_and_product_names=[
     'Heracles',
     'NGNIX',
     'iperf',
+    'E5 processors', # Intel processor family
+    'E5-2667', # Intel processor
+    'A72', # ARM Cortex-A72 processor
+    'WRK', # an HTTP benchmarking tool - see diva2:1552734
+    'CuckooSwitch',
+    'DGX™B200',
+    'Dyssect',
+    'Edgecore',
+    'AS9516-32D', # Edgecore switch
+    'Edgecore Networks',
+    'Edgecore Networks'
+    'DCS800 Wedge 100BF-32X switch', # Edgecore Networks
+    'ExoPlane',
+    'LangChain',
+    'NVIDIA®',
+    'Bluefield3®',
+    'NVL72',
+    'Quantum-X800', # switch
+    'Silkroad',
+    'Spectrum-X',
+    'Tofino™2',
+    'Vertex-AI',
+    'Tracker→Router→Firewall→NAT',
+    'CodeLlama-34B-Instruct',
+    'GB200 NVL36', # Nvidia processor rack
+    'LemonNFV',
+    'ExcelWriter',
+    'AMD-Vi',
+    'Cogent', # company
+
 ]
 
 
@@ -81050,6 +81142,16 @@ names_of_persons=[
     'Edsall',
     'Gran Alcoz',
     'Parthasarathy',
+    'Caiazzi',
+    'Mariano',
+    'Scazzariello',
+    'Milolidakis',
+    'Reda',
+    'Tagkoulis',
+    'Lizzy',
+    'Tengana',
+    'Hurtado',
+    'Sefidcon',
 
 ]
 
@@ -81428,6 +81530,9 @@ miss_spelled_words=[
     'network:finding',
     'acknowledgments',
     'similations',    
+    'deployement',
+    'utilizating',
+
     # GQM-for-merger    
     
 
@@ -82445,6 +82550,7 @@ KTH_ordbok_English_with_CEFR={
     'seminar course': {'B2': 'Noun Phrase'},
     'seminar room': {'B1': 'Noun Phrase'},
     'seminar': {'A2': 'Noun'},
+    'seminars': {'A2': 'Noun (plural)'},
     'senior researcher': {'B2': 'Noun Phrase'},
     'set of rules and regulations': {'B2': 'Noun Phrase'},
     'shortlist': {'B1': 'Verb, Noun'},
@@ -82656,6 +82762,7 @@ KTH_ordbok_English_with_CEFR={
 
 # many units would be  {'A2': 'Unit'} but can range from A1.. all the way to C2
 common_units={
+    '𝑘𝑏/𝑠':  {'B1': 'Unit'}, # kilobits per second
     'B':  {'B1': 'Unit'}, # byte
     'b':  {'B1': 'Unit'}, # bit
     'bit':  {'B1': 'Unit'}, # bit
