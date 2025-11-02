@@ -46651,6 +46651,8 @@ common_English_words={
     'routing algorithm and deadlock': {'B2': 'Noun Phrase'},
     'routing and wavelength assignment': {'B2': 'Noun Phrase'},
     'routing application': {'B2': 'Noun'},
+    'routing policy': {'B1 (Specialized)': 'Noun'},  # Foundational networking concept
+    'routing policies': {'B1 (Specialized)': 'Noun (plural)'}, # NOTE: Plural of 'routing policy'
     'routing protocol daemon': {'C1': 'Noun'},
     'routing protocol suit': {'C1': 'Noun'},
     'routing protocol': {'B2': 'Noun'},
