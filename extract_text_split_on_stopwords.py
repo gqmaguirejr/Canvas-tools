@@ -10509,7 +10509,7 @@ def extract_text_from_pdf(pdf_path):
             # Ignore empty strings or tokens that are only whitespace
             if not token:
                 continue
-            if token == '\n':
+            if token == '\n' or token == '\xa0':
                 if current_phrase:
                     output_lines.append(current_phrase.strip())
                     current_phrase = ""
@@ -10687,6 +10687,10 @@ def remove_known_words(output_lines):
         if w in well_known_acronyms:
              remove_list.append(w)
              continue
+
+        # remove acronyms possessives
+        if w.endswith('’s') and w[:-2] in well_known_acronyms:
+            continue
 
         if w in common_english.chemical_names_and_formulas:
             remove_list.append(w)
@@ -10870,7 +10874,7 @@ def remove_known_words(output_lines):
             continue
 
         if Verbose_Flag:
-            print(f"'{w}' not in common_English_words")
+            print(f"'{w}' not in common_English_words and friends")
 
     return remove_list
 
@@ -10886,10 +10890,11 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
     for w in unique_terms_sorted:
         # if len(w) > 2 and w[0:2] == '& ': # unnecessary with the remove_prefixes() above
         #     w=w[2:]
+        w=w.strip()
+
         if len(w) == 0:
             continue
 
-        w=w.strip()
         
         # known term, so nothing to do
         if w in grand_union or w.lower() in grand_union:
@@ -13869,7 +13874,6 @@ def main():
             break
         unique_terms_sorted=prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, i)
 
-
         unique_terms_sorted= set(unique_terms_sorted)
         unique_terms_sorted = sorted(list(unique_terms_sorted))
         # Write the processed text to the output file
@@ -13934,6 +13938,10 @@ def main():
     #     if w not in grand_union and w.lower() not in grand_union:
     #         print(f"{w} not in grand_union")
 
+    # if 'CPU' in well_known_acronyms:
+    #     print(f"CPU in well_known_acronyms")
+    # if 'CPU' in grand_union:
+    #     print(f"CPU in grand_union")
 
 if __name__ == "__main__":
     main()

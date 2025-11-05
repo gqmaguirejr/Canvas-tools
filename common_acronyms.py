@@ -4141,7 +4141,7 @@ well_known_acronyms_list=[
     ['NASA', 'National Aeronautics and Space Administration', {'cefr': 'B1'}],
     ['NASA-TLX', 'NASA Task Load Index', {'s': ['diva2:1778278'], 'n': 'used but not defined - spelled out in thesis on pg. 6'}],
     ['NASPI', 'North-American Synchrophasor Initiative'],
-    ['NAT', 'Netwoork Address Translator'],
+    ['NAT', 'Network Address Translator'],
     ['NAT', 'network address translation', {'swe': 'NAT, nätverksadressöversättning'}],
     ['NATO', 'North Atlantic Treaty Organization', {'s': ['diva2:1088641'], 'cefr': 'B2'}], # organization
     ['NB', 'Naïve Bayes',  {'s': ['diva2:1464917']}],

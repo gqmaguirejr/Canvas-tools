@@ -60385,6 +60385,8 @@ common_English_words={
     'NIC-CPU': {'B2 (Specialized)': 'Adjective'}, # Describes an interface or interaction
     'WorkPackage': {'B1 (Specialized)': 'Noun'}, # Common project management term
     'WritablePacket': {'B1 (Specialized)': 'Noun'}, # Specific software object/class name
+    'rack-scale': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor for data center systems 
+    'recreates': {'B2': 'Verb (third person singular)'},  # 3rd person singular. Common general/academic verb
 
     #GQMe
 
