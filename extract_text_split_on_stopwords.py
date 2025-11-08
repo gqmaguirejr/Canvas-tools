@@ -9785,7 +9785,7 @@ def replace_abbreviations(text):
 def remove_suffixes(wl):
     # Sort suffixes by length (longest first) to fix the bug.
     # This ensures '<=' is checked before '='.
-    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '{', '*/', '&', '*', '…'], key=len, reverse=True) #
+    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '{', '*/', '&', '*', '…', '\u2019'], key=len, reverse=True) #
     
     new_wl = []
     
@@ -9810,7 +9810,7 @@ def remove_suffixes(wl):
 def remove_prefixes(wl):
     # Sort prefixes by length (longest first) to fix the bug.
     # This ensures '††' is checked before '†'
-    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮'], key=len, reverse=True) # 
+    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮', '·', '∈', '∥', '©', '\u2019', '●'], key=len, reverse=True) # 
     
     new_wl = []
     
@@ -9832,6 +9832,159 @@ def remove_prefixes(wl):
             
     return new_wl
 
+def is_MathSymbol(s):
+    if not len(s) == 1:
+        return False
+
+    if 0x2100 <= ord(s) and ord(s) <= 0x214FF:         # Letterlike Symbols
+        return True
+    if 0x2200 <= ord(s) and ord(s) <= 0x22FF:     # Mathematical Operators
+        return True
+    if 0X2A00 <= ord(s) and ord(s) <= 0x2AFF:     # Supplemental Mathematical Operators
+        return True
+    if 0xE000 <= ord(s) and ord(s) <= 0xF8FF:     # Private Use Area - seems to be used by conveertnb (to print Jupyter notebooks)
+        return True
+    if 0x1D400 <= ord(s) and ord(s) <= 0x1D4FF:    # Mathematical Alphanumeric Symbols
+        return True
+    else:
+        return False
+
+
+def is_GreekSymbol(s):
+    if not len(s) == 1:
+        return False
+    if 0x0370 <= ord(s) and ord(s) <= 0x03FF:
+        return True
+    else:
+        return False
+
+def is_Miscellaneous_Technical(s):
+    if not len(s) == 1:
+        return False
+    if 0x2300 <= ord(s) and ord(s) <= 0x23FF:
+        return True
+    else:
+        return False
+
+
+def is_equation(s):
+    math_symbols=[ # generate_chars(0x2200, 0x22ff)
+        '∀', '∁', '∂', '∃', '∄', '∅',
+        '∆', '∇', '∈', '∉', '∊', '∋',
+        '∌', '∍', '∎', '∏', '∐', '∑',
+        '−', '∓', '∔', '∕', '∖', '∗',
+        '∘', '∙', '√', '∛', '∜', '∝',
+        '∞', '∟', '∠', '∡', '∢', '∣',
+        '∤', '∥', '∦', '∧', '∨', '∩',
+        '∪', '∫', '∬', '∭', '∮', '∯',
+        '∰', '∱', '∲', '∳', '∴', '∵',
+        '∶', '∷', '∸', '∹', '∺', '∻',
+        '∼', '∽', '∾', '∿', '≀', '≁',
+        '≂', '≃', '≄', '≅', '≆', '≇',
+        '≈', '≉', '≊', '≋', '≌', '≍',
+        '≎', '≏', '≐', '≑', '≒', '≓',
+        '≔', '≕', '≖', '≗', '≘', '≙',
+        '≚', '≛', '≜', '≝', '≞', '≟',
+        '≠', '≡', '≢', '≣', '≤', '≥',
+        '≦', '≧', '≨', '≩', '≪', '≫',
+        '≬', '≭', '≮', '≯', '≰', '≱',
+        '≲', '≳', '≴', '≵', '≶', '≷',
+        '≸', '≹', '≺', '≻', '≼', '≽',
+        '≾', '≿', '⊀', '⊁', '⊂', '⊃',
+        '⊄', '⊅', '⊆', '⊇', '⊈', '⊉',
+        '⊊', '⊋', '⊌', '⊍', '⊎', '⊏',
+        '⊐', '⊑', '⊒', '⊓', '⊔', '⊕',
+        '⊖', '⊗', '⊘', '⊙', '⊚', '⊛',
+        '⊜', '⊝', '⊞', '⊟', '⊠', '⊡',
+        '⊢', '⊣', '⊤', '⊥', '⊦', '⊧',
+        '⊨', '⊩', '⊪', '⊫', '⊬', '⊭',
+        '⊮', '⊯', '⊰', '⊱', '⊲', '⊳',
+        '⊴', '⊵', '⊶', '⊷', '⊸', '⊹',
+        '⊺', '⊻', '⊼', '⊽', '⊾', '⊿',
+        '⋀', '⋁', '⋂', '⋃', '⋄', '⋅',
+        '⋆', '⋇', '⋈', '⋉', '⋊', '⋋',
+        '⋌', '⋍', '⋎', '⋏', '⋐', '⋑',
+        '⋒', '⋓', '⋔', '⋕', '⋖', '⋗',
+        '⋘', '⋙', '⋚', '⋛', '⋜', '⋝',
+        '⋞', '⋟', '⋠', '⋡', '⋢', '⋣',
+        '⋤', '⋥', '⋦', '⋧', '⋨', '⋩',
+        '⋪', '⋫', '⋬', '⋭', '⋮', '⋯',
+        '⋰', '⋱', '⋲', '⋳', '⋴', '⋵',
+        '⋶', '⋷', '⋸', '⋹', '⋺', '⋻',
+        '⋼', '⋽', '⋾', '⋿'
+    ]
+    #
+    math_possible_excludes=['−', '∣', '∶', '∷', '∼']
+    #
+    extra_symbols = ['×', '…', '=', '÷', '+', '–', '^', '·', '¹', '²', '³', '±', '¬', 'µ', '¼', '½', '¾', 'Ø']
+    #
+    if len(s) < 1:
+        return False
+    #
+    if len(s) == 1:
+        if is_MathSymbol(s):  # alternative it could be "if s in math_symbols:"
+            return True
+        if is_GreekSymbol(s):
+            return True
+        if is_Miscellaneous_Technical(s):
+            return True
+        if s in extra_symbols:
+            return True
+        else:
+            return False
+    #
+    # exception for minus sign and tilde before a digit - these should be taken care of elsewhere
+    if (s[0] == '−' or  s[0] == '∼') and s[1].isdigit():
+        return False
+    #
+    if s[0] in ['¬']:
+        return True
+    #
+    if s.count('=') == 1:
+        return True
+    #
+    # if there is any math symbol in the string, consider it an equation
+    for c in s:
+        if is_MathSymbol(c): # alternatively "c in math_symbols:"
+            return True
+        if is_GreekSymbol(c):
+            return True
+        if is_Miscellaneous_Technical(c):
+            return True
+        if c in extra_symbols:
+            return True
+    #
+    if s.count('|') > 1:
+        return True
+
+    # if there is an assignment symbol
+    if s.count('←') == 1:
+        # and there is at least one letter for the lefthand side
+        if s.find('←') >= 1:
+            return True
+    #
+    # otherwise
+    return False
+
+def is_MiscSymbol_or_Pictograph(s):
+    if not len(s) == 1:
+        return False
+
+    if 0x2190 <= ord(s) and ord(s) <= 0x21FF:    # Arrows
+        return True
+    if 0x25A0 <= ord(s) and ord(s) <= 0x25FF:    # Geometric Shapes
+        return True
+    if 0x2600 <= ord(s) and ord(s) <= 0x26FF:    # Miscellaneous Symbols
+        return True
+    if 0xFFF0 <= ord(s) and ord(s) <= 0xFFFD:    # Specials
+        return True
+    if 0x27F0 <= ord(s) and ord(s) <= 0x27FF:    #    Supplemental Arrows-A
+        return True
+    if 0x1F300 <= ord(s) and ord(s) <= 0x1F5FF:  # Miscellaneous Symbols and Pictographs
+        return True
+    if 0x1F900 <= ord(s) and ord(s) <= 0x1F9FF:  # Supplemental Symbols and Pictographs
+        return True
+    return False
 
 def compute_column_positions(current_page_words):
     global Verbose_Flag
@@ -10292,6 +10445,9 @@ def extract_text_from_pdf(pdf_path):
         references_found=False
         header_bottom=0
         first_page=False
+        list_of_X_on_this_page=False
+        list_of_X_page=False
+
         for pageno, page in enumerate(doc): # iterate the document pages
             # the cover text near the bottom of the page with the year, so skip the cover page, similar for title page, and book information page
             if pageno < 3:
@@ -10317,7 +10473,7 @@ def extract_text_from_pdf(pdf_path):
                 # We assume that the list of acronyms is before the first page of the main matter
                 # and has the expected header.
                 # look for acronyms
-                if header_bottom > 0 and not acronyms_found and (lines_in_the_block.startswith('List of Acronyms and abbreviations | ') or lines_in_the_block.startswith('List of acronyms and abbreviations | ')):
+                if header_bottom > 0 and not acronyms_found and (lines_in_the_block.startswith('List of Acronyms and abbreviations | ') or lines_in_the_block.startswith('List of acronyms and abbreviations | ') or lines_in_the_block.startswith('List of Abbreviations') or lines_in_the_block.startswith('Abbreviations')):
                     acronyms_found=True
                     print(f"found acronyms {pageno}")
 
@@ -10405,7 +10561,7 @@ def extract_text_from_pdf(pdf_path):
                     if y0 > int(maximum_y0) and y1 < int(maximum_y1) + 2:
                         page_number_positions[pageno] = lines_in_the_block.replace('\n', '')
 
-                    if not acronyms_on_this_page and y0 < maximum_y0 and (lines_in_the_block.lower().find('list of acronyms and abbreviations') >= 0 or lines_in_the_block.find('Acronyms') >= 0):
+                    if not acronyms_on_this_page and y0 < maximum_y0 and (lines_in_the_block.lower().find('list of acronyms and abbreviations') >= 0 or lines_in_the_block.find('Acronyms') >= 0 or lines_in_the_block.lower().find('list of abbreviations') >= 0 or lines_in_the_block.lower().find('abbreviations') >= 0 ):
                         acronyms_on_this_page=True
                         print(f"{acronyms_on_this_page=}")
                         if contents_page != pageno:
@@ -10873,6 +11029,17 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w.isupper() and w.title() in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
+        # normalize U+2013 to U+2D
+        if '–' in w:
+            wtransformed=w.replace('–', '-')
+            if wtransformed in common_english.names_of_persons:
+                remove_list.append(w)
+                continue
+
         if Verbose_Flag:
             print(f"'{w}' not in common_English_words and friends")
 
@@ -10888,6 +11055,8 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
 
     print(f"prune_known_from_left start: {len(unique_terms_sorted)=}")
     for w in unique_terms_sorted:
+        # print(f"{iteration_step}:: {w}")
+
         # if len(w) > 2 and w[0:2] == '& ': # unnecessary with the remove_prefixes() above
         #     w=w[2:]
         w=w.strip()
@@ -10895,10 +11064,28 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if len(w) == 0:
             continue
 
+        # normalize U+2013 to U+2D
+        if '–' in w:
+            w=w.replace('–', '-')
+
+        if w.startswith('SSE'):
+            print(f"processing {w}")
+
         
         # known term, so nothing to do
-        if w in grand_union or w.lower() in grand_union:
+        if w in grand_union:
+            if w == 'SSE':
+                print(f"removed {w}")
             continue
+        if w.lower() in grand_union:
+            continue
+
+        # handle terms such as 'Intra-TP'
+        if '-' in w:
+            ws=w.split('-')
+            if len(ws) >= 2:
+                if ws[0].istitle() and ws[1].isupper() and ws[0].lower() + '-' + ws[1] in grand_union:
+                    continue
 
         # remove possessives
         if w.endswith('’s') and w[:-2] in grand_union:
@@ -10935,6 +11122,9 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
             if len(ws[0]) > 0 and ws[0] in grand_union and len(ws[1]) > 0 and is_integer(ws[1]):
                 continue
 
+        if is_equation(w):
+            continue
+
         # take care of simple assignments, such as MTU=1500
         if w.count('=') == 1:
             ws=w.split('=')
@@ -10954,7 +11144,9 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
             w=w.replace('/', ' ')
             w=w.strip()
 
-        if ' ' in w:
+        if ' ' not in w:
+            new_unique_terms.append(w)
+        else:
             ws = w.split(' ')
             # prune known words from the front
             new_term=''
@@ -11019,9 +11211,6 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
                     break
             if new_term:
                 new_unique_terms.append(new_term)
-            continue
-        else:
-            new_unique_terms.append(w)
 
     return new_unique_terms
 
@@ -13852,6 +14041,20 @@ def main():
     #     print("'offloading' is in grand_union")
 
     remove_list = []
+
+    # split on new lines
+    new_unique_terms_sorted=[]
+    for w in unique_terms_sorted:
+        if '\n' in w:
+            ws = w.split('\n')
+            for wws in ws:
+                new_unique_terms_sorted.append(wws)
+        else:
+            new_unique_terms_sorted.append(w)
+
+    unique_terms_sorted = new_unique_terms_sorted
+
+
     for w in unique_terms_sorted:
         # if w is a series of known words, then remove it
         if ' ' in w:
@@ -13867,15 +14070,18 @@ def main():
     unique_terms_sorted = [l for l in unique_terms_sorted if l not in remove_list]
 
 
-    for i in range(0, 10):
+    for i in range(0, 11):
         print(f"{i} {len(unique_terms_sorted)=}")
         if len(unique_terms_sorted) < 1:
             print("Nothing left to process")
             break
-        unique_terms_sorted=prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, i)
+        new_terms=prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, i)
 
-        unique_terms_sorted= set(unique_terms_sorted)
-        unique_terms_sorted = sorted(list(unique_terms_sorted))
+        new_terms_set = set(new_terms)
+        unique_terms_sorted = sorted(list(new_terms_set))
+        # for idx, t in enumerate(unique_terms_sorted):
+        #     print(f"{i}: {idx}\t{t}")
+
         # Write the processed text to the output file
         output_txt_pruned = base_output_name + f"-pruned-{i}.txt"
 
@@ -13930,7 +14136,7 @@ def main():
     if Verbose_Flag:
         print(f"{len(suffix_results)=}")
 
-    for idx, w in enumerate(suffix_results):
+    for idx, w in enumerate(sorted(suffix_results)):
         print(f"suffix: {idx} {w} {len(suffix_results[w])}")
     print(json.dumps(suffix_results, indent=2))
 
@@ -13940,8 +14146,8 @@ def main():
 
     # if 'CPU' in well_known_acronyms:
     #     print(f"CPU in well_known_acronyms")
-    # if 'CPU' in grand_union:
-    #     print(f"CPU in grand_union")
+    if 'SSE' in grand_union:
+        print(f"'SSE' in grand_union")
 
 if __name__ == "__main__":
     main()

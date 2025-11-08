@@ -1088,8 +1088,7 @@ thousand_most_common_words_in_English={
     'standard': {'A1': 'Noun'},
     'star': {'A1': 'Noun'},
     'start': {'A1': 'Verb'},
-    'state': {'A1': 'Verb, Noun'},
-    'state': {'A2': 'Noun'},
+    'state': {'A1': 'Verb, Noun', 'A2': 'Noun'},
     'statement': {'A2': 'Noun'},
     'station': {'A1': 'Noun'},
     'stay': {'A1': 'Verb'},
@@ -1659,6 +1658,7 @@ common_English_words={
     'Taiwanese': {'B1': 'Adjective, Noun, Demonym'},
     'Tamil': {'B2': 'Adjective, Noun, Demonym'},
     'Tanzanian': {'A2': 'Adjective, Noun'},
+    'Texan': {'A2': 'Adjective, Noun, Demonym'},
     'Thai': {'A2': 'Adjective, Noun, Demonym'},
     'Tibetan': {'B2': 'Adjective, Noun, Demonym'},
     'Trojan': {'B2': 'Adjective, Noun'},  # Demonym use is rare 
@@ -46661,7 +46661,7 @@ common_English_words={
     'rover': {'B1': 'Noun'},
     'rovers': {'B1': 'Noun (plural)'},
     'roving': {'B2': 'Adjective, Verb (present participle)'},
-    'row': {'A2': 'Noun, Verb', 'B1': 'Noun, Verb'}, # Common word with multiple meanings (line of objects, argument).
+    'row': {'A2': 'Noun, Verb', 'B1': 'Noun, Verb'}, # Common word with multiple meanings (line of objects, argument)
     'row-by-row': {'B1': 'Adverb'},
     'row-wise': {'B1': 'Adverb'},
     'royalties': {'B2': 'Noun (plural)'},
@@ -60387,6 +60387,220 @@ common_English_words={
     'WritablePacket': {'B1 (Specialized)': 'Noun'}, # Specific software object/class name
     'rack-scale': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor for data center systems 
     'recreates': {'B2': 'Verb (third person singular)'},  # 3rd person singular. Common general/academic verb
+    'co-engineering': {'C1 (Specialized)': 'Noun'}, # Abstract process in engineering/business
+    'under-theorized': {'C1 (Specialized)': 'Adjective'},  # Abstract academic/research term
+    'supercap': {'B2': 'Noun'}, # contraction
+    'supercaps': {'B2': 'Noun (plural)'}, # contraction
+    'microcantilever': {'C1 (Specialized)': 'Noun'}, # Specific, technical term in physics/engineering
+    'phase': {'B2': 'Noun'}, # Common general academic and technical/scientific term (e.g., "phase of a project," "phase of matter")
+    'U-shape': {'A2': 'Noun, Adjective'}, # Simple descriptive shape
+    'conceptualised': {'C1 (Specialized)': 'Verb'},  # Past tense/participle of 'to conceptualise' (UK spelling). Abstract academic verb.
+    'chemomechanics': {'C1 (Specialized)': 'Noun'}, # Specific, advanced interdisciplinary scientific field
+    'cephalosporin': {'C1 (Specialized)': 'Noun'}, # Specific class of antibiotics (medical term)
+    'architecturally': {'C1': 'Adverb'}, # Formal/academic adverb
+    'precision@k': {'C1 (Specialized)': 'Noun'},  # Specific, abstract metric in information retrieval/ML
+    'over-squashing': {'C1 (Specialized)': 'Noun'}, # Abstract problem in Graph Neural Networks
+    'walk': {'A1': 'Noun, Verb', 'B2 (Specialized)': 'Noun'}, # A1: General (e.g., "to walk"). B2: Technical (e.g., "a random walk" in a graph)
+    'walks': {'A1': 'Noun (plural), Verb (third person singular)', 'B2 (Specialized)': 'Noun (plural)'}, # Plural/3rd person of the above
+    'eigenmaps': {'C1 (Specialized)': 'Noun (plural)'}, # Specific, abstract mathematical/ML method
+    'meta-path': {'C1 (Specialized)': 'Noun'}, # Abstract, specialized concept in graph theory
+    'meta-paths': {'C1 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'rows': {'A2': 'Noun (plural), Verb (third person singular)', 'B1': 'Noun, Verb'},
+    'random-walk–based': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor (graph theory/ML)
+    'chokepoint': {'B2': 'Noun'}, # Common term (systems, networking, general) for a point of congestion
+    'chokepoints': {'B2': 'Noun (plural)'}, # Plural of the above
+    'co-designed': {'C1 (Specialized)': 'Adjective'}, # Abstract engineering/design process
+    'dynamic-rewiring': {'C1 (Specialized)': 'Noun, Adjective'}, # Abstract concept in graph theory/ML/neuroscience
+    'full-graph': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (graph theory/ML)
+    'high-label': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor (e.g., in data analysis)
+    'low-label': {'C1 (Specialized)': 'Adjective'},  # Compound technical descriptor (e.g., in data analysis)
+    'caipirinha': {'B2': 'Noun (Proper Noun)'}, # Specific name of a well-known cocktail
+    'caipirinhas': {'B2': 'Noun (plural)'}, # Plural of the above
+    'downstream-travelling': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (physics/fluids)
+    'upstream-travelling': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (physics/fluids)
+    'Q-criterion': {'C1 (Proper Noun)': 'Noun'}, # Specific, abstract criterion in fluid dynamics
+    'Naca0012 airfoil': {'B2 (Proper Noun)': 'Noun'}, # Specific, foundational name in aerodynamics 
+    'Naca0012 profile': {'B2 (Proper Noun)': 'Noun'}, # Synonym for the above
+    'iso-surface': {'C1 (Specialized)': 'Noun'}, # Core, abstract concept in scientific visualization 
+    'high-Reynolds-number': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor of a fluid dynamics regime
+    'low-Reynolds-number': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor of a fluid dynamics regime
+    'low-to-moderate': {'B2': 'Adjective'}, # Common academic/scientific descriptor
+    'outlines': {'B1': 'Verb (third person singular), Noun (plural)'}, # Verb: 3rd person sing. (e.g., "The paper outlines..."); Noun: plural (e.g., "the outlines")
+    'spanwidth': {'B2 (Specialized)': 'Noun'}, # Technical term, likely for "span" or "span-wise" width
+    'trailing-edge': {'B2 (Specialized)': 'Noun, Adjective'}, # Foundational concept in aerodynamics 
+    'wavenumbers': {'C1 (Specialized)': 'Noun (plural)'}, # Core, abstract concept in physics/spectroscopy
+    'yields': {'B2': 'Verb (third person singular), Noun (plural)'}, # Verb: 3rd person sing. (e.g., "The study yields..."); Noun: plural (e.g., "crop yields")
+    'bi-global': {'C1 (Specialized)': 'Adjective'}, # Abstract technical term (e.g., in fluid dynamics)
+    'bi-orthogonal': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical term (linear algebra)
+    'Fourier-transformed': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (signal processing/math)
+    'wave-packet': {'C1 (Specialized)': 'Noun'}, # Core, abstract concept in physics/quantum mechanics
+    'circles': {'A2': 'Noun (plural), Verb (third person singular)'},
+    'realizations': {'B2': 'Noun'},  # American English spelling of realizations
+    '1-D': {'B1 (Specialized)': 'Adjective'}, # Abbreviation for "one-dimensional"
+    '1D': {'B1 (Specialized)': 'Adjective'}, # Abbreviation for "one-dimensional"
+    '2D-histogram': {'C1 (Specialized)': 'Noun'}, # Specific data visualization term
+    'bi-Gaussian': {'C1 (Specialized)': 'Adjective'}, # Specific mathematical/statistical term
+    'Bi-Gaussian': {'C1 (Specialized)': 'Adjective'}, # Specific mathematical/statistical term
+    'Brownian-motion': {'C1 (Proper Noun)': 'Noun'}, # Specific concept in physics/math
+    'C-accelerated': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (programming)
+    'DNA-based': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (biology/genetics)
+    'EM-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., Expectation-Maximization)
+    'fluorosequencing': {'C1 (Specialized)': 'Noun'}, # Specific scientific method (genetics)
+    'GPU-optimized': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (computing)
+    'Hidden-Markov-Model-based classifier': {'C1 (Specialized)': 'Noun Phrase'}, # Specific, abstract ML/statistical concept
+    'reprinted': {'B2': 'Adjective, Verb'}, # Common academic/publishing term (past participle)
+    'piecewise-Gaussian': {'C1 (Specialized)': 'Adjective'}, # Specific mathematical/statistical term
+    'long-read DNA': {'C1 (Specialized)': 'Noun Phrase'}, # Specific technical term in genomics
+    'probabilities': {'B2': 'Noun (plural)'}, # Common mathematical/general term
+    'translocations': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract scientific term (genetics/physics)
+    'PSME4': {'C1 (Proper Noun)': 'Noun'}, # Specific proteasome subunit name (medical/biology)
+    'HBA2': {'B2 (Proper Noun)': 'Noun'}, # Foundational hemoglobin subunit name (medical/biology)
+    'HBB': {'B2 (Proper Noun)': 'Noun'}, # Foundational hemoglobin subunit name (medical/biology)
+    'PSME3': {'C1 (Proper Noun)': 'Noun'}, # Specific proteasome subunit name (medical/biology)
+    'PSMB10': {'C1 (Proper Noun)': 'Noun'},  # Specific proteasome subunit name (medical/biology)
+    'DNA-mediated': {'C1 (Specialized)': 'Adjective'}, # Abstract scientific/technical descriptor
+    'lessons': {'A1': 'Noun (plural)'},  # Plural of "lesson," a basic, core vocabulary word
+    'millions': {'A2': 'Noun (plural), Determiner'}, # Basic numerical term
+    'non-Markovian': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/statistical concept
+    'user-set': {'B1 (Specialized)': 'Adjective'},  # Common technical descriptor
+    'k Nearest Neighbors': {'B2 (Proper Noun)': 'Noun'}, # Foundational machine learning algorithm
+    'k Nearest Neighbours': {'B2 (Proper Noun)': 'Noun'},  # UK spelling of the above
+    'asphalt': {'B1 (Specialized)': 'Noun'}, # Common material, foundational technical term
+    'boulders': {'B1': 'Noun (plural)'}, # Common geological term
+    'climates': {'B1': 'Noun (plural)'}, # Common general/scientific term
+    'conducted': {'B1': 'Verb'}, # Past tense/participle. Common academic verb (e.g., "conducted a test")
+    'connected': {'A2': 'Adjective, Verb'}, # Common word
+    'consolidated-undrained': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract technical term (soil mechanics)
+    'engineering challenges': {'B1': 'Noun Phrase'}, # Common professional/academic phrase
+    'encompassing': {'B2': 'Verb'}, # Gerund/participle. Formal academic verb.
+    'fits': {'B2 (Specialized)': 'Verb/Noun'}, # Verb: "the model fits..." Noun: "model fits"
+    'geotechnical': {'B2 (Specialized)': 'Adjective'}, # Technical field name
+    'geotechnical engineering': {'B2 (Proper Noun)': 'Noun'}, # Name of the academic/professional field
+    'gravel': {'A2': 'Noun'}, # Common material
+    'intercept': {'B2': 'Verb, Noun'}, # Common mathematical/general term
+    'material': {'A2': 'Noun'}, # Common word
+    'materials': {'A2': 'Noun (plural)'}, # Common word
+    'mechanistic-empirical': {'C1 (Specialized)': 'Adjective'}, # Abstract methodological term
+    'number': {'A1': 'Noun'}, # Basic word
+    'passing': {'B2 (Specialized)': 'Verb, Noun'}, # Gerund/noun (e.g., "percent passing" a sieve test)
+    'pavement': {'B1 (Specialized)': 'Noun'}, # Foundational technical concept 
+    'pavements': {'B1 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'performed': {'B1': 'Verb'}, # Past tense/participle. Common academic verb (e.g., "performed a test")
+    'predictive accuracy': {'B2 (Specialized)': 'Noun Phrase'}, # Common statistical/ML term
+    'procedure': {'A2': 'Noun'}, # Common word
+    'properly': {'A2': 'Adverb'}, # Common word
+    'parameters': {'B1': 'Noun (plural)'}, # Common academic/technical term
+    'properties': {'A2': 'Noun (plural)'}, # Common general/scientific term
+    'representing': {'B1': 'Verb'}, # Gerund/participle. Common verb.
+    'resilient modulus': {'C1 (Specialized)': 'Noun'}, # Core, abstract concept in pavement engineering
+    'responses': {'B1': 'Noun (plural)'}, # Common general/scientific term
+    'specimen': {'B2 (Specialized)': 'Noun'}, # Foundational scientific/engineering term
+    'total number': {'A2': 'Noun Phrase'}, # Basic phrase
+    'soils': {'B1 (Specialized)': 'Noun (plural)'}, # Foundational technical term in this field
+    'degree': {'A2': 'Noun'}, # Common word
+    'silty': {'B1 (Specialized)': 'Adjective'}, # Foundational soil classification term
+    'state-of-practice': {'B2 (Specialized)': 'Noun'}, # Common engineering/professional term
+    'subgrades': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational technical term in pavement engineering
+    'based': {'B1': 'Adjective, Verb'}, # Past tense/participle (e.g., "based on")
+    'glacial': {'B2': 'Adjective'}, # Common geography/geology term
+    'patterns': {'A2': 'Noun (plural)'}, # Common word
+    'model': {'B1 (Specialized)': 'Noun, Verb'}, # Foundational scientific/engineering concept
+    'sand': {'A1': 'Noun'}, # Common, basic material
+    'suction-controlled': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract technical term (e.g., in soil mechanics)
+    'cobbles': {'B1': 'Noun (plural)'}, # Common geological/construction material
+    'freeze-thaw': {'B2 (Specialized)': 'Noun, Adjective'}, # Common concept in geology/engineering
+    'tills': {'B2 (Specialized)': 'Noun (plural)'}, # Technical term for glacial deposits (geology)
+    'deviator stress': {'C1 (Specialized)': 'Noun'}, # Core, abstract concept in geomechanics/materials science
+    'deviatoric stress': {'C1 (Specialized)': 'Noun'}, # Synonym for the above
+    'distresses': {'B2 (Specialized)': 'Noun (plural)'}, # Common technical term (e.g., pavement distresses)
+    'coarse-fine': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., coarse-fine ratio)
+    'compactive': {'B2 (Specialized)': 'Adjective'}, # Technical adjective (e.g., compactive effort)
+    'overpredicting': {'B2': 'Verb'}, # Gerund/participle. Common in modeling/statistics.
+    'pore-air pressure': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in soil mechanics
+    'pore-water pressure': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in soil mechanics
+    'slightly': {'A2': 'Adverb'},
+    'symbols': {'A1': 'Noun (plural)'},  # Basic, core vocabulary word
+    'at-rest': {'B2 (Specialized)': 'Adjective'},  # Foundational concept in physics/engineering (e.g., at-rest pressure)
+    '3D scatter plot': {'B2 (Specialized)': 'Noun'}, # Foundational data visualization term
+    'AC transmission': {'B2 (Specialized)': 'Noun'}, # Foundational concept in electrical engineering
+    'pre-qualification': {'C1': 'Noun'},  # Abstract process in business/finance/engineering
+    '1AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '2AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '3AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '4AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '5AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '6AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '7AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '8AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '9AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '10AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '11AM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '12PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '1PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '2PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '3PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '4PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '5PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '6PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '7PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '8PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '9PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '10PM': {'A1': 'Noun, Adverb'}, # Basic time expression
+    '11PM': {'A1': 'Noun, Adverb'},  # Basic time expression
+    'shares': {'A2': 'Verb, Noun', 'B2 (Specialized)': 'Noun (plural)'}, # A2: General (e.g., "He shares toys"). B2: Financial (e.g., "company shares")
+    'post-netting': {'C1 (Specialized)': 'Adjective, Noun'}, # Abstract financial/accounting term
+    'pre-netting': {'C1 (Specialized)': 'Adjective, Noun'}, # Abstract financial/accounting term
+    'margins': {'B2': 'Noun (plural)'}, # Common business/finance/general term
+    'capacities': {'B1': 'Noun (plural)'}, # Common general/technical term
+    'bids': {'B1': 'Noun (plural)'}, # Common business/auction term
+    'interconnectors': {'B2 (Specialized)': 'Noun (plural)'}, # Technical term (e.g., in power grids, electronics)
+    'combined-cycle': {'C1 (Specialized)': 'Adjective, Noun'}, # Specific, abstract concept in engineering (e.g., "combined-cycle plant")
+    'up-regulating': {'C1 (Specialized)': 'Adjective/Verb'}, # Abstract, technical biological process
+    'down-regulating': {'C1 (Specialized)': 'Adjective/Verb'}, # Abstract, technical biological process
+    '15-minute': {'A2': 'Adjective'}, # Simple compound time descriptor
+    '60-minute': {'A2': 'Adjective'}, # Simple compound time descriptor
+    '1-minute': {'A2': 'Adjective'},  # Simple compound time descriptor
+    'photopatterning': {'C1 (Specialized)': 'Noun'}, # Specific, abstract process in chemistry/materials science
+    'crosslinked': {'C1 (Specialized)': 'Adjective/Verb'}, # Describes the state of a polymer network (past participle)
+    'photocage': {'C1 (Specialized)': 'Noun'},  # Specific chemical group (photochemistry)
+    'hydrazones': {'C1 (Specialized)': 'Noun (plural)'}, # Specific chemical functional group
+    'biomacromolecules': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract, core concept in biology/chemistry
+    'lies': {'A2': 'Verb (third person singular), Noun'}, # Verb: 3rd person sing. ("he lies down" / "he tells lies"). Noun: plural ("untruths").
+    'finalization': {'C1': 'Noun'}, # Abstract noun for completing a process (business/project management)
+    'projections': {'B2 (Specialized)': 'Noun (plural)'}, # Technical term (e.g., "financial projections," "map projections")
+    'unsort': {'B2 (Specialized)': 'Verb'},  # Technical verb (computing), the reverse of sorting
+    'anti-fuse': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in electronics
+    'fifth-order': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (math/physics)
+    'dilithium': {'C1 (Proper Noun)': 'Noun'}, # Specific algorithm name (cryptography)
+    'pre-quantum': {'B2 (Specialized)': 'Adjective'},  # Common descriptor for the current era in cryptography
+    'desynchronization': {'C1 (Specialized)': 'Noun'}, # Abstract technical/scientific concept
+    'single-trace': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., in attacks, analysis)
+    'wishes': {'A2': 'Verb (third person singular), Noun (plural)'},  # Verb: 3rd person singular; Noun: plural. Basic, core vocabulary.
+    'possesses': {'B2': 'Verb (third person singular)'}, # 3rd person singular of 'possess'. Common formal verb.
+    'pre-key': {'C1 (Specialized)': 'Noun, Adjective'}, # Abstract technical concept (cryptography)
+    'non-profiled': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., in security attacks)
+    'amplitude-modulated': {'C1 (Specialized)': 'Adjective'}, # Core concept in physics/telecom (AM)
+    'SRAM-based': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Static Random-Access Memory)
+    'bit-interleaved': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract technical concept (e.g., in memory or comms)
+    'chain-based': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., in data structures, blockchain)
+    'frame-level': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., video, networking)
+    'latchups': {'C1 (Specialized)': 'Noun (plural)'}, # Specific, abstract concept in electronics (e.g., Single Event Latchup)
+    'multiple-bit': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., multiple-bit error)
+    'prehensive': {'C1': 'Adjective'}, # Formal general term (related to grasping or understanding)
+    'space-grade': {'B2 (Specialized)': 'Adjective'},  # Common technical/engineering descriptor
+    'Bayesian-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (statistics/ML)
+    'ICAP-based': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor
+    'multi-tier': {'B2 (Specialized)': 'Adjective'}, # Common technical/business descriptor (e.g., multi-tier architecture)
+    'photocontrolled': {'C1 (Specialized)': 'Adjective'}, # Abstract scientific/technical concept
+    'photocage-modified': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'BESS-hydro-wind': {'C1 (Proper Noun)': 'Noun'}, # Specific, specialized energy system model
+    'plannable': {'B2': 'Adjective'}, # Common project management/business term
+    'post-netted': {'C1 (Specialized)': 'Adjective'}, # Abstract financial/accounting term
+    'auctions': {'B1': 'Noun (plural)'}, # Common business/finance term
+    'cost-inefficient': {'B2': 'Adjective'}, # Common business/economic term
+    'hydro': {'B1 (Specialized)': 'Noun'}, # Common term for hydroelectric power
+    'lower-cost': {'B1': 'Adjective'}, # Common comparative adjective
+    'multi-ARMA': {'C1 (Specialized)': 'Adjective'},  # Specific, abstract statistical modeling term
 
     #GQMe
 
@@ -60640,6 +60854,24 @@ chemical_elements={
 
 
 chemical_names_and_formulas=[
+    'hydroxylamine',
+    '1-Ethyl-3',
+    '1-Hydroxybenzotriazole hydrate',
+    '3-Propanediylbishydroxylamine dihydrochloride',
+    '4-Diaminobutane',
+    '6-Dimethoxy-1',
+    '6-diamidino-2-phenylindole',
+    '8-bismaleimido-diethyleneglycol',
+    'Arginine-glycine-aspartic acid',
+    'Cou-Carbonate',
+    'Coumarin-carbonate',
+    'Diisopropyl azodicarboxylate',
+    'Methylfuran',
+    'Triphenylphosphine',
+    'dialdehyde',
+    'dihydrazide',
+    'hydroxylamine',
+    'methylmorpholinium chloride',
     'YBa2Cu3O7-[delta]',
     'Tri-Ethyl',
     'Tm2O3',
@@ -62647,6 +62879,19 @@ place_names=[
     'Myanmar',
     'United States',    
     'Bucharest',
+    'Brinellvägen',
+    'Kollegiesalen',
+    'Nanjing',
+    'Hohhot',
+    'Linköping',
+    'Sorrento',
+    'Banff',
+    'Serbia',
+    'Wales',
+    'Maspalomas', # Spain
+    'Rabat', # Morocco
+    'Morocco',
+
     #GQMp
 
 ]
@@ -75199,12 +75444,85 @@ company_and_product_names=[
     'ExcelWriter',
     'AMD-Vi',
     'Cogent', # company
+    'RAMEC', # architectural framework
+    'RAMI',  # architectural framework
+    'Node2Vec',
+    'SkipGram',
+    'DBLP', # database of computer liteature
+    'AmazonPhoto',
+    'WikiCS', # https://github.com/pmernyei/wiki-cs-dataset
+    'WebConference',
+    'TriGlobal',
+    'FELiCS',
+    'LUMI', # supercomputer cluster in Finland
+    'AlphaFold',
+    'Alvis cluster',
+    'DGX station',
+    'DGX',
+    'Incan',
+    'Erisyon',
+    'QuantumSense',
+    'PLOS Computational Biology', # journal
+    'Whatprot', #framework
+    'Probeam',
+    'Quantum-Si', # Incorporated
+    'QuipuNet',
+    'Quipu', # an Incan mathematical tool
+    'Karl Engvers Foundation',
+    'Signeuls Foundation',
+    'JULEA tool',
+    'Nordlink',
+    'PowerTech',
+    'Regelleistung', # on-line platform use by transmission system operators
+    'Paraview',
+    'Virtex-4QV',
+    'AMD-Xilinx',
+    'CRYSTALS-Dilithium',
+    'Euromicro', # conference
+    'AES-256', # cryptographic algorithm
+    'RSA-3072', # cryptographic algorithm
+    'DH-3072', # cryptographic algorithm
+    'DSA-3072', # cryptographic algorithm
+    'ML-KEM', # cryptographic algorithm
+    'ML-DSA', # cryptographic algorithm
+    'SLH-DSA', # cryptographic algorithm
+    'SHA3-512', # cryptographic algorithm
+    'SHAKE-128', # cryptographic algorithm
+    'SHAKE-256', # cryptographic algorithm
+    'Kyber-512', # cryptographic algorithm
+    'Kyber-768', # cryptographic algorithm
+    'Kyber-1024', # cryptographic algorithm
+    'KYBER',  # cryptographic algorithm
+    'NIST-I', # NIST security level
+    'NIST-III', # NIST security level
+    'NIST-V', # NIST security level
+    'LightSaber',
+    'Saber',
+    'FireSaber',
+    'Nordic Semiconductors', # company
+    'STM32F4',
+    'Mars Rover',
+    'SpaceCube', # NASA SpaceCube
+    'Ultrascale',
+    'Ultrascale FPGA',
+    'Virtex-5QV',
+    'Virtex-II devices',
+    'ZCU104', #  Ultrascale board
+    'Xeon-based',
+    'BAFFI', # testing tools
+    'ACME', # testing tools
+    'FLIPPER', # testing tools
+    'FT-UNSHADES', # testing tools
+    'PicoBlaze', # microprocessor
+    'JTI-EuroHPC',
 
 ]
 
 
 
 common_programming_languages=[ # libraries and functions
+    'Libsim',
+    'CuPy',
     'OpenMPI',
     'OWL', # web ontology language
     'React', # library
@@ -79453,7 +79771,6 @@ names_of_persons=[
     'Ritchie',
     'Ritz',
     'Rivest-Shamir-Adleman',
-    'Rivest–Shamir–Adleman',
     'Robbins',
     'Robel',
     'Robert',
@@ -79602,7 +79919,6 @@ names_of_persons=[
     'Saramito',
     'Saranurak',
     'Sarbanes-Oxley',
-    'Sarbanes–Oxley',
     'Saris',
     'Sarkar',
     'Sarmad',
@@ -79984,7 +80300,7 @@ names_of_persons=[
     'Sylvain',
     'Sylvester',
     'Szegö',
-    'Szekeres–Wilf',
+    'Szekeres-Wilf',
     'Szendy',
     'Szilard',
     'Szomszor',
@@ -81156,6 +81472,321 @@ names_of_persons=[
     'Tengana',
     'Hurtado',
     'Sefidcon',
+    'Bechky',
+    'Carlile',
+    'Griesemer',
+    'Hargadon',
+    'Huvila',
+    'Kvale',
+    'Wieringa',
+    'Artem',
+    'Kulachenko',
+    'Axel',
+    'Lundkvist',
+    'Üçel',
+    'Finke',
+    'Froböse',
+    'Gertrud',
+    'Gudmundson',
+    'Klett',
+    'Lindbergh',
+    'Mesarovic',
+    'Nadimpalli',
+    'Per-Lennart',
+    'Larsson',
+    'Sangrós',
+    'Giménez',
+    'Santhanagopalan',
+    'Santimetaneedol',
+    'Schilde',
+    'Streb',
+    'Torbjörn',
+    'Tripuraneni',
+    'Vasconcelos',
+    'Taru',
+    'Kwade',
+    'Cao',
+    'Chester',
+    'Samy',
+    'Giaretta',
+    'Kefato',
+    'Girdzijauskas',
+    'Lodovico',
+    'Weisfeiler-Lehman',
+    'Zekarias',
+    'Briggs-Bers',
+    'Arbey',
+    'Ricciardi',
+    'Kelvin-Helmholtz',
+    'Bogey',
+    'Curle',
+    'Amiet',
+    'Prantl',
+    'Theofilis',
+    'Gaster',
+    'Briggs',
+    'Bers',
+    'Towne',
+    'Chu',
+    'Ananthan',
+    'Edgington-Mitchell',
+    'Michalke',
+    'Ardeshir',
+    'Demange',
+    'Vincent',
+    'Jaunet',
+    'Igor',
+    'Bataille',
+    'Tam',
+    'Landahl',
+    'Brandt',
+    'Ronith',
+    'Adalberto',
+    'Donnatella',
+    'Tassawar',
+    'Yucheng',
+    'Shiyu',
+    'Yuning',
+    'Moreau',
+    'Colonius',
+    'Henningson',
+    'Lighthill',
+    'Akkermans',
+    'Andr´e',
+    'Cavalieri',
+    'Bailly',
+    'Cossu',
+    'Dzanic',
+    'Witherden',
+    'Dardel',
+    'Ellingsen',
+    'Ennes',
+    'Sarradj',
+    'Palm',
+    'Alva',
+    'Hanifiet',
+    'Jinfa',
+    'Kilian',
+    'Oberleithner',
+    'Marcial',
+    'McKeon',
+    'Marant',
+    'Noorani',
+    'Sabatini',
+    'Schlatter',
+    'Spencer',
+    'Sherwin',
+    'Tiago',
+    'Xiaolong',
+    'Deng',
+    'Yazhe',
+    'Zhihong',
+    'Tumin',
+    'Fosas',
+    'de Pando',
+    'Alicia',
+    'Cevedo',
+    'Bailing',
+    'Beauregard',
+    'Giovanni',
+    'Kipen',
+    'Saumey',
+    'Shyamprasad',
+    'Marcotte',
+    'Misiunas',
+    'Maglia',
+    'Raja',
+    'Jald´en',
+    'Baum-Welch',
+    'Alexandre',
+    'Pinto',
+    'Amélia',
+    'Andersland',
+    'Ladanyi',
+    'António',
+    'Correia',
+    'Atterberg',
+    'Zapata',
+    'Cham',
+    'Cristiana',
+    'Ferreira',
+    'Deviatoric',
+    'Doré',
+    'Zubeck',
+    'Erlingsson',
+    'Fredlund',
+    'Genuchten',
+    'Grav',
+    'Gräbe',
+    'Gyttja',
+    'Helge',
+    'Mork',
+    'Henrique',
+    'Carvalho',
+    'Everton',
+    'Luciana',
+    'Levenberg',
+    'Matos',
+    'Fernandes',
+    'Mohr-Coulomb',
+    'Guerra',
+    'Papagiannakis',
+    'Masad',
+    'Paute',
+    'Hornych',
+    'Proctor',
+    'Rabbira',
+    'Saba',
+    'Rahman',
+    'Rutting',
+    'Saliko',
+    'Shafiqur',
+    'Sigurdur',
+    'Sobhan',
+    'Siltig',
+    'Sêco',
+    'Thom',
+    'Tills ',
+    'Tomás',
+    'Ullidtz',
+    'Werkmeister',
+    'Salour',
+    'Cary',
+    'Honauer',
+    'Ödeen',
+    'Inge',
+    'Hoff',
+    'Bo',
+    'Algarvio',
+    'Dobschinski',
+    'Estanqueiro',
+    'Flynn',
+    'Hesamzadeh',
+    'Holttinen',
+    'Kazari',
+    'Khodadadi',
+    'Kiviluoma',
+    'Matevosyan',
+    'Morales-España',
+    'Pudjianto',
+    'Strbac',
+    'Vrana',
+    'Söder',
+    'Abolfazl',
+    'Hulsart',
+    'Billström',
+    'Louis',
+    'Pasteur',
+    'Kohlan',
+    'Taha',
+    'Behroozi',
+    'Wistrand',
+    'Finne-Wistrand',
+    'O’Callaghan',
+    'Ferrentino',
+    'Pappalardo',
+    'Schaufelberger',
+    'Yanru',
+    'Daniela',
+    'Kreuger',
+    'Cerrato',
+    'Ayan',
+    'Pentti',
+    'Idoia',
+    'Hanna',
+    'Tove',
+    'Shokoufeh',
+    'Edina',
+    'Gry',
+    'Ahmad',
+    'Saeed',
+    'Soroush',
+    'Mersad',
+    'Masoud',
+    'Nejib',
+    'Jen',
+    'Linnea',
+    'Lazaros',
+    'Rebecca',
+    'Guillaume',
+    'Karla',
+    'Noe',
+    'Nazmun',
+    'Celine',
+    'Alina',
+    'Inci',
+    'Ferdows',
+    'Farzad',
+    'Ece',
+    'Ceren',
+    'Carina',
+    'Reza',
+    'Perez',
+    'Alvisi',
+    'Annika',
+    'Atti',
+    'Danielle',
+    'Derek',
+    'Donatella',
+    'Fermin',
+    'Knut',
+    'Ramis',
+    'Rezaeiravesh',
+    'Saleh',
+    'Saleh',
+    'Valerio',
+    'Vitor',
+    'Yu-Cheng',
+    'Zhenyang',
+    'Hemati',
+    'Lindstrom',
+    'Childs',
+    'Kraichnan',
+    'Patera',
+    'Yeung',
+    'Lakshminarasimhan',
+    'Gauss-Lobatto-Legendre',
+    'Dubrova',
+    'Kalle',
+    'Ngo',
+    'Zolotarev',
+    'Fujisaki',
+    'Okamoto',
+    'Fiat-Shamir',
+    'Fisher-Yates',
+    'Bronchain',
+    'Brisfors',
+    'Kocher',
+    'Ruize',
+    'Korkin',
+    'Nadam',
+    'Kannan',
+    'Pitchaimani',
+    'Venkataraman',
+    'Di',
+    'Cappello',
+    'Hanifi',
+    'Lindenbaum',
+    'Markidis',
+    'Rasmussen',
+    'Williams',
+    'Wallen',
+    'Balakondareddy',
+    'Sana',
+    'Valdas',
+    'Pasiskevicius',
+    'Yaqun',
+    'Sehic',
+    'Niki',
+    'Mehrtashfar',
+    'Marie',
+    'Arsenian-Henriksson',
+    'Kivijärvi',
+    'Damian',
+    'Hannele',
+    'Kiarash',
+    'Lázaro',
+    'Martínez',
 
 ]
 
@@ -81526,6 +82157,12 @@ language_tags={
 }
 
 miss_spelled_words=[
+    'forkarskolan', # should be 'forskarskolan'
+    'sligthly',
+    'bining',
+    'atached',
+    'inteligence',
+    'imcompressible',
     "Nielson’s law", # should be Nielsen’s law
     "Moch",
     "moch",
@@ -82834,6 +83471,7 @@ common_units={
     'MPa': {'B1': 'Unit'},  # Megapascal - Unit of pressure - likely B1 for understanding pressure Units
     'MSample/s': {'B2': 'Unit'},  # Megasamples per second - Sampling rate - likely B2 for more specific engineering terms
     'MSps': {'B2': 'Unit'},  # Megasamples per second - alternative phrasing) - Sampling rate (likely B2 for more specific engineering terms
+    'MW/min': {'B2': 'Unit'}, # megawatt per minute
     'MWh/h': {'B2': 'Unit'},  # Megawatt-hours per hour - Rate of energy transfer - likely B2 for power engineering terms
     'MWh/year': {'B2': 'Unit'},  # Megawatt-hours per year - Energy consumption rate - likely B2 for power engineering terms
     'MWh': {'B2': 'Unit'},  # Megawatt-hours
@@ -82860,6 +83498,7 @@ common_units={
     'TB': {'A2': 'Unit'},  # Terabyte - Unit of data storage - assumed A2 for basic understanding
     'THz': {'B2': 'Unit'}, # terahertz
     'TWh': {'B2': 'Unit'}, # terawatt hour
+    'TWh/year': {'B2': 'Unit'}, # terawatt hour per year
     'Tb': {'B2': 'Unit'}, # Terabit
     'Tbps': {'B1': 'Unit'},
     'Tb/s': {'B2': 'Unit'},  # Terabit per second - data transfer rate
