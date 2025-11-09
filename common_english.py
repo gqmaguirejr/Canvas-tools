@@ -2788,6 +2788,7 @@ common_English_words={
     'CT-number': {'B2': 'Noun Phrase'},
     'CT-practice': {'B2': 'Noun Phrase'},
     'CT-scanner': {'B2': 'Noun'},  # Refers to a Computed Tomography scanner
+    'CT-scan': {'B2': 'Noun'},
     'CT-scans': {'B2': 'Noun (plural)'},  # Plural form of CT-scan
     'CTA image': {'C2': 'Noun'},
     'CTA-like': {'B2': 'Adjective'},  # Similar to a Call to Action
@@ -60601,7 +60602,89 @@ common_English_words={
     'hydro': {'B1 (Specialized)': 'Noun'}, # Common term for hydroelectric power
     'lower-cost': {'B1': 'Adjective'}, # Common comparative adjective
     'multi-ARMA': {'C1 (Specialized)': 'Adjective'},  # Specific, abstract statistical modeling term
-
+    'XZ plane': {'B1 (Specialized)': 'Noun'}, # Foundational concept in 3D geometry/math/physics
+    'discrete-continuum': {'C1 (Specialized)': 'Adjective/Noun'}, # Abstract modeling concept
+    'scalping technique': {'C1 (Specialized)': 'Noun'}, # Specific technical procedure (e.g., in mining, data)
+    'particuology': {'C1 (Specialized)': 'Noun'}, # Specific, advanced scientific field (study of particles)
+    'geomechanics': {'C1 (Specialized)': 'Noun'}, # Specific, advanced scientific/engineering field
+    'geotechnics': {'B2 (Specialized)': 'Noun'},  # Foundational engineering field (synonym for geotechnical engineering)
+    'DEM-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Discrete Element Method)
+    'sub-ballast': {'B2 (Specialized)': 'Noun'},  # Specific, foundational layer in railway/geotechnical engineering
+    'Iosipescu': {'B2 (Proper Noun)': 'Noun'}, # Name of a standard test (e.g., Iosipescu shear test)
+    'mesh-independent': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in computational modeling (FEM)
+    'micro-mechanics': {'C1 (Specialized)': 'Noun'}, # Specific, advanced field of mechanics
+    'micro-structure': {'B2 (Specialized)': 'Noun'}, # Foundational concept in materials science 
+    'servo-hydraulic': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor for equipment
+    'shear-modified': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'specimens': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational scientific/engineering term
+    'corrected': {'B1': 'Adjective, Verb'}, # Past tense/participle. Common general/academic word.
+    'collars': {'B1 (Specialized)': 'Noun (plural)'}, # Noun: Plural of collar (e.g., shaft collars in engineering)
+    'cup-cone': {'C1 (Specialized)': 'Adjective, Noun'}, # Describes a specific fracture type in materials science
+    'nonlocal': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in physics/mathematics/computing
+    'metals': {'A2': 'Noun (plural)'},  # Common, basic material category
+    'Sooth Bar': {'B2 (Proper Noun)': 'Noun'}, # Assuming this is a typo for "Smooth Bar," a type of test specimen
+    'Tresca-type': {'C1 (Proper Noun)': 'Adjective'}, # Abstract concept in materials science (Tresca yield criterion)
+    'Voce-type': {'C1 (Proper Noun)': 'Adjective'}, # Abstract concept in materials science (Voce equation for strain hardening)
+    'shouldered': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor for a specimen's shape
+    'HR-generalist': {'B1 (Specialized)': 'Noun'},  # Common job title (Human Resources)
+    'force-CMOD': {'C1 (Specialized)': 'Noun'}, # Technical term in fracture mechanics (Force vs. Crack Mouth Opening Displacement)
+    'low-alloy': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor in materials science
+    'crackextension': {'B2 (Specialized)': 'Noun'}, # Technical term in fracture mechanics (often "crack extension")
+    'FEM-predicted': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor (Finite Element Method)
+    'IFI-based': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor based on a specific method/institute
+    'IFI-extracted': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor based on a specific method/institute
+    'contrasts': {'B2': 'Verb (third person singular), Noun (plural)'}, # Verb: 3rd person sing.; Noun: plural. Common academic/general term.
+    'investor': {'B1': 'Noun'}, # Common business/finance term
+    'investors': {'B1': 'Noun (plural)'}, # Common business/finance term
+    'operas': {'B1': 'Noun (plural)'}, # Common cultural term
+    'pseudo-R-squared': {'C1 (Specialized)': 'Noun, Adjective'}, # Specific, abstract statistical metric
+    'purchases': {'A2': 'Noun (plural), Verb (third person singular)'}, # Plural noun / 3rd person singular verb. Common general term.
+    'shoutout': {'B2': 'Noun (Informal)'}, # Common informal term for an acknowledgment
+    'treatments': {'B1 (Specialized)': 'Noun (plural)'}, # Common scientific/medical term (e.g., experimental treatments)
+    'within-subjects experiments': {'C1 (Specialized)': 'Noun Phrase'}, # NOTE: Spelling corrected. Core methodological concept.
+    'vibes': {'B2': 'Noun (Informal)'}, # Common informal term for a feeling/atmosphere
+    'Sichuan-pepper-fueled': {'B2': 'Adjective'}, # Compound descriptive adjective
+    'mandating': {'B2': 'Verb'},  # Gerund/participle of "mandate," a formal verb
+    'COVID pandemic': {'B1 (Proper Noun Phrase)': 'Noun'}, # Specific, widely known global event
+    'bogie': {'B2 (Specialized)': 'Noun'}, # Foundational technical term (railway/vehicle engineering) 
+    'solidaxle': {'B2 (Specialized)': 'Noun, Adjective'}, # Technical term (automotive/railway)
+    'solid-axle': {'B2 (Specialized)': 'Noun, Adjective'}, # Technical term (automotive/railway)
+    'turnouts': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational technical term (railway) 
+    'wheels': {'A1': 'Noun (plural)'}, # Basic, core vocabulary word
+    'lock-in-place': {'B2': 'Adjective, Verb Phrase'}, # Compound descriptor or phrasal verb
+    'hard-over': {'B2 (Specialized)': 'Adverb, Adjective'}, # Idiomatic/technical term (e.g., in steering)
+    'damages': {'A2': 'Noun (plural)', 'B2 (Specialized)': 'Noun (plural)'}, # A2: "harm/injury". B2: "monetary compensation" (legal/finance).
+    'photothermal': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in physics/chemistry
+    'pseudo-two-dimensional': {'C1 (Specialized)': 'Adjective'}, # Abstract modeling concept
+    'twins': {'C1 (Specialized)': 'Noun (plural)'}, # e.g., crystal twinning in materials science
+    'chemistries': {'B2 (Specialized)': 'Noun (plural)'}, # Refers to different chemical systems (e.g., battery chemistries)
+    'coupled': {'B2 (Specialized)': 'Adjective, Verb'}, # e.g., coupled-physics, coupled equations
+    'de-intercalation': {'C1 (Specialized)': 'Noun'}, # Abstract process in electrochemistry
+    'delithiated': {'C1 (Specialized)': 'Adjective, Verb'}, # Abstract state in electrochemistry
+    'electro-chemo-mechanical': {'C1 (Specialized)': 'Adjective'}, # Advanced interdisciplinary concept
+    'electro-chemomechanical': {'C1 (Specialized)': 'Adjective'}, # Synonym of the above
+    'grid-scale': {'B2 (Specialized)': 'Adjective'}, # Common term in energy/power engineering
+    'imagebased': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor (image-based)
+    'inter-granular': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in materials science
+    'microstructure-informed models': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract modeling concept
+    'coupled 3D model': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical/modeling term
+    'U-Net-based': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor based on a specific ML architecture
+    'Ni-stabilizing': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (chemistry/materials)
+    'Ni-rich': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (chemistry/materials)
+    'Liion': {'B2 (Proper Noun)': 'Noun'}, # Foundational concept (Lithium-ion)
+    'Liions': {'B2 (Proper Noun)': 'Noun (plural)'}, # Plural of the above
+    'Li-Rich': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (chemistry/materials)
+    'complementarily': {'C1': 'Adverb'}, # Formal, academic adverb
+    'CEI-induced strain': {'C1 (Specialized)': 'Noun Phrase'}, # Compound, abstract scientific concept
+    'CO2 emissions': {'B1': 'Noun (plural)'}, # Common, general societal/scientific term
+    'CO2 reductions': {'B1': 'Noun (plural)'}, # Common, general societal/scientific term
+    '2D-plane-strain': {'C1 (Specialized)': 'Adjective, Noun'}, # Specific, abstract concept in mechanics
+    'connectivity-graph optimisation': {'C1 (Specialized)': 'Noun'}, # Abstract concept in graph theory/ML
+    'SPMe-type': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (e.g., Single Particle Model extended)
+    'cracks': {'A2': 'Noun (plural), Verb (third person singular)'}, # Noun: plural; Verb: 3rd person singular. Basic, common word.
+    'frost-thaw': {'B2 (Specialized)': 'Noun, Adjective'},  # Common technical concept in geology/engineering
+    'administrations': {'B2': 'Noun (plural)'},  # Common academic/business/political term
+    'streets': {'A1': 'Noun (plural)'},  # Basic, core vocabulary word
     #GQMe
 
 }
@@ -60854,6 +60937,15 @@ chemical_elements={
 
 
 chemical_names_and_formulas=[
+    'Ni⁴⁺',
+    'Nickel-Manganese-Cobalt-Oxide',
+    'Lithium-Iron-Phosphate',
+    'Lithium-Nickel-Manganese-Cobalt-Oxide',
+    'LiNixMnyCo1-x-YO2',
+    'Lithium-Cobalt-Oxide',
+    'LiCoO₂',
+    'LiFePO₄',
+    'LiNi0',
     'hydroxylamine',
     '1-Ethyl-3',
     '1-Hydroxybenzotriazole hydrate',
@@ -62891,6 +62983,9 @@ place_names=[
     'Maspalomas', # Spain
     'Rabat', # Morocco
     'Morocco',
+    'Ulm',
+    'Reykjavik',
+    'Skelleftea',
 
     #GQMp
 
@@ -75515,6 +75610,43 @@ company_and_product_names=[
     'FT-UNSHADES', # testing tools
     'PicoBlaze', # microprocessor
     'JTI-EuroHPC',
+    'FLAC3D',
+    'ITASCA',
+    'Itasca International, Inc.',
+    'PFC3D',
+    'Abaqus',
+    'Forsmarks kraftgruppen AB',
+    '304L', # a low-strength high-hardening austenitic stainless steel
+    'S690QL', # a high-strength and moderate-hardening structural steel
+    'AR600', # an ultra-high-strength low-hardening abrasion-resistant steel
+    'A508B', # low-alloy steel
+    'A533B', # low-alloy steel
+    'E1820', # ASTM E1820 test
+    '6892-1', # ISO 6892-1 test standard
+    'Bageriet Ida', # bakery
+    'Idas Krog',
+    'Bodycombat', # exercise
+    'Kantar SIFO', # company
+    'Hedeliusstipendier', # scholarship, award
+    'GPower', # software
+    'Signeuls Stiftelse', # foundation
+    'Signeuls Stiftelse travel scholarship',
+    'UIC60', # Swedish rail profile
+    '60E1', # Swedish rail profile
+    'S1001', # Swedish railway wheel
+    'S1002', # Swedish railway wheel
+    'S49', # type of Swedish rail
+    'SnC', # Swedish benchmark for turnout
+    'Daqus Energy',
+    'Canonical-Vine-Copula',
+    'Euromech Colloquium',
+    'IOP Publishing',
+    'COM-SOL',
+    'StarDist',
+    'Mistra InfraMaint',
+    'Mistra',
+    'InfraMaint',
+    'Inframaint',
 
 ]
 
@@ -81787,9 +81919,241 @@ names_of_persons=[
     'Kiarash',
     'Lázaro',
     'Martínez',
+    'Alabbasi',
+    'Andrade',
+    'Bagherzadeh',
+    'Bian',
+    'Ciantia',
+    'Cleary',
+    'Coetzee',
+    'Cundall',
+    'Eliáš',
+    'Feng',
+    'Frias',
+    'Lopez',
+    'Govender',
+    'Hussein',
+    'Jelke',
+    'Katsaga',
+    'Katterfeld',
+    'Khalkhali',
+    'Nasrollahi',
+    'McDowell',
+    'Mirghasemi',
+    "O’Sullivan",
+    'Roessler',
+    'Sanftenberg',
+    'Strack',
+    'Wensrich',
+    'Wersäll',
+    'Yousefi',
+    'Hazzard',
+    'Indraratna',
+    'Kourosh',
+    'Sinnott',
+    'Bagherzadeh-Khalkhali',
+    'Bridgman',
+    'Boåsen',
+    'Grinell',
+    'Grötch',
+    'Grötsch',
+    'Gurson',
+    'Gustavsson',
+    'Hultgren',
+    'Pål',
+    'Efsing',
+    'Rexer',
+    'Rådberg',
+    'Shuyue',
+    'Tvergaard',
+    'Gurson-Tvergaard-Needleman',
+    'Subasic',
+    'Charlott',
+    'Lundqvist',
+    'Ajzen',
+    'Allgood',
+    'Walstad',
+    'Annina',
+    'Aristei',
+    'Arvidsson',
+    'Asaad',
+    'Ayu',
+    'Agung',
+    'Faradynawati',
+    'Balasubramnian',
+    'Sargent',
+    'Benartzi',
+    'Boffo',
+    'Patalano',
+    'Venugopal',
+    'Dorfleitner',
+    'Druckman',
+    'McDermott',
+    'Durvasula',
+    'Fichtel',
+    'Filippini',
+    'Geissdoerfer',
+    'Gilad',
+    'Kliger',
+    'Grable',
+    'Joo',
+    'Grayot',
+    'Greenwald',
+    'Hauff',
+    'Heckman',
+    'Hilgert',
+    'Hogarth',
+    'Hirshleifer',
+    'Hsiao',
+    'Hsu-Chi',
+    'Huberman',
+    'Huhmann',
+    'Hulland',
+    'Miller',
+    'Inga-Lill',
+    'Ingalill',
+    'Jeanette',
+    'Junkus',
+    'Kahneman',
+    'Tversky',
+    'Kapil',
+    'Rawal',
+    'Kar',
+    'Patro',
+    'Kirk',
+    'Koenigsmarck',
+    'Koschate-Fischer',
+    'Schandelmeier',
+    'Kramer',
+    'Kritthana',
+    'Kimuam',
+    'Krosnick',
+    'Lakorn',
+    'Laudi',
+    'Leiser',
+    'Krill',
+    'Llewellyn',
+    'Lusardi',
+    'Löfgren',
+    'Nordblom',
+    'MacKenzie',
+    'Podsakoff',
+    'Mansson',
+    'McKechnie',
+    'Merunka',
+    'Meunier',
+    'Ohadi',
+    'Milner',
+    'Rosenstreich',
+    'Moloney',
+    'Nguyen',
+    'Nikita',
+    'Pahlevan',
+    'Naghavi',
+    'Petrucci',
+    'Prietzel',
+    'Raghunathan',
+    'Pham',
+    'Reuter',
+    'Rickwood',
+    'Rik',
+    'Robinson',
+    'Rothwell',
+    'Sande',
+    'Schram',
+    'Simester',
+    'Soman',
+    'Zhuo',
+    'Sorensen',
+    'Stanovich',
+    'West',
+    'Steenkamp',
+    'Baumgartner',
+    'Strauss',
+    'Sunstein',
+    'Tsai',
+    'Tulving',
+    'Vanwalleghem',
+    'Mirowska',
+    'Viglia',
+    'Dolnicar',
+    'Wedel',
+    'Sheard',
+    'Sheth',
+    'Wester',
+    'Misse',
+    'Oldfield',
+    'Carlin',
+    'Dilling',
+    'Gathergood',
+    'D & Venugopal',
+    'Inderst',
+    'Giossi',
+    'Goodall',
+    'Keck',
+    'Mei',
+    'Qazizadeh',
+    'Andrii',
+    'Grystan',
+    'Biasi',
+    'Brandberg',
+    'Camara',
+    'Chevrier',
+    'Dakyo',
+    'Dedhia',
+    'Demirocak',
+    'Deshmukh',
+    'Doyle-Fuller-Newman',
+    'Ekström',
+    'Francois',
+    'Usseglio-Viretta',
+    'Goriparti',
+    'Heena',
+    'Hua',
+    'Jethalal',
+    'Kabir',
+    'Koech',
+    'Lindström',
+    'Manna',
+    'Mansi',
+    'Manthiram',
+    'Marios',
+    'Mantelos',
+    'Meena',
+    'Menye',
+    'Murdock',
+    'Nagda',
+    'Neale',
+    'Nidhi',
+    'Noel',
+    'Obrovac',
+    'Pankaj',
+    'Priyank',
+    'Puravankara',
+    'Suryanarayanan',
+    'Tapia-Ruiz',
+    'Toghill',
+    'Vinit',
+    'Amjad',
+    'Afridi',
+    'Anderson-Skold',
+    'Andersson-Sköld',
+    'Cristofer',
+    'Katharina',
+    'Lindroos',
+    'Leif',
+    'Nordin',
+    'Pais',
+    'Pereira',
+    'Samuel',
+    'Ulan',
+    'Burlin',
+    'Imtiaz',
+    'Polukarova',
+    'Roya',
+    'Amelie',
 
 ]
-
 
 common_french_words={
     "d’Acoustique": {'B1': 'Noun (compound)'},

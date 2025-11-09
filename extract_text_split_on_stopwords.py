@@ -9725,6 +9725,8 @@ abbreviations_map = {
     'Dr.': 'Doctor',
     'Prof.': 'Professor',
     'prof.': 'professor',
+    'Asst.': 'assistant',
+    'Assoc.': 'asso0ciate',
     'Mr.': 'Mister',
     'Mrs.': 'Missus',
     'Ms.': 'Miss',
@@ -10088,167 +10090,6 @@ def _is_page_number_label(s):
     return is_digit or is_roman
 
 
-def OLD_analyze_pdf_layout(doc):
-    """
-    First-pass analysis to find the document's structure.
-    
-    This pass iterates once to find:
-    1. Common header/footer coordinates.
-    2. A map of section titles (e.g., "Contents", "References") to page numbers.
-    3. A map of page number labels (e.g., "1", "iv") to their actual page index.
-    
-    Returns:
-        A dictionary (or "profile") of the document layout.
-    """
-    print("--- Starting layout analysis pass ---")
-    if Verbose_Flag:
-        print(f"Analyzing {doc.page_count} pages...")
-
-    section_map = {}
-    page_number_map = {}
-    
-    header_y_counter = Counter()
-    footer_y_counter = Counter()
-
-    page_height = doc[0].rect.height if doc.page_count > 0 else 792 # Default A4
-    FOOTER_Y_THRESHOLD = page_height * 0.90
-    HEADER_Y_THRESHOLD = page_height * 0.10
-    
-    # FIX: A block taller than this (in points) is likely main text,
-    # not a simple header/footer.
-    MAX_PAGENUM_BLOCK_HEIGHT = 25 
-
-    for pageno, page in enumerate(doc):
-        
-        # Skip first 3 pages (cover, title, info)
-        if pageno < 3: 
-            continue
-            
-        blocks = page.get_text("blocks", sort=True)
-        if not blocks:
-            continue
-        
-        # Candidate blocks for page numbers
-        page_header_blocks = []
-        page_footer_blocks = []
-
-        for b in blocks:
-            x0, y0, x1, y1, text, block_no, block_type = b
-            text = text.strip()
-            text_lower = text.lower()
-            block_height = y1 - y0 # Calculate block height
-            
-            if not text:
-                continue
-
-            # --- 1. Find Section Titles (from any block near the top) ---
-            if y0 < HEADER_Y_THRESHOLD * 2: # Top 30%
-                # (This logic is fine, it checks all blocks)
-                if "references" not in section_map and \
-                   (text_lower.startswith("references") or text_lower.startswith("bibliography")):
-                    if len(text_lower) < 20: 
-                        section_map["references"] = pageno
-                
-                elif "acronyms" not in section_map and \
-                     (text_lower.startswith("list of acronyms") or text_lower == "acronyms"):
-                    if len(text_lower) < 40:
-                        section_map["acronyms"] = pageno
-                
-                elif "contents" not in section_map and \
-                     (text_lower.startswith("contents") or text_lower.startswith("table of contents")):
-                    if len(text_lower) < 25:
-                        section_map["contents"] = pageno
-                
-                elif "introduction" not in section_map and "introduction" in text_lower and \
-                     ("1" in text or "chapter 1" in text_lower):
-                     section_map["introduction"] = pageno
-
-            # --- 2. Collect potential Page Number Blocks (must be short) ---
-            # FIX: Only consider blocks that are short
-            if block_height < MAX_PAGENUM_BLOCK_HEIGHT:
-                if y0 < HEADER_Y_THRESHOLD:
-                    page_header_blocks.append(b)
-                    
-                elif y1 > FOOTER_Y_THRESHOLD:
-                    page_footer_blocks.append(b)
-
-        # --- 3. Log common header/footer *visual* positions ---
-        # (This uses the filtered candidate blocks)
-        if page_header_blocks:
-            lowest_header_y1 = round(max(b[3] for b in page_header_blocks))
-            header_y_counter[lowest_header_y1] += 1
-            
-        if page_footer_blocks:
-            highest_footer_y0 = round(min(b[1] for b in page_footer_blocks))
-            footer_y_counter[highest_footer_y0] += 1
-            
-        # --- 4. Log page number labels from ONLY the candidate blocks ---
-        for block in page_header_blocks + page_footer_blocks:
-            page_num_text = block[4].strip()
-            
-            words = page_num_text.split()
-            if not words:
-                continue
-
-            first_word = words[0]
-            last_word = words[-1]
-            page_label_found = None
-            
-            if _is_page_number_label(last_word):
-                page_label_found = last_word.strip('()[]|')
-            elif _is_page_number_label(first_word):
-                page_label_found = first_word.strip('()[]|')
-            
-            if page_label_found and page_label_found not in page_number_map:
-                page_number_map[page_label_found] = pageno
-
-    # --- Analyze collected data and build the layout profile ---
-    layout = {
-        "header_bottom_y": 0,
-        "footer_top_y": page_height,
-        "start_page": 0,
-        "end_page": doc.page_count,
-        "acronyms_page": -1,
-    }
-
-    if header_y_counter:
-        layout["header_bottom_y"] = header_y_counter.most_common(1)[0][0]
-        
-    if footer_y_counter:
-        layout["footer_top_y"] = footer_y_counter.most_common(1)[0][0]
-
-    # --- Find Start Page (Cascade logic) ---
-    if '1' in page_number_map:
-        layout["start_page"] = page_number_map['1']
-    elif 'introduction' in section_map:
-        layout["start_page"] = section_map['introduction']
-    else:
-        start_page = max(section_map.get("contents", -1), section_map.get("acronyms", -1)) + 1
-        layout["start_page"] = max(0, start_page)
-
-    # --- Find End Page ---
-    if "references" in section_map:
-        layout["end_page"] = section_map["references"]
-        
-    if "acronyms" in section_map:
-        layout["acronyms_page"] = section_map["acronyms"]
-
-    # --- Final Sanity Check ---
-    if layout["start_page"] >= layout["end_page"]:
-        print(f"*** WARNING: Start page ({layout['start_page']}) is after end page ({layout['end_page']}). Defaulting end page to end of doc.")
-        layout["end_page"] = doc.page_count
-
-    print("--- Layout analysis complete ---")
-    print(f"  Header bottom estimated at: {layout['header_bottom_y']}")
-    print(f"  Footer top estimated at: {layout['footer_top_y']}")
-    print(f"  Acronyms page found at: {layout['acronyms_page']}")
-    print(f"  Main content START page: {layout['start_page']}")
-    print(f"  Main content END page (references): {layout['end_page']}")
-    if Verbose_Flag:
-        print(f"  DEBUG: page_number_map = {page_number_map}")
-    print("-----------------------------------")
-
-    return layout
 def _analyze_pdf_layout(doc):
     """
     First-pass analysis to find the document's structure.
@@ -10428,7 +10269,7 @@ def extract_text_from_pdf(pdf_path):
         print(f"Successfully opened '{pdf_path}'...")
 
         # test the analysis procedure
-        _analyze_pdf_layout(doc)
+        layout = _analyze_pdf_layout(doc)
         
         full_text = ""
         # Extract text from all pages
@@ -10443,7 +10284,10 @@ def extract_text_from_pdf(pdf_path):
         acronyms_found=False
         first_page_found=False
         references_found=False
-        header_bottom=0
+        if layout and layout.get('header_bottom_y') > 0:
+            header_bottom=layout['header_bottom_y']
+        else:
+            header_bottom=0
         first_page=False
         list_of_X_on_this_page=False
         list_of_X_page=False
@@ -10500,7 +10344,8 @@ def extract_text_from_pdf(pdf_path):
 
 
                 # if we are in the main matter and before the start of the references
-                if y1 > header_bottom and first_page_found and not references_found:
+                # add a small amount to the header_bottom to skip text in the header
+                if y1 > (header_bottom + 1) and first_page_found and not references_found:
                     full_text += lines_in_the_block
                 else:
                     continue
@@ -10633,6 +10478,12 @@ def extract_text_from_pdf(pdf_path):
                         if Verbose_Flag:
                             print(f"**** {idx=} {type(b)}****")
                         x0, y0, x1, y1, lines_in_the_block, block_no, block_type=b
+                        # skip header lines (when collecting text)
+                        if y1 < (header_bottom + 1):
+                            continue
+                        # replace end of line hyphens in the block
+                        # note this replacement is too agressive
+                        # lines_in_the_block=lines_in_the_block.replace('-\n', '')
                         if Verbose_Flag:
                             print(f"{x0=}, {y0=}, {x1=}, {y1=}, {lines_in_the_block=}, {block_no=}, {block_type=}")
                         # collect the contents of the page
@@ -10646,6 +10497,28 @@ def extract_text_from_pdf(pdf_path):
         #full_text=full_text.replace('-\n', '')
         #print(f"****{full_text=}****")
 
+        # replace Narrow No-Break Space (NNBSP) U+202F with a space
+        full_text=full_text.replace('\u202f', ' ')
+
+        # --- NEW ROBUST DE-HYPHENATION ---
+        
+        # take care of some special cases
+        full_text=full_text.replace('-\ntype', '-type')
+
+        # Case 1: Handle word breaks (e.g., "comput-\ner" -> "computer")
+        # This ONLY matches if there is a lowercase letter *before*
+        # AND *after* the hyphen-newline.
+        full_text = re.sub(r'([a-z])-\n([a-z])', r'\1\2', full_text)
+
+        # Case 2: Handle all remaining compound words (e.g., "HR-\ngeneralist")
+        # This rule now only finds hyphen-newlines that were *not* word breaks
+        # (like acronyms, names, or other compounds) and replaces the
+        # newline with a hyphen.
+        full_text = re.sub(r'-\n', '-', full_text)
+
+        # handle Em Dash '—' U+2014
+        full_text = full_text.replace('—', ' — ')
+        
         # --- NEW LOGIC TO SPLIT TEXT ---
         
         # 1. Define a regex pattern for splitting.
@@ -10806,6 +10679,9 @@ def remove_known_words(output_lines):
                 remove_list.append(w)
             continue
 
+        if is_TRITA_number(w):
+            remove_list.append(w)
+            continue
 
         if w in common_english.language_tags:
             remove_list.append(w)
@@ -11091,6 +10967,10 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if w.endswith('’s') and w[:-2] in grand_union:
             continue
 
+        # remove possessives
+        if w.endswith("s'") and w[:-2] in grand_union:
+            continue
+
         if is_integer(w):
             continue
 
@@ -11159,11 +11039,20 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
                     continue
                 if ww.lower() in grand_union:
                     continue
-
+                                          
+                # remove possessives
+                if ww.endswith("'s") and (ww[:-2] in grand_union or ww[:-2].lower() in grand_union):
+                    continue
 
                 # remove possessives
                 if ww.endswith('’s') and (ww[:-2] in grand_union or ww[:-2].lower() in grand_union):
                     continue
+
+                # remove possessives
+                if ww.endswith("s'") and ww[:-2] in grand_union or ww[:-2].lower in grand_union:
+                    continue
+
+
                 # plural possessive
                 if ww.endswith('s’') and (ww[:-2] in grand_union or ww[:-2].lower() in grand_union):
                     continue
@@ -13902,6 +13791,11 @@ def main():
             well_known_acronym_filter_set.add(key + 'es')  # e.g., "manrses"
         else:
             well_known_acronym_filter_set.add(key + 's')   # e.g., "cdfs"
+
+    # add the spelled out version of the acronyms
+    well_known_acronyms_meanings = [a[1] for a in common_acronyms.well_known_acronyms_list]
+    for w in well_known_acronyms_meanings:
+        well_known_acronyms.append(w)
 
     for w in well_known_acronym_filter_set:
         well_known_acronyms.append(w)
