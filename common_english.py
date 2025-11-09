@@ -60797,6 +60797,144 @@ common_English_words={
     'MONAI-based': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor (based on a specific framework)
     'MONet-compatible': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor (based on a specific ML model)
     'FROC@0': {'C1 (Specialized)': 'Noun'},  # Specific, abstract statistical/ML metric (Free-response Receiver Operating Characteristic)
+    '4-membered ring': {'C1 (Specialized)': 'Noun'}, # Abstract concept in chemistry
+    'Abbe-type refractometers': {'B2 (Proper Noun)': 'Noun'}, # Foundational lab instrument
+    'FIB-milled': {'C1 (Specialized)': 'Adjective'}, # Technical process (Focused Ion Beam)
+    'femtosecond-laser-enabled': {'C1 (Specialized)': 'Adjective'}, # Advanced technical descriptor
+    'HSQ-coated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Hydrogen silsesquioxane)
+    'L bands': {'B2 (Proper Noun)': 'Noun (plural)'}, # Foundational concept in telecom/spectroscopy
+    'MEMS-based': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'MSC-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Mesenchymal Stem Cells)
+    'MXenes': {'C1 (Proper Noun)': 'Noun (plural)'}, # Specific, advanced class of materials
+    'microoptics': {'B2 (Specialized)': 'Noun'}, # Technical field
+    'microstructured': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'non-cumulative': {'B2': 'Adjective'}, # NOTE: Spelling corrected from 'non-cumula'. Common statistical/academic term.
+    'resolidification': {'C1 (Specialized)': 'Noun'}, # Abstract process in materials/physics
+    'SiO2-like': {'B1 (Specialized)': 'Adjective'}, # Technical descriptor (based on a common chemical)
+    'subwavelength': {'C1 (Specialized)': 'Adjective'}, # Core, abstract concept in optics/physics
+    'topview': {'A2 (Specialized)': 'Noun'}, # Common term in diagrams (top-view)
+    'ultrashort': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., ultrashort pulse)
+    'X-coupler': {'C1 (Specialized)': 'Noun'}, # Specific technical component (optics/waveguides)
+    'bubbles': {'A1': 'Noun (plural)'}, # Basic, core vocabulary word
+    'castle-shaped': {'A2': 'Adjective'}, # Simple descriptive shape
+    'crosslink': {'C1 (Specialized)': 'Noun, Verb'}, # Core concept in polymer chemistry
+    'cultures': {'B1 (Specialized)': 'Noun (plural)'}, # e.g., "cell cultures"
+    'high-frequency': {'B1 (Specialized)': 'Adjective'}, # NOTE: Spelling corrected from 'high-frquency'. Foundational technical term.
+    'inks': {'A1': 'Noun (plural)', 'B2 (Specialized)': 'Verb (third person singular)'}, # Basic, core vocabulary word
+    'laser-material': {'B1 (Specialized)': 'Adjective/Noun'}, # e.g., "laser-material interaction"
+    'line-filtering': {'B2 (Specialized)': 'Noun'}, # Technical process (e.g., in signals)
+    'metal-free': {'B1 (Specialized)': 'Adjective'}, # NOTE: Spelling corrected from 'matel-free'. Common technical descriptor.
+    'micro-batteries': {'B2 (Specialized)': 'Noun (plural)'}, # Technical component
+    'microscaffolds': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract concept in bioengineering
+    'microtoroid': {'C1 (Specialized)': 'Noun'}, # Specific, abstract concept in optics/physics
+    'nanograting': {'C1 (Specialized)': 'Noun'}, # Advanced technical term (nanotech)
+    'nanogratings': {'C1 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'nm-thick': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (nanometer-thick)
+    'nth-order': {'B2 (Specialized)': 'Adjective'}, # Common mathematical term
+    'plates': {'A1': 'Noun (plural)', 'B1 (Specialized)': 'Noun (plural)'}, # A1: General (e.g., for food). B1: Technical (e.g., lab plates, tectonic plates)
+    'side-view': {'A2 (Specialized)': 'Noun'}, # Common term in diagrams
+    'silica-like': {'B1 (Specialized)': 'Adjective'}, # Technical descriptor
+    'splits': {'A2': 'Verb (third person singular), Noun'}, # Verb: 3rd person sing.; Noun: plural. Basic word.
+    'tortuosity': {'C1 (Specialized)': 'Noun'}, # Abstract, specific concept in physics/geology
+    'zones': {'A2': 'Noun'},
+    'nanograting-based': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'I’ve': {'A1': 'Contraction'}, # "I have"
+    'χAcetone': {'C1 (Specialized)': 'Noun'}, # Technical variable (e.g., mole fraction of acetone)
+    'MXene/PEDOT': {'C1 (Specialized)': 'Noun'},  # Compound name of a composite material
+    'nanoindenter': {'C1 (Specialized)': 'Noun'},  # Specific, advanced scientific instrument
+    'affibody-decorated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (bioengineering)
+    'allotypes': {'C1 (Specialized)': 'Noun (plural)'}, # Specific, abstract concept (immunology)
+    'alpha-helical': {'B2 (Specialized)': 'Adjective'}, # Foundational concept in protein structure
+    'anti-BCMA': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor for an antibody target
+    'anti-human BCMA': {'B2 (Proper Noun)': 'Adjective'}, # More specific technical descriptor
+    'anti-tumour': {'B2 (Specialized)': 'Adjective'}, # UK spelling. Foundational medical concept.
+    'antibody-derived': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'belantamab': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'bi-paratopic': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract concept (antibody engineering)
+    'bi-specific': {'B2 (Specialized)': 'Adjective'}, # Foundational concept (antibody engineering)
+    'binds': {'B1': 'Verb (third person singular)'}, # 3rd person singular. Common scientific/general verb.
+    'blinatumomab': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'cell-activating': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'cell-activation': {'B2 (Specialized)': 'Noun'}, # Foundational biological process
+    'cell-engaging': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor (e.g., BiTEs)
+    'cell-expressed': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'cell-redirecting': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'cellbased': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor (cell-based)
+    'cellfocused': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'chip-immobilised': {'B2 (Specialized)': 'Adjective'}, # UK spelling. Technical lab procedure.
+    'co-cultures': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational lab technique
+    'co-receptor': {'B2 (Specialized)': 'Noun'}, # Foundational biological concept
+    'co-receptors': {'B2 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'co-stimulatory': {'C1 (Specialized)': 'Adjective'}, # Core, abstract concept (immunology)
+    'cytokine-mediated': {'C1 (Specialized)': 'Adjective'}, # Abstract biological process
+    'cytolysis': {'C1 (Specialized)': 'Noun'}, # Core biological process
+    'donor-derived': {'B2 (Specialized)': 'Adjective'}, # Common medical/biological term
+    'dually': {'B2': 'Adverb'}, # Common formal/academic adverb
+    'fluorophore-labelled': {'B2 (Specialized)': 'Adjective'}, # UK spelling. Common lab technique.
+    'fratricide': {'C1 (Specialized)': 'Noun'}, # Specific term for T-cell killing (immunology)
+    'function-modified': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'isotype': {'B2 (Specialized)': 'Noun'}, # Foundational concept (immunology)
+    'isotypes': {'B2 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'letters': {'A1': 'Noun (plural)'}, # Basic, core vocabulary word
+    'mAb-based': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'memberdisplaying': {'B2 (Specialized)': 'Adjective'}, # (member-displaying)
+    'membrane-proximate': {'C1 (Specialized)': 'Adjective'}, # Abstract biological descriptor
+    'multispecific': {'C1 (Specialized)': 'Adjective'}, # Abstract concept (antibody engineering)
+    'non-CDR': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract concept (immunology)
+    'non-IgG-like': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract concept (immunology)
+    'non-expressing': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'non-lytic': {'C1 (Specialized)': 'Adjective'}, # Abstract technical descriptor (biology)
+    'pMHC-independent': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract concept (immunology)
+    'peptide-presenting': {'C1 (Specialized)': 'Adjective'}, # Core concept (immunology)
+    're-direct': {'B1': 'Verb'}, # Common verb
+    'realtime': {'B1 (Specialized)': 'Adjective/Adverb'}, # Common technical term (real-time)
+    'receptor-binding': {'B2 (Specialized)': 'Adjective/Noun'}, # Foundational biological concept
+    'recognised': {'B1': 'Verb'}, # UK spelling of "recognized" (past tense/participle)
+    'relapsed': {'B2 (Specialized)': 'Adjective/Verb'}, # Common medical term
+    'residues': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational term (e.g., amino acid residues)
+    'secondgeneration': {'B1': 'Adjective'}, # (second-generation) Common descriptor
+    'sensorgram': {'C1 (Specialized)': 'Noun'}, # Specific technical term (e.g., SPR analysis)
+    'sensorgrams': {'C1 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'site-localised': {'B2 (Specialized)': 'Adjective'}, # UK spelling. Technical descriptor.
+    'six-subunit': {'B1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'size-related': {'B1': 'Adjective'}, # Common descriptive phrase
+    'spheroid-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (bioengineering)
+    'supernatants': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational lab term (biology/chemistry)
+    'tails': {'A1': 'Noun (plural)'}, # Basic, core vocabulary word
+    'teclistamab': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'therapies': {'B1': 'Noun (plural)'}, # Common medical/general term
+    'trastuzumab': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'trispecific': {'C1 (Specialized)': 'Adjective'}, # Abstract concept (antibody engineering)
+    'Y-shape': {'A2': 'Noun, Adjective'}, # Simple descriptive shape
+    'Y-shaped': {'A2': 'Adjective'}, # Simple descriptive shape
+    'sequestrins': {'C1 (Specialized)': 'Noun (plural)'}, # Specific class of proteins
+    'anticalin': {'C1 (Proper Noun)': 'Noun'}, # Specific class of engineered proteins
+    'anticalins': {'C1 (Proper Noun)': 'Noun (plural)'}, # Plural of the above
+    'AffiMab': {'C1 (Proper Noun)': 'Noun'}, # Specific type of antibody format
+    'AffiMabs': {'C1 (Proper Noun)': 'Noun (plural)'}, # Plural of the above
+    'affimer': {'C1 (Proper Noun)': 'Noun'}, # Specific class of engineered proteins
+    'affimers': {'C1 (Proper Noun)': 'Noun (plural)'}, # Plural of the above
+    'C-termini': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational concept in biochemistry
+    'C-type Lectin-like': {'C1 (Specialized)': 'Adjective'}, # Abstract biological descriptor
+    'fibronectins': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational class of proteins
+    'forward-mutation': {'C1 (Specialized)': 'Noun'}, # Specific concept in genetics
+    'HER2-expressing': {'B2 (Proper Noun)': 'Adjective'}, # Compound technical descriptor
+    'HER2-mediated': {'B2 (Proper Noun)': 'Adjective'}, # Compound technical descriptor
+    'HER2-overexpressing': {'B2 (Proper Noun)': 'Adjective'}, # Compound technical descriptor
+    'HER2-targeted': {'B2 (Proper Noun)': 'Adjective'}, # Compound technical descriptor
+    'HER2-targeting': {'B2 (Proper Noun)': 'Adjective'}, # Compound technical descriptor
+    'HER3-induced': {'B2 (Proper Noun)': 'Adjective'}, # Compound technical descriptor
+    'HER3-targeting': {'B2 (Proper Noun)': 'Adjective'}, # Compound technical descriptor
+    'TAA-binder': {'C1 (Specialized)': 'Noun'}, # Technical agent noun (Tumor-Associated Antigen)
+    'TAA-binding': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor
+    'TCR-recognition': {'C1 (Specialized)': 'Noun'}, # Core, abstract concept (immunology)
+    'TNF-induced': {'B2 (Proper Noun)': 'Adjective'},  # Compound technical descriptor
+    'non-Hodgkin lymphoma': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific medical diagnosis
+    'tumour-targeting': {'B2 (Specialized)': 'Adjective'}, # UK spelling. Technical descriptor.
+    'live-cell analysis system': {'B2 (Specialized)': 'Noun Phrase'}, # Technical lab equipment/method
+    'radiolabelling': {'C1 (Specialized)': 'Noun, Verb'}, # UK spelling. Specific scientific technique.
+    'neutralisation': {'B2 (Specialized)': 'Noun'}, # UK spelling. Foundational concept in chemistry/biology.
+    'N-termini': {'B2 (Specialized)': 'Noun (plural)'},  # Foundational concept in biochemistry (N-terminus)
     #GQMe
 
 }
@@ -61049,6 +61187,14 @@ chemical_elements={
 
 
 chemical_names_and_formulas=[
+    'Si–H',
+    'Si–Si',
+    'H2SO4',
+    'HSiO1',
+    'HnSiOx',
+    'Si-O-Si',
+    'SiO1',
+    'Ti6Al4V',
     'Deuterium-Deuterium',
     '4He',
     'T→4He',
@@ -75850,6 +75996,18 @@ company_and_product_names=[
     'V-Net',
     'XNAT', # platform for managing imaging data and integrating AI applications
     'nnDetection',
+    'Optica Publishing Group',
+    'Optica', # 
+    'Yervoy', # pharmaceutial
+    'Blincyto', # pharmaceutial
+    'Enhertu',
+    'Kadcyla',
+    'Humira',
+    'Incucyte',
+    'Incucyte®',
+
+
+
 ]
 
 
@@ -82461,6 +82619,55 @@ names_of_persons=[
     'Yunxin',
     'Zhong',
     'Zhaohua',
+    'Adrian',
+    'Alessandro',
+    'Bellouard',
+    'Birnbaum',
+    'Calle',
+    'Chia-Chen',
+    'Chien-Ju',
+    'Chloe',
+    'Ellinor',
+    'Emre',
+    'Gaehun',
+    'Georg',
+    'Gu',
+    'Gérard',
+    'Mourou',
+    'Halvor',
+    'Hana',
+    'Henar',
+    'Kao',
+    'Kasumi',
+    'Katia',
+    'Kerem',
+    'Kissi',
+    'Kristinn',
+    'Lee-Lun',
+    'Mehrdad',
+    'Meike',
+    'Nankun',
+    'Niclas',
+    'Oliver',
+    'Pen-Sheng',
+    'Po-Han',
+    'Shiqian',
+    'Shiro',
+    'Souvik',
+    'Strickland',
+    'Theodore',
+    'Maiman',
+    'Taras',
+    'Tarcin',
+    'Theocharis',
+    'Valentina',
+    'Vivianne',
+    'Vorobyev',
+    'Wen-Hao',
+    'Xinxin',
+    'Yingying',
+    'Wouter',
+    'Jurkat-Lucia',
 
 ]
 
@@ -84406,6 +84613,20 @@ common_units={
     '°C/min': {'B1': 'Unit'},
     'kW/m2': {'B1': 'Unit'}, # kW per square meter
     'eV': {'B1': 'Unit'}, # electron Volt
+    'km': {'B1': 'Unit'},
+    'mA': {'B1': 'Unit'},
+    'mAcm-2': {'B1': 'Unit'},
+    'mFcm-2': {'B1': 'Unit'},
+    'nF': {'B1': 'Unit'},
+    'nJ': {'B1': 'Unit'},
+    'mV s-1': {'B1': 'Unit'},
+    'V s-1': {'B1': 'Unit'},
+    'nanosecond': {'A2': 'Unit'},
+    'μm': {'A2': 'Unit'},
+    'μN': {'B1': 'Unit'},
+    'dB/km': {'B2': 'Unit'},
+    's-1': {'A2': 'Unit'},
+
 }
 
 
