@@ -9590,6 +9590,44 @@ def is_ISBN(s):
     return False
     
 
+def is_value_units(w):
+    suffixes = sorted(common_english.common_units, key=len, reverse=True) #
+    # check all suffixes.
+    for s in suffixes:
+        if w.endswith(s):
+            # If a match is found, strip it and break the inner loop.
+            if is_integer(w[:-len(s)].strip()):
+                return True
+    #  If no suffix was found for this word, return False
+    return False
+
+def is_value_range_units(w):
+    if w.count('-') == 1:
+        ws=w.split('-')
+        if len(ws) == 2: 
+            if is_integer(ws[0]):
+                return is_value_units(ws[1])
+            elif is_value_units(ws[0]) and is_value_units(ws[1]):
+                return True
+            else:
+                return False
+        else:
+            return False
+    elif w.count('–') == 1:
+        ws=w.split('–')
+        if len(ws) == 2: 
+            if is_integer(ws[0]):
+                return is_value_units(ws[1])
+            elif is_value_units(ws[0]) and is_value_units(ws[1]):
+                return True
+            else:
+                return False
+        else:
+            return False
+    return False
+
+
+
 def is_value_dash_units(s):
     if s.count('-') == 1:
         ds = s.split('-')
@@ -9736,6 +9774,22 @@ abbreviations_map = {
     'Ltd.': 'Limited',
     'M.Sc.': 'Master of Science', # Must come before M.S.
     'M.S.': 'Master of Science',
+
+    # abbreviations for months
+    'Jan.': 'January',
+    'Feb.': 'February',
+    'Mar.': 'March',
+    'Apr.': 'April',
+    # May
+    'Jun.': 'June',
+    'Jul.': 'July',
+    'Aug.': 'August',
+    'Sep.': 'September',
+    'Sept.': 'September',
+    'Oct.': 'October',
+    'Nov.': 'November',
+    'Dec.': 'December',
+
     # Add the rest of your month/other abbreviations here
 }
 
@@ -9812,7 +9866,7 @@ def remove_suffixes(wl):
 def remove_prefixes(wl):
     # Sort prefixes by length (longest first) to fix the bug.
     # This ensures '††' is checked before '†'
-    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮', '·', '∈', '∥', '©', '\u2019', '●'], key=len, reverse=True) # 
+    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮', '·', '∈', '∥', '©', '\u2019', '●', '±', '~'], key=len, reverse=True) # 
     
     new_wl = []
     
@@ -10434,18 +10488,29 @@ def extract_text_from_pdf(pdf_path):
 
             print(f"{page_number_positions=}")
             for idx, i in enumerate(page_number_positions):
-                if page_number_positions[i] == '1':
-                    first_page_found=True
-                    first_page=int(i)
-                    print(f"found first page {first_page} at {idx=}")
+                if not first_page_found:
+                    if page_number_positions[i] == '1':
+                        first_page_found=True
+                        first_page=int(i)
+                        print(f"found first page {first_page} at {idx=}")
+                    else:
+                        if layout and layout.get('start_page') > 0:
+                            first_page_found=True
+                            first_page=layout['start_page']
+                            print(f"Using first page {first_page}")
             if contents_page:
                 print(f"{contents_page=}")
             if acronyms_page:
                 print(f"{acronyms_page=}")
+            if layout and layout.get('end_page'):
+                first_reference_page=layout['end_page']
             if first_reference_page:
                 print(f"{first_reference_page=}")
         
             for pageno, page in enumerate(doc): # iterate the document pages
+                if first_page_found and first_page and pageno < first_page:
+                    continue
+
                 if Verbose_Flag:
                     print(f"{pageno=}")
                 current_page=page.get_text("blocks", sort=True) # get plain text encoded as UTF-8
@@ -10519,6 +10584,9 @@ def extract_text_from_pdf(pdf_path):
         # handle Em Dash '—' U+2014
         full_text = full_text.replace('—', ' — ')
         
+        # replace remaining new lines with a double space
+        full_text = full_text.replace('\n', '  ')
+
         # --- NEW LOGIC TO SPLIT TEXT ---
         
         # 1. Define a regex pattern for splitting.
@@ -10629,13 +10697,22 @@ def group_by_suffix(phrase_list, min_group_size=2):
 def remove_known_words(output_lines):
     global Verbose_Flag
     global well_known_acronyms
+    global grand_union
 
     remove_list=[]
     for w in output_lines:
+        # replace double spaces in a word with a single space
+        if '  ' in w:
+            w=w.replace('  ', ' ')
+
         # some individual characters to remove
         if w in ['\u0013', '\u0017', '%', '&', '-']:
             remove_list.append(w)
             
+        # remove entries of the form 'Figure 4-2'
+        if w.startswith('Figure ') or w.startswith('Table '):
+            remove_list.append(w)
+
         if w in common_english.top_100_English_words:
             remove_list.append(w)
             continue
@@ -10696,6 +10773,14 @@ def remove_known_words(output_lines):
             continue
 
         if w in common_english.common_units:
+            remove_list.append(w)
+            continue
+
+        if is_value_range_units(w):
+            remove_list.append(w)
+            continue
+        
+        if is_value_units(w):
             remove_list.append(w)
             continue
 
@@ -10909,6 +10994,17 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        # take care of simple assignments, such as MTU=1500
+        if w.count('=') == 1:
+            ws=w.split('=')
+            if grand_union:
+                if ws[0] in grand_union and is_integer(ws[1]):
+                    remove_list.append(w)
+                    continue
+                if ws[0] in grand_union and is_value_units(ws[1]):
+                    remove_list.append(w)
+                    continue
+
         # normalize U+2013 to U+2D
         if '–' in w:
             wtransformed=w.replace('–', '-')
@@ -10936,6 +11032,10 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         # if len(w) > 2 and w[0:2] == '& ': # unnecessary with the remove_prefixes() above
         #     w=w[2:]
         w=w.strip()
+
+        # replace double spaces in a word with a single space
+        if '  ' in w:
+            w=w.replace('  ', ' ')
 
         if len(w) == 0:
             continue
@@ -10977,9 +11077,6 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if is_hex_number(w):
             continue
         
-        if is_integer_range_or_ISSN(w):
-            continue
-
         if is_ISO_date(w):
             continue
         
@@ -10989,7 +11086,16 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if is_TRITA_number(w):
             continue
         
+        if is_value_range_units(w):
+            continue
+        
+        if is_value_units(w):
+            continue
+        
         if is_value_dash_units(w):
+            continue
+
+        if is_integer_range_or_ISSN(w):
             continue
 
         # remove conference years
@@ -11009,6 +11115,8 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if w.count('=') == 1:
             ws=w.split('=')
             if ws[0] in grand_union and is_integer(ws[1]):
+                continue
+            if ws[0] in grand_union and is_value_units(ws[1]):
                 continue
 
         if w in acronym_filter_set:
@@ -11085,10 +11193,22 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
                     continue
                 if is_ISBN(ww):
                     continue
-                if is_integer_range_or_ISSN(ww):
+                if is_value_range_units(ww):
+                    continue
+                if is_value_units(ww):
                     continue
                 if is_value_dash_units(ww):
                     continue
+                if is_integer_range_or_ISSN(ww):
+                    continue
+                # take care of simple assignments, such as MTU=1500
+                if ww.count('=') == 1:
+                    ws=ww.split('=')
+                    if ws[0] in grand_union and is_integer(ws[1]):
+                        continue
+                    if ws[0] in grand_union and is_value_units(ws[1]):
+                        continue
+
                 if ww in acronym_filter_set:
                     print(f"{ww} found in acronym_filter_set")
                     continue
@@ -13695,6 +13815,7 @@ def main():
     global acronyms_text
     global acronyms_dict
     global well_known_acronyms
+    global grand_union
 
     parser = optparse.OptionParser()
     parser.add_option('-v', '--verbose',
@@ -13762,23 +13883,6 @@ def main():
 
         output_lines = [l for l in output_lines if l not in acronyms_dict.values()]
 
-    # remove unnecessary capitals
-    output_lines = [l for l in output_lines if l.lower() not in output_lines]
-
-    author_et_al = [l for l in output_lines if l.endswith(' et alii')]
-    authors = [l[:-6] for l in output_lines if l.endswith(' et alii')]
-    output_lines = [l for l in output_lines if l not in author_et_al]
-
-    # drop strings with unerscores, as these are not words, but probably variables
-    output_lines = [l for l in output_lines if '_' not in l]
-
-    # drop strings with '==', as these are not words, but probably an equation
-    output_lines = [l for l in output_lines if '==' not in l]
-
-    # remove suffixes and prefixes
-    output_lines = remove_suffixes(output_lines)
-    output_lines = remove_prefixes(output_lines)
-
     well_known_acronyms = [a[0] for a in common_acronyms.well_known_acronyms_list]
 
     # augment the well_known_acronyms with plurals
@@ -13799,33 +13903,6 @@ def main():
 
     for w in well_known_acronym_filter_set:
         well_known_acronyms.append(w)
-
-    remove_list = remove_known_words(output_lines)
-    remove_list = set(remove_list)
-    if Verbose_Flag:
-        print(f"to remove from output_lines: {remove_list=}")
-
-    output_lines = [l for l in output_lines if l not in remove_list]
-
-    processed_text = "\n".join(output_lines)
-
-    # Write the processed text to the output file
-    with open(output_txt, "w", encoding="utf-8") as out_file:
-        out_file.write(processed_text)
-        
-    print(f"Successfully extracted and processed text to '{output_txt}'.")
-
-    # Convert the list to a set to get unique terms
-    unique_terms_set = set(output_lines)
-
-    # Convert the set back to a list and sort it alphabetically
-    unique_terms_sorted = sorted(list(unique_terms_set))
-    processed_text = "\n".join(unique_terms_sorted)
-
-    output_txt_unique = base_output_name + "-unique.txt"
-    # Write the processed text to the output file
-    with open(output_txt_unique, "w", encoding="utf-8") as out_file:
-        out_file.write(processed_text)
 
     grand_union = set()
     for w in common_english.top_100_English_words:
@@ -13917,20 +13994,60 @@ def main():
 
     for w in common_swedish.common_swedish_words:
         grand_union.add(w)
-        continue
 
     for w in common_swedish.common_Swingish_words:
         grand_union.add(w)
-        continue
 
     for w in common_swedish.common_swedish_technical_words:
         grand_union.add(w)
-        continue
 
     for w in common_swedish.KTH_ordbok_Swedish_with_CEFR:
         grand_union.add(w)
-        continue
+
+    # remove unnecessary capitals
+    output_lines = [l for l in output_lines if l.lower() not in output_lines]
+
+    author_et_al = [l for l in output_lines if l.endswith(' et alii')]
+    authors = [l[:-6] for l in output_lines if l.endswith(' et alii')]
+    output_lines = [l for l in output_lines if l not in author_et_al]
+
+    # drop strings with unerscores, as these are not words, but probably variables
+    output_lines = [l for l in output_lines if '_' not in l]
+
+    # drop strings with '==', as these are not words, but probably an equation
+    output_lines = [l for l in output_lines if '==' not in l]
+
+    # remove suffixes and prefixes
+    output_lines = remove_suffixes(output_lines)
+    output_lines = remove_prefixes(output_lines)
+
+    remove_list = remove_known_words(output_lines)
+    remove_list = set(remove_list)
+    if Verbose_Flag:
+        print(f"to remove from output_lines: {remove_list=}")
+
+    output_lines = [l for l in output_lines if l not in remove_list]
+
+    processed_text = "\n".join(output_lines)
+
+    # Write the processed text to the output file
+    with open(output_txt, "w", encoding="utf-8") as out_file:
+        out_file.write(processed_text)
         
+    print(f"Successfully extracted and processed text to '{output_txt}'.")
+
+    # Convert the list to a set to get unique terms
+    unique_terms_set = set(output_lines)
+
+    # Convert the set back to a list and sort it alphabetically
+    unique_terms_sorted = sorted(list(unique_terms_set))
+    processed_text = "\n".join(unique_terms_sorted)
+
+    output_txt_unique = base_output_name + "-unique.txt"
+    # Write the processed text to the output file
+    with open(output_txt_unique, "w", encoding="utf-8") as out_file:
+        out_file.write(processed_text)
+
     # if 'offloading' in grand_union:
     #     print("'offloading' is in grand_union")
 

@@ -1419,6 +1419,7 @@ common_English_words={
     'October': {'A1': 'Noun'},
     'November': {'A1': 'Noun'},
     'December': {'A1': 'Noun'},
+
     # range of months
     'August-November': {'B2': 'Noun Phrase'},
     'December–February': {'A2': 'Noun Phrase'},
@@ -60685,6 +60686,117 @@ common_English_words={
     'frost-thaw': {'B2 (Specialized)': 'Noun, Adjective'},  # Common technical concept in geology/engineering
     'administrations': {'B2': 'Noun (plural)'},  # Common academic/business/political term
     'streets': {'A1': 'Noun (plural)'},  # Basic, core vocabulary word
+    'east-central': {'B1': 'Adjective'}, # Common geographical descriptor
+    'theorists': {'C1': 'Noun (plural)'}, # Abstract academic noun
+    'shadows': {'A2': 'Noun (plural), Verb (third person singular)'}, # Noun: plural; Verb: 3rd person sing. Basic, core word.
+    '3D-printed': {'B2 (Specialized)': 'Adjective'},  # Technical descriptor for an additive manufacturing process
+    'co-operation': {'B2': 'Noun'}, # Common academic/business/political term (UK spelling of cooperation)
+    'pseudocolour': {'C1 (Specialized)': 'Noun, Adjective'}, # Technical term in data visualization/imaging 
+    'corridors': {'A2': 'Noun (plural)'}, # Common word for "hallways"
+    'posited': {'C1': 'Verb'}, # Past tense/participle of "posit," a formal academic verb
+    'reforms': {'B2': 'Noun (plural), Verb'}, # Common political/economic term
+    'rhythms': {'B1': 'Noun (plural)'}, # Common term (music, biology, general)
+    'starts': {'A1': 'Noun (plural), Verb'},  # Basic, core vocabulary word
+    'centring': {'B2': 'Verb, Noun'},  # UK spelling of "centering." Gerund/participle of the verb "to centre."
+    'Mg-rich': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Magnesium-rich)
+    'hematite': {'B2 (Proper Noun)': 'Noun'}, # Foundational mineral name in geology/ironmaking
+    'ironmaking': {'B2 (Specialized)': 'Noun'},  # Foundational industrial process
+    'inclusions': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract concept in materials science
+    'deoxidation': {'C1 (Specialized)': 'Noun'}, # Specific chemical/metallurgical process
+    'silicates': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational class of chemical compounds
+    'laboratory-reduced': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'CaO-rich': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Calcium Oxide-rich)
+    'H2-cooled': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Hydrogen-cooled)
+    'NiCr-basket': {'B2 (Specialized)': 'Noun'}, # Technical term for a piece of equipment (Nickel-Chromium)
+    'CO2': {'A2 (Proper Noun)': 'Noun'}, # Common chemical formula
+    'vol%H2O': {'C1 (Specialized)': 'Noun'}, # Technical unit of concentration (volume percent)
+    'vol%N2': {'C1 (Specialized)': 'Noun'}, # Technical unit of concentration (volume percent)
+    'S-shaped': {'B1': 'Adjective'}, # Common descriptive term
+    'N2-cooled': {'B2 (Specialized)': 'Adjective'},  # Technical descriptor (Nitrogen-cooled)
+    'compositions': {'B1': 'Noun (plural)'}, # Common general/scientific term
+    'dilutes': {'B2': 'Verb'}, # 3rd person singular of "dilute"
+    'furnace-EAF': {'C1 (Specialized)': 'Noun'}, # Technical term (Electric Arc Furnace)
+    'furnace-reduced': {'B2 (Specialized)': 'Adjective'}, # Technical process descriptor
+    'furnacereduced': {'B2 (Specialized)': 'Adjective'}, # Technical process descriptor
+    'gas-tight': {'B2 (Specialized)': 'Adjective'}, # Common technical/engineering descriptor
+    'grains': {'A2': 'Noun (plural)', 'B2 (Specialized)': 'Noun (plural)'}, # A2: Food. B2: Materials science (e.g., crystal grains)
+    'ingoing': {'B1': 'Adjective'}, # Common term, synonym for "incoming"
+    'laboratory-produced': {'B2 (Specialized)': 'Adjective'}, # Common scientific descriptor
+    'laboratoryscale': {'B2 (Specialized)': 'Adjective/Noun'}, # Common scientific descriptor (laboratory-scale)
+    'micrographs': {'C1 (Specialized)': 'Noun (plural)'}, # NOTE: Spelling corrected from 'microraphs'. Technical term for images from a microscope.
+    'scrapbased': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (scrap-based)
+    'seals': {'A2': 'Noun (plural)/Verb'}, # Noun: e.g., animals, or things that seal. Verb: 3rd person sing.
+    'semi-quantitatively': {'C1 (Specialized)': 'Adverb'}, # Abstract scientific/analytic term
+    'spheres': {'A2': 'Noun (plural)'},  # Basic geometric shape
+    'wüstite': {'C1 (Proper Noun)': 'Noun'},  # Specific mineral name (iron(II) oxide)
+    'magnesiowüstite': {'C1 (Proper Noun)': 'Noun'},  # Specific mineral name (geology/materials science)
+    'K-radiation': {'C1 (Proper Noun)': 'Noun'}, # Specific, advanced concept in physics (e.g., K-shell radiation)
+    'vol%H2': {'C1 (Specialized)': 'Noun'},  # Technical unit of concentration (volume percent)
+    'Earth': {'A2': 'Noun'},
+    'D-shaped': {'A2': 'Adjective'}, # Simple descriptive shape
+    'nonresonant': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in physics/engineering
+    'on-axis': {'B2 (Specialized)': 'Adjective, Adverb'}, # Common technical term (physics/optics)
+    'toroidally': {'C1 (Specialized)': 'Adverb'},  # Abstract technical term (related to a torus)
+    'Fourier-decoupled': {'C1 (Specialized)': 'Adjective'}, # Abstract technical concept (math/physics)
+    'helicity': {'C1 (Specialized)': 'Noun'}, # Abstract concept in physics/math
+    'b-field': {'B2 (Specialized)': 'Noun'}, # Foundational concept in physics (magnetic field)
+    'islands': {'A1': 'Noun (plural)', 'C1 (Specialized)': 'Noun (plural)'}, # A1: General. C1: e.g., "magnetic islands" in physics
+    'mode-decoupled': {'C1 (Specialized)': 'Adjective'}, # Abstract technical concept
+    'oceans': {'A2': 'Noun (plural)'}, # Common geographical term
+    'plasmashell': {'C1 (Specialized)': 'Noun'}, # Technical term (plasma physics)
+    'positive-semidefinite': {'C1 (Specialized)': 'Adjective'}, # Core, abstract mathematical concept
+    'positons': {'C1 (Specialized)': 'Noun (plural)'}, # Assuming "positrons." Specific particle physics term.
+    'side-band': {'B2 (Specialized)': 'Noun'}, # Foundational concept in signal processing
+    'Riccati equation': {'C1 (Proper Noun)': 'Noun'}, # Specific, advanced type of differential equation
+    'radiodynamics': {'C1 (Specialized)': 'Noun'}, # Specific, advanced field of physics
+    'masks': {'A1': 'Noun, Verb', 'B2 (Specialized)': 'Noun (plural)'}, # A1: General (e.g., face masks). B2: Technical (e.g., bitmasks)
+    'StorageClass': {'B2 (Specialized)': 'Noun (Proper Noun)'}, # Specific, foundational concept (e.g., in Kubernetes or C++)
+    'C-STORE': {'B2 (Proper Noun)': 'Noun'}, # Specific, foundational operation name in the DICOM protocol
+    'AI-enhanced': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'AI-augmented': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'AI-produced': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'Ada-Boost': {'B2 (Proper Noun)': 'Noun'}, # Foundational ML algorithm
+    'Conv-Batch-ReLU': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational deep learning block
+    'decathlon': {'B2 (Proper Noun)': 'Noun'}, # e.g., Medical Segmentation Decathlon (MSD)
+    'FedCurv': {'C1 (Proper Noun)': 'Noun'}, # Specific, advanced federated learning algorithm
+    'FedOpt': {'C1 (Proper Noun)': 'Noun'}, # Specific, advanced federated learning algorithm
+    'FedProx': {'C1 (Proper Noun)': 'Noun'}, # Specific, advanced federated learning algorithm
+    'fissures': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational anatomical term (radiology)
+    'GitOps-based': {'B2 (Specialized)': 'Adjective'}, # Specific IT methodology
+    'hyperintensity': {'C1 (Specialized)': 'Noun'}, # Abstract, foundational concept (radiology/MRI)
+    'multitasking': {'B1 (Specialized)': 'Noun'}, # Foundational computing/ML concept
+    'nasopharyngeal carcinoma': {'C1 (Specialized)': 'Noun Phrase'}, # Specific medical diagnosis
+    'PACS-based': {'B1 (Specialized)': 'Adjective'}, # Foundational medical IT concept
+    'PACS-integrated': {'B1 (Specialized)': 'Adjective'}, # Foundational medical IT concept
+    'PCA-based': {'B2 (Proper Noun)': 'Adjective'}, # Based on a foundational statistical method
+    'radiomics-based': {'C1 (Specialized)': 'Adjective'}, # Based on an advanced, specific field
+    'reloaded': {'B1': 'Adjective, Verb'}, # Common computing term
+    'RoleBinding': {'B2 (Proper Noun)': 'Noun'}, # Specific, foundational object in Kubernetes
+    'U-Net-like': {'B2 (Proper Noun)': 'Adjective'}, # Based on a foundational ML architecture
+    'VM-based': {'B1 (Specialized)': 'Adjective'}, # Foundational IT concept (Virtual Machine)
+    'ViT-based': {'C1 (Proper Noun)': 'Adjective'}, # Based on an advanced ML architecture (Vision Transformer)
+    'well-curated': {'B2': 'Adjective'}, # Common academic/data science phrase
+    'worklist': {'B1 (Specialized)': 'Noun'}, # Foundational concept in medical IT/PACS
+    'auto-segmentation': {'B2 (Specialized)': 'Noun'}, # Specific task in medical imaging/ML
+    'extracts': {'B1': 'Verb (third person singular), Noun'}, # Verb: 3rd person sing.; Noun: plural. Common.
+    'intersects': {'B1': 'Verb (third person singular)'}, # 3rd person singular. Common general/math verb.
+    'multi-head self-attention': {'C1 (Specialized)': 'Noun Phrase'}, # Core, abstract concept in ML (Transformers)
+    'non-DICOM': {'B1 (Specialized)': 'Adjective'}, # Technical descriptor (medical IT)
+    'partnerships': {'B1': 'Noun (plural)'}, # Common business term
+    'pop-ups': {'A2': 'Noun (plural)'}, # Common computing/general term
+    'pre-treatment': {'B2 (Specialized)': 'Noun, Adjective'}, # Common medical/scientific term
+    'provisioners': {'B2 (Specialized)': 'Noun (plural)'}, # Technical term in IT/cloud computing
+    're-schedules': {'B1': 'Verb'}, # 3rd person singular verb
+    'slice-wise': {'B2 (Specialized)': 'Adjective, Adverb'}, # Common descriptor in medical imaging
+    'wholebody': {'B1 (Specialized)': 'Adjective'}, # Common medical term (whole-body)
+    'inter-phase': {'C1 (Specialized)': 'Adjective/Noun'}, # Abstract concept in physics/chemistry/materials
+    'anatomy-aware': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in medical AI/imaging
+    'multi-format': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    '4D': {'B1 (Specialized)': 'Adjective'}, # Common technical/scientific descriptor
+    'whole-lung': {'B1 (Specialized)': 'Adjective'},  # Common medical/imaging descriptor
+    'MONAI-based': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor (based on a specific framework)
+    'MONet-compatible': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor (based on a specific ML model)
+    'FROC@0': {'C1 (Specialized)': 'Noun'},  # Specific, abstract statistical/ML metric (Free-response Receiver Operating Characteristic)
     #GQMe
 
 }
@@ -60937,6 +61049,26 @@ chemical_elements={
 
 
 chemical_names_and_formulas=[
+    'Deuterium-Deuterium',
+    '4He',
+    'T→4He',
+    'Li6',
+    'He4',
+    'Li7',
+    '3H2O',
+    'MoSi2',
+    'CaO-SiO2-FeO',
+    'Fe-Cr-Al',
+    'H2-N2',
+    'P2O5',
+    'H2→Fe',
+    'V2O3',
+    'Fe3O4',
+    'MnO',
+    'Fe2O3→Fe3O4→Fe',
+    'Fe2O3→Fe3O4→FeO→Fe',
+    'H2O-H2',
+    'CaTiO3',
     'Ni⁴⁺',
     'Nickel-Manganese-Cobalt-Oxide',
     'Lithium-Iron-Phosphate',
@@ -62985,7 +63117,6 @@ place_names=[
     'Morocco',
     'Ulm',
     'Reykjavik',
-    'Skelleftea',
 
     #GQMp
 
@@ -69546,7 +69677,7 @@ company_and_product_names=[
     'vCores',
     'vDmax',# diva2:538857
     'vPro',
-    'vSphere',
+    'vSphere', # a VM
     'vanillaDQN',
     'vi',
     'vision/machine',
@@ -75647,12 +75778,84 @@ company_and_product_names=[
     'Mistra',
     'InfraMaint',
     'Inframaint',
-
+    'Dialux', # lamp vendor
+    'Dialux Evo', # lamp
+    'Evo',  # lamp
+    '12464-1', # European lighting standard EN 12464-1
+    'Annell', # lighting manufacturer
+    'Nexia', # lighting manufacturer
+    'Fagerhult', # lighting manufacturer
+    'ERCO', # lighting manufacturer
+    'SWECO Architects',
+    'SWECO',
+    'TRILUX Lighting Limited',
+    'Casa dei Bambini', # Montessori's school
+    'LabSoft', #  software
+    'ISIJ International',
+    'Hybrit Development AB',
+    'ZEISS',
+    'Swerim AB',
+    'Zeiss Axio Imager',
+    'Ohaus Explorer EX2202',
+    'EX2202',
+    'Ohaus Explorer',
+    'Ohaus',
+    'Vaisala HMP3',
+    'HMP3',
+    'Vaisala',
+    'EL-FLOW', # Bronkhorst EL-FLOW select flow meters
+    'Bronkhorst',
+    'LECO',
+    'SS111116', # Swedish Standard 111116:2019
+    'G8 Galileo BRUKER machine',
+    'BRUKER G8 Galileo',
+    'G8 Galileo',
+    'D-TACQ Solution Ltd',
+    'JT-60SA', # tokamak in Japan
+    'Acta Ophthalmologica', # journal
+    'TotalSegmentator',
+    'Swin RetinaUNeTR',
+    'Adagrad', # optimizer
+    'ArgoCD',
+    'AutoPET', # dataset
+    'Calico', # a Container Network Interface
+    'CloudStack', # a VM
+    'DICOMWeb', # the DICOM web interface
+    'MONAI Deploy',
+    'MONAI Label',
+    'ITK-SNAP', # visualization tool
+    'JupyterHub',
+    'KUH dataset',
+    'Kaapana', # platform
+    'KubeFlow',
+    'Kubelet',
+    'Kubernetes',
+    'MicroK8s',
+    'Minikube',
+    'MLFlow', # tool for lifecycle management
+    'MinIO', # a cloud storage solution
+    'NVFlare',
+    'OpenFL',
+    'OHIF', # viewer
+    'QuPath', # for digital pathology
+    'RetinaUNeTR', # model
+    'RetinaUNet',
+    'SCAPIS', # dataset
+    'SPIE', # organization
+    'SVM-18', # model
+    'TorchIO',
+    'TorchScript',
+    'Traefik',
+    'UNeTR',
+    'V-Net',
+    'XNAT', # platform for managing imaging data and integrating AI applications
+    'nnDetection',
 ]
 
 
 
 common_programming_languages=[ # libraries and functions
+    'BLAS',
     'Libsim',
     'CuPy',
     'OpenMPI',
@@ -82152,6 +82355,112 @@ names_of_persons=[
     'Polukarova',
     'Roya',
     'Amelie',
+    'Hasso',
+    'Plattner',
+    'Istance',
+    'Kools',
+    'Montessori',
+    'Wannarka',
+    'Ruhl',
+    'Lueder',
+    'Ananiadou',
+    'Claro',
+    'Looney',
+    'Collard',
+    'Rogoff',
+    'Tsoukala',
+    'Hathaway',
+    'Spear',
+    'Rani',
+    'Kerstin',
+    'Nicklas',
+    'Angelaki',
+    'Triantafyllidis',
+    'Bodin',
+    'Danielsson',
+    'Pllana',
+    'Michailidis',
+    'Barrouillet',
+    'Besenecker',
+    'Salinas',
+    'Bakirtzis',
+    'Rigolon',
+    'Dudek',
+    'Heschong',
+    'Kozulin',
+    'Boyce',
+    'Eto',
+    'Higuchi',
+    'Crowley',
+    'Eastman',
+    'Dorst',
+    'Liljefors',
+    'Ejhed',
+    'Torrance',
+    'Bjögvinsson',
+    'Erling',
+    'Per-Anders',
+    'Braddick',
+    'Brickenkamp',
+    'Zillmer',
+    'Cremin',
+    'Gest',
+    'Rodkin',
+    'Helene',
+    'Gelderblom',
+    'Jeon',
+    'Kyriaki',
+    "L’Ecuyer",
+    'Neufert',
+    'Panero',
+    'Zelnik',
+    'Tashakkori',
+    'Uslu-Kocabaş',
+    'Bavlı',
+    'Hedda',
+    'Pousette',
+    'Joar',
+    'Huss',
+    'Brännberg',
+    'Fogelström',
+    'Kojola',
+    'Sichen',
+    'Du',
+    'Hessling',
+    'Pei',
+    'Hyllander',
+    'Riesbeck',
+    'Fredriksson',
+    'Teodor',
+    'Jönsson',
+    'Vickerfält',
+    'Ilmakangas',
+    'Kazemi',
+    'Özgün',
+    'Heidari',
+    'Newcomb',
+    'Eddington',
+    'Suydam',
+    'Wendelstein',
+    'Riccati',
+    'Raeme',
+    'Konstancija',
+    'Kisonaite',
+    'Faisal',
+    'Bendazzoli',
+    'Fabritius',
+    'Hjelmgren',
+    'Lidén',
+    'Marcel',
+    'Früh',
+    'Sergios',
+    'Gatidis',
+    'Spahr',
+    'Xiangde',
+    'Luo',
+    'Yunxin',
+    'Zhong',
+    'Zhaohua',
 
 ]
 
@@ -82409,6 +82718,8 @@ common_latin_words=[
     'Nota',
     'Salmo', # salmon - diva2:817628 - Salmo salar L. and Salmo trutta L.
     'Theorema',
+    'Acta', # plural of actum) translates to "acts," "deeds," "transactions," "records," or "proceedings"
+    'Ophthalmologica', # adjectival form related to ophthalmology,
     'ab',
     'ad', # ad hoc
     'ad-hoc',
@@ -82461,6 +82772,11 @@ common_portuguese_words=[
     'da',
     'Atmosfera',
 ]
+
+common_russian_words={
+    'toroidalnaya kamera magnitnaya katushka', # toroidal chamber with magnetic coils - basis of the term "tokamak"
+
+    }
 
 common_spanish_words={
     'Bueno': {'A1': 'Adjective'},
@@ -82521,6 +82837,7 @@ language_tags={
 }
 
 miss_spelled_words=[
+    'Skelleftea', # a miss-spelling
     'forkarskolan', # should be 'forskarskolan'
     'sligthly',
     'bining',
@@ -84077,6 +84394,7 @@ common_units={
     '€/tonne': {'A2': 'Unit'}, 
     '€/year': {'A2': 'Unit'}, 
     'Ω': {'B1': 'Unit'}, #  of electrical resistance - ohm
+    'W': {'A2': 'Unit'}, # Watt
     'W/mK': {'B1': 'Unit'}, #  Watts per Metre Kelvin (W/mK) - for assesing insulation
     'Wh': {'B1': 'Unit'}, # Watt hour - see diva2:1764511
     '°/s': {'B1': 'Unit'}, # degrees per second
@@ -84084,8 +84402,10 @@ common_units={
     'NOK/kWh': {'B2': 'Unit'},  # Norwegian Krone per kilowatt-hour - Unit of energy cost
     'Wh/kg': {'B1': 'Unit'},
     'Wh/km': {'B1': 'Unit'},
-
-
+    'L/min': {'B1': 'Unit'},
+    '°C/min': {'B1': 'Unit'},
+    'kW/m2': {'B1': 'Unit'}, # kW per square meter
+    'eV': {'B1': 'Unit'}, # electron Volt
 }
 
 
