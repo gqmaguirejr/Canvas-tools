@@ -1680,7 +1680,12 @@ common_English_words={
     'Zulu': {'B2': 'Noun, Demonym'},
     'Bothnian': {'B2': 'Noun, Demonym'},
     'Botswanan': {'B2': 'Noun, Demonym'},
-
+    'Colombians': {'A2': 'Noun (plural)'}, # Demonym
+    'Ghanian': {'A2': 'Adjective/Noun'}, # Demonym (Standard spelling is 'Ghanaian')
+    'Kenyans': {'A2': 'Noun (plural)'}, # Demonym
+    'Libyans': {'A2': 'Noun (plural)'}, # Demonym
+    'Malays': {'A2': 'Noun (plural)'}, # Demonym/ethnic group
+    'Mexicans': {'A2': 'Noun (plural)'}, # Demonym
 
     # Political/Philosophical/Religious/... labels
     "Shi'i": {'B2': 'Noun, Adjective, Demonym'},
@@ -60935,6 +60940,195 @@ common_English_words={
     'radiolabelling': {'C1 (Specialized)': 'Noun, Verb'}, # UK spelling. Specific scientific technique.
     'neutralisation': {'B2 (Specialized)': 'Noun'}, # UK spelling. Foundational concept in chemistry/biology.
     'N-termini': {'B2 (Specialized)': 'Noun (plural)'},  # Foundational concept in biochemistry (N-terminus)
+    'bacteriophage': {'C1': 'Noun'},
+    'fluorescence': {'C1 (Specialized)': 'Noun'},
+    'Knottin scaffold proteins': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced class of proteins (bioengineering)
+    'reversely': {'B2': 'Adverb'}, # Common formal/academic adverb
+    'PASylation': {'C1 (Specialized)': 'Noun'}, # Specific, abstract process in biochemistry
+    'PEGylation': {'C1 (Specialized)': 'Noun'}, # Specific, abstract process in biochemistry
+    'XTENylation': {'C1 (Proper Noun)': 'Noun'},  # Specific, branded biotechnical process
+    'gallium-68-radiolabelled': {'C1 (Proper Noun)': 'Adjective'}, # Compound technical/scientific descriptor
+    'PNA-conjugated radionuclide': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical/scientific term
+    'contemplating': {'C1': 'Verb'}, # Gerund/participle of an abstract verb
+    'contrastingly': {'C1': 'Adverb'}, # Formal academic adverb
+    'countries': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'dissonant': {'C1': 'Adjective'}, # Abstract concept (disagreement)
+    'globalisation': {'B2': 'Noun'}, # UK spelling. Common but abstract concept.
+    'evenings': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'hyper-competition': {'C1 (Specialized)': 'Noun'}, # Specific, abstract term (business/economics)
+    'meritocratic': {'C1': 'Adjective'}, # Abstract political/social concept
+    'mobilities': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract academic term (e.g., social mobilities)
+    'overarchingly': {'C1': 'Adverb'}, # Formal, abstract academic adverb
+    'PhD-level': {'B2 (Specialized)': 'Adjective'}, # Common academic descriptor
+    're-rigging': {'C1': 'Verb/Noun'}, # Abstract concept of re-configuring/manipulating
+    'rejoining': {'B1': 'Verb/Noun'}, # Gerund/participle of a common verb
+    'scholarships': {'B1': 'Noun (plural)'}, # Common academic/financial term
+    'sub-sections': {'A2': 'Noun (plural)'}, # Basic organizational term
+    'Sweden-financed': {'B1': 'Adjective'}, # Compound descriptor
+    'theorization': {'C1': 'Noun'}, # Abstract academic process
+    'typified': {'C1': 'Verb'},  # Past tense/participle of a formal academic verb
+    'US-trained': {'B1': 'Adjective'}, # Compound descriptor
+    'USA-centric': {'C1': 'Adjective'}, # Abstract political/academic concept
+    'apprehended': {'C1': 'Verb'}, # Past tense/participle (in the sense of "to understand")
+    'awardees': {'B2': 'Noun (plural)'}, # Formal administrative/academic term
+    'awards': {'A2': 'Noun (plural), Verb'}, # Basic, core vocabulary
+    'beings': {'A2': 'Noun (plural)'}, # e.g., "human beings"
+    'coloniality': {'C1 (Specialized)': 'Noun'}, # Abstract academic concept (post-colonial theory)
+    'conceptualizations': {'C1': 'Noun (plural)'}, # Abstract academic term
+    'conjunctures': {'C1': 'Noun (plural)'}, # Formal academic term
+    'conventions': {'B2': 'Noun (plural)'}, # Common academic/social term
+    'creativeness': {'B2': 'Noun'}, # Abstract noun
+    'critiqued': {'C1': 'Verb'}, # Past tense/participle of a formal academic verb
+    'degree-focused': {'B1': 'Adjective'}, # Compound descriptor
+    'depreciated': {'B2': 'Verb'}, # Past tense/participle
+    'discourses': {'C1 (Specialized)': 'Noun (plural)'}, # Core, abstract academic concept
+    'ecosystemic': {'C1 (Specialized)': 'Adjective'}, # Abstract scientific/academic term
+    'epitomizes': {'C1': 'Verb'}, # 3rd person sing. of 'epitomize'
+    'framings': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract academic concept
+    'helpfully': {'B1': 'Adverb'}, # Common adverb
+    'highly-skilled': {'B1': 'Adjective'}, # Compound descriptor
+    'histories': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'imaginaries': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract academic concept (social theory)
+    'inelegantly': {'C1': 'Adverb'}, # Formal, abstract adverb
+    'institutionalism': {'C1 (Specialized)': 'Noun'}, # Abstract academic field/theory
+    'institutionalist': {'C1 (Specialized)': 'Noun/Adjective'}, # Follows from above
+    'intellects': {'C1': 'Noun (plural)'}, # Abstract noun
+    'intra-EU': {'B2 (Specialized)': 'Adjective'}, # Compound descriptor
+    'journals': {'B1': 'Noun (plural)'}, # Common academic term
+    'lengths': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'logics': {'C1 (Specialized)': 'Noun (plural)'}, # Academic use (e.g., "different logics")
+    'loves': {'A1': 'Verb, Noun'}, # Basic, core vocabulary
+    'mobilities': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract academic term (e.g., social mobilities)
+    'non-EU': {'B1 (Specialized)': 'Adjective'}, # Compound descriptor
+    'non-return': {'B2': 'Noun, Adjective'}, # Common concept in migration/policy
+    'non-returning': {'B2': 'Adjective'}, # Compound descriptor
+    'norms': {'B2': 'Noun (plural)'}, # Common academic/social term
+    'out-migration': {'B2 (Specialized)': 'Noun'}, # Formal academic term (sociology/geography)
+    'pandemic-related': {'B1': 'Adjective'}, # Compound descriptor
+    'petitioned': {'B2': 'Verb'}, # Past tense/participle
+    'post-Fordist': {'C1 (Specialized)': 'Adjective'}, # Abstract academic concept (sociology/economics)
+    'post-ISM': {'C1 (Specialized)': 'Adjective'}, # Highly specific/jargon term
+    'post-colonial': {'C1 (Specialized)': 'Adjective'}, # Abstract academic concept
+    'privileges': {'B2': 'Noun (plural), Verb'}, # Common academic/social term
+    'provocatively': {'C1': 'Adverb'}, # Formal/academic adverb
+    'question-sets': {'B1': 'Noun (plural)'}, # Common academic/survey term
+    'rationales': {'B2': 'Noun (plural)'}, # Common academic/business term
+    're-centered': {'B2': 'Adjective, Verb (Past tense/participle)'}, # Past tense/participle
+    're-formulation': {'C1': 'Noun'}, # Abstract academic process
+    'reassuringly': {'B2': 'Adverb'}, # Common adverb
+    'renewability': {'B2': 'Noun'}, # Abstract noun
+    'scholars': {'B1': 'Noun (plural)'}, # Common academic term
+    'scholarships': {'B1': 'Noun (plural)'}, # Common academic/financial term
+    'servants': {'B1': 'Noun (plural)'}, # e.g., "civil servants"
+    'sponsors': {'B1': 'Noun (plural), Verb'}, # Common business/academic term
+    'study-design': {'B2 (Specialized)': 'Noun'}, # Core methodological concept
+    'tempers': {'B2': 'Verb'}, # 3rd person singular verb
+    'theorizations': {'C1': 'Noun (plural)'}, # Abstract academic term
+    'touches': {'A1': 'Verb, Noun'}, # Basic, core vocabulary
+    'understandings': {'B1': 'Noun (plural)'}, # Common academic term
+    'vis-à-vis': {'C1': 'Preposition, Adverb'}, # Formal loanword
+    'Actor-Network-Theory': {'C1 (Proper Noun)': 'Noun'}, # Specific, abstract academic theory
+    'anglophone': {'B2': 'Adjective, Noun'}, # Common academic/political term
+    'Bourdieusian': {'C1 (Proper Noun)': 'Adjective'}, # Abstract academic concept (from Bourdieu)
+    'English-taught programs': {'B1': 'Noun Phrase'}, # Common academic term
+    'Foucauldian': {'C1 (Proper Noun)': 'Adjective'}, # Abstract academic concept (from Foucault)
+    'HCT-based': {'C1 (Specialized)': 'Adjective'}, # Abstract academic concept (Human Capital Theory)
+    'HCT-compelled': {'C1 (Specialized)': 'Adjective'}, # Abstract academic concept
+    'HCT-conceived': {'C1 (Specialized)': 'Adjective'}, # Abstract academic concept
+    'HCT-derived': {'C1 (Specialized)': 'Adjective'}, # Abstract academic concept
+    'HCT-inspired': {'C1 (Specialized)': 'Adjective'}, # Abstract academic concept
+    'HE-focused': {'B1 (Specialized)': 'Adjective'}, # Common academic descriptor (Higher Education)
+    'IGO-promoted': {'B2 (Specialized)': 'Adjective'}, # Compound academic descriptor (Intergovernmental Organization)
+    'impressionable': {'B2': 'Adjective'}, # Common general adjective
+    'meritbased': {'B2': 'Adjective'}, # (merit-based) Common academic/political concept
+    'Marxist-backgrounded': {'C1 (Specialized)': 'Adjective'}, # Compound academic descriptor
+    'Morena Party': {'B2 (Proper Noun)': 'Noun'}, # Specific political party name
+    'OW-based': {'C1 (Specialized)': 'Adjective'}, # Jargon, based on an acronym
+    'EC/SC-based': {'C1 (Specialized)': 'Adjective'}, # Jargon, based on an acronym
+    'EC/SC-grounded': {'C1 (Specialized)': 'Adjective'}, # Jargon, based on an acronym
+    'abroad': {'A2': 'Adverb'}, # Common, basic word
+    'actor-centered': {'B2 (Specialized)': 'Adjective'}, # Common social science concept
+    'admissions': {'B1': 'Noun (plural)'}, # Common academic/administrative term
+    'awardee': {'B2': 'Noun'}, # Formal administrative/academic term
+    'doctoral-level': {'B1 (Specialized)': 'Adjective'}, # Common academic descriptor
+    'graduates': {'A2': 'Noun (plural), Verb'}, # Basic academic term
+    'human-capital': {'C1 (Specialized)': 'Noun'}, # Core, abstract academic/economic concept
+    'inheres': {'C1': 'Verb'}, # 3rd person sing. of 'inhere'. Formal, abstract verb.
+    'justifications': {'B2': 'Noun (plural)'}, # Common academic/formal term
+    'program-participants': {'B1': 'Noun (plural)'}, # Common academic/administrative term
+    'sub-program': {'B1': 'Noun'}, # Common organizational term
+    'sub-programs': {'B1': 'Noun (plural)'},  # Plural of the above
+    'notions': {'B2': 'Noun (plural)'}, # Common abstract academic/formal term for "ideas"
+    'quotes': {'B1': 'Noun (plural), Verb (third person singular)'},  # Noun: "quotations" / Verb: 3rd person sing. "to quote"
+    'furthered': {'B2': 'Verb'}, # Past tense/participle of the formal verb "to further"
+    'loans': {'A2': 'Noun (plural), Verb'}, # Common financial term
+    'talisman': {'B2': 'Noun'}, # Abstract cultural object
+    'Morena Party': {'B2 (Proper Noun)': 'Noun'}, # Specific political party name
+    'Swedish-Indonesian': {'B1': 'Adjective'}, # Compound demonym
+    'WB-backed': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor (World Bank-backed)
+    'assurances': {'B2': 'Noun (plural)'}, # Common formal/political/business term
+    'that’s': {'A1': 'Contraction'}, # "that is" / "that has"
+    'abroad': {'A2': 'Adverb'},  # Common, basic word
+    'Actornetwork': {'C1 (Specialized)': 'Noun'}, # A variant spelling of 'Actor-Network', an abstract academic theory
+    'CSC-related': {'B2 (Proper Noun)': 'Adjective'}, # A compound descriptor based on a specific proper noun
+    'ISM-focused': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor (based on a specific program)
+    'ISM-involved': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor
+    'ISM-sponsored': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor
+    'LPDP-sponsored': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor (based on a specific program)
+    'disorders': {'B1': 'Noun (plural)'}, # Common medical/general term
+    'Duodenal Atresia': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific medical diagnosis
+    'English-centricity': {'C1': 'Noun'}, # Abstract academic/political concept
+    'fenofibrate': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'hallucinations': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract concept (medical, or AI/ML)
+    'hydroxychloroquine': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'LLM-as-a-judge': {'C1 (Specialized)': 'Noun Phrase'}, # Specific, advanced ML concept
+    'LLM-integrated': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'LLM-related': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'LLM-use': {'B2 (Specialized)': 'Noun'}, # Compound technical term
+    'misattributed': {'B2': 'Verb'}, # Past tense/participle
+    'multitask': {'B1 (Specialized)': 'Verb/Noun'}, # Foundational computing/ML concept
+    'overinvestigation': {'B2 (Specialized)': 'Noun'}, # Abstract concept (medical/academic)
+    'overprioritized': {'B2': 'Verb'}, # Past tense/participle
+    'overthinking': {'B1': 'Noun/Verb'}, # Common psychological term
+    'overvalued': {'B2': 'Verb'}, # Past tense/participle
+    'recognitions': {'B2': 'Noun (plural)'}, # Common formal/academic term
+    'safety-by-design': {'B2 (Specialized)': 'Noun'}, # Foundational engineering/IT concept
+    'safeuse guide': {'B1': 'Noun Phrase'}, # (safe-use guide) Common term
+    'sycophancy': {'C1': 'Noun', 'C1 (Specialized)': 'Noun'}, # C1: General. C1 (Specialized): Specific ML/AI bias
+    'vomiting': {'A2': 'Noun, Verb'}, # Common medical/general term
+    'abilities': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'anticoagulation': {'B2 (Specialized)': 'Noun'}, # Foundational medical concept
+    'aphasic': {'C1 (Specialized)': 'Adjective/Noun'}, # Specific medical term
+    'beliefs': {'A2': 'Noun (plural)'}, # Basic, core vocabulary
+    'bias-detection': {'B2 (Specialized)': 'Noun'}, # Core concept in ML/social science
+    'breaches': {'B2 (Specialized)': 'Noun (plural), Verb'}, # e.g., "security breaches"
+    'burdens': {'B2': 'Noun (plural)'}, # Common academic/medical term (e.g., "disease burden")
+    'co-PI': {'B2 (Specialized)': 'Noun'}, # Common academic role (Co-Principal Investigator)
+    'datasecurity': {'B1 (Specialized)': 'Noun'}, # (data security) Foundational IT concept
+    'display-mounted': {'B1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'drug-effect': {'B1 (Specialized)': 'Noun'}, # Compound medical/scientific term
+    'falls': {'A1': 'Verb/Noun', 'B1 (Specialized)': 'Noun (plural)'}, # A1: General. B1: Medical (e.g., "patient falls")
+    'hexokinase': {'C1 (Proper Noun)': 'Noun'}, # Specific enzyme
+    'indomethacin': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'journaling-based': {'B2 (Specialized)': 'Adjective'}, # Compound descriptor
+    'mothers': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'non-aphasic': {'C1 (Specialized)': 'Adjective'}, # Specific medical term
+    'patient-centric': {'B2 (Specialized)': 'Adjective'}, # Common medical/administrative concept
+    'preterms': {'B2 (Specialized)': 'Noun (plural)'}, # (preterm infants)
+    'reframes': {'C1': 'Verb, Noun'}, # Verb: 3rd person sing.; Noun: plural. Abstract academic concept.
+    'risk-stratified': {'C1 (Specialized)': 'Adjective'}, # Core medical/statistical concept
+    'speech-language': {'B2 (Specialized)': 'Adjective'}, # Common medical/academic field
+    'sycophancy': {'C1': 'Noun', 'C1 (Specialized)': 'Noun'}, # C1: General. C1 (Specialized): Specific ML/AI bias
+    'test-taking': {'B1': 'Noun'},  # Common academic concept
+    'AI-Driven': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'bottom-up innovation': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in business/sociology
+    'Human-AI Interaction': {'B2 (Proper Noun)': 'Noun'}, # Name of a specific academic/technical field (HCI/HAI)
+    'ferritin': {'C1 (Specialized)': 'Noun'}, # Specific protein
+    'glucokinase': {'C1 (Proper Noun)': 'Noun'}, # Specific enzyme
+    'realities': {'B1': 'Noun (plural)'}, # Common abstract noun
+    'remodeling': {'B2 (Specialized)': 'Noun, Verb'}, # Common general/scientific term (e.g., "tissue remodeling")
+    'Moravec’s paradox': {'C1 (Proper Noun)': 'Noun'}, # Specific, abstract concept in AI/robotics
+    'UXa design': {'B2 (Specialized)': 'Noun'},  # Specific professional field (User Experience)
     #GQMe
 
 }
@@ -63263,6 +63457,12 @@ place_names=[
     'Morocco',
     'Ulm',
     'Reykjavik',
+    'Groningen',
+    'Kazakhstan',
+    'Chiang Mai University',
+    'Kassel',
+    'Malta',
+    'Myanmar/Burma',
 
     #GQMp
 
@@ -76005,10 +76205,43 @@ company_and_product_names=[
     'Humira',
     'Incucyte',
     'Incucyte®',
-
-
-
+    'Herceptin', # trastuzumab
+    'Perjeta', # pertuzumab
+    'Retrogenix', # company
+    'Rituxan', # rituximab
+    'XTEN', # an engineered protein polymer - consisting of Alanine, Glutamic acid, Glycine, Proline, Serine, and Threonine
+    'pIII', # protein
+    'AlexaFluor', # brand of dye
+    'Alexa Fluor', # brand of dye
+    'Acimtamig', # bispecific antibody
+    'Izokibep', # a IL-17a-inhibiting affibody
+    'MAXQDA', # software package
+    'MacWhisper', # software program
+    'COLFUTURO', # Columbia public-private organization
+    'CONAHCYT', # a Mexican research council - includes humanities
+    'Politica Online', # publication 'La Politica Online'
+    'Isma - Listen Report', # publication
+    'ERASMUS', # EU program
+    'EU-ASEAN', # collaboration
+    'BECAS Chile',
+    'Claude-3',
+    'DeepSeek R1',
+    'DeepSeek-R1',
+    'DeepSeek',
+    'Empatica E4 wristband',
+    'GPT-4-t',
+    'Huggingface',
+    'PubMedQA', # dataset
+    'AphasiaBank', # database
+    'Farmi',
+    'Moca-MIS', # memory score
+    'ReSpeaker Mic Array v2',
+    'Wav2Vec2-Large-XLSR-53-Swedish',
+    'PQ-S-1000', # benchmark
+    'wav2vec2-xlsr-53-espeak-cv-ft',
+    'Pub-MedQA', # questions dataset
 ]
+
 
 
 
@@ -82668,6 +82901,501 @@ names_of_persons=[
     'Yingying',
     'Wouter',
     'Jurkat-Lucia',
+    'Acemoglu',
+    'Abdulrazak',
+    'Gurnah',
+    'Autor',
+    'Ackers',
+    'Airoldi',
+    'Alenda-Demoutiez',
+    'Boidin',
+    'Alford',
+    'Allea',
+    'Almassri',
+    'Altbach',
+    'Alvesson',
+    'Spicer',
+    'Amelina',
+    'Horvath',
+    'Andreotti',
+    'André',
+    'Andrés',
+    'López',
+    'Obrador',
+    'Anthias',
+    'Appadurai',
+    'Aragonés',
+    'Salgado',
+    'Marañón',
+    'Arceo',
+    'Ardiyanti',
+    'Arnove',
+    'Asheim',
+    'Auila',
+    'Rachman',
+    'Baas',
+    'Baaz',
+    'Parashar',
+    'Bach',
+    'Balfour',
+    'Barajas',
+    'Basford',
+    'Riemsdijk',
+    'Batifoulier',
+    'Bauman',
+    'Beckert',
+    'Bhandari',
+    'Mirza',
+    'Biesta',
+    'Bilecen',
+    'Faist',
+    'Van Mol',
+    'Bills',
+    'Birdsall',
+    'Blaug',
+    'Boltanski',
+    'Chiapello',
+    'Thévenot',
+    'Boucher',
+    'Bourdieu',
+    'Passeron',
+    'Brannick',
+    'Coghlan',
+    'Brinkmann',
+    'Brunei',
+    'Bryant',
+    'Bryman',
+    'Brysiewicz',
+    'Bueger',
+    'Gadinger',
+    'Burma',
+    'Bygnes',
+    'Erdal',
+    'Böker',
+    'Carli',
+    'Ammon',
+    'Carney',
+    'Castells',
+    'Cantwell',
+    'Maldonado-Maldonado',
+    'Cañibano',
+    'Woolley',
+    'Cendejas',
+    'Centeno',
+    'Chankseliani',
+    'Kwak',
+    'Chase-Dunn',
+    'Cheesman',
+    'Chiapello',
+    'Chiappa',
+    'Finardi',
+    'Chien',
+    'Chingman',
+    'Choudaha',
+    'Chulalongkorn',
+    'Clegg',
+    'Baumeler',
+    'Cloutier',
+    'Langley',
+    'Cowen',
+    'Crenshaw',
+    'Czarniawska',
+    'Dahmen',
+    'Dassin',
+    'Deaton',
+    'Dellnäs',
+    'Desrosières',
+    'Dewey',
+    'DiMaggio',
+    'Diaz-Bone',
+    'Diaz-bone',
+    'de Larquier',
+    'Didou',
+    'Aupetit',
+    'Dietrich',
+    'Dopson',
+    'Drori',
+    'Krücken',
+    'Dwi',
+    'Larso',
+    'Eckstein',
+    'Eftimoski',
+    'Elder-Vass',
+    'Elfert',
+    'Engberg',
+    'Engbersen',
+    'Faist',
+    'Falkenberg',
+    'Fazal',
+    'Rizvi',
+    'Fedasiuk',
+    'Findlay',
+    'Finnemore',
+    'Sikkink',
+    'Foucault',
+    'Fourcade',
+    'Fourcade-Gourinchas',
+    'Babb',
+    'Frenkel',
+    'Krolik',
+    'Gaalen',
+    'Gaddafi',
+    'Galeano',
+    'Gaunt',
+    'Geddie',
+    'Geschwind',
+    'Ghee',
+    'Goenawan',
+    'Gonzales',
+    'Graeber',
+    'Gribble',
+    'Grieco',
+    'Guggenheim',
+    'Potthast',
+    'Guillemette',
+    'Guinier',
+    'Görman',
+    'Gürüz',
+    'Gobierno de Mexico',
+    'Haapakoski',
+    'Haas',
+    'Van De Werfhorst',
+    'Halvorsen',
+    'Skauge',
+    'Hampton',
+    'Hanrieder',
+    'Hanushek',
+    'Woessmann',
+    'Hazelkorn',
+    'Hazen',
+    'Alberts',
+    'Hedström',
+    'Phyo',
+    'Heinich',
+    'Hensell',
+    'Heuts',
+    'Mol',
+    'Heyneman',
+    'Hirschman',
+    'Hjalmarsson',
+    'Hobsbawm',
+    'Hodgson',
+    'Hollinghurst',
+    'Holm-Nielsen',
+    'Holmqvist',
+    'Telling',
+    'Honneth',
+    'Horst',
+    'Olsen',
+    'Hudzik',
+    'Huisman',
+    'Huttenlocher',
+    'Hylmö',
+    'Igoe',
+    'Imdorf',
+    'Leemann',
+    'Immanuel',
+    'Wallerstein',
+    'Indrawati',
+    'Kuncoro',
+    'Indriani',
+    'Iredale',
+    'Iskander',
+    'Jabatan',
+    'Perkhidmatan',
+    'Awam',
+    'Jacobs',
+    'Jandhyala B',
+    'Jayadeva',
+    'Jeremy',
+    'Rappleye',
+    'Jessop',
+    'Joan',
+    'Dassin',
+    'Jumakulov',
+    'Juusola',
+    'Kohvakka',
+    'Räihä',
+    'Jöns',
+    'Kalimantan',
+    'Kamil',
+    'Kapur',
+    'McHale',
+    'Kasa',
+    'Kehm',
+    'Teichler',
+    'Keita',
+    'Keskiner',
+    'Gür',
+    'Klees',
+    'Koh',
+    'Komisi',
+    'Krannich',
+    'Krannich',
+    'Hunger',
+    'Krause-Jensen',
+    'Garsten',
+    'Krueger',
+    'Lindahl',
+    'Krugman',
+    'Krücken',
+    'Meier',
+    'Kuteeva',
+    'Airey',
+    'Chankseliani',
+    'Kälvemark',
+    'Van der Wende',
+    'Lafaye',
+    'Lally',
+    'Lamont',
+    'Larquier',
+    'Latour',
+    'Lauder',
+    'Leahy',
+    'Lembaga',
+    'Pengelola',
+    'Dana',
+    'Pendidikan',
+    'Leydesdorff',
+    'Etzkowitz',
+    'Lillis',
+    'Lindquist',
+    'Lindsay',
+    'Lowell',
+    'Findlay',
+    'Lingard',
+    'Lisimba',
+    'Parashar',
+    'Littler',
+    'Loerke',
+    'Lomer',
+    'Lopez-Murillo',
+    'Lubieniecka',
+    'Luc',
+    'Luchilo',
+    'Lukes',
+    'Lundin',
+    'Lundvall',
+    'Lèse-majesté',
+    'Löwenheim',
+    'Maggi',
+    'Maharaj',
+    'Maldonado',
+    'Moreira',
+    'Maldonado-Torres',
+    'Marecek',
+    'Marginson',
+    'Marin',
+    'Maringe',
+    'Foskett',
+    'Markovits',
+    'Mathews',
+    'Matt',
+    'Mawer',
+    'Mays',
+    'Åkerlund',
+    'Mazzarol',
+    'Soutar',
+    'McCloskey',
+    'McCowan',
+    'Mennicken',
+    'Salais',
+    'Mezirow',
+    'Michèle',
+    'Mignolo',
+    'Morén',
+    'Motha',
+    'Moura',
+    'Castro',
+    'Mijs',
+    'Moutsios',
+    'Mulvey',
+    'Muniesa',
+    'Murti',
+    'Musselin',
+    'Muttaqin',
+    'Ndaipa',
+    'Newman',
+    'Gough',
+    'Niharika',
+    'Nokkala',
+    'Normand',
+    'Novelli',
+    'Novera',
+    'Nowak',
+    'Nugraha',
+    'Ardiyanti',
+    'Nugraheny',
+    'Krisiandi',
+    'Nussbaum',
+    'Nylander',
+    'Nästesjö',
+    'Oldac',
+    'Olivas',
+    'Olssen',
+    'Peters',
+    'Oriza',
+    'Hanita',
+    'Orosz',
+    'Ozga',
+    'Parrillo',
+    'Pashby',
+    'Patriotta',
+    'Peidong',
+    'Pelawi',
+    'Perna',
+    'Phaithayawat',
+    'Pierson',
+    'Pietsch',
+    'Pininta',
+    'Kasih',
+    'Ploner',
+    'Poocharoen',
+    'Prazeres',
+    'Prensa',
+    'Psacharopoulos',
+    'Raghuram',
+    'Rainer',
+    'Rakhmani',
+    'Utomo',
+    'Rensimer',
+    'Resnik',
+    'Reuten',
+    'Ridder-Symoens',
+    'Robeyns',
+    'Romer',
+    'Rothstein',
+    'Stolle',
+    'Rowan',
+    'Sadikovic',
+    'Saling',
+    'Samkin',
+    'Schneider',
+    'Samoff',
+    'Carrol',
+    'Sandel',
+    'Sandin',
+    'Santos',
+    'Sardan',
+    'Piccoli',
+    'Sassen',
+    'Sasso',
+    'Ritzen',
+    'Schendel',
+    'Schneijderberg',
+    'Zavale',
+    'Schroeder',
+    'Schultz',
+    'Schulz',
+    'Scott-Smith',
+    'Seawright',
+    'Gerring',
+    'Segovia',
+    'Sellar',
+    'Zipin',
+    'Selvaratnam',
+    'Selznick',
+    'Shahjahan',
+    'Shih',
+    'Skarsgård',
+    'Sordi',
+    'Soss',
+    'Sridhar',
+    'Steger',
+    'Steiner-Khamsi',
+    'Draxler',
+    'Waldow',
+    'Stigler',
+    'Becker',
+    'Storen',
+    'Storper',
+    'Strangio',
+    'Suddaby',
+    'Sudrajat',
+    'Sunde',
+    'Vischer',
+    'Sunnerfjell',
+    'Sørensen',
+    'Tannock',
+    'Teferra',
+    'Thelen',
+    'Therborn',
+    'Tigau',
+    'Tikly',
+    'Tilak',
+    'Tirado',
+    'Tomlinson',
+    'Tholen',
+    'Tournès',
+    'Tremblay',
+    'Trilokekar',
+    'Trow',
+    'Tsing',
+    'Tuccio',
+    'Unluer',
+    'Vanichakorn',
+    'Velasco',
+    'Verger',
+    'Vertovec',
+    'Vessuri',
+    'Vu',
+    'Weber',
+    'Wendt',
+    'Westenholz',
+    'Whiteside',
+    'Mah',
+    'Wicaksono',
+    'Friawan',
+    'Xiang',
+    'Yaffe',
+    'Ylijoki',
+    'Yogyakarta',
+    'Ziai',
+    'Ziguras',
+    'Zuboff',
+    'Åkerlund',
+    'Åkerman',
+    'Åkerström',
+    'Addey',
+    'Arboniés',
+    'Castles',
+    'Jagd',
+    'Kenayathulla',
+    'Maldonado‐Maldonado',
+    'Ochs',
+    'Oketch',
+    'Wende',
+    'Morena',
+    'Claudia',
+    'Sheinbaum',
+    'Ambika',
+    'Birger',
+    'Moell',
+    'Moëll',
+    'Eje',
+    'Henter',
+    'Goedecke',
+    'Gustafsson',
+    'Hagman',
+    'Holleman',
+    'Kjellström',
+    'Krister',
+    'Kucherenko',
+    'Lameris',
+    'Lopes',
+    'Miia',
+    'Kivipelto',
+    'Olga',
+    'Mikheeva',
+    'Olov',
+    'Engwall',
+    'Pataka',
+    'Sanian',
+    'Akbar',
+    'Shivam',
+    'Cumbal',
+    'Farestam',
+    'Jonell',
 
 ]
 
@@ -82925,12 +83653,14 @@ common_latin_words=[
     'Nota',
     'Salmo', # salmon - diva2:817628 - Salmo salar L. and Salmo trutta L.
     'Theorema',
+    'Universitas',
     'Acta', # plural of actum) translates to "acts," "deeds," "transactions," "records," or "proceedings"
     'Ophthalmologica', # adjectival form related to ophthalmology,
     'ab',
     'ad', # ad hoc
     'ad-hoc',
     'affinis',
+    'al',
     'alia', # used in et alia - inter alia
     'alii',
     'ante',
@@ -82938,6 +83668,7 @@ common_latin_words=[
     'bene',
     'de', # meaning "about," "concerning," or "of" 
     'errata',
+    'est',
     'et',
     'et alii',
     'facto', # de facto
@@ -83044,6 +83775,7 @@ language_tags={
 }
 
 miss_spelled_words=[
+    'fluoresence',
     'Skelleftea', # a miss-spelling
     'forkarskolan', # should be 'forskarskolan'
     'sligthly',
@@ -84626,6 +85358,11 @@ common_units={
     'μN': {'B1': 'Unit'},
     'dB/km': {'B2': 'Unit'},
     's-1': {'A2': 'Unit'},
+    's⁻¹': {'A2': 'Unit'}, # per second
+    'M⁻¹ s⁻¹': {'B2': 'Unit'}, # per mol per second
+    'pM': {'B2': 'Unit'}, # picomolar =  10^{-12} moles per liter
+    'picomolar': {'B2': 'Unit'},
+    'M': {'B1': 'Unit'}, # mol
 
 }
 

@@ -9598,6 +9598,8 @@ def is_value_units(w):
             # If a match is found, strip it and break the inner loop.
             if is_integer(w[:-len(s)].strip()):
                 return True
+            if is_unicode_power_of_ten(w[:-len(s)].strip()):
+                return True
     #  If no suffix was found for this word, return False
     return False
 
@@ -9606,6 +9608,8 @@ def is_value_range_units(w):
         ws=w.split('-')
         if len(ws) == 2: 
             if is_integer(ws[0]):
+                return is_value_units(ws[1])
+            elif is_unicode_power_of_ten(ws[0]):
                 return is_value_units(ws[1])
             elif is_value_units(ws[0]) and is_value_units(ws[1]):
                 return True
@@ -9617,6 +9621,8 @@ def is_value_range_units(w):
         ws=w.split('–')
         if len(ws) == 2: 
             if is_integer(ws[0]):
+                return is_value_units(ws[1])
+            elif is_unicode_power_of_ten(ws[0]):
                 return is_value_units(ws[1])
             elif is_value_units(ws[0]) and is_value_units(ws[1]):
                 return True
@@ -9841,7 +9847,7 @@ def replace_abbreviations(text):
 def remove_suffixes(wl):
     # Sort suffixes by length (longest first) to fix the bug.
     # This ensures '<=' is checked before '='.
-    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '{', '*/', '&', '*', '…', '\u2019'], key=len, reverse=True) #
+    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '{', '*/', '&', '*', '…', '\u2019', "‚"], key=len, reverse=True) #
     
     new_wl = []
     
@@ -9866,7 +9872,7 @@ def remove_suffixes(wl):
 def remove_prefixes(wl):
     # Sort prefixes by length (longest first) to fix the bug.
     # This ensures '††' is checked before '†'
-    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮', '·', '∈', '∥', '©', '\u2019', '●', '±', '~'], key=len, reverse=True) # 
+    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮', '·', '∈', '∥', '©', '\u2019', '●', '±', '~', "‘", '®'], key=len, reverse=True) # 
     
     new_wl = []
     
@@ -10203,6 +10209,10 @@ def _analyze_pdf_layout(doc):
                 if (text_lower.startswith("references") or text_lower.startswith("bibliography")):
                     if len(text_lower) < 20: 
                         references_candidates.append(pageno)
+                elif (text_lower.endswith("references") or text_lower.endswith("bibliography")):
+                    if len(text_lower) < 20: 
+                        references_candidates.append(pageno)
+
                 
                 elif "acronyms" not in section_map and \
                      (text_lower.startswith("list of acronyms") or text_lower == "acronyms"):
@@ -10392,7 +10402,7 @@ def extract_text_from_pdf(pdf_path):
                     references_found=True
                     print(f"found references page {pageno}")
 
-                if first_page_found and not references_found and lines_in_the_block.startswith('References'):
+                if first_page_found and not references_found and (lines_in_the_block.startswith('References') or lines_in_the_block.lower().endswith('references')):
                     references_found=True
                     print(f"found references page {pageno}")
 
@@ -10478,9 +10488,11 @@ def extract_text_from_pdf(pdf_path):
 
                     if not first_reference_page and not references_on_this_page and not contents_on_this_page and y0 < maximum_y0 and\
                        (lines_in_the_block.lower().startswith('references') or\
+                        lines_in_the_block.lower().strip().endswith('references') or\
                         lines_in_the_block.lower().startswith('bibliography')):
                         references_on_this_page=True
                         first_reference_page=pageno
+                        print(f"{first_reference_page=}")
 
                 if contents_on_this_page and list_of_X_on_this_page:
                     contents_page=pageno
@@ -10502,7 +10514,7 @@ def extract_text_from_pdf(pdf_path):
                 print(f"{contents_page=}")
             if acronyms_page:
                 print(f"{acronyms_page=}")
-            if layout and layout.get('end_page'):
+            if not first_reference_page and layout and layout.get('end_page'):
                 first_reference_page=layout['end_page']
             if first_reference_page:
                 print(f"{first_reference_page=}")
@@ -10807,6 +10819,22 @@ def remove_known_words(output_lines):
 
         # remove acronyms possessives
         if w.endswith('’s') and w[:-2] in well_known_acronyms:
+            remove_list.append(w)
+            continue
+
+        # remove acronyms possessives
+        if w.endswith('’s') and w[:-2] in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
+        # remove acronyms possessives
+        if w.endswith('’s') and w[:-2] in common_english.place_names:
+            remove_list.append(w)
+            continue
+
+        # remove acronyms possessives
+        if w.endswith('’s') and w[:-2] in common_english.company_and_product_names:
+            remove_list.append(w)
             continue
 
         if w in common_english.chemical_names_and_formulas:
@@ -11128,7 +11156,7 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
                 continue
 
         # consider alternatives such as "A/B" as "A B", but only do this in later steps
-        if iteration_step > 3 and '/' in w:
+        if iteration_step > 5 and '/' in w:
             w=w.replace('/', ' ')
             w=w.strip()
 
@@ -13808,6 +13836,44 @@ some_common_words=[    # common words to skip
     'UN',
 ]
 
+def remove_double_spaces(text_string):
+    """
+    Replaces all double spaces with a single space until no double spaces remain.
+    """
+    # Keep looping as long as two spaces are found
+    while "  " in text_string:
+        text_string = text_string.replace("  ", " ")
+    return text_string
+
+def is_unicode_power_of_ten(s):
+    """
+    Checks if an entire string is "10" followed by a Unicode superscript exponent.
+    
+    The string must be encoded in UTF-8 for the characters to be read correctly.
+    
+    Args:
+        s (str): The input string to check.
+
+    Returns:
+        bool: True if the string is a Unicode power of 10, False otherwise.
+    """
+    # This regex pattern breaks down as follows:
+    # ^     - Asserts the start of the string
+    # 10    - Matches the literal characters "10"
+    # [⁺⁻]? - Optionally matches one superscript plus (⁺) or minus (⁻)
+    # [⁰¹²³⁴⁵⁶⁷⁸⁹]+ - Matches one or more superscript digits (0-9)
+    # $     - Asserts the end of the string
+    
+    # NOTE: Your source file must be saved as UTF-8 for this to work.
+    pattern = re.compile(r"^10[⁺⁻]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+$")
+    
+    # re.match() checks for a match at the beginning of the string.
+    # Because we use ^ and $, it ensures the *entire* string matches.
+    if pattern.match(s):
+        return True
+    else:
+        return False
+
 def main():
     global Verbose_Flag
     global options
@@ -13830,6 +13896,18 @@ def main():
                       action="store_true",
                       help="remove stopwords and pubctuation from output")
 
+    parser.add_option('-i', '--info',
+                      dest="info",
+                      default=False,
+                      action="store_true",
+                      help="Print information about the document")
+
+    parser.add_option('-t', '--toc',
+                      dest="toc",
+                      default=False,
+                      action="store_true",
+                      help="Print information about the toc")
+
 
     options, remainder = parser.parse_args()
     Verbose_Flag = options.verbose
@@ -13851,6 +13929,36 @@ def main():
         print(f"Error: The file '{input_file}' was not found.")
         sys.exit(1)
         
+    if options.info:
+        try:
+            doc = pymupdf.open(input_file)
+            print(f"Successfully opened '{input_file}'...")
+
+            print(f"{doc.metadata=}")
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        finally:
+            if 'doc' in locals() and doc:
+                doc.close()
+        return
+        
+    if options.toc:
+        try:
+            doc = pymupdf.open(input_file)
+            print(f"Successfully opened '{input_file}'...")
+
+            for t in doc.get_toc():
+                print(t) 
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        finally:
+            if 'doc' in locals() and doc:
+                doc.close()
+        return
+        
+
     # Use os.path.splitext to safely get the base filename
     base_output_name, extension = os.path.splitext(input_file)
 
@@ -13860,6 +13968,9 @@ def main():
     acronyms_dict=dict()
 
     output_lines = extract_text_from_pdf(input_file)
+
+    # replace double spaces with one space-gqmjr
+    output_lines = [remove_double_spaces(l) for l in output_lines]
 
     # Create a new, combined set for filtering
     acronym_filter_set = set()
@@ -14157,8 +14268,8 @@ def main():
 
     # if 'CPU' in well_known_acronyms:
     #     print(f"CPU in well_known_acronyms")
-    if 'SSE' in grand_union:
-        print(f"'SSE' in grand_union")
+    if 'fluoresence' in grand_union:
+        print(f"'fluoresence' in grand_union")
 
 if __name__ == "__main__":
     main()
