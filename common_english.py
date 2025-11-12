@@ -61129,6 +61129,42 @@ common_English_words={
     'remodeling': {'B2 (Specialized)': 'Noun, Verb'}, # Common general/scientific term (e.g., "tissue remodeling")
     'Moravec’s paradox': {'C1 (Proper Noun)': 'Noun'}, # Specific, abstract concept in AI/robotics
     'UXa design': {'B2 (Specialized)': 'Noun'},  # Specific professional field (User Experience)
+    'capacity': {'B1': 'Noun'}, # Common general/technical/business term
+    'dayahead': {'B2 (Specialized)': 'Adjective, Noun'}, # (day-ahead) e.g., "day-ahead market"
+    'dispatch': {'B2': 'Verb, Noun'}, # Common business/logistics/technical term
+    'gaspumps': {'A2': 'Noun (plural)'}, # (gas pumps) Common general term
+    'peninsular': {'B2': 'Adjective'}, # Common geographical term
+    'requirements': {'A2': 'Noun (plural)'}, # Common general/technical term
+    'reserves': {'B1': 'Noun (plural), Verb'}, # Common general/financial/technical term
+    'scenarios': {'B1': 'Noun (plural)'},  # Common general/academic/business term
+    'Fibonacci-sphere-based': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/technical descriptor
+    'GPU-trainable': {'B2 (Specialized)': 'Adjective'}, # Common ML/technical descriptor
+    'action-value function': {'C1 (Specialized)': 'Noun Phrase'}, # Core, abstract concept in reinforcement learning
+    'deficiencies': {'B2': 'Noun (plural)'}, # Common formal/academic/medical term
+    'downtilt': {'B2 (Specialized)': 'Noun/Adjective'}, # Technical term (e.g., antenna downtilt)
+    'elevates': {'B1': 'Verb'}, # 3rd person singular of "elevate"
+    'fronts': {'B1': 'Noun (plural)', 'B2 (Specialized)': 'Noun (plural)'}, # B1: General (e.g., "store fronts"). B2: Scientific (e.g., "weather fronts")
+    'heuristic-informed': {'C1 (Specialized)': 'Adjective'}, # Abstract technical/AI concept
+    'longrange': {'B1': 'Adjective'}, # (long-range) Common descriptor
+    'marks': {'A1': 'Noun (plural)/Verb'}, # Basic, core vocabulary
+    'networkscale': {'B1 (Specialized)': 'Adjective/Noun'}, # (network-scale) Common technical descriptor
+    'open-world-learning-oriented': {'C1 (Specialized)': 'Adjective'}, # Compound, abstract ML concept
+    'parameter': {'B1': 'Noun'}, # Common academic/technical term
+    'placements': {'B1': 'Noun (plural)'}, # Common general/academic term
+    'representation-less': {'C1 (Specialized)': 'Adjective'}, # Abstract ML/AI concept
+    'shoot-and-bounce': {'B2 (Specialized)': 'Adjective/Noun'}, # Technical term (e.g., ray tracing)
+    'sidelink positioning': {'C1 (Specialized)': 'Noun'}, # Specific, advanced concept in wireless comms
+    'un-observed': {'B1': 'Adjective'}, # Common academic/scientific descriptor
+    'weakly-informed graphs': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract, technical concept (ML/graph theory)
+    'weakly-informed': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., Bayesian priors)
+    'representationless': {'C1 (Specialized)': 'Adjectivef'},  # Abstract ML/AI concept
+    'set/reset signal': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational concept in digital electronics/logic
+    'roll-out': {'B1': 'Noun'},  # Common business/project management term for a deployment
+    'patronage': {'C1': 'Noun'}, # Abstract social/political/business concept.
+    'crowns': {'A1': 'Noun (plural), Verb'}, # Noun: "krona/krona" (currency) or headwear. Verb: 3rd person sing.
+    'descriptives': {'B2 (Specialized)': 'Noun (plural)'}, # Common term in statistics (e.g., "descriptive statistics")
+    'months': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'questions': {'A1': 'Noun (plural), Verb'},  # Basic, core vocabulary
     #GQMe
 
 }
@@ -76240,6 +76276,10 @@ company_and_product_names=[
     'PQ-S-1000', # benchmark
     'wav2vec2-xlsr-53-espeak-cv-ft',
     'Pub-MedQA', # questions dataset
+    'InfoVista Planet', # simulation tool
+    'WINERT',
+    'CompuStat', # a publication from Standard and Poor
+
 ]
 
 
@@ -83396,6 +83436,74 @@ names_of_persons=[
     'Cumbal',
     'Farestam',
     'Jonell',
+    'Bandala',
+    'Bouton',
+    'Bresson',
+    'Daoutis',
+    'Defferrard',
+    'Florence',
+    'Gionis',
+    'Hoogeboom',
+    'Hu',
+    'Karlgren',
+    'Kipf',
+    'Koutlis',
+    'Maatouk',
+    'Matsuo',
+    'Satorras',
+    'Tassiulas',
+    'Vandergheynst',
+    'Vannella',
+    'Welling',
+    'Hakim',
+    'Giese',
+    'Cote',
+    'Kuijlen',
+    'Sijtsma',
+    'Terpstra',
+    'Fornell',
+    'Mittal',
+    'Lehmann',
+    'Ennew',
+    'Jiraporn',
+    'Golovkova',
+    'Eklof',
+    'Malova',
+    'Podkorytova',
+    'Hermansson',
+    'Grönroos',
+    'Homburg',
+    'Giering',
+    'Bloemer',
+    'Kasper',
+    'Zeithaml',
+    'Molina',
+    'Ittner',
+    'Larcker',
+    'Frennea',
+    'Reichheld',
+    'Helgesen',
+    'Santomero',
+    'Parasuraman',
+    'Strydom',
+    'Heggen',
+    'Storbacka',
+    'Strandvik',
+    'Ravald',
+    'Velnampy',
+    'Sivesan',
+    'Blut',
+    'Shaik',
+    'Bosukonda',
+    'Eidelson',
+    'Hallowell',
+    'Mazvancheryl',
+    'N’Goala',
+    'Larzelere',
+    'Ganesan',
+    'Aurier',
+    'Westbrook',
+    'Bateson',
 
 ]
 
@@ -85363,7 +85471,7 @@ common_units={
     'pM': {'B2': 'Unit'}, # picomolar =  10^{-12} moles per liter
     'picomolar': {'B2': 'Unit'},
     'M': {'B1': 'Unit'}, # mol
-
+    'hour':  {'A1': 'Unit'},
 }
 
 

@@ -14061,7 +14061,10 @@ def main():
     for w in common_english.place_names:
         grand_union.add(w)
 
+    #print(f"{well_known_acronyms=}")
     for w in well_known_acronyms:
+        if isinstance(w, dict):
+            print(f"{w} is a dict")
         grand_union.add(w)
 
     for w in common_english.chemical_names_and_formulas:
