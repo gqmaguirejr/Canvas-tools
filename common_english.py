@@ -1427,6 +1427,14 @@ common_English_words={
     'March-April': {'B2': 'Noun Phrase'},
     'April-June': {'B2': 'Noun Phrase'},
     'January-June': {'B2': 'Noun Phrase'},
+    'June-December': {'B1': 'Noun, Adjective'},  # Common time span descriptor
+
+    # time descriptors
+    'late-December': {'B1': 'Adjective, Adverb, Noun'}, # Common time descriptor
+    'late-May': {'B1': 'Adjective, Adverb, Noun'}, # Common time descriptor
+    'mid-March': {'B1': 'Adjective, Adverb, Noun'}, # Common time descriptor
+
+
 
     # seasons
     'Spring': {'A1': 'Proper Noun', 'B2': 'Verb'}, # (season)
@@ -61165,6 +61173,92 @@ common_English_words={
     'descriptives': {'B2 (Specialized)': 'Noun (plural)'}, # Common term in statistics (e.g., "descriptive statistics")
     'months': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
     'questions': {'A1': 'Noun (plural), Verb'},  # Basic, core vocabulary
+    'bicification': {'C1 (Specialized)': 'Noun'}, # Jargon term for urban planning/transport (making a city bike-friendly)
+    'city-specific': {'B2': 'Adjective'}, # Common academic/technical descriptor
+    'cyclable': {'B1': 'Adjective'}, # Common general descriptor
+    'E-bike': {'B1': 'Noun'}, # Common consumer/transport term (Electric bike)
+    'GPS-logged': {'B2 (Specialized)': 'Adjective'}, # Technical process descriptor
+    'GPS-verified': {'B2 (Specialized)': 'Adjective'}, # Technical process descriptor
+    'telework': {'B1': 'Noun'}, # Common business/social term
+    'anti-fraud': {'B2': 'Adjective, Noun'}, # Common business/legal/IT term
+    'bike-share': {'B1': 'Noun, Adjective'}, # Common transport term
+    'checks': {'A2': 'Noun, Verb'}, # Basic, core vocabulary
+    'city-consistent': {'B2': 'Adjective'}, # Common academic/technical descriptor
+    'closures': {'B1': 'Noun (plural)'}, # Common general/business term
+    'co-movement': {'B2 (Specialized)': 'Noun'}, # Specialized academic/scientific term
+    'cross-European': {'B2': 'Adjective'}, # Common geographical/political term
+    'cycling-related': {'B1': 'Adjective'}, # Common descriptive term
+    'debates': {'B1': 'Noun, Verb'}, # Common academic/general term
+    'declines': {'B2': 'Noun, Verb'}, # Common academic/general term
+    'dynamic-regression': {'C1 (Specialized)': 'Noun'}, # Specialized statistical/econometric term
+    'finite-sample': {'C1 (Specialized)': 'Adjective'}, # Specialized statistical/academic term
+    'harmonisation': {'B2': 'Noun'}, # UK spelling. Common academic/political term.
+    'lanes': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'longer-run': {'B1': 'Adjective, Noun'}, # Common economic/business term
+    'materialise': {'B2': 'Verb'}, # UK spelling. Common academic/general term.
+    'meta-analyses': {'C1 (Specialized)': 'Noun (plural)'}, # Specialized statistical/academic term
+    'mobility-sector': {'B2': 'Noun'}, # Common business/economic term
+    'ordinality': {'C1 (Specialized)': 'Noun'}, # Specialized mathematical/statistical term
+    'passages': {'A2': 'Noun (plural)'}, # Common general/literary term
+    'pooled-cross-section': {'C1 (Specialized)': 'Noun, Adjective'}, # Specialized statistical/econometric term
+    'post-incentive': {'B2': 'Adjective'}, # Common economic/policy term
+    'pre-COVID': {'A2': 'Adjective'}, # Common general/historical descriptor
+    'protected-network': {'B1 (Specialized)': 'Adjective/Noun'}, # Common IT/security term
+    'route-choice': {'B2 (Specialized)': 'Noun'}, # Common transport/behavioral science term
+    'slopes': {'B1': 'Noun, Verb'}, # Common general/scientific term
+    'stretches': {'A2': 'Noun, Verb'}, # Common general word
+    'trips': {'A1': 'Noun, Verb'}, # Basic, core vocabulary
+    'waived': {'B2': 'Verb'}, # Past tense/participle. Common legal/business term.
+    'wind-exposed': {'B1': 'Adjective'},  # Common environmental/geographical term
+    'publichealth': {'B2': 'Noun, Adjective'}, # Common academic/social term
+    'cityspecific': {'B2': 'Adjective'}, # Common academic/technical descriptor
+    'implement': {'B1': 'Verb'}, # Common academic/business verb
+    'cut-points': {'B2 (Specialized)': 'Noun (plural)'}, # Common term in statistics/data analysis
+    'rebates': {'B1': 'Noun (plural), Verb'}, # Common business/consumer term
+    'situates': {'B2': 'Verb (third person singular)'},  # 3rd person singular. Common formal/academic verb.
+    'COVID': {'A1 (Proper Noun)': 'Noun'}, # Acronym for the disease/pandemic
+    'Containment-and-Health Index': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named metric/index
+    'Hawthorne-type effect': {'B2 (Proper Noun)': 'Noun Phrase'}, # Specific named psychological/research concept
+    'Ljung-Box tests': {'C1 (Proper Noun)': 'Noun (plural)'},  # Specific named statistical test
+    'map-match': {'B2 (Specialized)': 'Noun, Verb'}, # Foundational concept in navigation and GIS
+    'map-matching': {'B2 (Specialized)': 'Noun, Verb'}, # Gerund/participle of the above
+    'random-walk-based methods': {'C1 (Specialized)': 'Noun Phrase'}, # Specific methodology in graph theory/ML
+    'random-walk-based': {'C1 (Specialized)': 'Adjective'},  # Adjective form of the above
+    'SkipGram-based': {'C1 (Proper Noun)': 'Adjective'},  # Technical descriptor (based on a specific foundational NLP algorithm)
+    'wavepacket': {'C1 (Specialized)': 'Noun'}, # Core, abstract concept in physics/quantum mechanics
+    'zero-Cf': {'C1 (Specialized)': 'Adjective, Noun'},  # Specific scientific/engineering jargon (e.g., zero coefficient of friction/drag)
+    'SPOD-based': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (based on Spectral Proper Orthogonal Decomposition)
+    'sheep-foot rollers': {'B2 (Specialized)': 'Noun Phrase'}, # Specific compaction equipment (geotechnical engineering) 
+    'time-hardening': {'C1 (Specialized)': 'Noun'},  # Abstract concept/model in materials science
+    'deviatoric': {'C1 (Specialized)': 'Adjective'}, # Specific, abstract term in mechanics/materials science
+    'sands': {'A1': 'Noun (plural)', 'B1': 'Verb (third person singular)'},  # Noun: Plural of the basic material. Verb: 3rd person singular of "to sand."
+    'extrusion-based': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor for a manufacturing/printing process
+    'photolysis': {'C1 (Specialized)': 'Noun'}, # Specific, abstract chemical process (decomposition by light)
+    'photocaged': {'C1 (Specialized)': 'Adjective/Verb'}, # Specific chemical state (caged by light)
+    'photocages': {'C1 (Specialized)': 'Noun (plural)'}, # Specific chemical groups
+    'photostiffening': {'C1 (Specialized)': 'Noun'}, # Abstract process in materials/polymer chemistry
+    'photouncaging': {'C1 (Specialized)': 'Noun'}, # Abstract process (reverse of photocaging)
+    'Mitsunobu reaction': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named reaction in organic chemistry
+    'AlamarBlue': {'C1 (Proper Noun)': 'Noun'},  # Specific, named reagent/assay in cell biology
+    'crosslinking': {'C1 (Specialized)': 'Noun, Verb'}, # Abstract process in polymer chemistry
+    'redshifted': {'C1 (Specialized)': 'Adjective, Verb'}, # Core concept in physics/astronomy (Doppler effect)
+    'uncaging': {'C1 (Specialized)': 'Noun, Verb'}, # Abstract chemical/biological process (reverse of caging)
+    'RGD-modified': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (based on a specific peptide sequence)
+    '18G needle': {'C1 (Specialized)': 'Noun Phrase'}, # Specific medical/technical instrument size
+    '1H NMR': {'C1 (Proper Noun)': 'Noun'}, # Specific analytical technique (Proton Nuclear Magnetic Resonance)
+    '7N ammonia': {'C1 (Specialized)': 'Noun Phrase'}, # Specific chemical reagent and concentration
+    'Boc protecting group': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in organic chemistry
+    'Boc-protecting groups': {'C1 (Specialized)': 'Noun Phrase (plural)'}, # Plural of the above
+    'Bocprotected Cou-Oxy': {'C1 (Proper Noun)': 'Noun'}, # Specific chemical compound name
+    'Ca2+': {'B2 (Specialized)': 'Noun'}, # Specific chemical symbol (Calcium Ion)
+    'D2O': {'B2 (Specialized)': 'Noun'}, # Specific chemical formula (Heavy Water)
+    'Fluor 546-conjugated phalloidin': {'C1 (Proper Noun)': 'Noun Phrase'}, # Highly specific chemical/biological reagent name
+    'counterparts': {'B2': 'Noun (plural)'}, # Common formal/academic term for "equivalents"
+    'scalping': {'C1 (Specialized)': 'Noun'},  # Abstract technical/business process (e.g., in finance or computational modeling)
+    'single-edge-notched-bend': {'C1 (Specialized)': 'Adjective, Noun'}, # Specific standardized specimen/test type in fracture mechanics (SENB)
+    "consumers'": {'B1': 'Noun (plural, genitive)'}, # Plural possessive form of "consumer"
+    'withinsubjects': {'C1 (Specialized)': 'Adjective, Adverb'}, # Shorthand for a core methodological concept in experimental design
+
     #GQMe
 
 }
@@ -61415,8 +61509,16 @@ chemical_elements={
 }
 
 
-
 chemical_names_and_formulas=[
+    'N-acetamide',
+    'N-aminophthalimide',
+    'N-phthalimide',
+    'NaN3',
+    'Ortho-nitrobenzyl',
+    'methylfuran',
+    'tert-Butoxycarbonylamino',
+    'tertbutyl',
+    '5-Methyl-2-furanmethanamine',
     'Si–H',
     'Si–Si',
     'H2SO4',
@@ -63499,6 +63601,11 @@ place_names=[
     'Kassel',
     'Malta',
     'Myanmar/Burma',
+    'Bosporus',
+    'Istanbul',
+    'Türkiye',
+    'Poznań',
+    'Braga',
 
     #GQMp
 
@@ -76060,7 +76167,8 @@ company_and_product_names=[
     'AmazonPhoto',
     'WikiCS', # https://github.com/pmernyei/wiki-cs-dataset
     'WebConference',
-    'TriGlobal',
+    'BiGlobal', # see diva2:2005197
+    'TriGlobal', # see diva2:2005197
     'FELiCS',
     'LUMI', # supercomputer cluster in Finland
     'AlphaFold',
@@ -76279,6 +76387,62 @@ company_and_product_names=[
     'InfoVista Planet', # simulation tool
     'WINERT',
     'CompuStat', # a publication from Standard and Poor
+    'OpenWeather', # API
+    'OSMnx', # Python package to download, model, analyze, and visualize street networks and other geospatial features from OpenStreetMap
+    'Bicing', # the public bike-share system - Ajuntament de Barcelona
+    'Eco-Counter', # company
+    'Strade Aperte program', # program for cycling in Milan 
+    'COLLAB', # dataset see diva2:2001853
+    'CayleyNets', # see diva2:2001853
+    'Chameleon', # Wikipedia - homogeneous graph dataset entity graph -- see diva2:2001853
+    'Crocodile', # Wikipedia - homogeneous graph dataset entity graph -- see diva2:2001853
+    'ESim', # see diva2:2001853
+    'GraRep', # matrix factorization -- see diva2:2001853
+    'Graph-SAGE', # a graph neural network architecture that uses a sample-and-aggregate strategy to generate node embeddings for large-scale graphs -- see diva2:2001853
+    'GraphCL', # see diva2:2001853
+    'GraphGPS', # graph transformer - a stacking of MPNN + transformer hybrid, which resolves the local expressivity bottlenecks by allowing information to spr -- see diva2:2001853
+    'GraphMAE', # Self-supervised masked graph autoencoders -- see diva2:2001853
+    'HERec', # Heterogeneous information network embedding for recommendation -- see diva2:2001853
+    'HGT', # Heterogeneous graph transformer -- see diva2:2001853
+    'HIN2vec', # “Hin2vec: Explore meta-paths in heterogeneous information networks for representation learning  -- see diva2:2001853
+    'HeteSpaceyWalk', # “Hetespaceywalk: A heterogeneous spacey random walk for heterogeneous information network embedding  -- see diva2:2001853
+    'IMDB-BINARY', # dataset -- see diva2:2001853
+    'IMDB-MULTI', # dataset -- see diva2:2001853
+    'REDDIT-BINARY', # dataset -- see diva2:2001853
+    'GraphGPS+LapPE', # graph transformer -- see diva2:2001853
+    'MAG-CS', # co-author network -- see diva2:2001853
+    'MGSSL', # Motif-based graph self-supervised learning for molecular property prediction -- see diva2:2001853
+    'MVGRL', # Contrastive multi-view representation learning on graphs -- see diva2:2001853
+    'macro-F1', # an F1 scopre acrosss classes -- see diva2:2001853
+    'metapath2vec', # Scalable Representation Learning for Heterogeneous Networks -- see diva2:2001853
+    'NCI1', # chemical dataset -- see diva2:2001853
+    'Peptides-func', # dataset -- see diva2:2001853
+    'PascalVOC-SP', # node classification task benchmark -- see diva2:2001853
+    'GCA', # framework from "Graph Contrastive Learning with Adaptive Augmentation" -- see diva2:2001853
+    'AASHTOWare', # software for AASHTO -- see diva2:2004903
+    'PMS-objekt', # pavement design tool -- see diva2:2004903
+    'SWC-150', # SWC-150 Fredlund - a pressure plate apparatus model -- see diva2:2004903
+    'PerkinElmer Spectrum',
+    'PerkinElmer',
+    'WILEY',
+    'Shimadzu UV2550 spectrometer',
+    'Shimadzu',
+    'TritonX',
+    'Tecan Infinite M200 pro plate reader',
+    'Nikon Eclipse Ti-S', # microscope
+    'TM-1000 tabletop scanning electron microscopy',
+    'PSS Suprema 2', # a type of column for use with the Agilent 1260 Infinity GPC/SEC System
+    'Suprema', # a type of column for use with the Agilent 1260 Infinity GPC/SEC System
+    'Leica SP8 DIVE',
+    'SP8 DIVE system', # Leica product
+    'ZORBAX RRHD', # for Reversed-Phase Chromatography -- see diva2:2004566
+    'ZORBAX', # a brand of Agilent instruments
+    'Agilent LC-MS-QTOF 6530C instrument', # chromatograph -- see diva2:2004566
+    '0.2C', # A rate of 0.2C (or C/5) means the charge or discharge current is one-fifth (0.2x) of the current required for a 1-hour cycle. This rate would theoretically charge or discharge the battery completely in 5 hours (\(1/0.2\) hours).
+    '0.4C', # This is a current value equal to 40% of the battery's total capacity. Charging or discharging at this rate would theoretically take 2.5 hours (1 hour / 0.4).
+    '0.6C', # This is a current value equal to 60% of the battery's total capacity
+    'HC IRAPO', # a water objective -- see diva2:2004566
+    'IRAPO', # a water objective -- see diva2:2004566
 
 ]
 
@@ -82376,7 +82540,6 @@ names_of_persons=[
     'Cham',
     'Cristiana',
     'Ferreira',
-    'Deviatoric',
     'Doré',
     'Zubeck',
     'Erlingsson',
@@ -83504,6 +83667,356 @@ names_of_persons=[
     'Aurier',
     'Westbrook',
     'Bateson',
+    'Abraham',
+    'Akar',
+    'Clifton',
+    'Aldred',
+    'Brakewood',
+    'Buehler',
+    'Dill',
+    'Pucher',
+    'Bergström',
+    'Cunha',
+    'Dickey',
+    'Fishman',
+    'Cherry',
+    'Francke',
+    'Shareck',
+    'Frejinger',
+    'Bierlaire',
+    'Gebhart',
+    'Noland',
+    'Greene',
+    'Hensher',
+    'Grüne-Yanoff',
+    'Hamre',
+    'Hedeker',
+    'Heinen',
+    'Hyndman',
+    'Athanasopoulos',
+    'Kingdon',
+    'Koch',
+    'Konstantinidou',
+    'Ljung',
+    'Marteau',
+    'Martens',
+    'McCullagh',
+    'Montjuïc',
+    'Nazelle',
+    'Nieuwenhuijsen',
+    'Khreis',
+    'Nikitas',
+    'Niska',
+    'Blomqvist',
+    "O’Holleran",
+    'Parkin',
+    'Koorey',
+    'Rotheram',
+    'Prati',
+    'Rabe-Hesketh',
+    'Skrondal',
+    'Radzimski',
+    'Dzięcielski',
+    'Reinsel',
+    'Thorsson',
+    'Tirachini',
+    'Cats',
+    'Tiao',
+    'Box',
+    'Collserola',
+    'Dickey-Fuller',
+    'Rietveld',
+    'Shaheen',
+    'Sunio',
+    'Schmöcker',
+    'Voros',
+    'Fredlung',
+    'Monismith',
+    'Dahlke',
+    'Dalby',
+    'DeForest',
+    'Deforest',
+    'DelRio',
+    'Dettin',
+    'Dey',
+    'Dhand',
+    'Diba',
+    'Dobson',
+    'Dodo',
+    'Dolatshahi-Pirouz',
+    'Donnelly',
+    'Dotson',
+    'Dubois',
+    'Dwyer',
+    'El-Sokkary',
+    'Fallahi',
+    'Farahani',
+    'Fenniri',
+    'Fernandez-Perez',
+    'Foroughi',
+    'Frith',
+    'Fukuda',
+    'Ganesh',
+    'Gehre',
+    'Gelmi',
+    'Gerecht',
+    'Gharios',
+    'Gilchrist',
+    'Girish',
+    'Grotheer',
+    'Grumezescu',
+    'Gränz',
+    'Grünewald',
+    'Gunnewiek',
+    'Guvendiren',
+    'Göbel',
+    'Adelmund',
+    'Akbari',
+    'Alsberg',
+    'Andreadis',
+    'Ansari',
+    'Anseth',
+    'Armes',
+    'Ashley',
+    'Auzely-Velty',
+    'Ayers',
+    'Azevedo',
+    'Badeau',
+    'Bader',
+    'Badi',
+    'Bahlmann',
+    'Basta',
+    'Beer-Lambert',
+    'Beeren',
+    'Benetti',
+    'Benuska',
+    'Bertsch',
+    'Bhagi',
+    'Bhowmik',
+    'Binth Mohammad',
+    'Blanchard-Desce',
+    'Blatchley',
+    'Blitterswijk',
+    'Bochet',
+    'Bongiardina',
+    'Borelli',
+    'Bouten',
+    'Bretherton',
+    'Broguiere',
+    'Budday',
+    'Burdick',
+    'Cantini',
+    'Cantrill',
+    'Chakma',
+    'Chalard',
+    'Chandranayaka',
+    'Chaudhary',
+    'Chaur',
+    'Cheruvu',
+    'Clermont',
+    'Combes',
+    'Cosgriff-Hernandez',
+    'Calore',
+    'Castet',
+    'Cescon',
+    'Ceva',
+    'Coulombe',
+    'Cousins',
+    'Eppendorf',
+    'Fairbanks',
+    'Hach',
+    'Hafeez',
+    'Hager',
+    'Harada',
+    'Harley',
+    'Hasany',
+    'Hayashi',
+    'Hebner',
+    'Heilshorn',
+    'Hemamalani',
+    'Hemshekhar',
+    'Henise',
+    'Hennenfent',
+    'Hibbard',
+    'Hilborn',
+    'Hilt',
+    'Hourdet',
+    'Hozumi',
+    'Huskin',
+    'Ikeda',
+    'Jaeschke',
+    'Jafari',
+    'Julius Vancso',
+    'Kadumudi',
+    'Kageyama',
+    'Kaindl',
+    'Kalia',
+    'Kamps',
+    'Karthikeyan',
+    'Kasko',
+    'Kawano',
+    'Kemp',
+    'Kemparaju',
+    'Keyser',
+    'Khademhosseini',
+    'Khang',
+    'Killaars',
+    'Kirkpatrick',
+    'Klan',
+    'Klausen',
+    'Kohane',
+    'Kojima',
+    'Kolmel',
+    'Konkolewicz',
+    'Kopyeva',
+    'Kostikov',
+    'Kuhl',
+    'Kuhn-Spearing',
+    'Kulchat',
+    'Kulkarni',
+    'Kurniawan',
+    'Kyburz',
+    'Iten',
+    'Ito',
+    'Kloxin',
+    'Kool',
+    'Langer',
+    'Laporte',
+    'LeSavage',
+    'Leeuwenburgh',
+    'Lehn',
+    'Levkin',
+    'Lou',
+    'Luchtefeld',
+    'Lutolf',
+    'Ma',
+    'Macdougall',
+    'Madsen',
+    'Malani',
+    'Malmstrom',
+    'Marcellus',
+    'Marco-Dufort',
+    'Mazunin',
+    'Mehrali',
+    'Mellett',
+    'Merugu',
+    'Miksch',
+    'Ming',
+    'Mokhtari',
+    'Mooney',
+    'Morlock',
+    'Moroni',
+    'Mosiewicz',
+    'Mostert',
+    'Munoz',
+    'Mitrousis',
+    'Mota',
+    'Motta',
+    'Nakamura',
+    'Nawale',
+    'Nepomuceno',
+    'Nikkhah',
+    'Nirmal',
+    'Parvathaneni',
+    'Patel',
+    'Pennisi',
+    'Peppas',
+    'Ohta',
+    'Ooi',
+    'Orive',
+    'Ovaert',
+    'Nam',
+    'Podgorski',
+    'Popik',
+    'Prakashini',
+    'Prestwich',
+    'Prez',
+    'Prisner',
+    'Pruitt',
+    'Putten',
+    'Qiao',
+    'Qin',
+    'Qiu',
+    'Qu',
+    'Raines',
+    'Rajachar',
+    'Ramorino',
+    'Reaume',
+    'Reid',
+    'Reis',
+    'Richbourg',
+    'Rizwan',
+    'Rooij',
+    'Rosales',
+    'Rossetti',
+    'Rubina',
+    'Ren',
+    'Sadiku',
+    'Sahlgren',
+    'Saito',
+    'Sakuyama',
+    'Salazar',
+    'Salehi',
+    'Salmeron-Sanchez',
+    'Samorezov',
+    'Sanders',
+    'Santi',
+    'Sartore',
+    'Scheiger',
+    'Schnellmann',
+    'Shadish',
+    'Shekhar',
+    'Sherman',
+    'Shoichet',
+    'Shou',
+    'Silva',
+    'Skillin',
+    'Solomek',
+    'Spears',
+    'Steinmann',
+    'Stoddart',
+    'Stowers',
+    'Sugimoto',
+    'Taberner',
+    'Taebnia',
+    'Taimoory',
+    'Talebian',
+    'Tamayol',
+    'Tanaka',
+    'Tavakoli',
+    'Teo',
+    'Thangam',
+    'Thushara',
+    'Tibbitt',
+    'Ting',
+    'Tirrell',
+    'Tonnele',
+    'Toubbeh',
+    'Trachsel',
+    'Trant',
+    'Travas-Sejdic',
+    'Truong',
+    'Tuan',
+    'Vacanti',
+    'Vahala',
+    'Varaprasad',
+    'Vlies',
+    'Wanasinghe',
+    'Wancura',
+    'Weinh',
+    'Weinrich',
+    'Winne',
+    'Wirz',
+    'Wyrobek',
+    'Yallapu',
+    'Yamaki',
+    'Yoshikawa',
+    'Yuan',
+    'Zechel',
+    'Zenobi-Wong',
+    'Zhai',
+    'Zioupos',
+    'Mitsunobu',
 
 ]
 
@@ -83615,6 +84128,7 @@ common_french_words={
     'sécurité': {'B1': 'Noun'},
     'traitement': {'B1': 'Noun'},
     'très': {'A1': 'Adverb'},
+    'vélo': {'A1': 'Noun (masculine)'}, # "bicycle," "bike"
     'violà': {'A2': 'Interjection'},
     'à': {'A1': 'Preposition'},
     'énergies': {'B1': 'Noun (plural)'},
@@ -83805,8 +84319,12 @@ common_latin_words=[
 common_norwegian_words=[
     'løsninger',
     'undersøkelsen',
+    'vegvesen', # Road Administration
+    'Statens vegvesen', # Norwegian Public Road Administration
 
 ]
+
+
 common_portuguese_words=[
     # GQM-for-merger    
     'água', #  {'A1': 'Noun'} # Water
@@ -83817,6 +84335,9 @@ common_portuguese_words=[
     'e',
     'da',
     'Atmosfera',
+    'Município',
+    'de',
+
 ]
 
 common_russian_words={
@@ -83840,6 +84361,7 @@ common_spanish_words={
     'la': {'A1': 'Article'}, # The, feminine singular
     'plata': {'A2': 'Noun'}, # silver and money
     'salud': {'A2': 'Interjection'},
+    'Ajuntament de Barcelona': {'B1 (Proper Noun Phrase)': 'Noun'},  # NOTE: This is Catalan for "Barcelona City Council," not Spanish.
 
 }
 
@@ -85470,8 +85992,11 @@ common_units={
     'M⁻¹ s⁻¹': {'B2': 'Unit'}, # per mol per second
     'pM': {'B2': 'Unit'}, # picomolar =  10^{-12} moles per liter
     'picomolar': {'B2': 'Unit'},
+    'mM': {'B2': 'Unit'}, # millimole
     'M': {'B1': 'Unit'}, # mol
     'hour':  {'A1': 'Unit'},
+    'kg/m3':  {'A2': 'Unit'},
+
 }
 
 

@@ -10203,7 +10203,7 @@ def _analyze_pdf_layout(doc):
                 continue
 
             # --- 1. Find Section Titles ---
-            if y0 < HEADER_Y_THRESHOLD * 3: # Top 30%
+            if (y0 < HEADER_Y_THRESHOLD * 3) or (block_no==0) or (block_no==1): # Top 30%
                 
                 # --- FIX: Collect all candidates for references ---
                 if (text_lower.startswith("references") or text_lower.startswith("bibliography")):
@@ -10214,10 +10214,10 @@ def _analyze_pdf_layout(doc):
                         references_candidates.append(pageno)
 
                 
-                elif "acronyms" not in section_map and \
-                     (text_lower.startswith("list of acronyms") or text_lower == "acronyms"):
-                    if len(text_lower) < 40:
-                        section_map["acronyms"] = pageno
+                    elif "acronyms" not in section_map and \
+                         (text_lower.startswith("list of acronyms") or text_lower == "acronyms" or text_lower.startswith("list of abbreviations") or text_lower.find("list of abbreviations") >= 0):
+                        if len(text_lower) < 40:
+                            section_map["acronyms"] = pageno
                 
                 elif "contents" not in section_map and \
                      (text_lower.startswith("contents") or text_lower.startswith("table of contents")):
@@ -10271,7 +10271,7 @@ def _analyze_pdf_layout(doc):
         "footer_top_y": page_height,
         "start_page": 0,
         "end_page": doc.page_count, # Default
-        "acronyms_page": -1,
+        "acronyms_page": False,
     }
 
     if header_y_counter:
@@ -10312,6 +10312,7 @@ def _analyze_pdf_layout(doc):
     if Verbose_Flag:
         print(f"  DEBUG: page_number_map = {page_number_map}")
         print(f"  DEBUG: references_candidates = {references_candidates}")
+        print(f"  DEBUG: layout = {layout=}")
     print("-----------------------------------")
 
     return layout
@@ -10348,6 +10349,7 @@ def extract_text_from_pdf(pdf_path):
         acronyms_found=False
         first_page_found=False
         references_found=False
+        current_header=False
         if layout and layout.get('header_bottom_y') > 0:
             header_bottom=layout['header_bottom_y']
         else:
@@ -10383,10 +10385,15 @@ def extract_text_from_pdf(pdf_path):
                 # look for acronyms
                 if header_bottom > 0 and not acronyms_found and (lines_in_the_block.startswith('List of Acronyms and abbreviations | ') or lines_in_the_block.startswith('List of acronyms and abbreviations | ') or lines_in_the_block.startswith('List of Abbreviations') or lines_in_the_block.startswith('Abbreviations')):
                     acronyms_found=True
+                    current_header='Acronyms'
                     print(f"found acronyms {pageno}")
 
+                # look for headers other than acronyms to stop collecting acronyms
+                if (idx == 0 or idx == 1) and not (lines_in_the_block.startswith('List of Acronyms and abbreviations | ') or lines_in_the_block.startswith('List of acronyms and abbreviations | ') or lines_in_the_block.startswith('List of Abbreviations') or lines_in_the_block.startswith('Abbreviations')):
+                    current_header=lines_in_the_block.strip()
+                    
                 # collect acronyms
-                if acronyms_found and not first_page_found:
+                if acronyms_found and current_header == 'Acronyms' and not first_page_found:
                     if y1 > header_bottom and not lines_in_the_block.lower() == 'list of acronyms and abbreviations\n':
                         acronyms_text += lines_in_the_block
                         collect_acronyms_from_page(pageno, page)
@@ -10411,8 +10418,9 @@ def extract_text_from_pdf(pdf_path):
                 # add a small amount to the header_bottom to skip text in the header
                 if y1 > (header_bottom + 1) and first_page_found and not references_found:
                     full_text += lines_in_the_block
-                else:
-                    continue
+                    print(f"collecting text using method 1 from page {pageno}")
+                # else:
+                #     continue
 
         if not first_page_found and not references_found:
             print(f"*** Try a second method to identify the pages ***")
@@ -10470,7 +10478,7 @@ def extract_text_from_pdf(pdf_path):
                     if y0 > int(maximum_y0) and y1 < int(maximum_y1) + 2:
                         page_number_positions[pageno] = lines_in_the_block.replace('\n', '')
 
-                    if not acronyms_on_this_page and y0 < maximum_y0 and (lines_in_the_block.lower().find('list of acronyms and abbreviations') >= 0 or lines_in_the_block.find('Acronyms') >= 0 or lines_in_the_block.lower().find('list of abbreviations') >= 0 or lines_in_the_block.lower().find('abbreviations') >= 0 ):
+                    if not acronyms_on_this_page and (y0 < maximum_y0 or block_no==0 or block_no==1) and (lines_in_the_block.lower().find('list of acronyms and abbreviations') >= 0 or lines_in_the_block.find('Acronyms') >= 0 or lines_in_the_block.lower().find('list of abbreviations') >= 0 or lines_in_the_block.lower().find('abbreviations') >= 0):
                         acronyms_on_this_page=True
                         print(f"{acronyms_on_this_page=}")
                         if contents_page != pageno:
@@ -10494,7 +10502,7 @@ def extract_text_from_pdf(pdf_path):
                         first_reference_page=pageno
                         print(f"{first_reference_page=}")
 
-                if contents_on_this_page and list_of_X_on_this_page:
+                if contents_on_this_page: #  and list_of_X_on_this_page
                     contents_page=pageno
                     print(f"found contents page {contents_page}")
 
@@ -10514,6 +10522,8 @@ def extract_text_from_pdf(pdf_path):
                 print(f"{contents_page=}")
             if acronyms_page:
                 print(f"{acronyms_page=}")
+            if first_reference_page < first_page and layout and layout.get('end_page'):
+                first_reference_page=layout['end_page']
             if not first_reference_page and layout and layout.get('end_page'):
                 first_reference_page=layout['end_page']
             if first_reference_page:
@@ -10563,9 +10573,13 @@ def extract_text_from_pdf(pdf_path):
                         # lines_in_the_block=lines_in_the_block.replace('-\n', '')
                         if Verbose_Flag:
                             print(f"{x0=}, {y0=}, {x1=}, {y1=}, {lines_in_the_block=}, {block_no=}, {block_type=}")
+
                         # collect the contents of the page
+                        print(f"collecting text using method 2 from page {pageno}")
                         full_text += lines_in_the_block
 
+        if Verbose_Flag:
+            print(f"length of full_text is {len(full_text)}")
 
         full_text=replace_ligature(full_text)
         full_text=replace_abbreviations(full_text)
@@ -10894,6 +10908,47 @@ def remove_known_words(output_lines):
             continue
 
         if w in common_swedish.KTH_ordbok_Swedish_with_CEFR:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_norwegian_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_portuguese_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_russian_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_spanish_words:
+            remove_list.append(w)
+            continue
+
+
+        if w in common_english.common_french_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_danish_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_finnish_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_icelandic_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_italian_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_japanese_words:
             remove_list.append(w)
             continue
 
@@ -13966,6 +14021,7 @@ def main():
 
     
     acronyms_dict=dict()
+    acronyms_found=False
 
     output_lines = extract_text_from_pdf(input_file)
 
@@ -14044,6 +14100,37 @@ def main():
         grand_union.add(w)
 
     for w in common_english.KTH_ordbok_English_with_CEFR:
+        grand_union.add(w)
+
+    for w in common_english.common_norwegian_words:
+        grand_union.add(w)
+
+    for w in common_english.common_portuguese_words:
+        grand_union.add(w)
+
+    for w in common_english.common_russian_words:
+        grand_union.add(w)
+
+
+    for w in common_english.common_spanish_words:
+        grand_union.add(w)
+
+    for w in common_english.common_french_words:
+        grand_union.add(w)
+
+    for w in common_english.common_danish_words:
+        grand_union.add(w)
+
+    for w in common_english.common_finnish_words:
+        grand_union.add(w)
+
+    for w in common_english.common_icelandic_words:
+        grand_union.add(w)
+
+    for w in common_english.common_italian_words:
+        grand_union.add(w)
+
+    for w in common_english.common_japanese_words:
         grand_union.add(w)
 
     for w in common_english.amino_acids:
@@ -14271,8 +14358,8 @@ def main():
 
     # if 'CPU' in well_known_acronyms:
     #     print(f"CPU in well_known_acronyms")
-    if 'fluoresence' in grand_union:
-        print(f"'fluoresence' in grand_union")
+    if 'vegvesen' in grand_union:
+        print(f"'vegvesen' in grand_union")
 
 if __name__ == "__main__":
     main()
