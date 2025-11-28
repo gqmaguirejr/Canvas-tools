@@ -61258,11 +61258,409 @@ common_English_words={
     'single-edge-notched-bend': {'C1 (Specialized)': 'Adjective, Noun'}, # Specific standardized specimen/test type in fracture mechanics (SENB)
     "consumers'": {'B1': 'Noun (plural, genitive)'}, # Plural possessive form of "consumer"
     'withinsubjects': {'C1 (Specialized)': 'Adjective, Adverb'}, # Shorthand for a core methodological concept in experimental design
-
+    'contacts': {'B1': 'Noun, Verb'}, # Common general word
+    '3-D sensors': {'B1 (Specialized)': 'Noun'}, # Foundational technical concept
+    '5-fold': {'B1': 'Adjective, Adverb'}, # Common descriptor
+    'ravelling': {'C1 (Specialized)': 'Noun'}, # Specific pavement distress term
+    'shoving': {'C1 (Specialized)': 'Noun'}, # Specific pavement distress term
+    'macrotexture': {'B2 (Specialized)': 'Noun'}, # Foundational pavement term
+    'megatexture': {'C1 (Specialized)': 'Noun'}, # Specific pavement term (highest scale texture)
+    'microtexture': {'B2 (Specialized)': 'Noun'}, # Foundational pavement term
+    'councils': {'B1': 'Noun (plural)'}, # Common general/political word
+    'log-transformed': {'B2 (Specialized)': 'Adjective'}, # Technical statistical term
+    'non-PMS': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Pavement Management System)
+    'non-pragmatic': {'C1': 'Adjective'}, # Formal/general adjective
+    'non-residential': {'B1': 'Adjective'}, # Common general descriptor
+    'project-level': {'B1': 'Adjective'}, # Common business/management term
+    'resurfacing': {'B2 (Specialized)': 'Noun'}, # Technical pavement maintenance term
+    'rises': {'A1': 'Verb/Noun'}, # Basic, core vocabulary
+    'trafficflow-induced': {'C1 (Specialized)': 'Adjective'}, # Abstract technical descriptor
+    'geometrics': {'B2 (Specialized)': 'Noun'}, # Technical term (road/railway geometry)
+    'GPS-coordinated': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (navigation/data)
+    'MR-treated': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., Magnetic Resonance)
+    'RC-treated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., Root Canal or Reinforced Concrete)
+    'SL-treated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Highly specific context)
+    'ST-treated': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (Highly specific context)
+    'Boudouard reaction': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named chemical reaction (metallurgy/gasification)
+    'Dulong’s Equation': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named equation (thermodynamics)
+    'Y-zeolite': {'B2 (Proper Noun)': 'Noun'}, # Specific class of catalyst material
+    'dual-catalyst': {'B2 (Specialized)': 'Noun, Adjective'}, # Foundational chemical engineering concept
+    'fractions': {'B1': 'Noun (plural)'}, # Common general/mathematical term
+    'microporous': {'B2 (Specialized)': 'Adjective'}, # Common descriptor in materials science
+    'monoaromatic': {'C1 (Specialized)': 'Adjective'}, # Specific chemical descriptor
+    'non-FR plastics': {'C1 (Specialized)': 'Noun (plural)'}, # Specific technical/regulatory term (non-Flame Retardant)
+    'plastic-rich': {'B1 (Specialized)': 'Adjective'}, # Common materials descriptor
+    'shorter-chain': {'B2 (Specialized)': 'Adjective'}, # Common descriptor in polymer/chemistry
+    'vapor-catalyst': {'B2 (Specialized)': 'Noun, Adjective'}, # Common term in chemical engineering processes
+    'HZSM-5': {'C1 (Proper Noun)': 'Noun'}, # Specific named zeolite catalyst
+    'HBeta': {'C1 (Proper Noun)': 'Noun'}, # Specific named zeolite catalyst
+    'HSM-5': {'C1 (Proper Noun)': 'Noun'}, # Specific named catalyst
+    'catalyst-to-feedstock ratio': {'C1 (Specialized)': 'Noun Phrase'}, # Specific technical ratio (chemical engineering)
+    'exsitu': {'B2': 'Adjective, Adverb'}, # Common scientific Latin term ("out of place")
+    'U-tube reactor': {'B2 (Specialized)': 'Noun'},  # Specific piece of laboratory equipment
+    'sociotechnical': {'C1 (Specialized)': 'Adjective'}, # Core concept in sociology, systems, and organizational design
+    'TCE-factors': {'C1 (Specialized)': 'Noun (plural)'}, # Technical/academic concept (Transaction Cost Economics)
+    'TCE-model': {'C1 (Specialized)': 'Noun'}, # Technical/academic concept (Transaction Cost Economics)
+    'bets': {'B1': 'Verb, Noun'},  # Common general word
+    'Hammerstein-type structure': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named model structure (control theory)
+    'LS-based methods': {'B2 (Specialized)': 'Noun Phrase'}, # Technical descriptor (Least Squares)
+    'Lyapunov-stable adaptive laws': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named concept in control theory
+    'Phase-lag-free': {'C1 (Specialized)': 'Adjective'}, # Abstract technical descriptor (signal processing/control)
+    'S-Cab truck': {'B1 (Proper Noun)': 'Noun'}, # Specific vehicle/model name
+    'SDP-relaxations': {'C1 (Specialized)': 'Noun (plural)'}, # Specific optimization technique (Semidefinite Programming)
+    'zoomed-in': {'B1': 'Adjective, Verb'}, # Common descriptive term
+    'dead-zone': {'B2 (Specialized)': 'Noun'}, # Technical term (control systems/mechanics)
+    'dollars': {'A1': 'Noun (plural)'}, # Basic currency unit
+    'easier-to-solve': {'A2': 'Adjective'}, # Common comparative descriptor
+    'excitation-energy': {'B2 (Specialized)': 'Noun'}, # Compound scientific noun (physics/chemistry)
+    'rank-constrained': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/optimization descriptor
+    'semi-definite': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical term (linear algebra)
+    'washboard': {'B1': 'Noun'}, # Common household/general term (also used for road surface)
+    'edge-computing-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor for a modern distributed architecture
+    'bounded-input': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in control theory/system stability
+    'bounded-output': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in control theory/system stability
+    'response-logistic': {'C1 (Specialized)': 'Adjective'},  # Specific term in statistical modeling (logistic regression for responses)
+    'electrodynamic': {'C1 (Specialized)': 'Adjective'}, # Core concept in physics/engineering
+    'Gauss’ theorem': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named theorem (math/physics)
+    'Nitsche’s method': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named numerical method
+    'performance': {'B1 (Specialized)': 'Noun'}, # NOTE: Spelling corrected from 'peformance'. Common general/technical term.
+    'RepeatVector': {'B2 (Proper Noun)': 'Noun'}, # Specific function/layer name in ML/Keras
+    'TimeDistributed': {'C1 (Proper Noun)': 'Noun'},  # Specific layer name/function in machine learning libraries (e.g., Keras)
+    'Stefan-Boltzmann constant': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named physical constant (thermodynamics)
+    'gramians': {'C1 (Specialized)': 'Noun (plural)'}, # Core, abstract concept in linear algebra/control theory (Gramian matrix)
+    'NT-step': {'C1 (Specialized)': 'Noun'},  # Specific advanced algorithm (Nesterov-Todd step) in optimization theory
+    "Kabsch’s algorithm": {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named algorithm (linear algebra/computer vision)
+    'neural-field-based': {'C1 (Specialized)': 'Adjective'}, # Abstract concept (e.g., in neuroscience/modeling)
+    'sidestepping': {'B2': 'Verb/Noun'}, # Common general word (often figurative in academic context)
+    "Umeyama’s algorithm": {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named algorithm (linear algebra/computer vision)
+    'relocalized': {'B2': 'Verb'}, # Past tense/participle of "relocalize"
+    'scene-specific': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (computer graphics/vision)
+    'patches’': {'B2 (Specialized)': 'Noun (plural, genitive)'}, # Possessive plural (e.g., image patches)
+    'near-photorealistic': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (computer graphics)
+    'instance-level': {'B2 (Specialized)': 'Adjective'}, # Common technical/ML descriptor
+    'calibration-free': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (instrumentation/vision)
+    'category-level': {'B2 (Specialized)': 'Adjective'}, # Common technical/ML descriptor
+    'dataset-specialized': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor (ML)
+    'arbitrarily-oriented': {'C1': 'Adjective'}, # Formal/abstract descriptor
+    '6D': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (6-Dimensional, e.g., pose estimation)
+    'PnP-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Perspective-n-Point)
+    'R3 manifold': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical concept (3D Euclidean space manifold)
+    'RGB-D-Based': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (RGB and Depth camera)
+    'SDF-based': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (Signed Distance Function)
+    'AHT-related': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Anatomy for Human-centered Technology)
+    'CT-based': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Computed Tomography)
+    'craniovertebral junction': {'C1 (Specialized)': 'Noun Phrase'}, # Specific anatomical term
+    'decedent': {'B2 (Specialized)': 'Noun'}, # Specific legal/medical term
+    'Demons-registration-based': {'C1 (Proper Noun)': 'Adjective'}, # Technical descriptor (Specific image registration algorithm)
+    'embryology': {'C1 (Specialized)': 'Noun'}, # Specific scientific field
+    'SBS-related': {'C2 (Specialized)': 'Adjective'}, # Highly specific/jargon descriptor (Shaken Baby Syndrome)
+    'Sobotta’s Anatomy': {'B2 (Proper Noun)': 'Noun Phrase'}, # Specific named textbook
+    'WHO-reported': {'B1 (Proper Noun)': 'Adjective'}, # Compound descriptor (World Health Organization)
+    'adaptive-remeshing': {'C1 (Specialized)': 'Noun, Adjective'}, # Abstract modeling concept
+    'brain-skull displacement': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract biomechanical concept
+    'fontanelle': {'B2 (Specialized)': 'Noun'}, # Specific anatomical term
+    'form-space': {'C1 (Specialized)': 'Noun'}, # Abstract academic concept (philosophy/design)
+    'illustrations': {'A2': 'Noun (plural)'}, # Common general word
+    'procrustes analysis': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific statistical technique
+    'skull-suture-brain': {'C1 (Specialized)': 'Noun'}, # Compound anatomical term
+    'statistical-based': {'B1 (Specialized)': 'Adjective'}, # Common academic/technical descriptor
+    'strains': {'B2 (Specialized)': 'Noun (plural)'}, # Common scientific/engineering term
+    'viscerocranium': {'C1 (Specialized)': 'Noun'}, # Specific anatomical term
+    'youngest-age': {'B1': 'Adjective'}, # Compound descriptor (superlative)
+    'Box–Cox power': {'C1 (Proper Noun)': 'Adjective'}, # Specific statistical transformation (Box-Cox power transformation)
+    'CT-segmented': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Computed Tomography)
+    'squamosal': {'C1 (Specialized)': 'Adjective, Noun'}, # Specific anatomical term (suture)
+    'lambdoidal': {'C1 (Specialized)': 'Adjective, Noun'}, # Specific anatomical term (suture)
+    'mastoid': {'B2 (Specialized)': 'Adjective, Noun'}, # Specific anatomical term (mastoid process)
+    'sphenoidal': {'C1 (Specialized)': 'Adjective, Noun'},  # Specific anatomical term (suture)
+    'metopic': {'C1 (Specialized)': 'Adjective'}, # Specific anatomical/medical term (related to the forehead/suture)
+    'dura mater': {'C1 (Specialized)': 'Noun'},  # Specific anatomical term (dura mater)
+    'dura': {'C1 (Specialized)': 'Noun'},  # Specific anatomical term (dura mater)
+    '20-dimensional': {'B2 (Specialized)': 'Adjective'}, # Common mathematical/scientific descriptor
+    '3-dimensional': {'A2': 'Adjective'}, # Common geometric descriptor
+    "4’th order Runge-Kutta method": {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced numerical method
+    'ARX-model': {'C1 (Specialized)': 'Noun'}, # Specific time-series model (AutoRegressive with eXogenous input)
+    'Bayes’ rule': {'B2 (Proper Noun)': 'Noun Phrase'}, # Foundational statistical theorem
+    'bottom-left': {'A1': 'Adjective/Adverb'}, # Basic directional descriptor
+    'bottom-right': {'A1': 'Adjective/Adverb'}, # Basic directional descriptor
+    'box-plot': {'B1 (Specialized)': 'Noun'}, # Common data visualization type 
+    'cartesian-to-spherical': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor for coordinate conversion
+    'Chapman-Kolmogorov equation': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced mathematical equation
+    'GP-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Gaussian Process)
+    'GRU-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Gated Recurrent Unit)
+    'minibatch': {'B2 (Specialized)': 'Noun'}, # Core concept in machine learning
+    'modelfree': {'C1 (Specialized)': 'Adjective'}, # Technical concept (e.g., model-free control)
+    'PE-based': {'C1 (Specialized)': 'Adjective'}, # Jargon, based on a specific acronym (e.g., Performance Evaluation)
+    'finite-Taylor': {'C1 (Specialized)': 'Adjective'}, # Compound mathematical concept
+    'full/partial': {'B1': 'Adjective Phrase'}, # Conceptual pairing of common words
+    'linearizes': {'C1 (Specialized)': 'Verb'}, # 3rd person singular of 'linearize'
+    'lowrank': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical concept (e.g., low-rank approximation)
+    'modeldriven': {'C1 (Specialized)': 'Adjective'}, # Abstract technical descriptor
+    'noises': {'A2': 'Noun (plural)'}, # Common word
+    'one-sigma': {'B2 (Specialized)': 'Adjective/Noun'}, # Common statistical descriptor
+    'underdetermined': {'C1': 'Adjective'}, # Formal/mathematical adjective
+    'Lorenz-63 attractor': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named dynamical system (chaos theory) 
+    'Lorenz-96 attractor': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named dynamical system (chaos theory)
+    'MCEM algorithm': {'C1 (Specialized)': 'Noun'}, # Specific algorithm (Monte Carlo Expectation-Maximization)
+    'TS-estimator': {'C1 (Specialized)': 'Noun'}, # Specific statistical/econometric estimator
+    'low-SMNR regime': {'C1 (Specialized)': 'Noun Phrase'}, # Technical descriptor (Signal-to-measurement-path Noise Ratio)
+    'MCMC-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Markov chain Monte Carlo)
+    'NMSE-versus-SMNR': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic/statistical descriptor (Normalized Mean Square Error versus Signal-to-Measurement-Noise Ratio)
+    'deparser': {'C1 (Specialized)': 'Noun'}, # Specific term in network programming (P4 language)
+    'Hoare-Style Logic': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, abstract concept in formal verification
+    'ITP-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Interactive Theorem Prover)
+    'non-proof-producing': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (formal verification)
+    'overapproximation': {'C1 (Specialized)': 'Noun'}, # Abstract concept in formal verification/modeling
+    'P4-specific': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (P4 programming language)
+    'formulae': {'B2': 'Noun (plural)'}, # Plural of formula (formal/academic)
+    'interpreter-based': {'B2 (Specialized)': 'Adjective'}, # Common computing descriptor
+    'next-hop': {'B1 (Specialized)': 'Noun, Adjective'}, # Foundational networking concept
+    'proof-check': {'B2 (Specialized)': 'Noun'}, # Common term in formal verification
+    'proofproducing': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (formal verification)
+    'amusingly': {'B2': 'Adverb'}, # Common general word
+    'datatypes': {'B1 (Specialized)': 'Noun (plural)'}, # Common programming/database term
+    'externs': {'B2 (Specialized)': 'Noun (plural)'},  # Specific programming/compiler term (e.g., in C/C++)
+    'analysis-friendly': {'B2 (Specialized)': 'Adjective'}, # Common academic/technical descriptor
+    'AI-generated': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'AI-made': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'AI-music': {'B2 (Specialized)': 'Noun'}, # Compound technical term
+    'AI-ness': {'C1 (Specialized)': 'Noun'}, # Abstract concept in AI/philosophy
+    'AI-text': {'B2 (Specialized)': 'Noun'}, # Compound technical term
+    'chorales': {'B1': 'Noun (plural)'}, # Common music term
+    'creators': {'A2': 'Noun (plural)'}, # Common general word
+    'jigs': {'B1': 'Noun (plural)'}, # Common music/dance term
+    'non-AI': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'opensource': {'B1 (Specialized)': 'Adjective/Noun'}, # Common technical/business term (open-source)
+    'reels': {'B1': 'Noun (plural)'}, # Common music/dance term
+    'semitones': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational music theory term
+    'singles': {'A2': 'Noun (plural)'}, # Common music/general term
+    'songs': {'A1': 'Noun (plural)'}, # Basic, core vocabulary
+    'subplot': {'B1': 'Noun'}, # Common literary/narrative term
+    'tunes': {'A1': 'Noun (plural)', 'B1': 'Verb (3rd person singular)'}, # Noun: "melodies/songs". Verb: "the guitarist tunes the instrument" / "the engine tunes itself."
+    'ceding control': {'B2': 'Verb Phrase'}, # Common academic/business phrase
+    'item-to-corpus': {'C1 (Specialized)': 'Noun/Adjective'}, # Technical descriptor (information retrieval/ML)
+    'jukebox': {'B1 (Proper Noun)': 'Noun'}, # Specific AI model name (or general machine)
+    'controversies': {'B2': 'Noun (plural)'}, # Common academic/general term
+    'corpus-to-corpus': {'C1 (Specialized)': 'Noun/Adjective'}, # Technical descriptor (information retrieval/ML)
+    'overreliance': {'B2': 'Noun'},  # Abstract noun
+    'musicological': {'C1 (Specialized)': 'Adjective'}, # Specific academic field descriptor (study of music)
+    'submissions': {'B2': 'Noun (plural)'}, # Common academic/publishing term
+    'XAIxArts community': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific name of a community/group (Explainable AI and Arts)
+    'contour-based analysis': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract technical descriptor (math/image processing)
+    'traditions': {'B1': 'Noun (plural)'},  # Common general/academic term
+    'Thomson-scatters': {'C1 (Specialized)': 'Noun'}, # Specific physics term (plural)
+    'axisymetric': {'C1 (Specialized)': 'Adjective'}, # Abstract geometrical/modeling descriptor.
+    'gyrokinetic': {'C1 (Specialized)': 'Adjective'}, # Specific physics field descriptor (plasma physics)
+    'in-Figure': {'B2': 'Adjective, Adverb'}, # Common academic/referential descriptor
+    'inter-ELM': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (between Edge Localized Modes)
+    'iso-Figure': {'B2': 'Adjective, Adverb'}, # Common academic/referential descriptor
+    'low-Z': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (low atomic number)
+    'non-ideally': {'B2': 'Adverb'}, # Common formal/academic adverb
+    'nonperturbed': {'C1 (Specialized)': 'Adjective'}, # Abstract scientific descriptor (not perturbed)
+    'post-ELM': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (after Edge Localized Mode)
+    'pre-ELM': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (before Edge Localized Mode)
+    're-named': {'B1': 'Verb'}, # Past tense/participle of "rename"
+    'triangularity': {'C1 (Specialized)': 'Noun'}, # Specific geometrical/modeling term (plasma physics)
+    'L-mode': {'C1 (Proper Noun)': 'Noun'}, # Specific operational regime in plasma physics
+    'PB-boundary': {'C1 (Specialized)': 'Noun'}, # Technical descriptor (Peeling-Ballooning boundary)
+    'PB-limited': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor
+    'PB-model': {'C1 (Specialized)': 'Noun'}, # Technical descriptor
+    'PB-modes': {'C1 (Specialized)': 'Noun (plural)'}, # Technical descriptor
+    'PB-stability': {'C1 (Specialized)': 'Noun'}, # Technical descriptor
+    'D-shape': {'A2': 'Noun/Adjective'}, # Simple descriptive shape
+    'shots': {'B1': 'Noun (plural)', 'A2': 'Noun (plural)'}, # B1: Technical (e.g., plasma shots, photographic shots). A2: General (e.g., vaccine shots).
+    'Navier-Stoke’s': {'C1 (Proper Noun)': 'Noun Phrase'}, # Foundational set of equations in fluid dynamics
+    'detections': {'B2': 'Noun (plural)'}, # Common technical/scientific term
+    'energy-conserving': {'C1 (Specialized)': 'Adjective'}, # Abstract scientific/engineering concept
+    'non-object-related': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (computing/vision)
+    'off-position': {'B1': 'Noun'}, # Common general/technical term
+    'photorealistic': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (computer graphics)
+    'post-render': {'B2 (Specialized)': 'Adjective/Noun'}, # Technical descriptor (computer graphics)
+    'scopes': {'B2': 'Noun (plural)'}, # Common academic/technical term
+    'sensor-level': {'B2 (Specialized)': 'Adjective'}, # Common technical/engineering descriptor
+    'textures': {'B1': 'Noun (plural)', 'B2 (Specialized)': 'Noun (plural)'}, # B1: General. B2: Technical (e.g., in graphics)
+    'updaters': {'B2 (Specialized)': 'Noun (plural)'}, # Technical term (e.g., software/data updaters)
+    'textureless': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (computer graphics)
+    'CAD-based': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Computer-Aided Design)
+    'CAD-derived': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'CAD-generated': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'CAD-modeled': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'Orings': {'B1 (Specialized)': 'Noun (plural)'}, # Technical component name (O-rings)
+    'subfigures': {'B1': 'Noun (plural)'}, # Common academic/publishing term
+    'mAP@50-95': {'C1 (Specialized)': 'Noun'}, # Specific, abstract ML/Computer Vision metric
+    'inequalities': {'B2': 'Noun (plural)'}, # Common mathematical/general term
+    'p-Laplace': {'C1 (Proper Noun)': 'Noun'}, # Specific mathematical operator/equation name
+    'p-Laplacian': {'C1 (Proper Noun)': 'Noun'}, # Specific mathematical operator/equation name
+    'semi-norm': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical concept (functional analysis)
+    'seminorm': {'C1 (Specialized)': 'Noun'},  # Synonym of the above
+    'extremals': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract mathematical/calculus term
+    'analysability': {'C1': 'Noun'}, # Abstract academic noun
+    'desiderata': {'C1': 'Noun (plural)'}, # Formal academic term (Latin plural)
+    'heterophilic': {'C1 (Specialized)': 'Adjective'}, # Abstract concept (e.g., cell-cell interaction, graph theory)
+    'heterophily': {'C1 (Specialized)': 'Noun'}, # Abstract concept (social science/graph theory)
+    'high-illicit': {'B2': 'Adjective'}, # Compound descriptive term
+    'homophilic': {'C1 (Specialized)': 'Adjective'}, # Abstract concept (e.g., cell-cell interaction, graph theory)
+    'latents': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract statistical/ML term (latent variables)
+    'low-illicit': {'B2': 'Adjective'}, # Compound descriptive term
+    'patents': {'B2': 'Noun (plural)'}, # Common business/legal term
+    'restated': {'B2': 'Verb'}, # Past tense/participle. Common academic/formal verb.
+    'Student-t': {'B2 (Proper Noun)': 'Noun/Adjective'}, # Foundational statistical distribution
+    'abbreviates': {'B2': 'Verb'}, # 3rd person singular verb
+    'accuracies': {'B2': 'Noun (plural)'}, # Common academic/scientific term
+    'attribute-reconstruction': {'C1 (Specialized)': 'Noun'}, # Abstract ML/graph theory concept
+    'balances': {'A2': 'Noun (plural), Verb'}, # Basic, core vocabulary
+    'blurs': {'B1': 'Verb/Noun'}, # Common visual/image processing term
+    'collapses': {'B2': 'Verb/Noun'}, # Common scientific/general term
+    'crossview': {'B2 (Specialized)': 'Noun, Adjective'}, # Technical descriptor (computer vision)
+    'degree-based': {'B2 (Specialized)': 'Adjective'}, # Common technical/graph theory descriptor
+    'edge-level': {'B2 (Specialized)': 'Adjective'}, # Common technical/graph theory descriptor
+    'elementwise': {'B2 (Specialized)': 'Adjective, Adverb'}, # Common mathematical/programming term
+    'equalises': {'A2': 'Verb'}, # UK spelling. 3rd person singular of 'equalize'.
+    'heterophilic': {'C1 (Specialized)': 'Adjective'}, # Abstract concept (e.g., cell-cell interaction, graph theory)
+    'higher-quality': {'B1': 'Adjective'}, # Common comparative descriptor
+    'matrix-function': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical concept
+    'merchants': {'B1': 'Noun (plural)'}, # Common business term
+    'miners': {'B1': 'Noun (plural)'}, # e.g., "data miners" or "cryptocurrency miners"
+    'outer-product': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical concept (linear algebra)
+    'rank-deficient': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical concept (linear algebra)
+    'ranks': {'B1': 'Noun (plural), Verb'}, # Common academic/general term
+    're-accessing': {'B2': 'Verb/Noun'}, # Common technical/computing term
+    'relabelling': {'B2 (Specialized)': 'Noun/Verb'}, # UK spelling. Common data science term.
+    'resolutions': {'B1': 'Noun (plural)'}, # Common general/technical term
+    'respects': {'A2': 'Noun (plural), Verb'}, # Basic, core vocabulary
+    'right-side': {'A1': 'Adjective, Noun'}, # Basic directional descriptor
+    'row-permuted': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical descriptor (linear algebra)
+    'scale-specific': {'B2 (Specialized)': 'Adjective'}, # Common scientific/technical descriptor
+    'single-pass': {'B2 (Specialized)': 'Adjective'}, # Common computing/algorithmic descriptor
+    'single-scale': {'B2 (Specialized)': 'Adjective'}, # Common scientific/technical descriptor
+    'sparse-dense': {'C1 (Specialized)': 'Adjective, Noun'}, # Conceptual pairing in computing/math
+    'structure-derived': {'C1 (Specialized)': 'Adjective'}, # Compound academic descriptor
+    'submatrix': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical concept
+    'symmetrised': {'C1 (Specialized)': 'Adjective'}, # UK spelling. Abstract mathematical descriptor.
+    'test-set': {'B1 (Specialized)': 'Noun'}, # Core concept in machine learning
+    'transaction-level': {'B2 (Specialized)': 'Adjective'}, # Common business/IT descriptor
+    'unmasked': {'B1': 'Adjective/Verb'}, # Common general/technical term
+    'walk-splitting': {'C1 (Specialized)': 'Noun'}, # Specific graph theory/algorithmic concept
+    'walkbased': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., walk-based method)
+    'walknormalised': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., walk-normalized adjacency matrix)
+    'y-axes': {'B1 (Specialized)': 'Noun (plural)'}, # Foundational concept in visualization/math
+    '2-step embeddings': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical descriptor (ML/NLP)
+    'disobeying': {'B2': 'Verb'}, # Gerund/participle of "disobey"
+    'directedness': {'C1 (Specialized)': 'Noun'}, # Abstract concept (e.g., in graph theory or psychological testing)
+    'ECF-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Empirical Characteristic Function)
+    'finegrained': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (fine-grained)
+    'messagepassing': {'C1 (Specialized)': 'Noun'}, # Core concept in Graph Neural Networks
+    'k-step': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (k-step walk, k-step method)
+    'SVD-Entropy': {'C1 (Specialized)': 'Noun'}, # Specific mathematical/data analysis concept (Singular Value Decomposition)
+    'SVD-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Singular Value Decomposition)
+    'favour': {'B1': 'Noun, Verb'}, # UK spelling. Common general word.
+    'money-lending': {'B1': 'Noun'}, # Common business/economic term
+    'permutation-invariant': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/ML concept
+    'L2-norms': {'C1 (Specialized)': 'Noun (plural)'}, # Core mathematical concept (linear algebra)
+    'Flink-like': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor (based on a specific framework)
+    'functions-as-a-service': {'C1 (Specialized)': 'Noun'}, # Core concept in cloud computing (FaaS)
+    'snappshotting': {'B2 (Specialized)': 'Noun, Verb'}, # NOTE: Spelling corrected to 'snapshotting'. Technical process of checkpointing.
+    'untracked': {'B1': 'Adjective'}, # Common general/technical descriptor
+    'dataflows': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational concept in data processing
+    'failure-transparent': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in distributed systems/fault tolerance
+    'stops': {'A2': 'Verb, Noun'},  # Basic, core vocabulary
+    'delta-based': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., delta-based encoding, delta-based change)
+    'progresses': {'B1': 'Verb (third person singular)'},   # 3rd person singular of 'progress'. Common general word.
+    '2D-greyscale images': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/imaging descriptor
+    '2D-permeability field': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract modeling concept
+    '3-parameter Maxwell model': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named constitutive model 
+    '3-phase systems': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'accumulations': {'B2': 'Noun (plural)'}, # Common general/scientific term
+    'FFT-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Fast Fourier Transform)
+    'hexplane algorithm': {'C1 (Specialized)': 'Noun'}, # Specific graphics/modeling algorithm
+    'KI-water solution': {'B2 (Specialized)': 'Noun Phrase'}, # Compound chemical/technical term
+    'Kapton tube': {'B2 (Proper Noun)': 'Noun'}, # Specific laboratory material/equipment
+    'Kapton': {'B2 (Proper Noun)': 'Noun'}, # Specific, proprietary polyimide film used in engineering/science
+    'nanofocus': {'C1 (Specialized)': 'Noun'}, # Specific term in imaging/optics
+    'Richards-type equations': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named mathematical model
+    'attenuation-contrast X-ray imaging': {'C1 (Specialized)': 'Noun'}, # Advanced scientific imaging technique
+    'cross-directional': {'B2 (Specialized)': 'Adjective'}, # Common technical/engineering descriptor
+    'felt-press': {'C1 (Specialized)': 'Noun'}, # Specific piece of industrial equipment
+    'groove-induced': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'grooved': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'high-NA': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (High Numerical Aperture)
+    'intensities': {'B1': 'Noun (plural)'}, # Common general/scientific term
+    'methacrylate-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (polymer chemistry)
+    'multi-projection imaging': {'C1 (Specialized)': 'Noun'}, # Advanced scientific imaging technique
+    'three-parameter Maxwell models': {'C1 (Proper Noun)': 'Noun Phrase (plural)'}, # Plural of the 3-parameter model
+    'timeresolved X-ray radiography': {'C1 (Specialized)': 'Noun'}, # Advanced scientific imaging technique
+    'tomogram': {'C1 (Specialized)': 'Noun'}, # Specific medical/imaging result
+    'twophoton polymerization': {'C1 (Specialized)': 'Noun'}, # Advanced chemical/manufacturing process
+    'water-KI': {'B2 (Specialized)': 'Noun, Adjective'}, # Compound chemical/technical term
+    'Lattice-Boltzmann simulation': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced computational method (fluid dynamics)
+    'PTFE-covered': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Polytetrafluoroethylene)
+    'X-ray-based': {'B2 (Specialized)': 'Adjective'}, # Common scientific imaging descriptor
+    'belts': {'A1': 'Noun (plural)', 'B2 (Specialized)': 'Noun (plural)'}, # A1: General (e.g., clothing). B2: Technical (e.g., conveyor belts, timing belts)
+    'three-parameter': {'B1 (Specialized)': 'Adjective'}, # Common mathematical/modeling descriptor
+    'twophoton': {'C1 (Specialized)': 'Adjective'},  # Advanced chemical/physical process descriptor
+    '3-parameter': {'B1 (Specialized)': 'Adjective'}, # Common mathematical/modeling descriptor
+    '3-phase': {'B2 (Specialized)': 'Adjective'}, # Common scientific/engineering term
+    'Terzaghi´s principle': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named principle in soil mechanics
+    'microprinter': {'B2 (Specialized)': 'Noun'},  # Specific technical device
+    'Fatou’s inequality': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named mathematical inequality (measure theory/calculus)
+    'Glivenko-Cantelli’s theorem': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named theorem (statistics/probability)
+    'Monge problem': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named problem (optimal transport theory)
+    'Schilder’s theorem': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named theorem (large deviations theory)
+    'Wasserstein-1 distance': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific named metric (optimal transport theory)
+    'Wasserstein-GAN': {'C1 (Proper Noun)': 'Noun'}, # Specific named ML model (Generative Adversarial Network)
+    'ascent-descent dynamics': {'C1 (Specialized)': 'Noun'}, # Abstract concept (optimization theory/dynamics)
+    'bridge-matching': {'C1 (Specialized)': 'Noun'}, # Abstract concept (optimal transport theory)
+    'compacts': {'C1 (Specialized)': 'Verb (third person singular), Noun'}, # Verb: 3rd person sing.; Noun: plural. Abstract mathematical term.
+    'descent-ascent': {'C1 (Specialized)': 'Noun'}, # Abstract concept (optimization theory/dynamics)
+    'flow-matching': {'C1 (Specialized)': 'Noun'}, # Abstract concept (optimal transport theory)
+    'forward-backward': {'C1 (Specialized)': 'Adjective, Adverb'}, # Common numerical/algorithmic descriptor
+    'adversarially': {'C1 (Specialized)': 'Adverb'}, # Abstract academic/technical adverb (e.g., in ML/Security)
+    'VAE-like encoder': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Variational Autoencoder)
+    'law-of-large-numbers': {'B2 (Proper Noun)': 'Noun Phrase'}, # Foundational statistical theorem
+    'Kantorovich-Rubinstein duality': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced mathematical concept
+    'GAN-objective': {'C1 (Specialized)': 'Noun'}, # Technical descriptor (Generative Adversarial Network)
+    'LDP-type': {'C1 (Specialized)': 'Adjective'},
+    '1-Lipschitz functions': {'C1 (Specialized)': 'Noun Phrase (plural)'}, # Abstract mathematical concept (functional analysis)
+    'AED-related': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Automation, Electrification, Digitalisation)
+    'Delphi-like estimates': {'C1 (Proper Noun)': 'Noun Phrase (plural)'}, # Specific academic/forecasting method
+    'EU-level': {'B2': 'Adjective'}, # Common political/administrative descriptor
+    'Stock-and-Flow': {'C1 (Specialized)': 'Noun'}, # Abstract concept in systems dynamics/economics
+    "Sweden's": {'A1': 'Noun (Proper Noun, Genitive)'}, # Possessive form of the country
+    'TCO-reduction': {'B2 (Specialized)': 'Noun'}, # Business/finance term (Total Cost of Ownership)
+    'worse-before-better': {'B2': 'Adjective'}, # Common idiomatic/business descriptor
+    'commitments': {'B2': 'Noun (plural)'}, # Common formal/business term
+    'e-truck': {'B1 (Specialized)': 'Noun'}, # Common transport/technical term (Electric truck)
+    'future-orientated': {'B2': 'Adjective'}, # Common business/academic descriptor
+    'insight-focused': {'B2': 'Adjective'}, # Common business/academic descriptor
+    'phase-specific': {'B2': 'Adjective'}, # Common technical/project management descriptor
+    'subsidies': {'B2': 'Noun (plural)'},  # Common political/economic term
+    'broad-gauge': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (railway track gauge)
+    'heavy-haul': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (railway/trucking transport)
+    'nondominated': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in optimization/economics (non-dominated solution/Pareto efficiency)
+    'surface-initiated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., surface-initiated crack)
+    'subsurface-initiated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., subsurface-initiated crack)
+    'biparametric': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/modeling descriptor
+    'creosote': {'B2 (Specialized)': 'Noun'}, # Specific chemical compound/material (railway ties)
+    'girder': {'B1 (Specialized)': 'Noun'}, # Foundational structural engineering term
+    'prestressed concrete': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational structural engineering material
+    'railings': {'A2': 'Noun (plural)', 'B1': 'Verb (3rd person singular)'}, # Noun: Common architectural feature. Verb: 3rd person singular (e.g., "The safety code railings off the edge.")
+    'nails': {'A2': 'Noun (plural)', 'B1': 'Verb (3rd person singular)'}, # Noun: basic tool. Verb: 3rd person singular (e.g., "The carpenter nails the board").
+    'screws': {'A2': 'Noun (plural)', 'B1': 'Verb (3rd person sinular)'}, # Noun: basic component. Verb: 3rd person singular (e.g., "The machine screws the component into place").
+    'slotted-in': {'B2 (Specialized)': 'Adjective, Verb'}, # Technical descriptor
+    'stress-ribbon': {'C1 (Specialized)': 'Noun, Adjective'}, # Specific structural engineering concept (bridge type)
+    'zero-padding': {'B2 (Specialized)': 'Noun'}, # Common technical concept (signal processing/ML)
+    'auto-MAC': {'B2 (Specialized)': 'Noun'}, # Technical term
+    'auto-spectral density': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in signal processing
+    'cross-spectral densities': {'C1 (Specialized)': 'Noun Phrase (plural)'}, # Abstract concept in signal processing
+    'mass-spring-damper system': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in mechanical engineering/physics
+    'springs': {'A2': 'Noun (plural)', 'B1': 'Verb (3rd person sing.)', 'B1 (Specialized)': 'Noun (plural)'},
+    'auto-spectral': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (auto-spectral density in signal processing)
+    'cross-spectral': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (cross-spectral density in signal processing)
+    'footbridge': {'A2': 'Noun'},  # Common architectural/structural element
     #GQMe
 
 }
-    
+
 chemical_elements_symbols={
     # Element - chemical symbols
     'Ac': {'C2': 'Symbol (chemical)'}, # actinium
@@ -61510,6 +61908,15 @@ chemical_elements={
 
 
 chemical_names_and_formulas=[
+    '3-Cholamidopropyl',
+    '4-deoxy-4-formamido-L-arabinose',
+    'H₂',
+    'H₂O',
+    'C₂',
+    'C₂-C₃',
+    'CaBr₂',
+    'CH₄',
+    'Al₂O3',
     'N-acetamide',
     'N-aminophthalimide',
     'N-phthalimide',
@@ -63606,7 +64013,19 @@ place_names=[
     'Türkiye',
     'Poznań',
     'Braga',
-
+    'Sommargatan', # street
+    'Östergatan', # street
+    'Rosendal', # district
+    'Marrakech',
+    'Tangier',
+    'Daejeon', # South Korea
+    'Laramie',
+    'El Salvador',
+    'Dunajec', # river between Poland and Slovakia
+    'Slovakia',
+    'Uddebo',
+    'Wrocław', # Poland
+    'Góis', # Portugal
     #GQMp
 
 ]
@@ -66863,6 +67282,7 @@ company_and_product_names=[
     'MASON', # multi-agent simulation environment library - used but not defined in diva2:1464540
     'MATHCAD', # product - used but not defined in diva2:550721
     'MATLAB and RADAR',
+    'MAT-LAB', # sometimes hyphenated as
     'MATLAB', # programming and numeric computing platform
     'MATLAB/SIMULINK', # programming and numeric computing platform and simulation
     'MATLAB/Simulink',
@@ -76443,6 +76863,360 @@ company_and_product_names=[
     '0.6C', # This is a current value equal to 60% of the battery's total capacity
     'HC IRAPO', # a water objective -- see diva2:2004566
     'IRAPO', # a water objective -- see diva2:2004566
+    'ASTM', # ASTME International, formerly known as American Society for Testing and Materials,
+    'PIARC', # World Road association -- organization -- see diva2:2010066
+    'GreenPave', # a tool -- see diva2:2010066
+    'Greenroads', # a tool -- see diva2:2010066
+    'CARIDDI', # 3D finite element model of the resistive wall -- see diva2:2008879
+    'Orthanc', #  an open-source, lightweight DICOM server -- see diva2:2006331
+    'Alfa Aesar', # company - now Thermo Scientific Chemicals
+    'Fityk software', # see diva2:2010763
+    'Micromeritics', # company
+    'PURALOX SCCa-150/200', # a specific grade of high-purity gamma-alumina (\(\gamma -Al_{2}O_{3}\)) powder, manufactured by Sasol -- see diva2:2010763
+    'Pyro GC-MS/FID', # a micro-pyrolyzer system coupled with gas chromatography–mass spectrometry and flame ionization detection
+    'Zeolyst International', # company
+    'NETZSCH STA 449 F3 Jupiter system',
+    'NETZSCH', # company
+    'NIST20', # a National Institute of Standards and Technology library
+    'IEEE/CAA Journal',
+    'LMIRANK', # software -- see diva2:2015915
+    'PyCharm', # library
+    'i5-8250U processor', # Intel processor
+    'Automatica Sinica', # journal
+    'bmibnb', # a branch-and-bound method, available in YALMIP -- see diva2:2015915
+    'filtfilt', # Matlab function
+    'FEniCSx',
+    'SIAM Journal', # journal
+    'ASM-Net', # see diva2:2011825
+    'FoundationPose', # see diva2:2011825
+    'Any6D', # see diva2:2011825
+    'NetVLAD', # see diva2:2011825
+    'AnyLoc', # see diva2:2011825
+    'SALAD', # see diva2:2011825
+    'BundleFusion', # see diva2:2011825
+    'Objaverse', # dataset -- see diva2:2011825
+    'Zero-1-to-3', # see diva2:2011825
+    'CAT3D', # see diva2:2011825
+    'TRELLIS', # see diva2:2011825
+    'REDWOOD75', # dataset -- see diva2:2011825
+    'REAL275', # dataset -- see diva2:2011825
+    'Spann3R', # see diva2:2011825
+    'MUSt3R', # see diva2:2011825
+    'CUT3R', # see diva2:2011825
+    'DUSt3R', # see diva2:2011825
+    'Fast3R', # see diva2:2011825
+    'MV-DUSt3R+', # see diva2:2011825
+    'FLARE', # see diva2:2011825
+    'VGGT', # see diva2:2011825
+    'iMAP', # see diva2:2011825
+    'Co-SLAM', # see diva2:2011825
+    'CosyPose', # see diva2:2011825
+    'RANSAC', # see diva2:2011825
+    'LSD-SLAM', # see diva2:2011825
+    'DROID-SLAM', # see diva2:2011825
+    'DTAM', # see diva2:2011825
+    'DeepIM', # see diva2:2011825
+    'DeMoN',  # see diva2:2011825 - note it appears as De-MoN due to hyphenation at end of line
+    'GLACE', # see diva2:2011825
+    'GO-SLAM', # see diva2:2011825
+    'Gen3DSR', # see diva2:2011825
+    'InstPIFu', # see diva2:2011825
+    'MIDI', # see diva2:2011825
+    'Kapture', # see diva2:2011825
+    'KinectFusion', # see diva2:2011825
+    'Kintinuous', # see diva2:2011825
+    'LatentFusion', # see diva2:2011825
+    'MIPS-Fusion', # see diva2:2011825
+    'Loopy-SLAM', # see diva2:2011825
+    'MASt3R', # see diva2:2011825
+    'MASt3R-SLAM', # see diva2:2011825
+    'MV-DUSt3R', # see diva2:2011825
+    'MegaPose', # see diva2:2011825
+    'MonoSLAM', # see diva2:2011825
+    'NICE-SLAM', # see diva2:2011825
+    'NICESLAM', # see diva2:2011825
+    'NRGBD', # dataset -- see diva2:2011825
+    'NeuMap', # see diva2:2011825
+    'NeuS', # see diva2:2011825
+    'NodeSLAM', # see diva2:2011825
+    'OKVIS', # see diva2:2011825
+    'ORB-SLAM', # see diva2:2011825
+    'Pascal3D+', # see diva2:2011825
+    'ObjectNet3D', # see diva2:2011825
+    'RBP-Pose', # see diva2:2011825
+    'R-SCoRe', # see diva2:2011825
+    'Indoor-6', # see diva2:2011825
+    'RIO10', # see diva2:2011825
+    'Reloc3r', # see diva2:2011825
+    'Replica-Big', # see diva2:2011825
+    'SACReg', # see diva2:2011825
+    'SDFEst', # see diva2:2011825
+    'SGPA', # see diva2:2011825
+    'VGGT-SLAM', # see diva2:2011825
+    'VINS-Fusion', # see diva2:2011825
+    'VoxGraph', # see diva2:2011825
+    'iCaps', # see diva2:2011825
+    'DINOv2', # see diva2:2011825
+    'BOP benchmark', # see diva2:2011825
+    'Pascal3D', # see diva2:2011825
+    'DPDN', # see diva2:2011825
+    'Springer-Verlag', # company (publisher)
+    'Connexions Web site', # web site -- see diva2:2010399
+    'Morpho', # an R package -- see diva2:2010399
+    'Deep-Bayes', # see diva2:2011966
+    'DeepBayes', # see diva2:2011966
+    'CPF-SAEM', # see diva2:2011966
+    'FilterPy', # see diva2:2011966
+    'Kalman-Net', # see diva2:2011966
+    'KalmanNet', # see diva2:2011966
+    'Mamba', # see diva2:2011966
+    'RTSNet', # see diva2:2011966
+    'Split-KalmanNet', # see diva2:2011966
+    'pyParticleEst', # see diva2:2011966
+    'Adam-W', # see diva2:2011966
+    'ARMv6', # processor -- see diva2:2013403
+    'ARMv6-M', # processor -- see diva2:2013403
+    'SPARCv8', # processor -- see diva2:2013403
+    'Cortex-M0', # processor -- see diva2:2013403
+    'EuroP4', # conference -- see diva2:2013403
+    'Isabelle/HOL', # see diva2:2013403
+    'Leapfrog', # see diva2:2013403
+    'Metis', # first-order prover -- see diva2:2013403
+    'NetCTL', # see diva2:2013403
+    'P4Cub', # see diva2:2013403
+    'P4light', # see diva2:2013403
+    'PISCES', # see diva2:2013403
+    'Petr4', # see diva2:2013403
+    'Rocq', # re-named Coq theorem prover
+    'SafeP4', # see diva2:2013403
+    'Smallfoot language', # see diva2:2013403
+    'Holfoot', # verification tool -- see diva2:2013403
+    'Symnet', # symbolic executor -- see diva2:2013403
+    'TAP4S', # prototype tool  -- see diva2:2013403
+    'XCAP', # see diva2:2013403
+    'Zenodo', # see diva2:2013403
+    'CAP-family logic', # see diva2:2013403
+    'BMv2', # a reference software switch written in C++ -- see diva2:2013403
+    'Automath', # see diva2:2013403
+    'ASSERT-P4', # see diva2:2013403
+    'Compcert', # see diva2:2013403
+    'V1Model', # see diva2:2013403
+    "X-Switch’s", # Open ISA
+    "Whitehead’s Principia Mathematica", # book -- see diva2:2013403
+    "Landau’s Grundlagen der Analysis",  # book -- see diva2:2013403
+    "Grundlagen der Analysis",  # book -- see diva2:2013403
+    'Aimi', # company -- see diva2:2011779
+    'Aiva Technologies', # company -- see diva2:2011779
+    'Bark1', # open source  -- see diva2:2011779
+    'Boomy', # commerical platform   -- see diva2:2011779
+    'Suno', # commerical platform   -- see diva2:2011779
+    'Udio', # commerical platform   -- see diva2:2011779
+    'Databass AI', # company -- see diva2:2011779
+    'Amadeus Code', # company -- see diva2:2011779
+    'Beatoven.ai', # company -- see diva2:2011779
+    'brain.fm', # company -- see diva2:2011779
+    'Cassette', # company -- see diva2:2011779
+    'Loudly', # company -- see diva2:2011779
+    'Riffusion', # company -- see diva2:2011779
+    'Soundful', # company -- see diva2:2011779
+    'soundraw.io', # company -- see diva2:2011779
+    'Soundry AI', # company -- see diva2:2011779
+    'Splash', # company -- see diva2:2011779
+    'ElevenLabs Music',  # company -- see diva2:2011779
+    'Owl Duet', # company -- see diva2:2011779
+    'Sonauto', # company -- see diva2:2011779
+    'MusicGen', # diffusion model -- see diva2:2011779
+    'Diff-Sound', # diffusion model -- see diva2:2011779
+    'Moûsai', # diffusion model -- see diva2:2011779
+    'SDMuse', # diffusion model -- see diva2:2011779
+    'Musika!', # see diva2:2011779
+    'GEMA', # music rights group -- see diva2:2011779
+    'SACEM', # music rights group -- see diva2:2011779
+    'IRCAM Amplify', # AI music detector -- see diva2:2011779
+    'IRCAM', # AI music detector -- see diva2:2011779
+    'Illiac Suite', # composition -- see diva2:2011779
+    'Nutcracker',  # composition -- see diva2:2011779
+    'Morgan Rattler',  # corpus? -- see diva2:2011779
+    'EnCodec', # neural compression method -- see diva2:2011779
+    'SoundStream', # neural compression method -- see diva2:2011779
+    'ABC/MIDI/score/audio', # renderings -- see diva2:2011779
+    'Books3 collection', # collection -- see diva2:2011779
+    'CAESMI', # method  -- see diva2:2011779 page 27
+    'StyleRank', # method  -- see diva2:2011779 page 27
+    'MuseGAN',# see diva2:2011779
+    'MusiCNN embeddings',# see diva2:2011779
+    'MusicLM',# see diva2:2011779
+    'SONICS dataset',# see diva2:2011779
+
+    'CASTOR', # code -- see diva2:2012738
+    'JOREK', # code -- see diva2:2012738
+    'MISHKA', # code -- see diva2:2012738
+    'Europed', # code -- see diva2:2012738
+    'EPED', # model  -- see diva2:2012738
+    'ESSIVE', # framework  -- see diva2:2012738
+    'ADDA', # see diva2:2013003
+    'PointDAN', # see diva2:2013003
+    'MCD', # see diva2:2013003
+    'SWDA', # see diva2:2013003
+    'SIP-17', # factory environment -- see diva2:2013003
+    'SIP15-OD', # factory environment -- see diva2:2013003
+    'SIP2A-OD', # factory environment -- see diva2:2013003
+    'ViT-B/16', # a sel-supervisred model -- see diva2:2013003
+    'YOLOv12', # see diva2:2013003
+    'YOLOv8', # see diva2:2013003
+    'CCSA', # contrastive method -- see diva2:2013003
+    'CGTextures', # see diva2:2013003
+    'ConvNeXt', # see diva2:2013003
+    'DANN',  # model -- see diva2:2013003
+    'Eevee', # see diva2:2013003
+    'LINEMOD', # see diva2:2013003
+    'AdamW', # optimizer -- see diva2:2013003
+    'LambdaLR scheduler', # see diva2:2013003
+    'MVTec ITODD',  # see diva2:2013003
+    'ModelNet',  # see diva2:2013003
+    'PixelDA',  # see diva2:2013003
+    'PyBullet', # render -- see diva2:2013003
+    'ResNet152',  # see diva2:2013003
+    'SIP17', # dataset -- see diva2:2013003
+    'SceneNet', # see diva2:2013003
+    'Sim2Real Robotic Dataset', # see diva2:2013003
+    'Syn2Real', # see diva2:2013003
+    'T-LESS', # see diva2:2013003
+    'TL-160', # see diva2:2013003
+    'TL-20', # see diva2:2013003
+    'Unsplash dataset', # see diva2:2013003
+    'Ultralytics', # YOLO Ultralytics -- see diva2:2013003
+    'Flickr8K', # see diva2:2013003
+    'FlyingThings3D', # see diva2:2013003
+
+    'Dogecoin', # a digital currency -- see diva2:2014390
+    'Arxiv', # a preprint site -- see diva2:2014390
+    'Polblogs', # dataset -- see diva2:2014390
+    'Fly Larva', # dataset -- see diva2:2014390
+    'Flylarva', # dataset -- see diva2:2014390
+    'EU-Email', # dataset -- see diva2:2014390
+    'Enron', # dataset -- see diva2:2014390
+    'Pokec' # dataset -- see diva2:2014390
+    'Adam', # A gradient descent optimizer-- see diva2:2014390
+    'AdamW', # A version of Adam-- see diva2:2014390
+    'amsgrad', # A flag for Adam-- see diva2:2014390
+    'APP', # A proximity node embedding model baseline-- see diva2:2014390
+    'BGRL', # A SSGNN node embedding baseline model-- see diva2:2014390
+    'BLADE', # A proximity node embedding model baseline-- see diva2:2014390
+    'CCA-SSG', # A SSGNN node embedding baseline model-- see diva2:2014390
+    'CNAFS', # An unsupervised feature selection baseline method-- see diva2:2014390
+    'DGGAN', # A proximity node embedding model baseline-- see diva2:2014390
+    'DirSwitch', # A ReachNEs base node embedding model that uses edge direction switching-- see diva2:2014390
+    'DirSwitch-r', # A DirSwitch using r directed walk steps before switching to undirected propagation-- see diva2:2014390
+    'F.E.+MLP', # Feature Engineering + Multilayer Perceptron flow prediction baseline model-- see diva2:2014390
+    'F.G.', # The Fairness–Goodness flow prediction baseline model-- see diva2:2014390
+    'GraphSAGE', # Graph Sample and Aggregate (GNN architecture)-- see diva2:2014390
+    'HOPE', # A proximity node embedding model-- see diva2:2014390
+    'K-Means', # Lloyd’s algorithm for partitioning data into k clusters-- see diva2:2014390
+    'MultiDir-r', # Multi-directional reachability model with r directed steps and no undirected switching-- see diva2:2014390
+    'NDFS', # An unsupervised feature selection baseline method-- see diva2:2014390
+    'NERD', # A proximity node embedding model-- see diva2:2014390
+    'NMI', # Normalized Mutual Information-- see diva2:2014390
+    'Node2Vec', # A proximity node embedding model-- see diva2:2014390
+    'PCAPass', # A message-passing node embedding model-- see diva2:2014390
+    'QMR', # A matrix decomposition method-- see diva2:2014390
+    'QMR-FS', # QMR Feature Selection method-- see diva2:2014390
+    'SPEC', # An unsupervised feature selection baseline method-- see diva2:2014390
+    'UDFS', # An unsupervised feature selection baseline method-- see diva2:2014390
+    'USFSM', # An unsupervised feature selection baseline method-- see diva2:2014390
+    'AMLWorld', # IBM simulator -- see diva2:2014390
+    'Arenas', # dataset -- see diva2:2014390
+    'Cora-ML', # citation network -- see diva2:2014390
+    'Citeseer', # citation network -- see diva2:2014390
+    'CoCite', # citation network -- see diva2:2014390
+    'Cora', # citation network -- see diva2:2014390
+    'Pubmed', # citation network -- see diva2:2014390
+    'DGraphFin', # dataset -- see diva2:2014390
+    'FUGAL', # alignment method -- see diva2:2014390
+    'S-GWL', # alignment method -- see diva2:2014390
+    'FMIUFS', # algorithm  -- see diva2:2014390
+    'Isolet', # dataset -- see diva2:2014390
+    'KDDCUP', # dataset -- see diva2:2014390
+    'Pokec', # dataset -- see diva2:2014390
+    'AML-World', # dataset -- see diva2:2014390
+    'MultiLens', # see diva2:2014390
+    'PaySim',  # see diva2:2014390
+    'AMLSim', # see diva2:2014390
+    'PhUSION', # framework -- see diva2:2014390
+    'RiWalk', # see diva2:2014390
+    'Scikitlearn', # library  -- see diva2:2014390
+    'EvolveGCN', # see diva2:2014390
+    'GEARSage', # see diva2:2014390
+    'GraphMAE2', # see diva2:2014390
+    'GraphWave', # see diva2:2014390
+    'HDB-SCAN', # see diva2:2014390
+    'Heart-C', # see diva2:2014390
+    'Heart-Statlog', # see diva2:2014390
+    'Deep-Walk', # randown walk sampling method -- see diva2:2014390
+    'DG-GAN', # unsupervised digraph proximity method -- see diva2:2014390
+    'Dir-GNN', # see diva2:2014390
+    'FinVolution Group',# see diva2:2014390 
+    'FinVolution',# see diva2:2014390 
+    'Uniswap', # see diva2:2014390 
+    'Nanopool', # see diva2:2014390 
+    'Sparkpool', # see diva2:2014390 
+    'WikiVote', # see diva2:2014390 
+    'Wikivotes', # see diva2:2014390 
+    'NetMF', # see diva2:2014390 
+
+    'DBOS', # see diva2:2013047
+    'DBSP', # see diva2:2013047
+    'DEBS', # see diva2:2013047
+    'Elixir', # see diva2:2013047
+    'Flo', # see diva2:2013047
+    'Hazelcast Jet', # see diva2:2013047
+    'Lemmata', # see diva2:2013047
+    'NEX-Mark', # benchmark -- see diva2:2013047
+    'Naiad',  # see diva2:2013047
+    'NebulaStream', # see diva2:2013047
+    'Pravega',  # see diva2:2013047
+    'Statefun', # see diva2:2013047
+    'Styx',  # see diva2:2013047
+    'AmbientTalk',  # see diva2:2013047
+    'Borealis',   # see diva2:2013047
+    'Netherite', # runtime -- see diva2:2013047
+    'Hydroflow', # see diva2:2013047
+
+    'Andor Zyla', # company -- see diva2:2009508
+    'sCMOS camera', # Andor Zyla 5.5 sCMOS camera -- see diva2:2009508
+    'Brookfield DV-I Prime', # viscometer -- see diva2:2009508
+    'Fuji Prescale LW', # pressure sensitive film -- see diva2:2009508
+    'ForMAX', # accelerator beamline -- see diva2:2009508
+    'Haines Jumps', # the instantaneous ﬁlling of a pore from\na throat once a threshold pressure is overcome  -- see diva2:2009508
+    'Meitner', # company -- see diva2:2009508
+    'Messmer Büchel PG-X', # goniometer -- see diva2:2009508
+    'New Era NE-4000', # syringe pump -- see diva2:2009508
+    'NE-4000', # syringe pump -- see diva2:2009508
+    'Nanoscribe', # 3D printer -- see diva2:2009508
+    'Phoenix Nanotom M nanofocus X-ray computer tomography system', # see diva2:2009508
+    'Nanotom', # product series -- see diva2:2009508
+    'Kern & Sohn ABJ 220-4M', # precision scale -- see diva2:2009508
+    'IP-Q', # methacrylate-based\nphotoresist -- see diva2:2009508
+    'Shore A', # hardness scale -- see diva2:2009508
+    'Shore-A', # hardness scale -- see diva2:2009508
+
+    'SuperPoint', # features -- diva2:2014039
+
+    'Scriptapedia', # see diva2:2015250
+    'ASTRA', # model -- see diva2:2015250
+    'Vensim', # simulator -- see diva2:2015250
+
+    'FASTSIM', # simulator -- see diva2:diva2:2014271
+    'Creosote AB', # company ', # diva2:2014482
+    'Guadalhorce', # footbridge in Malaga, Spain -- see diva2:2014482
+    'Emrik bridge', # bridge  -- see diva2:2014482
+    'Emrik',
+    'Haradal bridge', # bridge in Ängelholm, Sweden -- see diva2:2014482
+    'Haradal', # bridge inÄngelholm, Sweden -- see diva2:2014482
+    'Hägernäs bridge', # bridge  -- see diva2:2014482
+    'Solérino bridge', # bridge  -- see diva2:2014482
+    'Uddebo bridge', # bridge  -- see diva2:2014482
+    'Lardal footbridge', # bridge  -- see diva2:2014482
 
 ]
 
@@ -80908,7 +81682,6 @@ names_of_persons=[
     'Schriebman',
     'Schryen',
     'Schrödinger',
-    'Schrödinger',
     'Schubert',
     'Schulze',
     'Schulzrinne',
@@ -84017,6 +84790,501 @@ names_of_persons=[
     'Zhai',
     'Zioupos',
     'Mitsunobu',
+    'Farhut',
+    'Abambres',
+    'Abaza',
+    'Alpaydin',
+    'Amador Jimenez',
+    'Amador-Jimenez',
+    'Arrojo',
+    'Atadero',
+    'Attoh-Okine',
+    'Azlan',
+    'Balad',
+    'Benedetto',
+    'Benmhahe',
+    'Bennett',
+    'Breiman',
+    'Brista',
+    'Bryce',
+    'Chacra',
+    'Chentoufi',
+    'Coenen',
+    'El-Korchi',
+    'Faghih-Imani',
+    'Flintsch',
+    'France-Mensah',
+    'Gangaram',
+    'Garber',
+    'Geem',
+    'Golroo',
+    'Gramling',
+    'Hoel',
+    'Hosseini',
+    'Kargah-Ostadi',
+    'Kheirati',
+    'Klein-Paste',
+    'Korchi',
+    'Ksaibati',
+    'Larson',
+    'Lavin',
+    'Lundberg',
+    'Mahmood',
+    'Mallick',
+    'Massart',
+    'McNeil',
+    'Mohammadi',
+    'Mohsen',
+    'Mubaraki',
+    'Mullin',
+    'Novak',
+    "O’Nions",
+    'Pantelias',
+    'Piryonesi',
+    'Preston',
+    'Rebala',
+    'Saha',
+    'Sallaby',
+    'Shahin',
+    'Sholevar',
+    'Skrypczuk',
+    'Smadi',
+    'Staniek',
+    'Stoffels',
+    'Tushman',
+    'Underwood',
+    'Vasquez',
+    'Wolters',
+    'Wågberg',
+    'Zimmerman',
+    'Zelek',
+    'Speight',
+    'Meneses',
+    'Sholevar',
+    'Fwa',
+    'Fraser-Suzuki',
+    'Peng',
+    'Altmann',
+    'Bashir',
+    'Berg',
+    'Biddle',
+    'Bouchard',
+    'Tatum',
+    'Brummer',
+    'Sauer',
+    'Denscombe',
+    'Ekelhof',
+    'Farrell',
+    'Terriff',
+    'Grissom',
+    'Guba',
+    'Helfat',
+    'Peteraf',
+    'Horowitz',
+    'Pindyck',
+    'Johannesson',
+    'Kollars',
+    'Korstjens',
+    'Liwång',
+    'Maier',
+    'Mazzocchi',
+    'Modig',
+    'Molas-Gallart',
+    'Oosthuizen',
+    'Repko',
+    'Scharre',
+    'Sio',
+    'van den Hoven',
+    'Tobi',
+    'Kampen',
+    'Sommerville',
+    'Walden',
+    'Chiuso',
+    'Flärdh',
+    'Refors',
+    'Salapaka',
+    'Veedu',
+    'Zorzi',
+    'Junlin',
+    'Zienkiewicz-Zhu',
+    'Lihua',
+    'Lirong',
+    'Popov-Belevitch-Hautus',
+    'Xiaoming',
+    'Yibei',
+    'Zhixin',
+    'Zuo',
+    'Jensfelt',
+    'Patric',
+    'Barroso-Laguna',
+    'Behnke',
+    'Brachmann',
+    'Bruns',
+    'Cavallari',
+    'Cipolla',
+    'Dekel',
+    'Heiden',
+    'Koenig',
+    'Lowe',
+    'Monszpart',
+    'Munukutla',
+    'Palmieri',
+    'Pieropan',
+    'Prisacariu',
+    'Rosu',
+    'Shotton',
+    'Sowmya',
+    'Sukhatme',
+    'Teed',
+    'Tumova',
+    'Törngren',
+    'Zangeneh',
+    'Müller',
+    'Arras',
+    'Áron',
+    'Albermani',
+    'Boyde',
+    'Caffey',
+    'Couper',
+    'Hajiaghamemar',
+    'Ibrahim',
+    'Loyd',
+    'Margulies',
+    'Ommaya',
+    'Pasquesi',
+    'Prange',
+    'Duhaime',
+    'Sobotta',
+    'Abdalmoaty',
+    'Chapman-Kolmogorov',
+    'Yonina',
+    'Eldar',
+    'Honoré',
+    'Rössler',
+    'Anoud',
+    'Alshnakat',
+    'Appel',
+    'Bartels',
+    'Benton',
+    'Bruin',
+    'Chlipala',
+    'Collavizza',
+    'Eichholz',
+    'Karl',
+    'Palmskog',
+    'Lindner',
+    'Mads',
+    'Dam',
+    'Myreen',
+    'Roberto',
+    'Guanciale',
+    'Saabas',
+    'Uustalu',
+    'Charguéraud',
+    'Zermelo-Fraenkel',
+    'Whitehead',
+    'Acharya',
+    'Tchaikovsky',
+    'Kiki-Bouba',
+    'Bouba',
+    'Kiki',
+    'Doherty',
+    'Doshi-Velez',
+    'Drott',
+    'Karhunen-Loève',
+    'Jonason',
+    'Mikey',
+    'Shulman',
+    'Morreale',
+    'Pasquier',
+    'Seán',
+    'Shandon',
+    'Bells',
+    'Ens',
+    'Ladegaillerie',
+     "O’Neill",
+     'Sturm',
+     'Huron',
+    'Braginskii',
+    'Dewar',
+    'Manickam',
+    'Shafranov',
+    'Shaparov',
+    'Tamm',
+    'Zeff',
+    'Grad-Shafranov',
+    'Atsuto',
+    'Maki',
+    'Björkman',
+    'Blinn-Phong',
+    'Duruo',
+    'Eversberg',
+    'Hanson',
+    'Henningsson',
+    'Horváth',
+    'Lambrecht',
+    'Mayershofer',
+    'Mårtensson',
+    'Talha',
+    'Bilal',
+    'Xiaomeng',
+    'Sampaio',
+    'Banach',
+    'Gagliardo-Nirenberg-Sobolev',
+    'Garain',
+    'Giorgi-Nash-Moser',
+    'Harnack',
+    'Lane-Emden',
+    'Liouville',
+    'Morrey',
+    'Nazarov',
+    'Pierre-Simon',
+    'Sobolev-Slobodeckiĭ',
+    'Cardoso',
+    'Pareja',
+    'Rossi',
+    'Yeo-Johnson',
+    'Marsellus',
+    'Butch',
+    'Jimmie',
+    'Jules',
+    'Zed',
+    'Gärtner',
+    'Vogel',
+    'Wensley',
+    'Adas',
+    'Antes',
+    'Flanders',
+    'Ashari',
+    'Vahedi',
+    'Tafreshi',
+    'Bernd',
+    'Güldenberg',
+    'Bosanquet',
+    'Bermond',
+    'Burton',
+    'Caio',
+    'Penteado',
+    'Kozeny-Carman',
+    'Carman',
+    'Chevallier',
+    'Drozdov',
+    'Eisert',
+    'El-Hosseiny',
+    'Ermert',
+    'Fekete',
+    'Feldkamp',
+    'Forchheimer',
+    'Gullbrand',
+    'Vomhoff',
+    'Hakala',
+    'Harlin',
+    'Helga',
+    'Hoyland',
+    'Field',
+    'Kaul',
+    'Kerekes',
+    'Kershaw',
+    'Kovscek',
+    'Kozeny',
+    'Krochak',
+    'Österlund',
+    'Langenhove',
+    'Kiekens',
+    'Leisen',
+    'Beckham',
+    'Lenormand',
+    'Zarcone',
+    'Lobosco',
+    'MacGregor',
+    'Machlem',
+    'Masoodi',
+    'Pillai',
+    'Moschel',
+    'Lucas-Washburn',
+    'Paulapuro',
+    'Pikulik',
+    'Rosén',
+    'Schuchardt',
+    'Schütte',
+    'Shan',
+    'Shan-Chen',
+    'Siegfried',
+    'Graser',
+    'Skelton',
+    'Toney',
+    'Slater',
+    'Suzano',
+    'Swain',
+    'Sze',
+    'Szikla',
+    'Tappi',
+    'Tejbo',
+    'Terzaghi',
+    'Timo',
+    'Frick',
+    'Tschoegl',
+    'Villanueva-Perez',
+    'Villanueva',
+    'Vuoristo',
+    'Kuokkala',
+    'Wahlstrom',
+    'Walley',
+    'Washburn',
+    'Westerholz',
+    'Wiegmann',
+    'Wiseman',
+    'Young-Laplace',
+    "l’Anson",
+    'Ashwort',
+    'Österberg',
+    'Fereidoon',
+    'Zangeneh',
+    'Nikaidô-Isoda',
+    'Donsker-Varadhan',
+    'Dupuis',
+    'Erwin',
+    'Fatou',
+    'Freidlin-Wentzell',
+    'Geer', # van de Geer
+    'Geoffrey',
+    'Glivenko-Cantelli',
+    'Harald',
+    'Cramér',
+    'Ishii',
+    'Madireddy',
+    'McKean-Vlasov',
+    'Radon-Nikodym',
+    'Ramanan',
+    'Samaddar',
+    'Sanov',
+    'Cavana',
+    'Maani',
+    'Tuominen',
+    'Ritchey',
+    'Geels',
+    'Álvarez',
+    'Alkemade',
+    'Papachristos',
+    'Peck',
+    'Coyle',
+    'Hovmand',
+    'Gillström',
+    'Hovmand',
+    'Garrity',
+    'Sterman',
+    'Meadows',
+    'Barlas',
+    'Markard',
+    'Ghisolfi',
+    'Auvinen',
+    'Abson',
+    'Aschauer',
+    'Bossel',
+    'Coninck',
+    'Groesser',
+    'Schaffernicht',
+    'Király',
+    'Miskolczi',
+    'Leurent',
+    'Longhurst',
+    'Luna-Reyes',
+    'Andersen',
+    'Moallemi',
+    'Malekpour',
+    'Ramage',
+    'Shipp',
+    'Riopel',
+    'Rogstadius',
+    'Sachse',
+    'Almkvist',
+    'Schot',
+    'Sovacool',
+    'Hess',
+    'Struben',
+    'Swilling',
+    'Teddlie',
+    'Plano Clark',
+    'Ekberg',
+    'Jahed',
+    'Kabo',
+    'Kik-Piotrowski',
+    'Shevtsov',
+    'Abrahamsen',
+    'Barros',
+    'Biliszczuk',
+    'Bjertnaes',
+    'Blass',
+    'Branco',
+    'Brumunddal',
+    'Dischinger',
+    'Crocetti',
+    'Ernst',
+    'Gaspard Riche de Prony',
+    'Guyan',
+    'Hawryszków',
+    'Hegeir',
+    'Honda',
+    'Ingólfsson',
+    'Jockwer',
+    'Kerr-Rhines',
+    'Linderholt',
+    "L’Heureux",
+    'Moelven',
+    'Mulabdic',
+    'Malo',
+    'Van Nimmen',
+    'Nimmen',
+    'Pasternak',
+    'Ringhofer',
+    'Rönnquist',
+    'Strømmen',
+    'Wollebæk',
+    'Wollebaek',
+    'Sandhaas',
+    'Schickhofer',
+    'Stamatopoulos',
+    'Suaryana',
+    'Sétra',
+    'Veletsos',
+    'Vlazov',
+    'Vesić',
+    'Vestøl',
+    'Høibø',
+    'Younan',
+    'Uibel',
+    'Kato',
+    'Landel',
+    'Leontiev',
+    'Dubochet',
+    'Caroline',
+    'Fangyuan',
+    'Feifei',
+    'Haozhong',
+    'Herui',
+    'Hongjian',
+    'Huangqi',
+    'Jie',
+    'Jingru',
+    'Kathrin',
+    'Knoll',
+    'Kristina',
+    'Luyao',
+    'Marit',
+    'Morong',
+    'Pasi',
+    'Ruonan',
+    'Ruska',
+    'Shengyuan',
+    'Shenyang',
+    'Tailang',
+    'Tales',
+    'Xueying',
+    'Yawen',
+    'Yizhou',
+    'Yuyang',
+    'Zhouzhou',
+    'Zuoneng',
 
 ]
 
@@ -85825,6 +87093,7 @@ common_units={
     'kA': {'B1': 'Unit'},  # Common Unit in electrical engineering
     'kB': {'B2': 'Unit'},  # Likely refers to kilobytes, technical context - higher level
     'kBar': {'B2': 'Unit'},  # Less common Unit, pressure measurement - higher level
+    'kg':  {'A2': 'Unit'},
     'kCal': {'B1': 'Unit'},  # Calorie Unit, potentially introduced at A2 level
     'kDa': {'B1': 'Unit'}, # kilodalton
     'kHz/cm': {'B2': 'Unit'}, # kilohertz per centimeter
@@ -85990,17 +87259,42 @@ common_units={
     's-1': {'A2': 'Unit'},
     's⁻¹': {'A2': 'Unit'}, # per second
     'M⁻¹ s⁻¹': {'B2': 'Unit'}, # per mol per second
-    'pM': {'B2': 'Unit'}, # picomolar =  10^{-12} moles per liter
-    'picomolar': {'B2': 'Unit'},
-    'mM': {'B2': 'Unit'}, # millimole
+    'picomolar': {'B1': 'Unit'},
+    'pM': {'B1': 'Unit'}, # picomolar =  10^{-12} moles per liter
+    'mM': {'B1': 'Unit'}, # millimole
     'M': {'B1': 'Unit'}, # mol
     'hour':  {'A1': 'Unit'},
     'kg/m3':  {'A2': 'Unit'},
+    'J/mol': {'B2': 'Unit'},
+    'J/K': {'B2': 'Unit'}, # units of Boltzmann constant (1.381×10-23 J/K)
+    'KOH/g': {'B2': 'Unit'}, # milligrams of potassium hydroxide per gram
+    'mL': {'A2': 'Unit'},
+    'cm3':  {'A2': 'Unit'},
+    'kJ':  {'A2': 'Unit'},
+    'MA':  {'A2': 'Unit'}, # mega ampere
+    'MJ':  {'A2': 'Unit'}, # mega joule
+    'K':  {'A1': 'Unit'},
+    'h':  {'A1': 'Unit'},
+    'm':  {'A1': 'Unit'},
+    'N/m2':  {'A2': 'Unit'},
+    'N/mm': {'A2': 'Unit'},
+    'mm3':  {'A2': 'Unit'},
+
 
 }
 
-
 mathematical_words_to_ignore=[
+    'logN',
+    '∇·',
+    '∂t',
+    '∆t',
+    '∂x',
+    '∂y',
+    '∂z',
+    '∂T',
+    '∂Ω',
+    '∆U',
+    'σ',
     'z̈',
     'sub-10',
     'sub-100',
@@ -86036,6 +87330,7 @@ mathematical_words_to_ignore=[
     'cos',
     'cos2',
     'tan',
+    'tanh',
     'arcsin',
     'arccos',
     'arctan',

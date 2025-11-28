@@ -11127,15 +11127,18 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if '–' in w:
             w=w.replace('–', '-')
 
-        if w.startswith('SSE'):
-            print(f"processing {w}")
+        # if w.startswith('SSE'):
+        #     print(f"processing {w}")
 
         
         # known term, so nothing to do
         if w in grand_union:
-            if w == 'SSE':
-                print(f"removed {w}")
+            # if w == 'SSE':
+            #     print(f"removed {w}")
             continue
+        if w.istitle() and w.lower() in grand_union:
+            continue
+
         if w.lower() in grand_union:
             continue
 
@@ -13929,6 +13932,83 @@ def is_unicode_power_of_ten(s):
     else:
         return False
 
+def extract_potential_acronyms(text_block):
+    """
+    Finds potential acronyms/abbreviations enclosed in parentheses based on
+    strict linguistic and numeric rules.
+
+    Rules for the string inside parentheses:
+    1. Must contain two or more characters that are letters (a-z, A-Z).
+    2. May contain hyphens (-) or dashes.
+    3. Must NOT be a purely numerical value (e.g., 123, 1.0, 1e-6).
+    
+    Args:
+        text_block (str): The input text to search within.
+
+    Returns:
+        list: A list of strings found inside the parentheses (the acronyms).
+    """
+    
+    # 1. Define the pattern for valid acronym content.
+    #    It must contain at least two letters and can have hyphens/dashes.
+    #    [^)]+ - Matches one or more characters that are NOT a closing parenthesis.
+    #    [a-zA-Z].*[a-zA-Z] - Ensures there are at least two letters anywhere inside.
+    #    [\-–—] - Matches various forms of hyphens/dashes.
+    
+    # Pattern explanation:
+    # \(             - Literal opening parenthesis
+    # (              - Start of capturing group (the acronym itself)
+    #   (?![\d\.\+\-e]+$) - Negative Lookahead: Ensures the content is NOT JUST numbers, signs, and 'e'.
+    #   [a-zA-Z\d\-\–—\s]{2,} - Must have at least 2 characters (letters, numbers, hyphens, spaces).
+    # )
+    # \)             - Literal closing parenthesis
+    
+    # We refine the pattern to be more strict about containing *at least two letters*
+    # which is often the best indicator of a true acronym/abbreviation.
+    # We also ensure the content is at least 2 characters long.
+    
+    # Combined Robust Pattern: 
+    # 1. Matches: (XX), (X-Y), (X-Y-Z), (X2-Y), (A/B), (NFV), (DPDK)
+    # 2. Excludes: (123), (1.0), (a), (I), (i), (X), (3)
+    # 3. Excludes: (NF-V) if the content is just NF-V.
+    
+    
+    # The simplest way to satisfy all rules without overly complex lookaheads 
+    # is to require at least two letters and then filter out purely numeric strings post-match.
+    
+    # Pattern to capture anything inside parentheses that contains letters and hyphens:
+    # Requires: 2 or more characters, including at least one letter.
+    raw_pattern = re.compile(r'\(([a-zA-Z][a-zA-Z\d\-\–—\s\/]{1,}|[a-zA-Z\d\-\–—\s\/]{1,}[a-zA-Z])\)')
+    
+    # Find all candidates
+    candidates = raw_pattern.findall(text_block)
+    
+    final_acronyms = []
+
+    for acronym in candidates:
+        # Strip extraneous whitespace and normalize the case
+        clean_acronym = acronym.strip()
+        
+        # Rule 1 & 2 Check: Length and letter content is largely handled by the regex.
+        if len(clean_acronym) < 2:
+            continue
+
+        # Rule 3 Check: Must NOT be purely numerical.
+        # This checks if the string contains *only* numbers, periods, and standard scientific notation characters.
+        # We must ignore those that were meant to be math/numbers but were complex strings (e.g., "1.2.3").
+        is_numeric = re.fullmatch(r'[\d\s\.\,\+\-e]+', clean_acronym)
+        
+        # Check for strings that are numbers or very short single letters/symbols
+        if is_numeric:
+            continue
+            
+        # Specific check for content that is mostly letters, enforcing the spirit of the rule:
+        letter_count = sum(1 for char in clean_acronym if char.isalpha())
+        if letter_count >= 2:
+             final_acronyms.append(clean_acronym)
+
+    return sorted(list(set(final_acronyms))) # Return unique, sorted list
+
 def main():
     global Verbose_Flag
     global options
@@ -14024,6 +14104,7 @@ def main():
     acronyms_found=False
 
     output_lines = extract_text_from_pdf(input_file)
+    saved_output_lines = output_lines
 
     # replace double spaces with one space-gqmjr
     output_lines = [remove_double_spaces(l) for l in output_lines]
@@ -14352,12 +14433,30 @@ def main():
         print(f"suffix: {idx} {w} {len(suffix_results[w])}")
     print(json.dumps(suffix_results, indent=2))
 
+    potential_acronyms=[]
+    processed_text = " ".join(saved_output_lines)
+    processed_text=processed_text.replace("( ", "(")
+    processed_text=processed_text.replace(" )", ")")
+    print(f"{len(processed_text)=}")
+    full_text_file = base_output_name + f"-full_text.txt"
+    with open(full_text_file, "w", encoding="utf-8") as out_file:
+        out_file.write(processed_text)
+    potential_acronyms=extract_potential_acronyms(processed_text)
+    if len(potential_acronyms) > 0:
+        print(f"{potential_acronyms=}")
+
     # for w in sorted(some_common_words):
     #     if w not in grand_union and w.lower() not in grand_union:
     #         print(f"{w} not in grand_union")
 
     # if 'CPU' in well_known_acronyms:
     #     print(f"CPU in well_known_acronyms")
+    test_words=[
+    ]
+    for w in test_words:
+        if w not in grand_union:
+            print(f"{w} not in grand_union")
+
     if 'vegvesen' in grand_union:
         print(f"'vegvesen' in grand_union")
 
