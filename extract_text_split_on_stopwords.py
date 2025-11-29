@@ -10326,6 +10326,7 @@ def extract_text_from_pdf(pdf_path):
     global acronyms_found
     global acronyms_text
     global header_bottom
+    global options
 
     output_lines=[]
 
@@ -10460,6 +10461,11 @@ def extract_text_from_pdf(pdf_path):
                 if pageno < 3:
                     continue
                 
+                # special case for thesis with miss numbered page 1
+                if options.Qcase and pageno < 18:
+                    continue
+                
+
                 if Verbose_Flag:
                     print(f"{pageno=}")
                 current_page=page.get_text("blocks", sort=True) # get plain text encoded as UTF-8
@@ -10836,17 +10842,25 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
-        # remove acronyms possessives
+        if w.endswith('S’') and w[:-1] in well_known_acronyms:
+            remove_list.append(w)
+            continue
+
+        # remove names possessives
         if w.endswith('’s') and w[:-2] in common_english.names_of_persons:
             remove_list.append(w)
             continue
 
-        # remove acronyms possessives
+        if w.endswith('s’') and w[:-1] in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
+        # remove place possessives
         if w.endswith('’s') and w[:-2] in common_english.place_names:
             remove_list.append(w)
             continue
 
-        # remove acronyms possessives
+        # remove company and product possessives
         if w.endswith('’s') and w[:-2] in common_english.company_and_product_names:
             remove_list.append(w)
             continue
@@ -14043,6 +14057,12 @@ def main():
                       action="store_true",
                       help="Print information about the toc")
 
+    parser.add_option('-Q', '--Qcase',
+                      dest="Qcase",
+                      default=False,
+                      action="store_true",
+                      help="Special Q case")
+
 
     options, remainder = parser.parse_args()
     Verbose_Flag = options.verbose
@@ -14251,9 +14271,6 @@ def main():
         grand_union.add(w)
 
     for w in common_english.KTH_ordbok_English_with_CEFR:
-        grand_union.add(w)
-
-    for w in common_english.names_of_persons:
         grand_union.add(w)
 
     for w in common_english.mathematical_words_to_ignore:

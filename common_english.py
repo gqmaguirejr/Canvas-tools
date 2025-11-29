@@ -61657,6 +61657,199 @@ common_English_words={
     'auto-spectral': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (auto-spectral density in signal processing)
     'cross-spectral': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (cross-spectral density in signal processing)
     'footbridge': {'A2': 'Noun'},  # Common architectural/structural element
+    'biosciences': {'B2 (Specialized)': 'Noun (plural)'}, # Specific academic/scientific field
+    'G-protein': {'B2 (Specialized)': 'Noun'}, # Foundational biological concept
+    'G-protein-coupled receptor': {'C1 (Specialized)': 'Noun Phrase'}, # Foundational biological concept
+    'GPI-anchored proteins': {'C1 (Specialized)': 'Noun Phrase (plural)'}, # Specific biological concept (Glycosylphosphatidylinositol)
+    'Glutamate': {'B2 (Specialized)': 'Noun'}, # Foundational biological compound (amino acid/neurotransmitter)
+    'Golgi apparatus': {'B2 (Proper Noun)': 'Noun Phrase'}, # Foundational cellular structure 
+    'monocarboxylic': {'C1 (Specialized)': 'Adjective'}, # Specific chemical descriptor
+    'N-linked glycosylation': {'C1 (Specialized)': 'Noun Phrase'}, # Specific biological process
+    'nanodiscs': {'C1 (Specialized)': 'Noun (plural)'}, # Specific technical tool (bioengineering)
+    'Nickel-NTA': {'C1 (Specialized)': 'Noun'}, # Specific lab reagent/column material
+    'PTM-specific antibodies': {'C1 (Specialized)': 'Noun Phrase (plural)'}, # Specific biological reagent
+    'Strep-Tactin resin': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific lab reagent/column material
+    'Thon rings': {'C1 (Proper Noun)': 'Noun (plural)'}, # Specific imaging phenomenon (electron microscopy)
+    'bottom-up': {'B2': 'Adjective, Adverb'}, # Common scientific/business methodology
+    'cadherin': {'C1 (Specialized)': 'Noun'}, # Specific protein class
+    'caspase': {'C1 (Specialized)': 'Noun'}, # Specific enzyme class
+    'conducts': {'B1': 'Verb'}, # 3rd person singular verb
+    'couples': {'B1': 'Verb, Noun'}, # Verb: 3rd person singular; Noun: plural
+    'efflux': {'C1 (Specialized)': 'Noun'}, # Specific biological process
+    'hamster': {'A1': 'Noun'}, # Common animal
+    'mates': {'A1': 'Noun (plural), Verb'}, # Basic, core vocabulary
+    'monocarboxylate': {'C1 (Specialized)': 'Noun'}, # Specific chemical compound
+    'probenecid': {'C1 (Proper Noun)': 'Noun'}, # Specific drug name
+    'purinergic': {'C1 (Specialized)': 'Adjective'}, # Specific biological descriptor
+    'relaxation-optimized': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., in NMR)
+    'spots': {'A1': 'Noun (plural), Verb'}, # Basic, core vocabulary
+    'vitrification': {'C1 (Specialized)': 'Noun'}, # Specific scientific process (cryopreservation)
+    'Hellinger-based tools': {'C1 (Specialized)': 'Noun Phrase (plural)'}, # Specific methodology (statistical divergence)
+    'Hoeffding-type': {'C1 (Proper Noun)': 'Adjective'}, # Specific mathematical/statistical inequality
+    'L-Lipschitz': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical concept (functional analysis)
+    'onestep': {'B2 (Specialized)': 'Adjective'}, # Common numerical/algorithmic descriptor
+    'parameter-free': {'B2 (Specialized)': 'Adjective'}, # Common technical/scientific descriptor
+    'sub-Gaussian': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/statistical concept
+    'nonnegativity': {'B2': 'Noun'}, # Abstract mathematical/general noun
+    'PAC-Bayesian': {'C1 (Proper Noun)': 'Adjective'},  # Specific, advanced concept in learning theory (Probably Approximately Correct)
+    'CAD-to-assembly planning linkage': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical/engineering term
+    'centralising': {'B2': 'Verb'}, # UK spelling of "centralizing." Gerund/participle/verb.
+    'customisable': {'B1': 'Adjective'}, # UK spelling of "customizable." Common general term.
+    'Cyber-Physical-Systems': {'C1 (Specialized)': 'Noun'}, # Core technical/academic field (CPS)
+    'DfA-based': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Design for Assembly)
+    'DfA-expanded': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'function-to-solution': {'C1 (Specialized)': 'Noun'}, # Abstract engineering/design concept
+    'MFD-expanded': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Modular Function Deployment)
+    'Master’s-level': {'B1 (Specialized)': 'Adjective'}, # Common academic descriptor
+    'modularisation': {'C1 (Specialized)': 'Noun'}, # UK spelling of "modularization." Abstract engineering concept.
+    'Poka-yoke': {'B2 (Proper Noun)': 'Noun'}, # Specific manufacturing concept
+    'postponement': {'B2': 'Noun'}, # Common business/logistics term
+    'pre-testable': {'B1': 'Adjective'}, # Common engineering/testing descriptor
+    'pushes': {'A2': 'Verb, Noun'}, # Basic, core vocabulary
+    'self-locating': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., in assembly)
+    'siloed': {'B2': 'Adjective'}, # Common business/organizational term
+    'assembly-oriented': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'automation-friendly': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'compliance-driven': {'B2': 'Adjective'}, # Common business/legal descriptor
+    'cost-driven': {'B1': 'Adjective'}, # Common business/economic descriptor
+    'fact-based': {'B1': 'Adjective'}, # Common general descriptor
+    'forward-compatible': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'functions': {'A2': 'Noun (plural), Verb'}, # Basic, core vocabulary
+    'gen-AI': {'B2 (Specialized)': 'Noun'}, # Technical term (Generative AI)
+    'labour': {'A2': 'Noun'}, # UK spelling. Basic, core vocabulary.
+    'manually-biased': {'B2': 'Adjective'}, # Compound descriptive term
+    'module-set': {'B1 (Specialized)': 'Noun'}, # Common technical/engineering term
+    'operationalising': {'C1': 'Verb'}, # UK spelling. Abstract academic/business verb.
+    'order-fulfilment': {'B2': 'Noun'}, # UK spelling. Common business/logistics term.
+    'part-level': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'penalises': {'B2': 'Verb'}, # UK spelling. 3rd person singular verb.
+    'positionality': {'C1 (Specialized)': 'Noun'}, # Abstract academic concept (social science)
+    're-approval': {'B2': 'Noun'}, # Common administrative term
+    'real-prototype': {'B2 (Specialized)': 'Noun'}, # Technical descriptor
+    'recalibration': {'B2 (Specialized)': 'Noun'}, # Technical process noun
+    'second-best': {'B1': 'Adjective'}, # Common descriptive/economic term
+    "companies'": {'A2': 'Noun (plural, genitive)'}, # Plural possessive of 'company'
+    'assemblability': {'C1 (Specialized)': 'Noun'}, # Abstract engineering concept (ease of assembly)
+    'departments': {'A2': 'Noun (plural)'}, # Common organizational term
+    'prototypelike': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (like a prototype)
+    'anchorings': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract academic concept (e.g., anchoring points in discourse)
+    'animistic': {'C1': 'Adjective'}, # Abstract academic concept
+    'co-performance': {'C1 (Specialized)': 'Noun'}, # Abstract concept (e.g., in sociology/systems)
+    'conceptualisation': {'C1': 'Noun'}, # UK spelling. Abstract academic noun.
+    'critics': {'B1': 'Noun (plural)'}, # Common general word
+    'engagements': {'B2': 'Noun (plural)'}, # Common formal/academic term
+    'Liboiron calls': {'N/A': 'Phrase'}, # Not a single lexical item (Proper Noun + Verb)
+    'physecology': {'C2 (Specialized)': 'Noun'}, # Highly specific/advanced field of study
+    'physicalisation': {'C1': 'Noun'}, # UK spelling. Abstract academic noun.
+    'physicalisations':  {'C1': 'Noun (plural)'}, # UK spelling. Abstract academic noun.
+    'quotidian': {'C1': 'Adjective'}, # Formal/academic adjective (daily, ordinary)
+    'agential': {'C1': 'Adjective'}, # Abstract academic term (related to agency)
+    'artefact': {'B2': 'Noun'}, # UK spelling. Common academic/archaeological term.
+    'conceptualise': {'C1': 'Verb'}, # UK spelling. Abstract academic verb.
+    'contends': {'C1': 'Verb'}, # 3rd person singular of 'contend'. Formal academic verb.
+    'impressions': {'A2': 'Noun (plural)'}, # Basic, core vocabulary
+    'insitu': {'B2': 'Adjective/Adverb'}, # Scientific Latin loanword (in its original place)
+    'middle-out': {'C1 (Specialized)': 'Adjective/Adverb'}, # Abstract management/design methodology
+    'pre-conceived notions regarding CO2 emissions': {'C1': 'Noun Phrase'}, # Complex academic phrase
+    'quoting': {'B1': 'Verb/Noun'}, # Gerund/participle of "quote"
+    'recontextualizes': {'C1': 'Verb'}, # 3rd person singular of 'recontextualize'. Formal academic verb.
+    'we’d': {'A1': 'Contraction'}, # "we had" or "we would"
+    'Blevis’': {'B2 (Proper Noun)': 'Noun (Genitive)'}, # Possessive name
+    'Felt’': {'B2 (Proper Noun)': 'Noun (Genitive)'}, # Possessive name
+    'Strengers’': {'B2 (Proper Noun)': 'Noun (Genitive)'}, # Possessive name
+    'physicalised': {'C1': 'Adjective/Verb'}, # UK spelling. Past tense/participle of 'physicalise'.
+    'tries': {'A2': 'Verb, Noun'},  # Basic, core vocabulary (Verb: 3rd person sing.; Noun: plural)
+    'chips': {'A1': 'Noun (plural)', 'B1': 'Verb (3rd person sing.)', 'B2 (Specialized)': 'Noun (plural)'},     # Noun (A1): General food item (e.g., potato chips). # Noun (B2 Specialized): Integrated circuits or silicon chips (e.g., "CPU chips"). # Verb (B1): 3rd person singular of "to chip" (e.g., "The cup chips easily").
+    'righthanded': {'B1': 'Adjective'}, # Common general descriptor
+    'SRR-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Split-Ring Resonator)
+    'TE-wave': {'B2 (Specialized)': 'Noun'}, # Foundational physics term (Transverse Electric wave)
+    'TEM-wave': {'B2 (Specialized)': 'Noun'}, # Foundational physics term (Transverse Electromagnetic wave)
+    'TE11': {'C1 (Specialized)': 'Noun'}, # Specific modal field designation
+    'TE_{11}': {'C1 (Specialized)': 'Noun'}, # Specific modal field designation
+    'TEmn': {'C1 (Specialized)': 'Noun'}, # Specific modal field designation
+    'TE_{mn}': {'C1 (Specialized)': 'Noun'}, # Specific modal field designation
+    'TMmn': {'C1 (Specialized)': 'Noun'}, # Specific modal field designation
+    'TM_{mn}': {'C1 (Specialized)': 'Noun'}, # Specific modal field designation
+    'complex-valued': {'B2 (Specialized)': 'Adjective'}, # Common mathematical descriptor
+    'impedance-matched': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (electronics/physics)
+    'lossier': {'B2': 'Adjective'}, # Comparative adjective (more lossy)
+    'scalarvalued': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (mathematics/modeling)
+    'time-harmonic': {'C1 (Specialized)': 'Adjective'}, # Abstract physics descriptor
+    'world-renowned': {'B2': 'Adjective'}, # Common general descriptor
+    'Veselago’s': {'C1 (Proper Noun)': 'Noun (Genitive)'}, # Possessive name (e.g., Veselago's theory of metamaterials)
+    'tangent': {'B1': 'Noun, Adjective', 'B2 (Specialized)': 'Noun'}, # B1: General math/geometry term. B2: Specialized (e.g., tangent delta in materials science).
+    'wave-PML': {'C1 (Specialized)': 'Noun'},  # Technical term (wave/Perfectly Matched Layer)
+    'dilemmas': {'B2': 'Noun (plural)'}, # Common abstract academic/general term
+    'dramatised': {'B2': 'Verb'}, # UK spelling. Past tense/participle of "dramatize."
+    'post-growth': {'C1 (Specialized)': 'Adjective/Noun'}, # Abstract concept in economics/sustainability
+    'reflective-reflexive': {'C1 (Specialized)': 'Adjective'}, # Abstract methodological descriptor (social science/philosophy)
+    'second-wave': {'B1': 'Adjective'}, # Common general descriptor
+    'subcommunity': {'B2': 'Noun'}, # Common academic/social term
+    'supervisors': {'B1': 'Noun (plural)'}, # Common academic/professional role
+    'transdisciplinary': {'C1 (Specialized)': 'Adjective'}, # Core academic concept
+    'actionoriented': {'B1': 'Adjective'}, # (action-oriented) Common business/general descriptor
+    'Alice-in-Wonderland-esque': {'B2 (Proper Noun)': 'Adjective'}, # Compound literary descriptor
+    'Christianity’s': {'A2': 'Noun (Proper Noun, Genitive)'}, # Possessive form of the religion
+    'DoughnutEconomics': {'C1 (Proper Noun)': 'Noun'}, # Specific economic model name
+    'Holocene': {'C1 (Specialized)': 'Noun'}, # Specific geological epoch
+    'liveable': {'B1': 'Adjective'}, # UK spelling. Common general descriptor.
+    'ontologically': {'C1 (Specialized)': 'Adverb'}, # Abstract philosophical adverb
+    'practivists': {'C1 (Specialized)': 'Noun (plural)'}, # Specific academic/social term (a portmanteau of "practitioner" and "activist")
+    '3D-printing': {'B1 (Specialized)': 'Noun, Verb'}, # Foundational manufacturing technology
+    'astrogliosis': {'C1 (Specialized)': 'Noun'}, # Specific medical/biological process
+    'backside': {'A2': 'Noun'}, # Common general word
+    'gasses': {'B1': 'Noun (plural)'}, # Common general/scientific term
+    'HDPE-implanted': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (High-Density Polyethylene)
+    'LNP-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Lipid Nanoparticle)
+    'LNP-encapsulated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor
+    'microimplant': {'B2 (Specialized)': 'Noun'}, # Technical medical/engineering term
+    'micromechanics': {'C1 (Specialized)': 'Noun'}, # Specific, advanced field of mechanics
+    'Rayleigh-type': {'C1 (Proper Noun)': 'Adjective'}, # Specific scientific model/law
+    'brains': {'A2': 'Noun (plural)'}, # Common biological/general word
+    'floods': {'A2': 'Noun (plural), Verb'}, # Common general word
+    'Rayleigh-type nozzles': {'C1 (Proper Noun)': 'Noun Phrase (plural)'}, # Specific technical component
+    'UV-visible': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (spectroscopy)
+    'fluid-attenuated': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., in MRI sequences)
+    'high-shear': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (rheology/chemistry)
+    'micro-particles': {'B2 (Specialized)': 'Noun (plural)'}, # Common scientific term
+    'piezo-ceramic': {'B2 (Specialized)': 'Noun'}, # Technical material name
+    'small-molecule': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (chemistry/drug development)
+    'ultrasound-MEMS': {'C1 (Specialized)': 'Noun'}, # Compound technical term (Microelectromechanical systems)
+    'luciferase-encoding': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (reporter gene/bioengineering)
+    'untethered': {'B1': 'Adjective'},  # Common general word
+    'marginalizing': {'C1': 'Verb'}, # Abstract academic/statistical concept (gerund/participle)
+    'dives': {'B1': 'Verb, Noun (plural)'}, # Common general word
+    'dual-antenna': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (wireless comms)
+    'earth-oriented': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (navigation/space)
+    'em-Localization': {'C1 (Specialized)': 'Noun'}, # Technical term (Electromagnetic Localization)
+    'likelihoods': {'B2 (Specialized)': 'Noun (plural)'}, # Common statistical term
+    'onboard': {'B1 (Specialized)': 'Adjective, Adverb'}, # Common technical descriptor
+    'perception': {'B2': 'Noun'}, # Common psychological/scientific term
+    'prox-op': {'C1 (Specialized)': 'Noun'}, # Specific algorithm name (Proximal Operator)
+    'range-bearing': {'C1 (Specialized)': 'Noun/Adjective'}, # Specific navigation/sensor concept
+    'resurfaces': {'B1': 'Verb'}, # 3rd person singular verb
+    'rotations': {'B1': 'Noun (plural)'}, # Common general/scientific term
+    'seafloors': {'A2': 'Noun (plural)'}, # Common geographical term
+    'soft-docking': {'C1 (Specialized)': 'Noun/Adjective'}, # Technical concept (robotics/space)
+    'vectorspace': {'B2 (Specialized)': 'Noun'}, # Foundational mathematical concept (vector space)
+    'whitened': {'C1 (Specialized)': 'Adjective, Verb'}, # Abstract statistical/signal processing term (e.g., whitened data)
+    'top-side': {'A2': 'Noun, Adjective'}, # Common general descriptor (top side)
+    'AI-suggested': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'Ar-sputter': {'C1 (Specialized)': 'Noun'}, # Technical process (Argon sputtering)
+    'deconvoluted': {'C1 (Specialized)': 'Adjective, Verb'}, # Abstract mathematical/scientific process
+    'disproportionation': {'C1 (Specialized)': 'Noun'}, # Specific chemical reaction
+    'dissolutions': {'B2': 'Noun (plural)'}, # Common general/scientific term
+    'leaching': {'B2 (Specialized)': 'Noun, Verb'}, # NOTE: Spelling corrected from 'leching'. Specific geological/chemical process.
+    'N2-purged': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Nitrogen-purged)
+    'N2O-purged': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Nitrous Oxide-purged)
+    'doping': {'C1 (Specialized)': 'Noun'}, # Specific process (e.g., semiconductor physics, materials science)
+    'pentavalent': {'C1 (Specialized)': 'Adjective'}, # Specific chemical/biological descriptor
+    'peroxocoordinated': {'C1 (Specialized)': 'Adjective'}, # Specific chemical descriptor
+    'pre-oxidized': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'pre-oxidizing': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'radiolytically': {'C1 (Specialized)': 'Adverb'}, # Abstract scientific adverb (related to radiolysis)
+    'spiked': {'B2': 'Verb/Adjective'}, # Common scientific/general term (e.g., "spiked with a substance")
+    'surface-near': {'B2 (Specialized)': 'Adjective'}, # Common scientific/engineering descriptor
     #GQMe
 
 }
@@ -61907,7 +62100,15 @@ chemical_elements={
 }
 
 
+
 chemical_names_and_formulas=[
+    'HO2',
+    'HCHO',
+    'HCO3',
+    'H2O2',
+    'H₂O₂',
+    'undecaprenyl-phosphate 4-deoxy-4-formamido-L-arabinose transferase',
+    'Lauryl Maltose Neopentyl Glycol',
     '3-Cholamidopropyl',
     '4-deoxy-4-formamido-L-arabinose',
     'H₂',
@@ -64026,6 +64227,9 @@ place_names=[
     'Uddebo',
     'Wrocław', # Poland
     'Góis', # Portugal
+    'Aarhus', # Denmark
+    'Hamburg',
+    'Askö',
     #GQMp
 
 ]
@@ -77217,6 +77421,70 @@ company_and_product_names=[
     'Solérino bridge', # bridge  -- see diva2:2014482
     'Uddebo bridge', # bridge  -- see diva2:2014482
     'Lardal footbridge', # bridge  -- see diva2:2014482
+    'His-tag', # affinity tag -- see diva2:2014692
+    'AVI-tag', # affinity tag -- see diva2:2014692
+    'GFP-tag', # affinity tag -- see diva2:2014692
+    'GST-tag', # affinity tag -- see diva2:2014692
+    'anti-AVI-tag', # affinity tag -- see diva2:2014692
+    'YoPro', # positively charged molecule -- see diva2:2014692
+    'Acriflavine resistance protein B', # see diva2:2014692
+    'Bio-Beads', # styrene beads -- see diva2:2014692
+    'CryoSparc', # software -- see diva2:2014692
+    'CryoSPARC', # software -- see diva2:2014692
+    'DRPnet', # neural network -- see diva2:2014692
+    'DeepEMhancer', # a fully automatic deep learning-based local sharpening algorithms -- see diva2:2014692
+    'Erwinia carotovora', # BACTERIA - renamed 'Pectobacterium carotovora' -- see diva2:2014692
+    'Fos-Choline', # 8 , 3- ([3-Cholamidopropyl] dimethylammonio) -2-hydroxy-1-propanesulfonate -- see diva2:2014692
+    'HMMER', # a software package used to search biological sequence databases for homologous sequences -- see diva2:2014692
+    'LocScale', # type of cryoEM map -- see diva2:2014692
+    'LocalDeblur', # type of cryoEM map -- see diva2:2014692
+    'LocSpiral',  # type of cryoEM map -- see diva2:2014692
+    'MSP2N2', # a type of MSP -- see diva2:2014692
+    'ModelAngelo', # software -- see diva2:2014692
+    'P2X', # purinergic receptor P2 -- see diva2:2014692
+    'P2Y', # purinergic receptor P2 -- see diva2:2014692
+    'PANX1', # a Pannexin protein -- see diva2:2014692
+    'PANX2', # a Pannexin protein -- see diva2:2014692
+    'PANX3', # a Pannexin protein -- see diva2:2014692
+    'PANX1-3', # the three members of Pannexin family -- see diva2:2014692
+    'PDZ1', # a PDZ domain  -- see diva2:2014692
+    'PDZ3',  # a PDZ domain  -- see diva2:2014692
+    'PDZ1-MBP', # a Maltose binding protein -- see diva2:2014692
+    'PDZ3-MBP', # a Maltose binding protein -- see diva2:2014692
+    'R217H', # mutation -- see diva2:2014692
+    'Relion', # software - De novo 3D model generation  -- see diva2:2014692
+    'SRC', # the Src non-receptor tyrosine kinase, a proto-oncogene enzyme -- see diva2:2014692
+    'Spotiton', # an inkjet dispensing instrument -- see diva2:2014692
+    'VitroJet', # a contact printing instrument -- see diva2:2014692
+    'crYOLO', # a neural network -- see diva2:2014692
+    'cryoWriter', # a microcapillary instrument -- see diva2:2014692
+    'v-SRC', # an oncogene found in the Rous sarcoma virus (RSV) -- see diva2:2014692
+    'B-factor', # Debye-Waller factor or temperature factor -- see diva2:2014692
+    'Á-net', # see diva2:2015738
+    'DiManD', # project -- see diva2:2014840
+    'Senseair AB', # company  -- see diva2:2014840
+    'MFD®', # see diva2:2014840
+    'Repubblica', # Metro Station see diva2:2014840
+    'CC-BY Creative Commons Attribution', # see diva2:2016077
+    'BY-NC-ND', # CC license -- see diva2:2015381
+    'BY-SA', # CC license -- see diva2:2015381
+    'Berkana Institute', # see diva2:2015381
+    'Consilience Project', # see diva2:2015381
+    'Nature',  # publisher -- see diva2:2015381
+    'BioMEMS', # MEMS applied to medicine -- diva2:2012109
+    'Iba1+', # resident microglia -- diva2:2012109
+    'CD11b+', # infiltrating macrophages -- diva2:2012109
+    'SBG Ellipse-D', # antenna -- see diva2:2014193
+    'Evologics', # company -- see diva2:2014193
+    'Blackfly', # Evologics R 7/17 USBL  Blackfly S camera -- see diva2:2014193
+
+    'Arsenazo', # Arsenazo III method -- see diva2:2014397
+    'Nordion Gammacell', # see diva2:2014397
+    'Phoibos', # Specs Phoibos 150 hemispherical analyzer -- see diva2:2014397
+    'Polystat', # Huber Polystat K6 heat / cooling   circulator
+    'Sigma-Aldrich', # company -- see diva2:2014397
+    'Tectra GmbH',  # company -- see diva2:2014397
+    'Milli-Q', # product -- Merck Milli-Q water -- see diva2:2014397
 
 ]
 
@@ -85285,6 +85553,206 @@ names_of_persons=[
     'Yuyang',
     'Zhouzhou',
     'Zuoneng',
+    'shu-Chieh',
+    'Ábel',
+    'Cauchy-Schwarz',
+    'Chapelle',
+    'McMahan',
+    'Streeter',
+    'Russo',
+    'Luciënne',
+    'Aksel',
+    'Biørn-Hansen',
+    'Arjun',
+    'Menon',
+    'Rajendran',
+    'Asgeirsdottir',
+    'Comber',
+    'Barad',
+    'Blevis',
+    'Bremer',
+    'Brynjarsdottir',
+    'Dourish',
+    "D’Ignazio",
+    'Elina',
+    'Erving',
+    'Goffman',
+    'Forlizzi',
+    'Frayling',
+    'Gitelman',
+    'Goody',
+    'Hargreaves',
+    'Hygge',
+    'Katzeff',
+    'Kimmerer',
+    'Koskinen',
+    'Kuijer',
+    'Giaccardi',
+    'Lindrup',
+    'Luis',
+    'Zapico',
+    'Morozov',
+    'Parag',
+    'Janda',
+    'Pargman',
+    'Paulos',
+    'Paulúns',
+    'Granola',
+    'Redström',
+    'Sauvé',
+    'Soden',
+    'Sofie',
+    'Nyström',
+    'Stiglitz',
+    'Strengers',
+    'Tsoukas',
+    'Valdemar',
+    'Anker',
+    'Verbeek',
+    'Weick',
+    'Wickberg',
+    'Windlin',
+    'Yanni',
+    'Loukissas',
+    'Yolande',
+    'Biggs',
+    'Desjardins',
+    'Renato',
+    "D’Amico",
+    'Sheehan',
+    'Ihde',
+    'Ampere-Maxwell',
+    'Haddad',
+    'Mathieu',
+    'Maxwell-Heaviside',
+    'Pendry',
+    'Shukurov',
+    'Veselago',
+    'Bardzell',
+    'Baumer',
+    'Silberman',
+    'Bendell',
+    'Berkana',
+    'Biernacki',
+    'Waldorf',
+    'Biørn',
+    'Hansen',
+    'Bornemark',
+    'Bødker',
+    'Chefurka',
+    'Corrigan',
+    'Cunliffe',
+    'Danermark',
+    'Darley',
+    'Latane',
+    'Denzin',
+    'Dougald',
+    'Hine',
+    'Dunne',
+    'Raby',
+    'Espen',
+    'Stoknes',
+    'Fazey',
+    'Feyerabend',
+    'Filimowicz',
+    'Tzankova',
+    'Forsyth',
+    'Gell',
+    'Hagens',
+    'Heijden',
+    'Herr',
+    'Anderson',
+    'Hickel',
+    'Hilty',
+    'Aebischer',
+    'Hoggett',
+    'Ioan',
+    'Jamie',
+    'Alexander',
+    'Johnstone',
+    'Kaptelinin',
+    'Kimberly',
+    'Nicholas',
+    'Kingsnorth',
+    'Kirby',
+    'Kirman',
+    'Klaes',
+    'Knowles',
+    'Kymäläinen',
+    'Ilstedt',
+    'Wangel',
+    'Lakatos',
+    'Lakhani',
+    'Leifler',
+    'Lincoln',
+    'Guba',
+    'Linda',
+    'Lumma',
+    'Weger',
+    'Lynas',
+    'Machado',
+    'de Oliveira',
+    'Mankoff',
+    'Mann-Bates',
+    'Meyerson',
+    'Moilanen',
+    'Alasoini',
+    'Moustaka',
+    'Naomi',
+    'Panu',
+    'Pihkala',
+    'Polman',
+    'Raby',
+    'Raghavan',
+    'Rahm-Skågeby',
+    'Rahm',
+    'Raworth',
+    'Riel',
+    'Rupert',
+    'Read',
+    'Sakschewski',
+    'Sköldberg',
+    'Stebbins',
+    'Søndergaard',
+    'Tainter',
+    'Tanenbaum',
+    'Umpleby',
+    'Vanessa',
+    'Watterson',
+    'Wheatley',
+    'Frieze',
+    'Whitmarsh',
+    'Woodbury',
+    'Zadek',
+    'Thorslund',
+    'Grix',
+    'Finlay',
+    'Lave',
+    'Lupton',
+    'Stoknes',
+    'Moustakas',
+    'Abbe',
+    'Göppert-Mayer',
+    'Arrhenius',
+    'Barreiro',
+    'Fidalgo',
+    'Bielski',
+    'Birgitta',
+    'Fricke',
+    'Ghormley',
+    'Haber-Weiss',
+    'Jamal',
+    "Jacobus Henricus van ’t Hoff",
+    'LaVerne',
+    'Nicol',
+    'Needs',
+    'Pastina',
+    'Schortmann',
+    'DeSesa',
+    'Spinks',
+    'Trummer',
+    'Voight',
+
 
 ]
 
@@ -87284,6 +87752,8 @@ common_units={
 }
 
 mathematical_words_to_ignore=[
+    'log₁₀',
+    'argmax',
     'logN',
     '∇·',
     '∂t',
