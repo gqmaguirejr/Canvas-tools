@@ -5,6 +5,10 @@
 #
 # Extract text from PDF file, splitting lines before/after stopwords and punctuation.
 #
+# with option '-v' use verbose output
+# with option '-M' include terms in chemical_names_and_formulas and misc_words_to_ignore
+# with option '-Q' do special processing (skipping more pages before extracting text)
+#
 # G. Q. Maguire Jr.
 #
 # 2025-10-16
@@ -14057,6 +14061,12 @@ def main():
                       action="store_true",
                       help="Print information about the toc")
 
+    parser.add_option('-M', '--Misc',
+                      dest="Misc",
+                      default=False,
+                      action="store_true",
+                      help="keep terms from misc_words_to_ignore")
+
     parser.add_option('-Q', '--Qcase',
                       dest="Qcase",
                       default=False,
@@ -14255,8 +14265,11 @@ def main():
             print(f"{w} is a dict")
         grand_union.add(w)
 
-    for w in common_english.chemical_names_and_formulas:
-        grand_union.add(w)
+
+    if not options.Misc:
+        print("Ignore terms in chemical_names_and_formulas")
+        for w in common_english.chemical_names_and_formulas:
+            grand_union.add(w)
 
     for w in common_english.common_urls:
         grand_union.add(w)
@@ -14288,8 +14301,10 @@ def main():
     for w in acronym_filter_set:
         grand_union.add(w)
 
-    for w in common_english.misc_words_to_ignore:
-        grand_union.add(w)
+    if not options.Misc:
+        print("Ignore terms in misc_words_to_ignore")
+        for w in common_english.misc_words_to_ignore:
+            grand_union.add(w)
 
     for w in common_swedish.common_swedish_words:
         grand_union.add(w)

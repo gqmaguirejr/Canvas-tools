@@ -61850,6 +61850,167 @@ common_English_words={
     'radiolytically': {'C1 (Specialized)': 'Adverb'}, # Abstract scientific adverb (related to radiolysis)
     'spiked': {'B2': 'Verb/Adjective'}, # Common scientific/general term (e.g., "spiked with a substance")
     'surface-near': {'B2 (Specialized)': 'Adjective'}, # Common scientific/engineering descriptor
+    'equiaxed': {'C1 (Specialized)': 'Adjective'}, # Specific descriptor in materials science (uniform grain size)
+    'Furukawa-scaling': {'C1 (Proper Noun)': 'Noun'}, # Specific, named model (e.g., in polymer physics)
+    'ingots': {'B2 (Specialized)': 'Noun (plural)'}, # Specific metallurgy/materials term
+    'pseudoisothermal': {'C1 (Specialized)': 'Adjective'}, # Abstract scientific descriptor
+    'RMC-approach': {'C1 (Specialized)': 'Noun'}, # Technical descriptor (Reverse Monte Carlo)
+    'solutionised': {'C1 (Specialized)': 'Adjective/Verb'}, # UK spelling. Technical process (e.g., solution heat treatment).
+    'compromises': {'B2': 'Verb, Noun'}, # Common abstract academic/general term
+    'high-Q': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (High Quality factor in physics/electronics)
+    'large-box': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (e.g., in computational modeling)
+    'low-Q': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Low Quality factor)
+    'macrosegregation': {'C1 (Specialized)': 'Noun'}, # Abstract process in materials science (casting)
+    'magnesia': {'B2 (Specialized)': 'Noun'}, # Specific chemical compound (MgO)
+    'metabisulphite': {'C1 (Specialized)': 'Noun'}, # Specific chemical compound
+    'microhardness': {'B2 (Specialized)': 'Noun'}, # Specific material property
+    'molybdenum-rich': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'mortem': {'C1': 'Noun, Adverb'}, # Latin loanword (e.g., post-mortem)
+    'nearatomic-scale': {'C1 (Specialized)': 'Adjective'}, # Compound scientific descriptor
+    'needles': {'A2': 'Noun (plural)', 'B2 (Specialized)': 'Noun (plural)'}, # A2: General. B2: Technical (e.g., crystal needles in materials).
+    'pre-characterisation': {'C1 (Specialized)': 'Noun'}, # UK spelling. Technical process descriptor.
+    'supercell': {'C1 (Specialized)': 'Noun'}, # Abstract concept in solid-state physics/materials modeling
+    'untextured': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (materials science/graphics)
+    'ILL-type furnace': {'C1 (Proper Noun)': 'Noun'}, # Specific, proprietary piece of scientific equipment developed at Institut Laue-Langevin (ILL) in France
+    'Ar-gas': {'B2 (Specialized)': 'Noun'}, # Technical term for Argon gas
+    'As-quenched': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor in materials science (metallurgy)
+    'Z-number': {'B2 (Specialized)': 'Noun'},  # Foundational scientific term (Atomic Number)
+    'Porod-type scattering': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific phenomenon/law in X-ray and neutron scattering
+    'diffractograms': {'C1 (Specialized)': 'Noun (plural)'}, # Specific technical term for X-ray diffraction results
+    'sub-section': {'A2': 'Noun'}, # Common organizational term
+    'powders': {'B1': 'Noun (plural)'}, # Common general/scientific material
+    'as-reduced': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor in chemistry/metallurgy
+    'nickel-rich': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'gas-tightness': {'B2 (Specialized)': 'Noun'}, # Technical property
+    'tCO2-equivalent': {'B2 (Specialized)': 'Noun'}, # Technical unit of measurement (Tonnes of CO2 equivalent)
+    'scaling-up': {'B2': 'Noun, Verb'}, # Gerund/noun for a common business/technical process (scaling up)
+    'achievements': {'B1': 'Noun (plural)'}, # Common general word
+    'by-products': {'B1': 'Noun (plural)'}, # Common general/scientific term
+    'byproduct': {'B1': 'Noun'}, # Common general/scientific term
+    'diffractogram': {'C1 (Specialized)': 'Noun'}, # Specific technical term for X-ray diffraction results
+    'diffractometry': {'C1 (Specialized)': 'Noun'}, # Specific technical field (X-ray diffraction)
+    'disperser': {'B2 (Specialized)': 'Noun'}, # Technical equipment/component
+    'hemicylindrical': {'C1 (Specialized)': 'Adjective'}, # Abstract geometric descriptor
+    'hydrogen-reduced': {'B2 (Specialized)': 'Adjective'}, # Technical process descriptor
+    'invar alloys': {'C1 (Proper Noun)': 'Noun (plural)'}, # Specific class of alloys 
+    'iron-rich': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'reoxidation': {'C1 (Specialized)': 'Noun'}, # Specific chemical/metallurgical process
+    'reoxidized': {'C1 (Specialized)': 'Adjective/Verb'}, # Technical process descriptor
+    'singlephase': {'B2 (Specialized)': 'Adjective'}, # Common scientific descriptor (single-phase)
+    'trioxide': {'C1 (Specialized)': 'Noun'}, # Specific chemical compound
+    'Bernstein-von Mises phenomenon': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named theorem in statistics
+    'Cauchy-aware': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Cauchy distribution in math/stat)
+    'eigendecomposition': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical process (linear algebra)
+    'Gaussianor': {'C1 (Specialized)': 'Noun'}, # Assuming shorthand for Gaussian operator/model
+    'Hankel-structured': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical descriptor (matrix structure)
+    'L-Lipchitz': {'C1 (Specialized)': 'Adjective'}, # NOTE: Spelling corrected to 'L-Lipschitz'. Abstract mathematical concept.
+    'Laplace-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Laplace transform/distribution)
+    'Level-p Pyramid Sampling': {'C1 (Specialized)': 'Noun Phrase'}, # Specific statistical/algorithmic concept
+    'Lipschitz-smooth surrogate': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical/optimization concept
+    'noiseless': {'B2': 'Adjective'}, # Common scientific/technical descriptor
+    'nomographic': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/statistical term
+    'noncoherent': {'C1 (Specialized)': 'Adjective'}, # Abstract signal processing/physics term
+    'off-the-grid': {'C1 (Specialized)': 'Adjective, Adverb'}, # Abstract concept in signal processing/optimization
+    'analog-based': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'asynchronized': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (not synchronized)
+    'calligraphic': {'B2': 'Adjective'}, # Common descriptive word
+    'casts': {'A2': 'Verb/Noun'}, # Basic, core vocabulary
+    'coordinate-wise': {'B2 (Specialized)': 'Adjective, Adverb'}, # Common mathematical/programming descriptor
+    'delay-Doppler': {'C1 (Specialized)': 'Noun, Adjective'}, # Specific concept in radar/communications
+    'demodulators': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational electronics/telecom component
+    'error-control': {'B2 (Specialized)': 'Noun, Adjective'}, # Foundational telecom/coding concept
+    'favors': {'B1': 'Verb (third person singular), Noun'}, # Verb: 3rd person sing.; Noun: plural. Common general word.
+    'harmonizes': {'B2': 'Verb'}, # 3rd person singular verb
+    'high-SNR': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Signal-to-Noise Ratio)
+    'in-channel': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor (telecom/signal processing)
+    'lifted-structure': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical/engineering concept
+    'low-SNR': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Signal-to-Noise Ratio)
+    'lower-SNR': {'B2 (Specialized)': 'Adjective'}, # Comparative technical descriptor
+    'majority-based': {'B2 (Specialized)': 'Adjective'}, # Common technical/algorithmic descriptor
+    'majority-sampling': {'B2 (Specialized)': 'Noun'}, # Technical process (statistics/data science)
+    'modulation-dependent': {'C1 (Specialized)': 'Adjective'}, # Abstract technical descriptor (telecom)
+    'moment-generating': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical concept (statistics)
+    'narrow-band': {'B2 (Specialized)': 'Adjective'}, # Foundational telecom/signal processing concept
+    'noise-aware': {'B2 (Specialized)': 'Adjective'}, # Common technical/algorithmic descriptor
+    'noiseless': {'B2': 'Adjective'}, # Common scientific/technical descriptor
+    'one-bit': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'orders-of-magnitude': {'B2': 'Noun Phrase'}, # Common scientific/general phrase
+    'per-node': {'B1 (Specialized)': 'Adjective, Adverb'}, # Common technical descriptor
+    'per-transmission': {'B2 (Specialized)': 'Adjective, Adverb'}, # Common technical descriptor
+    'product-based': {'B1 (Specialized)': 'Adjective'}, # Common technical/mathematical descriptor
+    'rank-one': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical concept (linear algebra)
+    'realvalued': {'B2 (Specialized)': 'Adjective'}, # Common mathematical/programming descriptor
+    'sub-sampled': {'B2 (Specialized)': 'Adjective, Verb'}, # Technical descriptor (signal processing/data science)
+    'subchannels': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational telecom concept
+    'tribes': {'B1': 'Noun (plural)'},  # Common general/social term
+    'exponential-like': {'B2': 'Adjective'}, # Common descriptive/mathematical descriptor
+    'Au-plated': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Gold-plated)
+    'backshorted': {'C1 (Specialized)': 'Adjective, Verb'}, # Specific technical term (microwave engineering)
+    'E-field': {'B2 (Specialized)': 'Noun'}, # Foundational physics term (Electric field)
+    'ferrite-based': {'B2 (Specialized)': 'Adjective'}, # Common technical/materials descriptor
+    'Fresnel-like reflection': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific concept in optics/physics
+    'graphenation': {'C1 (Specialized)': 'Noun'}, # Specific process (materials science)
+    'IEEE-compliant': {'B2 (Proper Noun)': 'Adjective'}, # Common technical/standards descriptor
+    'lightwave': {'B1 (Specialized)': 'Noun'}, # Foundational telecom/physics term
+    'Mikaelian lens': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named lens type
+    'Mxenes': {'C1 (Proper Noun)': 'Noun (plural)'}, # NOTE: Spelling corrected to MXenes (advanced materials)
+    'nanophotonics': {'C1 (Specialized)': 'Noun'}, # Specific, advanced field of physics
+    'quasi-conformal': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical/engineering descriptor
+    'Si-glass': {'B2 (Specialized)': 'Noun'}, # Technical material descriptor (Silicon-glass)
+    'substrateless': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (materials science)
+    'TEOS-derived': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (tetraethoxysilane)
+    'unclad': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (optics/fiber)
+    'all-dielectric': {'C1 (Specialized)': 'Adjective'}, # Abstract technical descriptor
+    'all-silicon': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'butt-coupling': {'C1 (Specialized)': 'Noun, Verb'}, # Specific technique (optics/waveguides)
+    'expanders': {'B2 (Specialized)': 'Noun (plural)'}, # Technical components
+    'float-zone': {'C1 (Specialized)': 'Adjective, Noun'}, # Specific process in materials science (silicon purification)
+    'hot-wall': {'B2 (Specialized)': 'Adjective, Noun'}, # Technical descriptor (e.g., in a chemical reactor)
+    'low-loss': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'mass-manufacturable': {'B1': 'Adjective'}, # Common business/engineering descriptor
+    'multiline-TRL': {'C1 (Specialized)': 'Noun'}, # Specific measurement technique (microwave/RF)
+    'producible': {'B1': 'Adjective'}, # Common general word
+    'quasi-TE': {'C1 (Specialized)': 'Adjective'}, # Specific modal field descriptor
+    'quasi-TM': {'C1 (Specialized)': 'Adjective'}, # Specific modal field descriptor
+    'rods': {'A2': 'Noun (plural)'}, # Common general word
+    'stays': {'A2': 'Verb, Noun'}, # Basic, core vocabulary
+    'ultrathin': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    '1-port': {'B1 (Specialized)': 'Noun, Adjective'}, # Common technical descriptor (e.g., 1-port device)
+    '2-port': {'B1 (Specialized)': 'Noun, Adjective'}, # Common technical descriptor (e.g., 2-port network)
+    'microphotonics': {'C1 (Specialized)': 'Noun'},  # Specific, advanced field of physics/engineering
+    'dividers': {'B1 (Specialized)': 'Noun (plural)'}, # Technical components (e.g., power dividers, signal dividers)
+    'rectangular-to-square': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor for shape conversion
+    'Y-junctions': {'C1 (Specialized)': 'Noun (plural)'}, # Specific technical component (waveguides/optics)
+    'high-CNT': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (high Carbon Nanotube content)
+    'PEC-backed': {'C1 (Specialized)': 'Adjective'},  # Technical descriptor (Perfect Electric Conductor)
+    '5G-enabled': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor
+    'AI-integrated': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'AI-native': {'C1 (Specialized)': 'Adjective'}, # Abstract technical concept (e.g., 6G architecture)
+    'cumulatives': {'B2': 'Noun (plural)'}, # Common statistical/general term
+    'DNN-partitioning': {'C1 (Specialized)': 'Noun'}, # Technical descriptor (Deep Neural Network)
+    'HI-single threshold': {'C1 (Specialized)': 'Noun Phrase'}, # Specific algorithm/policy name (Hierarchical Inference)
+    'initialise': {'B1': 'Verb'}, # UK spelling of 'initialize'
+    'LLM-specific': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'MAB-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Multi-Armed Bandit)
+    'MAC-layer': {'B1 (Specialized)': 'Noun'}, # Foundational networking concept
+    'MobileNet-based': {'B2 (Proper Noun)': 'Adjective'}, # Technical descriptor (MobileNet architecture)
+    'No-offload policy': {'B2 (Specialized)': 'Noun Phrase'}, # Specific policy/protocol name
+    'Qt-based': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (Bernoulli random variable Q_t)
+    'compute-aware': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'continuous-EWF': {'C1 (Specialized)': 'Noun'}, # Technical descriptor (Exponentially Weighted Forecaster)
+    'dataset-model pairs': {'B2 (Specialized)': 'Noun Phrase (plural)'}, # Compound technical term
+    'multi-LLM inference': {'C1 (Specialized)': 'Noun'}, # Advanced technical concept
+    'normaliser': {'B2 (Specialized)': 'Noun'}, # UK spelling of 'normalizer'. Technical component.
+    'normalisers': {'B2 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'per-round': {'B1 (Specialized)': 'Adjective/Adverb'}, # Common algorithmic descriptor
+    're-categorised': {'B1': 'Verb'}, # UK spelling. Past tense/participle.
+    'remedies': {'B1': 'Noun (plural)/Verb'}, # Common general word
+    'scalable-size': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'single-threshold policy': {'B2 (Specialized)': 'Noun Phrase'}, # Specific policy/protocol name
+    'softmax-like': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (ML activation function)
+    'sublinearly': {'C1 (Specialized)': 'Adverb'}, # Abstract mathematical/algorithmic descriptor
+    'tinyML': {'C1 (Specialized)': 'Noun'}, # Specific technical field/paradigm 
+    'two-threshold': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
     #GQMe
 
 }
@@ -62101,7 +62262,37 @@ chemical_elements={
 
 
 
+
 chemical_names_and_formulas=[
+    'Cu2O-NiO',
+    'FeNi',
+    'FeNi3',
+    'WO2',
+    'WO3',
+    'Al2O3-SiO2',
+    'Cu2O',
+    'Fe-17Ni-19Cu-17W-17Co-15Mo',
+    'Fe-Ni-Cu-Co-W-Mo',
+    'Fe-Ni-O',
+    'Fe3Ni',
+    'FeNi3',
+    'Ni-H',
+    'Ni-W',
+    'Ni4W',
+    'NiO',
+    'NiWO4',
+    'CuO-NiO',
+    'Fe2O3-NiO',
+    'CuNi',
+    'Cu-Ni',
+    'Fe-Ni',
+    'Cr-Cr',
+    'Fe-Cr-Co',
+    'Fe-Cr-Mo',
+    'Fe-Cr-Ni',
+    'Fe-Cr-Ni-Ti',
+    'Fe-Fe',
+    'FeCrNi',
     'HO2',
     'HCHO',
     'HCO3',
@@ -64230,6 +64421,18 @@ place_names=[
     'Aarhus', # Denmark
     'Hamburg',
     'Askö',
+    'Harwell', # UK
+    'Tennessee',
+    'Oak Ridge', # Tennessee
+    'Albuch' , # Germany
+    'Steinheim am Albuch' , # Germany
+    'Lancashire', # UK
+    'Kandel', # Germany
+    'Asilomar', # California
+    'Carthage',
+    'Kuala Lumpur',
+    'Rio de Janeiro',
+    'Sicily',
     #GQMp
 
 ]
@@ -77485,8 +77688,71 @@ company_and_product_names=[
     'Sigma-Aldrich', # company -- see diva2:2014397
     'Tectra GmbH',  # company -- see diva2:2014397
     'Milli-Q', # product -- Merck Milli-Q water -- see diva2:2014397
-
+    'CAMECA', # CAMECA EIKOS-UV instrument -- see diva2:2017126
+    'EIKOS-UV', # CAMECA EIKOS-UV instrument -- see diva2:2017126
+    'APSuite', # software -- see diva2:2017126
+    'GSAS', # software -- see diva2:2017126
+    'GSAS-II', # software -- see diva2:2017126
+    'GudrunN', # software -- see diva2:2017126
+    'Helios', # Helios 5 UC SEM-FIB system -- see diva2:2017126
+    'MOBFE4', # databases -- see diva2:2017126
+    'MTEX', # software package -- see diva2:2017126
+    'RMCProfile', # Algorithm -- see diva2:2017126
+    'SasView', # software -- see diva2:2017126
+    'TC-PRISMA', # simulations -- see diva2:2017126
+    'TCFE13', # database -- see diva2:2017126
+    'TCFE14', # database -- see diva2:2017126
+    'ThermoCalc', # software - ThermoCalc 2025b -- see diva2:2017126
+    'Beraha-II etchant',  # see diva2:2017126
+    'DSS2205', # grade of stainless steel
+    'DSS2507', # grade of stainless steel
+    'DSS2507V', # grade of stainless steel
+    'ISIS Neutron and Muon Source', # ISIS is not an acronym -- see diva2:2017126
+    'Aldrich Chemie Ferric GmbH', # company  -- see diva2:2016506
+    'Hybrit', # company  -- see diva2:2016506
+    'Hydnum Steel', # company  -- see diva2:2016506
+    'GravitHy', # company  -- see diva2:2016506
+    'GreenIron', # company  -- see diva2:2016506
+    'SALCOS', # company  -- see diva2:2016506
+    'Stegra', # company - formerly known as H2 Green Steel -- see diva2:2016506
+    'CC-BY', # Creative Commons license type-- see diva2:2016506
+    'Creative Commons CC-BY', # -- see diva2:2016506
+    'Leco ONH-836 instrument', # instrument -- see diva2:2016506
+    'MOBFE8', # kinetic database -- see diva2:2016506
+    'Sympatec QICPIC analyser', # Sympatec QICPIC analyser - instrument -- see diva2:2016506
+    'Sympatec', # company -- see diva2:2016506
+    'QICPIC', # Sympatec QICPIC analyser - product -- see diva2:2016506
+    'Retsch', # company -- see diva2:2016506
+    'PAQXOS', # software -- see diva2:2016506
+    'Aesar - ThermoFisher GmbH', # company -- see diva2:2016506
+    'Aldrich - Merck Life Science AB', # company -- see diva2:2016506
+    'Aldrich Chemie China', # company -- see diva2:2016506
+    'S-3700N', # Hitachi S-3700N instrument -- see diva2:2016506
+    'ESPRIT software', # software -- see diva2:2016506
+    'D5000 diffractometer', # Siemens D5000 diffractometer -- see diva2:2016506
+    'Northrop', # company -- see diva2:2016485
+    'N5260A', # Agilent N5260A Millimeter-Wave Controller -- see diva2:2016485
+    'WR-10', # a 67-110 GHz waveguide section -- see diva2:2016485
+    'WR-5.1', # a 140-220 GHz frequency band -- see diva2:2016485
+    'WR-3.4', # a 220-330 Ghz frequency band -- see diva2:2016485
+    'WR-2.1', # a 350-500 GHz frequency band -- see diva2:2016485
+    'WM570-VNAX', # Virginia Diodes Incorporated WM570-VNAX -- see diva2:2016485
+    'CD-26', # Microposit MF CD-26 Developer -- see diva2:2016485
+    'ZC220', # R&S®ZC220 with an upper frequency of 220 GHz -- see diva2:2016485
+    'ZC330', # R&S®ZC330 with an upper frequency of 330 GHz -- see diva2:2016485
+    'ZVA-24', # R&S®ZVA-24 a Vector Network Analyzersh  - Four Ports, Two Sources, 24 GHz -- see diva2:2016485
+    'Imagenette', # dataset - derived form Imagenet -- see diva2:2017058
+    'Imagewoof', # dataset - derived form Imagenet -- see diva2:2017058
+    'LogisticDogs', # dataset -- see diva2:2017058
+    'ResNet-8', # model -- see diva2:2017058
+    'ResnetDogs', # dataset -- see diva2:2017058
+    'X-RaCT', # dataset -- see diva2:2017058
+    'ChestXRay', # dataset -- see diva2:2017058
+    'BreakHis', # dataset -- see diva2:2017058
+    'Imagenet', # dataset -- see diva2:2017058
 ]
+
+
 
 
 
@@ -85752,7 +86018,77 @@ names_of_persons=[
     'Spinks',
     'Trummer',
     'Voight',
-
+    'Algie',
+    'Appleton',
+    'Avrami',
+    'Bergman',
+    'Billinge',
+    'Cahn',
+    'Cahn-Hilliard',
+    'Cervellino',
+    'Clapp',
+    'Didcot',
+    'Faber-Ziman',
+    'Friedel',
+    'Frison',
+    'Hilliard',
+    'Kampmann',
+    'Kikuchi',
+    'Laves',
+    'Lifshitz',
+    'Mössbauer',
+    'Pomey',
+    'Porod',
+    'Slyozov',
+    'Spooner',
+    'Warren-Cowley',
+    'Wyckoff',
+    'Yakel',
+    'Bar-on',
+    'Ellingham',
+    'Bragg-Brentano',
+    'Aeneas Tacticus',
+    'Bai-Yin',
+    'Bokaei',
+    'Boothe Luce',
+    'Chiani',
+    'Daei',
+    'Eleanor Roosevelt',
+    'Fischione',
+    'Fodor',
+    'Gündüz',
+    'Halford',
+    'Luccock',
+    'Helstrom',
+    'Kaibin',
+    'Kolmogorov-Arnold',
+    'Kountoris',
+    'Marchenko-Pastur',
+    'Martinez-Gost',
+    'Oberhammer',
+    'Peris',
+    'Pelham',
+    'Pérez-Neira',
+    'Razavikia',
+    'Rini',
+    'Seidi',
+    'Shannoon-Kotelinkove',
+    'Skoglund',
+    'Sprecher',
+    'Sprecher-Buck',
+    'Stenhammar',
+    'Szent-Györgyi',
+    'Tracy-Widom',
+    'Veh',
+    'Wishart',
+    'Fujita',
+    'Nagatsuma',
+    'Goell',
+    'Koala',
+    'Marcatilli',
+    'Salisbury',
+    'Schwarz-Christoffel',
+    'Chow',
 
 ]
 
