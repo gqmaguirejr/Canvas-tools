@@ -12,6 +12,11 @@
 # 2025-12-02
 #
 
+import warnings
+# Suppress specific sklearn UserWarnings using regex matching
+warnings.filterwarnings("ignore", category=UserWarning, message=r".*token_pattern.*")
+warnings.filterwarnings("ignore", category=UserWarning, message=r".*stop_words.*inconsistent.*")
+
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -28,8 +33,14 @@ sys.path.append('/home/maguire/Canvas-tools')
 # sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module_folder
 # sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
-import common_english
-import common_acronyms
+# Attempt to import custom modules
+try:
+    import common_english
+    import common_acronyms
+except ImportError:
+    # Fallback to prevent crash if running elsewhere
+    common_english = None
+    common_acronyms = None
 
 # Ensure necessary NLTK data is downloaded
 try:
@@ -37,11 +48,14 @@ try:
     nltk.data.find('corpora/wordnet')
     nltk.data.find('tokenizers/punkt')
 except LookupError:
-    print("Downloading necessary NLTK data...")
-    nltk.download('stopwords')
-    nltk.download('wordnet')
-    nltk.download('omw-1.4')
-    nltk.download('punkt')
+    # Only print if we are actually downloading to avoid noise
+    # print("Downloading necessary NLTK data...") 
+    nltk.download('stopwords', quiet=True)
+    nltk.download('wordnet', quiet=True)
+    nltk.download('omw-1.4', quiet=True)
+    nltk.download('punkt', quiet=True)
+
+Verbose_Flag = False
 
 def extract_text_from_pdf(pdf_path):
     """
@@ -118,11 +132,12 @@ def clean_text_structural(text):
         text = text.replace(search, replace)
 
     # 1. Fix hyphenation at line endings (e.g., "Sen- \n sing" -> "Sensing")
+    # \w matches Unicode word characters (letters, numbers, underscore)
     text = re.sub(r'(\w+)-\s+(\w+)', r'\1\2', text)
     
     # 2. Preserve compound words by replacing hyphens with underscores
-    # E.g. "all-dielectric" -> "all_dielectric"
-    text = re.sub(r'(?<=[a-zA-Z])-(?=[a-zA-Z])', '_', text)
+    # Matches hyphens bounded by Unicode letters (excludes digits and underscores via [^\W\d_])
+    text = re.sub(r'(?<=[^\W\d_])-(?=[^\W\d_])', '_', text)
     
     return text
 
@@ -138,13 +153,16 @@ def build_case_frequency_map(pages):
         # Perform structural cleaning only (keep case, keep punctuation for now)
         text = clean_text_structural(page)
         
-        # Remove special chars but KEEP case. 
-        # Logic must match preprocess_text's final tokenization exactly.
-        # Replace non-alpha/non-underscore with space
-        text = re.sub(r'[^a-zA-Z\s_]', ' ', text)
+        # Remove digits
+        text = re.sub(r'\d+', ' ', text)
+        
+        # Remove non-word characters (punctuation, symbols) but keep whitespace
+        # [^\w\s] matches anything that isn't a word char (letter/number/_) or whitespace
+        text = re.sub(r'[^\w\s]', ' ', text)
         
         # Remove short words (1-2 chars)
-        text = re.sub(r'\b[a-zA-Z]{1,2}\b', ' ', text)
+        # [^\W\d_] matches any word character that is NOT a digit and NOT an underscore (i.e. letters)
+        text = re.sub(r'\b[^\W\d_]{1,2}\b', ' ', text)
         
         # Tokenize by splitting on whitespace
         tokens = text.split()
@@ -165,13 +183,19 @@ def preprocess_text(text):
     # 2. Convert to lowercase
     text = text.lower()
     
-    # 3. Remove special characters and digits (BUT keep spaces and underscores)
-    text = re.sub(r'[^a-zA-Z\s_]', ' ', text)
+    # 3. Remove digits
+    text = re.sub(r'\d+', ' ', text)
     
-    # 4. Remove short words (1-2 characters)
-    text = re.sub(r'\b[a-zA-Z]{1,2}\b', ' ', text)
+    # 4. Remove special characters/punctuation (BUT keep spaces and underscores)
+    # [^\w\s] removes anything that isn't a word char (letter/number/_) or whitespace
+    # Since we removed digits in step 3, this effectively keeps letters and underscores
+    text = re.sub(r'[^\w\s]', ' ', text)
     
-    # 5. Remove extra whitespace
+    # 5. Remove short words (1-2 characters)
+    # [^\W\d_] ensures we match only letters (Unicode aware)
+    text = re.sub(r'\b[^\W\d_]{1,2}\b', ' ', text)
+    
+    # 6. Remove extra whitespace
     text = re.sub(r'\s+', ' ', text).strip()
     
     return text
@@ -236,7 +260,9 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
         'value', 'parameter', 'time', 'system', 'case', 'example',
         'sample', 'frequency', 'fig', 'eq', 'equation', 'simulation', 'experiment',
         # Added web artifacts to stop list
-        'org', 'com', 'net', 'edu', 'gov'
+        'org', 'com', 'net', 'edu', 'gov',
+        # some more to remove
+        'preprint', 'arxiv'
     ]
     base_stop_words.extend(academic_noise)
     
@@ -291,6 +317,9 @@ def get_cefr_level(phrase):
     Checks multiple dictionaries: common_English_words, top_100_English_words, 
     and thousand_most_common_words_in_English.
     """
+    if common_english is None:
+        return ""
+
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
@@ -298,12 +327,11 @@ def get_cefr_level(phrase):
     dicts_to_check = [
         'common_English_words',
         'top_100_English_words',
-        'thousand_most_common_words_in_English',
+        'thousand_most_common_words_in_English'
         'chemical_elements_symbols',
         'chemical_elements',
-        'common_units'
-
-
+        'KTH_ordbok_English_with_CEFR',
+        'common_units',
     ]
 
     for dict_name in dicts_to_check:
@@ -318,6 +346,7 @@ def get_cefr_level(phrase):
             # Find key that looks like a CEFR level (A1-C2)
             for key in entry:
                 # Use slicing [:2] to match 'C1' from 'C1 (Specialized)'
+                # This ensures we match 'C1' against the set valid_levels
                 if len(key) >= 2 and key[:2] in valid_levels:
                     return key
                     
@@ -326,7 +355,7 @@ def get_cefr_level(phrase):
 def print_keyword_clusters(all_keywords):
     """
     Groups keywords by common root words to suggest 'Umbrella Terms'.
-    Now includes CEFR level column.
+    Includes CEFR level column aligned.
     """
     groups = defaultdict(list)
     # Extract significant tokens (len > 3) from all phrases
@@ -390,7 +419,7 @@ def main():
         print("Usage: ./thesis_keyword_extractor.py [-v] <PDF_file>")
         sys.exit(1)
 
-    pdf_path= remainder[0]
+    pdf_path = remainder[0]
     pdf_path = pdf_path.replace('"', '').replace("'", "")
     
     print("\nExtracting text...")
@@ -417,19 +446,21 @@ def main():
         unigrams = get_top_features(corpus, case_map, ngram_range=(1, 1), top_n=10)
         
         # 2. Get Top Bigrams/Trigrams (Phrases)
-        phrases = get_top_features(corpus, case_map, ngram_range=(2, 3), top_n=20) # Increased to 20 for better clustering
+        phrases = get_top_features(corpus, case_map, ngram_range=(2, 3), top_n=20) 
         
-        print(f"{'TOP SINGLE KEYWORDS':<30} | {'Frequency':<10}")
-        print("-" * 45)
+        print(f"{'TOP SINGLE KEYWORDS':<35} | {'Freq':<6} | {'CEFR'}")
+        print("-" * 60)
         for word, count in unigrams:
-            print(f"{word:<30} | {count:<10}")
+            level = get_cefr_level(word)
+            print(f"{word:<35} | {count:<6} | {level}")
             
-        print("\n" + "=" * 45 + "\n")
+        print("\n" + "=" * 60 + "\n")
         
-        print(f"{'TOP KEY PHRASES':<30} | {'Frequency':<10}")
-        print("-" * 45)
+        print(f"{'TOP KEY PHRASES':<35} | {'Freq':<6} | {'CEFR'}")
+        print("-" * 60)
         for phrase, count in phrases:
-            print(f"{phrase:<30} | {count:<10}")
+            level = get_cefr_level(phrase)
+            print(f"{phrase:<35} | {count:<6} | {level}")
 
         # 3. Print Cluster Analysis
         all_keywords = unigrams + phrases

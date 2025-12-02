@@ -44087,6 +44087,7 @@ common_English_words={
     'rage quit': {'xx': 'Verb'}, # Slang, meaning to abruptly quit in anger.
     'ragescroll': {'xx': 'Verb'}, # Internet slang, to scroll rapidly and angrily.
     'raging': {'B1': 'Adjective'},
+    'rail': {'A1': 'Noun'},
     'rail defect detection': {'B2': 'Noun (compound)'},
     'rail image classification': {'B2': 'Noun (compound)'},
     'rail industry': {'B2': 'Noun (compound)'},
@@ -44101,7 +44102,8 @@ common_English_words={
     'railcar': {'B2': 'Noun'},
     'railcars': {'B2': 'Noun (plural)'},
     'railroad classification yards': {'B2': 'Noun Phrase'},
-    'rails': {'A1': 'Noun (plural)'},
+    'rail': {'A1': 'Noun', 'B1': 'Verb'}, # Noun: basic structure (e.g., train rail). Verb: "to complain/protest."
+    'rails': {'A1': 'Noun (plural)', 'B1': 'Verb (3rd person singular)'}, # Plural noun / 3rd person singular verb (e.g., "The mechanism rails against the stop.")
     'railway freight transport': {'B2': 'Noun (compound)'},
     'railway scheduling': {'B2': 'Noun (compound)'},
     'railway signaling': {'C1': 'Noun'},
@@ -60668,7 +60670,8 @@ common_English_words={
     'solidaxle': {'B2 (Specialized)': 'Noun, Adjective'}, # Technical term (automotive/railway)
     'solid-axle': {'B2 (Specialized)': 'Noun, Adjective'}, # Technical term (automotive/railway)
     'turnouts': {'B2 (Specialized)': 'Noun (plural)'}, # Foundational technical term (railway) 
-    'wheels': {'A1': 'Noun (plural)'}, # Basic, core vocabulary word
+    'wheel': {'A1': 'Noun', 'B1': 'Verb'}, # Noun: Basic component. Verb: "to push or roll something on wheels."
+    'wheels': {'A1': 'Noun (plural)', 'B1': 'Verb (3rd person singular)'}, # Plural noun / 3rd person singular verb (e.g., "The cart wheels easily.")
     'lock-in-place': {'B2': 'Adjective, Verb Phrase'}, # Compound descriptor or phrasal verb
     'hard-over': {'B2 (Specialized)': 'Adverb, Adjective'}, # Idiomatic/technical term (e.g., in steering)
     'damages': {'A2': 'Noun (plural)', 'B2 (Specialized)': 'Noun (plural)'}, # A2: "harm/injury". B2: "monetary compensation" (legal/finance).
@@ -62038,13 +62041,92 @@ common_English_words={
     'employers': {'A2': 'Noun (plural)'}, # Common general word
     'piecework': {'B2 (Specialized)': 'Noun'}, # Specific labor/economic term
     'legitimise': {'B2': 'Verb'}, # UK spelling of 'legitimize'. Common formal verb.
-    'provisions': {'B2': 'Noun (plural)'}, # Common formal/legal/business term
-    'sub-theme': {'B1': 'Noun'},  # Common academic/organizational term
-    'wages': {'A2': 'Noun (plural)'},  # Common general/economic term
+    'Bayesian regret': {'C1 (Specialized)': 'Noun'}, # Abstract statistical/ML concept
+    'action space': {'C1 (Specialized)': 'Noun'}, # Core concept in reinforcement learning
+    'assembly strategy': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering term
+    'assembly': {'A2': 'Noun', 'B2 (Specialized)': 'Noun'}, # A2: General meeting. B2: Technical process (product assembly).
+    'bending mode': {'B2 (Specialized)': 'Noun'}, # Common engineering/physics term
+    'bound': {'B1': 'Adjective, Noun, Verb', 'C1 (Specialized)': 'Noun'}, # C1: Math (e.g., upper/lower bound). B1: General (e.g., bound by rules).
     'builder': {'A2': 'Noun'}, # Common general word for a person who builds things
+    'carbon emission': {'B1': 'Noun'}, # Common general/environmental term
+    'carbon footprint': {'B1': 'Noun'}, # Common general/environmental term
+    'cell membrane': {'B1 (Specialized)': 'Noun'}, # Foundational biology concept
+    'climate change': {'A2': 'Noun Phrase'}, # Common, widely discussed societal term
+    'clinical reasoning': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract medical/academic concept
+    'clinical': {'B2 (Specialized)': 'Adjective'}, # Common medical/academic term
+    'concept evaluation': {'B2': 'Noun Phrase'}, # Common business/engineering/academic term
+    'contact fatigue': {'C1 (Specialized)': 'Noun'}, # Specific engineering/materials failure mode
+    'contact': {'A1': 'Noun', 'B1': 'Verb', 'B2 (Specialized)': 'Noun'}, # A1: General contact. B2: Technical (e.g., electrical contact, rolling contact).
+    'creep force': {'C1 (Specialized)': 'Noun'}, # Specific engineering/physics term (railway dynamics)
+    'damping ratio': {'C1 (Specialized)': 'Noun'}, # Specific engineering/physics term (vibration)
+    'design concept': {'B1': 'Noun Phrase'}, # Common general/engineering term
+    'design optimisation': {'B2 (Specialized)': 'Noun'}, # UK spelling. Common engineering term.
+    'electron microscopy': {'B2 (Specialized)': 'Noun'}, # Foundational scientific technique 
+    'energy consumption': {'B1': 'Noun Phrase'}, # Common general/economic/scientific term
+    'evaluation criterion': {'B2': 'Noun Phrase'}, # Common academic/formal term
+    'fatigue': {'B2': 'Noun'}, # Common medical/engineering/general term
+    'friction coefficient': {'B2 (Specialized)': 'Noun'}, # Common physics/engineering term
+    'health care': {'A2': 'Noun Phrase'}, # Common, widely discussed societal term
     'ideal': {'A2': 'Adjective/Noun'}, # Common general word
-
-
+    'information theory': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic field
+    'large language': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor (e.g., large language model)
+    'medical reasoning': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract medical/academic concept
+    'membrane protein': {'C1 (Specialized)': 'Noun'}, # Specific biological concept
+    'mode': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General (way/style). B1: Technical (e.g., vibration mode).
+    'modular architecture': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/computing concept
+    'modular design': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/computing concept
+    'modular product architecture': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract engineering/business concept
+    'modular product': {'B2 (Specialized)': 'Noun Phrase'}, # Common business/engineering term
+    'pedestrian': {'B1': 'Noun, Adjective'}, # Common general word
+    'product architecture': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/business concept
+    'provisions': {'B2': 'Noun (plural)'}, # Common formal/legal/business term
+    'rail profile': {'B2 (Specialized)': 'Noun'}, # Specific engineering term (railway)
+    'regret bound': {'C1 (Specialized)': 'Noun'}, # Abstract statistical/ML concept
+    'regret': {'B2': 'Noun/Verb', 'C1 (Specialized)': 'Noun'}, # C1: AI/ML/Stats (e.g., Bayesian regret). B2: General feeling.
+    'rolling contact fatigue': {'C1 (Specialized)': 'Noun'}, # Specific engineering failure mode
+    'rolling contact': {'B2 (Specialized)': 'Noun'}, # Foundational engineering concept
+    'sampling algorithm': {'B2 (Specialized)': 'Noun'}, # Common statistical/ML term
+    'shear modulus': {'C1 (Specialized)': 'Noun'}, # Specific engineering/physics term
+    'sub-theme': {'B1': 'Noun'},  # Common academic/organizational term
+    'timber bridge': {'B1': 'Noun Phrase'}, # Common structural engineering term
+    'timber': {'B1': 'Noun'}, # Common general/construction material
+    'transporter': {'B1': 'Noun', 'C1 (Specialized)': 'Noun'}, # C1: Biology (membrane transporter protein). B1: General vehicle.
+    'wages': {'A2': 'Noun (plural)'},  # Common general/economic term
+    'wheel profile': {'B2 (Specialized)': 'Noun'}, # Specific engineering term (railway)
+    'wheel rail profile': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering system
+    'wheel rail': {'B2 (Specialized)': 'Noun'}, # Specific engineering system
+    'adoption': {'B2': 'Noun'}, # Common general/business/academic term
+    'causal loop': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in systems dynamics
+    'dynamic': {'B2': 'Adjective'}, # Common general/scientific term
+    'dynamic complexity': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in systems dynamics
+    'e-truck adoption': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical/business term
+    'feedback loop': {'B2': 'Noun Phrase'}, # Common scientific/systems concept
+    'freight transport': {'B1': 'Noun Phrase'}, # Common general/logistics term
+    'impact electrification': {'B2': 'Noun Phrase'}, # Compound technical/environmental term
+    'multi-system transition': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in systems/sustainability
+    'policy': {'B1': 'Noun'}, # Common general/political term
+    'policy intervention': {'B2': 'Noun Phrase'}, # Common political/economic/academic term
+    'road freight': {'B1': 'Noun Phrase'}, # Common general/logistics term
+    'road freight transport': {'B1': 'Noun Phrase'}, # Common general/logistics term
+    'sustainability transition': {'B2': 'Noun Phrase'}, # Abstract academic/environmental concept
+    'system-level impact': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/academic term
+    'transport': {'A2': 'Noun, Verb'}, # Common general word
+    'Brownian motion': {'B2 (Proper Noun)': 'Noun Phrase'}, # Foundational concept in physics/math
+    'Schrödinger bridge': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced concept in stochastic optimal control/math
+    'deviation principle': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract statistical concept
+    'electric truck': {'B1': 'Noun Phrase'}, # Common general/transport term
+    'electricity supply': {'B1': 'Noun Phrase'}, # Common general/economic term
+    'empirical process': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract statistical/math concept
+    'flow matching': {'C1 (Specialized)': 'Noun'}, # Abstract concept in generative modeling/transport theory
+    'information processing': {'B1': 'Noun Phrase'}, # Common general/technical term
+    'large deviation': {'C1 (Specialized)': 'Noun'}, # Abstract statistical/math concept
+    'large deviation principle': {'C1 (Specialized)': 'Noun Phrase'}, # Core abstract statistical/math theorem
+    'neural information': {'B2 (Specialized)': 'Noun Phrase'}, # Compound concept (neuroscience/AI)
+    'neural information processing': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic field/process
+    'neural network': {'B2 (Specialized)': 'Noun'}, # Foundational concept in AI/ML 
+    'paper': {'A1': 'Noun', 'B1': 'Noun'}, # A1: General material. B1: Academic context (e.g., "research paper").
+    'rate function': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical term (large deviation theory)
+    'transport efficiency': {'B1': 'Noun Phrase'}, # Common general/economic/engineering term
     #GQMe
 
 }
