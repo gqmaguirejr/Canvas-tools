@@ -341,6 +341,16 @@ def get_cefr_level(phrase):
         if not isinstance(vocab, dict):
             continue
             
+        entry = vocab.get(phrase)
+        if entry and isinstance(entry, dict):
+            # Find key that looks like a CEFR level (A1-C2)
+            for key in entry:
+                # Use slicing [:2] to match 'C1' from 'C1 (Specialized)'
+                # This ensures we match 'C1' against the set valid_levels
+                if len(key) >= 2 and key[:2] in valid_levels:
+                    return key
+                    
+
         entry = vocab.get(phrase_lower)
         if entry and isinstance(entry, dict):
             # Find key that looks like a CEFR level (A1-C2)
