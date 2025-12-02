@@ -8,6 +8,7 @@
 # with option '-v' use verbose output
 # with option '-M' include terms in chemical_names_and_formulas and misc_words_to_ignore
 # with option '-Q' do special processing (skipping more pages before extracting text)
+# with option '-W' keep words from WordsToFilterOutSet
 #
 # G. Q. Maguire Jr.
 #
@@ -33,10 +34,10 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
 import common_english
-#import common_swedish
 import common_acronyms
-import AVL_words_with_CEFR
 import common_swedish
+import AVL_words_with_CEFR
+
 
 # List of words that will trigger a line break.
 StopWords=[
@@ -10466,7 +10467,7 @@ def extract_text_from_pdf(pdf_path):
                     continue
                 
                 # special case for thesis with miss numbered page 1
-                if options.Qcase and pageno < 18:
+                if options.Qcase and pageno < 13:
                     continue
                 
 
@@ -10677,7 +10678,9 @@ def extract_text_from_pdf(pdf_path):
         output_lines = [l[2:] if l.startswith('% ') else l for l in output_lines]
         output_lines = [l[2:] if l.startswith('= ') else l for l in output_lines]
 
-        output_lines = [l for l in output_lines if l not in WordsToFilterOutSet]
+        # optionally, filter out words from WordsToFilterOutSet
+        if not Wcase:
+            output_lines = [l for l in output_lines if l not in WordsToFilterOutSet]
 
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -14072,6 +14075,12 @@ def main():
                       default=False,
                       action="store_true",
                       help="Special Q case")
+
+    parser.add_option('-W', '--Wcase',
+                      dest="Wcase",
+                      default=False,
+                      action="store_true",
+                      help="keep words from WordsToFilterOutSet")
 
 
     options, remainder = parser.parse_args()

@@ -9260,6 +9260,45 @@ well_known_acronyms_list=[
     ['PF', 'Pólya frequency', {'s': ['diva2:2017058']}],
     ['PMF', 'probability mass function', {'s': ['diva2:2017058']}],
 
+    ['AI', 'Artificial Intelligence', {'s': ['diva2:2015553']}],
+    ['B2B', 'Business-to-Business', {'s': ['diva2:2015553']}],
+    ['BM', 'Business Model', {'s': ['diva2:2015553']}],
+    ['CapEx', 'Capital Expenditure', {'s': ['diva2:2015553']}],
+    ['CRE', 'Commercial Real Estate', {'s': ['diva2:2015553']}],
+    ['FinTech', 'Financial Technology', {'s': ['diva2:2015553']}],
+    ['GPT', 'General-Purpose Technology', {'s': ['diva2:2015553']}],
+    ['IoT', 'Internet of Things', {'s': ['diva2:2015553']}],
+    ['IVS', 'International Valuation Standards', {'s': ['diva2:2015553']}],
+    ['NOI', 'Net Operating Income', {'s': ['diva2:2015553']}],
+    ['OpEx', 'Operational Expenditure', {'s': ['diva2:2015553']}],
+    ['PropTech', 'Property Technology', {'s': ['diva2:2015553']}],
+    ['RICS', 'Royal Institution of Chartered Surveyors', {'s': ['diva2:2015553']}],
+    ['SaaS', 'Software as a Service', {'s': ['diva2:2015553']}],
+    ['VT', 'Vertical Technology', {'s': ['diva2:2015553']}],
+
+    ['CapEx/OpEx', 'Capital Expenditure / Operational Expenditure', {'s': ['diva2:2015553']}],
+    ['GPT-VT', 'General-Purpose Technology - Vertical Technology', {'s': ['diva2:2015553']}],
+
+
+    ['ATAG', 'Air Transport Action Group', {'s': ['diva2:2014980']}],
+    ['BDF3', 'Backward Differentiation Formula, third order', {'s': ['diva2:2014980']}],
+    ['EXT3', 'Extrapolation, third order', {'s': ['diva2:2014980']}],
+    ['BDF3/EXT3', 'Backward Differentiation Formula, third order/Extrapolation, third order', {'s': ['diva2:2014980']}],
+    ['FST', 'free-stream  turbulence', {'s': ['diva2:2014980']}],
+    ['GHG', 'greenhouse gas', {'s': ['diva2:2014980']}],
+    ['GLL', 'Gauss-Lobatto-Legendre', {'s': ['diva2:2014980']}],
+    ['GPUs', 'Graphical Processing Units', {'s': ['diva2:2014980']}],
+    ['NOx', 'nitrogen oxides', {'s': ['diva2:2014980']}],
+    ['POD', 'Proper Orthogonal Decomposition', {'s': ['diva2:2014980']}],
+    ['RANS', 'Reynolds-Averaged Navier Stokes', {'s': ['diva2:2014980']}],
+    ['SEM', 'Spectral Element Method', {'s': ['diva2:2014980']}],
+    ['SPOD', 'Spectral POD', {'s': ['diva2:2014980']}],
+
+    ['HR', 'Human Resources', {'s': ['diva2:2015671']}],
+    ['NOSACQ-50', 'Nordic Safety Climate Questionnaire', {'s': ['diva2:2015671']}],
+    ['SBUF', 'Development Fund of the Swedish Construction Industry', {'s': ['diva2:2015671'], 'swe': 'Svenska Byggbranschens Utvecklingsfond'}],
+
+
     #GQMa
 
     

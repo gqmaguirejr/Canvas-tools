@@ -6744,7 +6744,7 @@ common_English_words={
     'academic integrity': {'B2': 'Noun Phrase'},
     'academic work': {'B2': 'Noun Phrase'},
     'academical': {'B2': 'Adjective'},
-    'academicals': {'XX': 'Noun (informal)'}, # Informat or British English, use 'academics' instead
+    'academicals': {'C1': 'Noun (plural)'}, # Formal term for academic dress or academic matters
     'academicians': {'B2': 'Noun (compound)'},
     'academics': {'B2': 'Noun', 'C1': 'Noun (plural)'}, # 'B2': 'Noun (plural, subjects of study)', 'C1': 'Noun (plural, people)'
     'academies': {'B1': 'Noun (plural)'},
@@ -8666,7 +8666,7 @@ common_English_words={
     'anyon': {'B2': 'Noun'},
     'anyons': {'B2': 'Noun (plural)'},
     'anytime': {'A2': 'Adverb, Noun'},
-    'anyways': {'XX': 'Adverb (informal)'},
+    'anyways': {'B1': 'Adverb (Informal)'}, # Common colloquial adverb
     'aorta': {'A2': 'Noun'},
     'aortas': {'B1': 'Noun (plural)'},
     'aortic': {'B2': 'Adjective'},
@@ -8863,7 +8863,7 @@ common_English_words={
     'arc consistency': {'B2': 'Noun (compound)'},
     'arc incident energy': {'B2': 'Noun (compound)'},
     'arc squeezing': {'B2': 'Noun (compound)'},
-    'arc-lang': {'XX': 'Noun'},
+    'arc-lang': {'C1 (Specialized)': 'Noun'}, # Specific programming language
     'arc-melting': {'B2': 'Noun Phrase'},
     'arcade': {'A1': 'Noun'},
     'arcane': {'B2': 'Adjective'},
@@ -9237,7 +9237,7 @@ common_English_words={
     'asynchronous motor': {'B2': 'Noun Phrase'},
     'asynchronous': {'C1': 'Adjective'},
     'asynchronously': {'C1': 'Adverb'},
-    'asynchrony': {'XX': 'Noun'},
+    'asynchrony': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept (computing, physics)
     'at-a-glance': {'B1': 'Adverb'},
     'at-hand': {'B2': 'Adjective'},
     'at-line': {'B2': 'Adjective'},
@@ -9360,7 +9360,7 @@ common_English_words={
     'attribute': {'B2': 'Noun', 'C1': 'Verb'},  # e.g., "an attribute of..." # e.g., "to attribute X to Y"
     'attribute-based': {'B1': 'Adjective (compound)'},
     'attribute-driven': {'C1': 'Adjective (compound)'},
-    'attribute-image-combined': {'XX': 'Adjective (compound)'},
+    'attribute-image-combined': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor (ML, computer vision)
     'attribute-information-combined': {'C2': 'Adjective (compound)'},
     'attribute-to-sequence': {'B2': 'Noun Phrase'},
     'attribute-value': {'C2': 'Noun (compound)'},
@@ -15122,11 +15122,15 @@ common_English_words={
     'constructed wetlands': {'C1': 'Noun'},
     'constructed': {'B2': 'Verb (past tense), Verb (past participle)'},
     'constructing': {'B2': 'Verb (gerund), Verb (present participle)'},
+    'construction company': {'B1': 'Noun Phrase'}, # Common general business entity
     'construction equipment': {'B2': 'Noun (compound)'},
     'construction industry': {'B2': 'Noun'},
     'construction planning': {'B2': 'Noun'},
+    'construction sector': {'B1': 'Noun Phrase'}, # Common general/economic sector
     'construction site': {'B2': 'Noun (compound)'},
     'construction vehicle': {'B2': 'Noun (compound)'},
+    'construction work': {'A2': 'Noun Phrase'},  # Common general activity
+    'construction worker': {'A2': 'Noun Phrase'}, # Common general occupation
     'construction': {'A1': 'Noun', 'B1': 'Noun, Verb', 'C1': 'Noun', 'C2': 'Noun'},
     'constructional': {'A2': 'Adjective'},
     'constructions': {'B2': 'Noun (plural)'},
@@ -62011,6 +62015,36 @@ common_English_words={
     'sublinearly': {'C1 (Specialized)': 'Adverb'}, # Abstract mathematical/algorithmic descriptor
     'tinyML': {'C1 (Specialized)': 'Noun'}, # Specific technical field/paradigm 
     'two-threshold': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'operationalizes': {'C1': 'Verb'}, # 3rd person singular. Abstract academic/business verb.
+    'ConTech': {'B2 (Specialized)': 'Noun (Proper Noun)'}, # Specific industry term (Construction Technology)
+    'Socio-Ethics': {'C1 (Specialized)': 'Noun'}, # Compound academic field
+    'searches': {'A2': 'Verb, Noun'}, # Basic, core vocabulary
+    'HealthTech': {'B2 (Specialized)': 'Noun (Proper Noun)'}, # Specific industry term (Health Technology)
+    'KPI-linked': {'B2 (Specialized)': 'Adjective'}, # Technical descriptor (Key Performance Indicator)
+    'managerially': {'B2': 'Adverb'}, # Common business/formal adverb
+    'co-citation analysis': {'C1 (Specialized)': 'Noun Phrase'}, # Specific bibliometric/academic method
+    'organizational-embedded digital value': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract management/academic concept
+    'underdefined': {'B2': 'Adjective'}, # Common academic/technical descriptor
+    'cousins': {'A1': 'Noun (plural)'}, # Basic, core vocabulary word
+    'endwall': {'B2 (Specialized)': 'Noun'}, # Foundational concept (e.g., fluid dynamics, combustion)
+    'unsteady': {'B2': 'Adjective'}, # Common scientific/general term (e.g., unsteady flow)
+    'non-CO2': {'B1 (Specialized)': 'Adjective'}, # Technical descriptor (non-carbon dioxide emissions)
+    'free-stream': {'C1 (Specialized)': 'Adjective/Noun'}, # Core concept in fluid dynamics/aerodynamics
+    'homosociality': {'C1 (Specialized)': 'Noun'}, # Abstract concept in sociology/gender studies
+    'humour': {'B1': 'Noun'}, # UK spelling. Common general word.
+    'tensions': {'B1': 'Noun (plural)'},  # Common general/social term
+    'obligations': {'B1': 'Noun (plural)'},  # Common general/business/legal/social term
+    'homosocial': {'C1 (Specialized)': 'Adjective'}, # Abstract concept in sociology/gender studies
+    'employers': {'A2': 'Noun (plural)'}, # Common general word
+    'piecework': {'B2 (Specialized)': 'Noun'}, # Specific labor/economic term
+    'legitimise': {'B2': 'Verb'}, # UK spelling of 'legitimize'. Common formal verb.
+    'provisions': {'B2': 'Noun (plural)'}, # Common formal/legal/business term
+    'sub-theme': {'B1': 'Noun'},  # Common academic/organizational term
+    'wages': {'A2': 'Noun (plural)'},  # Common general/economic term
+    'builder': {'A2': 'Noun'}, # Common general word for a person who builds things
+    'ideal': {'A2': 'Adjective/Noun'}, # Common general word
+
+
     #GQMe
 
 }
@@ -64433,6 +64467,7 @@ place_names=[
     'Kuala Lumpur',
     'Rio de Janeiro',
     'Sicily',
+    'Genova', # Italy
     #GQMp
 
 ]
@@ -77750,6 +77785,20 @@ company_and_product_names=[
     'ChestXRay', # dataset -- see diva2:2017058
     'BreakHis', # dataset -- see diva2:2017058
     'Imagenet', # dataset -- see diva2:2017058
+    'Unissu', # dataset -- see diva2:2015553
+    'Bibliometrix', # bibliometric analysis software -- see diva2:2015553
+    'Biblioshiny', # web interface to Bibliometrix -- see diva2:2015553
+    'PWC', # company  -- see diva2:2015553
+    'Walktrap', # clustering algorithm -- see diva2:2015553
+    'TurboExpo', # ASME Turbomachinery Technical Conference & Exposition (Turbo Expo) -- see diva2:2014980
+    'gslib', # library -- see diva2:2014980
+    'NOSACQ-50', # questionnaire -- see diva2:2015671
+    'ILOSTAT', # database of labour statistics -- see diva2:2015671
+    'Afa Försäkring', # company -- see diva2:2015671
+    'MeToo initiative', #  -- see diva2:2015671
+    'Stoppa Machokulturen', #  -- see diva2:2015671
+    'NVivo Software', # software for coding transcribed interviews -- see diva2:2015671
+
 ]
 
 
@@ -86089,7 +86138,130 @@ names_of_persons=[
     'Salisbury',
     'Schwarz-Christoffel',
     'Chow',
-
+    'Cuccurullo',
+    'Pigneur',
+    'Olli',
+    'Vigren',
+    'Trajtenberg',
+    'Aria',
+    'Dearsley',
+    'Zott',
+    'Bresnahan',
+    'Teece',
+    'Yanoff',
+    'Deipenbrock',
+    'Wachter',
+    'Mahoney',
+    'Shaw',
+    'Saiz',
+    'Geltner',
+    'Viriato',
+    'Gambardella',
+    'McGahan',
+    'Roark',
+    'Tagliaro',
+    'Partanen',
+    'Fox',
+    'Saggi',
+    "O’Mahony",
+    'Denton',
+    'Do Carmo Lopes',
+    'Jansson',
+    'Jaramillo',
+    'Fischer',
+    'Borée',
+    'Butler',
+    'Catherine',
+    'Dario',
+    'Durovic',
+    'Faúndez',
+    'Goldstein',
+    'Spores',
+    'Gustavo',
+    'Görtler',
+    'Kiran',
+    'Kleusberg',
+    'Kármán',
+    'Langston',
+    'Lauren',
+    'Lengani',
+    'Simoni',
+    'Margaux',
+    'Michelassi',
+    'Mihai',
+    'Pawel',
+    'Samantha',
+    'Sieverding',
+    'Bosche',
+    'Sirovich',
+    'Tufo',
+    'Faby',
+    'Messerschmidt',
+    'Messner',
+    'Pietilä',
+    'Ojala',
+    'Packendorff',
+    'Markham',
+    'Vänje',
+    'Rönnlund',
+    'Esmée',
+    'Sinéad',
+    'Sprague',
+    'Hearn',
+    'Ely',
+    'Oswald',
+    'Stieger',
+    'Hammarén',
+    'Cha',
+    'Iacuone',
+    'Paap',
+    'Åmark',
+    'Abrahamsson',
+    'Holgersson',
+    'Ollus',
+    'Simu',
+    'Thiel',
+    'Styhre',
+    'Ahlstrand',
+    'Pöllänen',
+    'Somerville',
+    'Gherardi',
+    'Schein',
+    'Smircich',
+    'Hirdman',
+    'Korvajärvi',
+    'Kvande',
+    'Agapiou',
+    'Kiesling',
+    'Connell',
+    'Mellström',
+    'Faulkner',
+    'Tjeder',
+    'Sundström',
+    'Guldenmund',
+    'Kimmel',
+    'Ajslev',
+    'Goundar',
+    'Dozier',
+    'Edgren',
+    'Haslam',
+    'Holmes',
+    'Marra',
+    'Hulst',
+    'Visser',
+    'Hällgren',
+    'Ibáñez',
+    'Narocki',
+    'Järvholm',
+    'Khurshid',
+    'Kines',
+    'Mikkelsen',
+    'Olofssdotter',
+    'Rasmusson',
+    'Schexnayder',
+    'Ulfsdotter',
+    'Molnár',
+    'Conley',
 ]
 
 common_french_words={
@@ -86099,6 +86271,7 @@ common_french_words={
     "d'information": {'B1': 'Noun (compound)'},
     "l'Energie": {'B1': 'Noun'},
     "l'énergie": {'B1': 'Noun'},
+    'À': {'A1': 'Preposition'}, # "to," "at"
     'Africaine': {'B1': 'Adjective'},
     'Agence': {'B1': 'Noun'},
     'Appliqué': {'B1': 'Noun', 'B2': 'Adjective'},
@@ -86177,12 +86350,14 @@ common_french_words={
     'fédérale': {'B2': 'Adjective'}, # feminine form of the adjective "fédéral," which translates to "federal" in English
     'fédéraux': {'B2': 'Adjective'},
     'français': {'A1': 'Adjective, Noun, Demonym'}, # as a Noun (language/people)
+    'grands-parents': {'A1': 'Noun (plural)'}, # "grandparents"
     'idéa': {'A2': 'Noun'},
     'informatiques': {'B2': 'Adjective'},
     'la': {'A1': 'Article'},
     'le': {'A1': 'Article'},
     'manœuvre': {'B2': 'Noun'},
     'masse': {'B1': 'Noun'},
+    'mes': {'A1': 'Determiner (Possessive Adjective)'}, # "my" (plural)
     'montage': {'B2': 'Noun'},
     'nationale': {'B1': 'Noun'},
     'nouveau': {'A2': 'Adjective'},
@@ -86477,6 +86652,8 @@ language_tags={
 }
 
 miss_spelled_words=[
+    'assesing', # should be 'assessing'
+    'assesment', # should be 'assessment'
     'fluoresence',
     'Skelleftea', # a miss-spelling
     'forkarskolan', # should be 'forskarskolan'

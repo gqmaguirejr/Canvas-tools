@@ -3501,6 +3501,151 @@ Wrote 2209 broad terms to '/tmp/ieee_thesaurus_2023_terms_broad.txt'.
 
 ```
 
+## thesis_keyword_extractor.py
+### Purpose
+Thesis Keyword Suggestion Tool 
+
+### Input
+```bash
+.thesis_keyword_extractor.py PDF_file
+```
+
+### Output
+```bash
+Extracting text...
+Successfully extracted 148 pages.
+Analyzing text case usage...
+Identifying keywords...
+
+  warnings.warn(
+TOP SINGLE KEYWORDS            | Frequency 
+---------------------------------------------
+waveguide                      | 477       
+GHz                            | 209       
+terahertz                      | 175       
+THz                            | 164       
+mode                           | 156       
+dielectric                     | 141       
+loss                           | 141       
+silicon                        | 132       
+device                         | 123       
+material                       | 122       
+
+=============================================
+
+TOP KEY PHRASES                | Frequency 
+---------------------------------------------
+dielectric waveguide           | 70        
+effective medium               | 48        
+loss engineering               | 44        
+passive component              | 42        
+carbon nanotube                | 39        
+all-silicon THz                | 38        
+electric field                 | 38        
+shielding efficiency           | 38        
+terahertz loss                 | 38        
+terahertz loss engineering     | 38        
+all-silicon THz passive        | 37        
+THz passive                    | 37        
+THz passive component          | 37        
+silicon waveguide              | 36        
+metallic waveguide             | 33        
+<author's name>                  | 33        
+waveguide crossing             | 32        
+photonic crystal               | 30        
+dielectric rod                 | 27        
+insertion loss                 | 25        
+
+KEYWORD CLUSTERS (Potential Umbrella Terms)   | Freq   | CEFR
+------------------------------------------------------------
+[WAVEGUIDE] (Total: 648)                      |        | A2
+  - waveguide                                 | 477    | A2
+  - dielectric waveguide                      | 70     | 
+  - silicon waveguide                         | 36     | 
+  - metallic waveguide                        | 33     | 
+  - waveguide crossing                        | 32     | 
+
+[LOSS] (Total: 286)                           |        | A1
+  - loss                                      | 141    | A1
+  - loss engineering                          | 44     | 
+  - terahertz loss                            | 38     | 
+  - terahertz loss engineering                | 38     | 
+  - insertion loss                            | 25     | 
+
+[TERAHERTZ] (Total: 251)                      |        | B1
+  - terahertz                                 | 175    | B1
+  - terahertz loss                            | 38     | 
+  - terahertz loss engineering                | 38     | 
+
+[DIELECTRIC] (Total: 238)                     |        | C2
+  - dielectric                                | 141    | C2
+  - dielectric waveguide                      | 70     | 
+  - dielectric rod                            | 27     | 
+
+[SILICON] (Total: 168)                        |        | B2
+  - silicon                                   | 132    | B2
+  - silicon waveguide                         | 36     | 
+
+[PASSIVE] (Total: 153)                        |        | B2
+  - passive component                         | 42     | 
+  - all-silicon THz passive                   | 37     | 
+  - THz passive                               | 37     | 
+  - THz passive component                     | 37     | 
+
+[ENGINEERING] (Total: 82)                     |        | A2
+  - loss engineering                          | 44     | 
+  - terahertz loss engineering                | 38     | 
+
+[COMPONENT] (Total: 79)                       |        | B2
+  - passive component                         | 42     | 
+  - THz passive component                     | 37     | 
+
+[ALL-SILICON] (Total: 75)                     |        | B2 (Specialized)
+  - all-silicon THz                           | 38     | 
+  - all-silicon THz passive                   | 37     | 
+
+
+Suggestion: Key phrases often make better thesis keywords than single words.
+```
+
+### Note 
+In the output above the thesis author's name has been replaced with "<author's name>".
+
+### Keyword Suggestion Methodology
+
+This program uses statistical analysis (___frequency countin___ and ___n-gram extraction___) combined with linguistic filtering to suggest keywords.
+
+#### Limitations regarding Named Entities
+
+Currently, the tool does not utilize Named Entity Recognition (NER). Consequently, it cannot distinguish between a frequent proper noun (such as an author's name) and a frequent technical term.
+
+* ***Issue***: If the author's, supervisor's, or co-authors' names appear frequently (e.g., in headers or footers), they will likely appear in the suggested keywords list.
+
+* ***Action***: These names are generally unsuitable as keywords and requires the user to manually ignore them.
+
+#### CEFR Level Interpretation
+
+The tool references multiple English language dictionaries (via common_english.py) to estimate CEFR levels for extracted terms. This provides a useful heuristic for selection:
+
+* ***B1 / B2 (Intermediate)***: These phrases are often the "sweet spot" for keywords. They are likely specific enough to be meaningful, while broad enough to be commonly searched terms.
+
+* ***C1 / C2 (Advanced)***: These terms are likely highly specific technical terms. Use these to emphasize specific content, novelties, or technical depth in the thesis.
+
+* ***A1 / A2 (Basic)***: In contrast, these terms will usually be too generic for use as thesis keywords.
+
+#### The Human Element
+
+> "Algorithms count tokens, but humans index concepts."
+
+The program acts as a statistical aid but requires the user to perform the final evaluation. Your goal in selecting keywords is to attract readers to content they will find relevant. This selection requires human judgment to verify that a statistically frequent term actually represents a core concept of the work.
+
+#### Future Improvements
+
+* ***Name Filtering***: A potential improvement is to utilize common_english.names_of_persons (classifying them as {'B2': 'Noun (proper name)'}) to help automatically filter out names of persons.
+
+* ***Expanded Dictionaries***: The CEFR lookup capabilities could be expanded by incorporating additional dictionary sources.
+
+
 <!-- 
 
 ## xxx.py
