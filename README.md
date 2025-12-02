@@ -3613,7 +3613,7 @@ In the output above the thesis author's name has been replaced with "<author's n
 
 ### Keyword Suggestion Methodology
 
-This program uses statistical analysis (___frequency countin___ and ___n-gram extraction___) combined with linguistic filtering to suggest keywords.
+This program uses statistical analysis (___frequency counting___ and ___n-gram extraction___) combined with linguistic filtering to suggest keywords.
 
 #### Limitations regarding Named Entities
 
