@@ -27484,7 +27484,6 @@ common_English_words={
     'iSCAT': {'C1': 'Noun, Abbreviation'}, 
     'ice cream': {'A1': 'Noun'},
     'ice hockey': {'A1': 'Noun'},
-    'ice hockey': {'A1': 'Noun'},
     'ice-free': {'A2': 'Adjective'},
     'ice-going': {'B2': 'Adjective (compound)'},
     'ice-propelled': {'B2': 'Adjective'},
@@ -62127,6 +62126,800 @@ common_English_words={
     'paper': {'A1': 'Noun', 'B1': 'Noun'}, # A1: General material. B1: Academic context (e.g., "research paper").
     'rate function': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical term (large deviation theory)
     'transport efficiency': {'B1': 'Noun Phrase'}, # Common general/economic/engineering term
+    'absolute': {'B1': 'Adjective'}, # Common general/mathematical term
+    'absolute pose': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in computer vision/robotics
+    'absolute pose regression': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract ML/computer vision concept
+    'ambiguous observation': {'C1': 'Noun Phrase'}, # Abstract academic/scientific concept
+    'camera': {'A1': 'Noun'}, # Basic, core vocabulary
+    'camera pose': {'B2 (Specialized)': 'Noun'}, # Foundational concept in computer vision/robotics
+    'camera relocalization': {'C1 (Specialized)': 'Noun'}, # Abstract computer vision process
+    'distribution modeling': {'C1 (Specialized)': 'Noun'}, # Abstract statistical/ML concept
+    'distribution pose': {'C1 (Specialized)': 'Noun'}, # Abstract statistical/ML concept
+    'feature': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General characteristic. B1: Technical (e.g., software feature).
+    'image observation': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/technical phrase
+    'local feature': {'B2 (Specialized)': 'Noun'}, # Foundational concept in computer vision (e.g., SIFT)
+    'observation': {'B1': 'Noun'}, # Common general/scientific term
+    'pose': {'B1': 'Noun', 'B2 (Specialized)': 'Noun'}, # B1: General position. B2: Technical (e.g., camera pose).
+    'pose regression': {'C1 (Specialized)': 'Noun'}, # Abstract ML/computer vision concept
+    'posterior distribution': {'C1 (Specialized)': 'Noun Phrase'}, # Core abstract statistical concept
+    'relocalization': {'C1 (Specialized)': 'Noun'}, # Abstract computer vision process
+    'scene': {'A2': 'Noun'}, # Common general/visual word
+    'scene coordinate': {'B2 (Specialized)': 'Noun'}, # Foundational concept in computer vision
+    'dynamic compression': {'C1 (Specialized)': 'Noun'}, # Abstract physics/engineering concept
+    'fibre network': {'B2 (Specialized)': 'Noun'}, # UK spelling. Common engineering/materials term.
+    'liquid': {'A2': 'Noun, Adjective'}, # Common general word
+    'liquid distribution': {'B1 (Specialized)': 'Noun'}, # Common scientific/engineering term
+    'liquid transport': {'B1 (Specialized)': 'Noun'}, # Common scientific/engineering term
+    'load rate': {'B2 (Specialized)': 'Noun'}, # Common engineering/testing term
+    'loss': {'A2': 'Noun', 'B1': 'Noun'}, # A2: General loss/damage. B1: Technical/economic loss.
+    'macro-scale stress': {'C1 (Specialized)': 'Noun'}, # Abstract concept in mechanics/materials
+    'macro-scale stress variation': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in mechanics/materials
+    'paper web': {'B2 (Specialized)': 'Noun'}, # Specific industrial term (paper industry)
+    'porous medium': {'C1 (Specialized)': 'Noun'}, # Core concept in fluid dynamics/materials science
+    'press': {'A2': 'Noun/Verb', 'B1 (Specialized)': 'Noun'}, # B1: Technical (e.g., shoe press). A2: General.
+    'press belt': {'B2 (Specialized)': 'Noun'}, # Specific industrial component
+    'press felt': {'B2 (Specialized)': 'Noun'}, # Specific industrial component
+    'press nip': {'C1 (Specialized)': 'Noun'}, # Specific industrial process/region
+    'shoe': {'A1': 'Noun', 'B1 (Specialized)': 'Noun'}, # B1: Technical (e.g., shoe press). A1: General.
+    'shoe press': {'B2 (Specialized)': 'Noun'}, # Specific industrial equipment
+    'shoe press nip': {'C1 (Specialized)': 'Noun'}, # Specific industrial process/region
+    'stress variation': {'B2 (Specialized)': 'Noun'}, # Common engineering/scientific term
+    'void volume': {'C1 (Specialized)': 'Noun'}, # Abstract scientific term (porous materials)
+    'void volume loss': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract scientific term
+    'volume': {'A2': 'Noun'}, # Common general/mathematical term
+    'volume loss': {'B1': 'Noun Phrase'}, # Common scientific/medical/general term
+    'wet pressing': {'C1 (Specialized)': 'Noun'}, # Specific industrial process
+    'actor': {'A1': 'Noun', 'B2 (Specialized)': 'Noun'}, # A1: General (performer). B2: Specialized (e.g., actor model in computing, or Actor in ANT).
+    'apache flink': {'C1 (Proper Noun)': 'Noun'}, # Specific stream processing framework 
+    'atomic stream': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in distributed systems
+    'compositional pattern': {'B2': 'Noun Phrase'}, # Common technical/design term
+    'dataflow streaming': {'C1 (Specialized)': 'Noun'}, # Abstract concept in data processing
+    'definition failure': {'B2': 'Noun Phrase'}, # Common general/technical term
+    'definition failure transparency': {'C2 (Specialized)': 'Noun Phrase'}, # Highly abstract and specific concept in fault tolerance
+    'event': {'A2': 'Noun'}, # Common general word
+    'failure recovery': {'B2 (Specialized)': 'Noun'}, # Common technical/systems term
+    'failure transparency': {'C1 (Specialized)': 'Noun'}, # Abstract concept in distributed systems
+    'failure-transparent programming': {'C2 (Specialized)': 'Noun Phrase'}, # Highly abstract and specific concept in programming models
+    'global aggregation': {'B2 (Specialized)': 'Noun'}, # Common statistical/computing term
+    'operational semantics': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic concept (programming languages/logic)
+    'proof': {'B2': 'Noun'}, # Common academic/mathematical term
+    'proof failure': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept (e.g., in formal verification)
+    'proof failure transparency': {'C2 (Specialized)': 'Noun Phrase'}, # Highly abstract and specific concept
+    'replicated type': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in distributed systems
+    'stateful dataflow': {'C1 (Specialized)': 'Noun'}, # Core concept in data processing
+    'stateful dataflow streaming': {'C1 (Specialized)': 'Noun Phrase'}, # Advanced concept in data processing
+    'directed graph': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in graph theory/CS
+    'edge': {'A1': 'Noun', 'B2 (Specialized)': 'Noun'}, # A1: General boundary. B2: Technical (e.g., graph edge).
+    'edge direction': {'B2 (Specialized)': 'Noun Phrase'}, # Common graph theory term
+    'feature': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General characteristic. B1: Technical (e.g., ML feature).
+    'flow': {'B1': 'Noun, Verb', 'B2 (Specialized)': 'Noun'}, # B2: Technical (e.g., data flow, network flow). B1: General movement.
+    'graph alignment': {'C1 (Specialized)': 'Noun'}, # Abstract technical concept (network science/ML)
+    'graph structure': {'B2 (Specialized)': 'Noun Phrase'}, # Common graph theory term
+    'length distribution': {'B2 (Specialized)': 'Noun Phrase'}, # Common statistical/scientific term
+    'matrix': {'B1 (Specialized)': 'Noun'}, # Foundational mathematical concept (linear algebra)
+    'message aggregation': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in Graph Neural Networks
+    'node attribute': {'B2 (Specialized)': 'Noun Phrase'}, # Common graph theory/ML term
+    'node classification': {'B2 (Specialized)': 'Noun'}, # Specific task in machine learning/graph theory
+    'node embeddings': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract ML concept
+    'random walk': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in probability/graph theory
+    'transaction network': {'B2 (Specialized)': 'Noun Phrase'}, # Common business/IT/graph term
+    'walk length': {'B2 (Specialized)': 'Noun Phrase'}, # Common graph theory/algorithmic term
+    'walk length distribution': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract statistical/graph theory term
+    'Hölder regularity': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced mathematical concept
+    'Moser iteration': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced mathematical technique
+    'Sobolev inequality': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced mathematical theorem
+    'Sobolev space': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, advanced mathematical concept
+    'bounded open': {'C1 (Specialized)': 'Adjective'}, # Compound mathematical descriptor
+    'eigenvalue': {'B2 (Specialized)': 'Noun'}, # Foundational mathematical concept (linear algebra)
+    'extremal function': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical concept
+    'extremal function inequality': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical concept
+    'first eigenvalue': {'B2 (Specialized)': 'Noun Phrase'}, # Common mathematical descriptor
+    'fractional p-Laplace': {'C2 (Specialized)': 'Noun'}, # Highly advanced mathematical concept
+    'fractional p-Laplacian': {'C2 (Specialized)': 'Noun'}, # Highly advanced mathematical concept
+    'inequality': {'B2': 'Noun'}, # Common mathematical/general term
+    'isolation': {'B1': 'Noun'}, # Common general/scientific term
+    'isolation first': {'C1 (Specialized)': 'Noun Phrase'}, # Specific mathematical descriptor (contextual)
+    'isolation first eigenvalue': {'C1 (Specialized)': 'Noun Phrase'}, # Compound mathematical descriptor
+    'partial differential': {'B2 (Specialized)': 'Adjective'}, # Common mathematical descriptor
+    'rescaled function': {'B2 (Specialized)': 'Noun Phrase'}, # Common mathematical/modeling term
+    'right-hand side': {'B1': 'Noun Phrase'}, # Common mathematical/general directional phrase
+    'weak solution': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical concept (partial differential equations)
+    'computer vision': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational academic/technical field
+    'computer vision pattern': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical concept
+    'manufacturing': {'B1': 'Noun, Verb'}, # Common general/industrial term
+    'manufacturing part': {'B1': 'Noun Phrase'}, # Common industrial term
+    'manufacturing part recognition': {'B2 (Specialized)': 'Noun Phrase'}, # Specific technical process
+    'object': {'A1': 'Noun', 'B1 (Specialized)': 'Noun'}, # A1: General item. B1: Technical (e.g., programming object, computer vision object).
+    'object detection': {'B2 (Specialized)': 'Noun'}, # Core technical process in computer vision 
+    'part recognition': {'B2 (Specialized)': 'Noun'}, # Specific technical process
+    'quality inspection': {'B1': 'Noun Phrase'}, # Common industrial/business term
+    'real': {'A1': 'Adjective'}, # Basic, core vocabulary
+    'real image': {'B1': 'Noun Phrase'}, # Common technical/imaging term
+    'synthetic active': {'C1 (Specialized)': 'Adjective'}, # Compound academic/technical concept
+    'synthetic active learning': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract ML methodology
+    'synthetic generation': {'B2 (Specialized)': 'Noun'}, # Abstract technical process
+    'vision pattern': {'B2 (Specialized)': 'Noun Phrase'}, # Common academic/technical concept
+    'vision pattern recognition': {'C1 (Specialized)': 'Noun Phrase'}, # Specific technical process
+    'MHD stability': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in Plasma Physics (Magnetohydrodynamics)
+    'Nucl fusion': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept (Nuclear fusion)
+    'ballooning mode': {'C1 (Specialized)': 'Noun'}, # Specific type of plasma instability
+    'bootstrap current': {'C1 (Specialized)': 'Noun'}, # Specific plasma phenomenon
+    'control fusion': {'B2 (Specialized)': 'Noun Phrase'}, # Specific application field
+    'energy': {'A2': 'Noun'}, # Common general/scientific word
+    'field': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General area. B1: Scientific (e.g., magnetic field).
+    'field line': {'B2 (Specialized)': 'Noun'}, # Foundational concept in physics (magnetic fields)
+    'flux surface': {'C1 (Specialized)': 'Noun'}, # Specific concept in fusion/plasma confinement
+    'fusion': {'B1 (Specialized)': 'Noun'}, # Common scientific/general term
+    'gas rate': {'B1 (Specialized)': 'Noun'}, # Common technical/scientific term
+    'isotope mass': {'B2 (Specialized)': 'Noun'}, # Common scientific term
+    'magnetic field': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational physics concept
+    'pedestal height': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in fusion (H-mode plasma)
+    'pedestal stability': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in fusion/plasma physics
+    'pressure gradient': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in physics/fluid dynamics
+    'ai-generated music': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical term
+    'comparison representation': {'B2 (Specialized)': 'Noun Phrase'}, # Common academic/ML descriptor
+    'comparison representation music': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical descriptor
+    'double jig': {'B1': 'Noun'}, # Specific music/dance term
+    'explanation': {'A2': 'Noun'}, # Common general word
+    'last accessed': {'B1': 'Adjective, Adverb'}, # Common computing/general term
+    'melodic contour': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational music theory term
+    'music generation': {'B2 (Specialized)': 'Noun'}, # Specific field/task (AI/ML)
+    'music information': {'B2 (Specialized)': 'Noun'}, # Specific field/discipline
+    'representation music': {'C1 (Specialized)': 'Noun'}, # Abstract concept in music theory/AI
+    'execution': {'B1': 'Noun'}, # Common general/technical term
+    'functional property': {'B2': 'Noun Phrase'}, # Common technical/scientific term
+    'interactive theorem': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in formal methods
+    'logic': {'B1': 'Noun', 'C1 (Specialized)': 'Noun'}, # B1: General (reasoning). C1: Technical (formal logic).
+    'logic unstructured': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical concept
+    'machine code': {'B2 (Specialized)': 'Noun'}, # Foundational computing concept
+    'path condition': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in symbolic execution/formal verification
+    'program logic': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational computing concept
+    'software switch': {'B2 (Specialized)': 'Noun'}, # Common networking/systems term
+    'symbolic': {'B2': 'Adjective', 'C1 (Specialized)': 'Adjective'}, # C1: Technical (e.g., symbolic execution). B2: General.
+    'symbolic variable': {'C1 (Specialized)': 'Noun Phrase'}, # Technical concept (symbolic execution)
+    'theorem proving': {'C1 (Specialized)': 'Noun'}, # Specific academic/technical field
+    'unstructured program': {'C1 (Specialized)': 'Noun Phrase'}, # Technical concept (programming languages)
+    'verification tool': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/systems term
+    'verified compiler': {'C1 (Specialized)': 'Noun Phrase'}, # Advanced computing concept
+    'verified software': {'C1 (Specialized)': 'Noun Phrase'}, # Advanced computing concept
+    'Kalman filter': {'B2 (Proper Noun)': 'Noun Phrase'}, # Foundational concept in estimation theory
+    'compressed measurement': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/scientific term
+    'data-driven nonlinear': {'C1 (Specialized)': 'Adjective'}, # Abstract technical/ML descriptor
+    'data-driven nonlinear state': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract technical/ML concept
+    'deep learning-based': {'B2 (Specialized)': 'Adjective'}, # Common ML descriptor
+    'estimation nonlinear': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical concept
+    'linear measurement': {'B1 (Specialized)': 'Noun Phrase'}, # Common mathematical/scientific term
+    'log log': {'B2 (Specialized)': 'Noun'}, # Common statistical/mathematical descriptor
+    'measurement noise': {'B2 (Specialized)': 'Noun'}, # Common scientific/technical term
+    'noisy measurement': {'B2 (Specialized)': 'Noun'}, # Common scientific/technical term
+    'nonlinear measurement': {'B2 (Specialized)': 'Noun'}, # Common scientific/technical term
+    'nonlinear state': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical/system concept
+    'nonlinear state estimation': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical/system concept
+    'signal processing': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational academic/technical field
+    'state': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General condition. B1: Technical (e.g., system state, state variable).
+    'state estimation': {'C1 (Specialized)': 'Noun'}, # Abstract technical/system concept
+    'state trajectory': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical/system concept
+    'state transition': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical/system concept
+    'abusive head trauma': {'C1 (Specialized)': 'Noun Phrase'}, # Specific medical diagnosis/legal term
+    'accessory suture': {'C1 (Specialized)': 'Noun Phrase'}, # Specific anatomical term
+    'brain injury': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical term
+    'cervical spine': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational anatomical term
+    'cranial bone': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational anatomical term
+    'cranial suture': {'C1 (Specialized)': 'Noun Phrase'}, # Specific anatomical term
+    'cranial suture fontanelle': {'C1 (Specialized)': 'Noun Phrase'}, # Compound anatomical term
+    'finite element': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational engineering/modeling concept 
+    'fracture pattern': {'B2 (Specialized)': 'Noun Phrase'}, # Common medical/engineering term
+    'head injury': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical term
+    'head neck': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational anatomical grouping
+    'head trauma': {'B2 (Specialized)': 'Noun Phrase'}, # Common medical term
+    'infant': {'A2': 'Noun'}, # Common general word
+    'infant cranial': {'B2 (Specialized)': 'Adjective'}, # Compound medical descriptor
+    'infant head': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical/anatomical term
+    'infant head neck': {'B2 (Specialized)': 'Noun Phrase'}, # Compound medical/anatomical grouping
+    'infant skull': {'B2 (Specialized)': 'Noun Phrase'}, # Specific anatomical structure
+    'infant skull fracture': {'C1 (Specialized)': 'Noun Phrase'}, # Specific medical diagnosis
+    'injury': {'A2': 'Noun'}, # Common general word
+    'neck': {'A1': 'Noun'}, # Basic, core vocabulary
+    'skull': {'A2': 'Noun'}, # Common biological/general word
+    'skull fracture': {'B2 (Specialized)': 'Noun Phrase'}, # Common medical term
+    'suture fontanelle': {'C1 (Specialized)': 'Noun Phrase'}, # Compound anatomical term
+    'trauma': {'B1': 'Noun'}, # Common medical/general term
+    'coordinate': {'A2': 'Noun', 'B1': 'Verb', 'B2 (Specialized)': 'Noun'}, # B2: Technical (e.g., coordinates in a system). A2: General (e.g., coordination).
+    'coordinate regression': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract ML/computer vision concept
+    'loop closure': {'C1 (Specialized)': 'Noun'}, # Core concept in robotics/SLAM
+    'map code': {'B2 (Specialized)': 'Noun'}, # Technical descriptor (e.g., in GIS)
+    'object pose': {'B2 (Specialized)': 'Noun'}, # Foundational concept in computer vision/robotics
+    'point set': {'B2 (Specialized)': 'Noun'}, # Common mathematical/computer vision term
+    'pose estimation': {'C1 (Specialized)': 'Noun'}, # Abstract computer vision/robotics process
+    'pose shape': {'C1 (Specialized)': 'Noun'}, # Abstract computer vision concept
+    'pose shape estimation': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract computer vision concept
+    'scene coordinate': {'B2 (Specialized)': 'Noun'}, # Foundational concept in computer vision
+    'scene coordinate regression': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract ML/computer vision concept
+    'scene representation': {'C1 (Specialized)': 'Noun'}, # Abstract computer graphics/vision concept
+    'shape estimation': {'C1 (Specialized)': 'Noun'}, # Abstract computer vision/robotics process
+    'control input': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in control theory
+    'control placement': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/systems term
+    'controllability Gramian': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in linear algebra/control theory
+    'cost function': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational mathematical/optimization concept
+    'cost matrix': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational mathematical/engineering concept
+    'finite-time horizon': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in control theory/optimization
+    'inverse optimal': {'C1 (Specialized)': 'Adjective'}, # Abstract field descriptor
+    'inverse optimal control': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic field/process
+    'inverse reinforcement': {'C1 (Specialized)': 'Adjective'}, # Abstract field descriptor
+    'inverse reinforcement learning': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic field/process (IRL)
+    'linear': {'B1': 'Adjective'}, # Common general/mathematical term
+    'linear quadratic': {'B2 (Specialized)': 'Adjective'}, # Compound mathematical descriptor
+    'linear quadratic regulator': {'C1 (Specialized)': 'Noun Phrase'}, # Specific control theory concept (LQR)
+    'minimal control': {'B2 (Specialized)': 'Noun Phrase'}, # Common control theory term
+    'number control': {'B1': 'Noun Phrase'}, # Common general/technical term
+    'objective function': {'C1 (Specialized)': 'Noun Phrase'}, # Core mathematical/optimization concept
+    'optimal control': {'C1 (Specialized)': 'Noun Phrase'}, # Core academic field/process
+    'pattern formation': {'B2': 'Noun Phrase'}, # Common scientific/general term
+    'quadratic regulator': {'C1 (Specialized)': 'Noun Phrase'}, # Specific control theory concept
+    'regulator': {'B1': 'Noun'}, # Common general/technical device/concept
+    'sufficient condition': {'C1': 'Noun Phrase'}, # Formal mathematical/academic phrase
+    'brake': {'A2': 'Noun', 'B1': 'Verb'}, # Common general word
+    'brake block': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/railway term
+    'brake disc': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/automotive term
+    'brake pad': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/automotive term
+    'brake pressure': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering term
+    'braking distance': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/transport term
+    'coefficient friction': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational physics/engineering term
+    'composite brake': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering/materials term
+    'composite brake block': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering/materials term
+    'contact area': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/scientific term
+    'disc brake': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/automotive term
+    'expansion wear': {'C1 (Specialized)': 'Noun Phrase'}, # Specific tribology/materials concept
+    'friction heat': {'B2 (Specialized)': 'Noun Phrase'}, # Common physics/engineering term
+    'heat': {'A1': 'Noun, Verb'}, # Basic, core vocabulary
+    'heat flux': {'C1 (Specialized)': 'Noun'}, # Abstract physics/engineering concept
+    'ice': {'A1': 'Noun', 'B1': 'Verb'}, # Noun: Frozen water. Verb: "to cover with ice/frost" or "to chill with ice."
+    'maximum temperature': {'B1': 'Noun Phrase'}, # Common general/scientific term
+    'thermal expansion': {'B2 (Specialized)': 'Noun Phrase'}, # Common physics/engineering concept
+    'thermal expansion wear': {'C1 (Specialized)': 'Noun Phrase'}, # Specific tribology/materials concept
+    'dead-zone phenomenon': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in control theory/mechanics
+    'design': {'A2': 'Noun', 'B1': 'Verb'}, # Common general word
+    'design vehicle': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/transport term
+    'design vehicle mass': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering/transport term
+    'distance design': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering/technical term
+    'estimation accuracy': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/statistical term
+    'input design': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/systems term
+    'input design vehicle': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering/transport term
+    'mass': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General substance. B1: Technical (e.g., vehicle mass).
+    'mass estimation': {'B2 (Specialized)': 'Noun'}, # Common engineering/systems term
+    'minimum': {'A2': 'Adjective, Noun'}, # Common general word
+    'minimum design': {'B1': 'Noun Phrase'}, # Common engineering term
+    'minimum distance design': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering/technical term
+    'soft sensor': {'C1 (Specialized)': 'Noun'}, # Specific term in instrumentation/control engineering
+    'strong nonlinear': {'C1 (Specialized)': 'Adjective'}, # Compound mathematical/system descriptor
+    'torque estimation': {'C1 (Specialized)': 'Noun'}, # Specific engineering/systems term
+    'vehicle mass': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/transport term
+    'vehicle mass estimation': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering/systems term
+    'working condition': {'B1': 'Noun Phrase'}, # Common general/engineering term
+    'autonomous weapon': {'B2 (Specialized)': 'Noun Phrase'}, # Specific technical/military term
+    'capability': {'B1': 'Noun'}, # Common general word
+    'capability development': {'B2': 'Noun Phrase'}, # Common technical/business/military term
+    'capability engineering': {'C1 (Specialized)': 'Noun Phrase'}, # Specific technical/academic field
+    'defence capability': {'B2': 'Noun Phrase'}, # Common military/political term
+    'emerging technology': {'B1': 'Noun Phrase'}, # Common business/technical term
+    'ethical': {'B1': 'Adjective'}, # Common general word
+    'ethical consideration': {'B2': 'Noun Phrase'}, # Common general/academic term
+    'governing layer': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract technical/organizational concept
+    'human control': {'B1': 'Noun Phrase'}, # Common general/technical term
+    'layer': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General layer. B1: Technical (e.g., protocol layer).
+    'life cycle': {'B1': 'Noun Phrase'}, # Common general/engineering/business term
+    'meaningful': {'B1': 'Adjective'}, # Common general word
+    'meaningful human control': {'C1 (Specialized)': 'Noun Phrase'}, # Core ethical/legal concept in autonomous systems
+    'military capability': {'B2': 'Noun Phrase'}, # Common military term
+    'military context': {'B2': 'Noun Phrase'}, # Common military/social term
+    'military innovation': {'B2': 'Noun Phrase'}, # Common military/business term
+    'military organisation': {'B2': 'Noun Phrase'}, # UK spelling. Common military term.
+    'new technology': {'A2': 'Noun Phrase'}, # Common general phrase
+    'technical': {'B1': 'Adjective'}, # Common general word
+    'technical sociotechnical': {'C1 (Specialized)': 'Adjective'}, # Compound technical/social descriptor
+    'three layer': {'B1 (Specialized)': 'Adjective'}, # Common technical descriptor (three-layer architecture)
+    'activation energy': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in chemistry/physics
+    'catalytic pyrolysis': {'C1 (Specialized)': 'Noun Phrase'}, # Specific chemical engineering process
+    'circuit board': {'A2': 'Noun Phrase'}, # Common technical/general item
+    'electrical': {'A2': 'Adjective'}, # Common general word
+    'electrical electronic': {'B1 (Specialized)': 'Adjective'}, # Compound descriptor
+    'electrical electronic equipment': {'B1 (Specialized)': 'Noun Phrase'}, # Common industrial/regulatory term
+    'electronic': {'A2': 'Adjective'}, # Common general word
+    'electronic equipment': {'A2': 'Noun Phrase'}, # Common general term
+    'electronic waste': {'B1': 'Noun Phrase'}, # Common general/environmental term
+    'ex-situ catalytic': {'C1 (Specialized)': 'Adjective'}, # Technical descriptor (chemical engineering)
+    'oil yield': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/industrial metric
+    'peak area': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/analytic metric
+    'solid residue': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/industrial term
+    'waste': {'A2': 'Noun, Verb'}, # Common general word
+    'waste electrical': {'B1 (Specialized)': 'Adjective'}, # Compound descriptor
+    'waste electrical electronic': {'B1 (Specialized)': 'Adjective'}, # Compound descriptor
+    'yield': {'B1': 'Noun, Verb'}, # Common general/scientific/business term
+    'active steering': {'C1 (Specialized)': 'Noun'}, # Specific concept in vehicle control
+    'active wheelset': {'B2 (Specialized)': 'Noun'}, # Specific concept in railway vehicle dynamics
+    'active wheelset steering': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in control systems
+    'angular velocity feedback': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in control systems
+    'control strategy': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/systems term
+    'equivalent conicity': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in railway vehicle dynamics
+    'feedback': {'B1': 'Noun', 'B2 (Specialized)': 'Noun'}, # B1: General response. B2: Technical (e.g., feedback loop, control system).
+    'lateral displacement': {'B2 (Specialized)': 'Noun Phrase'}, # Common physics/engineering term
+    'mode control': {'C1 (Specialized)': 'Noun'}, # Specific concept in control theory
+    'railway vehicle': {'B1': 'Noun Phrase'}, # Common transport/engineering term
+    'rolling radius': {'B2 (Specialized)': 'Noun Phrase'}, # Specific concept in wheel dynamics
+    'sliding mode': {'C1 (Specialized)': 'Noun'}, # Abstract concept in control theory
+    'sliding mode control': {'C1 (Specialized)': 'Noun Phrase'}, # Specific control theory concept (SMC)
+    'steering control': {'B2 (Specialized)': 'Noun'}, # Common engineering/systems term
+    'vehicle dynamic': {'B2 (Specialized)': 'Noun'}, # Common engineering field (often plural: dynamics)
+    'velocity feedback': {'B2 (Specialized)': 'Noun'}, # Common control systems term
+    'wear number': {'C1 (Specialized)': 'Noun'}, # Specific tribology/engineering metric
+    'wheelset angular': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'wheelset angular velocity': {'C1 (Specialized)': 'Noun Phrase'}, # Specific engineering/dynamics term
+    'wheelset steering': {'C1 (Specialized)': 'Noun'}, # Specific engineering/dynamics process
+    'European city': {'A2': 'Noun Phrase'}, # Common general geographical term
+    'bicycle count': {'B1': 'Noun Phrase'}, # Common transport/planning term
+    'car ownership': {'B1': 'Noun Phrase'}, # Common social/economic term
+    'cycling': {'A2': 'Noun, Verb'}, # Common general activity
+    'cycling infrastructure': {'B1': 'Noun Phrase'}, # Common transport/planning term
+    'protected lane': {'B1': 'Noun Phrase'}, # Common transport/planning term
+    'public transport': {'A2': 'Noun Phrase'}, # Common general term
+    'public-transport use': {'B1': 'Noun Phrase'}, # Compound general term
+    'transport review': {'B1': 'Noun Phrase'}, # Common transport/planning term
+    'transportation part': {'B1': 'Noun Phrase'}, # Common transport/engineering term
+    'urban cycling': {'B1': 'Noun Phrase'}, # Common transport/planning term
+    'customer revenue': {'B1': 'Noun Phrase'}, # Common business/economic term
+    'customer satisfaction': {'B1': 'Noun Phrase'}, # Common business/marketing term
+    'customer survey': {'B1': 'Noun Phrase'}, # Common business/marketing term
+    'different level': {'A2': 'Noun Phrase'}, # Common general phrase
+    'effect customer': {'B1': 'Noun Phrase'}, # Compound business term
+    'four year': {'A2': 'Adjective, Noun'}, # Common time descriptor
+    'growth customer': {'B1': 'Noun Phrase'}, # Compound business term
+    'growth customer revenue': {'B2': 'Noun Phrase'}, # Compound business/economic term
+    'individual customer': {'A2': 'Noun Phrase'}, # Common general/business term
+    'individual level': {'B1': 'Noun Phrase'}, # Common general/academic phrase
+    'level customer': {'B1': 'Noun Phrase'}, # Compound business term
+    'level customer satisfaction': {'B2': 'Noun Phrase'}, # Compound business/marketing term
+    'level satisfaction': {'B1': 'Noun Phrase'}, # Compound business term
+    'relationship customer': {'B1': 'Noun Phrase'}, # Compound business/marketing term
+    'relationship customer satisfaction': {'B2': 'Noun Phrase'}, # Compound business/marketing term
+    'satisfaction': {'B1': 'Noun'}, # Common general word
+    'satisfaction customer': {'B1': 'Noun Phrase'}, # Compound business term
+    'satisfaction level': {'B1': 'Noun Phrase'}, # Common general/business term
+    'satisfied customer': {'B1': 'Noun Phrase'}, # Common business/marketing term
+    'sustained effect': {'B2': 'Noun Phrase'}, # Common academic/general term
+    'appended paper': {'B1': 'Noun Phrase'}, # Common academic/publishing term
+    'advance neural': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'advance neural information': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical descriptor
+    'graph attention': {'C1 (Specialized)': 'Noun'}, # Core concept in Graph Neural Networks
+    'graph neural': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'graph representation': {'C1 (Specialized)': 'Noun'}, # Abstract ML/graph theory concept
+    'graph representation learning': {'C1 (Specialized)': 'Noun Phrase'}, # Specific ML field/task
+    'information processing': {'B1': 'Noun Phrase'}, # Common general/technical term
+    'learning graph': {'B2 (Specialized)': 'Noun'}, # Compound technical term (ML/graph theory)
+    'summary appended': {'B1': 'Adjective, Noun Phrase'}, # Compound academic/publishing term
+    'wireless network': {'B1': 'Noun Phrase'}, # Common technical/general term
+    'wireless ray': {'B2 (Specialized)': 'Noun'}, # Specific concept in wireless communications
+    'activation cost': {'B2 (Specialized)': 'Noun Phrase'}, # Specific economic/market term
+    'balancing area': {'B2 (Specialized)': 'Noun Phrase'}, # Specific technical/regulatory term (power grids)
+    'balancing service': {'B2 (Specialized)': 'Noun Phrase'}, # Specific economic/market term
+    'capacity market': {'C1 (Specialized)': 'Noun Phrase'}, # Specific economic/market term
+    'continuous balancing': {'C1 (Specialized)': 'Noun'}, # Abstract technical/market concept
+    'decomposition algorithm': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical/algorithmic concept
+    'energy activation': {'B2 (Specialized)': 'Noun'}, # Compound economic/market term
+    'forecast error': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/statistical term
+    'imbalance': {'B1': 'Noun', 'B2 (Specialized)': 'Noun'}, # B1: General disagreement. B2: Technical (e.g., power imbalance).
+    'market clearing': {'C1 (Specialized)': 'Noun'}, # Specific economic/market concept
+    'normal imbalance': {'B2 (Specialized)': 'Noun Phrase'}, # Specific technical/market term
+    'power imbalance': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/market term
+    'wind power': {'A2': 'Noun Phrase'}, # Common general/environmental term
+    'wind solar': {'B1': 'Noun Phrase'}, # Common general/environmental term
+    'alzheimer disease': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific medical diagnosis
+    'digital biomarkers': {'C1 (Specialized)': 'Noun (plural)'}, # Abstract concept in medicine/ML
+    'error': {'A2': 'Noun'}, # Common general word
+    'harm reduction': {'B2': 'Noun Phrase'}, # Common medical/social term
+    'medical LLM': {'C1 (Specialized)': 'Noun'}, # Specific technical/medical concept
+    'multimedia appendix': {'B1': 'Noun Phrase'}, # Common academic/publishing term
+    'patient clinician': {'B1': 'Noun Phrase'}, # Common medical/social term
+    'reasoning': {'B2': 'Noun'}, # Common abstract academic/general term
+    'speech': {'A1': 'Noun'}, # Basic, core vocabulary
+    'speech language': {'B1': 'Noun Phrase'}, # Common academic/medical term
+    'swedish medical': {'B1 (Specialized)': 'Adjective'}, # Compound descriptor
+    'annual report': {'B1': 'Noun Phrase'}, # Common business/finance/academic term
+    'common good': {'B2': 'Noun Phrase'}, # Common ethical/political/social concept
+    'comparative education': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic field
+    'economic development': {'B1': 'Noun Phrase'}, # Common general/economic term
+    'home country': {'A2': 'Noun Phrase'}, # Common general term
+    'human capital': {'C1 (Specialized)': 'Noun Phrase'}, # Core abstract economic/academic concept
+    'international education': {'B1': 'Noun Phrase'}, # Common academic/social term
+    'international student': {'A2': 'Noun Phrase'}, # Common academic/social term
+    'international student mobility': {'B2': 'Noun Phrase'}, # Common academic/social term
+    'order worth': {'B1': 'Noun Phrase'}, # Common business/economic term
+    'scholarship organization': {'B1': 'Noun Phrase'}, # Common academic/administrative term
+    'scholarship program': {'B1': 'Noun Phrase'}, # Common academic/administrative term
+    'sponsored student': {'A2': 'Noun Phrase'}, # Common academic/administrative term
+    'student mobility': {'B1': 'Noun Phrase'}, # Common academic/social term
+    'valuation process': {'B2': 'Noun Phrase'}, # Common business/finance term
+    'world bank': {'A2 (Proper Noun)': 'Noun Phrase'}, # Common global institution
+    'alternative scaffold': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/bioengineering term
+    'amino acid': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational biology/chemistry concept
+    'cancer': {'A2': 'Noun'}, # Common general/medical word
+    'cancer cell': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical/biological term
+    'cancer therapy': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical term
+    'cell activation': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational biological process
+    'cell engager': {'C1 (Specialized)': 'Noun'}, # Specific term in bioengineering (e.g., Bi-specific T-cell Engager)
+    'cell engagers': {'C1 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'dual': {'B1': 'Adjective'}, # Common general/technical word
+    'dual engager': {'C1 (Specialized)': 'Noun'}, # Specific concept in bioengineering
+    'dual engager construct': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in bioengineering
+    'dual engagers': {'C1 (Specialized)': 'Noun (plural)'}, # Plural of the above
+    'effector function': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in immunology
+    'engager construct': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in bioengineering
+    'scaffold protein': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in cell biology/bioengineering
+    'target cell': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical/biological term
+    'Publishing group': {'B1': 'Noun Phrase'}, # Common business/academic term
+    'd-printed glass': {'B2 (Specialized)': 'Adjective, Noun'}, # Technical descriptor for manufacturing process
+    'femtosecond laser': {'C1 (Specialized)': 'Noun Phrase'}, # Specific scientific instrument/tool
+    'fiber tip': {'B2 (Specialized)': 'Noun'}, # Common technical term (optics)
+    'fused silica': {'C1 (Specialized)': 'Noun'}, # Specific material (optics/chemistry)
+    'glass microspheres': {'B2 (Specialized)': 'Noun (plural)'}, # Common scientific/engineering component
+    'glass microstructures': {'B2 (Specialized)': 'Noun (plural)'}, # Common scientific/engineering component
+    'laser': {'A2': 'Noun'}, # Common general/technical word
+    'laser pulse': {'B1 (Specialized)': 'Noun Phrase'}, # Common technical/scientific term
+    'nanograting mode': {'C1 (Specialized)': 'Noun'}, # Specific concept in optics/physics
+    'optical': {'B1': 'Adjective'}, # Common general/scientific word
+    'optical fiber': {'B1 (Specialized)': 'Noun Phrase'}, # Common technical component
+    'optical fiber tip': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical term
+    'periodic nanogratings': {'C1 (Specialized)': 'Noun Phrase (plural)'}, # Specific, advanced concept in optics
+    'pulse energy': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/scientific metric
+    'repetition rate': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical/scientific metric
+    'silica glass': {'B1 (Specialized)': 'Noun Phrase'}, # Common technical material
+    'sphere mode': {'C1 (Specialized)': 'Noun Phrase'}, # Specific physics/optics concept (e.g., whispering gallery modes)
+    'uniform mode': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical descriptor (e.g., waveguide mode)
+    'brain tumor': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical term
+    'clinical workflow': {'B2 (Specialized)': 'Noun Phrase'}, # Common medical/administrative term
+    'federated learning': {'C1 (Specialized)': 'Noun'}, # Specific field/methodology in machine learning
+    'lung lobe': {'B2 (Specialized)': 'Noun Phrase'}, # Specific anatomical term
+    'medical image': {'B1 (Specialized)': 'Noun Phrase'}, # Common medical/technical term
+    'platform': {'B1': 'Noun', 'B2 (Specialized)': 'Noun'}, # B1: General structure. B2: Technical (e.g., software platform).
+    'writing review': {'B1': 'Noun Phrase'}, # Common academic/publishing term
+    'coil current': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering/physics term
+    'control coil': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering component
+    'error field': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in plasma physics
+    'feedback control': {'B2 (Specialized)': 'Noun Phrase'}, # Common control systems term
+    'field pinch': {'C1 (Specialized)': 'Noun'}, # Specific magnetic confinement concept 
+    'growth rate': {'B2': 'Noun Phrase'}, # Common general/scientific term
+    'magnetic': {'B1': 'Adjective'}, # Common general/scientific word
+    'mode number': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in plasma physics (wave/instability)
+    'plasma physic': {'C1 (Specialized)': 'Noun Phrase'}, # Specific academic/scientific field
+    'resistive wall': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in plasma physics/fusion devices
+    'resistive wall mode': {'C1 (Specialized)': 'Noun Phrase'}, # Specific type of plasma instability
+    'reversed field': {'C1 (Specialized)': 'Adjective'}, # Specific concept in plasma physics
+    'reversed field pinch': {'C1 (Specialized)': 'Noun Phrase'}, # Specific magnetic confinement concept
+    'sensor array': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/systems term
+    'state space': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in control theory/mathematics
+    'toroidal mode': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in plasma physics (geometry)
+    'wall mode': {'C1 (Specialized)': 'Noun'}, # Specific type of plasma instability
+    'dense iron layer': {'B2 (Specialized)': 'Noun Phrase'}, # Specific concept in metallurgy/materials science
+    'gas': {'A1': 'Noun'}, # Basic, core vocabulary
+    'heating rate': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'heating rate min': {'B2 (Specialized)': 'Noun Phrase'}, # Compound scientific/engineering term
+    'hematite pellet': {'B2 (Specialized)': 'Noun Phrase'}, # Specific metallurgy/materials term
+    'hydrogen content': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/chemical term
+    'hydrogen gas': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/chemical term
+    'inside': {'A1': 'Adverb, Preposition, Noun'}, # Basic, core vocabulary
+    'iron layer': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'nitrogen content': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/chemical term
+    'non-isothermal reduction': {'C1 (Specialized)': 'Noun Phrase'}, # Specific chemical/metallurgical process
+    'pellet': {'B1 (Specialized)': 'Noun'}, # Common scientific/industrial term
+    'rate min': {'B1': 'Noun Phrase'}, # Common general/technical term (minimum rate)
+    'reduction curve': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'reduction gas': {'B2 (Specialized)': 'Noun Phrase'}, # Specific chemical engineering term
+    'reduction rate': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering metric
+    'shaft furnace': {'B2 (Specialized)': 'Noun Phrase'}, # Specific industrial equipment 
+    'take place': {'A2': 'Verb Phrase'}, # Common phrasal verb
+    'type inclusion': {'C1 (Specialized)': 'Noun Phrase'}, # Compound scientific/metallurgical term
+    'water vapor': {'A2': 'Noun Phrase'}, # Common general/scientific term
+    'age group': {'A2': 'Noun Phrase'}, # Common general phrase
+    'classroom': {'A1': 'Noun'}, # Basic, core vocabulary
+    'cognitive development': {'C1 (Specialized)': 'Noun Phrase'}, # Core academic field (psychology/education)
+    'educational space': {'B1': 'Noun Phrase'}, # Common general/academic term
+    'electric lighting': {'B1': 'Noun Phrase'}, # Common general/technical term
+    'illuminance level': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering/physics metric
+    'learning activity': {'A2': 'Noun Phrase'}, # Common general/educational term
+    'lighting': {'A2': 'Noun'}, # Common general word
+    'lighting design': {'B1': 'Noun Phrase'}, # Common engineering/design term
+    'lighting distribution': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering/physics concept
+    'lighting scene': {'B1': 'Noun Phrase'}, # Common technical/design term
+    'lighting school': {'B1': 'Noun Phrase'}, # Compound general term
+    'lighting school environment': {'B2': 'Noun Phrase'}, # Compound general/academic term
+    'pupil': {'A2': 'Noun'}, # Common general word (student)
+    'school classroom': {'A2': 'Noun Phrase'}, # Common general term
+    'school environment': {'A2': 'Noun Phrase'}, # Common general term
+    'seating arrangement': {'B1': 'Noun Phrase'}, # Common general/educational term
+    'spatial lighting': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/design term
+    'spatial lighting distribution': {'C1 (Specialized)': 'Noun Phrase'}, # Compound engineering/physics concept
+    'teacher pupil': {'A2': 'Noun Phrase'}, # Common general phrase
+    'Skellefteå municipality': {'B2 (Proper Noun)': 'Noun Phrase'}, # Specific name of a municipality
+    'distress': {'B1': 'Noun', 'B2 (Specialized)': 'Noun'}, # B1: General trouble. B2: Technical (e.g., pavement distress).
+    'input variable': {'B2 (Specialized)': 'Noun Phrase'}, # Common statistical/engineering term
+    'maintenance treatment': {'B1': 'Noun Phrase'}, # Common engineering/management term
+    'municipal street': {'B1': 'Noun Phrase'}, # Common administrative/transport term
+    'non-residential street': {'B1': 'Noun Phrase'}, # Common planning/transport term
+    'pavement condition': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/transport metric
+    'pavement deterioration': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering concept
+    'pavement distress': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering failure mode
+    'pavement maintenance': {'B1': 'Noun Phrase'}, # Common engineering/management term
+    'pavement management': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering/administrative field
+    'predicted observed': {'B2 (Specialized)': 'Adjective/Verb'}, # Common statistical/modeling term
+    'residential street': {'A2': 'Noun Phrase'}, # Common general/planning term
+    'street network': {'B1': 'Noun Phrase'}, # Common transport/planning term
+    'street pavement': {'B1': 'Noun Phrase'}, # Common engineering/transport term
+    'testing stage': {'B1': 'Noun Phrase'}, # Common general/engineering term
+    'battery electrode': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering/chemical component
+    'contributed conceptualization': {'B2': 'Noun Phrase'}, # Common academic/publishing phrase
+    'degradation mechanism': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract scientific/engineering concept
+    'electrochemical society': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific academic organization
+    'electrode material': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'electrode microstructure': {'C1 (Specialized)': 'Noun Phrase'}, # Specific scientific/engineering concept
+    'energy density': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering metric
+    'li-ion battery': {'B1 (Specialized)': 'Noun Phrase'}, # Common technical product
+    'mechanical': {'B1': 'Adjective'}, # Common general/scientific word
+    'mechanical degradation': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract scientific/engineering concept
+    'particle': {'A2': 'Noun'}, # Common general/scientific word
+    'particle cracking': {'C1 (Specialized)': 'Noun'}, # Specific scientific/engineering failure mode
+    'positive electrode': {'B2 (Specialized)': 'Noun Phrase'}, # Specific electrochemical component
+    'power source': {'B1': 'Noun Phrase'}, # Common general/technical term
+    'secondary particle': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in battery materials
+    'specific capacity': {'C1 (Specialized)': 'Noun Phrase'}, # Specific electrochemical/engineering metric
+    'mutual': {'B1': 'Adjective'}, # Common general word
+    'advice-seeking behavior': {'B2': 'Noun Phrase'}, # Common academic/psychological term
+    'consumer decision-making': {'B2': 'Noun Phrase'}, # Common business/marketing/psychology term
+    'finance literacy': {'B2': 'Noun Phrase'}, # Common academic/financial term
+    'financial literacy': {'B2': 'Noun Phrase'}, # Common academic/financial term
+    'financial service': {'B1': 'Noun Phrase'}, # Common business/financial term
+    'financial sustainability': {'B2': 'Noun Phrase'}, # Common business/economic term
+    'fund information': {'B1': 'Noun Phrase'}, # Common financial term
+    'individual investor': {'B1': 'Noun Phrase'}, # Common business/financial term
+    'investment decision': {'B1': 'Noun Phrase'}, # Common business/financial term
+    'literacy': {'B1': 'Noun'}, # Common general/academic word
+    'mutual fund': {'B1': 'Noun Phrase'}, # Common financial product
+    'mutual fund information': {'B2': 'Noun Phrase'}, # Common financial term
+    'summary paper': {'B1': 'Noun Phrase'}, # Common academic/publishing term
+    'sustainability literacy': {'B2': 'Noun Phrase'}, # Common academic/environmental term
+    'sustainable finance': {'B2': 'Noun Phrase'}, # Specific economic/financial field
+    'sustainable finance literacy': {'C1 (Specialized)': 'Noun Phrase'}, # Compound academic/financial concept
+    'sustainable investment': {'B2': 'Noun Phrase'}, # Specific economic/financial concept
+    'sustainable mutual': {'B2': 'Adjective/Noun'}, # Compound financial term
+    'sustainable mutual fund': {'B2': 'Noun Phrase'}, # Compound financial product
+    'understanding sustainable': {'B1': 'Verb Phrase'}, # Compound general/academic phrase
+    'understanding sustainable mutual': {'B1': 'Noun Phrase'}, # Compound general/financial phrase
+    'zone': {'A1': 'Noun', 'B1 (Specialized)': 'Noun'}, # A1: General area. B1: Technical (e.g., specific region of study).
+    'characteristic length': {'C1 (Specialized)': 'Noun Phrase'}, # Core, abstract scientific/engineering concept
+    'crack': {'A2': 'Noun', 'B1': 'Verb'}, # Common general word
+    'cup-cone fracture': {'C1 (Specialized)': 'Noun Phrase'}, # Specific failure mode (ductile materials)
+    'ductile fracture': {'C1 (Specialized)': 'Noun Phrase'}, # Specific failure mode
+    'fracture mode': {'C1 (Specialized)': 'Noun Phrase'}, # Specific failure classification
+    'fracture process': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering concept
+    'fracture process zone': {'C1 (Specialized)': 'Noun Phrase'}, # Specific, abstract concept in fracture mechanics
+    'fracture surface': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'length scale': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'plastic strain': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in materials science/mechanics
+    'process zone': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract technical concept
+    'uniaxial tensile': {'C1 (Specialized)': 'Adjective'}, # Specific testing/loading condition
+    'void nucleation': {'C1 (Specialized)': 'Noun'}, # Abstract concept in materials science (damage evolution)
+    'volume fraction': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering metric
+    'ballasted track': {'B2 (Specialized)': 'Noun Phrase'}, # Specific concept in railway engineering 
+    'contact force': {'B1 (Specialized)': 'Noun Phrase'}, # Common physics/engineering term
+    'differential settlement': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in geotechnical/structural engineering
+    'discrete element': {'C1 (Specialized)': 'Adjective/Noun'}, # Abstract computational concept
+    'discrete element method': {'C1 (Specialized)': 'Noun Phrase'}, # Specific computational modeling technique (DEM)
+    'element method': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/modeling technique (e.g., Finite Element Method)
+    'granular material': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering material
+    'particle arrangement': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/modeling term
+    'particle shape': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/modeling term
+    'powder technology': {'C1 (Specialized)': 'Noun Phrase'}, # Specific scientific/engineering field
+    'rail beam': {'B2 (Specialized)': 'Noun Phrase'}, # Common structural engineering term
+    'railway ballast': {'B2 (Specialized)': 'Noun Phrase'}, # Specific material in railway engineering
+    'railway track': {'A2': 'Noun Phrase'}, # Common general word
+    'size distribution': {'B2 (Specialized)': 'Noun Phrase'}, # Common statistical/scientific term
+    'sleeper': {'B1': 'Noun', 'B2 (Specialized)': 'Noun'}, # B1: Person sleeping. B2: Technical (railway tie).
+    'structural element': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering term
+    'transition zone': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering/geographical/scientific term
+    'Online available': {'B1': 'Adjective'}, # Common general descriptor
+    'attack scenario': {'B2 (Specialized)': 'Noun Phrase'}, # Common security/military/general term
+    'cryptographic algorithm': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational IT security concept
+    'cryptographic hardware': {'B2 (Specialized)': 'Noun Phrase'}, # Common IT security/engineering term
+    'cryptographic hardware embedded': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical descriptor
+    'empirical probability': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract statistical concept
+    'hardware embedded': {'B2 (Specialized)': 'Adjective'}, # Common technical descriptor
+    'masked': {'B1': 'Adjective, Verb', 'C1 (Specialized)': 'Adjective'}, # C1: Technical (e.g., masked implementation). B1: General.
+    'masked implementation': {'C1 (Specialized)': 'Noun Phrase'}, # Specific security/cryptography concept
+    'message bit': {'B1 (Specialized)': 'Noun Phrase'}, # Common technical term (data/communications)
+    'message recovery': {'C1 (Specialized)': 'Noun'}, # Specific security/cryptography task
+    'power consumption': {'B1': 'Noun Phrase'}, # Common general/engineering term
+    'probability recover': {'C1 (Specialized)': 'Noun Phrase'}, # Compound statistical/security term
+    'recovery': {'B1': 'Noun'}, # Common general/technical term
+    'recovery attack': {'C1 (Specialized)': 'Noun Phrase'}, # Specific security/cryptography attack type
+    'recovery probability': {'C1 (Specialized)': 'Noun Phrase'}, # Compound statistical/security term
+    'secret': {'A2': 'Noun/Adjective'}, # Common general word
+    'secret recovery': {'B2': 'Noun Phrase'}, # Common general/technical term
+    'session secret': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational IT security concept
+    'Swedish humanity': {'B1 (Specialized)': 'Noun Phrase'}, # Compound academic/social term
+    'academic': {'A2': 'Adjective, Noun'}, # Common general word
+    'concept quality': {'B2': 'Noun Phrase'}, # Common academic/business term
+    'conception practice': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract academic concept
+    'conception practice quality': {'C1 (Specialized)': 'Noun Phrase'}, # Compound abstract concept
+    'conception quality': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract academic concept
+    'history humanity': {'B1': 'Noun Phrase'}, # Compound academic term
+    'humanity scholar': {'B1': 'Noun Phrase'}, # Common academic role
+    'practice quality': {'B1': 'Noun Phrase'}, # Common academic/business term
+    'quality culture': {'B2': 'Noun Phrase'}, # Common organizational/academic term
+    'quality humanity': {'B2': 'Noun Phrase'}, # Compound academic term
+    'quality site': {'B1': 'Noun Phrase'}, # Common general/business term
+    'quality work': {'B1': 'Noun Phrase'}, # Common general/business term
+    'science technology': {'B1': 'Noun Phrase'}, # Compound academic term
+    'social science': {'B1': 'Noun Phrase'}, # Common academic field
+    'Monte Carlo': {'B2 (Proper Noun)': 'Noun'}, # Foundational statistical method
+    'Monte Carlo tree': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific concept (e.g., Monte Carlo Tree Search, MCTS)
+    'configuration bit': {'B1 (Specialized)': 'Noun Phrase'}, # Common technical term (electronics/programming)
+    'configuration memory': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical term (electronics/FPGA)
+    'critical bit': {'B2 (Specialized)': 'Noun Phrase'}, # Common technical term (security/testing)
+    'error margin': {'B1': 'Noun Phrase'}, # Common general/statistical term
+    'failure detection': {'B2 (Specialized)': 'Noun'}, # Common engineering/systems term
+    'fault': {'B1': 'Noun'}, # Common general/technical term
+    'fault injection': {'C1 (Specialized)': 'Noun'}, # Specific testing technique (security/reliability)
+    'fault space': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in testing/modeling
+    'nuclear': {'B1': 'Adjective'}, # Common general/scientific word
+    'nuclear science': {'B1': 'Noun Phrase'}, # Common academic/scientific field
+    'scrubber failure': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering failure mode
+    'single event': {'B2 (Specialized)': 'Noun Phrase'}, # Specific term (e.g., Single Event Upset in electronics)
+    'statistical': {'B1': 'Adjective'}, # Common general/scientific word
+    'statistical fault': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical term
+    'statistical fault injection': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical term
+    'transaction nuclear': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical/scientific term
+    'transaction nuclear science': {'C1 (Specialized)': 'Noun Phrase'}, # Compound academic/scientific field
+    'tree search': {'B2 (Specialized)': 'Noun Phrase'}, # Common algorithmic concept
+    'proper': {'B1': 'Adjective'}, # Common general word
+    'adapted paper': {'B1': 'Noun Phrase'}, # Common academic/publishing term
+    'compression turbulence': {'C1 (Specialized)': 'Noun'}, # Specific concept in fluid dynamics
+    'computational fluid': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'computational resource': {'B1 (Specialized)': 'Noun Phrase'}, # Common technical/computing term
+    'fluid': {'B1': 'Noun, Adjective'}, # Common general/scientific term
+    'fluid dynamic': {'B2 (Specialized)': 'Noun'}, # Common scientific field (often plural: dynamics)
+    'in-situ task': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'in-situ technique': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'orthogonal decomposition': {'C1 (Specialized)': 'Noun'}, # Abstract mathematical concept (linear algebra/signal processing)
+    'proper orthogonal': {'C1 (Specialized)': 'Adjective'}, # Abstract mathematical descriptor (POD)
+    'proper orthogonal decomposition': {'C1 (Specialized)': 'Noun Phrase'}, # Specific mathematical technique (POD)
+    'spectral element': {'C1 (Specialized)': 'Noun'}, # Specific numerical method
+    'turbulent flow': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in fluid dynamics
+    'Schiff base': {'C1 (Specialized)': 'Noun Phrase'}, # Specific chemical compound
+    'bond': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General connection. B1: Technical (e.g., chemical bond).
+    'covalent hydrogel': {'C1 (Specialized)': 'Noun Phrase'}, # Specific material type
+    'dynamic covalent': {'C1 (Specialized)': 'Adjective'}, # Abstract chemical concept
+    'dynamic hydrogel': {'C1 (Specialized)': 'Noun'}, # Specific material type
+    'hydrazone bond': {'C1 (Specialized)': 'Noun Phrase'}, # Specific chemical bond
+    'hydrogel dynamic': {'C1 (Specialized)': 'Noun'}, # Abstract concept (often plural: dynamics)
+    'hydrogel prepared': {'B2 (Specialized)': 'Noun Phrase'}, # Compound material term
+    'hydrolytic stability': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract chemical property
+    'mechanical property': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/scientific term
+    'native tissue': {'B2 (Specialized)': 'Noun Phrase'}, # Common biological term
+    'oxime bond': {'C1 (Specialized)': 'Noun Phrase'}, # Specific chemical bond
+    'polymer concentration': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/chemical metric
+    'property hydrogel': {'B2 (Specialized)': 'Noun Phrase'}, # Compound material property term
+    'self-Healing ability': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract material property
+    'stress relaxation': {'C1 (Specialized)': 'Noun'}, # Abstract concept in rheology/mechanics
+    'in vitro stability': {'C1 (Specialized)': 'Noun Phrase'}, # Specific scientific/biological term (in vitro)
+    'design flexible': {'B1': 'Verb Phrase'}, # Compound verb phrase (to design flexibly)
+    'design flexible pavement': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering concept
+    'flexible pavement': {'B2 (Specialized)': 'Noun Phrase'}, # Specific pavement structure type 
+    'flexible pavement structure': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering concept
+    'matric suction': {'C1 (Specialized)': 'Noun'}, # Specific concept in unsaturated soil mechanics
+    'moisture content': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering metric
+    'pavement design': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering field/process
+    'pavement structure': {'B2 (Specialized)': 'Noun Phrase'}, # Common engineering concept
+    'permanent deformation': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in materials/geomechanics
+    'shear strength': {'B2 (Specialized)': 'Noun Phrase'}, # Common physics/engineering property
+    'silty sand': {'B1 (Specialized)': 'Noun Phrase'}, # Specific soil classification
+    'stress level': {'B1 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering metric
+    'stress path': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in soil mechanics/mechanics
+    'subgrade soil': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational engineering/geotechnical term
+    'subgrades characterisation': {'C1 (Specialized)': 'Noun Phrase'}, # UK spelling. Abstract geotechnical process.
+    'Brownian motion augmentation': {'C1 (Specialized)': 'Noun Phrase'}, # Compound concept in physics/math/modeling
+    'Edman degradation': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific chemical sequencing technique
+    'classification task': {'B2 (Specialized)': 'Noun Phrase'}, # Common ML/data science term
+    'dye sequence': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in molecular biology/SMPS
+    'expectation maximization': {'C1 (Specialized)': 'Noun'}, # Core statistical algorithm (EM algorithm)
+    'fluorescence string': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in molecular biology/SMPS
+    'motion augmentation': {'B2 (Specialized)': 'Noun'}, # Common technical/modeling technique
+    'peptide inference': {'C1 (Specialized)': 'Noun'}, # Specific task in proteomics/bioinformatics
+    'protein abundance': {'C1 (Specialized)': 'Noun Phrase'}, # Common concept in proteomics
+    'protein inference': {'C1 (Specialized)': 'Noun'}, # Specific task in proteomics/bioinformatics
+    'protein sequencing': {'C1 (Specialized)': 'Noun'}, # Specific biological technique
+    'single-molecule protein': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in proteomics
+    'single-molecule protein sequencing': {'C1 (Specialized)': 'Noun Phrase'}, # Specific advanced technique (SMPS)
+    'transition probability': {'C1 (Specialized)': 'Noun Phrase'}, # Core statistical/mathematical concept (Markov Models)
+    'boundary layer': {'B2 (Specialized)': 'Noun Phrase'}, # Core concept in fluid dynamics 
+    'broadband noise': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in acoustics/signal processing
+    'edge noise': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in aeroacoustics
+    'fluid mechanic': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific field (often plural: dynamics)
+    'impinging jet': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in fluid dynamics/aeroacoustics
+    'impinging jet noise': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in aeroacoustics
+    'jet': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General transport. B1: Technical (e.g., fluid jet).
+    'jet noise': {'B2 (Specialized)': 'Noun'}, # Specific concept in aeroacoustics
+    'noise': {'A1': 'Noun', 'B1': 'Verb'}, # Basic, core vocabulary
+    'noise generation': {'B2 (Specialized)': 'Noun'}, # Common scientific/engineering process
+    'noise reduction': {'B1': 'Noun Phrase'}, # Common general/engineering term
+    'roughness element': {'B2 (Specialized)': 'Noun Phrase'}, # Common fluid dynamics/engineering term
+    'tonal noise': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in acoustics
+    'trailing edge': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in aerodynamics
+    'trailing edge noise': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in aeroacoustics
+    'aeroacoustics': {'C1 (Specialized)': 'Noun'}, # Specific, advanced scientific field (sound generation by fluid motion)
+    'edge type': {'B2 (Specialized)': 'Noun Phrase'}, # Common graph theory/ML term
+    'graph feature': {'C1 (Specialized)': 'Noun'},
+    'heterogeneous graph': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in graph theory/ML
+    'inductive link': {'C1 (Specialized)': 'Noun'}, # Abstract ML/graph theory concept
+    'inductive link prediction': {'C1 (Specialized)': 'Noun Phrase'}, # Specific ML task
+    'link prediction': {'B2 (Specialized)': 'Noun'}, # Core ML/graph theory task
+    'long-range dependency': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract ML/modeling concept
+    'node edge': {'B2 (Specialized)': 'Noun Phrase'}, # Compound graph theory term
+    'prediction': {'B1': 'Noun'}, # Common general/scientific term
+    'self-supervised learning': {'C1 (Specialized)': 'Noun Phrase'}, # Specific ML methodology
+    'social network': {'B1': 'Noun Phrase'}, # Common general/social science term
+    'active layer': {'B2 (Specialized)': 'Noun Phrase'}, # Specific concept in chemistry/materials science
+    'active material': {'B2 (Specialized)': 'Noun Phrase'}, # Common scientific/engineering term
+    'active particle': {'B2 (Specialized)': 'Noun Phrase'}, # Specific concept in battery materials
+    'calendering process': {'C1 (Specialized)': 'Noun Phrase'}, # Specific manufacturing/engineering process
+    'charge cycling': {'B2 (Specialized)': 'Noun'}, # Specific electrochemical process
+    'electrode active': {'B2 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'electrode layer': {'B2 (Specialized)': 'Noun Phrase'}, # Specific concept in battery architecture
+    'element modelling': {'B2 (Specialized)': 'Noun'}, # Common engineering/scientific term (Finite Element Modelling)
+    'lithium-ion battery electrode': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical component
+    'mechanical behaviour': {'B2 (Specialized)': 'Noun Phrase'}, # UK spelling. Common engineering/scientific term.
+    'architecture boundary': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in systems/design
+    'architecture boundary object': {'C1 (Specialized)': 'Noun Phrase'}, # Compound abstract concept
+    'boundary object': {'C1 (Specialized)': 'Noun Phrase'}, # Core abstract concept in interdisciplinary studies
+    'boundary object support': {'C1 (Specialized)': 'Noun Phrase'}, # Compound abstract concept
+    'co-engineering practice': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract process in engineering/management
+    'development trustworthy': {'B2': 'Noun Phrase'}, # Common quality/engineering descriptor
+    'knowledge boundary': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in organizational/academic study
+    'object support': {'B1': 'Noun Phrase'}, # Compound general/technical term
+    'power dynamic': {'C1': 'Noun Phrase'}, # Abstract concept in sociology/politics/management
+    'reference architecture boundary': {'C1 (Specialized)': 'Noun Phrase'}, # Compound abstract concept
+    'support co-engineering': {'C1 (Specialized)': 'Verb Phrase'}, # Compound abstract verb phrase
+    'LLC slice': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in modern CPU cache architecture
+    'cache line': {'B2 (Specialized)': 'Noun'}, # Foundational concept in computer architecture
+    'improving cache': {'B2 (Specialized)': 'Verb Phrase'}, # Common technical/optimization goal
+    'service chain': {'B2 (Specialized)': 'Noun'}, # Foundational networking/systems concept (e.g., NFV service chain)
+    'collector infrastructure': {'B2 (Specialized)': 'Noun Phrase'}, # Common networking/systems term
+    'internet topology': {'B2 (Specialized)': 'Noun Phrase'}, # Core academic/technical field
+    'monitor report': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical term
+    'number monitor': {'B1 (Specialized)': 'Noun Phrase'}, # Compound technical term (number of monitors)
+    'public route': {'B2 (Specialized)': 'Noun Phrase'}, # Specific concept in networking (BGP)
+    'public route collector': {'B2 (Specialized)': 'Noun Phrase'}, # Specific networking system
+    'realistic hijacker': {'C1 (Specialized)': 'Noun Phrase'}, # Specific theoretical/academic term
+    'route collector': {'B2 (Specialized)': 'Noun Phrase'}, # Specific networking system
+    'route collector infrastructure': {'C1 (Specialized)': 'Noun Phrase'}, # Compound technical/systems term
+    'sophisticated hijacker': {'C1 (Specialized)': 'Noun Phrase'}, # Specific theoretical/academic term
+    'stealthy hijack': {'C1 (Specialized)': 'Noun Phrase'}, # Specific theoretical/academic term
+    'stealthy hijacker': {'C1 (Specialized)': 'Noun Phrase'}, # Specific theoretical/academic term
+    'online': {'A1': 'Adjective, Adverb'}, # Common general word
+    'linux kernel': {'B2 (Proper Noun)': 'Noun Phrase'}, # Foundational concept in computing (operating system)
+    'chain': {'A2': 'Noun', 'B1 (Specialized)': 'Noun'}, # A2: General link/series. B1: Technical (e.g., service chain, Markov chain).
+    'design implementation': {'B1': 'Noun Phrase'}, # Common general/engineering term
+    'increase traffic locality': {'C1 (Specialized)': 'Verb Phrase'}, # Abstract optimization goal (computing/networking)
+    'memory access': {'B1 (Specialized)': 'Noun'}, # Foundational computing concept
+    'network function': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational networking/systems concept
+    'per packet': {'B1 (Specialized)': 'Adverbial Phrase'}, # Common technical descriptor
+    'spatial locality': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in computer architecture/caching
+    'traffic locality': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in networking/caching
+    'CPU cycle': {'B1 (Specialized)': 'Noun Phrase'}, # Foundational computing concept
+    'L1 cache': {'B2 (Specialized)': 'Noun Phrase'}, # Foundational concept in computer architecture
+    'cycle per packet': {'C1 (Specialized)': 'Noun Phrase'}, # Specific performance metric
+    'locality factor': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract technical metric
+    'networked design': {'B1 (Specialized)': 'Noun Phrase'}, # Common engineering/systems term
+    'networked design implementation': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering/systems term
+    'packet flow': {'B1 (Specialized)': 'Noun Phrase'}, # Common networking concept
+    'spatial locality factor': {'C1 (Specialized)': 'Noun Phrase'}, # Specific technical/optimization metric
     #GQMe
 
 }

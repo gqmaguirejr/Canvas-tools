@@ -10679,7 +10679,7 @@ def extract_text_from_pdf(pdf_path):
         output_lines = [l[2:] if l.startswith('= ') else l for l in output_lines]
 
         # optionally, filter out words from WordsToFilterOutSet
-        if not Wcase:
+        if not options.Wcase:
             output_lines = [l for l in output_lines if l not in WordsToFilterOutSet]
 
     except Exception as e:

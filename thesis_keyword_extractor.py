@@ -37,10 +37,12 @@ sys.path.append('/home/maguire/Canvas-tools')
 try:
     import common_english
     import common_acronyms
+    import AVL_words_with_CEFR
 except ImportError:
     # Fallback to prevent crash if running elsewhere
     common_english = None
     common_acronyms = None
+    AVL_words_with_CEFR = None
 
 # Ensure necessary NLTK data is downloaded
 try:
@@ -153,8 +155,8 @@ def build_case_frequency_map(pages):
         # Perform structural cleaning only (keep case, keep punctuation for now)
         text = clean_text_structural(page)
         
-        # Remove digits
-        text = re.sub(r'\d+', ' ', text)
+        # Remove standalone numbers (keep alphanumeric)
+        text = re.sub(r'\b\d+\b', ' ', text)
         
         # Remove non-word characters (punctuation, symbols) but keep whitespace
         # [^\w\s] matches anything that isn't a word char (letter/number/_) or whitespace
@@ -183,12 +185,12 @@ def preprocess_text(text):
     # 2. Convert to lowercase
     text = text.lower()
     
-    # 3. Remove digits
-    text = re.sub(r'\d+', ' ', text)
+    # 3. Remove standalone numbers (BUT keep alphanumerics like "Graph2Feat")
+    text = re.sub(r'\b\d+\b', ' ', text)
     
     # 4. Remove special characters/punctuation (BUT keep spaces and underscores)
     # [^\w\s] removes anything that isn't a word char (letter/number/_) or whitespace
-    # Since we removed digits in step 3, this effectively keeps letters and underscores
+    # Since we only removed standalone digits in step 3, this effectively keeps alphanumerics and underscores
     text = re.sub(r'[^\w\s]', ' ', text)
     
     # 5. Remove short words (1-2 characters)
@@ -313,44 +315,43 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
 
 def get_cefr_level(phrase):
     """
-    Attempts to retrieve the CEFR level for a phrase from common_english module.
-    Checks multiple dictionaries: common_English_words, top_100_English_words, 
-    and thousand_most_common_words_in_English.
+    Attempts to retrieve the CEFR level for a phrase from common_english 
+    and AVL_words_with_CEFR modules.
     """
-    if common_english is None:
-        return ""
-
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
-    # List of dictionaries to check in the module
-    dicts_to_check = [
-        'common_English_words',
-        'top_100_English_words',
-        'thousand_most_common_words_in_English'
-        'chemical_elements_symbols',
-        'chemical_elements',
-        'KTH_ordbok_English_with_CEFR',
-        'common_units',
+    # Sources to check: (Module Object, Dictionary Name)
+    sources = [
+        (common_english, 'common_English_words'),
+        (common_english, 'top_100_English_words'),
+        (common_english, 'thousand_most_common_words_in_English'),
+        (common_english, 'chemical_elements_symbols'),
+        (common_english, 'chemical_elements'),
+        (common_english, 'KTH_ordbok_English_with_CEFR'),
+        (common_english, 'common_units'),
+        (AVL_words_with_CEFR, 'AVL_words_with_CEFR')
     ]
 
-    for dict_name in dicts_to_check:
-        vocab = getattr(common_english, dict_name, {})
+    for module, dict_name in sources:
+        if module is None:
+            continue
+            
+        vocab = getattr(module, dict_name, {})
         
         # Check if attribute is a dictionary
         if not isinstance(vocab, dict):
             continue
-            
+        
+        # Check 1: Try exact match (e.g. "Brownian motion")
         entry = vocab.get(phrase)
         if entry and isinstance(entry, dict):
-            # Find key that looks like a CEFR level (A1-C2)
             for key in entry:
                 # Use slicing [:2] to match 'C1' from 'C1 (Specialized)'
-                # This ensures we match 'C1' against the set valid_levels
                 if len(key) >= 2 and key[:2] in valid_levels:
                     return key
-                    
 
+        # Check 2: Try lowercase match (e.g. "construction")
         entry = vocab.get(phrase_lower)
         if entry and isinstance(entry, dict):
             # Find key that looks like a CEFR level (A1-C2)
