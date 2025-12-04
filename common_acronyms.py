@@ -9298,6 +9298,7 @@ well_known_acronyms_list=[
     ['NOSACQ-50', 'Nordic Safety Climate Questionnaire', {'s': ['diva2:2015671']}],
     ['SBUF', 'Development Fund of the Swedish Construction Industry', {'s': ['diva2:2015671'], 'swe': 'Svenska Byggbranschens Utvecklingsfond'}],
 
+    ['PDEs', 'partial differential equations', {'s': ['diva2:2018160']}],
 
     #GQMa
 

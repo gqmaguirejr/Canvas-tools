@@ -318,26 +318,42 @@ def get_cefr_level(phrase):
     Attempts to retrieve the CEFR level for a phrase from common_english 
     and AVL_words_with_CEFR modules.
     """
+    if common_english is None:
+        return ""
+
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
-    # Sources to check: (Module Object, Dictionary Name)
-    sources = [
-        (common_english, 'common_English_words'),
-        (common_english, 'top_100_English_words'),
-        (common_english, 'thousand_most_common_words_in_English'),
-        (common_english, 'chemical_elements_symbols'),
-        (common_english, 'chemical_elements'),
-        (common_english, 'KTH_ordbok_English_with_CEFR'),
-        (common_english, 'common_units'),
-        (AVL_words_with_CEFR, 'AVL_words_with_CEFR')
+    # 0. Check names of persons (Exact match required)
+    # Uses names_of_persons list if it exists in common_english
+    names_list = getattr(common_english, 'names_of_persons', [])
+    if isinstance(names_list, (list, set, tuple)):
+        # Check 1: Exact phrase match
+        if phrase in names_list:
+            return "B2 (Proper Name)"
+        
+        # Check 2: Compound names (e.g. "John Smith")
+        # Split phrase by spaces and check if ALL parts are in the list
+        parts = phrase.split()
+        if len(parts) > 1:
+            if all(part in names_list for part in parts):
+                return "B2 (Proper Name)"
+
+
+    # List of dictionaries to check in the module
+    dicts_to_check = [
+        'common_English_words',
+        'top_100_English_words',
+        'thousand_most_common_words_in_English',
+        'chemical_elements_symbols',
+        'chemical_elements',
+        'KTH_ordbok_English_with_CEFR',
+        'common_units',
+        'AVL_words_with_CEFR'
     ]
 
-    for module, dict_name in sources:
-        if module is None:
-            continue
-            
-        vocab = getattr(module, dict_name, {})
+    for dict_name in dicts_to_check:
+        vocab = getattr(common_english, dict_name, {})
         
         # Check if attribute is a dictionary
         if not isinstance(vocab, dict):

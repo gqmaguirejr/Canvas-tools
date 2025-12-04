@@ -62920,6 +62920,43 @@ common_English_words={
     'networked design implementation': {'B2 (Specialized)': 'Noun Phrase'}, # Compound engineering/systems term
     'packet flow': {'B1 (Specialized)': 'Noun Phrase'}, # Common networking concept
     'spatial locality factor': {'C1 (Specialized)': 'Noun Phrase'}, # Specific technical/optimization metric
+    'homosocial practice': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract concept in sociology/gender studies
+    'workplace culture': {'B2': 'Noun Phrase'}, # Common organizational/business term
+    'safety practice': {'B1': 'Noun Phrase'}, # Common general/engineering term
+    'ideal worker': {'B2': 'Noun Phrase'}, # Common sociological/economic concept
+    'macho culture': {'B2': 'Noun Phrase'}, # Common social/cultural term
+    'phantom image': {'B2 (Specialized)': 'Noun Phrase'}, # Specific term (e.g., in medical imaging or graphics)
+    'safe solution': {'B1': 'Noun Phrase'}, # Common general term
+    'safe solution builder': {'B2 (Specialized)': 'Noun Phrase'}, # Compound technical/business term
+    'solution builder': {'B2': 'Noun Phrase'}, # Common business/technical term
+    'caring practice': {'B1': 'Noun Phrase'}, # Common sociological/general term
+    'masculine ideal': {'C1': 'Noun Phrase'}, # Abstract concept in sociology/gender studies
+    'secondary': {'B1': 'Adjective'}, # Common general word
+    'secondary flow': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in fluid dynamics
+    'low-pressure turbine': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering component 
+    'free-stream turbulence': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in fluid dynamics
+    'turbine blade': {'B2 (Specialized)': 'Noun Phrase'}, # Specific engineering component
+    'flow structure': {'B2 (Specialized)': 'Noun Phrase'}, # Common concept in fluid dynamics
+    'laminar boundary': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'laminar boundary layer': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in fluid dynamics
+    'original draft': {'B1': 'Noun Phrase'}, # Common general/publishing term
+    'passage vortex': {'C1 (Specialized)': 'Noun'}, # Specific concept in fluid dynamics (turbomachinery)
+    'secondary flow structure': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in fluid dynamics
+    'turbulent boundary': {'C1 (Specialized)': 'Adjective'}, # Compound technical descriptor
+    'turbulent boundary layer': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in fluid dynamics
+    'Perron method': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific mathematical technique (PDEs)
+    'boundary point': {'B2 (Specialized)': 'Noun Phrase'}, # Common mathematical/geometric term
+    'comparison principle': {'C1 (Specialized)': 'Noun Phrase'}, # Abstract mathematical theorem (PDEs)
+    'free boundary': {'C1 (Specialized)': 'Noun Phrase'}, # Specific concept in mathematical analysis (PDEs)
+    'infinity Laplace': {'C2 (Specialized)': 'Noun'}, # Highly advanced mathematical operator
+    'nonlocal infinity': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept
+    'relevant theory': {'B1': 'Noun Phrase'}, # Common general/academic phrase
+    'relevant theory method': {'B2': 'Noun Phrase'}, # Compound academic phrase
+    'test function': {'C1 (Specialized)': 'Noun Phrase'}, # Core concept in mathematical analysis (e.g., weak solutions)
+    'theory method': {'B1': 'Noun Phrase'}, # Common general/academic phrase
+    'viscosity solution': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept (PDEs)
+    'viscosity subsolution': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept (PDEs)
+    'viscosity supersolution': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept (PDEs)
     #GQMe
 
 }
@@ -80209,7 +80246,6 @@ names_of_persons=[
     'Dawkinsâ',
     'Dawson',
     'De Giorgi',
-    'De Giorgi',
     'De Witte',
     'DeGeorge',
     'DeLone',
@@ -87137,6 +87173,16 @@ names_of_persons=[
     'Ulfsdotter',
     'Molnár',
     'Conley',
+    'Caffarelli',
+    'Crandall',
+    'DeGiorgi',
+    'Euler-Lagrange',
+    'Pierre-Louis',
+    'Lions',
+    'Schauder',
+    'Sternberg',
+    'Frida',
+    'Fejne',
 ]
 
 common_french_words={
