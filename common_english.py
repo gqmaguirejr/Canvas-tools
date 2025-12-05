@@ -62957,6 +62957,8 @@ common_English_words={
     'viscosity solution': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept (PDEs)
     'viscosity subsolution': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept (PDEs)
     'viscosity supersolution': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept (PDEs)
+    'Bénard convection': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named phenomenon (fluid dynamics/heat transfer)
+    'Rayleigh Bénard convection': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named phenomenon (fluid dynamics/heat transfer)
     #GQMe
 
 }
@@ -87183,6 +87185,8 @@ names_of_persons=[
     'Sternberg',
     'Frida',
     'Fejne',
+    'Bénard',
+
 ]
 
 common_french_words={

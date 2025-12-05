@@ -27,6 +27,7 @@ import sys
 import pymupdf  # PyMuPDF
 import re
 import nltk
+import unicodedata # Added for character normalization
 
 # Add path to custom modules
 sys.path.append('/home/maguire/Canvas-tools')
@@ -85,7 +86,40 @@ def clean_text_structural(text):
     Performs structural cleaning (ligatures, hyphens, compounds) 
     BUT preserves case and non-alpha characters for now.
     """
-    # 0. Fix PDF Ligatures using comprehensive table
+    # --- NEW: Normalization and Accent Fixing ---
+    
+    # 1. Apply NFC to compose "space + combining" into "spacing modifier"
+    # This is critical for inputs like "B \u0301enard" -> "B\u00B4enard" (merges space+accent)
+    text = unicodedata.normalize('NFC', text)
+
+    # 2. Fix Legacy/Spacing Accents (e.g. "B´enard" -> "Bénard")
+    # Using a callback allows us to handle any letter case dynamically
+    def merge_accent(match):
+        acc, letter = match.groups()
+        # Map spacing accents (often found in LaTeX PDFs) to combining diacritics
+        combine_map = {
+            '\u00B4': '\u0301', # Acute ´
+            '`': '\u0300',      # Grave `
+            '¨': '\u0308',      # Diaeresis ¨
+            '^': '\u0302',      # Circumflex ^
+            '~': '\u0303'       # Tilde ~
+        }
+        if acc in combine_map:
+            # Combine letter + diacritic and normalize to precomposed char (e.g. 'e' + '́' -> 'é')
+            return unicodedata.normalize('NFKC', letter + combine_map[acc])
+        return match.group(0)
+
+    # Regex matches: spacing accent + optional whitespace + letter
+    # \u00B4 is the specific 'acute accent' often distinct from single quote
+    text = re.sub(r'([\u00B4`¨^~])\s*([a-zA-Z])', merge_accent, text)
+
+    # 3. Standard Unicode Normalization (NFKC)
+    # Run AFTER manual accent fixing to ensure consistency
+    text = unicodedata.normalize('NFKC', text)
+
+    # --- End Accent Fixing ---
+
+    # 4. Fix PDF Ligatures using comprehensive table
     ligature_table = {
         '\ufb00': 'ff', # 'ﬀ'
         '\ufb03': 'ffi', # 'ﬃ'
@@ -133,11 +167,11 @@ def clean_text_structural(text):
     for search, replace in ligature_table.items():
         text = text.replace(search, replace)
 
-    # 1. Fix hyphenation at line endings (e.g., "Sen- \n sing" -> "Sensing")
+    # 5. Fix hyphenation at line endings (e.g., "Sen- \n sing" -> "Sensing")
     # \w matches Unicode word characters (letters, numbers, underscore)
     text = re.sub(r'(\w+)-\s+(\w+)', r'\1\2', text)
     
-    # 2. Preserve compound words by replacing hyphens with underscores
+    # 6. Preserve compound words by replacing hyphens with underscores
     # Matches hyphens bounded by Unicode letters (excludes digits and underscores via [^\W\d_])
     text = re.sub(r'(?<=[^\W\d_])-(?=[^\W\d_])', '_', text)
     
@@ -221,26 +255,23 @@ def restore_case(token, case_map):
     # If word wasn't found (unlikely) or only 1 variation exists, return it
     if not variations:
         return token
-    if len(variations) == 1:
-        return variations.most_common(1)[0][0]
+        
+    # Find the single most common variation
+    most_common_variant, most_common_count = variations.most_common(1)[0]
     
-    # Check User Rule: "If there is a title-caps version and a lower case version, 
-    # then you use the lower case version."
-    # Examples: "Computer" (Title) vs "computer" (Lower) -> Use "computer"
-    # Note: "GHz" is NOT Title case (it's mixed). "Ghz" IS Title case.
+    # Check User Rule: "Use the most common" 
+    # BUT break ties in favor of lowercase (e.g. "The" vs "the", prefer "the")
     
     lower_v = token.lower()
-    # Check if a true Title Case variant exists (e.g. "Word")
-    # We iterate keys to find one that is title case
-    has_title = any(v.istitle() for v in variations.keys())
-    has_lower = lower_v in variations
+    if lower_v in variations:
+        lower_count = variations[lower_v]
+        # If lowercase is equally common or more common, use it.
+        # This prevents "The" (50) vs "the" (50) -> returning "The" randomly.
+        if lower_count >= most_common_count:
+            return lower_v
     
-    if has_title and has_lower:
-        return lower_v
-        
-    # User Rule: "Otherwise... use the most common"
-    # This handles "GHz" (100) vs "Ghz" (1) -> uses "GHz"
-    return variations.most_common(1)[0][0]
+    # Otherwise return the clear winner (e.g. "Bénard": 12 vs "bénard": 1 -> "Bénard")
+    return most_common_variant
 
 def get_top_features(corpus, case_map, ngram_range, top_n=15):
     """
@@ -324,7 +355,7 @@ def get_cefr_level(phrase):
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
-    # 0. Check names of persons (Exact match required)
+    # 0. Check names of persons (Exact match or all parts match)
     # Uses names_of_persons list if it exists in common_english
     names_list = getattr(common_english, 'names_of_persons', [])
     if isinstance(names_list, (list, set, tuple)):
@@ -339,6 +370,25 @@ def get_cefr_level(phrase):
             if all(part in names_list for part in parts):
                 return "B2 (Proper Name)"
 
+    # 0.5 Check Acronyms (Exact match including case + plurals)
+    acronyms_list = getattr(common_acronyms, 'well_known_acronyms_list', [])
+    if isinstance(acronyms_list, list):
+        for entry in acronyms_list:
+            if not entry:
+                continue
+            acrn = entry[0] # The acronym string
+            
+            # Check strict exact match
+            if phrase == acrn:
+                return "Acronym"
+            
+            # Check plural 's' (e.g. APIs)
+            if phrase == acrn + 's':
+                return "Acronym"
+            
+            # Check plural 'es' (e.g. SMSes) - typically if acronym ends in 's'
+            if phrase == acrn + 'es':
+                return "Acronym"
 
     # List of dictionaries to check in the module
     dicts_to_check = [
