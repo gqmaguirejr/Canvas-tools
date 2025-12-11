@@ -62959,6 +62959,54 @@ common_English_words={
     'viscosity supersolution': {'C2 (Specialized)': 'Noun Phrase'}, # Highly advanced mathematical concept (PDEs)
     'Bénard convection': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named phenomenon (fluid dynamics/heat transfer)
     'Rayleigh Bénard convection': {'C1 (Proper Noun)': 'Noun Phrase'}, # Specific, named phenomenon (fluid dynamics/heat transfer)
+    'recover': {'B2': 'Verb/Command'},
+    'power trace': {'C2 (Specialized)': 'Noun Phrase'},
+    'message decoding': {'C1 (Specialized)': 'Noun Phrase'},
+    'profiling stage': {'C2 (Specialized)': 'Noun Phrase'},
+    'recover': {'B2': 'Verb/Command'},
+    'power trace': {'C2 (Specialized)': 'Noun Phrase'},
+    'message decoding': {'C1 (Specialized)': 'Noun Phrase'},
+    'profiling stage': {'C2 (Specialized)': 'Noun Phrase'},
+    'secret coefficient': {'C2 (Specialized)': 'Noun Phrase'},
+    'secret vector': {'C2 (Specialized)': 'Noun Phrase'},
+    'encapsulation algorithm': {'C2 (Specialized)': 'Noun Phrase'},
+    'quantum computer': {'C1 (Specialized)': 'Noun Phrase'},
+    'sensitive variable': {'C2 (Specialized)': 'Noun Phrase'},
+    'single trace': {'C2 (Specialized)': 'Noun Phrase'},
+    'message byte': {'C1 (Specialized)': 'Noun Phrase'},
+    'polynomial coefficient': {'C2 (Specialized)': 'Noun Phrase'},
+    'recover secret': {'C2 (Specialized)': 'Verb Phrase'},
+    'side-channel emission': {'C2 (Specialized)': 'Noun Phrase'},
+    'attack stage': {'C2 (Specialized)': 'Noun Phrase'},
+    'decapsulation algorithm': {'C2 (Specialized)': 'Noun Phrase'},
+    'masked message': {'C2 (Specialized)': 'Noun Phrase'},
+    'message encoding': {'C1 (Specialized)': 'Noun Phrase'},
+    'message recovery attack': {'C2 (Specialized)': 'Noun Phrase'},
+    'multi-bit error': {'C1 (Specialized)': 'Noun Phrase'},
+    'public encryption': {'B2': 'Noun Phrase'},
+    'recover message': {'C1 (Specialized)': 'Verb Phrase'},
+    'secret recovery attack': {'C2 (Specialized)': 'Noun Phrase'},
+    'trace point': {'C2 (Specialized)': 'Noun Phrase'},
+    'transaction cryptographic': {'C2 (Specialized)': 'Noun Phrase'},
+    'transaction cryptographic Hardware': {'C2 (Specialized)': 'Noun Phrase'},
+    'error injection': {'C1 (Specialized)': 'Noun Phrase'},
+    'multi-bit error injection': {'C2 (Specialized)': 'Noun Phrase'},
+    'post-quantum cryptographic': {'C2 (Specialized)': 'Adjective'},
+    'signing procedure': {'B2': 'Noun Phrase'},
+    'trace acquisition': {'C2 (Specialized)': 'Noun Phrase'},
+    'cyclic rotation': {'C2 (Specialized)': 'Noun Phrase'},
+    'first-order masked implementation': {'C2 (Specialized)': 'Noun Phrase'},
+    'recover coefficient': {'C2 (Specialized)': 'Verb Phrase'},
+    'bit recovery': {'C2 (Specialized)': 'Noun Phrase'},
+    'full secret': {'C1 (Specialized)': 'Noun Phrase'},
+    'higher-order masked': {'C2 (Specialized)': 'Adjective'},
+    'post-quantum cryptographic algorithm': {'C2 (Specialized)': 'Noun Phrase'},
+    'hardware implementation': {'C1 (Specialized)': 'Noun Phrase'},
+    'message bit recovery': {'C2 (Specialized)': 'Noun Phrase'},
+    'profiling device': {'C2 (Specialized)': 'Noun Phrase'},
+    'public cryptography': {'C1 (Specialized)': 'Noun Phrase'},
+    'template attack': {'C2 (Specialized)': 'Noun Phrase'},
+    'clock': {'A1': 'Noun', 'A2': 'Verb'},
     #GQMe
 
 }
@@ -66430,7 +66478,7 @@ company_and_product_names=[
     'CQ500', # dataset - see diva2:1784235
     'CREO', # simulation - see diva2:1835627
     'CRIGEN', # lab - see diva2:1091126
-    'CRYSTALS-Kyber',
+    'CRYSTALS-Kyber', # post-quantum crypto algorithm
     'CS:GO', # e-sporting event - diva2:1708152
     'CSAW-M', # dataset diva2:1703315
     'CSAW-S', #  dataset diva2:1616660
@@ -77969,7 +78017,7 @@ company_and_product_names=[
     'Paraview',
     'Virtex-4QV',
     'AMD-Xilinx',
-    'CRYSTALS-Dilithium',
+    'CRYSTALS-Dilithium', # post-quantum crypto algorithm
     'Euromicro', # conference
     'AES-256', # cryptographic algorithm
     'RSA-3072', # cryptographic algorithm
@@ -77989,7 +78037,7 @@ company_and_product_names=[
     'NIST-III', # NIST security level
     'NIST-V', # NIST security level
     'LightSaber',
-    'Saber',
+    'Saber', # post-quantum crypto algorithm
     'FireSaber',
     'Nordic Semiconductors', # company
     'STM32F4',
@@ -87186,6 +87234,7 @@ names_of_persons=[
     'Frida',
     'Fejne',
     'Bénard',
+    'Springer',
 
 ]
 
@@ -89185,7 +89234,7 @@ common_units={
     'N/m2':  {'A2': 'Unit'},
     'N/mm': {'A2': 'Unit'},
     'mm3':  {'A2': 'Unit'},
-
+    'furlong':  {'A2': 'Unit'},
 
 }
 

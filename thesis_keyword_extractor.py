@@ -28,6 +28,8 @@ import pymupdf  # PyMuPDF
 import re
 import nltk
 import unicodedata # Added for character normalization
+import json
+import importlib
 
 # Add path to custom modules
 sys.path.append('/home/maguire/Canvas-tools')
@@ -59,6 +61,136 @@ except LookupError:
     nltk.download('punkt', quiet=True)
 
 Verbose_Flag = False
+
+# Global variable to store loaded standardized terms
+STANDARDIZED_TERMS = {}
+
+def load_standardized_terms(config_file="subject_area_config.json"):
+    """
+    Loads configuration and standardized term lists from a JSON file.
+   
+    """
+    global STANDARDIZED_TERMS
+    global Verbose_Flag
+
+    try:
+        with open(config_file, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+            STANDARDIZED_TERMS = config
+            if Verbose_Flag:
+                print(f"Loaded configuration for {len(config.get('all_dicts', {}))} term dicts.")
+    except FileNotFoundError:
+        print(f"WARNING: Configuration file '{config_file}' not found. No standardized terms loaded.")
+    except json.JSONDecodeError as e:
+        print(f"ERROR: Failed to parse JSON configuration: {e}")
+
+
+def get_subject_area(pdf_path):
+    """
+    Attempts to read the subject area (e.g., 'Information and Communication Technology')
+    from the cover/title page of the PDF, robustly handling multi-line subjects using
+    the PyMuPDF 'blocks' extraction method for better structural awareness.
+    
+    The function uses an explicit list of valid subject areas to reliably match 
+    and extract the correct field of study, discarding the specific thesis title.
+    """
+    subject = "Unknown"
+    doc = None
+    
+    # Matches common leading thesis title text (Doctoral Thesis in, Master's Thesis in, etc.)
+    thesis_title_pattern = re.compile(r'(?:Doctoral|Licentiate|Master\'s)\s+Thesis\s+in\s*', re.IGNORECASE)
+    
+    # --- VALID SUBJECT AREAS (provided by user for precise matching) ---
+    VALID_SUBJECT_AREAS = [
+        'Architecture',
+        'Art, Technology and Design',
+        'Biotechnology',
+        'Chemical Science and Engineering',
+        'Civil and Architectural Engineering',
+        'Computer Science',
+        'Electrical Engineering',
+        'Energy Technology and Systems',
+        'Engineering Materials Science',
+        'Engineering Mechanics',
+        'Geodesy and Geoinformatics',
+        'Industrial Economics and Management',
+        'Information and Communication Technology',
+        'Mathematics',
+        'Mediated Communication',
+        'Physics',
+        'Planning and Decision Analysis',
+        'Production Engineering',
+        'Solid Mechanics',
+        'The Built Environment and Society: Management, Economics and Law',
+        'Theoretical Chemistry and Biology',
+        'Vehicle and Maritime Engineering',
+        # Extras ???
+        'Applied and Computational Mathematics',
+        'Business Studies',
+        'Chemistry',
+        'Engineering Design',
+        'Fibre and Polymer Science',
+        'History of Science, Technology and Environment',
+        'Human Computer Interaction',
+        'Industrial Engineering and Management',
+        'Materials Science and Engineering',
+        'Medical Engineering',
+        'Medical Technology',
+        'Real Estate and Construction Management',
+        'Speech and Music Communication',
+        'Structural Engineering and Bridges',
+        'Technology and Health',
+        'Technology and Learning',
+        'Transport Science',
+
+    ]
+    # Sort by length descending to ensure matching of longer, more specific subjects first 
+    # (e.g., "Civil and Architectural Engineering" before "Civil Engineering" if that were present).
+    VALID_SUBJECT_AREAS.sort(key=len, reverse=True)
+    
+    try:
+        doc = pymupdf.open(pdf_path)
+
+        # Search page 1 (index 0) and page 2 (index 1)
+        for pageno in range(min(2, doc.page_count)):
+            blocks = doc[pageno].get_text("blocks", sort=True)
+            
+            for (x0, y0, x1, y1, block_text, block_no, block_type) in blocks:
+                
+                # Normalize the block text: replace newlines with spaces and strip
+                # Example: "Doctoral Thesis in Mathematics Existence, uniqueness, and regularity theory for local and nonlocal problems"
+                text_to_search = block_text.replace('\n', ' ').strip()
+                
+                if re.search(r'Thesis\s+in', text_to_search, re.IGNORECASE):
+                    
+                    # 1. Clean the text to remove "Doctoral Thesis in " boilerplate
+                    # subject_raw: "Mathematics Existence, uniqueness, and regularity theory for local and nonlocal problems"
+                    subject_raw = thesis_title_pattern.split(text_to_search)[-1].strip()
+                    
+                    if subject_raw:
+                        # 2. Check the cleaned raw text against the list of known subjects
+                        for valid_subject in VALID_SUBJECT_AREAS:
+                            
+                            # Create a regex pattern to match the valid subject at the start of the string,
+                            # followed by a word boundary (space or end of string), ensuring we don't match 
+                            # 'Computer Science' when the subject is 'Computer Science and Engineering'.
+                            # The check is case-insensitive.
+                            match_pattern = re.compile(re.escape(valid_subject) + r'(\s|$)', re.IGNORECASE)
+                            
+                            if match_pattern.match(subject_raw):
+                                # Found a match! Return the correctly capitalized/formatted version from the list.
+                                return valid_subject
+        
+    except Exception as e:
+        # In a real environment, you might log this error.
+        print(f"Error reading subject area: {e}")
+        pass
+    finally:
+        # doc is mocked, so we just check for its existence in a real application context
+        if doc: doc.close()
+    
+    return subject
+
 
 def extract_text_from_pdf(pdf_path):
     """
@@ -478,9 +610,200 @@ def print_keyword_clusters(all_keywords):
                 print(f"  - {phrase:<41} | {count:<6} | {level}")
             print()
 
+def get_dictionaries_for_subject_area(subject_area):
+    """
+    Looks up the required dictionary names (dict_name) for a given subject area
+    using the STANDARDIZED_TERMS configuration.
+    
+    Args:
+        subject_area (str): The cleaned degree area (e.g., 'Computer Science').
+
+    Returns:
+        list: A list of dictionary names (strings) required for analysis in this area,
+              or an empty list if the subject area is not configured.
+    """
+    return STANDARDIZED_TERMS["degree_areas"].get(subject_area, [])
+
+
+def get_relevant_terms_from_dicts(terms_to_search, loaded_dicts_map):
+    """
+    Searches a list of unigrams and phrases (terms_to_search) across multiple 
+    loaded subject dictionaries using case-insensitive and basic singular/plural matching.
+    
+    The function builds a map: {normalized_key: (original_key, dict_name, dictionary_object)}
+    This ensures the correct source dictionary is captured during the lookup phase.
+    
+    Args:
+        terms_to_search (list): A list of strings (unigrams or phrases) extracted from the thesis text.
+        loaded_dicts_map (dict): A map where keys are dict_name strings and values 
+                                 are the actual loaded Python dictionary objects.
+
+    Returns:
+        list: A list of result dictionaries, where each result is:
+              {'term': str, 'dict_name': str, 'classification': dict}
+    """
+    relevant_terms = []
+    
+    # Normalize input terms once (lowercase for initial key lookup)
+    normalized_input_terms = set(term.lower() for term in terms_to_search)
+    
+    # Structure to hold mappings: {normalized_form: (original_key, dict_name, dictionary_object)}
+    normalized_to_original_map = {}
+    
+    # 1. Pre-process all dictionary keys for faster, case/plural-insensitive lookup
+    for dict_name, dictionary in loaded_dicts_map.items():
+        if dictionary is None:
+            continue
+            
+        for original_key in dictionary.keys():
+            normalized_key = original_key.lower()
+            
+            # Map normalized key to original key, dict_name, and dictionary object
+            if normalized_key not in normalized_to_original_map:
+                 normalized_to_original_map[normalized_key] = (original_key, dict_name, dictionary)
+                 
+            # Basic singular/plural check for keys ending in 's'
+            if normalized_key.endswith('s'):
+                singular_key = normalized_key[:-1]
+                if singular_key not in normalized_to_original_map:
+                    # Map normalized singular key to original plural key
+                    normalized_to_original_map[singular_key] = (original_key, dict_name, dictionary)
+
+    # 2. Search all normalized input terms against the prepared map
+    matched_keys = set() # Track unique dictionary keys found to avoid duplicates
+    
+    for input_term_lower in normalized_input_terms:
+        
+        # Check for exact match (case-insensitive)
+        if input_term_lower in normalized_to_original_map:
+            original_dict_key, dict_name, dictionary = normalized_to_original_map[input_term_lower]
+            if original_dict_key not in matched_keys:
+                relevant_terms.append({
+                    'term': original_dict_key,
+                    'dict_name': dict_name,
+                    'classification': dictionary[original_dict_key]
+                })
+                matched_keys.add(original_dict_key)
+                
+        # Check for singular/plural match on input terms (input is plural, map holds singular)
+        if input_term_lower.endswith('s'):
+            singular_input_term = input_term_lower[:-1]
+            if singular_input_term in normalized_to_original_map:
+                original_dict_key, dict_name, dictionary = normalized_to_original_map[singular_input_term]
+                if original_dict_key not in matched_keys:
+                    relevant_terms.append({
+                        'term': original_dict_key,
+                        'dict_name': dict_name,
+                        'classification': dictionary[original_dict_key]
+                    })
+                    matched_keys.add(original_dict_key)
+
+    return relevant_terms
+
+def get_dict_import_info(relevant_dict_names):
+    """
+    Looks up the source file and dict name for a list of required dictionary names
+    by checking against the 'all_dicts' configuration list.
+
+    Args:
+        relevant_dict_names (list): A list of 'dict_name' strings obtained 
+                                    from the subject area lookup.
+
+    Returns:
+        list: A list of dictionaries, where each inner dictionary contains 
+              'source_file', 'dict_name', and 'display_name' for the required dicts.
+    """
+    required_dicts = []
+    
+    # Create a set for fast lookup of required names
+    required_names_set = set(relevant_dict_names)
+    
+    # Iterate through all configured dictionaries and check if their dict_name is required
+    for d_info in STANDARDIZED_TERMS["all_dicts"]:
+        if d_info["dict_name"] in required_names_set:
+            required_dicts.append(d_info)
+            
+    return required_dicts
+
+def get_relevant_terms_from_dicts(terms_to_search, loaded_dicts_map):
+    """
+    Searches a list of unigrams and phrases (terms_to_search) across multiple 
+    loaded subject dictionaries using case-insensitive and basic singular/plural matching.
+    
+    The function builds a map: {normalized_key: (original_key, dict_name, dictionary_object)}
+    This ensures the correct source dictionary is captured during the lookup phase.
+    
+    Args:
+        terms_to_search (list): A list of strings (unigrams or phrases) extracted from the thesis text.
+        loaded_dicts_map (dict): A map where keys are dict_name strings and values 
+                                 are the actual loaded Python dictionary objects.
+
+    Returns:
+        list: A list of result dictionaries, where each result is:
+              {'term': str, 'dict_name': str, 'classification': dict}
+    """
+    relevant_terms = []
+    
+    # Normalize input terms once (lowercase for initial key lookup)
+    normalized_input_terms = set(term.lower() for term in terms_to_search)
+    
+    # Structure to hold mappings: {normalized_form: (original_key, dict_name, dictionary_object)}
+    normalized_to_original_map = {}
+    
+    # 1. Pre-process all dictionary keys for faster, case/plural-insensitive lookup
+    for dict_name, dictionary in loaded_dicts_map.items():
+        if dictionary is None:
+            continue
+            
+        for original_key in dictionary.keys():
+            normalized_key = original_key.lower()
+            
+            # Map normalized key to original key, dict_name, and dictionary object
+            if normalized_key not in normalized_to_original_map:
+                 normalized_to_original_map[normalized_key] = (original_key, dict_name, dictionary)
+                 
+            # Basic singular/plural check for keys ending in 's'
+            if normalized_key.endswith('s'):
+                singular_key = normalized_key[:-1]
+                if singular_key not in normalized_to_original_map:
+                    # Map normalized singular key to original plural key
+                    normalized_to_original_map[singular_key] = (original_key, dict_name, dictionary)
+
+    # 2. Search all normalized input terms against the prepared map
+    matched_keys = set() # Track unique dictionary keys found to avoid duplicates
+    
+    for input_term_lower in normalized_input_terms:
+        
+        # Check for exact match (case-insensitive)
+        if input_term_lower in normalized_to_original_map:
+            original_dict_key, dict_name, dictionary = normalized_to_original_map[input_term_lower]
+            if original_dict_key not in matched_keys:
+                relevant_terms.append({
+                    'term': original_dict_key,
+                    'dict_name': dict_name,
+                    'classification': dictionary[original_dict_key]
+                })
+                matched_keys.add(original_dict_key)
+                
+        # Check for singular/plural match on input terms (input is plural, map holds singular)
+        if input_term_lower.endswith('s'):
+            singular_input_term = input_term_lower[:-1]
+            if singular_input_term in normalized_to_original_map:
+                original_dict_key, dict_name, dictionary = normalized_to_original_map[singular_input_term]
+                if original_dict_key not in matched_keys:
+                    relevant_terms.append({
+                        'term': original_dict_key,
+                        'dict_name': dict_name,
+                        'classification': dictionary[original_dict_key]
+                    })
+                    matched_keys.add(original_dict_key)
+
+    return relevant_terms
+
 def main():
     global Verbose_Flag
     global options
+    global STANDARDIZED_TERMS
 
     parser = optparse.OptionParser()
     parser.add_option('-v', '--verbose',
@@ -488,6 +811,12 @@ def main():
                       default=False,
                       action="store_true",
                       help="Print lots of output to stdout")
+
+    parser.add_option('-t', '--testing',
+                      dest="testing",
+                      default=False,
+                      action="store_true",
+                      help="A mode for testing")
 
     options, remainder = parser.parse_args()
     Verbose_Flag = options.verbose
@@ -499,6 +828,13 @@ def main():
     pdf_path = remainder[0]
     pdf_path = pdf_path.replace('"', '').replace("'", "")
     
+    # get subject from the conver or title page
+    potential_subject=get_subject_area(pdf_path)
+    print(f"{pdf_path=}\t{potential_subject=}")
+    if options.testing:
+        return
+    
+
     print("\nExtracting text...")
     pages = extract_text_from_pdf(pdf_path)
     
@@ -520,10 +856,10 @@ def main():
         print("Identifying keywords...\n")
         
         # 1. Get Top Unigrams (Single Words)
-        unigrams = get_top_features(corpus, case_map, ngram_range=(1, 1), top_n=10)
+        unigrams = get_top_features(corpus, case_map, ngram_range=(1, 1), top_n=100)
         
         # 2. Get Top Bigrams/Trigrams (Phrases)
-        phrases = get_top_features(corpus, case_map, ngram_range=(2, 3), top_n=20) 
+        phrases = get_top_features(corpus, case_map, ngram_range=(2, 3), top_n=100) 
         
         print(f"{'TOP SINGLE KEYWORDS':<35} | {'Freq':<6} | {'CEFR'}")
         print("-" * 60)
@@ -547,6 +883,58 @@ def main():
         
     else:
         print("Failed to process the PDF.")
+
+
+    # do the processing of the subject area dicts
+    already_loaded=[]
+    full_dicts=dict()
+    if potential_subject == "Unknown":
+        return                  # return as there is nothing more that can be done
+
+    print(f"\nChecking for standard keywords for the subject: {potential_subject}")
+
+    load_standardized_terms("/home/maguire/Canvas-tools/subject_area_config.json")
+    if Verbose_Flag:
+        print(f"{STANDARDIZED_TERMS=}")
+    relevant_dicts = get_dictionaries_for_subject_area(potential_subject)
+    if Verbose_Flag:
+        print(f"{relevant_dicts=}")
+
+    if relevant_dicts:
+        dicts_to_import=get_dict_import_info(relevant_dicts)
+        if Verbose_Flag:
+            print(f"{dicts_to_import=}")
+
+        # [{'source_file': 'IEEE_thesaurus.py', 'dict_name': 'IEEE_thesaurus_2023_broad_terms', 'display_name': 'IEEE Thesaurus 2023 (Broad Terms)'}, {'source_file': 'IEEE_thesaurus.py', 'dict_name': 'IEEE_thesaurus_2023_narrow_terms', 'display_name': 'IEEE Thesaurus 2023 (Narrow Terms)'}, {'source_file': 'ACM_CCS.py', 'dict_name': 'ACM_categories', 'display_name': 'ACM Computing Classification System (Full Categories)'}, {'source_file': 'ACM_CCS.py', 'dict_name': 'ACM_toplevel', 'display_name': 'ACM Computing Classification System (Top Level)'}]
+        for d in dicts_to_import:
+            print(f"Importing {d['display_name']}")
+            try:
+                if d['source_file'].endswith('.py'):
+                    file_to_import=d['source_file'][:-3]
+                    if file_to_import not in already_loaded:
+                        new_module=importlib.import_module(file_to_import)
+                        already_loaded.append(file_to_import)
+                        for name, value in new_module.__dict__.items():
+                            if not name.startswith("__"):
+                                globals()[name] = value
+                                full_dicts[name]=value
+
+            except Exception as e:
+                print(f"Error importing {d['source_file']}: {e}")
+                return []
+                
+        # print(f"{full_dicts=}")
+        # for d in full_dicts:
+        #     print(f"{d} {len(full_dicts[d])}")
+
+        what_to_search_for=[]
+        for word, count in all_keywords:
+            what_to_search_for.append(word)
+
+        results=get_relevant_terms_from_dicts(what_to_search_for, full_dicts)
+        for result in results:
+            print(f"Match: Term='{result['term']}', Dict='{result['dict_name']}', Class='{result['classification']}'")
+
 
 if __name__ == "__main__":
     main()
