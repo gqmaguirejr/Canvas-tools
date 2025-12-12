@@ -3645,6 +3645,62 @@ The program acts as a statistical aid but requires the user to perform the final
 
 * ***Expanded Dictionaries***: The CEFR lookup capabilities could be expanded by incorporating additional dictionary sources.
 
+Some additional dictionaries have been added - each augmented with POS and CEFR levels:
+* ACM_CCS.py - ACM Computing Classification System (CCS) https://dl.acm.org/ccs
+* IEEE_thesaurus.py - Terms from the IEEE thesaurus 2023
+* msc2020.py - American Mathematical Society (AMS) Mathematics Subject Classification (MSC) - additionally augmented with MSC code.
+
+The mapping between subject areas and the above files and dicts is done via subject_area_config.json. The basic format of this file is:
+```python
+{
+    "degree_areas": {
+        "Computer Science": [
+            "ACM_toplevel",
+            "ACM_categories",
+            "IEEE_thesaurus_2023_broad_terms",
+            "IEEE_thesaurus_2023_narrow_terms"
+        ],
+        "Electrical Engineering": [
+            "ACM_toplevel",
+            "ACM_categories",
+            "IEEE_thesaurus_2023_broad_terms",
+            "IEEE_thesaurus_2023_narrow_terms"
+        ],
+        "Information and Communication Technology": [
+            "ACM_toplevel",
+            "ACM_categories",
+            "IEEE_thesaurus_2023_broad_terms",
+            "IEEE_thesaurus_2023_narrow_terms"
+        ]
+    },
+    "all_dicts": [
+        {
+            "source_file": "IEEE_thesaurus.py",
+            "dict_name": "IEEE_thesaurus_2023_broad_terms",
+            "display_name": "IEEE Thesaurus 2023 (Broad Terms)"
+        },
+        {
+            "source_file": "IEEE_thesaurus.py",
+            "dict_name": "IEEE_thesaurus_2023_narrow_terms",
+            "display_name": "IEEE Thesaurus 2023 (Narrow Terms)"
+        },
+        {
+            "source_file": "ACM_CCS.py",
+            "dict_name": "ACM_categories",
+            "display_name": "ACM Computing Classification System (Full Categories)"
+        },
+        {
+            "source_file": "ACM_CCS.py",
+            "dict_name": "ACM_toplevel",
+            "display_name": "ACM Computing Classification System (Top Level)"
+        }
+    ]
+}
+
+```
+
+The program tries to determine the subject area based on the cover or title page.
+
 
 <!-- 
 
