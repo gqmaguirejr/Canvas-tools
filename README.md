@@ -3647,8 +3647,8 @@ The program acts as a statistical aid but requires the user to perform the final
 
 Some additional dictionaries have been added - each augmented with POS and CEFR levels:
 * ACM_CCS.py - ACM Computing Classification System (CCS) https://dl.acm.org/ccs
-* IEEE_thesaurus.py - Terms from the IEEE thesaurus 2023
-* msc2020.py - American Mathematical Society (AMS) Mathematics Subject Classification (MSC) - additionally augmented with MSC code.
+* IEEE_thesaurus.py - Terms from the IEEE thesaurus 2023 - based on the CSV file: https://github.com/angelosalatino/ieee-taxonomy-thesaurus-rdf/blob/main/source/cleaned_ieee_thesaurus_2023.csv
+* msc2020.py - American Mathematical Society (AMS) Mathematics Subject Classification (MSC) - additionally augmented with MSC code - based on https://mathscinet.ams.org/mathscinet/msc/pdfs/classifications2020.pdf
 
 The mapping between subject areas and the above files and dicts is done via subject_area_config.json. The basic format of this file is:
 ```python
