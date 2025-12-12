@@ -1,0 +1,44 @@
+{
+    "degree_areas": {
+        "Computer Science": [
+            "ACM_toplevel",
+            "ACM_categories",
+            "IEEE_thesaurus_2023_broad_terms",
+            "IEEE_thesaurus_2023_narrow_terms"
+        ],
+        "Electrical Engineering": [
+            "ACM_toplevel",
+            "ACM_categories",
+            "IEEE_thesaurus_2023_broad_terms",
+            "IEEE_thesaurus_2023_narrow_terms"
+        ],
+        "Information and Communication Technology": [
+            "ACM_toplevel",
+            "ACM_categories",
+            "IEEE_thesaurus_2023_broad_terms",
+            "IEEE_thesaurus_2023_narrow_terms"
+        ]
+    },
+    "all_dicts": [
+        {
+            "source_file": "IEEE_thesaurus.py",
+            "dict_name": "IEEE_thesaurus_2023_broad_terms",
+            "display_name": "IEEE Thesaurus 2023 (Broad Terms)"
+        },
+        {
+            "source_file": "IEEE_thesaurus.py",
+            "dict_name": "IEEE_thesaurus_2023_narrow_terms",
+            "display_name": "IEEE Thesaurus 2023 (Narrow Terms)"
+        },
+        {
+            "source_file": "ACM_CCS.py",
+            "dict_name": "ACM_categories",
+            "display_name": "ACM Computing Classification System (Full Categories)"
+        },
+        {
+            "source_file": "ACM_CCS.py",
+            "dict_name": "ACM_toplevel",
+            "display_name": "ACM Computing Classification System (Top Level)"
+        }
+    ]
+}
