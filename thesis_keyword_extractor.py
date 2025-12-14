@@ -32,9 +32,9 @@ import json
 import importlib
 
 # Add path to custom modules
-sys.path.append('/home/maguire/Canvas-tools')
-# sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module_folder
-# sys.path.append('/home/maguire/Canvas/Canvas-tools')
+#sys.path.append('/home/maguire/Canvas-tools')
+sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module_folder
+#sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
 # Attempt to import custom modules
 try:
@@ -65,6 +65,7 @@ Verbose_Flag = False
 # Global variable to store loaded standardized terms
 STANDARDIZED_TERMS = {}
 
+# config_file=
 def load_standardized_terms(config_file="subject_area_config.json"):
     """
     Loads configuration and standardized term lists from a JSON file.
@@ -893,7 +894,7 @@ def main():
 
     print(f"\nChecking for standard keywords for the subject: {potential_subject}")
 
-    load_standardized_terms("/home/maguire/Canvas-tools/subject_area_config.json")
+    load_standardized_terms()
     if Verbose_Flag:
         print(f"{STANDARDIZED_TERMS=}")
     relevant_dicts = get_dictionaries_for_subject_area(potential_subject)

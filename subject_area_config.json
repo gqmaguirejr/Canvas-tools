@@ -17,6 +17,10 @@
             "ACM_categories",
             "IEEE_thesaurus_2023_broad_terms",
             "IEEE_thesaurus_2023_narrow_terms"
+        ],
+        "Applied and Computational Mathematics": [
+	  "expanded_msc_keywords_with_code",
+	  "mathematics_subject_classification"
         ]
     },
     "all_dicts": [
@@ -39,6 +43,16 @@
             "source_file": "ACM_CCS.py",
             "dict_name": "ACM_toplevel",
             "display_name": "ACM Computing Classification System (Top Level)"
+        },
+        {
+            "source_file": "MSC_Keywords_Expanded_with_Code.py",
+            "dict_name": "expanded_msc_keywords_with_code",
+            "display_name": "American Mathematical Society (AMS) Mathematics Subject Classification (Top Level)"
+        },
+	{
+          "source_file": "msc2020.py",
+          "dict_name": "mathematics_subject_classification",
+          "display_name": "American Mathematical Society (AMS) Mathematics Subject Classification"
         }
     ]
 }
