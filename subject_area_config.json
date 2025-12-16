@@ -18,10 +18,28 @@
             "IEEE_thesaurus_2023_broad_terms",
             "IEEE_thesaurus_2023_narrow_terms"
         ],
-        "Applied and Computational Mathematics": [
+        "Mathematics": [
 	  "expanded_msc_keywords_with_code",
 	  "mathematics_subject_classification"
-        ]
+        ],
+	"Architecture": [],
+        "Art, Technology and Design": [],
+	"Biotechnology": [],
+	"Chemical Science and Engineering": [],
+	"Civil and Architectural Engineering": ["construction_surveying_and_civil_engineering"],
+	"Energy Technology and Systems": [],
+	"Engineering Materials Science": [],
+	"Engineering Mechanics": ["physics_subject_headings"],
+	"Geodesy and Geoinformatics": [],
+	"Industrial Economics and Management": [],
+	"Mediated Communication": [],
+	"Physics": ["physics_subject_headings"],
+	"Planning and Decision Analysis": [],
+	"Production Engineering": [],
+	"Solid Mechanics": ["physics_subject_headings"],
+	"The Built Environment and Society: Management, Economics and Law": [],
+	"Theoretical Chemistry and Biology": [],
+	"Vehicle and Maritime Engineering": []
     },
     "all_dicts": [
         {
@@ -53,6 +71,16 @@
           "source_file": "msc2020.py",
           "dict_name": "mathematics_subject_classification",
           "display_name": "American Mathematical Society (AMS) Mathematics Subject Classification"
+        },
+	{
+          "source_file": "Physics_keywords.py",
+          "dict_name": "physics_subject_headings",
+          "display_name": "American Physical Society (APS) - Physics Subject Headings"
+        },
+	{
+          "source_file": "Construction_Surveying_and_Civil_Engineering.py",
+          "dict_name": "construction_surveying_and_civil_engineering",
+          "display_name": "(Oxford) Dictionary of Construction, Surveying and Civil Engineering"
         }
     ]
 }
