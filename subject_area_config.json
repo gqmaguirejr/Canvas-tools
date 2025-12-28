@@ -22,8 +22,8 @@
 	  "expanded_msc_keywords_with_code",
 	  "mathematics_subject_classification"
         ],
-	"Architecture": [],
-        "Art, Technology and Design": [],
+	"Architecture": ["Getty_AAT"],
+        "Art, Technology and Design": ["Getty_AAT"],
 	"Biotechnology": [],
 	"Chemical Science and Engineering": [],
 	"Civil and Architectural Engineering": ["construction_surveying_and_civil_engineering"],
@@ -81,6 +81,11 @@
           "source_file": "Construction_Surveying_and_Civil_Engineering.py",
           "dict_name": "construction_surveying_and_civil_engineering",
           "display_name": "(Oxford) Dictionary of Construction, Surveying and Civil Engineering"
+        },
+        {
+            "source_file": "AAT_terms_with_CEFR.py",
+            "dict_name": "Getty_AAT",
+            "display_name": "Getty Art & Architecture Thesaurus (AAT)"
         }
     ]
 }

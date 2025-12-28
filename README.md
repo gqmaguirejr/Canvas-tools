@@ -3702,6 +3702,20 @@ The mapping between subject areas and the above files and dicts is done via subj
 The program tries to determine the subject area based on the cover or title page.
 
 
+## Construction_Surveying_and_Civil_Engineering.py
+
+### Purpose
+Contains terms from the (Oxford) "Dictionary of Construction, Surveying and Civil Engineering" along with CEFR levels.
+
+## AAT_terms_with_CEFR.py
+
+### Purpose
+Contatins the Getty Art & Architecture Thesaurus (AAT) with 175,284 terms and their CEFR levels.
+The AAT dataset comes from http://aatdownloads.getty.edu/
+
+It contains information from the J. Paul Getty Trust, Getty Research Institute, the Art & Architecture Thesaurus, which is made available under the ODC Attribution License, i.e., the Open Data Commons Attribution License (ODC-By) 1.0.
+
+
 <!-- 
 
 ## xxx.py
