@@ -3701,6 +3701,12 @@ The mapping between subject areas and the above files and dicts is done via subj
 
 The program tries to determine the subject area based on the cover or title page.
 
+##  Physics_keywords.py
+
+### Purpose
+
+Physics keywords, derived from American Physical Society (APS) - Physics Subject Headings with CEFR levels added.
+
 
 ## Construction_Surveying_and_Civil_Engineering.py
 
