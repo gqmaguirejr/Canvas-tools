@@ -9449,6 +9449,40 @@ well_known_acronyms_list=[
     ['SA', 'Simulated Annealing', {'s': ['diva2:2023389']}],
     ['T-HARM', 'Temporal Hierarchical Attack Representation Model', {'s': ['diva2:2023389']}],
 
+
+
+    ['AMS', 'Arbetsmarknadsstyrelsen', {'s': ['diva2:2021861']}],
+    ['ANT', 'Aktör nätverksteori', {'s': ['diva2:2021861']}],
+    ['ATA', 'Antikvarisk-topografiska arkivet', {'s': ['diva2:2021861']}],
+    ['CEPLIS', 'European Council of the Liberal Professions', {'s': ['diva2:2021861']}],
+    ['CIAM', "Congrès Internationaux d'Architecture Moderne", {'s': ['diva2:2021861']}],
+    ['C.R.I.A.', 'American Committee to Rescue Italian Art', {'s': ['diva2:2021861']}],
+    ['E.C.C.O.', "European Confederation of Conservator-restorers' Organisations", {'s': ['diva2:2021861']}],
+    ['ENCoRE', 'Conservation-Restoration education and the development of the profession', {'s': ['diva2:2021861']}],
+    ['ICCROM', 'International Center for the Study of the Preservation and Restoration of Cultural Property', {'s': ['diva2:2021861']}],
+    ['ICEC', 'International Committee for Ethics in Conservation', {'s': ['diva2:2021861']}],
+    ['ICOM', 'International Council of Museums', {'s': ['diva2:2021861']}],
+    ['ICOM-CC', 'International Council of Museums – Committee for Conservation', {'s': ['diva2:2021861']}],
+    ['ICOMOS', 'International Council on Monuments and Sites', {'s': ['diva2:2021861']}],
+    ['IIC', 'International Institute for Conservation of Historic and Artistic Works', {'s': ['diva2:2021861']}],
+    ['IRPA', 'Institut Royal du Patrimoine Artistique', {'s': ['diva2:2021861']}],
+    ['IVA', 'Kungliga Ingenjörsvetenskapsakademien', {'s': ['diva2:2021861']}],
+    ['KB', 'Kungliga biblioteket', {'s': ['diva2:2021861']}],
+    ['K-byrån', 'Kulturhistoriska byrån (Byggnadsstyrelsen)', {'s': ['diva2:2021861']}],
+    ['KKH', 'Kungliga konsthögskolan', {'s': ['diva2:2021861']}],
+    ['KRO', 'Konstnärernas riksorganisation', {'s': ['diva2:2021861']}],
+    ['KTH', 'Kungliga Tekniska högskolan', {'s': ['diva2:2021861']}],
+    ['NIKU', 'Norsk institutt for kulturminneforskning', {'s': ['diva2:2021861']}],
+    ['NKF-S', 'Nordiska konservatorförbundet Sverige (tidigare kallad den svenska sektionen)', {'s': ['diva2:2021861']}],
+    ['OOO', 'Object Oriented Onthology (objektorienterad ontologi)', {'s': ['diva2:2021861']}],
+    ['RAÄ', 'Riksantikvarieämbetet', {'s': ['diva2:2021861']}],
+    ['SAR', 'Svenska Arkitekters Riksförbund', {'s': ['diva2:2021861']}],
+    ['SIB', 'Statens institut för byggnadsforskning', {'s': ['diva2:2021861']}],
+    ['STS', 'Science and Technology Studies', {'s': ['diva2:2021861']}],
+
+    ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
+    ['IAST', 'International Alphabet of Sanskrit Transliteration'],
+
     #GQMa
 
 
