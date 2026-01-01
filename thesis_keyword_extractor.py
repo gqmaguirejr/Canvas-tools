@@ -6,6 +6,7 @@
 # Purpose: Thesis Keyword Suggestion Tool
 #
 # with option '-v' use verbose output
+# with option '-s' consider Swedish words
 #
 # G. Q. Maguire Jr. + help of Gemini 3 Pro
 #
@@ -39,11 +40,13 @@ sys.path.append('/z3/maguire/Canvas/Canvas-tools')  # Include the path to module
 # Attempt to import custom modules
 try:
     import common_english
+    import common_swedish
     import common_acronyms
     import AVL_words_with_CEFR
 except ImportError:
     # Fallback to prevent crash if running elsewhere
     common_english = None
+    common_swedish = None
     common_acronyms = None
     AVL_words_with_CEFR = None
 
@@ -100,6 +103,8 @@ def get_subject_area(pdf_path):
     
     # Matches common leading thesis title text (Doctoral Thesis in, Master's Thesis in, etc.)
     thesis_title_pattern = re.compile(r'(?:Doctoral|Licentiate|Master\'s)\s+Thesis\s+in\s*', re.IGNORECASE)
+    if options.swedish:
+        thesis_title_pattern = re.compile(r'(?:Doktorsavhandling|Licentiatuppsats|Licentiatavhandling|Magisteravhandling|Masteruppsats)\s+inom\s*', re.IGNORECASE)
     
     # --- VALID SUBJECT AREAS (provided by user for precise matching) ---
     VALID_SUBJECT_AREAS = [
@@ -145,6 +150,34 @@ def get_subject_area(pdf_path):
         'Transport Science',
 
     ]
+    if options.swedish:
+        VALID_SUBJECT_AREAS = [
+            'Arkitektur',
+            'Bioteknologi',
+            'Byggvetenskap',
+            'Datalogi',
+            'Elektro- och systemteknik',
+            'Energiteknik och -system',
+            'Farkostteknik',
+            'Fysik',
+            'Geodesi och Geoinformatik',
+            'Hållfasthetslära',
+            'Industriell ekonomi och organisation',
+            'Industriell produktion',
+            'Informations- och kommunikationsteknik',
+            'Kemivetenskap',
+            'Konst, teknik och design',
+            'Matematik',
+            'Medierad kommunikation',
+            'Planering och beslutsanalys',
+            'Samhällsbyggnad: Management, ekonomi och juridik',
+            'Teknisk materialvetenskap',
+            'Teknisk Mekanik',
+            'Teoretisk kemi och biologi',
+            # Extras ???
+
+        ]
+
     # Sort by length descending to ensure matching of longer, more specific subjects first 
     # (e.g., "Civil and Architectural Engineering" before "Civil Engineering" if that were present).
     VALID_SUBJECT_AREAS.sort(key=len, reverse=True)
@@ -407,6 +440,7 @@ def restore_case(token, case_map):
     return most_common_variant
 
 def get_top_features(corpus, case_map, ngram_range, top_n=15):
+    global options
     """
     Extracts top features and restores case using the frequency map.
     """
@@ -414,6 +448,7 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
     
     # Custom stop words list
     base_stop_words = list(stopwords.words('english'))
+
     academic_noise = [
         'figure', 'table', 'chapter', 'section', 'thesis', 'dissertation',
         'result', 'results', 'conclusion', 'conclusions', 'methodology', 
@@ -432,6 +467,9 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
     ]
     base_stop_words.extend(academic_noise)
     
+    if options.swedish:
+        base_stop_words.extend(stopwords.words('swedish'))
+
     lemmatized_stop_words = [wnl.lemmatize(w) for w in base_stop_words]
     lemmatized_stop_words = list(set(lemmatized_stop_words))
 
@@ -488,7 +526,7 @@ def get_cefr_level(phrase):
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
-    # 0. Check names of persons (Exact match or all parts match)
+    # Check names of persons (Exact match or all parts match)
     # Uses names_of_persons list if it exists in common_english
     names_list = getattr(common_english, 'names_of_persons', [])
     if isinstance(names_list, (list, set, tuple)):
@@ -503,25 +541,19 @@ def get_cefr_level(phrase):
             if all(part in names_list for part in parts):
                 return "B2 (Proper Name)"
 
-    # 0.5 Check Acronyms (Exact match including case + plurals)
-    acronyms_list = getattr(common_acronyms, 'well_known_acronyms_list', [])
-    if isinstance(acronyms_list, list):
-        for entry in acronyms_list:
-            if not entry:
-                continue
-            acrn = entry[0] # The acronym string
-            
-            # Check strict exact match
-            if phrase == acrn:
-                return "Acronym"
-            
-            # Check plural 's' (e.g. APIs)
-            if phrase == acrn + 's':
-                return "Acronym"
-            
-            # Check plural 'es' (e.g. SMSes) - typically if acronym ends in 's'
-            if phrase == acrn + 'es':
-                return "Acronym"
+    # Check proper names (Exact match)
+    names_list = getattr(common_english, 'proper_names', [])
+    if isinstance(names_list, (list, set, tuple)):
+        # Check 1: Exact phrase match
+        if phrase in names_list:
+            return "B2 (Proper Name)"
+
+    # Check place names (Exact match)
+    names_list = getattr(common_english, 'place_names', [])
+    if isinstance(names_list, (list, set, tuple)):
+        # Check 1: Exact phrase match
+        if phrase in names_list:
+            return "B2 (Proper Name)"
 
     # List of dictionaries to check in the module
     dicts_to_check = [
@@ -533,6 +565,8 @@ def get_cefr_level(phrase):
         'KTH_ordbok_English_with_CEFR',
         'common_units',
         'AVL_words_with_CEFR'
+        'common_french_words',
+        'common_italian_words',
     ]
 
     for dict_name in dicts_to_check:
@@ -560,6 +594,60 @@ def get_cefr_level(phrase):
                 if len(key) >= 2 and key[:2] in valid_levels:
                     return key
                     
+    if options.swedish:
+        # List of dictionaries to check in the module
+        dicts_to_check = [
+            'common_swedish_words',
+            'common_swedish_technical_words',
+            'KTH_ordbok_Swedish_with_CEFR',
+        ]
+
+
+        for dict_name in dicts_to_check:
+            vocab = getattr(common_swedish, dict_name, {})
+        
+            # Check if attribute is a dictionary
+            if not isinstance(vocab, dict):
+                continue
+        
+            # Check 1: Try exact match (e.g. "Brownian motion")
+            entry = vocab.get(phrase)
+            if entry and isinstance(entry, dict):
+                for key in entry:
+                    # Use slicing [:2] to match 'C1' from 'C1 (Specialized)'
+                    if len(key) >= 2 and key[:2] in valid_levels:
+                        return key
+
+            # Check 2: Try lowercase match (e.g. "construction")
+            entry = vocab.get(phrase_lower)
+            if entry and isinstance(entry, dict):
+                # Find key that looks like a CEFR level (A1-C2)
+                for key in entry:
+                    # Use slicing [:2] to match 'C1' from 'C1 (Specialized)'
+                    # This ensures we match 'C1' against the set valid_levels
+                    if len(key) >= 2 and key[:2] in valid_levels:
+                        return key
+    # Check Acronyms (Exact match including case + plurals)
+    acronyms_list = getattr(common_acronyms, 'well_known_acronyms_list', [])
+    if isinstance(acronyms_list, list):
+        for entry in acronyms_list:
+            if not entry:
+                continue
+            acrn = entry[0] # The acronym string
+            
+            # Check strict exact match
+            if phrase == acrn:
+                return "Acronym"
+            
+            # Check plural 's' (e.g. APIs)
+            if phrase == acrn + 's':
+                return "Acronym"
+            
+            # Check plural 'es' (e.g. SMSes) - typically if acronym ends in 's'
+            if phrase == acrn + 'es':
+                return "Acronym"
+
+
     return ""
 
 def print_keyword_clusters(all_keywords):
@@ -819,6 +907,12 @@ def main():
                       action="store_true",
                       help="A mode for testing")
 
+    parser.add_option('-s', '--swedish',
+                      dest="swedish",
+                      default=False,
+                      action="store_true",
+                      help="When processing a thesis in Swedish")
+
     options, remainder = parser.parse_args()
     Verbose_Flag = options.verbose
 
@@ -857,7 +951,7 @@ def main():
         print("Identifying keywords...\n")
         
         # 1. Get Top Unigrams (Single Words)
-        unigrams = get_top_features(corpus, case_map, ngram_range=(1, 1), top_n=100)
+        unigrams = get_top_features(corpus, case_map, ngram_range=(1, 1), top_n=1000)
         
         # 2. Get Top Bigrams/Trigrams (Phrases)
         phrases = get_top_features(corpus, case_map, ngram_range=(2, 3), top_n=100) 

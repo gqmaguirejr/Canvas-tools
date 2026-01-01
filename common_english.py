@@ -65367,6 +65367,23 @@ common_English_words={
     "owners": {"B2 (General)": "Noun (plural)"}, # In technical contexts, the entities or users with primary control or legal responsibility over an asset or process
     "progressions": {"C1 (Academic)": "Noun (plural)"}, # The sequenced stages of a process, such as the step-by-step advancement of a cyberattack or simulation state
 
+    "conservation": {"B2": "Noun", "C1": "Noun", 'n': 'The professional discipline of preserving, protecting, and stabilizing cultural heritage; the specific diagnostic record of interventions made to prolong the life of a material, such as concrete or lime paintings.'},
+    "restoration": {'B2': 'Noun', 'n': 'Focuses on the aesthetic repair or returning an object to a known earlier state.'},
+    "museum": {"A2": "Noun", 'n': 'Institution that houses and cares for a collection of artifacts and other objects of scientific, artistic, or historical importance'},
+    "heritage": {"B2": "Noun", 'n': 'Valued objects and qualities such as cultural traditions, unspoiled countryside, and historic buildings that have been passed down from previous generations'},
+    "cultural heritage": {"B2": "Noun Phrase"},
+    "profession": {"B1": "Noun", 'n': 'A paid occupation, especially one that involves prolonged training and a formal qualification'},
+    "conservation-restoration": {"C1": "Noun", 'n': 'The professional field dedicated to the examination, documentation, and treatment of cultural heritage'},
+    "cultural": {"B1": "Adjective", 'n': 'Relating to the ideas, customs, and social behavior of a society'},
+    "monument": {"B1": "Noun", 'n': 'A statue, building, or other structure erected to commemorate a famous person or event; in heritage'},
+    "painting": {"A1": "Noun", 'n': 'The process or art of using paint, or the resulting work of art'},
+    "modern": {"A2": "Adjective", 'n': 'Relating to the present or recent times as opposed to the remote past'},
+    "pigment": {"B2": "Noun", 'n': 'The natural coloring matter of animal or plant tissue, or a substance used as coloring in paint/concrete'},
+    "preservation": {"B2": "Noun", 'n': 'The act of maintaining something in its original or existing state; in engineering, a record of protection'},
+    "gallery": {"A2": "Noun", 'n': 'A room or building for the display or sale of works of art'},
+    "inspiration": {"B1": "Noun", 'n': 'The process of being mentally stimulated to do or feel something, especially to do something creative'},
+
+
     #GQMe
 
 }
@@ -67792,6 +67809,18 @@ place_names=[
     'Genova', # Italy
     'Iggesund',
     'Paris',
+    'Uppsala',
+    'Lund',
+    'Ängsö',
+    'Floda',
+    'Vadsbro',
+    'Finja',
+    'Södermanland',
+    'Vendels',
+    'Rom',
+    'Florens',
+    'Venedig',
+
     #GQMp
 
 ]
@@ -81141,6 +81170,7 @@ company_and_product_names=[
     'Toptica Photonics AG', # company
     'Academic Press', # publisher
     'Macaulay2', # com puter algebra system
+
 ]
 
 
@@ -81726,7 +81756,7 @@ common_programming_languages=[ # libraries and functions
 
 ]
 
-# many of these would be considred: {'B2': 'Noun (proper name)'}
+# many of these would be considered: {'B2': 'Noun (proper name)'}
 names_of_persons=[
     #
     "Bass-Guivarc'h",
@@ -89840,10 +89870,129 @@ names_of_persons=[
     'Thurner',
     'Venable',
     'Zenitani',
+    'Alf',
+    'Hedman',
+    'Alfre',
+    'Conti',
+    'Eibner',
+    'Lenoir',
+    'Alexis-François',
+    'Sigurd',
+    'Curman',
+    'Curmans',
+    'Bengtsson',
+    'Nilson',
+    'Nilsons',
+    'Melin',
+    'Månsson',
+    'Mandelgren',
+    'Nil',
+    'Bror',
+    'Muñoz',
+    'Viñas',
+    'Roosval',
+    'Göthberg',
+    'Elmén',
+    'Albertus',
+    'Pictor',
+    'Sven',
+    'Dalén',
+    'Åke',
+    'Nisbeth',
+    'Garreau',
+    'Theodor',
+    'Wåhlin',
+    'Wåhlins',
+    'Blomé',
+    'Hidemark',
+    'Geijer',
+    'Hölling',
+    'Åman',
+    'Ekhoff',
+    'Hallström',
+    'Gustaf',
+    'Söderblom',
+    'Tångeberg',
+    'DeLanda',
+    'Philippot',
+    'Riegl',
+    'Feldtkeller',
+    'Rydbeck',
+    'Gunnar',
+    'Zettervall',
+    'Zettervalls',
+    'Ciatti',
+    'Weman',
+    'Westlund',
+    'Owman',
+    'Jokilehto',
+    'Biörnstad',
+    'Bergh',
+    'Fant',
+    'Karlsmo',
+    'Lindell-Andersson',
+    'Bedoire',
+    'Brunius',
+    'Cesare',
+    'Haraway',
+    'Våga',
+    'Upmark',
+    'Johannes',
+    'Petterssons',
+    'Waldur',
+    'Grandien',
+    'Mandelgrens',
+    'Bohrn',
+    'Hägg',
+    'Ruskin',
+    'Brandis',
+    'Bertil',
+    'Cavalcaselle',
+    'Wetterberg',
+    'Corbusier',
+]
+# GQMn
+# many of these would be considered: {'B2': 'Noun (proper name)'}
+proper_names=[
+    'National Gallery',
 
+    'Byggnadsstyrelsen', # The National Board of Public Building; the state agency formerly responsible for Swedish public buildings and church restoration projects
+    'Byggnadsvårdsåret', # The Year of Architectural Conservation; often refers to 1975, which shifted the European perspective on cultural heritage
+    "Materialinstitutet", # The Material Institute; an institution that historically analyzed the degradation and preservation of materials
+    'Riksarkivet',
+    'Överintendentsämbetet',
+    'Konstakademien',
+    'Riksantikvarieämbetets',
+    'Konsthögskolan',
+    'Nationalmuseum',
+    'Sankt Petri',
+    'AB Svensk Filmindustri', # company
+    'Svenska kyrkan',
+    'Adelcrantzka palatset', # palace
+    'Adolf Fredriks kyrka', # church
+    'Strängnäs domkyrka',
+    'Uppsala domkyrka', # church
+    'Uppsala domkyrkas', 
+    'Riksantikvarieämbetet',
+    'Lund domkyrka', # church
+    'Svenska Dagbladet',
+    'kyrka Skåne',
+    'Nordiska konservatorförbundet',
+    'ATA Ämbetsarkivet',
+    'Sigurd Curmans arkiv',
+    'Finja kyrka',
+    'kyrka Uppland',
+    'Ängsö kyrka',
+    'Sveriges kyrkor', # A major descriptive work/series documenting Swedish churches
+    'Sverige kyrkor',
+    'Vitterhetsakademien',
+    'Vitterhetsakademiens',
 ]
 
+
 common_french_words={
+    "Art sacré": {"C1": "Noun", 'n': 'French: Sacred Art; a specific theological and aesthetic movement regarding modern religious art'},
+    "art sacré": {"C1": "Noun", 'n': 'French: Sacred Art; a specific theological and aesthetic movement regarding modern religious art'},
     "d’Acoustique": {'B1': 'Noun (compound)'},
     "d'Electricité": {'B1': 'Noun (compound)'},
     'd’Etudes': {'B1': 'Noun (plural)'},
@@ -89942,6 +90091,7 @@ common_french_words={
     'nouveau': {'A2': 'Adjective'},
     'numérique': {'B1': 'Noun'},
     'optronique': {'C1': 'Noun'},
+    "peintures": {"B1": "Noun (Plural)", 'n': "Paintings; often found in international charters like the Venice Charter or 'peintures murales'"},
     'perturbations': {'B2': 'Noun (plural)'},
     'pour': {'A1': 'Preposition'},
     'radioélectriques': {'C1': 'Adjective (plural)'},
@@ -90001,59 +90151,55 @@ common_finnish_words=[
     # GQM-for-merger
 ]
 
-common_german_words=[
-    'Aktiengesellschaft',
-    'Bahn',
-    'Bayerische',
-    'Bundesbahnen',
-    'Deutsche',
-    'Deutschland',
-    'Einstellung',
-    'Entscheidungsproblem',
-    'Entscheidungsproblem',
-    'Flughafen',
-    'Flugzeug',
-    'Forschungszentrum',
-    'Gedankenexperiment',
-    'Geheimfernschreiber',
-    'Geheimfernschreiber',
-    'Geheimschreiber',
-    'GmbH',
-    'Großer',
-    'Linien',
-    'Luft',
-    'Luft-',
-    'Motoren',
-    'Naturf', #from the shortened jounrnal name "Z. Naturf"
-    'Netzwerkdurchsetzungsgesetz',
-    'Netzwerkdurchsetzungsgesetz',
-    'Raumfahrt',
-    'Schlüsselfernschreibmaschine',
-    'Schlüsselfernschreibmaschine',
-    'Schweizerische',
-    'Schwerionenforschung',
-    'Stahlwerks',
-    'Technische',
-    'Universität',
-    'Verlag',
-    'Werke',
-    'Wiener',
-    'Windkannal',
-    'Zentrum',
+common_german_words={
+    "Aktiengesellschaft": {"B2": "Noun", 'n': 'Stock corporation [AG]; a common legal designation for large German industrial and transport companies'},
+    "Bahn": {"A1": "Noun", 'n': 'Train/Railway; the general term for rail transport'},
+    "Bayerische": {"A2": "Adjective", 'n': 'Bavarian; often used in company names like BMW [Bayerische Motoren Werke]'},
+    "Bundesbahnen": {"B1": "Noun", 'n': 'Federal Railways; specifically referring to state-run rail systems like the ÖBB or SBB'},
+    "Deutsche": {"A1": "Adjective", 'n': 'often part of official institutional titles'},
+    "Deutschland": {"A1": "Proper Noun", 'n': 'Germany'},
+    "Einstellung": {"B2": "Noun", 'n': "Setting/Attitude/Cessation; in a technical context, it often refers to the 'adjustment' of machinery or the 'stopping' of a process"},
+    "Entscheidungsproblem": {"C1": "Noun", 'n': 'Decision Problem; a fundamental challenge in mathematical logic and computer science, famously addressed by Alan Turing'},
+    "Flughafen": {"A2": "Noun", 'n': 'Airport'},
+    "Flugzeug": {"A1": "Noun", 'n': 'Airplane'},
+    "Forschungszentrum": {"B2": "Noun", 'n': 'Research center; a diagnostic record of institutional scientific activity'},
+    "Gedankenexperiment": {"B2": "Noun", 'n': 'Thought experiment; a conceptual tool used in physics and philosophy to visualize a hypothesis'},
+    "Geheimfernschreiber": {"C1": "Noun", 'n': 'Secret teleprinter; specifically referring to the Siemens and Halske T52 used for high-level encrypted communications'},
+    "Geheimschreiber": {"C1": "Noun", 'n': 'Secret writer; a general term for historical German cipher machines'},
+    "GmbH": {"B1": "Noun", 'n': 'Limited liability company; the most common legal structure for German businesses'},
+    "Großer": {"A1": "Adjective", 'n': 'Large/Great'},
+    "Linien": {"A2": "Noun", 'n': 'Lines; can refer to transport lines, geometric lines, or structural boundaries'},
+    "Luft": {"A1": "Noun", 'n': 'Air; often used as a prefix for aviation-related terms'},
+    "Luft-": {"A1": "Prefix", 'n': "Aero- / Air-; as in 'Luftfahrt' [aviation]"},
+    "Motoren": {"B1": "Noun (Motors/Engines.)"},
+    "Naturf": {"C1": "Abbreviation", 'n': "Short for 'Naturforschung' [natural research]; commonly found in the journal 'Z. Naturf'"},
+    "Netzwerkdurchsetzungsgesetz": {"C1": "Noun", 'n': 'Network Enforcement Act [NetzDG]; a specific German law regulating online content and hate speech'},
+    "Raumfahrt": {"B2": "Noun", 'n': 'Space travel / Aerospace; the technical field of space exploration'},
+    "Schlüsselfernschreibmaschine": {"C1": "Noun", 'n': 'Cipher teleprinter; a highly technical diagnostic record of WWII-era cryptographic hardware'},
+    "Schweizerische": {"A1": "Adjective", 'n': 'Swiss'},
+    "Schwerionenforschung": {"C1": "Noun", 'n': 'Heavy ion research; a specialized branch of nuclear physics, as in the GSI center in Darmstadt'},
+    "Stahlwerks": {"B2": "Noun (Genitive", 'n': 'of a steel mill / steel works'},
+    "Technische": {"B1": "Adjective", 'n': "Technical; frequently found in 'Technische Universität' titles"},
+    "Universität": {"A2": "Noun", 'n': 'University'},
+    "Verlag": {"B1": "Noun", 'n': 'Publisher / Publishing house; essential for identifying the source of historical records'},
+    "Werke": {"B1": "Noun", 'n': "Works / Factory / Plant; used for industrial sites or a creator's body of work"},
+    "Wiener": {"A2": "Adjective", 'n': 'Viennese; relating to Vienna'},
+    "Windkannal": {"C1": "Noun", 'n': 'Wind tunnel; a diagnostic facility for testing aerodynamic properties in engineering'},
+    "Zentrum": {"A2": "Noun", 'n': 'Center'},
 
-    'achtung',
-    'autobahn',
-    'forschungsgruppe',
-    'kredite',
-    'leistungsmessung',
-    'nachster',
-    'sozialforschung',
-    'telekommunikationsnetzte',
-    'umlaut',
-    'und',
-    'zentrum',
+    # Lowercase / General Terms
+    "achtung": {"A1": "Exclamation, Noun", 'n': 'Attention / Danger / Warning'},
+    "autobahn": {"A1": "Noun", 'n': 'High-speed highway; a fundamental part of German transport infrastructure'},
+    "forschungsgruppe": {"B2": "Noun", 'n': 'Research group'},
+    "kredite": {"B2": "Noun", 'n': 'Credits / Loans; a record of financial transactions'},
+    "leistungsmessung": {"C1": "Noun", 'n': 'Performance measurement; a diagnostic metric in engineering and labor science'},
+    "nachster": {"A2": "Adjective", 'n': 'Next'},
+    "sozialforschung": {"B2": "Noun", 'n': 'Social research'},
+    "telekommunikationsnetzte": {"C1": "Noun", 'n': 'Telecommunications networks; a specialized field of infrastructure engineering'},
+    "umlaut": {"A2": "Noun", 'n': 'The phonetic diacritic [ä, ö, ü] specific to German and Swedish'},
+    "und": {"A1": "Conjunction", 'n': 'and'},
+}
 
-]
 
 common_icelandic_words=[
     'Þjórsá',
@@ -90061,25 +90207,30 @@ common_icelandic_words=[
 ]
 
 
-common_italian_words=[
-    'Ferrovie',
-    'Fondazione',
-    'Italiane',
-    'Lamiera',
-    'Politecnico',
-    'Poste',
-    'adagio',
-    'allegro',
-    'bacchette',
-    'bello',
-    'classifica',
-    'di',
-    'federali',
-    'legato',
-    'metallo',
-    'svizzere',
-    'verniciata',
-]
+common_italian_words={
+    "arte": {"B2": "Noun", 'n': 'Art; often used in philosophical or aesthetic citations'},
+    "dell": {"B2": "Preposition", 'n': "Of; often found in titles like 'Teoria del restauro'"},
+    "del restauro": {"C1": "Noun", 'n': "Of restoration; often refers to 'Teoria del restauro', a foundational theory of conservation"},
+    "Ferrovie": {"B2": "Noun", 'n': "Railways; often used in the context of 'Ferrovie dello Stato', the Italian state railway system"},
+    "Fondazione": {"B1": "Noun", 'n': 'Foundation; can refer to a physical structural base or a legal/charitable institution'},
+    "Italiane": {"A1": "Adjective (feminine plural form)"},
+    "Lamiera": {"C1": "Noun", 'n': 'Sheet metal; a diagnostic material record in industrial design and structural engineering'},
+    "Politecnico": {"B2": "Noun", 'n': 'Polytechnic; refers to technical universities specializing in engineering and architecture'},
+    "Poste": {"A2": "Noun", 'n': "Post/Mail service; often part of 'Poste Italiane'"},
+    "adagio": {"B1": "Adverb", 'n': 'Musical Term (Slowly; a tempo marking indicating a slow, leisurely pace)'},
+    "allegro": {"B1": "Adverb", 'n': '/Musical Term (Cheerful/Lively; a tempo marking indicating a fast, brisk pace)'},
+    "bacchette": {"B2": "Noun", 'n': "Rods/Sticks; can refer to drumsticks, conductors' batons, or small structural rods."},
+    "bello": {"A1": "Adjective", 'n': 'Beautiful; a general aesthetic descriptor'},
+    "classifica": {"A2": "Noun", 'n': 'Classification/Ranking; a record of order or hierarchy'},
+    "di": {"A1": "Preposition", 'n': 'Of/From; a foundational functional particle'},
+    "federali": {"B2": "Adjective", 'n': 'Federal; plural form referring to national or central government systems'},
+    "legato": {"B2": "Adjective", 'n': "Musical Term (Bound/Tied together; in music, notes played smoothly without gaps; in mechanics, 'linked'"},
+    "metallo": {"A2": "Noun", 'n': 'Metal; a general material category'},
+    "peintures murales": {"C1": "Noun", 'n': 'Mural paintings; a term often used in international conservation literature'},
+    "svizzere": {"A1": "Adjective (feminine plural form)", 'n': 'Swiss'},
+    "verniciata": {"B2": "Adjective, Past Participle", 'n': 'Painted/Varnished; a record of surface treatment, often for protection or aesthetics'},
+
+}
 
 common_japanese_words=[
     'keiretsu',
@@ -90122,6 +90273,9 @@ common_latin_words=[
     'facto', # de facto
     'hallux', # big toe
     'hoc',
+    'ibid', # short for ibidem
+    'Ibid', # short for ibidem
+    'ibidem',
     'initio',
     'in situ',
     'in silicio',

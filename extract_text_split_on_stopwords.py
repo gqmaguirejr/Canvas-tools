@@ -6,6 +6,7 @@
 # Extract text from PDF file, splitting lines before/after stopwords and punctuation.
 #
 # with option '-v' use verbose output
+# with option '-s' consider Swedish words
 # with option '-M' include terms in chemical_names_and_formulas and misc_words_to_ignore
 # with option '-Q' do special processing (skipping more pages before extracting text)
 # with option '-W' keep words from WordsToFilterOutSet
@@ -34,6 +35,7 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 
 #  as common_English_words, common_swedish_words, common_swedish_technical_words
 import common_english
+import common_swedish
 import common_acronyms
 import common_swedish
 import AVL_words_with_CEFR
@@ -10768,6 +10770,10 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_english.KTH_ordbok_English_with_CEFR:
+            remove_list.append(w)
+            continue
+
         if w in common_english.chemical_elements_symbols:
             remove_list.append(w)
             continue
@@ -10776,11 +10782,27 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_swedish.common_swedish_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_swedish.common_swedish_technical_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_swedish.KTH_ordbok_Swedish_with_CEFR:
+            remove_list.append(w)
+            continue
+
         if w in common_english.programming_keywords:
             remove_list.append(w)
             continue
 
         if w in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.proper_names:
             remove_list.append(w)
             continue
 
@@ -14046,11 +14068,11 @@ def main():
                       action="store_true",
                       help="Print lots of output to stdout")
 
-    parser.add_option('-s', '--stop',
+    parser.add_option('--stop',
                       dest="stop",
                       default=False,
                       action="store_true",
-                      help="remove stopwords and pubctuation from output")
+                      help="remove stopwords and punctuation from output")
 
     parser.add_option('-i', '--info',
                       dest="info",
@@ -14082,6 +14104,12 @@ def main():
                       action="store_true",
                       help="keep words from WordsToFilterOutSet")
 
+
+    parser.add_option('-s', '--swedish',
+                      dest="swedish",
+                      default=False,
+                      action="store_true",
+                      help="When processing a thesis in Swedish")
 
     options, remainder = parser.parse_args()
     Verbose_Flag = options.verbose
