@@ -9480,10 +9480,29 @@ well_known_acronyms_list=[
     ['SIB', 'Statens institut för byggnadsforskning', {'s': ['diva2:2021861']}],
     ['STS', 'Science and Technology Studies', {'s': ['diva2:2021861']}],
 
+
+    ["Kongl: Mayst:tz",  "Kunglig Majestäts"],
+    ['AHD', 'Authorized Heritage Discourse'],
+    ['AIME', 'An Inquiry into Modes of Existence'],
+    ['AMU', 'Arbetsmarknadsutbildning'],
+    ['BNF', 'Bibliothèque Nationale de France'],
+    ['k:a', 'kyrka'],
+    ['vd', 'Verkställande Direktör'],
+
+    ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
     ['IAST', 'International Alphabet of Sanskrit Transliteration'],
 
+    ['CPO', 'Co-Packaged Optics'],
+    ['LPO', 'linear pluggable optics'],
+    ['FAUs', 'Fiber Attach Units'],
+    ['MZMs', 'Mach-Zender Modulators'],
+    ['MRMs', 'Micro-Ring Modulators'],
+    ['EAMs', 'Electro-Absorption Modulators'],
+    ['ELSs', 'External Light Sourcess'],
+
     #GQMa
+
 
 
     

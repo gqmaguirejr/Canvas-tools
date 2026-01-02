@@ -10880,6 +10880,10 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if options.swedish and w.endswith('s') and w[:-1] in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
         if w.endswith('s’') and w[:-1] in common_english.names_of_persons:
             remove_list.append(w)
             continue
@@ -10888,6 +10892,11 @@ def remove_known_words(output_lines):
         if w.endswith('’s') and w[:-2] in common_english.place_names:
             remove_list.append(w)
             continue
+
+        if options.swedish and w.endswith('s') and w[:-1] in common_english.place_names:
+            remove_list.append(w)
+            continue
+
 
         # remove company and product possessives
         if w.endswith('’s') and w[:-2] in common_english.company_and_product_names:
@@ -14291,6 +14300,9 @@ def main():
         grand_union.add(w)
 
     for w in common_english.decimal_prefixes:
+        grand_union.add(w)
+
+    for w in common_english.proper_names:
         grand_union.add(w)
 
     for w in common_english.place_names:

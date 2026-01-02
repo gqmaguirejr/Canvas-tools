@@ -547,6 +547,9 @@ def get_cefr_level(phrase):
         # Check 1: Exact phrase match
         if phrase in names_list:
             return "B2 (Proper Name)"
+        if options.swedish and phrase+'s' in names_list: # check for the Swedish possesive verion
+            return "B2 (Proper Name)"
+
 
     # Check place names (Exact match)
     names_list = getattr(common_english, 'place_names', [])
@@ -554,6 +557,10 @@ def get_cefr_level(phrase):
         # Check 1: Exact phrase match
         if phrase in names_list:
             return "B2 (Proper Name)"
+
+        if options.swedish and phrase+'s' in names_list:
+            return "B2 (Proper Name)"
+
 
     # List of dictionaries to check in the module
     dicts_to_check = [
@@ -564,9 +571,11 @@ def get_cefr_level(phrase):
         'chemical_elements',
         'KTH_ordbok_English_with_CEFR',
         'common_units',
-        'AVL_words_with_CEFR'
+        'AVL_words_with_CEFR',
         'common_french_words',
         'common_italian_words',
+        'common_german_words',
+        'common_latin_words',
     ]
 
     for dict_name in dicts_to_check:
