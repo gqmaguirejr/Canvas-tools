@@ -9488,6 +9488,20 @@ well_known_acronyms_list=[
     ['BNF', 'Bibliothèque Nationale de France'],
     ['k:a', 'kyrka'],
     ['vd', 'Verkställande Direktör'],
+    ['nr', 'No. (Number / Nummer)'],
+    ['ICR', 'Istituto Superiore per la Conservazione ed il Restauro'],
+    ['MoK', 'Meddelelser om konservering'],
+    ['Arkdes', 'Arkitektur- och designcentrums arkiv'],
+    ['ArkDes', 'Arkitektur- och designcentrums arkiv'],
+    ['BDR', 'Bund Deutscher Restauratoren'],
+    ['Bjh', 'Björklinge hbf'],
+    ['saa', 'Svenska Akademiens Arkiv'],
+    ['saa', 'Se även'], # See also
+
+    ['Abb.', 'Abbildung'], # German for illustration
+    ['Abb', 'Abbildung'], # German for illustration
+    ['Bd.', 'Band'], # German for volume
+    ['Bd', 'Band'], # German for volume
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
@@ -9500,6 +9514,8 @@ well_known_acronyms_list=[
     ['MRMs', 'Micro-Ring Modulators'],
     ['EAMs', 'Electro-Absorption Modulators'],
     ['ELSs', 'External Light Sourcess'],
+
+    ['GSTA', 'Global System Trust Architecture'],
 
     #GQMa
 

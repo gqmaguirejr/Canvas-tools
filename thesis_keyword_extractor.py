@@ -609,6 +609,8 @@ def get_cefr_level(phrase):
             'common_swedish_words',
             'common_swedish_technical_words',
             'KTH_ordbok_Swedish_with_CEFR',
+            'common_danish_words',
+            'common_norwegian_words',
         ]
 
 

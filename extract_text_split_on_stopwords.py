@@ -10633,7 +10633,7 @@ def extract_text_from_pdf(pdf_path):
         # The parentheses () ensure the delimiters (spaces and punctuation) are kept.
         #splitter_pattern = re.compile(r'(\s+|[.,?!:;()#"“”])')
         # The new, corrected pattern with escaped brackets and braces:
-        splitter_pattern = re.compile(r'(\s+|[.,?!:;()#"“”\[\]\{\}\+\∗×•∗])')
+        splitter_pattern = re.compile(r'(\s+|[.,?!:;()#"“”„\[\]\{\}\+\∗×•∗])')
         
         tokens = splitter_pattern.split(full_text)
         #print(f"{tokens=}")
@@ -10654,7 +10654,7 @@ def extract_text_from_pdf(pdf_path):
             cleaned_token = token.strip().lower()
             is_stopword = cleaned_token in StopWordsSet
             # A simple check if the token itself is one of the punctuation marks
-            is_punctuation = cleaned_token in {'.', ',', '?', '!', ':', ';', '(', ')', '"', '“', '”', '|', '#', '[', ']', '{', '}', '×', '*', '•', '∗', '+'}
+            is_punctuation = cleaned_token in {'.', ',', '?', '!', ':', ';', '(', ')', '"', '“', '”', '|', '#', '[', ']', '{', '}', '×', '*', '•', '∗', '+', '„'}
 
             if is_stopword or is_punctuation or is_integer(token) or is_percentage(token) or is_approximate_integer(token):
                 # If we were building a phrase, add it to the output first.
@@ -10799,6 +10799,10 @@ def remove_known_words(output_lines):
             continue
 
         if w in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
+        if options.swedish and w[-1] == 's' and w[:-1] in common_english.names_of_persons:
             remove_list.append(w)
             continue
 
@@ -11182,7 +11186,14 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         # if w.startswith('SSE'):
         #     print(f"processing {w}")
 
-        
+        if w in common_english.proper_names:
+            continue
+
+        # remove Swedish possessive names 
+        if options.swedish and w.endswith("s") and w[:-1] in common_english.names_of_persons:
+            continue
+
+
         # known term, so nothing to do
         if w in grand_union:
             # if w == 'SSE':
@@ -11277,6 +11288,9 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
             # prune known words from the front
             new_term=''
             for idx, ww in enumerate(ws):
+                # remove Swedish possessive names 
+                if options.swedish and ww.endswith("s") and ww[:-1] in common_english.names_of_persons:
+                    continue
                 if ww in grand_union:
                     continue
                 if ww.isupper() and ww.lower() in grand_union:
@@ -11298,10 +11312,10 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
                 if ww.endswith("s'") and ww[:-2] in grand_union or ww[:-2].lower in grand_union:
                     continue
 
-
                 # plural possessive
                 if ww.endswith('s’') and (ww[:-2] in grand_union or ww[:-2].lower() in grand_union):
                     continue
+
                 # remove words with trailing hyphens
                 if ww.endswith('-') and ww[:-1] in grand_union:
                     continue
@@ -14279,6 +14293,9 @@ def main():
         grand_union.add(w)
 
     for w in common_english.common_finnish_words:
+        grand_union.add(w)
+
+    for w in common_english.common_german_words:
         grand_union.add(w)
 
     for w in common_english.common_icelandic_words:
