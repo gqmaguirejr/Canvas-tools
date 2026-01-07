@@ -11183,6 +11183,11 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if '–' in w:
             w=w.replace('–', '-')
 
+        # normalize U+2019 to U+27
+        if "’" in w:
+            w=w.replace("’", "'")
+
+
         # if w.startswith('SSE'):
         #     print(f"processing {w}")
 

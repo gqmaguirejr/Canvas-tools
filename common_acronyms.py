@@ -9497,11 +9497,18 @@ well_known_acronyms_list=[
     ['Bjh', 'Björklinge hbf'],
     ['saa', 'Svenska Akademiens Arkiv'],
     ['saa', 'Se även'], # See also
+    ['SFS', 'Svensk författningssamling'],
 
     ['Abb.', 'Abbildung'], # German for illustration
     ['Abb', 'Abbildung'], # German for illustration
     ['Bd.', 'Band'], # German for volume
     ['Bd', 'Band'], # German for volume
+    ['hrsg.', 'Herausgeber', {'eng': 'Editor'}],
+    ['hrsg', 'Herausgeber', {'eng': 'Editor'}],
+    ['ff.', 'foliis sequentibus'], # Latin
+    ['ff', 'foliis sequentibus'], # Latin
+    ['f.', 'foliis sequentibus'], # Latin
+    ['f', 'foliis sequentibus'], # Latin
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
@@ -9516,6 +9523,7 @@ well_known_acronyms_list=[
     ['ELSs', 'External Light Sourcess'],
 
     ['GSTA', 'Global System Trust Architecture'],
+    ['FN', 'Förenta nationerna', {'eng': 'United Nations'}],
 
     #GQMa
 

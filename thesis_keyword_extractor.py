@@ -659,6 +659,10 @@ def get_cefr_level(phrase):
                 return "Acronym"
 
 
+    # if the word has single right quote mark (such as "l’art"), then replace it with a single quote and try again
+    if "’" in phrase:
+        phrase=phrase.replace("’", "'")
+        return get_cefr_level(phrase)
     return ""
 
 def print_keyword_clusters(all_keywords):
