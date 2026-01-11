@@ -440,7 +440,7 @@ def restore_case(token, case_map):
     # Otherwise return the clear winner (e.g. "Bénard": 12 vs "bénard": 1 -> "Bénard")
     return most_common_variant
 
-def get_top_features(corpus, case_map, ngram_range, top_n=15):
+def old_get_top_features(corpus, case_map, ngram_range, top_n=15):
     global options
     """
     Extracts top features and restores case using the frequency map.
@@ -516,87 +516,140 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
     except ValueError:
         return []
 
+def get_top_features(corpus, case_map, ngram_range, top_n=15):
+    global options
+    wnl = WordNetLemmatizer()
+    
+    # 1. Expand Noise List with specific ghost fragments found in your output
+    # These are fragments typically created by over-lemmatization or OCR errors
+    ghost_fragments = ['ho', 'ans', 'ha', 'hu', 'as', 'la', 'le', 'un', 'une']
+    
+    base_stop_words = list(stopwords.words('english'))
+    if options.swedish:
+        base_stop_words.extend(stopwords.words('swedish'))
+        
+    academic_noise = [
+        'figure', 'table', 'chapter', 'section', 'thesis', 'dissertation',
+        'result', 'results', 'conclusion', 'conclusions', 'methodology', 
+        'study', 'analysis', 'based', 'using', 'used', 'data', 'research', 
+        'model', 'page', 'university', 'abstract', 'introduction',
+        'et', 'al', 'pp', 'vol', 'no', 'doi', 'ieee', 'isbn', 'issn',
+        'conference', 'proceedings', 'journal', 'http', 'https', 'www',
+        'shown', 'show', 'seen', 'see', 'also', 'however', 'therefore',
+        'contribution', 'key', 'proposed', 'approach', 'problem', 'performance',
+        'value', 'parameter', 'time', 'system', 'case', 'example',
+        'sample', 'frequency', 'fig', 'eq', 'equation', 'simulation', 'experiment',
+        'org', 'com', 'net', 'edu', 'gov', 'preprint', 'arxiv',
+
+    ]
+    
+    base_stop_words.extend(academic_noise)
+    base_stop_words.extend(ghost_fragments)
+    
+    lemmatized_stop_words = list(set([wnl.lemmatize(w.lower()) for w in base_stop_words]))
+
+    vectorizer = CountVectorizer(
+        tokenizer=LemmaTokenizer(),
+        stop_words=lemmatized_stop_words,
+        ngram_range=ngram_range, 
+        max_df=0.95,
+        min_df=2
+    )
+
+    try:
+        X = vectorizer.fit_transform(corpus)
+        feature_names = vectorizer.get_feature_names_out()
+        term_counts = X.todense().sum(axis=0).tolist()[0]
+        keyword_counts = list(zip(feature_names, term_counts))
+        
+        # 2. Refined Filtering
+        final_keywords = []
+        sorted_keywords = sorted(keyword_counts, key=lambda x: x[1], reverse=True)
+        
+        # 3. Aggregating "Known" Small Words (The "Shield" set)
+        # We combine keys from all three of your dictionaries
+        known_small_words = set()
+    
+        # Dictionary Sources to check
+        sources = [
+            (common_english, 'common_English_words'),
+            (common_english, 'thousand_most_common_words_in_English'),
+            (common_swedish, 'common_swedish_words'),
+            (common_english, 'common_french_words'),
+            (common_english, 'common_danish_words'),
+            (common_english, 'common_finnish_words'),
+            (common_english, 'common_german_words'),
+            (common_english, 'common_greek_words'),
+            (common_english, 'common_icelandic_words'),
+            (common_english, 'common_italian_words'),
+            (common_english, 'common_japanese_words'),
+            (common_english, 'common_latin_words'),
+            (common_english, 'common_norwegian_words'),
+            (common_english, 'common_portuguese_words'),
+            (common_english, 'common_russian_words'),
+            (common_english, 'common_spanish_words'),
+            (common_english, 'common_units'),
+
+        ]
+    
+        for module, attr in sources:
+            # Safely extract keys if the attribute exists
+            data = getattr(module, attr, {})
+            if isinstance(data, dict):
+                known_small_words.update(data.keys())
+            elif isinstance(data, (list, set, tuple)):
+                known_small_words.update(data)
+
+        for word, count in sorted_keywords:
+            clean_word = word.replace('_', '-')
+            lower_word = clean_word.lower()
+
+            # REJECTION LOGIC:
+            # Reject if it's in our specific ghost list
+            if lower_word in ghost_fragments:
+                continue
+                
+            # SPECIAL HANDLING FOR 2-LETTER WORDS:
+            if len(clean_word) <= 2:
+                # If it's a known symbol/acronym (from your list), KEEP IT
+                if clean_word in known_small_words or clean_word.isupper():
+                    pass 
+                # If it's not known and not an Acronym, it's likely noise
+                elif lower_word not in known_small_words:
+                    continue
+
+            # Case restoration logic
+            tokens = re.split(r'([-\s])', clean_word)
+            restored_tokens = [restore_case(t, case_map) if t.strip() and t.replace('-', '').isalnum() else t for t in tokens]
+            restored_word = "".join(restored_tokens)
+            
+            final_keywords.append((restored_word, count))
+            
+            if len(final_keywords) >= top_n:
+                break
+                
+        return final_keywords
+        
+    except ValueError:
+        return []
+
 def get_cefr_level(phrase):
     """
     Attempts to retrieve the CEFR level for a phrase from common_english 
     and AVL_words_with_CEFR modules.
     """
     global options
+    global name_category_dict
+    
     if common_english is None:
         return ""
 
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
-    # Check names of persons (Exact match or all parts match)
-    # Uses names_of_persons list if it exists in common_english
-    names_list = getattr(common_english, 'names_of_persons', [])
-    if isinstance(names_list, (list, set, tuple)):
-        # Helper function to check an individual word
-        def is_name(word):
-            # 1. Exact match (covers standard name and s/x/z possessives)
-            if word in names_list:
-                return True
-        
-            # 2. Swedish possessive logic
-            if options.swedish:
-                # Check if it ends in 's' (but isn't just 's')
-                if word.endswith('s') and len(word) > 1:
-                    root = word[:-1]
-                    # If the root is in the list AND the root doesn't 
-                    # naturally end in s, x, or z (which would be a different rule)
-                    if root in names_list and not root.lower().endswith(('s', 'x', 'z')):
-                        return True
-            return False
-
-        # Check 1: Exact phrase match
-        if is_name(phrase):
-            return "B2 (Proper Name)"
-        
-        # Check 2: Compound names (e.g. "John Smith")
-        # Split phrase by spaces and check if ALL parts are in the list
-        parts = phrase.split()
-        if len(parts) > 1:
-            if all(is_name(part) for part in parts):
-                return "B2 (Proper Name)"
-
-    # Check proper names (Exact match)
-    names_list = getattr(common_english, 'proper_names', [])
-    if isinstance(names_list, (list, set, tuple)):
-        # Check 1: Exact phrase match
-        if phrase in names_list:
-            return "B2 (Proper Name)"
-        if options.swedish and phrase+'s' in names_list: # check for the Swedish possesive verion
-            return "B2 (Proper Name)"
-
-
-    # Check place names (Exact match)
-    names_list = getattr(common_english, 'place_names', [])
-    if isinstance(names_list, (list, set, tuple)):
-        # Check 1: Exact phrase match
-        if phrase in names_list:
-            return "B2 (Proper Name)"
-
-        if options.swedish and phrase+'s' in names_list:
-            return "B2 (Proper Name)"
-
-    names_list = getattr(common_swedish, 'swedish_place_names', [])
-    if isinstance(names_list, (list, set, tuple)):
-        # Check 1: Exact phrase match
-        if phrase in names_list:
-            return "B2 (Proper Name)"
-
-        if options.swedish and phrase+'s' in names_list:
-            return "B2 (Proper Name)"
-
-
-    names_list = getattr(common_swedish, 'swedish_names_for_foreign_places', [])
-    if isinstance(names_list, (list, set, tuple)):
-        # Check 1: Exact phrase match
-        if phrase in names_list:
-            return "B2 (Proper Name)"
-
-
+    p_name=check_proper_name(phrase, name_category_dict)
+    if p_name:
+        return p_name
 
     # List of dictionaries to check in the module
     dicts_to_check = [
@@ -941,10 +994,58 @@ def get_relevant_terms_from_dicts(terms_to_search, loaded_dicts_map):
 
     return relevant_terms
 
+def check_proper_name(phrase, category_dict):
+    global options
+
+    if not phrase:
+        return None
+
+    # Step 1: Global Exact Match
+    # Check all categories for the phrase exactly as it is.
+    for category, names_set in category_dict.items():
+        if phrase in names_set:
+            return f"B2 (Proper Name: {category})"
+
+    # Step 2: Swedish Genitive Check (The 's' rule)
+    if options.swedish and phrase.endswith('s') and len(phrase) > 2:
+        root = phrase[:-1]
+        # Only strip if the root doesn't end in s, x, or z
+        if not root.lower().endswith(('s', 'x', 'z')):
+            # We prioritize checking People and Swedish Places for possessives
+            for cat in ['names_of_persons', 'swedish_place_names', 'proper_names']:
+                if root in category_dict.get(cat, set()):
+                    return f"B2 (Proper Name: {cat} possessive)"
+
+    # Step 3: Compound Name Logic
+    parts = phrase.split()
+    if len(parts) > 1:
+        match_count = 0
+        for part in parts:
+            found = False
+            # Check if this specific word exists in any list or is a possessive
+            for cat, names_set in category_dict.items():
+                if part in names_set:
+                    found = True
+                    break
+                # Inner possessive check for compound parts like "Sigurd Curmans"
+                if options.swedish and part.endswith('s'):
+                    p_root = part[:-1]
+                    if not p_root.lower().endswith(('s', 'x', 'z')) and p_root in names_set:
+                        found = True
+                        break
+            if found:
+                match_count += 1
+        
+        if match_count == len(parts):
+            return "B2 (Proper Name: Compound Match)"
+
+    return None
+
 def main():
     global Verbose_Flag
     global options
     global STANDARDIZED_TERMS
+    global name_category_dict
 
     parser = optparse.OptionParser()
     parser.add_option('-v', '--verbose',
@@ -981,6 +1082,14 @@ def main():
     if options.testing:
         return
     
+    # Initialize the dictionary using sets for O(1) lookup speed
+    name_category_dict = {
+        'names_of_persons': set(common_english.names_of_persons),
+        'proper_names': set(common_english.proper_names),
+        'place_names': set(common_english.place_names),
+        'swedish_place_names': set(common_swedish.swedish_place_names),
+        'swedish_names_for_foreign_places': set(common_swedish.swedish_names_for_foreign_places)
+    }
 
     print("\nExtracting text...")
     pages = extract_text_from_pdf(pdf_path)
