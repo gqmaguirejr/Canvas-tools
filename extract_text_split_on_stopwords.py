@@ -10754,6 +10754,11 @@ def remove_known_words(output_lines):
         if w.startswith('Figure ') or w.startswith('Table '):
             remove_list.append(w)
 
+        # remove proper names
+        for pn in sorted(common_english.proper_names, key=len, reverse=True):
+            if w.startswith(pn):
+                remove_list.append(pn)
+
         if w in common_english.top_100_English_words:
             remove_list.append(w)
             continue
@@ -10806,7 +10811,7 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
-        if w in common_english.proper_names:
+        if w in sorted(common_english.proper_names, key=len, reverse=True):
             remove_list.append(w)
             continue
 
@@ -10866,6 +10871,15 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_swedish.swedish_place_names:
+            remove_list.append(w)
+            continue
+
+        if w in common_swedish.swedish_names_for_foreign_places:
+            remove_list.append(w)
+            continue
+
+
         if w in well_known_acronyms:
              remove_list.append(w)
              continue
@@ -10897,10 +10911,13 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
-        if options.swedish and w.endswith('s') and w[:-1] in common_english.place_names:
+        if options.swedish and w.endswith('s') and w[:-1] in common_swedish.swedish_place_names:
             remove_list.append(w)
             continue
 
+        if options.swedish and w.endswith('s') and w[:-1] in common_swedish.swedish_names_for_foreign_places:
+            remove_list.append(w)
+            continue
 
         # remove company and product possessives
         if w.endswith('’s') and w[:-2] in common_english.company_and_product_names:
@@ -10948,6 +10965,10 @@ def remove_known_words(output_lines):
             continue
 
         if w in common_english.common_german_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_english.common_greek_words:
             remove_list.append(w)
             continue
 
@@ -11191,7 +11212,7 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         # if w.startswith('SSE'):
         #     print(f"processing {w}")
 
-        if w in common_english.proper_names:
+        if w in sorted(common_english.proper_names, key=len, reverse=True):
             continue
 
         # remove Swedish possessive names 
@@ -14303,6 +14324,9 @@ def main():
     for w in common_english.common_german_words:
         grand_union.add(w)
 
+    for w in common_english.common_greek_words:
+        grand_union.add(w)
+
     for w in common_english.common_icelandic_words:
         grand_union.add(w)
 
@@ -14329,6 +14353,18 @@ def main():
 
     for w in common_english.place_names:
         grand_union.add(w)
+
+    for w in common_swedish.swedish_place_names:
+        grand_union.add(w)
+
+    # deal with possive form of Swedish placename
+    if options.swedish:
+        for w in common_swedish.swedish_place_names:
+            grand_union.add(w+'s')
+
+    for w in common_swedish.swedish_names_for_foreign_places:
+        grand_union.add(w)
+
 
     #print(f"{well_known_acronyms=}")
     for w in well_known_acronyms:
@@ -14364,9 +14400,6 @@ def main():
         grand_union.add(w)
         
     for w in common_english.common_latin_words:
-        grand_union.add(w)
-
-    if w in common_english.common_german_words:
         grand_union.add(w)
 
     for w in acronym_filter_set:

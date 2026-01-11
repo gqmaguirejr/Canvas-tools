@@ -98,6 +98,7 @@ def get_subject_area(pdf_path):
     The function uses an explicit list of valid subject areas to reliably match 
     and extract the correct field of study, discarding the specific thesis title.
     """
+    global options
     subject = "Unknown"
     doc = None
     
@@ -520,6 +521,7 @@ def get_cefr_level(phrase):
     Attempts to retrieve the CEFR level for a phrase from common_english 
     and AVL_words_with_CEFR modules.
     """
+    global options
     if common_english is None:
         return ""
 
@@ -530,15 +532,32 @@ def get_cefr_level(phrase):
     # Uses names_of_persons list if it exists in common_english
     names_list = getattr(common_english, 'names_of_persons', [])
     if isinstance(names_list, (list, set, tuple)):
+        # Helper function to check an individual word
+        def is_name(word):
+            # 1. Exact match (covers standard name and s/x/z possessives)
+            if word in names_list:
+                return True
+        
+            # 2. Swedish possessive logic
+            if options.swedish:
+                # Check if it ends in 's' (but isn't just 's')
+                if word.endswith('s') and len(word) > 1:
+                    root = word[:-1]
+                    # If the root is in the list AND the root doesn't 
+                    # naturally end in s, x, or z (which would be a different rule)
+                    if root in names_list and not root.lower().endswith(('s', 'x', 'z')):
+                        return True
+            return False
+
         # Check 1: Exact phrase match
-        if phrase in names_list:
+        if is_name(phrase):
             return "B2 (Proper Name)"
         
         # Check 2: Compound names (e.g. "John Smith")
         # Split phrase by spaces and check if ALL parts are in the list
         parts = phrase.split()
         if len(parts) > 1:
-            if all(part in names_list for part in parts):
+            if all(is_name(part) for part in parts):
                 return "B2 (Proper Name)"
 
     # Check proper names (Exact match)
@@ -561,6 +580,23 @@ def get_cefr_level(phrase):
         if options.swedish and phrase+'s' in names_list:
             return "B2 (Proper Name)"
 
+    names_list = getattr(common_swedish, 'swedish_place_names', [])
+    if isinstance(names_list, (list, set, tuple)):
+        # Check 1: Exact phrase match
+        if phrase in names_list:
+            return "B2 (Proper Name)"
+
+        if options.swedish and phrase+'s' in names_list:
+            return "B2 (Proper Name)"
+
+
+    names_list = getattr(common_swedish, 'swedish_names_for_foreign_places', [])
+    if isinstance(names_list, (list, set, tuple)):
+        # Check 1: Exact phrase match
+        if phrase in names_list:
+            return "B2 (Proper Name)"
+
+
 
     # List of dictionaries to check in the module
     dicts_to_check = [
@@ -575,6 +611,7 @@ def get_cefr_level(phrase):
         'common_french_words',
         'common_italian_words',
         'common_german_words',
+        'common_greek_words',
         'common_latin_words',
     ]
 

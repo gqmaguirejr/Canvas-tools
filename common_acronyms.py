@@ -9484,6 +9484,7 @@ well_known_acronyms_list=[
     ["Kongl: Mayst:tz",  "Kunglig Majestäts"],
     ['AHD', 'Authorized Heritage Discourse'],
     ['AIME', 'An Inquiry into Modes of Existence'],
+    ['AIC', 'American Institute for Conservation'],
     ['AMU', 'Arbetsmarknadsutbildning'],
     ['BNF', 'Bibliothèque Nationale de France'],
     ['k:a', 'kyrka'],
@@ -9498,6 +9499,20 @@ well_known_acronyms_list=[
     ['saa', 'Svenska Akademiens Arkiv'],
     ['saa', 'Se även'], # See also
     ['SFS', 'Svensk författningssamling'],
+    ['CCI', 'Canadian Conservation Institute'],
+    ['ZKM', 'Center for Art and Media Karlsruhe'], # located in Karlsruhe, Germany
+    ['WPA', 'Works Progress Administration', {'n': 'later renamed the Work Projects Administration'}],
+    ['Unesco', 'United Nations Educational, Scientific and Cultural Organization'],
+    ['Unesco', 'United Nations Educational, Scientific and Cultural Organization'],
+    ['UKIC', 'United Kingdom Institute for Conservation of Historic and Artistic Works'],
+    ['SPAB', 'Society for the Protection of Ancient Buildings'],
+    ['SOU', 'Statens offentliga utredningar', {'eng': 'Swedish Government Official Reports'}],
+    ['SHM', 'Statens historiska museer', {'eng': 'National Historical Museums'}],
+    ['SSHM', 'Statens sjöhistoriska museer', {'eng': 'National Maritime Museums'}],
+    ['SMTM', 'Statens maritima och transporthistoriska museer'],
+    ['SBMK', 'Stichting Behoud Moderne Kunst'],
+    ['SBHK', 'Stichting Behoud Hedendaagse Kunst'],
+    ['SIS', 'Svenska institutet för standarder', {'eng': 'Swedish Institute for Standards'}],
 
     ['Abb.', 'Abbildung'], # German for illustration
     ['Abb', 'Abbildung'], # German for illustration
@@ -9505,10 +9520,15 @@ well_known_acronyms_list=[
     ['Bd', 'Band'], # German for volume
     ['hrsg.', 'Herausgeber', {'eng': 'Editor'}],
     ['hrsg', 'Herausgeber', {'eng': 'Editor'}],
+    ['m.fl.', 'med flera'],
     ['ff.', 'foliis sequentibus'], # Latin
     ['ff', 'foliis sequentibus'], # Latin
     ['f.', 'foliis sequentibus'], # Latin
     ['f', 'foliis sequentibus'], # Latin
+    ['bl.', "bland annat"], # or "bland andra"
+    ['bl', "bland annat"], # or "bland andra"
+    ['Sci.', 'Science'], # a journal
+    ['Sci', 'Science'], # a journal
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
