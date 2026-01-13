@@ -516,6 +516,10 @@ def old_get_top_features(corpus, case_map, ngram_range, top_n=15):
     except ValueError:
         return []
 
+# Create a simple word tokenizer as a fallback
+def word_tokenizer(text):
+    return re.findall(r'\b\w\w+\b', text.lower())
+
 def get_top_features(corpus, case_map, ngram_range, top_n=15):
     global options
     wnl = WordNetLemmatizer()
@@ -544,17 +548,28 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
     ]
     
     base_stop_words.extend(academic_noise)
-    base_stop_words.extend(ghost_fragments)
+
+    if not options.no_lemma:
+        base_stop_words.extend(ghost_fragments)
     
     lemmatized_stop_words = list(set([wnl.lemmatize(w.lower()) for w in base_stop_words]))
 
-    vectorizer = CountVectorizer(
-        tokenizer=LemmaTokenizer(),
-        stop_words=lemmatized_stop_words,
-        ngram_range=ngram_range, 
-        max_df=0.95,
-        min_df=2
-    )
+    if options.no_lemma:
+        vectorizer = CountVectorizer(
+            tokenizer=word_tokenizer,
+            stop_words=base_stop_words,
+            ngram_range=ngram_range, 
+            max_df=0.95,
+            min_df=2
+        )
+    else:
+        vectorizer = CountVectorizer(
+            tokenizer=LemmaTokenizer(),
+            stop_words=lemmatized_stop_words,
+            ngram_range=ngram_range, 
+            max_df=0.95,
+            min_df=2
+        )
 
     try:
         X = vectorizer.fit_transform(corpus)
@@ -589,7 +604,8 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_english, 'common_russian_words'),
             (common_english, 'common_spanish_words'),
             (common_english, 'common_units'),
-
+            (common_english, 'chemical_elements_symbols'),
+            (common_english, 'chemical_elements'),
         ]
     
         for module, attr in sources:
@@ -1065,6 +1081,12 @@ def main():
                       default=False,
                       action="store_true",
                       help="When processing a thesis in Swedish")
+
+    parser.add_option('-n', '--nolemitization',
+                      dest="no_lemma",
+                      default=False,
+                      action="store_true",
+                      help="Diable lemmitization")
 
     options, remainder = parser.parse_args()
     Verbose_Flag = options.verbose

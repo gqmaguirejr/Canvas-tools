@@ -9513,6 +9513,15 @@ well_known_acronyms_list=[
     ['SBMK', 'Stichting Behoud Moderne Kunst'],
     ['SBHK', 'Stichting Behoud Hedendaagse Kunst'],
     ['SIS', 'Svenska institutet för standarder', {'eng': 'Swedish Institute for Standards'}],
+    ['IRPA', 'Institut Royale de Patrimoine Artistique'],
+    ['OIM', 'Offices international des Musées'],
+    ['IMO', 'International Museums Office'],
+    ['ICOM', 'Conseil international des musées'],
+    ['CICI', 'International Commission for Intellectual Cooperation'],
+    ['NKF-S', 'Nordiska konservatorförbundet, Svenska sektionen'],
+    ['Rdr', 'Riksdaler'],
+    ['OUV', 'outstanding universal value'],
+
 
     ['Abb.', 'Abbildung'], # German for illustration
     ['Abb', 'Abbildung'], # German for illustration
