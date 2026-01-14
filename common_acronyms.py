@@ -9518,10 +9518,14 @@ well_known_acronyms_list=[
     ['IMO', 'International Museums Office'],
     ['ICOM', 'Conseil international des musées'],
     ['CICI', 'International Commission for Intellectual Cooperation'],
+    ['NKF', 'Nordiska konservatorförbundet'],
+    ['NKFs', 'Nordiska konservatorförbundets'],
     ['NKF-S', 'Nordiska konservatorförbundet, Svenska sektionen'],
+    ['NKF-N', 'Nordiska konservatorförbundet, norske seksjonen'],
     ['Rdr', 'Riksdaler'],
     ['OUV', 'outstanding universal value'],
-
+    ['MoMa', 'The Museum of Modern Art'],
+    ['IADA', 'Internationale Arbeitsgemeinschaft der Archiv-, Bibliotheks- und Graphikrestauratoren eingetragener Verein'],
 
     ['Abb.', 'Abbildung'], # German for illustration
     ['Abb', 'Abbildung'], # German for illustration

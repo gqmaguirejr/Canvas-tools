@@ -592,6 +592,7 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_swedish, 'common_swedish_words'),
             (common_english, 'common_french_words'),
             (common_english, 'common_danish_words'),
+            (common_english, 'common_dutch_words'),
             (common_english, 'common_finnish_words'),
             (common_english, 'common_german_words'),
             (common_english, 'common_greek_words'),
