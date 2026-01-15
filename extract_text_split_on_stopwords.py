@@ -11017,6 +11017,10 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_english.common_estonian_words:
+            remove_list.append(w)
+            continue
+
         if w in common_english.common_finnish_words:
             remove_list.append(w)
             continue
@@ -14323,6 +14327,9 @@ def main():
         grand_union.add(w)
 
     for w in common_english.common_dutch_words:
+        grand_union.add(w)
+
+    for w in common_english.common_estonian_words:
         grand_union.add(w)
 
     for w in common_english.common_finnish_words:

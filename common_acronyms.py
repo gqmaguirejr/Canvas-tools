@@ -9481,6 +9481,7 @@ well_known_acronyms_list=[
     ['STS', 'Science and Technology Studies', {'s': ['diva2:2021861']}],
 
 
+    ['Kgl', 'Kunglig'],
     ["Kongl: Mayst:tz",  "Kunglig Majestäts"],
     ['AHD', 'Authorized Heritage Discourse'],
     ['AIME', 'An Inquiry into Modes of Existence'],
@@ -9526,6 +9527,7 @@ well_known_acronyms_list=[
     ['OUV', 'outstanding universal value'],
     ['MoMa', 'The Museum of Modern Art'],
     ['IADA', 'Internationale Arbeitsgemeinschaft der Archiv-, Bibliotheks- und Graphikrestauratoren eingetragener Verein'],
+    ['LSE', 'London School of Economics'],
 
     ['Abb.', 'Abbildung'], # German for illustration
     ['Abb', 'Abbildung'], # German for illustration
