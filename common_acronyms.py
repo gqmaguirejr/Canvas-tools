@@ -9528,6 +9528,15 @@ well_known_acronyms_list=[
     ['MoMa', 'The Museum of Modern Art'],
     ['IADA', 'Internationale Arbeitsgemeinschaft der Archiv-, Bibliotheks- und Graphikrestauratoren eingetragener Verein'],
     ['LSE', 'London School of Economics'],
+    ['KUS', 'konstnärsutbildningssakkunniga'],
+    ['KTHBs', 'KTHs biblioteks'],
+    ['KTHB', 'KTHs bibliotek'],
+    ['KML', 'kulturminneslag'],
+    ['KML', 'Kulturmiljölagen'],
+    ['KIK-IRPA', 'Koninklijk Instituut voor het Kunstpatrimonium', {'eng': 'Royal Institute for Cultural Heritage'}],
+    ['KC-bruk', 'Kalk-Cement-bruk'],
+    ['K-byrån', 'kulturhistorisk byrå'],
+    ['JAIC', 'Journal of the American Institute for Conservation'],
 
     ['Abb.', 'Abbildung'], # German for illustration
     ['Abb', 'Abbildung'], # German for illustration
@@ -9544,6 +9553,10 @@ well_known_acronyms_list=[
     ['bl', "bland annat"], # or "bland andra"
     ['Sci.', 'Science'], # a journal
     ['Sci', 'Science'], # a journal
+    ['Hr', 'Herr'],
+    ['Dr.n', 'Doktorn'],
+    ['IIC-AG', 'International Institute of Conservation American group'],
+    
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
