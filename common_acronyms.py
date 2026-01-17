@@ -9556,7 +9556,10 @@ well_known_acronyms_list=[
     ['Hr', 'Herr'],
     ['Dr.n', 'Doktorn'],
     ['IIC-AG', 'International Institute of Conservation American group'],
-    
+    ['GRASCA', 'Graduate School in Contract Archaeology'],
+    ['GCI', 'Getty Conservation Institute'],
+    ['R.', 'Renovatum'],
+    ['F. S.', 'Fac-Simile'],
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
