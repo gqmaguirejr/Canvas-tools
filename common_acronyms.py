@@ -9459,6 +9459,8 @@ well_known_acronyms_list=[
     ['C.R.I.A.', 'American Committee to Rescue Italian Art', {'s': ['diva2:2021861']}],
     ['E.C.C.O.', "European Confederation of Conservator-restorers' Organisations", {'s': ['diva2:2021861']}],
     ['ENCoRE', 'Conservation-Restoration education and the development of the profession', {'s': ['diva2:2021861']}],
+    ['ENCoRE', 'European Network for Conservation-Restoration Education', {'ger': 'Europäisches Netzwerk für Ausbildung in Konservierung-Restaurierung'}],
+
     ['ICCROM', 'International Center for the Study of the Preservation and Restoration of Cultural Property', {'s': ['diva2:2021861']}],
     ['ICEC', 'International Committee for Ethics in Conservation', {'s': ['diva2:2021861']}],
     ['ICOM', 'International Council of Museums', {'s': ['diva2:2021861']}],
@@ -9537,6 +9539,7 @@ well_known_acronyms_list=[
     ['KC-bruk', 'Kalk-Cement-bruk'],
     ['K-byrån', 'kulturhistorisk byrå'],
     ['JAIC', 'Journal of the American Institute for Conservation'],
+    ['DIGARV', 'Digitalisering och tillgängliggörande av kulturarvssamlingar'],
 
     ['Abb.', 'Abbildung'], # German for illustration
     ['Abb', 'Abbildung'], # German for illustration
@@ -9560,6 +9563,10 @@ well_known_acronyms_list=[
     ['GCI', 'Getty Conservation Institute'],
     ['R.', 'Renovatum'],
     ['F. S.', 'Fac-Simile'],
+    ['ECCCH', 'European Collaborative Cloud for Cultural Heritage'],
+    ['ECHOES', 'European Cloud for Heritage OpEn Science'],
+    ['E.C.C.O.', 'European Confederation of Conservator-Restorers Organisations'],
+
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
