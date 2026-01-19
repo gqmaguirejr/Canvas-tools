@@ -9457,7 +9457,9 @@ well_known_acronyms_list=[
     ['CEPLIS', 'European Council of the Liberal Professions', {'s': ['diva2:2021861']}],
     ['CIAM', "Congrès Internationaux d'Architecture Moderne", {'s': ['diva2:2021861']}],
     ['C.R.I.A.', 'American Committee to Rescue Italian Art', {'s': ['diva2:2021861']}],
+    ['CRIA.', 'American Committee to Rescue Italian Art', {'s': ['diva2:2021861']}],
     ['E.C.C.O.', "European Confederation of Conservator-restorers' Organisations", {'s': ['diva2:2021861']}],
+    ['ECCO', "European Confederation of Conservator-restorers' Organisations", {'s': ['diva2:2021861']}],
     ['ENCoRE', 'Conservation-Restoration education and the development of the profession', {'s': ['diva2:2021861']}],
     ['ENCoRE', 'European Network for Conservation-Restoration Education', {'ger': 'Europäisches Netzwerk für Ausbildung in Konservierung-Restaurierung'}],
 
@@ -9490,6 +9492,7 @@ well_known_acronyms_list=[
     ['AIC', 'American Institute for Conservation'],
     ['AMU', 'Arbetsmarknadsutbildning'],
     ['BNF', 'Bibliothèque Nationale de France'],
+    ['BnF', 'Bibliothèque nationale de France'],
     ['k:a', 'kyrka'],
     ['vd', 'Verkställande Direktör'],
     ['nr', 'No. (Number / Nummer)'],
@@ -9564,9 +9567,11 @@ well_known_acronyms_list=[
     ['R.', 'Renovatum'],
     ['F. S.', 'Fac-Simile'],
     ['ECCCH', 'European Collaborative Cloud for Cultural Heritage'],
+    ['Eccch', 'European Collaborative Cloud for Cultural Heritage'],
     ['ECHOES', 'European Cloud for Heritage OpEn Science'],
     ['E.C.C.O.', 'European Confederation of Conservator-Restorers Organisations'],
-
+    ['DAHJ', 'International Journal for Digital Art History'],
+    ['CETS', 'Council of Europe Treaty Series'],
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
