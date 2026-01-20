@@ -9457,6 +9457,7 @@ well_known_acronyms_list=[
     ['CEPLIS', 'European Council of the Liberal Professions', {'s': ['diva2:2021861']}],
     ['CIAM', "Congrès Internationaux d'Architecture Moderne", {'s': ['diva2:2021861']}],
     ['C.R.I.A.', 'American Committee to Rescue Italian Art', {'s': ['diva2:2021861']}],
+    ['CRIA', 'American Committee to Rescue Italian Art', {'s': ['diva2:2021861']}],
     ['CRIA.', 'American Committee to Rescue Italian Art', {'s': ['diva2:2021861']}],
     ['E.C.C.O.', "European Confederation of Conservator-restorers' Organisations", {'s': ['diva2:2021861']}],
     ['ECCO', "European Confederation of Conservator-restorers' Organisations", {'s': ['diva2:2021861']}],
@@ -9464,6 +9465,7 @@ well_known_acronyms_list=[
     ['ENCoRE', 'European Network for Conservation-Restoration Education', {'ger': 'Europäisches Netzwerk für Ausbildung in Konservierung-Restaurierung'}],
 
     ['ICCROM', 'International Center for the Study of the Preservation and Restoration of Cultural Property', {'s': ['diva2:2021861']}],
+    ['ICROM', 'International Centre for the Study of the Preservation and Restoration of Cultural Property', {'n': 'now known as ICCROM'}],
     ['ICEC', 'International Committee for Ethics in Conservation', {'s': ['diva2:2021861']}],
     ['ICOM', 'International Council of Museums', {'s': ['diva2:2021861']}],
     ['ICOM-CC', 'International Council of Museums – Committee for Conservation', {'s': ['diva2:2021861']}],
@@ -9572,6 +9574,12 @@ well_known_acronyms_list=[
     ['E.C.C.O.', 'European Confederation of Conservator-Restorers Organisations'],
     ['DAHJ', 'International Journal for Digital Art History'],
     ['CETS', 'Council of Europe Treaty Series'],
+    ['vsw.', 'und so weiter'],
+    ['vsw', 'und so weiter'],
+    ['K. K.', 'Kaiserlich und Königlich'],
+    ['Akad', 'Kungl. Akademien för de fria konsterna'],
+    ['AHS', 'authorized heritage discourse'],
+
 
     ['ÖIÄ', 'Överintendentsämbetet'],
     ['EITA', 'Encyclopaedia of Indian Temple Architecture'], # From the Getty AAT
@@ -9595,8 +9603,6 @@ well_known_acronyms_list=[
     
 
 ]
-
-
 
 less_well_known_acronyms_list=[
     ['-verse', 'universe', {'swe': '-versum'}],
