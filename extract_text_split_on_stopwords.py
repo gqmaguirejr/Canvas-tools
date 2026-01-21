@@ -11185,6 +11185,15 @@ def remove_known_words(output_lines):
 
     return remove_list
 
+# We escape names to handle special characters and sort by length (longest first)
+sorted_names = sorted(common_english.proper_names, key=len, reverse=True)
+# The pattern: (Name1|Name2|Name3)(followed by space OR end of string)
+proper_name_pattern_string = r'^(?:' + '|'.join(map(re.escape, sorted_names)) + r')(?=\s|$)'
+
+def remove_proper_names(w):
+    # re.sub with a count of 1 ensures we only strip from the start, 
+    return re.sub(proper_name_pattern_string, "", w, count=1).lstrip()
+
 
 def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, iteration_step):
     new_unique_terms=[]
@@ -11220,7 +11229,11 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         # if w.startswith('SSE'):
         #     print(f"processing {w}")
 
-        if w in sorted(common_english.proper_names, key=len, reverse=True):
+        # if w in sorted(common_english.proper_names, key=len, reverse=True):
+        #     continue
+
+        w=remove_proper_names(w)
+        if len(w) == 0:
             continue
 
         # remove Swedish possessive names 
