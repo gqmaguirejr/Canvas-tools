@@ -192,6 +192,8 @@ def get_subject_area(pdf_path):
             
             for (x0, y0, x1, y1, block_text, block_no, block_type) in blocks:
                 
+                if options.verbose:
+                    print(f"GQM: {block_text=}, {block_no=}, {block_type=}")
                 # Normalize the block text: replace newlines with spaces and strip
                 # Example: "Doctoral Thesis in Mathematics Existence, uniqueness, and regularity theory for local and nonlocal problems"
                 text_to_search = block_text.replace('\n', ' ').strip()
@@ -201,6 +203,8 @@ def get_subject_area(pdf_path):
                     # 1. Clean the text to remove "Doctoral Thesis in " boilerplate
                     # subject_raw: "Mathematics Existence, uniqueness, and regularity theory for local and nonlocal problems"
                     subject_raw = thesis_title_pattern.split(text_to_search)[-1].strip()
+                    if options.verbose:
+                        print(f"{subject_raw=}")
                     
                     if subject_raw:
                         # 2. Check the cleaned raw text against the list of known subjects
@@ -212,7 +216,7 @@ def get_subject_area(pdf_path):
                             # The check is case-insensitive.
                             match_pattern = re.compile(re.escape(valid_subject) + r'(\s|$)', re.IGNORECASE)
                             
-                            if match_pattern.match(subject_raw):
+                            if match_pattern.search(subject_raw):
                                 # Found a match! Return the correctly capitalized/formatted version from the list.
                                 return valid_subject
         
@@ -608,6 +612,9 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_english, 'common_units'),
             (common_english, 'chemical_elements_symbols'),
             (common_english, 'chemical_elements'),
+            (common_english, 'chemical_names_and_formulas'),
+            (common_english, 'company_and_product_names'),
+            (common_english, 'common_programming_languages'),
         ]
     
         for module, attr in sources:
@@ -658,6 +665,7 @@ def get_cefr_level(phrase):
     """
     global options
     global name_category_dict
+    global exact_name_category_dict
     
     if common_english is None:
         return ""
@@ -665,6 +673,10 @@ def get_cefr_level(phrase):
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
+    p_name=cefr_from_exact_match(phrase, exact_name_category_dict)
+    if p_name:
+        return p_name
+
     p_name=check_proper_name(phrase, name_category_dict)
     if p_name:
         return p_name
@@ -675,6 +687,7 @@ def get_cefr_level(phrase):
         'top_100_English_words',
         'thousand_most_common_words_in_English',
         'chemical_elements_symbols',
+        'chemical_names_and_formulas',
         'chemical_elements',
         'KTH_ordbok_English_with_CEFR',
         'common_units',
@@ -711,7 +724,7 @@ def get_cefr_level(phrase):
                 if len(key) >= 2 and key[:2] in valid_levels:
                     return key
                     
-    if options.swedish:
+    if options.swedish or True:
         # List of dictionaries to check in the module
         dicts_to_check = [
             'common_swedish_words',
@@ -1059,11 +1072,24 @@ def check_proper_name(phrase, category_dict):
 
     return None
 
+def cefr_from_exact_match(phrase, category_dict):
+    if not phrase:
+        return None
+
+    # Step 1: Global Exact Match
+    # Check all categories for the phrase exactly as it is.
+    for category, names_set in category_dict.items():
+        if phrase in names_set:
+            return f"B2 (Proper Name: {category})"
+
+    return None
+
 def main():
     global Verbose_Flag
     global options
     global STANDARDIZED_TERMS
     global name_category_dict
+    global exact_name_category_dict
 
     parser = optparse.OptionParser()
     parser.add_option('-v', '--verbose',
@@ -1114,6 +1140,14 @@ def main():
         'swedish_place_names': set(common_swedish.swedish_place_names),
         'swedish_names_for_foreign_places': set(common_swedish.swedish_names_for_foreign_places)
     }
+
+    exact_name_category_dict = {
+        'company_and_product_names': set(common_english.company_and_product_names),
+        'common_programming_languages': set(common_english.common_programming_languages),
+        'mathematical_words_to_ignore': set(common_english.mathematical_words_to_ignore),
+        'common_units': set(common_english.common_units),
+    }
+
 
     print("\nExtracting text...")
     pages = extract_text_from_pdf(pdf_path)
