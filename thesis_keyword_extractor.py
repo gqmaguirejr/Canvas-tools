@@ -338,6 +338,9 @@ def clean_text_structural(text):
     for search, replace in ligature_table.items():
         text = text.replace(search, replace)
 
+    # Expand common abbreviations (titles, months) using abbreviations_map
+    text=replace_abbreviations(text)
+
     # 5. Fix hyphenation at line endings (e.g., "Sen- \n sing" -> "Sensing")
     # \w matches Unicode word characters (letters, numbers, underscore)
     text = re.sub(r'(\w+)-\s+(\w+)', r'\1\2', text)
@@ -1083,6 +1086,91 @@ def cefr_from_exact_match(phrase, category_dict):
             return f"B2 (Proper Name: {category})"
 
     return None
+
+abbreviations_map = {
+    '⎧⎨⎩': '{', # a large left curly brace
+    'i.e.': 'id est',
+    'e.g.': 'for example',
+    'et al.': 'et alii', # 'and others'
+    'etc.': 'et cetera',
+    'vs.': 'versus',
+    'Dr.': 'Doctor',
+    'Prof.': 'Professor',
+    'prof.': 'professor',
+    'Asst.': 'assistant',
+    'Assoc.': 'asso0ciate',
+    'Mr.': 'Mister',
+    'Mrs.': 'Missus',
+    'Ms.': 'Miss',
+    'U.S.': 'United States',
+    'U.K.': 'United Kingdom',
+    'Inc.': 'Incorporated',
+    'Ltd.': 'Limited',
+    'M.Sc.': 'Master of Science', # Must come before M.S.
+    'M.S.': 'Master of Science',
+
+    # abbreviations for months
+    'Jan.': 'January',
+    'Feb.': 'February',
+    'Mar.': 'March',
+    'Apr.': 'April',
+    # May
+    'Jun.': 'June',
+    'Jul.': 'July',
+    'Aug.': 'August',
+    'Sep.': 'September',
+    'Sept.': 'September',
+    'Oct.': 'October',
+    'Nov.': 'November',
+    'Dec.': 'December',
+
+    # Add the rest of your month/other abbreviations here
+}
+
+def replace_abbreviations(text):
+    """
+    Replaces abbreviations in a string with their full-text equivalents.
+    """
+    if not text:
+        return text
+
+    # Sort keys by length (descending) to replace longer matches first
+    sorted_keys = sorted(abbreviations_map.keys(), key=len, reverse=True)
+
+    for abbr in sorted_keys:
+        escaped_abbr = re.escape(abbr)
+        
+        # Start with a word boundary to prevent matching "see.g."
+        start_boundary = r'\b'
+        
+        # --- THE FIX ---
+        # Only add a word boundary at the end if the abbreviation
+        # itself ends with a word character (a-z, 0-9, _).
+        if abbr[-1].isalnum():
+             end_boundary = r'\b'
+        else:
+             # If it ends with '.', don't add a boundary, as the '.'
+             # already acts as the boundary.
+             end_boundary = r''
+        # --- END FIX ---
+
+        # Build the final pattern
+        pattern = start_boundary + escaped_abbr + end_boundary
+        
+        # Use a lambda function to handle case-insensitivity in the replacement
+        # This makes sure "E.G." is replaced with "FOR EXAMPLE"
+        def get_replacement(match):
+            replacement = abbreviations_map[abbr]
+            if match.group(0).isupper():
+                return replacement.upper()
+            elif match.group(0).istitle():
+                return replacement.title()
+            else:
+                return replacement
+
+        text = re.sub(pattern, get_replacement, text, flags=re.IGNORECASE)
+        
+    return text
 
 def main():
     global Verbose_Flag
