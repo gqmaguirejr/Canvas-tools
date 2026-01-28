@@ -478,7 +478,7 @@ def replace_abbreviations(text):
 def remove_suffixes(wl):
     # Sort suffixes by length (longest first) to fix the bug.
     # This ensures '<=' is checked before '='.
-    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '{', '*/', '&', '*', '…', '\u2019', "‚"], key=len, reverse=True) #
+    suffixes = sorted(['-', '–', '>', '≤', '=', '<=', '*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '{', '*/', '&', '*', '…', '\u2019', "‚", '»'], key=len, reverse=True) #
     
     new_wl = []
     
@@ -503,7 +503,7 @@ def remove_suffixes(wl):
 def remove_prefixes(wl):
     # Sort prefixes by length (longest first) to fix the bug.
     # This ensures '††' is checked before '†'
-    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮', '·', '∈', '∥', '©', '\u2019', '●', '±', '~', "‘", '®'], key=len, reverse=True) # 
+    prefixes = sorted(['*', '**', '†', '††', '‡', '‡‡', '§', '§§', '¶', '¶¶', '∥', '∥∥', '&', '- ', '/*', '//', '<', '>','⋆', '\uf091', '\uf09b', '—', '−', '–', '-', 'x', '&', '∝', '≥', '/', '=', '->', '∼', '▷', '…', '……', '✓', '', '⋮', '·', '∈', '∥', '©', '\u2019', '●', '±', '~', "‘", '®', '«'], key=len, reverse=True) # 
     
     new_wl = []
     
@@ -1093,7 +1093,7 @@ def extract_text_from_pdf(pdf_path):
                     continue
                 
                 # special case for thesis with miss numbered page 1
-                if options.Qcase and pageno < 13:
+                if options.Qcase and pageno < 20:
                     continue
                 
 
@@ -1628,6 +1628,9 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_english.common_turkish_words:
+            remove_list.append(w)
+            continue
 
         if w in common_english.common_french_words:
             remove_list.append(w)
@@ -1738,9 +1741,9 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
-        # if w in common_english.company_and_product_names:
-        #     remove_list.append(w)
-        #     continue
+        if w in common_english.company_and_product_names:
+            remove_list.append(w)
+            continue
 
         if w.lower() in common_english.common_programming_languages:
             remove_list.append(w)
@@ -2412,6 +2415,9 @@ def main():
         grand_union.add(w)
 
     for w in common_english.common_japanese_words:
+        grand_union.add(w)
+
+    for w in common_english.common_turkish_words:
         grand_union.add(w)
 
     for w in common_english.amino_acids:

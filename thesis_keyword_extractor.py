@@ -612,6 +612,7 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_english, 'common_portuguese_words'),
             (common_english, 'common_russian_words'),
             (common_english, 'common_spanish_words'),
+            (common_english, 'common_turkish_words'),
             (common_english, 'common_units'),
             (common_english, 'chemical_elements_symbols'),
             (common_english, 'chemical_elements'),
