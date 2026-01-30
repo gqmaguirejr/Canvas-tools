@@ -1093,7 +1093,7 @@ def extract_text_from_pdf(pdf_path):
                     continue
                 
                 # special case for thesis with miss numbered page 1
-                if options.Qcase and pageno < 20:
+                if options.Qcase and pageno < 18:
                     continue
                 
 
@@ -2355,6 +2355,12 @@ def main():
 
     for w in common_english.common_English_words:
         grand_union.add(w)
+
+    # to catch words with a hyphen that has been elided
+    for w in common_english.common_English_words:
+        if '-' in w:
+            we = w.replace('-', '')
+            grand_union.add(we)
 
     for w in common_english.chemical_elements_symbols:
         grand_union.add(w)
