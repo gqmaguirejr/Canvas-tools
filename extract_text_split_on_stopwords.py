@@ -1093,7 +1093,7 @@ def extract_text_from_pdf(pdf_path):
                     continue
                 
                 # special case for thesis with miss numbered page 1
-                if options.Qcase and pageno < 18:
+                if options.Qcase and pageno < 16:
                     continue
                 
 
