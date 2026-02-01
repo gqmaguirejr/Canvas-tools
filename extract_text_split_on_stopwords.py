@@ -1378,6 +1378,10 @@ def remove_known_words(output_lines):
         if w.startswith('Figure ') or w.startswith('Table '):
             remove_list.append(w)
 
+        # remove ordinals
+        if w in common_english.ordinals_list:
+            remove_list.append(w)
+
         # remove proper names
         for pn in sorted(common_english.proper_names, key=len, reverse=True):
             if w.startswith(pn):
@@ -2361,6 +2365,9 @@ def main():
         if '-' in w:
             we = w.replace('-', '')
             grand_union.add(we)
+
+    for w in common_english.ordinals_list:
+        grand_union.add(w)
 
     for w in common_english.chemical_elements_symbols:
         grand_union.add(w)
