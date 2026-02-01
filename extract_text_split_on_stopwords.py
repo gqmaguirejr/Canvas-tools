@@ -2702,8 +2702,8 @@ def main():
         if w not in grand_union:
             print(f"{w} not in grand_union")
 
-    if 'vegvesen' in grand_union:
-        print(f"'vegvesen' in grand_union")
+    if 'alii' in grand_union:
+        print(f"'alii' in grand_union")
 
 if __name__ == "__main__":
     main()

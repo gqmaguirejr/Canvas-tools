@@ -730,11 +730,6 @@ def get_cefr_level(phrase):
         'KTH_ordbok_English_with_CEFR',
         'common_units',
         'AVL_words_with_CEFR',
-        'common_french_words',
-        'common_italian_words',
-        'common_german_words',
-        'common_greek_words',
-        'common_latin_words',
     ]
 
     for dict_name in dicts_to_check:
@@ -743,7 +738,7 @@ def get_cefr_level(phrase):
         # Check if attribute is a dictionary
         if not isinstance(vocab, dict):
             continue
-        
+
         # Check 1: Try exact match (e.g. "Brownian motion")
         entry = vocab.get(phrase)
         if entry and isinstance(entry, dict):
@@ -762,14 +757,57 @@ def get_cefr_level(phrase):
                 if len(key) >= 2 and key[:2] in valid_levels:
                     return key
                     
+    dicts_to_check = {
+        'common_dutch_words': common_dutch,
+        'common_estonian_words': common_estonian,
+        'common_french_words': common_french,
+        'common_finnish_words': common_finnish,
+        'common_german_words': common_german,
+        'common_greek_words': common_greek,
+        'common_icelandic_words': common_icelandic,
+        'common_italian_words': common_italian,
+        'common_japanese_words': common_japanese,
+        'common_latin_words': common_latin,
+        'common_portuguese_words': common_portuguese,
+        'common_russian_words': common_russian,
+        'common_spanish_words': common_spanish,
+        'common_turkish_words': common_turkish,
+        'common_danish_words': common_danish,
+        'common_norwegian_words': common_norwegian,
+    }
+
+    for dict_name in dicts_to_check:
+        vocab = getattr(dicts_to_check[dict_name], dict_name, {})
+        
+        # Check if attribute is a dictionary
+        if not isinstance(vocab, dict):
+            continue
+
+        # Check 1: Try exact match (e.g. "Brownian motion")
+        entry = vocab.get(phrase)
+        if entry and isinstance(entry, dict):
+            for key in entry:
+                # Use slicing [:2] to match 'C1' from 'C1 (Specialized)'
+                if len(key) >= 2 and key[:2] in valid_levels:
+                    return key
+
+        # Check 2: Try lowercase match (e.g. "construction")
+        entry = vocab.get(phrase_lower)
+        if entry and isinstance(entry, dict):
+            # Find key that looks like a CEFR level (A1-C2)
+            for key in entry:
+                # Use slicing [:2] to match 'C1' from 'C1 (Specialized)'
+                # This ensures we match 'C1' against the set valid_levels
+                if len(key) >= 2 and key[:2] in valid_levels:
+                    return key
+
+
     if options.swedish or True:
         # List of dictionaries to check in the module
         dicts_to_check = [
             'common_swedish_words',
             'common_swedish_technical_words',
             'KTH_ordbok_Swedish_with_CEFR',
-            'common_danish_words',
-            'common_norwegian_words',
         ]
 
 
@@ -797,6 +835,7 @@ def get_cefr_level(phrase):
                     # This ensures we match 'C1' against the set valid_levels
                     if len(key) >= 2 and key[:2] in valid_levels:
                         return key
+
     # Check Acronyms (Exact match including case + plurals)
     acronyms_list = getattr(common_acronyms, 'well_known_acronyms_list', [])
     if isinstance(acronyms_list, list):
@@ -1322,9 +1361,13 @@ def main():
         print("Failed to process the PDF.")
 
 
+    print(f"'alii' has CEFR level: {get_cefr_level('alii')}")
+
+
     # do the processing of the subject area dicts
     already_loaded=[]
     full_dicts=dict()
+
     if potential_subject == "Unknown":
         return                  # return as there is nothing more that can be done
 

@@ -11691,6 +11691,46 @@ well_known_acronyms_list=[
     ['Quasidistrib', 'Quasi-distributed'],
     ['Freq', 'Frequency'],
     ['Multi-freq', 'Multi-frequency'],
+
+
+    ['DNN', 'Deep neural network', {'s': ['diva2:2001096']}],
+    ['FGXS', 'Few-group cross-sections', {'s': ['diva2:2001096']}],
+    ['MAE', 'Mean absolute error', {'s': ['diva2:2001096']}],
+    ['MARE', 'Mean absolute relative error', {'s': ['diva2:2001096']}],
+    ['MC', 'Monte Carlo', {'s': ['diva2:2001096']}],
+    ['MGXS', 'Multi-group cross-sections', {'s': ['diva2:2001096']}],
+    ['ML', ' Machine learning', {'s': ['diva2:2001096']}],
+    ['MSE', 'Mean square error', {'s': ['diva2:2001096']}],
+    ['PCA', 'Principal Component Analysis', {'s': ['diva2:2001096']}],
+    ['PWR', 'Pressurized water reactor', {'s': ['diva2:2001096']}],
+    ['RNN', 'Recurrent neural network', {'s': ['diva2:2001096']}],
+
+    ['ANOVA', 'analysis of variance ', {'s': ['diva2:2001096']}],
+    ['BFGS', 'Broyden-FletcherGoldfarb-Shanno', {'s': ['diva2:2001096']}],
+    ['BP', 'backpropagation', {'s': ['diva2:2001096']}],
+    ['EOF', 'empirical orthogonal functions', {'s': ['diva2:2001096']}],
+    ['KLT', 'Karhunen-Loève transform', {'s': ['diva2:2001096']}],
+    ['LWRs', 'light water reactors', {'s': ['diva2:2001096']}],
+    ['MAEi', 'mean absolute error', {'s': ['diva2:2001096']}], # The "i" is a subscript in the thesis
+    ['MOX', 'mixed oxide', {'s': ['diva2:2001096']}],
+    ['NLL', 'negative log-likelihood', {'s': ['diva2:2001096']}],
+    ['POD', 'proper orthogonal decomposition', {'s': ['diva2:2001096']}],
+    ['SGD', 'stochastic gradient descent', {'s': ['diva2:2001096']}],
+    ['SVD', 'Singular Value Decomposition', {'s': ['diva2:2001096']}],
+    ['WNMT', 'Wilcoxon, Nemenyi, McDonald-Thompson', {'s': ['diva2:2001096']}],
+    ['p-NN', 'Parametric Deep Neural Networks', {'s': ['diva2:2001096']}],
+    ['p-PR', 'Parametric Polynomial Regression', {'s': ['diva2:2001096']}],
+    ['tp-NN', 'transformed parameterized neural network', {'s': ['diva2:2001096']}],
+    ['tp-PR', 'transformed parameterized Polynomial Regression', {'s': ['diva2:2001096']}],
+    ['SKC', 'Svenskt Kärntekniskt Centrum', {'s': ['diva2:2001096'], 'eng': 'Swedish Centre for Nuclear Technology'}],
+    ['MAREN', 'MAchine Learning-based REpresentation Model for NEWT Cross-Section Libraries', {'s': ['diva2:2001096']}],
+    ['BEAVRS', 'Benchmark for evaluation and validation of reactor simulations', {'s': ['diva2:2001096']}],
+    ['r-RMSE', 'relative Root Mean Square Error', {'s': ['diva2:2001096']}],
+    ['SCALE', 'Standardized Computer Analyses for Licensing Evaluation', {'s': ['diva2:2001096'], 'n': 'used but not defined in thesis'}],
+    ['PWR/BWR', 'Pressurized Water Reactor/Boiling Water Reactor', {'s': ['diva2:2001096']}],
+
+    ['Eqn', 'Equation'],
+    ['Eqns', 'Equations'],
     #GQMa
 
 
