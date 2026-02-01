@@ -43,12 +43,46 @@ try:
     import common_swedish
     import common_acronyms
     import AVL_words_with_CEFR
+    import common_danish
+    import common_dutch
+    import common_estonian
+    import common_finnish
+    import common_french
+    import common_german
+    import common_greek
+    import common_icelandic
+    import common_italian
+    import common_japanese
+    import common_latin
+    import common_norwegian
+    import common_portuguese
+    import common_russian
+    import common_spanish
+    import common_turkish
+
 except ImportError:
     # Fallback to prevent crash if running elsewhere
     common_english = None
     common_swedish = None
     common_acronyms = None
     AVL_words_with_CEFR = None
+    common_danish = None
+    common_dutch = None
+    common_estonian = None
+    common_finnish = None
+    common_french = None
+    common_german = None
+    common_greek = None
+    common_icelandic = None
+    common_italian = None
+    common_japanese = None
+    common_latin = None
+    common_norwegian = None
+    common_portuguese = None
+    common_russian = None
+    common_spanish = None
+    common_turkish = None
+
 
 # Ensure necessary NLTK data is downloaded
 try:
@@ -598,21 +632,21 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_english, 'thousand_most_common_words_in_English'),
             (common_swedish, 'common_swedish_words'),
             (common_english, 'common_french_words'),
-            (common_english, 'common_danish_words'),
-            (common_english, 'common_dutch_words'),
-            (common_english, 'common_estonian_words'),
-            (common_english, 'common_finnish_words'),
-            (common_english, 'common_german_words'),
-            (common_english, 'common_greek_words'),
-            (common_english, 'common_icelandic_words'),
-            (common_english, 'common_italian_words'),
-            (common_english, 'common_japanese_words'),
-            (common_english, 'common_latin_words'),
-            (common_english, 'common_norwegian_words'),
-            (common_english, 'common_portuguese_words'),
-            (common_english, 'common_russian_words'),
-            (common_english, 'common_spanish_words'),
-            (common_english, 'common_turkish_words'),
+            (common_danish, 'common_danish_words'),
+            (common_dutch, 'common_dutch_words'),
+            (common_estonian, 'common_estonian_words'),
+            (common_finnish, 'common_finnish_words'),
+            (common_german, 'common_german_words'),
+            (common_greek, 'common_greek_words'),
+            (common_icelandic, 'common_icelandic_words'),
+            (common_italian, 'common_italian_words'),
+            (common_japanese, 'common_japanese_words'),
+            (common_latin, 'common_latin_words'),
+            (common_norwegian, 'common_norwegian_words'),
+            (common_portuguese, 'common_portuguese_words'),
+            (common_russian, 'common_russian_words'),
+            (common_spanish, 'common_spanish_words'),
+            (common_turkish, 'common_turkish_words'),
             (common_english, 'common_units'),
             (common_english, 'chemical_elements_symbols'),
             (common_english, 'chemical_elements'),

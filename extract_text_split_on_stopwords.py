@@ -37,7 +37,23 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 import common_english
 import common_swedish
 import common_acronyms
-import common_swedish
+import common_danish
+import common_dutch
+import common_estonian
+import common_finnish
+import common_french
+import common_german
+import common_greek
+import common_icelandic
+import common_italian
+import common_japanese
+import common_latin
+import common_norwegian
+import common_portuguese
+import common_russian
+import common_spanish
+import common_turkish
+
 import AVL_words_with_CEFR
 import ACM_CCS
 import IEEE_thesaurus
@@ -1588,15 +1604,15 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
         
-        if w in common_english.common_latin_words:
+        if w in common_latin.common_latin_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_german_words:
+        if w in common_german.common_german_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_greek_words:
+        if w in common_greek.common_greek_words:
             remove_list.append(w)
             continue
 
@@ -1616,55 +1632,55 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
-        if w in common_english.common_norwegian_words:
+        if w in common_norwegian.common_norwegian_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_portuguese_words:
+        if w in common_portuguese.common_portuguese_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_russian_words:
+        if w in common_russian.common_russian_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_spanish_words:
+        if w in common_spanish.common_spanish_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_turkish_words:
+        if w in common_turkish.common_turkish_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_french_words:
+        if w in common_french.common_french_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_danish_words:
+        if w in common_danish.common_danish_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_dutch_words:
+        if w in common_dutch.common_dutch_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_estonian_words:
+        if w in common_estonian.common_estonian_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_finnish_words:
+        if w in common_finnish.common_finnish_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_icelandic_words:
+        if w in common_icelandic.common_icelandic_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_italian_words:
+        if w in common_italian.common_italian_words:
             remove_list.append(w)
             continue
 
-        if w in common_english.common_japanese_words:
+        if w in common_japanese.common_japanese_words:
             remove_list.append(w)
             continue
 
@@ -1769,7 +1785,7 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
         
-        if w.lower() in common_english.common_latin_words:
+        if w.lower() in common_latin.common_latin_words:
             remove_list.append(w)
             continue
 
@@ -2387,50 +2403,50 @@ def main():
     for w in common_english.KTH_ordbok_English_with_CEFR:
         grand_union.add(w)
 
-    for w in common_english.common_norwegian_words:
+    for w in common_norwegian.common_norwegian_words:
         grand_union.add(w)
 
-    for w in common_english.common_portuguese_words:
+    for w in common_portuguese.common_portuguese_words:
         grand_union.add(w)
 
-    for w in common_english.common_russian_words:
+    for w in common_russian.common_russian_words:
         grand_union.add(w)
 
 
-    for w in common_english.common_spanish_words:
+    for w in common_spanish.common_spanish_words:
         grand_union.add(w)
 
-    for w in common_english.common_french_words:
+    for w in common_french.common_french_words:
         grand_union.add(w)
 
-    for w in common_english.common_danish_words:
+    for w in common_danish.common_danish_words:
         grand_union.add(w)
 
-    for w in common_english.common_dutch_words:
+    for w in common_dutch.common_dutch_words:
         grand_union.add(w)
 
-    for w in common_english.common_estonian_words:
+    for w in common_estonian.common_estonian_words:
         grand_union.add(w)
 
-    for w in common_english.common_finnish_words:
+    for w in common_finnish.common_finnish_words:
         grand_union.add(w)
 
-    for w in common_english.common_german_words:
+    for w in common_german.common_german_words:
         grand_union.add(w)
 
-    for w in common_english.common_greek_words:
+    for w in common_greek.common_greek_words:
         grand_union.add(w)
 
-    for w in common_english.common_icelandic_words:
+    for w in common_icelandic.common_icelandic_words:
         grand_union.add(w)
 
-    for w in common_english.common_italian_words:
+    for w in common_italian.common_italian_words:
         grand_union.add(w)
 
-    for w in common_english.common_japanese_words:
+    for w in common_japanese.common_japanese_words:
         grand_union.add(w)
 
-    for w in common_english.common_turkish_words:
+    for w in common_turkish.common_turkish_words:
         grand_union.add(w)
 
     for w in common_english.amino_acids:
@@ -2496,7 +2512,7 @@ def main():
     for w in common_english.miss_spelled_words:
         grand_union.add(w)
         
-    for w in common_english.common_latin_words:
+    for w in common_latin.common_latin_words:
         grand_union.add(w)
 
     for w in acronym_filter_set:
