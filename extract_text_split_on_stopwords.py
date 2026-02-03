@@ -1982,6 +1982,8 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
             # prune known words from the front
             new_term=''
             for idx, ww in enumerate(ws):
+                if ww == '&':
+                    continue
                 # remove Swedish possessive names 
                 if options.swedish and ww.endswith("s") and ww[:-1] in common_english.names_of_persons:
                     continue
