@@ -1282,6 +1282,12 @@ common_german_words={
     "überwachenden": {"B2": "Adjective, Participle", 'n': "Supervising / Monitoring"},
     'eine': {'A1': 'Article, Number', 'n': 'A / An / One (Feminine)'},
     'geschehen': {'B2': 'Verb, Noun', 'n': 'To happen / Events'},
+    "Mittelstandsforschung": {"C1": "Noun", "n": "Research focused on small and medium-sized enterprises (SMEs), particularly the unique 'German SMEs' model"},
+    "bildung": {"B1": "Noun", "n": "Education or formation; the 'attain'-ment of 'skilled' status in the 'labour supply' through 'learning applications'"},
+    "forschung": {"B2": "Noun", "n": "Research; the systematic 'experimental tests' and 'empirical literature' used to 'inspect' 'technical development'"},
+    "mittelstand": {"B2": "Noun", "n": "The 'middle' sector of the economy, consisting of 'medium sized firms' that 'characterises' Germany's 'innovation capability'"},
+    "bundesministerium": {"B2": "Noun", "n": "A Federal Ministry in Germany; a 'top-level' 'organisational system' responsible for a specific 'sector-wide' policy area"},
+
 
 # GQMg
 }

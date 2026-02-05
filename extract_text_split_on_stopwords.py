@@ -15,6 +15,12 @@
 #
 # 2025-10-16
 #
+# Note(s):
+# We remove Zero Width Non-Joiner (ZWNJ) for each page.
+# Thus, if the a block of text contains any unicode character in an alphabet
+# for which the ZWNJ must be kept, it is kept for the whole block.
+# This is probably too conservative, but simple.
+#
 
 import sys
 import os
@@ -24,6 +30,7 @@ import faulthandler
 import re
 import pprint
 import json
+import unicodedata
 
 from collections import Counter
 from collections import defaultdict
@@ -178,6 +185,34 @@ WordsToFilterOutSet.update(ACM_CCS.ACM_categories)
 WordsToFilterOutSet.update(IEEE_thesaurus.IEEE_thesaurus_2023_broad_terms)
 
 
+def clean_zwnj(text):
+    global Verbose_Flag
+    # Unicode blocks/scripts where ZWNJ is essential:
+    # Persian/Arabic, Devanagari (Hindi), Bengali, Malayalam, etc.
+    essential_scripts = {'ARABIC', 'DEVANAGARI', 'BENGALI', 'MALAYALAM', 'KANNADA'}
+    
+    # 1. Immediate exit if ZWNJ (\u200c) is not present
+    if '\u200c' not in text:
+        return text
+
+    # 2. Character is present, now determine if we should keep it
+    keep_zwnj = False
+    for char in text:
+        try:
+            script = unicodedata.name(char).split()[0]
+            if script in essential_scripts:
+                keep_zwnj = True
+                break
+        except ValueError:
+            continue
+
+    if keep_zwnj:
+        # Keep ZWNJ (do nothing)
+        return text
+    else:
+        # Replace ZWNJ with nothing (U+200C)
+        return text.replace('\u200c', '')
+
 
 def is_integer(s):
     """
@@ -308,7 +343,7 @@ def is_TRITA_number(s):
     return False
 
 ligrature_table= {'\ufb00': 'ff', # 'ﬀ'
-                  '\ufb03': 'f‌f‌i', # 'ﬃ'
+                  '\ufb03': 'ffi', # 'ﬃ'
                   '\ufb04': 'ffl', # 'ﬄ'
                   '\ufb01': 'fi', # 'ﬁ'
                   '\ufb02': 'fl', # 'ﬂ'
@@ -797,7 +832,7 @@ def _is_page_number_label(s):
     return is_digit or is_roman
 
 
-def _analyze_pdf_layout(doc):
+def analyze_pdf_layout(doc):
     """
     First-pass analysis to find the document's structure.
     
@@ -982,13 +1017,16 @@ def extract_text_from_pdf(pdf_path):
         print(f"Successfully opened '{pdf_path}'...")
 
         # test the analysis procedure
-        layout = _analyze_pdf_layout(doc)
+        layout = analyze_pdf_layout(doc)
         
         full_text = ""
         # Extract text from all pages
         if False and Verbose_Flag:
             for page in doc:
-                full_text += page.get_text()
+                # we remove Zero Width Non-Joiner (ZWNJ) for each page
+                # If the page contains any unicode character in an alphabet for which the ZWNJ must be kept, it is kept for the whole page
+                # This is probably too conservative, but simple.
+                full_text += clean_zwnj(page.get_text())
             print(f"{full_text=}")
 
         full_text = ""
@@ -1043,7 +1081,7 @@ def extract_text_from_pdf(pdf_path):
                 # collect acronyms
                 if acronyms_found and current_header == 'Acronyms' and not first_page_found:
                     if y1 > header_bottom and not lines_in_the_block.lower() == 'list of acronyms and abbreviations\n':
-                        acronyms_text += lines_in_the_block
+                        acronyms_text += clean_zwnj(lines_in_the_block)
                         collect_acronyms_from_page(pageno, page)
                         break # go to the next page
 
@@ -1065,7 +1103,8 @@ def extract_text_from_pdf(pdf_path):
                 # if we are in the main matter and before the start of the references
                 # add a small amount to the header_bottom to skip text in the header
                 if y1 > (header_bottom + 1) and first_page_found and not references_found:
-                    full_text += lines_in_the_block
+                    # clean out ZWNJ chars (as needed)
+                    full_text += clean_zwnj(lines_in_the_block)
                     print(f"collecting text using method 1 from page {pageno}")
                 # else:
                 #     continue
@@ -1129,7 +1168,7 @@ def extract_text_from_pdf(pdf_path):
                         print(f"{x0=}, {y0=}, {x1=}, {y1=}, {lines_in_the_block=}, {block_no=}, {block_type=}")
 
                     if y0 > int(maximum_y0) and y1 < int(maximum_y1) + 2:
-                        page_number_positions[pageno] = lines_in_the_block.replace('\n', '')
+                        page_number_positions[pageno] = clean_zwnj(lines_in_the_block.replace('\n', ''))
 
                     if not acronyms_on_this_page and (y0 < maximum_y0 or block_no==0 or block_no==1) and (lines_in_the_block.lower().find('list of acronyms and abbreviations') >= 0 or lines_in_the_block.find('Acronyms') >= 0 or lines_in_the_block.lower().find('list of abbreviations') >= 0 or lines_in_the_block.lower().find('abbreviations') >= 0):
                         acronyms_on_this_page=True
@@ -1200,16 +1239,16 @@ def extract_text_from_pdf(pdf_path):
                 # the acronyms page is just before the first page
                 if acronyms_page < list_of_X_page:
                     if acronyms_found and pageno >= acronyms_page and pageno < list_of_X_page and pageno < first_page:
-                        acronyms_text += lines_in_the_block
+                        acronyms_text += clean_zwnj(lines_in_the_block)
                         collect_acronyms_from_page(pageno, page)
                 else:
                     if acronyms_found and pageno >= acronyms_page and pageno < first_page:
                         prefix1='Acronyms'
                         prefix2='ACRONYMS'
                         if lines_in_the_block.startswith(prefix1) or lines_in_the_block.startswith(prefix2):
-                            acronyms_text += lines_in_the_block[len(prefix1):]
+                            acronyms_text += clean_zwnj(lines_in_the_block[len(prefix1):])
                         else:
-                            acronyms_text += lines_in_the_block
+                            acronyms_text += clean_zwnj(lines_in_the_block)
                         collect_acronyms_from_page(pageno, page)
 
                 if pageno >= first_page:
@@ -1229,7 +1268,8 @@ def extract_text_from_pdf(pdf_path):
 
                         # collect the contents of the page
                         print(f"collecting text using method 2 from page {pageno}")
-                        full_text += lines_in_the_block
+                        # clean ZWNJ characters out if needed
+                        full_text += clean_zwnj(lines_in_the_block)
 
         if Verbose_Flag:
             print(f"length of full_text is {len(full_text)}")
@@ -1240,6 +1280,9 @@ def extract_text_from_pdf(pdf_path):
         # combine to deal with hypehnation at the end of a line
         #full_text=full_text.replace('-\n', '')
         #print(f"****{full_text=}****")
+
+        # replace Zero Width Non-Joiner (ZWNJ) with nothing
+        #full_text=full_text.replace('\u2008', '')
 
         # replace Narrow No-Break Space (NNBSP) U+202F with a space
         full_text=full_text.replace('\u202f', ' ')
