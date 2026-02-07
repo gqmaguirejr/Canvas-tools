@@ -732,6 +732,9 @@ def get_cefr_level(phrase):
     phrase_lower = phrase.lower()
     valid_levels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}
     
+    if phrase in common_english.ordinals_list:
+        return f"B1 Number (ordinal)"
+
     p_name=cefr_from_exact_match(phrase, exact_name_category_dict)
     if p_name:
         return p_name

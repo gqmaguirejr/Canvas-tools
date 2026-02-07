@@ -224,6 +224,22 @@ def is_integer(s):
     except ValueError:
         return False
 
+def is_dollar_amount(s):
+    """
+    Returns True if the string s can be converted to an integer - after removing an initial dolar sign, False otherwise.
+    """
+    if s[0] != '$':
+        return False
+    if len(s) < 2:
+        return False
+    try:
+        int(s[1:])
+        return True
+    except ValueError:
+        return False
+
+
+
 hex_digits='0123456789abcdefABCDEF'
 
 def is_hex_number(string):
@@ -1148,7 +1164,7 @@ def extract_text_from_pdf(pdf_path):
                     continue
                 
                 # special case for thesis with miss numbered page 1
-                if options.Qcase and pageno < 16:
+                if options.Qcase and pageno < 24:
                     continue
                 
 
@@ -1963,6 +1979,12 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if is_hex_number(w):
             continue
         
+        if is_dollar_amount(w):
+            continue
+        
+        if is_percentage(w):
+            continue
+
         if is_ISO_date(w):
             continue
         
@@ -2079,6 +2101,10 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
                 if is_integer(ww):
                     continue
                 if is_hex_number(ww):
+                    continue
+                if is_dollar_amount(ww):
+                    continue
+                if is_percentage(ww):
                     continue
                 if is_ISO_date(ww):
                     continue

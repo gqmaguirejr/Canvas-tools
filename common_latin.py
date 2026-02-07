@@ -33,6 +33,7 @@
 # 
 
 common_latin_words={
+    "Aves": {"B2": "Noun", "n": "The class of vertebrate animals that 'characterises' birds; they 'unify' features like feathers, toothless beaked jaws, and the laying of hard-shelled eggs"},
     "mays": {"C1": "Specific Epithet", "n": "The species name in the binomial 'Zea mays'; derived from an indigenous word for 'life-giver' or 'maize'"},
     "Zea": {"C1": "Genus", "n": "A genus of flowering plants in the grass family (Poaceae), to which the 'crop' maize belongs"},
 
