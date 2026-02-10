@@ -13271,6 +13271,33 @@ well_known_acronyms_list=[
 
     ['Misc', 'Miscellaneous', {'s': ['diva2:1942899']}],
 
+    ['CW', 'Correlation width of the PSF', {'s': ['diva2:2024738']}],
+    ['D', 'Dioptres (=1/m)', {'s': ['diva2:2024738']}],
+    ['FWHM', 'Full width at half maximum', {'s': ['diva2:2024738']}],
+    ['HOA', 'Higher order aberration', {'s': ['diva2:2024738']}],
+    ['HSWS', 'Hartmann-Shack wavefront sensor', {'s': ['diva2:2024738']}],
+    ['KTH', 'KTH Royal Institute of Technology', {'s': ['diva2:2024738']}],
+    ['MTF', 'Modulation transfer function', {'s': ['diva2:2024738']}],
+    ['MTFa', 'Area under one-dimensional MTF', {'s': ['diva2:2024738']}],
+    ['Ortho-k', 'Orthokeratology', {'s': ['diva2:2024738']}],
+    ['PSF', 'Point spread function', {'s': ['diva2:2024738']}],
+    ['RMS', 'Root mean square', {'s': ['diva2:2024738']}],
+    ['RPR', 'Relative peripheral refraction', {'s': ['diva2:2024738']}],
+    ['SER', 'Spherical equivalent refraction', {'s': ['diva2:2024738']}],
+    ['STR', 'Strehl ratio', {'s': ['diva2:2024738']}],
+    ['VA', ' Visual acuity', {'s': ['diva2:2024738']}],
+
+
+    ['AL', 'axial length', {'s': ['diva2:2024738']}],
+    ['DIMS', 'Defocus incorporated multiple segments', {'s': ['diva2:2024738']}],
+    ['HM', 'hot mirror', {'s': ['diva2:2024738']}],
+    ['IOVS', 'Investigative Ophthalmology & Visual Science', {'s': ['diva2:2024738']}],
+    ['JAMA', 'Journal of the American Medical Association', {'s': ['diva2:2024738']}],
+    ['JOSAA', 'Journal of the Optical Society of America A', {'s': ['diva2:2024738']}],
+    ['RMS HOA', 'RMS only from the higher order aberrations', {'s': ['diva2:2024738']}],
+    ['SVL', 'single vision lens', {'s': ['diva2:2024738']}],
+    ['boe', 'Biomedical Optics Express', {'s': ['diva2:2024738']}],
+
    #GQMa
 ]
 
