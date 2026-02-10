@@ -717,5 +717,6 @@ common_french_words={
     "éternelles": {"B2": "Adjective (Plural)", 'n': "Eternal; in art theory, often used to describe the 'timeless' or 'universal' qualities of a masterpiece."},
     "études": {"A2": "Noun (Plural)", 'n': "Studies; can refer to academic research papers or preliminary sketches made by an artist before the final work"},
     "été": {"A1": "Verb (Past participle)", 'n': "of 'être'; been; used here to establish a historical state"},
+    "Droit": {"B1": "Noun, Adjective", "n": "As a noun: Law or a legal right. As an adjective: Straight, right-hand side, or upright"},
 
 }

@@ -319,6 +319,8 @@ common_danish_words={
     "uden": {"A2": "Preposition", 'n': "Without"},
     "udtryk": {"B1": "Noun", 'n': "Expression / Term; e.g., 'fagligt udtryk' (technical term)"},
     "vaere": {"A1": "Verb (Infinitive)", 'n': "To be; (Modern spelling: 'være')"},
+    'Naerum': {'B2': 'Proper Noun', 'n': 'A suburb in Denmark famous for its allotment gardens (Nærumvænge)'},
+    'Nærum': {'B2': 'Proper Noun', 'n': 'A suburb in Denmark famous for its allotment gardens (Nærumvænge)'},
 
 }
 

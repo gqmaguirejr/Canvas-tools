@@ -54,6 +54,7 @@ import common_greek
 import common_icelandic
 import common_italian
 import common_japanese
+import common_kurdish
 import common_latin
 import common_norwegian
 import common_portuguese
@@ -1163,8 +1164,8 @@ def extract_text_from_pdf(pdf_path):
                 if pageno < 3:
                     continue
                 
-                # special case for thesis with miss numbered page 1
-                if options.Qcase and pageno < 24:
+                # special case for thesis with missnumbered page 1
+                if options.Qcase and pageno < 14:
                     continue
                 
 
@@ -1708,6 +1709,10 @@ def remove_known_words(output_lines):
             continue
 
         if w in common_turkish.common_turkish_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_kurdish.common_kurdish_words:
             remove_list.append(w)
             continue
 
@@ -2301,6 +2306,12 @@ def main():
                       action="store_true",
                       help="Special Q case")
 
+    parser.add_option('-T', '--Tcase',
+                      dest="Tcase",
+                      default=False,
+                      action="store_true",
+                      help="use a text file rather than PDF")
+
     parser.add_option('-W', '--Wcase',
                       dest="Wcase",
                       default=False,
@@ -2334,84 +2345,8 @@ def main():
         print(f"Error: The file '{input_file}' was not found.")
         sys.exit(1)
         
-    if options.info:
-        try:
-            doc = pymupdf.open(input_file)
-            print(f"Successfully opened '{input_file}'...")
-
-            print(f"{doc.metadata=}")
-
-        except Exception as e:
-            print(f"An error occurred: {e}")
-        finally:
-            if 'doc' in locals() and doc:
-                doc.close()
-        return
-        
-    if options.toc:
-        try:
-            doc = pymupdf.open(input_file)
-            print(f"Successfully opened '{input_file}'...")
-
-            for t in doc.get_toc():
-                print(t) 
-
-        except Exception as e:
-            print(f"An error occurred: {e}")
-        finally:
-            if 'doc' in locals() and doc:
-                doc.close()
-        return
-        
-
-    # Use os.path.splitext to safely get the base filename
-    base_output_name, extension = os.path.splitext(input_file)
-
-    output_txt = base_output_name + ".txt"
-
-    
-    acronyms_dict=dict()
-    acronyms_found=False
-
-    output_lines = extract_text_from_pdf(input_file)
-    saved_output_lines = output_lines
-    potential_acronyms=[]
-    processed_text = " ".join(saved_output_lines)
-    processed_text=processed_text.replace("( ", "(")
-    processed_text=processed_text.replace(" )", ")")
-    print(f"{len(processed_text)=}")
-    full_text_file = base_output_name + f"-full_text.txt"
-    with open(full_text_file, "w", encoding="utf-8") as out_file:
-        out_file.write(processed_text)
-    potential_acronyms=extract_potential_acronyms(processed_text)
-    if len(potential_acronyms) > 0:
-        print(f"{potential_acronyms=}")
-
-
-    # replace double spaces with one space
-    output_lines = [remove_double_spaces(l) for l in output_lines]
-
     # Create a new, combined set for filtering
     acronym_filter_set = set()
-
-    if acronyms_found:
-        #print(f"{acronyms_text}")
-        pprint.pprint(f"{acronyms_dict}")
-
-        # Loop through dictionary keys ONCE to build the set
-        for key in acronyms_dict.keys():
-            acronym_filter_set.add(key)  # Add the base acronym (e.g., "cdf")
-    
-            # Use pluralization rule on the lowercase key
-            if key.endswith('s') or key.endswith('S'):
-                acronym_filter_set.add(key + 'es')  # e.g., "manrses"
-            else:
-                acronym_filter_set.add(key + 's')   # e.g., "cdfs"
-
-        # Now, your list comprehension is simple, clean, and case-insensitive
-        output_lines = [l for l in output_lines if l not in acronym_filter_set]
-
-        output_lines = [l for l in output_lines if l not in acronyms_dict.values()]
 
     well_known_acronyms = [a[0] for a in common_acronyms.well_known_acronyms_list]
 
@@ -2517,6 +2452,9 @@ def main():
     for w in common_japanese.common_japanese_words:
         grand_union.add(w)
 
+    for w in common_kurdish.common_kurdish_words:
+        grand_union.add(w)
+
     for w in common_turkish.common_turkish_words:
         grand_union.add(w)
 
@@ -2605,6 +2543,116 @@ def main():
 
     for w in common_swedish.KTH_ordbok_Swedish_with_CEFR:
         grand_union.add(w)
+
+
+    if options.Tcase:
+        output_lines=[]
+        li=0
+        try: 
+            with open(input_file, 'r') as f: # , encoding='utf-8'
+                li=li+1
+                line=f.readline().replace('\n', '')
+                output_lines.append(line)
+                while line:
+                    line=f.readline().replace('\n', '')
+                    #print(f"{line=}")
+                    output_lines.append(line)
+
+        except Exception as e:
+            print(f"An error occurred: line {li}: {e}")
+
+        remove_list=[]
+        for w in output_lines:
+            if w.lower() in output_lines:
+                remove_list.append(w)
+
+        output_lines = [l for l in output_lines if l not in remove_list]
+
+        remove_list = set(remove_known_words(output_lines))
+        output_lines = [l for l in output_lines if l not in remove_list]
+        print(f"{output_lines=}")
+
+        return
+
+
+    if options.info:
+        try:
+            doc = pymupdf.open(input_file)
+            print(f"Successfully opened '{input_file}'...")
+
+            print(f"{doc.metadata=}")
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        finally:
+            if 'doc' in locals() and doc:
+                doc.close()
+        return
+        
+    if options.toc:
+        try:
+            doc = pymupdf.open(input_file)
+            print(f"Successfully opened '{input_file}'...")
+
+            for t in doc.get_toc():
+                print(t) 
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        finally:
+            if 'doc' in locals() and doc:
+                doc.close()
+        return
+        
+
+    # Use os.path.splitext to safely get the base filename
+    base_output_name, extension = os.path.splitext(input_file)
+
+    output_txt = base_output_name + ".txt"
+
+    
+    acronyms_dict=dict()
+    acronyms_found=False
+
+    output_lines = extract_text_from_pdf(input_file)
+    saved_output_lines = output_lines
+    potential_acronyms=[]
+    processed_text = " ".join(saved_output_lines)
+    processed_text=processed_text.replace("( ", "(")
+    processed_text=processed_text.replace(" )", ")")
+    print(f"{len(processed_text)=}")
+    full_text_file = base_output_name + f"-full_text.txt"
+    with open(full_text_file, "w", encoding="utf-8") as out_file:
+        out_file.write(processed_text)
+    potential_acronyms=extract_potential_acronyms(processed_text)
+    if len(potential_acronyms) > 0:
+        print(f"{potential_acronyms=}")
+
+
+    # replace double spaces with one space
+    output_lines = [remove_double_spaces(l) for l in output_lines]
+
+    # Create a new, combined set for filtering
+    acronym_filter_set = set()
+
+    if acronyms_found:
+        #print(f"{acronyms_text}")
+        pprint.pprint(f"{acronyms_dict}")
+
+        # Loop through dictionary keys ONCE to build the set
+        for key in acronyms_dict.keys():
+            acronym_filter_set.add(key)  # Add the base acronym (e.g., "cdf")
+    
+            # Use pluralization rule on the lowercase key
+            if key.endswith('s') or key.endswith('S'):
+                acronym_filter_set.add(key + 'es')  # e.g., "manrses"
+            else:
+                acronym_filter_set.add(key + 's')   # e.g., "cdfs"
+
+        # Now, your list comprehension is simple, clean, and case-insensitive
+        output_lines = [l for l in output_lines if l not in acronym_filter_set]
+
+        output_lines = [l for l in output_lines if l not in acronyms_dict.values()]
 
     if Verbose_Flag:
         print(f"begin processing the {len(output_lines)} lines")

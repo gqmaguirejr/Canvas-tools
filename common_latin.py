@@ -137,6 +137,22 @@ common_latin_words={
     "rigidus": {"B2": "Adjective", 'n': "Rigid / Stiff"},
     "situ operando": {"C2": "Phrase (Technical)", 'n': "Operating in position; likely used in engineering or clinical contexts"},
     "situ": {"C1": "Noun (Ablative)", 'n': "Position / Site"},
-    "vide": {"B2": "Verb", 'n': "See; used to direct a reader to another part of a text or a different work"}
+    "vide": {"B2": "Verb", 'n': "See; used to direct a reader to another part of a text or a different work"},
+    'Acer': {'B1': 'Noun', 'n': 'The genus of maple trees and shrubs, known for their distinctively lobed leaves and winged seeds (samaras)'},
+    'Tagetes': {'B1': 'Noun', 'n': 'The genus of marigolds, consisting of bright annual or perennial herbaceous plants in the sunflower family'},
+    'Helianthus': {'B1': 'Noun', 'n': 'The genus of sunflowers, characterized by large, rayed flower heads and edible seeds'},
+    'Sorbus': {'B1': 'Noun', 'n': 'The genus of rowans (mountain ash) and whitebeams, often bearing clusters of red or orange berries'},
+    'Kolkwitzia': {'B2': 'Noun', 'n': 'A genus containing the beauty bush, a deciduous shrub known for its bell-shaped pink flowers'},
+    'Syringa': {'B1': 'Noun', 'n': 'The genus of lilacs, comprising deciduous shrubs and small trees famous for their fragrant spring blossoms'},
+    'Hippophae': {'B2': 'Noun', 'n': 'The genus of sea buckthorns; deciduous shrubs known for their bright orange berries and ability to thrive in coastal or salty soils'},
+    'Malus': {'B1': 'Noun', 'n': 'The genus of apple and crabapple trees, widely cultivated for their fruit and spring blossoms'},
+    'Purpurea': {'B1': 'Adjective', 'n': 'Purple; used as a specific epithet to describe plants with purple flowers, leaves, or fruit'},
+    'Platanus': {'B2': 'Noun', 'n': 'The genus of plane trees, known for their height, palm-shaped leaves, and mottled, peeling bark'},
+    'Platanoides': {'C1': 'Adjective', 'n': 'Plane-like; often used for the Norway Maple (Acer platanoides) because its leaves resemble the Platanus'},
+    'Portulaca': {'B2': 'Noun', 'n': 'The genus of purslanes, which are succulent flowering plants that thrive in hot, dry environments'},
+    'Rhus': {'B2': 'Noun', 'n': 'The genus of sumacs, characterized by pinnate leaves and conical clusters of red berries'},
+    'Upsaliensis': {'C1': 'Adjective', 'n': 'Relating to Uppsala, Sweden; often used in species names to denote a connection to the city or its university'},
+
+
 }
 
