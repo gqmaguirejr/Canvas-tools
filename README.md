@@ -3722,6 +3722,26 @@ The AAT dataset comes from http://aatdownloads.getty.edu/
 It contains information from the J. Paul Getty Trust, Getty Research Institute, the Art & Architecture Thesaurus, which is made available under the ODC Attribution License, i.e., the Open Data Commons Attribution License (ODC-By) 1.0.
 
 
+## check_subjects_on_3rd_cycle_covers.py
+
+### Purpose
+To check the subject on the cover of third cycle theses agains the actual list of subjects.
+
+
+### Input
+```bash
+check_subjects_on_3rd_cycle_covers.py dir_name
+```
+
+### Output
+Outputs the block of text from the cover and tries to extract the subject.
+
+
+### Note 
+
+The program is overly accepting as it will find the subject - even if it is followed by another string that makes it not a valid subject. For example, 'Doctoral Thesis in Physics, Materials & Nanophysics' will be matched when looking for 'Doctoral Thesis in Physics' - but the additional ', Materials & Nanophysics' turns the subject into an invalid subject.
+
+
 <!-- 
 
 ## xxx.py
