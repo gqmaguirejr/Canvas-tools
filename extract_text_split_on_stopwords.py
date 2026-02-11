@@ -1016,6 +1016,28 @@ def analyze_pdf_layout(doc):
 
     return layout
 
+def remove_urls(txt):
+    """
+    Remove all URLs - as they should be opaque as far as extraction goes
+    """
+    start_of_url='https://'
+
+    # eliminate URLs
+    start_of_url_offset= txt.find(start_of_url)
+    if start_of_url_offset >=0:
+        pre_str=txt[0:start_of_url_offset]
+        offset=start_of_url_offset+len(start_of_url)
+        c=txt[offset]
+        while c not in ['\n', ' ']:
+            offset=offset+1
+            c=txt[offset]
+        post_str=txt[offset:]
+        txt=pre_str + ' ' + post_str
+
+    # return the cleaned string
+    return txt
+
+
 def extract_text_from_pdf(pdf_path):
     """
     Extracts text from a PDF file, splits it by stopwords and punctuation,
@@ -1291,6 +1313,9 @@ def extract_text_from_pdf(pdf_path):
         if Verbose_Flag:
             print(f"length of full_text is {len(full_text)}")
 
+        # eliminate all of the URLs
+        full_text=remove_urls(full_text)
+
         full_text=replace_ligature(full_text)
         full_text=replace_abbreviations(full_text)
 
@@ -1323,6 +1348,7 @@ def extract_text_from_pdf(pdf_path):
         # handle Em Dash '—' U+2014
         full_text = full_text.replace('—', ' — ')
         
+
         # replace remaining new lines with a double space
         full_text = full_text.replace('\n', '  ')
 
@@ -2618,12 +2644,15 @@ def main():
     saved_output_lines = output_lines
     potential_acronyms=[]
     processed_text = " ".join(saved_output_lines)
+    # tighten the space aound parentheses - to late use when looking for acronyms
     processed_text=processed_text.replace("( ", "(")
     processed_text=processed_text.replace(" )", ")")
     print(f"{len(processed_text)=}")
+
     full_text_file = base_output_name + f"-full_text.txt"
     with open(full_text_file, "w", encoding="utf-8") as out_file:
         out_file.write(processed_text)
+
     potential_acronyms=extract_potential_acronyms(processed_text)
     if len(potential_acronyms) > 0:
         print(f"{potential_acronyms=}")
@@ -2661,7 +2690,10 @@ def main():
     output_lines = [l for l in output_lines if l.lower() not in output_lines]
 
     author_et_al = [l for l in output_lines if l.endswith(' et alii')]
-    authors = [l[:-6] for l in output_lines if l.endswith(' et alii')]
+    authors = [l[:-7].strip() for l in output_lines if l.endswith(' et alii')]
+    authors=set(authors)
+    print(f"possible authors: {authors}")
+
     output_lines = [l for l in output_lines if l not in author_et_al]
 
     # drop strings with underscores, as these are not words, but probably variables

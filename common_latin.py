@@ -152,6 +152,10 @@ common_latin_words={
     'Portulaca': {'B2': 'Noun', 'n': 'The genus of purslanes, which are succulent flowering plants that thrive in hot, dry environments'},
     'Rhus': {'B2': 'Noun', 'n': 'The genus of sumacs, characterized by pinnate leaves and conical clusters of red berries'},
     'Upsaliensis': {'C1': 'Adjective', 'n': 'Relating to Uppsala, Sweden; often used in species names to denote a connection to the city or its university'},
+    'Alcaligenes': {'C1': 'Proper Noun', 'n': 'A genus of Gram-negative, aerobic, rod-shaped bacteria known for producing an alkaline reaction in certain growth media'},
+    'Callinectes': {'C1': 'Proper Noun', 'n': 'A genus of crabs, part of the swimming crab family (Portunidae), characterized by their paddle-shaped hind legs'},
+    'faecalis': {'B2': 'Adjective', 'n': 'Relating to feces; used in species names like Enterococcus faecalis to denote bacteria commonly found in the intestinal tract'},
+    'sapidus': {'C1': 'Adjective', 'n': 'Savory, tasty, or delicious; most famously used in the name Callinectes sapidus (the Atlantic blue crab)'},
 
 
 }
