@@ -718,5 +718,6 @@ common_french_words={
     "études": {"A2": "Noun (Plural)", 'n': "Studies; can refer to academic research papers or preliminary sketches made by an artist before the final work"},
     "été": {"A1": "Verb (Past participle)", 'n': "of 'être'; been; used here to establish a historical state"},
     "Droit": {"B1": "Noun, Adjective", "n": "As a noun: Law or a legal right. As an adjective: Straight, right-hand side, or upright"},
+    'probabilités': {'A2': 'Noun (Plural)', 'n': 'Probabilities; the branch of mathematics concerning numerical descriptions of how likely an event is to occur'},
 
 }
