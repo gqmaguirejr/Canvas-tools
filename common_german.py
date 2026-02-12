@@ -1287,7 +1287,9 @@ common_german_words={
     "forschung": {"B2": "Noun", "n": "Research; the systematic 'experimental tests' and 'empirical literature' used to 'inspect' 'technical development'"},
     "mittelstand": {"B2": "Noun", "n": "The 'middle' sector of the economy, consisting of 'medium sized firms' that 'characterises' Germany's 'innovation capability'"},
     "bundesministerium": {"B2": "Noun", "n": "A Federal Ministry in Germany; a 'top-level' 'organisational system' responsible for a specific 'sector-wide' policy area"},
+    'angewandte': {'B2': 'Adjective', 'n': 'Applied; refers to the practical application of science or theory to specific tasks, such as "angewandte Mathematik" (applied mathematics)'},
+    'vielen': {'A1': 'Adjective', 'n': 'Many or much; used here in the accusative case to modify "Dank"'},
+    'Dank': {'A1': 'Noun', 'n': 'Thanks or gratitude; a masculine noun used to express appreciation'},
 
-
-# GQMg
+    # GQMg
 }

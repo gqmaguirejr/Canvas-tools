@@ -156,6 +156,7 @@ common_latin_words={
     'Callinectes': {'C1': 'Proper Noun', 'n': 'A genus of crabs, part of the swimming crab family (Portunidae), characterized by their paddle-shaped hind legs'},
     'faecalis': {'B2': 'Adjective', 'n': 'Relating to feces; used in species names like Enterococcus faecalis to denote bacteria commonly found in the intestinal tract'},
     'sapidus': {'C1': 'Adjective', 'n': 'Savory, tasty, or delicious; most famously used in the name Callinectes sapidus (the Atlantic blue crab)'},
+    'Nelumbo nucifera': {'C1': 'Proper Noun', 'n': 'The scientific name for the sacred lotus; famous for its self-cleaning, ultrahydrophobic leaves.'},
 
 
 }
