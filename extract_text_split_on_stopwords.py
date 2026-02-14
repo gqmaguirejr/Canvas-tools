@@ -359,6 +359,27 @@ def is_TRITA_number(s):
         return True
     return False
 
+def is_US_patent_number(s):
+    """
+    Checks if a string matches the format of a US Granted Patent 
+    or a US Published Patent Application.
+    """
+    # 1. Matches Published Applications: US YYYY/NNNNNNN (optional kind code)
+    #    Example: US 2023/0123456 A1
+    app_pattern = r"^US\s?\d{4}/?\d{7}(?:\s?[A-Z]\d)?$"
+    
+    # 2. Matches Granted Patents: US 1 to 8 digits (optional kind code)
+    #    Allows for commas as thousands separators.
+    #    Example: US 11,574,486 B2 or US 5,778
+    grant_pattern = r"^US\s?(?:\d{1,3}(?:,?\d{3})*|\d{1,8})(?:\s?[A-Z]\d?)?$"
+    
+    # Clean string to remove surrounding whitespace for checking
+    s = s.strip()
+    
+    if re.match(app_pattern, s, re.IGNORECASE) or re.match(grant_pattern, s, re.IGNORECASE):
+        return True
+    return False
+
 ligrature_table= {'\ufb00': 'ff', # 'ﬀ'
                   '\ufb03': 'ffi', # 'ﬃ'
                   '\ufb04': 'ffl', # 'ﬄ'
@@ -2037,6 +2058,9 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
         if is_integer_range_or_ISSN(w):
             continue
 
+        if is_US_patent_number(w):
+            continue
+        
         # remove conference years
         if w.startswith("’") and len(w) >= 3 and is_integer(w[1:]):
             continue
@@ -2149,6 +2173,9 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
                     continue
                 if is_integer_range_or_ISSN(ww):
                     continue
+                if is_US_patent_number(ww):
+                    continue
+                
                 # take care of simple assignments, such as MTU=1500
                 if ww.count('=') == 1:
                     ws=ww.split('=')
@@ -2853,8 +2880,9 @@ def main():
         if w not in grand_union:
             print(f"{w} not in grand_union")
 
-    if 'alii' in grand_union:
-        print(f"'alii' in grand_union")
+    test_word='BS-to-user links'
+    if test_word in grand_union:
+        print(f"'{test_word}' in grand_union")
 
 if __name__ == "__main__":
     main()
