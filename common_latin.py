@@ -157,6 +157,7 @@ common_latin_words={
     'faecalis': {'B2': 'Adjective', 'n': 'Relating to feces; used in species names like Enterococcus faecalis to denote bacteria commonly found in the intestinal tract'},
     'sapidus': {'C1': 'Adjective', 'n': 'Savory, tasty, or delicious; most famously used in the name Callinectes sapidus (the Atlantic blue crab)'},
     'Nelumbo nucifera': {'C1': 'Proper Noun', 'n': 'The scientific name for the sacred lotus; famous for its self-cleaning, ultrahydrophobic leaves.'},
+    'Chimica': {'C1': 'Noun', 'n': 'Chemistry; the branch of science that deals with the properties, composition, and structure of substances (elements and compounds) and the reactions they undergo'},
 
 
 }
