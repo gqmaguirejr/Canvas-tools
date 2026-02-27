@@ -43,6 +43,7 @@ try:
     import common_swedish
     import common_acronyms
     import AVL_words_with_CEFR
+    import common_bosnian
     import common_danish
     import common_dutch
     import common_estonian
@@ -66,6 +67,7 @@ except ImportError:
     common_swedish = None
     common_acronyms = None
     AVL_words_with_CEFR = None
+    common_bosnian = None
     common_danish = None
     common_dutch = None
     common_estonian = None
@@ -653,6 +655,7 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_english, 'thousand_most_common_words_in_English'),
             (common_swedish, 'common_swedish_words'),
             (common_english, 'common_french_words'),
+            (common_bosnian, 'common_bosnian_words'),
             (common_danish, 'common_danish_words'),
             (common_dutch, 'common_dutch_words'),
             (common_estonian, 'common_estonian_words'),
@@ -797,6 +800,7 @@ def get_cefr_level(phrase):
         'common_spanish_words': common_spanish,
         'common_turkish_words': common_turkish,
         'common_danish_words': common_danish,
+        'common_bosnian_words': common_bosnian,
         'common_norwegian_words': common_norwegian,
     }
 

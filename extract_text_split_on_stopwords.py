@@ -44,6 +44,7 @@ sys.path.append('/home/maguire/Canvas/Canvas-tools')
 import common_english
 import common_swedish
 import common_acronyms
+import common_bosnian
 import common_danish
 import common_dutch
 import common_estonian
@@ -1208,7 +1209,7 @@ def extract_text_from_pdf(pdf_path):
                     continue
                 
                 # special case for thesis with missnumbered page 1
-                if options.Qcase and pageno < 16:
+                if options.Qcase and pageno < 20:
                     continue
                 
 
@@ -1768,6 +1769,10 @@ def remove_known_words(output_lines):
             continue
 
         if w in common_danish.common_danish_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_bosnian.common_bosnian_words:
             remove_list.append(w)
             continue
 
