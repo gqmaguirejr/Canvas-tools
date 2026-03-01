@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# ./extract_text_split_on_stopwords.py PDF_file
+# ./extract_text_split_on_stopwords.py PDF_file [start_offset]
 #
 # Extract text from PDF file, splitting lines before/after stopwords and punctuation.
 #
 # with option '-v' use verbose output
 # with option '-s' consider Swedish words
 # with option '-M' include terms in chemical_names_and_formulas and misc_words_to_ignore
-# with option '-Q' do special processing (skipping more pages before extracting text)
+# with option '-Q' do special processing (skipping more pages before extracting text) - look for the offset as an additional command line parameter
+#     example: time ./extract_text_split_on_stopwords.py -s -Q /tmp/third_cycle_PDFs/diva2:1993983-SUMMARY01.pdf 13
 # with option '-W' keep words from WordsToFilterOutSet
 #
 # G. Q. Maguire Jr.
@@ -1070,6 +1071,7 @@ def extract_text_from_pdf(pdf_path):
     global acronyms_text
     global header_bottom
     global options
+    global start_offset
 
     output_lines=[]
 
@@ -1209,7 +1211,7 @@ def extract_text_from_pdf(pdf_path):
                     continue
                 
                 # special case for thesis with missnumbered page 1
-                if options.Qcase and pageno < 20:
+                if options.Qcase and pageno < start_offset:
                     continue
                 
 
@@ -2326,6 +2328,7 @@ def main():
     global acronyms_dict
     global well_known_acronyms
     global grand_union
+    global start_offset
 
     parser = optparse.OptionParser()
     parser.add_option('-v', '--verbose',
@@ -2392,11 +2395,16 @@ def main():
         print(f"VERBOSE   : {options.verbose}")
         print(f"REMAINING : {remainder}")
 
-    if len(remainder) != 1:
-        print("Usage: ./extract_text_split_on_stopwords.py [-v] <PDF_file>")
+    if len(remainder) < 1:
+        print("Usage: ./extract_text_split_on_stopwords.py [-v] <PDF_file> [start_offset]")
         sys.exit(1)
 
     input_file = remainder[0]
+
+    if options.Qcase and len(remainder) >= 2:
+        start_offset = int(remainder[1])
+    else:
+        start_offset=0
 
     if not os.path.exists(input_file):
         # Corrected bug: was using 'input_pdf' which was not defined

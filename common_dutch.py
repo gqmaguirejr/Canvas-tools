@@ -37,5 +37,10 @@ common_dutch_words={
     "lakwerk": {"C1": "Noun", "n": "Lacquerwork; refers to the art of coating objects (often wood or metal) with lacquer to create a hard, durable, and glossy finish"},
     "Middeleeuwse": {"B1": "Adjective", "n": "Medieval; relating to the Middle Ages (approx. 500–1500 AD). Often used to describe Gothic or Romanesque architectural styles."},
     "muurschilderingen": {"B2": "Noun (Plural)", "n": "Wall paintings / Murals; figurative or decorative paintings applied to wall surfaces, such as frescoes or secco paintings in historical churches."},
+    'fietspaden': {'B1': 'Noun (Plural)', 'n': 'Cycle paths; dedicated lanes or tracks designed specifically for bicycle traffic, similar to Swedish cykelvägar'},
+    'ontwerp': {'B2': 'Noun', 'n': 'Design or blueprint; the structural plan or engineering layout for a road or path structure'},
+    'en': {'A1': 'Conjunction', 'n': 'And; a basic coordinating conjunction used to link terms or phrases'},
+    'keuze': {'B1': 'Noun', 'n': 'Choice or selection; refers to the decision-making process in selecting materials or design parameters'},
+    'materiaal': {'A2': 'Noun', 'n': 'Material; the physical substances (such as asphalt, concrete, or aggregate) used in construction'},
 
 }
