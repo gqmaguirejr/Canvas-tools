@@ -1290,6 +1290,7 @@ common_german_words={
     'angewandte': {'B2': 'Adjective', 'n': 'Applied; refers to the practical application of science or theory to specific tasks, such as "angewandte Mathematik" (applied mathematics)'},
     'vielen': {'A1': 'Adjective', 'n': 'Many or much; used here in the accusative case to modify "Dank"'},
     'Dank': {'A1': 'Noun', 'n': 'Thanks or gratitude; a masculine noun used to express appreciation'},
+    'Makromolekulare': {'B2': 'Adjective', 'n': 'Macromolecular; relating to large molecules (polymers) composed of many repeating monomer units'},
 
     # GQMg
 }
