@@ -321,6 +321,7 @@ common_danish_words={
     "vaere": {"A1": "Verb (Infinitive)", 'n': "To be; (Modern spelling: 'være')"},
     'Naerum': {'B2': 'Proper Noun', 'n': 'A suburb in Denmark famous for its allotment gardens (Nærumvænge)'},
     'Nærum': {'B2': 'Proper Noun', 'n': 'A suburb in Denmark famous for its allotment gardens (Nærumvænge)'},
+    "multi-stråle": {"C1": "Noun/Adjective", "n": "Multi-beam; referring to an optical setup that utilizes multiple simultaneous beams of radiation, such as X-rays, to increase imaging speed or provide stereo information"},
 
 }
 

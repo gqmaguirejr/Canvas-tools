@@ -492,7 +492,7 @@ abbreviations_map = {
     'Prof.': 'Professor',
     'prof.': 'professor',
     'Asst.': 'assistant',
-    'Assoc.': 'asso0ciate',
+    'Assoc.': 'associate',
     'Mr.': 'Mister',
     'Mrs.': 'Missus',
     'Ms.': 'Miss',
