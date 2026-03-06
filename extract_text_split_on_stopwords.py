@@ -1561,6 +1561,10 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w.endswith('´s') and w[:-2] in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
         if options.swedish and w[-1] == 's' and w[:-1] in common_english.names_of_persons:
             remove_list.append(w)
             continue
@@ -1649,6 +1653,10 @@ def remove_known_words(output_lines):
 
         # remove names possessives
         if w.endswith('’s') and w[:-2] in common_english.names_of_persons:
+            remove_list.append(w)
+            continue
+
+        if w.endswith('´s') and w[:-2] in common_english.names_of_persons:
             remove_list.append(w)
             continue
 
@@ -1831,10 +1839,6 @@ def remove_known_words(output_lines):
         #     remove_list.append(w)
         #     continue
 
-        # if w in common_english.names_of_persons:
-        #     remove_list.append(w)
-        #     continue
-
         # if w in common_english.language_tags:
         #     remove_list.append(w)
         #     continue
@@ -1890,10 +1894,6 @@ def remove_known_words(output_lines):
         if w.lower() in common_english.KTH_ordbok_English_with_CEFR:
             remove_list.append(w)
             continue
-
-        # if w in common_english.names_of_persons:
-        #     remove_list.append(w)
-        #     continue
 
         if w.lower() in common_english.mathematical_words_to_ignore:
             remove_list.append(w)
@@ -1999,6 +1999,10 @@ def prune_known_from_left(unique_terms_sorted, grand_union, acronym_filter_set, 
 
         w=remove_proper_names(w)
         if len(w) == 0:
+            continue
+
+        # remove Swedish possessive names 
+        if w.endswith("´s") and w[:-2] in common_english.names_of_persons:
             continue
 
         # remove Swedish possessive names 

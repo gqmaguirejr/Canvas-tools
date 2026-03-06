@@ -158,7 +158,12 @@ common_latin_words={
     'sapidus': {'C1': 'Adjective', 'n': 'Savory, tasty, or delicious; most famously used in the name Callinectes sapidus (the Atlantic blue crab)'},
     'Nelumbo nucifera': {'C1': 'Proper Noun', 'n': 'The scientific name for the sacred lotus; famous for its self-cleaning, ultrahydrophobic leaves.'},
     'Chimica': {'C1': 'Noun', 'n': 'Chemistry; the branch of science that deals with the properties, composition, and structure of substances (elements and compounds) and the reactions they undergo'},
-
+    'Helianthus annuus': {'B1': 'Proper Noun', 'n': 'The common sunflower; its seeds are used to produce sunflower oil, a lightweight emollient rich in Vitamin E used in lotions'},
+    'Butyrospermum parkii': {'B1': 'Proper Noun', 'n': 'The African shea tree; its nuts produce shea butter, a dense lipid used in cosmetics for its intense moisturizing and skin-smoothing properties'},
+    'Helianthus': {'B2': 'Proper Noun', 'n': 'A genus of plants comprising about 70 species in the daisy family, commonly known as sunflowers'},
+    'annuus': {'B2': 'Adjective', 'n': 'Latin for "annual"; describing a plant that completes its life cycle, from germination to the production of seeds, within one year'},
+    'Butyrospermum': {'C1': 'Proper Noun', 'n': 'A genus of African trees; the name is derived from Latin and Greek meaning "butter seed."'},
+    'parkii': {'C1': 'Proper Noun, Adjective', 'n': 'A specific epithet named after the explorer Mungo Park, used to identify the shea tree (Butyrospermum parkii)'},
 
 }
 
