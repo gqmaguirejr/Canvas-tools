@@ -164,6 +164,10 @@ common_latin_words={
     'annuus': {'B2': 'Adjective', 'n': 'Latin for "annual"; describing a plant that completes its life cycle, from germination to the production of seeds, within one year'},
     'Butyrospermum': {'C1': 'Proper Noun', 'n': 'A genus of African trees; the name is derived from Latin and Greek meaning "butter seed."'},
     'parkii': {'C1': 'Proper Noun, Adjective', 'n': 'A specific epithet named after the explorer Mungo Park, used to identify the shea tree (Butyrospermum parkii)'},
+    'Annales': {'B2': 'Noun', 'n': 'Latin for "Annals" or "Yearbooks"; historically used for records of events, now common in the titles of long-standing scientific journals'},
+    'Geophysicae': {'C1': 'Noun', 'n': 'The genitive form of "Geophysica," meaning "of Geophysics"; the study of the physical properties and processes of the Earth and its surrounding space environment'},
+    'Numerica': {'C1': 'Adjective/Noun', 'n': 'Latin for "Numerical"; often used in the titles of journals or academic series (e.g., "Mathematica Numerica") focusing on computational methods and algorithms'},
+    'Electrochimica': {'C1': 'Noun, Adjective', 'n': 'Latin for "Electrochemistry"; most commonly recognized in the title of the journal "Electrochimica Acta," which focuses on the science of electrochemical processes'},
 
 }
 

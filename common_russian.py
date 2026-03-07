@@ -38,5 +38,10 @@ common_russian_words = {
     "kamera": {"A1": "Noun (Feminine)", "n": "Chamber / Vessel; the container where the plasma is held."},
     "magnitnaya": {"A2": "Adjective (Feminine)", "n": "Magnetic; relating to the fields used to confine the hot plasma away from the chamber walls."},
     "katushka": {"B2": "Noun (Feminine)", "n": "Coil; specifically the electromagnetic coils that generate the confining magnetic fields."},
+    'Doklady': {'B2': 'Noun', 'n': 'Reports or Proceedings; literally "reports," used in the titles of academic journals to present brief, significant research results'},
+    'Akademii': {'B1': 'Noun', 'n': 'Of the Academy; the genitive form of "Akademiya," referring to the governing body of scientific research'},
+    'Nauk': {'B1': 'Noun', 'n': 'Of Sciences; the genitive plural of "Nauka," covering all branches of knowledge from physics to biology'},
+    'SSSR': {'A2': 'Proper Noun', 'n': 'USSR; the Union of Soviet Socialist Republics, the historical state under which these scientific academies were organized'},
+
 }
 
