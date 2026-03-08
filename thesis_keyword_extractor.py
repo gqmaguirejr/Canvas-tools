@@ -12,6 +12,9 @@
 #
 # 2025-12-02
 #
+# 2026-03-08 added the use of SENTINEL to replace hyphen in the middle of a word
+# this is an improvement over using '_' to do this as there can be undescore characters in variable names.
+#
 
 import warnings
 # Suppress specific sklearn UserWarnings using regex matching
@@ -103,6 +106,9 @@ Verbose_Flag = False
 
 # Global variable to store loaded standardized terms
 STANDARDIZED_TERMS = {}
+
+# Use a character from the Supplementary Private Use Area-A
+SENTINEL = '\U000f0000'
 
 # config_file=
 def load_standardized_terms(config_file="subject_area_config.json"):
@@ -404,7 +410,7 @@ def clean_text_structural(text):
     
     # 6. Preserve compound words by replacing hyphens with underscores
     # Matches hyphens bounded by Unicode letters (excludes digits and underscores via [^\W\d_])
-    text = re.sub(r'(?<=[^\W\d_])-(?=[^\W\d_])', '_', text)
+    text = re.sub(r'(?<=[^\W_])-(?=[^\W_])', SENTINEL, text)
     
     return text
 
@@ -559,7 +565,7 @@ def old_get_top_features(corpus, case_map, ngram_range, top_n=15):
         
         final_keywords = []
         for word, count in sorted_keywords:
-            clean_word = word.replace('_', '-')
+            clean_word = word.replace(SENTINEL, '-')
             
             # Split tokens to restore case individually
             # capturing delimiters in split keeps them in the list
@@ -688,7 +694,7 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
                 known_small_words.update(data)
 
         for word, count in sorted_keywords:
-            clean_word = word.replace('_', '-')
+            clean_word = word.replace(SENTINEL, '-')
             lower_word = clean_word.lower()
 
             # REJECTION LOGIC:
