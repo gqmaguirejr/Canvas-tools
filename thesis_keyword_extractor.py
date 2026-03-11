@@ -47,9 +47,11 @@ try:
     import common_acronyms
     import AVL_words_with_CEFR
     import common_bosnian
+    import common_catalan.py
     import common_danish
     import common_dutch
     import common_estonian
+    import common_faroese
     import common_finnish
     import common_french
     import common_german
@@ -71,9 +73,11 @@ except ImportError:
     common_acronyms = None
     AVL_words_with_CEFR = None
     common_bosnian = None
+    common_catalan = None
     common_danish = None
     common_dutch = None
     common_estonian = None
+    common_faroese = None
     common_finnish = None
     common_french = None
     common_german = None
@@ -657,14 +661,22 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
     
         # Dictionary Sources to check
         sources = [
+            (common_english, 'chemical_elements_symbols'),
+            (common_english, 'chemical_names_and_formulas'),
             (common_english, 'common_English_words'),
-            (common_english, 'thousand_most_common_words_in_English'),
-            (common_swedish, 'common_swedish_words'),
             (common_english, 'common_french_words'),
+            (common_english, 'common_programming_languages'),
+            (common_english, 'common_units'),
+            (common_english, 'company_and_product_names'),
+            (common_english, 'thousand_most_common_words_in_English'),
             (common_bosnian, 'common_bosnian_words'),
+            (common_swedish, 'common_swedish_words'),
+            (common_catalan, 'common_catalan_words'),
             (common_danish, 'common_danish_words'),
             (common_dutch, 'common_dutch_words'),
+            (common_english, 'chemical_elements'),
             (common_estonian, 'common_estonian_words'),
+            (common_faroese, 'common_faroese_words'),
             (common_finnish, 'common_finnish_words'),
             (common_german, 'common_german_words'),
             (common_greek, 'common_greek_words'),
@@ -677,12 +689,6 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_russian, 'common_russian_words'),
             (common_spanish, 'common_spanish_words'),
             (common_turkish, 'common_turkish_words'),
-            (common_english, 'common_units'),
-            (common_english, 'chemical_elements_symbols'),
-            (common_english, 'chemical_elements'),
-            (common_english, 'chemical_names_and_formulas'),
-            (common_english, 'company_and_product_names'),
-            (common_english, 'common_programming_languages'),
         ]
     
         for module, attr in sources:
@@ -791,23 +797,25 @@ def get_cefr_level(phrase):
                     return key
                     
     dicts_to_check = {
+        'common_bosnian_words': common_bosnian,
+        'common_catalan_words': common_catalan,
+        'common_danish_words': common_danish,
         'common_dutch_words': common_dutch,
         'common_estonian_words': common_estonian,
-        'common_french_words': common_french,
+        'common_faroese_words': common_faroese,
         'common_finnish_words': common_finnish,
+        'common_french_words': common_french,
         'common_german_words': common_german,
         'common_greek_words': common_greek,
         'common_icelandic_words': common_icelandic,
         'common_italian_words': common_italian,
         'common_japanese_words': common_japanese,
         'common_latin_words': common_latin,
+        'common_norwegian_words': common_norwegian,
         'common_portuguese_words': common_portuguese,
         'common_russian_words': common_russian,
         'common_spanish_words': common_spanish,
         'common_turkish_words': common_turkish,
-        'common_danish_words': common_danish,
-        'common_bosnian_words': common_bosnian,
-        'common_norwegian_words': common_norwegian,
     }
 
     for dict_name in dicts_to_check:

@@ -35,6 +35,7 @@
 common_greek_words={
     "adiafora": {"C1": "Noun (Plural), Adjective", "n": "Indifferents / Matters of indifference; things that are neither morally good nor bad."},
     'epi': {'B2': 'Prefix', 'n': 'A Greek prefix meaning "above," "upon," or "in addition to"; in genetics, it refers to the layers of chemical modifications that sit "upon" the DNA sequence'},
+    'Ethnos': {'C1': 'Noun', 'n': 'A group of people belonging to the same nation or share a common cultural heritage; the root for terms like ethnicity and ethnology'},
 
 }
 

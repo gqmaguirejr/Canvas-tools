@@ -170,6 +170,11 @@ common_portuguese_words = {
     'vítimas': {'B1': 'Noun (Plural)', 'n': 'Victims'},
     'às': {'A1': 'Contraction', 'n': 'To the (feminine plural)'},
     'Voluntários': {'B1': 'Noun (Plural)', 'n': 'Volunteers; individuals who freely offer their time and skills to support humanitarian aid, health services, or community development'},
+    'ambiente': {'B1': 'Noun', 'n': 'Environment; referring to the surrounding conditions, both natural (meio ambiente) and social, in which a city exists'},
+    'Colexio Oficial de Arquitectos de Galicia': {'C1': 'Proper Noun', 'n': 'COAG; the official professional body for architects in Galicia, Spain (written in Galician, which is closely related to Portuguese)'},
+    'urbanismo': {'B2': 'Noun', 'n': 'Urbanism or town planning; the study and practice of designing and organizing the physical and social aspects of cities'},
+    'urbanas': {'A2': 'Adjective (feminine plural)', 'n': 'Urban; relating to cities or towns, often used in phrases like "áreas urbanas" or "zonas urbanas"'},
+
 
 }
 

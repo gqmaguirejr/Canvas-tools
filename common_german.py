@@ -1291,6 +1291,12 @@ common_german_words={
     'vielen': {'A1': 'Adjective', 'n': 'Many or much; used here in the accusative case to modify "Dank"'},
     'Dank': {'A1': 'Noun', 'n': 'Thanks or gratitude; a masculine noun used to express appreciation'},
     'Makromolekulare': {'B2': 'Adjective', 'n': 'Macromolecular; relating to large molecules (polymers) composed of many repeating monomer units'},
+    'Physik': {'A1': 'Noun', 'n': 'Physics; the natural science that studies matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force'},
+    'Bevölkerung': {'A2': 'Noun', 'n': 'Population; the total number of people living in a specific city, region, or country'},
+    'Sittlichkeit': {'C1': 'Noun', 'n': 'Ethical life or social morality; a Hegelian concept referring to the customary ethical norms of a community'},
+    'Heim': {'A1': 'Noun', 'n': 'Home; a private dwelling or place of belonging, central to early 20th-century residential planning'},
+    'Raum': {'A2': 'Noun', 'n': 'Space or room; the fundamental physical or conceptual area in which urban planning occurs (e.g., Lebensraum)'},
+    'Morphologie': {'B2': 'Noun', 'n': 'Morphology; the study of the form and structure of human settlements and their historical evolution'},
 
     # GQMg
 }

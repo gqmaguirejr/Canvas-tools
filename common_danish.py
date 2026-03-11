@@ -322,6 +322,8 @@ common_danish_words={
     'Naerum': {'B2': 'Proper Noun', 'n': 'A suburb in Denmark famous for its allotment gardens (Nærumvænge)'},
     'Nærum': {'B2': 'Proper Noun', 'n': 'A suburb in Denmark famous for its allotment gardens (Nærumvænge)'},
     "multi-stråle": {"C1": "Noun/Adjective", "n": "Multi-beam; referring to an optical setup that utilizes multiple simultaneous beams of radiation, such as X-rays, to increase imaging speed or provide stereo information"},
+    'Annaler': {'C1': 'Noun (plural)', 'n': 'Annals; chronological records of events, often referring to historical yearbooks of architecture or landscape gardening'},
+    'Havekunst': {'B2': 'Noun', 'n': 'The art of gardening or landscape architecture; the aesthetic and technical practice of designing gardens'},
 
 }
 

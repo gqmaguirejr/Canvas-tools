@@ -169,6 +169,13 @@ common_latin_words={
     'Numerica': {'C1': 'Adjective/Noun', 'n': 'Latin for "Numerical"; often used in the titles of journals or academic series (e.g., "Mathematica Numerica") focusing on computational methods and algorithms'},
     'Electrochimica': {'C1': 'Noun, Adjective', 'n': 'Latin for "Electrochemistry"; most commonly recognized in the title of the journal "Electrochimica Acta," which focuses on the science of electrochemical processes'},
     'post hoc': {'C1': 'Adjective, Adverb', 'n': 'Latin for "after this"; refers to explanation methods applied after a model has already been trained'},
+    'Cedratvirus lurbo': {'C1': 'Proper Noun', 'n': 'A species of giant DNA virus characterized by its large, pithos-shaped virion and genome, typically infecting soil-dwelling amoebae'},
+    'Acanthamoeba castellanii': {'C1': 'Proper Noun', 'n': 'A common species of soil-dwelling amoebae that serves as a popular model organism in cellular imaging and as a host for various giant viruses'},
+    'Systema': {'B2': 'Noun', 'n': 'System; an organized whole or a set of connected things or parts forming a complex whole'},
+    'Naturae': {'B2': 'Noun (genitive)', 'n': 'Of Nature; referring to the natural world and its essential qualities or character'},
+    'Ambio': {'C1': 'Verb', 'n': 'To go around or surround; the Latin root for "ambient" and "environment" (ambiens)'},
+    'Contranaturam': {'C1': 'Adjective, Adverb', 'n': 'Against nature; describing actions, structures, or theories that deviate from or oppose the natural order'},
+    'terram': {'A2': 'Noun (accusative)', 'n': 'The earth, ground, or land; the physical foundation of any territorial or geographic study'},
 
 }
 

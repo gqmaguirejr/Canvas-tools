@@ -54,7 +54,6 @@ common_spanish_words={
     'señora': {'A2': 'Noun'},
     'Soledad': {'A2': 'Noun'}, # Solitude, loneliness, or a female given name
     'Tifón': {'B1': 'Noun'}, # Typhoon
-    'Universitat': {'B2': 'Noun (Catalan)'},  # University - This is the Catalan spelling of the word
     'agua': {'A1': 'Noun'}, # Water
     'alfombra': {'A2': 'Noun'},
     'alinear': {'B2': 'Verb'},
@@ -64,5 +63,37 @@ common_spanish_words={
     'plata': {'A2': 'Noun'}, # silver and money
     'salud': {'A2': 'Interjection'},
     'Ajuntament de Barcelona': {'B1 (Proper Noun Phrase)': 'Noun'},  # NOTE: This is Catalan for "Barcelona City Council," not Spanish.
+    'Universidad Nacional de La Plata': {'B2': 'Proper Noun', 'n': 'A major public university in Argentina, known for influential research in territorial planning and geography'},
+    'Teorías Territoriales y Planificación Territorial': {'C1': 'Noun phrase', 'n': 'Territorial Theories and Territorial Planning; a common academic course or field of study in Spanish-speaking urbanism'},
+    'Teoría': {'B1': 'Noun', 'n': 'Theory; the systematic explanation of principles governing a subject like urban morphology'},
+    'Anatomía de Una Metrópoli Discontinua': {'C1': 'Proper Noun', 'n': "'Anatomy of a Discontinuous Metropolis'; a thematic study of fragmented urban growth patterns."},
+    'Anthropos': {'C1': 'Proper Noun', 'n': 'A prominent Spanish publishing house specializing in social sciences, humanities, and urban theory'},
+    'Ciudad de Los Ricos y La Ciudad de Los Pobres': {'B2': 'Noun phrase', 'n': "'City of the Rich and City of the Poor'; a concept describing urban segregation and socio-economic fragmentation."},
+    'Ciudadanismo': {'C1': 'Noun', 'n': 'Citizenism; an ideology or social movement focused on the rights and active participation of city residents'},
+    'Ildefonso Cerdà y el nacimiento de la urbanística moderna': {'C1': 'Proper Noun', 'n': "A seminal work regarding Cerdà, the engineer who designed Barcelona's Eixample and founded the discipline of 'Urbanistica'."},
+    'Imprenta Española': {'B2': 'Proper Noun', 'n': 'Spanish Press; referring to the historical printing and publication of technical and urbanist texts'},
+    'Grecia': {'A1': 'Proper Noun', 'n': 'Greece; often studied in urbanism for the origins of the "polis" and classical city planning'},
+    'Fondo de Cultura Económica': {'B2': 'Proper Noun', 'n': 'A major Spanish-language publisher (FCE) based in Mexico, essential for distributing urban and social theory'},
+    'Estudios': {'A2': 'Noun (plural)', 'n': 'Studies; systematic academic investigations into urban phenomena'},
+    'Rurizad': {'C1': 'Noun', 'n': 'A variant or specific term related to "rurality" or the process of ruralization within a territory'},
+    'Regió Metropolitana de Barcelona': {'B2': 'Proper Noun', 'n': 'The Barcelona Metropolitan Region; a key case study for polycentricity and regional planning'},
+    'Revista': {'A2': 'Noun', 'n': 'Magazine or journal; a periodic publication for academic or professional urban discourse'},
+    'Prefacio': {'B1': 'Noun', 'n': 'Preface; the introductory section of a book or planning document'},
+    'Planificación': {'B1': 'Noun', 'n': 'Planning; the technical and political process of organizing land use and infrastructure'},
+    'Planos': {'B1': 'Noun (plural)', 'n': 'Plans or maps; technical drawings used to represent urban designs and layouts'},
+    'Pasados': {'A2': 'Noun (plural)', 'n': 'Pasts; the historical layers or previous states of a city (see palimpsest)'},
+    'Necesides': {'B1': 'Noun (plural)', 'n': 'A variant or misspelling of "necesidades" (needs); referring to the social requirements of a population'},
+    'Múltiples': {'B1': 'Adjective (plural)', 'n': 'Multiple; used to describe the diverse factors influencing urban growth'},
+    'Morfología': {'C1': 'Noun', 'n': 'Morphology; the study of the form and structure of human settlements'},
+    'Mito': {'B1': 'Noun', 'n': 'Myth; in urban theory, a narrative that shapes how a city is perceived or planned'},
+    'vacíos': {'B2': 'Noun (plural)', 'n': 'Voids or empty spaces; the non-built areas within an urban fabric'},
+    'reforma': {'B1': 'Noun', 'n': 'Reform; a planned change or improvement to an existing urban or social system'},
+    'fraternidad': {'B2': 'Noun', 'n': 'Fraternity or brotherhood; a social ideal often linked to the design of public spaces'},
+    'familia': {'A1': 'Noun', 'n': 'Family; the basic social unit for which residential housing is designed'},
+    'crecimiento': {'B1': 'Noun', 'n': 'Growth; the physical expansion or population increase of a city'},
+    'ciudad': {'A1': 'Noun', 'n': 'City; the primary subject of urbanistic study and intervention'},
+    'Espacien': {'C1': 'Verb, Noun', 'n': 'A variant related to "espaciar" (to space out) or the conceptualization of space'},
+    'Cuarto': {'A1': 'Noun, Adjective', 'n': 'Room or fourth; referring to a specific division of space or a numerical order'},
+    'segunda': {'A1': 'Adjective', 'n': 'Second; often used in "segunda residencia" (second home) or secondary urban phases'},
 
 }

@@ -47,8 +47,10 @@ import common_swedish
 import common_acronyms
 import common_bosnian
 import common_danish
+import common_catalan
 import common_dutch
 import common_estonian
+import common_faroese
 import common_finnish
 import common_french
 import common_german
@@ -1782,6 +1784,14 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_catalan.common_catalan_words:
+            remove_list.append(w)
+            continue
+
+        if w in common_faroese.common_faroese_words:
+            remove_list.append(w)
+            continue
+
         if w in common_bosnian.common_bosnian_words:
             remove_list.append(w)
             continue
@@ -2496,6 +2506,12 @@ def main():
         grand_union.add(w)
 
     for w in common_danish.common_danish_words:
+        grand_union.add(w)
+
+    for w in common_catalan.common_catalan_words:
+        grand_union.add(w)
+
+    for w in common_faroese.common_faroese_words:
         grand_union.add(w)
 
     for w in common_dutch.common_dutch_words:
