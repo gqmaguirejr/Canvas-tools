@@ -36,5 +36,7 @@ common_catalan_words={
     'Identitat del territori': {'C1': 'Noun (Catalan)', 'n': 'Territorial identity; the unique cultural and physical character of a specific geographic region'},
     'Quaderns': {'B2': 'Noun (Catalan)', 'n': 'Notebooks or journals; specifically referring to "Quaderns d\'Arquitectura i Urbanisme," an influential Catalan publication'},
     'Universitat': {'B2': 'Noun (Catalan)'},  # University - This is the Catalan spelling of the word
+    "d'arquitectura": {'B2': 'Noun phrase', 'n': 'Of architecture; the possessive form used to describe principles, journals, or schools related to the building arts'},
+    'Mediterrània': {'B1': 'Proper Noun', 'n': 'Mediterranean; referring to the sea, the climatic region, and the specific urban culture shared by coastal Southern Europe'},
 
 }

@@ -96,4 +96,21 @@ common_spanish_words={
     'Cuarto': {'A1': 'Noun, Adjective', 'n': 'Room or fourth; referring to a specific division of space or a numerical order'},
     'segunda': {'A1': 'Adjective', 'n': 'Second; often used in "segunda residencia" (second home) or secondary urban phases'},
 
+    'proyecto': {'B1': 'Noun', 'n': 'Project; the formal design, plan, or proposal for an architectural or urban intervention'},
+    'metrópolis': {'B2': 'Noun', 'n': 'Metropolis; a very large and densely populated city that serves as a regional or national hub'},
+    'leyes': {'A2': 'Noun (plural)', 'n': 'Laws; the legal frameworks and regulations that govern land use and urban development'},
+    'ensanche': {'C1': 'Noun', 'n': 'Expansion; specifically the 19th-century planned extensions of Spanish cities, such as the Cerdà plan in Barcelona'},
+    'Revolución': {'B1': 'Noun', 'n': 'Revolution; often referring to the Industrial Revolution and its radical impact on urban structures'},
+    'Ricos': {'A1': 'Noun (plural), Adjective', 'n': 'The rich; in urban theory, referring to affluent social classes and their influence on spatial segregation'},
+    'circulación': {'B2': 'Noun', 'n': 'Circulation; the movement of people, vehicles, and goods through the city’s street network'},
+    'Paisaje': {'B1': 'Noun', 'n': 'Landscape; the visible features of an area of land, including both natural and human-made elements'},
+    'Libros': {'A1': 'Noun (plural)', 'n': 'Books; the written records and theoretical texts that document urban history and planning'},
+    'Filosofía': {'B2': 'Noun', 'n': 'Philosophy; the study of the fundamental nature of knowledge and ethics in relation to urban life'},
+    'Caminos': {'A2': 'Noun (plural)', 'n': 'Paths or roads; the physical routes that connect different points within a territory'},
+    'Colapso': {'C1': 'Noun', 'n': 'Collapse; the breakdown of urban systems or social structures due to crises or over-exploitation'},
+    'Ecológico': {'B1': 'Adjective', 'n': 'Ecological; relating to the relationship between living organisms and their urban or natural environment'},
+    'vecinos de las calles con respecto': {'B2': 'Noun phrase', 'n': 'Neighbors of the streets with respect to; referring to the relationship or rights of residents regarding their local urban environment'},
+    'Memoria Revolucionaria': {'C1': 'Noun phrase', 'n': 'Revolutionary Memory; the collective remembrance of radical social or political shifts that have reshaped the city'},
+    'Siglo Después': {'B1': 'Noun phrase', 'n': 'A Century Later; a temporal perspective often used in longitudinal studies to assess the long-term impact of urban reforms'},
+
 }

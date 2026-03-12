@@ -174,6 +174,9 @@ common_portuguese_words = {
     'Colexio Oficial de Arquitectos de Galicia': {'C1': 'Proper Noun', 'n': 'COAG; the official professional body for architects in Galicia, Spain (written in Galician, which is closely related to Portuguese)'},
     'urbanismo': {'B2': 'Noun', 'n': 'Urbanism or town planning; the study and practice of designing and organizing the physical and social aspects of cities'},
     'urbanas': {'A2': 'Adjective (feminine plural)', 'n': 'Urban; relating to cities or towns, often used in phrases like "áreas urbanas" or "zonas urbanas"'},
+    'urbano': {'A1': 'Adjective', 'n': 'Urban; relating to a city or town, as opposed to rural areas'},
+    'obras': {'B1': 'Noun (plural)', 'n': 'Works or construction projects; often used in the context of building or renovation'},
+    'públicas': {'A2': 'Adjective (feminine plural)', 'n': 'Public; relating to the state or the community rather than private individuals'},
 
 
 }

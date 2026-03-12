@@ -564,5 +564,20 @@ common_italian_words={
     "dell'urbanistica": {'B2': 'Noun phrase', 'n': 'Of urban planning; the possessive form indicating a relationship to the discipline'},
     "L'urbanistica": {'B2': 'Noun (definite)', 'n': 'Urban planning (the discipline); the subject of study in architecture schools'},
     'Spazio': {'A2': 'Noun', 'n': 'Space; the physical three-dimensional area occupied by urban elements'},
+    'Maestro': {'B2': 'Noun', 'n': 'Italian for "master" or "teacher"; used to describe a distinguished figure in the arts or a lead architect of a major project'},
+
+    'suolo': {'B1': 'Noun', 'n': 'Soil or ground; in planning, refers to land use (consumo di suolo) and the physical surface of the territory'},
+    'questione': {'B1': 'Noun', 'n': 'Question or issue; often used in "la questione urbana" to describe the complex problems facing modern cities'},
+    'l\'avvenire': {'B2': 'Noun', 'n': 'The future; a literary or formal term for what is to come, frequently used in visionary planning manifestoes'},
+    'città': {'A1': 'Noun', 'n': 'City; the primary human settlement and the focus of urbanistic intervention'},
+    'elementare': {'A2': 'Adjective', 'n': 'Elementary or basic; referring to fundamental urban units or primary education infrastructure'},
+    'Società': {'B1': 'Noun', 'n': 'Society; the collective body of individuals living together in a community or organized under a state'},
+    'Immagini': {'A2': 'Noun (plural)', 'n': 'Images; visual representations used in cartography, photography, and urban mental mapping'},
+    'Cambia': {'A2': 'Verb', 'n': 'Change (third-person singular); used to describe the ongoing transformation of the urban fabric'},
+    'Regionale': {'B1': 'Adjective', 'n': 'Regional; relating to a large geographic area that encompasses multiple municipalities'},
+    'oggi': {'A1': 'Adverb', 'n': 'Today; referring to contemporary conditions and current urban challenges'},
+    'Trentino': {'B2': 'Proper Noun', 'n': 'A mountainous province in northern Italy known for its specific autonomous planning and landscape management'},
+    'stati europei': {'B1': 'Noun (plural)', 'n': 'European states; the sovereign nations that constitute the European continent and its geopolitical framework'},
+    'Regione Milanese': {'B2': 'Proper Noun', 'n': 'The Milanese Region; the functional metropolitan area and hinterland surrounding the city of Milan'},
 
 }

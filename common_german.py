@@ -1297,6 +1297,10 @@ common_german_words={
     'Heim': {'A1': 'Noun', 'n': 'Home; a private dwelling or place of belonging, central to early 20th-century residential planning'},
     'Raum': {'A2': 'Noun', 'n': 'Space or room; the fundamental physical or conceptual area in which urban planning occurs (e.g., Lebensraum)'},
     'Morphologie': {'B2': 'Noun', 'n': 'Morphology; the study of the form and structure of human settlements and their historical evolution'},
+    'Kulturlandschaft': {'B2': 'Noun', 'n': 'Cultural landscape; a geographic area shaped by the long-term interaction between human activity and the natural environment'},
+    'Wirtschaftsleben': {'B2': 'Noun', 'n': "Economic life; the collective activities and relationships involving the production, distribution, and consumption of goods and services within a society"},
+    'Frau': {'A1': 'Noun', 'n': 'Woman or Mrs.; used as a formal title or to denote a female individual'},
+    'Salicylsäurefrabrik': {'C1': 'Noun', 'n': 'Salicylic acid factory; a historical industrial facility for the large-scale production of the precursor to aspirin'},
 
     # GQMg
 }

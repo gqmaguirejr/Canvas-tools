@@ -47,7 +47,7 @@ try:
     import common_acronyms
     import AVL_words_with_CEFR
     import common_bosnian
-    import common_catalan.py
+    import common_catalan
     import common_danish
     import common_dutch
     import common_estonian
@@ -661,9 +661,9 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
     
         # Dictionary Sources to check
         sources = [
+            (common_english, 'common_English_words'),
             (common_english, 'chemical_elements_symbols'),
             (common_english, 'chemical_names_and_formulas'),
-            (common_english, 'common_English_words'),
             (common_english, 'common_french_words'),
             (common_english, 'common_programming_languages'),
             (common_english, 'common_units'),
@@ -1369,6 +1369,8 @@ def main():
         'swedish_place_names': set(common_swedish.swedish_place_names),
         'swedish_names_for_foreign_places': set(common_swedish.swedish_names_for_foreign_places)
     }
+
+    print(f"{len(name_category_dict)=}")
 
     exact_name_category_dict = {
         'company_and_product_names': set(common_english.company_and_product_names),
