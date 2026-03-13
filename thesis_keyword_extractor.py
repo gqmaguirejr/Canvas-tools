@@ -52,6 +52,7 @@ try:
     import common_dutch
     import common_estonian
     import common_faroese
+    import common_farsi
     import common_finnish
     import common_french
     import common_german
@@ -78,6 +79,7 @@ except ImportError:
     common_dutch = None
     common_estonian = None
     common_faroese = None
+    common_farsi = None
     common_finnish = None
     common_french = None
     common_german = None
@@ -677,6 +679,7 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_english, 'chemical_elements'),
             (common_estonian, 'common_estonian_words'),
             (common_faroese, 'common_faroese_words'),
+            (common_farsi, 'common_farsi_words'),
             (common_finnish, 'common_finnish_words'),
             (common_german, 'common_german_words'),
             (common_greek, 'common_greek_words'),
@@ -803,6 +806,7 @@ def get_cefr_level(phrase):
         'common_dutch_words': common_dutch,
         'common_estonian_words': common_estonian,
         'common_faroese_words': common_faroese,
+        'common_farsi_words': common_farsi,
         'common_finnish_words': common_finnish,
         'common_french_words': common_french,
         'common_german_words': common_german,
