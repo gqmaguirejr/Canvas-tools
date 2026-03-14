@@ -1301,6 +1301,7 @@ common_german_words={
     'Wirtschaftsleben': {'B2': 'Noun', 'n': "Economic life; the collective activities and relationships involving the production, distribution, and consumption of goods and services within a society"},
     'Frau': {'A1': 'Noun', 'n': 'Woman or Mrs.; used as a formal title or to denote a female individual'},
     'Salicylsäurefrabrik': {'C1': 'Noun', 'n': 'Salicylic acid factory; a historical industrial facility for the large-scale production of the precursor to aspirin'},
+    'Radmotorikpark': {'C1': 'Noun', 'n': 'A cycling motor skills park; a specialized training facility with obstacles and varied terrain designed to improve cyclists’ balance and handling'},
 
     # GQMg
 }
