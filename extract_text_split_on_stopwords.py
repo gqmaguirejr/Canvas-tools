@@ -2603,6 +2603,11 @@ def main():
 
     for w in common_english.company_and_product_names:
         grand_union.add(w)
+        # add versions without the trademark and registered trademark symbols
+        if w.endswith('®') and len(w) > 1:
+            grand_union.add(w[:-1])
+        if w.endswith('™') and len(w) > 1:
+            grand_union.add(w[:-1])
 
     for w in common_english.common_programming_languages:
         grand_union.add(w)

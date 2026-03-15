@@ -1376,13 +1376,23 @@ def main():
 
     print(f"{len(name_category_dict)=}")
 
+    # add versions without the trademark and registered trademark symbols
+    new_entries=set()
+    for w in common_english.company_and_product_names:
+        if w.endswith('®') and len(w) > 1:
+            new_entries.add(w[:-1])
+        if w.endswith('™') and len(w) > 1:
+            new_entries.add(w[:-1])
+
+    common_english.company_and_product_names = set(common_english.company_and_product_names) | new_entries
+
+
     exact_name_category_dict = {
         'company_and_product_names': set(common_english.company_and_product_names),
         'common_programming_languages': set(common_english.common_programming_languages),
         'mathematical_words_to_ignore': set(common_english.mathematical_words_to_ignore),
         'common_units': set(common_english.common_units),
     }
-
 
     print("\nExtracting text...")
     pages = extract_text_from_pdf(pdf_path)
