@@ -176,6 +176,7 @@ common_latin_words={
     'Ambio': {'C1': 'Verb', 'n': 'To go around or surround; the Latin root for "ambient" and "environment" (ambiens)'},
     'Contranaturam': {'C1': 'Adjective, Adverb', 'n': 'Against nature; describing actions, structures, or theories that deviate from or oppose the natural order'},
     'terram': {'A2': 'Noun (accusative)', 'n': 'The earth, ground, or land; the physical foundation of any territorial or geographic study'},
+    "computare": {"C2": "Verb", "n": "To sum up, reckon, or calculate; the Latin root of the modern word 'compute'"},
 
 }
 

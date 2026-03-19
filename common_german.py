@@ -1353,6 +1353,24 @@ common_german_words={
     'langjährigen': {'B1': 'Adjective', 'n': 'Long-standing or of many years; typically used to describe relationships, experiences, or employees'},
     'unsere': {'A1': 'Pronoun', 'n': 'Our; possessive determiner for "wir" (we)'},
     'Freundschaften': {'A2': 'Noun (plural)', 'n': 'Friendships; plural of "Freundschaft"'},
+    "Informatik": {"A1": "noun", "n": "The study of computers and computing; computer science"},
+
+    "Charakter": {"B2": "Noun", "n": "Character or nature; the inherent complex of attributes that determines a person's or thing's moral or ethical actions"},
+    "blossen": {"C1": "Adjective", "n": "Mere or bare; often used to indicate that something is 'only' or 'just' what it appears to be"},
+    "Veränderliche": {"C1": "Noun", "n": "Variable; a quantity that during a calculation or within a specific context is assumed to vary or be capable of varying"},
+    "derartige": {"B2": "Adjective", "n": "Such or of that kind; referring to something previously mentioned or implied"},
+    "prüfen": {"A2": "Verb", "n": "To check, examine, or test; to verify the accuracy or quality of something"},
+    "verfolgen": {"B2": "Verb", "n": "To follow or pursue; in a technical context, to track a process or development"},
+    "hinsichtlich": {"C1": "Preposition", "n": "Regarding or with respect to; used to specify the aspect of something being discussed"},
+    "völlig": {"B1": "Adverb", "n": "Completely or entirely; indicates a state of total fulfillment or completion"},
+    "beliebiger": {"C1": "Adjective", "n": "Any or arbitrary; choosing one thing without regard to its specific characteristics"},
+    "logisch": {"B1": "Adjective", "n": "Logical; relating to or according to the rules of logic or formal argument"},
+    "allgemeiner": {"B2": "Adjective", "n": "General; relating to or affecting all the people or things in a group"},
+    "Aussagen": {"B2": "Noun", "n": "Plural of 'Aussage'; statements, assertions, or propositions"},
+    "logischen": {"B1": "Adjective", "n": "Inflected form of 'logisch'; pertaining to logic"},
+    "Aussage": {"B2": "Noun", "n": "Statement or proposition; a clear expression of something in speech or writing"},
+    "wäre": {"B1": "Verb", "n": "Would be; the subjunctive II form of 'sein' (to be)"},
+    "methodischen": {"C1": "Adjective", "n": "Methodical; following a systematic or established procedure"},
 
     # GQMg
 }

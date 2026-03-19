@@ -770,5 +770,13 @@ common_french_words={
     'conditionnée': {'B2': 'Adjective (feminine)', 'n': 'Conditioned; used to describe how urban form or social behavior is shaped by specific historical or economic factors'},
     'fonctions': {'B1': 'Noun (plural)', 'n': 'Functions; in urbanism, refers to the specific uses of land (housing, industry, recreation) as defined in modernist zoning'},
     'Seuil': {'B2': 'Proper Noun, Noun', 'n': 'Éditions du Seuil; a prestigious French publishing house known for fundamental works in sociology, philosophy, and urban theory'},
+    "assemblée": {"A2": "noun", "n": "A gathering of people or a formal legislative body"},
+    "L'algèbre": {"B2": "Noun", "n": "Algebra; the branch of mathematics in which letters and symbols are used to represent numbers and quantities"},
+    "qu'une": {"A2": "Conjunction", "n": "Contraction of 'que' + 'une' (than a/that a); used to introduce a comparison or a subordinate clause"},
+    "géométrie": {"B1": "Noun", "n": "Geometry; the branch of mathematics concerned with the properties and relations of points, lines, surfaces, and solids"},
+    "écrite": {"A2": "Adjective", "n": "Written; the feminine past participle of 'écrire', referring to something expressed in writing"},
 
 }
+
+
+
