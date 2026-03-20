@@ -598,5 +598,7 @@ common_italian_words={
     "probabilità": {"B1": "noun", "n": "The extent to which something is likely to happen; chance"},
     "teoria": {"B1": "noun", "n": "A system of ideas intended to explain something"},
     "uso": {"A1": "noun", "n": "The action of using something or the state of being used"},
+    "messa": {"A2": "Noun", "n": "Mass; the central religious service of the Catholic Church, or the act of putting/placing something (e.g., 'messa in posa')"},
+    "voce": {"A1": "Noun", "n": "Voice; the sound produced by a person's larynx, or an entry/item in a list or dictionary"},
 
 }

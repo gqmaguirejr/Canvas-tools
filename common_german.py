@@ -1371,6 +1371,7 @@ common_german_words={
     "Aussage": {"B2": "Noun", "n": "Statement or proposition; a clear expression of something in speech or writing"},
     "wäre": {"B1": "Verb", "n": "Would be; the subjunctive II form of 'sein' (to be)"},
     "methodischen": {"C1": "Adjective", "n": "Methodical; following a systematic or established procedure"},
+    "Stimmfeld": {"C1": "Noun", "n": "Voice range profile (VRP); a graphical representation (phonetogram) of the dynamic range of the voice across its frequency range"},
 
     # GQMg
 }
