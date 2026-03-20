@@ -20202,7 +20202,7 @@ well_known_acronyms_list=[
     ['ARAM', 'All Random All Mid', {'s': ['diva2:1939381'], 'n': 'used but not defined;  in League of Legends are four randomly assigned players in a fast-paced, single-lane battle'}],
     ['CAPE', 'Consensus Auditory-Perceptual Evaluation', {'s': ['diva2:1939381']}],
     ['RQOL', 'Related Quality of Life', {'s': ['diva2:1939381']}],
-    ['MUSAiC', 'Music at the Frontiers of Artificial Creativity and Criticism', {'s': ['diva2:1939381']}],
+    ['MUSAiC', 'Music at the Frontiers of Artificial Creativity and Criticism', {'s': ['diva2:1939381'], 'n': 'used but not defined'}],
 
     #GQMa
 ]
