@@ -62,6 +62,7 @@ try:
     import common_japanese
     import common_latin
     import common_norwegian
+    import common_polish
     import common_portuguese
     import common_russian
     import common_spanish
@@ -89,6 +90,7 @@ except ImportError:
     common_japanese = None
     common_latin = None
     common_norwegian = None
+    common_polish = None
     common_portuguese = None
     common_russian = None
     common_spanish = None
@@ -688,6 +690,7 @@ def get_top_features(corpus, case_map, ngram_range, top_n=15):
             (common_japanese, 'common_japanese_words'),
             (common_latin, 'common_latin_words'),
             (common_norwegian, 'common_norwegian_words'),
+            (common_polish, 'common_polish_words'),
             (common_portuguese, 'common_portuguese_words'),
             (common_russian, 'common_russian_words'),
             (common_spanish, 'common_spanish_words'),
@@ -816,6 +819,7 @@ def get_cefr_level(phrase):
         'common_japanese_words': common_japanese,
         'common_latin_words': common_latin,
         'common_norwegian_words': common_norwegian,
+        'common_polish_words': common_polish,
         'common_portuguese_words': common_portuguese,
         'common_russian_words': common_russian,
         'common_spanish_words': common_spanish,

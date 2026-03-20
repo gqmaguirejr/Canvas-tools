@@ -62,6 +62,7 @@ import common_japanese
 import common_kurdish
 import common_latin
 import common_norwegian
+import common_polish
 import common_portuguese
 import common_russian
 import common_spanish
@@ -1757,6 +1758,10 @@ def remove_known_words(output_lines):
             remove_list.append(w)
             continue
 
+        if w in common_polish.common_polish_words:
+            remove_list.append(w)
+            continue
+
         if w in common_portuguese.common_portuguese_words:
             remove_list.append(w)
             continue
@@ -2496,6 +2501,9 @@ def main():
         grand_union.add(w)
 
     for w in common_norwegian.common_norwegian_words:
+        grand_union.add(w)
+
+    for w in common_polish.common_polish_words:
         grand_union.add(w)
 
     for w in common_portuguese.common_portuguese_words:
