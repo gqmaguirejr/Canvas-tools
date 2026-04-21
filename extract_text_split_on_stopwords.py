@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python3.11
 # -*- coding: utf-8 -*-
 #
 # ./extract_text_split_on_stopwords.py PDF_file [start_offset]
@@ -284,16 +284,16 @@ def is_ISBN(s):
         s=s.replace("-", "")
         if s.isnumeric():
             return True
-    # ISBN-13 without additional dashes
+        # ISBN-13 without additional dashes
     elif (s.startswith("978-") and s[4:].count('-') == 0) and s[4:].isdigit:
             return True
     elif s.count('-') == 3:
         s=s.replace("-", "")
         if s.isnumeric():
             return True
-    # otherwise
+        # otherwise
     return False
-    
+
 
 def is_value_units(w):
     suffixes = sorted(common_english.common_units, key=len, reverse=True) #
@@ -305,7 +305,7 @@ def is_value_units(w):
                 return True
             if is_unicode_power_of_ten(w[:-len(s)].strip()):
                 return True
-    #  If no suffix was found for this word, return False
+            #  If no suffix was found for this word, return False
     return False
 
 def is_value_range_units(w):
@@ -355,7 +355,7 @@ def is_integer_range_or_ISSN(string):
         return string.isdigit()
     # otherwise
     return False
-    
+
 def is_TRITA_number(s):
     if s.startswith("TRITA-ABE-DLT") or\
        s.startswith("TRITA-CBH-FOU") or\
@@ -545,12 +545,12 @@ def replace_abbreviations(text):
         # Only add a word boundary at the end if the abbreviation
         # itself ends with a word character (a-z, 0-9, _).
         if abbr[-1].isalnum():
-             end_boundary = r'\b'
+            end_boundary = r'\b'
         else:
-             # If it ends with '.', don't add a boundary, as the '.'
-             # already acts as the boundary.
+            # If it ends with '.', don't add a boundary, as the '.'
+            # already acts as the boundary.
              end_boundary = r''
-        # --- END FIX ---
+             # --- END FIX ---
 
         # Build the final pattern
         pattern = start_boundary + escaped_abbr + end_boundary
@@ -588,7 +588,7 @@ def remove_suffixes(wl):
                 new_wl.append(w[:-len(s)].strip())
                 found_suffix = True
                 break # Suffix found, move to the next word
-                
+            
         # 4. If no suffix was found for this word, append the original word.
         if not found_suffix:
             new_wl.append(w)
@@ -613,7 +613,7 @@ def remove_prefixes(wl):
                 new_wl.append(w[len(s):].strip())
                 found_prefix = True
                 break # prefix found, move to the next word
-                
+            
         # 4. If no prefix was found for this word, append the original word.
         if not found_prefix:
             new_wl.append(w)
@@ -720,8 +720,8 @@ def is_equation(s):
             return True
         else:
             return False
-    #
-    # exception for minus sign and tilde before a digit - these should be taken care of elsewhere
+        #
+        # exception for minus sign and tilde before a digit - these should be taken care of elsewhere
     if (s[0] == '−' or  s[0] == '∼') and s[1].isdigit():
         return False
     #
@@ -741,7 +741,7 @@ def is_equation(s):
             return True
         if c in extra_symbols:
             return True
-    #
+        #
     if s.count('|') > 1:
         return True
 
@@ -750,8 +750,8 @@ def is_equation(s):
         # and there is at least one letter for the lefthand side
         if s.find('←') >= 1:
             return True
-    #
-    # otherwise
+        #
+        # otherwise
     return False
 
 def is_MiscSymbol_or_Pictograph(s):
@@ -819,7 +819,7 @@ def collect_acronyms_from_page(pageno, page):
     last_block_no=0
     current_page_words=page.get_text("words", sort=True) # get plain text encoded as UTF-8
     column1, column2 = compute_column_positions(current_page_words)
-    print(f"{column1=}, {column2=}")
+    # print(f"{column1=}, {column2=}")
 
     for idx, b in enumerate(current_page_words):
         x0, y0, x1, y1, word, block_no, line_no, word_no=b
