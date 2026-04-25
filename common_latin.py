@@ -177,6 +177,8 @@ common_latin_words={
     'Contranaturam': {'C1': 'Adjective, Adverb', 'n': 'Against nature; describing actions, structures, or theories that deviate from or oppose the natural order'},
     'terram': {'A2': 'Noun (accusative)', 'n': 'The earth, ground, or land; the physical foundation of any territorial or geographic study'},
     "computare": {"C2": "Verb", "n": "To sum up, reckon, or calculate; the Latin root of the modern word 'compute'"},
+    'communicare': {'C2': 'Verb', 'n': 'Latin root for "to share" or "to impart"; origin of the English "communicate"'},
+
 
 }
 
