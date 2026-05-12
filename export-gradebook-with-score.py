@@ -503,7 +503,7 @@ def main():
        gradebook_history_df.to_excel(writer, sheet_name='Gradebook_history')
 
        # Close the Pandas Excel writer and output the Excel file.
-       writer.save()
+       writer.close()
 
 
        # add time stamp to log file

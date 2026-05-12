@@ -229,6 +229,6 @@ def main():
     appointments_df.to_excel(writer, sheet_name='Events')
               
     # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
 if __name__ == "__main__": main()

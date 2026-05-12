@@ -658,7 +658,7 @@ def main():
         quiz_submissions_all[quiz].to_excel(writer, sheet_name=sheet_name)
 
     # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
     for q in incorrect_answers:
         try:

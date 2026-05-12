@@ -235,7 +235,7 @@ def main(argv):
 
     workbook.close()
     # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))

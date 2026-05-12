@@ -204,6 +204,6 @@ def main():
             sh_name="{0}".format(course_id)
             df.to_excel(writer, sheet_name=sh_name)
             # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
 if __name__ == "__main__": main()

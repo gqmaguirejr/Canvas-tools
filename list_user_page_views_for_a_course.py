@@ -260,7 +260,7 @@ def main():
 
 
     # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
     print("There were {} users enrolled in the course.".format(len(users_processed)))
 

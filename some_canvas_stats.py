@@ -368,7 +368,7 @@ def main(argv):
     #    print("assignments={0}".format(assignments))
 
     # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
 
 if __name__ == '__main__':

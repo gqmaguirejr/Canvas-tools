@@ -377,7 +377,7 @@ def main():
         #                 verbose_print(f'input type={i.type}, name={i.name}, value={i.value}')
 
     # Close the Pandas Excel writer and output the Excel file.
-    writer.save()
+    writer.close()
 
     if question_type_stats:
         print(f'{question_type_stats=}')

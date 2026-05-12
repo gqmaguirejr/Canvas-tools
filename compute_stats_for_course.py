@@ -318,6 +318,6 @@ def main():
                 allModuleItems_df.to_excel(writer, sheet_name='All published pages')
 
             # Close the Pandas Excel writer and output the Excel file.
-            writer.save()
+            writer.close()
 
 if __name__ == "__main__": main()

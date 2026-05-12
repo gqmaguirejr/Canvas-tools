@@ -360,7 +360,7 @@ def main():
 
 
             # Close the Pandas Excel writer and output the Excel file.
-            writer.save()
+            writer.close()
 
         if len(question_type_stats) > 0:
             print("question_type_stats={}".format(question_type_stats))

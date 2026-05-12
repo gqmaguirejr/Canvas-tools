@@ -183,6 +183,6 @@ def main():
     cards_df=pd.json_normalize(cards)
     cards_df.to_excel(writer, sheet_name='cards')
 
-    writer.save()
+    writer.close()
 
 if __name__ == "__main__": main()
