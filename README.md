@@ -3741,6 +3741,22 @@ Outputs the block of text from the cover and tries to extract the subject.
 
 The program is overly accepting as it will find the subject - even if it is followed by another string that makes it not a valid subject. For example, 'Doctoral Thesis in Physics, Materials & Nanophysics' will be matched when looking for 'Doctoral Thesis in Physics' - but the additional ', Materials & Nanophysics' turns the subject into an invalid subject.
 
+## Crossref_HTML-to-spreadsheet.py
+
+### Purpose
+To process references from the HTML table produced by Crossref to add to a spreadsheet.
+
+### Input
+```bash
+./Crossref_HTML-to-spreadsheet.py HTML_file spreadsheet_file
+```
+
+### Output
+Outputs an updated spreadsheet file (either .csv or x.slx based on the spreadsheet_file name. It creates the file if it does not already exist.
+
+The program can be used with bash script: batch_update_from_crossref.sh to process all of the .html files in a directory.
+
+
 
 <!-- 
 
