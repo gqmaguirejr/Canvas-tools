@@ -3,7 +3,7 @@
 #
 # ./Crossref_HTML-to-spreadsheet.py HTML_file spredsheet_file.xlsx
 #
-# Process references from the HTML table produced by Crossref to add to a spreadsheet
+# Process references from the HTML table produced by Crossref's Simple Text Query (https://apps.crossref.org/SimpleTextQuery) to add reference information to a spreadsheet
 #
 # with option '-v' use verbose output
 #
