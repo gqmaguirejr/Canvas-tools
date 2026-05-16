@@ -3757,6 +3757,18 @@ Outputs an updated spreadsheet file (either .csv or x.slx based on the spreadshe
 The program can be used with bash script: batch_update_from_crossref.sh to process all of the .html files in a directory.
 
 
+## compare_dois.py
+
+### Purpose
+Compares the 'DOI in Reference' and 'Crossref DOI' columns from the output of Crossref_HTML-to-spreadsheet.py to evaluate matching performance.
+
+### Input
+```bash
+./compare_dois.py spreadsheet_file.xlsx
+```
+
+### Output
+outputs an updated spreadsheet with the name {base_name}-matched{ext}
 
 <!-- 
 
