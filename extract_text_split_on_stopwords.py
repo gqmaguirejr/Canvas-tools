@@ -523,6 +523,13 @@ abbreviations_map = {
     'Dec.': 'December',
 
     # Add the rest of your month/other abbreviations here
+
+    'd.ä.': 'den äldre', # the older (Swedish)  - note there is no space after the first period
+    'd.y.': 'den yngre', # the younger (Swedish)- note there is no space after the first period
+    'd. Ä.': 'der Ältere', # the older (German)
+    'd. Ält.': 'der Ältere', # the older (German)
+    'd. J.': 'der Jüngere', # the younger (German)
+
 }
 
 def replace_abbreviations(text):
