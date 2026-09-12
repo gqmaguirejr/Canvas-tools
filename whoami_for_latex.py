@@ -220,6 +220,7 @@ def main():
                     lastname=u_name[0].strip()
                     firstname=u_name[1].strip()
                     kthid=u['user']['sis_user_id']
+                    print(f"{lastname}, {firstname}: {kthid=}")
                     kth_user_info=get_user_by_kthid(kthid)
                     if Verbose_Flag:
                         pprint.pprint(kth_user_info)
@@ -289,9 +290,46 @@ def main():
                             print(f"% If the supervisor is from within KTH")
                             print(f"% add their KTHID, School and Department info")
                             print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
-                            print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{EECS}}")
+                            print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{XXX}}")
                             print(f"%\\supervisor{supervisor_index}sDepartment"+"{Department}")
                             return
+
+                    else:
+                        if supervisor_index == 'S':
+                            print("% --- Author Information ---")
+                            print(f"\\authorsLastname"+"{"+f"{lastname}"+"}")
+                            print(f"\\authorsFirstname"+"{"+f"{firstname}"+"}")
+                            print(f"\\email"+"{"+f"{email_address}"+"}")
+                            print(f"\\kthid"+"{"+f"{kthid}"+"}")
+                            print(f"\\authorsSchool"+"{\\schoolAcronym{XXX}}")
+                            return
+
+                        elif supervisor_index == 'A':
+                            print(f"%If not the first supervisor,")
+                            print(f"% then replace supervisorAs with supervisorBs or")
+                            print(f"% supervisorCAs as appropriate")
+                            print(f"\\supervisor{supervisor_index}sLastname"+"{"+f"{lastname}"+"}")
+                            print(f"\\supervisor{supervisor_index}sFirstname"+"{"+f"{firstname}"+"}")
+                            print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
+                            print(f"% If the supervisor is from within KTH")
+                            print(f"% add their KTHID, School and Department info")
+                            print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
+                            print(f"\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{XXX}}")
+                            return
+                        else:
+                            print(f"%If not the first supervisor,")
+                            print(f"% then replace supervisorAs with supervisorBs or")
+                            print(f"% supervisorCAs as appropriate")
+                            print("\\supervisorAsLastname{"+f"{lastname}"+"}")
+                            print("\\supervisorAsFirstname{"+f"{firstname}"+"}")
+                            print("\\supervisorAsEmail{"+f"{email_address}"+"}")
+                            print(f"% If the supervisor is from within KTH")
+                            print(f"% add their KTHID, School and Department info")
+                            print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
+                            print(f"%\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{XXX}}")
+                            # print(f"%\\supervisor{supervisor_index}sDepartment"+"{Department}")
+                            return
+
             else:
                 print(f"Could not find user with e-mail address {email_address} in course {course_id}")
                 print("You will need to manually edit the following entry")
