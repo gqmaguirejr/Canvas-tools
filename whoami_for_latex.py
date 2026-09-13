@@ -277,14 +277,11 @@ def main():
 
                     else:
                         if supervisor_index != 'A':
-                            print(f"%If not the first supervisor,")
-                            print(f"% then replace supervisorAs with supervisorBs or")
-                            print(f"% supervisorCAs as appropriate")
+                            print(f"% If not the first supervisor, then replace supervisorAs with supervisorBs or supervisorCAs as appropriate")
                         print(f"\\supervisor{supervisor_index}sLastname"+"{"+f"{lastname}"+"}")
                         print(f"\\supervisor{supervisor_index}sFirstname"+"{"+f"{firstname}"+"}")
                         print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
-                        print(f"% If the supervisor is from within KTH")
-                        print(f"% add their KTHID, School and Department info")
+                        print(f"% If the supervisor is from within KTH add their KTHID, School and Department info")
                         print(f"\\supervisor{supervisor_index}sKTHID"+"{"+f"{kthid}"+"}")
                         print(f"\\supervisor{supervisor_index}sSchool"+"{\\schoolAcronym{"+f"{school_acronym}"+"}}")
                         print(f"\\supervisor{supervisor_index}sDepartment"+"{"+f"{wi_name_eng}"+"}")
@@ -293,9 +290,7 @@ def main():
             else:
                 print(f"Could not find user with e-mail address {email_address} in course {course_id}")
                 print("You will need to manually edit the following entry")
-                print(f"%If not the first supervisor,")
-                print(f"% then replace supervisorAs with supervisorBs or")
-                print(f"% supervisorCAs as appropriate")
+                print(f"% If not the first supervisor, then replace supervisorAs with supervisorBs or supervisorCAs as appropriate")
                 print(f"\\supervisor{supervisor_index}sLastname"+"{lastname}")
                 print(f"\\supervisor{supervisor_index}sFirstname"+"{firstname}")
                 print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
