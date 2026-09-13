@@ -294,7 +294,7 @@ def main():
                 print(f"\\supervisor{supervisor_index}sLastname"+"{lastname}")
                 print(f"\\supervisor{supervisor_index}sFirstname"+"{firstname}")
                 print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
-                print("% other for a supervisor outside of KTH add their organization info")
+                print("% Other: for a supervisor outside of KTH add their organization info")
                 print(f"\\supervisor{supervisor_index}sOrganization"+ "{xxxxx University, Department of yyyy}")
 
 
