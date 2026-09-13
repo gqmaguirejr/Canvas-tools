@@ -293,10 +293,9 @@ def main():
             else:
                 print(f"Could not find user with e-mail address {email_address} in course {course_id}")
                 print("You will need to manually edit the following entry")
-                if supervisor_index != 'A':
-                    print(f"%If not the first supervisor,")
-                    print(f"% then replace supervisorAs with supervisorBs or")
-                    print(f"% supervisorCAs as appropriate")
+                print(f"%If not the first supervisor,")
+                print(f"% then replace supervisorAs with supervisorBs or")
+                print(f"% supervisorCAs as appropriate")
                 print(f"\\supervisor{supervisor_index}sLastname"+"{lastname}")
                 print(f"\\supervisor{supervisor_index}sFirstname"+"{firstname}")
                 print(f"\\supervisor{supervisor_index}sEmail"+"{"+f"{email_address}"+"}")
