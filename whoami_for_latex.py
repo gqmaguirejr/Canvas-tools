@@ -128,6 +128,9 @@ def user_profile_url(user_id):
     if r.status_code == requests.codes.ok:
         page_response=r.json()
         return page_response
+    else:
+        if Verbose_Flag:
+            print(f"{r.status_code=}")
     return []
 
 def get_user_by_kthid(kthid):
